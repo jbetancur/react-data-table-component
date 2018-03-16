@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <ProgressWrapper centered /> should render correctly when a component is passed that is a react component 1`] = `
+.c0 {
+  text-align: center;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  className="c0"
+>
+  A Component that is passed in
+</div>
+`;
+
+exports[`component <ProgressWrapper component /> should render correctly when a component is passed that is a react component 1`] = `
+.c0 {
+  text-align: center;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    A String that is passed in
+  </div>
+</div>
+`;
+
+exports[`component <ProgressWrapper component /> should render correctly when a component is passed that is a string 1`] = `
+.c0 {
+  text-align: center;
+}
+
+<div
+  className="c0"
+>
+  A Component that is passed in
+</div>
+`;

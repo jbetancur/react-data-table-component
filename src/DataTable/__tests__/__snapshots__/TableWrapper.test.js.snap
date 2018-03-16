@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <TableWrapper /> should render correctly 1`] = `
+.c0 {
+  position: relative;
+  height: 100%;
+}
+
+<div
+  className="c0"
+/>
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <ExpanderRow /> should render correctly 1`] = `
+.c0 {
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+<tr
+  className="c0"
+>
+  <td
+    colSpan={0}
+  />
+</tr>
+`;
+
+exports[`component <ExpanderRow /> with children should render correctly and have a data prop 1`] = `
+.c0 {
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+<tr
+  className="c0"
+>
+  <td
+    colSpan={0}
+  >
+    <div
+      data={
+        Object {
+          "name": "morty",
+        }
+      }
+      key=".0"
+    >
+      Some Expander Content
+    </div>
+  </td>
+</tr>
+`;
+
+exports[`component <ExpanderRow numColumns /> should render correctly 1`] = `
+.c0 {
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+<tr
+  className="c0"
+>
+  <td
+    colSpan={5}
+  />
+</tr>
+`;

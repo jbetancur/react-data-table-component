@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <NoData /> should render correctly when a component is passed that is a react component 1`] = `
+<NoData__NoDataWrapperMessage>
+  <div>
+    A String that is passed in
+  </div>
+</NoData__NoDataWrapperMessage>
+`;
+
+exports[`component <NoData /> should render correctly when a component is passed that is a string 1`] = `
+<NoData__NoDataWrapperMessage>
+  A Component that is passed in
+</NoData__NoDataWrapperMessage>
+`;

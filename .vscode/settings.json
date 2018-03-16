@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        ".editorconfig": "javascriptreact"
+    },
+    "editor.formatOnType": true,
+    // "eslint.options": {"configFile": "./package.json"},
+    "editor.tabSize": 2,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": false,
+    "eslint.nodePath": "./src",
+    "editor.formatOnSave": false,
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.fontFamily": "Knack Nerd Font",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.shellArgs.osx": [
+      "-l"
+    ],
+    "terminal.integrated.shell.osx": "zsh",
+    "terminal.integrated.scrollback": 5000,
+    "editor.fontSize": 13,
+    // "editor.minimap.enabled": true,
+    "extensions.autoUpdate": true
+  }

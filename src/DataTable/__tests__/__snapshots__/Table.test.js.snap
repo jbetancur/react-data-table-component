@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <Table /> should render correctly 1`] = `
+.c0 {
+  height: 100px;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+<table
+  className="c0"
+/>
+`;
+
+exports[`component <Table disabled={true} /> should render correctly  1`] = `
+.c0 {
+  height: 100px;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+<table
+  className="c0"
+  disabled={true}
+/>
+`;

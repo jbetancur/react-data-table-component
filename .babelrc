@@ -1,0 +1,24 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    ["module-resolver", { 
+      "root": ["./"],
+      "cwd": "./"
+    }],
+    "babel-plugin-styled-components"
+  ],
+  "env": {
+    "commonjs": {
+      "plugins": [
+        "transform-es2015-modules-commonjs",
+        "babel-plugin-styled-components"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+language: node_js
+
+node_js:
+  - "lts/*"
+
+cache:
+  yarn: true
+
+script:
+  - cd stories/
+  - yarn install
+  - cd ../
+  - yarn lint
+  - yarn flow-typed
+  - yarn flow
+  - yarn test -- --coverage
+  - yarn build
+
+before_deploy:
+  - yarn build-storybook
+
+deploy:
+  edge: # https://github.com/travis-ci/travis-ci/issues/9312
+    branch: v1.8.47
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: storybook-static
+  on:
+    branch: master
+
+after_script:
+  - yarn codecov

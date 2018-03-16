@@ -1,0 +1,17 @@
+__mocks__
+.storybook
+.vscode
+coverage
+stories
+!dist
+flow-typed
+.babelrc
+.eslintignore
+.eslintrc.json
+.flowconfig
+.travis.yml
+jsconfig.json
+rollup.config.*.js
+test-config.js
+yarn.lock
+*.log

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <TableRow /> should render correctly 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+<tr
+  className="c0"
+/>
+`;
+
+exports[`component <TableRow /> with children should render correctly 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+<tr
+  className="c0"
+>
+  <td>
+    Some Child Cell
+  </td>
+</tr>
+`;
+
+exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c0:hover {
+  background-color: rgba(0,0,0,.08);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+}
+
+<tr
+  className="c0"
+/>
+`;
+
+exports[`component <TableRow striped /> should render correctly 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c0:nth-child(odd) {
+  background-color: rgba(0,0,0,.03);
+}
+
+<tr
+  className="c0"
+/>
+`;
