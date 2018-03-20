@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/jbetancur/react-data-table-component.svg?branch=master)](https://travis-ci.org/jbetancur/react-data-table-component)
 
+[React Data Table Component Demo](https://jbetancur.github.io/react-data-table-component)
+
 # React Data Table Component
 
 Why the long name? Well, there are A LOT of React table libraries out there! Creating yet another React table library came out of nescessity while developing a production application for a busy startup. I discovered that while there are great table libraries available, most required heavy customization, feature bloated/slow (I didn't need an Excel clone), lacked features, were "too" opinionated in their styling (overriding css and/or forced to use their flavor of ui library) or required a commercial license.
