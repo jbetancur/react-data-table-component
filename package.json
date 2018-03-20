@@ -17,8 +17,7 @@
     "flow-typed:stories": "cd stories/ && flow-typed install -s -o --ignoreDeps peer --packageDir ../ || true",
     "build:dev": "rollup -c rollup.config.dev.js -m",
     "build:prod": "rollup -c rollup.config.prod.js",
-    "build:umd": "rollup -c rollup.config.umd.js",
-    "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod && npm run build:umd",
+    "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
     "start": "npm run build:dev -- -w",
     "test": "cross-env BABEL_ENV=commonjs jest --passWithNoTests",
     "test:tdd": "cross-env BABEL_ENV=commonjs jest --watch",
@@ -83,8 +82,9 @@
     "jest-styled-components": "^5.0.0",
     "raf": "^3.4.0",
     "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.56.5",
+    "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^9.0.0",
     "rollup-plugin-node-resolve": "^3.2.0",
@@ -99,9 +99,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "react-dom": "^16.2.0",
     "shortid": "^2.2.8",
-    "styled-components": "^3.2.1"
+    "styled-components": "^3.2.3"
   },
   "peerDependencies": {
     "react": "^15.5.0 || ^16.0.0"
