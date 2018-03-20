@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const SampleStyle = styled.div`
   padding: 16px;
   display: block;
-  height: 100%;
   width: 100%;
 
   p {
