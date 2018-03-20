@@ -235,10 +235,39 @@ const MyComponent = () => (
 
 ```
 
-##Theming
-TBD
+## Theming
+Under Development
 
-Resources
+The curent default Theme is very "material".  Plans are to have 3 build in selectable themes (clean, bootstrap, material).
+
+You can override or replace the current theme using the `customTheme` prop
+
+For Example:
+
+```
+// Override the row default height
+const mySweetTheme = {
+  rows: {
+    height: '64px'
+  }
+}
+
+
+const MyComponent = () => (
+  <DataTable
+    title="Arnold Movies"
+    columns={columns}
+    customTheme={mySweetTheme}
+  />
+);
+```
+
+Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/defaultTheme.js) for reference
+
+
+
+
+### Theme Resources
 * [SVG Encoder](https://codepen.io/yoksel/details/JDqvs)
 
 
