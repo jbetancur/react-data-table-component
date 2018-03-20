@@ -13,8 +13,8 @@ React Data Table Component is still under **Development**, but here are the init
 * Selectable Rows
 * Expandable Rows
 * Themeable via js config
-* Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`)
-* Responsive
+* Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
+* Responsive (via x-scroll)
 
 ## Roadmap
 * Sortable (server)
@@ -22,7 +22,8 @@ React Data Table Component is still under **Development**, but here are the init
 * Search (client/server)
 * Fixed Headers
 * Built in themes (Material, Boostrap)
-* Accesibility
+* Mobile Responsive
+* Accessibility
 
 ## API
 ### Data
@@ -49,7 +50,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
 | data | array<Object> | no | [] | Table Data |
-| keyField | string | no | 'id' | Your data should have a unique indentifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` value this field name, especially if you want to manage row state at a later time, While not recommmended, If an unique `id` is not present  in your data set, then React Data Table will use the row index as the key value |
+| keyField | string | no | 'id' | Your data should have a unique identifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` value this field name, especially if you want to manage row state at a later time, While not recommmended, If an unique `id` is not present  in your data set, then React Data Table will use the row index as the key value |
 | progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
 | progressComponent | component | no |  | allows you to use your own custom progress component |
 | progressCentered | bool | no |  | absolutely position and center the progress over the table |
