@@ -27,7 +27,15 @@ React Data Table Component is still under **Development**, but here are the init
 * Mobile Responsive
 * Accessibility
 
-## API
+## Installation
+```
+npm install react-data-table-component 
+
+// or
+
+yarn add react-data-table-component 
+```
+## API/Usage
 ### Data
 `data` just needs to be an array of object data....
 

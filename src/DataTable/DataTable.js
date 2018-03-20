@@ -458,14 +458,18 @@ class DataTable extends PureComponent {
                 component={progressComponent}
                 centered={progressCentered}
               />}
-            {rows.length > 0 ?
+
+            {!rows.length > 0 && !progressPending &&
+              <NoData component={noDataComponent} />}
+
+            {rows.length > 0 &&
               <Table disabled={progressPending}>
                 {this.renderTableHead()}
 
                 <TableBody>
                   {this.renderRows()}
                 </TableBody>
-              </Table> : <NoData component={noDataComponent} />}
+              </Table>}
           </TableWrapper>
         </ResponsiveWrapper>
       </ThemeProvider>

@@ -1,13 +1,13 @@
 {
   "name": "react-data-table-component",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A declarative react based data table",
   "main": "dist/index.prod.js",
-  "module": "dist/index.prod.umd.js",
+  "module": "dist/index.prod.js",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/psychobolt/react-rollup-boilerplate.git",
+  "repository": "https://github.com/jbetancur/react-data-table-component",
   "author": "jbetancur",
   "license": "MIT",
   "scripts": {
@@ -103,6 +103,6 @@
     "styled-components": "^3.2.3"
   },
   "peerDependencies": {
-    "react": "^15.5.0 || ^16.0.0"
+    "react": "^16.0.0"
   }
 }
