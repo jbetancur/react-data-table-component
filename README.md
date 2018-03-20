@@ -63,20 +63,20 @@ Nothing new here - we are using an array of object literals and properties to de
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
 | sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon  |
-| striped | bool | no |  | stripe color the odd rows |
+| striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are highlighted on hover |
 | contextTitle | string | no |  | override the context menu title |
 | contextActions | array of components | no |  | add context action as an array of components |
-| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows, columns |
-| clearSelectedRows | bool | no | false | set this prop to true to trigger all rows to deselect - you can use this together with onTableUpdate to control |
+| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows, columns }) |
+| clearSelectedRows | bool | no | false | set to true to trigger all rows to deselect - you can use this together with `onTableUpdate` manage the table state |
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
-| defaultSortAsc | bool | true |  |  |
+| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | className | string | no |  | override the className on the Table wrapper |
 | style | object | no |  | override the style on the Table wrapper |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers and menus will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". **The table parent element must have a fixed `height` or `height: 100%` for this to work** |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
-| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/defaultTheme.js), by overriding specifc props. Your changes will be merged. |
+| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/defaultTheme.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
 
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
@@ -238,7 +238,7 @@ const MyComponent = () => (
 ## Theming
 Under Development
 
-The curent default Theme is very "material".  Plans are to have 3 build in selectable themes (clean, bootstrap, material).
+The curent default Theme is very "material". Near term plans are to have 3 built-in prop selectable themes (none, bootstrap, material).
 
 You can override or replace the current theme using the `customTheme` prop
 
@@ -251,7 +251,6 @@ const mySweetTheme = {
     height: '64px'
   }
 }
-
 
 const MyComponent = () => (
   <DataTable
