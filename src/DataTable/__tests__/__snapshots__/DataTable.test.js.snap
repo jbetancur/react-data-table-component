@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <DataTable /> should render correctly 1`] = `
+.c0 {
+  position: relative;
+  overflow-x: auto;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+>
+  <WithTheme(TableHeader)
+    contextActions={Array []}
+    contextTitle="0 item selected"
+    showContextMenu={false}
+    title=""
+  />
+  <TableWrapper>
+    <NoDataWrapper
+      component="There are no records to display"
+    />
+  </TableWrapper>
+</div>
+`;

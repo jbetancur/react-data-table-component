@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <TableCell /> should render correctly 1`] = `
+.c0 {
+  box-sizing: border-box;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(0,0,0,.87);
+  height: 48px;
+  width: auto;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c0:first-child {
+  padding-left: 24px;
+}
+
+.c0:last-child {
+  padding-right: 24px;
+}
+
+<td
+  className="c0"
+  colSpan={null}
+  type={null}
+  width="auto"
+/>
+`;
