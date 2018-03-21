@@ -72,6 +72,7 @@ class DataTable extends PureComponent {
       PropTypes.node,
       PropTypes.func,
     ]),
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -106,6 +107,7 @@ class DataTable extends PureComponent {
     overflowY: false,
     overflowYOffset: '250px',
     noDataComponent: 'There are no records to display',
+    disabled: false,
   };
 
   constructor(props) {
@@ -427,6 +429,7 @@ class DataTable extends PureComponent {
       progressComponent,
       progressCentered,
       noDataComponent,
+      disabled,
     } = this.props;
 
     const {
@@ -463,7 +466,7 @@ class DataTable extends PureComponent {
               <NoData component={noDataComponent} />}
 
             {rows.length > 0 &&
-              <Table disabled={progressPending}>
+              <Table disabled={disabled}>
                 {this.renderTableHead()}
 
                 <TableBody>
