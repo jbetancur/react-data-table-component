@@ -10,7 +10,6 @@ exports[`component <TableCol /> should render correctly 1`] = `
   user-select: none;
   font-weight: 500;
   white-space: nowrap;
-  text-overflow: ellipsis;
   height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);

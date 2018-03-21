@@ -63,6 +63,7 @@ const columns = [
     number: true,
   },
   {
+    name: 'Actions',
     width: '42px',
     cell: row => <CustomMaterialMenu row={row} />,
   },

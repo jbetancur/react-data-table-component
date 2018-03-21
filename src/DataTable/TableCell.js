@@ -9,7 +9,6 @@ const TableCellStyle = styled.td`
   box-sizing: border-box;
   vertical-align: middle;
   white-space: nowrap;
-  text-overflow: ellipsis;
   line-height: normal;
   font-weight: 400;
   font-size: ${props => props.theme.rows.fontSize};

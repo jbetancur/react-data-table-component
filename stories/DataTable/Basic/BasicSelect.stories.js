@@ -11,7 +11,7 @@ const columns = [
     sortable: true,
   },
   {
-    name: 'MOvie',
+    name: 'Movie',
     selector: 'movie',
     sortable: true,
   },

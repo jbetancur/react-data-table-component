@@ -9,7 +9,6 @@ const TableColStyle = styled.th`
   user-select: none;
   font-weight: 500;
   white-space: nowrap;
-  text-overflow: ellipsis;
   height: ${props => props.theme.header.height};
   font-size: ${props => props.theme.header.fontSize};
   color: ${props => props.theme.header.fontColor};
@@ -29,8 +28,9 @@ const TableColStyle = styled.th`
   &:nth-child(2) {
     /* when compact or expander is not first child (table is selectable) */
     ${props => props.type !== 'checkbox' && 'padding-left: 8px'};
-    ${props => props.column.compact && 'padding: 0'};
   }
+
+  ${props => props.column.compact && 'padding: 0'};
 
   &:last-child {
     padding-right: ${props => props.theme.cells.lastCellPadding};
