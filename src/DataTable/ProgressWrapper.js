@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 const ProgressWrapperStyle = styled.div`
   text-align: center;
+  position: relative;
   ${props => props.centered && css`
     position: absolute;
     display: flex;

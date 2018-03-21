@@ -3,6 +3,7 @@
 exports[`component <ProgressWrapper centered /> should render correctly when a component is passed that is a react component 1`] = `
 .c0 {
   text-align: center;
+  position: relative;
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -30,6 +31,7 @@ exports[`component <ProgressWrapper centered /> should render correctly when a c
 exports[`component <ProgressWrapper component /> should render correctly when a component is passed that is a react component 1`] = `
 .c0 {
   text-align: center;
+  position: relative;
 }
 
 <div
@@ -44,6 +46,7 @@ exports[`component <ProgressWrapper component /> should render correctly when a 
 exports[`component <ProgressWrapper component /> should render correctly when a component is passed that is a string 1`] = `
 .c0 {
   text-align: center;
+  position: relative;
 }
 
 <div
