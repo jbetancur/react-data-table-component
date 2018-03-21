@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const ProgressWrapperStyle = styled.div`
+  position: ${props => (props.centered ? 'absolute' : 'relative')};
+  ${props => props.centered && 'align-items: center'};
   text-align: center;
-  position: relative;
-  ${props => props.centered && css`
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  `};
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
 const ProgressWrapper = ({ component, centered }) => (

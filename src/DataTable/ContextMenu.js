@@ -22,7 +22,7 @@ const ContextMenuStyle = styled.div`
   align-items: center;
   justify-content: space-between;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
 `;
 
 const ContextMenu = ({ visible, title, actions }) => (

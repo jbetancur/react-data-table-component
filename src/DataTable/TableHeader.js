@@ -8,7 +8,7 @@ const TableHeaderStyle = styled.header`
   overflow: hidden;
   align-items: center;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
   min-height: 64px;
 `;
 

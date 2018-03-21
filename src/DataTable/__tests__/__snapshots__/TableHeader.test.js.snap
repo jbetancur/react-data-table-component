@@ -35,7 +35,7 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
 }
 
 .c0 {
@@ -49,7 +49,7 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
   min-height: 64px;
 }
 
@@ -199,7 +199,7 @@ exports[`component <TableHeader title contextActions /> should render correctly 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
   min-height: 64px;
 }
 
@@ -235,7 +235,7 @@ exports[`component <TableHeader title contextTitle /> should render correctly 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
   min-height: 64px;
 }
 
@@ -265,7 +265,7 @@ exports[`component <TableHeader title showContextMenu /> should render correctly
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
   min-height: 64px;
 }
 
