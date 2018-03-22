@@ -5,7 +5,9 @@ import { FontIcon, MenuButton, ListItem, Divider } from 'react-md';
 // eslint-disable-next-line react/prop-types
 export default ({ row }) => {
   const deleteRow = () => {
+    // eslint-disable-next-line no-console
     console.log(`deleted ${row.id}!`);
+    // eslint-disable-next-line no-alert
     window.alert(`deleted ${row.name}!`);
   };
 

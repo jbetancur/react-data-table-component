@@ -24,6 +24,61 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
 </tr>
 `;
 
+exports[`component <TableRow /> with columns should render correctly if a row does not have a keyField 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+<tr
+  className="c0"
+>
+  <WithTheme(TableCell)
+    column={
+      Object {
+        "id": 123,
+        "name": "Name",
+        "selector": "name",
+      }
+    }
+    key="cell-123-0"
+    row={
+      Object {
+        "name": "testname",
+      }
+    }
+    type="cell"
+  />
+</tr>
+`;
+
+exports[`component <TableRow /> with columns should render correctly if a row has a keyField 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+<tr
+  className="c0"
+>
+  <WithTheme(TableCell)
+    column={
+      Object {
+        "id": 123,
+        "name": "Name",
+        "selector": "name",
+      }
+    }
+    key="cell-123-456"
+    row={
+      Object {
+        "id": 456,
+        "name": "testname",
+      }
+    }
+    type="cell"
+  />
+</tr>
+`;
+
 exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
 .c0 {
   border-top: 1px solid rgba(0,0,0,.12);

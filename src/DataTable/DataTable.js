@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import orderBy from 'lodash/orderBy';
@@ -20,7 +20,7 @@ import NoData from './NoData';
 import { decorateColumns, insertItem, removeItem, countIfOne, getSortDirection } from './util';
 import defaultTheme from '../themes/default';
 
-class DataTable extends PureComponent {
+class DataTable extends Component {
   static propTypes = {
     title: PropTypes.oneOfType([
       PropTypes.string,
@@ -118,6 +118,8 @@ class DataTable extends PureComponent {
     const sortedRows = props.defaultSortField ?
       orderBy(props.data, props.defaultSortField, sortDirection) : props.data;
 
+    this.columns = decorateColumns(props.columns);
+
     this.state = {
       allSelected: false,
       selectedCount: 0,
@@ -125,7 +127,6 @@ class DataTable extends PureComponent {
       sortColumn: props.defaultSortField,
       sortDirection,
       rows: sortedRows,
-      columns: decorateColumns(props.columns),
     };
   }
 
@@ -144,10 +145,10 @@ class DataTable extends PureComponent {
       this.setState(state => ({ rows: orderBy(nextProps.data, state.sortColumn, state.sortDirection) }));
     }
 
-    // Keep columns state in sync if it changes
-    if (nextProps.columns !== this.props.columns) {
-      this.setState({ columns: decorateColumns(nextProps.columns) });
-    }
+    // // Keep columns state in sync if it changes
+    // if (nextProps.columns !== this.props.columns) {
+    //   this.setState({ columns: decorateColumns(nextProps.columns) });
+    // }
 
     // Keep sort default states in sync if it changes
     if (nextProps.defaultSortAsc !== this.props.defaultSortAsc
@@ -265,17 +266,22 @@ class DataTable extends PureComponent {
       sortIcon,
     } = this.props;
 
+    const {
+      sortColumn,
+      sortDirection,
+    } = this.state;
+
     return (
-      this.state.columns.map(col => (
+      this.columns.map(col => (
         <TableCol
           key={col.id}
           type="column"
           column={col}
           width={col.width}
           onColumnClick={this.handleSort}
-          sortable={col.sortable && this.state.sortColumn === col.selector}
-          sortField={this.state.sortColumn}
-          sortDirection={this.state.sortDirection}
+          sortable={col.sortable && sortColumn === col.selector}
+          sortField={sortColumn}
+          sortDirection={sortDirection}
           sortIcon={sortIcon}
         />))
     );
@@ -290,15 +296,17 @@ class DataTable extends PureComponent {
       expanderStateField,
       striped,
       highlightOnHover,
+      keyField,
+      // columns,
     } = this.props;
 
     const {
       rows,
-      columns,
+      // columns,
     } = this.state;
 
     const numColumns =
-      columns.length + countIfOne(selectableRows) + countIfOne(expandableRows);
+      this.columns.length + countIfOne(selectableRows) + countIfOne(expandableRows);
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
 
     return (
@@ -320,26 +328,17 @@ class DataTable extends PureComponent {
             key={row[this.props.keyField] || index}
             striped={striped}
             highlightOnHover={highlightOnHover}
+            columns={this.columns}
+            row={row}
+            index={index}
+            keyField={keyField}
           >
             {selectableRows && this.renderSelectableRows(row, index)}
             {expandableRows && this.renderExpanderCell(row, index)}
-            {this.renderCells(row, index)}
           </TableRow>
         );
       })
     );
-  }
-
-  renderCells(row, index) {
-    return (
-      this.state.columns.map(col => (
-        <TableCell
-          type="cell"
-          key={`cell-${col.id}-${row[this.props.keyField] || index}`}
-          width={col.width}
-          column={col}
-          row={row}
-        />)));
   }
 
   renderExpanderCell(row, index) {

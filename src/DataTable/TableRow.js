@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
+import TableCell from './TableCell';
 
 const TableRowStyle = styled.tr`
   border-top: 1px solid ${props => props.theme.rows.borderColor};
@@ -18,12 +19,20 @@ const TableRowStyle = styled.tr`
   `};
 `;
 
-const TableRow = ({ striped, highlightOnHover, children }) => (
+const TableRow = ({ striped, highlightOnHover, children, columns, keyField, row, index }) => (
   <TableRowStyle
     striped={striped}
     highlightOnHover={highlightOnHover}
   >
     {children}
+    {columns.map(col => (
+      <TableCell
+        type="cell"
+        key={`cell-${col.id}-${row[keyField] || index}`}
+        width={col.width}
+        column={col}
+        row={row}
+      />))}
   </TableRowStyle>
 );
 
@@ -34,6 +43,10 @@ TableRow.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  columns: PropTypes.array.isRequired,
+  keyField: PropTypes.string.isRequired,
+  row: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 TableRow.defaultProps = {
