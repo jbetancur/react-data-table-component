@@ -7,6 +7,15 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "react",
+    "data",
+    "table",
+    "tables",
+    "react-table",
+    "react-data-table",
+    "react-data-table-component"
+  ],
   "repository": "https://github.com/jbetancur/react-data-table-component",
   "author": "jbetancur",
   "license": "MIT",
