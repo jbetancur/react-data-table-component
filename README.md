@@ -4,7 +4,7 @@
 
 # React Data Table Component
 
-Creating yet another React table library came out of nescessity while developing a production application for a growing startup. I discovered that while there some great table libraries already available, most required heavy customization (overriding css and/or forced to use their flavor of ui library), lacked built in sorting or required a commercial license.
+Creating yet another React table library came out of nescessity while developing a production application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization (overriding css and/or forced to use their flavor of ui library), lacked built in sorting or required a commercial license.
 
 If you want to achieve balance with the force and want a simple, sortable, flexible table library, give React Data Table Component a shot. If you want an Excel clone, need to pivot large data sets or want to infinitely scroll millions of rows, then this is not the React table library you are looking for 👋
   
@@ -92,7 +92,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 
 #### Advanced Selectable Component Options
-Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is providerd to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
+Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
 
 Example Usage:
 
