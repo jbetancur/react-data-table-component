@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { handleFunctionProps } from './util';
 
 const baseCheckboxStyle = { fontSize: '18px', cursor: 'pointer' };
 
@@ -21,7 +22,9 @@ export default class Checkbox extends PureComponent {
   static defaultProps = {
     indeterminate: false,
     component: 'input',
-    componentOptions: {},
+    componentOptions: {
+      style: {},
+    },
     data: {},
     index: null,
     style: null,
@@ -49,22 +52,23 @@ export default class Checkbox extends PureComponent {
       component,
       componentOptions,
       indeterminate,
-      style,
       ...rest
     } = this.props;
 
     const TagName = component || 'input';
-    const baseStyle = TagName === 'input' ? baseCheckboxStyle : style;
+    const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
+    const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
 
     return (
       <TagName
-        {...rest}
-        {...componentOptions}
         type="checkbox"
+        {...rest}
+        {...resolvedComponentOptions}
+        // allow this component to fully control these options
         ref={el => { this.el = el; }}
-        onClick={this.handleClick}
-        onChange={() => null} // prevent uncontrolled checbox warnings - also we don't need onChange
         style={baseStyle}
+        onClick={this.handleClick}
+        onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
       />
     );
   }

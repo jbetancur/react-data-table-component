@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import differenceBy from 'lodash/differenceBy';
-import { Card, Button, FontIcon, Checkbox as MDCheckbox } from 'react-md';
+import { Card, Button, FontIcon, Checkbox } from 'react-md';
 import data from '../constants/sampleDeserts';
 import CustomMaterialMenu from './CustomMaterialMenu';
 import DataTable from '../../../src/DataTable/DataTable';
@@ -105,7 +105,8 @@ class MaterialTable extends PureComponent {
           defaultSortField="name"
           contextActions={contextActions}
           sortIcon={<FontIcon>arrow_downward</FontIcon>}
-          selectableRowsComponent={MDCheckbox}
+          selectableRowsComponent={Checkbox}
+          selectableRowsComponentProps={{ uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) }}
           onTableUpdate={this.handleChange}
           clearSelectedRows={this.state.clearSelected}
         />

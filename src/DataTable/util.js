@@ -31,3 +31,18 @@ export const decorateColumns = columns => columns.map(column => ({ id: shortid.g
 export const countIfOne = item => (item ? 1 : 0);
 
 export const getSortDirection = direction => (direction ? 'asc' : 'desc');
+
+export const handleFunctionProps = (object, ...args) => {
+  let newObject;
+
+  Object.keys(object).map(o => object[o]).forEach((value, index) => {
+    const oldObject = object;
+
+    if (typeof value === 'function') {
+      newObject = { ...oldObject, [Object.keys(object)[index]]: value(...args) };
+      delete oldObject[value];
+    }
+  });
+
+  return newObject || object;
+};

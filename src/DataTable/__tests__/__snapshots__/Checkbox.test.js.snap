@@ -3,7 +3,11 @@
 exports[`component <Checkbox /> should render correctly 1`] = `
 <Checkbox
   component="input"
-  componentOptions={Object {}}
+  componentOptions={
+    Object {
+      "style": Object {},
+    }
+  }
   data={Object {}}
   indeterminate={false}
   index={null}
@@ -29,7 +33,11 @@ exports[`component <Checkbox /> should render correctly 1`] = `
 exports[`component <Checkbox /> should render correctly when a custom component is not provided 1`] = `
 <Checkbox
   component="input"
-  componentOptions={Object {}}
+  componentOptions={
+    Object {
+      "style": Object {},
+    }
+  }
   data={Object {}}
   indeterminate={false}
   index={null}
@@ -55,7 +63,11 @@ exports[`component <Checkbox /> should render correctly when a custom component 
 exports[`component <Checkbox component/> should render correctly with a custom checkbox 1`] = `
 <Checkbox
   component={[Function]}
-  componentOptions={Object {}}
+  componentOptions={
+    Object {
+      "style": Object {},
+    }
+  }
   data={Object {}}
   indeterminate={false}
   index={null}
@@ -67,7 +79,7 @@ exports[`component <Checkbox component/> should render correctly with a custom c
     index={null}
     onChange={[Function]}
     onClick={[Function]}
-    style={null}
+    style={Object {}}
     type="checkbox"
   >
     <div>
