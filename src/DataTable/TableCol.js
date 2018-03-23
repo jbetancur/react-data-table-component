@@ -143,12 +143,12 @@ class TableCol extends PureComponent {
       return (
         <Checkbox
           name="select-all-rows"
+          aria-label="select-all-rows"
           component={checkboxComponent}
           componentOptions={checkboxComponentOptions}
           onClick={onClick}
           checked={checked}
           indeterminate={indeterminate}
-          aria-label="select-all-rows"
         />
       );
     }
