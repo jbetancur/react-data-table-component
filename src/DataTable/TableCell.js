@@ -79,6 +79,14 @@ class TableCell extends PureComponent {
     children: null,
   };
 
+  handleCellClick = e => {
+    const { type, column } = this.props;
+
+    if (type === 'checkbox' || type === 'expander' || column.ignoreRowClick) {
+      e.stopPropagation();
+    }
+  };
+
   renderChildren() {
     const {
       column,
@@ -138,6 +146,7 @@ class TableCell extends PureComponent {
         colSpan={colSpan}
         column={column}
         data-label={column.name}
+        onClick={this.handleCellClick}
       >
         {this.renderChildren()}
       </TableCellStyle>

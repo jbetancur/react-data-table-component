@@ -19,22 +19,28 @@ const TableRowStyle = styled.tr`
   `};
 `;
 
-const TableRow = ({ striped, highlightOnHover, children, columns, keyField, row, index }) => (
-  <TableRowStyle
-    striped={striped}
-    highlightOnHover={highlightOnHover}
-  >
-    {children}
-    {columns.map(col => (
-      <TableCell
-        type="cell"
-        key={`cell-${col.id}-${row[keyField] || index}`}
-        width={col.width}
-        column={col}
-        row={row}
-      />))}
-  </TableRowStyle>
-);
+const TableRow = ({ striped, highlightOnHover, children, columns, keyField, row, index, onRowClicked }) => {
+  const handleRowClick = e =>
+    onRowClicked && onRowClicked(row, index, e);
+
+  return (
+    <TableRowStyle
+      striped={striped}
+      highlightOnHover={highlightOnHover}
+      onClick={handleRowClick}
+    >
+      {children}
+      {columns.map(col => (
+        <TableCell
+          type="cell"
+          key={`cell-${col.id}-${row[keyField] || index}`}
+          width={col.width}
+          column={col}
+          row={row}
+        />))}
+    </TableRowStyle>
+  );
+};
 
 TableRow.propTypes = {
   striped: PropTypes.bool,
@@ -47,12 +53,14 @@ TableRow.propTypes = {
   keyField: PropTypes.string.isRequired,
   row: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
+  onRowClicked: PropTypes.func,
 };
 
 TableRow.defaultProps = {
   striped: false,
   highlightOnHover: false,
   children: null,
+  onRowClicked: null,
 };
 
 export default withTheme(TableRow);

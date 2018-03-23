@@ -39,8 +39,6 @@ yarn add react-data-table-component
 ```
 
 ## API/Usage
-### Data
-`data` just needs to be an array of object data....
 
 ### Columns
 Nothing new here - we are using an array of object literals and properties to describle the columns:
@@ -55,6 +53,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | compact  | bool   | no       | removes any padding in the cell. useful for custom cells icons or buttons                                                 |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
 | cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>`  **Negates  `format`** |
+| preventRowClick   | bool | no | implements e.stopPropagation() on a specific Table Cell. This is **really** useful when you want to trigger some action based on `onRowClicked` and when you do not want the Table Cell to trigger `onRowClicked`
 
 
 ### DataTable Properties
@@ -62,15 +61,15 @@ Nothing new here - we are using an array of object literals and properties to de
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
-| data | array<Object> | no | [] | Table Data |
-| keyField | string | no | 'id' | Your data should have a unique identifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time. If a unique `id` is not present, React Data Table will use the row index (not recommended) as the key value |
-| progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
+| data | array<Object> | no | [] | it is **highly recommended** that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
+| keyField | string | no | 'id' | your data should have a unique identifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time. If a unique `id` is not present, React Data Table will use the row index (not recommended) as the key value |
+| progressPending | bool | no |  | disables the table and displays a plain text Loading Indicator |
 | progressComponent | component | no |  | allows you to use your own custom progress component |
 | progressCentered | bool | no |  | absolutely position and center the progress over the table |
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
-| expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent` |
+| expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
 | sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table  |
@@ -79,6 +78,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | contextTitle | string | no |  | override the context menu title |
 | contextActions | array of components | no |  | add context action as an array of components |
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
+| onRowClicked | func | no | | callback to access the row data,index on row click |
 | clearSelectedRows | bool | no | false | set to true to trigger all rows to deselect - you can use this together with `onTableUpdate` manage the table state |
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
 | defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |

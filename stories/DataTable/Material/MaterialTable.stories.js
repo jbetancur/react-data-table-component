@@ -66,6 +66,7 @@ const columns = [
     name: 'Actions',
     width: '42px',
     cell: row => <CustomMaterialMenu row={row} />,
+    ignoreRowClick: true,
   },
 ];
 
@@ -78,6 +79,11 @@ class MaterialTable extends PureComponent {
     console.log('state ', state);
     this.setState({ selectedRows: state.selectedRows, clearSelected: false });
   };
+
+  handleRowClicked = row => {
+    // eslint-disable-next-line no-console
+    console.log(`${row.name} was clicked!`);
+  }
 
   deleteAll = () => {
     const rows = this.state.selectedRows.map(r => r.name);
@@ -109,6 +115,8 @@ class MaterialTable extends PureComponent {
           selectableRowsComponentProps={{ uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) }}
           onTableUpdate={this.handleChange}
           clearSelectedRows={this.state.clearSelected}
+          onRowClicked={this.handleRowClicked}
+          expandableRows
         />
       </Card>
     );

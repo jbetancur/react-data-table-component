@@ -36,7 +36,6 @@ class DataTable extends Component {
       PropTypes.func,
     ]),
     progressCentered: PropTypes.bool,
-    expanderStateKeyField: PropTypes.string,
     expanderStateField: PropTypes.string,
     expandableRowsComponent: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
@@ -74,6 +73,7 @@ class DataTable extends Component {
     ]),
     disabled: PropTypes.bool,
     noHeader: PropTypes.bool,
+    onRowClicked: PropTypes.func,
   };
 
   static defaultProps = {
@@ -84,7 +84,6 @@ class DataTable extends Component {
     progressPending: false,
     progressComponent: <h2>Loading...</h2>,
     progressCentered: false,
-    expanderStateKeyField: 'id',
     expanderStateField: '$$expander',
     expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
     selectableRowsComponent: 'input',
@@ -110,6 +109,7 @@ class DataTable extends Component {
     noDataComponent: 'There are no records to display',
     disabled: false,
     noHeader: false,
+    onRowClicked: null,
   };
 
   constructor(props) {
@@ -170,6 +170,12 @@ class DataTable extends Component {
     return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
   }
 
+  determineExpanderRowIdentifier(row) {
+    const { keyField } = this.props;
+
+    return row[keyField] ? row[keyField] : row;
+  }
+
   handleSelectAll = () => {
     this.setState(state => {
       const allSelected = !state.allSelected;
@@ -198,14 +204,20 @@ class DataTable extends Component {
     }
   }
 
+  handleRowClicked = (row, index, e) => {
+    if (this.props.onRowClicked) {
+      this.props.onRowClicked(row, index, e);
+    }
+  }
+
   toggleExpand = row => {
     const {
       keyField,
-      expanderStateKeyField,
       expanderStateField,
     } = this.props;
 
-    const expandedRow = this.state.rows.find(r => r[expanderStateField] && r.parent === row[this.props.expanderStateKeyField]);
+    const identifier = this.determineExpanderRowIdentifier(row);
+    const expandedRow = this.state.rows.find(r => r[expanderStateField] && r.parent === identifier);
 
     if (expandedRow) {
       this.setState(state => ({
@@ -217,8 +229,8 @@ class DataTable extends Component {
       this.setState(state => ({
         // insert a new expander row
         rows: insertItem(state.rows, {
-          [expanderStateKeyField]: shortid.generate(),
-          parent: row[keyField],
+          [keyField]: shortid.generate(),
+          parent: identifier,
           [expanderStateField]: true,
         }, parentRowIndex + 1),
       }));
@@ -285,12 +297,11 @@ class DataTable extends Component {
     );
   }
 
-  renderRows() {
+  renderRows(numColumns) {
     const {
       selectableRows,
       expandableRows,
       expandableRowsComponent,
-      expanderStateKeyField,
       expanderStateField,
       striped,
       highlightOnHover,
@@ -300,9 +311,6 @@ class DataTable extends Component {
     const {
       rows,
     } = this.state;
-
-    const numColumns =
-      this.columns.length + countIfOne(selectableRows) + countIfOne(expandableRows);
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
 
     return (
@@ -310,7 +318,7 @@ class DataTable extends Component {
         if (row[expanderStateField]) {
           return (
             <ExpanderRow
-              key={`expander--${row[expanderStateKeyField]}`}
+              key={`expander--${row[keyField]}`}
               numColumns={numColumns}
               data={getExpanderRowbByParentId(row.parent)}
             >
@@ -328,6 +336,7 @@ class DataTable extends Component {
             row={row}
             index={index}
             keyField={keyField}
+            onRowClicked={this.handleRowClicked}
           >
             {selectableRows && this.renderSelectableRows(row, index)}
             {expandableRows && this.renderExpanderCell(row, index)}
@@ -338,14 +347,15 @@ class DataTable extends Component {
   }
 
   renderExpanderCell(row, index) {
-    const getExpanderRowParentById = id => this.state.rows.find(r => id === r.parent);
+    const identifier = this.determineExpanderRowIdentifier(row);
+    const getExpanderRowParentById = id => this.state.rows.findIndex(r => id === r.parent);
 
     return (
       <TableCell
         width="42px"
         type="expander"
         onToggled={this.toggleExpand}
-        expanded={!!getExpanderRowParentById(row[this.props.keyField])}
+        expanded={getExpanderRowParentById(identifier) > -1}
         row={row}
         index={index}
       />
@@ -412,6 +422,8 @@ class DataTable extends Component {
 
   render() {
     const {
+      selectableRows,
+      expandableRows,
       title,
       customTheme,
       contextActions,
@@ -434,6 +446,7 @@ class DataTable extends Component {
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
+    const numColumns = this.columns.length + countIfOne(selectableRows) + countIfOne(expandableRows);
 
     return (
       <ThemeProvider theme={theme}>
@@ -467,7 +480,7 @@ class DataTable extends Component {
                 {this.renderTableHead()}
 
                 <TableBody>
-                  {this.renderRows()}
+                  {this.renderRows(numColumns)}
                 </TableBody>
               </Table>}
           </TableWrapper>

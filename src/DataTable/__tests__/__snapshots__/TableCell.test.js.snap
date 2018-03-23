@@ -26,6 +26,7 @@ exports[`component <TableCell /> should render correctly 1`] = `
 <td
   className="c0"
   colSpan={null}
+  onClick={[Function]}
   type={null}
   width="auto"
 />

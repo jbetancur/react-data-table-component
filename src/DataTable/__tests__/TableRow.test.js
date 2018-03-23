@@ -1,7 +1,7 @@
 import 'jest-styled-components';
 
 import React from 'react';
-import { shallowWithTheme } from '../../test-helpers';
+import { shallowWithTheme, mountWithTheme } from '../../test-helpers';
 
 import TableRow from '../TableRow';
 
@@ -51,4 +51,18 @@ test('component <TableRow /> with columns should render correctly if a row has a
   const wrapper = shallowWithTheme(<TableRow columns={columns} row={row} keyField="id" index={0} />);
 
   expect(wrapper.dive().dive()).toMatchSnapshot();
+});
+
+test('component <TableRow onRowClicked /> with columns should render correctly', () => {
+  const columns = [{
+    id: 123,
+    name: 'Name',
+    selector: 'name',
+  }];
+  const row = { id: 456, name: 'testname' };
+  const mockCallBack = jest.fn();
+  const wrapper = shallowWithTheme(<TableRow columns={columns} row={row} keyField="id" index={0} onRowClicked={mockCallBack} />);
+  wrapper.dive().dive().simulate('click');
+
+  expect(mockCallBack).toHaveBeenCalled();
 });
