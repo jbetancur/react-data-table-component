@@ -4,11 +4,11 @@
 
 # React Data Table Component
 
-Why the long name? Well, there are A LOT of React table libraries out there! Creating yet another React table library came out of nescessity while developing a production application for a busy startup. I discovered that while there are great table libraries available, most required heavy customization, feature bloated/slow (I didn't need an Excel clone), lacked features, were "too" opinionated in their styling (overriding css and/or forced to use their flavor of ui library) or required a commercial license.
+Creating yet another React table library came out of nescessity while developing a production application for a growing startup. I discovered that while there some great table libraries already available, most required heavy customization (overriding css and/or forced to use their flavor of ui library), lacked built in sorting or required a commercial license.
 
 If you want to achieve balance with the force and want a simple, sortable, flexible table library, give React Data Table Component a shot. If you want an Excel clone, need to pivot large data sets or want to infinitely scroll millions of rows, then this is not the React table library you are looking for 👋
   
-React Data Table Component is still under **Development**, but here are the initial features available:
+React Data Table Component is still under **Development**, though I do not expect the API to change. Here are the initial features available:
 
 * Declarative Configuration
 * Sortable (client)
@@ -19,11 +19,13 @@ React Data Table Component is still under **Development**, but here are the init
 * Responsive (via x-scroll)
 
 ## Roadmap
+In order priority:
+
+* Pagination (client/server) - This is currently under development and should be ready soon!
+* Built in themes (Material, Boostrap)
 * Sortable (server)
-* Pagination (client/server)
 * Search (client/server)
 * Fixed Headers
-* Built in themes (Material, Boostrap)
 * Mobile Responsive
 * Accessibility
 
@@ -35,6 +37,7 @@ npm install react-data-table-component
 
 yarn add react-data-table-component 
 ```
+
 ## API/Usage
 ### Data
 `data` just needs to be an array of object data....
@@ -45,7 +48,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`                                                 |
+| selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                 |
 | sortable | bool   | no       | if the column is sortable                                                                                    |
 | number   | bool   | no       | if the field is a number: applies `text-align: right`                                                                |
 | center   | bool   | no       | if the field should be centered: applies `text-align: center`                                                               |
@@ -66,27 +69,59 @@ Nothing new here - we are using an array of object literals and properties to de
 | progressCentered | bool | no |  | absolutely position and center the progress over the table |
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
-| selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent` |
+| selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent` |
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
-| sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon  |
+| sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table  |
 | striped | bool | no | false | stripe color the odd rows |
-| highlightOnHover | bool | no | false | if rows are highlighted on hover |
+| highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
 | contextTitle | string | no |  | override the context menu title |
 | contextActions | array of components | no |  | add context action as an array of components |
-| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows, columns }) |
+| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
 | clearSelectedRows | bool | no | false | set to true to trigger all rows to deselect - you can use this together with `onTableUpdate` manage the table state |
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
 | defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | className | string | no |  | override the className on the Table wrapper |
 | style | object | no |  | override the style on the Table wrapper |
-| overflowY | bool | no | false | if a table is responsive, items such as layovers and menus will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". **The table parent element must have a fixed `height` or `height: 100%` for this to work** |
+| overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
-| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/defaultTheme.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
+| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
+
+#### Advanced Selectable Component Options
+Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is providerd to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
+
+Example Usage:
+
+```
+
+const { Checkbox } from 'react-md';
+
+...
+
+/* 
+  In this example, react-md ui lib determines its indeterminate state via the `uncheckedIcon` property. To override it
+  so let's override it. React Data Table is aware if a checkbox is indetermite or not becuase internally we resolve this as 
+  `yourfunction(checkboxawareindeterminatestate)`
+*/
+
+const handleIndeterminate = isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>);
+
+const MyComponent = () => (
+  <DataTable
+    title="Arnold Movies"
+    columns={columns}
+    data={data}
+    selectableRows
+    selectableRowsComponent={Checkbox} // Pass the function only
+    selectableRowsComponentProps={{ uncheckedIcon: handleIndeterminate  }}
+  />
+);
+```
+**Note** This is currently only supported for indeterminate state, but I may expand this out in the future if there is a demand
 
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
@@ -144,7 +179,7 @@ const MyComponent = () => (
 ```
 
 ### Overriding with a 3rd Party Ui Component Library
-You don't like those ugly html checkboxes? Let's override them with some [react-md](https://react-md.mlaursen.com) sexyiness. While we are at it we will also override the `sortIcon`
+You don't like those ugly html checkboxes? Let's override them with some [react-md](https://react-md.mlaursen.com) sexyiness. While we are at it we will also override the `sortIcon`:
 
 ```
 ...
@@ -158,7 +193,7 @@ const MyComponent = () => (
     data={data}
     selectableRows
     selectableRowsComponent={Checkbox} // Pass the function only
-    selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass some props to our react-md checkbox
+    selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass react-md supported props down to our custom checkbox
     sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon
     onTableUpdate={handleChange}
   />
@@ -271,7 +306,7 @@ const MyComponent = () => (
 );
 ```
 
-Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/defaultTheme.js) for reference
+Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference
 
 
 

@@ -1,4 +1,12 @@
-import { getProperty, insertItem, removeItem, decorateColumns, countIfOne, getSortDirection } from '../util';
+import {
+  getProperty,
+  insertItem,
+  removeItem,
+  decorateColumns,
+  countIfOne,
+  getSortDirection,
+  handleFunctionProps,
+} from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting' } });
 
@@ -76,5 +84,25 @@ describe('getSortDirection', () => {
     const direction = getSortDirection();
 
     expect(direction).toBe('desc');
+  });
+});
+
+describe('handleFunctionProps', () => {
+  test('should resolve the property if it is a function with indeterminate = true', () => {
+    const prop = handleFunctionProps({ fakeProp: indeterminate => (indeterminate ? 'yay' : 'nay') }, true);
+
+    expect(prop).toEqual({ fakeProp: 'yay' });
+  });
+
+  test('should resolve the property if it is a function with indeterminate = false', () => {
+    const prop = handleFunctionProps({ fakeProp: indeterminate => (indeterminate ? 'yay' : 'nay') }, false);
+
+    expect(prop).toEqual({ fakeProp: 'nay' });
+  });
+
+  test('should not need to resolve the property if it is not a function', () => {
+    const prop = handleFunctionProps({ fakeProp: 'haha' });
+
+    expect(prop).toEqual({ fakeProp: 'haha' });
   });
 });
