@@ -1,7 +1,7 @@
 import 'jest-styled-components';
 
 import React from 'react';
-import { shallowWithTheme, mountWithTheme } from '../../test-helpers';
+import { shallowWithTheme } from '../../test-helpers';
 
 import TableRow from '../TableRow';
 
