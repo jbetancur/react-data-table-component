@@ -73,6 +73,7 @@ class DataTable extends Component {
       PropTypes.func,
     ]),
     disabled: PropTypes.bool,
+    hideHeader: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -108,6 +109,7 @@ class DataTable extends Component {
     overflowYOffset: '250px',
     noDataComponent: 'There are no records to display',
     disabled: false,
+    hideHeader: false,
   };
 
   constructor(props) {
@@ -429,6 +431,7 @@ class DataTable extends Component {
       progressCentered,
       noDataComponent,
       disabled,
+      hideHeader,
     } = this.props;
 
     const {
@@ -447,12 +450,13 @@ class DataTable extends Component {
           overflowYOffset={overflowYOffset}
           overflowY={overflowY}
         >
-          <TableHeader
-            title={title}
-            showContextMenu={selectedCount > 0}
-            contextTitle={this.calculateSelectedItems()}
-            contextActions={contextActions}
-          />
+          {!hideHeader &&
+            <TableHeader
+              title={title}
+              showContextMenu={selectedCount > 0}
+              contextTitle={this.calculateSelectedItems()}
+              contextActions={contextActions}
+            />}
 
           <TableWrapper>
             {progressPending &&

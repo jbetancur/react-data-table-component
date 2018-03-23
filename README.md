@@ -85,7 +85,8 @@ Nothing new here - we are using an array of object literals and properties to de
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/defaultTheme.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
-| disabled | bool | no | false | disables the Table section
+| disabled | bool | no | false | disables the Table section |
+| hideHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
