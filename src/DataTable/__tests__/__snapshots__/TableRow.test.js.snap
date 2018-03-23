@@ -7,6 +7,7 @@ exports[`component <TableRow /> should render correctly 1`] = `
 
 <tr
   className="c0"
+  onClick={[Function]}
 />
 `;
 
@@ -17,6 +18,7 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
 
 <tr
   className="c0"
+  onClick={[Function]}
 >
   <td>
     Some Child Cell
@@ -31,6 +33,7 @@ exports[`component <TableRow /> with columns should render correctly if a row do
 
 <tr
   className="c0"
+  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -58,6 +61,7 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
 
 <tr
   className="c0"
+  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -94,6 +98,7 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
 
 <tr
   className="c0"
+  onClick={[Function]}
 />
 `;
 
@@ -108,5 +113,6 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
 
 <tr
   className="c0"
+  onClick={[Function]}
 />
 `;
