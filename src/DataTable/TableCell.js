@@ -99,13 +99,12 @@ class TableCell extends PureComponent {
         return (
           <Checkbox
             name="select-row"
+            aria-label="select-row"
             component={checkboxComponent}
             componentOptions={checkboxComponentOptions}
             checked={checked}
             onClick={onClick}
             data={row}
-            index={index}
-            aria-label="select-row"
           />
         );
       case 'cell':

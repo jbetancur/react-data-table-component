@@ -147,11 +147,6 @@ class DataTable extends Component {
       this.setState(state => ({ rows: orderBy(nextProps.data, state.sortColumn, state.sortDirection) }));
     }
 
-    // // Keep columns state in sync if it changes
-    // if (nextProps.columns !== this.props.columns) {
-    //   this.setState({ columns: decorateColumns(nextProps.columns) });
-    // }
-
     // Keep sort default states in sync if it changes
     if (nextProps.defaultSortAsc !== this.props.defaultSortAsc
       || nextProps.defaultSortField !== this.props.defaultSortField) {
@@ -168,7 +163,7 @@ class DataTable extends Component {
     }
   }
 
-  calculateSelectedItems() {
+  generateDefaultContextTitle() {
     const { contextTitle } = this.props;
     const { selectedCount } = this.state;
 
@@ -211,13 +206,14 @@ class DataTable extends Component {
     } = this.props;
 
     const expandedRow = this.state.rows.find(r => r[expanderStateField] && r.parent === row[this.props.expanderStateKeyField]);
-    const parentRowIndex = this.state.rows.indexOf(row);
 
     if (expandedRow) {
       this.setState(state => ({
         rows: removeItem(state.rows, expandedRow),
       }));
     } else {
+      const parentRowIndex = this.state.rows.findIndex(r => r === row);
+
       this.setState(state => ({
         // insert a new expander row
         rows: insertItem(state.rows, {
@@ -299,12 +295,10 @@ class DataTable extends Component {
       striped,
       highlightOnHover,
       keyField,
-      // columns,
     } = this.props;
 
     const {
       rows,
-      // columns,
     } = this.state;
 
     const numColumns =
@@ -454,7 +448,7 @@ class DataTable extends Component {
             <TableHeader
               title={title}
               showContextMenu={selectedCount > 0}
-              contextTitle={this.calculateSelectedItems()}
+              contextTitle={this.generateDefaultContextTitle()}
               contextActions={contextActions}
             />}
 
