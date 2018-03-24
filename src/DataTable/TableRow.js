@@ -10,7 +10,6 @@ const TableRowStyle = styled.tr`
         background-color: ${props.theme.rows.stripedColor};
       }
   `};
-
   ${props => props.highlightOnHover && css`
       &:hover {
         background-color: ${props.theme.rows.hoverColor};

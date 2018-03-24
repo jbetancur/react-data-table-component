@@ -308,7 +308,7 @@ class DataTable extends Component {
       striped,
       highlightOnHover,
       keyField,
-      c,
+      pointerOnHover,
     } = this.props;
 
     const {
