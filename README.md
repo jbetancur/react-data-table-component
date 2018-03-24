@@ -75,6 +75,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table  |
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
+| pointerOnHover | bool | no | false | if rows show a point icon on hover |
 | contextTitle | string | no |  | override the context menu title |
 | contextActions | array of components | no |  | add context action as an array of components |
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |

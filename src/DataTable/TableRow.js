@@ -10,6 +10,7 @@ const TableRowStyle = styled.tr`
         background-color: ${props.theme.rows.stripedColor};
       }
   `};
+
   ${props => props.highlightOnHover && css`
       &:hover {
         background-color: ${props.theme.rows.hoverColor};
@@ -17,9 +18,14 @@ const TableRowStyle = styled.tr`
         transition-property: background-color;
       }
   `};
+  ${props => props.pointerOnHover && css`
+      &:hover {
+        cursor: pointer;
+      }
+  `};
 `;
 
-const TableRow = ({ striped, highlightOnHover, children, columns, keyField, row, index, onRowClicked }) => {
+const TableRow = ({ striped, highlightOnHover, pointerOnHover, children, columns, keyField, row, index, onRowClicked }) => {
   const handleRowClick = e =>
     onRowClicked && onRowClicked(row, index, e);
 
@@ -27,6 +33,7 @@ const TableRow = ({ striped, highlightOnHover, children, columns, keyField, row,
     <TableRowStyle
       striped={striped}
       highlightOnHover={highlightOnHover}
+      pointerOnHover={pointerOnHover}
       onClick={handleRowClick}
     >
       {children}
@@ -45,6 +52,7 @@ const TableRow = ({ striped, highlightOnHover, children, columns, keyField, row,
 TableRow.propTypes = {
   striped: PropTypes.bool,
   highlightOnHover: PropTypes.bool,
+  pointerOnHover: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -59,6 +67,7 @@ TableRow.propTypes = {
 TableRow.defaultProps = {
   striped: false,
   highlightOnHover: false,
+  pointerOnHover: false,
   children: null,
   onRowClicked: null,
 };

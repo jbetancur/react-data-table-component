@@ -52,6 +52,7 @@ class DataTable extends Component {
     sortIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     striped: PropTypes.bool,
     highlightOnHover: PropTypes.bool,
+    pointerOnHover: PropTypes.bool,
     onServerSort: PropTypes.func,
     contextTitle: PropTypes.string,
     contextActions: PropTypes.arrayOf(PropTypes.node),
@@ -92,6 +93,7 @@ class DataTable extends Component {
     sortIcon: false,
     striped: false,
     highlightOnHover: false,
+    pointerOnHover: false,
     onServerSort: null,
     contextTitle: '',
     contextActions: [],
@@ -306,6 +308,7 @@ class DataTable extends Component {
       striped,
       highlightOnHover,
       keyField,
+      c,
     } = this.props;
 
     const {
@@ -332,6 +335,7 @@ class DataTable extends Component {
             key={row[this.props.keyField] || index}
             striped={striped}
             highlightOnHover={highlightOnHover}
+            pointerOnHover={pointerOnHover}
             columns={this.columns}
             row={row}
             index={index}

@@ -102,6 +102,21 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
 />
 `;
 
+exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
+.c0 {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c0:hover {
+  cursor: pointer;
+}
+
+<tr
+  className="c0"
+  onClick={[Function]}
+/>
+`;
+
 exports[`component <TableRow striped /> should render correctly 1`] = `
 .c0 {
   border-top: 1px solid rgba(0,0,0,.12);

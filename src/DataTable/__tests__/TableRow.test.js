@@ -23,6 +23,13 @@ test('component <TableRow highlightOnHover /> should render correctly', () => {
   expect(wrapper.dive().dive()).toMatchSnapshot();
 });
 
+test('component <TableRow pointerOnHover /> should render correctly', () => {
+  const wrapper = shallowWithTheme(<TableRow pointerOnHover columns={[]} row={{}} keyField="id" index={0} />);
+
+  expect(wrapper.dive().dive()).toMatchSnapshot();
+});
+
+
 test('component <TableRow /> with children should render correctly', () => {
   const wrapper = shallowWithTheme(<TableRow columns={[]} row={{}} keyField="id" index={0}><td>Some Child Cell</td></TableRow>);
 
