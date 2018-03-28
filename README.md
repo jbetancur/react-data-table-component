@@ -189,11 +189,11 @@ class MyComponent extends Component {
 ### Clearing Selected Rows
 We need some hook to trigger all the selectedRows to clear. If you were building your own table component, you would manage the selected rows state in some parent component, however, in our case, since we to keep row management within React Data Table, a `clearSelectedRows` prop is provided so you can pass a toggled state.
 
-It will be up to you to make sure you do not pass the same state twice. For example, if you set `clearSelectedRows={true}` twice, the second trigger, none the rows will not be cleared. 
+It will be up to you to make sure you do not pass the same state twice. For example, if you set `clearSelectedRows={true}` twice, on the second update/trigger, none the rows will not be cleared. 
 
 ```
 ...
-
+// set the initial state
 state = { toggledClearRows: false }
 ...
 
@@ -202,7 +202,7 @@ const handleChange = (state) => {
   console.log('Selected Rows: ', state.selectedRows);
 };
 
-// Some action that triggers you to clear rows but keeps a toggle state synced
+// Toggle the state so React Table Table changes to `clearSelectedRows` are triggered
 const handleClearRows = () => {
   this.setState({ toggledClearRows: !this.state.toggledClearRows})
 }
