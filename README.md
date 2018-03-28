@@ -46,11 +46,12 @@ Nothing new here - we are using an array of object literals and properties to de
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                 |
-| sortable | bool   | no       | if the column is sortable                                                                                    |
-| number   | bool   | no       | if the field is a number: applies `text-align: right`                                                                |
-| center   | bool   | no       | if the field should be centered: applies `text-align: center`                                                               |
-| compact  | bool   | no       | removes any padding in the cell. useful for custom cells icons or buttons                                                 |
+| selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                |
+| sortable | bool   | no       | if the column is sortable                                                                                     |
+| width    | string |          | the width of the column (the column will still be resticted to how `<table></table>` handles width)           |
+| number   | bool   | no       | if the field is a number: applies `text-align: right`                                                         |
+| center   | bool   | no       | if the field should be centered: applies `text-align: center`                                                 |
+| compact  | bool   | no       | removes any padding in the cell. useful for custom cells icons or buttons                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
 | cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>`  **Negates  `format`** |
 | ignoreRowClick   | bool | no | implements e.stopPropagation() on a specific Table Cell. This is **really** useful when you want to trigger some action based on `onRowClicked` and when you do not want the Table Cell to trigger `onRowClicked`
@@ -80,7 +81,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | contextActions | array of components | no |  | add context action as an array of components |
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
-| clearSelectedRows | bool | no | false | set to true to trigger all rows to deselect - you can use this together with `onTableUpdate` manage the table state |
+| clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
 | defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | className | string | no |  | override the className on the Table wrapper |
@@ -145,12 +146,16 @@ const columns = [
   },
 ];
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-  />
+class MyComponent extends Component {
+  render { 
+    return (
+      <DataTable
+        title="Arnold Movies"
+        columns={columns}
+        data={data}
+      />
+    )
+  }
 );
 
 ```
@@ -166,16 +171,55 @@ const handleChange = (state) => {
   console.log('Selected Rows: ', state.selectedRows);
 };
 
+class MyComponent extends Component {
+  render { 
+      return (
+        <DataTable
+          title="Arnold Movies"
+          columns={columns}
+          data={data}
+          selectableRows // add for checkbox selection
+          onTableUpdate={handleChange}
+        />
+    )
+  }
+);
+```
+
+### Clearing Selected Rows
+We need some hook to trigger all the selectedRows to clear. If you were building your own table component, you would manage the selected rows state in some parent component, however, in our case, since we to keep row management within React Data Table, a `clearSelectedRows` prop is provided so you can pass a toggled state.
+
+It will be up to you to make sure you do not pass the same state twice. For example, if you set `clearSelectedRows={true}` twice, the second trigger, none the rows will not be cleared. 
+
+```
 ...
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows // add for checkbox selection
-    onTableUpdate={handleChange}
-  />
+state = { toggledClearRows: false }
+...
+
+const handleChange = (state) => {
+  // You can use setState or dispatch with something like Redux so we can use the retrieved data
+  console.log('Selected Rows: ', state.selectedRows);
+};
+
+// Some action that triggers you to clear rows but keeps a toggle state synced
+const handleClearRows = () => {
+  this.setState({ toggledClearRows: !this.state.toggledClearRows})
+}
+
+class MyComponent extends Component {
+  render { 
+    return (
+      <DataTable
+        title="Arnold Movies"
+        columns={columns}
+        data={data}
+        selectableRows // add for checkbox selection
+        onTableUpdate={handleChange}
+        clearSelectedRows={this.state.toggledClearRows}
+      />
+    )
+  }
 );
 ```
 
@@ -187,17 +231,20 @@ You don't like those ugly html checkboxes? Let's override them with some [react-
 import { Checkbox, FontIcon } from 'react-md';
 ...
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows
-    selectableRowsComponent={Checkbox} // Pass the function only
-    selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass react-md supported props down to our custom checkbox
-    sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon
-    onTableUpdate={handleChange}
-  />
+class MyComponent extends Component {
+  render { 
+    return (
+      title="Arnold Movies"
+      columns={columns}
+      data={data}
+      selectableRows
+      selectableRowsComponent={Checkbox} // Pass the function only
+      selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass react-md supported props down to our custom checkbox
+      sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon
+      onTableUpdate={handleChange}
+    />
+    )
+  }
 );
 ```
 
@@ -223,19 +270,22 @@ const columns = [
 
 ...
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows
-    selectableRowsComponent={Checkbox}
-    selectableRowsComponentProps={{ inkDisabled: true }}
-    sortIcon={<FontIcon>arrow_downward</FontIcon>}
-    onTableUpdate={handleChange}
-  />
+class MyComponent extends Component {
+  render { 
+    return (
+      <DataTable
+        title="Arnold Movies"
+        columns={columns}
+        data={data}
+        selectableRows
+        selectableRowsComponent={Checkbox}
+        selectableRowsComponentProps={{ inkDisabled: true }}
+        sortIcon={<FontIcon>arrow_downward</FontIcon>}
+        onTableUpdate={handleChange}
+      />
+    )
+  }
 );
-
 ```
 
 
@@ -264,21 +314,24 @@ const columns = [
 // The row data is composed into your custom expandable component via the data prop
 const ExpanableComponent = ({ data }) => <img src={data.image} />;
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows
-    selectableRowsComponent={Checkbox}
-    selectableRowsComponentProps={{ inkDisabled: true }}
-    sortIcon={<FontIcon>arrow_downward</FontIcon>}
-    onTableUpdate={handleChange} 
-    expandableRows
-    expandableRowsComponent={<ExpanableComponent />}
-  />
+class MyComponent extends Component {
+  render { 
+    return (
+      <DataTable
+        title="Arnold Movies"
+        columns={columns}
+        data={data}
+        selectableRows
+        selectableRowsComponent={Checkbox}
+        selectableRowsComponentProps={{ inkDisabled: true }}
+        sortIcon={<FontIcon>arrow_downward</FontIcon>}
+        onTableUpdate={handleChange} 
+        expandableRows
+        expandableRowsComponent={<ExpanableComponent />}
+      />
+    )
+  }
 );
-
 ```
 
 ## Theming
@@ -298,18 +351,20 @@ const mySweetTheme = {
   }
 }
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    customTheme={mySweetTheme}
-  />
+class MyComponent extends Component {
+  render { 
+    return (
+      <DataTable
+        title="Arnold Movies"
+        columns={columns}
+        customTheme={mySweetTheme}
+      />
+    )
+  }
 );
 ```
 
 Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference
-
-
 
 
 ### Theme Resources
