@@ -9,75 +9,13 @@ import CustomMaterialMenu from './CustomMaterialMenu';
 import DataTable from '../../../src/DataTable/DataTable';
 import './index.css';
 
-const columns = [
-  {
-    name: 'Name',
-    selector: 'name',
-    sortable: true,
-  },
-  {
-    name: 'Type',
-    selector: 'type',
-    sortable: true,
-  },
-  {
-    name: 'Calories (g)',
-    selector: 'calories',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Fat (g)',
-    selector: 'fat',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Carbs (g)',
-    selector: 'carbs',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Protein (g)',
-    selector: 'protein',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Sodium (mg)',
-    selector: 'sodium',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Calcium (%)',
-    selector: 'calcium',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Iron (%)',
-    selector: 'iron',
-    sortable: true,
-    number: true,
-  },
-  {
-    name: 'Actions',
-    width: '42px',
-    cell: row => <CustomMaterialMenu row={row} />,
-    ignoreRowClick: true,
-  },
-];
-
-
 class MaterialTable extends PureComponent {
-  state = { selectedRows: [], clearSelected: false, data };
+  state = { selectedRows: [], toggleCleared: false, data };
 
   handleChange = state => {
     // eslint-disable-next-line no-console
     console.log('state ', state);
-    this.setState({ selectedRows: state.selectedRows, clearSelected: false });
+    this.setState({ selectedRows: state.selectedRows });
   };
 
   handleRowClicked = row => {
@@ -88,8 +26,20 @@ class MaterialTable extends PureComponent {
   deleteAll = () => {
     const rows = this.state.selectedRows.map(r => r.name);
     // eslint-disable-next-line no-alert
-    if (window.confirm(`Are you sure you wamt to delete:\r ${rows}?`)) {
-      this.setState(state => ({ clearSelected: true, data: differenceBy(state.data, state.selectedRows, 'name') }));
+    if (window.confirm(`Are you sure you want to delete:\r ${rows}?`)) {
+      this.setState(state => ({ toggleCleared: !state.toggleCleared, data: differenceBy(state.data, state.selectedRows, 'name') }));
+    }
+  }
+
+  deleteOne = row => {
+    // eslint-disable-next-line no-alert
+    if (window.confirm(`Are you sure you want to delete:\r ${row.name}?`)) {
+      const index = this.state.data.findIndex(r => r === row);
+
+      this.setState(state => ({
+        toggleCleared: !state.toggleCleared,
+        data: [...state.data.slice(0, index), ...state.data.slice(index + 1)],
+      }));
     }
   }
 
@@ -97,6 +47,68 @@ class MaterialTable extends PureComponent {
     const contextActions = [
       <Button key="add" icon secondary>add</Button>,
       <Button key="delete" onClick={this.deleteAll} style={{ color: 'red' }} icon>delete</Button>,
+    ];
+
+    const columns = [
+      {
+        name: 'Name',
+        selector: 'name',
+        sortable: true,
+      },
+      {
+        name: 'Type',
+        selector: 'type',
+        sortable: true,
+      },
+      {
+        name: 'Calories (g)',
+        selector: 'calories',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Fat (g)',
+        selector: 'fat',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Carbs (g)',
+        selector: 'carbs',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Protein (g)',
+        selector: 'protein',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Sodium (mg)',
+        selector: 'sodium',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Calcium (%)',
+        selector: 'calcium',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Iron (%)',
+        selector: 'iron',
+        sortable: true,
+        number: true,
+      },
+      {
+        name: 'Actions',
+        cell: row => <CustomMaterialMenu row={row} onDeleteRow={this.deleteOne} />,
+        ignoreRowClick: true,
+        number: true,
+        allowOverflow: true,
+      },
     ];
 
     return (
@@ -114,7 +126,7 @@ class MaterialTable extends PureComponent {
           selectableRowsComponent={Checkbox}
           selectableRowsComponentProps={{ uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) }}
           onTableUpdate={this.handleChange}
-          clearSelectedRows={this.state.clearSelected}
+          clearSelectedRows={this.state.toggleCleared}
           onRowClicked={this.handleRowClicked}
         />
       </Card>

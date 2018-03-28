@@ -137,11 +137,11 @@ class DataTable extends Component {
   componentWillReceiveProps(nextProps) {
     // allow clearing of rows via passed clearSelectedRows prop
     if (nextProps.clearSelectedRows !== this.props.clearSelectedRows) {
-      this.setState(() => ({
+      this.setState({
         allSelected: false,
         selectedCount: 0,
         selectedRows: [],
-      }));
+      });
     }
 
     // Keep data state in sync if it changes
@@ -184,8 +184,8 @@ class DataTable extends Component {
 
       return {
         allSelected,
-        selectedCount: allSelected ? this.state.rows.length : 0,
-        selectedRows: allSelected ? this.state.rows : [],
+        selectedCount: allSelected ? state.rows.length : 0,
+        selectedRows: allSelected ? state.rows : [],
       };
     });
   }
