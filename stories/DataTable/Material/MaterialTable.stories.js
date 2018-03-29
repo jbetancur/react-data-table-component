@@ -128,6 +128,7 @@ class MaterialTable extends PureComponent {
           onTableUpdate={this.handleChange}
           clearSelectedRows={this.state.toggleCleared}
           onRowClicked={this.handleRowClicked}
+          expandableRows
         />
       </Card>
     );

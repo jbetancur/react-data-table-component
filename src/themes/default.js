@@ -24,8 +24,6 @@ export default {
     height: '48px',
   },
   cells: {
-    firstCellPadding: '24px',
-    lastCellPadding: '24px',
     cellPadding: '48px',
   },
   expander: {

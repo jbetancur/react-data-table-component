@@ -4,30 +4,22 @@ exports[`component <TableCell /> should render correctly 1`] = `
 .c0 {
   box-sizing: border-box;
   vertical-align: middle;
-  white-space: nowrap;
   line-height: normal;
-  font-weight: 400;
+  white-space: nowrap;
   font-size: 13px;
+  font-weight: 400;
   color: rgba(0,0,0,.87);
   height: 48px;
-  width: auto;
   padding-left: calc(48px / 2);
   padding-right: calc(48px / 2);
 }
 
-.c0:first-child {
-  padding-left: 24px;
-}
-
-.c0:last-child {
-  padding-right: 24px;
+.c0:nth-child(n+2) {
+  padding-left: calc(48px / 6);
 }
 
 <td
   className="c0"
-  colSpan={null}
   onClick={[Function]}
-  type={null}
-  width="auto"
 />
 `;

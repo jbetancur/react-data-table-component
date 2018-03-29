@@ -1,39 +1,26 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
-import Checkbox from './Checkbox';
 
 const TableColStyle = styled.th`
   box-sizing: border-box;
   vertical-align: middle;
+  line-height: normal;
+  white-space: nowrap;
+  font-size: ${props => props.theme.header.fontSize};
   user-select: none;
   font-weight: 500;
-  white-space: nowrap;
-  height: ${props => props.theme.header.height};
-  font-size: ${props => props.theme.header.fontSize};
   color: ${props => props.theme.header.fontColor};
-  width: ${props => props.width};
+  height: ${props => props.theme.header.height};
+  width: ${props => props.column.width};
+  ${props => props.sortable && 'cursor: pointer'};
   ${props => props.column.number && 'text-align: right'};
   ${props => props.column.center && 'text-align: center'};
-  ${props => props.sortable && 'cursor: pointer'};
   padding-left: calc(${props => props.theme.cells.cellPadding} / 2);
   padding-right: calc(${props => props.theme.cells.cellPadding} / 2);
 
-  &:first-child {
-    padding-left: ${props => props.theme.cells.firstCellPadding};
-    ${props => props.type === 'checkbox' && 'padding-left: 8px'};
-    ${props => props.type === 'checkbox' && 'padding-right: 0'};
-  }
-
-  &:nth-child(2) {
-    /* when compact or expander is not first child (table is selectable) */
-    ${props => props.type !== 'checkbox' && 'padding-left: 8px'};
-  }
-
-  ${props => props.column.compact && 'padding: 0'};
-
-  &:last-child {
-    padding-right: ${props => props.theme.cells.lastCellPadding};
+  &:nth-child(n+2) {
+    padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
   }
 
   &::before {
@@ -84,34 +71,17 @@ class TableCol extends PureComponent {
   static propTypes = {
     onColumnClick: PropTypes.func,
     column: PropTypes.object,
-    sortable: PropTypes.bool,
+    sortField: PropTypes.string,
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
     sortIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    type: PropTypes.oneOf(['checkbox', 'column']),
-    checkboxComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func,
-    ]),
-    checkboxComponentOptions: PropTypes.object,
-    checked: PropTypes.bool,
-    indeterminate: PropTypes.bool,
-    onClick: PropTypes.func,
-    width: PropTypes.string,
   };
 
   static defaultProps = {
     onColumnClick: () => {},
     column: {},
-    sortable: false,
+    sortField: null,
     sortDirection: 'asc',
     sortIcon: false,
-    type: 'column',
-    checkboxComponent: null,
-    checkboxComponentOptions: {},
-    checked: false,
-    indeterminate: false,
-    onClick: null,
-    width: 'auto',
   };
 
   onColumnClick = e => {
@@ -125,55 +95,15 @@ class TableCol extends PureComponent {
     }
   }
 
-  renderChildren() {
-    const {
-      type,
-      column,
-      checked,
-      checkboxComponent,
-      checkboxComponentOptions,
-      indeterminate,
-      onClick,
-      sortable,
-      sortIcon,
-      sortDirection,
-    } = this.props;
-
-    if (type === 'checkbox') {
-      return (
-        <Checkbox
-          name="select-all-rows"
-          aria-label="select-all-rows"
-          component={checkboxComponent}
-          componentOptions={checkboxComponentOptions}
-          onClick={onClick}
-          checked={checked}
-          indeterminate={indeterminate}
-        />
-      );
-    }
-
-    return (
-      column.name ?
-        <ColumnCellWrapper>
-          {sortable && sortIcon &&
-          <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
-            {sortIcon}
-          </SortIcon>}
-          {column.name}
-        </ColumnCellWrapper> : null
-    );
-  }
-
   render() {
     const {
       column,
-      width,
-      sortable,
       sortIcon,
       sortDirection,
-      type,
+      sortField,
     } = this.props;
+
+    const sortable = column.sortable && sortField === column.selector;
 
     return (
       <TableColStyle
@@ -181,11 +111,16 @@ class TableCol extends PureComponent {
         sortable={sortable}
         sortDirection={sortDirection}
         sortIcon={sortIcon}
-        type={type}
         column={column}
-        width={width}
       >
-        {this.renderChildren()}
+        {column.name ?
+          <ColumnCellWrapper>
+            {sortable && sortIcon &&
+              <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
+                {sortIcon}
+              </SortIcon>}
+            {column.name}
+          </ColumnCellWrapper> : null}
       </TableColStyle>
     );
   }
