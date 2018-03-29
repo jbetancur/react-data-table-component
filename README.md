@@ -8,7 +8,7 @@ Creating yet another React table library came out of nescessity while developing
 
 If you want to achieve balance with the force and want a simple, sortable, flexible table library, give React Data Table Component a shot. If you want an Excel clone, need to pivot large data sets or want to infinitely scroll millions of rows, then this is not the React table library you are looking for 👋
   
-React Data Table Component is still under **Development**, though I do not expect the API to change. Here are the initial features available:
+React Data Table Component is still under **Development**, though I do not anticpate the API to change much. Here are the initial features available:
 
 * Declarative Configuration
 * Sortable (client)

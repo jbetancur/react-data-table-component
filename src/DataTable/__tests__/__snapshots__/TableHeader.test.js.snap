@@ -70,8 +70,6 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
       Object {
         "cells": Object {
           "cellPadding": "48px",
-          "firstCellPadding": "24px",
-          "lastCellPadding": "24px",
         },
         "expander": Object {
           "backgroundColor": "transparent",
@@ -128,8 +126,6 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
               Object {
                 "cells": Object {
                   "cellPadding": "48px",
-                  "firstCellPadding": "24px",
-                  "lastCellPadding": "24px",
                 },
                 "expander": Object {
                   "backgroundColor": "transparent",

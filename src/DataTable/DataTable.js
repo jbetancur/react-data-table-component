@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import orderBy from 'lodash/orderBy';
-import pullAllBy from 'lodash/pullAllBy';
 import merge from 'lodash/merge';
-import shortid from 'shortid';
 import Table from './Table';
 import TableHead from './TableHead';
 import TableRow from './TableRow';
 import TableCol from './TableCol';
-import TableCell from './TableCell';
+import TableColCheckbox from './TableColCheckbox';
 import ExpanderRow from './ExpanderRow';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
@@ -17,131 +14,34 @@ import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import NoData from './NoData';
-import { decorateColumns, insertItem, removeItem, countIfOne, getSortDirection } from './util';
+import { propTypes, defaultProps } from './DataTablePropTypes';
+import { decorateColumns, countIfOne, getSortDirection } from './util';
+import { handleSelectAll, handleRowChecked, toggleExpand, handleSort, clearSelectedRows } from './statemgmt';
 import defaultTheme from '../themes/default';
 
 class DataTable extends Component {
-  static propTypes = {
-    title: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.node,
-    ]),
-    selectableRows: PropTypes.bool,
-    expandableRows: PropTypes.bool,
-    keyField: PropTypes.string,
-    progressPending: PropTypes.bool,
-    progressComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.node,
-      PropTypes.func,
-    ]),
-    progressCentered: PropTypes.bool,
-    expanderStateField: PropTypes.string,
-    expandableRowsComponent: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-      PropTypes.func,
-    ]),
-    selectableRowsComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.node,
-      PropTypes.func,
-    ]),
-    selectableRowsComponentProps: PropTypes.object,
-    customTheme: PropTypes.object,
-    sortIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    striped: PropTypes.bool,
-    highlightOnHover: PropTypes.bool,
-    pointerOnHover: PropTypes.bool,
-    onServerSort: PropTypes.func,
-    contextTitle: PropTypes.string,
-    contextActions: PropTypes.arrayOf(PropTypes.node),
-    onTableUpdate: PropTypes.func,
-    clearSelectedRows: PropTypes.bool,
-    defaultSortField: PropTypes.string,
-    defaultSortAsc: PropTypes.bool,
-    columns: PropTypes.array,
-    data: PropTypes.array,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    responsive: PropTypes.bool,
-    overflowY: PropTypes.bool,
-    overflowYOffset: PropTypes.string,
-    noDataComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.node,
-      PropTypes.func,
-    ]),
-    disabled: PropTypes.bool,
-    noHeader: PropTypes.bool,
-    onRowClicked: PropTypes.func,
-  };
-
-  static defaultProps = {
-    title: '',
-    keyField: 'id',
-    selectableRows: false,
-    expandableRows: false,
-    progressPending: false,
-    progressComponent: <h2>Loading...</h2>,
-    progressCentered: false,
-    expanderStateField: '$$expander',
-    expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
-    selectableRowsComponent: 'input',
-    selectableRowsComponentProps: {},
-    customTheme: {},
-    sortIcon: false,
-    striped: false,
-    highlightOnHover: false,
-    pointerOnHover: false,
-    onServerSort: null,
-    contextTitle: '',
-    contextActions: [],
-    onTableUpdate: null,
-    clearSelectedRows: false,
-    defaultSortField: null,
-    defaultSortAsc: true,
-    columns: [],
-    data: [],
-    className: null,
-    style: {},
-    responsive: true,
-    overflowY: false,
-    overflowYOffset: '250px',
-    noDataComponent: 'There are no records to display',
-    disabled: false,
-    noHeader: false,
-    onRowClicked: null,
-  };
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
 
   constructor(props) {
     super(props);
 
     const sortDirection = getSortDirection(props.defaultSortAsc);
-    // only initially sort rows if initial sort field is provided
-    const sortedRows = props.defaultSortField ?
-      orderBy(props.data, props.defaultSortField, sortDirection) : props.data;
-
     this.columns = decorateColumns(props.columns);
-
     this.state = {
       allSelected: false,
       selectedCount: 0,
       selectedRows: [],
       sortColumn: props.defaultSortField,
       sortDirection,
-      rows: sortedRows,
+      rows: props.defaultSortField ? orderBy(props.data, props.defaultSortField, sortDirection) : props.data,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     // allow clearing of rows via passed clearSelectedRows prop
     if (nextProps.clearSelectedRows !== this.props.clearSelectedRows) {
-      this.setState({
-        allSelected: false,
-        selectedCount: 0,
-        selectedRows: [],
-      });
+      this.setState(() => clearSelectedRows());
     }
 
     // Keep data state in sync if it changes
@@ -172,38 +72,12 @@ class DataTable extends Component {
     return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
   }
 
-  determineExpanderRowIdentifier(row) {
-    const { keyField } = this.props;
-
-    return row[keyField] ? row[keyField] : row;
-  }
-
   handleSelectAll = () => {
-    this.setState(state => {
-      const allSelected = !state.allSelected;
-
-      return {
-        allSelected,
-        selectedCount: allSelected ? state.rows.length : 0,
-        selectedRows: allSelected ? state.rows : [],
-      };
-    });
+    this.setState(state => handleSelectAll(state));
   }
 
   handleRowChecked = row => {
-    if (this.state.selectedRows.find(r => r === row)) {
-      this.setState(state => ({
-        selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
-        allSelected: false,
-        selectedRows: removeItem(state.selectedRows, row),
-      }));
-    } else {
-      this.setState(state => ({
-        selectedCount: state.selectedRows.length + 1,
-        allSelected: state.selectedRows.length + 1 === state.rows.length,
-        selectedRows: insertItem(state.selectedRows, row),
-      }));
-    }
+    this.setState(state => handleRowChecked(row, state));
   }
 
   handleRowClicked = (row, index, e) => {
@@ -213,62 +87,13 @@ class DataTable extends Component {
   }
 
   toggleExpand = row => {
-    const {
-      keyField,
-      expanderStateField,
-    } = this.props;
-
-    const identifier = this.determineExpanderRowIdentifier(row);
-    const expandedRow = this.state.rows.find(r => r[expanderStateField] && r.parent === identifier);
-
-    if (expandedRow) {
-      this.setState(state => ({
-        rows: removeItem(state.rows, expandedRow),
-      }));
-    } else {
-      const parentRowIndex = this.state.rows.findIndex(r => r === row);
-
-      this.setState(state => ({
-        // insert a new expander row
-        rows: insertItem(state.rows, {
-          [keyField]: shortid.generate(),
-          parent: identifier,
-          [expanderStateField]: true,
-        }, parentRowIndex + 1),
-      }));
-    }
+    this.setState((state, props) => toggleExpand(props, row, state));
   }
 
   handleSort = ({ selector, sortable }) => {
-    const {
-      expandableRows,
-      expanderStateField,
-      onServerSort,
-    } = this.props;
+    this.setState((state, props) => handleSort(props, selector, sortable, state));
 
-    if (sortable) {
-      this.setState(() => {
-        const { sortDirection, rows } = this.state;
-        const direction = sortDirection === 'asc' ? 'desc' : 'asc';
-        const handleRows = () => {
-          if (expandableRows) {
-            const removedExpands = pullAllBy(rows, rows.filter(r => r[expanderStateField]));
-
-            return orderBy(removedExpands, selector, direction);
-          }
-
-          return orderBy(rows, selector, direction);
-        };
-
-        return {
-          sortColumn: selector,
-          sortDirection: direction,
-          rows: handleRows(),
-        };
-      });
-    }
-
-    if (sortable && onServerSort) {
+    if (sortable && this.props.onServerSort) {
       this.props.onServerSort(this.state.sortColumn, this.state.sortDirection);
     }
   }
@@ -284,14 +109,11 @@ class DataTable extends Component {
     } = this.state;
 
     return (
-      this.columns.map(col => (
+      this.columns.map(column => (
         <TableCol
-          key={col.id}
-          type="column"
-          column={col}
-          width={col.width}
+          key={column.id}
+          column={column}
           onColumnClick={this.handleSort}
-          sortable={col.sortable && sortColumn === col.selector}
           sortField={sortColumn}
           sortDirection={sortDirection}
           sortIcon={sortIcon}
@@ -309,6 +131,8 @@ class DataTable extends Component {
       highlightOnHover,
       keyField,
       pointerOnHover,
+      selectableRowsComponent,
+      selectableRowsComponentProps,
     } = this.props;
 
     const {
@@ -337,53 +161,21 @@ class DataTable extends Component {
             highlightOnHover={highlightOnHover}
             pointerOnHover={pointerOnHover}
             columns={this.columns}
+            rows={this.state.rows}
             row={row}
             index={index}
             keyField={keyField}
             onRowClicked={this.handleRowClicked}
-          >
-            {selectableRows && this.renderSelectableRows(row, index)}
-            {expandableRows && this.renderExpanderCell(row, index)}
-          </TableRow>
+            checkboxComponent={selectableRowsComponent}
+            checkboxComponentOptions={selectableRowsComponentProps}
+            onRowSelected={this.handleRowChecked}
+            selectableRows={selectableRows}
+            selectedRows={this.state.selectedRows}
+            expandableRows={expandableRows}
+            onToggled={this.toggleExpand}
+          />
         );
       })
-    );
-  }
-
-  renderExpanderCell(row, index) {
-    const identifier = this.determineExpanderRowIdentifier(row);
-    const getExpanderRowParentById = id => this.state.rows.findIndex(r => id === r.parent);
-
-    return (
-      <TableCell
-        width="42px"
-        type="expander"
-        onToggled={this.toggleExpand}
-        expanded={getExpanderRowParentById(identifier) > -1}
-        row={row}
-        index={index}
-      />
-    );
-  }
-
-  renderSelectableRows(row, index) {
-    const {
-      selectableRowsComponent,
-      selectableRowsComponentProps,
-    } = this.props;
-
-    const isChecked = this.state.selectedRows.indexOf(this.state.rows[index]) > -1;
-
-    return (
-      <TableCell
-        type="checkbox"
-        width="42px"
-        checked={isChecked}
-        checkboxComponent={selectableRowsComponent}
-        checkboxComponentOptions={selectableRowsComponentProps}
-        onClick={this.handleRowChecked}
-        row={row}
-      />
     );
   }
 
@@ -406,18 +198,14 @@ class DataTable extends Component {
       <TableHead>
         <tr>
           {selectableRows &&
-            <TableCol
-              type="checkbox"
-              width="42px"
+            <TableColCheckbox
               onClick={this.handleSelectAll}
               checked={allSelected}
               checkboxComponent={selectableRowsComponent}
               checkboxComponentOptions={selectableRowsComponentProps}
               indeterminate={isIndeterminate}
             />}
-
-          {expandableRows && <TableCol width="42px" />}
-
+          {expandableRows && <TableCol />}
           {this.renderColumns()}
         </tr>
       </TableHead>

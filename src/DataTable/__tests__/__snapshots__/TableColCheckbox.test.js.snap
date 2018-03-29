@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <TableColCheckbox /> should render correctly 1`] = `
+.c0 {
+  box-sizing: border-box;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  height: 48px;
+  font-size: 12px;
+  color: rgba(0,0,0,.54);
+  width: 42px;
+  padding-left: calc(48px / 6);
+  padding-right: 0;
+}
+
+<th
+  className="c0"
+>
+  <Checkbox
+    aria-label="select-all-rows"
+    checked={false}
+    component={null}
+    componentOptions={Object {}}
+    data={Object {}}
+    indeterminate={false}
+    index={null}
+    name="select-all-rows"
+    onClick={[Function]}
+    style={null}
+  />
+</th>
+`;

@@ -12,6 +12,11 @@ export const getProperty = (row, selector, format) => {
   return selector.split('.').reduce((acc, part) => acc && acc[part], row);
 };
 
+// eslint-disable-next-line arrow-body-style
+export const determineExpanderRowIdentifier = (row, keyField) => {
+  return row[keyField] ? row[keyField] : row;
+};
+
 export const insertItem = (array, item, index = 0) => [
   ...array.slice(0, index),
   item,

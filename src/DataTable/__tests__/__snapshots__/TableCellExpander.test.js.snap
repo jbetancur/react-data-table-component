@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component <TableCellExpander /> should render correctly 1`] = `
+.c0 {
+  box-sizing: border-box;
+  vertical-align: middle;
+  white-space: nowrap;
+  line-height: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(0,0,0,.87);
+  height: 48px;
+  width: 42px;
+  padding: 0;
+}
+
+.c0:nth-child(n+2) {
+  padding-right: calc(48px / 6);
+}
+
+<td
+  className="c0"
+  onClick={[Function]}
+  type={null}
+>
+  <WithTheme(ExpanderButton)
+    data={Object {}}
+    expanded={false}
+    index={null}
+    onToggled={null}
+  />
+</td>
+`;
