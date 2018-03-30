@@ -35,7 +35,7 @@ const TableCellStyle = styled.div`
       padding-left: calc(${props.theme.cells.cellPadding} / 6);
     }
   `};
-  ${props => props.column.compact && `calc(${props.theme.cells.cellPadding} / 8)`};
+  ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 8)`};
 `;
 
 class TableCell extends PureComponent {

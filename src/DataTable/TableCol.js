@@ -30,7 +30,7 @@ const TableColStyle = styled.div`
       padding-left: calc(${props.theme.cells.cellPadding} / 6);
     }
   `};
-  ${props => props.column.compact && `calc(${props.theme.cells.cellPadding} / 8)`};
+  ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 8)`};
 
   &::before {
     font-size: 12px;
