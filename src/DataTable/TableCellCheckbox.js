@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import Checkbox from './Checkbox';
 
-const TableCellCheckboxStyle = styled.td`
+const TableCellCheckboxStyle = styled.div`
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
   box-sizing: border-box;
-  vertical-align: middle;
   line-height: normal;
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
   height: ${props => props.theme.rows.height};
-  width: 42px;
   padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
-  padding-right: 0;
+  padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
 `;
 
 class TableCellCheckbox extends PureComponent {

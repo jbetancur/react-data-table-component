@@ -54,6 +54,7 @@ class MaterialTable extends PureComponent {
         name: 'Name',
         selector: 'name',
         sortable: true,
+        grow: 2,
       },
       {
         name: 'Type',
@@ -64,50 +65,51 @@ class MaterialTable extends PureComponent {
         name: 'Calories (g)',
         selector: 'calories',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Fat (g)',
         selector: 'fat',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Carbs (g)',
         selector: 'carbs',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Protein (g)',
         selector: 'protein',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Sodium (mg)',
         selector: 'sodium',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Calcium (%)',
         selector: 'calcium',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Iron (%)',
         selector: 'iron',
         sortable: true,
-        number: true,
+        right: true,
       },
       {
         name: 'Actions',
         cell: row => <CustomMaterialMenu row={row} onDeleteRow={this.deleteOne} />,
         ignoreRowClick: true,
-        number: true,
         allowOverflow: true,
+        center: true,
+        width: '70px',
       },
     ];
 
@@ -128,11 +130,10 @@ class MaterialTable extends PureComponent {
           onTableUpdate={this.handleChange}
           clearSelectedRows={this.state.toggleCleared}
           onRowClicked={this.handleRowClicked}
-          expandableRows
         />
       </Card>
     );
   }
 }
 
-storiesOf('React Data Table', module).add('Material (3rd Party UI Lib)', () => <MaterialTable />);
+storiesOf('Theme: Material', module).add('3rd Party UI Lib', () => <MaterialTable />);

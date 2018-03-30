@@ -2,28 +2,30 @@
 
 exports[`component <Table /> should render correctly 1`] = `
 .c0 {
-  height: 100px;
+  display: table;
   width: 100%;
+  height: 100%;
   max-width: 100%;
   border-collapse: collapse;
 }
 
-<table
+<div
   className="c0"
 />
 `;
 
 exports[`component <Table disabled={true} /> should render correctly  1`] = `
 .c0 {
-  height: 100px;
+  display: table;
   width: 100%;
+  height: 100%;
   max-width: 100%;
   border-collapse: collapse;
   pointer-events: none;
   opacity: 0.4;
 }
 
-<table
+<div
   className="c0"
   disabled={true}
 />

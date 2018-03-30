@@ -2,8 +2,18 @@
 
 exports[`component <TableColCheckbox /> should render correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 42px;
+  -ms-flex: 0 0 42px;
+  flex: 0 0 42px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
-  vertical-align: middle;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -12,12 +22,11 @@ exports[`component <TableColCheckbox /> should render correctly 1`] = `
   height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  width: 42px;
   padding-left: calc(48px / 6);
-  padding-right: 0;
+  padding-left: calc(48px / 6);
 }
 
-<th
+<div
   className="c0"
 >
   <Checkbox
@@ -32,5 +41,5 @@ exports[`component <TableColCheckbox /> should render correctly 1`] = `
     onClick={[Function]}
     style={null}
   />
-</th>
+</div>
 `;

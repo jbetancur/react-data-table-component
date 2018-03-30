@@ -3,7 +3,19 @@
 exports[`component <TableCol /> should render correctly 1`] = `
 .c0 {
   box-sizing: border-box;
-  vertical-align: middle;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
   line-height: normal;
   white-space: nowrap;
   font-size: 12px;
@@ -13,22 +25,17 @@ exports[`component <TableCol /> should render correctly 1`] = `
   user-select: none;
   font-weight: 500;
   color: rgba(0,0,0,.54);
-  height: 48px;
+  min-height: 48px;
   padding-left: calc(48px / 2);
   padding-right: calc(48px / 2);
-}
-
-.c0:nth-child(n+2) {
-  padding-left: calc(48px / 6);
 }
 
 .c0::before {
   font-size: 12px;
   padding-right: 4px;
-  padding-bottom: 5px;
 }
 
-<th
+<div
   className="c0"
   onClick={[Function]}
 />

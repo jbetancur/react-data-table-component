@@ -28,7 +28,8 @@ const baseProps = {
   checkboxComponentOptions: {},
   selectableRows: false,
   expandableRows: false,
-  onToggled: () => {},
+  onToggled: () => { },
+  firstCellIndex: 0,
 };
 
 test('component <TableRow /> should render correctly', () => {

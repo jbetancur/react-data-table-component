@@ -2,10 +2,14 @@
 
 exports[`component <TableRow /> should render correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -17,6 +21,7 @@ exports[`component <TableRow /> should render correctly 1`] = `
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -26,15 +31,19 @@ exports[`component <TableRow /> should render correctly 1`] = `
     }
     type="cell"
   />
-</tr>
+</div>
 `;
 
 exports[`component <TableRow /> with children should render correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -46,6 +55,7 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -55,15 +65,19 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
     }
     type="cell"
   />
-</tr>
+</div>
 `;
 
 exports[`component <TableRow /> with columns should render correctly if a row does not have a keyField 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -75,6 +89,7 @@ exports[`component <TableRow /> with columns should render correctly if a row do
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -84,15 +99,19 @@ exports[`component <TableRow /> with columns should render correctly if a row do
     }
     type="cell"
   />
-</tr>
+</div>
 `;
 
 exports[`component <TableRow /> with columns should render correctly if a row has a keyField 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -104,6 +123,7 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -113,15 +133,19 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
     }
     type="cell"
   />
-</tr>
+</div>
 `;
 
 exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -133,6 +157,7 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -142,15 +167,19 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
     }
     type="cell"
   />
-</tr>
+</div>
 `;
 
 exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -162,6 +191,7 @@ exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -171,15 +201,19 @@ exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
     }
     type="cell"
   />
-</tr>
+</div>
 `;
 
 exports[`component <TableRow striped /> should render correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
-<tr
+<div
   className="c0"
   onClick={[Function]}
 >
@@ -191,6 +225,7 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
         "selector": "name",
       }
     }
+    firstCellIndex={0}
     key="cell-123-456"
     row={
       Object {
@@ -200,5 +235,5 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
     }
     type="cell"
   />
-</tr>
+</div>
 `;

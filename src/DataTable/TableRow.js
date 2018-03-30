@@ -4,9 +4,10 @@ import styled, { withTheme, css } from 'styled-components';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
-import { determineExpanderRowIdentifier } from './util';
+import { determineExpanderRowIdentifier, isExpandedRow } from './util';
 
-const TableRowStyle = styled.tr`
+const TableRowStyle = styled.div`
+  display: flex;
   border-top: 1px solid ${props => props.theme.rows.borderColor};
   ${props => props.striped && css`
       &:nth-child(odd) {
@@ -49,6 +50,7 @@ class TableRow extends PureComponent {
     selectableRows: PropTypes.bool.isRequired,
     expandableRows: PropTypes.bool.isRequired,
     onToggled: PropTypes.func.isRequired,
+    firstCellIndex: PropTypes.number.isRequired,
   };
 
   isExpanded = () => {
@@ -70,12 +72,14 @@ class TableRow extends PureComponent {
       columns,
       keyField,
       row,
+      rows,
       index,
       checkboxComponent,
       checkboxComponentOptions,
       selectableRows,
       expandableRows,
       onToggled,
+      firstCellIndex,
     } = this.props;
 
     return (
@@ -97,7 +101,7 @@ class TableRow extends PureComponent {
         {expandableRows &&
         <TableCellExpander
           onToggled={onToggled}
-          expanded={this.isExpanded()}
+          expanded={isExpandedRow(row, rows, keyField)}
           row={row}
           index={index}
         />}
@@ -108,6 +112,7 @@ class TableRow extends PureComponent {
             width={col.width}
             column={col}
             row={row}
+            firstCellIndex={firstCellIndex}
           />))}
       </TableRowStyle>
     );

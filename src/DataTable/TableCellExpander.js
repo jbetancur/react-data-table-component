@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import ExpanderButton from './ExpanderButton';
 
-const TableCellExpanderStyle = styled.td`
+const TableCellExpanderStyle = styled.div`
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
   box-sizing: border-box;
   vertical-align: middle;
   white-space: nowrap;
@@ -12,12 +15,7 @@ const TableCellExpanderStyle = styled.td`
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
   height: ${props => props.theme.rows.height};
-  width: 42px;
   padding: 0;
-
-  &:nth-child(n+2) {
-    padding-right: calc(${props => props.theme.cells.cellPadding} / 6);
-  }
 `;
 
 class TableCellExpander extends PureComponent {
