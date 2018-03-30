@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableHead /> should render correctly 1`] = `
+exports[`component <TableHeadRow /> should render correctly 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
-  background-color: transparent;
+  width: 100%;
 }
 
 <div

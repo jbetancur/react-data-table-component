@@ -1,7 +1,6 @@
 import shortid from 'shortid';
 import orderBy from 'lodash/orderBy';
-import pullAllBy from 'lodash/pullAllBy';
-import { insertItem, removeItem, determineExpanderRowIdentifier } from './util';
+import { insertItem, removeItem, determineExpanderRowIdentifier, pull } from './util';
 
 export const handleSelectAll = state => {
   const allSelected = !state.allSelected;
@@ -29,12 +28,7 @@ export const handleRowChecked = (row, state) => {
   };
 };
 
-export const toggleExpand = (props, row, state) => {
-  const {
-    keyField,
-    expanderStateField,
-  } = props;
-
+export const toggleExpand = ({ keyField, expanderStateField }, row, state) => {
   const identifier = determineExpanderRowIdentifier(row, keyField);
   const expandedRow = state.rows.find(r => r[expanderStateField] && r.parent === identifier);
 
@@ -56,18 +50,13 @@ export const toggleExpand = (props, row, state) => {
   };
 };
 
-export const handleSort = (props, selector, sortable, state) => {
-  const {
-    expandableRows,
-    expanderStateField,
-  } = props;
-
+export const handleSort = ({ expandableRows, expanderStateField }, selector, sortable, state) => {
   if (sortable) {
     const { sortDirection, rows } = state;
     const direction = sortDirection === 'asc' ? 'desc' : 'asc';
     const handleRows = () => {
       if (expandableRows) {
-        const removedExpands = pullAllBy(rows, rows.filter(r => r[expanderStateField]));
+        const removedExpands = pull(rows, rows.filter(r => r[expanderStateField]));
 
         return orderBy(removedExpands, selector, direction);
       }

@@ -16,7 +16,7 @@ React Data Table Component is still under **Development**, though I do not antic
 * Expandable Rows
 * Themeable via js config
 * Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
-* Responsive (via x-scroll)
+* Responsive (via x-scroll/flex)
 
 ## Roadmap
 In order priority:
@@ -48,14 +48,18 @@ Nothing new here - we are using an array of object literals and properties to de
 | name     | string | no       | the display name of our Column e.g. 'Name'                                                                    |
 | selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
-| width    | string |          | the width of the column (the column will still be resticted to how `<table></table>` handles width)           |
-| number   | bool   | no       | if the field is a number: applies `text-align: right`                                                         |
-| center   | bool   | no       | if the field should be centered: applies `text-align: center`                                                 |
-| compact  | bool   | no       | removes any padding in the cell. useful for custom cells icons or buttons                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
 | cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>`  **Negates  `format`** |
+| grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column.  the is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicityly set widths |
+| width    | string | no       | give the column a fixed width                                                                                 |
+| minWidth | string | no       | give the column a minWidth                                                                                    |
+| maxWidth | string | no       | give the column a maxWidth                                                                                    |
+| right    | bool   | no       | right aligns the content in the cell                                                          |
+| center   | bool   | no       | center aligns the content in the cell                                                |
+| compact  | bool   | no       | removes any padding in the cell. useful for custom cells icons or buttons                                     |
+| wrap     | bool   | no       | whether the cell content shold be allowed to wrap. |
+| allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for certain menus/layovers                                     |
 | ignoreRowClick   | bool | no | implements e.stopPropagation() on a specific Table Cell. This is **really** useful when you want to trigger some action based on `onRowClicked` and when you do not want the Table Cell to trigger `onRowClicked`
-
 
 ### DataTable Properties
 | Property | Type | Required | Default | Description |
@@ -142,7 +146,7 @@ const columns = [
     name: 'Year',
     selector: 'year',
     sortable: true,
-    number: true,
+    right: true,
   },
 ];
 
@@ -264,7 +268,7 @@ const columns = [
     name: 'Year',
     selector: 'year',
     sortable: true,
-    number: true,
+    right: true,
   },
 ];
 
@@ -305,7 +309,7 @@ const columns = [
     name: 'Year',
     selector: 'year',
     sortable: true,
-    number: true,
+    right: true,
   },
 ];
 

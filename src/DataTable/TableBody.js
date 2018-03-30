@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const TableBody = styled.tbody`
+const TableBody = styled.div`
   /* future styling */
 `;
+
 export default TableBody;

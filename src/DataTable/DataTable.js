@@ -4,6 +4,7 @@ import orderBy from 'lodash/orderBy';
 import merge from 'lodash/merge';
 import Table from './Table';
 import TableHead from './TableHead';
+import TableHeadRow from './TableHeadRow';
 import TableRow from './TableRow';
 import TableCol from './TableCol';
 import TableColCheckbox from './TableColCheckbox';
@@ -15,7 +16,7 @@ import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './DataTablePropTypes';
-import { decorateColumns, countIfOne, getSortDirection } from './util';
+import { decorateColumns, getSortDirection, calcFirstCellIndex } from './util';
 import { handleSelectAll, handleRowChecked, toggleExpand, handleSort, clearSelectedRows } from './statemgmt';
 import defaultTheme from '../themes/default';
 
@@ -100,6 +101,8 @@ class DataTable extends Component {
 
   renderColumns() {
     const {
+      selectableRows,
+      expandableRows,
       sortIcon,
     } = this.props;
 
@@ -107,6 +110,8 @@ class DataTable extends Component {
       sortColumn,
       sortDirection,
     } = this.state;
+
+    const firstCellIndex = calcFirstCellIndex(selectableRows, expandableRows);
 
     return (
       this.columns.map(column => (
@@ -117,11 +122,12 @@ class DataTable extends Component {
           sortField={sortColumn}
           sortDirection={sortDirection}
           sortIcon={sortIcon}
+          firstCellIndex={firstCellIndex}
         />))
     );
   }
 
-  renderRows(numColumns) {
+  renderRows() {
     const {
       selectableRows,
       expandableRows,
@@ -139,6 +145,7 @@ class DataTable extends Component {
       rows,
     } = this.state;
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
+    const firstCellIndex = calcFirstCellIndex(selectableRows, expandableRows);
 
     return (
       rows.map((row, index) => {
@@ -146,7 +153,6 @@ class DataTable extends Component {
           return (
             <ExpanderRow
               key={`expander--${row[keyField]}`}
-              numColumns={numColumns}
               data={getExpanderRowbByParentId(row.parent)}
             >
               {expandableRowsComponent}
@@ -173,6 +179,7 @@ class DataTable extends Component {
             selectedRows={this.state.selectedRows}
             expandableRows={expandableRows}
             onToggled={this.toggleExpand}
+            firstCellIndex={firstCellIndex}
           />
         );
       })
@@ -196,7 +203,7 @@ class DataTable extends Component {
 
     return (
       <TableHead>
-        <tr>
+        <TableHeadRow>
           {selectableRows &&
             <TableColCheckbox
               onClick={this.handleSelectAll}
@@ -205,17 +212,15 @@ class DataTable extends Component {
               checkboxComponentOptions={selectableRowsComponentProps}
               indeterminate={isIndeterminate}
             />}
-          {expandableRows && <TableCol />}
+          {expandableRows && <div style={{ width: '42px' }} />}
           {this.renderColumns()}
-        </tr>
+        </TableHeadRow>
       </TableHead>
     );
   }
 
   render() {
     const {
-      selectableRows,
-      expandableRows,
       title,
       customTheme,
       contextActions,
@@ -238,7 +243,6 @@ class DataTable extends Component {
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
-    const numColumns = this.columns.length + countIfOne(selectableRows) + countIfOne(expandableRows);
 
     return (
       <ThemeProvider theme={theme}>
@@ -272,7 +276,7 @@ class DataTable extends Component {
                 {this.renderTableHead()}
 
                 <TableBody>
-                  {this.renderRows(numColumns)}
+                  {this.renderRows()}
                 </TableBody>
               </Table>}
           </TableWrapper>

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const TableStyle = styled.table`
-  height: 100px;
+const TableStyle = styled.div`
+  display: table;
   width: 100%;
+  height: 100%;
   max-width: 100%;
   border-collapse: collapse;
   ${props => props.disabled && 'pointer-events: none'};

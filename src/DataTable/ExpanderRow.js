@@ -8,7 +8,8 @@ const renderChildren = (children, data) => {
   return Children.map(children, child => cloneElement(child, { data }));
 };
 
-const ExpanderRowStyle = styled.tr`
+const ExpanderRowStyle = styled.div`
+  width: 100%;
   box-sizing: border-box;
   background-color: ${props => props.theme.expander.backgroundColor};
 `;
@@ -16,7 +17,6 @@ const ExpanderRowStyle = styled.tr`
 class ExpanderRow extends PureComponent {
   static propTypes = {
     data: PropTypes.object,
-    numColumns: PropTypes.number,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node,
@@ -25,22 +25,18 @@ class ExpanderRow extends PureComponent {
 
   static defaultProps = {
     data: {},
-    numColumns: 0,
     children: null,
   };
 
   render() {
     const {
       data,
-      numColumns,
       children,
     } = this.props;
 
     return (
       <ExpanderRowStyle>
-        <td colSpan={numColumns}>
-          {renderChildren(children, data)}
-        </td>
+        {renderChildren(children, data)}
       </ExpanderRowStyle>
     );
   }

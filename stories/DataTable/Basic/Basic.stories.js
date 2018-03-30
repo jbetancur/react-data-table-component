@@ -14,11 +14,11 @@ const columns = [
     name: 'Year',
     selector: 'year',
     sortable: true,
-    number: true,
+    right: true,
   },
 ];
 
-storiesOf('React Data Table', module).add('Basic', () => (
+storiesOf('Basic', module).add('Basic', () => (
   <DataTable
     title="Arnie Movies"
     columns={columns}

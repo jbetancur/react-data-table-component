@@ -5,20 +5,20 @@ import moment from 'moment';
 import data from '../constants/sampleRMEpisodes';
 import DataTable from '../../../src/DataTable/DataTable';
 import SampleExpandedComponent from './RickExpandedComponent';
-import { trim } from '../demo-utils';
 
 const columns = [
   {
     name: 'Name',
     selector: 'name',
     sortable: true,
-    cell: d => <div><div style={{ fontWeight: 700 }}>{d.name}</div>{trim(d.summary, 100)}</div>,
-    width: '100px',
+    cell: d => <div><div style={{ fontWeight: 700 }}>{d.name}</div><div>{d.summary}</div></div>,
+    width: '300px',
   },
   {
     name: 'Season',
     selector: 'season',
     sortable: true,
+    right: true,
   },
   {
     name: 'Air Date',
@@ -33,7 +33,7 @@ const columns = [
   },
 ];
 
-storiesOf('React Data Table', module).add('Expansion & Custom Cells', () => (
+storiesOf('Expandable', module).add('Expansion & Custom Cells', () => (
   <DataTable
     title="Rick & Morty Episodes"
     columns={columns}

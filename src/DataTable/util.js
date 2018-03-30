@@ -30,10 +30,12 @@ export const removeItem = (array, item) => {
   return newArray;
 };
 
+export const pull = (array, values) => array.filter(el => values.indexOf(el) < 0);
+
 // Make sure columns have unique id's
 export const decorateColumns = columns => columns.map(column => ({ id: shortid.generate(), ...column }));
 
-export const countIfOne = item => (item ? 1 : 0);
+export const calcFirstCellIndex = (...args) => args.reduce((a, b) => a + b, 0);
 
 export const getSortDirection = direction => (direction ? 'asc' : 'desc');
 
@@ -50,4 +52,10 @@ export const handleFunctionProps = (object, ...args) => {
   });
 
   return newObject || object;
+};
+
+export const isExpandedRow = (row, rows, keyField) => {
+  const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
+
+  return rows.findIndex(r => rowIdentifier === r.parent) > -1;
 };
