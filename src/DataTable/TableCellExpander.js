@@ -14,7 +14,7 @@ const TableCellExpanderStyle = styled.div`
   font-weight: 400;
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
-  height: ${props => props.theme.rows.height};
+  min-height: ${props => props.theme.rows.height};
   padding: 0;
 `;
 

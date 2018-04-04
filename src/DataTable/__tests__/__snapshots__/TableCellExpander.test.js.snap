@@ -20,7 +20,7 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  height: 48px;
+  min-height: 48px;
   padding: 0;
 }
 

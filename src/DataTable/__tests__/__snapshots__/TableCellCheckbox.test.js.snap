@@ -17,7 +17,7 @@ exports[`component <TableCellCheckbox /> should render correctly 1`] = `
   line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  height: 48px;
+  min-height: 48px;
   padding-left: calc(48px / 6);
   padding-left: calc(48px / 6);
 }
