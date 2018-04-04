@@ -11,8 +11,8 @@ script:
   - yarn install
   - cd ../
   - yarn lint
-  - yarn flow-typed
-  - yarn flow
+  # - yarn flow-typed
+  # - yarn flow
   - yarn test -- --coverage
   - yarn build
 
