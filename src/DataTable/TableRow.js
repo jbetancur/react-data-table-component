@@ -91,7 +91,6 @@ class TableRow extends PureComponent {
       >
         {selectableRows &&
         <TableCellCheckbox
-          width="42px"
           checked={this.isChecked()}
           checkboxComponent={checkboxComponent}
           checkboxComponentOptions={checkboxComponentOptions}
@@ -109,7 +108,6 @@ class TableRow extends PureComponent {
           <TableCell
             type="cell"
             key={`cell-${col.id}-${row[keyField] || index}`}
-            width={col.width}
             column={col}
             row={row}
             firstCellIndex={firstCellIndex}

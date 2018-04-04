@@ -11,7 +11,7 @@ const TableCellCheckboxStyle = styled.div`
   line-height: normal;
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
-  height: ${props => props.theme.rows.height};
+  min-height: ${props => props.theme.rows.height};
   padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
   padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
 `;
