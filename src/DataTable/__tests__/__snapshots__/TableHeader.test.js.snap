@@ -84,7 +84,7 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
   justify-content: flex-end;
 }
 
-.c2 * {
+.c2 > * {
   margin-left: 5px;
 }
 
