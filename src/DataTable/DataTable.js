@@ -223,6 +223,7 @@ class DataTable extends Component {
     const {
       title,
       customTheme,
+      actions,
       contextActions,
       className,
       style,
@@ -259,6 +260,7 @@ class DataTable extends Component {
               showContextMenu={selectedCount > 0}
               contextTitle={this.generateDefaultContextTitle()}
               contextActions={contextActions}
+              actions={actions}
             />}
 
           <TableWrapper>

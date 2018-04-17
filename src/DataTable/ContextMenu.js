@@ -25,14 +25,14 @@ const ContextMenuStyle = styled.div`
   padding: 16px 16px 16px 24px;
 `;
 
-const ContextMenu = ({ visible, title, actions }) => (
+const ContextMenu = ({ visible, title, contextActions }) => (
   <ContextMenuStyle visible={visible}>
     <Title>
       {title}
     </Title>
 
     <div>
-      {actions}
+      {contextActions}
     </div>
   </ContextMenuStyle>
 );
@@ -40,13 +40,13 @@ const ContextMenu = ({ visible, title, actions }) => (
 ContextMenu.propTypes = {
   visible: PropTypes.bool,
   title: PropTypes.string,
-  actions: PropTypes.arrayOf(PropTypes.node),
+  contextActions: PropTypes.arrayOf(PropTypes.node),
 };
 
 ContextMenu.defaultProps = {
   visible: false,
   title: null,
-  actions: [],
+  contextActions: [],
 };
 
 export default withTheme(ContextMenu);

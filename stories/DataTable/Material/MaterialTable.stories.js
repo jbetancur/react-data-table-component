@@ -44,8 +44,11 @@ class MaterialTable extends PureComponent {
   }
 
   render() {
+    const actions = [
+      <Button key="add" flat secondary iconChildren="add">Add</Button>,
+    ];
+
     const contextActions = [
-      <Button key="add" icon secondary>add</Button>,
       <Button key="delete" onClick={this.deleteAll} style={{ color: 'red' }} icon>delete</Button>,
     ];
 
@@ -123,6 +126,7 @@ class MaterialTable extends PureComponent {
           selectableRows
           highlightOnHover
           defaultSortField="name"
+          actions={actions}
           contextActions={contextActions}
           sortIcon={<FontIcon>arrow_downward</FontIcon>}
           selectableRowsComponent={Checkbox}

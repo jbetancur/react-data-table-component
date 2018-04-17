@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component <TableHeader title /> should render correctly 1`] = `
-.c3 {
+.c4 {
   color: rgba(0,0,0,.64);
   font-size: 18px;
   font-weight: 400;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   top: 0;
   left: 0;
@@ -41,28 +41,58 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
 .c0 {
   position: relative;
   overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 16px 16px 16px 24px;
   min-height: 64px;
+  width: 100%;
 }
 
 .c1 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
   color: rgba(0,0,0,.87);
   font-size: 22px;
   font-weight: 400;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c2 * {
+  margin-left: 5px;
 }
 
 <WithTheme(TableHeader)
   title="whoa!"
 >
   <TableHeader
+    actions={Array []}
     contextActions={Array []}
     contextTitle=""
     showContextMenu={false}
@@ -115,13 +145,18 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
             whoa!
           </div>
         </TableHeader__Title>
+        <TableHeader__Actions>
+          <div
+            className="c2"
+          />
+        </TableHeader__Actions>
         <WithTheme(ContextMenu)
-          actions={Array []}
+          contextActions={Array []}
           title=""
           visible={false}
         >
           <ContextMenu
-            actions={Array []}
+            contextActions={Array []}
             theme={
               Object {
                 "cells": Object {
@@ -165,11 +200,11 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
               visible={false}
             >
               <div
-                className="c2"
+                className="c3"
               >
                 <ContextMenu__Title>
                   <div
-                    className="c3"
+                    className="c4"
                   />
                 </ContextMenu__Title>
                 <div />
@@ -187,16 +222,24 @@ exports[`component <TableHeader title contextActions /> should render correctly 
 .c0 {
   position: relative;
   overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 16px 16px 16px 24px;
   min-height: 64px;
+  width: 100%;
 }
 
 <header
@@ -205,8 +248,9 @@ exports[`component <TableHeader title contextActions /> should render correctly 
   <TableHeader__Title>
     whoa!
   </TableHeader__Title>
+  <TableHeader__Actions />
   <WithTheme(ContextMenu)
-    actions={
+    contextActions={
       Array [
         <div>
           some action
@@ -223,16 +267,24 @@ exports[`component <TableHeader title contextTitle /> should render correctly 1`
 .c0 {
   position: relative;
   overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 16px 16px 16px 24px;
   min-height: 64px;
+  width: 100%;
 }
 
 <header
@@ -241,8 +293,9 @@ exports[`component <TableHeader title contextTitle /> should render correctly 1`
   <TableHeader__Title>
     whoa!
   </TableHeader__Title>
+  <TableHeader__Actions />
   <WithTheme(ContextMenu)
-    actions={Array []}
+    contextActions={Array []}
     title="items!!!"
     visible={false}
   />
@@ -253,16 +306,24 @@ exports[`component <TableHeader title showContextMenu /> should render correctly
 .c0 {
   position: relative;
   overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 16px 16px 16px 24px;
   min-height: 64px;
+  width: 100%;
 }
 
 <header
@@ -271,8 +332,9 @@ exports[`component <TableHeader title showContextMenu /> should render correctly
   <TableHeader__Title>
     whoa!
   </TableHeader__Title>
+  <TableHeader__Actions />
   <WithTheme(ContextMenu)
-    actions={Array []}
+    contextActions={Array []}
     title=""
     visible={true}
   />
