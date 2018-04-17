@@ -34,6 +34,7 @@ export const propTypes = {
   highlightOnHover: PropTypes.bool,
   pointerOnHover: PropTypes.bool,
   onServerSort: PropTypes.func,
+  actions: PropTypes.arrayOf(PropTypes.node),
   contextTitle: PropTypes.string,
   contextActions: PropTypes.arrayOf(PropTypes.node),
   onTableUpdate: PropTypes.func,
