@@ -27,7 +27,7 @@ const Actions = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  * {
+  > * {
     margin-left: 5px;
   }
 `;
