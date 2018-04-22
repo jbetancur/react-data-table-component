@@ -59,7 +59,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | compact  | bool   | no       | reduces the padding in the cell. useful for custom cells icons or buttons                                     |
 | wrap     | bool   | no       | whether the cell content shold be allowed to wrap. |
 | allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning                                     |
-| ignoreRowClick   | bool | no | implements e.stopPropagation() on a specific Table Cell. This is **really** useful when you want to trigger some action based on `onRowClicked` and when you do not want the Table Cell to trigger `onRowClicked`
+| ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered
 
 ### DataTable Properties
 | Property | Type | Required | Default | Description |
