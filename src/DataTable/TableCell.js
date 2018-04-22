@@ -4,6 +4,7 @@ import styled, { withTheme, css } from 'styled-components';
 import { getProperty } from './util';
 
 const TableCellStyle = styled.div`
+  position: relative;
   box-sizing: border-box;
   display: flex;
   flex: ${props => (props.column.grow === 0 ? 0 : props.column.grow || 1)} 0 0;
@@ -38,11 +39,20 @@ const TableCellStyle = styled.div`
   ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 8)`};
 `;
 
+const ClickMask = styled.div`
+    position: absolute;
+    top: 0;
+    lefT: 0;
+    width: 100%;
+    height: 100%;
+`;
+
 class TableCell extends PureComponent {
   static propTypes = {
     column: PropTypes.object,
     row: PropTypes.object,
     firstCellIndex: PropTypes.number,
+    onClick: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -51,27 +61,20 @@ class TableCell extends PureComponent {
     firstCellIndex: 0,
   };
 
-  handleCellClick = e => {
-    const { column } = this.props;
-
-    if (column.ignoreRowClick) {
-      e.stopPropagation();
-    }
-  };
-
   render() {
     const {
       column,
       row,
       firstCellIndex,
+      onClick,
     } = this.props;
 
     return (
       <TableCellStyle
         column={column}
-        onClick={this.handleCellClick}
         firstCellIndex={firstCellIndex}
       >
+        {!column.ignoreRowClick && <ClickMask onClick={onClick} />}
         <div className="react-data-table--cell-content">
           {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
         </div>

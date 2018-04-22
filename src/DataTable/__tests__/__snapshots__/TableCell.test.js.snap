@@ -2,6 +2,7 @@
 
 exports[`component <TableCell /> should render correctly 1`] = `
 .c0 {
+  position: relative;
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -33,7 +34,56 @@ exports[`component <TableCell /> should render correctly 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
+>
+  <TableCell__ClickMask
+    onClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+  />
+  <div
+    className="react-data-table--cell-content"
+  />
+</div>
+`;
+
+exports[`component <TableCell /> should render correctly and prevent clicks when column.ignoreRowClick = true 1`] = `
+.c0 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  className="c0"
 >
   <div
     className="react-data-table--cell-content"

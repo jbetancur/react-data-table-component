@@ -11,7 +11,6 @@ exports[`component <TableRow /> should render correctly 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -23,6 +22,7 @@ exports[`component <TableRow /> should render correctly 1`] = `
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
@@ -45,7 +45,6 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -57,6 +56,7 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
@@ -79,7 +79,6 @@ exports[`component <TableRow /> with columns should render correctly if a row do
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -91,6 +90,7 @@ exports[`component <TableRow /> with columns should render correctly if a row do
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
@@ -113,7 +113,6 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -125,6 +124,7 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
@@ -147,7 +147,6 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -159,6 +158,7 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
@@ -181,7 +181,6 @@ exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -193,6 +192,7 @@ exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
@@ -215,7 +215,6 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
 >
   <WithTheme(TableCell)
     column={
@@ -227,6 +226,7 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
     }
     firstCellIndex={0}
     key="cell-123-456"
+    onClick={[Function]}
     row={
       Object {
         "id": 456,
