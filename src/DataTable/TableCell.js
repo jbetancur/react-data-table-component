@@ -39,7 +39,7 @@ const TableCellStyle = styled.div`
   ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 8)`};
 `;
 
-const ClickMask = styled.div`
+const ClickClip = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -52,7 +52,6 @@ class TableCell extends PureComponent {
     column: PropTypes.object,
     row: PropTypes.object,
     firstCellIndex: PropTypes.number,
-    onClick: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -66,7 +65,6 @@ class TableCell extends PureComponent {
       column,
       row,
       firstCellIndex,
-      onClick,
     } = this.props;
 
     return (
@@ -74,7 +72,7 @@ class TableCell extends PureComponent {
         column={column}
         firstCellIndex={firstCellIndex}
       >
-        {!column.ignoreRowClick && <ClickMask onClick={onClick} />}
+        {!column.ignoreRowClick && <ClickClip data-tag="___react-data-table--click-clip___" />}
         <div className="react-data-table--cell-content">
           {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
         </div>
