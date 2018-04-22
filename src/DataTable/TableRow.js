@@ -87,7 +87,6 @@ class TableRow extends PureComponent {
         striped={striped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={pointerOnHover}
-        onClick={this.handleRowClick}
       >
         {selectableRows &&
         <TableCellCheckbox
@@ -111,6 +110,7 @@ class TableRow extends PureComponent {
             column={col}
             row={row}
             firstCellIndex={firstCellIndex}
+            onClick={this.handleRowClick}
           />))}
       </TableRowStyle>
     );
