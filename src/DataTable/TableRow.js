@@ -60,7 +60,14 @@ class TableRow extends PureComponent {
 
   handleRowChecked = r => this.props.onRowSelected && this.props.onRowSelected(r);
 
-  handleRowClick = e => this.props.onRowClicked && this.props.onRowClicked(this.props.row, this.props.index, e);
+  handleRowClick = e => {
+    if (this.props.onRowClicked) {
+      // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
+      if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
+        this.props.onRowClicked(this.props.row, this.props.index, e);
+      }
+    }
+  };
 
   isChecked = () => this.props.selectedRows.indexOf(this.props.rows[this.props.index]) > -1;
 
@@ -87,6 +94,7 @@ class TableRow extends PureComponent {
         striped={striped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={pointerOnHover}
+        onClick={this.handleRowClick}
       >
         {selectableRows &&
         <TableCellCheckbox
@@ -110,7 +118,6 @@ class TableRow extends PureComponent {
             column={col}
             row={row}
             firstCellIndex={firstCellIndex}
-            onClick={this.handleRowClick}
           />))}
       </TableRowStyle>
     );
