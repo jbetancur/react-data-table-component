@@ -4,11 +4,13 @@
 
 # React Data Table Component
 
-Creating yet another React table library came out of nescessity while developing a production application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization (overriding css and/or forced to use their flavor of ui library), lacked built in sorting or required a commercial license.
+Creating yet another React table library came out of nescessity while developing a production application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization (like overriding css and/or forced to use their flavor of ui library), or they lacked built in sorting and in some cases required a restrictive license.
 
-If you want to achieve balance with the force and want a simple, sortable, flexible table library, give React Data Table Component a shot. If you want an Excel clone, need to pivot large data sets or want to infinitely scroll millions of rows, then this is not the React table library you are looking for 👋
+If you want to achieve balance with the force and want a simple, sortable, and flexible table library, give React Data Table Component a chance. If you want an Excel clone, need to pivot large data sets or want to infinitely scroll millions of rows, then this is not the React table library you are looking for 👋
   
-React Data Table Component is still under **Development**, though I do not anticpate the API to change much. Here are the initial features available:
+React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the API to change much. 
+
+## Initial features available:
 
 * Declarative Configuration
 * Sortable (client)
@@ -18,24 +20,27 @@ React Data Table Component is still under **Development**, though I do not antic
 * Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
 * Responsive (via x-scroll/flex)
 
+## In Progress
+* Pagination (client/server) - This is currently under development and should be ready soon!
+
 ## Roadmap
 In order priority:
-
-* Pagination (client/server) - This is currently under development and should be ready soon!
 * Built in themes (Material, Boostrap)
-* Sortable (server)
-* Search (client/server)
-* Fixed Headers
+* Sort hook for Server based sorting
+* Search hooks for server and client based filtering
+* Fixed Header support
 * Mobile Responsive
 * Accessibility
 
 ## Installation
+React Data Table requires `styled-components`. If you already have `styled-components` installed there is no need to install it again
+
 ```
-npm install react-data-table-component 
+npm install react-data-table-component styled-components
 
 // or
 
-yarn add react-data-table-component 
+yarn add react-data-table-component styled-components
 ```
 
 ## API/Usage
