@@ -137,7 +137,7 @@ const MyComponent = () => (
 The following declarative structure creates a sortable table of Arnold movie titles:
 
 ```js
-import DataTable from 'react-data-table-component`;
+import DataTable from 'react-data-table-component';
 
 const data = [{ title: 'Conan the Barbarian', year: '1982' } ...];
 const columns = [
