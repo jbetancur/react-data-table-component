@@ -55,7 +55,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | sortable | bool   | no       | if the column is sortable                                                                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
 | cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>`  **Negates  `format`** |
-| grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column.  the is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicityly set widths |
+| grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column.  the is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
 | maxWidth | string | no       | give the column a maxWidth                                                                                    |
@@ -107,15 +107,15 @@ Sometimes 3rd party checkbox components have their own way of handling indetermi
 
 Example Usage:
 
-```
+```js
 
 const { Checkbox } from 'react-md';
 
 ...
 
 /* 
-  In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property. Let's override it. React Data Table is made aware if a checkbox is indetermite or not becuase internally we can resolve this as 
-  `yourfunction(checkboxawareindeterminatestate)`
+  In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property. 
+  Let's override it. React Data Table is made aware if a checkbox is indetermite or not becuase internally we can resolve this   as `yourfunction(checkboxawareindeterminatestate)`
 */
 
 const handleIndeterminate = isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>);
@@ -136,7 +136,7 @@ const MyComponent = () => (
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
 
-```
+```js
 import DataTable from 'react-data-table-component`;
 
 const data = [{ title: 'Conan the Barbarian', year: '1982' } ...];
@@ -171,7 +171,7 @@ class MyComponent extends Component {
 ## Selectable Rows
 Let's make our rows selectable so we can access the selected results
 
-```
+```js
 ...
 
 const handleChange = (state) => {
@@ -199,7 +199,7 @@ We need some hook to trigger all the selectedRows to clear. If you were building
 
 It will be up to you to make sure you do not pass the same state twice. For example, if you set `clearSelectedRows={true}` twice, on the second update/trigger, none the rows will not be cleared. 
 
-```
+```js
 ...
 // set the initial state
 state = { toggledClearRows: false }
@@ -234,7 +234,7 @@ class MyComponent extends Component {
 ### Overriding with a 3rd Party Ui Component Library
 You don't like those ugly html checkboxes? Let's override them with some [react-md](https://react-md.mlaursen.com) sexyiness. While we are at it we will also override the `sortIcon`:
 
-```
+```js
 ...
 import { Checkbox, FontIcon } from 'react-md';
 ...
@@ -258,7 +258,7 @@ class MyComponent extends Component {
 
 ## Custom Cells
 Let's give our Movie list a summary, but in the same cell as `Name`:
-```
+```js
 ....
 
 const data = [{ title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982' } ...];
@@ -299,7 +299,7 @@ class MyComponent extends Component {
 
 ## Expandable Rows
 Let's make our rows expandable so we can view more details:
-```
+```js
 ...
 
 const data = [{ title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982', image: 'http://conan.image.png' } ...];
@@ -351,7 +351,7 @@ You can override or replace the current theme using the `customTheme` prop
 
 For Example:
 
-```
+```js
 // Override the row default height
 const mySweetTheme = {
   rows: {
