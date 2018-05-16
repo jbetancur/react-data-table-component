@@ -114,8 +114,7 @@ const { Checkbox } from 'react-md';
 ...
 
 /* 
-  In this example, react-md ui lib determines its indeterminate state via the `uncheckedIcon` property. To override it
-  so let's override it. React Data Table is aware if a checkbox is indetermite or not becuase internally we resolve this as 
+  In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property. Let's override it. React Data Table is made aware if a checkbox is indetermite or not becuase internally we can resolve this as 
   `yourfunction(checkboxawareindeterminatestate)`
 */
 
@@ -132,7 +131,7 @@ const MyComponent = () => (
   />
 );
 ```
-**Note** This is currently only supported for indeterminate state, but I may expand this out in the future if there is a demand
+**Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
 
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
