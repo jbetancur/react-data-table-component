@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import orderBy from 'lodash/orderBy';
 import merge from 'lodash/merge';
+import { polyfill } from 'react-lifecycles-compat';
 import Table from './Table';
 import TableHead from './TableHead';
 import TableHeadRow from './TableHeadRow';
@@ -24,6 +25,30 @@ class DataTable extends Component {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
 
+  static getDerivedStateFromProps(props, state) {
+    // allow clearing of rows via passed clearSelectedRows prop
+    if (props.clearSelectedRows !== state.clearSelectedRows) {
+      return clearSelectedRows(props.clearSelectedRows);
+    }
+
+    // Keep data state in sync if it changes
+    if (props.data !== state.rows) {
+      return {
+        rows: orderBy(props.data, state.sortColumn, state.sortDirection),
+      };
+    }
+
+    if (props.defaultSortAsc !== state.defaultSortAsc
+      || props.defaultSortField !== state.defaultSortField) {
+      return {
+        sortDirection: getSortDirection(props.defaultSortAsc),
+        sortColumn: props.defaultSortField,
+      };
+    }
+
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
@@ -36,33 +61,19 @@ class DataTable extends Component {
       sortColumn: props.defaultSortField,
       sortDirection,
       rows: props.defaultSortField ? orderBy(props.data, props.defaultSortField, sortDirection) : props.data,
+      clearSelectedRows: false,
+      defaultSortAsc: props.defaultSortAsc,
+      defaultSortField: props.defaultSortField,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    // allow clearing of rows via passed clearSelectedRows prop
-    if (nextProps.clearSelectedRows !== this.props.clearSelectedRows) {
-      this.setState(() => clearSelectedRows());
-    }
-
-    // Keep data state in sync if it changes
-    if (nextProps.data !== this.props.data) {
-      this.setState(state => ({ rows: orderBy(nextProps.data, state.sortColumn, state.sortDirection) }));
-    }
-
-    // Keep sort default states in sync if it changes
-    if (nextProps.defaultSortAsc !== this.props.defaultSortAsc
-      || nextProps.defaultSortField !== this.props.defaultSortField) {
-      this.setState({
-        sortDirection: getSortDirection(nextProps.defaultSortAsc),
-        sortColumn: nextProps.defaultSortField,
-      });
-    }
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    if (this.props.onTableUpdate && nextState !== this.state) {
-      nextProps.onTableUpdate(nextState);
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.onTableUpdate &&
+      (prevState.selectedRows !== this.state.selectedRows
+      || prevState.sortDirection !== this.state.sortDirection
+      || prevState.sortColumn !== this.state.sortColumn)
+    ) {
+      this.props.onTableUpdate(this.state);
     }
   }
 
@@ -288,4 +299,4 @@ class DataTable extends Component {
   }
 }
 
-export default DataTable;
+export default polyfill(DataTable);
