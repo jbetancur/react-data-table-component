@@ -6,7 +6,7 @@
 
 Creating yet another React table library came out of nescessity while developing a production application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization (like overriding css and/or forced to use their flavor of ui library), or they lacked built in sorting and in some cases required a restrictive license.
 
-If you want to achieve balance with the force and want a simple, sortable, and flexible table library, give React Data Table Component a chance. If you want an Excel clone, need to pivot large data sets or want to infinitely scroll millions of rows, then this is not the React table library you are looking for 👋
+If you want to achieve balance with the force and want a simple, sortable, and flexible table library give React Data Table Component a chance. If you want an Excel clone, need to pivot large data sets then this is not the React table library you are looking for 👋
   
 React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the API to change much. 
 
@@ -21,7 +21,8 @@ React Data Table Component is not yet Feature Complete and still under **Develop
 * Responsive (via x-scroll/flex)
 
 ## In Progress
-* Pagination (client/server) - This is currently under development and should be ready soon!
+* Scroll Pagination (client/server) - This is currently under development and should be ready soon!
+* Move Features (Sort, Expand) where epossible to HoC's
 
 ## Roadmap
 In order priority:
