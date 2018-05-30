@@ -74,7 +74,7 @@ export const handleSort = ({ expandableRows, expanderStateField }, selector, sor
   return { ...state };
 };
 
-export const clearSelectedRows = clearedRowsFlag => ({
+export const clearSelected = clearedRowsFlag => ({
   allSelected: false,
   selectedCount: 0,
   selectedRows: [],

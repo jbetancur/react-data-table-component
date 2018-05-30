@@ -2,8 +2,10 @@
 
 exports[`component <TableWrapper /> should render correctly 1`] = `
 .c0 {
+  display: table;
   position: relative;
   height: 100%;
+  width: 100%;
 }
 
 <div

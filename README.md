@@ -8,7 +8,7 @@ Creating yet another React table library came out of nescessity while developing
 
 If you want to achieve balance with the force and want a simple, sortable, and flexible table library give React Data Table Component a chance. If you want an Excel clone and need to pivot large data sets then this is not the React table library you are looking for 👋
   
-React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the API to change.
+React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the existing API to change.
 
 ## Initial features available:
 
@@ -105,6 +105,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
+| fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
 
 #### Advanced Selectable Component Options
 Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
