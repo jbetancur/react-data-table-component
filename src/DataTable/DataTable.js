@@ -18,23 +18,30 @@ import TableWrapper from './TableWrapper';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './DataTablePropTypes';
 import { decorateColumns, getSortDirection, calcFirstCellIndex } from './util';
-import { handleSelectAll, handleRowChecked, toggleExpand, handleSort, clearSelectedRows } from './statemgmt';
+import { handleSelectAll, handleRowChecked, toggleExpand, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
+
+const recalculateRows = ({ defaultSortAsc, defaultSortField, data }) => {
+  const sortDirection = getSortDirection(defaultSortAsc);
+
+  return defaultSortField ? orderBy(data, defaultSortField, sortDirection) : data;
+};
 
 class DataTable extends Component {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
 
   static getDerivedStateFromProps(props, state) {
-    // allow clearing of rows via passed clearSelectedRows prop
+    // allow clearing of rows via passed clearSelectedRows toggle prop
     if (props.clearSelectedRows !== state.clearSelectedRows) {
-      return clearSelectedRows(props.clearSelectedRows);
+      return clearSelected(props.clearSelectedRows);
     }
 
     // Keep data state in sync if it changes
-    if (props.data !== state.rows) {
+    if (props.data !== state.data) {
       return {
-        rows: orderBy(props.data, state.sortColumn, state.sortDirection),
+        data: props.data,
+        rows: recalculateRows(props),
       };
     }
 
@@ -60,10 +67,14 @@ class DataTable extends Component {
       selectedRows: [],
       sortColumn: props.defaultSortField,
       sortDirection,
-      rows: props.defaultSortField ? orderBy(props.data, props.defaultSortField, sortDirection) : props.data,
+      rows: recalculateRows(props),
       clearSelectedRows: false,
+      // eslint-disable-next-line react/no-unused-state
       defaultSortAsc: props.defaultSortAsc,
+      // eslint-disable-next-line react/no-unused-state
       defaultSortField: props.defaultSortField,
+      // eslint-disable-next-line react/no-unused-state
+      data: props.data,
     };
   }
 
@@ -73,7 +84,17 @@ class DataTable extends Component {
       || prevState.sortDirection !== this.state.sortDirection
       || prevState.sortColumn !== this.state.sortColumn)
     ) {
-      this.props.onTableUpdate(this.state);
+      const { allSelected, selectedCount, selectedRows, rows, sortColumn, sortDirection, clearSelectedRows } = this.state;
+
+      this.props.onTableUpdate({
+        allSelected,
+        selectedCount,
+        selectedRows,
+        rows,
+        sortColumn,
+        sortDirection,
+        clearSelectedRows,
+      });
     }
   }
 
@@ -247,6 +268,7 @@ class DataTable extends Component {
       noDataComponent,
       disabled,
       noHeader,
+      fixedHeader,
     } = this.props;
 
     const {
@@ -288,7 +310,11 @@ class DataTable extends Component {
               <Table disabled={disabled}>
                 {this.renderTableHead()}
 
-                <TableBody>
+                <TableBody
+                  fixedHeader={fixedHeader}
+                  hasOffset={overflowY}
+                  offset={overflowYOffset}
+                >
                   {this.renderRows()}
                 </TableBody>
               </Table>}

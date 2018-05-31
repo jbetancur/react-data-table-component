@@ -2,11 +2,16 @@
 
 exports[`component <Table /> should render correctly 1`] = `
 .c0 {
-  display: table;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   max-width: 100%;
-  border-collapse: collapse;
 }
 
 <div
@@ -16,11 +21,16 @@ exports[`component <Table /> should render correctly 1`] = `
 
 exports[`component <Table disabled={true} /> should render correctly  1`] = `
 .c0 {
-  display: table;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   max-width: 100%;
-  border-collapse: collapse;
   pointer-events: none;
   opacity: 0.4;
 }

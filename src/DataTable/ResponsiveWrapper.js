@@ -6,8 +6,9 @@ import styled, { css } from 'styled-components';
   https://www.brunildo.org/test/Overflowxy2.html
 */
 
-const TableWrapper = styled.div`
+const ResponsiveWrapper = styled.div`
   position: relative;
+  width: 100%;
   ${props => props.responsive && 'overflow-x: auto'};
   ${props => props.overflowY && props.responsive && props.overflowYOffset && css`
     padding-bottom: ${props.overflowYOffset};
@@ -15,4 +16,4 @@ const TableWrapper = styled.div`
   `};
 `;
 
-export default TableWrapper;
+export default ResponsiveWrapper;

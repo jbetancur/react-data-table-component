@@ -8,6 +8,7 @@ import { determineExpanderRowIdentifier, isExpandedRow } from './util';
 
 const TableRowStyle = styled.div`
   display: flex;
+  width: 100%;
   border-top: 1px solid ${props => props.theme.rows.borderColor};
   ${props => props.striped && css`
       &:nth-child(odd) {

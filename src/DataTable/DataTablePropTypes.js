@@ -56,6 +56,7 @@ export const propTypes = {
   disabled: PropTypes.bool,
   noHeader: PropTypes.bool,
   onRowClicked: PropTypes.func,
+  fixedHeader: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -93,4 +94,5 @@ export const defaultProps = {
   disabled: false,
   noHeader: false,
   onRowClicked: null,
+  fixedHeader: false,
 };

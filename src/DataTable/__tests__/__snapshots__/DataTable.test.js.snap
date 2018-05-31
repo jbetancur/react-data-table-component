@@ -3,6 +3,7 @@
 exports[`component <DataTable /> should render correctly 1`] = `
 .c0 {
   position: relative;
+  width: 100%;
   overflow-x: auto;
 }
 
@@ -20,6 +21,291 @@ exports[`component <DataTable /> should render correctly 1`] = `
     <NoDataWrapper
       component="There are no records to display"
     />
+  </TableWrapper>
+</div>
+`;
+
+exports[`component <DataTable /> should render correctly if the keyField is overriden 1`] = `
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+>
+  <WithTheme(TableHeader)
+    contextActions={Array []}
+    contextTitle="0 item selected"
+    showContextMenu={false}
+    title=""
+  />
+  <TableWrapper>
+    <Table__TableStyle
+      disabled={false}
+    >
+      <WithTheme(TableHead)>
+        <TableHeadRow>
+          <WithTheme(TableCol)
+            column={
+              Object {
+                "id": 1,
+                "name": "Test",
+                "selector": "some.name",
+              }
+            }
+            firstCellIndex={0}
+            key="1"
+            onColumnClick={[Function]}
+            sortDirection="asc"
+            sortField={null}
+            sortIcon={false}
+          />
+        </TableHeadRow>
+      </WithTheme(TableHead)>
+      <TableBody
+        fixedHeader={false}
+        hasOffset={false}
+        offset="250px"
+      >
+        <WithTheme(TableRow)
+          checkboxComponent="input"
+          checkboxComponentOptions={Object {}}
+          columns={
+            Array [
+              Object {
+                "id": 1,
+                "name": "Test",
+                "selector": "some.name",
+              },
+            ]
+          }
+          expandableRows={false}
+          firstCellIndex={0}
+          highlightOnHover={false}
+          index={0}
+          key="1"
+          keyField="uuid"
+          onRowClicked={[Function]}
+          onRowSelected={[Function]}
+          onToggled={[Function]}
+          pointerOnHover={false}
+          row={
+            Object {
+              "some": Object {
+                "name": "Henry the 8th",
+              },
+              "uuid": 1,
+            }
+          }
+          rows={
+            Array [
+              Object {
+                "some": Object {
+                  "name": "Henry the 8th",
+                },
+                "uuid": 1,
+              },
+            ]
+          }
+          selectableRows={false}
+          selectedRows={Array []}
+          striped={false}
+        />
+      </TableBody>
+    </Table__TableStyle>
+  </TableWrapper>
+</div>
+`;
+
+exports[`component <DataTable /> should render correctly with a default sort field 1`] = `
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+>
+  <WithTheme(TableHeader)
+    contextActions={Array []}
+    contextTitle="0 item selected"
+    showContextMenu={false}
+    title=""
+  />
+  <TableWrapper>
+    <Table__TableStyle
+      disabled={false}
+    >
+      <WithTheme(TableHead)>
+        <TableHeadRow>
+          <WithTheme(TableCol)
+            column={
+              Object {
+                "id": 1,
+                "name": "Test",
+                "selector": "some.name",
+              }
+            }
+            firstCellIndex={0}
+            key="1"
+            onColumnClick={[Function]}
+            sortDirection="asc"
+            sortField="some.name"
+            sortIcon={false}
+          />
+        </TableHeadRow>
+      </WithTheme(TableHead)>
+      <TableBody
+        fixedHeader={false}
+        hasOffset={false}
+        offset="250px"
+      >
+        <WithTheme(TableRow)
+          checkboxComponent="input"
+          checkboxComponentOptions={Object {}}
+          columns={
+            Array [
+              Object {
+                "id": 1,
+                "name": "Test",
+                "selector": "some.name",
+              },
+            ]
+          }
+          expandableRows={false}
+          firstCellIndex={0}
+          highlightOnHover={false}
+          index={0}
+          key="1"
+          keyField="id"
+          onRowClicked={[Function]}
+          onRowSelected={[Function]}
+          onToggled={[Function]}
+          pointerOnHover={false}
+          row={
+            Object {
+              "id": 1,
+              "some": Object {
+                "name": "Henry the 8th",
+              },
+            }
+          }
+          rows={
+            Array [
+              Object {
+                "id": 1,
+                "some": Object {
+                  "name": "Henry the 8th",
+                },
+              },
+            ]
+          }
+          selectableRows={false}
+          selectedRows={Array []}
+          striped={false}
+        />
+      </TableBody>
+    </Table__TableStyle>
+  </TableWrapper>
+</div>
+`;
+
+exports[`component <DataTable /> should render correctly with columns/data 1`] = `
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+>
+  <WithTheme(TableHeader)
+    contextActions={Array []}
+    contextTitle="0 item selected"
+    showContextMenu={false}
+    title=""
+  />
+  <TableWrapper>
+    <Table__TableStyle
+      disabled={false}
+    >
+      <WithTheme(TableHead)>
+        <TableHeadRow>
+          <WithTheme(TableCol)
+            column={
+              Object {
+                "id": 1,
+                "name": "Test",
+                "selector": "some.name",
+              }
+            }
+            firstCellIndex={0}
+            key="1"
+            onColumnClick={[Function]}
+            sortDirection="asc"
+            sortField={null}
+            sortIcon={false}
+          />
+        </TableHeadRow>
+      </WithTheme(TableHead)>
+      <TableBody
+        fixedHeader={false}
+        hasOffset={false}
+        offset="250px"
+      >
+        <WithTheme(TableRow)
+          checkboxComponent="input"
+          checkboxComponentOptions={Object {}}
+          columns={
+            Array [
+              Object {
+                "id": 1,
+                "name": "Test",
+                "selector": "some.name",
+              },
+            ]
+          }
+          expandableRows={false}
+          firstCellIndex={0}
+          highlightOnHover={false}
+          index={0}
+          key="1"
+          keyField="id"
+          onRowClicked={[Function]}
+          onRowSelected={[Function]}
+          onToggled={[Function]}
+          pointerOnHover={false}
+          row={
+            Object {
+              "id": 1,
+              "some": Object {
+                "name": "Henry the 8th",
+              },
+            }
+          }
+          rows={
+            Array [
+              Object {
+                "id": 1,
+                "some": Object {
+                  "name": "Henry the 8th",
+                },
+              },
+            ]
+          }
+          selectableRows={false}
+          selectedRows={Array []}
+          striped={false}
+        />
+      </TableBody>
+    </Table__TableStyle>
   </TableWrapper>
 </div>
 `;
