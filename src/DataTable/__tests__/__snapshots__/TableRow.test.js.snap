@@ -30,6 +30,7 @@ exports[`component <TableRow /> should render correctly 1`] = `
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>
@@ -65,6 +66,7 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>
@@ -100,6 +102,7 @@ exports[`component <TableRow /> with columns should render correctly if a row do
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>
@@ -135,6 +138,7 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>
@@ -170,6 +174,7 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>
@@ -205,6 +210,7 @@ exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>
@@ -240,6 +246,7 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
         "name": "testname",
       }
     }
+    rowClickable={false}
     type="cell"
   />
 </div>

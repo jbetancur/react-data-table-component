@@ -52,12 +52,14 @@ class TableCell extends PureComponent {
     column: PropTypes.object,
     row: PropTypes.object,
     firstCellIndex: PropTypes.number,
+    rowClickable: PropTypes.bool,
   };
 
   static defaultProps = {
     column: {},
     row: {},
     firstCellIndex: 0,
+    rowClickable: false,
   };
 
   render() {
@@ -65,6 +67,7 @@ class TableCell extends PureComponent {
       column,
       row,
       firstCellIndex,
+      rowClickable,
     } = this.props;
 
     return (
@@ -72,7 +75,7 @@ class TableCell extends PureComponent {
         column={column}
         firstCellIndex={firstCellIndex}
       >
-        {!column.ignoreRowClick && <ClickClip data-tag="___react-data-table--click-clip___" />}
+        {!column.ignoreRowClick && rowClickable && <ClickClip data-tag="___react-data-table--click-clip___" />}
         <div className="react-data-table--cell-content">
           {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
         </div>

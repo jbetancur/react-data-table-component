@@ -39,6 +39,7 @@ class TableRow extends PureComponent {
     row: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired,
     onRowClicked: PropTypes.func.isRequired,
+    rowClickable: PropTypes.bool,
     onRowSelected: PropTypes.func.isRequired,
     selectedRows: PropTypes.array.isRequired,
     rows: PropTypes.array.isRequired,
@@ -54,6 +55,10 @@ class TableRow extends PureComponent {
     firstCellIndex: PropTypes.number.isRequired,
   };
 
+  static defaultProps = {
+    rowClickable: false,
+  }
+
   isExpanded = () => {
     const rowIdentifier = determineExpanderRowIdentifier(this.props.row, this.props.keyField);
     return this.props.rows.findIndex(r => rowIdentifier === r.parent) > -1;
@@ -62,11 +67,9 @@ class TableRow extends PureComponent {
   handleRowChecked = r => this.props.onRowSelected && this.props.onRowSelected(r);
 
   handleRowClick = e => {
-    if (this.props.onRowClicked) {
-      // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
-      if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
-        this.props.onRowClicked(this.props.row, this.props.index, e);
-      }
+    // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
+    if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
+      this.props.onRowClicked(this.props.row, this.props.index, e);
     }
   };
 
@@ -88,6 +91,7 @@ class TableRow extends PureComponent {
       expandableRows,
       onToggled,
       firstCellIndex,
+      rowClickable,
     } = this.props;
 
     return (
@@ -119,6 +123,7 @@ class TableRow extends PureComponent {
             column={col}
             row={row}
             firstCellIndex={firstCellIndex}
+            rowClickable={rowClickable}
           />))}
       </TableRowStyle>
     );
