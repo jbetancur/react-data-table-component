@@ -35,9 +35,6 @@ exports[`component <TableCell /> should render correctly 1`] = `
 <div
   className="c0"
 >
-  <TableCell__ClickClip
-    data-tag="___react-data-table--click-clip___"
-  />
   <div
     className="react-data-table--cell-content"
   />

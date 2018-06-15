@@ -171,6 +171,7 @@ class DataTable extends Component {
       pointerOnHover,
       selectableRowsComponent,
       selectableRowsComponentProps,
+      onRowClicked,
     } = this.props;
 
     const {
@@ -204,6 +205,7 @@ class DataTable extends Component {
             index={index}
             keyField={keyField}
             onRowClicked={this.handleRowClicked}
+            rowClickable={!!onRowClicked}
             checkboxComponent={selectableRowsComponent}
             checkboxComponentOptions={selectableRowsComponentProps}
             onRowSelected={this.handleRowChecked}

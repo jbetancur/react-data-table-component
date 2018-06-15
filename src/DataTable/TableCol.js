@@ -125,14 +125,14 @@ class TableCol extends PureComponent {
         column={column}
         firstCellIndex={firstCellIndex}
       >
-        {column.name ?
+        {column.name &&
           <ColumnCellWrapper>
             {sortable && sortIcon &&
               <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
                 {sortIcon}
               </SortIcon>}
             {column.name}
-          </ColumnCellWrapper> : null}
+          </ColumnCellWrapper>}
       </TableColStyle>
     );
   }
