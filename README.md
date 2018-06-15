@@ -90,6 +90,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
 | pointerOnHover | bool | no | false | if rows show a point icon on hover |
+| actions | array of components | no |  | add actions to the TableHeader |
 | contextTitle | string | no |  | override the context menu title |
 | contextActions | array of components | no |  | add context action as an array of components |
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
