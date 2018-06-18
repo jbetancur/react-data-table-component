@@ -33,16 +33,15 @@ const Actions = styled.div`
   }
 `;
 
-const TableHeader = ({ title, showContextMenu, contextTitle, actions, contextActions, pending }) => (
+const TableHeader = ({ title, showContextMenu, contextTitle, actions, contextActions }) => (
   <TableHeaderStyle>
     <Title>
       {title}
     </Title>
 
-    {!pending &&
-      <Actions>
-        {actions}
-      </Actions>}
+    <Actions>
+      {actions}
+    </Actions>
 
     <ContextMenu
       visible={showContextMenu}
@@ -59,9 +58,14 @@ TableHeader.propTypes = {
   ]).isRequired,
   showContextMenu: PropTypes.bool,
   contextTitle: PropTypes.string,
-  actions: PropTypes.arrayOf(PropTypes.node),
-  contextActions: PropTypes.arrayOf(PropTypes.node),
-  pending: PropTypes.bool,
+  actions: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  contextActions: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 TableHeader.defaultProps = {
@@ -69,7 +73,6 @@ TableHeader.defaultProps = {
   contextTitle: '',
   actions: [],
   contextActions: [],
-  pending: false,
 };
 
 export default withTheme(TableHeader);

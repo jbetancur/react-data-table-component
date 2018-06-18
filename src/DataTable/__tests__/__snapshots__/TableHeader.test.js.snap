@@ -99,7 +99,6 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
     actions={Array []}
     contextActions={Array []}
     contextTitle=""
-    pending={false}
     showContextMenu={false}
     theme={
       Object {
