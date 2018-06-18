@@ -5,7 +5,7 @@ import ContextMenu from './ContextMenu';
 
 const TableHeaderStyle = styled.header`
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex: 1 0 auto;
   align-items: center;
@@ -26,21 +26,23 @@ const Actions = styled.div`
   flex: 1 0 auto;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 
   > * {
     margin-left: 5px;
   }
 `;
 
-const TableHeader = ({ title, showContextMenu, contextTitle, actions, contextActions }) => (
+const TableHeader = ({ title, showContextMenu, contextTitle, actions, contextActions, pending }) => (
   <TableHeaderStyle>
     <Title>
       {title}
     </Title>
 
-    <Actions>
-      {actions}
-    </Actions>
+    {!pending &&
+      <Actions>
+        {actions}
+      </Actions>}
 
     <ContextMenu
       visible={showContextMenu}
@@ -59,6 +61,7 @@ TableHeader.propTypes = {
   contextTitle: PropTypes.string,
   actions: PropTypes.arrayOf(PropTypes.node),
   contextActions: PropTypes.arrayOf(PropTypes.node),
+  pending: PropTypes.bool,
 };
 
 TableHeader.defaultProps = {
@@ -66,6 +69,7 @@ TableHeader.defaultProps = {
   contextTitle: '',
   actions: [],
   contextActions: [],
+  pending: false,
 };
 
 export default withTheme(TableHeader);
