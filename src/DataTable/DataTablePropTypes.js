@@ -34,9 +34,15 @@ export const propTypes = {
   highlightOnHover: PropTypes.bool,
   pointerOnHover: PropTypes.bool,
   onServerSort: PropTypes.func,
-  actions: PropTypes.arrayOf(PropTypes.node),
+  actions: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   contextTitle: PropTypes.string,
-  contextActions: PropTypes.arrayOf(PropTypes.node),
+  contextActions: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   onTableUpdate: PropTypes.func,
   clearSelectedRows: PropTypes.bool,
   defaultSortField: PropTypes.string,
