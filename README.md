@@ -20,22 +20,19 @@ React Data Table Component is not yet Feature Complete and still under **Develop
 * Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
 * Responsive (via x-scroll/flex)
 
-## GA - In Progress
-* Search Hooks (client/server)
-* Scroll Pagination (server)
+## GA 1.0 - In Progress
 * Move Features (Sort, Expand) where epossible to HoC's
 
 ## Roadmap
 In order priority:
 * Built in themes (Material, Boostrap)
 * Sort hook for Server based sorting
-* Search hooks for server and client based filtering
 * Fixed Header support
 * Mobile Responsive
 * Accessibility
 
 ## Installation
-React Data Table requires the winderful `styled-components` library. If you've already installed `styled-components, there is no need to install it again.
+React Data Table requires the winderful `styled-components` library. If you've already installed `styled-components`, there is no need to install it again.
 
 ```
 npm install react-data-table-component styled-components
