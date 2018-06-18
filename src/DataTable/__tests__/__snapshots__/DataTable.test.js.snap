@@ -14,6 +14,7 @@ exports[`component <DataTable /> should render correctly 1`] = `
   <WithTheme(TableHeader)
     contextActions={Array []}
     contextTitle="0 item selected"
+    pending={false}
     showContextMenu={false}
     title=""
   />
@@ -39,6 +40,7 @@ exports[`component <DataTable /> should render correctly if the keyField is over
   <WithTheme(TableHeader)
     contextActions={Array []}
     contextTitle="0 item selected"
+    pending={false}
     showContextMenu={false}
     title=""
   />
@@ -135,6 +137,7 @@ exports[`component <DataTable /> should render correctly with a default sort fie
   <WithTheme(TableHeader)
     contextActions={Array []}
     contextTitle="0 item selected"
+    pending={false}
     showContextMenu={false}
     title=""
   />
@@ -231,6 +234,7 @@ exports[`component <DataTable /> should render correctly with columns/data 1`] =
   <WithTheme(TableHeader)
     contextActions={Array []}
     contextTitle="0 item selected"
+    pending={false}
     showContextMenu={false}
     title=""
   />

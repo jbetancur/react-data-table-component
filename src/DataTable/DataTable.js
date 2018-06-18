@@ -290,13 +290,14 @@ class DataTable extends Component {
           overflowY={overflowY}
         >
           {!noHeader &&
-            <TableHeader
-              title={title}
-              showContextMenu={selectedCount > 0}
-              contextTitle={this.generateDefaultContextTitle()}
-              contextActions={contextActions}
-              actions={actions}
-            />}
+          <TableHeader
+            title={title}
+            showContextMenu={selectedCount > 0}
+            contextTitle={this.generateDefaultContextTitle()}
+            contextActions={contextActions}
+            actions={actions}
+            pending={progressPending}
+          />}
 
           <TableWrapper>
             {progressPending &&
