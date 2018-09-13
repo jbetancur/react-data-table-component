@@ -21,7 +21,7 @@ React Data Table Component is not yet Feature Complete and still under **Develop
 * Responsive (via x-scroll/flex)
 
 ## GA 1.0 - In Progress
-* Move Features (Sort, Expand) where epossible to HoC's
+* Move Features (Sort, Expand) where possible to HoC's
 
 ## Roadmap
 In order priority:
@@ -32,7 +32,7 @@ In order priority:
 * Accessibility
 
 ## Installation
-React Data Table requires the winderful `styled-components` library. If you've already installed `styled-components`, there is no need to install it again.
+React Data Table requires the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
 
 ```
 npm install react-data-table-component styled-components
