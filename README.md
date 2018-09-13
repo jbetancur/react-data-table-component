@@ -235,7 +235,7 @@ class MyComponent extends Component {
 ```
 
 ### Overriding with a 3rd Party Ui Component Library
-You don't like those ugly html checkboxes? Let's override them with some [react-md](https://react-md.mlaursen.com) sexyiness. While we are at it we will also override the `sortIcon`:
+Don't like those ugly html checkboxes? Let's override them with some [react-md](https://react-md.mlaursen.com) sexyiness. While we are at it we will also override the `sortIcon`:
 
 ```js
 ...
