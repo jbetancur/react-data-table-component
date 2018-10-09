@@ -29,6 +29,8 @@ const TableCellStyle = styled.div`
   min-height: ${props => props.theme.rows.height};
   ${props => props.column.right && 'justify-content: flex-end'};
   ${props => props.column.center && 'justify-content: center'};
+  padding-top: 3px;
+  padding-bottom: 3px;
   padding-left: calc(${props => props.theme.cells.cellPadding} / 2);
   padding-right: calc(${props => props.theme.cells.cellPadding} / 2);
   ${props => props.firstCellIndex > 0 && css`
