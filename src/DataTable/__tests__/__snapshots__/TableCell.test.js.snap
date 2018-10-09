@@ -23,6 +23,8 @@ exports[`component <TableCell /> should render correctly 1`] = `
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   padding-left: calc(48px / 2);
   padding-right: calc(48px / 2);
 }

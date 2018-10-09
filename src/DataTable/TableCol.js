@@ -56,6 +56,7 @@ const ColumnCellWrapper = styled.div`
   margin-left: -3px;
   display: inline-flex;
   align-items: center;
+  ${props => props.active && 'font-weight: 800'};
 `;
 
 const SortIcon = styled.span`
@@ -126,7 +127,7 @@ class TableCol extends PureComponent {
         firstCellIndex={firstCellIndex}
       >
         {column.name &&
-          <ColumnCellWrapper>
+          <ColumnCellWrapper active={sortable}>
             {sortable && sortIcon &&
               <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
                 {sortIcon}
