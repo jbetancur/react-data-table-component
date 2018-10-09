@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import orderBy from 'lodash/orderBy';
+import isEqual from 'lodash/isEqual';
 import merge from 'lodash/merge';
 import { polyfill } from 'react-lifecycles-compat';
 import Table from './Table';
@@ -21,11 +22,8 @@ import { decorateColumns, getSortDirection, calcFirstCellIndex } from './util';
 import { handleSelectAll, handleRowChecked, toggleExpand, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
 
-const recalculateRows = ({ defaultSortAsc, defaultSortField, data }) => {
-  const sortDirection = getSortDirection(defaultSortAsc);
-
-  return defaultSortField ? orderBy(data, defaultSortField, sortDirection) : data;
-};
+const recalculateRows = ({ defaultSortField, data }, { sortDirection }) =>
+  (defaultSortField ? orderBy(data, defaultSortField, sortDirection) : data);
 
 class DataTable extends Component {
   static propTypes = propTypes;
@@ -36,12 +34,11 @@ class DataTable extends Component {
     if (props.clearSelectedRows !== state.clearSelectedRows) {
       return clearSelected(props.clearSelectedRows);
     }
-
     // Keep data state in sync if it changes
-    if (props.data !== state.data) {
+    if (!isEqual(props.data, state.data) || !state.rows.length) {
       return {
         data: props.data,
-        rows: recalculateRows(props),
+        rows: recalculateRows(props, state),
       };
     }
 
@@ -67,7 +64,7 @@ class DataTable extends Component {
       selectedRows: [],
       sortColumn: props.defaultSortField,
       sortDirection,
-      rows: recalculateRows(props),
+      rows: [],
       clearSelectedRows: false,
       // eslint-disable-next-line react/no-unused-state
       defaultSortAsc: props.defaultSortAsc,
