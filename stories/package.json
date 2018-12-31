@@ -2,9 +2,9 @@
     "name": "stories",
     "version": "0.1.0",
     "dependencies": {
-        "lodash": "^4.17.5",
+        "lodash": "^4.17.11",
         "material-design-icons": "^3.0.1",
-        "moment": "^2.21.0",
-        "react-md": "^1.2.11"
+        "moment": "^2.23.0",
+        "react-md": "^1.9.2"
     }
 }

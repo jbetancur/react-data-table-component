@@ -74,9 +74,10 @@ keycode@^2.1.7:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
 
-lodash@^4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
+lodash@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 loose-envify@^1.0.0, loose-envify@^1.3.1:
   version "1.3.1"
@@ -88,9 +89,10 @@ material-design-icons@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/material-design-icons/-/material-design-icons-3.0.1.tgz#9a71c48747218ebca51e51a66da682038cdcb7bf"
 
-moment@^2.21.0:
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
+moment@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.23.0.tgz#759ea491ac97d54bac5ad776996e2a58cc1bc225"
+  integrity sha512-3IE39bHVqFbWWaPOMHZF98Q9c3LDKGTmypMiTM2QygGXXElkFWIH7GxfmlwmY2vwa+wmNsoYZmG2iusf1ZjJoA==
 
 node-fetch@^1.0.1:
   version "1.7.3"
@@ -148,9 +150,10 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
-react-md@^1.2.11:
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/react-md/-/react-md-1.2.11.tgz#b2296e36bb8095ace00cf8b35fd0c5b1d4837799"
+react-md@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/react-md/-/react-md-1.9.2.tgz#5685412be24a82a3ff7d8a7344767a9757f21f15"
+  integrity sha512-vfUVIVnOkoXk6be9RIAne1qHpJN3kwYH+fC7gHJmsJsGSi7bbg9v3RSJP9JDeTkrXj/qhbUGHuZM+4XNjis/cA==
   dependencies:
     classnames "^2.2.5"
     prop-types "15.6.0"
