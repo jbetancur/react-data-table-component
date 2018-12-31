@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components';
 import orderBy from 'lodash/orderBy';
 import isEqual from 'lodash/isEqual';
 import merge from 'lodash/merge';
-import { polyfill } from 'react-lifecycles-compat';
 import Table from './Table';
 import TableHead from './TableHead';
 import TableHeadRow from './TableHeadRow';
@@ -27,6 +26,7 @@ const recalculateRows = ({ defaultSortField, data }, { sortDirection }) =>
 
 class DataTable extends Component {
   static propTypes = propTypes;
+
   static defaultProps = defaultProps;
 
   static getDerivedStateFromProps(props, state) {
@@ -76,14 +76,17 @@ class DataTable extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.onTableUpdate &&
-      (prevState.selectedRows !== this.state.selectedRows
-      || prevState.sortDirection !== this.state.sortDirection
-      || prevState.sortColumn !== this.state.sortColumn)
-    ) {
-      const { allSelected, selectedCount, selectedRows, rows, sortColumn, sortDirection, clearSelectedRows } = this.state;
+    const { onTableUpdate } = this.props;
+    const { selectedRows, sortDirection, sortColumn } = this.state;
 
-      this.props.onTableUpdate({
+    if (onTableUpdate &&
+      (prevState.selectedRows !== selectedRows
+      || prevState.sortDirection !== sortDirection
+      || prevState.sortColumn !== sortColumn)
+    ) {
+      const { allSelected, selectedCount, rows, clearSelectedRows } = this.state;
+
+      onTableUpdate({
         allSelected,
         selectedCount,
         selectedRows,
@@ -95,13 +98,6 @@ class DataTable extends Component {
     }
   }
 
-  generateDefaultContextTitle() {
-    const { contextTitle } = this.props;
-    const { selectedCount } = this.state;
-
-    return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
-  }
-
   handleSelectAll = () => {
     this.setState(state => handleSelectAll(state));
   }
@@ -111,8 +107,10 @@ class DataTable extends Component {
   }
 
   handleRowClicked = (row, index, e) => {
-    if (this.props.onRowClicked) {
-      this.props.onRowClicked(row, index, e);
+    const { onRowClicked } = this.props;
+
+    if (onRowClicked) {
+      onRowClicked(row, index, e);
     }
   }
 
@@ -121,11 +119,21 @@ class DataTable extends Component {
   }
 
   handleSort = ({ selector, sortable }) => {
+    const { onServerSort } = this.props;
+    const { sortColumn, sortDirection } = this.state;
+
     this.setState((state, props) => handleSort(props, selector, sortable, state));
 
-    if (sortable && this.props.onServerSort) {
-      this.props.onServerSort(this.state.sortColumn, this.state.sortDirection);
+    if (sortable && onServerSort) {
+      onServerSort(sortColumn, sortDirection);
     }
+  }
+
+  generateDefaultContextTitle() {
+    const { contextTitle } = this.props;
+    const { selectedCount } = this.state;
+
+    return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
   }
 
   renderColumns() {
@@ -152,7 +160,8 @@ class DataTable extends Component {
           sortDirection={sortDirection}
           sortIcon={sortIcon}
           firstCellIndex={firstCellIndex}
-        />))
+        />
+      ))
     );
   }
 
@@ -173,7 +182,9 @@ class DataTable extends Component {
 
     const {
       rows,
+      selectedRows,
     } = this.state;
+
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
     const firstCellIndex = calcFirstCellIndex(selectableRows, expandableRows);
 
@@ -192,12 +203,12 @@ class DataTable extends Component {
 
         return (
           <TableRow
-            key={row[this.props.keyField] || index}
+            key={row[keyField] || index}
             striped={striped}
             highlightOnHover={highlightOnHover}
             pointerOnHover={pointerOnHover}
             columns={this.columns}
-            rows={this.state.rows}
+            rows={rows}
             row={row}
             index={index}
             keyField={keyField}
@@ -207,7 +218,7 @@ class DataTable extends Component {
             checkboxComponentOptions={selectableRowsComponentProps}
             onRowSelected={this.handleRowChecked}
             selectableRows={selectableRows}
-            selectedRows={this.state.selectedRows}
+            selectedRows={selectedRows}
             expandableRows={expandableRows}
             onToggled={this.toggleExpand}
             firstCellIndex={firstCellIndex}
@@ -235,14 +246,15 @@ class DataTable extends Component {
     return (
       <TableHead>
         <TableHeadRow>
-          {selectableRows &&
+          {selectableRows && (
             <TableColCheckbox
               onClick={this.handleSelectAll}
               checked={allSelected}
               checkboxComponent={selectableRowsComponent}
               checkboxComponentOptions={selectableRowsComponentProps}
               indeterminate={isIndeterminate}
-            />}
+            />
+          )}
           {expandableRows && <div style={{ width: '42px' }} />}
           {this.renderColumns()}
         </TableHeadRow>
@@ -286,27 +298,29 @@ class DataTable extends Component {
           overflowYOffset={overflowYOffset}
           overflowY={overflowY}
         >
-          {!noHeader &&
-          <TableHeader
-            title={title}
-            showContextMenu={selectedCount > 0}
-            contextTitle={this.generateDefaultContextTitle()}
-            contextActions={contextActions}
-            actions={actions}
-            pending={progressPending}
-          />}
+          {!noHeader && (
+            <TableHeader
+              title={title}
+              showContextMenu={selectedCount > 0}
+              contextTitle={this.generateDefaultContextTitle()}
+              contextActions={contextActions}
+              actions={actions}
+              pending={progressPending}
+            />
+          )}
 
           <TableWrapper>
-            {progressPending &&
+            {progressPending && (
               <ProgressWrapper
                 component={progressComponent}
                 centered={progressCentered}
-              />}
+              />
+            )}
 
             {!rows.length > 0 && !progressPending &&
               <NoData component={noDataComponent} />}
 
-            {rows.length > 0 &&
+            {rows.length > 0 && (
               <Table disabled={disabled}>
                 {this.renderTableHead()}
 
@@ -317,7 +331,8 @@ class DataTable extends Component {
                 >
                   {this.renderRows()}
                 </TableBody>
-              </Table>}
+              </Table>
+            )}
           </TableWrapper>
         </ResponsiveWrapper>
       </ThemeProvider>
@@ -325,4 +340,4 @@ class DataTable extends Component {
   }
 }
 
-export default polyfill(DataTable);
+export default DataTable;

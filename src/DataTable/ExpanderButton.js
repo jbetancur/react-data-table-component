@@ -19,8 +19,7 @@ const ButtonStyle = styled.button`
 `;
 
 const ExpanderButton = ({ expanded, children, data, index, onToggled }) => {
-  const handleToggle = e =>
-    onToggled && onToggled(data, index, e);
+  const handleToggle = e => onToggled && onToggled(data, index, e);
 
   return (
     <ButtonStyle

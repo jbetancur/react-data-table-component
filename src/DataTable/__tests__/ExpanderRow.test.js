@@ -21,4 +21,3 @@ test('component <ExpanderRow /> with children should render correctly and have a
 
   expect(wrapper.dive().dive()).toMatchSnapshot();
 });
-

@@ -10,4 +10,3 @@ test('component <TableCell /> should render correctly', () => {
 
   expect(wrapper.dive().dive()).toMatchSnapshot();
 });
-

@@ -37,7 +37,6 @@ const TableColStyle = styled.div`
     padding-right: 4px;
   }
 
-  /* default sorting when no icon is specified */
   ${props => props.sortable && props.sortDirection === 'asc' && !props.sortIcon &&
     css`
       &::before {
@@ -126,14 +125,16 @@ class TableCol extends PureComponent {
         column={column}
         firstCellIndex={firstCellIndex}
       >
-        {column.name &&
+        {column.name && (
           <ColumnCellWrapper active={sortable}>
-            {sortable && sortIcon &&
+            {sortable && sortIcon && (
               <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
                 {sortIcon}
-              </SortIcon>}
+              </SortIcon>
+            )}
             {column.name}
-          </ColumnCellWrapper>}
+          </ColumnCellWrapper>
+        )}
       </TableColStyle>
     );
   }

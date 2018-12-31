@@ -55,4 +55,3 @@ test('component <Checkbox /> should handle onClick', () => {
 
   expect(mockCallBack).toBeCalled();
 });
-
