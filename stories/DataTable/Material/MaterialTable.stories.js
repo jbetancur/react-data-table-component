@@ -4,13 +4,13 @@ import { storiesOf } from '@storybook/react';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import differenceBy from 'lodash/differenceBy';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
-import data from '../constants/sampleDeserts';
+import tableDataItems from '../constants/sampleDeserts';
 import CustomMaterialMenu from './CustomMaterialMenu';
 import DataTable from '../../../src/DataTable/DataTable';
 import './index.css';
 
 class MaterialTable extends PureComponent {
-  state = { selectedRows: [], toggleCleared: false, data };
+  state = { selectedRows: [], toggleCleared: false, data: tableDataItems };
 
   handleChange = state => {
     // eslint-disable-next-line no-console
@@ -24,7 +24,8 @@ class MaterialTable extends PureComponent {
   }
 
   deleteAll = () => {
-    const rows = this.state.selectedRows.map(r => r.name);
+    const { selectedRows } = this.state;
+    const rows = selectedRows.map(r => r.name);
     // eslint-disable-next-line no-alert
     if (window.confirm(`Are you sure you want to delete:\r ${rows}?`)) {
       this.setState(state => ({ toggleCleared: !state.toggleCleared, data: differenceBy(state.data, state.selectedRows, 'name') }));
@@ -34,7 +35,8 @@ class MaterialTable extends PureComponent {
   deleteOne = row => {
     // eslint-disable-next-line no-alert
     if (window.confirm(`Are you sure you want to delete:\r ${row.name}?`)) {
-      const index = this.state.data.findIndex(r => r === row);
+      const { data } = this.state;
+      const index = data.findIndex(r => r === row);
 
       this.setState(state => ({
         toggleCleared: !state.toggleCleared,
@@ -116,13 +118,15 @@ class MaterialTable extends PureComponent {
       },
     ];
 
+    const { data, toggleCleared } = this.state;
+
     return (
       <Card style={{ height: '100%' }}>
         <DataTable
           overflowY
           title="Desserts"
           columns={columns}
-          data={this.state.data}
+          data={data}
           selectableRows
           highlightOnHover
           defaultSortField="name"
@@ -132,7 +136,7 @@ class MaterialTable extends PureComponent {
           selectableRowsComponent={Checkbox}
           selectableRowsComponentProps={{ uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) }}
           onTableUpdate={this.handleChange}
-          clearSelectedRows={this.state.toggleCleared}
+          clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
         />
       </Card>

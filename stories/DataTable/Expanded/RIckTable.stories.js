@@ -11,7 +11,12 @@ const columns = [
     name: 'Name',
     selector: 'name',
     sortable: true,
-    cell: d => <div><div style={{ fontWeight: 700 }}>{d.name}</div><div>{d.summary}</div></div>,
+    cell: d => (
+      <div>
+        <div style={{ fontWeight: 700 }}>{d.name}</div>
+        <div>{d.summary}</div>
+      </div>
+    ),
     width: '300px',
   },
   {

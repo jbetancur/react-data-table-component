@@ -1,23 +1,50 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false
-    }],
-    "stage-0",
-    "react"
-  ],
   "plugins": [
-    ["module-resolver", { 
-      "root": ["./"],
-      "cwd": "./"
-    }],
-    "babel-plugin-styled-components"
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-object-assign",
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "> 1%",
+            "Chrome >= 48",
+            "Firefox >= 44",
+            "Firefox ESR",
+            "Safari >= 9.1",
+            "Edge >= 12",
+            "ios_saf >= 9.3",
+            "ie 11"
+          ]
+        },
+        "modules": false,
+        "forceAllTransforms": true
+      }
+    ]
   ],
   "env": {
-    "commonjs": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ],
       "plugins": [
-        "transform-es2015-modules-commonjs",
-        "babel-plugin-styled-components"
+        [
+          "babel-plugin-styled-components",
+          {
+            "minify": false
+          }
+        ]
       ]
     }
   }

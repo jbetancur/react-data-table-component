@@ -1,8 +1,10 @@
 import config, { plugins } from './rollup.config.common';
+import pkg from '../package.json';
 
 export default Object.assign(config, {
   output: {
-    file: 'dist/index.dev.js',
+    name: 'ReactFlexybox',
+    file: `dist/${pkg.name}.dev.js`,
     format: 'cjs',
   },
   plugins: plugins.concat([

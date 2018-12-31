@@ -60,20 +60,34 @@ class TableRow extends PureComponent {
   }
 
   isExpanded = () => {
-    const rowIdentifier = determineExpanderRowIdentifier(this.props.row, this.props.keyField);
-    return this.props.rows.findIndex(r => rowIdentifier === r.parent) > -1;
+    const { row, rows, keyField } = this.props;
+
+    const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
+    return rows.findIndex(r => rowIdentifier === r.parent) > -1;
   }
 
-  handleRowChecked = r => this.props.onRowSelected && this.props.onRowSelected(r);
+  handleRowChecked = row => {
+    const { onRowSelected } = this.props;
+
+    if (onRowSelected) {
+      onRowSelected(row);
+    }
+  }
 
   handleRowClick = e => {
+    const { index, onRowClicked, row } = this.props;
+
     // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
     if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
-      this.props.onRowClicked(this.props.row, this.props.index, e);
+      onRowClicked(row, index, e);
     }
   };
 
-  isChecked = () => this.props.selectedRows.indexOf(this.props.rows[this.props.index]) > -1;
+  isChecked = () => {
+    const { index, rows, selectedRows } = this.props;
+
+    return selectedRows.indexOf(rows[index]) > -1;
+  }
 
   render() {
     const {
@@ -101,21 +115,23 @@ class TableRow extends PureComponent {
         pointerOnHover={pointerOnHover}
         onClick={this.handleRowClick}
       >
-        {selectableRows &&
-        <TableCellCheckbox
-          checked={this.isChecked()}
-          checkboxComponent={checkboxComponent}
-          checkboxComponentOptions={checkboxComponentOptions}
-          onClick={this.handleRowChecked}
-          row={row}
-        />}
-        {expandableRows &&
-        <TableCellExpander
-          onToggled={onToggled}
-          expanded={isExpandedRow(row, rows, keyField)}
-          row={row}
-          index={index}
-        />}
+        {selectableRows && (
+          <TableCellCheckbox
+            checked={this.isChecked()}
+            checkboxComponent={checkboxComponent}
+            checkboxComponentOptions={checkboxComponentOptions}
+            onClick={this.handleRowChecked}
+            row={row}
+          />
+        )}
+        {expandableRows && (
+          <TableCellExpander
+            onToggled={onToggled}
+            expanded={isExpandedRow(row, rows, keyField)}
+            row={row}
+            index={index}
+          />
+        )}
         {columns.map(col => (
           <TableCell
             type="cell"
@@ -124,7 +140,8 @@ class TableRow extends PureComponent {
             row={row}
             firstCellIndex={firstCellIndex}
             rowClickable={rowClickable}
-          />))}
+          />
+        ))}
       </TableRowStyle>
     );
   }

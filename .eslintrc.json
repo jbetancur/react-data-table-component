@@ -10,7 +10,9 @@
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "import/prefer-default-export": 0,
-        "object-curly-newline": ["error", { "consistent": true }]
+        "object-curly-newline": ["error", { "consistent": true }],
+        "implicit-arrow-linebreak": 0,
+        "operator-linebreak": 0
     },
     "env": {
         "jest/globals": true,

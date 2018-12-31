@@ -4,11 +4,11 @@
 
 # React Data Table Component
 
-Creating yet another React table library came out of nescessity while developing a web application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization or lacked basic features such as built in sorting, search, and in some cases required a restrictive license.
+Creating yet another React table library came out of nescessity while developing a web application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization or lacked basic features such as built in sorting, and in some cases required a restrictive license.
 
 If you want to achieve balance with the force and want a simple, sortable, and flexible table library give React Data Table Component a chance. If you want an Excel clone and need to pivot large data sets then this is not the React table library you are looking for 👋
   
-React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the existing API to change.
+React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the existing API to change drastically.
 
 ## Initial features available:
 
@@ -19,9 +19,6 @@ React Data Table Component is not yet Feature Complete and still under **Develop
 * Themeable via js config
 * Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
 * Responsive (via x-scroll/flex)
-
-## GA 1.0 - In Progress
-* Move Features (Sort, Expand) where possible to HoC's
 
 ## Roadmap
 In order priority:
@@ -38,7 +35,7 @@ React Data Table requires the wonderful `styled-components` library. If you've a
 npm install react-data-table-component styled-components
 ```
 
-// or
+or
 
 ```
 yarn add react-data-table-component styled-components
@@ -158,7 +155,7 @@ const columns = [
 ];
 
 class MyComponent extends Component {
-  render { 
+  render() { 
     return (
       <DataTable
         title="Arnold Movies"
@@ -183,7 +180,7 @@ const handleChange = (state) => {
 };
 
 class MyComponent extends Component {
-  render { 
+  render() { 
       return (
         <DataTable
           title="Arnold Movies"
@@ -219,7 +216,7 @@ const handleClearRows = () => {
 }
 
 class MyComponent extends Component {
-  render { 
+  render() { 
     return (
       <DataTable
         title="Arnold Movies"
@@ -243,7 +240,7 @@ import { Checkbox, FontIcon } from 'react-md';
 ...
 
 class MyComponent extends Component {
-  render { 
+  render() { 
     return (
       title="Arnold Movies"
       columns={columns}
@@ -282,7 +279,7 @@ const columns = [
 ...
 
 class MyComponent extends Component {
-  render { 
+  render() { 
     return (
       <DataTable
         title="Arnold Movies"
@@ -326,7 +323,7 @@ const columns = [
 const ExpanableComponent = ({ data }) => <img src={data.image} />;
 
 class MyComponent extends Component {
-  render { 
+  render() { 
     return (
       <DataTable
         title="Arnold Movies"
@@ -363,7 +360,7 @@ const mySweetTheme = {
 }
 
 class MyComponent extends Component {
-  render { 
+  render() { 
     return (
       <DataTable
         title="Arnold Movies"

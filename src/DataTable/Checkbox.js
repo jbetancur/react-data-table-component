@@ -31,12 +31,16 @@ export default class Checkbox extends PureComponent {
   };
 
   componentDidMount() {
-    this.el.indeterminate = this.props.indeterminate;
+    const { indeterminate } = this.props;
+
+    this.el.indeterminate = indeterminate;
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.indeterminate !== this.props.indeterminate) {
-      this.el.indeterminate = this.props.indeterminate;
+    const { indeterminate } = this.props;
+
+    if (prevProps.indeterminate !== indeterminate) {
+      this.el.indeterminate = indeterminate;
     }
   }
 

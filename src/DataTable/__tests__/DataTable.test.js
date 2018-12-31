@@ -52,4 +52,3 @@ test('component <DataTable /> should render correctly with a default sort field'
 
   expect(wrapper.dive().dive()).toMatchSnapshot();
 });
-
