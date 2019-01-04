@@ -2,6 +2,8 @@
 
 [React Data Table Component Demo](https://jbetancur.github.io/react-data-table-component)
 
+[![Storybook](https://github.com/storybooks/press/blob/master/badges/storybook.svg)](https://jbetancur.github.io/react-data-table-component
+)
 # React Data Table Component
 
 Creating yet another React table library came out of nescessity while developing a web application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization or lacked basic features such as built in sorting, and in some cases required a restrictive license.
