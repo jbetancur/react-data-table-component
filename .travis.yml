@@ -7,9 +7,6 @@ cache:
   yarn: true
 
 script:
-  - cd stories/
-  - yarn install
-  - cd ../
   - yarn lint
   # - yarn flow-typed
   # - yarn flow
