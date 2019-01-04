@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
+import { DataTableConsumer } from './DataTableContext';
 import Checkbox from './Checkbox';
 
 const TableCellCheckboxStyle = styled.div`
@@ -20,19 +21,12 @@ class TableCellCheckbox extends PureComponent {
   static propTypes = {
     row: PropTypes.object,
     checked: PropTypes.bool,
-    checkboxComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func,
-    ]),
-    checkboxComponentOptions: PropTypes.object,
     onClick: PropTypes.func,
   };
 
   static defaultProps = {
     row: {},
-    checkboxComponent: null,
     checked: false,
-    checkboxComponentOptions: {},
     onClick: null,
   };
 
@@ -42,27 +36,29 @@ class TableCellCheckbox extends PureComponent {
 
   render() {
     const {
-      checkboxComponent,
-      checkboxComponentOptions,
       checked,
       row,
       onClick,
     } = this.props;
 
     return (
-      <TableCellCheckboxStyle
-        onClick={this.handleCellClick}
-      >
-        <Checkbox
-          name="select-row"
-          aria-label="select-row"
-          component={checkboxComponent}
-          componentOptions={checkboxComponentOptions}
-          checked={checked}
-          onClick={onClick}
-          data={row}
-        />
-      </TableCellCheckboxStyle>
+      <DataTableConsumer>
+        {({ selectableRowsComponent, selectableRowsComponentProps }) => (
+          <TableCellCheckboxStyle
+            onClick={this.handleCellClick}
+          >
+            <Checkbox
+              name="select-row"
+              aria-label="select-row"
+              component={selectableRowsComponent}
+              componentOptions={selectableRowsComponentProps}
+              checked={checked}
+              onClick={onClick}
+              data={row}
+            />
+          </TableCellCheckboxStyle>
+        )}
+      </DataTableConsumer>
     );
   }
 }

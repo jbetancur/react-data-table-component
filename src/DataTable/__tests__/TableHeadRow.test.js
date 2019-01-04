@@ -1,10 +1,11 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from 'react-testing-library';
 import TableHeadRow from '../TableHeadRow';
 
+afterEach(cleanup);
+
 test('component <TableHeadRow /> should render correctly', () => {
-  const wrapper = shallow(<TableHeadRow />);
-  expect(wrapper).toMatchSnapshot();
+  const { container } = render(<TableHeadRow />);
+  expect(container.firstChild).toMatchSnapshot();
 });

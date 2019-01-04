@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
+import { DataTableConsumer } from './DataTableContext';
 import Checkbox from './Checkbox';
 
 const TableColStyle = styled.div`
@@ -19,45 +20,36 @@ const TableColStyle = styled.div`
 
 class TableCol extends PureComponent {
   static propTypes = {
-    checkboxComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func,
-    ]),
-    checkboxComponentOptions: PropTypes.object,
-    checked: PropTypes.bool,
-    indeterminate: PropTypes.bool,
     onClick: PropTypes.func,
   };
 
   static defaultProps = {
-    checkboxComponent: null,
-    checkboxComponentOptions: {},
-    checked: false,
-    indeterminate: false,
     onClick: null,
   };
 
+  isIndeterminate = (selectedRows, allSelected) => selectedRows.length > 0 && !allSelected;
+
   render() {
     const {
-      checked,
-      checkboxComponent,
-      checkboxComponentOptions,
-      indeterminate,
       onClick,
     } = this.props;
 
     return (
-      <TableColStyle>
-        <Checkbox
-          name="select-all-rows"
-          aria-label="select-all-rows"
-          component={checkboxComponent}
-          componentOptions={checkboxComponentOptions}
-          onClick={onClick}
-          checked={checked}
-          indeterminate={indeterminate}
-        />
-      </TableColStyle>
+      <DataTableConsumer>
+        {({ selectableRowsComponent, selectableRowsComponentProps, selectedRows, allSelected }) => (
+          <TableColStyle>
+            <Checkbox
+              name="select-all-rows"
+              aria-label="select-all-rows"
+              component={selectableRowsComponent}
+              componentOptions={selectableRowsComponentProps}
+              onClick={onClick}
+              checked={allSelected}
+              indeterminate={this.isIndeterminate(selectedRows, allSelected)}
+            />
+          </TableColStyle>
+        )}
+      </DataTableConsumer>
     );
   }
 }

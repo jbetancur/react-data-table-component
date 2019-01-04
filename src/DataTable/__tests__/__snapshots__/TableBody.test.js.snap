@@ -2,6 +2,6 @@
 
 exports[`component <TableBody /> should render correctly 1`] = `
 <div
-  className=""
+  class=""
 />
 `;

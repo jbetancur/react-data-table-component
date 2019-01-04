@@ -27,19 +27,14 @@ exports[`component <TableColCheckbox /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 >
-  <Checkbox
+  <input
     aria-label="select-all-rows"
-    checked={false}
-    component={null}
-    componentOptions={Object {}}
-    data={Object {}}
-    indeterminate={false}
-    index={null}
+    data="[object Object]"
     name="select-all-rows"
-    onClick={[Function]}
-    style={null}
+    style="font-size: 18px; cursor: pointer;"
+    type="checkbox"
   />
 </div>
 `;

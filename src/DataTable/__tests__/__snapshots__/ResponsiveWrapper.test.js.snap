@@ -7,7 +7,7 @@ exports[`component <ResponsiveWrapper /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;
 
@@ -18,7 +18,7 @@ exports[`component <ResponsiveWrapper overflowY /> should not apply overFlowY wi
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;
 
@@ -30,7 +30,7 @@ exports[`component <ResponsiveWrapper responsive /> should render correctly  1`]
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;
 
@@ -44,6 +44,6 @@ exports[`component <ResponsiveWrapper responsive overflowY overflowYOffset="250p
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;

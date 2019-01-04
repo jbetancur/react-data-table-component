@@ -1,19 +1,14 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 import Checkbox from '../Checkbox';
 
-test('component <Checkbox /> should render correctly', () => {
-  const wrapper = mount(<Checkbox onClick={jest.fn()} />);
-
-  expect(wrapper).toMatchSnapshot();
-});
+afterEach(cleanup);
 
 test('component <Checkbox /> should render correctly when a custom component is not provided', () => {
-  const wrapper = mount(<Checkbox onClick={jest.fn()} />);
+  const { container } = render(<Checkbox onClick={jest.fn()} />);
 
-  expect(wrapper).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <Checkbox component/> should render correctly with a custom checkbox', () => {
@@ -24,34 +19,36 @@ test('component <Checkbox component/> should render correctly with a custom chec
     }
   }
 
-  const wrapper = mount(<Checkbox onClick={jest.fn()} component={CustomComp} />);
+  const { container } = render(<Checkbox onClick={jest.fn()} component={CustomComp} />);
 
-  expect(wrapper).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <Checkbox component/> should render correctly with custom props', () => {
-  const wrapper = mount(<Checkbox onClick={jest.fn()} componentOptions={{ test: 'false' }} />);
+  const { container } = render(<Checkbox onClick={jest.fn()} componentOptions={{ test: 'false' }} />);
 
-  expect(wrapper).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <Checkbox indeterminate /> should toggle indeterminate to true on the element', () => {
-  const wrapper = mount(<Checkbox onClick={jest.fn()} indeterminate />);
-  wrapper.instance().componentDidUpdate({ indeterminate: false });
+  const { container } = render(<Checkbox onClick={jest.fn()} indeterminate />);
 
-  expect(wrapper.instance().el.indeterminate).toBe(true);
+  expect(container.firstChild.indeterminate).toBe(true);
 });
 
 test('component <Checkbox indeterminate={false} /> should not toggle indeterminate if theere is no change', () => {
-  const wrapper = mount(<Checkbox onClick={jest.fn()} indeterminate={false} />);
-  wrapper.instance().componentDidUpdate({ indeterminate: false });
-  expect(wrapper.instance().el.indeterminate).toBe(false);
+  const { container } = render(<Checkbox onClick={jest.fn()} indeterminate={false} />);
+
+  expect(container.firstChild.indeterminate).toBe(false);
 });
 
 test('component <Checkbox /> should handle onClick', () => {
-  const mockCallBack = jest.fn();
-  const wrapper = mount(<Checkbox data={{ name: 'morty' }} index={1} onClick={mockCallBack} />);
-  wrapper.simulate('click');
+  const mockCallback = jest.fn();
+  const { container } = render(<Checkbox data={{ name: 'morty' }} index={1} onClick={mockCallback} />);
+  fireEvent.click(container.firstChild);
 
-  expect(mockCallBack).toBeCalled();
+  expect(mockCallback).toBeCalled();
+  expect(mockCallback.mock.calls[0][0]).toEqual({ name: 'morty' });
+  expect(mockCallback.mock.calls[0][1]).toBe(1);
+  expect(mockCallback.mock.calls[0][2]).toBeDefined(); // TODO: mock event?
 });

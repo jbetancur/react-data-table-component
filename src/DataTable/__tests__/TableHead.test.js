@@ -1,10 +1,13 @@
 import 'jest-styled-components';
-
 import React from 'react';
+import { cleanup } from 'react-testing-library';
+import { renderWithTheme } from '../../test-helpers';
 import TableHead from '../TableHead';
-import { shallowWithTheme } from '../../test-helpers';
+
+afterEach(cleanup);
 
 test('component <TableHead /> should render correctly', () => {
-  const wrapper = shallowWithTheme(<TableHead />);
-  expect(wrapper.dive()).toMatchSnapshot();
+  const { container } = renderWithTheme(<TableHead />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });

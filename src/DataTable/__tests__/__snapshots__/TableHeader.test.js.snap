@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableHeader title /> should render correctly 1`] = `
+exports[`component <TableHeader title contextActions /> should render correctly 1`] = `
 .c4 {
   color: rgba(0,0,0,.64);
   font-size: 18px;
@@ -92,182 +92,68 @@ exports[`component <TableHeader title /> should render correctly 1`] = `
   margin-left: 5px;
 }
 
-<WithTheme(TableHeader)
-  title="whoa!"
->
-  <TableHeader
-    actions={Array []}
-    contextActions={Array []}
-    contextTitle=""
-    showContextMenu={false}
-    theme={
-      Object {
-        "cells": Object {
-          "cellPadding": "48px",
-        },
-        "expander": Object {
-          "backgroundColor": "transparent",
-          "collapsedButton": "data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E",
-          "expandedButton": "data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7.41%207.84L12%2012.42l4.59-4.58L18%209.25l-6%206-6-6z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.75h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E",
-        },
-        "header": Object {
-          "backgroundColor": "transparent",
-          "contextMenu": Object {
-            "backgroundColor": "#e3f2fd",
-            "fontColor": "rgba(0,0,0,.64)",
-            "fontSize": "18px",
-            "transitionTime": "0.15s",
-          },
-          "fontColor": "rgba(0,0,0,.54)",
-          "fontSize": "12px",
-          "height": "48px",
-        },
-        "rows": Object {
-          "borderColor": "rgba(0,0,0,.12)",
-          "fontColor": "rgba(0,0,0,.87)",
-          "fontSize": "13px",
-          "height": "48px",
-          "hoverColor": "rgba(0,0,0,.08)",
-          "stripedColor": "rgba(0,0,0,.03)",
-        },
-        "title": Object {
-          "fontColor": "rgba(0,0,0,.87)",
-          "fontSize": "22px",
-        },
-      }
-    }
-    title="whoa!"
-  >
-    <TableHeader__TableHeaderStyle>
-      <header
-        className="c0"
-      >
-        <TableHeader__Title>
-          <div
-            className="c1"
-          >
-            whoa!
-          </div>
-        </TableHeader__Title>
-        <TableHeader__Actions>
-          <div
-            className="c2"
-          />
-        </TableHeader__Actions>
-        <WithTheme(ContextMenu)
-          contextActions={Array []}
-          title=""
-          visible={false}
-        >
-          <ContextMenu
-            contextActions={Array []}
-            theme={
-              Object {
-                "cells": Object {
-                  "cellPadding": "48px",
-                },
-                "expander": Object {
-                  "backgroundColor": "transparent",
-                  "collapsedButton": "data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E",
-                  "expandedButton": "data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7.41%207.84L12%2012.42l4.59-4.58L18%209.25l-6%206-6-6z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.75h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E",
-                },
-                "header": Object {
-                  "backgroundColor": "transparent",
-                  "contextMenu": Object {
-                    "backgroundColor": "#e3f2fd",
-                    "fontColor": "rgba(0,0,0,.64)",
-                    "fontSize": "18px",
-                    "transitionTime": "0.15s",
-                  },
-                  "fontColor": "rgba(0,0,0,.54)",
-                  "fontSize": "12px",
-                  "height": "48px",
-                },
-                "rows": Object {
-                  "borderColor": "rgba(0,0,0,.12)",
-                  "fontColor": "rgba(0,0,0,.87)",
-                  "fontSize": "13px",
-                  "height": "48px",
-                  "hoverColor": "rgba(0,0,0,.08)",
-                  "stripedColor": "rgba(0,0,0,.03)",
-                },
-                "title": Object {
-                  "fontColor": "rgba(0,0,0,.87)",
-                  "fontSize": "22px",
-                },
-              }
-            }
-            title=""
-            visible={false}
-          >
-            <ContextMenu__ContextMenuStyle
-              visible={false}
-            >
-              <div
-                className="c3"
-              >
-                <ContextMenu__Title>
-                  <div
-                    className="c4"
-                  />
-                </ContextMenu__Title>
-                <div />
-              </div>
-            </ContextMenu__ContextMenuStyle>
-          </ContextMenu>
-        </WithTheme(ContextMenu)>
-      </header>
-    </TableHeader__TableHeaderStyle>
-  </TableHeader>
-</WithTheme(TableHeader)>
-`;
-
-exports[`component <TableHeader title contextActions /> should render correctly 1`] = `
-.c0 {
-  position: relative;
-  overflow: visible;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 16px 16px 16px 24px;
-  min-height: 64px;
-  width: 100%;
-}
-
 <header
-  className="c0"
+  class="c0"
 >
-  <TableHeader__Title>
+  <div
+    class="c1"
+  >
     whoa!
-  </TableHeader__Title>
-  <TableHeader__Actions />
-  <WithTheme(ContextMenu)
-    contextActions={
-      Array [
-        <div>
-          some action
-        </div>,
-      ]
-    }
-    title=""
-    visible={false}
+  </div>
+  <div
+    class="c2"
   />
+  <div
+    class="c3"
+  >
+    <div
+      class="c4"
+    >
+      undefined item selected
+    </div>
+    <div />
+  </div>
 </header>
 `;
 
 exports[`component <TableHeader title contextTitle /> should render correctly 1`] = `
+.c4 {
+  color: rgba(0,0,0,.64);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
 .c0 {
   position: relative;
   overflow: visible;
@@ -291,22 +177,99 @@ exports[`component <TableHeader title contextTitle /> should render correctly 1`
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 > * {
+  margin-left: 5px;
+}
+
 <header
-  className="c0"
+  class="c0"
 >
-  <TableHeader__Title>
+  <div
+    class="c1"
+  >
     whoa!
-  </TableHeader__Title>
-  <TableHeader__Actions />
-  <WithTheme(ContextMenu)
-    contextActions={Array []}
-    title="items!!!"
-    visible={false}
+  </div>
+  <div
+    class="c2"
   />
+  <div
+    class="c3"
+  >
+    <div
+      class="c4"
+    >
+      undefined item selected
+    </div>
+    <div />
+  </div>
 </header>
 `;
 
 exports[`component <TableHeader title showContextMenu /> should render correctly 1`] = `
+.c4 {
+  color: rgba(0,0,0,.64);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
 .c0 {
   position: relative;
   overflow: visible;
@@ -330,17 +293,57 @@ exports[`component <TableHeader title showContextMenu /> should render correctly
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 > * {
+  margin-left: 5px;
+}
+
 <header
-  className="c0"
+  class="c0"
 >
-  <TableHeader__Title>
+  <div
+    class="c1"
+  >
     whoa!
-  </TableHeader__Title>
-  <TableHeader__Actions />
-  <WithTheme(ContextMenu)
-    contextActions={Array []}
-    title=""
-    visible={true}
+  </div>
+  <div
+    class="c2"
   />
+  <div
+    class="c3"
+  >
+    <div
+      class="c4"
+    >
+      undefined item selected
+    </div>
+    <div />
+  </div>
 </header>
 `;

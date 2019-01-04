@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
+import { DataTableConsumer } from './DataTableContext';
 import { getProperty } from './util';
 
 const TableCellStyle = styled.div`
@@ -53,14 +54,12 @@ class TableCell extends PureComponent {
   static propTypes = {
     column: PropTypes.object,
     row: PropTypes.object,
-    firstCellIndex: PropTypes.number,
     rowClickable: PropTypes.bool,
   };
 
   static defaultProps = {
     column: {},
     row: {},
-    firstCellIndex: 0,
     rowClickable: false,
   };
 
@@ -68,20 +67,23 @@ class TableCell extends PureComponent {
     const {
       column,
       row,
-      firstCellIndex,
       rowClickable,
     } = this.props;
 
     return (
-      <TableCellStyle
-        column={column}
-        firstCellIndex={firstCellIndex}
-      >
-        {!column.ignoreRowClick && rowClickable && <ClickClip data-tag="___react-data-table--click-clip___" />}
-        <div className="react-data-table--cell-content">
-          {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
-        </div>
-      </TableCellStyle>
+      <DataTableConsumer>
+        {({ firstCellIndex }) => (
+          <TableCellStyle
+            column={column}
+            firstCellIndex={firstCellIndex}
+          >
+            {!column.ignoreRowClick && rowClickable && <ClickClip data-tag="___react-data-table--click-clip___" />}
+            <div className="react-data-table--cell-content">
+              {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
+            </div>
+          </TableCellStyle>
+        )}
+      </DataTableConsumer>
     );
   }
 }

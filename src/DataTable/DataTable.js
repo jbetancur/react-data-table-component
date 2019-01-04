@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import orderBy from 'lodash/orderBy';
 import isEqual from 'lodash/isEqual';
 import merge from 'lodash/merge';
+import { DataTableProvider } from './DataTableContext';
 import Table from './Table';
 import TableHead from './TableHead';
 import TableHeadRow from './TableHeadRow';
@@ -66,11 +67,8 @@ class DataTable extends Component {
       sortDirection,
       rows: [],
       clearSelectedRows: false,
-      // eslint-disable-next-line react/no-unused-state
       defaultSortAsc: props.defaultSortAsc,
-      // eslint-disable-next-line react/no-unused-state
       defaultSortField: props.defaultSortField,
-      // eslint-disable-next-line react/no-unused-state
       data: props.data,
     };
   }
@@ -137,29 +135,12 @@ class DataTable extends Component {
   }
 
   renderColumns() {
-    const {
-      selectableRows,
-      expandableRows,
-      sortIcon,
-    } = this.props;
-
-    const {
-      sortColumn,
-      sortDirection,
-    } = this.state;
-
-    const firstCellIndex = calcFirstCellIndex(selectableRows, expandableRows);
-
     return (
       this.columns.map(column => (
         <TableCol
           key={column.id}
           column={column}
           onColumnClick={this.handleSort}
-          sortField={sortColumn}
-          sortDirection={sortDirection}
-          sortIcon={sortIcon}
-          firstCellIndex={firstCellIndex}
         />
       ))
     );
@@ -167,26 +148,16 @@ class DataTable extends Component {
 
   renderRows() {
     const {
-      selectableRows,
-      expandableRows,
       expandableRowsComponent,
       expanderStateField,
-      striped,
-      highlightOnHover,
       keyField,
-      pointerOnHover,
-      selectableRowsComponent,
-      selectableRowsComponentProps,
-      onRowClicked,
     } = this.props;
 
     const {
       rows,
-      selectedRows,
     } = this.state;
 
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
-    const firstCellIndex = calcFirstCellIndex(selectableRows, expandableRows);
 
     return (
       rows.map((row, index) => {
@@ -204,24 +175,11 @@ class DataTable extends Component {
         return (
           <TableRow
             key={row[keyField] || index}
-            striped={striped}
-            highlightOnHover={highlightOnHover}
-            pointerOnHover={pointerOnHover}
-            columns={this.columns}
-            rows={rows}
             row={row}
             index={index}
-            keyField={keyField}
             onRowClicked={this.handleRowClicked}
-            rowClickable={!!onRowClicked}
-            checkboxComponent={selectableRowsComponent}
-            checkboxComponentOptions={selectableRowsComponentProps}
             onRowSelected={this.handleRowChecked}
-            selectableRows={selectableRows}
-            selectedRows={selectedRows}
-            expandableRows={expandableRows}
             onToggled={this.toggleExpand}
-            firstCellIndex={firstCellIndex}
           />
         );
       })
@@ -231,17 +189,8 @@ class DataTable extends Component {
   renderTableHead() {
     const {
       selectableRows,
-      selectableRowsComponent,
-      selectableRowsComponentProps,
       expandableRows,
     } = this.props;
-
-    const {
-      selectedRows,
-      allSelected,
-    } = this.state;
-
-    const isIndeterminate = selectedRows.length > 0 && !allSelected;
 
     return (
       <TableHead>
@@ -249,10 +198,6 @@ class DataTable extends Component {
           {selectableRows && (
             <TableColCheckbox
               onClick={this.handleSelectAll}
-              checked={allSelected}
-              checkboxComponent={selectableRowsComponent}
-              checkboxComponentOptions={selectableRowsComponentProps}
-              indeterminate={isIndeterminate}
             />
           )}
           {expandableRows && <div style={{ width: '42px' }} />}
@@ -267,7 +212,6 @@ class DataTable extends Component {
       title,
       customTheme,
       actions,
-      contextActions,
       className,
       style,
       responsive,
@@ -284,57 +228,64 @@ class DataTable extends Component {
 
     const {
       rows,
-      selectedCount,
+      selectableRows,
+      expandableRows,
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
+    const init = {
+      ...this.props,
+      ...this.state,
+      ...{ columns: this.columns },
+      ...{ firstCellIndex: calcFirstCellIndex(selectableRows, expandableRows) },
+    };
 
     return (
       <ThemeProvider theme={theme}>
-        <ResponsiveWrapper
-          responsive={responsive}
-          className={className}
-          style={style}
-          overflowYOffset={overflowYOffset}
-          overflowY={overflowY}
-        >
-          {!noHeader && (
-            <TableHeader
-              title={title}
-              showContextMenu={selectedCount > 0}
-              contextTitle={this.generateDefaultContextTitle()}
-              contextActions={contextActions}
-              actions={actions}
-              pending={progressPending}
-            />
-          )}
-
-          <TableWrapper>
-            {progressPending && (
-              <ProgressWrapper
-                component={progressComponent}
-                centered={progressCentered}
+        <DataTableProvider initialState={init}>
+          <ResponsiveWrapper
+            responsive={responsive}
+            className={className}
+            style={style}
+            overflowYOffset={overflowYOffset}
+            overflowY={overflowY}
+          >
+            {!noHeader && (
+              <TableHeader
+                title={title}
+                contextTitle={this.generateDefaultContextTitle()}
+                actions={actions}
+                pending={progressPending}
               />
             )}
 
-            {!rows.length > 0 && !progressPending &&
-              <NoData component={noDataComponent} />}
+            <TableWrapper>
+              {progressPending && (
+                <ProgressWrapper
+                  component={progressComponent}
+                  centered={progressCentered}
+                />
+              )}
 
-            {rows.length > 0 && (
-              <Table disabled={disabled}>
-                {this.renderTableHead()}
+              {!rows.length > 0 && !progressPending &&
+                <NoData component={noDataComponent} />}
 
-                <TableBody
-                  fixedHeader={fixedHeader}
-                  hasOffset={overflowY}
-                  offset={overflowYOffset}
-                >
-                  {this.renderRows()}
-                </TableBody>
-              </Table>
-            )}
-          </TableWrapper>
-        </ResponsiveWrapper>
+              {rows.length > 0 && (
+                <Table disabled={disabled}>
+                  {this.renderTableHead()}
+
+                  <TableBody
+                    fixedHeader={fixedHeader}
+                    hasOffset={overflowY}
+                    offset={overflowYOffset}
+                  >
+                    {this.renderRows()}
+                  </TableBody>
+                </Table>
+              )}
+            </TableWrapper>
+          </ResponsiveWrapper>
+        </DataTableProvider>
       </ThemeProvider>
     );
   }

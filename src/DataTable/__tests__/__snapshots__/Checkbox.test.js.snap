@@ -1,121 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <Checkbox /> should render correctly 1`] = `
-<Checkbox
-  component="input"
-  componentOptions={
-    Object {
-      "style": Object {},
-    }
-  }
-  data={Object {}}
-  indeterminate={false}
-  index={null}
-  onClick={[MockFunction]}
-  style={null}
->
-  <input
-    data={Object {}}
-    index={null}
-    onChange={[Function]}
-    onClick={[Function]}
-    style={
-      Object {
-        "cursor": "pointer",
-        "fontSize": "18px",
-      }
-    }
-    type="checkbox"
-  />
-</Checkbox>
-`;
-
 exports[`component <Checkbox /> should render correctly when a custom component is not provided 1`] = `
-<Checkbox
-  component="input"
-  componentOptions={
-    Object {
-      "style": Object {},
-    }
-  }
-  data={Object {}}
-  indeterminate={false}
-  index={null}
-  onClick={[MockFunction]}
-  style={null}
->
-  <input
-    data={Object {}}
-    index={null}
-    onChange={[Function]}
-    onClick={[Function]}
-    style={
-      Object {
-        "cursor": "pointer",
-        "fontSize": "18px",
-      }
-    }
-    type="checkbox"
-  />
-</Checkbox>
+<input
+  data="[object Object]"
+  style="font-size: 18px; cursor: pointer;"
+  type="checkbox"
+/>
 `;
 
 exports[`component <Checkbox component/> should render correctly with a custom checkbox 1`] = `
-<Checkbox
-  component={[Function]}
-  componentOptions={
-    Object {
-      "style": Object {},
-    }
-  }
-  data={Object {}}
-  indeterminate={false}
-  index={null}
-  onClick={[MockFunction]}
-  style={null}
->
-  <CustomComp
-    data={Object {}}
-    index={null}
-    onChange={[Function]}
-    onClick={[Function]}
-    style={Object {}}
-    type="checkbox"
-  >
-    <div>
-      25 schmeckles
-    </div>
-  </CustomComp>
-</Checkbox>
+<div>
+  25 schmeckles
+</div>
 `;
 
 exports[`component <Checkbox component/> should render correctly with custom props 1`] = `
-<Checkbox
-  component="input"
-  componentOptions={
-    Object {
-      "test": "false",
-    }
-  }
-  data={Object {}}
-  indeterminate={false}
-  index={null}
-  onClick={[MockFunction]}
-  style={null}
->
-  <input
-    data={Object {}}
-    index={null}
-    onChange={[Function]}
-    onClick={[Function]}
-    style={
-      Object {
-        "cursor": "pointer",
-        "fontSize": "18px",
-      }
-    }
-    test="false"
-    type="checkbox"
-  />
-</Checkbox>
+<input
+  data="[object Object]"
+  style="font-size: 18px; cursor: pointer;"
+  test="false"
+  type="checkbox"
+/>
 `;

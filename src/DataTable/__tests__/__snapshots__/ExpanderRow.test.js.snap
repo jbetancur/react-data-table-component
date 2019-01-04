@@ -8,7 +8,7 @@ exports[`component <ExpanderRow /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;
 
@@ -20,15 +20,10 @@ exports[`component <ExpanderRow /> with children should render correctly and hav
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   <div
-    data={
-      Object {
-        "name": "morty",
-      }
-    }
-    key=".0"
+    data="[object Object]"
   >
     Some Expander Content
   </div>
@@ -43,6 +38,6 @@ exports[`component <ExpanderRow numColumns /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;
