@@ -1,8 +1,8 @@
 
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
-import 'react-md/dist/react-md.pink-blue.min.css';
 import differenceBy from 'lodash/differenceBy';
+import 'react-md/dist/react-md.pink-blue.min.css';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
 import tableDataItems from '../constants/sampleDeserts';
 import CustomMaterialMenu from './CustomMaterialMenu';
