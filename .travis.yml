@@ -17,12 +17,10 @@ before_deploy:
   - yarn build-storybook
 
 deploy:
-  edge: # https://github.com/travis-ci/travis-ci/issues/9312
-    branch: v1.8.47
   provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: storybook-static
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
   on:
     branch: master
 
