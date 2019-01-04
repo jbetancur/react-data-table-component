@@ -35,10 +35,10 @@ exports[`component <TableCell /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   <div
-    className="react-data-table--cell-content"
+    class="react-data-table--cell-content"
   />
 </div>
 `;

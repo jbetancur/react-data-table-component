@@ -1,12 +1,13 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { shallowWithTheme } from '../../test-helpers';
-
+import { cleanup } from 'react-testing-library';
+import { renderWithTheme } from '../../test-helpers';
 import TableCellExpander from '../TableCellExpander';
 
-test('component <TableCellExpander /> should render correctly', () => {
-  const wrapper = shallowWithTheme(<TableCellExpander row={{}} column={{ selector: 'test' }} />);
+afterEach(cleanup);
 
-  expect(wrapper.dive().dive()).toMatchSnapshot();
+test('component <TableCellExpander /> should render correctly', () => {
+  const { container } = renderWithTheme(<TableCellExpander row={{}} column={{ selector: 'test' }} index={0} />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });

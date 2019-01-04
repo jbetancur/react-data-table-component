@@ -21,7 +21,7 @@ exports[`component <ProgressWrapper centered /> should render correctly when a c
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   A Component that is passed in
 </div>
@@ -44,7 +44,7 @@ exports[`component <ProgressWrapper component /> should render correctly when a 
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   <div>
     A String that is passed in
@@ -69,7 +69,7 @@ exports[`component <ProgressWrapper component /> should render correctly when a 
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   A Component that is passed in
 </div>

@@ -1,318 +1,1071 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component <DataTable /> should render correctly 1`] = `
+.c5 {
+  color: rgba(0,0,0,.64);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px 16px 16px 24px;
+  min-height: 64px;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
 .c0 {
   position: relative;
   width: 100%;
   overflow-x: auto;
 }
 
+.c6 {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+}
+
 <div
-  className="c0"
-  style={Object {}}
+  class="c0"
 >
-  <WithTheme(TableHeader)
-    contextActions={Array []}
-    contextTitle="0 item selected"
-    pending={false}
-    showContextMenu={false}
-    title=""
-  />
-  <TableWrapper>
-    <NoDataWrapper
-      component="There are no records to display"
+  <header
+    class="c1"
+  >
+    <div
+      class="c2"
     />
-  </TableWrapper>
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      >
+        0 item selected
+      </div>
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7"
+    >
+      There are no records to display
+    </div>
+  </div>
 </div>
 `;
 
 exports[`component <DataTable /> should render correctly if the keyField is overriden 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c13 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c13 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c14 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c10 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  white-space: nowrap;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 500;
+  color: rgba(0,0,0,.54);
+  min-height: 48px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c10::before {
+  font-size: 12px;
+  padding-right: 4px;
+}
+
+.c11 {
+  margin-left: -3px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  color: rgba(0,0,0,.64);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px 16px 16px 24px;
+  min-height: 64px;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
 .c0 {
   position: relative;
   width: 100%;
   overflow-x: auto;
 }
 
+.c6 {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 <div
-  className="c0"
-  style={Object {}}
+  class="c0"
 >
-  <WithTheme(TableHeader)
-    contextActions={Array []}
-    contextTitle="0 item selected"
-    pending={false}
-    showContextMenu={false}
-    title=""
-  />
-  <TableWrapper>
-    <Table__TableStyle
-      disabled={false}
+  <header
+    class="c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
     >
-      <WithTheme(TableHead)>
-        <TableHeadRow>
-          <WithTheme(TableCol)
-            column={
-              Object {
-                "id": 1,
-                "name": "Test",
-                "selector": "some.name",
-              }
-            }
-            firstCellIndex={0}
-            key="1"
-            onColumnClick={[Function]}
-            sortDirection="asc"
-            sortField={null}
-            sortIcon={false}
-          />
-        </TableHeadRow>
-      </WithTheme(TableHead)>
-      <TableBody
-        fixedHeader={false}
-        hasOffset={false}
+      <div
+        class="c5"
+      >
+        0 item selected
+      </div>
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c9"
+        >
+          <div
+            class="c10"
+          >
+            <div
+              class="c11"
+            >
+              Test
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
         offset="250px"
       >
-        <WithTheme(TableRow)
-          checkboxComponent="input"
-          checkboxComponentOptions={Object {}}
-          columns={
-            Array [
-              Object {
-                "id": 1,
-                "name": "Test",
-                "selector": "some.name",
-              },
-            ]
-          }
-          expandableRows={false}
-          firstCellIndex={0}
-          highlightOnHover={false}
-          index={0}
-          key="1"
-          keyField="uuid"
-          onRowClicked={[Function]}
-          onRowSelected={[Function]}
-          onToggled={[Function]}
-          pointerOnHover={false}
-          row={
-            Object {
-              "some": Object {
-                "name": "Henry the 8th",
-              },
-              "uuid": 1,
-            }
-          }
-          rowClickable={false}
-          rows={
-            Array [
-              Object {
-                "some": Object {
-                  "name": "Henry the 8th",
-                },
-                "uuid": 1,
-              },
-            ]
-          }
-          selectableRows={false}
-          selectedRows={Array []}
-          striped={false}
-        />
-      </TableBody>
-    </Table__TableStyle>
-  </TableWrapper>
+        <div
+          class="c12"
+        >
+          <div
+            class="c13"
+          >
+            <div
+              class="c14"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Henry the 8th
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`component <DataTable /> should render correctly with a default sort field 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c13 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c13 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c14 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c10 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  white-space: nowrap;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 500;
+  color: rgba(0,0,0,.54);
+  min-height: 48px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c10::before {
+  font-size: 12px;
+  padding-right: 4px;
+}
+
+.c11 {
+  margin-left: -3px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  color: rgba(0,0,0,.64);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px 16px 16px 24px;
+  min-height: 64px;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
 .c0 {
   position: relative;
   width: 100%;
   overflow-x: auto;
 }
 
+.c6 {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 <div
-  className="c0"
-  style={Object {}}
+  class="c0"
 >
-  <WithTheme(TableHeader)
-    contextActions={Array []}
-    contextTitle="0 item selected"
-    pending={false}
-    showContextMenu={false}
-    title=""
-  />
-  <TableWrapper>
-    <Table__TableStyle
-      disabled={false}
+  <header
+    class="c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
     >
-      <WithTheme(TableHead)>
-        <TableHeadRow>
-          <WithTheme(TableCol)
-            column={
-              Object {
-                "id": 1,
-                "name": "Test",
-                "selector": "some.name",
-              }
-            }
-            firstCellIndex={0}
-            key="1"
-            onColumnClick={[Function]}
-            sortDirection="asc"
-            sortField="some.name"
-            sortIcon={false}
-          />
-        </TableHeadRow>
-      </WithTheme(TableHead)>
-      <TableBody
-        fixedHeader={false}
-        hasOffset={false}
+      <div
+        class="c5"
+      >
+        0 item selected
+      </div>
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c9"
+        >
+          <div
+            class="c10"
+          >
+            <div
+              class="c11"
+            >
+              Test
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
         offset="250px"
       >
-        <WithTheme(TableRow)
-          checkboxComponent="input"
-          checkboxComponentOptions={Object {}}
-          columns={
-            Array [
-              Object {
-                "id": 1,
-                "name": "Test",
-                "selector": "some.name",
-              },
-            ]
-          }
-          expandableRows={false}
-          firstCellIndex={0}
-          highlightOnHover={false}
-          index={0}
-          key="1"
-          keyField="id"
-          onRowClicked={[Function]}
-          onRowSelected={[Function]}
-          onToggled={[Function]}
-          pointerOnHover={false}
-          row={
-            Object {
-              "id": 1,
-              "some": Object {
-                "name": "Henry the 8th",
-              },
-            }
-          }
-          rowClickable={false}
-          rows={
-            Array [
-              Object {
-                "id": 1,
-                "some": Object {
-                  "name": "Henry the 8th",
-                },
-              },
-            ]
-          }
-          selectableRows={false}
-          selectedRows={Array []}
-          striped={false}
-        />
-      </TableBody>
-    </Table__TableStyle>
-  </TableWrapper>
+        <div
+          class="c12"
+        >
+          <div
+            class="c13"
+          >
+            <div
+              class="c14"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Henry the 8th
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`component <DataTable /> should render correctly with columns/data 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c13 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c13 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c14 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c10 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: normal;
+  white-space: nowrap;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 500;
+  color: rgba(0,0,0,.54);
+  min-height: 48px;
+  padding-left: calc(48px / 2);
+  padding-right: calc(48px / 2);
+}
+
+.c10::before {
+  font-size: 12px;
+  padding-right: 4px;
+}
+
+.c11 {
+  margin-left: -3px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  color: rgba(0,0,0,.64);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px 16px 16px 24px;
+  min-height: 64px;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
 .c0 {
   position: relative;
   width: 100%;
   overflow-x: auto;
 }
 
+.c6 {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 <div
-  className="c0"
-  style={Object {}}
+  class="c0"
 >
-  <WithTheme(TableHeader)
-    contextActions={Array []}
-    contextTitle="0 item selected"
-    pending={false}
-    showContextMenu={false}
-    title=""
-  />
-  <TableWrapper>
-    <Table__TableStyle
-      disabled={false}
+  <header
+    class="c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
     >
-      <WithTheme(TableHead)>
-        <TableHeadRow>
-          <WithTheme(TableCol)
-            column={
-              Object {
-                "id": 1,
-                "name": "Test",
-                "selector": "some.name",
-              }
-            }
-            firstCellIndex={0}
-            key="1"
-            onColumnClick={[Function]}
-            sortDirection="asc"
-            sortField={null}
-            sortIcon={false}
-          />
-        </TableHeadRow>
-      </WithTheme(TableHead)>
-      <TableBody
-        fixedHeader={false}
-        hasOffset={false}
+      <div
+        class="c5"
+      >
+        0 item selected
+      </div>
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c9"
+        >
+          <div
+            class="c10"
+          >
+            <div
+              class="c11"
+            >
+              Test
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
         offset="250px"
       >
-        <WithTheme(TableRow)
-          checkboxComponent="input"
-          checkboxComponentOptions={Object {}}
-          columns={
-            Array [
-              Object {
-                "id": 1,
-                "name": "Test",
-                "selector": "some.name",
-              },
-            ]
-          }
-          expandableRows={false}
-          firstCellIndex={0}
-          highlightOnHover={false}
-          index={0}
-          key="1"
-          keyField="id"
-          onRowClicked={[Function]}
-          onRowSelected={[Function]}
-          onToggled={[Function]}
-          pointerOnHover={false}
-          row={
-            Object {
-              "id": 1,
-              "some": Object {
-                "name": "Henry the 8th",
-              },
-            }
-          }
-          rowClickable={false}
-          rows={
-            Array [
-              Object {
-                "id": 1,
-                "some": Object {
-                  "name": "Henry the 8th",
-                },
-              },
-            ]
-          }
-          selectableRows={false}
-          selectedRows={Array []}
-          striped={false}
-        />
-      </TableBody>
-    </Table__TableStyle>
-  </TableWrapper>
+        <div
+          class="c12"
+        >
+          <div
+            class="c13"
+          >
+            <div
+              class="c14"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Henry the 8th
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

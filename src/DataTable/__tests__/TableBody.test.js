@@ -1,11 +1,11 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { shallow } from 'enzyme';
-
+import { render, cleanup } from 'react-testing-library';
 import TableBody from '../TableBody';
 
+afterEach(cleanup);
+
 test('component <TableBody /> should render correctly', () => {
-  const wrapper = shallow(<TableBody />);
-  expect(wrapper).toMatchSnapshot();
+  const { container } = render(<TableBody />);
+  expect(container.firstChild).toMatchSnapshot();
 });

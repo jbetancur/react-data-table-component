@@ -11,29 +11,8 @@ exports[`component <TableRow /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;
 
 exports[`component <TableRow /> with children should render correctly 1`] = `
@@ -47,29 +26,8 @@ exports[`component <TableRow /> with children should render correctly 1`] = `
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;
 
 exports[`component <TableRow /> with columns should render correctly if a row does not have a keyField 1`] = `
@@ -83,29 +41,8 @@ exports[`component <TableRow /> with columns should render correctly if a row do
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;
 
 exports[`component <TableRow /> with columns should render correctly if a row has a keyField 1`] = `
@@ -119,29 +56,8 @@ exports[`component <TableRow /> with columns should render correctly if a row ha
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;
 
 exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
@@ -155,29 +71,8 @@ exports[`component <TableRow highlightOnHover /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;
 
 exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
@@ -191,29 +86,8 @@ exports[`component <TableRow pointerOnHover /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;
 
 exports[`component <TableRow striped /> should render correctly 1`] = `
@@ -227,27 +101,6 @@ exports[`component <TableRow striped /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
-  onClick={[Function]}
->
-  <WithTheme(TableCell)
-    column={
-      Object {
-        "id": 123,
-        "name": "Name",
-        "selector": "name",
-      }
-    }
-    firstCellIndex={0}
-    key="cell-123-456"
-    row={
-      Object {
-        "id": 456,
-        "name": "testname",
-      }
-    }
-    rowClickable={false}
-    type="cell"
-  />
-</div>
+  class="c0"
+/>
 `;

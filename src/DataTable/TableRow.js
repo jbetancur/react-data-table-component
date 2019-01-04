@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
+import { DataTableConsumer } from './DataTableContext';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
-import { determineExpanderRowIdentifier, isExpandedRow } from './util';
+import { isExpandedRow } from './util';
 
 const TableRowStyle = styled.div`
   display: flex;
@@ -31,40 +32,12 @@ const TableRowStyle = styled.div`
 
 class TableRow extends PureComponent {
   static propTypes = {
-    striped: PropTypes.bool.isRequired,
-    highlightOnHover: PropTypes.bool.isRequired,
-    pointerOnHover: PropTypes.bool.isRequired,
-    columns: PropTypes.array.isRequired,
-    keyField: PropTypes.string.isRequired,
     row: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired,
     onRowClicked: PropTypes.func.isRequired,
-    rowClickable: PropTypes.bool,
     onRowSelected: PropTypes.func.isRequired,
-    selectedRows: PropTypes.array.isRequired,
-    rows: PropTypes.array.isRequired,
-    checkboxComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.node,
-      PropTypes.func,
-    ]).isRequired,
-    checkboxComponentOptions: PropTypes.object.isRequired,
-    selectableRows: PropTypes.bool.isRequired,
-    expandableRows: PropTypes.bool.isRequired,
     onToggled: PropTypes.func.isRequired,
-    firstCellIndex: PropTypes.number.isRequired,
   };
-
-  static defaultProps = {
-    rowClickable: false,
-  }
-
-  isExpanded = () => {
-    const { row, rows, keyField } = this.props;
-
-    const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
-    return rows.findIndex(r => rowIdentifier === r.parent) > -1;
-  }
 
   handleRowChecked = row => {
     const { onRowSelected } = this.props;
@@ -83,66 +56,58 @@ class TableRow extends PureComponent {
     }
   };
 
-  isChecked = () => {
-    const { index, rows, selectedRows } = this.props;
+  isChecked = (rows, selectedRows) => {
+    const { index } = this.props;
 
     return selectedRows.indexOf(rows[index]) > -1;
   }
 
   render() {
     const {
-      striped,
-      highlightOnHover,
-      pointerOnHover,
-      columns,
-      keyField,
       row,
-      rows,
       index,
-      checkboxComponent,
-      checkboxComponentOptions,
-      selectableRows,
-      expandableRows,
       onToggled,
-      firstCellIndex,
-      rowClickable,
+      onRowClicked,
     } = this.props;
 
     return (
-      <TableRowStyle
-        striped={striped}
-        highlightOnHover={highlightOnHover}
-        pointerOnHover={pointerOnHover}
-        onClick={this.handleRowClick}
-      >
-        {selectableRows && (
-          <TableCellCheckbox
-            checked={this.isChecked()}
-            checkboxComponent={checkboxComponent}
-            checkboxComponentOptions={checkboxComponentOptions}
-            onClick={this.handleRowChecked}
-            row={row}
-          />
+      <DataTableConsumer>
+        {({ keyField, columns, rows, selectedRows, selectableRows, expandableRows, striped, highlightOnHover, pointerOnHover }) => (
+          <TableRowStyle
+            striped={striped}
+            highlightOnHover={highlightOnHover}
+            pointerOnHover={pointerOnHover}
+            onClick={this.handleRowClick}
+          >
+            {selectableRows && (
+              <TableCellCheckbox
+                checked={this.isChecked(rows, selectedRows)}
+                onClick={this.handleRowChecked}
+                row={row}
+              />
+            )}
+
+            {expandableRows && (
+              <TableCellExpander
+                onToggled={onToggled}
+                expanded={isExpandedRow(row, rows, keyField)}
+                row={row}
+                index={index}
+              />
+            )}
+
+            {columns.map(col => (
+              <TableCell
+                type="cell"
+                key={`cell-${col.id}-${row[keyField] || index}`}
+                column={col}
+                row={row}
+                rowClickable={!!onRowClicked}
+              />
+            ))}
+          </TableRowStyle>
         )}
-        {expandableRows && (
-          <TableCellExpander
-            onToggled={onToggled}
-            expanded={isExpandedRow(row, rows, keyField)}
-            row={row}
-            index={index}
-          />
-        )}
-        {columns.map(col => (
-          <TableCell
-            type="cell"
-            key={`cell-${col.id}-${row[keyField] || index}`}
-            column={col}
-            row={row}
-            firstCellIndex={firstCellIndex}
-            rowClickable={rowClickable}
-          />
-        ))}
-      </TableRowStyle>
+      </DataTableConsumer>
     );
   }
 }

@@ -1,8 +1,6 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { shallow } from 'enzyme';
-
+import { render, cleanup } from 'react-testing-library';
 import DataTable from '../DataTable';
 
 // eslint-disable-next-line arrow-body-style
@@ -20,35 +18,37 @@ const dataMock = () => {
   };
 };
 
-test('component <DataTable /> should render correctly', () => {
-  const wrapper = shallow(<DataTable data={[]} columns={[]} />);
+afterEach(cleanup);
 
-  expect(wrapper.dive().dive()).toMatchSnapshot();
+test('component <DataTable /> should render correctly', () => {
+  const { container } = render(<DataTable data={[]} columns={[]} />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <DataTable /> should render correctly with columns/data', () => {
   const mock = dataMock();
-  const wrapper = shallow(<DataTable data={mock.data} columns={mock.columns} />);
+  const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
-  expect(wrapper.dive().dive()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <DataTable /> should render correctly if the keyField is overriden', () => {
   const mock = dataMock();
   const data = [{ uuid: 1, some: { name: 'Henry the 8th' } }];
-  const wrapper = shallow(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
+  const { container } = render(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
 
-  expect(wrapper.dive().dive()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 
 test('component <DataTable /> should render correctly with a default sort field', () => {
   const mock = dataMock();
-  const wrapper = shallow(<DataTable
+  const { container } = render(<DataTable
     data={mock.data}
     columns={mock.columns}
     defaultSortField="some.name"
   />);
 
-  expect(wrapper.dive().dive()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });

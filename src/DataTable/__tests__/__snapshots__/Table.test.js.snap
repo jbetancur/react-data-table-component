@@ -15,7 +15,7 @@ exports[`component <Table /> should render correctly 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 />
 `;
 
@@ -36,7 +36,7 @@ exports[`component <Table disabled={true} /> should render correctly  1`] = `
 }
 
 <div
-  className="c0"
-  disabled={true}
+  class="c0"
+  disabled=""
 />
 `;

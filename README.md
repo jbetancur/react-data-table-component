@@ -30,6 +30,15 @@ In order priority:
 * Mobile Responsive
 * Accessibility
 
+## Requirements
+React Data Table Component requires the following be installed in your project:
+  * React 16.3+
+  * styled-components 3.2.3+ || 4.0.0+
+
+If you need to have backwards compatability with React versions previous to 16.3 you will have to `yarn add react-data-table-component@0.13.0`. 
+
+** Note that versions previous to react-data-table-component@1.0.0` are  deprecated and will no longer be maintained. **
+
 ## Installation
 React Data Table requires the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
 

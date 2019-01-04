@@ -1,26 +1,30 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { shallow } from 'enzyme';
-
+import { render, cleanup } from 'react-testing-library';
 import ResponsiveWrapper from '../ResponsiveWrapper';
 
+afterEach(cleanup);
+
 test('component <ResponsiveWrapper /> should render correctly', () => {
-  const wrapper = shallow(<ResponsiveWrapper />);
-  expect(wrapper).toMatchSnapshot();
+  const { container } = render(<ResponsiveWrapper />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <ResponsiveWrapper responsive /> should render correctly ', () => {
-  const wrapper = shallow(<ResponsiveWrapper responsive />);
-  expect(wrapper).toMatchSnapshot();
+  const { container } = render(<ResponsiveWrapper responsive />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <ResponsiveWrapper overflowY /> should not apply overFlowY without an overflowYOffset or not responsive ', () => {
-  const wrapper = shallow(<ResponsiveWrapper overflowY />);
-  expect(wrapper).toMatchSnapshot();
+  const { container } = render(<ResponsiveWrapper overflowY />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('component <ResponsiveWrapper responsive overflowY overflowYOffset="250px" /> should render correctly when overflowYOffset is provided ', () => {
-  const wrapper = shallow(<ResponsiveWrapper responsive overflowY overflowYOffset="250px" />);
-  expect(wrapper).toMatchSnapshot();
+  const { container } = render(<ResponsiveWrapper responsive overflowY overflowYOffset="250px" />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });

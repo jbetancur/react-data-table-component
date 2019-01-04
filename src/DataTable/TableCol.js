@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
+import { DataTableConsumer } from './DataTableContext';
 
 const TableColStyle = styled.div`
   box-sizing: border-box;
@@ -79,19 +80,11 @@ class TableCol extends PureComponent {
   static propTypes = {
     onColumnClick: PropTypes.func,
     column: PropTypes.object,
-    sortField: PropTypes.string,
-    sortDirection: PropTypes.oneOf(['asc', 'desc']),
-    sortIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    firstCellIndex: PropTypes.number,
   };
 
   static defaultProps = {
     onColumnClick: () => {},
     column: {},
-    sortField: null,
-    sortDirection: 'asc',
-    sortIcon: false,
-    firstCellIndex: 0,
   };
 
   onColumnClick = e => {
@@ -108,34 +101,35 @@ class TableCol extends PureComponent {
   render() {
     const {
       column,
-      sortIcon,
-      sortDirection,
-      sortField,
-      firstCellIndex,
     } = this.props;
 
-    const sortable = column.sortable && sortField === column.selector;
-
     return (
-      <TableColStyle
-        onClick={this.onColumnClick}
-        sortable={sortable}
-        sortDirection={sortDirection}
-        sortIcon={sortIcon}
-        column={column}
-        firstCellIndex={firstCellIndex}
-      >
-        {column.name && (
-          <ColumnCellWrapper active={sortable}>
-            {sortable && sortIcon && (
-              <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
-                {sortIcon}
-              </SortIcon>
-            )}
-            {column.name}
-          </ColumnCellWrapper>
-        )}
-      </TableColStyle>
+      <DataTableConsumer>
+        {({ sortIcon, sortColumn, sortDirection }) => {
+          const sortable = column.sortable && sortColumn === column.selector;
+
+          return (
+            <TableColStyle
+              onClick={this.onColumnClick}
+              sortable={sortable}
+              sortDirection={sortDirection}
+              sortIcon={sortIcon}
+              column={column}
+            >
+              {column.name && (
+                <ColumnCellWrapper active={sortable}>
+                  {sortable && sortIcon && (
+                    <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
+                      {sortIcon}
+                    </SortIcon>
+                  )}
+                  {column.name}
+                </ColumnCellWrapper>
+              )}
+            </TableColStyle>
+          );
+        }}
+      </DataTableConsumer>
     );
   }
 }

@@ -1,12 +1,13 @@
 import 'jest-styled-components';
-
 import React from 'react';
-import { shallowWithTheme } from '../../test-helpers';
-
+import { cleanup } from 'react-testing-library';
+import { renderWithTheme } from '../../test-helpers';
 import TableCell from '../TableCell';
 
-test('component <TableCell /> should render correctly', () => {
-  const wrapper = shallowWithTheme(<TableCell row={{}} column={{ selector: 'test' }} />);
+afterEach(cleanup);
 
-  expect(wrapper.dive().dive()).toMatchSnapshot();
+test('component <TableCell /> should render correctly', () => {
+  const { container } = renderWithTheme(<TableCell row={{}} column={{ selector: 'test' }} />);
+
+  expect(container.firstChild).toMatchSnapshot();
 });
