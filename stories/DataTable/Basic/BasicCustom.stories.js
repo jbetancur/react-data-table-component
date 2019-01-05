@@ -26,16 +26,21 @@ const columns = [
     selector: 'year',
     sortable: true,
   },
+  {
+    name: 'Poster',
+    selector: 'posterUrl',
+    cell: row => <img height="42px" width="80px" alt={row.name} src={row.posterUrl} />,
+  },
 ];
 
-const BasicSelectable = () => (
+const BasicTable = () => (
   <DataTable
     title="Movie List"
     columns={columns}
     data={data}
-    selectableRows
   />
 );
 
+
 storiesOf('Basic', module)
-  .add('Selectable', BasicSelectable);
+  .add('Custom Cell', BasicTable);

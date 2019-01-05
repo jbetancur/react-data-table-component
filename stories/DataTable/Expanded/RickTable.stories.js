@@ -11,13 +11,6 @@ const columns = [
     name: 'Name',
     selector: 'name',
     sortable: true,
-    cell: d => (
-      <div>
-        <div style={{ fontWeight: 700 }}>{d.name}</div>
-        <div>{d.summary}</div>
-      </div>
-    ),
-    width: '300px',
   },
   {
     name: 'Season',
@@ -38,7 +31,7 @@ const columns = [
   },
 ];
 
-storiesOf('Expandable', module).add('Expansion & Custom Cells', () => (
+const Expandable = () => (
   <DataTable
     title="Rick & Morty Episodes"
     columns={columns}
@@ -49,4 +42,7 @@ storiesOf('Expandable', module).add('Expansion & Custom Cells', () => (
     defaultSortDirection="desc"
     expandableRowsComponent={<SampleExpandedComponent />}
   />
-));
+);
+
+storiesOf('Basic', module)
+  .add('Expandable Rick', Expandable);

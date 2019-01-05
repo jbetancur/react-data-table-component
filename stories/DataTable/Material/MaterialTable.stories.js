@@ -144,4 +144,5 @@ class MaterialTable extends PureComponent {
   }
 }
 
-storiesOf('Theme: Material', module).add('3rd Party UI Lib', () => <MaterialTable />);
+storiesOf('Advanced', module)
+  .add('react-md', () => <MaterialTable />);

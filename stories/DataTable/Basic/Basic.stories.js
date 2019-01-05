@@ -11,17 +11,25 @@ const columns = [
     sortable: true,
   },
   {
+    name: 'Director',
+    selector: 'director',
+    sortable: true,
+  },
+  {
     name: 'Year',
     selector: 'year',
     sortable: true,
-    right: true,
   },
 ];
 
-storiesOf('Basic', module).add('Basic', () => (
+const BasicTable = () => (
   <DataTable
-    title="Arnie Movies"
+    title="Movie List"
     columns={columns}
     data={data}
   />
-));
+);
+
+
+storiesOf('Basic', module)
+  .add('Sortable', BasicTable);
