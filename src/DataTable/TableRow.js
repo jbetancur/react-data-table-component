@@ -5,7 +5,7 @@ import { DataTableConsumer } from './DataTableContext';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
-import { isExpandedRow } from './util';
+import { determineExpanderRowIdentifier } from './util';
 
 const TableRowStyle = styled.div`
   display: flex;
@@ -62,6 +62,12 @@ class TableRow extends PureComponent {
     return selectedRows.indexOf(rows[index]) > -1;
   }
 
+  isExpandedRow = (row, rows, keyField) => {
+    const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
+
+    return rows.findIndex(r => rowIdentifier === r.parent) > -1;
+  }
+
   render() {
     const {
       row,
@@ -90,7 +96,7 @@ class TableRow extends PureComponent {
             {expandableRows && (
               <TableCellExpander
                 onToggled={onToggled}
-                expanded={isExpandedRow(row, rows, keyField)}
+                expanded={this.isExpandedRow(row, rows, keyField)}
                 row={row}
                 index={index}
               />

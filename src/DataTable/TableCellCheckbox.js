@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
@@ -17,50 +17,40 @@ const TableCellCheckboxStyle = styled.div`
   padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
 `;
 
-class TableCellCheckbox extends PureComponent {
-  static propTypes = {
-    row: PropTypes.object,
-    checked: PropTypes.bool,
-    onClick: PropTypes.func,
-  };
+const TableCellCheckbox = memo(({
+  checked,
+  row,
+  onClick,
+}) => (
+  <DataTableConsumer>
+    {({ selectableRowsComponent, selectableRowsComponentProps }) => (
+      <TableCellCheckboxStyle
+        onClick={e => e.stopPropagation()}
+      >
+        <Checkbox
+          name="select-row"
+          aria-label="select-row"
+          component={selectableRowsComponent}
+          componentOptions={selectableRowsComponentProps}
+          checked={checked}
+          onClick={onClick}
+          data={row}
+        />
+      </TableCellCheckboxStyle>
+    )}
+  </DataTableConsumer>
+));
 
-  static defaultProps = {
-    row: {},
-    checked: false,
-    onClick: null,
-  };
+TableCellCheckbox.propTypes = {
+  row: PropTypes.object,
+  checked: PropTypes.bool,
+  onClick: PropTypes.func,
+};
 
-  handleCellClick = e => {
-    e.stopPropagation();
-  };
-
-  render() {
-    const {
-      checked,
-      row,
-      onClick,
-    } = this.props;
-
-    return (
-      <DataTableConsumer>
-        {({ selectableRowsComponent, selectableRowsComponentProps }) => (
-          <TableCellCheckboxStyle
-            onClick={this.handleCellClick}
-          >
-            <Checkbox
-              name="select-row"
-              aria-label="select-row"
-              component={selectableRowsComponent}
-              componentOptions={selectableRowsComponentProps}
-              checked={checked}
-              onClick={onClick}
-              data={row}
-            />
-          </TableCellCheckboxStyle>
-        )}
-      </DataTableConsumer>
-    );
-  }
-}
+TableCellCheckbox.defaultProps = {
+  row: {},
+  checked: false,
+  onClick: null,
+};
 
 export default withTheme(TableCellCheckbox);
