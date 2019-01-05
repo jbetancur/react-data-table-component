@@ -1,7 +1,8 @@
 import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
 
-const defaultState = {
+export const defaultState = {
+  keyField: 'id',
   columns: [],
   rows: [],
   selectedRows: [],

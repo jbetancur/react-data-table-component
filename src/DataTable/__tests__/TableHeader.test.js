@@ -6,19 +6,19 @@ import TableHeader from '../TableHeader';
 
 afterEach(cleanup);
 
-test('component <TableHeader title showContextMenu /> should render correctly', () => {
+test('<TableHeader title showContextMenu /> should render correctly', () => {
   const { container } = renderWithTheme(<TableHeader title="whoa!" showContextMenu />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('component <TableHeader title contextTitle /> should render correctly', () => {
+test('<TableHeader title contextTitle /> should render correctly', () => {
   const { container } = renderWithTheme(<TableHeader title="whoa!" contextTitle="items!!!" />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('component <TableHeader title contextActions /> should render correctly', () => {
+test('<TableHeader title contextActions /> should render correctly', () => {
   const { container } = renderWithTheme(<TableHeader title="whoa!" contextActions={[<div>some action</div>]} />);
 
   expect(container.firstChild).toMatchSnapshot();

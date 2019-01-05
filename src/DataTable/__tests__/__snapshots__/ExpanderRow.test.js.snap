@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <ExpanderRow /> should render correctly 1`] = `
+exports[`<ExpanderRow /> should render correctly 1`] = `
 .c0 {
   width: 100%;
   box-sizing: border-box;
@@ -12,7 +12,7 @@ exports[`component <ExpanderRow /> should render correctly 1`] = `
 />
 `;
 
-exports[`component <ExpanderRow /> with children should render correctly and have a data prop 1`] = `
+exports[`<ExpanderRow /> with children should render correctly and have a data prop 1`] = `
 .c0 {
   width: 100%;
   box-sizing: border-box;
@@ -30,7 +30,7 @@ exports[`component <ExpanderRow /> with children should render correctly and hav
 </div>
 `;
 
-exports[`component <ExpanderRow numColumns /> should render correctly 1`] = `
+exports[`<ExpanderRow numColumns /> should render correctly 1`] = `
 .c0 {
   width: 100%;
   box-sizing: border-box;

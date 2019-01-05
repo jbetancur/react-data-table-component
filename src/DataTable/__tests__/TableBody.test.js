@@ -5,7 +5,7 @@ import TableBody from '../TableBody';
 
 afterEach(cleanup);
 
-test('component <TableBody /> should render correctly', () => {
+test('<TableBody /> should render correctly', () => {
   const { container } = render(<TableBody />);
   expect(container.firstChild).toMatchSnapshot();
 });

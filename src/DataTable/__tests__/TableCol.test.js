@@ -6,7 +6,7 @@ import TableCol from '../TableCol';
 
 afterEach(cleanup);
 
-test('component <TableCol /> should render correctly', () => {
+test('should render correctly', () => {
   const { container } = renderWithTheme(<TableCol />);
 
   expect(container.firstChild).toMatchSnapshot();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableHead /> should render correctly 1`] = `
+exports[`should render correctly 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;

@@ -23,13 +23,11 @@ const TableCellCheckbox = memo(({
   onClick,
 }) => (
   <DataTableConsumer>
-    {({ selectableRowsComponent, selectableRowsComponentProps }) => (
-      <TableCellCheckboxStyle
-        onClick={e => e.stopPropagation()}
-      >
+    {({ keyField, selectableRowsComponent, selectableRowsComponentProps }) => (
+      <TableCellCheckboxStyle onClick={e => e.stopPropagation()}>
         <Checkbox
-          name="select-row"
-          aria-label="select-row"
+          name={`select-row-${row[keyField]}`}
+          aria-label={`select-row-${row[keyField]}`}
           component={selectableRowsComponent}
           componentOptions={selectableRowsComponentProps}
           checked={checked}

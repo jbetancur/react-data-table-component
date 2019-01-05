@@ -5,7 +5,7 @@ import Checkbox from '../Checkbox';
 
 afterEach(cleanup);
 
-test('component <Checkbox /> should render correctly when a custom component is not provided', () => {
+test('should render correctly when a custom component is not provided', () => {
   const { container } = render(<Checkbox onClick={jest.fn()} />);
 
   expect(container.firstChild).toMatchSnapshot();
@@ -42,13 +42,12 @@ test('component <Checkbox indeterminate={false} /> should not toggle indetermina
   expect(container.firstChild.indeterminate).toBe(false);
 });
 
-test('component <Checkbox /> should handle onClick', () => {
+test('should handle onClick', () => {
   const mockCallback = jest.fn();
-  const { container } = render(<Checkbox data={{ name: 'morty' }} index={1} onClick={mockCallback} />);
+  const { container } = render(<Checkbox data={{ name: 'morty' }} onClick={mockCallback} />);
   fireEvent.click(container.firstChild);
 
   expect(mockCallback).toBeCalled();
   expect(mockCallback.mock.calls[0][0]).toEqual({ name: 'morty' });
-  expect(mockCallback.mock.calls[0][1]).toBe(1);
-  expect(mockCallback.mock.calls[0][2]).toBeDefined(); // TODO: mock event?
+  expect(mockCallback.mock.calls[0][1]).toBeDefined(); // TODO: mock event?
 });

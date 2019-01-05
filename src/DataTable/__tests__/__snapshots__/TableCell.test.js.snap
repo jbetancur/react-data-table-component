@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableCell /> should render correctly 1`] = `
+exports[`<TableCell /> should render correctly 1`] = `
 .c0 {
   position: relative;
   box-sizing: border-box;

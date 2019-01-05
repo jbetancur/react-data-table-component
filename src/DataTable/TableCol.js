@@ -110,6 +110,7 @@ class TableCol extends PureComponent {
 
           return (
             <TableColStyle
+              id={`column-${column.selector}`}
               onClick={this.onColumnClick}
               sortable={sortable}
               sortDirection={sortDirection}

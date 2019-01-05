@@ -45,6 +45,7 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
 >
   <button
     class="c1"
+    data-testid="expander-button"
   />
 </div>
 `;

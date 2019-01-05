@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     name: 'Frozen yogurt',
     type: 'Ice cream',
     calories: 159,
@@ -10,6 +11,7 @@ export default [
     calcium: 14,
     iron: 1,
   }, {
+    id: 2,
     name: 'Ice cream sandwhich',
     type: 'Ice cream',
     calories: 237,
@@ -20,6 +22,7 @@ export default [
     calcium: 8,
     iron: 1,
   }, {
+    id: 3,
     name: 'Eclair',
     type: 'Pastry',
     calories: 262,
@@ -30,6 +33,7 @@ export default [
     calcium: 6,
     iron: 7,
   }, {
+    id: 4,
     name: 'Cupcake',
     type: 'Pastry',
     calories: 305,
@@ -40,6 +44,7 @@ export default [
     calcium: 3,
     iron: 8,
   }, {
+    id: 5,
     name: 'Gingerbread',
     type: 'Pastry',
     calories: 356,
@@ -50,6 +55,7 @@ export default [
     calcium: 7,
     iron: 16,
   }, {
+    id: 6,
     name: 'Jelly bean',
     type: 'Other',
     calories: 375,
@@ -60,6 +66,7 @@ export default [
     calcium: 0,
     iron: 0,
   }, {
+    id: 7,
     name: 'Lollipop',
     type: 'Other',
     calories: 392,
@@ -70,6 +77,7 @@ export default [
     calcium: 0,
     iron: 2,
   }, {
+    id: 8,
     name: 'Honeycomb',
     type: 'Other',
     calories: 408,
@@ -80,6 +88,7 @@ export default [
     calcium: 0,
     iron: 45,
   }, {
+    id: 9,
     name: 'Donut',
     type: 'Pastry',
     calories: 52,
@@ -90,6 +99,7 @@ export default [
     calcium: 2,
     iron: 22,
   }, {
+    id: 10,
     name: 'KitKat',
     type: 'Other',
     calories: 16,

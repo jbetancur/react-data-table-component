@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableHeader title contextActions /> should render correctly 1`] = `
+exports[`<TableHeader title contextActions /> should render correctly 1`] = `
 .c4 {
   color: rgba(0,0,0,.64);
   font-size: 18px;
@@ -116,7 +116,7 @@ exports[`component <TableHeader title contextActions /> should render correctly 
 </header>
 `;
 
-exports[`component <TableHeader title contextTitle /> should render correctly 1`] = `
+exports[`<TableHeader title contextTitle /> should render correctly 1`] = `
 .c4 {
   color: rgba(0,0,0,.64);
   font-size: 18px;
@@ -232,7 +232,7 @@ exports[`component <TableHeader title contextTitle /> should render correctly 1`
 </header>
 `;
 
-exports[`component <TableHeader title showContextMenu /> should render correctly 1`] = `
+exports[`<TableHeader title showContextMenu /> should render correctly 1`] = `
 .c4 {
   color: rgba(0,0,0,.64);
   font-size: 18px;

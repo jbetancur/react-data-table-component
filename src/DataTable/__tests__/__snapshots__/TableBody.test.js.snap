@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableBody /> should render correctly 1`] = `
+exports[`<TableBody /> should render correctly 1`] = `
 <div
   class=""
 />

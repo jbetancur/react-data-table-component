@@ -6,7 +6,7 @@ import TableCell from '../TableCell';
 
 afterEach(cleanup);
 
-test('component <TableCell /> should render correctly', () => {
+test('<TableCell /> should render correctly', () => {
   const { container } = renderWithTheme(<TableCell row={{}} column={{ selector: 'test' }} />);
 
   expect(container.firstChild).toMatchSnapshot();

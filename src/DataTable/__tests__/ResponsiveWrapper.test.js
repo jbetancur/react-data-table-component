@@ -5,25 +5,25 @@ import ResponsiveWrapper from '../ResponsiveWrapper';
 
 afterEach(cleanup);
 
-test('component <ResponsiveWrapper /> should render correctly', () => {
+test('<ResponsiveWrapper /> should render correctly', () => {
   const { container } = render(<ResponsiveWrapper />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('component <ResponsiveWrapper responsive /> should render correctly ', () => {
+test('<ResponsiveWrapper responsive /> should render correctly ', () => {
   const { container } = render(<ResponsiveWrapper responsive />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('component <ResponsiveWrapper overflowY /> should not apply overFlowY without an overflowYOffset or not responsive ', () => {
+test('<ResponsiveWrapper overflowY /> should not apply overFlowY without an overflowYOffset or not responsive ', () => {
   const { container } = render(<ResponsiveWrapper overflowY />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('component <ResponsiveWrapper responsive overflowY overflowYOffset="250px" /> should render correctly when overflowYOffset is provided ', () => {
+test('<ResponsiveWrapper responsive overflowY overflowYOffset="250px" /> should render correctly when overflowYOffset is provided ', () => {
   const { container } = render(<ResponsiveWrapper responsive overflowY overflowYOffset="250px" />);
 
   expect(container.firstChild).toMatchSnapshot();

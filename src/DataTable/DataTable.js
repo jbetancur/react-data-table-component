@@ -19,7 +19,7 @@ import TableWrapper from './TableWrapper';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './DataTablePropTypes';
 import { decorateColumns, getSortDirection, calcFirstCellIndex } from './util';
-import { handleSelectAll, handleRowChecked, toggleExpand, handleSort, clearSelected } from './statemgmt';
+import { handleSelectAll, handleRowSelected, toggleExpand, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
 
 const recalculateRows = ({ defaultSortField, data }, { sortDirection }) =>
@@ -100,15 +100,15 @@ class DataTable extends Component {
     this.setState(state => handleSelectAll(state));
   }
 
-  handleRowChecked = row => {
-    this.setState(state => handleRowChecked(row, state));
+  handleRowSelected = row => {
+    this.setState(state => handleRowSelected(row, state));
   }
 
-  handleRowClicked = (row, index, e) => {
+  handleRowClicked = (row, e) => {
     const { onRowClicked } = this.props;
 
     if (onRowClicked) {
-      onRowClicked(row, index, e);
+      onRowClicked(row, e);
     }
   }
 
@@ -125,13 +125,6 @@ class DataTable extends Component {
     if (sortable && onServerSort) {
       onServerSort(sortColumn, sortDirection);
     }
-  }
-
-  generateDefaultContextTitle() {
-    const { contextTitle } = this.props;
-    const { selectedCount } = this.state;
-
-    return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
   }
 
   renderColumns() {
@@ -160,7 +153,7 @@ class DataTable extends Component {
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
 
     return (
-      rows.map((row, index) => {
+      rows.map(row => {
         if (row[expanderStateField]) {
           return (
             <ExpanderRow
@@ -174,11 +167,10 @@ class DataTable extends Component {
 
         return (
           <TableRow
-            key={row[keyField] || index}
+            key={row[keyField]}
             row={row}
-            index={index}
             onRowClicked={this.handleRowClicked}
-            onRowSelected={this.handleRowChecked}
+            onRowSelected={this.handleRowSelected}
             onToggled={this.toggleExpand}
           />
         );
@@ -195,11 +187,7 @@ class DataTable extends Component {
     return (
       <TableHead>
         <TableHeadRow>
-          {selectableRows && (
-            <TableColCheckbox
-              onClick={this.handleSelectAll}
-            />
-          )}
+          {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
           {expandableRows && <div style={{ width: '42px' }} />}
           {this.renderColumns()}
         </TableHeadRow>
@@ -238,6 +226,7 @@ class DataTable extends Component {
       ...this.state,
       ...{ columns: this.columns },
       ...{ firstCellIndex: calcFirstCellIndex(selectableRows, expandableRows) },
+      ...{ onToggled: this.toggleExpand },
     };
 
     return (
@@ -253,7 +242,6 @@ class DataTable extends Component {
             {!noHeader && (
               <TableHeader
                 title={title}
-                contextTitle={this.generateDefaultContextTitle()}
                 actions={actions}
                 pending={progressPending}
               />
