@@ -53,9 +53,3 @@ export const handleFunctionProps = (object, ...args) => {
 
   return newObject || object;
 };
-
-export const isExpandedRow = (row, rows, keyField) => {
-  const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
-
-  return rows.findIndex(r => rowIdentifier === r.parent) > -1;
-};

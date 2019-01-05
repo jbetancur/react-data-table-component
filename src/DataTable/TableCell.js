@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
@@ -50,42 +50,36 @@ const ClickClip = styled.div`
   height: 100%;
 `;
 
-class TableCell extends PureComponent {
-  static propTypes = {
-    column: PropTypes.object,
-    row: PropTypes.object,
-    rowClickable: PropTypes.bool,
-  };
+const TableCell = memo(({
+  column,
+  row,
+  rowClickable,
+}) => (
+  <DataTableConsumer>
+    {({ firstCellIndex }) => (
+      <TableCellStyle
+        column={column}
+        firstCellIndex={firstCellIndex}
+      >
+        {!column.ignoreRowClick && rowClickable && <ClickClip data-tag="___react-data-table--click-clip___" />}
+        <div className="react-data-table--cell-content">
+          {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
+        </div>
+      </TableCellStyle>
+    )}
+  </DataTableConsumer>
+));
 
-  static defaultProps = {
-    column: {},
-    row: {},
-    rowClickable: false,
-  };
+TableCell.propTypes = {
+  column: PropTypes.object,
+  row: PropTypes.object,
+  rowClickable: PropTypes.bool,
+};
 
-  render() {
-    const {
-      column,
-      row,
-      rowClickable,
-    } = this.props;
-
-    return (
-      <DataTableConsumer>
-        {({ firstCellIndex }) => (
-          <TableCellStyle
-            column={column}
-            firstCellIndex={firstCellIndex}
-          >
-            {!column.ignoreRowClick && rowClickable && <ClickClip data-tag="___react-data-table--click-clip___" />}
-            <div className="react-data-table--cell-content">
-              {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
-            </div>
-          </TableCellStyle>
-        )}
-      </DataTableConsumer>
-    );
-  }
-}
+TableCell.defaultProps = {
+  column: {},
+  row: {},
+  rowClickable: false,
+};
 
 export default withTheme(TableCell);
