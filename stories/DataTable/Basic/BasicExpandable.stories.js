@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import data from '../constants/sampleMovieData';
+import tableDataItems from '../constants/sampleMovieData';
 import DataTable from '../../../src/DataTable/DataTable';
 
 const columns = [
@@ -28,14 +28,22 @@ const columns = [
   },
 ];
 
-const BasicSelectable = () => (
+// eslint-disable-next-line react/prop-types
+const ExpandedSection = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+
+const BasicTable = () => (
   <DataTable
     title="Movie List"
     columns={columns}
-    data={data}
-    selectableRows
+    data={tableDataItems}
+    expandableRows
+    highlightOnHover
+    defaultSortField="name"
+    defaultSortDirection="desc"
+    expandableRowsComponent={<ExpandedSection />}
   />
 );
 
+
 storiesOf('Basic', module)
-  .add('Selectable', BasicSelectable);
+  .add('Expandable', BasicTable);
