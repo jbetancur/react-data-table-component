@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <TableCol /> should render correctly 1`] = `
+exports[`should render correctly 1`] = `
 .c0 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -37,5 +37,6 @@ exports[`component <TableCol /> should render correctly 1`] = `
 
 <div
   class="c0"
+  id="column-undefined"
 />
 `;

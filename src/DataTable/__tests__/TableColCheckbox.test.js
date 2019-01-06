@@ -6,7 +6,7 @@ import TableColCheckbox from '../TableColCheckbox';
 
 afterEach(cleanup);
 
-test('component <TableColCheckbox /> should render correctly', () => {
+test('should render correctly', () => {
   const { container } = renderWithTheme(<TableColCheckbox row={{}} column={{ selector: 'test' }} onClick={jest.fn()} />);
 
   expect(container.firstChild).toMatchSnapshot();

@@ -5,7 +5,7 @@ import TableWrapper from '../TableWrapper';
 
 afterEach(cleanup);
 
-test('component <TableWrapper /> should render correctly', () => {
+test('should render correctly', () => {
   const { container } = render(<TableWrapper />);
   expect(container.firstChild).toMatchSnapshot();
 });

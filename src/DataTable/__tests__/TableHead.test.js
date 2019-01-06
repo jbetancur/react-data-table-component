@@ -6,7 +6,7 @@ import TableHead from '../TableHead';
 
 afterEach(cleanup);
 
-test('component <TableHead /> should render correctly', () => {
+test('should render correctly', () => {
   const { container } = renderWithTheme(<TableHead />);
 
   expect(container.firstChild).toMatchSnapshot();

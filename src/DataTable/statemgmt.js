@@ -12,7 +12,7 @@ export const handleSelectAll = state => {
   };
 };
 
-export const handleRowChecked = (row, state) => {
+export const handleRowSelected = (row, state) => {
   if (state.selectedRows.find(r => r === row)) {
     return {
       selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,

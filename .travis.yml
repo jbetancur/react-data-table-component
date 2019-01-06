@@ -10,7 +10,7 @@ script:
   - yarn lint
   # - yarn flow-typed
   # - yarn flow
-  - yarn test -- --coverage
+  - yarn test
   - yarn build
 
 before_deploy:

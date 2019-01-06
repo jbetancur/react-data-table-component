@@ -4,5 +4,13 @@ import { ThemeProvider } from 'styled-components';
 import 'jest-styled-components';
 import theme from './themes/default';
 
-export const renderWithTheme = tree =>
-  render(<ThemeProvider theme={theme}>{tree}</ThemeProvider>);
+export const renderWithTheme = (tree, ...args) =>
+  render(<ThemeProvider theme={theme}>{tree}</ThemeProvider>, ...args);
+
+export function syntheticEvent(a) {
+  return ({
+    target: a,
+    preventDefault: jest.fn(),
+    stopPropagation: jest.fn(),
+  });
+}

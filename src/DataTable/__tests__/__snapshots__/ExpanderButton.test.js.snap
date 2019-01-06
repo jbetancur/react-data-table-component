@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component <ExpanderButton expanded /> should render correctly 1`] = `
+exports[`<ExpanderButton expanded /> should render correctly 1`] = `
 .c0 {
   outline: none;
   border: none;
@@ -19,10 +19,11 @@ exports[`component <ExpanderButton expanded /> should render correctly 1`] = `
 
 <button
   class="c0"
+  data-testid="expander-button"
 />
 `;
 
-exports[`component <ExpanderButton expanded={false} /> should render correctly 1`] = `
+exports[`<ExpanderButton expanded={false} /> should render correctly 1`] = `
 .c0 {
   outline: none;
   border: none;
@@ -41,5 +42,6 @@ exports[`component <ExpanderButton expanded={false} /> should render correctly 1
 
 <button
   class="c0"
+  data-testid="expander-button"
 />
 `;

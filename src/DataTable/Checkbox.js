@@ -15,7 +15,6 @@ export default class Checkbox extends PureComponent {
     onClick: PropTypes.func.isRequired,
     componentOptions: PropTypes.object,
     data: PropTypes.object,
-    index: PropTypes.number,
     style: PropTypes.object,
   };
 
@@ -26,7 +25,6 @@ export default class Checkbox extends PureComponent {
       style: {},
     },
     data: {},
-    index: null,
     style: null,
   };
 
@@ -45,9 +43,9 @@ export default class Checkbox extends PureComponent {
   }
 
   handleClick = e => {
-    const { onClick, data, index } = this.props;
+    const { onClick, data } = this.props;
 
-    onClick(data, index, e);
+    onClick(data, e);
   }
 
   render() {
@@ -58,8 +56,7 @@ export default class Checkbox extends PureComponent {
       indeterminate,
       ...rest
     } = this.props;
-
-    const TagName = component || 'input';
+    const TagName = component;
     const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
     const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
 

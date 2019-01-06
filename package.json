@@ -31,7 +31,7 @@
     "flow-typed:src": "flow-typed install -s -o --ignoreDeps peer",
     "flow-typed:stories": "cd stories/ && flow-typed install -s -o --ignoreDeps peer --packageDir ../ || true",
     "start": "npm run build:dev -- -w",
-    "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
+    "test": "cross-env BABEL_ENV=test jest --passWithNoTests --verbose --coverage",
     "test:tdd": "cross-env BABEL_ENV=test jest --watch",
     "test:tdd-coverage": "cross-env BABEL_ENV=test jest --watch --coverage",
     "test:coverage": "cross-env BABEL_ENV=test jest --coverage",

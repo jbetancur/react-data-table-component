@@ -33,34 +33,26 @@ const TableRowStyle = styled.div`
 class TableRow extends PureComponent {
   static propTypes = {
     row: PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired,
     onRowClicked: PropTypes.func.isRequired,
     onRowSelected: PropTypes.func.isRequired,
-    onToggled: PropTypes.func.isRequired,
   };
 
-  handleRowChecked = row => {
+  handleRowSelected = row => {
     const { onRowSelected } = this.props;
 
-    if (onRowSelected) {
-      onRowSelected(row);
-    }
+    onRowSelected(row);
   }
 
   handleRowClick = e => {
-    const { index, onRowClicked, row } = this.props;
-
     // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
     if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
-      onRowClicked(row, index, e);
+      const { onRowClicked, row } = this.props;
+
+      onRowClicked(row, e);
     }
   };
 
-  isChecked = (rows, selectedRows) => {
-    const { index } = this.props;
-
-    return selectedRows.indexOf(rows[index]) > -1;
-  }
+  isChecked = (row, selectedRows) => selectedRows.some(srow => srow === row);
 
   isExpandedRow = (row, rows, keyField) => {
     const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
@@ -71,8 +63,6 @@ class TableRow extends PureComponent {
   render() {
     const {
       row,
-      index,
-      onToggled,
       onRowClicked,
     } = this.props;
 
@@ -87,25 +77,23 @@ class TableRow extends PureComponent {
           >
             {selectableRows && (
               <TableCellCheckbox
-                checked={this.isChecked(rows, selectedRows)}
-                onClick={this.handleRowChecked}
+                checked={this.isChecked(row, selectedRows)}
+                onClick={this.handleRowSelected}
                 row={row}
               />
             )}
 
             {expandableRows && (
               <TableCellExpander
-                onToggled={onToggled}
                 expanded={this.isExpandedRow(row, rows, keyField)}
                 row={row}
-                index={index}
               />
             )}
 
             {columns.map(col => (
               <TableCell
                 type="cell"
-                key={`cell-${col.id}-${row[keyField] || index}`}
+                key={`cell-${col.id}-${row[keyField]}`}
                 column={col}
                 row={row}
                 rowClickable={!!onRowClicked}

@@ -25,8 +25,13 @@ const ContextMenuStyle = styled.div`
   padding: 16px 16px 16px 24px;
 `;
 
-const generateDefaultContextTitle = (contextTitle, selectedCount) =>
-  contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
+const generateDefaultContextTitle = (contextTitle, selectedCount) => {
+  if (selectedCount === 0) {
+    return null;
+  }
+
+  return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
+};
 
 const ContextMenu = () => (
   <DataTableConsumer>
