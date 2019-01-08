@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Pagination from './Pagination';
+import FirstPageIcon from '../icons/FirstPage';
+import LastPageIcon from '../icons/LastPage';
+import LeftIcon from '../icons/Left';
+import RightIcon from '../icons/Right';
 
 export const propTypes = {
   title: PropTypes.oneOfType([
@@ -33,7 +38,7 @@ export const propTypes = {
   striped: PropTypes.bool,
   highlightOnHover: PropTypes.bool,
   pointerOnHover: PropTypes.bool,
-  onServerSort: PropTypes.func,
+  onSort: PropTypes.func,
   actions: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -63,6 +68,16 @@ export const propTypes = {
   noHeader: PropTypes.bool,
   onRowClicked: PropTypes.func,
   fixedHeader: PropTypes.bool,
+  pagination: PropTypes.bool,
+  paginationPerPage: PropTypes.number,
+  paginationRowsPerPageOptions: PropTypes.array,
+  onChangePage: PropTypes.func,
+  onChangeRowsPerPage: PropTypes.func,
+  paginationComponent: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.func,
+  ]),
 };
 
 export const defaultProps = {
@@ -82,7 +97,7 @@ export const defaultProps = {
   striped: false,
   highlightOnHover: false,
   pointerOnHover: false,
-  onServerSort: null,
+  onSort: null,
   contextTitle: '',
   contextActions: [],
   onTableUpdate: null,
@@ -101,4 +116,14 @@ export const defaultProps = {
   noHeader: false,
   onRowClicked: null,
   fixedHeader: false,
+  pagination: false,
+  paginationPerPage: 10,
+  paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
+  onChangePage: null,
+  onChangeRowsPerPage: null,
+  paginationComponent: Pagination,
+  paginationIconFirstPage: <FirstPageIcon />,
+  paginationIconLastPage: <LastPageIcon />,
+  paginationIconNext: <RightIcon />,
+  paginationIconPrevious: <LeftIcon />,
 };

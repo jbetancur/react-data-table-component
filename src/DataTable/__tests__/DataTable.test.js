@@ -14,7 +14,7 @@ jest.mock('shortid', () => {
 const dataMock = () => {
   return {
     columns: [{ name: 'Test', selector: 'some.name' }],
-    data: [{ id: 1, some: { name: 'Henry the 8th' } }],
+    data: [{ id: 1, some: { name: 'Henry the 8th' } }, { id: 2, some: { name: 'Henry the 9th' } }],
   };
 };
 
@@ -252,5 +252,60 @@ describe('onRowClicked', () => {
 
     expect(rowClickedMock.mock.calls[0][0]).toEqual(mock.data[0]);
     expect(rowClickedMock.mock.calls[0][1]).toBeDefined(); // TODO: mock event?
+  });
+});
+
+describe('Pagination', () => {
+  test('should render correctly if pagination is enabled', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onRowClicked={jest.fn()}
+        pagination
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should call onChangePage if paged', () => {
+    const onChangePageMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onRowClicked={jest.fn()}
+        pagination
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangePage={onChangePageMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(onChangePageMock).toBeCalledWith(2);
+  });
+
+  test('should call onChangeRowsPerPage if paged', () => {
+    const onChangeRowsPerPageMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onRowClicked={jest.fn()}
+        pagination
+        onChangeRowsPerPage={onChangeRowsPerPageMock}
+      />,
+    );
+
+    fireEvent.change(container.querySelector('select'), { target: { value: 20 } });
+    expect(onChangeRowsPerPageMock).toBeCalledWith(20);
   });
 });

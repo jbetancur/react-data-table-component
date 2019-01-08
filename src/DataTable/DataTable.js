@@ -6,6 +6,7 @@ import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
 import Table from './Table';
 import TableHead from './TableHead';
+import TableFooter from './TableFooter';
 import TableHeadRow from './TableHeadRow';
 import TableRow from './TableRow';
 import TableCol from './TableCol';
@@ -35,6 +36,7 @@ class DataTable extends Component {
     if (props.clearSelectedRows !== state.clearSelectedRows) {
       return clearSelected(props.clearSelectedRows);
     }
+
     // Keep data state in sync if it changes
     if (!isEqual(props.data, state.data) || !state.rows.length) {
       return {
@@ -66,10 +68,12 @@ class DataTable extends Component {
       sortColumn: props.defaultSortField,
       sortDirection,
       rows: [],
+      data: props.data,
       clearSelectedRows: false,
       defaultSortAsc: props.defaultSortAsc,
       defaultSortField: props.defaultSortField,
-      data: props.data,
+      currentPage: 1,
+      rowsPerPage: props.paginationPerPage,
     };
   }
 
@@ -112,19 +116,43 @@ class DataTable extends Component {
     }
   }
 
-  toggleExpand = row => {
-    this.setState((state, props) => toggleExpand(props, row, state));
-  }
-
   handleSort = ({ selector, sortable }) => {
-    const { onServerSort } = this.props;
+    const { onSort } = this.props;
     const { sortColumn, sortDirection } = this.state;
 
     this.setState((state, props) => handleSort(props, selector, sortable, state));
 
-    if (sortable && onServerSort) {
-      onServerSort(sortColumn, sortDirection);
+    if (sortable && onSort) {
+      onSort(sortColumn, sortDirection);
     }
+  }
+
+  handleChangePage = currentPage => {
+    const { onChangePage } = this.props;
+
+    this.setState({
+      currentPage,
+    });
+
+    if (onChangePage) {
+      onChangePage(currentPage);
+    }
+  }
+
+  handleChangeRowsPerPage = rowsPerPage => {
+    const { onChangeRowsPerPage } = this.props;
+
+    this.setState({
+      rowsPerPage,
+    });
+
+    if (onChangeRowsPerPage) {
+      onChangeRowsPerPage(rowsPerPage);
+    }
+  }
+
+  toggleExpand = row => {
+    this.setState((state, props) => toggleExpand(props, row, state));
   }
 
   renderColumns() {
@@ -144,16 +172,25 @@ class DataTable extends Component {
       expandableRowsComponent,
       expanderStateField,
       keyField,
+      pagination,
     } = this.props;
 
     const {
       rows,
+      currentPage,
+      rowsPerPage,
     } = this.state;
 
     const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
+    const lastIndex = currentPage * rowsPerPage;
+    const firstIndex = lastIndex - rowsPerPage;
+
+    const currentRows = pagination
+      ? rows.slice(firstIndex, lastIndex)
+      : rows;
 
     return (
-      rows.map(row => {
+      currentRows.map(row => {
         if (row[expanderStateField]) {
           return (
             <ExpanderRow
@@ -212,12 +249,18 @@ class DataTable extends Component {
       disabled,
       noHeader,
       fixedHeader,
+      pagination,
+      paginationComponent,
     } = this.props;
+
+    const Pagination = paginationComponent;
 
     const {
       rows,
       selectableRows,
       expandableRows,
+      rowsPerPage,
+      currentPage,
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
@@ -270,6 +313,19 @@ class DataTable extends Component {
                     {this.renderRows()}
                   </TableBody>
                 </Table>
+              )}
+
+              {pagination && !progressPending && (
+                <TableFooter>
+                  <Pagination
+                    onChangePage={this.handleChangePage}
+                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    rowCount={rows.length}
+                    currentPage={currentPage}
+                    rowsPerPage={rowsPerPage}
+                    theme={theme}
+                  />
+                </TableFooter>
               )}
             </TableWrapper>
           </ResponsiveWrapper>
