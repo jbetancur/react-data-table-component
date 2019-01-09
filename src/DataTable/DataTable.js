@@ -18,7 +18,7 @@ import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import NoData from './NoData';
-import { propTypes, defaultProps } from './DataTablePropTypes';
+import { propTypes, defaultProps } from './propTypes';
 import { decorateColumns, getSortDirection, calcFirstCellIndex } from './util';
 import { handleSelectAll, handleRowSelected, toggleExpand, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
