@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with default props 1`] = `
+.c0 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+}
+
+<span
+  class="c0"
+>
+  Rows per page:
+</span>
+`;

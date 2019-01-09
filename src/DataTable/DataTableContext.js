@@ -1,7 +1,9 @@
 import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
+import { defaultProps } from './DataTablePropTypes';
 
 export const defaultState = {
+  ...defaultProps,
   keyField: 'id',
   columns: [],
   rows: [],

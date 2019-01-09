@@ -6,13 +6,13 @@
 )
 # React Data Table Component
 
-Creating yet another React table library came out of nescessity while developing a web application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization or lacked basic features such as built in sorting, and in some cases required a restrictive license.
+Creating yet another React table library came out of nescessity while developing a web application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization or lacked basic features such as built in sorting and pagination, and in some cases required a restrictive license.
 
-If you want to achieve balance with the force and want a simple, sortable, and flexible table library give React Data Table Component a chance. If you want an Excel clone and need to pivot large data sets then this is not the React table library you are looking for 👋
+If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone and need to pivot large data sets then this is not the React table library you are looking for 👋
   
-React Data Table Component is not yet Feature Complete and still under **Development** - though I do not anticpate the existing API to change drastically.
+React Data Table Component is still in Beta - though I do not anticpate the "existing API" to change drastically.
 
-## Initial features available:
+## Key Features
 
 * Declarative Configuration
 * Sortable (client)
@@ -21,14 +21,7 @@ React Data Table Component is not yet Feature Complete and still under **Develop
 * Themeable via js config
 * Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
 * Responsive (via x-scroll/flex)
-
-## Roadmap
-In order priority:
-* Built in themes (Material, Boostrap)
-* Sort hook for Server based sorting
-* Fixed Header support
-* Mobile Responsive
-* Accessibility
+* Pagination
 
 ## Requirements
 React Data Table Component requires the following be installed in your project:
@@ -112,7 +105,17 @@ Nothing new here - we are using an array of object literals and properties to de
 | disabled | bool | no | false | disables the Table section |
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 | fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
-
+| pagination | bool | no | false | enable pagination with defaults |
+| paginationPerPage | number | no | 10 | rows per page |
+| paginationRowsPerPageOptions | number | no | [10, 15, 20, 25, 30] | row page dropdown selection options |
+| onChangePage | func | no | null | callback when paged that returns the current Page |
+| onChangeRowsPerPage | func | no | null | callback when rows per page is changed that returns the new rows per page|
+| paginationComponent | func | no | Pagination | a component that overrides the default paginator component |
+| paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination |
+| paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination |
+| paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination |
+| paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination |
+  
 #### Advanced Selectable Component Options
 Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
 
