@@ -8,7 +8,7 @@ export default Object.assign(config, {
     {
       file: pkg.module,
       format: 'es',
-    }
+    },
   ],
   plugins: plugins.concat([
     terser(),

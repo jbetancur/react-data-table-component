@@ -8,7 +8,7 @@ export default Object.assign(config, {
     {
       file: pkg.main,
       format: 'cjs',
-    }
+    },
   ],
   plugins: plugins.concat([
     uglify(),
