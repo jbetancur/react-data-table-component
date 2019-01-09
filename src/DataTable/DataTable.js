@@ -264,6 +264,7 @@ class DataTable extends Component {
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
+    const enabledPagination = pagination && !progressPending && rows.length > 0;
     const init = {
       ...this.props,
       ...this.state,
@@ -315,7 +316,7 @@ class DataTable extends Component {
                 </Table>
               )}
 
-              {pagination && !progressPending && (
+              {enabledPagination && (
                 <TableFooter>
                   <Pagination
                     onChangePage={this.handleChangePage}
