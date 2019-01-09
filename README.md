@@ -12,6 +12,8 @@ If you want to achieve balance with the force and want a simple but flexible tab
   
 React Data Table Component is still in Beta - though I do not anticpate the "existing API" to change drastically.
 
+Props to JB for getting this to GA!!!
+
 ## Key Features
 
 * Declarative Configuration
