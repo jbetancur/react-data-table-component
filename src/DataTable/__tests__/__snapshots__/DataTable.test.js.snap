@@ -1,124 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination should render correctly if pagination is enabled 1`] = `
-.c20 {
-  cursor: pointer;
-  height: 24px;
-  min-width: 24px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding-left: 8px;
-  padding-right: 16px;
-  box-sizing: content-box;
-  font-size: 13px;
-  color: rgba(0,0,0,.54);
-  outline: none;
-  border: none;
-  background-color: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c20 .ddown-color {
-  fill: red;
-}
-
-.c20::-ms-expand {
-  display: none;
-}
-
-.c20:disabled::-ms-expand {
-  background: #f60;
-}
-
-.c19 {
-  position: relative;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
-  font-size: 13px;
-  color: rgba(0,0,0,.54);
-}
-
-.c19 svg {
-  top: 1;
-  right: 0;
-  color: rgba(0,0,0,0.54);
-  position: absolute;
-  pointer-events: none;
-  fill: currentColor;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  font-size: 24px;
-  -webkit-transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
-  transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c22 {
-  position: relative;
-  display: block;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  height: 40px;
-  width: 40px;
-  padding: 8px;
-  margin: 2px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c22 svg {
-  fill: rgba(0,0,0,.54);
-}
-
-.c22:disabled {
-  opacity: 0.4;
-  cursor: unset;
-}
-
-.c22:hover:not(:disabled) {
-  background-color: rgba(0,0,0,.12);
-}
-
-.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  list-style: none;
-  border-radius: 4px;
-  margin-left: 20px;
-  white-space: nowrap;
-}
-
-.c18 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  font-size: 13px;
-  color: rgba(0,0,0,.54);
-}
-
 .c7 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -413,6 +295,124 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.c20 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 16px;
+  box-sizing: content-box;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c20 .ddown-color {
+  fill: red;
+}
+
+.c20::-ms-expand {
+  display: none;
+}
+
+.c20:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c19 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 8px;
+  margin-right: 32px;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+}
+
+.c19 svg {
+  top: 1;
+  right: 0;
+  color: rgba(0,0,0,0.54);
+  position: absolute;
+  pointer-events: none;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 24px;
+  -webkit-transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c22 {
+  position: relative;
+  display: block;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c22 svg {
+  fill: rgba(0,0,0,.54);
+}
+
+.c22:disabled {
+  opacity: 0.4;
+  cursor: unset;
+}
+
+.c22:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  border-radius: 4px;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.c18 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
 }
 
 <div

@@ -1,14 +1,14 @@
 import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
-import { defaultProps } from './DataTablePropTypes';
 
 export const defaultState = {
-  ...defaultProps,
   keyField: 'id',
   columns: [],
   rows: [],
   selectedRows: [],
   firstCellIndex: 0,
+  paginationPerPage: 10,
+  paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
 };
 
 const DataTableContext = createContext(defaultState);
