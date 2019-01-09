@@ -28,7 +28,6 @@ const BasicPaginationTable = () => (
     columns={columns}
     data={data}
     pagination
-    selectableRows
   />
 );
 
