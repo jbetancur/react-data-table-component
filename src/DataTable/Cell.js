@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const CellBase = styled.div`
   position: relative;
   display: flex;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
@@ -14,7 +15,6 @@ export const CellBase = styled.div`
 // Default Cell Component
 export const Cell = styled(CellBase)`
   flex: ${props => (props.column.grow === 0 ? 0 : props.column.grow || 1)} 0 0;
-  align-items: center;
   max-width: ${props => props.column.maxWidth || '100%'};
   min-width: ${props => (props.column.minWidth || '100px')};
   ${props => props.column.width && css`

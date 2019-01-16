@@ -5,7 +5,7 @@ import { DataTableConsumer } from './DataTableContext';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
-import { determineExpanderRowIdentifier } from './util';
+import ExpanderRow from './ExpanderRow';
 
 const TableRowStyle = styled.div`
   display: flex;
@@ -37,6 +37,10 @@ class TableRow extends PureComponent {
     onRowSelected: PropTypes.func.isRequired,
   };
 
+  state = {
+    expanded: false,
+  }
+
   handleRowSelected = row => {
     const { onRowSelected } = this.props;
 
@@ -54,10 +58,8 @@ class TableRow extends PureComponent {
 
   isChecked = (row, selectedRows) => selectedRows.some(srow => srow === row);
 
-  isExpandedRow = (row, rows, keyField) => {
-    const rowIdentifier = determineExpanderRowIdentifier(row, keyField);
-
-    return rows.findIndex(r => rowIdentifier === r.parent) > -1;
+  toggleRowExpand = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
   }
 
   render() {
@@ -66,40 +68,54 @@ class TableRow extends PureComponent {
       onRowClicked,
     } = this.props;
 
+    const { expanded } = this.state;
+
     return (
       <DataTableConsumer>
-        {({ keyField, columns, rows, selectedRows, selectableRows, expandableRows, striped, highlightOnHover, pointerOnHover }) => (
-          <TableRowStyle
-            striped={striped}
-            highlightOnHover={highlightOnHover}
-            pointerOnHover={pointerOnHover}
-            onClick={this.handleRowClick}
-          >
-            {selectableRows && (
-              <TableCellCheckbox
-                checked={this.isChecked(row, selectedRows)}
-                onClick={this.handleRowSelected}
-                row={row}
-              />
-            )}
+        {({ keyField, columns, selectedRows, selectableRows, expandableRows, striped, highlightOnHover, pointerOnHover, expandableRowsComponent }) => (
+          <React.Fragment>
+            <TableRowStyle
+              striped={striped}
+              highlightOnHover={highlightOnHover}
+              pointerOnHover={pointerOnHover}
+              onClick={this.handleRowClick}
+            >
+              {selectableRows && (
+                <TableCellCheckbox
+                  checked={this.isChecked(row, selectedRows)}
+                  onClick={this.handleRowSelected}
+                  row={row}
+                />
+              )}
 
-            {expandableRows && (
-              <TableCellExpander
-                expanded={this.isExpandedRow(row, rows, keyField)}
-                row={row}
-              />
-            )}
+              {expandableRows && (
+                <TableCellExpander
+                  expanded={expanded}
+                  row={row}
+                  onExpandToggled={this.toggleRowExpand}
+                />
+              )}
 
-            {columns.map(col => (
-              <TableCell
-                type="cell"
-                key={`cell-${col.id}-${row[keyField]}`}
-                column={col}
-                row={row}
-                rowClickable={!!onRowClicked}
-              />
-            ))}
-          </TableRowStyle>
+              {columns.map(col => (
+                <TableCell
+                  type="cell"
+                  key={`cell-${col.id}-${row[keyField]}`}
+                  column={col}
+                  row={row}
+                  rowClickable={!!onRowClicked}
+                />
+              ))}
+            </TableRowStyle>
+
+            {expanded && (
+              <ExpanderRow
+                key={`expander--${row[keyField]}`}
+                data={row}
+              >
+                {expandableRowsComponent}
+              </ExpanderRow>
+            )}
+          </React.Fragment>
         )}
       </DataTableConsumer>
     );

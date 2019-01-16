@@ -12,6 +12,11 @@ export default ({ row, onDeleteRow }) => {
     <MenuButton
       id="menu-button-2"
       icon
+      simplifiedMenu={false}
+      anchor={{
+        x: MenuButton.HorizontalAnchors.INNER_LEFT,
+        y: MenuButton.VerticalAnchors.OVERLAP,
+      }}
       menuItems={[
         <ListItem key={1} primaryText="Item One" />,
         <ListItem key={2} primaryText="Item Two" />,

@@ -75,7 +75,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
 | data | array<Object> | no | [] | it is **highly recommended** that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
-| keyField | string | no | 'id' | your data should have a unique identifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time. If a unique `id` is not present, React Data Table will use the row index (not recommended) as the key value |
+| keyField | string | no | 'id' | your data should have a unique identifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time or use the expander feature. If a unique `id` is not present, React Data Table will use the row index (not recommended) as the key value |
 | progressPending | bool | no |  | disables the table and displays a plain text Loading Indicator |
 | progressComponent | component | no |  | allows you to use your own custom progress component |
 | progressCentered | bool | no |  | absolutely position and center the progress over the table |
