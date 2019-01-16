@@ -30,12 +30,10 @@ export const removeItem = (array, item) => {
   return newArray;
 };
 
-export const pull = (array, values) => array.filter(el => values.indexOf(el) < 0);
+export const pull = (array, values) => array.filter(el => values.indexOf(el) < 1);
 
 // Make sure columns have unique id's
 export const decorateColumns = columns => columns.map(column => ({ id: shortid.generate(), ...column }));
-
-export const calcFirstCellIndex = (...args) => args.reduce((a, b) => a + b, 0);
 
 export const getSortDirection = direction => (direction ? 'asc' : 'desc');
 

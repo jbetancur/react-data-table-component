@@ -6,8 +6,8 @@ const ButtonStyle = styled.button`
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(${props => props.theme.expander[props.expanded ? 'expandedButton' : 'collapsedButton']});
   background-position: center center;

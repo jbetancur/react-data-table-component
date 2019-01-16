@@ -6,7 +6,7 @@ export const defaultState = {
   columns: [],
   rows: [],
   selectedRows: [],
-  firstCellIndex: 0,
+  internalCell: false,
   paginationPerPage: 10,
   paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
 };

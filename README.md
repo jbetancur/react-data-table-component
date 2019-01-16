@@ -61,10 +61,11 @@ Nothing new here - we are using an array of object literals and properties to de
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
 | maxWidth | string | no       | give the column a maxWidth                                                                                    |
-| right    | bool   | no       | right aligns the content in the cell                                                          |
-| center   | bool   | no       | center aligns the content in the cell                                                |
+| right    | bool   | no       | right aligns the content in the cell. usefil for numbers                                                      |
+| center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | reduces the padding in the cell. useful for custom cells icons or buttons                                     |
-| wrap     | bool   | no       | whether the cell content shold be allowed to wrap. |
+| button   | bool   | no       | applies additional styling when using a button                                                                |
+| wrap     | bool   | no       | whether the cell content shold be allowed to wrap.                                                            |
 | allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning                                     |
 | ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered
 

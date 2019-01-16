@@ -1,13 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TableCell /> should render correctly 1`] = `
+exports[`<TableCell /> should render correctly if column.allowOverflow 1`] = `
 .c0 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -17,15 +22,79 @@ exports[`<TableCell /> should render correctly 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c0:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: visible;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.button 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0:not(:last-child) {
   padding-right: calc(48px / 2);
 }
 
@@ -39,6 +108,438 @@ exports[`<TableCell /> should render correctly 1`] = `
 >
   <div
     class="react-data-table--cell-content"
-  />
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.center 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.maxWidth 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 200px;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.minWidth 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 200px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.right 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.width 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  min-width: 200px;
+  max-width: 200px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if column.wrap 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: normal;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly if not an internal cell (e.g. checkbox or expander 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
+</div>
+`;
+
+exports[`<TableCell /> should render correctly with defaults 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: rgba(0,0,0,.87);
+  min-height: 48px;
+}
+
+.c0:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c0 .react-data-table--cell-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="react-data-table--cell-content"
+  >
+    testname
+  </div>
 </div>
 `;

@@ -19,7 +19,7 @@ import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './propTypes';
-import { decorateColumns, getSortDirection, calcFirstCellIndex } from './util';
+import { decorateColumns, getSortDirection } from './util';
 import { handleSelectAll, handleRowSelected, toggleExpand, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
 
@@ -251,25 +251,26 @@ class DataTable extends Component {
       fixedHeader,
       pagination,
       paginationComponent,
+      selectableRows,
+      expandableRows,
     } = this.props;
 
     const Pagination = paginationComponent;
 
     const {
       rows,
-      selectableRows,
-      expandableRows,
       rowsPerPage,
       currentPage,
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
     const enabledPagination = pagination && !progressPending && rows.length > 0;
+
     const init = {
       ...this.props,
       ...this.state,
       ...{ columns: this.columns },
-      ...{ firstCellIndex: calcFirstCellIndex(selectableRows, expandableRows) },
+      ...{ internalCell: selectableRows || expandableRows },
       ...{ onToggled: this.toggleExpand },
     };
 

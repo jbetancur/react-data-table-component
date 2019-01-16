@@ -5,8 +5,8 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
   background-position: center center;
@@ -18,10 +18,17 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
 }
 
 .c0 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 42px;
   -ms-flex: 0 0 42px;
   flex: 0 0 42px;
@@ -29,15 +36,15 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  vertical-align: middle;
   white-space: nowrap;
-  line-height: normal;
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding: 0;
+}
+
+.c0:not(:first-child) {
+  padding-left: 0;
 }
 
 <div

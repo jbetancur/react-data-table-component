@@ -5,8 +5,6 @@ import { renderWithTheme } from '../../test-helpers';
 import { DataTableProvider, defaultState } from '../DataTableContext';
 import TableRow from '../TableRow';
 
-afterEach(cleanup);
-
 const columnsMock = [{
   id: 123,
   name: 'Name',
@@ -17,6 +15,8 @@ const rowMock = {
   id: 456,
   name: 'testname',
 };
+
+afterEach(cleanup);
 
 test('should render correctly with no columns', () => {
   const { container } = renderWithTheme(

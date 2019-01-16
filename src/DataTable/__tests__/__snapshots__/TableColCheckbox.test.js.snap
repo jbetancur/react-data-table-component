@@ -2,28 +2,32 @@
 
 exports[`should render correctly 1`] = `
 .c0 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
+  height: 48px;
 }
 
 <div

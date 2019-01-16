@@ -1,37 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
+import { Cell } from './Cell';
 import { DataTableConsumer } from './DataTableContext';
 
-const TableColStyle = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex: ${props => (props.column.grow === 0 ? 0 : props.column.grow || 1)} 0 0;
-  align-items: center;
-  max-width: ${props => props.column.maxWidth || '100%'};
-  min-width: ${props => (props.column.minWidth || '100px')};
-  ${props => props.column.width && css`
-    min-width: ${props.column.width};
-    max-width: ${props.column.width};
-  `};
-  line-height: normal;
-  white-space: nowrap;
+const TableColStyle = styled(Cell)`
   font-size: ${props => props.theme.header.fontSize};
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: ${props => props.theme.header.fontColor};
   min-height: ${props => props.theme.header.height};
   ${props => props.sortable && 'cursor: pointer'};
-  ${props => props.column.right && 'justify-content: flex-end'};
-  ${props => props.column.center && 'justify-content: center'};
-  padding-left: calc(${props => props.theme.cells.cellPadding} / 2);
-  padding-right: calc(${props => props.theme.cells.cellPadding} / 2);
-  ${props => props.firstCellIndex > 0 && css`
-    &:nth-child(${props.firstCellIndex + 1}) {
-      padding-left: calc(${props.theme.cells.cellPadding} / 6);
-    }
-  `};
-  ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 8)`};
 
   &::before {
     font-size: 12px;
@@ -105,7 +85,7 @@ class TableCol extends PureComponent {
 
     return (
       <DataTableConsumer>
-        {({ sortIcon, sortColumn, sortDirection }) => {
+        {({ sortIcon, sortColumn, sortDirection, internalCell }) => {
           const sortable = column.sortable && sortColumn === column.selector;
 
           return (
@@ -116,6 +96,7 @@ class TableCol extends PureComponent {
               sortDirection={sortDirection}
               sortIcon={sortIcon}
               column={column}
+              internalCell={internalCell}
             >
               {column.name && (
                 <ColumnCellWrapper active={sortable}>
