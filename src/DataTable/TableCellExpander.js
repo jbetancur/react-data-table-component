@@ -2,21 +2,21 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
+import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 
-const TableCellExpanderStyle = styled.div`
-  display: flex;
+const TableCellExpanderStyle = styled(CellBase)`
   flex: 0 0 42px;
   align-items: center;
-  box-sizing: border-box;
-  vertical-align: middle;
   white-space: nowrap;
-  line-height: normal;
   font-weight: 400;
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
   min-height: ${props => props.theme.rows.height};
-  padding: 0;
+
+  &:not(:first-child) {
+    padding-left: 0;
+  }
 `;
 
 class TableCellExpander extends PureComponent {

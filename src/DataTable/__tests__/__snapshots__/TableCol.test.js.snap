@@ -2,11 +2,17 @@
 
 exports[`should render correctly 1`] = `
 .c0 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -16,17 +22,22 @@ exports[`should render correctly 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c0:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c0:last-child {
   padding-right: calc(48px / 2);
 }
 

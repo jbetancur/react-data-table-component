@@ -3,11 +3,16 @@
 exports[`should render correctly with highlightOnHover prop 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -17,15 +22,18 @@ exports[`should render correctly with highlightOnHover prop 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -88,11 +96,16 @@ exports[`should render correctly with no columns 1`] = `
 exports[`should render correctly with pointerOnHover prop 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -102,15 +115,18 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -158,11 +174,16 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
 exports[`should render correctly with striped prop 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -172,15 +193,18 @@ exports[`should render correctly with striped prop 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -228,11 +252,16 @@ exports[`should render correctly with striped prop 1`] = `
 exports[`when column.ignoreRowClick is true should not render the click clip div 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -242,15 +271,18 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -286,11 +318,16 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
 exports[`with children should render correctly 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -300,15 +337,18 @@ exports[`with children should render correctly 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -356,11 +396,16 @@ exports[`with children should render correctly 1`] = `
 exports[`with columns should render correctly if a row does not have a keyField 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -370,15 +415,18 @@ exports[`with columns should render correctly if a row does not have a keyField 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -426,11 +474,16 @@ exports[`with columns should render correctly if a row does not have a keyField 
 exports[`with columns should render correctly if a row has a keyField 1`] = `
 .c1 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -440,15 +493,18 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c1:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c1:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -496,11 +552,16 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
 exports[`with columns should render correctly if expandableRows 1`] = `
 .c3 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -510,15 +571,18 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c3:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c3:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -539,8 +603,8 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
   background-position: center center;
@@ -552,10 +616,17 @@ exports[`with columns should render correctly if expandableRows 1`] = `
 }
 
 .c1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 42px;
   -ms-flex: 0 0 42px;
   flex: 0 0 42px;
@@ -563,15 +634,15 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  vertical-align: middle;
   white-space: nowrap;
-  line-height: normal;
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding: 0;
+}
+
+.c1:not(:first-child) {
+  padding-left: 0;
 }
 
 .c0 {
@@ -613,11 +684,16 @@ exports[`with columns should render correctly if expandableRows 1`] = `
 exports[`with columns should render correctly if selectableRows is true 1`] = `
 .c2 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -627,15 +703,18 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c2:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c2:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -653,24 +732,27 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
 }
 
 .c1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c0 {
@@ -715,11 +797,16 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
 exports[`with columns should render correctly if selectableRows is true and a row is checked 1`] = `
 .c2 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -729,15 +816,18 @@ exports[`with columns should render correctly if selectableRows is true and a ro
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c2:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c2:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -755,24 +845,27 @@ exports[`with columns should render correctly if selectableRows is true and a ro
 }
 
 .c1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c0 {

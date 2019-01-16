@@ -5,6 +5,7 @@ import differenceBy from 'lodash/differenceBy';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
 import tableDataItems from '../constants/sampleDeserts';
+import CustomMaterialMenu from './CustomMaterialMenu';
 import DataTable from '../../../src/DataTable/DataTable';
 import './index.css';
 
@@ -54,6 +55,14 @@ class MaterialTable extends PureComponent {
     ];
 
     const columns = [
+      {
+        name: 'Actions',
+        cell: row => <CustomMaterialMenu row={row} onDeleteRow={this.deleteOne} />,
+        ignoreRowClick: true,
+        allowOverflow: true,
+        button: true,
+        width: '56px',
+      },
       {
         name: 'Name',
         selector: 'name',
@@ -107,6 +116,12 @@ class MaterialTable extends PureComponent {
         sortable: true,
         right: true,
       },
+      {
+        cell: () => <Button raised primary>Action</Button>,
+        ignoreRowClick: true,
+        allowOverflow: true,
+        button: true,
+      },
     ];
 
     const { data, toggleCleared } = this.state;
@@ -137,4 +152,4 @@ class MaterialTable extends PureComponent {
 }
 
 storiesOf('Advanced', module)
-  .add('react-md', () => <MaterialTable />);
+  .add('react-md: Action Buttons', () => <MaterialTable />);

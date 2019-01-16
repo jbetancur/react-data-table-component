@@ -53,11 +53,16 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -67,15 +72,14 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -93,24 +97,27 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c14 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c13 {
@@ -123,11 +130,17 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c11 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -137,17 +150,18 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -169,28 +183,32 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c10 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
+  height: 48px;
 }
 
 .c5 {
@@ -716,11 +734,16 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -730,15 +753,14 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -759,8 +781,8 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
   background-position: center center;
@@ -772,10 +794,17 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 }
 
 .c13 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 42px;
   -ms-flex: 0 0 42px;
   flex: 0 0 42px;
@@ -783,15 +812,15 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  vertical-align: middle;
   white-space: nowrap;
-  line-height: normal;
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding: 0;
+}
+
+.c13:not(:first-child) {
+  padding-left: 0;
 }
 
 .c12 {
@@ -804,11 +833,17 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -818,17 +853,18 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -1094,11 +1130,16 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -1108,15 +1149,14 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -1137,8 +1177,8 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
   background-position: center center;
@@ -1153,8 +1193,8 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7.41%207.84L12%2012.42l4.59-4.58L18%209.25l-6%206-6-6z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.75h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
   background-position: center center;
@@ -1166,10 +1206,17 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 }
 
 .c13 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 42px;
   -ms-flex: 0 0 42px;
   flex: 0 0 42px;
@@ -1177,15 +1224,15 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  vertical-align: middle;
   white-space: nowrap;
-  line-height: normal;
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding: 0;
+}
+
+.c13:not(:first-child) {
+  padding-left: 0;
 }
 
 .c12 {
@@ -1198,11 +1245,17 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -1212,17 +1265,18 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -1659,11 +1713,16 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 
 .c14 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -1673,15 +1732,18 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c14:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c14:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -1708,11 +1770,17 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 }
 
 .c11 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -1722,17 +1790,22 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c11:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2001,11 +2074,16 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 
 .c13 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -2015,15 +2093,18 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c13:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c13:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2050,11 +2131,17 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -2064,17 +2151,22 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c10:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2304,11 +2396,16 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -2318,15 +2415,14 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2344,24 +2440,27 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c14 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c13 {
@@ -2374,11 +2473,17 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c11 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -2388,17 +2493,18 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2420,28 +2526,32 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c10 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
+  height: 48px;
 }
 
 .c5 {
@@ -2703,11 +2813,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -2717,15 +2832,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2743,24 +2857,27 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c14 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c13 {
@@ -2773,11 +2890,17 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c11 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -2787,17 +2910,18 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -2819,28 +2943,32 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c10 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
+  height: 48px;
 }
 
 .c5 {
@@ -3102,11 +3230,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -3116,15 +3249,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -3142,24 +3274,27 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c14 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c13 {
@@ -3172,11 +3307,17 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c11 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -3186,17 +3327,18 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -3218,28 +3360,32 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c10 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
+  height: 48px;
 }
 
 .c5 {
@@ -3503,11 +3649,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -3517,15 +3668,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -3543,24 +3693,27 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c14 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
 }
 
 .c13 {
@@ -3573,11 +3726,17 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c11 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -3587,17 +3746,18 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -3619,28 +3779,32 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c10 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  height: 48px;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  padding-left: calc(48px / 6);
-  padding-left: calc(48px / 6);
+  height: 48px;
 }
 
 .c5 {
@@ -4060,11 +4224,16 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 
 .c13 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4074,15 +4243,18 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c13:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c13:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4109,11 +4281,17 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4123,17 +4301,22 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c10:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4363,11 +4546,16 @@ exports[`should render correctly with columns/data 1`] = `
 
 .c13 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4377,15 +4565,18 @@ exports[`should render correctly with columns/data 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c13:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c13:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4412,11 +4603,17 @@ exports[`should render correctly with columns/data 1`] = `
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4426,17 +4623,22 @@ exports[`should render correctly with columns/data 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c10:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4683,11 +4885,16 @@ exports[`should render without a header if noHeader is true 1`] = `
 
 .c8 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4697,15 +4904,18 @@ exports[`should render without a header if noHeader is true 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c8:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c8:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4732,11 +4942,17 @@ exports[`should render without a header if noHeader is true 1`] = `
 }
 
 .c5 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4746,17 +4962,22 @@ exports[`should render without a header if noHeader is true 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c5:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c5:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4894,11 +5115,16 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 
 .c15 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4908,15 +5134,14 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -4937,8 +5162,8 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   outline: none;
   border: none;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
   background-position: center center;
@@ -4950,10 +5175,17 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 }
 
 .c13 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 42px;
   -ms-flex: 0 0 42px;
   flex: 0 0 42px;
@@ -4961,15 +5193,15 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
-  vertical-align: middle;
   white-space: nowrap;
-  line-height: normal;
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding: 0;
+}
+
+.c13:not(:first-child) {
+  padding-left: 0;
 }
 
 .c12 {
@@ -4982,11 +5214,17 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -4996,17 +5234,18 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
-  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -5272,11 +5511,16 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 
 .c13 {
   position: relative;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -5286,15 +5530,18 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
   color: rgba(0,0,0,.87);
   min-height: 48px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.c13:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c13:last-child {
   padding-right: calc(48px / 2);
 }
 
@@ -5321,11 +5568,17 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 }
 
 .c10 {
-  box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
@@ -5335,17 +5588,22 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   align-items: center;
   max-width: 100%;
   min-width: 100px;
-  line-height: normal;
-  white-space: nowrap;
   font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  white-space: nowrap;
   color: rgba(0,0,0,.54);
   min-height: 48px;
+}
+
+.c10:first-child {
   padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 

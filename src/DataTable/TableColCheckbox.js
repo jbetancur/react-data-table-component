@@ -2,20 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
+import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
-const TableColStyle = styled.div`
-  display: flex;
-  flex: 0 0 42px;
+const TableColStyle = styled(CellBase)`
+  flex: 0 0 48px;
   align-items: center;
-  box-sizing: border-box;
   user-select: none;
   white-space: nowrap;
-  height: ${props => props.theme.header.height};
   font-size: ${props => props.theme.header.fontSize};
   color: ${props => props.theme.header.fontColor};
-  padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
-  padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
+  height: ${props => props.theme.header.height};
 `;
 
 const TableCol = ({
