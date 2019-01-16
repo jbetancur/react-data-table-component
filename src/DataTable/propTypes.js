@@ -21,7 +21,6 @@ export const propTypes = {
     PropTypes.func,
   ]),
   progressCentered: PropTypes.bool,
-  expanderStateField: PropTypes.string,
   expandableRowsComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -88,7 +87,6 @@ export const defaultProps = {
   progressPending: false,
   progressComponent: <h2>Loading...</h2>,
   progressCentered: false,
-  expanderStateField: '$$expander',
   expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
   selectableRowsComponent: 'input',
   selectableRowsComponentProps: {},

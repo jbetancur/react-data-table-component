@@ -57,6 +57,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -66,10 +70,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -102,6 +102,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -111,10 +115,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -135,6 +135,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -144,10 +148,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -188,6 +188,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -197,10 +201,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -738,6 +738,10 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -747,10 +751,6 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -799,19 +799,19 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
@@ -838,6 +838,10 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -847,10 +851,6 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -1023,7 +1023,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
           class="c9"
         >
           <div
-            style="width: 42px;"
+            style="width: 48px;"
           />
           <div
             class="c10"
@@ -1134,6 +1134,10 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -1143,10 +1147,6 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -1211,19 +1211,19 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
@@ -1233,6 +1233,12 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 
 .c13:not(:first-child) {
   padding-left: 0;
+}
+
+.c17 {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
 }
 
 .c12 {
@@ -1250,6 +1256,10 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -1259,10 +1269,6 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -1295,12 +1301,6 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c17 {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: transparent;
 }
 
 .c5 {
@@ -1441,7 +1441,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           class="c9"
         >
           <div
-            style="width: 42px;"
+            style="width: 48px;"
           />
           <div
             class="c10"
@@ -1717,6 +1717,10 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -1726,10 +1730,6 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -1775,6 +1775,10 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -1784,10 +1788,6 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -2078,6 +2078,10 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2087,10 +2091,6 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -2136,6 +2136,10 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2145,10 +2149,6 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -2400,6 +2400,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2409,10 +2413,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -2445,6 +2445,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2454,10 +2458,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -2478,6 +2478,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2487,10 +2491,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -2531,6 +2531,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2540,10 +2544,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2817,6 +2817,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2826,10 +2830,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -2862,6 +2862,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2871,10 +2875,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -2895,6 +2895,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2904,10 +2908,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -2948,6 +2948,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -2957,10 +2961,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -3234,6 +3234,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3243,10 +3247,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -3279,6 +3279,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3288,10 +3292,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -3312,6 +3312,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3321,10 +3325,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -3365,6 +3365,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3374,10 +3378,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -3653,6 +3653,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3662,10 +3666,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -3698,6 +3698,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3707,10 +3711,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -3731,6 +3731,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3740,10 +3744,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -3784,6 +3784,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -3793,10 +3797,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -4228,6 +4228,10 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -4237,10 +4241,6 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -4286,6 +4286,10 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -4295,10 +4299,6 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -4550,6 +4550,10 @@ exports[`should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -4559,10 +4563,6 @@ exports[`should render correctly with columns/data 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -4608,6 +4608,10 @@ exports[`should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -4617,10 +4621,6 @@ exports[`should render correctly with columns/data 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -4889,6 +4889,10 @@ exports[`should render without a header if noHeader is true 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -4898,10 +4902,6 @@ exports[`should render without a header if noHeader is true 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -4947,6 +4947,10 @@ exports[`should render without a header if noHeader is true 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -4956,10 +4960,6 @@ exports[`should render without a header if noHeader is true 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -5119,6 +5119,10 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -5128,10 +5132,6 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -5180,19 +5180,19 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 42px;
-  -ms-flex: 0 0 42px;
-  flex: 0 0 42px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
@@ -5219,6 +5219,10 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -5228,10 +5232,6 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;
@@ -5404,7 +5404,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
           class="c9"
         >
           <div
-            style="width: 42px;"
+            style="width: 48px;"
           />
           <div
             class="c10"
@@ -5515,6 +5515,10 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -5524,10 +5528,6 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 13px;
@@ -5573,6 +5573,10 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -5582,10 +5586,6 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;

@@ -7,6 +7,10 @@ exports[`should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -16,10 +20,6 @@ exports[`should render correctly 1`] = `
   -webkit-flex: 1 0 0;
   -ms-flex: 1 0 0;
   flex: 1 0 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   max-width: 100%;
   min-width: 100px;
   font-size: 12px;

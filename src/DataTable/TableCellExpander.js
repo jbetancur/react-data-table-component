@@ -1,13 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
-import { DataTableConsumer } from './DataTableContext';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 
 const TableCellExpanderStyle = styled(CellBase)`
-  flex: 0 0 42px;
-  align-items: center;
+  flex: 0 0 48px;
   white-space: nowrap;
   font-weight: 400;
   font-size: ${props => props.theme.rows.fontSize};
@@ -19,51 +17,39 @@ const TableCellExpanderStyle = styled(CellBase)`
   }
 `;
 
-class TableCellExpander extends PureComponent {
-  static propTypes = {
-    column: PropTypes.object,
-    row: PropTypes.object,
-    type: PropTypes.oneOf(['checkbox', 'cell', 'expander']),
-    expanded: PropTypes.bool,
-  };
+const TableCellExpander = ({
+  column,
+  row,
+  type,
+  expanded,
+  onExpandToggled,
+}) => (
+  <TableCellExpanderStyle
+    type={type}
+    column={column}
+    onClick={e => e.stopPropagation()}
+  >
+    <ExpanderButton
+      onToggled={onExpandToggled}
+      row={row}
+      expanded={expanded}
+    />
+  </TableCellExpanderStyle>
+);
 
-  static defaultProps = {
-    column: {},
-    row: {},
-    type: null,
-    expanded: false,
-  };
+TableCellExpander.propTypes = {
+  column: PropTypes.object,
+  row: PropTypes.object,
+  type: PropTypes.oneOf(['checkbox', 'cell', 'expander']),
+  expanded: PropTypes.bool,
+  onExpandToggled: PropTypes.func.isRequired,
+};
 
-  handleCellClick = e => {
-    e.stopPropagation();
-  };
-
-  render() {
-    const {
-      column,
-      row,
-      type,
-      expanded,
-    } = this.props;
-
-    return (
-      <DataTableConsumer>
-        {({ onToggled }) => (
-          <TableCellExpanderStyle
-            type={type}
-            column={column}
-            onClick={this.handleCellClick}
-          >
-            <ExpanderButton
-              onToggled={onToggled}
-              row={row}
-              expanded={expanded}
-            />
-          </TableCellExpanderStyle>
-        )}
-      </DataTableConsumer>
-    );
-  }
-}
+TableCellExpander.defaultProps = {
+  column: {},
+  row: {},
+  type: null,
+  expanded: false,
+};
 
 export default withTheme(TableCellExpander);

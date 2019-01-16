@@ -11,7 +11,6 @@ import TableHeadRow from './TableHeadRow';
 import TableRow from './TableRow';
 import TableCol from './TableCol';
 import TableColCheckbox from './TableColCheckbox';
-import ExpanderRow from './ExpanderRow';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import ResponsiveWrapper from './ResponsiveWrapper';
@@ -20,7 +19,7 @@ import TableWrapper from './TableWrapper';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './propTypes';
 import { decorateColumns, getSortDirection } from './util';
-import { handleSelectAll, handleRowSelected, toggleExpand, handleSort, clearSelected } from './statemgmt';
+import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
 
 const recalculateRows = ({ defaultSortField, data }, { sortDirection }) =>
@@ -120,7 +119,7 @@ class DataTable extends Component {
     const { onSort } = this.props;
     const { sortColumn, sortDirection } = this.state;
 
-    this.setState((state, props) => handleSort(props, selector, sortable, state));
+    this.setState(state => handleSort(selector, sortable, state));
 
     if (sortable && onSort) {
       onSort(sortColumn, sortDirection);
@@ -151,10 +150,6 @@ class DataTable extends Component {
     }
   }
 
-  toggleExpand = row => {
-    this.setState((state, props) => toggleExpand(props, row, state));
-  }
-
   renderColumns() {
     return (
       this.columns.map(column => (
@@ -169,8 +164,6 @@ class DataTable extends Component {
 
   renderRows() {
     const {
-      expandableRowsComponent,
-      expanderStateField,
       keyField,
       pagination,
     } = this.props;
@@ -181,7 +174,6 @@ class DataTable extends Component {
       rowsPerPage,
     } = this.state;
 
-    const getExpanderRowbByParentId = parent => rows.find(r => r.id === parent);
     const lastIndex = currentPage * rowsPerPage;
     const firstIndex = lastIndex - rowsPerPage;
 
@@ -190,28 +182,14 @@ class DataTable extends Component {
       : rows;
 
     return (
-      currentRows.map(row => {
-        if (row[expanderStateField]) {
-          return (
-            <ExpanderRow
-              key={`expander--${row[keyField]}`}
-              data={getExpanderRowbByParentId(row.parent)}
-            >
-              {expandableRowsComponent}
-            </ExpanderRow>
-          );
-        }
-
-        return (
-          <TableRow
-            key={row[keyField]}
-            row={row}
-            onRowClicked={this.handleRowClicked}
-            onRowSelected={this.handleRowSelected}
-            onToggled={this.toggleExpand}
-          />
-        );
-      })
+      currentRows.map((row, i) => (
+        <TableRow
+          key={row[keyField] || i}
+          row={row}
+          onRowClicked={this.handleRowClicked}
+          onRowSelected={this.handleRowSelected}
+        />
+      ))
     );
   }
 
@@ -225,7 +203,7 @@ class DataTable extends Component {
       <TableHead>
         <TableHeadRow>
           {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
-          {expandableRows && <div style={{ width: '42px' }} />}
+          {expandableRows && <div style={{ width: '48px' }} />}
           {this.renderColumns()}
         </TableHeadRow>
       </TableHead>
@@ -265,13 +243,11 @@ class DataTable extends Component {
 
     const theme = merge(defaultTheme, customTheme);
     const enabledPagination = pagination && !progressPending && rows.length > 0;
-
     const init = {
       ...this.props,
       ...this.state,
       ...{ columns: this.columns },
       ...{ internalCell: selectableRows || expandableRows },
-      ...{ onToggled: this.toggleExpand },
     };
 
     return (

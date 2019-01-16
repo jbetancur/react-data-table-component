@@ -1,4 +1,4 @@
-import React, { PureComponent, Children, cloneElement } from 'react';
+import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 
@@ -14,32 +14,26 @@ const ExpanderRowStyle = styled.div`
   background-color: ${props => props.theme.expander.backgroundColor};
 `;
 
-class ExpanderRow extends PureComponent {
-  static propTypes = {
-    data: PropTypes.object,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-  };
+const ExpanderRow = ({
+  data,
+  children,
+}) => (
+  <ExpanderRowStyle>
+    {renderChildren(children, data)}
+  </ExpanderRowStyle>
+);
 
-  static defaultProps = {
-    data: {},
-    children: null,
-  };
+ExpanderRow.propTypes = {
+  data: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+};
 
-  render() {
-    const {
-      data,
-      children,
-    } = this.props;
-
-    return (
-      <ExpanderRowStyle>
-        {renderChildren(children, data)}
-      </ExpanderRowStyle>
-    );
-  }
-}
+ExpanderRow.defaultProps = {
+  data: {},
+  children: null,
+};
 
 export default withTheme(ExpanderRow);

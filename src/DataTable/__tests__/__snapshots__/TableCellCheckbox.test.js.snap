@@ -7,6 +7,10 @@ exports[`should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -16,10 +20,6 @@ exports[`should render correctly 1`] = `
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -45,6 +45,10 @@ exports[`should render correctly if a selectableRowsComponent is provided 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -54,10 +58,6 @@ exports[`should render correctly if a selectableRowsComponent is provided 1`] = 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;
@@ -79,6 +79,10 @@ exports[`should render correctly if a selectableRowsComponent is provided with s
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   line-height: normal;
   padding-left: calc(48px / 6);
@@ -88,10 +92,6 @@ exports[`should render correctly if a selectableRowsComponent is provided with s
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-size: 13px;
   color: rgba(0,0,0,.87);
   min-height: 48px;

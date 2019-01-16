@@ -7,7 +7,6 @@ import Checkbox from './Checkbox';
 
 const TableColStyle = styled(CellBase)`
   flex: 0 0 48px;
-  align-items: center;
   user-select: none;
   white-space: nowrap;
   font-size: ${props => props.theme.header.fontSize};
