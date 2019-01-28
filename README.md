@@ -59,9 +59,9 @@ Nothing new here - we are using an array of object literals and properties to de
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
 | maxWidth | string | no       | give the column a maxWidth                                                                                    |
-| right    | bool   | no       | right aligns the content in the cell. usefil for numbers                                                      |
+| right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
-| compact  | bool   | no       | reduces the padding in the cell. useful for custom cells icons or buttons                                     |
+| compact  | bool   | no       | reduces the padding in the cell by 50%                                     |
 | button   | bool   | no       | applies additional styling when using a button                                                                |
 | wrap     | bool   | no       | whether the cell content shold be allowed to wrap.                                                            |
 | allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning                                     |
@@ -152,7 +152,7 @@ The following declarative structure creates a sortable table of Arnold movie tit
 ```js
 import DataTable from 'react-data-table-component';
 
-const data = [{ title: 'Conan the Barbarian', year: '1982' } ...];
+const data = [{ id: 1, title: 'Conan the Barbarian', year: '1982' } ...];
 const columns = [
   {
     name: 'Title',
@@ -274,7 +274,7 @@ Let's give our Movie list a summary, but in the same cell as `Name`:
 ```js
 ....
 
-const data = [{ title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982' } ...];
+const data = [{ id: 1, title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982' } ...];
 const columns = [
   {
     name: 'Title',
@@ -309,13 +309,12 @@ class MyComponent extends Component {
 );
 ```
 
-
 ## Expandable Rows
 Let's make our rows expandable so we can view more details:
 ```js
 ...
 
-const data = [{ title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982', image: 'http://conan.image.png' } ...];
+const data = [{ id: 1, title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982', image: 'http://conan.image.png' } ...];
 const columns = [
   {
     name: 'Title',
