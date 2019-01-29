@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
@@ -46,4 +46,4 @@ TableCellCheckbox.defaultProps = {
   onClick: null,
 };
 
-export default withTheme(TableCellCheckbox);
+export default TableCellCheckbox;

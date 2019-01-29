@@ -1,6 +1,6 @@
 import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 
 // Make "data" available on our any child component
 // eslint-disable-next-line arrow-body-style
@@ -36,4 +36,4 @@ ExpanderRow.defaultProps = {
   children: null,
 };
 
-export default withTheme(ExpanderRow);
+export default ExpanderRow;

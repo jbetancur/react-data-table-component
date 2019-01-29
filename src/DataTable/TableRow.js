@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
@@ -96,13 +96,13 @@ class TableRow extends PureComponent {
                 />
               )}
 
-              {columns.map(col => (
+              {columns.map(column => (
                 <TableCell
                   type="cell"
-                  key={`cell-${col.id}-${row[keyField]}`}
-                  column={col}
+                  key={`cell-${column.id}-${row[keyField]}`}
+                  column={column}
                   row={row}
-                  rowClickable={!!onRowClicked}
+                  rowClickable={!!onRowClicked || column.button}
                 />
               ))}
             </TableRowStyle>
@@ -121,5 +121,4 @@ class TableRow extends PureComponent {
     );
   }
 }
-
-export default withTheme(TableRow);
+export default TableRow;

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 
@@ -17,15 +17,13 @@ const TableCellExpanderStyle = styled(CellBase)`
   }
 `;
 
-const TableCellExpander = ({
+const TableCellExpander = memo(({
   column,
   row,
-  type,
   expanded,
   onExpandToggled,
 }) => (
   <TableCellExpanderStyle
-    type={type}
     column={column}
     onClick={e => e.stopPropagation()}
   >
@@ -35,12 +33,11 @@ const TableCellExpander = ({
       expanded={expanded}
     />
   </TableCellExpanderStyle>
-);
+));
 
 TableCellExpander.propTypes = {
   column: PropTypes.object,
   row: PropTypes.object,
-  type: PropTypes.oneOf(['checkbox', 'cell', 'expander']),
   expanded: PropTypes.bool,
   onExpandToggled: PropTypes.func.isRequired,
 };
@@ -48,8 +45,7 @@ TableCellExpander.propTypes = {
 TableCellExpander.defaultProps = {
   column: {},
   row: {},
-  type: null,
   expanded: false,
 };
 
-export default withTheme(TableCellExpander);
+export default TableCellExpander;

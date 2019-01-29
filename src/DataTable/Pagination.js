@@ -35,14 +35,13 @@ const Button = styled.button`
 
 const PageList = styled.div`
   display: flex;
-  list-style: none;
   border-radius: 4px;
   margin-left: 20px;
   white-space: nowrap;
 `;
 
 const Span = styled.span`
-  flex-shrink: 0;
+  flex-shrink: 1;
   font-size: ${props => props.theme.pagination.fontSize};
   color: ${props => props.theme.pagination.fontColor};
 `;
@@ -62,7 +61,6 @@ export default class Pagination extends PureComponent {
 
     return Math.ceil(rowCount / rowsPerPage);
   }
-
 
   // TODO: Future numbers implementation
   // handlePage = e => {
@@ -133,8 +131,8 @@ export default class Pagination extends PureComponent {
             <Span>
               {status}
             </Span>
-            <PageList>
 
+            <PageList>
               <Button
                 id="pagination-first-page"
                 onClick={this.handleFirst}

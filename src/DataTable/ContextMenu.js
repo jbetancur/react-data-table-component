@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
 
 const Title = styled.div`
@@ -49,4 +49,4 @@ const ContextMenu = () => (
   </DataTableConsumer>
 );
 
-export default withTheme(ContextMenu);
+export default ContextMenu;

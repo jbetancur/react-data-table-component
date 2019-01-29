@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import ContextMenu from './ContextMenu';
 
 const TableHeaderStyle = styled.header`
   position: relative;
   overflow: visible;
   display: flex;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 `;
@@ -62,4 +62,4 @@ TableHeader.defaultProps = {
   actions: [],
 };
 
-export default withTheme(TableHeader);
+export default TableHeader;

@@ -114,7 +114,6 @@ class MaterialTable extends PureComponent {
     return (
       <Card style={{ height: '100%' }}>
         <DataTable
-          overflowY
           title="Desserts"
           columns={columns}
           data={data}

@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 .c0 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div

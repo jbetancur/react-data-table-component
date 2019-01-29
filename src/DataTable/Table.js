@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const disabled = css`
+  pointer-events: none;
+  opacity: 0.4;
+`;
 
 const TableStyle = styled.div`
   display: flex;
@@ -6,8 +11,7 @@ const TableStyle = styled.div`
   width: 100%;
   height: 100%;
   max-width: 100%;
-  ${props => props.disabled && 'pointer-events: none'};
-  ${props => props.disabled && 'opacity: 0.4'};
+  ${props => props.disabled && disabled};
 `;
 
 export default TableStyle;

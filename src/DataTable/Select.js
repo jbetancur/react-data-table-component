@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import DropDownIcon from '../icons/Dropdown';
 
 const SelectControl = styled.select`
@@ -63,4 +63,4 @@ const Select = props => (
   </SelectWrapper>
 );
 
-export default withTheme(Select);
+export default Select;

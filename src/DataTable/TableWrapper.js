@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const TableWrapper = styled.div`
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 `;
 
 export default TableWrapper;

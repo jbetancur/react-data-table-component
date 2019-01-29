@@ -23,11 +23,14 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   background-color: transparent;
 }
 
-.c17 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
@@ -36,9 +39,9 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 56px;
   min-height: 56px;
   padding-right: 8px;
+  padding-left: 8px;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
 }
@@ -51,7 +54,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -79,16 +82,16 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -96,7 +99,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   height: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -120,7 +123,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   min-height: 48px;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -255,9 +258,9 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -266,7 +269,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -302,6 +305,16 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   margin-left: 5px;
 }
 
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -309,13 +322,13 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
-.c20 {
+.c21 {
   cursor: pointer;
   height: 24px;
   min-width: 24px;
@@ -336,19 +349,19 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   appearance: none;
 }
 
-.c20 .ddown-color {
+.c21 .ddown-color {
   fill: red;
 }
 
-.c20::-ms-expand {
+.c21::-ms-expand {
   display: none;
 }
 
-.c20:disabled::-ms-expand {
+.c21:disabled::-ms-expand {
   background: #f60;
 }
 
-.c19 {
+.c20 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -359,7 +372,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   color: rgba(0,0,0,.54);
 }
 
-.c19 svg {
+.c20 svg {
   top: 1;
   right: 0;
   color: rgba(0,0,0,0.54);
@@ -381,7 +394,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   flex-shrink: 0;
 }
 
-.c22 {
+.c23 {
   position: relative;
   display: block;
   outline: none;
@@ -401,34 +414,33 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   transition: 0.3s;
 }
 
-.c22 svg {
+.c23 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c22:disabled {
+.c23:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c22:hover:not(:disabled) {
+.c23:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c21 {
+.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  list-style: none;
   border-radius: 4px;
   margin-left: 20px;
   white-space: nowrap;
 }
 
-.c18 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -490,14 +502,14 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c13"
         offset="250px"
       >
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-1"
@@ -508,10 +520,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -522,10 +534,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           </div>
         </div>
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-2"
@@ -536,10 +548,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -552,18 +564,18 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
       </div>
     </div>
     <nav
-      class="c17"
+      class="c18"
     >
       <span
-        class="c18"
+        class="c19"
       >
         Rows per page:
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <select
-          class="c20"
+          class="c21"
         >
           <option
             selected=""
@@ -608,15 +620,15 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
         </svg>
       </div>
       <span
-        class="c18"
+        class="c19"
       >
         1-2 of 2
       </span>
       <div
-        class="c21"
+        class="c22"
       >
         <button
-          class="c22"
+          class="c23"
           disabled=""
           id="pagination-first-page"
         >
@@ -636,7 +648,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           </svg>
         </button>
         <button
-          class="c22"
+          class="c23"
           disabled=""
           id="pagination-previous-page"
         >
@@ -656,7 +668,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           </svg>
         </button>
         <button
-          class="c22"
+          class="c23"
           disabled=""
           id="pagination-next-page"
         >
@@ -676,7 +688,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           </svg>
         </button>
         <button
-          class="c22"
+          class="c23"
           disabled=""
           id="pagination-last-page"
         >
@@ -732,7 +744,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -760,16 +772,16 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -777,7 +789,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   height: 100%;
 }
 
-.c14 {
+.c15 {
   outline: none;
   border: none;
   display: block;
@@ -789,11 +801,11 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   background-repeat: no-repeat;
 }
 
-.c14:hover {
+.c15:hover {
   cursor: pointer;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -819,11 +831,11 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   min-height: 48px;
 }
 
-.c13:not(:first-child) {
+.c14:not(:first-child) {
   padding-left: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -929,9 +941,9 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -940,7 +952,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -976,6 +988,16 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -983,10 +1005,10 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -1038,25 +1060,25 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <button
-              class="c14"
+              class="c15"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -1067,21 +1089,21 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <button
-              class="c14"
+              class="c15"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -1128,7 +1150,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1156,16 +1178,16 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -1173,7 +1195,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   height: 100%;
 }
 
-.c18 {
+.c19 {
   outline: none;
   border: none;
   display: block;
@@ -1185,11 +1207,11 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   background-repeat: no-repeat;
 }
 
-.c18:hover {
+.c19:hover {
   cursor: pointer;
 }
 
-.c14 {
+.c15 {
   outline: none;
   border: none;
   display: block;
@@ -1201,11 +1223,11 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   background-repeat: no-repeat;
 }
 
-.c14:hover {
+.c15:hover {
   cursor: pointer;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1231,17 +1253,17 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   min-height: 48px;
 }
 
-.c13:not(:first-child) {
+.c14:not(:first-child) {
   padding-left: 0;
 }
 
-.c17 {
+.c18 {
   width: 100%;
   box-sizing: border-box;
   background-color: transparent;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1347,9 +1369,9 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1358,7 +1380,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -1394,6 +1416,16 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -1401,10 +1433,10 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -1456,25 +1488,25 @@ exports[`expandableRows should render correctly when expandableRows is true and 
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <button
-              class="c14"
+              class="c15"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -1485,7 +1517,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           </div>
         </div>
         <div
-          class="c17"
+          class="c18"
         >
           <div
             data="[object Object]"
@@ -1494,21 +1526,21 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <button
-              class="c18"
+              class="c19"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -1569,9 +1601,9 @@ exports[`progress/nodata should render correctly when progressPending is false a
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1580,7 +1612,7 @@ exports[`progress/nodata should render correctly when progressPending is false a
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -1623,10 +1655,10 @@ exports[`progress/nodata should render correctly when progressPending is false a
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 .c7 {
@@ -1711,7 +1743,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   width: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1739,20 +1771,20 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   min-height: 48px;
 }
 
-.c14:first-child {
+.c15:first-child {
   padding-left: calc(48px / 2);
 }
 
-.c14:last-child {
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c14 .react-data-table--cell-content {
+.c15 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c15 {
+.c16 {
   position: absolute;
   top: 0;
   left: 0;
@@ -1760,7 +1792,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   height: 100%;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1870,9 +1902,9 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1881,7 +1913,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -1917,6 +1949,16 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   margin-left: 5px;
 }
 
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -1939,10 +1981,10 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -1998,17 +2040,17 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
         </div>
       </div>
       <div
-        class=""
+        class="c13"
         offset="250px"
       >
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <div
-              class="c15"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2019,13 +2061,13 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
           </div>
         </div>
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <div
-              class="c15"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2072,7 +2114,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   width: 100%;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2100,20 +2142,20 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   min-height: 48px;
 }
 
-.c13:first-child {
+.c14:first-child {
   padding-left: calc(48px / 2);
 }
 
-.c13:last-child {
+.c14:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c13 .react-data-table--cell-content {
+.c14 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c14 {
+.c15 {
   position: absolute;
   top: 0;
   left: 0;
@@ -2121,7 +2163,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   height: 100%;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2231,9 +2273,9 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2242,7 +2284,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -2278,6 +2320,16 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -2285,10 +2337,10 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -2337,17 +2389,17 @@ exports[`prop changes should update state if the data prop changes 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <div
-              class="c14"
+              class="c15"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2394,7 +2446,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2422,16 +2474,16 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -2439,7 +2491,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   height: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2463,7 +2515,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   min-height: 48px;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2598,9 +2650,9 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2609,7 +2661,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -2645,6 +2697,16 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   margin-left: 5px;
 }
 
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -2652,10 +2714,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -2715,14 +2777,14 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
         </div>
       </div>
       <div
-        class=""
+        class="c13"
         offset="250px"
       >
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-1"
@@ -2733,10 +2795,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2747,10 +2809,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
           </div>
         </div>
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-2"
@@ -2761,10 +2823,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2811,7 +2873,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2839,16 +2901,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -2856,7 +2918,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   height: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2880,7 +2942,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   min-height: 48px;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3015,9 +3077,9 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3026,7 +3088,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -3062,6 +3124,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   margin-left: 5px;
 }
 
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -3069,10 +3141,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -3132,14 +3204,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
         </div>
       </div>
       <div
-        class=""
+        class="c13"
         offset="250px"
       >
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-1"
@@ -3150,10 +3222,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -3164,10 +3236,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           </div>
         </div>
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-2"
@@ -3178,10 +3250,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -3228,7 +3300,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3256,16 +3328,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -3273,7 +3345,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   height: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3297,7 +3369,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   min-height: 48px;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3432,9 +3504,9 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3443,7 +3515,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -3479,6 +3551,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   margin-left: 5px;
 }
 
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -3486,10 +3568,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -3551,14 +3633,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
         </div>
       </div>
       <div
-        class=""
+        class="c13"
         offset="250px"
       >
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-1"
@@ -3569,10 +3651,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -3583,10 +3665,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           </div>
         </div>
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-2"
@@ -3597,10 +3679,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -3647,7 +3729,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3675,16 +3757,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -3692,7 +3774,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   height: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3716,7 +3798,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   min-height: 48px;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3851,9 +3933,9 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3862,7 +3944,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -3898,6 +3980,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   margin-left: 5px;
 }
 
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -3905,10 +3997,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -3970,14 +4062,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
         </div>
       </div>
       <div
-        class=""
+        class="c13"
         offset="250px"
       >
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-1"
@@ -3988,10 +4080,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -4002,10 +4094,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           </div>
         </div>
         <div
-          class="c13"
+          class="c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <input
               aria-label="select-row-2"
@@ -4016,10 +4108,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -4080,9 +4172,9 @@ exports[`should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -4091,7 +4183,7 @@ exports[`should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -4134,10 +4226,10 @@ exports[`should render correctly 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 .c7 {
@@ -4222,7 +4314,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   width: 100%;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4250,20 +4342,20 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   min-height: 48px;
 }
 
-.c13:first-child {
+.c14:first-child {
   padding-left: calc(48px / 2);
 }
 
-.c13:last-child {
+.c14:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c13 .react-data-table--cell-content {
+.c14 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c14 {
+.c15 {
   position: absolute;
   top: 0;
   left: 0;
@@ -4271,7 +4363,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   height: 100%;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4381,9 +4473,9 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -4392,7 +4484,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -4428,6 +4520,16 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -4435,10 +4537,10 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -4487,17 +4589,17 @@ exports[`should render correctly if the keyField is overriden 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <div
-              class="c14"
+              class="c15"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -4544,7 +4646,7 @@ exports[`should render correctly with columns/data 1`] = `
   width: 100%;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4572,20 +4674,20 @@ exports[`should render correctly with columns/data 1`] = `
   min-height: 48px;
 }
 
-.c13:first-child {
+.c14:first-child {
   padding-left: calc(48px / 2);
 }
 
-.c13:last-child {
+.c14:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c13 .react-data-table--cell-content {
+.c14 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c14 {
+.c15 {
   position: absolute;
   top: 0;
   left: 0;
@@ -4593,7 +4695,7 @@ exports[`should render correctly with columns/data 1`] = `
   height: 100%;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4703,9 +4805,9 @@ exports[`should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -4714,7 +4816,7 @@ exports[`should render correctly with columns/data 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -4750,6 +4852,16 @@ exports[`should render correctly with columns/data 1`] = `
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -4757,10 +4869,10 @@ exports[`should render correctly with columns/data 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -4809,17 +4921,17 @@ exports[`should render correctly with columns/data 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <div
-              class="c14"
+              class="c15"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -4830,13 +4942,13 @@ exports[`should render correctly with columns/data 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <div
-              class="c14"
+              class="c15"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -4883,7 +4995,7 @@ exports[`should render without a header if noHeader is true 1`] = `
   width: 100%;
 }
 
-.c8 {
+.c9 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4911,20 +5023,20 @@ exports[`should render without a header if noHeader is true 1`] = `
   min-height: 48px;
 }
 
-.c8:first-child {
+.c9:first-child {
   padding-left: calc(48px / 2);
 }
 
-.c8:last-child {
+.c9:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c8 .react-data-table--cell-content {
+.c9 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   top: 0;
   left: 0;
@@ -4932,7 +5044,7 @@ exports[`should render without a header if noHeader is true 1`] = `
   height: 100%;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4998,6 +5110,16 @@ exports[`should render without a header if noHeader is true 1`] = `
   align-items: center;
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -5005,10 +5127,10 @@ exports[`should render without a header if noHeader is true 1`] = `
 }
 
 .c1 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -5039,17 +5161,17 @@ exports[`should render without a header if noHeader is true 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c7"
         offset="250px"
       >
         <div
-          class="c7"
+          class="c8"
         >
           <div
-            class="c8"
+            class="c9"
           >
             <div
-              class="c9"
+              class="c10"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -5060,13 +5182,13 @@ exports[`should render without a header if noHeader is true 1`] = `
           </div>
         </div>
         <div
-          class="c7"
+          class="c8"
         >
           <div
-            class="c8"
+            class="c9"
           >
             <div
-              class="c9"
+              class="c10"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -5113,7 +5235,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   width: 100%;
 }
 
-.c15 {
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -5141,16 +5263,16 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   min-height: 48px;
 }
 
-.c15:last-child {
+.c16:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c15 .react-data-table--cell-content {
+.c16 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -5158,7 +5280,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   height: 100%;
 }
 
-.c14 {
+.c15 {
   outline: none;
   border: none;
   display: block;
@@ -5170,11 +5292,11 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   background-repeat: no-repeat;
 }
 
-.c14:hover {
+.c15:hover {
   cursor: pointer;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -5200,11 +5322,11 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   min-height: 48px;
 }
 
-.c13:not(:first-child) {
+.c14:not(:first-child) {
   padding-left: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5310,9 +5432,9 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -5321,7 +5443,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -5357,6 +5479,16 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -5364,10 +5496,10 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -5419,25 +5551,25 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <button
-              class="c14"
+              class="c15"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -5448,21 +5580,21 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <button
-              class="c14"
+              class="c15"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="c15"
+            class="c16"
           >
             <div
-              class="c16"
+              class="c17"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -5509,7 +5641,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   width: 100%;
 }
 
-.c13 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -5537,20 +5669,20 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   min-height: 48px;
 }
 
-.c13:first-child {
+.c14:first-child {
   padding-left: calc(48px / 2);
 }
 
-.c13:last-child {
+.c14:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c13 .react-data-table--cell-content {
+.c14 .react-data-table--cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c14 {
+.c15 {
   position: absolute;
   top: 0;
   left: 0;
@@ -5558,7 +5690,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   height: 100%;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5668,9 +5800,9 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -5679,7 +5811,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -5715,6 +5847,16 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   margin-left: 5px;
 }
 
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c0 {
   position: relative;
   width: 100%;
@@ -5722,10 +5864,10 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 }
 
 .c6 {
-  display: table;
   position: relative;
-  height: 100%;
+  display: table;
   width: 100%;
+  height: 100%;
 }
 
 <div
@@ -5774,17 +5916,17 @@ exports[`sorting should render correctly with a default sort field 1`] = `
         </div>
       </div>
       <div
-        class=""
+        class="c12"
         offset="250px"
       >
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <div
-              class="c14"
+              class="c15"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -5795,13 +5937,13 @@ exports[`sorting should render correctly with a default sort field 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
         >
           <div
-            class="c13"
+            class="c14"
           >
             <div
-              class="c14"
+              class="c15"
               data-tag="___react-data-table--click-clip___"
             />
             <div

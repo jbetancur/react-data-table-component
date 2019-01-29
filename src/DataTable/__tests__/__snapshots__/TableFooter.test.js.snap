@@ -6,6 +6,9 @@ exports[`should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
@@ -14,9 +17,9 @@ exports[`should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 56px;
   min-height: 56px;
   padding-right: 8px;
+  padding-left: 8px;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
 }
