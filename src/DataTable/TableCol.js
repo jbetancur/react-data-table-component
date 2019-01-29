@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
 import { DataTableConsumer } from './DataTableContext';
 
@@ -116,4 +116,4 @@ class TableCol extends PureComponent {
   }
 }
 
-export default withTheme(TableCol);
+export default TableCol;

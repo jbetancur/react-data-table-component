@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
@@ -14,7 +14,7 @@ const TableColStyle = styled(CellBase)`
   height: ${props => props.theme.header.height};
 `;
 
-const TableCol = ({
+const TableCol = memo(({
   onClick,
 }) => (
   <DataTableConsumer>
@@ -32,7 +32,7 @@ const TableCol = ({
       </TableColStyle>
     )}
   </DataTableConsumer>
-);
+));
 
 TableCol.propTypes = {
   onClick: PropTypes.func,
@@ -42,4 +42,4 @@ TableCol.defaultProps = {
   onClick: null,
 };
 
-export default withTheme(TableCol);
+export default TableCol;

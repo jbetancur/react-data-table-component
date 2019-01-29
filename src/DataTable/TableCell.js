@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
 import { Cell } from './Cell';
 import { getProperty } from './util';
@@ -61,4 +61,4 @@ TableCell.defaultProps = {
   rowClickable: false,
 };
 
-export default withTheme(TableCell);
+export default TableCell;

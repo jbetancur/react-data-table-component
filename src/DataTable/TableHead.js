@@ -1,4 +1,4 @@
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 
 const TableHead = styled.div`
   display: flex;
@@ -6,4 +6,4 @@ const TableHead = styled.div`
   background-color: ${props => props.theme.header.backgroundColor};
 `;
 
-export default withTheme(TableHead);
+export default TableHead;

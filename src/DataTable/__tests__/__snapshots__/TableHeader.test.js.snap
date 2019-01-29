@@ -45,9 +45,9 @@ exports[`<TableHeader title contextActions /> should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -56,7 +56,7 @@ exports[`<TableHeader title contextActions /> should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -161,9 +161,9 @@ exports[`<TableHeader title contextTitle /> should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -172,7 +172,7 @@ exports[`<TableHeader title contextTitle /> should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
@@ -277,9 +277,9 @@ exports[`<TableHeader title showContextMenu /> should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -288,7 +288,7 @@ exports[`<TableHeader title showContextMenu /> should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px 16px 16px 24px;
+  padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
 }
