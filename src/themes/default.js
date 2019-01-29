@@ -12,7 +12,7 @@ export default {
       backgroundColor: '#e3f2fd',
       fontSize: '18px',
       fontColor: 'rgba(0,0,0,.64)',
-      transitionTime: '0.15s',
+      transitionTime: '225ms',
     },
   },
   rows: {

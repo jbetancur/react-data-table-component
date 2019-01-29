@@ -46,8 +46,26 @@ exports[`should render correctly 1`] = `
   padding-right: 4px;
 }
 
+.c1 {
+  margin-left: -3px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div
   class="c0"
-  id="column-undefined"
-/>
+  id="column-name"
+>
+  <div
+    class="c1"
+  >
+    test
+  </div>
+</div>
 `;
