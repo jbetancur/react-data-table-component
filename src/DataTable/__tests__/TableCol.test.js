@@ -7,7 +7,12 @@ import TableCol from '../TableCol';
 afterEach(cleanup);
 
 test('should render correctly', () => {
-  const { container } = renderWithTheme(<TableCol />);
+  const { container } = renderWithTheme(
+    <TableCol
+      onColumnClick={jest.fn()}
+      column={{ id: 1, name: 'test', selector: 'name' }}
+    />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });

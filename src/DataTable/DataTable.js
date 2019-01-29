@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
+import memoize from 'memoize-one';
 import orderBy from 'lodash/orderBy';
-import isEqual from 'lodash/isEqual';
 import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
 import Table from './Table';
@@ -22,9 +22,6 @@ import { decorateColumns, getSortDirection } from './util';
 import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
 import defaultTheme from '../themes/default';
 
-const recalculateRows = ({ defaultSortField, data }, { sortDirection }) =>
-  (defaultSortField ? orderBy(data, defaultSortField, sortDirection) : data);
-
 class DataTable extends Component {
   static propTypes = propTypes;
 
@@ -36,22 +33,6 @@ class DataTable extends Component {
       return clearSelected(props.clearSelectedRows);
     }
 
-    // Keep data state in sync if it changes
-    if (!isEqual(props.data, state.data) || !state.rows.length) {
-      return {
-        data: props.data,
-        rows: recalculateRows(props, state),
-      };
-    }
-
-    if (props.defaultSortAsc !== state.defaultSortAsc
-      || props.defaultSortField !== state.defaultSortField) {
-      return {
-        sortDirection: getSortDirection(props.defaultSortAsc),
-        sortColumn: props.defaultSortField,
-      };
-    }
-
     return null;
   }
 
@@ -60,17 +41,15 @@ class DataTable extends Component {
 
     const sortDirection = getSortDirection(props.defaultSortAsc);
     this.columns = decorateColumns(props.columns);
+    this.sortedRows = memoize((rows, defaultSortField, direction) => orderBy(rows, defaultSortField, direction));
+    this.PaginationComponent = props.paginationComponent;
     this.state = {
       allSelected: false,
       selectedCount: 0,
       selectedRows: [],
       sortColumn: props.defaultSortField,
       sortDirection,
-      rows: [],
-      data: props.data,
       clearSelectedRows: false,
-      defaultSortAsc: props.defaultSortAsc,
-      defaultSortField: props.defaultSortField,
       currentPage: 1,
       rowsPerPage: props.paginationPerPage,
     };
@@ -85,13 +64,12 @@ class DataTable extends Component {
       || prevState.sortDirection !== sortDirection
       || prevState.sortColumn !== sortColumn)
     ) {
-      const { allSelected, selectedCount, rows, clearSelectedRows } = this.state;
+      const { allSelected, selectedCount, clearSelectedRows } = this.state;
 
       onTableUpdate({
         allSelected,
         selectedCount,
         selectedRows,
-        rows,
         sortColumn,
         sortDirection,
         clearSelectedRows,
@@ -100,11 +78,15 @@ class DataTable extends Component {
   }
 
   handleSelectAll = () => {
-    this.setState(state => handleSelectAll(state));
+    const { data } = this.props;
+
+    this.setState(state => handleSelectAll(data, state.allSelected));
   }
 
   handleRowSelected = row => {
-    this.setState(state => handleRowSelected(row, state));
+    const { data } = this.props;
+
+    this.setState(state => handleRowSelected(data, row, state.selectedRows));
   }
 
   handleRowClicked = (row, e) => {
@@ -165,21 +147,24 @@ class DataTable extends Component {
   renderRows() {
     const {
       keyField,
+      data,
       pagination,
     } = this.props;
 
     const {
-      rows,
       currentPage,
       rowsPerPage,
+      sortDirection,
+      sortColumn,
     } = this.state;
 
     const lastIndex = currentPage * rowsPerPage;
     const firstIndex = lastIndex - rowsPerPage;
+    const sortedRows = this.sortedRows(data, sortColumn, sortDirection);
 
     const currentRows = pagination
-      ? rows.slice(firstIndex, lastIndex)
-      : rows;
+      ? sortedRows.slice(firstIndex, lastIndex)
+      : sortedRows;
 
     return (
       currentRows.map((row, i) => (
@@ -212,6 +197,7 @@ class DataTable extends Component {
 
   render() {
     const {
+      data,
       title,
       customTheme,
       actions,
@@ -228,21 +214,17 @@ class DataTable extends Component {
       noHeader,
       fixedHeader,
       pagination,
-      paginationComponent,
       selectableRows,
       expandableRows,
     } = this.props;
 
-    const Pagination = paginationComponent;
-
     const {
-      rows,
       rowsPerPage,
       currentPage,
     } = this.state;
 
     const theme = merge(defaultTheme, customTheme);
-    const enabledPagination = pagination && !progressPending && rows.length > 0;
+    const enabledPagination = pagination && !progressPending && data.length > 0;
     const init = {
       ...this.props,
       ...this.state,
@@ -276,10 +258,10 @@ class DataTable extends Component {
                 />
               )}
 
-              {!rows.length > 0 && !progressPending &&
+              {!data.length > 0 && !progressPending &&
                 <NoData component={noDataComponent} />}
 
-              {rows.length > 0 && (
+              {data.length > 0 && (
                 <Table disabled={disabled}>
                   {this.renderTableHead()}
 
@@ -295,10 +277,10 @@ class DataTable extends Component {
 
               {enabledPagination && (
                 <TableFooter>
-                  <Pagination
+                  <this.PaginationComponent
                     onChangePage={this.handleChangePage}
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    rowCount={rows.length}
+                    rowCount={data.length}
                     currentPage={currentPage}
                     rowsPerPage={rowsPerPage}
                     theme={theme}

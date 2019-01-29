@@ -18,7 +18,9 @@ const ContextMenuStyle = styled.div`
   z-index: 1;
   transform: ${props => (props.visible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -100%, 0)')};
   transition-duration: ${props => props.theme.header.contextMenu.transitionTime};
-  transition-property: transform;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-delay: 0;
+  will-change: transform;
   align-items: center;
   justify-content: space-between;
   display: flex;

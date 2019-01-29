@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export const defaultState = {
   keyField: 'id',
   columns: [],
-  rows: [],
   selectedRows: [],
   internalCell: false,
   paginationPerPage: 10,

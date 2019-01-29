@@ -58,13 +58,8 @@ const SortIcon = styled.span`
 
 class TableCol extends PureComponent {
   static propTypes = {
-    onColumnClick: PropTypes.func,
-    column: PropTypes.object,
-  };
-
-  static defaultProps = {
-    onColumnClick: () => {},
-    column: {},
+    onColumnClick: PropTypes.func.isRequired,
+    column: PropTypes.object.isRequired,
   };
 
   onColumnClick = e => {
@@ -73,15 +68,11 @@ class TableCol extends PureComponent {
       onColumnClick,
     } = this.props;
 
-    if (onColumnClick) {
-      onColumnClick(column, e);
-    }
+    onColumnClick(column, e);
   }
 
   render() {
-    const {
-      column,
-    } = this.props;
+    const { column } = this.props;
 
     return (
       <DataTableConsumer>
@@ -101,7 +92,7 @@ class TableCol extends PureComponent {
               {column.name && (
                 <ColumnCellWrapper active={sortable}>
                   {sortable && sortIcon && (
-                    <SortIcon className={sortDirection === 'asc' ? 'asc' : 'desc'}>
+                    <SortIcon className={sortDirection}>
                       {sortIcon}
                     </SortIcon>
                   )}
