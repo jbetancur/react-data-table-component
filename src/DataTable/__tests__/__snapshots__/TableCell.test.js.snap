@@ -25,7 +25,6 @@ exports[`<TableCell /> should render correctly if column.allowOverflow 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -38,6 +37,7 @@ exports[`<TableCell /> should render correctly if column.allowOverflow 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: visible;
   text-overflow: ellipsis;
 }
@@ -82,7 +82,6 @@ exports[`<TableCell /> should render correctly if column.button 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -99,6 +98,7 @@ exports[`<TableCell /> should render correctly if column.button 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -143,7 +143,6 @@ exports[`<TableCell /> should render correctly if column.center 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -156,6 +155,7 @@ exports[`<TableCell /> should render correctly if column.center 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -196,7 +196,6 @@ exports[`<TableCell /> should render correctly if column.maxWidth 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -209,6 +208,7 @@ exports[`<TableCell /> should render correctly if column.maxWidth 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -249,7 +249,6 @@ exports[`<TableCell /> should render correctly if column.minWidth 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -262,6 +261,7 @@ exports[`<TableCell /> should render correctly if column.minWidth 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -306,7 +306,6 @@ exports[`<TableCell /> should render correctly if column.right 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -319,6 +318,7 @@ exports[`<TableCell /> should render correctly if column.right 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -361,7 +361,6 @@ exports[`<TableCell /> should render correctly if column.width 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -374,6 +373,7 @@ exports[`<TableCell /> should render correctly if column.width 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -414,7 +414,6 @@ exports[`<TableCell /> should render correctly if column.wrap 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: normal;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -427,6 +426,7 @@ exports[`<TableCell /> should render correctly if column.wrap 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -467,7 +467,6 @@ exports[`<TableCell /> should render correctly if not an internal cell (e.g. che
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -476,6 +475,7 @@ exports[`<TableCell /> should render correctly if not an internal cell (e.g. che
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -516,7 +516,6 @@ exports[`<TableCell /> should render correctly with defaults 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -529,6 +528,7 @@ exports[`<TableCell /> should render correctly with defaults 1`] = `
 }
 
 .c0 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }

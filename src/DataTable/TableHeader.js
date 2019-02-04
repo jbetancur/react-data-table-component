@@ -13,6 +13,7 @@ const TableHeaderStyle = styled.header`
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: ${props => props.theme.title.backgroundColor};
 `;
 
 const Title = styled.div`

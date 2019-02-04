@@ -61,6 +61,7 @@ exports[`<TableHeader title contextActions /> should render correctly 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c1 {
@@ -179,6 +180,7 @@ exports[`<TableHeader title contextTitle /> should render correctly 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c1 {
@@ -297,6 +299,7 @@ exports[`<TableHeader title showContextMenu /> should render correctly 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c1 {

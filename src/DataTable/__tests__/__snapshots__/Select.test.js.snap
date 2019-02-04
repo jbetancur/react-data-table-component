@@ -22,10 +22,6 @@ exports[`should render correctly with default props 1`] = `
   appearance: none;
 }
 
-.c1 .ddown-color {
-  fill: red;
-}
-
 .c1::-ms-expand {
   display: none;
 }
@@ -48,7 +44,7 @@ exports[`should render correctly with default props 1`] = `
 .c0 svg {
   top: 1;
   right: 0;
-  color: rgba(0,0,0,0.54);
+  color: rgba(0,0,0,.54);
   position: absolute;
   pointer-events: none;
   fill: currentColor;

@@ -43,6 +43,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
+  background-color: transparent;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 
@@ -78,7 +79,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -87,6 +87,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -130,6 +131,8 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -274,6 +277,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -351,10 +355,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   appearance: none;
 }
 
-.c21 .ddown-color {
-  fill: red;
-}
-
 .c21::-ms-expand {
   display: none;
 }
@@ -377,7 +377,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 .c20 svg {
   top: 1;
   right: 0;
-  color: rgba(0,0,0,0.54);
+  color: rgba(0,0,0,.54);
   position: absolute;
   pointer-events: none;
   fill: currentColor;
@@ -770,7 +770,6 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -779,6 +778,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -844,6 +844,8 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -959,6 +961,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -1178,7 +1181,6 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -1187,6 +1189,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -1274,6 +1277,8 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -1389,6 +1394,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -1623,6 +1629,7 @@ exports[`progress/nodata should render correctly when progressPending is false a
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -1775,7 +1782,6 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -1788,6 +1794,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 }
 
 .c15 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -1807,6 +1814,8 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -1926,6 +1935,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -2148,7 +2158,6 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -2161,6 +2170,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 }
 
 .c14 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -2180,6 +2190,8 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -2299,6 +2311,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -2482,7 +2495,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -2491,6 +2503,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -2534,6 +2547,8 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -2678,6 +2693,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -2911,7 +2927,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -2920,6 +2935,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -2963,6 +2979,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -3107,6 +3125,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -3340,7 +3359,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -3349,6 +3367,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -3392,6 +3411,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -3536,6 +3557,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -3771,7 +3793,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -3780,6 +3801,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -3823,6 +3845,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -3967,6 +3991,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -4208,6 +4233,7 @@ exports[`should render correctly 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -4360,7 +4386,6 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -4373,6 +4398,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c14 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -4392,6 +4418,8 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -4511,6 +4539,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -4694,7 +4723,6 @@ exports[`should render correctly with columns/data 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -4707,6 +4735,7 @@ exports[`should render correctly with columns/data 1`] = `
 }
 
 .c14 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -4726,6 +4755,8 @@ exports[`should render correctly with columns/data 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -4845,6 +4876,7 @@ exports[`should render correctly with columns/data 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -5045,7 +5077,6 @@ exports[`should render without a header if noHeader is true 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -5058,6 +5089,7 @@ exports[`should render without a header if noHeader is true 1`] = `
 }
 
 .c9 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -5077,6 +5109,8 @@ exports[`should render without a header if noHeader is true 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c5 {
@@ -5285,7 +5319,6 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -5294,6 +5327,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 }
 
 .c16 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -5359,6 +5393,8 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -5474,6 +5510,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {
@@ -5693,7 +5730,6 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -5706,6 +5742,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 }
 
 .c14 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -5725,6 +5762,8 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -5844,6 +5883,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   padding: 8px 16px 8px 24px;
   min-height: 64px;
   width: 100%;
+  background-color: transparent;
 }
 
 .c2 {

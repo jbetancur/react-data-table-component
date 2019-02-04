@@ -11,6 +11,8 @@ const TableRowStyle = styled.div`
   display: flex;
   width: 100%;
   border-top: 1px solid ${props => props.theme.rows.borderColor};
+  background-color: ${props => props.theme.rows.backgroundColor};
+  color: ${props => props.theme.rows.fontColor};
   ${props => props.striped && css`
       &:nth-child(odd) {
         background-color: ${props.theme.rows.stripedColor};
@@ -18,6 +20,7 @@ const TableRowStyle = styled.div`
   `};
   ${props => props.highlightOnHover && css`
       &:hover {
+        color: ${props.theme.rows.hoverFontColor};
         background-color: ${props.theme.rows.hoverColor};
         transition-duration: 0.15s;
         transition-property: background-color;

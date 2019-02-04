@@ -2,6 +2,7 @@ export default {
   title: {
     fontSize: '22px',
     fontColor: 'rgba(0,0,0,.87)',
+    backgroundColor: 'transparent',
   },
   header: {
     fontSize: '12px',
@@ -18,8 +19,10 @@ export default {
   rows: {
     fontSize: '13px',
     fontColor: 'rgba(0,0,0,.87)',
+    backgroundColor: 'transparent',
     borderColor: 'rgba(0,0,0,.12)',
     stripedColor: 'rgba(0,0,0,.03)',
+    hoverFontColor: 'rgba(0,0,0,.87)',
     hoverColor: 'rgba(0,0,0,.08)',
     height: '48px',
   },
@@ -34,6 +37,7 @@ export default {
   pagination: {
     fontSize: '13px',
     fontColor: 'rgba(0,0,0,.54)',
+    backgroundColor: 'transparent',
     buttonFontColor: 'rgba(0,0,0,.54)',
     buttonHoverBackground: 'rgba(0,0,0,.12)',
   },
