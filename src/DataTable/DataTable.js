@@ -42,6 +42,7 @@ class DataTable extends Component {
     const sortDirection = getSortDirection(props.defaultSortAsc);
     this.columns = decorateColumns(props.columns);
     this.sortedRows = memoize((rows, defaultSortField, direction) => orderBy(rows, defaultSortField, direction));
+    this.mergeTheme = memoize((theme, customTheme) => merge(theme, customTheme));
     this.PaginationComponent = props.paginationComponent;
     this.state = {
       allSelected: false,
@@ -161,7 +162,6 @@ class DataTable extends Component {
     const lastIndex = currentPage * rowsPerPage;
     const firstIndex = lastIndex - rowsPerPage;
     const sortedRows = this.sortedRows(data, sortColumn, sortDirection);
-
     const currentRows = pagination
       ? sortedRows.slice(firstIndex, lastIndex)
       : sortedRows;
@@ -223,7 +223,7 @@ class DataTable extends Component {
       currentPage,
     } = this.state;
 
-    const theme = merge(defaultTheme, customTheme);
+    const theme = this.mergeTheme(defaultTheme, customTheme);
     const enabledPagination = pagination && !progressPending && data.length > 0;
     const init = {
       ...this.props,

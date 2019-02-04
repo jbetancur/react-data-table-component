@@ -21,6 +21,7 @@ exports[`should render correctly 1`] = `
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
+  background-color: transparent;
   border-top: 1px solid rgba(0,0,0,.12);
 }
 

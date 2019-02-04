@@ -25,7 +25,6 @@ exports[`should render correctly with highlightOnHover prop 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -38,6 +37,7 @@ exports[`should render correctly with highlightOnHover prop 1`] = `
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -57,6 +57,8 @@ exports[`should render correctly with highlightOnHover prop 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -86,6 +88,8 @@ exports[`should render correctly with no columns 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -118,7 +122,6 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -131,6 +134,7 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -150,6 +154,8 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -196,7 +202,6 @@ exports[`should render correctly with striped prop 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -209,6 +214,7 @@ exports[`should render correctly with striped prop 1`] = `
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -228,6 +234,8 @@ exports[`should render correctly with striped prop 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -274,7 +282,6 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -287,6 +294,7 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -298,6 +306,8 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -340,7 +350,6 @@ exports[`with children should render correctly 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -353,6 +362,7 @@ exports[`with children should render correctly 1`] = `
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -372,6 +382,8 @@ exports[`with children should render correctly 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -418,7 +430,6 @@ exports[`with columns should render correctly if a row does not have a keyField 
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -431,6 +442,7 @@ exports[`with columns should render correctly if a row does not have a keyField 
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -450,6 +462,8 @@ exports[`with columns should render correctly if a row does not have a keyField 
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -496,7 +510,6 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -509,6 +522,7 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
 }
 
 .c1 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -528,6 +542,8 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -574,7 +590,6 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -587,6 +602,7 @@ exports[`with columns should render correctly if expandableRows 1`] = `
 }
 
 .c3 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -652,6 +668,8 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -706,7 +724,6 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -719,6 +736,7 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
 }
 
 .c2 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -762,6 +780,8 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div
@@ -819,7 +839,6 @@ exports[`with columns should render correctly if selectableRows is true and a ro
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(0,0,0,.87);
   min-height: 48px;
 }
 
@@ -832,6 +851,7 @@ exports[`with columns should render correctly if selectableRows is true and a ro
 }
 
 .c2 .react-data-table--cell-content {
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -875,6 +895,8 @@ exports[`with columns should render correctly if selectableRows is true and a ro
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
 }
 
 <div

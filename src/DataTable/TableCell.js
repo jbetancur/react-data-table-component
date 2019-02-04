@@ -9,10 +9,10 @@ const TableCellStyle = styled(Cell)`
   font-size: ${props => props.theme.rows.fontSize};
   font-weight: 400;
   white-space: ${props => (props.column.wrap ? 'normal' : 'nowrap')};
-  color: ${props => props.theme.rows.fontColor};
   min-height: ${props => props.theme.rows.height};
 
   .react-data-table--cell-content {
+    color: inherit;
     overflow: ${props => (props.column.allowOverflow ? 'visible' : 'hidden')};
     text-overflow: ellipsis;
   }

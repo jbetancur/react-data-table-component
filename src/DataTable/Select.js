@@ -17,10 +17,6 @@ const SelectControl = styled.select`
   background-color: transparent;
   appearance: none;
 
-  .ddown-color {
-    fill: red;
-  }
-
   &::-ms-expand {
     display: none;
   }
@@ -42,7 +38,7 @@ const SelectWrapper = styled.div`
   svg {
     top: 1;
     right: 0;
-    color: rgba(0, 0, 0, 0.54);
+    color: ${props => props.theme.pagination.fontColor};
     position: absolute;
     pointer-events: none;
     fill: currentColor;

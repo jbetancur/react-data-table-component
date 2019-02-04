@@ -9,6 +9,7 @@ const TableFooter = styled.nav`
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
+  background-color: ${props => props.theme.pagination.backgroundColor};
   border-top: 1px solid ${props => props.theme.rows.borderColor};
 `;
 export default TableFooter;
