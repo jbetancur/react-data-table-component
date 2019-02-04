@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   title: {
     fontSize: '22px',
     fontColor: 'rgba(0,0,0,.87)',
@@ -41,4 +41,4 @@ export default {
     buttonFontColor: 'rgba(0,0,0,.54)',
     buttonHoverBackground: 'rgba(0,0,0,.12)',
   },
-};
+});

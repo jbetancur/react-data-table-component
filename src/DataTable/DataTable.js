@@ -20,7 +20,7 @@ import NoData from './NoData';
 import { propTypes, defaultProps } from './propTypes';
 import { decorateColumns, getSortDirection } from './util';
 import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
-import defaultTheme from '../themes/default';
+import getDefaultTheme from '../themes/default';
 
 class DataTable extends Component {
   static propTypes = propTypes;
@@ -223,7 +223,8 @@ class DataTable extends Component {
       currentPage,
     } = this.state;
 
-    const theme = this.mergeTheme(defaultTheme, customTheme);
+    const theme = this.mergeTheme(getDefaultTheme(), customTheme);
+    // const theme = merge(getDefaultTheme(), customTheme);
     const enabledPagination = pagination && !progressPending && data.length > 0;
     const init = {
       ...this.props,
