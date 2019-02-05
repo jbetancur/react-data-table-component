@@ -7,30 +7,48 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 
+const defaultRowsCSS = css`
+  border-top: ${props => props.theme.rows.borderWidth} solid ${props => props.theme.rows.borderColor};
+`;
+
+const spacedRowsCSS = css`
+  margin-top: ${props => props.theme.rows.spacingMargin || 0};
+  margin-bottom: ${props => props.theme.rows.spacingMargin || 0};
+  border-radius: ${props => props.theme.rows.spacingBorderRadius || 0};
+  border: ${props => props.theme.rows.borderWidth} solid ${props => props.theme.rows.borderColor};
+  ${props => props.theme.rows.spacingShadow && `box-shadow: ${props.theme.rows.spacingShadow}`};
+`;
+
+const stripedCSS = css`
+  &:nth-child(odd) {
+    background-color: ${props => props.theme.rows.stripedColor};
+  }
+`;
+
+const hightlightCSS = css`
+  &:hover {
+    color: ${props => props.theme.rows.hoverFontColor};
+    background-color: ${props => props.theme.rows.hoverColor};
+    transition-duration: 0.15s;
+    transition-property: background-color;
+  }
+`;
+
+const pointerCSS = css`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const TableRowStyle = styled.div`
   display: flex;
   width: 100%;
-  border-top: 1px solid ${props => props.theme.rows.borderColor};
+  ${props => (props.theme.rows.spacing === 'spaced' ? spacedRowsCSS : defaultRowsCSS)};
   background-color: ${props => props.theme.rows.backgroundColor};
   color: ${props => props.theme.rows.fontColor};
-  ${props => props.striped && css`
-      &:nth-child(odd) {
-        background-color: ${props.theme.rows.stripedColor};
-      }
-  `};
-  ${props => props.highlightOnHover && css`
-      &:hover {
-        color: ${props.theme.rows.hoverFontColor};
-        background-color: ${props.theme.rows.hoverColor};
-        transition-duration: 0.15s;
-        transition-property: background-color;
-      }
-  `};
-  ${props => props.pointerOnHover && css`
-      &:hover {
-        cursor: pointer;
-      }
-  `};
+  ${props => props.striped && stripedCSS};
+  ${props => props.highlightOnHover && hightlightCSS};
+  ${props => props.pointerOnHover && pointerCSS};
 `;
 
 class TableRow extends PureComponent {
@@ -124,4 +142,5 @@ class TableRow extends PureComponent {
     );
   }
 }
+
 export default TableRow;

@@ -61,7 +61,6 @@ const BasicTable = () => (
     highlightOnHover
     pointerOnHover
     pagination
-    expandableRows
   />
 );
 

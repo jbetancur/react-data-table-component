@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   title: {
     fontSize: '22px',
     fontColor: 'rgba(0,0,0,.87)',
@@ -17,9 +17,12 @@ export default {
     },
   },
   rows: {
+    // default || spaced
+    spacing: 'default',
     fontSize: '13px',
     fontColor: 'rgba(0,0,0,.87)',
     backgroundColor: 'transparent',
+    borderWidth: '1px',
     borderColor: 'rgba(0,0,0,.12)',
     stripedColor: 'rgba(0,0,0,.03)',
     hoverFontColor: 'rgba(0,0,0,.87)',
@@ -41,4 +44,4 @@ export default {
     buttonFontColor: 'rgba(0,0,0,.54)',
     buttonHoverBackground: 'rgba(0,0,0,.12)',
   },
-};
+});
