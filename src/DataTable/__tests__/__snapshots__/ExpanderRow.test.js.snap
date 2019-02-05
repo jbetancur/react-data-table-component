@@ -4,6 +4,7 @@ exports[`<ExpanderRow /> should render correctly 1`] = `
 .c0 {
   width: 100%;
   box-sizing: border-box;
+  color: rgba(0,0,0,.87);
   background-color: transparent;
 }
 
@@ -16,6 +17,7 @@ exports[`<ExpanderRow /> with children should render correctly and have a data p
 .c0 {
   width: 100%;
   box-sizing: border-box;
+  color: rgba(0,0,0,.87);
   background-color: transparent;
 }
 
@@ -34,6 +36,7 @@ exports[`<ExpanderRow numColumns /> should render correctly 1`] = `
 .c0 {
   width: 100%;
   box-sizing: border-box;
+  color: rgba(0,0,0,.87);
   background-color: transparent;
 }
 

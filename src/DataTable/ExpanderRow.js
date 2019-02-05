@@ -11,6 +11,7 @@ const renderChildren = (children, data) => {
 const ExpanderRowStyle = styled.div`
   width: 100%;
   box-sizing: border-box;
+  color: ${props => props.theme.expander.fontColor};
   background-color: ${props => props.theme.expander.backgroundColor};
 `;
 

@@ -4,17 +4,16 @@ import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/DataTable/DataTable';
 
-const darkTheme = {
+const rowTheme = {
   rows: {
     // spaced allows the following properties
     spacing: 'spaced',
-    spacingBorderRadius: 0,
+    spacingBorderRadius: '50px',
     spacingMargin: '3px',
-    spacingShadow: '0 1px 3px 0 rgba(0,0,0,0.15)',
 
-    borderColor: 'transparent',
+    borderColor: 'rgba(0,0,0,.12)',
     backgroundColor: 'white',
-    height: '64px',
+    height: '52px',
   },
   cells: {
     cellPadding: '48px',
@@ -44,8 +43,7 @@ const BasicTable = () => (
     title="Movie List"
     columns={columns}
     data={data}
-    customTheme={darkTheme}
-    highlightOnHover
+    customTheme={rowTheme}
     pointerOnHover
     pagination
   />
