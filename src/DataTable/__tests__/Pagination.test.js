@@ -17,7 +17,7 @@ test('should render correctly with default props', () => {
         rowCount={40}
         onChangePage={jest.fn()}
         onChangeRowsPerPage={jest.fn()}
-        theme={{ ...theme }}
+        theme={{ ...theme() }}
       />
     </DataTableProvider>,
   );
@@ -36,7 +36,7 @@ describe('when clicking the First Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -55,7 +55,7 @@ describe('when clicking the First Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -76,7 +76,7 @@ describe('when clicking the Last Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -95,7 +95,7 @@ describe('when clicking the Last Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -116,7 +116,7 @@ describe('when clicking the Next Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -135,7 +135,7 @@ describe('when clicking the Next Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -156,7 +156,7 @@ describe('when clicking the Previous Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -175,7 +175,7 @@ describe('when clicking the Previous Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -197,7 +197,7 @@ describe('when there is no paging to be done', () => {
           rowCount={5}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={jest.fn()}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );
@@ -236,7 +236,7 @@ describe('when clicking the Previous Page button', () => {
           rowCount={40}
           onChangePage={onChangePageMock}
           onChangeRowsPerPage={onChangeRowsPerPageMock}
-          theme={{ ...theme }}
+          theme={{ ...theme() }}
         />
       </DataTableProvider>,
     );

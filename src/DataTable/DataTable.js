@@ -224,7 +224,6 @@ class DataTable extends Component {
     } = this.state;
 
     const theme = this.mergeTheme(getDefaultTheme(), customTheme);
-    // const theme = merge(getDefaultTheme(), customTheme);
     const enabledPagination = pagination && !progressPending && data.length > 0;
     const init = {
       ...this.props,
