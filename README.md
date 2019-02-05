@@ -355,11 +355,7 @@ class MyComponent extends Component {
 ```
 
 ## Theming
-Under Development
-
-The curent default Theme is very "material". Near term plans are to have 3 built-in prop selectable themes (none, bootstrap, material).
-
-You can override or replace the current theme using the `customTheme` prop
+You can override or replace the default theme using the `customTheme` prop. Internally, this just deep merges your theme with the default theme.
 
 For Example:
 
@@ -384,21 +380,18 @@ class MyComponent extends Component {
 );
 ```
 
-Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference
+Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
 
 
 ### Theme Resources
 * [SVG Encoder](https://codepen.io/yoksel/details/JDqvs)
 
-
 # Development
 
 ## Setup
-
 Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root and stories directory.
 
 ## Installing Flow Types
-
 Install flowtypes using the package script:
 ```sh
 yarn flow-typed
@@ -407,7 +400,6 @@ yarn flow-typed
 > It is advised to run the script whenever NPM packages are installed.
 
 ## Local development
-
 During development,
 ```sh
 # watch and build new source changes
@@ -417,7 +409,6 @@ yarn storybook
 ```
 
 ## Including NPM packages
-
 This project uses two package.json structure.
 
 ### Library dependencies -- <root_dir>/package.json
@@ -435,13 +426,11 @@ yarn add [package-name]
 ```
 
 ## Static Types
-
 ```sh
 yarn flow # performs type checking on files
 ```
 
 ## Lint
-
 ```sh
 yarn lint # runs linter to detect any style issues (css & js)
 yarn lint:css # lint only css
@@ -450,14 +439,12 @@ yarn lint:js --fix # tries to fix js lint issues
 ```
 
 ## Test
-
 ```sh
 yarn test # runs functional/unit tests using Jest
 yarn test --coverage # with coverage
 ```
 
 ## Build
-
 ```sh
 yarn build # builds sources at src/
 ```

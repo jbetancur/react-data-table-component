@@ -8,14 +8,18 @@ import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 
 const defaultRowsCSS = css`
-  border-top: ${props => props.theme.rows.borderWidth} solid ${props => props.theme.rows.borderColor};
+  border-top-style: solid;
+  border-top-width: ${props => props.theme.rows.borderWidth};
+  border-top-color: ${props => props.theme.rows.borderColor};
 `;
 
 const spacedRowsCSS = css`
   margin-top: ${props => props.theme.rows.spacingMargin || 0};
   margin-bottom: ${props => props.theme.rows.spacingMargin || 0};
   border-radius: ${props => props.theme.rows.spacingBorderRadius || 0};
-  border: ${props => props.theme.rows.borderWidth} solid ${props => props.theme.rows.borderColor};
+  border-style: solid;
+  border-width: ${props => props.theme.rows.borderWidth};
+  border-color: ${props => props.theme.rows.borderColor};
   ${props => props.theme.rows.spacingShadow && `box-shadow: ${props.theme.rows.spacingShadow}`};
 `;
 
@@ -28,7 +32,7 @@ const stripedCSS = css`
 const hightlightCSS = css`
   &:hover {
     color: ${props => props.theme.rows.hoverFontColor};
-    background-color: ${props => props.theme.rows.hoverColor};
+    background-color: ${props => props.theme.rows.hoverBackgroundColor};
     transition-duration: 0.15s;
     transition-property: background-color;
   }

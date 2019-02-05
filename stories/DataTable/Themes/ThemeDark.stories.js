@@ -10,6 +10,10 @@ const darkTheme = {
     fontColor: '#FFFFFF',
     backgroundColor: '#363640',
   },
+  contextMenu: {
+    backgroundColor: '#E91E63',
+    fontColor: '#FFFFFF',
+  },
   header: {
     fontSize: '12px',
     fontColor: '#FFFFFF',
@@ -20,7 +24,7 @@ const darkTheme = {
     backgroundColor: '#363640',
     borderColor: 'rgba(255, 255, 255, .12)',
     hoverFontColor: 'black',
-    hoverColor: 'rgba(0, 0, 0, .12)',
+    hoverBackgroundColor: 'rgba(0, 0, 0, .24)',
   },
   cells: {
     cellPadding: '48px',
@@ -31,6 +35,10 @@ const darkTheme = {
     backgroundColor: '#363640',
     buttonFontColor: '#FFFFFF',
     buttonHoverBackground: 'rgba(255, 255, 255, .12)',
+  },
+  expander: {
+    fontColor: '#FFFFFF',
+    backgroundColor: '#363640',
   },
 };
 
@@ -61,6 +69,8 @@ const BasicTable = () => (
     highlightOnHover
     pointerOnHover
     pagination
+    selectableRows
+    expandableRows
   />
 );
 
