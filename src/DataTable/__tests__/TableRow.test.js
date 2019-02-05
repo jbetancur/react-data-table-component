@@ -23,7 +23,6 @@ test('should render correctly with no columns', () => {
     <DataTableProvider initialState={{ columns: [] }}>
       <TableRow
         row={rowMock}
-
         onRowClicked={jest.fn()}
         onRowSelected={jest.fn()}
       />
