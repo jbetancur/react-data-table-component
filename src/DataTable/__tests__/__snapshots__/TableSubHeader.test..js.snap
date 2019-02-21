@@ -14,8 +14,7 @@ exports[`<TableSubheader defaults should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
@@ -46,8 +45,7 @@ exports[`<TableSubheader with component should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
@@ -80,8 +78,7 @@ exports[`<TableSubheader with component should render correctly with center alig
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: center;
@@ -114,8 +111,7 @@ exports[`<TableSubheader with component should render correctly with left align 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: start;
@@ -148,8 +144,7 @@ exports[`<TableSubheader with component should render correctly with right align
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
@@ -182,8 +177,7 @@ exports[`<TableSubheader with component should render when wrap is false 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
