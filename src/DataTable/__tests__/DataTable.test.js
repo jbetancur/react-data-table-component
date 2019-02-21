@@ -309,3 +309,19 @@ describe('Pagination', () => {
     expect(onChangeRowsPerPageMock).toBeCalledWith(20);
   });
 });
+
+describe('Subheader', () => {
+  test('should render correctly when a subheader is enabled', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        subheader
+        subheaderComponent={<div />}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
