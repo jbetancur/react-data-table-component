@@ -118,7 +118,7 @@ export const defaultProps = {
   noHeader: false,
   subHeader: false,
   subHeaderAlign: 'right',
-  subHeaderWrap: false,
+  subHeaderWrap: true,
   subHeaderComponent: [],
   onRowClicked: null,
   fixedHeader: false,

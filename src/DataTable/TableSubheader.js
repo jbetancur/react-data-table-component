@@ -13,8 +13,7 @@ const SubheaderWrapper = styled.header`
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  padding: 0 16px 0 24px;
-  min-height: 48px;
+  padding: 0 16px 8px 24px;
   width: 100%;
   background-color: ${props => props.theme.title.backgroundColor};
   justify-content: ${props => alignMap[props.align]};
