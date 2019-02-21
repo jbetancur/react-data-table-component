@@ -14,6 +14,7 @@ const TableHeaderStyle = styled.header`
   min-height: 64px;
   width: 100%;
   background-color: ${props => props.theme.title.backgroundColor};
+  flex-wrap: wrap;
 `;
 
 const Title = styled.div`
@@ -26,8 +27,8 @@ const Title = styled.div`
 const Actions = styled.div`
   flex: 1 0 auto;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
 
   > * {
     margin-left: 5px;

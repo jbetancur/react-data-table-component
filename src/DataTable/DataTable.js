@@ -12,6 +12,7 @@ import TableRow from './TableRow';
 import TableCol from './TableCol';
 import TableColCheckbox from './TableColCheckbox';
 import TableHeader from './TableHeader';
+import TableSubheader from './TableSubheader';
 import TableBody from './TableBody';
 import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
@@ -216,6 +217,10 @@ class DataTable extends Component {
       pagination,
       selectableRows,
       expandableRows,
+      subHeader,
+      subHeaderAlign,
+      subHeaderWrap,
+      subHeaderComponent,
     } = this.props;
 
     const {
@@ -247,6 +252,14 @@ class DataTable extends Component {
                 title={title}
                 actions={actions}
                 pending={progressPending}
+              />
+            )}
+
+            {subHeader && (
+              <TableSubheader
+                align={subHeaderAlign}
+                wrapContent={subHeaderWrap}
+                component={subHeaderComponent}
               />
             )}
 

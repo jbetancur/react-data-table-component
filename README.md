@@ -87,9 +87,9 @@ Nothing new here - we are using an array of object literals and properties to de
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
 | pointerOnHover | bool | no | false | if rows show a point icon on hover |
-| actions | array of components | no |  | add actions to the TableHeader |
+| actions | component or array of components | no |  | add actions to the TableHeader |
 | contextTitle | string | no |  | override the context menu title |
-| contextActions | array of components | no |  | add context action as an array of components |
+| contextActions | component or array of components| no |  | add context actions to the TableHeader context|
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
@@ -114,7 +114,12 @@ Nothing new here - we are using an array of object literals and properties to de
 | paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination |
 | paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination |
 | paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination |
-  
+| subHeader | component or array of components | no | false | show a subheader between the table and table header
+| subHeaderAlign | string | no | right | align the subheader content (left, right, center)
+| subHeaderWrap | bool | no | true | whether the subheader content should wrap
+| subHeader | component or array of components | no | false | show a subheader between the table and table header
+| subHeaderComponent |  component or array of components | no | [] | a component you want to render |
+
 #### Advanced Selectable Component Options
 Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
 

@@ -6,20 +6,26 @@ import TableHeader from '../TableHeader';
 
 afterEach(cleanup);
 
-test('<TableHeader title showContextMenu /> should render correctly', () => {
-  const { container } = renderWithTheme(<TableHeader title="whoa!" showContextMenu />);
+test('<TableHeader title showContextMenu should render correctly', () => {
+  const { container } = renderWithTheme(<TableHeader title="whoa!" />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('<TableHeader title contextTitle /> should render correctly', () => {
+test('<TableHeader title contextTitle should render correctly', () => {
   const { container } = renderWithTheme(<TableHeader title="whoa!" contextTitle="items!!!" />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('<TableHeader title contextActions /> should render correctly', () => {
-  const { container } = renderWithTheme(<TableHeader title="whoa!" contextActions={[<div>some action</div>]} />);
+test('<TableHeader with actions should render correctly', () => {
+  const { container } = renderWithTheme(<TableHeader title="whoa!" actions={<><div>some action</div>, <div>some action 2</div></>} />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('<TableHeader with showContextMenu/contextActions should render correctly', () => {
+  const { container } = renderWithTheme(<TableHeader title="whoa!" showContextMenu contextActions={<><div>some action</div>, <div>some action 2</div></>} />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
