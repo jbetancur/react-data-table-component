@@ -220,7 +220,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -276,8 +276,8 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -871,7 +871,7 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -927,8 +927,8 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -1268,7 +1268,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -1324,8 +1324,8 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -1707,7 +1707,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -1763,8 +1763,8 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -1945,7 +1945,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 
 exports[`progress/nodata should render correctly when progressPending is false and there are no row items 1`] = `
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -2001,8 +2001,8 @@ exports[`progress/nodata should render correctly when progressPending is false a
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -2256,7 +2256,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -2312,8 +2312,8 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -2637,7 +2637,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -2693,8 +2693,8 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -3024,7 +3024,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -3080,8 +3080,8 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -3461,7 +3461,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -3517,8 +3517,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -3898,7 +3898,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -3954,8 +3954,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -4337,7 +4337,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -4393,8 +4393,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -4582,7 +4582,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 
 exports[`should render correctly 1`] = `
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -4638,8 +4638,8 @@ exports[`should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -4893,7 +4893,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -4949,8 +4949,8 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -5235,7 +5235,7 @@ exports[`should render correctly with columns/data 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -5291,8 +5291,8 @@ exports[`should render correctly with columns/data 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -5876,7 +5876,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -5932,8 +5932,8 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -6254,7 +6254,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 }
 
 .c5 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -6310,8 +6310,8 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;

@@ -68,7 +68,11 @@ export const propTypes = {
   subHeader: PropTypes.bool,
   subHeaderAlign: PropTypes.string,
   subHeaderWrap: PropTypes.bool,
-  subHeaderComponent: PropTypes.array,
+  subHeaderComponent: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.string,
+  ]),
   onRowClicked: PropTypes.func,
   fixedHeader: PropTypes.bool,
   pagination: PropTypes.bool,
