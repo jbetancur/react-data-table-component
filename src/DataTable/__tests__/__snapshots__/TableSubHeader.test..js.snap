@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TableSubheader defaults should render correctly 1`] = `
+exports[`TableSubheader defaults should render correctly 1`] = `
 .c0 {
   position: relative;
   display: -webkit-box;
@@ -31,7 +31,7 @@ exports[`<TableSubheader defaults should render correctly 1`] = `
 />
 `;
 
-exports[`<TableSubheader with component should render correctly 1`] = `
+exports[`TableSubheader with component should render correctly 1`] = `
 .c0 {
   position: relative;
   display: -webkit-box;
@@ -64,7 +64,7 @@ exports[`<TableSubheader with component should render correctly 1`] = `
 </header>
 `;
 
-exports[`<TableSubheader with component should render correctly with center align 1`] = `
+exports[`TableSubheader with component should render correctly with center align 1`] = `
 .c0 {
   position: relative;
   display: -webkit-box;
@@ -97,7 +97,7 @@ exports[`<TableSubheader with component should render correctly with center alig
 </header>
 `;
 
-exports[`<TableSubheader with component should render correctly with left align 1`] = `
+exports[`TableSubheader with component should render correctly with left align 1`] = `
 .c0 {
   position: relative;
   display: -webkit-box;
@@ -130,7 +130,7 @@ exports[`<TableSubheader with component should render correctly with left align 
 </header>
 `;
 
-exports[`<TableSubheader with component should render correctly with right align 1`] = `
+exports[`TableSubheader with component should render correctly with right align 1`] = `
 .c0 {
   position: relative;
   display: -webkit-box;
@@ -163,7 +163,7 @@ exports[`<TableSubheader with component should render correctly with right align
 </header>
 `;
 
-exports[`<TableSubheader with component should render when wrap is false 1`] = `
+exports[`TableSubheader with component should render when wrap is false 1`] = `
 .c0 {
   position: relative;
   display: -webkit-box;

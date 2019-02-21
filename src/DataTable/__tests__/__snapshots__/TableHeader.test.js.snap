@@ -2,7 +2,7 @@
 
 exports[`<TableHeader title contextTitle should render correctly 1`] = `
 .c4 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -58,8 +58,8 @@ exports[`<TableHeader title contextTitle should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -124,7 +124,7 @@ exports[`<TableHeader title contextTitle should render correctly 1`] = `
 
 exports[`<TableHeader title showContextMenu should render correctly 1`] = `
 .c4 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -180,8 +180,8 @@ exports[`<TableHeader title showContextMenu should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -246,7 +246,7 @@ exports[`<TableHeader title showContextMenu should render correctly 1`] = `
 
 exports[`<TableHeader with actions should render correctly 1`] = `
 .c4 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -302,8 +302,8 @@ exports[`<TableHeader with actions should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;
@@ -376,7 +376,7 @@ exports[`<TableHeader with actions should render correctly 1`] = `
 
 exports[`<TableHeader with showContextMenu/contextActions should render correctly 1`] = `
 .c4 {
-  color: rgba(0,0,0,.64);
+  color: rgba(0,0,0,.87);
   font-size: 18px;
   font-weight: 400;
 }
@@ -432,8 +432,8 @@ exports[`<TableHeader with showContextMenu/contextActions should render correctl
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
   width: 100%;
   background-color: transparent;
   -webkit-flex-wrap: wrap;

@@ -10,8 +10,8 @@ const TableHeaderStyle = styled.header`
   flex: 1 1 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px 8px 24px;
-  min-height: 64px;
+  padding: 4px 16px 4px 24px;
+  min-height: ${props => props.theme.title.height};
   width: 100%;
   background-color: ${props => props.theme.title.backgroundColor};
   flex-wrap: wrap;

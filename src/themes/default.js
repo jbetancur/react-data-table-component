@@ -3,6 +3,7 @@ export default () => ({
     fontSize: '22px',
     fontColor: 'rgba(0,0,0,.87)',
     backgroundColor: 'transparent',
+    height: '56px',
   },
   header: {
     fontSize: '12px',
@@ -13,7 +14,7 @@ export default () => ({
   contextMenu: {
     backgroundColor: '#e3f2fd',
     fontSize: '18px',
-    fontColor: 'rgba(0,0,0,.64)',
+    fontColor: 'rgba(0,0,0,.87)',
     transitionTime: '225ms',
   },
   rows: {
