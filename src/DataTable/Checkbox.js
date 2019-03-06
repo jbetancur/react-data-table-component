@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { handleFunctionProps } from './util';
 
@@ -28,17 +28,24 @@ export default class Checkbox extends PureComponent {
     style: null,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.checkbox = createRef();
+  }
+
+
   componentDidMount() {
     const { indeterminate } = this.props;
 
-    this.el.indeterminate = indeterminate;
+    this.checkbox.current.indeterminate = indeterminate;
   }
 
   componentDidUpdate(prevProps) {
     const { indeterminate } = this.props;
 
     if (prevProps.indeterminate !== indeterminate) {
-      this.el.indeterminate = indeterminate;
+      this.checkbox.current.indeterminate = indeterminate;
     }
   }
 
@@ -66,7 +73,7 @@ export default class Checkbox extends PureComponent {
         {...rest}
         {...resolvedComponentOptions}
         // allow this component to fully control these options
-        ref={el => { this.el = el; }}
+        ref={this.checkbox}
         style={baseStyle}
         onClick={this.handleClick}
         onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
