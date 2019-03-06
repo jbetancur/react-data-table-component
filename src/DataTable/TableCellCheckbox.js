@@ -22,7 +22,6 @@ const TableCellCheckbox = memo(({
       <TableCellCheckboxStyle onClick={e => e.stopPropagation()}>
         <Checkbox
           name={`select-row-${row[keyField]}`}
-          aria-label={`select-row-${row[keyField]}`}
           component={selectableRowsComponent}
           componentOptions={selectableRowsComponentProps}
           checked={checked}

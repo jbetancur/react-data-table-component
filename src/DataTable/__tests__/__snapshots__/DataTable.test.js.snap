@@ -490,7 +490,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           >
             <input
               aria-label="select-all-rows"
-              data="[object Object]"
               name="select-all-rows"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -520,7 +519,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           >
             <input
               aria-label="select-row-1"
-              data="[object Object]"
               name="select-row-1"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -548,7 +546,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           >
             <input
               aria-label="select-row-2"
-              data="[object Object]"
               name="select-row-2"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -3181,7 +3178,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
           >
             <input
               aria-label="select-all-rows"
-              data="[object Object]"
               name="select-all-rows"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -3211,7 +3207,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
           >
             <input
               aria-label="select-row-1"
-              data="[object Object]"
               name="select-row-1"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -3239,7 +3234,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
           >
             <input
               aria-label="select-row-2"
-              data="[object Object]"
               name="select-row-2"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -3618,7 +3612,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-all-rows"
-              data="[object Object]"
               name="select-all-rows"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -3648,7 +3641,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-row-1"
-              data="[object Object]"
               name="select-row-1"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -3676,7 +3668,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-row-2"
-              data="[object Object]"
               name="select-row-2"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -4057,7 +4048,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-all-rows"
-              data="[object Object]"
               name="select-all-rows"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -4087,7 +4077,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-row-1"
-              data="[object Object]"
               name="select-row-1"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -4115,7 +4104,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-row-2"
-              data="[object Object]"
               name="select-row-2"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -4496,7 +4484,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-all-rows"
-              data="[object Object]"
               name="select-all-rows"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -4526,7 +4513,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-row-1"
-              data="[object Object]"
               name="select-row-1"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"
@@ -4554,7 +4540,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           >
             <input
               aria-label="select-row-2"
-              data="[object Object]"
               name="select-row-2"
               style="font-size: 18px; cursor: pointer;"
               type="checkbox"

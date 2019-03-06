@@ -16,6 +16,8 @@ export default class Checkbox extends PureComponent {
     componentOptions: PropTypes.object,
     data: PropTypes.object,
     style: PropTypes.object,
+    checked: PropTypes.bool,
+    name: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -26,6 +28,7 @@ export default class Checkbox extends PureComponent {
     },
     data: {},
     style: null,
+    checked: false,
   };
 
   constructor(props) {
@@ -61,21 +64,23 @@ export default class Checkbox extends PureComponent {
       component,
       componentOptions,
       indeterminate,
-      ...rest
+      checked,
+      name,
     } = this.props;
     const TagName = component;
     const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
     const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
-
     return (
       <TagName
         type="checkbox"
-        {...rest}
         {...resolvedComponentOptions}
         // allow this component to fully control these options
         ref={this.checkbox}
         style={baseStyle}
         onClick={this.handleClick}
+        name={name}
+        aria-label={name}
+        checked={checked}
         onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
       />
     );

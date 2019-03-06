@@ -812,7 +812,6 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
   >
     <input
       aria-label="select-row-456"
-      data="[object Object]"
       name="select-row-456"
       style="font-size: 18px; cursor: pointer;"
       type="checkbox"
@@ -930,7 +929,6 @@ exports[`with columns should render correctly if selectableRows is true and a ro
     <input
       aria-label="select-row-456"
       checked=""
-      data="[object Object]"
       name="select-row-456"
       style="font-size: 18px; cursor: pointer;"
       type="checkbox"
