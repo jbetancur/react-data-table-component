@@ -22,7 +22,6 @@ const TableCol = memo(({
       <TableColStyle>
         <Checkbox
           name="select-all-rows"
-          aria-label="select-all-rows"
           component={selectableRowsComponent}
           componentOptions={selectableRowsComponentProps}
           onClick={onClick}
