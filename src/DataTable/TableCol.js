@@ -43,15 +43,18 @@ const SortIcon = styled.span`
   i,
   svg {
     font-size: 18px !important;
-    line-height: 24px;
+    height: 18px !important;
+    width: 18px !important;
     flex-grow: 0;
     flex-shrink: 0;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
     transition-duration: 0.1s;
     transition-property: transform;
   }
 
   &.desc i,
-  svg {
+  &.desc svg {
     transform: rotate(180deg);
   }
 `;
