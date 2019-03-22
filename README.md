@@ -105,9 +105,10 @@ Nothing new here - we are using an array of object literals and properties to de
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 | fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
 | pagination | bool | no | false | enable pagination with defaults |
+| paginationTotalRows | number | no | 0 | allows you to provide the total row count for your table as represented by your API when performing server side pagination. if this property is not provided then react-data-table will use `data.length` |
 | paginationPerPage | number | no | 10 | rows per page |
 | paginationRowsPerPageOptions | number | no | [10, 15, 20, 25, 30] | row page dropdown selection options |
-| onChangePage | func | no | null | callback when paged that returns the current Page |
+| onChangePage | func | no | null | callback when paged that returns the current page and total row count. e.g. onChangePage(page, totalRows) |
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed that returns the new rows per page|
 | paginationComponent | func | no | Pagination | a component that overrides the default paginator component |
 | paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination |

@@ -288,7 +288,28 @@ describe('Pagination', () => {
     );
 
     fireEvent.click(container.querySelector('button#pagination-next-page'));
-    expect(onChangePageMock).toBeCalledWith(2);
+    expect(onChangePageMock).toBeCalledWith(2, 2);
+  });
+
+  test('should call onChangePage if paged with an the optional paginationTotalRows prop', () => {
+    const onChangePageMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onRowClicked={jest.fn()}
+        pagination
+        paginationTotalRows={10}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangePage={onChangePageMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(onChangePageMock).toBeCalledWith(2, 10);
   });
 
   test('should call onChangeRowsPerPage if paged', () => {
