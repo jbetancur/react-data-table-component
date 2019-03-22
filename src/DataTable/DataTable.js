@@ -111,14 +111,14 @@ class DataTable extends Component {
   }
 
   handleChangePage = currentPage => {
-    const { onChangePage } = this.props;
+    const { onChangePage, data, paginationTotalRows } = this.props;
 
     this.setState({
       currentPage,
     });
 
     if (onChangePage) {
-      onChangePage(currentPage);
+      onChangePage(currentPage, paginationTotalRows || data.length);
     }
   }
 
@@ -199,6 +199,7 @@ class DataTable extends Component {
   render() {
     const {
       data,
+      paginationTotalRows,
       title,
       customTheme,
       actions,
@@ -293,7 +294,7 @@ class DataTable extends Component {
                   <this.PaginationComponent
                     onChangePage={this.handleChangePage}
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    rowCount={data.length}
+                    rowCount={paginationTotalRows || data.length}
                     currentPage={currentPage}
                     rowsPerPage={rowsPerPage}
                     theme={theme}

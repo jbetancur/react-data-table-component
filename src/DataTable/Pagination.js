@@ -94,10 +94,10 @@ export default class Pagination extends PureComponent {
     onChangePage(this.getNumberOfPages());
   }
 
-  handleRowsPerPage = e => {
+  handleRowsPerPage = ({ target }) => {
     const { onChangePage, onChangeRowsPerPage } = this.props;
 
-    onChangeRowsPerPage(Number(e.target.value));
+    onChangeRowsPerPage(Number(target.value));
     // TODO: fix empty array on perRows change
     onChangePage(1);
   }
