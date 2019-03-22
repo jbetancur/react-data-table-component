@@ -27,7 +27,7 @@ const columns = [
   {
     name: 'Image',
     selector: 'image.medium',
-    cell: d => <img height="42px" width="80px" alt={d.image.medium} src={d.image.medium} />,
+    cell: d => <img height="32x" width="64px" alt={d.image.medium} src={d.image.medium} />,
   },
 ];
 
