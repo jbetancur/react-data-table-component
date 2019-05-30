@@ -86,6 +86,7 @@
     "@storybook/addon-links": "^4.1.4",
     "@storybook/addon-storysource": "^4.1.4",
     "@storybook/react": "^4.1.4",
+    "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",

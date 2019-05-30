@@ -134,6 +134,37 @@ class DataTable extends Component {
     }
   }
 
+  calculateRows() {
+    const {
+      data,
+      pagination,
+      paginationServer,
+    } = this.props;
+
+    const {
+      currentPage,
+      rowsPerPage,
+      sortDirection,
+      sortColumn,
+    } = this.state;
+
+    if (pagination) {
+      // when paginating server side just return the rows
+      if (paginationServer) {
+        return this.sortedRows(data, sortColumn, sortDirection);
+      }
+
+      // otherwise, it's assumed all of the data is present client side, therefore, we should slice the records
+      const lastIndex = currentPage * rowsPerPage;
+      const firstIndex = lastIndex - rowsPerPage;
+
+      return this.sortedRows(data, sortColumn, sortDirection)
+        .slice(firstIndex, lastIndex);
+    }
+
+    return this.sortedRows(data, sortColumn, sortDirection);
+  }
+
   renderColumns() {
     return (
       this.columns.map(column => (
@@ -149,26 +180,10 @@ class DataTable extends Component {
   renderRows() {
     const {
       keyField,
-      data,
-      pagination,
     } = this.props;
 
-    const {
-      currentPage,
-      rowsPerPage,
-      sortDirection,
-      sortColumn,
-    } = this.state;
-
-    const lastIndex = currentPage * rowsPerPage;
-    const firstIndex = lastIndex - rowsPerPage;
-    const sortedRows = this.sortedRows(data, sortColumn, sortDirection);
-    const currentRows = pagination
-      ? sortedRows.slice(firstIndex, lastIndex)
-      : sortedRows;
-
     return (
-      currentRows.map((row, i) => (
+      this.calculateRows().map((row, i) => (
         <TableRow
           key={row[keyField] || i}
           row={row}
