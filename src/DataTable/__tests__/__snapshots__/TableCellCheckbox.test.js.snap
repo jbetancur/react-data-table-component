@@ -26,7 +26,7 @@ exports[`should render correctly 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <input
     aria-label="select-row-456"
@@ -63,7 +63,7 @@ exports[`should render correctly if a selectableRowsComponent is provided 1`] = 
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div>
     hahah
@@ -97,7 +97,7 @@ exports[`should render correctly if a selectableRowsComponent is provided with s
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div>
     hahah

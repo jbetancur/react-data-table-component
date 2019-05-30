@@ -43,7 +43,7 @@ exports[`<TableCell /> should render correctly if column.allowOverflow 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -104,7 +104,7 @@ exports[`<TableCell /> should render correctly if column.button 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -161,7 +161,7 @@ exports[`<TableCell /> should render correctly if column.center 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -214,7 +214,7 @@ exports[`<TableCell /> should render correctly if column.maxWidth 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -267,7 +267,7 @@ exports[`<TableCell /> should render correctly if column.minWidth 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -324,7 +324,7 @@ exports[`<TableCell /> should render correctly if column.right 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -379,7 +379,7 @@ exports[`<TableCell /> should render correctly if column.width 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -432,7 +432,7 @@ exports[`<TableCell /> should render correctly if column.wrap 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -481,7 +481,7 @@ exports[`<TableCell /> should render correctly if not an internal cell (e.g. che
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"
@@ -534,7 +534,7 @@ exports[`<TableCell /> should render correctly with defaults 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCell c0"
 >
   <div
     class="react-data-table--cell-content"

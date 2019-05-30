@@ -9,7 +9,7 @@ exports[`<ExpanderRow /> should render correctly 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_ExpanderRow c0"
 />
 `;
 
@@ -22,7 +22,7 @@ exports[`<ExpanderRow /> with children should render correctly and have a data p
 }
 
 <div
-  class="c0"
+  class="rdt_ExpanderRow c0"
 >
   <div
     data="[object Object]"
@@ -41,6 +41,6 @@ exports[`<ExpanderRow numColumns /> should render correctly 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_ExpanderRow c0"
 />
 `;

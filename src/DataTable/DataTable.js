@@ -186,8 +186,8 @@ class DataTable extends Component {
     } = this.props;
 
     return (
-      <TableHead>
-        <TableHeadRow>
+      <TableHead className="rdt_TableHead">
+        <TableHeadRow className="rdt_TableHeadRow">
           {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
           {expandableRows && <div style={{ width: '48px' }} />}
           {this.renderColumns()}
@@ -276,13 +276,17 @@ class DataTable extends Component {
                 <NoData component={noDataComponent} />}
 
               {data.length > 0 && (
-                <Table disabled={disabled}>
+                <Table
+                  disabled={disabled}
+                  className="rdt_Table"
+                >
                   {this.renderTableHead()}
 
                   <TableBody
                     fixedHeader={fixedHeader}
                     hasOffset={overflowY}
                     offset={overflowYOffset}
+                    className="rdt_TableBody"
                   >
                     {this.renderRows()}
                   </TableBody>
@@ -290,7 +294,7 @@ class DataTable extends Component {
               )}
 
               {enabledPagination && (
-                <TableFooter>
+                <TableFooter className="rdt_TableFooter">
                   <this.PaginationComponent
                     onChangePage={this.handleChangePage}
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}

@@ -36,6 +36,7 @@ const TableCell = memo(({
       <TableCellStyle
         column={column}
         internalCell={internalCell}
+        className="rdt_TableCell"
       >
         {!column.ignoreRowClick && rowClickable && (
           <ClickClip data-tag="___react-data-table--click-clip___" />

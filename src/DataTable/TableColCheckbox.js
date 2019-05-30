@@ -19,7 +19,7 @@ const TableCol = memo(({
 }) => (
   <DataTableConsumer>
     {({ selectableRowsComponent, selectableRowsComponentProps, selectedRows, allSelected }) => (
-      <TableColStyle>
+      <TableColStyle className="rdt_TableCol">
         <Checkbox
           name="select-all-rows"
           component={selectableRowsComponent}
