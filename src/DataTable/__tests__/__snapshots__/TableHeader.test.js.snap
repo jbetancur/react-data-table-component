@@ -99,7 +99,7 @@ exports[`<TableHeader title contextTitle should render correctly 1`] = `
 }
 
 <header
-  class="c0"
+  class="rdt_TableHeader c0"
 >
   <div
     class="c1"
@@ -221,7 +221,7 @@ exports[`<TableHeader title showContextMenu should render correctly 1`] = `
 }
 
 <header
-  class="c0"
+  class="rdt_TableHeader c0"
 >
   <div
     class="c1"
@@ -343,7 +343,7 @@ exports[`<TableHeader with actions should render correctly 1`] = `
 }
 
 <header
-  class="c0"
+  class="rdt_TableHeader c0"
 >
   <div
     class="c1"
@@ -473,7 +473,7 @@ exports[`<TableHeader with showContextMenu/contextActions should render correctl
 }
 
 <header
-  class="c0"
+  class="rdt_TableHeader c0"
 >
   <div
     class="c1"

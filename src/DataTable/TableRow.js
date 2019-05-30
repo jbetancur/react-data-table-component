@@ -104,6 +104,7 @@ class TableRow extends PureComponent {
               highlightOnHover={highlightOnHover}
               pointerOnHover={pointerOnHover}
               onClick={this.handleRowClick}
+              className="rdt_TableRow"
             >
               {selectableRows && (
                 <TableCellCheckbox

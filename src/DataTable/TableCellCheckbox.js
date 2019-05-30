@@ -19,7 +19,10 @@ const TableCellCheckbox = memo(({
 }) => (
   <DataTableConsumer>
     {({ keyField, selectableRowsComponent, selectableRowsComponentProps }) => (
-      <TableCellCheckboxStyle onClick={e => e.stopPropagation()}>
+      <TableCellCheckboxStyle
+        onClick={e => e.stopPropagation()}
+        className="rdt_TableCell"
+      >
         <Checkbox
           name={`select-row-${row[keyField]}`}
           component={selectableRowsComponent}

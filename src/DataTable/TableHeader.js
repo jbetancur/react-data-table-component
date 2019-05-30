@@ -36,7 +36,7 @@ const Actions = styled.div`
 `;
 
 const TableHeader = ({ title, actions }) => (
-  <TableHeaderStyle>
+  <TableHeaderStyle className="rdt_TableHeader">
     <Title>
       {title}
     </Title>

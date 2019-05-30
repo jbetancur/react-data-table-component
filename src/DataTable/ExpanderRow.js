@@ -19,7 +19,7 @@ const ExpanderRow = ({
   data,
   children,
 }) => (
-  <ExpanderRowStyle>
+  <ExpanderRowStyle className="rdt_ExpanderRow">
     {renderChildren(children, data)}
   </ExpanderRowStyle>
 );

@@ -456,7 +456,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -477,16 +477,16 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
           >
             <input
               aria-label="select-all-rows"
@@ -496,7 +496,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
             />
           </div>
           <div
-            class="c11"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
@@ -508,14 +508,14 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
         </div>
       </div>
       <div
-        class="c13"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-1"
@@ -525,7 +525,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -539,10 +539,10 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
           </div>
         </div>
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-2"
@@ -552,7 +552,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -568,7 +568,7 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
       </div>
     </div>
     <nav
-      class="c18"
+      class="rdt_TableFooter c18"
     >
       <span
         class="c19"
@@ -991,7 +991,7 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -1012,16 +1012,16 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -1033,14 +1033,14 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -1054,10 +1054,10 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
           </div>
         </div>
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -1388,7 +1388,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -1409,19 +1409,19 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
             style="width: 48px;"
           />
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -1433,11 +1433,11 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
             class="c14"
@@ -1448,7 +1448,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -1462,7 +1462,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
           </div>
         </div>
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
             class="c14"
@@ -1473,7 +1473,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -1827,7 +1827,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -1848,19 +1848,19 @@ exports[`expandableRows should render correctly when expandableRows is true and 
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
             style="width: 48px;"
           />
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -1872,11 +1872,11 @@ exports[`expandableRows should render correctly when expandableRows is true and 
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
             class="c14"
@@ -1887,7 +1887,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -1901,7 +1901,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           </div>
         </div>
         <div
-          class="c18"
+          class="rdt_ExpanderRow c18"
         >
           <div
             data="[object Object]"
@@ -1910,7 +1910,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           </div>
         </div>
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
             class="c14"
@@ -1921,7 +1921,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -2073,7 +2073,7 @@ exports[`progress/nodata should render correctly when progressPending is false a
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -2391,7 +2391,7 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -2419,16 +2419,16 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
       </h2>
     </div>
     <div
-      class="c8"
+      class="rdt_Table c8"
     >
       <div
-        class="c9"
+        class="rdt_TableHead c9"
       >
         <div
-          class="c10"
+          class="rdt_TableHeadRow c10"
         >
           <div
-            class="c11"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
@@ -2440,14 +2440,14 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
         </div>
       </div>
       <div
-        class="c13"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <div
               class="c16"
@@ -2461,10 +2461,10 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
           </div>
         </div>
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <div
               class="c16"
@@ -2757,7 +2757,7 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -2778,16 +2778,16 @@ exports[`prop changes should update state if the data prop changes 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -2799,14 +2799,14 @@ exports[`prop changes should update state if the data prop changes 1`] = `
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -3144,7 +3144,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -3165,16 +3165,16 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
           >
             <input
               aria-label="select-all-rows"
@@ -3184,7 +3184,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             />
           </div>
           <div
-            class="c11"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
@@ -3196,14 +3196,14 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
         </div>
       </div>
       <div
-        class="c13"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-1"
@@ -3213,7 +3213,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -3227,10 +3227,10 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
           </div>
         </div>
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-2"
@@ -3240,7 +3240,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -3578,7 +3578,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -3599,16 +3599,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
           >
             <input
               aria-label="select-all-rows"
@@ -3618,7 +3618,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c11"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
@@ -3630,14 +3630,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
         </div>
       </div>
       <div
-        class="c13"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-1"
@@ -3647,7 +3647,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -3661,10 +3661,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           </div>
         </div>
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-2"
@@ -3674,7 +3674,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -4012,7 +4012,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -4035,16 +4035,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
           >
             <input
               aria-label="select-all-rows"
@@ -4054,7 +4054,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c11"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
@@ -4066,14 +4066,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
         </div>
       </div>
       <div
-        class="c13"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-1"
@@ -4083,7 +4083,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -4097,10 +4097,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           </div>
         </div>
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-2"
@@ -4110,7 +4110,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -4448,7 +4448,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -4471,16 +4471,16 @@ exports[`selectableRows should render correctly when selectableRows is true and 
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
           >
             <input
               aria-label="select-all-rows"
@@ -4490,7 +4490,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c11"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
@@ -4502,14 +4502,14 @@ exports[`selectableRows should render correctly when selectableRows is true and 
         </div>
       </div>
       <div
-        class="c13"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-1"
@@ -4519,7 +4519,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -4533,10 +4533,10 @@ exports[`selectableRows should render correctly when selectableRows is true and 
           </div>
         </div>
         <div
-          class="c14"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c15"
+            class="rdt_TableCell c15"
           >
             <input
               aria-label="select-row-2"
@@ -4546,7 +4546,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -4698,7 +4698,7 @@ exports[`should render correctly 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -5001,7 +5001,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -5022,16 +5022,16 @@ exports[`should render correctly if the keyField is overriden 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -5043,14 +5043,14 @@ exports[`should render correctly if the keyField is overriden 1`] = `
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -5343,7 +5343,7 @@ exports[`should render correctly with columns/data 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -5364,16 +5364,16 @@ exports[`should render correctly with columns/data 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -5385,14 +5385,14 @@ exports[`should render correctly with columns/data 1`] = `
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -5406,10 +5406,10 @@ exports[`should render correctly with columns/data 1`] = `
           </div>
         </div>
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -5608,16 +5608,16 @@ exports[`should render without a header if noHeader is true 1`] = `
     class="c1"
   >
     <div
-      class="c2"
+      class="rdt_Table c2"
     >
       <div
-        class="c3"
+        class="rdt_TableHead c3"
       >
         <div
-          class="c4"
+          class="rdt_TableHeadRow c4"
         >
           <div
-            class="c5"
+            class="rdt_TableCol c5"
             id="column-some.name"
           >
             <div
@@ -5629,14 +5629,14 @@ exports[`should render without a header if noHeader is true 1`] = `
         </div>
       </div>
       <div
-        class="c7"
+        class="rdt_TableBody c7"
         offset="250px"
       >
         <div
-          class="c8"
+          class="rdt_TableRow c8"
         >
           <div
-            class="c9"
+            class="rdt_TableCell c9"
           >
             <div
               class="c10"
@@ -5650,10 +5650,10 @@ exports[`should render without a header if noHeader is true 1`] = `
           </div>
         </div>
         <div
-          class="c8"
+          class="rdt_TableRow c8"
         >
           <div
-            class="c9"
+            class="rdt_TableCell c9"
           >
             <div
               class="c10"
@@ -5984,7 +5984,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -6005,19 +6005,19 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
             style="width: 48px;"
           />
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -6029,11 +6029,11 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
             class="c14"
@@ -6044,7 +6044,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -6058,7 +6058,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
           </div>
         </div>
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
             class="c14"
@@ -6069,7 +6069,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
             />
           </div>
           <div
-            class="c16"
+            class="rdt_TableCell c16"
           >
             <div
               class="c17"
@@ -6362,7 +6362,7 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   class="c0"
 >
   <header
-    class="c1"
+    class="rdt_TableHeader c1"
   >
     <div
       class="c2"
@@ -6383,16 +6383,16 @@ exports[`sorting should render correctly with a default sort field 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="rdt_Table c7"
     >
       <div
-        class="c8"
+        class="rdt_TableHead c8"
       >
         <div
-          class="c9"
+          class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
+            class="rdt_TableCol c10"
             id="column-some.name"
           >
             <div
@@ -6404,14 +6404,14 @@ exports[`sorting should render correctly with a default sort field 1`] = `
         </div>
       </div>
       <div
-        class="c12"
+        class="rdt_TableBody c12"
         offset="250px"
       >
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"
@@ -6425,10 +6425,10 @@ exports[`sorting should render correctly with a default sort field 1`] = `
           </div>
         </div>
         <div
-          class="c13"
+          class="rdt_TableRow c13"
         >
           <div
-            class="c14"
+            class="rdt_TableCell c14"
           >
             <div
               class="c15"

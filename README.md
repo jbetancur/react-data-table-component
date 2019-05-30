@@ -391,6 +391,23 @@ Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component
 ### Theme Resources
 * [SVG Encoder](https://codepen.io/yoksel/details/JDqvs)
 
+
+
+## CSS Overrides
+If you would like to customize the various components of React Data Table using your styled-components or you favorite CSS framework:
+
+* rdt_Table
+* rdt_TableRow
+* rdt_TableCol
+* rdt_TableCell
+* rdt_TableHeader
+* rdt_TableFooter
+* rdt_TableHead
+* rdt_TableHeadRow
+* rdt_TableBody
+* rdt_ExpanderRow
+
+
 # Development
 
 ## Setup

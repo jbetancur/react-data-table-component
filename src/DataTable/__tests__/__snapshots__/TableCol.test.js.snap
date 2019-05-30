@@ -59,7 +59,7 @@ exports[`should render correctly 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableCol c0"
   id="column-name"
 >
   <div

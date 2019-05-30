@@ -64,10 +64,10 @@ exports[`should render correctly with highlightOnHover prop 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="c2"
@@ -97,7 +97,7 @@ exports[`should render correctly with no columns 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 />
 `;
 
@@ -165,10 +165,10 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="c2"
@@ -247,10 +247,10 @@ exports[`should render correctly with striped prop 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="c2"
@@ -321,10 +321,10 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="react-data-table--cell-content"
@@ -399,10 +399,10 @@ exports[`with children should render correctly 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="c2"
@@ -481,10 +481,10 @@ exports[`with columns should render correctly if a row does not have a keyField 
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="c2"
@@ -563,10 +563,10 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <div
       class="c2"
@@ -691,7 +691,7 @@ exports[`with columns should render correctly if expandableRows 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
     class="c1"
@@ -702,7 +702,7 @@ exports[`with columns should render correctly if expandableRows 1`] = `
     />
   </div>
   <div
-    class="c3"
+    class="rdt_TableCell c3"
   >
     <div
       class="c4"
@@ -805,10 +805,10 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <input
       aria-label="select-row-456"
@@ -818,7 +818,7 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
     />
   </div>
   <div
-    class="c2"
+    class="rdt_TableCell c2"
   >
     <div
       class="c3"
@@ -921,10 +921,10 @@ exports[`with columns should render correctly if selectableRows is true and a ro
 }
 
 <div
-  class="c0"
+  class="rdt_TableRow c0"
 >
   <div
-    class="c1"
+    class="rdt_TableCell c1"
   >
     <input
       aria-label="select-row-456"
@@ -935,7 +935,7 @@ exports[`with columns should render correctly if selectableRows is true and a ro
     />
   </div>
   <div
-    class="c2"
+    class="rdt_TableCell c2"
   >
     <div
       class="c3"

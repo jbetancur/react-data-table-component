@@ -91,6 +91,7 @@ class TableCol extends PureComponent {
               sortIcon={sortIcon}
               column={column}
               internalCell={internalCell}
+              className="rdt_TableCol"
             >
               {column.name && (
                 <ColumnCellWrapper active={sortable}>
