@@ -242,7 +242,6 @@ describe('when clicking the Previous Page button', () => {
     );
 
     fireEvent.change(container.querySelector('select'), { target: { value: 20 } });
-    expect(onChangeRowsPerPageMock).toBeCalledWith(20);
-    expect(onChangePageMock).toBeCalledWith(1);
+    expect(onChangeRowsPerPageMock).toBeCalledWith(20, 2);
   });
 });

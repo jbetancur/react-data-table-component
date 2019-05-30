@@ -62,14 +62,6 @@ export default class Pagination extends PureComponent {
     return Math.ceil(rowCount / rowsPerPage);
   }
 
-  // TODO: Future numbers implementation
-  // handlePage = e => {
-  //   const { onChangePage } = this.props;
-  //   const currentPage = Number(e.target.id);
-
-  //   onChangePage(currentPage);
-  // }
-
   handlePrevious = () => {
     const { onChangePage, currentPage } = this.props;
 
@@ -94,12 +86,10 @@ export default class Pagination extends PureComponent {
     onChangePage(this.getNumberOfPages());
   }
 
-  handleRowsPerPage = ({ target }) => {
-    const { onChangePage, onChangeRowsPerPage } = this.props;
+  handleRowsPerPage = currentPage => ({ target }) => {
+    const { onChangeRowsPerPage } = this.props;
 
-    onChangeRowsPerPage(Number(target.value));
-    // TODO: fix empty array on perRows change
-    onChangePage(1);
+    onChangeRowsPerPage(Number(target.value), currentPage);
   }
 
   render() {
@@ -115,10 +105,10 @@ export default class Pagination extends PureComponent {
 
     return (
       <DataTableConsumer>
-        {({ paginationPerPage, paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious }) => (
+        {({ paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious }) => (
           <React.Fragment>
             <Span>Rows per page:</Span>
-            <Select onChange={this.handleRowsPerPage} defaultValue={paginationPerPage}>
+            <Select onChange={this.handleRowsPerPage(currentPage)} defaultValue={rowsPerPage}>
               {paginationRowsPerPageOptions.map(num => (
                 <option
                   key={num}

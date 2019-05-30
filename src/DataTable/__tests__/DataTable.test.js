@@ -327,7 +327,7 @@ describe('Pagination', () => {
     );
 
     fireEvent.change(container.querySelector('select'), { target: { value: 20 } });
-    expect(onChangeRowsPerPageMock).toBeCalledWith(20);
+    expect(onChangeRowsPerPageMock).toBeCalledWith(20, 1);
   });
 });
 
