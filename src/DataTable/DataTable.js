@@ -113,24 +113,27 @@ class DataTable extends Component {
   handleChangePage = currentPage => {
     const { onChangePage, data, paginationTotalRows } = this.props;
 
-    this.setState({
-      currentPage,
-    });
+    this.setState({ currentPage });
 
     if (onChangePage) {
       onChangePage(currentPage, paginationTotalRows || data.length);
     }
   }
 
-  handleChangeRowsPerPage = rowsPerPage => {
-    const { onChangeRowsPerPage } = this.props;
+  handleChangeRowsPerPage = (rowsPerPage, currentPage) => {
+    const { onChangeRowsPerPage, data, paginationTotalRows, paginationServer } = this.props;
 
-    this.setState({
-      rowsPerPage,
-    });
+    this.setState({ rowsPerPage });
 
     if (onChangeRowsPerPage) {
-      onChangeRowsPerPage(rowsPerPage);
+      onChangeRowsPerPage(rowsPerPage, currentPage);
+    }
+
+    // if using client-side pagination recalculate the last page
+    if (!paginationServer) {
+      const rowCount = paginationTotalRows || data.length;
+
+      this.handleChangePage(Math.floor(rowCount / rowsPerPage) + 1);
     }
   }
 
@@ -148,21 +151,17 @@ class DataTable extends Component {
       sortColumn,
     } = this.state;
 
-    if (pagination) {
-      // when paginating server side just return the rows
-      if (paginationServer) {
-        return this.sortedRows(data, sortColumn, sortDirection);
-      }
+    const sortedRows = this.sortedRows(data, sortColumn, sortDirection);
 
-      // otherwise, it's assumed all of the data is present client side, therefore, we should slice the records
+    if (pagination && !paginationServer) {
+      // when using client-side pagination we can just slice the data set
       const lastIndex = currentPage * rowsPerPage;
       const firstIndex = lastIndex - rowsPerPage;
 
-      return this.sortedRows(data, sortColumn, sortDirection)
-        .slice(firstIndex, lastIndex);
+      return sortedRows.slice(firstIndex, lastIndex);
     }
 
-    return this.sortedRows(data, sortColumn, sortDirection);
+    return sortedRows;
   }
 
   renderColumns() {
