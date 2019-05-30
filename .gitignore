@@ -70,3 +70,4 @@ storybook-static
 # only support Yarn
 package-lock.json
 .DS_Store
+.vscode
