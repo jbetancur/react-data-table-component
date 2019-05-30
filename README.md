@@ -391,10 +391,8 @@ Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component
 ### Theme Resources
 * [SVG Encoder](https://codepen.io/yoksel/details/JDqvs)
 
-
-
 ## CSS Overrides
-If you would like to customize the various components of React Data Table using your styled-components or you favorite CSS framework:
+If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS/CSS preprocesor you may use the following classNames:
 
 * rdt_Table
 * rdt_TableRow
@@ -406,7 +404,6 @@ If you would like to customize the various components of React Data Table using 
 * rdt_TableHeadRow
 * rdt_TableBody
 * rdt_ExpanderRow
-
 
 # Development
 
