@@ -41,7 +41,7 @@ const ColumnCellWrapper = styled.div`
 
 const SortIcon = styled.span`
   line-height: 1;
-  
+
   i,
   svg {
     font-size: 18px !important;

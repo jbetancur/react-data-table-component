@@ -22,7 +22,7 @@ If you want to achieve balance with the force and want a simple but flexible tab
 
 ## Requirements
 React Data Table Component requires the following be installed in your project:
-  * React 16.3+
+  * React 16.6+
   * styled-components 3.2.3+ || 4.0.0+
 
 If you need to have backwards compatability with React versions previous to 16.3 you will have to `yarn add react-data-table-component@0.13.0`. 
