@@ -42,6 +42,9 @@ or
 yarn add react-data-table-component styled-components
 ```
 
+## Logging Issues
+Please use the github issue templates feature for logging isues or feature proposals
+
 ## API/Usage
 
 ### Columns
