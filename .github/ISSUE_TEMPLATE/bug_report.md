@@ -21,7 +21,7 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Code Sandbox**
-https://codesandbox.io/s/new
+https://codesandbox.io/embed/react-data-table-sandbox-ienim
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
