@@ -13,6 +13,7 @@ exports[`<TableBody /> should render correctly 1`] = `
 
 <div
   class="c0"
+  offset="0"
 />
 `;
 
@@ -26,11 +27,31 @@ exports[`<TableBody /> should render correctly when fixedHeader 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   max-height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 <div
   class="c0"
+  offset="0"
+/>
+`;
+
+exports[`<TableBody /> should render correctly when fixedHeader and fixedHeaderScrollHeight is set 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-height: 100px;
+  overflow-y: scroll;
+}
+
+<div
+  class="c0"
+  offset="0"
 />
 `;
 
@@ -44,11 +65,12 @@ exports[`<TableBody /> should render correctly when fixedHeader with an offset 1
   -ms-flex-direction: column;
   flex-direction: column;
   max-height: calc(100vh - 0);
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 <div
   class="c0"
+  offset="0"
 />
 `;
 
@@ -62,7 +84,7 @@ exports[`<TableBody /> should render correctly when fixedHeader with an offset w
   -ms-flex-direction: column;
   flex-direction: column;
   max-height: calc(100vh - 100px);
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 <div

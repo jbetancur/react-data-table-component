@@ -17,6 +17,12 @@ test('<TableBody /> should render correctly when fixedHeader', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('<TableBody /> should render correctly when fixedHeader and fixedHeaderScrollHeight is set', () => {
+  const { container } = render(<TableBody fixedHeader fixedHeaderScrollHeight="100px" />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('<TableBody /> should render correctly when fixedHeader with an offset', () => {
   const { container } = render(<TableBody fixedHeader hasOffset />);
 
