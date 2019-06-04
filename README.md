@@ -65,7 +65,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | reduces the padding in the cell by 50%                                     |
 | button   | bool   | no       | applies additional styling when using a button                                                                |
-| wrap     | bool   | no       | whether the cell content shold be allowed to wrap.                                                            |
+| wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
 | allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning                                     |
 | ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered
 
