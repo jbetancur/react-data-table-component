@@ -3,10 +3,15 @@ import styled, { css } from 'styled-components';
 const TableBody = styled.div`
   display: flex;
   flex-direction: column;
-  ${props => props.fixedHeader && css`
-    max-height: ${props.hasOffset ? `calc(100vh - ${props.offset || 0})` : '100vh'};
-    overflow: scroll;
+  ${({ fixedHeader, hasOffset, offset, fixedHeaderScrollHeight }) => fixedHeader && css`
+    max-height: ${hasOffset ? `calc(${fixedHeaderScrollHeight} - ${offset})` : fixedHeaderScrollHeight};
+    overflow-y: scroll;
   `};
 `;
+
+TableBody.defaultProps = {
+  fixedHeaderScrollHeight: '100vh',
+  offset: 0,
+};
 
 export default TableBody;

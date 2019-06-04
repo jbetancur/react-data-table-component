@@ -106,6 +106,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | disabled | bool | no | false | disables the Table section |
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 | fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
+| fixedHeaderScrollHeight | string | no | 100vh | in order for fixedHeader to work this property allows you to set a static height to the TabelBody. height must be a fixed value |
 | pagination | bool | no | false | enable pagination with defaults. by default the total record set will be sliced depending on the page, rows per page. if you wish to use server side pagination then use the `paginationServer` property |
 | paginationServer | bool | no | false | changes the default pagination to work with server side pagination |
 | paginationTotalRows | number | no | 0 | allows you to provide the total row count for your table as represented by your API when performing server side pagination. if this property is not provided then react-data-table will use `data.length` |

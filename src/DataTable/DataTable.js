@@ -229,6 +229,7 @@ class DataTable extends Component {
       disabled,
       noHeader,
       fixedHeader,
+      fixedHeaderScrollHeight,
       pagination,
       selectableRows,
       expandableRows,
@@ -298,6 +299,7 @@ class DataTable extends Component {
 
                   <TableBody
                     fixedHeader={fixedHeader}
+                    fixedHeaderScrollHeight={fixedHeaderScrollHeight}
                     hasOffset={overflowY}
                     offset={overflowYOffset}
                     className="rdt_TableBody"
