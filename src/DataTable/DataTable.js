@@ -211,6 +211,7 @@ class DataTable extends Component {
   }
 
   render() {
+
     const {
       data,
       paginationTotalRows,
@@ -223,9 +224,9 @@ class DataTable extends Component {
       overflowY,
       overflowYOffset,
       progressPending,
-      progressComponent,
+      progressText,
       progressCentered,
-      noDataComponent,
+      noDataText,
       disabled,
       noHeader,
       fixedHeader,
@@ -237,6 +238,7 @@ class DataTable extends Component {
       subHeaderAlign,
       subHeaderWrap,
       subHeaderComponent,
+      rowsPerPageText
     } = this.props;
 
     const {
@@ -282,13 +284,13 @@ class DataTable extends Component {
             <TableWrapper>
               {progressPending && (
                 <ProgressWrapper
-                  component={progressComponent}
+                  component={<h2>{progressText}</h2>}
                   centered={progressCentered}
                 />
               )}
 
               {!data.length > 0 && !progressPending &&
-                <NoData component={noDataComponent} />}
+                <NoData component={noDataText} />}
 
               {data.length > 0 && (
                 <Table
@@ -317,6 +319,7 @@ class DataTable extends Component {
                     rowCount={paginationTotalRows || data.length}
                     currentPage={currentPage}
                     rowsPerPage={rowsPerPage}
+                    rowsPerPageText={rowsPerPageText}
                     theme={theme}
                   />
                 </TableFooter>

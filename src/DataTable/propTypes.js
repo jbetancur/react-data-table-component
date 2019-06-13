@@ -15,16 +15,14 @@ export const propTypes = {
   expandableRows: PropTypes.bool,
   keyField: PropTypes.string,
   progressPending: PropTypes.bool,
-  progressComponent: PropTypes.oneOfType([
+  progressText: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
-    PropTypes.func,
   ]),
   progressCentered: PropTypes.bool,
-  expandableRowsComponent: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
+  expandableRowsText: PropTypes.oneOfType([
+    PropTypes.string,
     PropTypes.node,
-    PropTypes.func,
   ]),
   selectableRowsComponent: PropTypes.oneOfType([
     PropTypes.string,
@@ -58,10 +56,9 @@ export const propTypes = {
   responsive: PropTypes.bool,
   overflowY: PropTypes.bool,
   overflowYOffset: PropTypes.string,
-  noDataComponent: PropTypes.oneOfType([
+  noDataText: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
-    PropTypes.func,
   ]),
   disabled: PropTypes.bool,
   noHeader: PropTypes.bool,
@@ -88,17 +85,23 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  rowsPerPageText: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ])
 };
 
 export const defaultProps = {
   title: '',
+  progressText: 'Loading...',
+  expandableRowsText: 'Add a custom expander component. Use props.data for row data',
+  noDataText: 'There are no records to display',
+  rowsPerPageText: 'Rows per page:',
   keyField: 'id',
   selectableRows: false,
   expandableRows: false,
   progressPending: false,
-  progressComponent: <h2>Loading...</h2>,
   progressCentered: false,
-  expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
   selectableRowsComponent: 'input',
   selectableRowsComponentProps: {},
   customTheme: {},
@@ -120,7 +123,6 @@ export const defaultProps = {
   responsive: true,
   overflowY: false,
   overflowYOffset: '250px',
-  noDataComponent: 'There are no records to display',
   disabled: false,
   noHeader: false,
   subHeader: false,
