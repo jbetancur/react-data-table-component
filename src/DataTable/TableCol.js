@@ -8,13 +8,13 @@ const TableColStyle = styled(Cell)`
   font-size: ${props => props.theme.header.fontSize};
   user-select: none;
   font-weight: 500;
+  font-size: .9rem;
   white-space: nowrap;
   color: ${props => props.theme.header.fontColor};
   min-height: ${props => props.theme.header.height};
   ${props => props.sortable && 'cursor: pointer'};
 
   &::before {
-    font-size: 12px;
     padding-right: 4px;
   }
 
@@ -33,7 +33,6 @@ const TableColStyle = styled(Cell)`
 `;
 
 const ColumnCellWrapper = styled.div`
-  margin-left: -3px;
   display: inline-flex;
   align-items: center;
   ${props => props.active && 'font-weight: 800'};

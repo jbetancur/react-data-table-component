@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ButtonStyle = styled.button`
-  outline: none;
+  outline: none !important;
   border: none;
   display: block;
   width: 40px;

@@ -198,12 +198,11 @@ class DataTable extends Component {
       selectableRows,
       expandableRows,
     } = this.props;
-
     return (
       <TableHead className="rdt_TableHead">
         <TableHeadRow className="rdt_TableHeadRow">
           {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
-          {expandableRows && <div style={{ width: '48px' }} />}
+          {expandableRows && <div style={!expandableRows ? {width: '48px'} : {width: '56px'}} />}
           {this.renderColumns()}
         </TableHeadRow>
       </TableHead>
