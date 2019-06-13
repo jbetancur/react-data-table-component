@@ -7,7 +7,7 @@ import Select from './Select';
 const Button = styled.button`
   position: relative;
   display: block;
-  outline: none;
+  outline: none !important;
   user-select: none;
   cursor: pointer;
   border: none;
