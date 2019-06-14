@@ -122,7 +122,6 @@ Nothing new here - we are using an array of object literals and properties to de
 | subHeader | component or array of components | no | false | show a subheader between the table and table header
 | subHeaderAlign | string | no | right | align the subheader content (left, right, center)
 | subHeaderWrap | bool | no | true | whether the subheader content should wrap
-| subHeader | component or array of components | no | false | show a subheader between the table and table header
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
 
 #### Advanced Selectable Component Options
