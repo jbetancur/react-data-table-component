@@ -573,7 +573,8 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
       <span
         class="c19"
       >
-        Rows per page:
+        Rows per page
+        :
       </span>
       <div
         class="c20"

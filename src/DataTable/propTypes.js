@@ -89,6 +89,8 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  rowsPerPageText: PropTypes.string,
+  ofText: PropTypes.string,
 };
 
 export const defaultProps = {
@@ -144,4 +146,6 @@ export const defaultProps = {
   paginationIconLastPage: <LastPageIcon />,
   paginationIconNext: <RightIcon />,
   paginationIconPrevious: <LeftIcon />,
+  rowsPerPageText: 'Rows per page',
+  ofText: 'of',
 };

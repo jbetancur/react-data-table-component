@@ -237,6 +237,8 @@ class DataTable extends Component {
       subHeaderAlign,
       subHeaderWrap,
       subHeaderComponent,
+      rowsPerPageText,
+      ofText
     } = this.props;
 
     const {
@@ -318,6 +320,8 @@ class DataTable extends Component {
                     currentPage={currentPage}
                     rowsPerPage={rowsPerPage}
                     theme={theme}
+                    rowsPerPageText={rowsPerPageText}
+                    ofText={ofText}
                   />
                 </TableFooter>
               )}

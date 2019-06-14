@@ -12,6 +12,6 @@ exports[`should render correctly with default props 1`] = `
 <span
   class="c0"
 >
-  Rows per page:
+  :
 </span>
 `;
