@@ -52,7 +52,7 @@ class DataTable extends Component {
       sortColumn: props.defaultSortField,
       sortDirection,
       clearSelectedRows: false,
-      currentPage: 1,
+      currentPage: props.paginationDefaultPage,
       rowsPerPage: props.paginationPerPage,
     };
   }
