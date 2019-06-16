@@ -89,6 +89,7 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  paginationComponentOptions: PropTypes.object,
 };
 
 export const defaultProps = {
@@ -140,6 +141,10 @@ export const defaultProps = {
   onChangePage: null,
   onChangeRowsPerPage: null,
   paginationComponent: Pagination,
+  paginationComponentOptions: {
+    rowsPerPageText: 'Rows per page:',
+    rangeSeparatorText: 'of',
+  },
   paginationIconFirstPage: <FirstPageIcon />,
   paginationIconLastPage: <LastPageIcon />,
   paginationIconNext: <RightIcon />,

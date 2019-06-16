@@ -8,9 +8,17 @@ import theme from '../../themes/default';
 
 afterEach(cleanup);
 
+const defaultStateMock = {
+  ...defaultState,
+  paginationComponentOptions: {
+    rowsPerPageText: 'Rows per page:',
+    rangeSeparatorText: 'of',
+  },
+};
+
 test('should render correctly with default props', () => {
   const { container } = renderWithTheme(
-    <DataTableProvider initialState={{ ...defaultState }}>
+    <DataTableProvider initialState={{ ...defaultStateMock }}>
       <Pagination
         currentPage={1}
         rowsPerPage={10}
@@ -29,7 +37,7 @@ describe('when clicking the First Page button', () => {
   test('should call onChangePage with correct args when currentPage is > 1', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={4}
           rowsPerPage={10}
@@ -48,7 +56,7 @@ describe('when clicking the First Page button', () => {
   test('should NOT call onChangePage with correct args when currentPage is === 1', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={1}
           rowsPerPage={10}
@@ -69,7 +77,7 @@ describe('when clicking the Last Page button', () => {
   test('should call onChangePage with correct args when currentPage is < the last page', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={1}
           rowsPerPage={10}
@@ -88,7 +96,7 @@ describe('when clicking the Last Page button', () => {
   test('should NOT call onChangePage with correct args when currentPage is the last page', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={4}
           rowsPerPage={10}
@@ -109,7 +117,7 @@ describe('when clicking the Next Page button', () => {
   test('should call onChangePage with correct args when currentPage is not the last page', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={1}
           rowsPerPage={10}
@@ -128,7 +136,7 @@ describe('when clicking the Next Page button', () => {
   test('should NOT call onChangePage with correct args when currentPage is the last page', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={4}
           rowsPerPage={10}
@@ -149,7 +157,7 @@ describe('when clicking the Previous Page button', () => {
   test('should call onChangePage with correct args when currentPage is > 1', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={2}
           rowsPerPage={10}
@@ -168,7 +176,7 @@ describe('when clicking the Previous Page button', () => {
   test('should NOT call onChangePage with correct args when currentPage is 1', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={1}
           rowsPerPage={10}
@@ -190,7 +198,7 @@ describe('when there is no paging to be done', () => {
   test('should NOT call onChangePage with correct with any nav action when there are less rows that the page size', () => {
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={1}
           rowsPerPage={10}
@@ -229,7 +237,7 @@ describe('when clicking the Previous Page button', () => {
     // TOOO: remove when trailing empty rows is fixed
     const onChangePageMock = jest.fn();
     const { container } = renderWithTheme(
-      <DataTableProvider initialState={{ ...defaultState }}>
+      <DataTableProvider initialState={{ ...defaultStateMock }}>
         <Pagination
           currentPage={2}
           rowsPerPage={10}
