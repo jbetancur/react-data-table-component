@@ -116,7 +116,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | onChangePage | func | no | null | callback when paged that returns `onChangePage(page, totalRows)` |
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed returns `onChangeRowsPerPage(currentRowsPerPage, currentPage)` |
 | paginationComponent | func | no | Pagination | a component that overrides the default paginator component |
-| paginationComponentOptions | object | no | ```{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of' }``` | overridable options for the built in pagination component. If you are developing a custom pagination component you can use `paginationComponentOptions` to pass in your own custom props |
+| paginationComponentOptions | object | no | See Description | overridable options for the built in pagination component. If you are developing a custom pagination component you can use `paginationComponentOptions` to pass in your own custom props. Defaults to: ```{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of' }```|
 | paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination |
 | paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination |
 | paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination |
