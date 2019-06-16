@@ -262,7 +262,6 @@ describe('Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        selectableRows
         onRowClicked={jest.fn()}
         pagination
       />,
@@ -278,7 +277,6 @@ describe('Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        selectableRows
         onRowClicked={jest.fn()}
         pagination
         paginationPerPage={1}
@@ -298,7 +296,6 @@ describe('Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        selectableRows
         onRowClicked={jest.fn()}
         pagination
         paginationTotalRows={10}
@@ -319,7 +316,6 @@ describe('Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        selectableRows
         onRowClicked={jest.fn()}
         pagination
         onChangeRowsPerPage={onChangeRowsPerPageMock}
@@ -328,6 +324,20 @@ describe('Pagination', () => {
 
     fireEvent.change(container.querySelector('select'), { target: { value: 20 } });
     expect(onChangeRowsPerPageMock).toBeCalledWith(20, 1);
+  });
+
+  test('should render correctly when a paginationComponentOptions are passed', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationComponentOptions={{ rowsPerPageText: 'Fila por página' }}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 

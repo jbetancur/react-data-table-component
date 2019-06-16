@@ -89,73 +89,77 @@ export default class Pagination extends PureComponent {
 
   render() {
     const { theme, rowsPerPage, currentPage, rowCount } = this.props;
-    const numPages = getNumberOfPages(rowCount, rowsPerPage);
-    const lastIndex = currentPage * rowsPerPage;
-    const firstIndex = (lastIndex - rowsPerPage) + 1;
-    const status = currentPage === numPages
-      ? `${firstIndex}-${rowCount} of ${rowCount}`
-      : `${firstIndex}-${lastIndex} of ${rowCount}`;
-    const disabledLesser = currentPage === 1;
-    const disabledGreater = currentPage === numPages;
 
     return (
       <DataTableConsumer>
-        {({ paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious }) => (
-          <React.Fragment>
-            <Span>Rows per page:</Span>
-            <Select onChange={this.handleRowsPerPage(currentPage)} defaultValue={rowsPerPage}>
-              {paginationRowsPerPageOptions.map(num => (
-                <option
-                  key={num}
-                  value={num}
+        {({ paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious, paginationComponentOptions }) => {
+          const numPages = getNumberOfPages(rowCount, rowsPerPage);
+          const lastIndex = currentPage * rowsPerPage;
+          const firstIndex = (lastIndex - rowsPerPage) + 1;
+          const disabledLesser = currentPage === 1;
+          const disabledGreater = currentPage === numPages;
+          const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
+          const status = currentPage === numPages
+            ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
+            : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
+
+          return (
+            <React.Fragment>
+              <Span>{rowsPerPageText}</Span>
+              <Select onChange={this.handleRowsPerPage(currentPage)} defaultValue={rowsPerPage}>
+                {paginationRowsPerPageOptions.map(num => (
+                  <option
+                    key={num}
+                    value={num}
+                  >
+                    {num}
+                  </option>
+                ))}
+              </Select>
+              <Span>
+                {status}
+              </Span>
+
+              <PageList>
+                <Button
+                  id="pagination-first-page"
+                  onClick={this.handleFirst}
+                  disabled={disabledLesser}
+                  theme={theme}
                 >
-                  {num}
-                </option>
-              ))}
-            </Select>
-            <Span>
-              {status}
-            </Span>
+                  {paginationIconFirstPage}
+                </Button>
 
-            <PageList>
-              <Button
-                id="pagination-first-page"
-                onClick={this.handleFirst}
-                disabled={disabledLesser}
-                theme={theme}
-              >
-                {paginationIconFirstPage}
-              </Button>
+                <Button
+                  id="pagination-previous-page"
+                  onClick={this.handlePrevious}
+                  disabled={disabledLesser}
+                  theme={theme}
+                >
+                  {paginationIconPrevious}
+                </Button>
 
-              <Button
-                id="pagination-previous-page"
-                onClick={this.handlePrevious}
-                disabled={disabledLesser}
-                theme={theme}
-              >
-                {paginationIconPrevious}
-              </Button>
+                <Button
+                  id="pagination-next-page"
+                  onClick={this.handleNext}
+                  disabled={disabledGreater}
+                  theme={theme}
+                >
+                  {paginationIconNext}
+                </Button>
 
-              <Button
-                id="pagination-next-page"
-                onClick={this.handleNext}
-                disabled={disabledGreater}
-                theme={theme}
-              >
-                {paginationIconNext}
-              </Button>
-
-              <Button
-                id="pagination-last-page"
-                onClick={this.handleLast}
-                disabled={disabledGreater}
-                theme={theme}
-              >
-                {paginationIconLastPage}
-              </Button>
-            </PageList>
-          </React.Fragment>
-        )}
+                <Button
+                  id="pagination-last-page"
+                  onClick={this.handleLast}
+                  disabled={disabledGreater}
+                  theme={theme}
+                >
+                  {paginationIconLastPage}
+                </Button>
+              </PageList>
+            </React.Fragment>
+          );
+        }}
       </DataTableConsumer>
     );
   }
