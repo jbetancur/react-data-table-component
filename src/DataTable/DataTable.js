@@ -19,7 +19,7 @@ import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './propTypes';
-import { decorateColumns, getSortDirection } from './util';
+import { decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
 import getDefaultTheme from '../themes/default';
 
@@ -120,21 +120,26 @@ class DataTable extends Component {
     }
   }
 
-  handleChangeRowsPerPage = (rowsPerPage, currentPage) => {
+  handleChangeRowsPerPage = (newRowsPerPage, currentPage) => {
     const { onChangeRowsPerPage, data, paginationTotalRows, paginationServer } = this.props;
-
-    this.setState({ rowsPerPage });
+    const rowCount = paginationTotalRows || data.length;
+    const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
+    const recalculatedPage = Math.min(currentPage, updatedPage);
 
     if (onChangeRowsPerPage) {
-      onChangeRowsPerPage(rowsPerPage, currentPage);
+      onChangeRowsPerPage(newRowsPerPage, recalculatedPage);
     }
 
-    // if using client-side pagination recalculate the last page
+    // update the currentPage for client-side pagination
+    // server - side should be handled by onChangeRowsPerPage
     if (!paginationServer) {
-      const rowCount = paginationTotalRows || data.length;
-
-      this.handleChangePage(Math.floor(rowCount / rowsPerPage) + 1);
+      this.handleChangePage(recalculatedPage);
     }
+
+    this.setState({
+      rowsPerPage: newRowsPerPage,
+      currentPage: recalculatedPage,
+    });
   }
 
   calculateRows() {

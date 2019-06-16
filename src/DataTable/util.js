@@ -46,3 +46,5 @@ export const handleFunctionProps = (object, ...args) => {
 
   return newObject || object;
 };
+
+export const getNumberOfPages = (rowCount, rowsPerPage) => Math.ceil(rowCount / rowsPerPage);

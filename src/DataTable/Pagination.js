@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { DataTableConsumer } from './DataTableContext';
 import Select from './Select';
+import { getNumberOfPages } from './util';
 
 const Button = styled.button`
   position: relative;
@@ -56,12 +57,6 @@ export default class Pagination extends PureComponent {
     currentPage: PropTypes.number.isRequired,
   };
 
-  getNumberOfPages() {
-    const { rowsPerPage, rowCount } = this.props;
-
-    return Math.ceil(rowCount / rowsPerPage);
-  }
-
   handlePrevious = () => {
     const { onChangePage, currentPage } = this.props;
 
@@ -81,9 +76,9 @@ export default class Pagination extends PureComponent {
   }
 
   handleLast = () => {
-    const { onChangePage } = this.props;
+    const { onChangePage, rowsPerPage, rowCount } = this.props;
 
-    onChangePage(this.getNumberOfPages());
+    onChangePage(getNumberOfPages(rowCount, rowsPerPage));
   }
 
   handleRowsPerPage = currentPage => ({ target }) => {
@@ -94,7 +89,7 @@ export default class Pagination extends PureComponent {
 
   render() {
     const { theme, rowsPerPage, currentPage, rowCount } = this.props;
-    const numPages = this.getNumberOfPages();
+    const numPages = getNumberOfPages(rowCount, rowsPerPage);
     const lastIndex = currentPage * rowsPerPage;
     const firstIndex = (lastIndex - rowsPerPage) + 1;
     const status = currentPage === numPages
