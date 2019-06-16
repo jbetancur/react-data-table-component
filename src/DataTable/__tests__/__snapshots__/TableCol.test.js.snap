@@ -47,7 +47,6 @@ exports[`should render correctly 1`] = `
 }
 
 .c1 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

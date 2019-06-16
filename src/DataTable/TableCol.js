@@ -33,7 +33,6 @@ const TableColStyle = styled(Cell)`
 `;
 
 const ColumnCellWrapper = styled.div`
-  margin-left: -3px;
   display: inline-flex;
   align-items: center;
   ${props => props.active && 'font-weight: 800'};

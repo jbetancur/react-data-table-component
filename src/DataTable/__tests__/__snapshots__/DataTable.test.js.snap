@@ -163,7 +163,6 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -805,7 +804,6 @@ exports[`Pagination should render correctly when a paginationComponentOptions ar
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1423,7 +1421,6 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1820,7 +1817,6 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1985,7 +1981,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
           class="rdt_TableHeadRow c9"
         >
           <div
-            style="width: 48px;"
+            style="width: 56px;"
           />
           <div
             class="rdt_TableCol c10"
@@ -2259,7 +2255,6 @@ exports[`expandableRows should render correctly when expandableRows is true and 
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2424,7 +2419,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           class="rdt_TableHeadRow c9"
         >
           <div
-            style="width: 48px;"
+            style="width: 56px;"
           />
           <div
             class="rdt_TableCol c10"
@@ -2808,7 +2803,6 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3189,7 +3183,6 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3547,7 +3540,6 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3981,7 +3973,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4415,7 +4406,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4851,7 +4841,6 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5433,7 +5422,6 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5775,7 +5763,6 @@ exports[`should render correctly with columns/data 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6134,7 +6121,6 @@ exports[`should render without a header if noHeader is true 1`] = `
 }
 
 .c6 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6416,7 +6402,6 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6581,7 +6566,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
           class="rdt_TableHeadRow c9"
         >
           <div
-            style="width: 48px;"
+            style="width: 56px;"
           />
           <div
             class="rdt_TableCol c10"
@@ -6794,7 +6779,6 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

@@ -208,7 +208,7 @@ class DataTable extends Component {
       <TableHead className="rdt_TableHead">
         <TableHeadRow className="rdt_TableHeadRow">
           {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
-          {expandableRows && <div style={{ width: '48px' }} />}
+          {expandableRows && <div style={{ width: '56px' }} />}
           {this.renderColumns()}
         </TableHeadRow>
       </TableHead>
