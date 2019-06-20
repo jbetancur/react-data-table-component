@@ -5,7 +5,7 @@ import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 
 const TableCellExpanderStyle = styled(CellBase)`
-  flex: 0 0 48px;
+  flex: 0 0 56px;
   white-space: nowrap;
   font-weight: 400;
   font-size: ${props => props.theme.rows.fontSize};

@@ -17,6 +17,7 @@ import TableBody from './TableBody';
 import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
+import { CellBase } from './Cell';
 import NoData from './NoData';
 import { propTypes, defaultProps } from './propTypes';
 import { decorateColumns, getSortDirection, getNumberOfPages } from './util';
@@ -211,7 +212,7 @@ class DataTable extends Component {
       <TableHead className="rdt_TableHead">
         <TableHeadRow className="rdt_TableHeadRow">
           {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
-          {expandableRows && <div style={{ width: '48px' }} />}
+          {expandableRows && <CellBase style={{ flex: '0 0 56px' }} />}
           {this.renderColumns()}
         </TableHeadRow>
       </TableHead>
