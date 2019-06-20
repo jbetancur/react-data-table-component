@@ -85,7 +85,10 @@ Nothing new here - we are using an array of object literals and properties to de
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
+| defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
+| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table  |
+| onSort | func | no |  | callback to access the sort state when a column is clicked. returns (column, sortDirection, event) |
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
 | pointerOnHover | bool | no | false | if rows show a point icon on hover |
@@ -95,9 +98,6 @@ Nothing new here - we are using an array of object literals and properties to de
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| onSort | func | no |  | callback to access the sort state when a column is clicked. returns (column, sortDirection, event) |
-| defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
-| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | className | string | no |  | override the className on the Table wrapper |
 | style | object | no |  | override the style on the Table wrapper |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
