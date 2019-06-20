@@ -158,12 +158,12 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -800,12 +800,12 @@ exports[`Pagination should render correctly when a paginationComponentOptions ar
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1418,12 +1418,12 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1674,7 +1674,25 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   width: 100%;
 }
 
-.c16 {
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+}
+
+.c17 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1701,17 +1719,17 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   min-height: 48px;
 }
 
-.c16:last-child {
+.c17:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c16 .react-data-table--cell-content {
+.c17 .react-data-table--cell-content {
   color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c17 {
+.c18 {
   position: absolute;
   top: 0;
   left: 0;
@@ -1719,7 +1737,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   height: 100%;
 }
 
-.c15 {
+.c16 {
   outline: none;
   border: none;
   display: block;
@@ -1731,11 +1749,11 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   background-repeat: no-repeat;
 }
 
-.c15:hover {
+.c16:hover {
   cursor: pointer;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1751,9 +1769,9 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 48px;
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
@@ -1761,11 +1779,11 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   min-height: 48px;
 }
 
-.c14:not(:first-child) {
+.c15:not(:first-child) {
   padding-left: 0;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1778,7 +1796,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   color: rgba(0,0,0,.87);
 }
 
-.c10 {
+.c11 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1810,17 +1828,17 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   min-height: 48px;
 }
 
-.c10:last-child {
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c10::before {
+.c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
-.c11 {
-  margin-left: -3px;
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1928,7 +1946,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   margin-left: 5px;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1985,14 +2003,14 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
           class="rdt_TableHeadRow c9"
         >
           <div
-            style="width: 48px;"
+            class="c10"
           />
           <div
-            class="rdt_TableCol c10"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
-              class="c11"
+              class="c12"
             >
               Test
             </div>
@@ -2000,25 +2018,25 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
         </div>
       </div>
       <div
-        class="rdt_TableBody c12"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="rdt_TableRow c13"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <button
-              class="c15"
+              class="c16"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="rdt_TableCell c16"
+            class="rdt_TableCell c17"
           >
             <div
-              class="c17"
+              class="c18"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2029,21 +2047,21 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
           </div>
         </div>
         <div
-          class="rdt_TableRow c13"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <button
-              class="c15"
+              class="c16"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="rdt_TableCell c16"
+            class="rdt_TableCell c17"
           >
             <div
-              class="c17"
+              class="c18"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2090,7 +2108,25 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   width: 100%;
 }
 
-.c16 {
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+}
+
+.c17 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2117,17 +2153,17 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   min-height: 48px;
 }
 
-.c16:last-child {
+.c17:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c16 .react-data-table--cell-content {
+.c17 .react-data-table--cell-content {
   color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c17 {
+.c18 {
   position: absolute;
   top: 0;
   left: 0;
@@ -2135,7 +2171,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   height: 100%;
 }
 
-.c19 {
+.c20 {
   outline: none;
   border: none;
   display: block;
@@ -2147,11 +2183,11 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   background-repeat: no-repeat;
 }
 
-.c19:hover {
+.c20:hover {
   cursor: pointer;
 }
 
-.c15 {
+.c16 {
   outline: none;
   border: none;
   display: block;
@@ -2163,11 +2199,11 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   background-repeat: no-repeat;
 }
 
-.c15:hover {
+.c16:hover {
   cursor: pointer;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2183,9 +2219,9 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 48px;
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
@@ -2193,18 +2229,18 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   min-height: 48px;
 }
 
-.c14:not(:first-child) {
+.c15:not(:first-child) {
   padding-left: 0;
 }
 
-.c18 {
+.c19 {
   width: 100%;
   box-sizing: border-box;
   color: rgba(0,0,0,.87);
   background-color: transparent;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2217,7 +2253,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   color: rgba(0,0,0,.87);
 }
 
-.c10 {
+.c11 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2249,17 +2285,17 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   min-height: 48px;
 }
 
-.c10:last-child {
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c10::before {
+.c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
-.c11 {
-  margin-left: -3px;
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2367,7 +2403,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   margin-left: 5px;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2424,14 +2460,14 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           class="rdt_TableHeadRow c9"
         >
           <div
-            style="width: 48px;"
+            class="c10"
           />
           <div
-            class="rdt_TableCol c10"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
-              class="c11"
+              class="c12"
             >
               Test
             </div>
@@ -2439,25 +2475,25 @@ exports[`expandableRows should render correctly when expandableRows is true and 
         </div>
       </div>
       <div
-        class="rdt_TableBody c12"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="rdt_TableRow c13"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <button
-              class="c15"
+              class="c16"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="rdt_TableCell c16"
+            class="rdt_TableCell c17"
           >
             <div
-              class="c17"
+              class="c18"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2468,7 +2504,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           </div>
         </div>
         <div
-          class="rdt_ExpanderRow c18"
+          class="rdt_ExpanderRow c19"
         >
           <div
             data="[object Object]"
@@ -2477,21 +2513,21 @@ exports[`expandableRows should render correctly when expandableRows is true and 
           </div>
         </div>
         <div
-          class="rdt_TableRow c13"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <button
-              class="c19"
+              class="c20"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="rdt_TableCell c16"
+            class="rdt_TableCell c17"
           >
             <div
-              class="c17"
+              class="c18"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -2803,12 +2839,12 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
 }
 
 .c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3184,12 +3220,12 @@ exports[`prop changes should update state if the data prop changes 1`] = `
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3542,12 +3578,12 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
 }
 
 .c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3746,7 +3782,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -3775,7 +3811,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -3802,7 +3838,7 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -3976,12 +4012,12 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4180,7 +4216,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -4209,7 +4245,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -4236,7 +4272,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -4410,12 +4446,12 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4616,7 +4652,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -4645,7 +4681,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -4672,7 +4708,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -4846,12 +4882,12 @@ exports[`selectableRows should render correctly when selectableRows is true and 
 }
 
 .c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c12 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5052,7 +5088,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -5081,7 +5117,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -5108,7 +5144,7 @@ exports[`selectableRows should render correctly when selectableRows is true and 
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer;"
+              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
               type="checkbox"
             />
           </div>
@@ -5428,12 +5464,12 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5770,12 +5806,12 @@ exports[`should render correctly with columns/data 1`] = `
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6129,12 +6165,12 @@ exports[`should render without a header if noHeader is true 1`] = `
 }
 
 .c5::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c6 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6270,7 +6306,25 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   width: 100%;
 }
 
-.c16 {
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+}
+
+.c17 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -6297,17 +6351,17 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   min-height: 48px;
 }
 
-.c16:last-child {
+.c17:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c16 .react-data-table--cell-content {
+.c17 .react-data-table--cell-content {
   color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c17 {
+.c18 {
   position: absolute;
   top: 0;
   left: 0;
@@ -6315,7 +6369,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   height: 100%;
 }
 
-.c15 {
+.c16 {
   outline: none;
   border: none;
   display: block;
@@ -6327,11 +6381,11 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   background-repeat: no-repeat;
 }
 
-.c15:hover {
+.c16:hover {
   cursor: pointer;
 }
 
-.c14 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -6347,9 +6401,9 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 48px;
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
@@ -6357,11 +6411,11 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   min-height: 48px;
 }
 
-.c14:not(:first-child) {
+.c15:not(:first-child) {
   padding-left: 0;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6374,7 +6428,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   color: rgba(0,0,0,.87);
 }
 
-.c10 {
+.c11 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -6406,17 +6460,17 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   min-height: 48px;
 }
 
-.c10:last-child {
+.c11:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c10::before {
+.c11::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
-.c11 {
-  margin-left: -3px;
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6524,7 +6578,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   margin-left: 5px;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6581,14 +6635,14 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
           class="rdt_TableHeadRow c9"
         >
           <div
-            style="width: 48px;"
+            class="c10"
           />
           <div
-            class="rdt_TableCol c10"
+            class="rdt_TableCol c11"
             id="column-some.name"
           >
             <div
-              class="c11"
+              class="c12"
             >
               Test
             </div>
@@ -6596,25 +6650,25 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
         </div>
       </div>
       <div
-        class="rdt_TableBody c12"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="rdt_TableRow c13"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <button
-              class="c15"
+              class="c16"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="rdt_TableCell c16"
+            class="rdt_TableCell c17"
           >
             <div
-              class="c17"
+              class="c18"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -6625,21 +6679,21 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
           </div>
         </div>
         <div
-          class="rdt_TableRow c13"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c14"
+            class="c15"
           >
             <button
-              class="c15"
+              class="c16"
               data-testid="expander-button"
             />
           </div>
           <div
-            class="rdt_TableCell c16"
+            class="rdt_TableCell c17"
           >
             <div
-              class="c17"
+              class="c18"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -6789,12 +6843,12 @@ exports[`sorting should render correctly with a default sort field 1`] = `
 }
 
 .c10::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c11 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

@@ -43,12 +43,12 @@ exports[`should render correctly when the column is sortable and a custom sortIc
 }
 
 .c0::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c1 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -157,6 +157,7 @@ exports[`should render correctly when the column is sortable and the sort is asc
 }
 
 .c0::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
@@ -166,7 +167,6 @@ exports[`should render correctly when the column is sortable and the sort is asc
 }
 
 .c1 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -233,6 +233,7 @@ exports[`should render correctly when the column is sortable and the sort is des
 }
 
 .c0::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
@@ -242,7 +243,6 @@ exports[`should render correctly when the column is sortable and the sort is des
 }
 
 .c1 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -308,12 +308,12 @@ exports[`should render correctly with default props 1`] = `
 }
 
 .c0::before {
+  margin-bottom: 1px;
   font-size: 12px;
   padding-right: 4px;
 }
 
 .c1 {
-  margin-left: -3px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

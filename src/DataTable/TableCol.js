@@ -14,6 +14,7 @@ const TableColStyle = styled(Cell)`
   ${props => props.sortable && 'cursor: pointer'};
 
   &::before {
+    margin-bottom: 1px;
     font-size: 12px;
     padding-right: 4px;
   }
@@ -33,7 +34,6 @@ const TableColStyle = styled(Cell)`
 `;
 
 const ColumnCellWrapper = styled.div`
-  margin-left: -3px;
   display: inline-flex;
   align-items: center;
   ${props => props.active && 'font-weight: 800'};
