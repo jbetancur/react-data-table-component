@@ -99,15 +99,18 @@ class DataTable extends Component {
     }
   }
 
-  handleSort = ({ selector, sortable }) => {
+  handleSortChange = (column, e) => {
     const { onSort } = this.props;
-    const { sortColumn, sortDirection } = this.state;
 
-    this.setState(state => handleSort(selector, sortable, state));
+    this.setState(state => {
+      const newState = handleSort(column.selector, column.sortable, state);
 
-    if (sortable && onSort) {
-      onSort(sortColumn, sortDirection);
-    }
+      if (column.sortable && onSort) {
+        onSort(column, newState.sortDirection, e);
+      }
+
+      return newState;
+    });
   }
 
   handleChangePage = currentPage => {
@@ -175,7 +178,7 @@ class DataTable extends Component {
         <TableCol
           key={column.id}
           column={column}
-          onColumnClick={this.handleSort}
+          onColumnClick={this.handleSortChange}
         />
       ))
     );

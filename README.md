@@ -95,6 +95,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
+| onSort | func | no |  | callback to access the sort state when a column is clicked. returns (column, sortDirection, event) |
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
 | defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | className | string | no |  | override the className on the Table wrapper |
@@ -272,7 +273,7 @@ class MyComponent extends Component {
       selectableRows
       selectableRowsComponent={Checkbox} // Pass the function only
       selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass react-md supported props down to our custom checkbox
-      sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon
+      sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees
       onTableUpdate={handleChange}
     />
     )
