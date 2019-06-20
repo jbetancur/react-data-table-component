@@ -22,13 +22,19 @@ const columns = [
   },
 ];
 
-const BasicTable = () => (
-  <DataTable
-    title="Movie List"
-    columns={columns}
-    data={data}
-  />
-);
+const BasicTable = () => {
+  // eslint-disable-next-line no-console
+  const handleSort = (column, sortDirection) => console.log(column.selector, sortDirection);
+
+  return (
+    <DataTable
+      title="Movie List"
+      columns={columns}
+      data={data}
+      onSort={handleSort}
+    />
+  );
+};
 
 
 storiesOf('Basic', module)

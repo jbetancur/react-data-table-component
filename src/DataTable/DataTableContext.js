@@ -10,7 +10,7 @@ export const defaultState = {
   paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
 };
 
-const DataTableContext = createContext(defaultState);
+export const DataTableContext = createContext(defaultState);
 
 export class DataTableProvider extends PureComponent {
   static propTypes = {

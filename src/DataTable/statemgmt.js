@@ -29,7 +29,9 @@ export const handleRowSelected = (rows, row, selectedRows) => {
 export const handleSort = (selector, sortable, state) => {
   if (sortable) {
     const { sortDirection } = state;
-    const direction = sortDirection === 'asc' ? 'desc' : 'asc';
+    const direction = sortDirection === 'asc'
+      ? 'desc'
+      : 'asc';
 
     return {
       sortColumn: selector,
