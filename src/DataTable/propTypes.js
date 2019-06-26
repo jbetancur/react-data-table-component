@@ -13,6 +13,7 @@ export const propTypes = {
   ]),
   selectableRows: PropTypes.bool,
   expandableRows: PropTypes.bool,
+  expanderDisabledField: PropTypes.string,
   keyField: PropTypes.string,
   progressPending: PropTypes.bool,
   progressComponent: PropTypes.oneOfType([
@@ -97,6 +98,7 @@ export const defaultProps = {
   keyField: 'id',
   selectableRows: false,
   expandableRows: false,
+  expanderDisabledField: '',
   progressPending: false,
   progressComponent: <h2>Loading...</h2>,
   progressCentered: false,

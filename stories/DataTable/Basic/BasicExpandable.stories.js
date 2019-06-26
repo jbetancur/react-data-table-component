@@ -44,6 +44,30 @@ const BasicTable = () => (
   />
 );
 
+const BasicTableExpanderDisabled = () => {
+  const data = tableDataItems.map((item, i) => {
+    let expandable = false;
+    if (i % 2 === 0) {
+      expandable = true;
+    }
+    return { ...item, expandable };
+  });
+  return (
+    <DataTable
+      title="Movie List"
+      columns={columns}
+      data={data}
+      expandableRows
+      expanderDisabledField="expandable"
+      highlightOnHover
+      defaultSortField="name"
+      defaultSortDirection="desc"
+      expandableRowsComponent={<ExpandedSection />}
+    />
+  );
+};
+
 
 storiesOf('Basic', module)
-  .add('Expandable', BasicTable);
+  .add('Expandable', BasicTable)
+  .add('Expander disabled in odd rows', BasicTableExpanderDisabled);

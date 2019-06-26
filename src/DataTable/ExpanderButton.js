@@ -18,7 +18,7 @@ const ButtonStyle = styled.button`
   }
 `;
 
-const ExpanderButton = ({ expanded, children, row, onToggled }) => {
+const ExpanderButton = ({ expanded, children, row, onToggled, disabled }) => {
   const handleToggle = e => onToggled && onToggled(row, e);
 
   return (
@@ -26,6 +26,7 @@ const ExpanderButton = ({ expanded, children, row, onToggled }) => {
       onClick={handleToggle}
       expanded={expanded}
       data-testid="expander-button"
+      disabled={disabled}
     >
       {children}
     </ButtonStyle>
@@ -40,12 +41,14 @@ ExpanderButton.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  disabled: PropTypes.bool,
 };
 
 ExpanderButton.defaultProps = {
   onToggled: null,
   children: null,
   expanded: false,
+  disabled: false,
 };
 
 export default ExpanderButton;
