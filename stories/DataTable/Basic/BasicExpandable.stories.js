@@ -45,16 +45,16 @@ const BasicTable = () => (
 );
 
 const BasicTableExpanderDisabled = () => {
-  const data = tableDataItems.map((item, i) => {
-    let expandable = false;
-    if (i % 2 === 0) {
-      expandable = true;
+  const data = tableDataItems.map(item => {
+    let expandable = true;
+    if (Number(item.year) >= 2000) {
+      expandable = false;
     }
     return { ...item, expandable };
   });
   return (
     <DataTable
-      title="Movie List"
+      title="Movie List - No additional info for old movies (Before 2000)"
       columns={columns}
       data={data}
       expandableRows
@@ -70,4 +70,4 @@ const BasicTableExpanderDisabled = () => {
 
 storiesOf('Basic', module)
   .add('Expandable', BasicTable)
-  .add('Expander disabled in odd rows', BasicTableExpanderDisabled);
+  .add('Expander disabled by row', BasicTableExpanderDisabled);
