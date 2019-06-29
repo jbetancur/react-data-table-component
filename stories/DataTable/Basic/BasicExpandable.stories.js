@@ -46,11 +46,11 @@ const BasicTable = () => (
 
 const BasicTableExpanderDisabled = () => {
   const data = tableDataItems.map(item => {
-    let expandable = true;
-    if (Number(item.year) >= 2000) {
-      expandable = false;
+    let expanderDisabled = false;
+    if (Number(item.year) < 2000) {
+      expanderDisabled = true;
     }
-    return { ...item, expandable };
+    return { ...item, expanderDisabled };
   });
   return (
     <DataTable
@@ -58,7 +58,7 @@ const BasicTableExpanderDisabled = () => {
       columns={columns}
       data={data}
       expandableRows
-      expanderDisabledField="expandable"
+      expanderDisabledField="expanderDisabled"
       highlightOnHover
       defaultSortField="name"
       defaultSortDirection="desc"
