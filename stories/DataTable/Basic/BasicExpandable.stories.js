@@ -58,7 +58,7 @@ const BasicTableExpanderDisabled = () => {
       columns={columns}
       data={data}
       expandableRows
-      expanderDisabledField="expanderDisabled"
+      expandableDisabledField="expanderDisabled"
       highlightOnHover
       defaultSortField="name"
       defaultSortDirection="desc"

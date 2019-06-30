@@ -83,7 +83,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
-| expanderDisabledField | string | no | | React Data Table looks for this property for each item in your data to check if that item can be expanded or not. You must set a bool value in the `expanderDisabledField` of your data if you want to use this feature.
+| expandableDisabledField | string | no |  | React Data Table looks for this property for each item in your data to check if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
 | sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table  |
@@ -403,7 +403,7 @@ class MyComponent extends Component {
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
         onTableUpdate={handleChange} 
         expandableRows
-        expanderDisabledField="expanderDisabled"
+        expandableDisabledField="expanderDisabled"
         expandableRowsComponent={<ExpanableComponent />}
       />
     )
