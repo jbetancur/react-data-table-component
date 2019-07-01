@@ -83,7 +83,8 @@ Nothing new here - we are using an array of object literals and properties to de
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
-| expandableDisabledField | string | no |  | React Data Table looks for this property for each item in your data to check if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature.
+| expandableIcon | object | no | default expander icons | you may pass in your own custom icons using the `expandableIcon: { collapsed: <svg>...</svg>, expanded: <svg>...</svg>` |
+| expandableDisabledField | string | no |  | React Data Table looks for this property for each item in your data and checks if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
@@ -439,10 +440,6 @@ class MyComponent extends Component {
 ```
 
 Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
-
-
-### Theme Resources
-* [SVG Encoder](https://codepen.io/yoksel/details/JDqvs)
 
 ## CSS Overrides
 If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS/CSS preprocesor you may use the following classNames:
