@@ -61,7 +61,7 @@ class MaterialTable extends PureComponent {
         ignoreRowClick: true,
         allowOverflow: true,
         button: true,
-        width: '56px',
+        width: '56px', // custom width for icon button
       },
       {
         name: 'Name',
