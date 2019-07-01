@@ -16,7 +16,7 @@ const ButtonStyle = styled.button`
     color: ${props => props.theme.expander.expanderColorDisabled};
   }
 
-  &:hover {
+  &:hover:enabled {
     cursor: pointer;
   }
 `;

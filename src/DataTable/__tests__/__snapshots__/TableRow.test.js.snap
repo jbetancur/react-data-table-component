@@ -645,7 +645,7 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   color: rgba(0,0,0,.12);
 }
 
-.c2:hover {
+.c2:hover:enabled {
   cursor: pointer;
 }
 
