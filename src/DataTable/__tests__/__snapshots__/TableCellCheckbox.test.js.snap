@@ -31,7 +31,7 @@ exports[`should render correctly 1`] = `
   <input
     aria-label="select-row-456"
     name="select-row-456"
-    style="font-size: 18px; cursor: pointer;"
+    style="font-size: 18px; cursor: pointer; margin-left: 9px;"
     type="checkbox"
   />
 </div>

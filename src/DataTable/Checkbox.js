@@ -2,7 +2,7 @@ import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { handleFunctionProps } from './util';
 
-const baseCheckboxStyle = { fontSize: '18px', cursor: 'pointer' };
+const baseCheckboxStyle = { fontSize: '18px', cursor: 'pointer', marginLeft: '9px' };
 
 export default class Checkbox extends PureComponent {
   static propTypes = {

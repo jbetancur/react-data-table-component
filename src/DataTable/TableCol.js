@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
-import { DataTableConsumer } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 
 const TableColStyle = styled(Cell)`
   font-size: ${props => props.theme.header.fontSize};
@@ -14,17 +14,18 @@ const TableColStyle = styled(Cell)`
   ${props => props.sortable && 'cursor: pointer'};
 
   &::before {
+    margin-bottom: 1px;
     font-size: 12px;
     padding-right: 4px;
   }
 
-  ${props => props.sortable && props.sortDirection === 'asc' && !props.sortIcon &&
+  ${props => props.sortable && props.sortDirection === 'desc' && !props.sortIcon &&
     css`
       &::before {
         content: '\\25BC';
       }
   `};
-  ${props => props.sortable && props.sortDirection === 'desc' && !props.sortIcon &&
+  ${props => props.sortable && props.sortDirection === 'asc' && !props.sortIcon &&
     css`
       &::before {
         content: '\\25B2';
@@ -33,7 +34,6 @@ const TableColStyle = styled(Cell)`
 `;
 
 const ColumnCellWrapper = styled.div`
-  margin-left: -3px;
   display: inline-flex;
   align-items: center;
   ${props => props.active && 'font-weight: 800'};
@@ -55,8 +55,8 @@ const SortIcon = styled.span`
     transition-property: transform;
   }
 
-  &.desc i,
-  &.desc svg {
+  &.asc i,
+  &.asc svg {
     transform: rotate(180deg);
   }
 `;
@@ -67,48 +67,46 @@ class TableCol extends PureComponent {
     column: PropTypes.object.isRequired,
   };
 
+  // TODO: migrate to ueContext hook
+  static contextType = DataTableContext;
+
   onColumnClick = e => {
     const {
       column,
       onColumnClick,
     } = this.props;
+    const { sortDirection } = this.context;
 
-    onColumnClick(column, e);
+    onColumnClick(column, sortDirection, e);
   }
 
   render() {
     const { column } = this.props;
+    const { sortIcon, sortColumn, sortDirection, internalCell } = this.context;
+    const sortable = column.sortable && sortColumn === column.selector;
 
     return (
-      <DataTableConsumer>
-        {({ sortIcon, sortColumn, sortDirection, internalCell }) => {
-          const sortable = column.sortable && sortColumn === column.selector;
-
-          return (
-            <TableColStyle
-              id={`column-${column.selector}`}
-              onClick={this.onColumnClick}
-              sortable={sortable}
-              sortDirection={sortDirection}
-              sortIcon={sortIcon}
-              column={column}
-              internalCell={internalCell}
-              className="rdt_TableCol"
-            >
-              {column.name && (
-                <ColumnCellWrapper active={sortable}>
-                  {sortable && sortIcon && (
-                    <SortIcon className={sortDirection}>
-                      {sortIcon}
-                    </SortIcon>
-                  )}
-                  {column.name}
-                </ColumnCellWrapper>
-              )}
-            </TableColStyle>
-          );
-        }}
-      </DataTableConsumer>
+      <TableColStyle
+        id={`column-${column.selector}`}
+        onClick={this.onColumnClick}
+        sortable={sortable}
+        sortDirection={sortDirection}
+        sortIcon={sortIcon}
+        column={column}
+        internalCell={internalCell}
+        className="rdt_TableCol"
+      >
+        {column.name && (
+          <ColumnCellWrapper active={sortable}>
+            {sortable && sortIcon && (
+              <SortIcon className={sortDirection}>
+                {sortIcon}
+              </SortIcon>
+            )}
+            {column.name}
+          </ColumnCellWrapper>
+        )}
+      </TableColStyle>
     );
   }
 }

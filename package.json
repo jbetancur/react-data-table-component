@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "1.5.5",
+  "version": "1.6.1",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -137,7 +137,7 @@
     "shortid": "^2.2.14"
   },
   "peerDependencies": {
-    "react": ">= ^16.3.0",
+    "react": ">= ^16.6.0",
     "styled-components": ">= ^3.2.3 || >= ^4.0.0"
   }
 }

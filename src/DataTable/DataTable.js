@@ -17,7 +17,9 @@ import TableBody from './TableBody';
 import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
+import { CellBase } from './Cell';
 import NoData from './NoData';
+import Pagination from './Pagination';
 import { propTypes, defaultProps } from './propTypes';
 import { decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
@@ -44,7 +46,7 @@ class DataTable extends Component {
     this.columns = decorateColumns(props.columns);
     this.sortedRows = memoize((rows, defaultSortField, direction) => orderBy(rows, defaultSortField, direction));
     this.mergeTheme = memoize((theme, customTheme) => merge(theme, customTheme));
-    this.PaginationComponent = props.paginationComponent;
+    this.PaginationComponent = props.paginationComponent || Pagination;
     this.state = {
       allSelected: false,
       selectedCount: 0,
@@ -99,15 +101,18 @@ class DataTable extends Component {
     }
   }
 
-  handleSort = ({ selector, sortable }) => {
+  handleSortChange = (column, e) => {
     const { onSort } = this.props;
-    const { sortColumn, sortDirection } = this.state;
 
-    this.setState(state => handleSort(selector, sortable, state));
+    this.setState(state => {
+      const newState = handleSort(column.selector, column.sortable, state);
 
-    if (sortable && onSort) {
-      onSort(sortColumn, sortDirection);
-    }
+      if (column.sortable && onSort) {
+        onSort(column, newState.sortDirection, e);
+      }
+
+      return newState;
+    });
   }
 
   handleChangePage = currentPage => {
@@ -175,7 +180,7 @@ class DataTable extends Component {
         <TableCol
           key={column.id}
           column={column}
-          onColumnClick={this.handleSort}
+          onColumnClick={this.handleSortChange}
         />
       ))
     );
@@ -208,7 +213,7 @@ class DataTable extends Component {
       <TableHead className="rdt_TableHead">
         <TableHeadRow className="rdt_TableHeadRow">
           {selectableRows && <TableColCheckbox onClick={this.handleSelectAll} />}
-          {expandableRows && <div style={{ width: '48px' }} />}
+          {expandableRows && <CellBase style={{ flex: '0 0 56px' }} />}
           {this.renderColumns()}
         </TableHeadRow>
       </TableHead>
