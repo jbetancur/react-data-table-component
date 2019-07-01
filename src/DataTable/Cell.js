@@ -1,5 +1,17 @@
 import styled, { css } from 'styled-components';
 
+const lastCellPaddingWhenButton = css`
+  &:not(:last-child) {
+    padding-right: calc(${props => props.theme.cells.cellPadding} / 2);
+  }
+`;
+
+const lastCellPadding = css`
+  &:last-child {
+    padding-right: calc(${props => props.theme.cells.cellPadding} / 2);
+  }
+`;
+
 export const CellBase = styled.div`
   position: relative;
   display: flex;
@@ -12,9 +24,11 @@ export const CellBase = styled.div`
   padding-bottom: calc(${props => props.theme.cells.cellPadding} / 12);
 `;
 
-// Default Cell Component
+// Flex calculations
 export const Cell = styled(CellBase)`
-  flex: ${props => (props.column.grow === 0 ? 0 : props.column.grow || 1)} 0 0;
+  flex-grow: ${props => (props.column.grow === 0 || props.column.button ? 0 : props.column.grow || 1)};
+  flex-shrink: 0;
+  flex-basis: 0;
   max-width: ${props => props.column.maxWidth || '100%'};
   min-width: ${props => (props.column.minWidth || '100px')};
   ${props => props.column.width && css`
@@ -30,13 +44,6 @@ export const Cell = styled(CellBase)`
     }
   `};
 
-  &:last-child {
-    padding-right: calc(${props => props.theme.cells.cellPadding} / 2);
-  }
-
-  ${props => props.column.button && css`
-    &:not(:last-child) {
-      padding-right: calc(${props.theme.cells.cellPadding} / 2);
-    }
-  `};
+  /* calculate left/right edge paddings */
+  ${props => (props.column.button ? lastCellPaddingWhenButton : lastCellPadding)};
 `;
