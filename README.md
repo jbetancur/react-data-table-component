@@ -83,6 +83,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
+| expandableDisabledField | string | no |  | React Data Table looks for this property for each item in your data to check if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | noDataComponent | string or component | no |  | A custom component to display when there are no records to display
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
@@ -359,6 +360,51 @@ class MyComponent extends Component {
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
         onTableUpdate={handleChange} 
         expandableRows
+        expandableRowsComponent={<ExpanableComponent />}
+      />
+    )
+  }
+);
+```
+
+But in some cases we don't have more details to show:
+```js
+...
+
+const data = [{ id: 1, title: 'Conan the Barbarian', summary: 'Orphaned boy Conan is enslaved after his village is destroyed...',  year: '1982', expanderDisabled: true, image: 'http://conan.image.png' } ...];
+const columns = [
+  {
+    name: 'Title',
+    sortable: true,
+    cell: row => <div><div style={{ fontWeight: 700 }}>{row.title}</div>{row.summary}</div>,
+  },
+  {
+    name: 'Year',
+    selector: 'year',
+    sortable: true,
+    right: true,
+  },
+];
+
+...
+
+// The row data is composed into your custom expandable component via the data prop
+const ExpanableComponent = ({ data }) => <img src={data.image} />;
+
+class MyComponent extends Component {
+  render() { 
+    return (
+      <DataTable
+        title="Arnold Movies"
+        columns={columns}
+        data={data}
+        selectableRows
+        selectableRowsComponent={Checkbox}
+        selectableRowsComponentProps={{ inkDisabled: true }}
+        sortIcon={<FontIcon>arrow_downward</FontIcon>}
+        onTableUpdate={handleChange} 
+        expandableRows
+        expandableDisabledField="expanderDisabled"
         expandableRowsComponent={<ExpanableComponent />}
       />
     )

@@ -97,7 +97,7 @@ class TableRow extends PureComponent {
 
     return (
       <DataTableConsumer>
-        {({ keyField, columns, selectedRows, selectableRows, expandableRows, striped, highlightOnHover, pointerOnHover, expandableRowsComponent }) => (
+        {({ keyField, columns, selectedRows, selectableRows, expandableRows, striped, highlightOnHover, pointerOnHover, expandableRowsComponent, expandableDisabledField }) => (
           <React.Fragment>
             <TableRowStyle
               striped={striped}
@@ -119,6 +119,7 @@ class TableRow extends PureComponent {
                   expanded={expanded}
                   row={row}
                   onExpandToggled={this.toggleRowExpand}
+                  disabled={row[expandableDisabledField] || false}
                 />
               )}
 

@@ -22,6 +22,7 @@ const TableCellExpander = memo(({
   row,
   expanded,
   onExpandToggled,
+  disabled,
 }) => (
   <TableCellExpanderStyle
     column={column}
@@ -31,6 +32,7 @@ const TableCellExpander = memo(({
       onToggled={onExpandToggled}
       row={row}
       expanded={expanded}
+      disabled={disabled}
     />
   </TableCellExpanderStyle>
 ));
@@ -40,12 +42,14 @@ TableCellExpander.propTypes = {
   row: PropTypes.object,
   expanded: PropTypes.bool,
   onExpandToggled: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 TableCellExpander.defaultProps = {
   column: {},
   row: {},
   expanded: false,
+  disabled: false,
 };
 
 export default TableCellExpander;

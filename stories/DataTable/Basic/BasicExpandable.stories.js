@@ -44,6 +44,30 @@ const BasicTable = () => (
   />
 );
 
+const BasicTableExpanderDisabled = () => {
+  const data = tableDataItems.map(item => {
+    let expanderDisabled = false;
+    if (Number(item.year) < 2000) {
+      expanderDisabled = true;
+    }
+    return { ...item, expanderDisabled };
+  });
+  return (
+    <DataTable
+      title="Movie List - No additional info for old movies (Before 2000)"
+      columns={columns}
+      data={data}
+      expandableRows
+      expandableDisabledField="expanderDisabled"
+      highlightOnHover
+      defaultSortField="name"
+      defaultSortDirection="desc"
+      expandableRowsComponent={<ExpandedSection />}
+    />
+  );
+};
+
 
 storiesOf('Basic', module)
-  .add('Expandable', BasicTable);
+  .add('Expandable', BasicTable)
+  .add('Expander disabled by row', BasicTableExpanderDisabled);
