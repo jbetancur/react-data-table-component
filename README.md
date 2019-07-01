@@ -25,10 +25,6 @@ React Data Table Component requires the following be installed in your project:
   * React 16.6+
   * styled-components 3.2.3+ || 4.0.0+
 
-If you need to have backwards compatability with React versions previous to 16.3 you will have to `yarn add react-data-table-component@0.13.0`. 
-
-** Note that versions previous to react-data-table-component@1.0.0` are  deprecated and will no longer be maintained. **
-
 ## Installation
 React Data Table requires the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
 
@@ -43,7 +39,7 @@ yarn add react-data-table-component styled-components
 ```
 
 ## Logging Issues
-Please use the github issue templates feature for logging issues or feature proposals
+Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox are clear details on the feature/issue will elicit a quicker resonse ;)
 
 ## API/Usage
 
@@ -70,46 +66,62 @@ Nothing new here - we are using an array of object literals and properties to de
 | ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered
 
 ### DataTable Properties
+
+## Basic
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
 | data | array<Object> | no | [] | it is **highly recommended** that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
 | keyField | string | no | 'id' | your data should have a unique identifier. By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time or use the expander feature. If a unique `id` is not present, React Data Table will use the row index (not recommended) as the key value |
+| striped | bool | no | false | stripe color the odd rows |
+| highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
+| pointerOnHover | bool | no | false | if rows show a point icon on hover |
+| noDataComponent | string or component | no |  | A custom component to display when there are no records to display |
+| className | string | no |  | override the className on the Table wrapper |
+| style | object | no |  | override the style on the Table wrapper |
+| responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
+| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
+| disabled | bool | no | false | disables the Table section |
+| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
+| onRowClicked | func | no | | callback to access the row data,index on row click |
+| overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
+| overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
+
+## Progress Indicator
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | progressPending | bool | no |  | disables the table and displays a plain text Loading Indicator |
 | progressComponent | component | no |  | allows you to use your own custom progress component |
 | progressCentered | bool | no |  | absolutely position and center the progress over the table |
+
+## Row Selection
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
+| clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
+
+## Row Expander
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
 | expandableIcon | object | no | default expander icons | you may pass in your own custom icons using the `expandableIcon: { collapsed: <svg>...</svg>, expanded: <svg>...</svg>` |
 | expandableDisabledField | string | no |  | React Data Table looks for this property for each item in your data and checks if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
-| noDataComponent | string or component | no |  | A custom component to display when there are no records to display
+
+## Sorting
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | defaultSortField | string | no |  | Setting this ensures the table data is presorted before it renders and the field(selector) is focused |
 | defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
 | sortIcon | component | no |  | Override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table  |
 | onSort | func | no |  | callback to access the sort state when a column is clicked. returns ([column](https://github.com/jbetancur/react-data-table-component#columns), sortDirection, event) |
-| striped | bool | no | false | stripe color the odd rows |
-| highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
-| pointerOnHover | bool | no | false | if rows show a point icon on hover |
-| actions | component or array of components | no |  | add actions to the TableHeader |
-| contextTitle | string | no |  | override the context menu title |
-| contextActions | component or array of components| no |  | add context actions to the TableHeader context|
-| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
-| onRowClicked | func | no | | callback to access the row data,index on row click |
-| clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| className | string | no |  | override the className on the Table wrapper |
-| style | object | no |  | override the style on the Table wrapper |
-| overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
-| overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
-| responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
-| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
-| disabled | bool | no | false | disables the Table section |
-| noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
-| fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
-| fixedHeaderScrollHeight | string | no | 100vh | in order for fixedHeader to work this property allows you to set a static height to the TabelBody. height must be a fixed value |
+
+## Pagination
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | pagination | bool | no | false | enable pagination with defaults. by default the total record set will be sliced depending on the page, rows per page. if you wish to use server side pagination then use the `paginationServer` property |
 | paginationServer | bool | no | false | changes the default pagination to work with server side pagination |
 | paginationDefaultPage | number | no | 1 | the default page to use when the table initially loads |
@@ -124,6 +136,16 @@ Nothing new here - we are using an array of object literals and properties to de
 | paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination |
 | paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination |
 | paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination |
+
+## Header
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| actions | component or array of components | no |  | add actions to the TableHeader |
+| contextTitle | string | no |  | override the context menu title |
+| contextActions | component or array of components| no |  | add context actions to the TableHeader context|
+| noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
+| fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
+| fixedHeaderScrollHeight | string | no | 100vh | in order for fixedHeader to work this property allows you to set a static height to the TabelBody. height must be a fixed value |
 | subHeader | component or array of components | no | false | show a subheader between the table and table header
 | subHeaderAlign | string | no | right | align the subheader content (left, right, center)
 | subHeaderWrap | bool | no | true | whether the subheader content should wrap
