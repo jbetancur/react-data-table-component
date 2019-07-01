@@ -15,7 +15,7 @@ exports[`<ExpanderButton expanded /> should render correctly 1`] = `
   color: rgba(0,0,0,.12);
 }
 
-.c0:hover {
+.c0:hover:enabled {
   cursor: pointer;
 }
 
@@ -56,7 +56,7 @@ exports[`<ExpanderButton expanded={false} /> should render correctly 1`] = `
   color: rgba(0,0,0,.12);
 }
 
-.c0:hover {
+.c0:hover:enabled {
   cursor: pointer;
 }
 
