@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { DataTableContext } from './DataTableContext';
 
 const ButtonStyle = styled.button`
   outline: none;
@@ -9,25 +10,30 @@ const ButtonStyle = styled.button`
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(${props => props.theme.expander[props.expanded ? 'expandedButton' : 'collapsedButton']});
-  background-position: center center;
-  background-repeat: no-repeat;
+  color: ${props => props.theme.expander.expanderColor};
+
+  &:disabled {
+    color: ${props => props.theme.expander.expanderColorDisabled};
+  }
 
   &:hover {
     cursor: pointer;
   }
 `;
 
-const ExpanderButton = ({ expanded, children, row, onToggled }) => {
+const ExpanderButton = ({ expanded, row, onToggled }) => {
+  const { expandableIcon } = React.useContext(DataTableContext);
+  const icon = expanded
+    ? expandableIcon.expanded
+    : expandableIcon.collapsed;
   const handleToggle = e => onToggled && onToggled(row, e);
 
   return (
     <ButtonStyle
       onClick={handleToggle}
-      expanded={expanded}
       data-testid="expander-button"
     >
-      {children}
+      {icon}
     </ButtonStyle>
   );
 };
@@ -36,15 +42,10 @@ ExpanderButton.propTypes = {
   row: PropTypes.object.isRequired,
   expanded: PropTypes.bool,
   onToggled: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
 };
 
 ExpanderButton.defaultProps = {
   onToggled: null,
-  children: null,
   expanded: false,
 };
 
