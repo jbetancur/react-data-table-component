@@ -1751,7 +1751,7 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   color: rgba(0,0,0,.12);
 }
 
-.c16:hover {
+.c16:hover:enabled {
   cursor: pointer;
 }
 
@@ -2219,7 +2219,7 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   color: rgba(0,0,0,.12);
 }
 
-.c16:hover {
+.c16:hover:enabled {
   cursor: pointer;
 }
 
@@ -6435,7 +6435,7 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   color: rgba(0,0,0,.12);
 }
 
-.c16:hover {
+.c16:hover:enabled {
   cursor: pointer;
 }
 

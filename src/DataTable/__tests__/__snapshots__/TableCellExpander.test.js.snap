@@ -15,7 +15,7 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
   color: rgba(0,0,0,.12);
 }
 
-.c1:hover {
+.c1:hover:enabled {
   cursor: pointer;
 }
 
