@@ -19,6 +19,7 @@ import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import { CellBase } from './Cell';
 import NoData from './NoData';
+import Pagination from './Pagination';
 import { propTypes, defaultProps } from './propTypes';
 import { decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
@@ -45,7 +46,7 @@ class DataTable extends Component {
     this.columns = decorateColumns(props.columns);
     this.sortedRows = memoize((rows, defaultSortField, direction) => orderBy(rows, defaultSortField, direction));
     this.mergeTheme = memoize((theme, customTheme) => merge(theme, customTheme));
-    this.PaginationComponent = props.paginationComponent;
+    this.PaginationComponent = props.paginationComponent || Pagination;
     this.state = {
       allSelected: false,
       selectedCount: 0,

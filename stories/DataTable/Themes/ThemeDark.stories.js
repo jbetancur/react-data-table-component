@@ -39,6 +39,7 @@ const darkTheme = {
   expander: {
     fontColor: '#FFFFFF',
     backgroundColor: '#363640',
+    expanderColor: '#FFFFFF',
   },
 };
 

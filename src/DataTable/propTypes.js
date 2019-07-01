@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Pagination from './Pagination';
 import FirstPageIcon from '../icons/FirstPage';
 import LastPageIcon from '../icons/LastPage';
 import LeftIcon from '../icons/Left';
 import RightIcon from '../icons/Right';
+import ExpanderCollapsedIcon from '../icons/ExpanderCollapsedIcon';
+import ExpanderExpandedIcon from '../icons/ExpanderExpandedIcon';
 
 export const propTypes = {
   title: PropTypes.oneOfType([
@@ -26,6 +27,18 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  expandableIcon: PropTypes.shape({
+    collapsed: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node,
+      PropTypes.func,
+    ]),
+    expanded: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node,
+      PropTypes.func,
+    ]),
+  }),
   selectableRowsComponent: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
@@ -101,6 +114,10 @@ export const defaultProps = {
   progressComponent: <h2>Loading...</h2>,
   progressCentered: false,
   expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
+  expandableIcon: {
+    collapsed: <ExpanderCollapsedIcon />,
+    expanded: <ExpanderExpandedIcon />,
+  },
   selectableRowsComponent: 'input',
   selectableRowsComponentProps: {},
   customTheme: {},
@@ -140,7 +157,7 @@ export const defaultProps = {
   paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
   onChangePage: null,
   onChangeRowsPerPage: null,
-  paginationComponent: Pagination,
+  paginationComponent: null,
   paginationComponentOptions: {
     rowsPerPageText: 'Rows per page:',
     rangeSeparatorText: 'of',

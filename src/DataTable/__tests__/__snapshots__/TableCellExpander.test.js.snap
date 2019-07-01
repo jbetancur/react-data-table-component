@@ -8,9 +8,11 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
-  background-position: center center;
-  background-repeat: no-repeat;
+  color: rgba(0,0,0,.54);
+}
+
+.c1:disabled {
+  color: rgba(0,0,0,.12);
 }
 
 .c1:hover {
@@ -53,6 +55,22 @@ exports[`component <TableCellExpander /> should render correctly 1`] = `
   <button
     class="c1"
     data-testid="expander-button"
-  />
+  >
+    <svg
+      fill="currentColor"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+      />
+      <path
+        d="M0-.25h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
 </div>
 `;

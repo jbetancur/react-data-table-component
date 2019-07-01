@@ -1744,9 +1744,11 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
-  background-position: center center;
-  background-repeat: no-repeat;
+  color: rgba(0,0,0,.54);
+}
+
+.c16:disabled {
+  color: rgba(0,0,0,.12);
 }
 
 .c16:hover {
@@ -2030,7 +2032,23 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
             <button
               class="c16"
               data-testid="expander-button"
-            />
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
           <div
             class="rdt_TableCell c17"
@@ -2055,7 +2073,23 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
             <button
               class="c16"
               data-testid="expander-button"
-            />
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
           <div
             class="rdt_TableCell c17"
@@ -2171,22 +2205,6 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   height: 100%;
 }
 
-.c20 {
-  outline: none;
-  border: none;
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.c20:hover {
-  cursor: pointer;
-}
-
 .c16 {
   outline: none;
   border: none;
@@ -2194,9 +2212,11 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7.41%207.84L12%2012.42l4.59-4.58L18%209.25l-6%206-6-6z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.75h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
-  background-position: center center;
-  background-repeat: no-repeat;
+  color: rgba(0,0,0,.54);
+}
+
+.c16:disabled {
+  color: rgba(0,0,0,.12);
 }
 
 .c16:hover {
@@ -2487,7 +2507,23 @@ exports[`expandableRows should render correctly when expandableRows is true and 
             <button
               class="c16"
               data-testid="expander-button"
-            />
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"
+                />
+                <path
+                  d="M0-.75h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
           <div
             class="rdt_TableCell c17"
@@ -2519,9 +2555,25 @@ exports[`expandableRows should render correctly when expandableRows is true and 
             class="c15"
           >
             <button
-              class="c20"
+              class="c16"
               data-testid="expander-button"
-            />
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
           <div
             class="rdt_TableCell c17"
@@ -6376,9 +6428,11 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23757575%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0-.25h24v24H0z%22%20fill%3D%22none%22/%3E%0A%3C/svg%3E);
-  background-position: center center;
-  background-repeat: no-repeat;
+  color: rgba(0,0,0,.54);
+}
+
+.c16:disabled {
+  color: rgba(0,0,0,.12);
 }
 
 .c16:hover {
@@ -6662,7 +6716,23 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
             <button
               class="c16"
               data-testid="expander-button"
-            />
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
           <div
             class="rdt_TableCell c17"
@@ -6687,7 +6757,23 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
             <button
               class="c16"
               data-testid="expander-button"
-            />
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
           <div
             class="rdt_TableCell c17"
