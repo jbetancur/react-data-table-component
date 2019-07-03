@@ -39,7 +39,7 @@ yarn add react-data-table-component styled-components
 ```
 
 ## Logging Issues
-Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox are clear details on the feature/issue will elicit a quicker resonse ;)
+Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox and providing clear details on the feature/issue will elicit a much quicker resonse 😉
 
 ## API/Usage
 
