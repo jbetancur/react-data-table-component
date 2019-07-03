@@ -94,5 +94,5 @@ class AdvancedPaginationTable extends Component {
   }
 }
 
-storiesOf('Pagination', module)
-  .add('Server-Side', () => <AdvancedPaginationTable />);
+storiesOf('Basic', module)
+  .add('Pagination: Server-Side', () => <AdvancedPaginationTable />);

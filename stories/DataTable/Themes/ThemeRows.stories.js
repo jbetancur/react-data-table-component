@@ -50,5 +50,5 @@ const BasicTable = () => (
 );
 
 
-storiesOf('Custom Theme', module)
+storiesOf('Theming', module)
   .add('Custom Rows', BasicTable);

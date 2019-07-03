@@ -70,4 +70,4 @@ const BasicTableExpanderDisabled = () => {
 
 storiesOf('Basic', module)
   .add('Expandable', BasicTable)
-  .add('Expander disabled by row', BasicTableExpanderDisabled);
+  .add('Expandable: Row Disable', BasicTableExpanderDisabled);

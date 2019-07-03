@@ -33,5 +33,5 @@ const BasicTable = () => (
 );
 
 
-storiesOf('Pagination', module)
-  .add('Pagination Options', BasicTable);
+storiesOf('Basic', module)
+  .add('Pagination: Options', BasicTable);

@@ -76,5 +76,5 @@ const BasicTable = () => (
 );
 
 
-storiesOf('Custom Theme', module)
+storiesOf('Theming', module)
   .add('Dark Theme', BasicTable);

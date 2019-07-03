@@ -5,7 +5,7 @@ import './base.css';
 const req = require.context('../stories', true, /\.stories\.(js|jsx)$/);
 
 function loadStories() {
-  req.keys().forEach(filename => {
+  req.keys().sort().forEach(filename => {
     req(filename);
   });
 }

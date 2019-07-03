@@ -150,5 +150,5 @@ class MaterialTable extends PureComponent {
   }
 }
 
-storiesOf('Advanced', module)
+storiesOf('UI Libraries', module)
   .add('react-md: Action Buttons', () => <MaterialTable />);

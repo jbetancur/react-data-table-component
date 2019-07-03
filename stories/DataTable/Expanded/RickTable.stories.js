@@ -45,4 +45,4 @@ const Expandable = () => (
 );
 
 storiesOf('Basic', module)
-  .add('Expandable Rick', Expandable);
+  .add('Expandable: Custom Cell', Expandable);

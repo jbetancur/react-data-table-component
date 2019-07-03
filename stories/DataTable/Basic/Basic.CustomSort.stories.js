@@ -52,4 +52,4 @@ const BasicTable = () => {
 };
 
 storiesOf('Basic', module)
-  .add('Sortable: Custom', BasicTable);
+  .add('Sortable: Custom Sort', BasicTable);
