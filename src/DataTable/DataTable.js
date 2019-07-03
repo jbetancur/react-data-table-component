@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import memoize from 'memoize-one';
-import orderBy from 'lodash/orderBy';
 import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
 import Table from './Table';
@@ -21,7 +20,7 @@ import { CellBase } from './Cell';
 import NoData from './NoData';
 import Pagination from './Pagination';
 import { propTypes, defaultProps } from './propTypes';
-import { decorateColumns, getSortDirection, getNumberOfPages } from './util';
+import { sort, decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import { handleSelectAll, handleRowSelected, handleSort, clearSelected } from './statemgmt';
 import getDefaultTheme from '../themes/default';
 
@@ -44,7 +43,7 @@ class DataTable extends Component {
 
     const sortDirection = getSortDirection(props.defaultSortAsc);
     this.columns = decorateColumns(props.columns);
-    this.sortedRows = memoize((rows, defaultSortField, direction) => orderBy(rows, defaultSortField, direction));
+    this.sortedRows = memoize((rows, defaultSortField, direction) => sort(rows, defaultSortField, direction, props.sortFunction));
     this.mergeTheme = memoize((theme, customTheme) => merge(theme, customTheme));
     this.PaginationComponent = props.paginationComponent || Pagination;
     this.state = {

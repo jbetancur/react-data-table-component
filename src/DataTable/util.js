@@ -1,4 +1,13 @@
 import shortid from 'shortid';
+import orderBy from 'lodash/orderBy';
+
+export const sort = (rows, field = '', direction, sortFn) => {
+  if (sortFn && typeof sortFn === 'function') {
+    return sortFn(rows, field, direction);
+  }
+
+  return orderBy(rows, field, direction);
+};
 
 export const getProperty = (row, selector, format) => {
   if (typeof selector !== 'string') {
