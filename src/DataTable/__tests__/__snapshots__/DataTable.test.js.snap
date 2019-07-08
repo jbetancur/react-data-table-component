@@ -117,6 +117,8 @@ exports[`Pagination should render correctly if pagination is enabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -773,6 +775,8 @@ exports[`Pagination should render correctly when a paginationComponentOptions ar
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -1405,6 +1409,8 @@ exports[`Subheader should render correctly when a subheader is enabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -1840,6 +1846,8 @@ exports[`expandableRows should render correctly when expandableRows is true 1`] 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -2329,6 +2337,8 @@ exports[`expandableRows should render correctly when expandableRows is true and 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -2920,6 +2930,8 @@ exports[`progress/nodata should render correctly when progressPending is true 1`
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -3315,6 +3327,8 @@ exports[`prop changes should update state if the data prop changes 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -3691,6 +3705,8 @@ exports[`selectableRows should render correctly when selectableRows is true 1`] 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -4139,6 +4155,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -4587,6 +4605,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -5037,6 +5057,8 @@ exports[`selectableRows should render correctly when selectableRows is true and 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -5629,6 +5651,8 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -5985,6 +6009,8 @@ exports[`should render correctly with columns/data 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -6358,6 +6384,8 @@ exports[`should render without a header if noHeader is true 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -6678,6 +6706,8 @@ exports[`sorting should render correctly when a column is sorted 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -7098,6 +7128,8 @@ exports[`sorting should render correctly with a default sort field 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);

@@ -47,6 +47,8 @@ const pointerCSS = css`
 const TableRowStyle = styled.div`
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: ${props => props.theme.rows.height};
   ${props => (props.theme.rows.spacing === 'spaced' ? spacedRowsCSS : defaultRowsCSS)};
   background-color: ${props => props.theme.rows.backgroundColor};
   color: ${props => props.theme.rows.fontColor};
