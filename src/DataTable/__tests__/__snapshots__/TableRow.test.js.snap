@@ -63,6 +63,8 @@ exports[`should render correctly with highlightOnHover prop 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -96,6 +98,8 @@ exports[`should render correctly with no columns 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -171,6 +175,8 @@ exports[`should render correctly with pointerOnHover prop 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -260,6 +266,8 @@ exports[`should render correctly with striped prop 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -341,6 +349,8 @@ exports[`when column.ignoreRowClick is true should not render the click clip div
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -426,6 +436,8 @@ exports[`with children should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -515,6 +527,8 @@ exports[`with columns should render correctly if a row does not have a keyField 
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -604,6 +618,8 @@ exports[`with columns should render correctly if a row has a keyField 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -741,6 +757,8 @@ exports[`with columns should render correctly if expandableRows 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -878,6 +896,8 @@ exports[`with columns should render correctly if selectableRows is true 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -1001,6 +1021,8 @@ exports[`with columns should render correctly if selectableRows is true and a ro
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
