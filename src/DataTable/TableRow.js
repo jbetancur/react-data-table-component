@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { DataTableConsumer } from './DataTableContext';
+import { DataTableConsumer, DataTableContext } from './DataTableContext';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
@@ -66,6 +66,16 @@ class TableRow extends PureComponent {
 
   state = {
     expanded: false,
+  }
+
+  componentDidMount() {
+    const { row } = this.props;
+    const { defaultExpandedField } = this.context;
+    if (defaultExpandedField) {
+      this.setState({
+        expanded: row[defaultExpandedField],
+      });
+    }
   }
 
   handleRowSelected = row => {
@@ -150,5 +160,7 @@ class TableRow extends PureComponent {
     );
   }
 }
+
+TableRow.contextType = DataTableContext;
 
 export default TableRow;
