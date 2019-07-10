@@ -22,7 +22,7 @@ const ButtonStyle = styled.button`
 `;
 
 const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
-  const { expandableIcon } = React.useContext(DataTableContext);
+  const { expandableIcon, keyField } = React.useContext(DataTableContext);
   const icon = expanded
     ? expandableIcon.expanded
     : expandableIcon.collapsed;
@@ -31,7 +31,7 @@ const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
   return (
     <ButtonStyle
       onClick={handleToggle}
-      data-testid="expander-button"
+      data-testid={`expander-button-${row[keyField]}`}
       disabled={disabled}
     >
       {icon}

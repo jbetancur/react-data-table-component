@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TableFooter = styled.nav`
+const TableFooter = styled.footer`
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
@@ -12,4 +12,5 @@ const TableFooter = styled.nav`
   background-color: ${props => props.theme.pagination.backgroundColor};
   border-top: 1px solid ${props => props.theme.rows.borderColor};
 `;
+
 export default TableFooter;

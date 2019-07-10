@@ -34,8 +34,6 @@ export const removeItem = (array, item) => {
   return newArray;
 };
 
-export const pull = (array, values) => array.filter(el => values.indexOf(el) < 1);
-
 // Make sure columns have unique id's
 export const decorateColumns = columns => columns.map(column => ({ id: shortid.generate(), ...column }));
 

@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 import React from 'react';
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import Checkbox from '../Checkbox';
 
 afterEach(cleanup);
