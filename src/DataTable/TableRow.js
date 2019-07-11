@@ -64,6 +64,8 @@ class TableRow extends PureComponent {
     onRowSelected: PropTypes.func.isRequired,
   };
 
+  static contextType = DataTableContext;
+
   state = {
     expanded: false,
   }
@@ -160,7 +162,5 @@ class TableRow extends PureComponent {
     );
   }
 }
-
-TableRow.contextType = DataTableContext;
 
 export default TableRow;
