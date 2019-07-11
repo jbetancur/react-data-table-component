@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 import React from 'react';
-import { cleanup, fireEvent } from 'react-testing-library';
+import { cleanup, fireEvent } from '@testing-library/react';
 import { renderWithTheme } from '../../test-helpers'; // since child elements require theme
 import { DataTableProvider, defaultState } from '../DataTableContext';
 import Pagination from '../Pagination';
