@@ -23,7 +23,7 @@ A clear and concise description of what you expected to happen.
 ## Code Sandbox
 Please include a codesandbox to help duplicate your issue
 
-https://codesandbox.io/embed/react-data-table-sandbox-l6hpl
+https://codesandbox.io/embed/react-data-table-sandbox-ng2q4
 
 ## Screenshots
 If applicable, add screenshots to help explain your problem.
