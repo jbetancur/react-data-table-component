@@ -4,46 +4,66 @@ import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
 import { DataTableContext } from './DataTableContext';
 
-const TableColStyle = styled(Cell)`
-  font-size: ${props => props.theme.header.fontSize};
-  user-select: none;
-  font-weight: 500;
-  white-space: nowrap;
-  color: ${props => props.theme.header.fontColor};
-  min-height: ${props => props.theme.header.height};
-  ${props => props.sortable && 'cursor: pointer'};
-
-  &::before {
-    margin-bottom: 1px;
-    font-size: 12px;
-    padding-right: 4px;
-  }
-
-  ${props => props.sortable && props.sortDirection === 'desc' && !props.sortIcon &&
-    css`
-      &::before {
-        content: '\\25BC';
-      }
-  `};
-  ${props => props.sortable && props.sortDirection === 'asc' && !props.sortIcon &&
-    css`
-      &::before {
-        content: '\\25B2';
-      }
-  `};
+const nativeSortASC = css`
+  content: '\\25B2';
 `;
 
-const ColumnCellWrapper = styled.div`
+const nativeSortDESC = css`
+  content: '\\25BC';
+`;
+
+const activeColCSS = css`
+  font-weight: 600;
+  color: ${props => props.theme.header.fontColorActive};
+`;
+
+const TableColStyle = styled(Cell)`
+  user-select: none;
+  font-size: ${props => props.theme.header.fontSize};
+  font-weight: 500;
+  white-space: nowrap;
+  min-height: ${props => props.theme.header.height};
+  color: ${props => props.theme.header.fontColor};
+`;
+
+const ColumnSortable = styled.div`
   display: inline-flex;
   align-items: center;
-  ${props => props.active && 'font-weight: 800'};
+  height: 100%;
+
+  span {
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    ${props => props.sortActive && activeColCSS};
+
+    &:hover {
+      ${({ column }) => column.sortable && 'cursor: pointer'};
+    }
+
+    ${({ column, sortActive, sortDirection, sortIcon }) => sortActive && !sortIcon &&
+    (column.right
+      ? css`
+        &::before {
+          padding-right: 2px;
+          ${sortDirection === 'asc' ? nativeSortASC : nativeSortDESC};
+        }`
+      : css`
+        &::after {
+          padding-left: 2px;
+          ${sortDirection === 'asc' ? nativeSortASC : nativeSortDESC};
+        }
+      `)};
+  }
 `;
 
 const SortIcon = styled.span`
   line-height: 1;
+  user-select: none;
 
   i,
   svg {
+    color: inherit;
     font-size: 18px !important;
     height: 18px !important;
     width: 18px !important;
@@ -51,12 +71,13 @@ const SortIcon = styled.span`
     flex-shrink: 0;
     backface-visibility: hidden;
     transform-style: preserve-3d;
-    transition-duration: 0.1s;
+    transition-duration: 150ms;
     transition-property: transform;
   }
 
   &.asc i,
   &.asc svg {
+    padding-right: 4px;
     transform: rotate(180deg);
   }
 `;
@@ -70,40 +91,50 @@ class TableCol extends PureComponent {
   static contextType = DataTableContext;
 
   onColumnClick = e => {
-    const {
-      column,
-      onColumnClick,
-    } = this.props;
+    const { column, onColumnClick } = this.props;
     const { sortDirection } = this.context;
 
     onColumnClick(column, sortDirection, e);
   }
 
+  renderCustomSortIcon() {
+    const { sortIcon, sortDirection } = this.context;
+
+    return (
+      <SortIcon className={sortDirection}>
+        {sortIcon}
+      </SortIcon>
+    );
+  }
+
   render() {
     const { column } = this.props;
     const { sortIcon, sortColumn, sortDirection, internalCell } = this.context;
-    const sortable = column.sortable && sortColumn === column.selector;
+    const sortActive = column.sortable && sortColumn === column.selector;
+    const customSortIconLeft = sortActive && sortIcon && !column.right;
+    const customSortIconRight = sortActive && sortIcon && column.right;
 
     return (
       <TableColStyle
-        id={`column-${column.selector}`}
-        onClick={this.onColumnClick}
-        sortable={sortable}
-        sortDirection={sortDirection}
-        sortIcon={sortIcon}
-        column={column}
-        internalCell={internalCell}
         className="rdt_TableCol"
+        column={column} // required by Cell.js
+        internalCell={internalCell} // required by Cell.js
       >
         {column.name && (
-          <ColumnCellWrapper active={sortable}>
-            {sortable && sortIcon && (
-              <SortIcon className={sortDirection}>
-                {sortIcon}
-              </SortIcon>
-            )}
-            {column.name}
-          </ColumnCellWrapper>
+          <ColumnSortable
+            id={`column-${column.selector}`}
+            onClick={this.onColumnClick}
+            sortActive={sortActive}
+            sortDirection={sortDirection}
+            sortIcon={sortIcon}
+            column={column}
+          >
+            {customSortIconRight && this.renderCustomSortIcon()}
+            <span>
+              {column.name}
+            </span>
+            {customSortIconLeft && this.renderCustomSortIcon()}
+          </ColumnSortable>
         )}
       </TableColStyle>
     );

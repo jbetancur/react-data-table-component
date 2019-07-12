@@ -100,14 +100,14 @@ class DataTable extends Component {
     }
   }
 
-  handleSortChange = (column, e) => {
+  handleSortChange = column => {
     const { onSort } = this.props;
 
     this.setState(state => {
       const newState = handleSort(column.selector, column.sortable, state);
 
       if (column.sortable && onSort) {
-        onSort(column, newState.sortDirection, e);
+        onSort(column, newState.sortDirection);
       }
 
       return newState;
