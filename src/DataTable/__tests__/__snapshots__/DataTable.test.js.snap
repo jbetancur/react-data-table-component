@@ -207,11 +207,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -659,11 +654,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c10 {
@@ -1158,11 +1148,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -1588,11 +1573,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   transform: rotate(180deg);
 }
 
-.c6:hover .__rdt_custom_sort_icon i,
-.c6:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1899,11 +1879,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -2353,11 +2328,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -3064,11 +3034,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -3814,11 +3779,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -4355,11 +4315,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -4842,11 +4797,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -5270,11 +5220,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -5696,11 +5641,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -6134,11 +6074,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -6566,11 +6501,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -6992,11 +6922,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -7430,11 +7355,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -7856,11 +7776,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -8292,11 +8207,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -8720,11 +8630,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -9146,11 +9051,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -9632,11 +9532,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -10178,11 +10073,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -10666,11 +10556,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -11094,11 +10979,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -11526,11 +11406,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -11956,11 +11831,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -12399,11 +12269,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -12831,11 +12696,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -13257,11 +13117,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -13707,11 +13562,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -14161,11 +14011,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -14773,11 +14618,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -15223,11 +15063,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -15653,11 +15488,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -16079,11 +15909,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -16522,11 +16347,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c10 {
@@ -17027,11 +16847,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c10 {
   position: relative;
   display: -webkit-box;
@@ -17528,11 +17343,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c10 {
@@ -20381,11 +20191,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -20807,11 +20612,6 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -21267,11 +21067,6 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -21723,11 +21518,6 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -22183,11 +21973,6 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -22641,11 +22426,6 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
   transform: rotate(180deg);
 }
 
-.c12:hover .__rdt_custom_sort_icon i,
-.c12:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -23097,11 +22877,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {
@@ -23672,11 +23447,6 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   transform: rotate(180deg);
 }
 
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -24083,11 +23853,6 @@ exports[`should render correctly when disabled 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c11:hover .__rdt_custom_sort_icon i,
-.c11:hover .__rdt_custom_sort_icon svg {
-  opacity: 0.5;
 }
 
 .c5 {

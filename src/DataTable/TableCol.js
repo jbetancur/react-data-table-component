@@ -50,12 +50,15 @@ const ColumnSortable = styled.div`
   &:hover {
     ${({ column }) => column.sortable && 'cursor: pointer'};
 
+    /*
+    future feature
     .__rdt_custom_sort_icon {
       i,
       svg {
         ${props => !props.sortActive && 'opacity: 0.5'};
       }
     }
+    */
   }
 `;
 
