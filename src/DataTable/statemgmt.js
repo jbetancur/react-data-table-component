@@ -28,10 +28,16 @@ export const handleRowSelected = (rows, row, selectedRows) => {
 
 export const handleSort = (selector, sortable, state) => {
   if (sortable) {
-    const { sortDirection } = state;
-    const direction = sortDirection === 'asc'
-      ? 'desc'
-      : 'asc';
+    const { sortDirection, sortColumn } = state;
+    let direction = sortDirection;
+
+    // change sort direction only if sortColumn (currently selected column) is === the newly clicked column
+    // otherwise, retain sort direction if the column is swiched
+    if (sortColumn === selector) {
+      direction = sortDirection === 'asc'
+        ? 'desc'
+        : 'asc';
+    }
 
     return {
       sortColumn: selector,

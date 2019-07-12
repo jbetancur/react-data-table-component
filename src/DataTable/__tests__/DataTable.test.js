@@ -14,7 +14,7 @@ jest.mock('shortid', () => {
 const dataMock = colProps => {
   return {
     columns: [{ name: 'Test', selector: 'some.name', ...colProps }],
-    data: [{ id: 1, some: { name: 'Henry the 8th' } }, { id: 2, some: { name: 'Henry the 9th' } }],
+    data: [{ id: 1, some: { name: 'Apple' } }, { id: 2, some: { name: 'Zuchinni' } }],
   };
 };
 
@@ -332,18 +332,81 @@ describe('DataTable::sorting', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should render correctly when a column is sorted', () => {
+  test('should render correctly when a column is sorted in default asc', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when a column is sorted from asc to desc', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should call onSort with the correct params', () => {
+    const onSortMock = jest.fn();
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onSort={onSortMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
+  });
+
+  test('should call onSort with the correct params if the sort is clicked twice', () => {
+    const onSortMock = jest.fn();
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onSort={onSortMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'desc');
+  });
+
+  test('should render correctly with a custom sortIcon', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
       <DataTable
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        expandableRows
+        sortIcon={<div>ASC</div>}
       />,
     );
-
-    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -356,37 +419,6 @@ describe('DataTable::sorting', () => {
         columns={mock.columns}
         defaultSortField="some.name"
         defaultSortAsc={false}
-      />,
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  test('should call with the correct params onSort if a column is sortable and onSort is set', () => {
-    const onSortMock = jest.fn();
-    const mock = dataMock({ sortable: true });
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        defaultSortField="some.name"
-        onSort={onSortMock}
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
-
-    expect(onSortMock).toBeCalled();
-  });
-
-  test('should render correctly with a custom sortIcon', () => {
-    const mock = dataMock({ sortable: true });
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        defaultSortField="some.name"
-        sortIcon={<div>ASC</div>}
       />,
     );
 
