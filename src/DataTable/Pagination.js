@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableConsumer } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 import Select from './Select';
 import { getNumberOfPages } from './util';
 
@@ -57,6 +57,8 @@ export default class Pagination extends PureComponent {
     currentPage: PropTypes.number.isRequired,
   };
 
+  static contextType = DataTableContext;
+
   handlePrevious = () => {
     const { onChangePage, currentPage } = this.props;
 
@@ -81,86 +83,81 @@ export default class Pagination extends PureComponent {
     onChangePage(getNumberOfPages(rowCount, rowsPerPage));
   }
 
-  handleRowsPerPage = currentPage => ({ target }) => {
-    const { onChangeRowsPerPage } = this.props;
+  handleRowsPerPage = ({ target }) => {
+    const { onChangeRowsPerPage, currentPage } = this.props;
 
     onChangeRowsPerPage(Number(target.value), currentPage);
   }
 
   render() {
     const { theme, rowsPerPage, currentPage, rowCount } = this.props;
+    const { paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious, paginationComponentOptions } = this.context;
+
+    const numPages = getNumberOfPages(rowCount, rowsPerPage);
+    const lastIndex = currentPage * rowsPerPage;
+    const firstIndex = (lastIndex - rowsPerPage) + 1;
+    const disabledLesser = currentPage === 1;
+    const disabledGreater = currentPage === numPages;
+    const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
+    const status = currentPage === numPages
+      ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
+      : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
 
     return (
-      <DataTableConsumer>
-        {({ paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious, paginationComponentOptions }) => {
-          const numPages = getNumberOfPages(rowCount, rowsPerPage);
-          const lastIndex = currentPage * rowsPerPage;
-          const firstIndex = (lastIndex - rowsPerPage) + 1;
-          const disabledLesser = currentPage === 1;
-          const disabledGreater = currentPage === numPages;
-          const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
-          const status = currentPage === numPages
-            ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
-            : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
+      <React.Fragment>
+        <Span>{rowsPerPageText}</Span>
+        <Select onChange={this.handleRowsPerPage} defaultValue={rowsPerPage}>
+          {paginationRowsPerPageOptions.map(num => (
+            <option
+              key={num}
+              value={num}
+            >
+              {num}
+            </option>
+          ))}
+        </Select>
+        <Span>
+          {status}
+        </Span>
 
-          return (
-            <React.Fragment>
-              <Span>{rowsPerPageText}</Span>
-              <Select onChange={this.handleRowsPerPage(currentPage)} defaultValue={rowsPerPage}>
-                {paginationRowsPerPageOptions.map(num => (
-                  <option
-                    key={num}
-                    value={num}
-                  >
-                    {num}
-                  </option>
-                ))}
-              </Select>
-              <Span>
-                {status}
-              </Span>
+        <PageList>
+          <Button
+            id="pagination-first-page"
+            onClick={this.handleFirst}
+            disabled={disabledLesser}
+            theme={theme}
+          >
+            {paginationIconFirstPage}
+          </Button>
 
-              <PageList>
-                <Button
-                  id="pagination-first-page"
-                  onClick={this.handleFirst}
-                  disabled={disabledLesser}
-                  theme={theme}
-                >
-                  {paginationIconFirstPage}
-                </Button>
+          <Button
+            id="pagination-previous-page"
+            onClick={this.handlePrevious}
+            disabled={disabledLesser}
+            theme={theme}
+          >
+            {paginationIconPrevious}
+          </Button>
 
-                <Button
-                  id="pagination-previous-page"
-                  onClick={this.handlePrevious}
-                  disabled={disabledLesser}
-                  theme={theme}
-                >
-                  {paginationIconPrevious}
-                </Button>
+          <Button
+            id="pagination-next-page"
+            onClick={this.handleNext}
+            disabled={disabledGreater}
+            theme={theme}
+          >
+            {paginationIconNext}
+          </Button>
 
-                <Button
-                  id="pagination-next-page"
-                  onClick={this.handleNext}
-                  disabled={disabledGreater}
-                  theme={theme}
-                >
-                  {paginationIconNext}
-                </Button>
-
-                <Button
-                  id="pagination-last-page"
-                  onClick={this.handleLast}
-                  disabled={disabledGreater}
-                  theme={theme}
-                >
-                  {paginationIconLastPage}
-                </Button>
-              </PageList>
-            </React.Fragment>
-          );
-        }}
-      </DataTableConsumer>
+          <Button
+            id="pagination-last-page"
+            onClick={this.handleLast}
+            disabled={disabledGreater}
+            theme={theme}
+          >
+            {paginationIconLastPage}
+          </Button>
+        </PageList>
+      </React.Fragment>
     );
   }
 }

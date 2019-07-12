@@ -67,7 +67,6 @@ class TableCol extends PureComponent {
     column: PropTypes.object.isRequired,
   };
 
-  // TODO: migrate to ueContext hook
   static contextType = DataTableContext;
 
   onColumnClick = e => {
