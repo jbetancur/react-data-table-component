@@ -11,7 +11,7 @@ const TableColStyle = styled(CellBase)`
   white-space: nowrap;
   font-size: ${props => props.theme.header.fontSize};
   color: ${props => props.theme.header.fontColor};
-  height: ${props => props.theme.header.height};
+  min-height: ${props => props.theme.header.height};
 `;
 
 const TableCol = memo(({
