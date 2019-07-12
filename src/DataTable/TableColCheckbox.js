@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableConsumer } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
@@ -16,22 +16,22 @@ const TableColStyle = styled(CellBase)`
 
 const TableCol = memo(({
   onClick,
-}) => (
-  <DataTableConsumer>
-    {({ selectableRowsComponent, selectableRowsComponentProps, selectedRows, allSelected }) => (
-      <TableColStyle className="rdt_TableCol">
-        <Checkbox
-          name="select-all-rows"
-          component={selectableRowsComponent}
-          componentOptions={selectableRowsComponentProps}
-          onClick={onClick}
-          checked={allSelected}
-          indeterminate={selectedRows.length > 0 && !allSelected}
-        />
-      </TableColStyle>
-    )}
-  </DataTableConsumer>
-));
+}) => {
+  const { selectableRowsComponent, selectableRowsComponentProps, selectedRows, allSelected } = useContext(DataTableContext);
+
+  return (
+    <TableColStyle className="rdt_TableCol">
+      <Checkbox
+        name="select-all-rows"
+        component={selectableRowsComponent}
+        componentOptions={selectableRowsComponentProps}
+        onClick={onClick}
+        checked={allSelected}
+        indeterminate={selectedRows.length > 0 && !allSelected}
+      />
+    </TableColStyle>
+  );
+});
 
 TableCol.propTypes = {
   onClick: PropTypes.func,
