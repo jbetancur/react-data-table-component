@@ -470,6 +470,7 @@ If you would like to customize the layout components of React Data Table using s
 * rdt_Table
 * rdt_TableRow
 * rdt_TableCol
+* rdt_TableCol_Sortable
 * rdt_TableCell
 * rdt_TableHeader
 * rdt_TableFooter

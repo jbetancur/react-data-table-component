@@ -130,13 +130,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -162,15 +155,13 @@ exports[`DataTable::Header actions should render correctly 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -340,7 +331,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -544,13 +535,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -572,15 +556,13 @@ exports[`DataTable::Header context menu should render correctly when selectableR
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c10 {
@@ -789,7 +771,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -993,13 +975,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -1025,15 +1000,13 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -1195,7 +1168,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -1379,13 +1352,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -1411,15 +1377,13 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
 }
 
 .c6 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c7 {
@@ -1464,7 +1428,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
             class="rdt_TableCol c5"
           >
             <div
-              class="c6"
+              class="rdt_TableCol_Sortable c6"
               id="column-some.name"
             >
               <span>
@@ -1648,13 +1612,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -1680,15 +1637,13 @@ exports[`DataTable::Header title should render correctly 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -1850,7 +1805,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -2058,13 +2013,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -2090,15 +2038,13 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -2371,7 +2317,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -2725,13 +2671,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -2757,15 +2696,13 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -3038,7 +2975,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -3433,13 +3370,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -3461,15 +3391,13 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -3632,7 +3560,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -3930,13 +3858,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -3958,15 +3879,13 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -4129,7 +4048,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -4369,13 +4288,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -4401,15 +4313,13 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -4569,7 +4479,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -4753,13 +4663,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   flex-basis: 0;
   max-width: 600px;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -4785,15 +4688,13 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -4953,7 +4854,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -5137,13 +5038,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 200px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -5169,15 +5063,13 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -5337,7 +5229,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -5529,13 +5421,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -5561,15 +5446,13 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -5729,7 +5612,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -5917,13 +5800,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   min-width: 100px;
   min-width: 200px;
   max-width: 200px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -5949,15 +5825,13 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -6117,7 +5991,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -6301,13 +6175,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -6333,15 +6200,13 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -6501,7 +6366,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -6693,13 +6558,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -6725,15 +6583,13 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -6893,7 +6749,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -7077,13 +6933,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -7109,15 +6958,13 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -7277,7 +7124,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -7467,13 +7314,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   max-width: 100%;
   min-width: 100px;
   padding: calc(48px / 12);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -7499,15 +7339,13 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -7667,7 +7505,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -7851,13 +7689,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -7883,15 +7714,13 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -8051,7 +7880,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -8235,13 +8064,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -8267,15 +8089,13 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -8435,7 +8255,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -8681,13 +8501,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -8709,15 +8522,13 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -8880,7 +8691,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -9181,13 +8992,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -9209,15 +9013,13 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -9380,7 +9182,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -9621,13 +9423,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -9653,15 +9448,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -9823,7 +9616,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -10007,13 +9800,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -10039,15 +9825,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -10209,7 +9993,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -10393,13 +10177,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -10425,15 +10202,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -10597,7 +10372,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -10781,13 +10556,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -10813,15 +10581,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -10985,7 +10751,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -11178,13 +10944,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -11210,15 +10969,13 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -11378,7 +11135,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -11566,13 +11323,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -11598,15 +11348,13 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -11766,7 +11514,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -11950,13 +11698,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -11982,15 +11723,13 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -12172,7 +11911,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -12356,13 +12095,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -12388,15 +12120,13 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -12582,7 +12312,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -12766,13 +12496,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -12798,15 +12521,13 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -12986,7 +12707,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -13332,13 +13053,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -13364,15 +13078,13 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -13554,7 +13266,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -13738,13 +13450,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -13770,15 +13475,13 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -13940,7 +13643,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -14124,13 +13827,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -14156,15 +13852,13 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -14324,7 +14018,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -14508,13 +14202,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -14540,15 +14227,13 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -14707,7 +14392,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -14911,13 +14596,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -14939,15 +14617,13 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c10 {
@@ -15146,7 +14822,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -15370,13 +15046,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -15398,15 +15067,13 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c10 {
@@ -15605,7 +15272,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -15829,13 +15496,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -15857,15 +15517,13 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c10 {
@@ -16066,7 +15724,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -16332,13 +15990,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -16360,15 +16011,13 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-weight: 600;
   color: rgba(0,0,0,.87);
 }
@@ -16542,7 +16191,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -16836,13 +16485,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -16864,15 +16506,13 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-weight: 600;
   color: rgba(0,0,0,.87);
 }
@@ -17046,7 +16686,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -17278,13 +16918,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -17310,15 +16943,13 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-weight: 600;
   color: rgba(0,0,0,.87);
 }
@@ -17525,7 +17156,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -17716,13 +17347,6 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -17748,15 +17372,13 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-weight: 600;
   color: rgba(0,0,0,.87);
 }
@@ -17927,7 +17549,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -18111,13 +17733,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -18143,15 +17758,13 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   font-weight: 600;
   color: rgba(0,0,0,.87);
 }
@@ -18322,7 +17935,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -18510,13 +18123,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -18542,15 +18148,13 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -18710,7 +18314,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -18894,13 +18498,6 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -18926,15 +18523,13 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -19124,7 +18719,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -19308,13 +18903,6 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -19340,15 +18928,13 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -19538,7 +19124,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -19722,13 +19308,6 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -19754,15 +19333,13 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -19952,7 +19529,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -20136,13 +19713,6 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -20168,15 +19738,13 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -20366,7 +19934,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -20550,13 +20118,6 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -20582,15 +20143,13 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
 }
 
 .c12 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -20780,7 +20339,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
             class="rdt_TableCol c11"
           >
             <div
-              class="c12"
+              class="rdt_TableCol_Sortable c12"
               id="column-some.name"
             >
               <span>
@@ -20964,13 +20523,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -20996,15 +20548,13 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -21164,7 +20714,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -21493,13 +21043,6 @@ exports[`should render correctly if the keyField is overriden 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -21525,15 +21068,13 @@ exports[`should render correctly if the keyField is overriden 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -21693,7 +21234,7 @@ exports[`should render correctly if the keyField is overriden 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>
@@ -21862,13 +21403,6 @@ exports[`should render correctly when disabled 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
   min-height: 48px;
   color: rgba(0,0,0,.54);
 }
@@ -21894,15 +21428,13 @@ exports[`should render correctly when disabled 1`] = `
 }
 
 .c11 span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c5 {
@@ -22063,7 +21595,7 @@ exports[`should render correctly when disabled 1`] = `
             class="rdt_TableCol c10"
           >
             <div
-              class="c11"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
             >
               <span>

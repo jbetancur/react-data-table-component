@@ -18,10 +18,6 @@ const activeColCSS = css`
 `;
 
 const TableColStyle = styled(Cell)`
-  user-select: none;
-  font-size: ${props => props.theme.header.fontSize};
-  font-weight: 500;
-  white-space: nowrap;
   min-height: ${props => props.theme.header.height};
   color: ${props => props.theme.header.fontColor};
 `;
@@ -32,9 +28,10 @@ const ColumnSortable = styled.div`
   height: 100%;
 
   span {
+    user-select: none;
+    font-size: ${props => props.theme.header.fontSize};
+    font-weight: 500;
     line-height: 1;
-    display: inline-flex;
-    align-items: center;
     ${props => props.sortActive && activeColCSS};
 
     &:hover {
@@ -123,6 +120,7 @@ class TableCol extends PureComponent {
         {column.name && (
           <ColumnSortable
             id={`column-${column.selector}`}
+            className="rdt_TableCol_Sortable"
             onClick={this.onColumnClick}
             sortActive={sortActive}
             sortDirection={sortDirection}
