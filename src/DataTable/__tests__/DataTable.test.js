@@ -457,6 +457,22 @@ describe('DataTable::expandableRows', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly when defaultExpandedField is true', () => {
+    const mock = dataMock();
+    mock.data[0].defaultExpanded = true;
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        expandableRows
+        defaultExpandedField="defaultExpanded"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 describe('DataTable::selectableRows', () => {
