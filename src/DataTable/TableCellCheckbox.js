@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableConsumer } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
@@ -16,25 +16,25 @@ const TableCellCheckbox = memo(({
   checked,
   row,
   onClick,
-}) => (
-  <DataTableConsumer>
-    {({ keyField, selectableRowsComponent, selectableRowsComponentProps }) => (
-      <TableCellCheckboxStyle
-        onClick={e => e.stopPropagation()}
-        className="rdt_TableCell"
-      >
-        <Checkbox
-          name={`select-row-${row[keyField]}`}
-          component={selectableRowsComponent}
-          componentOptions={selectableRowsComponentProps}
-          checked={checked}
-          onClick={onClick}
-          data={row}
-        />
-      </TableCellCheckboxStyle>
-    )}
-  </DataTableConsumer>
-));
+}) => {
+  const { keyField, selectableRowsComponent, selectableRowsComponentProps } = useContext(DataTableContext);
+
+  return (
+    <TableCellCheckboxStyle
+      onClick={e => e.stopPropagation()}
+      className="rdt_TableCell"
+    >
+      <Checkbox
+        name={`select-row-${row[keyField]}`}
+        component={selectableRowsComponent}
+        componentOptions={selectableRowsComponentProps}
+        checked={checked}
+        onClick={onClick}
+        data={row}
+      />
+    </TableCellCheckboxStyle>
+  );
+});
 
 TableCellCheckbox.propTypes = {
   row: PropTypes.object,

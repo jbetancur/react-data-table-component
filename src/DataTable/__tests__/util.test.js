@@ -1,4 +1,5 @@
 import {
+  sort,
   getProperty,
   insertItem,
   removeItem,
@@ -8,6 +9,28 @@ import {
 } from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting' } });
+
+describe('sort', () => {
+  test('built in sort', () => {
+    const rows = sort([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc');
+
+    expect(rows[0].name).toEqual('vadar');
+  });
+
+  test('should handle a null field and not sort', () => {
+    const rows = sort([{ name: 'luke' }, { name: 'vadar' }], null, 'desc');
+
+    expect(rows[0].name).toEqual('luke');
+  });
+
+  test('custom sort should be called', () => {
+    const mockSort = jest.fn();
+
+    sort([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc', mockSort);
+
+    expect(mockSort).toBeCalledWith([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc');
+  });
+});
 
 describe('getProperty', () => {
   test('getProperty return an object when a selector is passed', () => {

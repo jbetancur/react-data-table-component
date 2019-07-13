@@ -8,6 +8,7 @@ export default () => ({
   header: {
     fontSize: '12px',
     fontColor: 'rgba(0,0,0,.54)',
+    fontColorActive: 'rgba(0,0,0,.87)',
     backgroundColor: 'transparent',
     height: '48px',
   },

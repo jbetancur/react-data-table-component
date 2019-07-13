@@ -16,6 +16,7 @@ const darkTheme = {
   },
   header: {
     fontSize: '12px',
+    fontColorActive: 'FFFFFF',
     fontColor: '#FFFFFF',
     backgroundColor: '#363640',
   },
