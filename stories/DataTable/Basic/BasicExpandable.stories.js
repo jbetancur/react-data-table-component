@@ -69,7 +69,7 @@ const BasicTableExpanderDisabled = () => {
 
 const BasicTableDefaultRowExpanded = () => {
   const data = tableDataItems;
-  data[0].expanded = true;
+  data[0].defaultExpanded = true;
 
   return (
     <DataTable
@@ -77,7 +77,7 @@ const BasicTableDefaultRowExpanded = () => {
       columns={columns}
       data={data}
       expandableRows
-      defaultExpandedField="expanded"
+      defaultExpandedField="defaultExpanded"
       highlightOnHover
       defaultSortField="name"
       defaultSortDirection="desc"
