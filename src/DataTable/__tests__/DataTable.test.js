@@ -465,7 +465,6 @@ describe('DataTable::expandableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         expandableRows
         defaultExpandedField="defaultExpanded"
       />,

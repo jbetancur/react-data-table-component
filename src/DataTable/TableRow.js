@@ -73,6 +73,7 @@ class TableRow extends PureComponent {
   componentDidMount() {
     const { row } = this.props;
     const { defaultExpandedField } = this.context;
+
     if (defaultExpandedField) {
       this.setState({
         expanded: row[defaultExpandedField],
