@@ -188,6 +188,7 @@ class DataTable extends Component {
   renderRows() {
     const {
       keyField,
+      defaultExpandedField,
     } = this.props;
 
     return (
@@ -195,6 +196,7 @@ class DataTable extends Component {
         <TableRow
           key={row[keyField] || i}
           row={row}
+          defaultExpanded={row[defaultExpandedField] || false}
           onRowClicked={this.handleRowClicked}
           onRowSelected={this.handleRowSelected}
         />
