@@ -62,12 +62,21 @@ class TableRow extends PureComponent {
     row: PropTypes.object.isRequired,
     onRowClicked: PropTypes.func.isRequired,
     onRowSelected: PropTypes.func.isRequired,
+    defaultExpanded: PropTypes.bool,
   };
+
+  static defaultProps = {
+    defaultExpanded: false,
+  }
 
   static contextType = DataTableContext;
 
-  state = {
-    expanded: false,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      expanded: props.defaultExpanded,
+    };
   }
 
   handleRowSelected = row => {

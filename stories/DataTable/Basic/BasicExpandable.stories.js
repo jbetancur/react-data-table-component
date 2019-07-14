@@ -67,7 +67,27 @@ const BasicTableExpanderDisabled = () => {
   );
 };
 
+const BasicTableDefaultRowExpanded = () => {
+  const data = tableDataItems;
+  data[0].defaultExpanded = true;
+
+  return (
+    <DataTable
+      title="Movie List - First row expanded"
+      columns={columns}
+      data={data}
+      expandableRows
+      defaultExpandedField="defaultExpanded"
+      highlightOnHover
+      defaultSortField="name"
+      defaultSortDirection="desc"
+      expandableRowsComponent={<ExpandedSection />}
+    />
+  );
+};
+
 
 storiesOf('Basic', module)
   .add('Expandable', BasicTable)
-  .add('Expandable: Row Disable', BasicTableExpanderDisabled);
+  .add('Expandable: Row Disable', BasicTableExpanderDisabled)
+  .add('Expandable: Row Expanded by default', BasicTableDefaultRowExpanded);

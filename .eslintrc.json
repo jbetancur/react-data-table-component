@@ -12,7 +12,8 @@
         "import/prefer-default-export": 0,
         "object-curly-newline": ["error", { "consistent": true }],
         "implicit-arrow-linebreak": 0,
-        "operator-linebreak": 0
+        "operator-linebreak": 0,
+        "linebreak-style": 0
     },
     "env": {
         "jest/globals": true,
