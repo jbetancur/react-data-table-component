@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
 import { DataTableContext } from './DataTableContext';
-import NativeSortIcon from './NativeSortIcon';
+import NativeSortIcon from '../icons/NativeSortIcon';
 
 const activeColCSS = css`
-  font-weight: 600;
   color: ${props => props.theme.header.fontColorActive};
 `;
 
@@ -17,15 +16,15 @@ const TableColStyle = styled(Cell)`
 const ColumnSortable = styled.div`
   color: ${props => props.theme.header.fontColor};
   font-size: ${props => props.theme.header.fontSize};
+  font-weight: ${props => props.theme.header.fontWeight};
   display: inline-flex;
   align-items: center;
   height: 100%;
-  font-weight: 400;
   line-height: 1;
   user-select: none;
   ${props => props.sortActive && activeColCSS};
 
-  .__rdt_custom_sort_icon {
+  span.__rdt_custom_sort_icon__ {
     i,
     svg {
       ${props => (props.sortActive ? 'opacity: 1' : 'opacity: 0')};
@@ -33,8 +32,6 @@ const ColumnSortable = styled.div`
       font-size: 18px !important;
       height: 18px !important;
       width: 18px !important;
-      flex-grow: 0;
-      flex-shrink: 0;
       backface-visibility: hidden;
       transform-style: preserve-3d;
       transition-duration: 125ms;
@@ -49,16 +46,13 @@ const ColumnSortable = styled.div`
 
   &:hover {
     ${({ column }) => column.sortable && 'cursor: pointer'};
+    ${({ column }) => column.sortable && activeColCSS};
+    ${({ sortActive, column }) => !sortActive && column.sortable && 'opacity: 1'};
 
-    /*
-    future feature
-    .__rdt_custom_sort_icon {
-      i,
-      svg {
-        ${props => !props.sortActive && 'opacity: 0.5'};
-      }
+    span,
+    span.__rdt_custom_sort_icon__ * {
+      ${({ sortActive, column }) => !sortActive && column.sortable && 'opacity: 0.60'};
     }
-    */
   }
 `;
 
@@ -78,10 +72,11 @@ class TableCol extends PureComponent {
   }
 
   renderNativeSortIcon(sortActive) {
+    const { column } = this.props;
     const { sortDirection } = this.context;
 
     return (
-      <NativeSortIcon sortActive={sortActive} sortDirection={sortDirection} />
+      <NativeSortIcon column={column} sortActive={sortActive} sortDirection={sortDirection} />
     );
   }
 
@@ -89,7 +84,7 @@ class TableCol extends PureComponent {
     const { sortIcon, sortDirection } = this.context;
 
     return (
-      <span className={[sortDirection, '__rdt_custom_sort_icon'].join(' ')}>
+      <span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>
         {sortIcon}
       </span>
     );
@@ -113,6 +108,7 @@ class TableCol extends PureComponent {
         {column.name && (
           <ColumnSortable
             id={`column-${column.selector}`}
+            role="button"
             className="rdt_TableCol_Sortable"
             onClick={this.onColumnClick}
             sortActive={sortActive}

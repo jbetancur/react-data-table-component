@@ -7,6 +7,7 @@ export default () => ({
   },
   header: {
     fontSize: '12px',
+    fontWeight: '500',
     fontColor: 'rgba(0,0,0,.54)',
     fontColorActive: 'rgba(0,0,0,.87)',
     backgroundColor: 'transparent',

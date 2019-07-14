@@ -56,7 +56,6 @@ class MaterialTable extends PureComponent {
 
     const columns = [
       {
-        name: 'Actions',
         cell: row => <CustomMaterialMenu row={row} onDeleteRow={this.deleteOne} />,
         ignoreRowClick: true,
         allowOverflow: true,
