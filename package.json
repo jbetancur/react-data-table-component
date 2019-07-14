@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -125,7 +125,7 @@
     "rollup-plugin-scss": "^1.0.1",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-uglify": "^6.0.2",
-    "styled-components": "^4.1.3",
+    "styled-components": "^4.3.2",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-config-styled-components": "^0.1.1",
