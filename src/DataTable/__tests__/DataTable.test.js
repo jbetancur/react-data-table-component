@@ -461,7 +461,6 @@ describe('DataTable::expandableRows', () => {
   test('should render correctly when defaultExpandedField is true', () => {
     const mock = dataMock();
     mock.data[0].defaultExpanded = true;
-
     const { container } = render(
       <DataTable
         data={mock.data}
