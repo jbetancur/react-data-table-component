@@ -63,7 +63,19 @@ Nothing new here - we are using an array of object literals and properties to de
 | button   | bool   | no       | applies additional styling when using a button                                                                |
 | wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
 | allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning                                     |
-| ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered
+| ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered |
+| hide   | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
+
+#### column.hide media presets
+When the breakpoint is reached the column will be hidden. These are the built-in media breakpoint presets when hiding columns
+
+| Value   | Breakpoint  | Description               |
+| ------- | ----------- | ------------------------- |
+| sm      | 599px       | small (phones)            | 
+| md      | 959px       | medium(landscape tablets) | 
+| lg      | 1280px      | large(laptops/desktops)   | 
+
+
 
 ### DataTable Properties
 

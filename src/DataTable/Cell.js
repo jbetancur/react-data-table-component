@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { media } from './media';
 
 const lastCellPaddingWhenButton = css`
   &:not(:last-child) {
@@ -46,4 +47,18 @@ export const Cell = styled(CellBase)`
 
   /* calculate left/right edge paddings */
   ${props => (props.column.button ? lastCellPaddingWhenButton : lastCellPadding)};
+
+  /* handle hiding cells */
+  ${props => props.column.hide && props.column.hide === 'sm' && media.sm`
+    display: none;
+  `};
+  ${props => props.column.hide && props.column.hide === 'md' && media.md`
+    display: none;
+  `};
+  ${props => props.column.hide && props.column.hide === 'lg' && media.lg`
+    display: none;
+  `};
+  ${props => props.column.hide && Number.isInteger(props.column.hide) && media.custom(props.column.hide)`
+    display: none;
+  `};
 `;
