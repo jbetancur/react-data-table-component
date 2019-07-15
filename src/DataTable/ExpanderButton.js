@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { DataTableContext } from './DataTableContext';
 
 const ButtonStyle = styled.button`
+  display: inline-flex;
   outline: none;
   border: none;
-  display: block;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -33,6 +33,7 @@ const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
       onClick={handleToggle}
       data-testid={`expander-button-${row[keyField]}`}
       disabled={disabled}
+      role="button"
     >
       {icon}
     </ButtonStyle>

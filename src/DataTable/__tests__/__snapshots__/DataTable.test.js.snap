@@ -3583,9 +3583,12 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 }
 
 .c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   outline: none;
   border: none;
-  display: block;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -3935,6 +3938,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
             <button
               class="c17"
               data-testid="expander-button-1"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -3976,6 +3980,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
             <button
               class="c17"
               data-testid="expander-button-2"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -4120,9 +4125,12 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
 }
 
 .c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   outline: none;
   border: none;
-  display: block;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -4473,6 +4481,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
             <button
               class="c17"
               data-testid="expander-button-1"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -4514,6 +4523,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
             <button
               class="c17"
               data-testid="expander-button-2"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -11412,9 +11422,12 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
 }
 
 .c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   outline: none;
   border: none;
-  display: block;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -11768,6 +11781,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
             <button
               class="c17"
               data-testid="expander-button-1"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -11818,6 +11832,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
             <button
               class="c17"
               data-testid="expander-button-2"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -11962,9 +11977,12 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   outline: none;
   border: none;
-  display: block;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -12311,6 +12329,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             <button
               class="c17"
               data-testid="expander-button-1"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -12352,6 +12371,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             <button
               class="c17"
               data-testid="expander-button-2"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -12496,9 +12516,12 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   outline: none;
   border: none;
-  display: block;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -12852,6 +12875,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             <button
               class="c17"
               data-testid="expander-button-1"
+              role="button"
             >
               <svg
                 fill="currentColor"
@@ -12902,6 +12926,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             <button
               class="c17"
               data-testid="expander-button-2"
+              role="button"
             >
               <svg
                 fill="currentColor"
