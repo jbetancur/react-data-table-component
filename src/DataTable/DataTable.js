@@ -282,6 +282,8 @@ class DataTable extends Component {
       subHeaderAlign,
       subHeaderWrap,
       subHeaderComponent,
+      contextTitle,
+      contextActions,
     } = this.props;
 
     const {
@@ -311,6 +313,8 @@ class DataTable extends Component {
       paginationIconNext,
       paginationIconPrevious,
       paginationComponentOptions,
+      contextTitle,
+      contextActions,
       indeterminate: selectedRows.length > 0 && !allSelected,
     };
 
