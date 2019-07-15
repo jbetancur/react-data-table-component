@@ -60,6 +60,10 @@ class TableCol extends PureComponent {
   static propTypes = {
     onColumnClick: PropTypes.func.isRequired,
     column: PropTypes.object.isRequired,
+    sortIcon: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.object,
+    ]).isRequired,
   };
 
   static contextType = DataTableContext;
@@ -76,12 +80,17 @@ class TableCol extends PureComponent {
     const { sortDirection } = this.context;
 
     return (
-      <NativeSortIcon column={column} sortActive={sortActive} sortDirection={sortDirection} />
+      <NativeSortIcon
+        column={column}
+        sortActive={sortActive}
+        sortDirection={sortDirection}
+      />
     );
   }
 
   renderCustomSortIcon() {
-    const { sortIcon, sortDirection } = this.context;
+    const { sortIcon } = this.props;
+    const { sortDirection } = this.context;
 
     return (
       <span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>
@@ -91,8 +100,8 @@ class TableCol extends PureComponent {
   }
 
   render() {
-    const { column } = this.props;
-    const { sortIcon, sortColumn, internalCell } = this.context;
+    const { column, sortIcon } = this.props;
+    const { sortColumn } = this.context;
     const sortActive = column.sortable && sortColumn === column.selector;
     const nativeSortIconLeft = !sortIcon && !column.right;
     const nativeSortIconRight = !sortIcon && column.right;
@@ -103,7 +112,6 @@ class TableCol extends PureComponent {
       <TableColStyle
         className="rdt_TableCol"
         column={column} // required by Cell.js
-        internalCell={internalCell} // required by Cell.js
       >
         {column.name && (
           <ColumnSortable

@@ -197,6 +197,54 @@ describe('DataTable::columns', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly if column.hide sm', () => {
+    const mock = dataMock({ hide: 'sm' });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly if column.hide md', () => {
+    const mock = dataMock({ hide: 'md' });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly if column.hide lg', () => {
+    const mock = dataMock({ hide: 'lg' });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly if column.hide is an integer', () => {
+    const mock = dataMock({ hide: 300 });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 describe('DataTable::progress/nodata', () => {
@@ -338,7 +386,6 @@ describe('DataTable::sorting', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        expandableRows
       />,
     );
 
@@ -353,7 +400,6 @@ describe('DataTable::sorting', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        expandableRows
       />,
     );
 
@@ -434,8 +480,21 @@ describe('DataTable::expandableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         expandableRows
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should not render expandableRows expandableRows is missing', () => {
+    const mock = dataMock();
+    mock.data[0].defaultExpanded = true;
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultExpandedField="defaultExpanded"
       />,
     );
 
@@ -448,7 +507,6 @@ describe('DataTable::expandableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         expandableRows
       />,
     );
@@ -481,7 +539,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
       />,
     );
@@ -495,7 +552,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
       />,
     );
@@ -511,7 +567,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
       />,
     );
@@ -527,7 +582,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
       />,
     );
@@ -543,7 +597,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
       />,
     );
@@ -554,7 +607,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
         clearSelectedRows
       />,
@@ -570,7 +622,6 @@ describe('DataTable::selectableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         selectableRows
         onRowClicked={rowClickedMock}
       />,
