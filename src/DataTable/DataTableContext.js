@@ -14,6 +14,8 @@ const {
   paginationIconNext,
   paginationIconPrevious,
   paginationComponentOptions,
+  contextTitle,
+  contextActions,
 } = defaultProps;
 
 export const defaultState = {
@@ -30,6 +32,8 @@ export const defaultState = {
   paginationIconNext,
   paginationIconPrevious,
   paginationComponentOptions,
+  contextTitle,
+  contextActions,
 };
 
 export const DataTableContext = createContext(defaultState);
