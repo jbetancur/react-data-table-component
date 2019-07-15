@@ -39,11 +39,10 @@ export const Cell = styled(CellBase)`
   ${props => props.column.right && 'justify-content: flex-end'};
   ${props => (props.column.center || props.column.button) && 'justify-content: center'};
   ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 12)`};
-  ${props => !props.internalCell && css`
-    &:first-child {
-      padding-left: calc(${props.theme.cells.cellPadding} / 2);
-    }
-  `};
+
+  &:first-child {
+    padding-left: calc(${props => props.theme.cells.cellPadding} / 2);
+  }
 
   /* calculate left/right edge paddings */
   ${props => (props.column.button ? lastCellPaddingWhenButton : lastCellPadding)};

@@ -1,7 +1,6 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableContext } from './DataTableContext';
 import { Cell } from './Cell';
 import { getProperty } from './util';
 
@@ -26,29 +25,17 @@ const ClickClip = styled.div`
   height: 100%;
 `;
 
-const TableCell = memo(({
-  column,
-  row,
-  rowClickable,
-}) => {
-  const { internalCell } = useContext(DataTableContext);
+const TableCell = memo(({ column, row, rowClickable }) => (
+  <TableCellStyle column={column} className="rdt_TableCell">
+    {!column.ignoreRowClick && rowClickable && (
+      <ClickClip data-tag="___react-data-table--click-clip___" />
+    )}
 
-  return (
-    <TableCellStyle
-      column={column}
-      internalCell={internalCell}
-      className="rdt_TableCell"
-    >
-      {!column.ignoreRowClick && rowClickable && (
-        <ClickClip data-tag="___react-data-table--click-clip___" />
-      )}
-
-      <div className="react-data-table--cell-content">
-        {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
-      </div>
-    </TableCellStyle>
-  );
-});
+    <div className="react-data-table--cell-content">
+      {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
+    </div>
+  </TableCellStyle>
+));
 
 TableCell.propTypes = {
   column: PropTypes.object,

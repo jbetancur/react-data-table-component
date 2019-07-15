@@ -2,11 +2,34 @@ import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
 import { defaultProps } from './propTypes';
 
+const {
+  keyField,
+  selectableRowsComponent,
+  selectableRowsComponentProps,
+  expandableIcon,
+  paginationTotalRows,
+  paginationRowsPerPageOptions,
+  paginationIconLastPage,
+  paginationIconFirstPage,
+  paginationIconNext,
+  paginationIconPrevious,
+  paginationComponentOptions,
+} = defaultProps;
+
 export const defaultState = {
-  columns: [],
   selectedRows: [],
-  internalCell: false,
-  ...defaultProps,
+  indeterminate: false,
+  keyField,
+  selectableRowsComponent,
+  selectableRowsComponentProps,
+  expandableIcon,
+  paginationTotalRows,
+  paginationRowsPerPageOptions,
+  paginationIconLastPage,
+  paginationIconFirstPage,
+  paginationIconNext,
+  paginationIconPrevious,
+  paginationComponentOptions,
 };
 
 export const DataTableContext = createContext(defaultState);

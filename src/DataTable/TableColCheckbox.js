@@ -14,10 +14,8 @@ const TableColStyle = styled(CellBase)`
   min-height: ${props => props.theme.header.height};
 `;
 
-const TableCol = memo(({
-  onClick,
-}) => {
-  const { selectableRowsComponent, selectableRowsComponentProps, selectedRows, allSelected } = useContext(DataTableContext);
+const TableCol = memo(({ onClick }) => {
+  const { selectableRowsComponent, selectableRowsComponentProps, allSelected, indeterminate } = useContext(DataTableContext);
 
   return (
     <TableColStyle className="rdt_TableCol">
@@ -27,7 +25,7 @@ const TableCol = memo(({
         componentOptions={selectableRowsComponentProps}
         onClick={onClick}
         checked={allSelected}
-        indeterminate={selectedRows.length > 0 && !allSelected}
+        indeterminate={indeterminate}
       />
     </TableColStyle>
   );

@@ -92,6 +92,12 @@ class DataTable extends Component {
     this.setState(state => handleRowSelected(data, row, state.selectedRows));
   }
 
+  checkIfRowSeleted = row => {
+    const { selectedRows } = this.state;
+
+    return selectedRows.some(srow => srow === row);
+  }
+
   handleRowClicked = (row, e) => {
     const { onRowClicked } = this.props;
 
@@ -174,12 +180,15 @@ class DataTable extends Component {
   }
 
   renderColumns() {
+    const { sortIcon } = this.props;
+
     return (
       this.columns.map(column => (
         <TableCol
           key={column.id}
           column={column}
           onColumnClick={this.handleSortChange}
+          sortIcon={sortIcon}
         />
       ))
     );
@@ -189,6 +198,13 @@ class DataTable extends Component {
     const {
       keyField,
       defaultExpandedField,
+      selectableRows,
+      expandableRows,
+      striped,
+      highlightOnHover,
+      pointerOnHover,
+      expandableRowsComponent,
+      expandableDisabledField,
     } = this.props;
 
     return (
@@ -196,9 +212,19 @@ class DataTable extends Component {
         <TableRow
           key={row[keyField] || i}
           row={row}
+          columns={this.columns}
+          keyField={keyField}
+          selectableRows={selectableRows}
+          expandableRows={expandableRows}
+          striped={striped}
+          highlightOnHover={highlightOnHover}
+          pointerOnHover={pointerOnHover}
+          expandableRowsComponent={expandableRowsComponent}
+          expandableDisabledField={expandableDisabledField}
           defaultExpanded={row[defaultExpandedField] || false}
           onRowClicked={this.handleRowClicked}
           onRowSelected={this.handleRowSelected}
+          isRowSelected={this.checkIfRowSeleted}
         />
       ))
     );
@@ -224,7 +250,17 @@ class DataTable extends Component {
   render() {
     const {
       data,
+      keyField,
+      selectableRowsComponent,
+      selectableRowsComponentProps,
+      expandableIcon,
       paginationTotalRows,
+      paginationRowsPerPageOptions,
+      paginationIconLastPage,
+      paginationIconFirstPage,
+      paginationIconNext,
+      paginationIconPrevious,
+      paginationComponentOptions,
       title,
       customTheme,
       actions,
@@ -242,8 +278,6 @@ class DataTable extends Component {
       fixedHeader,
       fixedHeaderScrollHeight,
       pagination,
-      selectableRows,
-      expandableRows,
       subHeader,
       subHeaderAlign,
       subHeaderWrap,
@@ -253,15 +287,31 @@ class DataTable extends Component {
     const {
       rowsPerPage,
       currentPage,
+      selectedRows,
+      allSelected,
+      selectedCount,
+      sortColumn,
+      sortDirection,
     } = this.state;
 
     const theme = this.mergeTheme(getDefaultTheme(), customTheme);
     const enabledPagination = pagination && !progressPending && data.length > 0;
     const init = {
-      ...this.props,
-      ...this.state,
-      ...{ columns: this.columns },
-      ...{ internalCell: selectableRows || expandableRows },
+      allSelected,
+      selectedCount,
+      sortColumn,
+      sortDirection,
+      keyField,
+      selectableRowsComponent,
+      selectableRowsComponentProps,
+      expandableIcon,
+      paginationRowsPerPageOptions,
+      paginationIconLastPage,
+      paginationIconFirstPage,
+      paginationIconNext,
+      paginationIconPrevious,
+      paginationComponentOptions,
+      indeterminate: selectedRows.length > 0 && !allSelected,
     };
 
     return (

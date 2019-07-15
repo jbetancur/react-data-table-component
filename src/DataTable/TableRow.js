@@ -59,15 +59,25 @@ const TableRowStyle = styled.div`
 
 class TableRow extends PureComponent {
   static propTypes = {
+    keyField: PropTypes.string.isRequired,
+    columns: PropTypes.array.isRequired,
     row: PropTypes.object.isRequired,
     onRowClicked: PropTypes.func.isRequired,
+    defaultExpanded: PropTypes.bool.isRequired,
+    selectableRows: PropTypes.bool.isRequired,
+    expandableRows: PropTypes.bool.isRequired,
+    striped: PropTypes.bool.isRequired,
+    highlightOnHover: PropTypes.bool.isRequired,
+    pointerOnHover: PropTypes.bool.isRequired,
+    expandableRowsComponent: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+      PropTypes.func,
+    ]).isRequired,
+    expandableDisabledField: PropTypes.string.isRequired,
     onRowSelected: PropTypes.func.isRequired,
-    defaultExpanded: PropTypes.bool,
+    isRowSelected: PropTypes.func.isRequired,
   };
-
-  static defaultProps = {
-    defaultExpanded: false,
-  }
 
   static contextType = DataTableContext;
 
@@ -79,12 +89,6 @@ class TableRow extends PureComponent {
     };
   }
 
-  handleRowSelected = row => {
-    const { onRowSelected } = this.props;
-
-    onRowSelected(row);
-  }
-
   handleRowClick = e => {
     // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
     if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
@@ -94,20 +98,27 @@ class TableRow extends PureComponent {
     }
   };
 
-  isChecked = (row, selectedRows) => selectedRows.some(srow => srow === row);
-
   toggleRowExpand = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   }
 
   render() {
     const {
+      keyField,
+      columns,
       row,
       onRowClicked,
+      selectableRows,
+      expandableRows,
+      striped,
+      highlightOnHover,
+      pointerOnHover,
+      expandableRowsComponent,
+      expandableDisabledField,
+      onRowSelected,
+      isRowSelected,
     } = this.props;
-
     const { expanded } = this.state;
-    const { keyField, columns, selectedRows, selectableRows, expandableRows, striped, highlightOnHover, pointerOnHover, expandableRowsComponent, expandableDisabledField } = this.context;
 
     return (
       <React.Fragment>
@@ -120,8 +131,8 @@ class TableRow extends PureComponent {
         >
           {selectableRows && (
             <TableCellCheckbox
-              checked={this.isChecked(row, selectedRows)}
-              onClick={this.handleRowSelected}
+              checked={isRowSelected(row)}
+              onClick={onRowSelected}
               row={row}
             />
           )}
@@ -137,7 +148,6 @@ class TableRow extends PureComponent {
 
           {columns.map(column => (
             <TableCell
-              type="cell"
               key={`cell-${column.id}-${row[keyField]}`}
               column={column}
               row={row}
@@ -146,7 +156,7 @@ class TableRow extends PureComponent {
           ))}
         </TableRowStyle>
 
-        {expanded && (
+        {expandableRows && expanded && (
           <ExpanderRow
             key={`expander--${row[keyField]}`}
             data={row}

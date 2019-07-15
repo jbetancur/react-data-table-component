@@ -492,6 +492,10 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   min-height: 48px;
 }
 
+.c17:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c17:last-child {
   padding-right: calc(48px / 2);
 }
@@ -591,6 +595,10 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -3552,6 +3560,10 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   min-height: 48px;
 }
 
+.c18:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c18:last-child {
   padding-right: calc(48px / 2);
 }
@@ -3678,6 +3690,10 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -4081,6 +4097,10 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   min-height: 48px;
 }
 
+.c18:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c18:last-child {
   padding-right: calc(48px / 2);
 }
@@ -4208,6 +4228,10 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -4854,6 +4878,1722 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   display: table;
   width: 100%;
   height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::columns should render correctly if column.hide is an integer 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width:300px) {
+  .c15 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:300px) {
+  .c10 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width:1280px) {
+  .c15 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:1280px) {
+  .c10 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::columns should render correctly if column.hide md 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width:959px) {
+  .c15 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:959px) {
+  .c10 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width:599px) {
+  .c15 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:599px) {
+  .c10 {
+    display: none;
+  }
 }
 
 <div
@@ -9149,6 +10889,423 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 </div>
 `;
 
+exports[`DataTable::expandableRows should not render expandableRows expandableRows is missing 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DataTable::expandableRows should render correctly when defaultExpandedField is true 1`] = `
 .c7 {
   display: -webkit-box;
@@ -9230,6 +11387,10 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   font-weight: 400;
   white-space: nowrap;
   min-height: 48px;
+}
+
+.c18:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c18:last-child {
@@ -9362,6 +11523,10 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -9774,6 +11939,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
+.c18:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c18:last-child {
   padding-right: calc(48px / 2);
 }
@@ -9897,6 +12066,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -10300,6 +12473,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
+.c18:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c18:last-child {
   padding-right: calc(48px / 2);
 }
@@ -10430,6 +12607,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -16523,6 +18704,10 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
+.c17:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c17:last-child {
   padding-right: calc(48px / 2);
 }
@@ -16622,6 +18807,10 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -17015,6 +19204,10 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
+.c17:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c17:last-child {
   padding-right: calc(48px / 2);
 }
@@ -17114,6 +19307,10 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -17507,6 +19704,10 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
+.c17:first-child {
+  padding-left: calc(48px / 2);
+}
+
 .c17:last-child {
   padding-right: calc(48px / 2);
 }
@@ -17606,6 +19807,10 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   max-width: 100%;
   min-width: 100px;
   min-height: 48px;
+}
+
+.c11:first-child {
+  padding-left: calc(48px / 2);
 }
 
 .c11:last-child {
@@ -17967,6 +20172,93 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   width: 100%;
 }
 
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 1;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .c10 {
   position: relative;
   display: -webkit-box;
@@ -17983,24 +20275,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-}
-
-.c18 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18013,145 +20287,18 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
   min-height: 48px;
 }
 
-.c18:last-child {
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
-}
-
-.c18 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c19 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c17 {
-  outline: none;
-  border: none;
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  color: rgba(0,0,0,.54);
-}
-
-.c17:disabled {
-  color: rgba(0,0,0,.12);
-}
-
-.c17:hover:enabled {
-  cursor: pointer;
-}
-
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 56px;
-  -ms-flex: 0 0 56px;
-  flex: 0 0 56px;
-  white-space: nowrap;
-  font-weight: 400;
-  font-size: 13px;
-  color: rgba(0,0,0,.87);
-  min-height: 48px;
-}
-
-.c16:not(:first-child) {
-  padding-left: 0;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c13 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 1;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 .c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c11:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c12 {
   color: rgba(0,0,0,.54);
   font-size: 12px;
   font-weight: 500;
@@ -18172,8 +20319,8 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   color: rgba(0,0,0,.87);
 }
 
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -18191,14 +20338,14 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   transition-property: transform;
 }
 
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.c12:hover {
+.c11:hover {
   cursor: pointer;
   color: rgba(0,0,0,.87);
 }
@@ -18300,7 +20447,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   margin-left: 5px;
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18357,13 +20504,10 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
           class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
-          />
-          <div
-            class="rdt_TableCol c11"
+            class="rdt_TableCol c10"
           >
             <div
-              class="rdt_TableCol_Sortable c12"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
               role="button"
             >
@@ -18371,7 +20515,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
                 Test
               </div>
               <span
-                class="c13"
+                class="c12"
               >
                 ▲
               </span>
@@ -18380,41 +20524,17 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
         </div>
       </div>
       <div
-        class="rdt_TableBody c14"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="rdt_TableRow c15"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c16"
-          >
-            <button
-              class="c17"
-              data-testid="expander-button-2"
-            >
-              <svg
-                fill="currentColor"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
-                />
-                <path
-                  d="M0-.25h24v24H0z"
-                  fill="none"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class="rdt_TableCell c18"
+            class="rdt_TableCell c15"
           >
             <div
-              class="c19"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -18425,37 +20545,13 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
           </div>
         </div>
         <div
-          class="rdt_TableRow c15"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c16"
-          >
-            <button
-              class="c17"
-              data-testid="expander-button-1"
-            >
-              <svg
-                fill="currentColor"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
-                />
-                <path
-                  d="M0-.25h24v24H0z"
-                  fill="none"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class="rdt_TableCell c18"
+            class="rdt_TableCell c15"
           >
             <div
-              class="c19"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -18502,6 +20598,90 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   width: 100%;
 }
 
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 1;
+}
+
 .c10 {
   position: relative;
   display: -webkit-box;
@@ -18518,24 +20698,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   padding-right: calc(48px / 6);
   padding-top: calc(48px / 12);
   padding-bottom: calc(48px / 12);
-}
-
-.c18 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18548,142 +20710,18 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
   min-height: 48px;
 }
 
-.c18:last-child {
+.c10:first-child {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
   padding-right: calc(48px / 2);
-}
-
-.c18 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c19 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c17 {
-  outline: none;
-  border: none;
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  color: rgba(0,0,0,.54);
-}
-
-.c17:disabled {
-  color: rgba(0,0,0,.12);
-}
-
-.c17:hover:enabled {
-  cursor: pointer;
-}
-
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 56px;
-  -ms-flex: 0 0 56px;
-  flex: 0 0 56px;
-  white-space: nowrap;
-  font-weight: 400;
-  font-size: 13px;
-  color: rgba(0,0,0,.87);
-  min-height: 48px;
-}
-
-.c16:not(:first-child) {
-  padding-left: 0;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c13 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 1;
 }
 
 .c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c11:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c12 {
   color: rgba(0,0,0,.54);
   font-size: 12px;
   font-weight: 500;
@@ -18704,8 +20742,8 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   color: rgba(0,0,0,.87);
 }
 
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -18723,14 +20761,14 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   transition-property: transform;
 }
 
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.c12:hover {
+.c11:hover {
   cursor: pointer;
   color: rgba(0,0,0,.87);
 }
@@ -18832,7 +20870,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   margin-left: 5px;
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18889,13 +20927,10 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
           class="rdt_TableHeadRow c9"
         >
           <div
-            class="c10"
-          />
-          <div
-            class="rdt_TableCol c11"
+            class="rdt_TableCol c10"
           >
             <div
-              class="rdt_TableCol_Sortable c12"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
               role="button"
             >
@@ -18903,7 +20938,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
                 Test
               </div>
               <span
-                class="c13"
+                class="c12"
               >
                 ▲
               </span>
@@ -18912,41 +20947,17 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
         </div>
       </div>
       <div
-        class="rdt_TableBody c14"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="rdt_TableRow c15"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c16"
-          >
-            <button
-              class="c17"
-              data-testid="expander-button-1"
-            >
-              <svg
-                fill="currentColor"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
-                />
-                <path
-                  d="M0-.25h24v24H0z"
-                  fill="none"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class="rdt_TableCell c18"
+            class="rdt_TableCell c15"
           >
             <div
-              class="c19"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -18957,37 +20968,13 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
           </div>
         </div>
         <div
-          class="rdt_TableRow c15"
+          class="rdt_TableRow c14"
         >
           <div
-            class="c16"
-          >
-            <button
-              class="c17"
-              data-testid="expander-button-2"
-            >
-              <svg
-                fill="currentColor"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
-                />
-                <path
-                  d="M0-.25h24v24H0z"
-                  fill="none"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class="rdt_TableCell c18"
+            class="rdt_TableCell c15"
           >
             <div
-              class="c19"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
