@@ -9,6 +9,21 @@ Creating yet another React table library came out of necessity while developing 
 
 If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone and need to pivot large data sets then this is not the React table library you are looking for 👋
 
+## Table of Contents
+
+* [Features](#key-features)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Issues/Contributing](#logging-issues-and-contributions)
+* [API/Usage](#api-and-usage)
+* [Basic Table](#basic-table)
+* [Selectable Rows](#selectable-rows)
+* [Custom Cells](#custom-cells)
+* [Expandable Rows](#expandable-rows)
+* [Optimizing for Performance and Caveats](#optimizing-for-performance-and-caveats)
+* [Theming](#theming)
+* [CSS Overrides](#css-overrides)
+
 ## Key Features
 
 * Declarative Configuration
@@ -38,10 +53,10 @@ or
 yarn add react-data-table-component styled-components
 ```
 
-## Logging Issues
-Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox and providing clear details on the feature/issue will elicit a much quicker resonse 😉
+## Logging Issues and Contributions
+Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox and providing clear details on the feature/issue will elicit a much quicker response 😉
 
-## API/Usage
+## API and Usage
 
 ### Columns
 Nothing new here - we are using an array of object literals and properties to describle the columns:
@@ -76,7 +91,6 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | lg      | 1280px      | large(laptops/desktops)   | 
 
 
-
 ### DataTable Properties
 
 #### Basic
@@ -95,7 +109,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
-| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
+| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection }). It's highly recommended that you memoize any handlers that you pass to `onTableUpdate` to prevent `DataTable` from unnescessary re-renders |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
@@ -449,6 +463,167 @@ class MyComponent extends Component {
 );
 ```
 
+## Optimizing for Performance and Caveats
+Pre-optimizaton is the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
+
+### Passing non-primitive props (objects, arrays and functions)
+While RDT has internal optimizations to try and prevent re-renders on deeper internal components, for peak performance it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives.
+
+As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`
+
+#### Optimizing Class Components
+You can typically achieve this by moving props that you pass to RDT outside of the `render` method. If the prop is a component it can just be a method defined on the class. Additionally, RDT provides you with a `memoize` helper function for caching functions or expensive calculations.
+
+##### Examples of Optimizations
+The following component will cause RDT to re-render everytime a checkbox is checked. 
+
+```js
+...
+import React, { Component } from 'react';
+import DataTable from 'react-data-table';
+
+class MyComponent extends Component {
+  updateState = state => {
+    this.setState({ selectedRows: state.selectedRows }); // triggers MyComponet to re-render with new state
+  }
+
+  render () { // by design runs on every trigger for state change
+    // upon re-render columns array is recreated and thus causes DataTable to re-render
+    const columns = [....];
+
+    return (
+      <DataTable 
+        data={data} 
+        columns={columns} 
+        onTableUpdate={this.updateState}
+        selectableRows
+      />
+    )
+  }
+}
+```
+
+A "solution" could be to declare any field that is a non primitive field outside of the render function so that it does not get recreated on every re-render cycle:
+
+```js
+...
+import React, { Component } from 'react';
+import DataTable from 'react-data-table';
+
+const columns = [....]; // is only created once
+
+class MyComponent extends Component {
+  updateState = state => {
+    this.setState({ selectedRows: state.selectedRows });
+  }
+
+  render () {
+
+    return (
+      <DataTable 
+        data={data} 
+        columns={columns} 
+        onTableUpdate={this.updateState}
+        selectableRows
+      />
+    )
+  }
+}
+
+```
+
+But that only works if you don't need to pass component props/methods to the column object. For example what if you want to attach an event handler to a button in the row using `column.cell`?
+
+```js
+const columns = [;
+  {
+    cell: () => <Button raised primary onClick={this.handleAction}>Action</Button>,
+    ignoreRowClick: true,
+    allowOverflow: true,
+    button: true,
+  },
+  ...
+];
+```
+
+So how do we attach event handlers to our columns without having to place it in the `render` method and dealing with unnescessary re-renders?
+
+**Memoization**.
+
+RDT allows you to wrap anything you want that returns a value in a memo function that you can use to memoize (cache) the result. This way, when React checks the component props for changes it will determine that `columns` is unchange and thus no re-render.
+
+Got it? Let's try this again with the optimal solution:
+
+```js
+import React, { Component } from 'react';
+import DataTable, { memoize } from 'react-data-table';
+
+const columns = memoize(handleAction => [
+  ...
+  {
+    cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
+    ignoreRowClick: true,
+    allowOverflow: true,
+    button: true,
+  },
+  ...
+]);
+
+class MyComponent extends Component {
+  updateState = state => {
+    this.setState({ selectedRows: state.selectedRows });
+  }
+
+  render () {
+    return (
+      <DataTable 
+        data={data} 
+        columns={columns(this.updateState)} 
+        onTableUpdate={this.updateState}
+        selectableRows
+      />
+    );
+  }
+}
+```
+
+Now when `onTableUpdate` is triggered and `MyComponent` re-renders `DataTable` will not re-render becuase `columns` has not changed. Also, noteice that `this.updateState` did not change because it's defined as a class method and therefore is only created once.
+
+#### Optimizing Functional Components
+If you're building functional components you get access to React Hooks such as `useMemo` and `useCallback`. In this example, simply wrap `columns` in a `useMemo` callback and your `updateState` into `useCallback`:
+
+```js
+import React, { useState, useMemo } from 'react';
+import DataTable from 'react-data-table';
+
+const MyComponentHook = () => {
+  const [thing, setThing] = useState();
+  const handleAction = value => setThing(value);
+  // unklike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onTableUpdate are memoized using useCallback
+  const updateState = useCallback(state => console.log(state));
+  const columns = useMemo(() => [
+    ...
+    {
+      cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
+    ...
+  ]);
+
+  return (
+    <DataTable 
+      data={data} 
+      columns={columns} 
+      onTableUpdate={updateState}
+      selectableRows
+    />
+  );
+}
+```
+
+
 ## Theming
 You can override or replace the default theme using the `customTheme` prop. Internally, this just deep merges your theme with the default theme.
 
@@ -478,7 +653,7 @@ class MyComponent extends Component {
 Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
 
 ## CSS Overrides
-If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS/CSS preprocesor you may use the following classNames:
+If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. preprocesor you may use the following classNames:
 
 * rdt_Table
 * rdt_TableRow

@@ -1,7 +1,7 @@
 {
     "parser": "babel-eslint",
     "extends": ["airbnb", "plugin:flowtype/recommended"],
-    "plugins": ["flowtype", "jest"],
+    "plugins": ["flowtype", "jest", "react-hooks"],
     "rules": {
         "max-len": 0,
         "react/forbid-prop-types": 0,
@@ -13,7 +13,9 @@
         "object-curly-newline": ["error", { "consistent": true }],
         "implicit-arrow-linebreak": 0,
         "operator-linebreak": 0,
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
     },
     "env": {
         "jest/globals": true,

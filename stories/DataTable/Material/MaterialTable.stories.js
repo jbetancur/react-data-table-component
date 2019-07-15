@@ -5,15 +5,73 @@ import differenceBy from 'lodash/differenceBy';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
 import tableDataItems from '../constants/sampleDeserts';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable, { memoize } from '../../../src/index';
 import './index.css';
+
+const sortIcon = <FontIcon>arrow_downward</FontIcon>;
+const selectProps = { uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) };
+const actions = <Button key="add" flat secondary iconChildren="add">Add</Button>;
+const contextActions = memoize(deleteHandler => <Button key="delete" onClick={deleteHandler} style={{ color: 'red' }} icon>delete</Button>);
+const columns = memoize(() => [
+  {
+    name: 'Name',
+    selector: 'name',
+    sortable: true,
+    grow: 2,
+  },
+  {
+    name: 'Type',
+    selector: 'type',
+    sortable: true,
+  },
+  {
+    name: 'Calories (g)',
+    selector: 'calories',
+    sortable: true,
+    right: true,
+  },
+  {
+    name: 'Fat (g)',
+    selector: 'fat',
+    sortable: true,
+    right: true,
+  },
+  {
+    name: 'Carbs (g)',
+    selector: 'carbs',
+    sortable: true,
+    right: true,
+  },
+  {
+    name: 'Protein (g)',
+    selector: 'protein',
+    sortable: true,
+    right: true,
+  },
+  {
+    name: 'Sodium (mg)',
+    selector: 'sodium',
+    sortable: true,
+    right: true,
+  },
+  {
+    name: 'Calcium (%)',
+    selector: 'calcium',
+    sortable: true,
+    right: true,
+  },
+  {
+    name: 'Iron (%)',
+    selector: 'iron',
+    sortable: true,
+    right: true,
+  },
+]);
 
 class MaterialTable extends PureComponent {
   state = { selectedRows: [], toggleCleared: false, data: tableDataItems };
 
   handleChange = state => {
-    // eslint-disable-next-line no-console
-    console.log('state ', state);
     this.setState({ selectedRows: state.selectedRows });
   };
 
@@ -45,90 +103,25 @@ class MaterialTable extends PureComponent {
   }
 
   render() {
-    const actions = [
-      <Button key="add" flat secondary iconChildren="add">Add</Button>,
-    ];
-
-    const contextActions = [
-      <Button key="delete" onClick={this.deleteAll} style={{ color: 'red' }} icon>delete</Button>,
-    ];
-
-    const columns = [
-      {
-        name: 'Name',
-        selector: 'name',
-        sortable: true,
-        grow: 2,
-      },
-      {
-        name: 'Type',
-        selector: 'type',
-        sortable: true,
-      },
-      {
-        name: 'Calories (g)',
-        selector: 'calories',
-        sortable: true,
-        right: true,
-      },
-      {
-        name: 'Fat (g)',
-        selector: 'fat',
-        sortable: true,
-        right: true,
-      },
-      {
-        name: 'Carbs (g)',
-        selector: 'carbs',
-        sortable: true,
-        right: true,
-      },
-      {
-        name: 'Protein (g)',
-        selector: 'protein',
-        sortable: true,
-        right: true,
-      },
-      {
-        name: 'Sodium (mg)',
-        selector: 'sodium',
-        sortable: true,
-        right: true,
-      },
-      {
-        name: 'Calcium (%)',
-        selector: 'calcium',
-        sortable: true,
-        right: true,
-      },
-      {
-        name: 'Iron (%)',
-        selector: 'iron',
-        sortable: true,
-        right: true,
-      },
-    ];
-
     const { data, toggleCleared } = this.state;
 
     return (
       <Card style={{ height: '100%' }}>
         <DataTable
           title="Desserts"
-          columns={columns}
+          columns={columns()}
           data={data}
           selectableRows
           highlightOnHover
           defaultSortField="name"
           actions={actions}
-          contextActions={contextActions}
-          sortIcon={<FontIcon>arrow_downward</FontIcon>}
+          contextActions={contextActions(this.deleteAll)}
+          sortIcon={sortIcon}
           selectableRowsComponent={Checkbox}
-          selectableRowsComponentProps={{ uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) }}
+          selectableRowsComponentProps={selectProps}
           onTableUpdate={this.handleChange}
           clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
-          pagination
         />
       </Card>
     );
