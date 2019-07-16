@@ -18,6 +18,7 @@ export default class Checkbox extends PureComponent {
     style: PropTypes.object,
     checked: PropTypes.bool,
     name: PropTypes.string.isRequired,
+    checkboxStatusSelector: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -29,6 +30,7 @@ export default class Checkbox extends PureComponent {
     data: {},
     style: null,
     checked: false,
+    checkboxStatusSelector: true,
   };
 
   constructor(props) {
@@ -66,6 +68,7 @@ export default class Checkbox extends PureComponent {
       indeterminate,
       checked,
       name,
+      checkboxStatusSelector,
     } = this.props;
     const TagName = component;
     const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
@@ -82,6 +85,7 @@ export default class Checkbox extends PureComponent {
         aria-label={name}
         checked={checked}
         onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
+        disabled={(name !== 'select-all-rows') && !checkboxStatusSelector}
       />
     );
   }

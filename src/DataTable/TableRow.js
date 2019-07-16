@@ -77,6 +77,11 @@ class TableRow extends PureComponent {
     expandableDisabledField: PropTypes.string.isRequired,
     onRowSelected: PropTypes.func.isRequired,
     isRowSelected: PropTypes.func.isRequired,
+    checkboxStatusSelector: PropTypes.string,
+  };
+
+  static defaultProps = {
+    checkboxStatusSelector: '',
   };
 
   static contextType = DataTableContext;
@@ -117,6 +122,7 @@ class TableRow extends PureComponent {
       expandableDisabledField,
       onRowSelected,
       isRowSelected,
+      checkboxStatusSelector,
     } = this.props;
     const { expanded } = this.state;
 
@@ -134,6 +140,7 @@ class TableRow extends PureComponent {
               checked={isRowSelected(row)}
               onClick={onRowSelected}
               row={row}
+              checkboxStatusSelector={checkboxStatusSelector}
             />
           )}
 

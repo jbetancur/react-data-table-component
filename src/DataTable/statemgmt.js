@@ -1,16 +1,19 @@
 import { insertItem, removeItem } from './util';
 
-export const handleSelectAll = (rows, allChecked) => {
+export const handleSelectAll = (rows, allChecked, checkboxStatusSelector) => {
   const allSelected = !allChecked;
+  const activeSelectedRows = rows.filter(row => row[checkboxStatusSelector] !== false);
 
   return {
     allSelected,
-    selectedCount: allSelected ? rows.length : 0,
-    selectedRows: allSelected ? rows : [],
+    selectedCount: allSelected ? activeSelectedRows.length : 0,
+    selectedRows: allSelected ? activeSelectedRows : [],
   };
 };
 
-export const handleRowSelected = (rows, row, selectedRows) => {
+export const handleRowSelected = (rows, row, selectedRows, checkboxStatusSelector) => {
+  const activeSelectedRows = rows.filter(rowItem => rowItem[checkboxStatusSelector] !== false);
+
   if (selectedRows.find(r => r === row)) {
     return {
       selectedCount: selectedRows.length > 0 ? selectedRows.length - 1 : 0,
@@ -21,7 +24,7 @@ export const handleRowSelected = (rows, row, selectedRows) => {
 
   return {
     selectedCount: selectedRows.length + 1,
-    allSelected: selectedRows.length + 1 === rows.length,
+    allSelected: selectedRows.length + 1 === activeSelectedRows.length,
     selectedRows: insertItem(selectedRows, row),
   };
 };

@@ -81,15 +81,15 @@ class DataTable extends Component {
   }
 
   handleSelectAll = () => {
-    const { data } = this.props;
+    const { data, checkboxStatusSelector } = this.props;
 
-    this.setState(state => handleSelectAll(data, state.allSelected));
+    this.setState(state => handleSelectAll(data, state.allSelected, checkboxStatusSelector));
   }
 
   handleRowSelected = row => {
-    const { data } = this.props;
+    const { data, checkboxStatusSelector } = this.props;
 
-    this.setState(state => handleRowSelected(data, row, state.selectedRows));
+    this.setState(state => handleRowSelected(data, row, state.selectedRows, checkboxStatusSelector));
   }
 
   checkIfRowSeleted = row => {
@@ -205,6 +205,7 @@ class DataTable extends Component {
       pointerOnHover,
       expandableRowsComponent,
       expandableDisabledField,
+      checkboxStatusSelector,
     } = this.props;
 
     return (
@@ -225,6 +226,7 @@ class DataTable extends Component {
           onRowClicked={this.handleRowClicked}
           onRowSelected={this.handleRowSelected}
           isRowSelected={this.checkIfRowSeleted}
+          checkboxStatusSelector={checkboxStatusSelector}
         />
       ))
     );

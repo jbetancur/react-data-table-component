@@ -16,6 +16,7 @@ const TableCellCheckbox = memo(({
   checked,
   row,
   onClick,
+  checkboxStatusSelector,
 }) => {
   const { keyField, selectableRowsComponent, selectableRowsComponentProps } = useContext(DataTableContext);
 
@@ -31,6 +32,7 @@ const TableCellCheckbox = memo(({
         checked={checked}
         onClick={onClick}
         data={row}
+        checkboxStatusSelector={row[checkboxStatusSelector]}
       />
     </TableCellCheckboxStyle>
   );
@@ -40,12 +42,14 @@ TableCellCheckbox.propTypes = {
   row: PropTypes.object,
   checked: PropTypes.bool,
   onClick: PropTypes.func,
+  checkboxStatusSelector: PropTypes.string,
 };
 
 TableCellCheckbox.defaultProps = {
   row: {},
   checked: false,
   onClick: null,
+  checkboxStatusSelector: '',
 };
 
 export default TableCellCheckbox;
