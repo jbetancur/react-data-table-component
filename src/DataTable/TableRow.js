@@ -117,6 +117,7 @@ class TableRow extends PureComponent {
       expandableDisabledField,
       onRowSelected,
       isRowSelected,
+      rowIndex
     } = this.props;
     const { expanded } = this.state;
 
@@ -152,6 +153,7 @@ class TableRow extends PureComponent {
               column={column}
               row={row}
               rowClickable={!!onRowClicked || column.button}
+              rowIndex={rowIndex}
             />
           ))}
         </TableRowStyle>

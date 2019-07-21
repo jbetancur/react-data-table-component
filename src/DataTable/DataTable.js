@@ -225,6 +225,7 @@ class DataTable extends Component {
           onRowClicked={this.handleRowClicked}
           onRowSelected={this.handleRowSelected}
           isRowSelected={this.checkIfRowSeleted}
+          rowIndex={i}
         />
       ))
     );

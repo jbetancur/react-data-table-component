@@ -25,14 +25,14 @@ const ClickClip = styled.div`
   height: 100%;
 `;
 
-const TableCell = memo(({ column, row, rowClickable }) => (
+const TableCell = memo(({ column, row, rowClickable, rowIndex }) => (
   <TableCellStyle column={column} className="rdt_TableCell">
     {!column.ignoreRowClick && rowClickable && (
       <ClickClip data-tag="___react-data-table--click-clip___" />
     )}
 
     <div className="react-data-table--cell-content">
-      {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
+      {column.cell ? column.cell(row, rowIndex) : getProperty(row, column.selector, column.format)}
     </div>
   </TableCellStyle>
 ));
