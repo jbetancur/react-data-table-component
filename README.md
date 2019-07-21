@@ -55,7 +55,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
-| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>`  **Negates  `format`** |
+| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `(row,rowIndex) => <h2>{row.title}</h2>`  **Negates  `format`** |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column.  the is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
