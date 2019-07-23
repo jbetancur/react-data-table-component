@@ -77,6 +77,11 @@ class TableRow extends PureComponent {
     expandableDisabledField: PropTypes.string.isRequired,
     onRowSelected: PropTypes.func.isRequired,
     isRowSelected: PropTypes.func.isRequired,
+    rowIndex: PropTypes.number,
+  };
+
+  static defaultProps = {
+    rowIndex: 0,
   };
 
   static contextType = DataTableContext;
@@ -117,7 +122,7 @@ class TableRow extends PureComponent {
       expandableDisabledField,
       onRowSelected,
       isRowSelected,
-      rowIndex
+      rowIndex,
     } = this.props;
     const { expanded } = this.state;
 

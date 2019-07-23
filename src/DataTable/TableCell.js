@@ -41,12 +41,14 @@ TableCell.propTypes = {
   column: PropTypes.object,
   row: PropTypes.object,
   rowClickable: PropTypes.bool,
+  rowIndex: PropTypes.number,
 };
 
 TableCell.defaultProps = {
   column: {},
   row: {},
   rowClickable: false,
+  rowIndex: 0,
 };
 
 export default TableCell;
