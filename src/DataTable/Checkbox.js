@@ -1,65 +1,88 @@
-import React from 'react';
+import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { handleFunctionProps } from './util';
 
 const baseCheckboxStyle = { fontSize: '18px', cursor: 'pointer', marginLeft: '9px' };
 
-const Checkbox = ({
-  component,
-  componentOptions,
-  indeterminate,
-  checked,
-  name,
-  onClick,
-}) => {
-  const setCheckboxRef = checkbox => {
-    if (checkbox) {
-      // eslint-disable-next-line no-param-reassign
-      checkbox.indeterminate = indeterminate;
-    }
+export default class Checkbox extends PureComponent {
+  static propTypes = {
+    indeterminate: PropTypes.bool,
+    component: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node,
+      PropTypes.func,
+    ]),
+    onClick: PropTypes.func.isRequired,
+    componentOptions: PropTypes.object,
+    data: PropTypes.object,
+    style: PropTypes.object,
+    checked: PropTypes.bool,
+    name: PropTypes.string.isRequired,
   };
 
-  const TagName = component;
-  const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
-  const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
+  static defaultProps = {
+    indeterminate: false,
+    component: 'input',
+    componentOptions: {
+      style: {},
+    },
+    data: {},
+    style: null,
+    checked: false,
+  };
 
-  return (
-    <TagName
-      type="checkbox"
-      {...resolvedComponentOptions}
-      // allow this component to fully control these options
-      ref={setCheckboxRef}
-      style={baseStyle}
-      onClick={onClick}
-      name={name}
-      aria-label={name}
-      checked={checked}
-      onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
-    />
-  );
-};
+  constructor(props) {
+    super(props);
 
-Checkbox.propTypes = {
-  indeterminate: PropTypes.bool,
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-    PropTypes.func,
-  ]),
-  componentOptions: PropTypes.object,
-  checked: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-};
+    this.checkbox = createRef();
+  }
 
-Checkbox.defaultProps = {
-  indeterminate: false,
-  component: 'input',
-  componentOptions: {
-    style: {},
-  },
-  checked: false,
-  onClick: null,
-};
 
-export default Checkbox;
+  componentDidMount() {
+    const { indeterminate } = this.props;
+
+    this.checkbox.current.indeterminate = indeterminate;
+  }
+
+  componentDidUpdate(prevProps) {
+    const { indeterminate } = this.props;
+
+    if (prevProps.indeterminate !== indeterminate) {
+      this.checkbox.current.indeterminate = indeterminate;
+    }
+  }
+
+  handleClick = e => {
+    const { onClick, data } = this.props;
+
+    onClick(data, e);
+  }
+
+  render() {
+    // remove indeterminate to prevent browser warnings
+    const {
+      component,
+      componentOptions,
+      indeterminate,
+      checked,
+      name,
+    } = this.props;
+    const TagName = component;
+    const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
+    const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
+    return (
+      <TagName
+        type="checkbox"
+        {...resolvedComponentOptions}
+        // allow this component to fully control these options
+        ref={this.checkbox}
+        style={baseStyle}
+        onClick={this.handleClick}
+        name={name}
+        aria-label={name}
+        checked={checked}
+        onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
+      />
+    );
+  }
+}

@@ -1,28 +1,16 @@
 [![Build Status](https://travis-ci.org/jbetancur/react-data-table-component.svg?branch=master)](https://travis-ci.org/jbetancur/react-data-table-component) [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component) [![Storybook](https://camo.githubusercontent.com/302badad5b2c7f7fa0929dadc1ca0ca7cdf2e8f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73746f7279626f6f6b2d72656163742d3030643866662e7376673f636f6c6f72413d653136313863266c6f676f3d646174613a696d6167652f706e673b6261736536342c6956424f5277304b47676f414141414e53556845556741414144454141414179434159414141443143444f794141414141584e535230494172733463365141414141526e51553142414143786a777638595155414141414a6345685a6377414144734d41414137444163647671475141414158305355524256476844375a6c7262425256464d66506e6666757a72623067566751553651594c425574425931457742636153535434494349314367676d4b6e345341686a6b6736434a565a517678432f794d694342524979474742494450694a6f524155667142686549744241433561793233334d7a6f7a337a6836774f4a325a75374f376f54482b6d736e39337a76623766336678376c6e707642666747423552646d335a667659786d6d54683971325853744a55723356666736366c7134445652416861356d4e456845367174597666426f2f37714a6b4a72352b634b452b4b464952723956693846656d70796b7571324259356943426b446f6259414439513030793752527461355945555241415a4175676d6e5641486e633969547a7a674a6a2f4a67447231466c494c4632504e5963446c6573574e4b463245576a69777079565937717a36516c525352466f4278706f52796f743236366974356f6b316857415774704a42623949796865466f64777a4272535a64324b7463424e4f4c2f7967552f79524c7175723649692b7159725373375273705a3266517139723657313252616b4231766c514268696b496f6f714849456d364a535848614a72546d6b65504f475568524a7377725936554a594e45744d67732f554c534c3632425a497233734e5766674a4e304431774847585a53472f2b44444937396a7261504e494f79655762484d304c78307a516256746d374b3445716a7832786b44465236434a6a4a6c445651414341574641444b52523961446333517a712f654e6f42476f4761665177495045496671683042496259784a79564330336262734e71494d72454730475a6367734956773341466a66576d533749664c67486a4b392b785a5a41696775784675647149705578694331724257335776623447474f782b5a4e3455694c30344131754b493967455235416c455a56323644455136362f47466a3745686947674c333853612b454a4e474661316b6d556e7167503377374377457173465959777042626b6c6846594330656769616973744b5073453649706f4577616a6256776145394d5268574f51424e5a303054564e394c4e772b6d3638503461746f6d7a4f2f6542656577307472686845617559314350515245633634627370784748652b38424a354a61736866536d585a42386553506b39682f474f32366b6b554e5246553667696147787175395139676d70306c4735796631386a475751574b4d6e3877653755626b52427670484e44384354644463435a5548707666396630637275374d626c5275575034556c384c41374e36744e46346c774161737531476e6a515a3136473962634a462f64444f6168552f6b4b49666b395a4f54417068666b3648347a544c42706166646b584f6c484c346f373749353064374c436333636265333542315465784a544e4175573973766b4b58566d37664957655a73625462504e774f3576457a7a7437784d5242496f496d7832396f53644c6f387a323057665877375145646665335153364b2f4d426e4677445461576c6b41546a4b444d49376e7966565465434858564546737843364c5054334e4f2b464a5345685057795535496239794a4e582b6b35754551587a33667957704c425a634a6b5244636d64356b642b3248314e76627352614d4e764d75694332596a7258694b4d6c4d584d5459657841536939654131584565572f775247362b6c6d652f6a7a72347042693454675764464c3968475479783642314962506e4643615242692f53445148706d41745842776d54424d7377736c4e38626e50304c332f4e5667374436414c64346f394d6d504a5a4a6834544b6853664a504b4e327774655a31305a6c4972646b4250573162615a3031654b506363524f71777546616a4f646e76374752467133353275586f62584d39527a4778614133597159796a685a6f4b30462b66352b692b734537535a50476c793937363961613445357468574e37704f4e46704775317867664c5053304872624464397076592b33556c4e484658683843306e556634657052752f424842774e616f38767338555176674978575843396c6e514c4270356f557875515a5648764b344f6c5273376c5556564f46776d63706233614f642b2b784f564735617852702b62366b5166567371336a7351376269356c756948674d70484d5a547850722b7a483336447147366c6c42476a544a7a716c482b7a454477755869576f3135686c69375751617a4e2f447663322b534f37414833524777372f7935544b527466785058706246737567544270762b6e704e7a2b52386a766e435a4f4a394e6f664b41486d7273685944785a66447066416b614b374b662f67434a5a52766f55313061473850424664645363392f53733662702b596a6147784b50676a792b456551784453445168794369796e536f36466a52344d41696b48576945347a396835776e517259554f536e756633614d39464f7239497956347a4a524a6f6f2f7358764d664f7251582b4579636254374c4e2b5558534734544c527361324e76417672746448435a364f39776d7967696a4a6564516d62433978582f6c6153672f58717364626c6572555467654c4b726f55714e794c716b676d6c626374597952366d43784e364b514e724d3151754558434d4a6f6a4e43686d57316944544e5a6a2b57626466526a385359707244584177726e4442642f5470534c62783961724e646f5561696c3139454c3532366f56714e36584e6259594a426b4c747569304945514352304b516b355872483368586679312f2b6d6e4150774e6e34482f346f436769623841414141415355564f524b35435949493d)](https://jbetancur.github.io/react-data-table-component
 )
 
-[React Data Table Component Demo](https://jbetancur.github.io/react-data-table-component)
-
 # React Data Table Component
 
 Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries already available, most required heavy customization or lacked basic features such as built in sorting and pagination, and in some cases required a restrictive license.
 
 If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone and need to pivot large data sets then this is not the React table library you are looking for 👋
 
-## Table of Contents
+## Demo and Examples
 
-* [Features](#key-features)
-* [Requirements](#requirements)
-* [Installation](#installation)
-* [Issues/Contributing](#logging-issues-and-contributions)
-* [API/Usage](#api-and-usage)
-* [Basic Table](#basic-table)
-* [Selectable Rows](#selectable-rows)
-* [Custom Cells](#custom-cells)
-* [Expandable Rows](#expandable-rows)
-* [Optimizing for Performance and Caveats](#optimizing-for-performance-and-caveats)
-* [Theming](#theming)
-* [CSS Overrides](#css-overrides)
+[React Data Table Component Demo](https://jbetancur.github.io/react-data-table-component)
+
 
 ## Key Features
 
@@ -53,10 +41,10 @@ or
 yarn add react-data-table-component styled-components
 ```
 
-## Logging Issues and Contributions
-Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox and providing clear details on the feature/issue will elicit a much quicker response 😉
+## Logging Issues
+Please use the github issue templates feature for logging issues or feature proposals. Including a codesanbox and providing clear details on the feature/issue will elicit a much quicker resonse 😉
 
-## API and Usage
+## API/Usage
 
 ### Columns
 Nothing new here - we are using an array of object literals and properties to describle the columns:
@@ -91,6 +79,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | lg      | 1280px      | large(laptops/desktops)   | 
 
 
+
 ### DataTable Properties
 
 #### Basic
@@ -109,7 +98,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
-| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection }). It's highly recommended that you memoize any handlers that you pass to `onTableUpdate` to prevent `DataTable` from unnescessary re-renders |
+| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection, rows }) |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
@@ -463,167 +452,6 @@ class MyComponent extends Component {
 );
 ```
 
-## Optimizing for Performance and Caveats
-Pre-optimizaton is the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
-
-### Passing non-primitive props (objects, arrays and functions)
-While RDT has internal optimizations to try and prevent re-renders on deeper internal components, for peak performance it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives.
-
-As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`
-
-#### Optimizing Class Components
-You can typically achieve this by moving props that you pass to RDT outside of the `render` method. If the prop is a component it can just be a method defined on the class. Additionally, RDT provides you with a `memoize` helper function for caching functions or expensive calculations.
-
-##### Examples of Optimizations
-The following component will cause RDT to re-render everytime a checkbox is checked. 
-
-```js
-...
-import React, { Component } from 'react';
-import DataTable from 'react-data-table';
-
-class MyComponent extends Component {
-  updateState = state => {
-    this.setState({ selectedRows: state.selectedRows }); // triggers MyComponet to re-render with new state
-  }
-
-  render () { // by design runs on every trigger for state change
-    // upon re-render columns array is recreated and thus causes DataTable to re-render
-    const columns = [....];
-
-    return (
-      <DataTable 
-        data={data} 
-        columns={columns} 
-        onTableUpdate={this.updateState}
-        selectableRows
-      />
-    )
-  }
-}
-```
-
-A "solution" could be to declare any field that is a non primitive field outside of the render function so that it does not get recreated on every re-render cycle:
-
-```js
-...
-import React, { Component } from 'react';
-import DataTable from 'react-data-table';
-
-const columns = [....]; // is only created once
-
-class MyComponent extends Component {
-  updateState = state => {
-    this.setState({ selectedRows: state.selectedRows });
-  }
-
-  render () {
-
-    return (
-      <DataTable 
-        data={data} 
-        columns={columns} 
-        onTableUpdate={this.updateState}
-        selectableRows
-      />
-    )
-  }
-}
-
-```
-
-But that only works if you don't need to pass component props/methods to the column object. For example what if you want to attach an event handler to a button in the row using `column.cell`?
-
-```js
-const columns = [;
-  {
-    cell: () => <Button raised primary onClick={this.handleAction}>Action</Button>,
-    ignoreRowClick: true,
-    allowOverflow: true,
-    button: true,
-  },
-  ...
-];
-```
-
-So how do we attach event handlers to our columns without having to place it in the `render` method and dealing with unnescessary re-renders?
-
-**Memoization**.
-
-RDT allows you to wrap anything you want that returns a value in a memo function that you can use to memoize (cache) the result. This way, when React checks the component props for changes it will determine that `columns` is unchange and thus no re-render.
-
-Got it? Let's try this again with the optimal solution:
-
-```js
-import React, { Component } from 'react';
-import DataTable, { memoize } from 'react-data-table';
-
-const columns = memoize(handleAction => [
-  ...
-  {
-    cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
-    ignoreRowClick: true,
-    allowOverflow: true,
-    button: true,
-  },
-  ...
-]);
-
-class MyComponent extends Component {
-  updateState = state => {
-    this.setState({ selectedRows: state.selectedRows });
-  }
-
-  render () {
-    return (
-      <DataTable 
-        data={data} 
-        columns={columns(this.updateState)} 
-        onTableUpdate={this.updateState}
-        selectableRows
-      />
-    );
-  }
-}
-```
-
-Now when `onTableUpdate` is triggered and `MyComponent` re-renders `DataTable` will not re-render becuase `columns` has not changed. Also, noteice that `this.updateState` did not change because it's defined as a class method and therefore is only created once.
-
-#### Optimizing Functional Components
-If you're building functional components you get access to React Hooks such as `useMemo` and `useCallback`. In this example, simply wrap `columns` in a `useMemo` callback and your `updateState` into `useCallback`:
-
-```js
-import React, { useState, useMemo } from 'react';
-import DataTable from 'react-data-table';
-
-const MyComponentHook = () => {
-  const [thing, setThing] = useState();
-  const handleAction = value => setThing(value);
-  // unklike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onTableUpdate are memoized using useCallback
-  const updateState = useCallback(state => console.log(state));
-  const columns = useMemo(() => [
-    ...
-    {
-      cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
-    },
-    ...
-  ]);
-
-  return (
-    <DataTable 
-      data={data} 
-      columns={columns} 
-      onTableUpdate={updateState}
-      selectableRows
-    />
-  );
-}
-```
-
-
 ## Theming
 You can override or replace the default theme using the `customTheme` prop. Internally, this just deep merges your theme with the default theme.
 
@@ -653,7 +481,7 @@ class MyComponent extends Component {
 Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
 
 ## CSS Overrides
-If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. preprocesor you may use the following classNames:
+If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS/CSS preprocesor you may use the following classNames:
 
 * rdt_Table
 * rdt_TableRow

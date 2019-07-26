@@ -40,7 +40,7 @@ export const Cell = styled(CellBase)`
   ${props => (props.column.center || props.column.button) && 'justify-content: center'};
   ${props => props.column.compact && `padding: calc(${props.theme.cells.cellPadding} / 12)`};
 
-  &:first-of-type {
+  &:first-child {
     padding-left: calc(${props => props.theme.cells.cellPadding} / 2);
   }
 

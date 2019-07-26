@@ -1,7 +1,42 @@
 import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
+import { defaultProps } from './propTypes';
 
-export const DataTableStateContext = createContext();
+const {
+  keyField,
+  selectableRowsComponent,
+  selectableRowsComponentProps,
+  expandableIcon,
+  paginationTotalRows,
+  paginationRowsPerPageOptions,
+  paginationIconLastPage,
+  paginationIconFirstPage,
+  paginationIconNext,
+  paginationIconPrevious,
+  paginationComponentOptions,
+  contextTitle,
+  contextActions,
+} = defaultProps;
+
+export const defaultState = {
+  selectedRows: [],
+  indeterminate: false,
+  keyField,
+  selectableRowsComponent,
+  selectableRowsComponentProps,
+  expandableIcon,
+  paginationTotalRows,
+  paginationRowsPerPageOptions,
+  paginationIconLastPage,
+  paginationIconFirstPage,
+  paginationIconNext,
+  paginationIconPrevious,
+  paginationComponentOptions,
+  contextTitle,
+  contextActions,
+};
+
+export const DataTableContext = createContext(defaultState);
 
 export class DataTableProvider extends PureComponent {
   static propTypes = {
@@ -16,9 +51,11 @@ export class DataTableProvider extends PureComponent {
     const { children, initialState } = this.props;
 
     return (
-      <DataTableStateContext.Provider value={initialState}>
+      <DataTableContext.Provider value={initialState}>
         {children}
-      </DataTableStateContext.Provider>
+      </DataTableContext.Provider>
     );
   }
 }
+
+export const DataTableConsumer = DataTableContext.Consumer;

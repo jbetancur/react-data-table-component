@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CellBase } from './Cell';
@@ -12,12 +12,12 @@ const TableCellExpanderStyle = styled(CellBase)`
   color: ${props => props.theme.rows.fontColor};
   min-height: ${props => props.theme.rows.height};
 
-  &:not(:first-of-type) {
+  &:not(:first-child) {
     padding-left: 0;
   }
 `;
 
-const TableCellExpander = ({
+const TableCellExpander = memo(({
   column,
   row,
   expanded,
@@ -35,7 +35,7 @@ const TableCellExpander = ({
       disabled={disabled}
     />
   </TableCellExpanderStyle>
-);
+));
 
 TableCellExpander.propTypes = {
   column: PropTypes.object,

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableStateContext } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
@@ -12,13 +12,12 @@ const TableCellCheckboxStyle = styled(CellBase)`
   min-height: ${props => props.theme.rows.height};
 `;
 
-const TableCellCheckbox = ({
-  name,
+const TableCellCheckbox = memo(({
   checked,
   row,
+  onClick,
 }) => {
-  const { dispatch, selectableRowsComponent, selectableRowsComponentProps } = useContext(DataTableStateContext);
-  const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row });
+  const { keyField, selectableRowsComponent, selectableRowsComponentProps } = useContext(DataTableContext);
 
   return (
     <TableCellCheckboxStyle
@@ -26,24 +25,27 @@ const TableCellCheckbox = ({
       className="rdt_TableCell"
     >
       <Checkbox
-        name={name}
+        name={`select-row-${row[keyField]}`}
         component={selectableRowsComponent}
         componentOptions={selectableRowsComponentProps}
         checked={checked}
-        onClick={handleOnRowSelected}
+        onClick={onClick}
+        data={row}
       />
     </TableCellCheckboxStyle>
   );
-};
+});
 
 TableCellCheckbox.propTypes = {
-  name: PropTypes.string.isRequired,
-  row: PropTypes.object.isRequired,
+  row: PropTypes.object,
   checked: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 TableCellCheckbox.defaultProps = {
+  row: {},
   checked: false,
+  onClick: null,
 };
 
 export default TableCellCheckbox;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableStateContext } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 
 const ButtonStyle = styled.button`
   display: inline-flex;
@@ -22,7 +22,7 @@ const ButtonStyle = styled.button`
 `;
 
 const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
-  const { expandableIcon, keyField } = React.useContext(DataTableStateContext);
+  const { expandableIcon, keyField } = React.useContext(DataTableContext);
   const icon = expanded
     ? expandableIcon.expanded
     : expandableIcon.collapsed;
