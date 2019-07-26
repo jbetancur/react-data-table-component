@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
-import { DataTableStateContext } from './DataTableContext';
+import { DataTableContext } from './DataTableContext';
 import NativeSortIcon from '../icons/NativeSortIcon';
 
 const activeColCSS = css`
@@ -56,72 +56,84 @@ const ColumnSortable = styled.div`
   }
 `;
 
-
-const TableCol = ({
-  column,
-  onColumnClick,
-  sortIcon,
-}) => {
-  const { sortColumn, sortDirection } = useContext(DataTableStateContext);
-
-  const handleColumnClick = e => {
-    onColumnClick(column, sortDirection, e);
+class TableCol extends PureComponent {
+  static propTypes = {
+    onColumnClick: PropTypes.func.isRequired,
+    column: PropTypes.object.isRequired,
+    sortIcon: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.object,
+    ]).isRequired,
   };
 
-  const renderNativeSortIcon = sortActive => (
-    <NativeSortIcon
-      column={column}
-      sortActive={sortActive}
-      sortDirection={sortDirection}
-    />
-  );
+  static contextType = DataTableContext;
 
-  const renderCustomSortIcon = () => (
-    <span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>
-      {sortIcon}
-    </span>
-  );
+  onColumnClick = e => {
+    const { column, onColumnClick } = this.props;
+    const { sortDirection } = this.context;
 
-  const sortActive = column.sortable && sortColumn === column.selector;
-  const nativeSortIconLeft = !sortIcon && !column.right;
-  const nativeSortIconRight = !sortIcon && column.right;
-  const customSortIconLeft = sortIcon && !column.right;
-  const customSortIconRight = sortIcon && column.right;
+    onColumnClick(column, sortDirection, e);
+  }
 
-  return (
-    <TableColStyle
-      className="rdt_TableCol"
-      column={column} // required by Cell.js
-    >
-      {column.name && (
-        <ColumnSortable
-          id={`column-${column.selector}`}
-          role="button"
-          className="rdt_TableCol_Sortable"
-          onClick={handleColumnClick}
-          sortActive={sortActive}
-          column={column}
-        >
-          {customSortIconRight && renderCustomSortIcon()}
-          {nativeSortIconRight && renderNativeSortIcon(sortActive)}
-          <div>
-            {column.name}
-          </div>
-          {customSortIconLeft && renderCustomSortIcon()}
-          {nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-        </ColumnSortable>
-      )}
-    </TableColStyle>
-  );
-};
+  renderNativeSortIcon(sortActive) {
+    const { column } = this.props;
+    const { sortDirection } = this.context;
 
-TableCol.propTypes = {
-  onColumnClick: PropTypes.func.isRequired,
-  column: PropTypes.object.isRequired,
-  sortIcon: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.object,
-  ]).isRequired,
-};
+    return (
+      <NativeSortIcon
+        column={column}
+        sortActive={sortActive}
+        sortDirection={sortDirection}
+      />
+    );
+  }
+
+  renderCustomSortIcon() {
+    const { sortIcon } = this.props;
+    const { sortDirection } = this.context;
+
+    return (
+      <span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>
+        {sortIcon}
+      </span>
+    );
+  }
+
+  render() {
+    const { column, sortIcon } = this.props;
+    const { sortColumn } = this.context;
+    const sortActive = column.sortable && sortColumn === column.selector;
+    const nativeSortIconLeft = !sortIcon && !column.right;
+    const nativeSortIconRight = !sortIcon && column.right;
+    const customSortIconLeft = sortIcon && !column.right;
+    const customSortIconRight = sortIcon && column.right;
+
+    return (
+      <TableColStyle
+        className="rdt_TableCol"
+        column={column} // required by Cell.js
+      >
+        {column.name && (
+          <ColumnSortable
+            id={`column-${column.selector}`}
+            role="button"
+            className="rdt_TableCol_Sortable"
+            onClick={this.onColumnClick}
+            sortActive={sortActive}
+            column={column}
+          >
+            {customSortIconRight && this.renderCustomSortIcon()}
+            {nativeSortIconRight && this.renderNativeSortIcon(sortActive)}
+            <div>
+              {column.name}
+            </div>
+            {customSortIconLeft && this.renderCustomSortIcon()}
+            {nativeSortIconLeft && this.renderNativeSortIcon(sortActive)}
+          </ColumnSortable>
+        )}
+      </TableColStyle>
+    );
+  }
+}
 
 export default TableCol;

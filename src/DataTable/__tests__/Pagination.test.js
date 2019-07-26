@@ -2,15 +2,14 @@ import 'jest-styled-components';
 import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
 import { renderWithTheme } from '../../test-helpers'; // since child elements require theme
-import { DataTableProvider } from '../DataTableContext';
-import { defaultProps } from '../propTypes';
+import { DataTableProvider, defaultState } from '../DataTableContext';
 import Pagination from '../Pagination';
 import theme from '../../themes/default';
 
 afterEach(cleanup);
 
 const defaultStateMock = {
-  ...defaultProps,
+  ...defaultState,
   paginationComponentOptions: {
     rowsPerPageText: 'Rows per page:',
     rangeSeparatorText: 'of',
