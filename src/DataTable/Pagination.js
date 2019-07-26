@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableContext } from './DataTableContext';
+import { DataTableStateContext } from './DataTableContext';
 import Select from './Select';
 import { getNumberOfPages } from './util';
 
@@ -57,7 +57,7 @@ export default class Pagination extends PureComponent {
     currentPage: PropTypes.number.isRequired,
   };
 
-  static contextType = DataTableContext;
+  static contextType = DataTableStateContext;
 
   handlePrevious = () => {
     const { onChangePage, currentPage } = this.props;
