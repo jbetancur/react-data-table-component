@@ -4303,6 +4303,10 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   border: none;
   width: 40px;
@@ -4847,6 +4851,10 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   border: none;
   width: 40px;
@@ -12178,6 +12186,10 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   border: none;
   width: 40px;
@@ -12735,6 +12747,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   border: none;
   width: 40px;
@@ -13276,6 +13292,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   border: none;
   width: 40px;
