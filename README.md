@@ -468,19 +468,20 @@ class MyComponent extends Component {
 ```
 
 ## Optimizing for Performance and Caveats
-Pre-optimizaton is the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
+Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
 
 ### Passing non-primitive props (objects, arrays and functions)
-While RDT has internal optimizations to try and prevent re-renders on deeper internal components, for peak performance it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives.
-
-As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`
+While RDT has internal optimizations to try and prevent re-renders on deeper internal components, for peak performance it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
 #### Optimizing Class Components
-You can typically achieve this by moving props or functions that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper function for caching functions or expensive calculations.
+You can typically achieve this by moving props such as objects, arrays, functions or other React compents that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper for cases where you are using a function to generate those values.
 
 ##### Examples of Optimizations
-The following component will cause RDT to re-render everytime a checkbox is checked.
+The following component will cause RDT to fully re-render everytime `onTableUpdate` is triggered. Why? Becuase when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this descision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
 
+However, in the example below `columns` changes on every re-render becuase it's being re-created. This is due to referential equality checking, simply: `columns[] !== columns[]`. In other words, while both instances of `columns` contain the same elements, they are "different" arrays.
+
+**Bad**
 ```js
 ...
 import React, { Component } from 'react';
@@ -491,7 +492,7 @@ class MyComponent extends Component {
     this.setState({ selectedRows: state.selectedRows }); // triggers MyComponet to re-render with new state
   }
 
-  render () { // by design runs on every trigger for state change
+  render () { // by design runs on every setState trigger
     // upon re-render columns array is recreated and thus causes DataTable to re-render
     const columns = [....];
 
@@ -509,6 +510,7 @@ class MyComponent extends Component {
 
 A "solution" could be to declare any field that is a non primitive field outside of the render function so that it does not get recreated on every re-render cycle:
 
+**Good**
 ```js
 ...
 import React, { Component } from 'react';
@@ -552,9 +554,10 @@ const columns = [;
 
 So how do we attach event handlers to our columns without having to place it in the `render` method and dealing with unnescessary re-renders?
 
-**Memoization**.
+1. Create a `columns` function and pass the arguments needed
+2. Memoize the `columns` function
 
-RDT allows you to wrap anything you want that returns a value in a memo function that you can use to memoize (cache) the result. This way, when React checks the component props for changes it will determine that `columns` is unchange and thus no re-render.
+This way, when React checks if `columns` has changes `columns` will instead be cached result (remember referential equality), thus no unnessesary re-render.
 
 Got it? Let's try this again with the optimal solution:
 
@@ -562,7 +565,7 @@ Got it? Let's try this again with the optimal solution:
 import React, { Component } from 'react';
 import DataTable, { memoize } from 'react-data-table';
 
-const columns = memoize(handleAction => [
+const onTableUpdate = memoize(handleAction => [
   ...
   {
     cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
@@ -591,7 +594,7 @@ class MyComponent extends Component {
 }
 ```
 
-Now when `onTableUpdate` is triggered and `MyComponent` re-renders `DataTable` will not re-render becuase `columns` has not changed. Also, noteice that `this.updateState` did not change because it's defined as a class method and therefore is only created once.
+Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once. This however,  is a different matter with function components.
 
 #### Optimizing Functional Components
 If you're building functional components you get access to React Hooks such as `useMemo` and `useCallback`. In this example, simply wrap `columns` in a `useMemo` callback and your `updateState` into `useCallback`:
@@ -626,7 +629,6 @@ const MyComponentHook = () => {
   );
 }
 ```
-
 
 ## Theming
 You can override or replace the default theme using the `customTheme` prop. Internally, this just deep merges your theme with the default theme.
