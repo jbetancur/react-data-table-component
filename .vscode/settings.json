@@ -6,7 +6,7 @@
     // "eslint.options": {"configFile": "./package.json"},
     "editor.tabSize": 2,
     "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": false,
+    "files.trimTrailingWhitespace": true,
     "eslint.nodePath": "./src",
     "editor.formatOnSave": false,
     "window.zoomLevel": 0,

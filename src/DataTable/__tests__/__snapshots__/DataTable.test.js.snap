@@ -65,7 +65,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -146,7 +146,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -389,6 +389,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -406,6 +407,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -492,7 +494,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   min-height: 48px;
 }
 
-.c17:first-child {
+.c17:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -597,7 +599,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -879,6 +881,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -906,6 +909,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -1002,7 +1006,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -1083,7 +1087,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -1318,6 +1322,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -1335,6 +1340,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -1421,7 +1427,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -1502,7 +1508,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   min-height: 48px;
 }
 
-.c5:first-child {
+.c5:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -1620,6 +1626,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
       >
         <div
           class="rdt_TableRow c9"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c10"
@@ -1637,6 +1644,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         </div>
         <div
           class="rdt_TableRow c9"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c10"
@@ -1723,7 +1731,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -1804,7 +1812,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -2039,6 +2047,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -2056,6 +2065,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -2166,7 +2176,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -2247,7 +2257,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -2593,6 +2603,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -2610,6 +2621,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -2866,7 +2878,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -2947,7 +2959,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -3293,6 +3305,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -3310,6 +3323,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -3387,6 +3401,708 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         class="c18"
       >
         1-2 undefined 2
+      </span>
+      <div
+        class="c21"
+      >
+        <button
+          class="c22"
+          disabled=""
+          id="pagination-first-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            />
+            <path
+              d="M24 24H0V0h24v24z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          class="c22"
+          disabled=""
+          id="pagination-previous-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          class="c22"
+          disabled=""
+          id="pagination-next-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          class="c22"
+          disabled=""
+          id="pagination-last-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            />
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`DataTable::Pagination should render correctly when pagination 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 56px;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  background-color: transparent;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.c20 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 16px;
+  box-sizing: content-box;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c20::-ms-expand {
+  display: none;
+}
+
+.c20:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c19 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 8px;
+  margin-right: 32px;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+}
+
+.c19 svg {
+  top: 1;
+  right: 0;
+  color: rgba(0,0,0,.54);
+  position: absolute;
+  pointer-events: none;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 24px;
+  -webkit-transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c22 {
+  position: relative;
+  display: block;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c22 svg {
+  fill: rgba(0,0,0,.54);
+}
+
+.c22:disabled {
+  opacity: 0.4;
+  cursor: unset;
+}
+
+.c22:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.c18 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+          id="row-1"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+          id="row-2"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="rdt_TableFooter c17"
+    >
+      <span
+        class="c18"
+      >
+        Rows per page:
+      </span>
+      <div
+        class="c19"
+      >
+        <select
+          class="c20"
+        >
+          <option
+            selected=""
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="15"
+          >
+            15
+          </option>
+          <option
+            value="20"
+          >
+            20
+          </option>
+          <option
+            value="25"
+          >
+            25
+          </option>
+          <option
+            value="30"
+          >
+            30
+          </option>
+        </select>
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </div>
+      <span
+        class="c18"
+      >
+        1-2 of 2
       </span>
       <div
         class="c21"
@@ -3560,7 +4276,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   min-height: 48px;
 }
 
-.c18:first-child {
+.c18:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -3629,7 +4345,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   min-height: 48px;
 }
 
-.c16:not(:first-child) {
+.c16:not(:first-of-type) {
   padding-left: 0;
 }
 
@@ -3695,7 +4411,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -3931,6 +4647,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="c16"
@@ -3973,6 +4690,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="c16"
@@ -4102,7 +4820,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   min-height: 48px;
 }
 
-.c18:first-child {
+.c18:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -4171,7 +4889,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   min-height: 48px;
 }
 
-.c16:not(:first-child) {
+.c16:not(:first-of-type) {
   padding-left: 0;
 }
 
@@ -4238,7 +4956,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -4474,6 +5192,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="c16"
@@ -4516,6 +5235,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="c16"
@@ -4631,7 +5351,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -4716,7 +5436,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -4949,6 +5669,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -4966,6 +5687,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -5052,7 +5774,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -5133,7 +5855,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -5378,6 +6100,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -5395,6 +6118,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -5481,7 +6205,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -5562,7 +6286,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -5807,6 +6531,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -5824,6 +6549,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -5910,7 +6636,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -5991,7 +6717,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -6236,6 +6962,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -6253,6 +6980,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -6339,7 +7067,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -6420,7 +7148,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -6665,6 +7393,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -6682,6 +7411,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -6768,7 +7498,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -6849,7 +7579,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -7082,6 +7812,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -7099,6 +7830,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -7185,7 +7917,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -7266,7 +7998,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -7499,6 +8231,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -7516,6 +8249,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -7606,7 +8340,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -7691,7 +8425,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -7924,6 +8658,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -7941,6 +8676,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -8029,7 +8765,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -8112,7 +8848,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -8345,6 +9081,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -8362,6 +9099,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -8448,7 +9186,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -8529,7 +9267,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -8762,6 +9500,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -8779,6 +9518,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -8869,7 +9609,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -8954,7 +9694,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -9187,6 +9927,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -9204,6 +9945,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -9290,7 +10032,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -9371,7 +10113,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -9604,6 +10346,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -9623,6 +10366,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -9712,7 +10456,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -9794,7 +10538,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -10027,6 +10771,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -10044,6 +10789,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -10130,7 +10876,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -10211,7 +10957,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -10444,6 +11190,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -10461,6 +11208,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -10547,7 +11295,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -10628,7 +11376,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -10861,6 +11609,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -10878,6 +11627,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -10964,7 +11714,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -11045,7 +11795,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -11278,6 +12028,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -11295,6 +12046,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -11399,7 +12151,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   min-height: 48px;
 }
 
-.c18:first-child {
+.c18:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -11468,7 +12220,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   min-height: 48px;
 }
 
-.c16:not(:first-child) {
+.c16:not(:first-of-type) {
   padding-left: 0;
 }
 
@@ -11538,7 +12290,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -11774,6 +12526,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="c16"
@@ -11825,6 +12578,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="c16"
@@ -11954,7 +12708,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
-.c18:first-child {
+.c18:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -12023,7 +12777,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
-.c16:not(:first-child) {
+.c16:not(:first-of-type) {
   padding-left: 0;
 }
 
@@ -12086,7 +12840,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -12322,6 +13076,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="c16"
@@ -12364,6 +13119,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="c16"
@@ -12493,7 +13249,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
-.c18:first-child {
+.c18:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -12562,7 +13318,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
-.c16:not(:first-child) {
+.c16:not(:first-of-type) {
   padding-left: 0;
 }
 
@@ -12632,7 +13388,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -12868,6 +13624,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="c16"
@@ -12919,6 +13676,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="c16"
@@ -13030,7 +13788,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -13111,7 +13869,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -13346,6 +14104,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -13363,6 +14122,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -13449,7 +14209,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -13530,7 +14290,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -13765,6 +14525,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -13782,6 +14543,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -13868,7 +14630,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -13949,7 +14711,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -14186,6 +14948,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -14203,6 +14966,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -14289,7 +15053,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -14370,7 +15134,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -14607,6 +15371,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -14624,6 +15389,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -14710,7 +15476,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -14800,7 +15566,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -15033,6 +15799,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -15050,6 +15817,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -15136,7 +15904,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -15221,7 +15989,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -15454,6 +16222,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -15471,6 +16240,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -15493,205 +16263,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 `;
 
 exports[`DataTable::progress/nodata should render correctly when a component is passed that is a react component 1`] = `
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-  background-color: transparent;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
-  min-height: 48px;
-}
-
-.c16:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c16:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c16 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c17 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c13 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 0;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c11:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c11:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c12 {
-  color: rgba(0,0,0,.54);
-  font-size: 12px;
-  font-weight: 500;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
-  opacity: 0;
-  color: inherit;
-  font-size: 18px !important;
-  height: 18px !important;
-  width: 18px !important;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -15789,16 +16360,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   margin-left: 5px;
 }
 
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
   position: relative;
   width: 100%;
@@ -15856,75 +16417,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
     >
       <div>
         A String that is passed in
-      </div>
-    </div>
-    <div
-      class="rdt_Table c8"
-    >
-      <div
-        class="rdt_TableHead c9"
-      >
-        <div
-          class="rdt_TableHeadRow c10"
-        >
-          <div
-            class="rdt_TableCol c11"
-          >
-            <div
-              class="rdt_TableCol_Sortable c12"
-              id="column-some.name"
-              role="button"
-            >
-              <div>
-                Test
-              </div>
-              <span
-                class="c13"
-              >
-                ▲
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="rdt_TableBody c14"
-        offset="250px"
-      >
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -15932,205 +16424,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 `;
 
 exports[`DataTable::progress/nodata should render correctly when a component is passed that is a react component 2`] = `
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-  background-color: transparent;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
-  min-height: 48px;
-}
-
-.c16:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c16:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c16 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c17 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c13 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 0;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c11:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c11:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c12 {
-  color: rgba(0,0,0,.54);
-  font-size: 12px;
-  font-weight: 500;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
-  opacity: 0;
-  color: inherit;
-  font-size: 18px !important;
-  height: 18px !important;
-  width: 18px !important;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -16226,16 +16519,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c3 > * {
   margin-left: 5px;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -16301,279 +16584,11 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
         A String that is passed in
       </div>
     </div>
-    <div
-      class="rdt_Table c8"
-    >
-      <div
-        class="rdt_TableHead c9"
-      >
-        <div
-          class="rdt_TableHeadRow c10"
-        >
-          <div
-            class="rdt_TableCol c11"
-          >
-            <div
-              class="rdt_TableCol_Sortable c12"
-              id="column-some.name"
-              role="button"
-            >
-              <div>
-                Test
-              </div>
-              <span
-                class="c13"
-              >
-                ▲
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="rdt_TableBody c14"
-        offset="250px"
-      >
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
 exports[`DataTable::progress/nodata should render correctly when a component is passed that is a string 1`] = `
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-  background-color: transparent;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
-  min-height: 48px;
-}
-
-.c16:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c16:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c16 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c17 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c13 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 0;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c11:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c11:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c12 {
-  color: rgba(0,0,0,.54);
-  font-size: 12px;
-  font-weight: 500;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
-  opacity: 0;
-  color: inherit;
-  font-size: 18px !important;
-  height: 18px !important;
-  width: 18px !important;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -16669,16 +16684,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c3 > * {
   margin-left: 5px;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -16737,75 +16742,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
       class="c7"
     >
       A Component that is passed in
-    </div>
-    <div
-      class="rdt_Table c8"
-    >
-      <div
-        class="rdt_TableHead c9"
-      >
-        <div
-          class="rdt_TableHeadRow c10"
-        >
-          <div
-            class="rdt_TableCol c11"
-          >
-            <div
-              class="rdt_TableCol_Sortable c12"
-              id="column-some.name"
-              role="button"
-            >
-              <div>
-                Test
-              </div>
-              <span
-                class="c13"
-              >
-                ▲
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="rdt_TableBody c14"
-        offset="250px"
-      >
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -16974,205 +16910,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 `;
 
 exports[`DataTable::progress/nodata should render correctly when progressPending is true 1`] = `
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-  background-color: transparent;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
-  min-height: 48px;
-}
-
-.c16:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c16:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c16 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c17 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c13 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 0;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c11:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c11:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c12 {
-  color: rgba(0,0,0,.54);
-  font-size: 12px;
-  font-weight: 500;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
-  opacity: 0;
-  color: inherit;
-  font-size: 18px !important;
-  height: 18px !important;
-  width: 18px !important;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -17270,16 +17007,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   margin-left: 5px;
 }
 
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
   position: relative;
   width: 100%;
@@ -17338,75 +17065,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
       <h2>
         Loading...
       </h2>
-    </div>
-    <div
-      class="rdt_Table c8"
-    >
-      <div
-        class="rdt_TableHead c9"
-      >
-        <div
-          class="rdt_TableHeadRow c10"
-        >
-          <div
-            class="rdt_TableCol c11"
-          >
-            <div
-              class="rdt_TableCol_Sortable c12"
-              id="column-some.name"
-              role="button"
-            >
-              <div>
-                Test
-              </div>
-              <span
-                class="c13"
-              >
-                ▲
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="rdt_TableBody c14"
-        offset="250px"
-      >
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="rdt_TableRow c15"
-        >
-          <div
-            class="rdt_TableCell c16"
-          >
-            <div
-              class="c17"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -17477,7 +17135,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -17558,7 +17216,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -17793,6 +17451,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -17810,6 +17469,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -17896,7 +17556,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -17977,7 +17637,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -18210,6 +17870,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -18227,6 +17888,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -18313,7 +17975,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -18394,7 +18056,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -18626,6 +18288,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -18643,6 +18306,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -18729,7 +18393,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
-.c17:first-child {
+.c17:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -18834,7 +18498,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -19106,6 +18770,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -19133,6 +18798,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -19229,7 +18895,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
-.c17:first-child {
+.c17:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -19334,7 +19000,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -19606,6 +19272,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -19633,6 +19300,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -19664,7 +19332,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 </div>
 `;
 
-exports[`DataTable::selectableRows should render correctly when selectableRows is true and all rows are selected 1`] = `
+exports[`DataTable::sorting should render correctly and not be sorted when a column.sort === false 1`] = `
 .c7 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -19695,7 +19363,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   width: 100%;
 }
 
-.c17 {
+.c15 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19729,21 +19397,21 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
-.c17:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
-.c17:last-child {
+.c15:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c17 .react-data-table--cell-content {
+.c15 .react-data-table--cell-content {
   color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c18 {
+.c16 {
   position: absolute;
   top: 0;
   left: 0;
@@ -19751,31 +19419,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   height: 100%;
 }
 
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 48px;
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
-  font-size: 13px;
-  color: rgba(0,0,0,.87);
-  min-height: 48px;
-}
-
-.c15 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19790,7 +19434,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   color: rgba(0,0,0,.87);
 }
 
-.c13 {
+.c12 {
   padding: 2px;
   color: inherit;
   -webkit-box-flex: 0;
@@ -19803,7 +19447,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   opacity: 0;
 }
 
-.c11 {
+.c10 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19834,15 +19478,15 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-height: 48px;
 }
 
-.c11:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
-.c11:last-child {
+.c10:last-child {
   padding-right: calc(48px / 2);
 }
 
-.c12 {
+.c11 {
   color: rgba(0,0,0,.54);
   font-size: 12px;
   font-weight: 500;
@@ -19862,8 +19506,8 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   user-select: none;
 }
 
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -19881,40 +19525,11 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   transition-property: transform;
 }
 
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c10 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-flex: 0 0 48px;
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  white-space: nowrap;
-  font-size: 12px;
-  color: rgba(0,0,0,.54);
-  min-height: 48px;
 }
 
 .c5 {
@@ -19931,9 +19546,9 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   height: 100%;
   background-color: #e3f2fd;
   z-index: 1;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
   -webkit-transition-duration: 225ms;
   transition-duration: 225ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
@@ -20014,7 +19629,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   margin-left: 5px;
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20054,9 +19669,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
     >
       <div
         class="c5"
-      >
-        2 items selected
-      </div>
+      />
       <div />
     </div>
   </header>
@@ -20075,18 +19688,8 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           <div
             class="rdt_TableCol c10"
           >
-            <input
-              aria-label="select-all-rows"
-              name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
-              type="checkbox"
-            />
-          </div>
-          <div
-            class="rdt_TableCol c11"
-          >
             <div
-              class="rdt_TableCol_Sortable c12"
+              class="rdt_TableCol_Sortable c11"
               id="column-some.name"
               role="button"
             >
@@ -20094,7 +19697,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
                 Test
               </div>
               <span
-                class="c13"
+                class="c12"
               >
                 ▲
               </span>
@@ -20103,27 +19706,18 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
         </div>
       </div>
       <div
-        class="rdt_TableBody c14"
+        class="rdt_TableBody c13"
         offset="250px"
       >
         <div
-          class="rdt_TableRow c15"
+          class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
-            class="rdt_TableCell c16"
-          >
-            <input
-              aria-label="select-row-1"
-              name="select-row-1"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
-              type="checkbox"
-            />
-          </div>
-          <div
-            class="rdt_TableCell c17"
+            class="rdt_TableCell c15"
           >
             <div
-              class="c18"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -20134,23 +19728,14 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           </div>
         </div>
         <div
-          class="rdt_TableRow c15"
+          class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
-            class="rdt_TableCell c16"
-          >
-            <input
-              aria-label="select-row-2"
-              name="select-row-2"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
-              type="checkbox"
-            />
-          </div>
-          <div
-            class="rdt_TableCell c17"
+            class="rdt_TableCell c15"
           >
             <div
-              class="c18"
+              class="c16"
               data-tag="___react-data-table--click-clip___"
             />
             <div
@@ -20231,7 +19816,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -20279,9 +19864,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -ms-flex-negative: 0;
   flex-shrink: 0;
   opacity: 1;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 .c10 {
@@ -20315,7 +19897,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -20554,23 +20136,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
       >
         <div
           class="rdt_TableRow c14"
-        >
-          <div
-            class="rdt_TableCell c15"
-          >
-            <div
-              class="c16"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-        <div
-          class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -20583,6 +20149,24 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
               class="react-data-table--cell-content"
             >
               Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+          id="row-2"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Zuchinni
             </div>
           </div>
         </div>
@@ -20657,7 +20241,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -20738,7 +20322,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -20977,6 +20561,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -20994,6 +20579,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -21080,7 +20666,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   min-height: 48px;
 }
 
-.c14:first-child {
+.c14:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -21148,7 +20734,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -21389,6 +20975,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
       >
         <div
           class="rdt_TableRow c13"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c14"
@@ -21406,6 +20993,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
         </div>
         <div
           class="rdt_TableRow c13"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c14"
@@ -21492,7 +21080,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -21573,7 +21161,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -21812,6 +21400,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -21829,6 +21418,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -21915,7 +21505,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -21999,7 +21589,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -22238,6 +21828,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
       >
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -22255,6 +21846,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -22341,7 +21933,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -22426,7 +22018,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -22659,6 +22251,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -22676,6 +22269,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"
@@ -22762,7 +22356,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
   min-height: 48px;
 }
 
-.c16:first-child {
+.c16:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -22843,7 +22437,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -23106,6 +22700,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -23123,6 +22718,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -23209,7 +22805,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
   min-height: 48px;
 }
 
-.c16:first-child {
+.c16:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -23290,7 +22886,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -23553,6 +23149,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -23570,6 +23167,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -23656,7 +23254,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
   min-height: 48px;
 }
 
-.c16:first-child {
+.c16:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -23737,7 +23335,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -24000,6 +23598,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -24017,6 +23616,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -24103,7 +23703,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
   min-height: 48px;
 }
 
-.c16:first-child {
+.c16:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -24184,7 +23784,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -24447,6 +24047,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -24464,6 +24065,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -24550,7 +24152,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
   min-height: 48px;
 }
 
-.c16:first-child {
+.c16:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -24631,7 +24233,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
   min-height: 48px;
 }
 
-.c11:first-child {
+.c11:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -24894,6 +24496,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
       >
         <div
           class="rdt_TableRow c15"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c16"
@@ -24911,6 +24514,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
         </div>
         <div
           class="rdt_TableRow c15"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c16"
@@ -24997,7 +24601,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -25078,7 +24682,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -25311,6 +24915,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -25494,406 +25099,6 @@ exports[`should render and empty table correctly 1`] = `
 </div>
 `;
 
-exports[`should render correctly if the keyField is overriden 1`] = `
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-}
-
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-  background-color: transparent;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c15 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
-  min-height: 48px;
-}
-
-.c15:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c15:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c15 .react-data-table--cell-content {
-  color: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c16 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
-}
-
-.c12 {
-  padding: 2px;
-  color: inherit;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  opacity: 0;
-}
-
-.c10 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: calc(48px / 6);
-  padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  min-height: 48px;
-}
-
-.c10:first-child {
-  padding-left: calc(48px / 2);
-}
-
-.c10:last-child {
-  padding-right: calc(48px / 2);
-}
-
-.c11 {
-  color: rgba(0,0,0,.54);
-  font-size: 12px;
-  font-weight: 500;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c11 span.__rdt_custom_sort_icon__ i,
-.c11 span.__rdt_custom_sort_icon__ svg {
-  opacity: 0;
-  color: inherit;
-  font-size: 18px !important;
-  height: 18px !important;
-  width: 18px !important;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c11 span.__rdt_custom_sort_icon__.asc i,
-.c11 span.__rdt_custom_sort_icon__.asc svg {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-.c5 {
-  color: rgba(0,0,0,.87);
-  font-size: 18px;
-  font-weight: 400;
-}
-
-.c4 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #e3f2fd;
-  z-index: 1;
-  -webkit-transform: translate3d(0,-100%,0);
-  -ms-transform: translate3d(0,-100%,0);
-  transform: translate3d(0,-100%,0);
-  -webkit-transition-duration: 225ms;
-  transition-duration: 225ms;
-  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
-  transition-timing-function: cubic-bezier(0,0,0.2,1);
-  -webkit-transition-delay: 0;
-  transition-delay: 0;
-  will-change: transform;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 16px 16px 16px 24px;
-}
-
-.c1 {
-  position: relative;
-  overflow: visible;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 4px 16px 4px 24px;
-  min-height: 56px;
-  width: 100%;
-  background-color: transparent;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.c2 {
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-  color: rgba(0,0,0,.87);
-  font-size: 22px;
-  font-weight: 400;
-}
-
-.c3 {
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c3 > * {
-  margin-left: 5px;
-}
-
-.c13 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0 {
-  position: relative;
-  width: 100%;
-  overflow-x: auto;
-}
-
-.c6 {
-  position: relative;
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-
-<div
-  class="c0"
->
-  <header
-    class="rdt_TableHeader c1"
-  >
-    <div
-      class="c2"
-    />
-    <div
-      class="c3"
-    />
-    <div
-      class="c4"
-    >
-      <div
-        class="c5"
-      />
-      <div />
-    </div>
-  </header>
-  <div
-    class="c6"
-  >
-    <div
-      class="rdt_Table c7"
-    >
-      <div
-        class="rdt_TableHead c8"
-      >
-        <div
-          class="rdt_TableHeadRow c9"
-        >
-          <div
-            class="rdt_TableCol c10"
-          >
-            <div
-              class="rdt_TableCol_Sortable c11"
-              id="column-some.name"
-              role="button"
-            >
-              <div>
-                Test
-              </div>
-              <span
-                class="c12"
-              >
-                ▲
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="rdt_TableBody c13"
-        offset="250px"
-      >
-        <div
-          class="rdt_TableRow c14"
-        >
-          <div
-            class="rdt_TableCell c15"
-          >
-            <div
-              class="c16"
-              data-tag="___react-data-table--click-clip___"
-            />
-            <div
-              class="react-data-table--cell-content"
-            >
-              Henry the 8th
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`should render correctly when disabled 1`] = `
 .c7 {
   display: -webkit-box;
@@ -25961,7 +25166,7 @@ exports[`should render correctly when disabled 1`] = `
   min-height: 48px;
 }
 
-.c15:first-child {
+.c15:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -26042,7 +25247,7 @@ exports[`should render correctly when disabled 1`] = `
   min-height: 48px;
 }
 
-.c10:first-child {
+.c10:first-of-type {
   padding-left: calc(48px / 2);
 }
 
@@ -26276,6 +25481,7 @@ exports[`should render correctly when disabled 1`] = `
       >
         <div
           class="rdt_TableRow c14"
+          id="row-1"
         >
           <div
             class="rdt_TableCell c15"
@@ -26293,6 +25499,7 @@ exports[`should render correctly when disabled 1`] = `
         </div>
         <div
           class="rdt_TableRow c14"
+          id="row-2"
         >
           <div
             class="rdt_TableCell c15"

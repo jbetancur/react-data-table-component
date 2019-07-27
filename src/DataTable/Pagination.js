@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableContext } from './DataTableContext';
+import { useTableContext } from './DataTableContext';
 import Select from './Select';
 import { getNumberOfPages } from './util';
 
@@ -47,117 +47,103 @@ const Span = styled.span`
   color: ${props => props.theme.pagination.fontColor};
 `;
 
-export default class Pagination extends PureComponent {
-  static propTypes = {
-    rowsPerPage: PropTypes.number.isRequired,
-    rowCount: PropTypes.number.isRequired,
-    onChangePage: PropTypes.func.isRequired,
-    onChangeRowsPerPage: PropTypes.func.isRequired,
-    theme: PropTypes.object.isRequired,
-    currentPage: PropTypes.number.isRequired,
-  };
+const Pagination = ({
+  rowsPerPage,
+  rowCount,
+  onChangePage,
+  onChangeRowsPerPage,
+  theme,
+  currentPage,
+}) => {
+  const {
+    paginationRowsPerPageOptions,
+    paginationIconLastPage,
+    paginationIconFirstPage,
+    paginationIconNext,
+    paginationIconPrevious,
+    paginationComponentOptions,
+  } = useTableContext();
+  const numPages = getNumberOfPages(rowCount, rowsPerPage);
+  const lastIndex = currentPage * rowsPerPage;
+  const firstIndex = (lastIndex - rowsPerPage) + 1;
+  const disabledLesser = currentPage === 1;
+  const disabledGreater = currentPage === numPages;
+  const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
+  const status = currentPage === numPages
+    ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
+    : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
 
-  static contextType = DataTableContext;
+  const handlePrevious = useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
+  const handleNext = useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
+  const handleFirst = useCallback(() => onChangePage(1), [onChangePage]);
+  const handleLast = useCallback(() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)), [onChangePage, rowCount, rowsPerPage]);
+  const handleRowsPerPage = useCallback(({ target }) => onChangeRowsPerPage(Number(target.value), currentPage), [currentPage, onChangeRowsPerPage]);
 
-  handlePrevious = () => {
-    const { onChangePage, currentPage } = this.props;
-
-    onChangePage(currentPage - 1);
-  }
-
-  handleNext = () => {
-    const { onChangePage, currentPage } = this.props;
-
-    onChangePage(currentPage + 1);
-  }
-
-  handleFirst = () => {
-    const { onChangePage } = this.props;
-
-    onChangePage(1);
-  }
-
-  handleLast = () => {
-    const { onChangePage, rowsPerPage, rowCount } = this.props;
-
-    onChangePage(getNumberOfPages(rowCount, rowsPerPage));
-  }
-
-  handleRowsPerPage = ({ target }) => {
-    const { onChangeRowsPerPage, currentPage } = this.props;
-
-    onChangeRowsPerPage(Number(target.value), currentPage);
-  }
-
-  render() {
-    const { theme, rowsPerPage, currentPage, rowCount } = this.props;
-    const { paginationRowsPerPageOptions, paginationIconLastPage, paginationIconFirstPage, paginationIconNext, paginationIconPrevious, paginationComponentOptions } = this.context;
-
-    const numPages = getNumberOfPages(rowCount, rowsPerPage);
-    const lastIndex = currentPage * rowsPerPage;
-    const firstIndex = (lastIndex - rowsPerPage) + 1;
-    const disabledLesser = currentPage === 1;
-    const disabledGreater = currentPage === numPages;
-    const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
-    const status = currentPage === numPages
-      ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
-      : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
-
-    return (
-      <React.Fragment>
-        <Span>{rowsPerPageText}</Span>
-        <Select onChange={this.handleRowsPerPage} defaultValue={rowsPerPage}>
-          {paginationRowsPerPageOptions.map(num => (
-            <option
-              key={num}
-              value={num}
-            >
-              {num}
-            </option>
-          ))}
-        </Select>
-        <Span>
-          {status}
-        </Span>
-
-        <PageList>
-          <Button
-            id="pagination-first-page"
-            onClick={this.handleFirst}
-            disabled={disabledLesser}
-            theme={theme}
+  return (
+    <>
+      <Span>{rowsPerPageText}</Span>
+      <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
+        {paginationRowsPerPageOptions.map(num => (
+          <option
+            key={num}
+            value={num}
           >
-            {paginationIconFirstPage}
-          </Button>
+            {num}
+          </option>
+        ))}
+      </Select>
+      <Span>
+        {status}
+      </Span>
 
-          <Button
-            id="pagination-previous-page"
-            onClick={this.handlePrevious}
-            disabled={disabledLesser}
-            theme={theme}
-          >
-            {paginationIconPrevious}
-          </Button>
+      <PageList>
+        <Button
+          id="pagination-first-page"
+          onClick={handleFirst}
+          disabled={disabledLesser}
+          theme={theme}
+        >
+          {paginationIconFirstPage}
+        </Button>
 
-          <Button
-            id="pagination-next-page"
-            onClick={this.handleNext}
-            disabled={disabledGreater}
-            theme={theme}
-          >
-            {paginationIconNext}
-          </Button>
+        <Button
+          id="pagination-previous-page"
+          onClick={handlePrevious}
+          disabled={disabledLesser}
+          theme={theme}
+        >
+          {paginationIconPrevious}
+        </Button>
 
-          <Button
-            id="pagination-last-page"
-            onClick={this.handleLast}
-            disabled={disabledGreater}
-            theme={theme}
-          >
-            {paginationIconLastPage}
-          </Button>
-        </PageList>
-      </React.Fragment>
-    );
-  }
-}
+        <Button
+          id="pagination-next-page"
+          onClick={handleNext}
+          disabled={disabledGreater}
+          theme={theme}
+        >
+          {paginationIconNext}
+        </Button>
+
+        <Button
+          id="pagination-last-page"
+          onClick={handleLast}
+          disabled={disabledGreater}
+          theme={theme}
+        >
+          {paginationIconLastPage}
+        </Button>
+      </PageList>
+    </>
+  );
+};
+
+Pagination.propTypes = {
+  rowsPerPage: PropTypes.number.isRequired,
+  rowCount: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  onChangeRowsPerPage: PropTypes.func.isRequired,
+  theme: PropTypes.object.isRequired,
+  currentPage: PropTypes.number.isRequired,
+};
+
+export default Pagination;

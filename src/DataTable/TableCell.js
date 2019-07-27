@@ -38,14 +38,12 @@ const TableCell = memo(({ column, row, rowClickable }) => (
 ));
 
 TableCell.propTypes = {
-  column: PropTypes.object,
-  row: PropTypes.object,
+  column: PropTypes.object.isRequired,
+  row: PropTypes.object.isRequired,
   rowClickable: PropTypes.bool,
 };
 
 TableCell.defaultProps = {
-  column: {},
-  row: {},
   rowClickable: false,
 };
 

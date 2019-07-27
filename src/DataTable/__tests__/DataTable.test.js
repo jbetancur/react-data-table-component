@@ -28,10 +28,18 @@ test('should render and empty table correctly', () => {
 
 test('should render correctly if the keyField is overriden', () => {
   const mock = dataMock();
-  const data = [{ uuid: 1, some: { name: 'Henry the 8th' } }];
+  const data = [{ uuid: 123, some: { name: 'Henry the 8th' } }];
   const { container } = render(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(container.querySelector('div[id="row-123"]')).toBeDefined();
+});
+
+test('should fallback to array indexes if data has no unique key', () => {
+  const mock = dataMock();
+  const data = [{ some: { name: 'Henry the 8th' } }];
+  const { container } = render(<DataTable data={data} columns={mock.columns} />);
+
+  expect(container.querySelector('div[id="row-0"]')).toBeDefined();
 });
 
 test('should render correctly when disabled', () => {
@@ -45,6 +53,125 @@ test('should render correctly when disabled', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+describe('DataTable::onTableUpdate', () => {
+  test('should call onTableUpdate with the correct values when select all rows is selected', () => {
+    const mock = dataMock();
+    const updatedMock = jest.fn();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onTableUpdate={updatedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-all-rows"]'));
+
+    expect(updatedMock).toBeCalledWith({
+      allSelected: true,
+      selectedCount: 2,
+      selectedRows: mock.data,
+      sortColumn: null,
+      sortDirection: 'asc',
+    });
+  });
+
+  test('should call onTableUpdate with the correct values when all rows are selected', () => {
+    const mock = dataMock();
+    const updatedMock = jest.fn();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onTableUpdate={updatedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-2"]'));
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(updatedMock).toBeCalledWith({
+      allSelected: true,
+      selectedCount: 2,
+      selectedRows: mock.data,
+      sortColumn: null,
+      sortDirection: 'asc',
+    });
+  });
+
+  test('should call onTableUpdate with the correct values when a row is selected', () => {
+    const mock = dataMock();
+    const updatedMock = jest.fn();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        onTableUpdate={updatedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(updatedMock).toBeCalledWith({
+      allSelected: false,
+      selectedCount: 1,
+      selectedRows: [mock.data[0]],
+      sortColumn: null,
+      sortDirection: 'asc',
+    });
+  });
+
+  test('should call onTableUpdate with the correct values when a column is selected', () => {
+    const mock = dataMock({ sortable: true });
+    const updatedMock = jest.fn();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onTableUpdate={updatedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(updatedMock).toBeCalledWith({
+      allSelected: false,
+      selectedCount: 0,
+      selectedRows: [],
+      sortColumn: 'some.name',
+      sortDirection: 'asc',
+    });
+  });
+
+  test('should call onTableUpdate with the correct values when a column is sorted', () => {
+    const mock = dataMock({ sortable: true });
+    const updatedMock = jest.fn();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onTableUpdate={updatedMock}
+      />,
+    );
+
+    // sort asc
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // sort desc
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(updatedMock).toBeCalledWith({
+      allSelected: false,
+      selectedCount: 0,
+      selectedRows: [],
+      sortColumn: 'some.name',
+      sortDirection: 'desc',
+    });
+  });
 });
 
 describe('data prop changes', () => {
@@ -263,6 +390,30 @@ describe('DataTable::progress/nodata', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should only show Loading if progressPending prop changes', () => {
+    const mock = dataMock();
+    const { getByText, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        progressPending={false}
+      />,
+    );
+
+    rerender(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        progressPending
+      />,
+    );
+
+    expect(getByText('Loading...')).toBeDefined();
+  });
+
+
   test('should render correctly when progressPending is false and there are no row items', () => {
     const mock = dataMock();
     const { container, getByText } = render(
@@ -367,6 +518,22 @@ describe('DataTable::responsive', () => {
 
 
 describe('DataTable::sorting', () => {
+  test('should not call onSort if the column is not sortable', () => {
+    const onSortMock = jest.fn();
+    const mock = dataMock({ sortable: false });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onSort={onSortMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(onSortMock).not.toBeCalled();
+  });
+
   test('should render correctly with a default sort field', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
@@ -376,6 +543,20 @@ describe('DataTable::sorting', () => {
         defaultSortField="some.name"
       />,
     );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly and not be sorted when a column.sort === false', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -403,7 +584,11 @@ describe('DataTable::sorting', () => {
       />,
     );
 
+    // select the column to sort
     fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // sort asc
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // sort desc
     fireEvent.click(container.querySelector('div[id="column-some.name"]'));
 
     expect(container.firstChild).toMatchSnapshot();
@@ -546,7 +731,7 @@ describe('DataTable::selectableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should render correctly when selectableRows is true and all rows are selected', () => {
+  test('select-all-rows should be true is all rows are selected', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
@@ -558,9 +743,26 @@ describe('DataTable::selectableRows', () => {
 
     fireEvent.click(container.querySelector('input[name=select-all-rows]'));
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
   });
 
+  test('select-all-rows should be false is all rows is de-selected', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name=select-all-rows]'));
+    fireEvent.click(container.querySelector('input[name=select-all-rows]'));
+
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(false);
+  });
+
+  // TODO: revist what this does actually does
   test('should render correctly when selectableRows is true and a single row is selected', () => {
     const mock = dataMock();
     const { container } = render(
@@ -576,7 +778,7 @@ describe('DataTable::selectableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should render correctly when selectableRows is true and a single row is selected', () => {
+  test('should render correctly when selectableRows is true and a single row is checked', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
@@ -589,6 +791,22 @@ describe('DataTable::selectableRows', () => {
     fireEvent.click(container.querySelector('input[name="select-row-1"]'));
 
     expect(container.querySelector('input[name="select-row-1"]').checked).toBe(true);
+  });
+
+  test('should render correctly when selectableRows is true and a single row is un-checked', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.querySelector('input[name="select-row-1"]').checked).toBe(false);
   });
 
   test('should render correctly when clearSelectedRows is toggled', () => {
@@ -1014,6 +1232,22 @@ describe('DataTable::Theming', () => {
         defaultSortField="some.name"
         expandableRows
         customTheme={theme}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+// TODO: Move Pagination tests here from Pagination.test.js
+describe('DataTable::Pagination', () => {
+  test('should render correctly when pagination', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
       />,
     );
 

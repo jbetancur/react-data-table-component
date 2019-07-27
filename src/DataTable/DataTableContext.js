@@ -1,42 +1,8 @@
-import React, { PureComponent, createContext } from 'react';
+import React, { PureComponent, createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { defaultProps } from './propTypes';
 
-const {
-  keyField,
-  selectableRowsComponent,
-  selectableRowsComponentProps,
-  expandableIcon,
-  paginationTotalRows,
-  paginationRowsPerPageOptions,
-  paginationIconLastPage,
-  paginationIconFirstPage,
-  paginationIconNext,
-  paginationIconPrevious,
-  paginationComponentOptions,
-  contextTitle,
-  contextActions,
-} = defaultProps;
-
-export const defaultState = {
-  selectedRows: [],
-  indeterminate: false,
-  keyField,
-  selectableRowsComponent,
-  selectableRowsComponentProps,
-  expandableIcon,
-  paginationTotalRows,
-  paginationRowsPerPageOptions,
-  paginationIconLastPage,
-  paginationIconFirstPage,
-  paginationIconNext,
-  paginationIconPrevious,
-  paginationComponentOptions,
-  contextTitle,
-  contextActions,
-};
-
-export const DataTableContext = createContext(defaultState);
+export const DataTableStateContext = createContext();
+export const useTableContext = () => useContext(DataTableStateContext);
 
 export class DataTableProvider extends PureComponent {
   static propTypes = {
@@ -51,11 +17,9 @@ export class DataTableProvider extends PureComponent {
     const { children, initialState } = this.props;
 
     return (
-      <DataTableContext.Provider value={initialState}>
+      <DataTableStateContext.Provider value={initialState}>
         {children}
-      </DataTableContext.Provider>
+      </DataTableStateContext.Provider>
     );
   }
 }
-
-export const DataTableConsumer = DataTableContext.Consumer;
