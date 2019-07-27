@@ -476,7 +476,7 @@ While RDT has internal optimizations to try and prevent re-renders on deeper int
 As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`
 
 #### Optimizing Class Components
-You can typically achieve this by moving props that you pass to RDT outside of the `render` method. If the prop is a component it can just be a method defined on the class. Additionally, RDT provides you with a `memoize` helper function for caching functions or expensive calculations.
+You can typically achieve this by moving props or functions that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper function for caching functions or expensive calculations.
 
 ##### Examples of Optimizations
 The following component will cause RDT to re-render everytime a checkbox is checked.
