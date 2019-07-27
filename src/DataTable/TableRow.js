@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import TableCell from './TableCell';
@@ -56,7 +56,8 @@ const TableRowStyle = styled.div`
   ${props => props.pointerOnHover && pointerCSS};
 `;
 
-const TableRow = ({
+const TableRow = memo(({
+  id,
   keyField,
   columns,
   row,
@@ -77,10 +78,10 @@ const TableRow = ({
       onRowClicked(row, e);
     }
   }, [onRowClicked, row]);
-
   return (
     <>
       <TableRowStyle
+        id={`row-${id}`}
         striped={striped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={pointerOnHover}
@@ -123,9 +124,10 @@ const TableRow = ({
       )}
     </>
   );
-};
+});
 
 TableRow.propTypes = {
+  id: PropTypes.any.isRequired,
   keyField: PropTypes.string.isRequired,
   columns: PropTypes.array.isRequired,
   row: PropTypes.object.isRequired,

@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import tableDataItems from '../constants/sampleDeserts';
 import DataTable from '../../../src/index';
@@ -7,7 +7,7 @@ import DataTable from '../../../src/index';
 const OptimizedHooks = () => {
   const [selectedRows, setSelectedRows] = useState([]);
 
-  useMemo(() => {
+  useEffect(() => {
     // eslint-disable-next-line no-console
     console.log('state', selectedRows);
   }, [selectedRows]);
@@ -24,7 +24,7 @@ const OptimizedHooks = () => {
   const columns = useMemo(() => [
     {
       // eslint-disable-next-line react/button-has-type
-      cell: () => <button raised primary onClick={handleButtonClick}>Action</button>,
+      cell: () => <button onClick={handleButtonClick}>Action</button>,
       ignoreRowClick: true,
       allowOverflow: true,
       button: true,

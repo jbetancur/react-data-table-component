@@ -7,7 +7,7 @@ import DataTable, { memoize } from '../../../src/index';
 const columns = memoize(clickHandler => [
   {
     // eslint-disable-next-line react/button-has-type
-    cell: () => <button raised primary onClick={clickHandler}>Action</button>,
+    cell: () => <button onClick={clickHandler}>Action</button>,
     ignoreRowClick: true,
     allowOverflow: true,
     button: true,

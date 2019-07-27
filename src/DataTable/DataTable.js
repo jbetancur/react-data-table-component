@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo, useCallback, useLayoutEffect } from 'react';
+import React, { memo, useReducer, useMemo, useCallback, useLayoutEffect, useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
@@ -23,7 +23,7 @@ import { propTypes, defaultProps } from './propTypes';
 import { sort, decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import getDefaultTheme from '../themes/default';
 
-const DataTable = ({
+const DataTable = memo(({
   data,
   columns,
   title,
@@ -106,6 +106,20 @@ const DataTable = ({
     selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
+  const firstUpdate = useRef(true);
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
+  }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
+
+  if (clearSelectedRows !== selectedRowsFlag) {
+    dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
+  }
+
   const init = {
     allSelected,
     selectedRows,
@@ -128,14 +142,6 @@ const DataTable = ({
     paginationIconPrevious,
     paginationComponentOptions,
   };
-
-  useLayoutEffect(() => {
-    onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
-  }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
-
-  if (clearSelectedRows !== selectedRowsFlag) {
-    dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
-  }
 
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
@@ -234,23 +240,29 @@ const DataTable = ({
                   offset={overflowYOffset}
                   className="rdt_TableBody"
                 >
-                  {calculatedRows.map((row, i) => (
-                    <TableRow
-                      key={row[keyField] || i}
-                      row={row}
-                      columns={columnsMemo}
-                      keyField={keyField}
-                      selectableRows={selectableRows}
-                      expandableRows={expandableRows}
-                      striped={striped}
-                      highlightOnHover={highlightOnHover}
-                      pointerOnHover={pointerOnHover}
-                      expandableRowsComponent={expandableRowsComponentMemo}
-                      expandableDisabledField={expandableDisabledField}
-                      defaultExpanded={row[defaultExpandedField] || false}
-                      onRowClicked={handleRowClicked}
-                    />
-                  ))}
+                  {calculatedRows.map((row, i) => {
+                    const id = row[keyField] || i;
+                    const defaultExpanded = row[defaultExpandedField] || false;
+
+                    return (
+                      <TableRow
+                        id={id}
+                        key={id}
+                        keyField={keyField}
+                        row={row}
+                        columns={columnsMemo}
+                        selectableRows={selectableRows}
+                        expandableRows={expandableRows}
+                        striped={striped}
+                        highlightOnHover={highlightOnHover}
+                        pointerOnHover={pointerOnHover}
+                        expandableRowsComponent={expandableRowsComponentMemo}
+                        expandableDisabledField={expandableDisabledField}
+                        defaultExpanded={defaultExpanded}
+                        onRowClicked={handleRowClicked}
+                      />
+                    );
+                  })}
                 </TableBody>
               </Table>
             )}
@@ -272,7 +284,7 @@ const DataTable = ({
       </DataTableProvider>
     </ThemeProvider>
   );
-};
+});
 
 DataTable.propTypes = propTypes;
 DataTable.defaultProps = defaultProps;

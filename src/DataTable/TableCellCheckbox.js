@@ -1,7 +1,7 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableStateContext } from './DataTableContext';
+import { useTableContext } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
@@ -13,7 +13,7 @@ const TableCellCheckboxStyle = styled(CellBase)`
 `;
 
 const TableCellCheckbox = ({ name, row }) => {
-  const { dispatch, selectedRows, selectableRowsComponent, selectableRowsComponentProps } = useContext(DataTableStateContext);
+  const { dispatch, selectedRows, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
   const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row });
   const isRowSelected = useMemo(() => selectedRows.some(srow => srow === row), [row, selectedRows]);
 

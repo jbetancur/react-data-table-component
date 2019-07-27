@@ -1,7 +1,7 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { DataTableStateContext } from './DataTableContext';
+import { useTableContext } from './DataTableContext';
 import Select from './Select';
 import { getNumberOfPages } from './util';
 
@@ -62,7 +62,7 @@ const Pagination = ({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
-  } = useContext(DataTableStateContext);
+  } = useTableContext();
   const numPages = getNumberOfPages(rowCount, rowsPerPage);
   const lastIndex = currentPage * rowsPerPage;
   const firstIndex = (lastIndex - rowsPerPage) + 1;

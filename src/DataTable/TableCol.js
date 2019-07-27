@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
-import { DataTableStateContext } from './DataTableContext';
+import { useTableContext } from './DataTableContext';
 import NativeSortIcon from '../icons/NativeSortIcon';
 
 const activeColCSS = css`
@@ -57,11 +57,11 @@ const ColumnSortable = styled.div`
 `;
 
 
-const TableCol = ({
+const TableCol = memo(({
   column,
   sortIcon,
 }) => {
-  const { dispatch, sortColumn, sortDirection, onSort } = useContext(DataTableStateContext);
+  const { dispatch, sortColumn, sortDirection, onSort } = useTableContext();
   const handleSortChange = () => {
     if (column.sortable) {
       let direction = sortDirection;
@@ -121,7 +121,7 @@ const TableCol = ({
       )}
     </TableColStyle>
   );
-};
+});
 
 TableCol.propTypes = {
   column: PropTypes.object.isRequired,

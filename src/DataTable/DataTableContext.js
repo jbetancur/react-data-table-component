@@ -1,7 +1,8 @@
-import React, { PureComponent, createContext } from 'react';
+import React, { PureComponent, createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 export const DataTableStateContext = createContext();
+export const useTableContext = () => useContext(DataTableStateContext);
 
 export class DataTableProvider extends PureComponent {
   static propTypes = {

@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { DataTableStateContext } from './DataTableContext';
+import { useTableContext } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
@@ -14,7 +14,7 @@ const TableColStyle = styled(CellBase)`
 `;
 
 const TableCol = () => {
-  const { dispatch, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps } = useContext(DataTableStateContext);
+  const { dispatch, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const handleSelectAll = () => dispatch({ type: 'SELECT_ALL' });
 

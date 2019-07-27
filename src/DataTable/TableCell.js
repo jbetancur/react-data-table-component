@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Cell } from './Cell';
@@ -25,7 +25,7 @@ const ClickClip = styled.div`
   height: 100%;
 `;
 
-const TableCell = ({ column, row, rowClickable }) => (
+const TableCell = memo(({ column, row, rowClickable }) => (
   <TableCellStyle column={column} className="rdt_TableCell">
     {!column.ignoreRowClick && rowClickable && (
       <ClickClip data-tag="___react-data-table--click-clip___" />
@@ -35,7 +35,7 @@ const TableCell = ({ column, row, rowClickable }) => (
       {column.cell ? column.cell(row) : getProperty(row, column.selector, column.format)}
     </div>
   </TableCellStyle>
-);
+));
 
 TableCell.propTypes = {
   column: PropTypes.object.isRequired,

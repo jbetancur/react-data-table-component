@@ -28,10 +28,18 @@ test('should render and empty table correctly', () => {
 
 test('should render correctly if the keyField is overriden', () => {
   const mock = dataMock();
-  const data = [{ uuid: 1, some: { name: 'Henry the 8th' } }];
+  const data = [{ uuid: 123, some: { name: 'Henry the 8th' } }];
   const { container } = render(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(container.querySelector('div[id="row-123"]')).toBeDefined();
+});
+
+test('should fallback to array indexes if data has no unique key', () => {
+  const mock = dataMock();
+  const data = [{ some: { name: 'Henry the 8th' } }];
+  const { container } = render(<DataTable data={data} columns={mock.columns} />);
+
+  expect(container.querySelector('div[id="row-0"]')).toBeDefined();
 });
 
 test('should render correctly when disabled', () => {
@@ -1224,6 +1232,22 @@ describe('DataTable::Theming', () => {
         defaultSortField="some.name"
         expandableRows
         customTheme={theme}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+// TODO: Move Pagination tests here from Pagination.test.js
+describe('DataTable::Pagination', () => {
+  test('should render correctly when pagination', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
       />,
     );
 

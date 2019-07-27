@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { DataTableStateContext } from './DataTableContext';
+import { useTableContext } from './DataTableContext';
 
 const Title = styled.div`
   color: ${props => props.theme.contextMenu.fontColor};
@@ -36,7 +36,7 @@ const generateDefaultContextTitle = (contextTitle, selectedCount) => {
 };
 
 const ContextMenu = () => {
-  const { contextTitle, contextActions, selectedCount } = useContext(DataTableStateContext);
+  const { contextTitle, contextActions, selectedCount } = useTableContext();
 
   return (
     <ContextMenuStyle visible={selectedCount > 0}>
