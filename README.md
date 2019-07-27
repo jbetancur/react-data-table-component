@@ -41,8 +41,8 @@ If you want to achieve balance with the force and want a simple but flexible tab
 
 ## Requirements
 React Data Table Component requires the following be installed in your project:
-  * React 16.6+
-  * styled-components 3.2.3+ || 4.0.0+
+  * React 16.8.0+
+  * styled-components 3.2.3+ || 4.0.0+ || 5.0.0+
 
 ## Installation
 React Data Table requires the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
@@ -90,9 +90,9 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 
 | Value   | Breakpoint  | Description               |
 | ------- | ----------- | ------------------------- |
-| sm      | 599px       | small (phones)            | 
-| md      | 959px       | medium(landscape tablets) | 
-| lg      | 1280px      | large(laptops/desktops)   | 
+| sm      | 599px       | small (phones)            |
+| md      | 959px       | medium(landscape tablets) |
+| lg      | 1280px      | large(laptops/desktops)   |
 
 
 ### DataTable Properties
@@ -194,8 +194,8 @@ const { Checkbox } from 'react-md';
 
 ...
 
-/* 
-  In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property. 
+/*
+  In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property.
   Let's override it. React Data Table is made aware if a checkbox is indetermite or not becuase internally we can resolve this   as `yourfunction(checkboxawareindeterminatestate)`
 */
 
@@ -236,7 +236,7 @@ const columns = [
 ];
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       <DataTable
         title="Arnold Movies"
@@ -261,7 +261,7 @@ const handleChange = (state) => {
 };
 
 class MyComponent extends Component {
-  render() { 
+  render() {
       return (
         <DataTable
           title="Arnold Movies"
@@ -278,7 +278,7 @@ class MyComponent extends Component {
 ### Clearing Selected Rows
 We need some hook to trigger all the selectedRows to clear. If you were building your own table component, you would manage the selected rows state in some parent component, however, in our case, since we to keep row management within React Data Table, a `clearSelectedRows` prop is provided so you can pass a toggled state.
 
-It will be up to you to make sure you do not pass the same state twice. For example, if you set `clearSelectedRows={true}` twice, on the second update/trigger, none the rows will not be cleared. 
+It will be up to you to make sure you do not pass the same state twice. For example, if you set `clearSelectedRows={true}` twice, on the second update/trigger, none the rows will not be cleared.
 
 ```js
 ...
@@ -297,7 +297,7 @@ const handleClearRows = () => {
 }
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       <DataTable
         title="Arnold Movies"
@@ -321,7 +321,7 @@ import { Checkbox, FontIcon } from 'react-md';
 ...
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       title="Arnold Movies"
       columns={columns}
@@ -360,7 +360,7 @@ const columns = [
 ...
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       <DataTable
         title="Arnold Movies"
@@ -403,7 +403,7 @@ const columns = [
 const ExpanableComponent = ({ data }) => <img src={data.image} />;
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       <DataTable
         title="Arnold Movies"
@@ -413,7 +413,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onTableUpdate={handleChange} 
+        onTableUpdate={handleChange}
         expandableRows
         expandableRowsComponent={<ExpanableComponent />}
       />
@@ -447,7 +447,7 @@ const columns = [
 const ExpanableComponent = ({ data }) => <img src={data.image} />;
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       <DataTable
         title="Arnold Movies"
@@ -457,7 +457,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onTableUpdate={handleChange} 
+        onTableUpdate={handleChange}
         expandableRows
         expandableDisabledField="expanderDisabled"
         expandableRowsComponent={<ExpanableComponent />}
@@ -479,7 +479,7 @@ As a general rule, or if you are experiencing performance issues you should ensu
 You can typically achieve this by moving props that you pass to RDT outside of the `render` method. If the prop is a component it can just be a method defined on the class. Additionally, RDT provides you with a `memoize` helper function for caching functions or expensive calculations.
 
 ##### Examples of Optimizations
-The following component will cause RDT to re-render everytime a checkbox is checked. 
+The following component will cause RDT to re-render everytime a checkbox is checked.
 
 ```js
 ...
@@ -496,9 +496,9 @@ class MyComponent extends Component {
     const columns = [....];
 
     return (
-      <DataTable 
-        data={data} 
-        columns={columns} 
+      <DataTable
+        data={data}
+        columns={columns}
         onTableUpdate={this.updateState}
         selectableRows
       />
@@ -524,9 +524,9 @@ class MyComponent extends Component {
   render () {
 
     return (
-      <DataTable 
-        data={data} 
-        columns={columns} 
+      <DataTable
+        data={data}
+        columns={columns}
         onTableUpdate={this.updateState}
         selectableRows
       />
@@ -580,9 +580,9 @@ class MyComponent extends Component {
 
   render () {
     return (
-      <DataTable 
-        data={data} 
-        columns={columns(this.updateState)} 
+      <DataTable
+        data={data}
+        columns={columns(this.updateState)}
         onTableUpdate={this.updateState}
         selectableRows
       />
@@ -617,9 +617,9 @@ const MyComponentHook = () => {
   ]);
 
   return (
-    <DataTable 
-      data={data} 
-      columns={columns} 
+    <DataTable
+      data={data}
+      columns={columns}
       onTableUpdate={updateState}
       selectableRows
     />
@@ -642,7 +642,7 @@ const mySweetTheme = {
 }
 
 class MyComponent extends Component {
-  render() { 
+  render() {
     return (
       <DataTable
         title="Arnold Movies"
