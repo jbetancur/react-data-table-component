@@ -5,6 +5,7 @@ import { useTableContext } from './DataTableContext';
 
 const ButtonStyle = styled.button`
   display: inline-flex;
+  align-items: center;
   outline: none;
   border: none;
   width: 40px;
