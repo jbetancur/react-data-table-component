@@ -15,7 +15,7 @@ If you want to achieve balance with the force and want a simple but flexible tab
 * [Issues/Contributing](#logging-issues-and-contributions)
 * [API](#api-and-usage)
   * [Defining Columns](#columns)
-  * [DataTable Properties](#data-table-properties)
+  * [DataTable Properties](#datatable-properties)
 * [Basic Table](#basic-table)
 * [Selectable Rows](#selectable-rows)
 * [Custom Cells](#custom-cells)
