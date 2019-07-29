@@ -71,6 +71,12 @@ const TableCol = memo(({
         direction = sortDirection === 'asc' ? 'desc' : 'asc';
       }
 
+      // Reset to the first page whenever a new sort is triggered
+      // Imagine viewing items 21-30 of 100 in pagination
+      // triggering a sort from a column resets to items 1-10 of 100
+      // It doesn't make sense to have the new sort reorder the items while the pagination remains set to items 21 - 30,
+      // since triggering the sort generally indicates the user wants a fresh ordered list
+      dispatch({ type: 'CHANGE_PAGE', page: 1 });
       dispatch({ type: 'SORT_CHANGE', sortDirection: direction, sortColumn: column.selector });
       onSort(column, direction);
     }
