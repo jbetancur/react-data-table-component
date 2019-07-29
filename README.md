@@ -676,7 +676,15 @@ If you would like to customize the layout components of React Data Table using s
 # Development
 
 ## Setup
-Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run `yarn` or `yarn install` command in the root and stories directory.
+
+Make sure your local Node version is set to `10.15.0` using [nvm](https://github.com/nvm-sh/nvm) or [n](https://github.com/tj/n).  This specific version is required, as Node v12+ and potentially other versions have some broken dependencies with Storybook.
+
+```bash
+$ node --version
+# v10.15.0
+$ yarn install
+$ yarn storybook # Local hotreloading example component available at http://localhost:6006
+```
 
 > It is advised to run the script whenever NPM packages are installed.
 
