@@ -268,7 +268,7 @@ class MyComponent extends Component {
           columns={columns}
           data={data}
           selectableRows // add for checkbox selection
-          onTableUpdate={handleChange}
+          onRowSelected={handleChange}
         />
     )
   }
@@ -304,7 +304,7 @@ class MyComponent extends Component {
         columns={columns}
         data={data}
         selectableRows // add for checkbox selection
-        onTableUpdate={handleChange}
+        onRowSelected={handleChange}
         clearSelectedRows={this.state.toggledClearRows}
       />
     )
@@ -330,7 +330,7 @@ class MyComponent extends Component {
       selectableRowsComponent={Checkbox} // Pass the function only
       selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass react-md supported props down to our custom checkbox
       sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees
-      onTableUpdate={handleChange}
+      onRowSelected={handleChange}
     />
     )
   }
@@ -370,7 +370,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onTableUpdate={handleChange}
+        onRowSelected={handleChange}
       />
     )
   }
@@ -413,7 +413,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onTableUpdate={handleChange}
+        onRowSelected={handleChange}
         expandableRows
         expandableRowsComponent={<ExpanableComponent />}
       />
@@ -457,7 +457,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onTableUpdate={handleChange}
+        onRowSelected={handleChange}
         expandableRows
         expandableDisabledField="expanderDisabled"
         expandableRowsComponent={<ExpanableComponent />}
@@ -477,7 +477,7 @@ While RDT has internal optimizations to try and prevent re-renders on deeper int
 You can typically achieve this by moving props such as objects, arrays, functions or other React compents that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper for cases where you are using a function to generate those values.
 
 ##### Examples of Optimizations
-The following component will cause RDT to fully re-render everytime `onTableUpdate` is triggered. Why? Becuase when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this descision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
+The following component will cause RDT to fully re-render everytime `onRowSelected` is triggered. Why? Becuase when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this descision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
 
 However, in the example below `columns` changes on every re-render becuase it's being re-created. This is due to referential equality checking, simply: `columns[] !== columns[]`. In other words, while both instances of `columns` contain the same elements, they are "different" arrays.
 
@@ -500,7 +500,7 @@ class MyComponent extends Component {
       <DataTable
         data={data}
         columns={columns}
-        onTableUpdate={this.updateState}
+        onRowSelected={this.updateState}
         selectableRows
       />
     )
@@ -529,7 +529,7 @@ class MyComponent extends Component {
       <DataTable
         data={data}
         columns={columns}
-        onTableUpdate={this.updateState}
+        onRowSelected={this.updateState}
         selectableRows
       />
     )
@@ -565,7 +565,7 @@ Got it? Let's try this again with the optimal solution:
 import React, { Component } from 'react';
 import DataTable, { memoize } from 'react-data-table';
 
-const onTableUpdate = memoize(handleAction => [
+const onRowSelected = memoize(handleAction => [
   ...
   {
     cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
@@ -586,7 +586,7 @@ class MyComponent extends Component {
       <DataTable
         data={data}
         columns={columns(this.updateState)}
-        onTableUpdate={this.updateState}
+        onRowSelected={this.updateState}
         selectableRows
       />
     );
@@ -606,7 +606,7 @@ import DataTable from 'react-data-table';
 const MyComponentHook = () => {
   const [thing, setThing] = useState();
   const handleAction = value => setThing(value);
-  // unklike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onTableUpdate are memoized using useCallback
+  // unklike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onRowSelected are memoized using useCallback
   const updateState = useCallback(state => console.log(state));
   const columns = useMemo(() => [
     ...
@@ -623,7 +623,7 @@ const MyComponentHook = () => {
     <DataTable
       data={data}
       columns={columns}
-      onTableUpdate={updateState}
+      onRowSelected={updateState}
       selectableRows
     />
   );
