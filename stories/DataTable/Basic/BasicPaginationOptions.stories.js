@@ -22,13 +22,15 @@ const columns = [
   },
 ];
 
+const paginationOptions = { rowsPerPageText: 'Filas por página', rangeSeparatorText: 'de' };
+
 const BasicTable = () => (
   <DataTable
     title="Lista de Peliculas"
     columns={columns}
     data={data}
     pagination
-    paginationComponentOptions={{ rowsPerPageText: 'Filas por página', rangeSeparatorText: 'de' }}
+    paginationComponentOptions={paginationOptions}
   />
 );
 
