@@ -47,6 +47,13 @@ export function tableReducer(state, action) {
       };
     }
 
+    case 'UPDATE_SEARCH_TEXT': {
+      return {
+        ...state,
+        searchText: action.text,
+      };
+    }
+
     case 'CHANGE_PAGE': {
       return {
         ...state,

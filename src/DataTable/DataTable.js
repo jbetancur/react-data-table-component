@@ -33,6 +33,7 @@ const DataTable = memo(({
   striped,
   highlightOnHover,
   pointerOnHover,
+  searchEnabled,
   selectableRowsComponent,
   selectableRowsComponentProps,
   expandableIcon,
@@ -93,6 +94,7 @@ const DataTable = memo(({
     selectedColumn: {},
     sortDirection: getSortDirection(defaultSortAsc),
     selectedRowsFlag: false,
+    searchText: '',
     currentPage: paginationDefaultPage,
     rowsPerPage: paginationPerPage,
     data,
@@ -100,6 +102,7 @@ const DataTable = memo(({
 
   const [{
     rowsPerPage,
+    searchText,
     currentPage,
     selectedRows,
     allSelected,
@@ -229,6 +232,15 @@ const DataTable = memo(({
 
             {!data.length > 0 && !progressPending &&
               <NoData component={noDataComponent} />}
+
+            {searchEnabled && (
+              <input
+                type="text"
+                placeholder='Search...'
+                value={searchText}
+                onChange={(e) => { dispatch({ type: 'UPDATE_SEARCH_TEXT', text: e.target.value }) }}
+              />
+            )}
 
             {data.length > 0 && !progressPending && (
               <Table disabled={disabled} className="rdt_Table">
