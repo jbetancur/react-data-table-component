@@ -3,14 +3,13 @@ import { insertItem, removeItem } from './util';
 export function tableReducer(state, action) {
   switch (action.type) {
     case 'SELECT_ALL': {
-      const { data } = state;
       const allChecked = !state.allSelected;
 
       return {
         ...state,
         allSelected: allChecked,
-        selectedCount: allChecked ? data.length : 0,
-        selectedRows: allChecked ? data : [],
+        selectedCount: allChecked ? state.data.length : 0,
+        selectedRows: allChecked ? state.data : [],
       };
     }
 
@@ -27,23 +26,22 @@ export function tableReducer(state, action) {
     }
 
     case 'ROW_SELECTED': {
-      const { selectedRows, data } = state;
       const { row } = action;
 
-      if (selectedRows.find(r => r === row)) {
+      if (state.selectedRows.find(r => r === row)) {
         return {
           ...state,
-          selectedCount: selectedRows.length > 0 ? selectedRows.length - 1 : 0,
+          selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
           allSelected: false,
-          selectedRows: removeItem(selectedRows, row),
+          selectedRows: removeItem(state.selectedRows, row),
         };
       }
 
       return {
         ...state,
-        selectedCount: selectedRows.length + 1,
-        allSelected: selectedRows.length + 1 === data.length,
-        selectedRows: insertItem(selectedRows, row),
+        selectedCount: state.selectedRows.length + 1,
+        allSelected: state.selectedRows.length + 1 === state.data.length,
+        selectedRows: insertItem(state.selectedRows, row),
       };
     }
 
