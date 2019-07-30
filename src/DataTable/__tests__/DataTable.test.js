@@ -55,8 +55,8 @@ test('should render correctly when disabled', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-describe('DataTable::onTableUpdate', () => {
-  test('should call onTableUpdate with the correct values when select all rows is selected', () => {
+describe('DataTable::onRowSelected', () => {
+  test('should call onRowSelected with the correct values when select all rows is selected', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
@@ -64,7 +64,7 @@ describe('DataTable::onTableUpdate', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        onTableUpdate={updatedMock}
+        onRowSelected={updatedMock}
       />,
     );
 
@@ -74,12 +74,10 @@ describe('DataTable::onTableUpdate', () => {
       allSelected: true,
       selectedCount: 2,
       selectedRows: mock.data,
-      sortColumn: null,
-      sortDirection: 'asc',
     });
   });
 
-  test('should call onTableUpdate with the correct values when all rows are selected', () => {
+  test('should call onRowSelected with the correct values when all rows are selected', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
@@ -87,7 +85,7 @@ describe('DataTable::onTableUpdate', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        onTableUpdate={updatedMock}
+        onRowSelected={updatedMock}
       />,
     );
 
@@ -98,12 +96,10 @@ describe('DataTable::onTableUpdate', () => {
       allSelected: true,
       selectedCount: 2,
       selectedRows: mock.data,
-      sortColumn: null,
-      sortDirection: 'asc',
     });
   });
 
-  test('should call onTableUpdate with the correct values when a row is selected', () => {
+  test('should call onRowSelected with the correct values when a row is selected', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
@@ -111,7 +107,7 @@ describe('DataTable::onTableUpdate', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        onTableUpdate={updatedMock}
+        onRowSelected={updatedMock}
       />,
     );
 
@@ -121,55 +117,6 @@ describe('DataTable::onTableUpdate', () => {
       allSelected: false,
       selectedCount: 1,
       selectedRows: [mock.data[0]],
-      sortColumn: null,
-      sortDirection: 'asc',
-    });
-  });
-
-  test('should call onTableUpdate with the correct values when a column is selected', () => {
-    const mock = dataMock({ sortable: true });
-    const updatedMock = jest.fn();
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        onTableUpdate={updatedMock}
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
-
-    expect(updatedMock).toBeCalledWith({
-      allSelected: false,
-      selectedCount: 0,
-      selectedRows: [],
-      sortColumn: 'some.name',
-      sortDirection: 'asc',
-    });
-  });
-
-  test('should call onTableUpdate with the correct values when a column is sorted', () => {
-    const mock = dataMock({ sortable: true });
-    const updatedMock = jest.fn();
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        onTableUpdate={updatedMock}
-      />,
-    );
-
-    // sort asc
-    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
-    // sort desc
-    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
-
-    expect(updatedMock).toBeCalledWith({
-      allSelected: false,
-      selectedCount: 0,
-      selectedRows: [],
-      sortColumn: 'some.name',
-      sortDirection: 'desc',
     });
   });
 });

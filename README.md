@@ -113,7 +113,6 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
-| onTableUpdate | func | no |  | callback to access the entire Data Table state ({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection }). It's highly recommended that you memoize any handlers that you pass to `onTableUpdate` to prevent `DataTable` from unnescessary re-renders |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
@@ -130,6 +129,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
+| onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). It's highly recommended that you memoize any handlers that you pass to `onRowSelected` to prevent `DataTable` from unnescessary re-renders |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 

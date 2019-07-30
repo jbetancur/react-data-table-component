@@ -119,7 +119,7 @@ class MaterialTable extends PureComponent {
           sortIcon={sortIcon}
           selectableRowsComponent={Checkbox}
           selectableRowsComponentProps={selectProps}
-          onTableUpdate={this.handleChange}
+          onRowSelected={this.handleChange}
           clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
         />
