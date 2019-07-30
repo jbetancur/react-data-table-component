@@ -133,7 +133,7 @@ const DataTable = memo(({
 
   useDidUpdateEffect(() => {
     onSort(selectedColumn, sortDirection);
-  }, [sortColumn, sortDirection]);
+  }, [onSort, sortColumn, sortDirection]);
 
   if (clearSelectedRows !== selectedRowsFlag) {
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
