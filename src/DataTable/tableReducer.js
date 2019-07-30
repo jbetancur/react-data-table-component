@@ -22,6 +22,7 @@ export function tableReducer(state, action) {
         sortColumn,
         selectedColumn,
         sortDirection,
+        currentPage: 1,
       };
     }
 
