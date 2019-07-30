@@ -151,6 +151,11 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onSort | func | no |  | callback to access the sort state when a column is clicked. returns ([column](https://github.com/jbetancur/react-data-table-component#columns), sortDirection, event) |
 | sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}. you must return an array |
 
+#### Searching
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| searchEnabled | boolean | no | false | Setting to true displays a Search box below the table header. Search only checks for matches in values that the table displays (i.e. additional properties in data rows that are not displayed by the columns prop will not be matched). Search is case insensitive ('A' matches 'Apple' and 'aardvark'). |
+
 #### Pagination
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
