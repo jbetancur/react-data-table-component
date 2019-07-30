@@ -1,4 +1,3 @@
-
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import tableDataItems from '../constants/sampleDeserts';

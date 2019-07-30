@@ -5,7 +5,7 @@ import DataTable from '../../../src/DataTable/DataTable';
 
 const columns = [
   {
-    name: 'Título',
+    name: 'Title',
     selector: 'title',
     sortable: true,
   },
@@ -15,24 +15,21 @@ const columns = [
     sortable: true,
   },
   {
-    name: 'Año',
+    name: 'Year',
     selector: 'year',
     sortable: true,
   },
 ];
 
-const paginationOptions = { rowsPerPageText: 'Filas por página', rangeSeparatorText: 'de' };
-
-const BasicTable = () => (
+const BasicSearchTable = () => (
   <DataTable
-    title="Lista de Peliculas"
+    title="Movie List"
     columns={columns}
     data={data}
-    pagination
-    paginationComponentOptions={paginationOptions}
+    searchEnabled
   />
 );
 
 
 storiesOf('Basic', module)
-  .add('Pagination: Options', BasicTable);
+  .add('Search', BasicSearchTable);
