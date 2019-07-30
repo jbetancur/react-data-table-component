@@ -31,7 +31,7 @@ test('should render correctly if the keyField is overriden', () => {
   const data = [{ uuid: 123, some: { name: 'Henry the 8th' } }];
   const { container } = render(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
 
-  expect(container.querySelector('div[id="row-123"]')).toBeDefined();
+  expect(container.querySelector('div[id="row-123"]')).not.toBeNull();
 });
 
 test('should fallback to array indexes if data has no unique key', () => {
@@ -39,7 +39,7 @@ test('should fallback to array indexes if data has no unique key', () => {
   const data = [{ some: { name: 'Henry the 8th' } }];
   const { container } = render(<DataTable data={data} columns={mock.columns} />);
 
-  expect(container.querySelector('div[id="row-0"]')).toBeDefined();
+  expect(container.querySelector('div[id="row-0"]')).not.toBeNull();
 });
 
 test('should render correctly when disabled', () => {
@@ -859,7 +859,6 @@ describe('DataTable::Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        onRowClicked={jest.fn()}
         pagination
       />,
     );
@@ -867,14 +866,79 @@ describe('DataTable::Pagination', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should call onChangePage if paged', () => {
+  test('should have the correct amount of rows when paging forward', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should have the correct amount of rows when paging backward', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationDefaultPage={2}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-previous-page'));
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should have the correct amount of rows when paging to the last page', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should have the correct amount of rows when paging backward to the first page', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationDefaultPage={2}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-first-page'));
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should call onChangePage with the correct values if paged forward', () => {
     const onChangePageMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        onRowClicked={jest.fn()}
         pagination
         paginationPerPage={1}
         paginationRowsPerPageOptions={[1, 2]}
@@ -886,6 +950,26 @@ describe('DataTable::Pagination', () => {
     expect(onChangePageMock).toBeCalledWith(2, 2);
   });
 
+  test('should call onChangePage with the correct values if paged backward', () => {
+    const onChangePageMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangePage={onChangePageMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(onChangePageMock).toBeCalledWith(2, 2);
+    fireEvent.click(container.querySelector('button#pagination-previous-page'));
+    expect(onChangePageMock).toBeCalledWith(1, 2);
+  });
+
   test('should call onChangePage if paged with an the optional paginationTotalRows prop', () => {
     const onChangePageMock = jest.fn();
     const mock = dataMock();
@@ -893,7 +977,6 @@ describe('DataTable::Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        onRowClicked={jest.fn()}
         pagination
         paginationTotalRows={10}
         paginationPerPage={1}
@@ -913,8 +996,24 @@ describe('DataTable::Pagination', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        onRowClicked={jest.fn()}
         pagination
+        onChangeRowsPerPage={onChangeRowsPerPageMock}
+      />,
+    );
+
+    fireEvent.change(container.querySelector('select'), { target: { value: 20 } });
+    expect(onChangeRowsPerPageMock).toBeCalledWith(20, 1);
+  });
+
+  test('should call onChangeRowsPerPage if paged when paginationServer is true', () => {
+    const onChangeRowsPerPageMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationServer
         onChangeRowsPerPage={onChangeRowsPerPageMock}
       />,
     );
@@ -1232,22 +1331,6 @@ describe('DataTable::Theming', () => {
         defaultSortField="some.name"
         expandableRows
         customTheme={theme}
-      />,
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-});
-
-// TODO: Move Pagination tests here from Pagination.test.js
-describe('DataTable::Pagination', () => {
-  test('should render correctly when pagination', () => {
-    const mock = dataMock();
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        pagination
       />,
     );
 

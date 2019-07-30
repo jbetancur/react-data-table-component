@@ -1,4 +1,4 @@
-import React, { memo, useReducer, useMemo, useCallback, useLayoutEffect, useRef } from 'react';
+import React, { memo, useReducer, useMemo, useCallback } from 'react';
 import { ThemeProvider } from 'styled-components';
 import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
@@ -19,6 +19,7 @@ import TableWrapper from './TableWrapper';
 import { CellBase } from './Cell';
 import NoData from './NoData';
 import NativePagination from './Pagination';
+import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
 import { sort, decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import getDefaultTheme from '../themes/default';
@@ -88,6 +89,7 @@ const DataTable = memo(({
     selectedCount: 0,
     selectedRows: [],
     sortColumn: defaultSortField,
+    selectedColumn: {},
     sortDirection: getSortDirection(defaultSortAsc),
     selectedRowsFlag: false,
     currentPage: paginationDefaultPage,
@@ -102,19 +104,26 @@ const DataTable = memo(({
     allSelected,
     selectedCount,
     sortColumn,
+    selectedColumn,
     sortDirection,
     selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
-  const firstUpdate = useRef(true);
-  useLayoutEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
-
+  useDidUpdateEffect(() => {
     onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
   }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
+
+  useDidUpdateEffect(() => {
+    onChangePage(currentPage, paginationTotalRows || data.length);
+  }, [currentPage, onChangePage]);
+
+  useDidUpdateEffect(() => {
+    onChangeRowsPerPage(rowsPerPage, currentPage);
+  }, [rowsPerPage, onChangeRowsPerPage]);
+
+  useDidUpdateEffect(() => {
+    onSort(selectedColumn, sortDirection);
+  }, [sortColumn, sortDirection]);
 
   if (clearSelectedRows !== selectedRowsFlag) {
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
@@ -126,7 +135,6 @@ const DataTable = memo(({
     selectedCount,
     sortColumn,
     sortDirection,
-    onSort,
     keyField,
     contextTitle,
     contextActions,
@@ -150,11 +158,7 @@ const DataTable = memo(({
   const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
-
-  const handleChangePage = page => {
-    dispatch({ type: 'CHANGE_PAGE', page });
-    onChangePage(page, paginationTotalRows || data.length);
-  };
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page });
 
   const handleChangeRowsPerPage = newRowsPerPage => {
     const rowCount = paginationTotalRows || data.length;
@@ -168,7 +172,6 @@ const DataTable = memo(({
     }
 
     dispatch({ type: 'CHANGE_ROWS_PER_PAGE', page: recalculatedPage, rowsPerPage: newRowsPerPage });
-    onChangeRowsPerPage(newRowsPerPage, recalculatedPage);
   };
 
   const calculatedRows = useMemo(() => {
