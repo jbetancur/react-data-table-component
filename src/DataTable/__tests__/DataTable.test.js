@@ -826,6 +826,8 @@ describe('DataTable::Pagination', () => {
     );
 
     fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(container.querySelector('div[id="row-1"]')).toBeNull();
+    expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -843,6 +845,8 @@ describe('DataTable::Pagination', () => {
     );
 
     fireEvent.click(container.querySelector('button#pagination-previous-page'));
+    expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
+    expect(container.querySelector('div[id="row-2"]')).toBeNull();
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -859,6 +863,8 @@ describe('DataTable::Pagination', () => {
     );
 
     fireEvent.click(container.querySelector('button#pagination-last-page'));
+    expect(container.querySelector('div[id="row-1"]')).toBeNull();
+    expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -876,7 +882,27 @@ describe('DataTable::Pagination', () => {
     );
 
     fireEvent.click(container.querySelector('button#pagination-first-page'));
+    expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
+    expect(container.querySelector('div[id="row-2"]')).toBeNull();
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should navigate to page 1 if the table is sorted', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    expect(container.firstChild).toMatchSnapshot();
+    expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
   });
 
   test('should call onChangePage with the correct values if paged forward', () => {

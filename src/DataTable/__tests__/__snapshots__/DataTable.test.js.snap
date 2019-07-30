@@ -4755,6 +4755,679 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 </div>
 `;
 
+exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 56px;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  background-color: transparent;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.c15:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c15:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c15 .react-data-table--cell-content {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c12 {
+  padding: 2px;
+  color: inherit;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  opacity: 1;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  padding-top: calc(48px / 12);
+  padding-bottom: calc(48px / 12);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 48px;
+}
+
+.c10:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: rgba(0,0,0,.87);
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 1;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c11:hover {
+  cursor: pointer;
+  color: rgba(0,0,0,.87);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.c20 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 16px;
+  box-sizing: content-box;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c20::-ms-expand {
+  display: none;
+}
+
+.c20:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c19 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 8px;
+  margin-right: 32px;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+}
+
+.c19 svg {
+  top: 1;
+  right: 0;
+  color: rgba(0,0,0,.54);
+  position: absolute;
+  pointer-events: none;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 24px;
+  -webkit-transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c22 {
+  position: relative;
+  display: block;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c22 svg {
+  fill: rgba(0,0,0,.54);
+}
+
+.c22:disabled {
+  opacity: 0.4;
+  cursor: unset;
+}
+
+.c22:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.c18 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+              <span
+                class="c12"
+              >
+                ▲
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+          id="row-1"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <div
+              class="c16"
+              data-tag="___react-data-table--click-clip___"
+            />
+            <div
+              class="react-data-table--cell-content"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="rdt_TableFooter c17"
+    >
+      <span
+        class="c18"
+      >
+        Rows per page:
+      </span>
+      <div
+        class="c19"
+      >
+        <select
+          class="c20"
+        >
+          <option
+            selected=""
+            value="1"
+          >
+            1
+          </option>
+          <option
+            value="2"
+          >
+            2
+          </option>
+        </select>
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </div>
+      <span
+        class="c18"
+      >
+        1-1 of 2
+      </span>
+      <div
+        class="c21"
+      >
+        <button
+          class="c22"
+          disabled=""
+          id="pagination-first-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            />
+            <path
+              d="M24 24H0V0h24v24z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          class="c22"
+          disabled=""
+          id="pagination-previous-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          class="c22"
+          id="pagination-next-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          class="c22"
+          id="pagination-last-page"
+        >
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            />
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
+
 exports[`DataTable::Pagination should render correctly if pagination is enabled 1`] = `
 .c7 {
   display: -webkit-box;
