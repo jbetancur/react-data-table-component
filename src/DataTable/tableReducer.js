@@ -15,11 +15,12 @@ export function tableReducer(state, action) {
     }
 
     case 'SORT_CHANGE': {
-      const { sortColumn, sortDirection } = action;
+      const { sortColumn, sortDirection, selectedColumn } = action;
 
       return {
         ...state,
         sortColumn,
+        selectedColumn,
         sortDirection,
       };
     }

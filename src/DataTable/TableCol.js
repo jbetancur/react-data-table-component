@@ -61,7 +61,7 @@ const TableCol = memo(({
   column,
   sortIcon,
 }) => {
-  const { dispatch, sortColumn, sortDirection, onSort } = useTableContext();
+  const { dispatch, sortColumn, sortDirection } = useTableContext();
   const handleSortChange = () => {
     if (column.sortable) {
       let direction = sortDirection;
@@ -71,8 +71,7 @@ const TableCol = memo(({
         direction = sortDirection === 'asc' ? 'desc' : 'asc';
       }
 
-      dispatch({ type: 'SORT_CHANGE', sortDirection: direction, sortColumn: column.selector });
-      onSort(column, direction);
+      dispatch({ type: 'SORT_CHANGE', sortDirection: direction, sortColumn: column.selector, selectedColumn: column });
     }
   };
 
