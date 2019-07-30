@@ -1,6 +1,7 @@
 import React, { memo, useReducer, useMemo, useCallback } from 'react';
 import { ThemeProvider } from 'styled-components';
 import merge from 'lodash/merge';
+import pick from 'lodash/pick';
 import { DataTableProvider } from './DataTableContext';
 import { tableReducer } from './tableReducer';
 import Table from './Table';
@@ -95,6 +96,7 @@ const DataTable = memo(({
     sortDirection: getSortDirection(defaultSortAsc),
     selectedRowsFlag: false,
     searchText: '',
+    searchedData: data,
     currentPage: paginationDefaultPage,
     rowsPerPage: paginationPerPage,
     data,
@@ -127,7 +129,7 @@ const DataTable = memo(({
   }, [allSelected, onTableUpdate, selectedCount, selectedRows]);
 
   useDidUpdateEffect(() => {
-    onChangePage(currentPage, paginationTotalRows || data.length);
+    onChangePage(currentPage, paginationTotalRows || searchedData.length);
   }, [currentPage, onChangePage]);
 
   useDidUpdateEffect(() => {
@@ -164,17 +166,34 @@ const DataTable = memo(({
     paginationComponentOptions,
   };
 
-  const enabledPagination = pagination && !progressPending && data.length > 0;
+  const enabledPagination = pagination && !progressPending && searchedData.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
-  const sortedData = useMemo(() => sort(data, sortColumn, sortDirection, sortFunction), [data, sortColumn, sortDirection, sortFunction]);
+
+  // Filter sortedData by searchText
+  // No conditional is required because if search is not enabled then the value will always be default ''
+  // which will always match every value
+  // searchedData takes a fresh copy of the original data set stored in data
+  const columnKeys = columns.map(c => { return c.selector })
+  const searchedData = data
+    .filter(row => {
+      // for each row, return an object containing only the same properties as the table itself
+      // then check if at least one value in that object, stringified and case-agnostic, matches searchText
+      return Object
+        .values(pick(row, columnKeys))
+        .map(v => { return v.toString().toLowerCase() })
+        .some(v => { return v.includes(searchText.toLowerCase()) })
+    })
+  // From here on, use searchedData instead of original data
+
+  const sortedData = useMemo(() => sort(searchedData, sortColumn, sortDirection, sortFunction), [searchedData, sortColumn, sortDirection, sortFunction]);
   const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page });
 
   const handleChangeRowsPerPage = newRowsPerPage => {
-    const rowCount = paginationTotalRows || data.length;
+    const rowCount = paginationTotalRows || searchedData.length;
     const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
     const recalculatedPage = Math.min(currentPage, updatedPage);
 
@@ -230,9 +249,6 @@ const DataTable = memo(({
               <ProgressWrapper component={progressComponent} centered={progressCentered} />
             )}
 
-            {!data.length > 0 && !progressPending &&
-              <NoData component={noDataComponent} />}
-
             {searchEnabled && (
               <input
                 type="text"
@@ -242,7 +258,10 @@ const DataTable = memo(({
               />
             )}
 
-            {data.length > 0 && !progressPending && (
+            {!searchedData.length > 0 && !progressPending &&
+              <NoData component={noDataComponent} />}
+
+            {searchedData.length > 0 && !progressPending && (
               <Table disabled={disabled} className="rdt_Table">
                 <TableHead className="rdt_TableHead">
                   <TableHeadRow className="rdt_TableHeadRow">
@@ -297,7 +316,7 @@ const DataTable = memo(({
                 <Pagination
                   onChangePage={handleChangePage}
                   onChangeRowsPerPage={handleChangeRowsPerPage}
-                  rowCount={paginationTotalRows || data.length}
+                  rowCount={paginationTotalRows || searchedData.length}
                   currentPage={currentPage}
                   rowsPerPage={rowsPerPage}
                   theme={theme}
