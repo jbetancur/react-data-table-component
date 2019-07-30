@@ -82,7 +82,8 @@ const DataTable = memo(({
   defaultSortField,
   defaultSortAsc,
   clearSelectedRows,
-  onTableUpdate,
+  onTableUpdate, // Deprecated
+  onRowSelected,
 }) => {
   const initialState = {
     allSelected: false,
@@ -109,9 +110,18 @@ const DataTable = memo(({
     selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
+  /* istanbul ignore next */
+  if (onTableUpdate) {
+    // eslint-disable-next-line no-console
+    console.error('Warning: onTableUpdate has been deprecated. Please switch to onRowSelected.');
+
+    useDidUpdateEffect(() => {
+      onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
+    }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
+  }
   useDidUpdateEffect(() => {
-    onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
-  }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
+    onRowSelected({ allSelected, selectedCount, selectedRows });
+  }, [allSelected, onTableUpdate, selectedCount, selectedRows]);
 
   useDidUpdateEffect(() => {
     onChangePage(currentPage, paginationTotalRows || data.length);
