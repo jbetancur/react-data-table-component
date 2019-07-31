@@ -212,6 +212,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -241,6 +242,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -694,6 +696,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -723,6 +726,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1153,6 +1157,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -1182,6 +1187,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1878,6 +1884,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -1907,6 +1914,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2126,6 +2134,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -2323,6 +2332,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -2352,6 +2362,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2540,6 +2551,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -2793,6 +2808,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -2990,6 +3006,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -3019,6 +3036,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3207,6 +3225,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -3460,6 +3482,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -3657,6 +3680,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -3686,6 +3710,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3874,6 +3899,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -4127,6 +4156,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -4324,6 +4354,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -4353,6 +4384,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4541,6 +4573,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -4794,6 +4830,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -4997,6 +5034,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -5026,6 +5064,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -5214,6 +5253,10 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -5467,6 +5510,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -5664,6 +5708,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -5693,6 +5738,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -5881,6 +5927,10 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -6169,6 +6219,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
@@ -6366,6 +6417,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -6395,6 +6447,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -6583,6 +6636,10 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -7120,6 +7177,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -7149,6 +7207,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -7669,6 +7728,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -7698,6 +7758,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -8149,6 +8210,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -8178,6 +8240,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -8568,6 +8631,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -8597,6 +8661,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -8999,6 +9064,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -9028,6 +9094,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -9430,6 +9497,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -9459,6 +9527,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -9861,6 +9930,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -9890,6 +9960,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -10292,6 +10363,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -10321,6 +10393,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -10711,6 +10784,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -10740,6 +10814,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -11138,6 +11213,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -11167,6 +11243,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -11561,6 +11638,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -11590,6 +11668,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -11980,6 +12059,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -12009,6 +12089,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -12407,6 +12488,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -12436,6 +12518,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -12826,6 +12909,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -12855,6 +12939,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -13251,6 +13336,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -13280,6 +13366,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -13670,6 +13757,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -13699,6 +13787,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -14089,6 +14178,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -14118,6 +14208,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -14508,6 +14599,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -14537,6 +14629,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -15007,6 +15100,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -15036,6 +15130,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -15561,6 +15656,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -15590,6 +15686,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16113,6 +16210,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -16142,6 +16240,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16594,6 +16693,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -16623,6 +16723,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -17015,6 +17116,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -17044,6 +17146,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -17436,6 +17539,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -17465,6 +17569,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -17859,6 +17964,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -17888,6 +17994,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -18291,6 +18398,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -18320,6 +18428,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -18714,6 +18823,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -18743,6 +18853,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -18934,6 +19045,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -18963,6 +19075,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19095,6 +19208,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -19124,6 +19238,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19260,6 +19375,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -19289,6 +19405,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19419,6 +19536,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -19448,6 +19566,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19581,6 +19700,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -19610,6 +19730,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19941,6 +20062,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -19970,6 +20092,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -20362,6 +20485,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -20391,6 +20515,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -20781,6 +20906,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -20810,6 +20936,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -21252,6 +21379,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -21281,6 +21409,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -21754,6 +21883,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -21783,6 +21913,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -22203,6 +22334,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -22232,6 +22364,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -22628,6 +22761,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -22657,6 +22791,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -23053,6 +23188,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -23082,6 +23218,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -23465,6 +23602,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -23494,6 +23632,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -23892,6 +24031,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -23921,6 +24061,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -24320,6 +24461,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -24349,6 +24491,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -24743,6 +24886,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -24772,6 +24916,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -25162,6 +25307,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -25191,6 +25337,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -25611,6 +25758,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -25640,6 +25788,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -26060,6 +26209,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -26089,6 +26239,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -26509,6 +26660,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -26538,6 +26690,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -26958,6 +27111,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -26987,6 +27141,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -27407,6 +27562,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -27436,6 +27592,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -27609,6 +27766,7 @@ exports[`should render and empty table correctly 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -27638,6 +27796,7 @@ exports[`should render and empty table correctly 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;
@@ -27972,6 +28131,7 @@ exports[`should render correctly when disabled 1`] = `
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: #e3f2fd;
   z-index: 1;
   -webkit-transform: translate3d(0,-100%,0);
@@ -28001,6 +28161,7 @@ exports[`should render correctly when disabled 1`] = `
 
 .c1 {
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: -webkit-box;
   display: -webkit-flex;

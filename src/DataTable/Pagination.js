@@ -43,6 +43,7 @@ const PageList = styled.div`
 
 const Span = styled.span`
   flex-shrink: 1;
+  user-select: none;
   font-size: ${props => props.theme.pagination.fontSize};
   color: ${props => props.theme.pagination.fontColor};
 `;

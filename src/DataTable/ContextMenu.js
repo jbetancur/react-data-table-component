@@ -14,6 +14,7 @@ const ContextMenuStyle = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: inherit;
   background-color: ${props => props.theme.contextMenu.backgroundColor};
   z-index: 1;
   transform: ${props => (props.visible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -100%, 0)')};

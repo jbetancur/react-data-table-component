@@ -5,6 +5,7 @@ const TableFooter = styled.footer`
   flex: 1 1 auto;
   justify-content: flex-end;
   align-items: center;
+  box-sizing: border-box;
   min-height: 56px;
   padding-right: 8px;
   padding-left: 8px;
