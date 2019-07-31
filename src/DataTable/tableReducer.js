@@ -8,8 +8,8 @@ export function tableReducer(state, action) {
       return {
         ...state,
         allSelected: allChecked,
-        selectedCount: allChecked ? state.data.length : 0,
-        selectedRows: allChecked ? state.data : [],
+        selectedCount: allChecked ? action.rows.length : 0,
+        selectedRows: allChecked ? action.rows : [],
       };
     }
 
@@ -40,7 +40,7 @@ export function tableReducer(state, action) {
       return {
         ...state,
         selectedCount: state.selectedRows.length + 1,
-        allSelected: state.selectedRows.length + 1 === state.data.length,
+        allSelected: state.selectedRows.length + 1 === action.rows.length,
         selectedRows: insertItem(state.selectedRows, row),
       };
     }

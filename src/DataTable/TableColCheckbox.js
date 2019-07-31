@@ -14,9 +14,9 @@ const TableColStyle = styled(CellBase)`
 `;
 
 const TableCol = () => {
-  const { dispatch, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
+  const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
-  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL' });
+  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL', rows: data });
 
   return (
     <TableColStyle className="rdt_TableCol">
