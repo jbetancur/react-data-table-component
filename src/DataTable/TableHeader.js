@@ -5,6 +5,7 @@ import ContextMenu from './ContextMenu';
 
 const TableHeaderStyle = styled.header`
   position: relative;
+  box-sizing: border-box;
   overflow: visible;
   display: flex;
   flex: 1 1 auto;

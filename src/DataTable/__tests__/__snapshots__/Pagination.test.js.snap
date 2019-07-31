@@ -5,6 +5,10 @@ exports[`should render correctly with default props 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
