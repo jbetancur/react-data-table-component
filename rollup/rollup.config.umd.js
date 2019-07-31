@@ -5,7 +5,7 @@ import config, { plugins } from './rollup.config.common';
 export default Object.assign(config, {
   output: [
     {
-      name: 'ReactFlexybox',
+      name: 'ReactDataTable',
       file: 'dist/react-data-table-component.umd.js',
       format: 'umd',
       globals: {
