@@ -95,7 +95,6 @@ const DataTable = memo(({
     selectedRowsFlag: false,
     currentPage: paginationDefaultPage,
     rowsPerPage: paginationPerPage,
-    data,
   };
 
   const [{
@@ -140,6 +139,8 @@ const DataTable = memo(({
   }
 
   const init = {
+    dispatch,
+    data,
     allSelected,
     selectedRows,
     selectedCount,
@@ -148,8 +149,6 @@ const DataTable = memo(({
     keyField,
     contextTitle,
     contextActions,
-    onTableUpdate,
-    dispatch,
     selectableRowsComponent,
     selectableRowsComponentProps,
     expandableIcon,

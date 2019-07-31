@@ -13,8 +13,8 @@ const TableCellCheckboxStyle = styled(CellBase)`
 `;
 
 const TableCellCheckbox = ({ name, row }) => {
-  const { dispatch, selectedRows, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
-  const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row });
+  const { dispatch, data, selectedRows, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
+  const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row, rows: data });
   const isRowSelected = useMemo(() => selectedRows.some(srow => srow === row), [row, selectedRows]);
 
   return (
