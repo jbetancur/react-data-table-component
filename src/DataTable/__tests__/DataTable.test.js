@@ -943,6 +943,65 @@ describe('DataTable::Pagination', () => {
     expect(onChangePageMock).toBeCalledWith(1, 2);
   });
 
+  test('should not deselect all rows if using pagination and selectedRows', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-all-rows"]'));
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
+  });
+
+  test('should deselect all rows if using paginationServer and selectedRows', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationServer
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-all-rows"]'));
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(false);
+  });
+
+  test('should deselect all rows if using pagination && paginationServer and selectedRows and the table is sorted', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationServer
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-all-rows"]'));
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(false);
+  });
+
   test('should call onChangePage if paged with an the optional paginationTotalRows prop', () => {
     const onChangePageMock = jest.fn();
     const mock = dataMock();
@@ -1009,7 +1068,6 @@ describe('DataTable::Pagination', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
-
 
 describe('DataTablke::subHeader', () => {
   test('should render correctly when a subheader is enabled', () => {

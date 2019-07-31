@@ -61,7 +61,7 @@ const TableCol = memo(({
   column,
   sortIcon,
 }) => {
-  const { dispatch, sortColumn, sortDirection } = useTableContext();
+  const { dispatch, pagination, paginationServer, sortColumn, sortDirection } = useTableContext();
   const handleSortChange = () => {
     if (column.sortable) {
       let direction = sortDirection;
@@ -71,7 +71,14 @@ const TableCol = memo(({
         direction = sortDirection === 'asc' ? 'desc' : 'asc';
       }
 
-      dispatch({ type: 'SORT_CHANGE', sortDirection: direction, sortColumn: column.selector, selectedColumn: column });
+      dispatch({
+        type: 'SORT_CHANGE',
+        sortDirection: direction,
+        sortColumn: column.selector,
+        selectedColumn: column,
+        pagination,
+        paginationServer,
+      });
     }
   };
 

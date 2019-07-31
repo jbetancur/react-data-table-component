@@ -14,7 +14,7 @@ export function tableReducer(state, action) {
     }
 
     case 'SORT_CHANGE': {
-      const { sortColumn, sortDirection, selectedColumn } = action;
+      const { sortColumn, sortDirection, selectedColumn, pagination, paginationServer } = action;
 
       return {
         ...state,
@@ -22,6 +22,12 @@ export function tableReducer(state, action) {
         selectedColumn,
         sortDirection,
         currentPage: 1,
+        // when using server-side paging reset selected row counts when sorting
+        ...pagination && paginationServer && ({
+          allSelected: false,
+          selectedCount: 0,
+          selectedRows: [],
+        }),
       };
     }
 
@@ -46,9 +52,16 @@ export function tableReducer(state, action) {
     }
 
     case 'CHANGE_PAGE': {
+      const { page, paginationServer } = action;
       return {
         ...state,
-        currentPage: action.page,
+        currentPage: page,
+        // when using server-side paging reset selected row counts
+        ...paginationServer && ({
+          allSelected: false,
+          selectedCount: 0,
+          selectedRows: [],
+        }),
       };
     }
 

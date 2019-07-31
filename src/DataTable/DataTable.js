@@ -109,6 +109,19 @@ const DataTable = memo(({
     selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
+  const sortedData = useMemo(() => sort(data, sortColumn, sortDirection, sortFunction), [data, sortColumn, sortDirection, sortFunction]);
+  const calculatedRows = useMemo(() => {
+    if (pagination && !paginationServer) {
+      // when using client-side pagination we can just slice the data set
+      const lastIndex = currentPage * rowsPerPage;
+      const firstIndex = lastIndex - rowsPerPage;
+
+      return sortedData.slice(firstIndex, lastIndex);
+    }
+
+    return sortedData;
+  }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
+
   /* istanbul ignore next */
   if (onTableUpdate) {
     // eslint-disable-next-line no-console
@@ -118,6 +131,7 @@ const DataTable = memo(({
       onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
     }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
   }
+
   useDidUpdateEffect(() => {
     onRowSelected({ allSelected, selectedCount, selectedRows });
   }, [allSelected, onTableUpdate, selectedCount, selectedRows]);
@@ -138,6 +152,28 @@ const DataTable = memo(({
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
   }
 
+  const enabledPagination = pagination && !progressPending && data.length > 0;
+  const Pagination = paginationComponent || NativePagination;
+  const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
+  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
+  const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
+  const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
+
+  const handleChangeRowsPerPage = newRowsPerPage => {
+    const rowCount = paginationTotalRows || calculatedRows.length;
+    const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
+    const recalculatedPage = Math.min(currentPage, updatedPage);
+
+    // update the currentPage for client-side pagination
+    // server - side should be handled by onChangeRowsPerPage
+    if (!paginationServer) {
+      handleChangePage(recalculatedPage);
+    }
+
+    dispatch({ type: 'CHANGE_ROWS_PER_PAGE', page: recalculatedPage, rowsPerPage: newRowsPerPage });
+  };
+
   const init = {
     dispatch,
     data,
@@ -152,6 +188,8 @@ const DataTable = memo(({
     selectableRowsComponent,
     selectableRowsComponentProps,
     expandableIcon,
+    pagination,
+    paginationServer,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
     paginationIconFirstPage,
@@ -159,41 +197,6 @@ const DataTable = memo(({
     paginationIconPrevious,
     paginationComponentOptions,
   };
-
-  const enabledPagination = pagination && !progressPending && data.length > 0;
-  const Pagination = paginationComponent || NativePagination;
-  const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
-  const sortedData = useMemo(() => sort(data, sortColumn, sortDirection, sortFunction), [data, sortColumn, sortDirection, sortFunction]);
-  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
-  const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
-  const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page });
-
-  const handleChangeRowsPerPage = newRowsPerPage => {
-    const rowCount = paginationTotalRows || data.length;
-    const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
-    const recalculatedPage = Math.min(currentPage, updatedPage);
-
-    // update the currentPage for client-side pagination
-    // server - side should be handled by onChangeRowsPerPage
-    if (!paginationServer) {
-      handleChangePage(recalculatedPage);
-    }
-
-    dispatch({ type: 'CHANGE_ROWS_PER_PAGE', page: recalculatedPage, rowsPerPage: newRowsPerPage });
-  };
-
-  const calculatedRows = useMemo(() => {
-    if (pagination && !paginationServer) {
-      // when using client-side pagination we can just slice the data set
-      const lastIndex = currentPage * rowsPerPage;
-      const firstIndex = lastIndex - rowsPerPage;
-
-      return sortedData.slice(firstIndex, lastIndex);
-    }
-
-    return sortedData;
-  }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
 
   return (
     <ThemeProvider theme={theme}>
