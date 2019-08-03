@@ -16,6 +16,7 @@ const TableCellCheckbox = ({ name, row }) => {
   const { dispatch, data, selectedRows, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
   const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row, rows: data });
   const isRowSelected = useMemo(() => selectedRows.some(srow => srow === row), [row, selectedRows]);
+  const { disabled = false } = row;
 
   return (
     <TableCellCheckboxStyle
@@ -28,6 +29,7 @@ const TableCellCheckbox = ({ name, row }) => {
         componentOptions={selectableRowsComponentProps}
         checked={isRowSelected}
         onClick={handleOnRowSelected}
+        disabled={disabled}
       />
     </TableCellCheckboxStyle>
   );

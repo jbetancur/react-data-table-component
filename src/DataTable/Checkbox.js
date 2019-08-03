@@ -11,6 +11,7 @@ const Checkbox = ({
   checked,
   name,
   onClick,
+  disabled,
 }) => {
   const setCheckboxRef = checkbox => {
     if (checkbox) {
@@ -35,6 +36,7 @@ const Checkbox = ({
       aria-label={name}
       checked={checked}
       onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
+      disabled={(name !== 'select-all-rows') && disabled}
     />
   );
 };
@@ -50,6 +52,7 @@ Checkbox.propTypes = {
   checked: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 Checkbox.defaultProps = {
@@ -60,6 +63,7 @@ Checkbox.defaultProps = {
   },
   checked: false,
   onClick: null,
+  disabled: false,
 };
 
 export default Checkbox;
