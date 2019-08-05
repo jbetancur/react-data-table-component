@@ -36,7 +36,7 @@ const Checkbox = ({
       aria-label={name}
       checked={checked}
       onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
-      disabled={(name !== 'select-all-rows') && disabled}
+      disabled={disabled}
     />
   );
 };
