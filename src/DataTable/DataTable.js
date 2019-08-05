@@ -84,6 +84,7 @@ const DataTable = memo(({
   clearSelectedRows,
   onTableUpdate, // Deprecated
   onRowSelected,
+  selctableRowsDisabledField,
 }) => {
   const initialState = {
     allSelected: false,
@@ -267,6 +268,7 @@ const DataTable = memo(({
                         row={row}
                         columns={columnsMemo}
                         selectableRows={selectableRows}
+                        selctableRowsDisabledField={selctableRowsDisabledField}
                         expandableRows={expandableRows}
                         striped={striped}
                         highlightOnHover={highlightOnHover}

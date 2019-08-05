@@ -12,7 +12,7 @@ const TableCellCheckboxStyle = styled(CellBase)`
   min-height: ${props => props.theme.rows.height};
 `;
 
-const TableCellCheckbox = ({ name, row }) => {
+const TableCellCheckbox = ({ name, row, disabled }) => {
   const { dispatch, data, selectedRows, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
   const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row, rows: data });
   const isRowSelected = useMemo(() => selectedRows.some(srow => srow === row), [row, selectedRows]);
@@ -28,7 +28,7 @@ const TableCellCheckbox = ({ name, row }) => {
         componentOptions={selectableRowsComponentProps}
         checked={isRowSelected}
         onClick={handleOnRowSelected}
-        disabled={row.disabled}
+        disabled={disabled}
       />
     </TableCellCheckboxStyle>
   );
@@ -37,6 +37,7 @@ const TableCellCheckbox = ({ name, row }) => {
 TableCellCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   row: PropTypes.object.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default TableCellCheckbox;

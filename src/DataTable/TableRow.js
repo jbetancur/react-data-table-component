@@ -70,6 +70,7 @@ const TableRow = memo(({
   expandableRowsComponent,
   expandableDisabledField,
   defaultExpanded,
+  selctableRowsDisabledField,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleRowClick = useCallback(e => {
@@ -92,6 +93,7 @@ const TableRow = memo(({
           <TableCellCheckbox
             name={`select-row-${row[keyField]}`}
             row={row}
+            disabled={selctableRowsDisabledField ? row[selctableRowsDisabledField] : false}
           />
         )}
 
@@ -144,6 +146,7 @@ TableRow.propTypes = {
     PropTypes.func,
   ]).isRequired,
   expandableDisabledField: PropTypes.string.isRequired,
+  selctableRowsDisabledField: PropTypes.string.isRequired,
 };
 
 export default TableRow;
