@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { handleFunctionProps } from './util';
 
-const baseCheckboxStyle = { fontSize: '18px', cursor: 'pointer', marginLeft: '9px' };
+const baseCheckboxStyle = { fontSize: '18px', marginLeft: '9px' };
 
 const Checkbox = ({
   component,
@@ -21,7 +21,7 @@ const Checkbox = ({
   };
 
   const TagName = component;
-  const baseStyle = TagName !== 'input' ? componentOptions.style : baseCheckboxStyle;
+  const baseStyle = TagName !== 'input' ? componentOptions.style : { ...baseCheckboxStyle, cursor: disabled ? 'not-allowed' : 'pointer' };
   const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
 
   return (
