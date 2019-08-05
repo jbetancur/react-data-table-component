@@ -36,7 +36,7 @@ const SelectWrapper = styled.div`
   color: ${props => props.theme.pagination.fontColor};
 
   svg {
-    top: 1;
+    top: 1px;
     right: 0;
     color: ${props => props.theme.pagination.fontColor};
     position: absolute;
