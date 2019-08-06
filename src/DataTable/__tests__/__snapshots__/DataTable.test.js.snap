@@ -104,6 +104,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -559,6 +560,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -1049,6 +1051,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -1472,6 +1475,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
 
 .c7 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -1776,6 +1780,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -2224,6 +2229,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -2898,6 +2904,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -3572,6 +3579,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -4246,6 +4254,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -4920,6 +4929,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -5600,6 +5610,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -6309,6 +6320,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -7069,6 +7081,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -7620,6 +7633,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -8098,6 +8112,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -8523,6 +8538,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -8956,6 +8972,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -9389,6 +9406,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -9822,6 +9840,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -10255,6 +10274,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -10676,6 +10696,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -11101,6 +11122,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -11528,6 +11550,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -11951,6 +11974,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -12376,6 +12400,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -12801,6 +12826,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -13227,6 +13253,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -13649,6 +13676,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -14070,6 +14098,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -14491,6 +14520,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -14992,6 +15022,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -15548,6 +15579,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -16102,6 +16134,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -16585,6 +16618,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -17008,6 +17042,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -17431,6 +17466,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -17856,6 +17892,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -18290,6 +18327,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -18715,6 +18753,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -19954,6 +19993,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -20377,6 +20417,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -20798,6 +20839,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -21242,6 +21284,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -21746,6 +21789,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -22226,6 +22270,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -22647,6 +22692,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -23074,6 +23120,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -23917,6 +23964,7 @@ exports[`DataTable::sorting should render correctly with a default sort field 1`
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -24344,6 +24392,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -24778,6 +24827,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -25199,6 +25249,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -25650,6 +25701,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -26101,6 +26153,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -26552,6 +26605,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -27003,6 +27057,7 @@ exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
 
 .c13 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -27454,6 +27509,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -28023,6 +28079,7 @@ exports[`should render correctly when disabled 1`] = `
 
 .c12 {
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
