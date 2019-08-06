@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const Icon = styled.span`
   padding: 2px;
+  min-height: 20px;
   color: inherit;
   flex-grow: 0;
   flex-shrink: 0;
