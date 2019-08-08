@@ -84,7 +84,7 @@ const DataTable = memo(({
   clearSelectedRows,
   onTableUpdate, // Deprecated
   onRowSelected,
-  selctableRowsDisabledField,
+  selectableRowsDisabledField,
 }) => {
   const initialState = {
     allSelected: false,
@@ -197,6 +197,7 @@ const DataTable = memo(({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
+    selectableRowsDisabledField,
   };
 
   return (
@@ -268,7 +269,7 @@ const DataTable = memo(({
                         row={row}
                         columns={columnsMemo}
                         selectableRows={selectableRows}
-                        selctableRowsDisabledField={selctableRowsDisabledField}
+                        selectableRowsDisabledField={selectableRowsDisabledField}
                         expandableRows={expandableRows}
                         striped={striped}
                         highlightOnHover={highlightOnHover}

@@ -33,7 +33,6 @@ export default [
   {
     id: 3,
     title: 'The Shawshank Redemption',
-    disabled: true,
     year: '1994',
     runtime: '142',
     genres: [

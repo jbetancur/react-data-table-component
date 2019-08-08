@@ -56,77 +56,80 @@ const TableRowStyle = styled.div`
   ${props => props.pointerOnHover && pointerCSS};
 `;
 
-const TableRow = memo(({
-  id,
-  keyField,
-  columns,
-  row,
-  onRowClicked,
-  selectableRows,
-  expandableRows,
-  striped,
-  highlightOnHover,
-  pointerOnHover,
-  expandableRowsComponent,
-  expandableDisabledField,
-  defaultExpanded,
-  selctableRowsDisabledField,
-}) => {
-  const [expanded, setExpanded] = useState(defaultExpanded);
-  const handleRowClick = useCallback(e => {
-    // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
-    if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
-      onRowClicked(row, e);
-    }
-  }, [onRowClicked, row]);
-  return (
-    <>
-      <TableRowStyle
-        id={`row-${id}`}
-        striped={striped}
-        highlightOnHover={highlightOnHover}
-        pointerOnHover={pointerOnHover}
-        onClick={handleRowClick}
-        className="rdt_TableRow"
-      >
-        {selectableRows && (
-          <TableCellCheckbox
-            name={`select-row-${row[keyField]}`}
-            row={row}
-            disabled={selctableRowsDisabledField ? row[selctableRowsDisabledField] : false}
-          />
-        )}
-
-        {expandableRows && (
-          <TableCellExpander
-            expanded={expanded}
-            row={row}
-            onExpandToggled={() => setExpanded(!expanded)}
-            disabled={row[expandableDisabledField] || false}
-          />
-        )}
-
-        {columns.map(column => (
-          <TableCell
-            key={`cell-${column.id}-${row[keyField]}`}
-            column={column}
-            row={row}
-            rowClickable={!!onRowClicked || column.button}
-          />
-        ))}
-      </TableRowStyle>
-
-      {expandableRows && expanded && (
-        <ExpanderRow
-          key={`expander--${row[keyField]}`}
-          data={row}
+const TableRow = memo(
+  ({
+    id,
+    keyField,
+    columns,
+    row,
+    onRowClicked,
+    selectableRows,
+    expandableRows,
+    striped,
+    highlightOnHover,
+    pointerOnHover,
+    expandableRowsComponent,
+    expandableDisabledField,
+    defaultExpanded,
+    selectableRowsDisabledField,
+  }) => {
+    const [expanded, setExpanded] = useState(defaultExpanded);
+    const handleRowClick = useCallback(e => {
+      // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
+      if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
+        onRowClicked(row, e);
+      }
+    }, [onRowClicked, row]);
+    return (
+      <>
+        <TableRowStyle
+          id={`row-${id}`}
+          striped={striped}
+          highlightOnHover={highlightOnHover}
+          pointerOnHover={pointerOnHover}
+          onClick={handleRowClick}
+          className="rdt_TableRow"
         >
-          {expandableRowsComponent}
-        </ExpanderRow>
-      )}
-    </>
-  );
-});
+          {selectableRows && (
+            <TableCellCheckbox
+              name={`select-row-${row[keyField]}`}
+              row={row}
+              disabled={
+                selectableRowsDisabledField
+                  ? row[selectableRowsDisabledField]
+                  : false
+              }
+            />
+          )}
+
+          {expandableRows && (
+            <TableCellExpander
+              expanded={expanded}
+              row={row}
+              onExpandToggled={() => setExpanded(!expanded)}
+              disabled={row[expandableDisabledField] || false}
+            />
+          )}
+
+          {columns.map(column => (
+            <TableCell
+              key={`cell-${column.id}-${row[keyField]}`}
+              column={column}
+              row={row}
+              rowClickable={!!onRowClicked || column.button}
+            />
+          ))}
+        </TableRowStyle>
+
+        {expandableRows && expanded && (
+          <ExpanderRow key={`expander--${row[keyField]}`} data={row}>
+            {expandableRowsComponent}
+          </ExpanderRow>
+        )}
+      </>
+    );
+  },
+);
 
 TableRow.propTypes = {
   id: PropTypes.any.isRequired,
@@ -146,7 +149,7 @@ TableRow.propTypes = {
     PropTypes.func,
   ]).isRequired,
   expandableDisabledField: PropTypes.string.isRequired,
-  selctableRowsDisabledField: PropTypes.string.isRequired,
+  selectableRowsDisabledField: PropTypes.string.isRequired,
 };
 
 export default TableRow;

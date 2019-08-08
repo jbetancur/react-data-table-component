@@ -4,7 +4,9 @@ export function tableReducer(state, action) {
   switch (action.type) {
     case 'SELECT_ALL': {
       const allChecked = !state.allSelected;
-      const selectedRows = action.rows.filter(({ disabled = false }) => !disabled);
+      const selectedRows = action.rows.filter(
+        row => !row[action.selectableRowsDisabledField],
+      );
 
       return {
         ...state,

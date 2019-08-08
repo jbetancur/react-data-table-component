@@ -34,7 +34,7 @@ const BasicSelectable = () => (
     columns={columns}
     data={data}
     selectableRows
-    selctableRowsDisabledField="disabled"
+    selectableRowsDisabledField="notSelectable"
   />
 );
 
