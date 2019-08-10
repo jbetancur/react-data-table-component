@@ -129,24 +129,24 @@ const DataTable = memo(({
 
     useDidUpdateEffect(() => {
       onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
-    }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
+    }, [allSelected, selectedCount, selectedRows, sortColumn, sortDirection]);
   }
 
   useDidUpdateEffect(() => {
     onRowSelected({ allSelected, selectedCount, selectedRows });
-  }, [allSelected, onTableUpdate, selectedCount, selectedRows]);
+  }, [allSelected, selectedCount, selectedRows]);
 
   useDidUpdateEffect(() => {
     onChangePage(currentPage, paginationTotalRows || data.length);
-  }, [currentPage, onChangePage]);
+  }, [currentPage]);
 
   useDidUpdateEffect(() => {
     onChangeRowsPerPage(rowsPerPage, currentPage);
-  }, [rowsPerPage, onChangeRowsPerPage]);
+  }, [rowsPerPage]);
 
   useDidUpdateEffect(() => {
     onSort(selectedColumn, sortDirection);
-  }, [onSort, sortColumn, sortDirection]);
+  }, [sortColumn, sortDirection]);
 
   if (clearSelectedRows !== selectedRowsFlag) {
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
