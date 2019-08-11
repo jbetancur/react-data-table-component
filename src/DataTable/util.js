@@ -55,3 +55,5 @@ export const handleFunctionProps = (object, ...args) => {
 };
 
 export const getNumberOfPages = (rowCount, rowsPerPage) => Math.ceil(rowCount / rowsPerPage);
+
+export const noop = () => null;
