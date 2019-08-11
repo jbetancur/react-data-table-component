@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import DataTable from '../DataTable';
 
 // eslint-disable-next-line arrow-body-style
@@ -17,8 +17,6 @@ const dataMock = colProps => {
     data: [{ id: 1, some: { name: 'Apple' } }, { id: 2, some: { name: 'Zuchinni' } }],
   };
 };
-
-afterEach(cleanup);
 
 test('should render and empty table correctly', () => {
   const { container } = render(<DataTable data={[]} columns={[]} />);

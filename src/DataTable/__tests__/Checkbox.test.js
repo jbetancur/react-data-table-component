@@ -1,9 +1,7 @@
 import 'jest-styled-components';
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Checkbox from '../Checkbox';
-
-afterEach(cleanup);
 
 test('should render correctly when a custom component is not provided', () => {
   const { container } = render(<Checkbox name="test" />);

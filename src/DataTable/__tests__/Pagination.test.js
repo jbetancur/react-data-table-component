@@ -1,13 +1,11 @@
 import 'jest-styled-components';
 import React from 'react';
-import { cleanup, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import { renderWithTheme } from '../../test-helpers'; // since child elements require theme
 import { DataTableProvider } from '../DataTableContext';
 import { defaultProps } from '../propTypes';
 import Pagination from '../Pagination';
 import theme from '../../themes/default';
-
-afterEach(cleanup);
 
 const defaultStateMock = {
   ...defaultProps,
