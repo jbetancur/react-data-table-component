@@ -122,6 +122,7 @@ class MaterialTable extends PureComponent {
           onRowSelected={this.handleChange}
           clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
+          pagination
         />
       </Card>
     );
