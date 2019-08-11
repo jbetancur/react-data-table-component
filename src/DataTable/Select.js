@@ -27,7 +27,6 @@ const SelectControl = styled.select`
 `;
 
 const SelectWrapper = styled.div`
-  /* width: 100%; */
   position: relative;
   flex-shrink: 0;
   margin-left: 8px;
@@ -36,19 +35,16 @@ const SelectWrapper = styled.div`
   color: ${props => props.theme.pagination.fontColor};
 
   svg {
-    top: 1;
+    top: 0;
     right: 0;
     color: ${props => props.theme.pagination.fontColor};
     position: absolute;
-    pointer-events: none;
     fill: currentColor;
-    width: 1em;
-    height: 1em;
+    width: 24px;
+    height: 24px;
     display: inline-block;
-    font-size: 24px;
-    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     user-select: none;
-    flex-shrink: 0;
+    pointer-events: none;
   }
 `;
 
