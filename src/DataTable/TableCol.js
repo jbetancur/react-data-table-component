@@ -11,6 +11,7 @@ const activeColCSS = css`
 
 const TableColStyle = styled(Cell)`
   min-height: ${props => props.theme.header.height};
+  ${props => props.column.button && 'text-align: center'};
 `;
 
 const ColumnSortable = styled.div`
@@ -97,10 +98,10 @@ const TableCol = memo(({
   );
 
   const sortActive = column.sortable && sortColumn === column.selector;
-  const nativeSortIconLeft = !sortIcon && !column.right;
-  const nativeSortIconRight = !sortIcon && column.right;
-  const customSortIconLeft = sortIcon && !column.right;
-  const customSortIconRight = sortIcon && column.right;
+  const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
+  const nativeSortIconRight = column.sortable && !sortIcon && column.right;
+  const customSortIconLeft = column.sortable && sortIcon && !column.right;
+  const customSortIconRight = column.sortable && sortIcon && column.right;
 
   return (
     <TableColStyle
