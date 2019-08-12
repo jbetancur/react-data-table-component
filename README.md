@@ -71,7 +71,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
-| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>`  **Negates  `format`** |
+| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` **Negates  `format`** |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column.  the is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
@@ -79,10 +79,10 @@ Nothing new here - we are using an array of object literals and properties to de
 | right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | reduces the padding in the cell by 50%                                     |
-| button   | bool   | no       | applies additional styling when using a button                                                                |
+| ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
+| button   | bool   | no       | this is like `ignoreRowClick` except it will apply aditional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
 | wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
-| allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning                                     |
-| ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on a specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered |
+| allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
 | hide   | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
 
 #### column.hide media presets

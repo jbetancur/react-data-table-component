@@ -73,11 +73,12 @@ const TableRow = memo(({
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleRowClick = useCallback(e => {
-    // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
-    if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
+    // use event delegation allow events to propogate only when the element with data-tag ___react-data-table-allow-propagation___ is present
+    if (e.target && e.target.getAttribute('data-tag') === '___react-data-table-allow-propagation___') {
       onRowClicked(row, e);
     }
   }, [onRowClicked, row]);
+
   return (
     <>
       <TableRowStyle
@@ -106,10 +107,10 @@ const TableRow = memo(({
 
         {columns.map(column => (
           <TableCell
+            id={`cell-${column.id}-${row[keyField]}`}
             key={`cell-${column.id}-${row[keyField]}`}
             column={column}
             row={row}
-            rowClickable={!!onRowClicked || column.button}
           />
         ))}
       </TableRowStyle>

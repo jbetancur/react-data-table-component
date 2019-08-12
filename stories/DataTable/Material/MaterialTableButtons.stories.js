@@ -17,7 +17,6 @@ const contextActions = memoize(deleteHandler => <Button key="delete" onClick={de
 const columns = memoize(deleteHandler => [
   {
     cell: row => <CustomMaterialMenu row={row} onDeleteRow={deleteHandler} />,
-    ignoreRowClick: true,
     allowOverflow: true,
     button: true,
     width: '56px', // custom width for icon button
@@ -77,8 +76,6 @@ const columns = memoize(deleteHandler => [
   },
   {
     cell: () => <Button raised primary>Action</Button>,
-    ignoreRowClick: true,
-    allowOverflow: true,
     button: true,
   },
 ]);
