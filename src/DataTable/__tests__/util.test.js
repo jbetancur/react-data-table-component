@@ -8,7 +8,7 @@ import {
   handleFunctionProps,
 } from '../util';
 
-const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting' } });
+const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
 
 describe('sort', () => {
   test('built in sort', () => {
@@ -33,16 +33,22 @@ describe('sort', () => {
 });
 
 describe('getProperty', () => {
-  test('getProperty return an object when a selector is passed', () => {
+  test('getProperty return a value when a selector is passed', () => {
     const property = getProperty(row, 'name');
 
     expect(property).toEqual('iamaname');
   });
 
-  test('getProperty return an object when there is a nested selector', () => {
+  test('getProperty return a value when there is a nested selector', () => {
     const property = getProperty(row, 'properties.nested');
 
     expect(property).toEqual('iamnesting');
+  });
+
+  test('getProperty return a value when a selector is an array', () => {
+    const property = getProperty(row, 'properties.items[0].name');
+
+    expect(property).toEqual('iamarrayname');
   });
 
   test('getProperty should handle when a format function is passed', () => {
