@@ -18,7 +18,23 @@ export const getProperty = (row, selector, format) => {
     return format(row);
   }
 
-  return selector.split('.').reduce((acc, part) => acc && acc[part], row);
+  return selector.split('.').reduce((acc, part) => {
+    if (!acc) {
+      return null;
+    }
+
+    // O(n2) when querying for an array (e.g. items[0].name)
+    // Likely, the object depth will be reasonable enough that performance is not impacted
+    const arr = part.match(/[^\]\\[.]+/g);
+    if (arr.length > 1) {
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < arr.length; i++) {
+        return acc[arr[i]][arr[i + 1]];
+      }
+    }
+
+    return acc[part];
+  }, row);
 };
 
 export const insertItem = (array, item, index = 0) => [

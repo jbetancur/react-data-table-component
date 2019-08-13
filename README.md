@@ -68,10 +68,10 @@ Nothing new here - we are using an array of object literals and properties to de
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | string | yes      | the propery in the data set e.g.  `property1.nested1.nested2`.                                                |
+| selector | string | yes      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
-| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` **Negates  `format`** |
+| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` <br /> **negates  `format`** |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column.  the is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
@@ -129,7 +129,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). It's highly recommended that you memoize any handlers that you pass to `onRowSelected` to prevent `DataTable` from unnescessary re-renders |
+| onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnescessary re-renders everytime your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 
@@ -471,7 +471,7 @@ class MyComponent extends Component {
 Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
 
 ### Passing non-primitive props (objects, arrays and functions)
-While RDT has internal optimizations to try and prevent re-renders on deeper internal components, for peak performance it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`.
+While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
 #### Optimizing Class Components
 You can typically achieve this by moving props such as objects, arrays, functions or other React compents that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper for cases where you are using a function to generate those values.
@@ -557,7 +557,7 @@ So how do we attach event handlers to our columns without having to place it in 
 1. Create a `columns` function and pass the arguments needed
 2. Memoize the `columns` function
 
-This way, when React checks if `columns` has changes `columns` will instead be cached result (remember referential equality), thus no unnessesary re-render.
+This way, when React checks if `columns` has changed `columns` will instead be the cached result (remember referential equality), thus no unnessesary re-render.
 
 Got it? Let's try this again with the optimal solution:
 
@@ -594,10 +594,10 @@ class MyComponent extends Component {
 }
 ```
 
-Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once. This however,  is a different matter with function components.
+Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once. This however, is a different matter with functional components.
 
 #### Optimizing Functional Components
-If you're building functional components you get access to React Hooks such as `useMemo` and `useCallback`. In this example, simply wrap `columns` in a `useMemo` callback and your `updateState` into `useCallback`:
+If you're building functional components in React 16.8+ you get access to React Hooks such as `useMemo` and `useCallback`. In this example, simply wrap `columns` in a `useMemo` callback and your `updateState` into `useCallback`:
 
 ```js
 import React, { useState, useMemo } from 'react';
