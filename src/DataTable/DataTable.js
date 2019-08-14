@@ -169,6 +169,12 @@ const DataTable = memo(({
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
+  // for client-side pagination it should navigate back one page when there is only 1 item on the last page and it is removed from the data set
+  // as long as there is data and the calculated rows (the rows calculated for the current page slice) are 0
+  if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {
+    handleChangePage(currentPage - 1);
+  }
+
   const handleChangeRowsPerPage = newRowsPerPage => {
     const rowCount = paginationTotalRows || calculatedRows.length;
     const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);

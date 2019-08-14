@@ -711,7 +711,6 @@ describe('DataTable::sorting', () => {
     // note row order should not change, but sort arrows should
     expect(container.firstChild).toMatchSnapshot();
   });
-
 });
 
 
@@ -997,6 +996,36 @@ describe('DataTable::Pagination', () => {
     fireEvent.click(container.querySelector('div[id="column-some.name"]'));
     expect(container.firstChild).toMatchSnapshot();
     expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
+  });
+
+  test('should navigate back one page if there is only 1 item and it is removed from the data', () => {
+    const mock = dataMock();
+    const mockOneDeleted = dataMock().data.slice(0, 1);
+
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    // move to last page
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+
+    rerender(
+      <DataTable
+        data={mockOneDeleted}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should call onChangePage with the correct values if paged forward', () => {
