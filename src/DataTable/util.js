@@ -24,7 +24,7 @@ export const getProperty = (row, selector, format) => {
     }
 
     // O(n2) when querying for an array (e.g. items[0].name)
-    // Likely, the object depth will be reasonable enough that performance is not impacted
+    // Likely, the object depth will be reasonable enough that performance is not a concern
     const arr = part.match(/[^\]\\[.]+/g);
     if (arr.length > 1) {
       // eslint-disable-next-line no-plusplus

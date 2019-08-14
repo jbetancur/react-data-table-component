@@ -32,7 +32,7 @@ const AdvancedPaginationTable = () => {
     setLoading(true);
 
     const response = await axios.get(
-      `https://reqres.in/api/users?page=${page}&per_page=${perPage}`,
+      `https://reqres.in/api/users?page=${page}&per_page=${perPage}&delay=1`,
     );
 
     setData(response.data.data);
@@ -48,7 +48,7 @@ const AdvancedPaginationTable = () => {
     setLoading(true);
 
     const response = await axios.get(
-      `https://reqres.in/api/users?page=${page}&per_page=${newPerPage}`,
+      `https://reqres.in/api/users?page=${page}&per_page=${newPerPage}&delay=1`,
     );
 
     setData(response.data.data);
