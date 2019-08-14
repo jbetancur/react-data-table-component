@@ -76,6 +76,7 @@ const DataTable = memo(({
   sortIcon,
   onSort,
   sortFunction,
+  sortServer,
   expandableRowsComponent,
   expandableDisabledField,
   defaultExpandedField,
@@ -109,7 +110,15 @@ const DataTable = memo(({
     selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
-  const sortedData = useMemo(() => sort(data, sortColumn, sortDirection, sortFunction), [data, sortColumn, sortDirection, sortFunction]);
+  const sortedData = useMemo(() => {
+    // server-side sorting bypasses internal sorting
+    if (!sortServer) {
+      return sort(data, sortColumn, sortDirection, sortFunction);
+    }
+
+    return data;
+  }, [data, sortColumn, sortDirection, sortFunction, sortServer]);
+
   const calculatedRows = useMemo(() => {
     if (pagination && !paginationServer) {
       // when using client-side pagination we can just slice the data set

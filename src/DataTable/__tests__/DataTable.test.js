@@ -680,6 +680,38 @@ describe('DataTable::sorting', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly and bypass internal sort when sortServer = true and asc sort', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        sortServer
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // note row order should not change, but sort arrows should
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly and bypass internal sort when sortServer = true and desc sort', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        sortServer
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // note row order should not change, but sort arrows should
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
 });
 
 
