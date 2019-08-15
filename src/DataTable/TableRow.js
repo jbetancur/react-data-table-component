@@ -56,51 +56,51 @@ const TableRowStyle = styled.div`
   ${props => props.pointerOnHover && pointerCSS};
 `;
 
-const TableRow = memo(
-  ({
-    id,
-    keyField,
-    columns,
-    row,
-    onRowClicked,
-    selectableRows,
-    expandableRows,
-    striped,
-    highlightOnHover,
-    pointerOnHover,
-    expandableRowsComponent,
-    expandableDisabledField,
-    defaultExpanded,
-    selectableRowsDisabledField,
-  }) => {
-    const [expanded, setExpanded] = useState(defaultExpanded);
-    const handleRowClick = useCallback(e => {
-      // use event delegation allow events to propogate only when the element with data-tag __react-data-table--click-clip___ is present
-      if (e.target && e.target.getAttribute('data-tag') === '___react-data-table--click-clip___') {
-        onRowClicked(row, e);
-      }
-    }, [onRowClicked, row]);
-    return (
-      <>
-        <TableRowStyle
-          id={`row-${id}`}
-          striped={striped}
-          highlightOnHover={highlightOnHover}
-          pointerOnHover={pointerOnHover}
-          onClick={handleRowClick}
-          className="rdt_TableRow"
-        >
-          {selectableRows && (
-            <TableCellCheckbox
-              name={`select-row-${row[keyField]}`}
-              row={row}
-              disabled={
-                selectableRowsDisabledField
-                  ? row[selectableRowsDisabledField]
-                  : false
+const TableRow = memo(({
+  id,
+  keyField,
+  columns,
+  row,
+  onRowClicked,
+  selectableRows,
+  expandableRows,
+  striped,
+  highlightOnHover,
+  pointerOnHover,
+  expandableRowsComponent,
+  expandableDisabledField,
+  defaultExpanded,
+  selectableRowsDisabledField,
+}) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+  const handleRowClick = useCallback(e => {
+    // use event delegation allow events to propogate only when the element with data-tag ___react-data-table-allow-propagation___ is present
+    if (e.target && e.target.getAttribute('data-tag') === '___react-data-table-allow-propagation___') {
+      onRowClicked(row, e);
+    }
+  }, [onRowClicked, row]);
+
+  return (
+    <>
+      <TableRowStyle
+        id={`row-${id}`}
+        striped={striped}
+        highlightOnHover={highlightOnHover}
+        pointerOnHover={pointerOnHover}
+        onClick={handleRowClick}
+        className="rdt_TableRow"
+      >
+        {selectableRows && (
+          <TableCellCheckbox
+            name={`select-row-${row[keyField]}`}
+            row={row}
+disabled={		        )}
+                selectableRowsDisabledField		
+                  ? row[selectableRowsDisabledField]		
+                  : false		
               }
-            />
-          )}
+          />
+        )}
 
           {expandableRows && (
             <TableCellExpander
@@ -111,15 +111,15 @@ const TableRow = memo(
             />
           )}
 
-          {columns.map(column => (
-            <TableCell
-              key={`cell-${column.id}-${row[keyField]}`}
-              column={column}
-              row={row}
-              rowClickable={!!onRowClicked || column.button}
-            />
-          ))}
-        </TableRowStyle>
+        {columns.map(column => (
+          <TableCell
+            id={`cell-${column.id}-${row[keyField]}`}
+            key={`cell-${column.id}-${row[keyField]}`}
+            column={column}
+            row={row}
+          />
+        ))}
+      </TableRowStyle>
 
         {expandableRows && expanded && (
           <ExpanderRow key={`expander--${row[keyField]}`} data={row}>

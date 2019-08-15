@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import DataTable from '../DataTable';
 
 // eslint-disable-next-line arrow-body-style
@@ -17,8 +17,6 @@ const dataMock = colProps => {
     data: [{ id: 1, some: { name: 'Apple' } }, { id: 2, some: { name: 'Zuchinni' } }],
   };
 };
-
-afterEach(cleanup);
 
 test('should render and empty table correctly', () => {
   const { container } = render(<DataTable data={[]} columns={[]} />);
@@ -151,6 +149,18 @@ describe('DataTable::columns', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when column.sortable = true', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should render correctly when column.wrap = true', () => {
     const mock = dataMock({ wrap: true });
     const { container } = render(
@@ -199,6 +209,47 @@ describe('DataTable::columns', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should not call onRowClicked when ignoreRowClick = true', () => {
+    const onRowClickedMock = jest.fn();
+    const mock = dataMock({ ignoreRowClick: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowClicked={onRowClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowClickedMock).not.toBeCalled();
+  });
+
+  test('should not call onRowClicked when button = true', () => {
+    const onRowClickedMock = jest.fn();
+    const mock = dataMock({ button: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowClicked={onRowClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowClickedMock).not.toBeCalled();
+  });
+
+  test('should render correctly when ignoreRowClick = true', () => {
+    const mock = dataMock({ ignoreRowClick: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 
   test('should render correctly when column.cell is set to a component', () => {
     const mock = dataMock({ cell: row => <div>{row.some.name}</div> });
@@ -481,8 +532,21 @@ describe('DataTable::sorting', () => {
     expect(onSortMock).not.toBeCalled();
   });
 
-  test('should render correctly with a default sort field', () => {
+  test('should render correctly with a default sort field and the native sort icon', () => {
     const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly with a default sort field and the icon to the right when column.right = true and the native sort icon', () => {
+    const mock = dataMock({ sortable: true, right: true });
     const { container } = render(
       <DataTable
         data={mock.data}
@@ -589,6 +653,20 @@ describe('DataTable::sorting', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly with a custom sortIcon and column.right = true', () => {
+    const mock = dataMock({ sortable: true, right: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        sortIcon={<div>ASC</div>}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should render correctly with a defaultSortAsc = false', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
@@ -600,6 +678,37 @@ describe('DataTable::sorting', () => {
       />,
     );
 
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly and bypass internal sort when sortServer = true and asc sort', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        sortServer
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // note row order should not change, but sort arrows should
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly and bypass internal sort when sortServer = true and desc sort', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        sortServer
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // note row order should not change, but sort arrows should
     expect(container.firstChild).toMatchSnapshot();
   });
 });
@@ -709,22 +818,6 @@ describe('DataTable::selectableRows', () => {
     expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(false);
   });
 
-  // TODO: revist what this does actually does
-  test('should render correctly when selectableRows is true and a single row is selected', () => {
-    const mock = dataMock();
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        selectableRows
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table--click-clip___"]'));
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   test('should render correctly when selectableRows is true and a single row is checked', () => {
     const mock = dataMock();
     const { container } = render(
@@ -792,7 +885,7 @@ describe('DataTable::selectableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table--click-clip___"]'));
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
 
     expect(rowClickedMock.mock.calls[0][0]).toEqual(mock.data[0]);
     expect(rowClickedMock.mock.calls[0][1]).toBeDefined(); // TODO: mock event?
@@ -903,6 +996,36 @@ describe('DataTable::Pagination', () => {
     fireEvent.click(container.querySelector('div[id="column-some.name"]'));
     expect(container.firstChild).toMatchSnapshot();
     expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
+  });
+
+  test('should navigate back one page if there is only 1 item and it is removed from the data', () => {
+    const mock = dataMock();
+    const mockOneDeleted = dataMock().data.slice(0, 1);
+
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    // move to last page
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+
+    rerender(
+      <DataTable
+        data={mockOneDeleted}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should call onChangePage with the correct values if paged forward', () => {
@@ -1216,7 +1339,7 @@ describe('DataTable::Header', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table--click-clip___"]'));
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
 
     expect(container.firstChild).toMatchSnapshot();
   });

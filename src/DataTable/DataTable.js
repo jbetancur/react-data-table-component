@@ -76,6 +76,7 @@ const DataTable = memo(({
   sortIcon,
   onSort,
   sortFunction,
+  sortServer,
   expandableRowsComponent,
   expandableDisabledField,
   defaultExpandedField,
@@ -110,7 +111,15 @@ const DataTable = memo(({
     selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
-  const sortedData = useMemo(() => sort(data, sortColumn, sortDirection, sortFunction), [data, sortColumn, sortDirection, sortFunction]);
+  const sortedData = useMemo(() => {
+    // server-side sorting bypasses internal sorting
+    if (!sortServer) {
+      return sort(data, sortColumn, sortDirection, sortFunction);
+    }
+
+    return data;
+  }, [data, sortColumn, sortDirection, sortFunction, sortServer]);
+
   const calculatedRows = useMemo(() => {
     if (pagination && !paginationServer) {
       // when using client-side pagination we can just slice the data set
@@ -130,24 +139,24 @@ const DataTable = memo(({
 
     useDidUpdateEffect(() => {
       onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
-    }, [allSelected, onTableUpdate, selectedCount, selectedRows, sortColumn, sortDirection]);
+    }, [allSelected, selectedCount, selectedRows, sortColumn, sortDirection]);
   }
 
   useDidUpdateEffect(() => {
     onRowSelected({ allSelected, selectedCount, selectedRows });
-  }, [allSelected, onTableUpdate, selectedCount, selectedRows]);
+  }, [allSelected, selectedCount, selectedRows]);
 
   useDidUpdateEffect(() => {
     onChangePage(currentPage, paginationTotalRows || data.length);
-  }, [currentPage, onChangePage]);
+  }, [currentPage]);
 
   useDidUpdateEffect(() => {
     onChangeRowsPerPage(rowsPerPage, currentPage);
-  }, [rowsPerPage, onChangeRowsPerPage]);
+  }, [rowsPerPage]);
 
   useDidUpdateEffect(() => {
     onSort(selectedColumn, sortDirection);
-  }, [onSort, sortColumn, sortDirection]);
+  }, [sortColumn, sortDirection]);
 
   if (clearSelectedRows !== selectedRowsFlag) {
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
@@ -160,6 +169,12 @@ const DataTable = memo(({
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
+
+  // for client-side pagination it should navigate back one page when there is only 1 item on the last page and it is removed from the data set
+  // as long as there is data and the calculated rows (the rows calculated for the current page slice) are 0
+  if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {
+    handleChangePage(currentPage - 1);
+  }
 
   const handleChangeRowsPerPage = newRowsPerPage => {
     const rowCount = paginationTotalRows || calculatedRows.length;

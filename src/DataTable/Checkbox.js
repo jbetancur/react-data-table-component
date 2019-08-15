@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { handleFunctionProps } from './util';
+import { handleFunctionProps, noop } from './util';
 
-const baseCheckboxStyle = { fontSize: '18px', marginLeft: '9px' };
+const calculateBaseStyle = disabled => ({
+  fontSize: '18px',
+  ...!disabled && { cursor: 'pointer' },
+  marginLeft: '9px',
+});
 
 const Checkbox = ({
   component,
@@ -21,27 +25,29 @@ const Checkbox = ({
   };
 
   const TagName = component;
-  const baseStyle = TagName !== 'input' ? componentOptions.style : { ...baseCheckboxStyle, cursor: disabled ? 'not-allowed' : 'pointer' };
-  const resolvedComponentOptions = handleFunctionProps(componentOptions, indeterminate);
+  const calculatedStyle = calculateBaseStyle(disabled);
+  const baseStyle = TagName !== 'input' ? componentOptions.style : calculatedStyle;
+  const resolvedComponentOptions = useMemo(() => handleFunctionProps(componentOptions, indeterminate), [componentOptions, indeterminate]);
 
   return (
     <TagName
       type="checkbox"
-      {...resolvedComponentOptions}
       // allow this component to fully control these options
       ref={setCheckboxRef}
       style={baseStyle}
-      onClick={onClick}
+      onClick={disabled ? noop : onClick}
       name={name}
       aria-label={name}
       checked={checked}
-      onChange={() => null} // prevent uncontrolled checkbox warnings -  we don't need onChange
       disabled={disabled}
+      {...resolvedComponentOptions}
+      onChange={noop} // prevent uncontrolled checkbox warnings -  we don't need onChange
     />
   );
 };
 
 Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
   indeterminate: PropTypes.bool,
   component: PropTypes.oneOfType([
     PropTypes.string,
@@ -50,7 +56,7 @@ Checkbox.propTypes = {
   ]),
   componentOptions: PropTypes.object,
   checked: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
 };
@@ -62,6 +68,7 @@ Checkbox.defaultProps = {
     style: {},
   },
   checked: false,
+  disabled: false,
   onClick: null,
   disabled: false,
 };

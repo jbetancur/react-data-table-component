@@ -36,7 +36,7 @@ class AdvancedPaginationTable extends Component {
     this.setState({ loading: true });
 
     const response = await axios.get(
-      `https://reqres.in/api/users?page=1&per_page=${perPage}`,
+      `https://reqres.in/api/users?page=1&per_page=${perPage}&delay=1`,
     );
 
     this.setState({
@@ -52,7 +52,7 @@ class AdvancedPaginationTable extends Component {
     this.setState({ loading: true });
 
     const response = await axios.get(
-      `https://reqres.in/api/users?page=${page}&per_page=${perPage}`,
+      `https://reqres.in/api/users?page=${page}&per_page=${perPage}&delay=1`,
     );
 
     this.setState({
@@ -65,7 +65,7 @@ class AdvancedPaginationTable extends Component {
     this.setState({ loading: true });
 
     const response = await axios.get(
-      `https://reqres.in/api/users?page=${page}&per_page=${perPage}`,
+      `https://reqres.in/api/users?page=${page}&per_page=${perPage}&delay=1`,
     );
 
     this.setState({
