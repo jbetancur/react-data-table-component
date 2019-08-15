@@ -85,6 +85,7 @@ const DataTable = memo(({
   clearSelectedRows,
   onTableUpdate, // Deprecated
   onRowSelected,
+  selectableRowsDisabledField,
 }) => {
   const initialState = {
     allSelected: false,
@@ -211,6 +212,7 @@ const DataTable = memo(({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
+    selectableRowsDisabledField,
   };
 
   return (
