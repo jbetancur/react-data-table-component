@@ -25,14 +25,13 @@ const Checkbox = ({
   };
 
   const TagName = component;
-  const calculatedStyle = calculateBaseStyle(disabled);
-  const baseStyle = TagName !== 'input' ? componentOptions.style : calculatedStyle;
+  const baseStyle = TagName !== 'input' ? componentOptions.style : calculateBaseStyle(disabled);
   const resolvedComponentOptions = useMemo(() => handleFunctionProps(componentOptions, indeterminate), [componentOptions, indeterminate]);
 
   return (
     <TagName
-      type="checkbox"
       // allow this component to fully control these options
+      type="checkbox"
       ref={setCheckboxRef}
       style={baseStyle}
       onClick={disabled ? noop : onClick}
