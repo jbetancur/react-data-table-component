@@ -16,9 +16,8 @@ const TableColStyle = styled(CellBase)`
 const TableCol = () => {
   const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowsDisabledField } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
-  const rows = data.filter(
-    row => !row[selectableRowsDisabledField],
-  );
+  const rows = data.filter(row => !row[selectableRowsDisabledField]);
+  const isDisabled = rows.length === 0;
   const handleSelectAll = () => dispatch({ type: 'SELECT_ALL', rows });
 
   return (
@@ -30,6 +29,7 @@ const TableCol = () => {
         onClick={handleSelectAll}
         checked={allSelected}
         indeterminate={indeterminate}
+        disabled={isDisabled}
       />
     </TableColStyle>
   );

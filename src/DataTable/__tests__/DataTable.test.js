@@ -849,6 +849,65 @@ describe('DataTable::selectableRows', () => {
     expect(container.querySelector('input[name="select-row-1"]').checked).toBe(false);
   });
 
+  test('select-all-rows should only check non disabled rows', () => {
+    const mock = dataMock();
+    mock.data[0].disabled = true;
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsDisabledField="disabled"
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name=select-all-rows]'));
+
+    expect(container.querySelector('input[name="select-row-1"]').checked).toBe(false);
+    expect(container.querySelector('input[name="select-row-2"]').checked).toBe(true);
+  });
+
+  test('should not be checked if the selectableRow is disabled', () => {
+    const mock = dataMock();
+    mock.data[0].disabled = true;
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsDisabledField="disabled"
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.querySelector('input[name="select-row-1"]').checked).toBe(false);
+  });
+
+  test('select-all-rows should be disabled if all rows are disabled', () => {
+    const mock = dataMock();
+    mock.data[0].disabled = true;
+    mock.data[1].disabled = true;
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsDisabledField="disabled"
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name=select-all-rows]'));
+
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(false);
+    expect(container.querySelector('input[name="select-row-1"]').checked).toBe(false);
+    expect(container.querySelector('input[name="select-row-2"]').checked).toBe(false);
+  });
+
   test('should render correctly when clearSelectedRows is toggled', () => {
     const mock = dataMock();
     const { container, rerender } = render(
