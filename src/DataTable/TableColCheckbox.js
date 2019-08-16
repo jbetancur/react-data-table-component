@@ -17,7 +17,7 @@ const TableCol = () => {
   const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowsDisabledField } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = data.filter(
-    datam => !datam[selectableRowsDisabledField],
+    row => !row[selectableRowsDisabledField],
   );
   const handleSelectAll = () => dispatch({ type: 'SELECT_ALL', rows });
 
