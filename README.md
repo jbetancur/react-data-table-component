@@ -132,6 +132,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnescessary re-renders everytime your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
+| selectableRowsDisabledField | string | no |  | Disable some rows from selection based on `bool` field |
 
 #### Row Expander
 | Property | Type | Required | Default | Description |

@@ -14,9 +14,12 @@ const TableColStyle = styled(CellBase)`
 `;
 
 const TableCol = () => {
-  const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps } = useTableContext();
+  const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowsDisabledField } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
-  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL', rows: data });
+  const rows = data.filter(
+    row => !row[selectableRowsDisabledField],
+  );
+  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL', rows });
 
   return (
     <TableColStyle className="rdt_TableCol">
