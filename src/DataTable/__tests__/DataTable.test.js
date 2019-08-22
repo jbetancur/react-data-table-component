@@ -24,7 +24,7 @@ test('should render and empty table correctly', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('should render correctly if the keyField is overriden', () => {
+test('should render correctly if the keyField is overridden', () => {
   const mock = dataMock();
   const data = [{ uuid: 123, some: { name: 'Henry the 8th' } }];
   const { container } = render(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
@@ -802,7 +802,7 @@ describe('DataTable::selectableRows', () => {
     expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
   });
 
-  test('select-all-rows should be false is all rows is de-selected', () => {
+  test('select-all-rows should be false and not when all rows is de-selected', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
@@ -831,6 +831,55 @@ describe('DataTable::selectableRows', () => {
     fireEvent.click(container.querySelector('input[name="select-row-1"]'));
 
     expect(container.querySelector('input[name="select-row-1"]').checked).toBe(true);
+    expect(container.querySelector('input[name="select-all-rows"]').indeterminate).toBe(true);
+  });
+
+  test('select-all-rows should not be indeterminate when all rows are selected', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+    fireEvent.click(container.querySelector('input[name="select-row-2"]'));
+
+    expect(container.querySelector('input[name="select-all-rows"]').indeterminate).toBe(false);
+  });
+
+  test('select-all-rows should be indeterminate when a single row is selected', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.querySelector('input[name="select-all-rows"]').indeterminate).toBe(true);
+  });
+
+  test('select-all-rows should be indeterminate when a row is selected ', () => {
+    const mock = dataMock();
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsPreSelectedField="selected"
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.querySelector('input[name="select-all-rows"]').indeterminate).toBe(true);
   });
 
   test('should render correctly when selectableRows is true and a single row is un-checked', () => {
@@ -906,6 +955,41 @@ describe('DataTable::selectableRows', () => {
     expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(false);
     expect(container.querySelector('input[name="select-row-1"]').checked).toBe(false);
     expect(container.querySelector('input[name="select-row-2"]').checked).toBe(false);
+  });
+
+  test('should be checked if a row is pre-selected and select-all-rows should indeterminate if not all rows are selected', () => {
+    const mock = dataMock();
+    mock.data[0].selected = true;
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsPreSelectedField="selected"
+      />,
+    );
+
+    expect(container.querySelector('input[name="select-row-1"]').checked).toBe(true);
+    expect(container.querySelector('input[name="select-all-rows"]').indeterminate).toBe(true);
+  });
+
+  test('select-all-rows should be checked if the all rows are pre-selected but select-all-rows should not be indeterminate', () => {
+    const mock = dataMock();
+    mock.data[0].selected = true;
+    mock.data[1].selected = true;
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsPreSelectedField="selected"
+      />,
+    );
+
+    expect(container.querySelector('input[name="select-all-rows"]').checked).toBe(true);
+    expect(container.querySelector('input[name="select-all-rows"]').indeterminate).toBe(false);
   });
 
   test('should render correctly when clearSelectedRows is toggled', () => {
@@ -1251,7 +1335,7 @@ describe('DataTable::Pagination', () => {
   });
 });
 
-describe('DataTablke::subHeader', () => {
+describe('DataTable::subHeader', () => {
   test('should render correctly when a subheader is enabled', () => {
     const mock = dataMock();
     const { container } = render(

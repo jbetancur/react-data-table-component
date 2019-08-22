@@ -1,7 +1,7 @@
 
 import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
-import tableDataItems from '../constants/sampleDeserts';
+import tableDataItems from '../constants/sampleDesserts';
 import DataTable from '../../../src/index';
 
 const OptimizedHooks = () => {

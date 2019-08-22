@@ -1,21 +1,19 @@
-
-import React from 'react';
 import { storiesOf } from '@storybook/react';
-import data from '../constants/sampleDesserts';
+import React from 'react';
+
 import DataTable from '../../../src/DataTable/DataTable';
+import data from '../constants/sampleDesserts';
 
 const columns = [
   {
     name: 'Name',
     selector: 'name',
     sortable: true,
-    grow: 2,
   },
   {
     name: 'Type',
     selector: 'type',
     sortable: true,
-    hide: 'sm',
   },
   {
     name: 'Calories (g)',
@@ -28,57 +26,52 @@ const columns = [
     selector: 'fat',
     sortable: true,
     right: true,
-    hide: 'md',
   },
   {
     name: 'Carbs (g)',
     selector: 'carbs',
     sortable: true,
     right: true,
-    hide: 'md',
   },
   {
     name: 'Protein (g)',
     selector: 'protein',
     sortable: true,
     right: true,
-    hide: 'md',
   },
   {
     name: 'Sodium (mg)',
     selector: 'sodium',
     sortable: true,
     right: true,
-    hide: 'md',
   },
   {
     name: 'Calcium (%)',
     selector: 'calcium',
     sortable: true,
     right: true,
-    hide: 'md',
   },
   {
     name: 'Iron (%)',
     selector: 'iron',
     sortable: true,
     right: true,
-    hide: 'md',
   },
 ];
-const BasicTable = () => {
-  // eslint-disable-next-line no-console
-  const handleSort = (column, sortDirection) => console.log(column.selector, sortDirection);
 
-  return (
-    <DataTable
-      title="Desserts"
-      columns={columns}
-      data={data}
-      onSort={handleSort}
-    />
-  );
-};
+const customData = data.map(datum => ({ ...datum, preSelected: false }));
 
-storiesOf('Basic', module)
-  .add('Responsive: Hiding Columns', BasicTable);
+customData[1].preSelected = true;
+customData[3].preSelected = true;
+
+const BasicSelectDisabledRow = () => (
+  <DataTable
+    title="Desserts"
+    columns={columns}
+    data={customData}
+    selectableRows
+    selectableRowsPreSelectedField="preSelected"
+  />
+);
+
+storiesOf('Basic', module).add('Selectable: Pre-selected Row', BasicSelectDisabledRow);

@@ -26212,7 +26212,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 </div>
 `;
 
-exports[`DataTablke::subHeader should render correctly when a subheader is enabled 1`] = `
+exports[`DataTable::subHeader should render correctly when a subheader is enabled 1`] = `
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -26632,7 +26632,7 @@ exports[`DataTablke::subHeader should render correctly when a subheader is enabl
 </div>
 `;
 
-exports[`DataTablke::subHeader should render correctly with center align 1`] = `
+exports[`DataTable::subHeader should render correctly with center align 1`] = `
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -27052,7 +27052,7 @@ exports[`DataTablke::subHeader should render correctly with center align 1`] = `
 </div>
 `;
 
-exports[`DataTablke::subHeader should render correctly with left align 1`] = `
+exports[`DataTable::subHeader should render correctly with left align 1`] = `
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -27472,7 +27472,7 @@ exports[`DataTablke::subHeader should render correctly with left align 1`] = `
 </div>
 `;
 
-exports[`DataTablke::subHeader should render correctly with right align 1`] = `
+exports[`DataTable::subHeader should render correctly with right align 1`] = `
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -27892,7 +27892,7 @@ exports[`DataTablke::subHeader should render correctly with right align 1`] = `
 </div>
 `;
 
-exports[`DataTablke::subHeader should render when subHeaderWrap is false 1`] = `
+exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;

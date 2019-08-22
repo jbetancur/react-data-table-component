@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import DataTable from '../../../src/DataTable/DataTable';
-import data from '../constants/sampleDeserts';
+import data from '../constants/sampleDesserts';
 
 const columns = [
   {
@@ -72,7 +72,7 @@ customData[3].isOutOfStock = true;
 
 const BasicSelectDisabledRow = () => (
   <DataTable
-    title="Deserts"
+    title="Desserts"
     columns={columns}
     data={customData}
     selectableRows
