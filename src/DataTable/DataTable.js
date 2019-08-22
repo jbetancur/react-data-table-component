@@ -33,8 +33,12 @@ const DataTable = memo(({
   striped,
   highlightOnHover,
   pointerOnHover,
+  selectableRows,
+  selectableRowsDisabledField,
+  selectableRowsPreSelectedField,
   selectableRowsComponent,
   selectableRowsComponentProps,
+  onRowSelected,
   expandableIcon,
   onChangeRowsPerPage,
   onChangePage,
@@ -70,7 +74,6 @@ const DataTable = memo(({
   subHeaderComponent,
   contextTitle,
   contextActions,
-  selectableRows,
   expandableRows,
   onRowClicked,
   sortIcon,
@@ -84,13 +87,14 @@ const DataTable = memo(({
   defaultSortAsc,
   clearSelectedRows,
   onTableUpdate, // Deprecated
-  onRowSelected,
-  selectableRowsDisabledField,
 }) => {
+  const preSelectedRows = selectableRowsPreSelectedField
+    ? data.filter(row => row[selectableRowsPreSelectedField])
+    : [];
   const initialState = {
-    allSelected: false,
-    selectedCount: 0,
-    selectedRows: [],
+    allSelected: preSelectedRows.length === data.length,
+    selectedCount: preSelectedRows.length,
+    selectedRows: preSelectedRows,
     sortColumn: defaultSortField,
     selectedColumn: {},
     sortDirection: getSortDirection(defaultSortAsc),
@@ -201,6 +205,8 @@ const DataTable = memo(({
     keyField,
     contextTitle,
     contextActions,
+    selectableRowsPreSelectedField,
+    selectableRowsDisabledField,
     selectableRowsComponent,
     selectableRowsComponentProps,
     expandableIcon,
@@ -212,7 +218,6 @@ const DataTable = memo(({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
-    selectableRowsDisabledField,
   };
 
   return (
