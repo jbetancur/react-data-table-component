@@ -34,6 +34,7 @@ const BasicSelectable = () => (
     columns={columns}
     data={data}
     selectableRows
+    selectableRowsSelectedField="selected"
   />
 );
 

@@ -6,7 +6,7 @@ import differenceBy from 'lodash/differenceBy';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
 import CustomMaterialMenu from './CustomMaterialMenu';
-import tableDataItems from '../constants/sampleDeserts';
+import tableDataItems from '../constants/sampleDesserts';
 import DataTable, { memoize } from '../../../src/index';
 import './index.css';
 

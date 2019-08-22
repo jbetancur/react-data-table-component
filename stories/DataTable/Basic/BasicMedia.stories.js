@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import data from '../constants/sampleDeserts';
+import data from '../constants/sampleDesserts';
 import DataTable from '../../../src/DataTable/DataTable';
 
 const columns = [
