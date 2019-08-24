@@ -35,6 +35,7 @@ const DataTable = memo(({
   pointerOnHover,
   dense,
   selectableRows,
+  selectableRowsNoSelectAll,
   selectableRowsDisabledField,
   selectableRowsPreSelectedField,
   selectableRowsComponent,
@@ -252,15 +253,22 @@ const DataTable = memo(({
               <ProgressWrapper component={progressComponent} centered={progressCentered} />
             )}
 
-            {!data.length > 0 && !progressPending &&
-              <NoData component={noDataComponent} />}
+            {!data.length > 0 && !progressPending && (
+              <NoData component={noDataComponent} />
+            )}
 
             {data.length > 0 && !progressPending && (
               <Table disabled={disabled} className="rdt_Table">
                 <TableHead className="rdt_TableHead">
                   <TableHeadRow className="rdt_TableHeadRow" dense={dense}>
-                    {selectableRows && <TableColCheckbox />}
-                    {expandableRows && <CellBase style={{ flex: '0 0 56px' }} />}
+                    {selectableRows && (
+                      selectableRowsNoSelectAll
+                        ? <CellBase style={{ flex: '0 0 48px' }} />
+                        : <TableColCheckbox />
+                    )}
+                    {expandableRows && (
+                      <CellBase style={{ flex: '0 0 56px' }} />
+                    )}
                     {columnsMemo.map(column => (
                       <TableCol
                         key={column.id}

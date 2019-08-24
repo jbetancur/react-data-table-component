@@ -13,6 +13,7 @@ export const propTypes = {
     PropTypes.node,
   ]),
   selectableRows: PropTypes.bool,
+  selectableRowsNoSelectAll: PropTypes.bool,
   selectableRowsPreSelectedField: PropTypes.string,
   selectableRowsDisabledField: PropTypes.string,
   selectableRowsComponent: PropTypes.oneOfType([
@@ -137,6 +138,7 @@ export const defaultProps = {
   title: '',
   keyField: 'id',
   selectableRows: false,
+  selectableRowsNoSelectAll: false,
   selectableRowsPreSelectedField: '',
   selectableRowsDisabledField: '',
   selectableRowsComponent: 'input',

@@ -129,6 +129,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
+| selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
 | onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
