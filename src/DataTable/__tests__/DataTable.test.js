@@ -53,6 +53,20 @@ test('should render correctly when disabled', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('should not show the TableHead when noTableHead is true', () => {
+  const mock = dataMock();
+  const { container } = render(
+    <DataTable
+      data={mock.data}
+      columns={mock.columns}
+      TableHead
+    />,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+
 describe('DataTable::onRowSelected', () => {
   test('should call onRowSelected with the correct values when select all rows is selected', () => {
     const mock = dataMock();
