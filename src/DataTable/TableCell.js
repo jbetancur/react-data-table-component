@@ -7,7 +7,6 @@ import { getProperty } from './util';
 const TableCellStyle = styled(Cell)`
   font-size: ${props => props.theme.rows.fontSize};
   font-weight: 400;
-  min-height: ${props => props.theme.rows.height};
 
   div:first-child {
     white-space: ${props => (props.column.wrap ? 'normal' : 'nowrap')};
@@ -17,7 +16,7 @@ const TableCellStyle = styled(Cell)`
 `;
 
 const TableCell = memo(({ id, column, row }) => {
-  // apply a tag that TableRow will use to stop event propogation when TableCell is clicked
+  // apply a tag that TableRow will use to stop event propagation when TableCell is clicked
   const dataTag = column.ignoreRowClick || column.button ? null : '___react-data-table-allow-propagation___';
 
   return (

@@ -33,6 +33,7 @@ const DataTable = memo(({
   striped,
   highlightOnHover,
   pointerOnHover,
+  dense,
   selectableRows,
   selectableRowsDisabledField,
   selectableRowsPreSelectedField,
@@ -257,7 +258,7 @@ const DataTable = memo(({
             {data.length > 0 && !progressPending && (
               <Table disabled={disabled} className="rdt_Table">
                 <TableHead className="rdt_TableHead">
-                  <TableHeadRow className="rdt_TableHeadRow">
+                  <TableHeadRow className="rdt_TableHeadRow" dense={dense}>
                     {selectableRows && <TableColCheckbox />}
                     {expandableRows && <CellBase style={{ flex: '0 0 56px' }} />}
                     {columnsMemo.map(column => (
@@ -293,6 +294,7 @@ const DataTable = memo(({
                         striped={striped}
                         highlightOnHover={highlightOnHover}
                         pointerOnHover={pointerOnHover}
+                        dense={dense}
                         expandableRowsComponent={expandableRowsComponentMemo}
                         expandableDisabledField={expandableDisabledField}
                         defaultExpanded={defaultExpanded}

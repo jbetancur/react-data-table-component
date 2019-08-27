@@ -9,7 +9,6 @@ const TableCellCheckboxStyle = styled(CellBase)`
   flex: 0 0 48px;
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
-  min-height: ${props => props.theme.rows.height};
 `;
 
 const TableCellCheckbox = ({ name, row }) => {

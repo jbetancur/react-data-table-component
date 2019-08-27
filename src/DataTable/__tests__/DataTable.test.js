@@ -1592,6 +1592,21 @@ describe('DataTable::pointerOnHover', () => {
   });
 });
 
+describe('DataTable::dense', () => {
+  test('should render correctly when dense', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        dense
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
 describe('DataTable::Theming', () => {
   test('should render correctly when rows spaced', () => {
     const mock = dataMock();

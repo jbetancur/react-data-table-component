@@ -21,8 +21,6 @@ export const CellBase = styled.div`
   line-height: normal;
   padding-left: calc(${props => props.theme.cells.cellPadding} / 6);
   padding-right: calc(${props => props.theme.cells.cellPadding} / 6);
-  padding-top: calc(${props => props.theme.cells.cellPadding} / 12);
-  padding-bottom: calc(${props => props.theme.cells.cellPadding} / 12);
 `;
 
 // Flex calculations
