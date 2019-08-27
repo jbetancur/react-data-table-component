@@ -12,6 +12,7 @@ export default () => ({
     fontColorActive: 'rgba(0,0,0,.87)',
     backgroundColor: 'transparent',
     height: '48px',
+    denseHeight: '32px',
   },
   contextMenu: {
     backgroundColor: '#e3f2fd',
@@ -31,6 +32,7 @@ export default () => ({
     hoverFontColor: 'rgba(0,0,0,.87)',
     hoverBackgroundColor: 'rgba(0,0,0,.08)',
     height: '48px',
+    denseHeight: '32px',
   },
   cells: {
     cellPadding: '48px',

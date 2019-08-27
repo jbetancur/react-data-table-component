@@ -28,7 +28,7 @@ const stripedCSS = css`
   }
 `;
 
-const hightlightCSS = css`
+const highlightCSS = css`
   &:hover {
     color: ${props => props.theme.rows.hoverFontColor};
     background-color: ${props => props.theme.rows.hoverBackgroundColor};
@@ -45,14 +45,16 @@ const pointerCSS = css`
 
 const TableRowStyle = styled.div`
   display: flex;
+  align-items: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
-  min-height: ${props => props.theme.rows.height};
+  min-height: ${props => (props.dense ? props.theme.rows.denseHeight : props.theme.rows.height)};
   ${props => (props.theme.rows.spacing === 'spaced' ? spacedRowsCSS : defaultRowsCSS)};
   background-color: ${props => props.theme.rows.backgroundColor};
   color: ${props => props.theme.rows.fontColor};
   ${props => props.striped && stripedCSS};
-  ${props => props.highlightOnHover && hightlightCSS};
+  ${props => props.highlightOnHover && highlightCSS};
   ${props => props.pointerOnHover && pointerCSS};
 `;
 
@@ -67,13 +69,14 @@ const TableRow = memo(({
   striped,
   highlightOnHover,
   pointerOnHover,
+  dense,
   expandableRowsComponent,
   expandableDisabledField,
   defaultExpanded,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleRowClick = useCallback(e => {
-    // use event delegation allow events to propogate only when the element with data-tag ___react-data-table-allow-propagation___ is present
+    // use event delegation allow events to propagate only when the element with data-tag ___react-data-table-allow-propagation___ is present
     if (e.target && e.target.getAttribute('data-tag') === '___react-data-table-allow-propagation___') {
       onRowClicked(row, e);
     }
@@ -86,6 +89,7 @@ const TableRow = memo(({
         striped={striped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={pointerOnHover}
+        dense={dense}
         onClick={handleRowClick}
         className="rdt_TableRow"
       >
@@ -139,6 +143,7 @@ TableRow.propTypes = {
   striped: PropTypes.bool.isRequired,
   highlightOnHover: PropTypes.bool.isRequired,
   pointerOnHover: PropTypes.bool.isRequired,
+  dense: PropTypes.bool.isRequired,
   expandableRowsComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

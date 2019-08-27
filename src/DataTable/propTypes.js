@@ -130,6 +130,7 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  dense: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -200,4 +201,5 @@ export const defaultProps = {
   paginationIconLastPage: <LastPageIcon />,
   paginationIconNext: <RightIcon />,
   paginationIconPrevious: <LeftIcon />,
+  dense: false,
 };

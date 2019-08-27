@@ -4,8 +4,13 @@ import { handleFunctionProps, noop } from './util';
 
 const calculateBaseStyle = disabled => ({
   fontSize: '18px',
+  height: '18px',
+  width: '18px',
   ...!disabled && { cursor: 'pointer' },
-  marginLeft: '9px',
+  padding: 0,
+  marginLeft: '8px',
+  verticalAlign: 'middle',
+  position: 'relative',
 });
 
 const Checkbox = ({

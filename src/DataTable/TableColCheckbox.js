@@ -10,7 +10,6 @@ const TableColStyle = styled(CellBase)`
   white-space: nowrap;
   font-size: ${props => props.theme.header.fontSize};
   color: ${props => props.theme.header.fontColor};
-  min-height: ${props => props.theme.header.height};
 `;
 
 const TableCol = () => {
