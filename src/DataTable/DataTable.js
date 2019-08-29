@@ -66,6 +66,7 @@ const DataTable = memo(({
   progressCentered,
   noDataComponent,
   disabled,
+  noTableHead,
   noHeader,
   fixedHeader,
   fixedHeaderScrollHeight,
@@ -259,25 +260,27 @@ const DataTable = memo(({
 
             {data.length > 0 && !progressPending && (
               <Table disabled={disabled} className="rdt_Table">
-                <TableHead className="rdt_TableHead">
-                  <TableHeadRow className="rdt_TableHeadRow" dense={dense}>
-                    {selectableRows && (
-                      selectableRowsNoSelectAll
-                        ? <CellBase style={{ flex: '0 0 48px' }} />
-                        : <TableColCheckbox />
-                    )}
-                    {expandableRows && (
-                      <CellBase style={{ flex: '0 0 56px' }} />
-                    )}
-                    {columnsMemo.map(column => (
-                      <TableCol
-                        key={column.id}
-                        column={column}
-                        sortIcon={sortIcon}
-                      />
-                    ))}
-                  </TableHeadRow>
-                </TableHead>
+                {!noTableHead && (
+                  <TableHead className="rdt_TableHead">
+                    <TableHeadRow className="rdt_TableHeadRow" dense={dense}>
+                      {selectableRows && (
+                        selectableRowsNoSelectAll
+                          ? <CellBase style={{ flex: '0 0 48px' }} />
+                          : <TableColCheckbox />
+                      )}
+                      {expandableRows && (
+                        <CellBase style={{ flex: '0 0 56px' }} />
+                      )}
+                      {columnsMemo.map(column => (
+                        <TableCol
+                          key={column.id}
+                          column={column}
+                          sortIcon={sortIcon}
+                        />
+                      ))}
+                    </TableHeadRow>
+                  </TableHead>
+                )}
 
                 <TableBody
                   fixedHeader={fixedHeader}
