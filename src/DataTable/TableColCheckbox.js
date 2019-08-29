@@ -5,12 +5,11 @@ import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
 const TableColStyle = styled(CellBase)`
-	flex: 0 0 48px;
-	user-select: none;
-	white-space: nowrap;
-	font-size: ${props => props.theme.header.fontSize};
-	color: ${props => props.theme.header.fontColor};
-	min-height: ${props => props.theme.header.height};
+flex: 0 0 48px;
+user-select: none;
+white-space: nowrap;
+font-size: ${props => props.theme.header.fontSize};
+color: ${props => props.theme.header.fontColor};
 `;
 
 const TableCol = () => {

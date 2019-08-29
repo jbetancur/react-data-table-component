@@ -111,11 +111,13 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | className | string | no |  | override the className on the Table wrapper |
 | style | object | no |  | override the style on the Table wrapper |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
-| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specifc props. Your changes will be merged. [See Theming](#theming) for more information |
+| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
+| dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
+| noTableHead | bool | no | false | hides the the sort columns and titles (TableHead) - this will obviously negate sorting |
 
 #### Progress Indicator
 | Property | Type | Required | Default | Description |
@@ -128,8 +130,9 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
+| selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnescessary re-renders everytime your parent component is re-rendered |
+| onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
 | selectableRowsPreSelectedField | string | no |  | a `bool` field on your dataset that controls whether a row is pre-selected. **note** this field can only be one level deep |
@@ -662,7 +665,7 @@ class MyComponent extends Component {
 Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
 
 ## CSS Overrides
-If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. preprocesor you may use the following classNames:
+If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. pre-processor you may use the following classNames:
 
 * rdt_Table
 * rdt_TableRow

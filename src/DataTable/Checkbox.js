@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { handleFunctionProps, noop } from './util';
 
 const calculateBaseStyle = disabled => ({
-	fontSize: '18px',
-	...(!disabled && { cursor: 'pointer' }),
-	marginLeft: '9px',
+  fontSize: '18px',
+  ...!disabled && { cursor: 'pointer' },
+  padding: 0,
+  marginLeft: '8px',
+  verticalAlign: 'middle',
+  position: 'relative',
 });
 
 const Checkbox = ({ id, component, componentOptions, indeterminate, checked, name, onClick, disabled, className }) => {

@@ -6,10 +6,9 @@ import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 
 const TableCellCheckboxStyle = styled(CellBase)`
-	flex: 0 0 48px;
-	font-size: ${props => props.theme.rows.fontSize};
-	color: ${props => props.theme.rows.fontColor};
-	min-height: ${props => props.theme.rows.height};
+  flex: 0 0 48px;
+  font-size: ${props => props.theme.rows.fontSize};
+  color: ${props => props.theme.rows.fontColor};
 `;
 
 const TableCellCheckbox = ({ name, row }) => {

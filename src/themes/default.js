@@ -6,13 +6,13 @@ export default () => ({
 		height: '56px',
 	},
 	header: {
-		fontSize: '14px',
-		fontWeight: 'normal',
+		fontSize: '12px',
+		fontWeight: '500',
 		fontColor: 'rgba(0,0,0,.54)',
 		fontColorActive: 'rgba(0,0,0,.87)',
 		backgroundColor: 'transparent',
 		height: '48px',
-		borderTop: '1px solid #eee',
+		denseHeight: '32px',
 	},
 	contextMenu: {
 		backgroundColor: '#e3f2fd',
@@ -32,7 +32,8 @@ export default () => ({
 		hoverFontColor: 'rgba(0,0,0,.87)',
 		hoverBackgroundColor: 'rgba(0,0,0,.08)',
 		height: 'auto',
-		selectedRowBackgroundColor: '#ebf2fb',
+		denseHeight: '32px',
+		selectedRowBackgroundColor: '#ededed',
 		selectedRowColor: '#202020',
 	},
 	cells: {

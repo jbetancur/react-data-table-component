@@ -34,7 +34,7 @@ const selectedRowCSS = css`
 	color: ${props => props.theme.rows.selectedRowColor} !important;
 `;
 
-const hightlightCSS = css`
+const highlightCSS = css`
 	&:hover {
 		color: ${props => props.theme.rows.hoverFontColor};
 		background-color: ${props => props.theme.rows.hoverBackgroundColor};
@@ -51,14 +51,16 @@ const pointerCSS = css`
 
 const TableRowStyle = styled.div`
 	display: flex;
+	align-items: stretch;
+	align-content: stretch;
 	width: 100%;
 	box-sizing: border-box;
-	min-height: ${props => props.theme.rows.height};
+	min-height: ${props => (props.dense ? props.theme.rows.denseHeight : props.theme.rows.height)};
 	${props => (props.theme.rows.spacing === 'spaced' ? spacedRowsCSS : defaultRowsCSS)};
 	background-color: ${props => props.theme.rows.backgroundColor};
 	color: ${props => props.theme.rows.fontColor};
 	${props => props.striped && stripedCSS};
-	${props => props.highlightOnHover && hightlightCSS};
+	${props => props.highlightOnHover && highlightCSS};
 	${props => props.pointerOnHover && pointerCSS};
 	${props => props.isRowSelected && selectedRowCSS};
 `;
@@ -75,6 +77,7 @@ const TableRow = memo(
 		striped,
 		highlightOnHover,
 		pointerOnHover,
+		dense,
 		expandableRowsComponent,
 		expandableDisabledField,
 		defaultExpanded,
@@ -99,9 +102,10 @@ const TableRow = memo(
 					striped={striped}
 					highlightOnHover={highlightOnHover}
 					pointerOnHover={pointerOnHover}
+					dense={dense}
 					onClick={handleRowClick}
-					isRowSelected={isRowSelected}
 					className={(isRowSelected && 'rdt-selected-row ') + 'rdt_TableRow'}
+					isRowSelected={isRowSelected}
 				>
 					{selectableRows && <TableCellCheckbox name={`select-row-${row[keyField]}`} row={row} />}
 
@@ -146,6 +150,7 @@ TableRow.propTypes = {
 	striped: PropTypes.bool.isRequired,
 	highlightOnHover: PropTypes.bool.isRequired,
 	pointerOnHover: PropTypes.bool.isRequired,
+	dense: PropTypes.bool.isRequired,
 	expandableRowsComponent: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node, PropTypes.func])
 		.isRequired,
 	expandableDisabledField: PropTypes.string.isRequired,

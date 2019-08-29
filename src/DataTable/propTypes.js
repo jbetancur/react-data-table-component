@@ -13,6 +13,7 @@ export const propTypes = {
     PropTypes.node,
   ]),
   selectableRows: PropTypes.bool,
+  selectableRowsNoSelectAll: PropTypes.bool,
   selectableRowsPreSelectedField: PropTypes.string,
   selectableRowsDisabledField: PropTypes.string,
   selectableRowsComponent: PropTypes.oneOfType([
@@ -84,6 +85,7 @@ export const propTypes = {
     PropTypes.func,
   ]),
   disabled: PropTypes.bool,
+  noTableHead: PropTypes.bool,
   noHeader: PropTypes.bool,
   subHeader: PropTypes.bool,
   subHeaderAlign: PropTypes.string,
@@ -130,12 +132,14 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  dense: PropTypes.bool,
 };
 
 export const defaultProps = {
   title: '',
   keyField: 'id',
   selectableRows: false,
+  selectableRowsNoSelectAll: false,
   selectableRowsPreSelectedField: '',
   selectableRowsDisabledField: '',
   selectableRowsComponent: 'input',
@@ -175,6 +179,7 @@ export const defaultProps = {
   overflowYOffset: '250px',
   noDataComponent: 'There are no records to display',
   disabled: false,
+  noTableHead: false,
   noHeader: false,
   subHeader: false,
   subHeaderAlign: 'right',
@@ -200,4 +205,5 @@ export const defaultProps = {
   paginationIconLastPage: <LastPageIcon />,
   paginationIconNext: <RightIcon />,
   paginationIconPrevious: <LeftIcon />,
+  dense: false,
 };

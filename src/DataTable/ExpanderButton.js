@@ -8,8 +8,6 @@ const ButtonStyle = styled.button`
   align-items: center;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   color: ${props => props.theme.expander.expanderColor};
 

@@ -10,7 +10,6 @@ const activeColCSS = css`
 `;
 
 const TableColStyle = styled(Cell)`
-  min-height: ${props => props.theme.header.height};
   ${props => props.column.button && 'text-align: center'};
 `;
 

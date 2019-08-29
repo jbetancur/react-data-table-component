@@ -10,7 +10,6 @@ const TableCellExpanderStyle = styled(CellBase)`
   font-weight: 400;
   font-size: ${props => props.theme.rows.fontSize};
   color: ${props => props.theme.rows.fontColor};
-  min-height: ${props => props.theme.rows.height};
 
   &:not(:first-of-type) {
     padding-left: 0;

@@ -53,6 +53,20 @@ test('should render correctly when disabled', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('should not show the TableHead when noTableHead is true', () => {
+  const mock = dataMock();
+  const { container } = render(
+    <DataTable
+      data={mock.data}
+      columns={mock.columns}
+      TableHead
+    />,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+
 describe('DataTable::onRowSelected', () => {
   test('should call onRowSelected with the correct values when select all rows is selected', () => {
     const mock = dataMock();
@@ -784,6 +798,21 @@ describe('DataTable::selectableRows', () => {
       />,
     );
 
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should not render a select all checkbox when selectableRowsNoSelectAll is true', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsNoSelectAll
+      />,
+    );
+
+    expect(container.querySelector('input[name="select-all-rows"]')).toBe(null);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -1585,6 +1614,21 @@ describe('DataTable::pointerOnHover', () => {
         data={mock.data}
         columns={mock.columns}
         pointerOnHover
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+describe('DataTable::dense', () => {
+  test('should render correctly when dense', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        dense
       />,
     );
 

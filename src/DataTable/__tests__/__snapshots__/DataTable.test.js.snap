@@ -28,6 +28,11 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -45,8 +50,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -61,7 +64,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -83,6 +85,13 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -107,8 +116,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -121,7 +128,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -428,6 +434,11 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -445,8 +456,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -461,7 +470,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c16:first-of-type {
@@ -492,14 +500,11 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c14 {
@@ -507,6 +512,13 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -531,8 +543,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -545,7 +555,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -616,8 +625,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -628,7 +635,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   white-space: nowrap;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  min-height: 48px;
 }
 
 .c5 {
@@ -802,7 +808,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -835,7 +841,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -861,7 +867,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -911,6 +917,11 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -928,8 +939,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -944,7 +953,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -966,6 +974,13 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -990,8 +1005,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1004,7 +1017,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -1303,6 +1315,11 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -1320,8 +1337,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1336,7 +1351,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c9:first-of-type {
@@ -1358,6 +1372,13 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -1382,8 +1403,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1396,7 +1415,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c5:first-of-type {
@@ -1576,6 +1594,11 @@ exports[`DataTable::Header title should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -1593,8 +1616,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1609,7 +1630,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -1631,6 +1651,13 @@ exports[`DataTable::Header title should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -1655,8 +1682,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1669,7 +1694,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -1993,6 +2017,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -2010,8 +2039,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2026,7 +2053,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -2048,6 +2074,13 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -2072,8 +2105,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2086,7 +2117,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -2632,6 +2662,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -2649,8 +2684,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2665,7 +2698,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -2687,6 +2719,13 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -2711,8 +2750,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2725,7 +2762,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -3271,6 +3307,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -3288,8 +3329,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3304,7 +3343,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -3326,6 +3364,13 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -3350,8 +3395,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3364,7 +3407,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -3910,6 +3952,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -3927,8 +3974,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3943,7 +3988,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -3965,6 +4009,13 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -3989,8 +4040,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -4003,7 +4052,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -4549,6 +4597,11 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -4566,8 +4619,6 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -4582,7 +4633,6 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -4604,6 +4654,13 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -4628,8 +4685,6 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -4642,7 +4697,6 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -5190,6 +5244,11 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -5207,8 +5266,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -5223,7 +5280,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -5245,6 +5301,13 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -5282,8 +5345,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -5296,7 +5357,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -5853,6 +5913,11 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -5870,8 +5935,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -5886,7 +5949,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -5908,6 +5970,13 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -5932,8 +6001,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -5946,7 +6013,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -6525,6 +6591,11 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -6542,8 +6613,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -6558,7 +6627,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -6580,6 +6648,13 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -6604,8 +6679,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -6618,7 +6691,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -7172,6 +7244,11 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -7189,8 +7266,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
 }
 
 .c17 {
@@ -7207,8 +7282,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -7223,7 +7296,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c17:first-of-type {
@@ -7251,8 +7323,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   align-items: center;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   color: rgba(0,0,0,.54);
 }
@@ -7279,8 +7349,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 56px;
   -ms-flex: 0 0 56px;
   flex: 0 0 56px;
@@ -7288,7 +7356,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c15:not(:first-of-type) {
@@ -7300,6 +7367,13 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -7327,8 +7401,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -7341,7 +7413,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -7691,6 +7762,11 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -7708,8 +7784,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
 }
 
 .c17 {
@@ -7726,8 +7800,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -7742,7 +7814,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c17:first-of-type {
@@ -7770,8 +7841,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   align-items: center;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   color: rgba(0,0,0,.54);
 }
@@ -7798,8 +7867,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 56px;
   -ms-flex: 0 0 56px;
   flex: 0 0 56px;
@@ -7807,7 +7874,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c15:not(:first-of-type) {
@@ -7819,6 +7885,13 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -7847,8 +7920,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -7861,7 +7932,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -8211,6 +8281,11 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -8228,8 +8303,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -8248,7 +8321,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   justify-content: center;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -8270,6 +8342,13 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -8294,8 +8373,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -8312,7 +8389,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -8609,6 +8685,11 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -8626,8 +8707,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -8642,7 +8721,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -8664,6 +8742,13 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -8688,8 +8773,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -8702,7 +8785,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -9011,6 +9093,11 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -9028,8 +9115,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9044,7 +9129,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -9066,6 +9150,13 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -9090,8 +9181,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9104,7 +9193,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -9413,6 +9501,11 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -9430,8 +9523,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9446,7 +9537,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -9468,6 +9558,13 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -9492,8 +9589,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9506,7 +9601,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -9815,6 +9909,11 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -9832,8 +9931,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9848,7 +9945,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -9870,6 +9966,13 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -9894,8 +9997,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9908,7 +10009,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -10217,6 +10317,11 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -10234,8 +10339,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -10250,7 +10353,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -10272,6 +10374,13 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -10296,8 +10405,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -10310,7 +10417,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   flex-basis: 0;
   max-width: 600px;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -10607,6 +10713,11 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -10624,8 +10735,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -10640,7 +10749,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   min-width: 200px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -10662,6 +10770,13 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -10686,8 +10801,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -10700,7 +10813,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 200px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -10997,6 +11109,11 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -11014,8 +11131,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11034,7 +11149,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   justify-content: flex-end;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -11056,6 +11170,13 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -11080,8 +11201,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11098,7 +11217,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -11395,6 +11513,11 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -11412,8 +11535,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11430,7 +11551,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   max-width: 200px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -11452,6 +11572,13 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -11476,8 +11603,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11492,7 +11617,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   min-width: 100px;
   min-width: 200px;
   max-width: 200px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -11789,6 +11913,11 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -11806,8 +11935,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11822,7 +11949,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -11844,6 +11970,13 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -11868,8 +12001,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11882,7 +12013,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -12179,6 +12309,11 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -12196,8 +12331,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -12216,7 +12349,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   justify-content: center;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -12238,6 +12370,13 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -12262,8 +12401,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -12280,7 +12417,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: 48px;
   text-align: center;
 }
 
@@ -12572,6 +12708,11 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -12589,8 +12730,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -12605,7 +12744,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -12627,6 +12765,13 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -12651,8 +12796,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -12665,7 +12808,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -12958,6 +13100,11 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -12975,8 +13122,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -12992,7 +13137,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   padding: calc(48px / 12);
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -13014,6 +13158,13 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -13038,8 +13189,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13053,7 +13202,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   max-width: 100%;
   min-width: 100px;
   padding: calc(48px / 12);
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -13350,6 +13498,11 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -13367,8 +13520,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13383,7 +13534,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -13405,6 +13555,13 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -13442,8 +13599,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13456,7 +13611,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -13769,6 +13923,11 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -13786,8 +13945,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13802,7 +13959,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -13824,6 +13980,13 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -13848,8 +14011,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13862,7 +14023,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -14159,6 +14319,11 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -14176,8 +14341,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14192,7 +14355,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -14214,6 +14376,13 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -14238,8 +14407,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14252,7 +14419,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -14543,6 +14709,11 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -14560,8 +14731,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14576,7 +14745,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -14598,6 +14766,13 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -14622,8 +14797,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14636,7 +14809,402 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
+}
+
+.c10:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c12"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c13"
+          id="row-1"
+        >
+          <div
+            class="rdt_TableCell c14"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c13"
+          id="row-2"
+        >
+          <div
+            class="rdt_TableCell c14"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::dense should render correctly when dense 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 32px;
+  width: 100%;
+}
+
+.c14 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c14:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c14:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c14 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 32px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
 }
 
 .c10:first-of-type {
@@ -14933,6 +15501,11 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -14950,8 +15523,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14966,7 +15537,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -14988,6 +15558,13 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -15012,8 +15589,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15026,7 +15601,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -15323,6 +15897,11 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -15340,8 +15919,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
 }
 
 .c17 {
@@ -15358,8 +15935,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15374,7 +15949,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c17:first-of-type {
@@ -15402,8 +15976,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   align-items: center;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   color: rgba(0,0,0,.54);
 }
@@ -15430,8 +16002,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 56px;
   -ms-flex: 0 0 56px;
   flex: 0 0 56px;
@@ -15439,7 +16009,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c15:not(:first-of-type) {
@@ -15458,6 +16027,13 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -15482,8 +16058,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15496,7 +16070,6 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -15855,6 +16428,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -15872,8 +16450,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
 }
 
 .c17 {
@@ -15890,8 +16466,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15906,7 +16480,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c17:first-of-type {
@@ -15934,8 +16507,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   color: rgba(0,0,0,.54);
 }
@@ -15962,8 +16533,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 56px;
   -ms-flex: 0 0 56px;
   flex: 0 0 56px;
@@ -15971,7 +16540,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c15:not(:first-of-type) {
@@ -15983,6 +16551,13 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -16007,8 +16582,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16021,7 +16594,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -16371,6 +16943,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -16388,8 +16965,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
 }
 
 .c17 {
@@ -16406,8 +16981,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16422,7 +16995,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c17:first-of-type {
@@ -16450,8 +17022,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   color: rgba(0,0,0,.54);
 }
@@ -16478,8 +17048,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 56px;
   -ms-flex: 0 0 56px;
   flex: 0 0 56px;
@@ -16487,7 +17055,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   font-weight: 400;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c15:not(:first-of-type) {
@@ -16506,6 +17073,13 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -16530,8 +17104,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16544,7 +17116,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -16903,6 +17474,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -16920,8 +17496,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16936,7 +17510,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -16958,6 +17531,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -16982,8 +17562,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16996,7 +17574,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -17295,6 +17872,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -17312,8 +17894,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -17328,7 +17908,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -17350,6 +17929,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -17374,8 +17960,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -17388,7 +17972,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -17687,6 +18270,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -17704,8 +18292,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -17720,7 +18306,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -17742,6 +18327,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -17766,8 +18358,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -17780,7 +18370,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -18081,6 +18670,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -18098,8 +18692,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18114,7 +18706,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -18136,6 +18727,13 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -18160,8 +18758,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18174,7 +18770,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -18475,6 +19070,11 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -18492,8 +19092,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18508,7 +19106,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -18530,6 +19127,13 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -18563,8 +19167,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18577,7 +19179,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -18874,6 +19475,11 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -18891,8 +19497,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18907,7 +19511,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -18929,6 +19532,13 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -18957,8 +19567,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18971,7 +19579,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -20086,6 +20693,11 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -20103,8 +20715,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20119,7 +20729,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -20141,6 +20750,13 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -20165,8 +20781,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20179,7 +20793,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -20478,6 +21091,11 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -20495,8 +21113,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20511,7 +21127,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -20533,6 +21148,13 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -20557,8 +21179,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20571,7 +21191,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -20868,6 +21487,11 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -20885,8 +21509,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20901,7 +21523,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -20923,6 +21544,13 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -20947,8 +21575,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20961,7 +21587,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -21229,7 +21854,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 </div>
 `;
 
-exports[`DataTable::selectableRows should render correctly when selectableRows is true 1`] = `
+exports[`DataTable::selectableRows should not render a select all checkbox when selectableRowsNoSelectAll is true 1`] = `
 .c7 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -21257,7 +21882,28 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
 }
 
 .c16 {
@@ -21274,8 +21920,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21290,7 +21934,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c16:first-of-type {
@@ -21321,14 +21964,11 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   font-size: 13px;
   color: rgba(0,0,0,.87);
-  min-height: 48px;
 }
 
 .c14 {
@@ -21336,6 +21976,13 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -21360,8 +22007,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21374,7 +22019,446 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
+}
+
+.c11:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c12 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="c10"
+          />
+          <div
+            class="rdt_TableCol c11"
+          >
+            <div
+              class="rdt_TableCol_Sortable c12"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c13"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c14"
+          id="row-1"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <input
+              aria-label="select-row-1"
+              name="select-row-1"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              type="checkbox"
+            />
+          </div>
+          <div
+            class="rdt_TableCell c16"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c14"
+          id="row-2"
+        >
+          <div
+            class="rdt_TableCell c15"
+          >
+            <input
+              aria-label="select-row-2"
+              name="select-row-2"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              type="checkbox"
+            />
+          </div>
+          <div
+            class="rdt_TableCell c16"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::selectableRows should render correctly when selectableRows is true 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   min-height: 48px;
+  width: 100%;
+}
+
+.c16 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c16:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c16:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c16 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+  font-size: 13px;
+  color: rgba(0,0,0,.87);
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
 }
 
 .c11:first-of-type {
@@ -21445,8 +22529,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -21457,7 +22539,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   white-space: nowrap;
   font-size: 12px;
   color: rgba(0,0,0,.54);
-  min-height: 48px;
 }
 
 .c5 {
@@ -21621,7 +22702,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -21654,7 +22735,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -21680,7 +22761,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; margin-left: 9px;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -21730,6 +22811,11 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -21747,8 +22833,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21763,7 +22847,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -21785,6 +22868,13 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -21822,8 +22912,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21836,7 +22924,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -22144,6 +23231,11 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -22161,8 +23253,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22177,7 +23267,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -22199,6 +23288,13 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -22239,8 +23335,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22253,7 +23347,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -22561,6 +23654,11 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -22578,8 +23676,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22594,7 +23690,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -22616,6 +23711,13 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -22640,8 +23742,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22654,7 +23754,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -22951,6 +24050,11 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -22968,8 +24072,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22984,7 +24086,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -23006,6 +24107,13 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -23043,8 +24151,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23057,7 +24163,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -23365,6 +24470,11 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -23382,8 +24492,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23398,7 +24506,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -23420,6 +24527,13 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -23457,8 +24571,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23471,7 +24583,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -23779,6 +24890,11 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -23796,8 +24912,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23812,7 +24926,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -23834,6 +24947,13 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -23858,8 +24978,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23872,7 +24990,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -24182,6 +25299,11 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -24199,8 +25321,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -24219,7 +25339,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   justify-content: flex-end;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -24241,6 +25360,13 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -24265,8 +25391,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -24283,7 +25407,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -24593,6 +25716,11 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -24610,8 +25738,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -24630,7 +25756,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   justify-content: flex-end;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -24652,6 +25777,13 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -24689,8 +25821,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -24707,7 +25837,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -25015,6 +26144,11 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -25032,8 +26166,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25048,7 +26180,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -25070,6 +26201,13 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -25107,8 +26245,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25121,7 +26257,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -25429,6 +26564,11 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -25446,8 +26586,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25462,7 +26600,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -25484,6 +26621,13 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -25524,8 +26668,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25538,7 +26680,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -25846,6 +26987,11 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -25863,8 +27009,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25879,7 +27023,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -25901,6 +27044,13 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -25929,8 +27079,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25943,7 +27091,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -26240,6 +27387,11 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -26257,8 +27409,6 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26273,7 +27423,6 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -26295,6 +27444,13 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -26319,8 +27475,6 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26333,7 +27487,6 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -26660,6 +27813,11 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -26677,8 +27835,6 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26693,7 +27849,6 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -26715,6 +27870,13 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -26739,8 +27901,6 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26753,7 +27913,6 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -27080,6 +28239,11 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -27097,8 +28261,6 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -27113,7 +28275,6 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -27135,6 +28296,13 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -27159,8 +28327,6 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -27173,7 +28339,6 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -27500,6 +28665,11 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -27517,8 +28687,6 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -27533,7 +28701,6 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -27555,6 +28722,13 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -27579,8 +28753,6 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -27593,7 +28765,6 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -27920,6 +29091,11 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -27937,8 +29113,6 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -27953,7 +29127,6 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c15:first-of-type {
@@ -27975,6 +29148,13 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -27999,8 +29179,6 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28013,7 +29191,6 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c11:first-of-type {
@@ -28340,6 +29517,11 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -28357,8 +29539,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28373,7 +29553,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -28395,6 +29574,13 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -28419,8 +29605,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28433,7 +29617,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
@@ -28686,6 +29869,402 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 </div>
 `;
 
+exports[`should not show the TableHead when noTableHead is true 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
+  width: 100%;
+}
+
+.c14 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c14:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c14:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c14 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c10:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="rdt_TableHeader c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="rdt_Table c7"
+    >
+      <div
+        class="rdt_TableHead c8"
+      >
+        <div
+          class="rdt_TableHeadRow c9"
+        >
+          <div
+            class="rdt_TableCol c10"
+          >
+            <div
+              class="rdt_TableCol_Sortable c11"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rdt_TableBody c12"
+        offset="250px"
+      >
+        <div
+          class="rdt_TableRow c13"
+          id="row-1"
+        >
+          <div
+            class="rdt_TableCell c14"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="rdt_TableRow c13"
+          id="row-2"
+        >
+          <div
+            class="rdt_TableCell c14"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`should render and empty table correctly 1`] = `
 .c5 {
   color: rgba(0,0,0,.87);
@@ -28880,6 +30459,11 @@ exports[`should render correctly when disabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
   width: 100%;
 }
 
@@ -28897,8 +30481,6 @@ exports[`should render correctly when disabled 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28913,7 +30495,6 @@ exports[`should render correctly when disabled 1`] = `
   min-width: 100px;
   font-size: 13px;
   font-weight: 400;
-  min-height: 48px;
 }
 
 .c14:first-of-type {
@@ -28935,6 +30516,13 @@ exports[`should render correctly when disabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
@@ -28959,8 +30547,6 @@ exports[`should render correctly when disabled 1`] = `
   line-height: normal;
   padding-left: calc(48px / 6);
   padding-right: calc(48px / 6);
-  padding-top: calc(48px / 12);
-  padding-bottom: calc(48px / 12);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28973,7 +30559,6 @@ exports[`should render correctly when disabled 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-  min-height: 48px;
 }
 
 .c10:first-of-type {
