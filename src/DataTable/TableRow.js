@@ -5,6 +5,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
+import { useTableContext } from './DataTableContext';
 
 const defaultRowsCSS = css`
   border-top-style: solid;
@@ -72,6 +73,8 @@ const TableRow = memo(({
   defaultExpanded,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  const { selectedRows } = useTableContext();
+  const isRowSelected = selectedRows.some(srow => srow === row);
   const handleRowClick = useCallback(e => {
     // use event delegation allow events to propogate only when the element with data-tag ___react-data-table-allow-propagation___ is present
     if (e.target && e.target.getAttribute('data-tag') === '___react-data-table-allow-propagation___') {
@@ -87,7 +90,7 @@ const TableRow = memo(({
         highlightOnHover={highlightOnHover}
         pointerOnHover={pointerOnHover}
         onClick={handleRowClick}
-        className="rdt_TableRow"
+        className={`${isRowSelected && 'rdt-selected-row '}rdt_TableRow`}
       >
         {selectableRows && (
           <TableCellCheckbox
