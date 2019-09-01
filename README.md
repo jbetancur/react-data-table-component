@@ -4,7 +4,7 @@
 
 Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries out there, some required heavy customization, were missing out of the box features such as built in sorting and pagination, or required understanding the atmoic structure of html tables.
 
-The goal of this project may change or grow, but it's simply to provide an easy to use interface for creating tables when you don't need complex enterprise capabilities. while still allowing some "leeway" for customization.
+The goal of this project may change or grow, but it's simply to provide an easy to use interface for creating tables when you don't need complex enterprise capabilities, but still allowing some "leeway" for customization.
 
 If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone or heavy "enterprise" capabilities, then this is not the React table library you are looking for 👋
 
