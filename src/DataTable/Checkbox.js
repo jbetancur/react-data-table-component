@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { handleFunctionProps, noop } from './util';
 
@@ -7,11 +7,12 @@ const calculateBaseStyle = disabled => ({
   ...!disabled && { cursor: 'pointer' },
   padding: 0,
   marginLeft: '8px',
+  marginTop: '1px',
   verticalAlign: 'middle',
   position: 'relative',
 });
 
-const Checkbox = ({
+const Checkbox = memo(({
   component,
   componentOptions,
   indeterminate,
@@ -46,7 +47,7 @@ const Checkbox = ({
       onChange={noop} // prevent uncontrolled checkbox warnings -  we don't need onChange
     />
   );
-};
+});
 
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,

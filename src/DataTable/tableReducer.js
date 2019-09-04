@@ -32,9 +32,9 @@ export function tableReducer(state, action) {
     }
 
     case 'ROW_SELECTED': {
-      const { row } = action;
+      const { row, rows, isRowSelected } = action;
 
-      if (state.selectedRows.find(r => r === row)) {
+      if (isRowSelected) {
         return {
           ...state,
           selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
@@ -46,7 +46,7 @@ export function tableReducer(state, action) {
       return {
         ...state,
         selectedCount: state.selectedRows.length + 1,
-        allSelected: state.selectedRows.length + 1 === action.rows.length,
+        allSelected: state.selectedRows.length + 1 === rows.length,
         selectedRows: insertItem(state.selectedRows, row),
       };
     }
