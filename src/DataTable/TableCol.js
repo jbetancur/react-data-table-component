@@ -66,7 +66,7 @@ const TableCol = memo(({
     if (column.sortable) {
       let direction = sortDirection;
       // change sort direction only if sortColumn (currently selected column) is === the newly clicked column
-      // otherwise, retain sort direction if the column is swiched
+      // otherwise, retain sort direction if the column is switched
       if (sortColumn === column.selector) {
         direction = sortDirection === 'asc' ? 'desc' : 'asc';
       }

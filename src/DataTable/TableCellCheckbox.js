@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useTableContext } from './DataTableContext';
@@ -13,9 +13,10 @@ const TableCellCheckboxStyle = styled(CellBase)`
 
 const TableCellCheckbox = ({ name, row }) => {
   const { dispatch, data, selectedRows, selectableRowsComponent, selectableRowsComponentProps, selectableRowsDisabledField } = useTableContext();
-  const handleOnRowSelected = () => dispatch({ type: 'ROW_SELECTED', row, rows: data });
-  const isRowSelected = useMemo(() => selectedRows.some(srow => srow === row), [row, selectedRows]);
+  const isRowSelected = selectedRows.some(srow => srow === row);
   const isRowDisabled = row[selectableRowsDisabledField];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleOnRowSelected = useCallback(() => dispatch({ type: 'ROW_SELECTED', row, rows: data, isRowSelected }), [data, isRowSelected, row]);
 
   return (
     <TableCellCheckboxStyle
