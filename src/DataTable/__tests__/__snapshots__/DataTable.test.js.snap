@@ -808,7 +808,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -841,7 +841,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -867,7 +867,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -22262,7 +22262,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -22288,7 +22288,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -22702,7 +22702,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -22735,7 +22735,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -22761,7 +22761,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
