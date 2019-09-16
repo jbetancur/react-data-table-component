@@ -573,7 +573,7 @@ Got it? Let's try this again with the optimal solution:
 import React, { Component } from 'react';
 import DataTable, { memoize } from 'react-data-table';
 
-const onRowSelected = memoize(handleAction => [
+const columns = memoize(handleAction => [
   ...
   {
     cell: () => <Button raised primary onClick={handleAction}>Action</Button>,
