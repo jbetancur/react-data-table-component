@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const TextField = styled.input`
   height: 32px;
@@ -55,5 +55,5 @@ const BasicTable = () => {
   );
 };
 
-storiesOf('Basic', module)
-  .add('Filter/Search', () => <BasicTable />);
+storiesOf('Filtering', module)
+  .add('Using SubHeader', () => <BasicTable />);

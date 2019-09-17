@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -33,5 +33,5 @@ const BasicFixedHeader = () => (
 );
 
 
-storiesOf('Basic', module)
+storiesOf('General', module)
   .add('Fixed Header', BasicFixedHeader);

@@ -1,18 +1,25 @@
 
+
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import differenceBy from 'lodash/differenceBy';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
+import CustomMaterialMenu from '../shared/CustomMaterialMenu';
 import tableDataItems from '../constants/sampleDesserts';
 import DataTable, { memoize } from '../../../src/index';
-import './index.css';
 
 const sortIcon = <FontIcon>arrow_downward</FontIcon>;
 const selectProps = { uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) };
 const actions = <Button key="add" flat secondary iconChildren="add">Add</Button>;
 const contextActions = memoize(deleteHandler => <Button key="delete" onClick={deleteHandler} style={{ color: 'red' }} icon>delete</Button>);
-const columns = memoize(() => [
+const columns = memoize(deleteHandler => [
+  {
+    cell: row => <CustomMaterialMenu row={row} onDeleteRow={deleteHandler} />,
+    allowOverflow: true,
+    button: true,
+    width: '56px', // custom width for icon button
+  },
   {
     name: 'Name',
     selector: 'name',
@@ -66,6 +73,10 @@ const columns = memoize(() => [
     sortable: true,
     right: true,
   },
+  {
+    cell: () => <Button raised primary>Action</Button>,
+    button: true,
+  },
 ]);
 
 class MaterialTable extends PureComponent {
@@ -109,7 +120,7 @@ class MaterialTable extends PureComponent {
       <Card style={{ height: '100%' }}>
         <DataTable
           title="Desserts"
-          columns={columns()}
+          columns={columns(this.deleteOne)}
           data={data}
           selectableRows
           highlightOnHover
@@ -130,4 +141,4 @@ class MaterialTable extends PureComponent {
 }
 
 storiesOf('UI Libraries', module)
-  .add('react-md', () => <MaterialTable />);
+  .add('react-md: Action Buttons', () => <MaterialTable />);

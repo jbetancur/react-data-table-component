@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -22,20 +22,14 @@ const columns = [
   },
 ];
 
-const BasicTable = () => {
-  // eslint-disable-next-line no-console
-  const handleSort = (column, sortDirection) => console.log(column.selector, sortDirection);
+const BasicTable = () => (
+  <DataTable
+    title="Movie List"
+    columns={columns}
+    data={data}
+    defaultSortField="title"
+  />
+);
 
-  return (
-    <DataTable
-      title="Movie List"
-      columns={columns}
-      data={data}
-      onSort={handleSort}
-    />
-  );
-};
-
-
-storiesOf('Basic', module)
+storiesOf('General', module)
   .add('Sortable', BasicTable);

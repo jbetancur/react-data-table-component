@@ -98,5 +98,5 @@ class OptimizedClass extends PureComponent {
   }
 }
 
-storiesOf('Basic', module)
+storiesOf('General', module)
   .add('Optimized: Class', () => <OptimizedClass />);

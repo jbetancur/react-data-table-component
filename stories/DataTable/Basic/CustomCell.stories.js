@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const Button = () => (
   <button type="button">Download</button>
@@ -68,5 +68,5 @@ const BasicTable = () => (
 );
 
 
-storiesOf('Basic', module)
-  .add('Custom Cells', BasicTable);
+storiesOf('Custom Cells', module)
+  .add('Example 1', BasicTable);

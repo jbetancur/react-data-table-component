@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { storiesOf } from '@storybook/react';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -94,5 +94,5 @@ class AdvancedPaginationTable extends Component {
   }
 }
 
-storiesOf('Basic', module)
-  .add('Pagination: Server-Side', () => <AdvancedPaginationTable />);
+storiesOf('Pagination', module)
+  .add('Server-Side', () => <AdvancedPaginationTable />);
