@@ -17739,6 +17739,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   flex-direction: column;
   max-height: 100vh;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c0 {
@@ -18137,6 +18138,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   flex-direction: column;
   max-height: 100px;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c0 {
@@ -18535,6 +18537,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-direction: column;
   max-height: calc(100vh - 250px);
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c0 {
@@ -18935,6 +18938,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-direction: column;
   max-height: calc(100vh - 250px);
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c0 {

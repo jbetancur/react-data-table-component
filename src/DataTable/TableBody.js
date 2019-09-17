@@ -6,6 +6,7 @@ const TableBody = styled.div`
   ${({ fixedHeader, hasOffset, offset, fixedHeaderScrollHeight }) => fixedHeader && css`
     max-height: ${hasOffset ? `calc(${fixedHeaderScrollHeight} - ${offset})` : fixedHeaderScrollHeight};
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   `};
 `;
 
