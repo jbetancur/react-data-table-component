@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import orderBy from 'lodash/orderBy';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 // eslint-disable-next-line arrow-body-style
 const customSort = (rows, field, direction) => {
@@ -51,5 +51,5 @@ const BasicTable = () => {
   );
 };
 
-storiesOf('Basic', module)
-  .add('Sortable: Custom Sort', BasicTable);
+storiesOf('Sorting', module)
+  .add('Custom Sort Function', BasicTable);

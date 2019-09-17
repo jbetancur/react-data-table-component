@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -32,5 +32,5 @@ const BasicTable = () => (
 );
 
 
-storiesOf('Basic', module)
+storiesOf('General', module)
   .add('Dense Rows', BasicTable);

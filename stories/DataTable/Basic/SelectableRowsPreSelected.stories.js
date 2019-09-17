@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 import data from '../constants/sampleDesserts';
 
 const columns = [
@@ -74,4 +74,4 @@ const BasicSelectDisabledRow = () => (
   />
 );
 
-storiesOf('Basic', module).add('Selectable: Pre-selected Row', BasicSelectDisabledRow);
+storiesOf('Selectable Rows', module).add('Pre-selected Row', BasicSelectDisabledRow);

@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -35,5 +35,5 @@ const BasicTable = () => (
 );
 
 
-storiesOf('Basic', module)
-  .add('Pagination: Options', BasicTable);
+storiesOf('Pagination', module)
+  .add('Options', BasicTable);

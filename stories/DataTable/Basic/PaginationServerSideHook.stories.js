@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { storiesOf } from '@storybook/react';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -75,5 +75,5 @@ const AdvancedPaginationTable = () => {
   );
 };
 
-storiesOf('Basic', module)
-  .add('Pagination: Server-Side Hooks', () => <AdvancedPaginationTable />);
+storiesOf('Pagination', module)
+  .add('Server-Side Using Hooks', () => <AdvancedPaginationTable />);

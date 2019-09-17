@@ -2,9 +2,32 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import moment from 'moment';
+import styled from 'styled-components';
 import data from '../constants/sampleRMEpisodes';
-import DataTable from '../../../src/DataTable/DataTable';
-import SampleExpandedComponent from './RickExpandedComponent';
+import DataTable from '../../../src/index';
+
+const SampleStyle = styled.div`
+  padding: 16px;
+  display: block;
+  width: 100%;
+
+  p {
+    font-size: 16px;
+    font-weight: 700;
+    word-break: break-all;
+  }
+`;
+
+// eslint-disable-next-line
+const SampleExpandedComponent = ({ data }) => (
+  <SampleStyle>
+    <p>
+      {data.summary}
+    </p>
+    <img height="75%" width="75%" alt={data.image.original} src={data.image.original} />
+  </SampleStyle>
+);
+
 
 const columns = [
   {
@@ -44,5 +67,5 @@ const Expandable = () => (
   />
 );
 
-storiesOf('Basic', module)
-  .add('Expandable: Custom Cell', Expandable);
+storiesOf('Expandable', module)
+  .add('Custom Cells', Expandable);

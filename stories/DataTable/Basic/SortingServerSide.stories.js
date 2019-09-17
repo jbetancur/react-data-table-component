@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { orderBy } from 'lodash';
 import data from '../constants/sampleMovieData';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -23,7 +23,7 @@ const columns = [
   },
 ];
 
-const BasicTable = () => {
+const SortingServerSide = () => {
   const [loading, setLoading] = useState(false);
   const [items, setData] = useState(data);
 
@@ -51,5 +51,5 @@ const BasicTable = () => {
 };
 
 
-storiesOf('Basic', module)
-  .add('Sortable: Server-Side', () => <BasicTable />);
+storiesOf('Sorting', module)
+  .add('Server-Side', () => <SortingServerSide />);

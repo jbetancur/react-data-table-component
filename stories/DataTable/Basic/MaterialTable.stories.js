@@ -1,26 +1,17 @@
 
-
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import differenceBy from 'lodash/differenceBy';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import { Card, Button, FontIcon, Checkbox } from 'react-md';
-import CustomMaterialMenu from './CustomMaterialMenu';
 import tableDataItems from '../constants/sampleDesserts';
 import DataTable, { memoize } from '../../../src/index';
-import './index.css';
 
 const sortIcon = <FontIcon>arrow_downward</FontIcon>;
 const selectProps = { uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) };
 const actions = <Button key="add" flat secondary iconChildren="add">Add</Button>;
 const contextActions = memoize(deleteHandler => <Button key="delete" onClick={deleteHandler} style={{ color: 'red' }} icon>delete</Button>);
-const columns = memoize(deleteHandler => [
-  {
-    cell: row => <CustomMaterialMenu row={row} onDeleteRow={deleteHandler} />,
-    allowOverflow: true,
-    button: true,
-    width: '56px', // custom width for icon button
-  },
+const columns = memoize(() => [
   {
     name: 'Name',
     selector: 'name',
@@ -74,10 +65,6 @@ const columns = memoize(deleteHandler => [
     sortable: true,
     right: true,
   },
-  {
-    cell: () => <Button raised primary>Action</Button>,
-    button: true,
-  },
 ]);
 
 class MaterialTable extends PureComponent {
@@ -101,19 +88,6 @@ class MaterialTable extends PureComponent {
     }
   }
 
-  deleteOne = row => {
-    // eslint-disable-next-line no-alert
-    if (window.confirm(`Are you sure you want to delete:\r ${row.name}?`)) {
-      const { data } = this.state;
-      const index = data.findIndex(r => r === row);
-
-      this.setState(state => ({
-        toggleCleared: !state.toggleCleared,
-        data: [...state.data.slice(0, index), ...state.data.slice(index + 1)],
-      }));
-    }
-  }
-
   render() {
     const { data, toggleCleared } = this.state;
 
@@ -121,7 +95,7 @@ class MaterialTable extends PureComponent {
       <Card style={{ height: '100%' }}>
         <DataTable
           title="Desserts"
-          columns={columns(this.deleteOne)}
+          columns={columns()}
           data={data}
           selectableRows
           highlightOnHover
@@ -142,4 +116,4 @@ class MaterialTable extends PureComponent {
 }
 
 storiesOf('UI Libraries', module)
-  .add('react-md: Action Buttons', () => <MaterialTable />);
+  .add('react-md', () => <MaterialTable />);

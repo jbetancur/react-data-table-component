@@ -95,5 +95,5 @@ const OptimizedHooks = () => {
   );
 };
 
-storiesOf('Basic', module)
+storiesOf('General', module)
   .add('Optimized: Hooks', () => <OptimizedHooks />);

@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleDesserts';
-import DataTable from '../../../src/DataTable/DataTable';
+import DataTable from '../../../src/index';
 
 const columns = [
   {
@@ -80,5 +80,5 @@ const BasicTable = () => {
   );
 };
 
-storiesOf('Basic', module)
-  .add('Responsive: Hiding Columns', BasicTable);
+storiesOf('General', module)
+  .add('Responsive Hiding Columns', BasicTable);
