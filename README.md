@@ -2,7 +2,7 @@
 
 # React Data Table Component
 
-Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries out there, some required heavy customization, were missing out of the box features such as built in sorting and pagination, or required understanding the atmoic structure of html tables.
+Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries out there, some required heavy customization, were missing out of the box features such as built in sorting and pagination, or required understanding the atomic structure of html tables.
 
 The goal of this project may change or grow, but it's simply to provide an easy to use interface for creating tables when you don't need complex enterprise capabilities, but still allowing some "leeway" for customization.
 
@@ -81,8 +81,8 @@ Nothing new here - we are using an array of object literals and properties to de
 | right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | reduces the padding in the cell by 50%                                     |
-| ignoreRowClick   | bool | no | prevents the `onRowClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
-| button   | bool   | no       | this is like `ignoreRowClick` except it will apply aditional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
+| ignoreRowClick   | bool | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
+| button   | bool   | no       | this is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
 | wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
 | allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
 | hide   | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
@@ -116,6 +116,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
 | onRowClicked | func | no | | callback to access the row data,index on row click |
+| onRowDoubleClicked | func | no | | callback to access the row data,index on row double click |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
@@ -170,7 +171,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | paginationRowsPerPageOptions | number | no | [10, 15, 20, 25, 30] | row page dropdown selection options |
 | onChangePage | func | no | null | callback when paged that returns `onChangePage(page, totalRows)` |
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed returns `onChangeRowsPerPage(currentRowsPerPage, currentPage)` |
-| paginationComponent | func | no | Pagination | a component that overrides the default paginator component |
+| paginationComponent | func | no | Pagination | a component that overrides the default pagination component |
 | paginationComponentOptions | object | no | See Description | overridable options for the built in pagination component. If you are developing a custom pagination component you can use `paginationComponentOptions` to pass in your own custom props. Defaults to: ```{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of' }```|
 | paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination |
 | paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination |
@@ -204,7 +205,7 @@ const { Checkbox } from 'react-md';
 
 /*
   In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property.
-  Let's override it. React Data Table is made aware if a checkbox is indetermite or not becuase internally we can resolve this   as `yourfunction(checkboxawareindeterminatestate)`
+  Let's override it. React Data Table is made aware if a checkbox is indeterminate or not because internally we can resolve this   as `yourfunction(checkboxawareindeterminatestate)`
 */
 
 const handleIndeterminate = isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>);
@@ -482,12 +483,12 @@ Pre-optimizaton can be the root of all evil, however, there are some best practi
 While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive property that's passed into RDT is not re-created on every render cycyle. This is even more important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
 #### Optimizing Class Components
-You can typically achieve this by moving props such as objects, arrays, functions or other React compents that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper for cases where you are using a function to generate those values.
+You can typically achieve this by moving props such as objects, arrays, functions or other React components that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper for cases where you are using a function to generate those values.
 
 ##### Examples of Optimizations
-The following component will cause RDT to fully re-render everytime `onRowSelected` is triggered. Why? Becuase when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this descision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
+The following component will cause RDT to fully re-render every time `onRowSelected` is triggered. Why? Because when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this decision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
 
-However, in the example below `columns` changes on every re-render becuase it's being re-created. This is due to referential equality checking, simply: `columns[] !== columns[]`. In other words, while both instances of `columns` contain the same elements, they are "different" arrays.
+However, in the example below `columns` changes on every re-render because it's being re-created. This is due to referential equality checking, simply: `columns[] !== columns[]`. In other words, while both instances of `columns` contain the same elements, they are "different" arrays.
 
 **Bad**
 ```js
@@ -497,7 +498,7 @@ import DataTable from 'react-data-table';
 
 class MyComponent extends Component {
   updateState = state => {
-    this.setState({ selectedRows: state.selectedRows }); // triggers MyComponet to re-render with new state
+    this.setState({ selectedRows: state.selectedRows }); // triggers MyComponent to re-render with new state
   }
 
   render () { // by design runs on every setState trigger
@@ -560,12 +561,12 @@ const columns = [;
 ];
 ```
 
-So how do we attach event handlers to our columns without having to place it in the `render` method and dealing with unnescessary re-renders?
+So how do we attach event handlers to our columns without having to place it in the `render` method and dealing with unnecessary re-renders?
 
 1. Create a `columns` function and pass the arguments needed
 2. Memoize the `columns` function
 
-This way, when React checks if `columns` has changed `columns` will instead be the cached result (remember referential equality), thus no unnessesary re-render.
+This way, when React checks if `columns` has changed `columns` will instead be the cached result (remember referential equality), thus no unnecessary re-render.
 
 Got it? Let's try this again with the optimal solution:
 
@@ -614,7 +615,7 @@ import DataTable from 'react-data-table';
 const MyComponentHook = () => {
   const [thing, setThing] = useState();
   const handleAction = value => setThing(value);
-  // unklike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onRowSelected are memoized using useCallback
+  // unlike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onRowSelected are memoized using useCallback
   const updateState = useCallback(state => console.log(state));
   const columns = useMemo(() => [
     ...
