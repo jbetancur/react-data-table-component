@@ -253,6 +253,36 @@ describe('DataTable::columns', () => {
     expect(onRowClickedMock).not.toBeCalled();
   });
 
+  test('should not call onRowDoubleClicked when ignoreRowClick = true', () => {
+    const onRowDoubleClickedMock = jest.fn();
+    const mock = dataMock({ ignoreRowClick: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowDoubleClicked={onRowDoubleClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowDoubleClickedMock).not.toBeCalled();
+  });
+
+  test('should not call onRowDoubleClicked when button = true', () => {
+    const onRowDoubleClickedMock = jest.fn();
+    const mock = dataMock({ button: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowDoubleClicked={onRowDoubleClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowDoubleClickedMock).not.toBeCalled();
+  });
+
   test('should render correctly when ignoreRowClick = true', () => {
     const mock = dataMock({ ignoreRowClick: true });
     const { container } = render(

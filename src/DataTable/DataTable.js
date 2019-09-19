@@ -79,6 +79,7 @@ const DataTable = memo(({
   contextActions,
   expandableRows,
   onRowClicked,
+  onRowDoubleClicked,
   sortIcon,
   onSort,
   sortFunction,
@@ -175,6 +176,7 @@ const DataTable = memo(({
   const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
+  const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
   // for client-side pagination it should navigate back one page when there is only 1 item on the last page and it is removed from the data set
@@ -310,6 +312,7 @@ const DataTable = memo(({
                         expandableDisabledField={expandableDisabledField}
                         defaultExpanded={defaultExpanded}
                         onRowClicked={handleRowClicked}
+                        onRowDoubleClicked={handleRowDoubleClicked}
                       />
                     );
                   })}

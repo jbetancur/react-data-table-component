@@ -6,6 +6,8 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 
+const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
+
 const defaultRowsCSS = css`
   border-top-style: solid;
   border-top-width: ${props => props.theme.rows.borderWidth};
@@ -64,6 +66,7 @@ const TableRow = memo(({
   columns,
   row,
   onRowClicked,
+  onRowDoubleClicked,
   selectableRows,
   expandableRows,
   striped,
@@ -77,10 +80,16 @@ const TableRow = memo(({
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleRowClick = useCallback(e => {
     // use event delegation allow events to propagate only when the element with data-tag ___react-data-table-allow-propagation___ is present
-    if (e.target && e.target.getAttribute('data-tag') === '___react-data-table-allow-propagation___') {
+    if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
       onRowClicked(row, e);
     }
   }, [onRowClicked, row]);
+
+  const handleRowDoubleClick = useCallback(e => {
+    if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
+      onRowDoubleClicked(row, e);
+    }
+  }, [onRowDoubleClicked, row]);
 
   return (
     <>
@@ -91,6 +100,7 @@ const TableRow = memo(({
         pointerOnHover={pointerOnHover}
         dense={dense}
         onClick={handleRowClick}
+        onDoubleClick={handleRowDoubleClick}
         className="rdt_TableRow"
       >
         {selectableRows && (
@@ -137,6 +147,7 @@ TableRow.propTypes = {
   columns: PropTypes.array.isRequired,
   row: PropTypes.object.isRequired,
   onRowClicked: PropTypes.func.isRequired,
+  onRowDoubleClicked: PropTypes.func.isRequired,
   defaultExpanded: PropTypes.bool.isRequired,
   selectableRows: PropTypes.bool.isRequired,
   expandableRows: PropTypes.bool.isRequired,
