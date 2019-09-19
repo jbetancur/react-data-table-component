@@ -138,8 +138,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
-| selectableRowsPreSelectedField | string | no |  | a `bool` field on your dataset that controls whether a row is pre-selected. **note** this field can only be one level deep |
-| selectableRowsDisabledField | string | no |  | a `bool` field on your dataset that controls whether a row can be selected. **note** this field can only be one level deep |
+| selectableRowsPreSelectedField | string | no |  | a `bool` field on your data set that controls whether a row is pre-selected. **note** this field can only be one level deep |
+| selectableRowsDisabledField | string | no |  | a `bool` field on your data set that controls whether a row can be selected. **note** this field can only be one level deep |
 
 #### Row Expander
 | Property | Type | Required | Default | Description |
@@ -186,14 +186,14 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | contextActions | component or array of components| no |  | add context actions to the TableHeader context|
 | noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 | fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
-| fixedHeaderScrollHeight | string | no | 100vh | in order for fixedHeader to work this property allows you to set a static height to the TabelBody. height must be a fixed value |
-| subHeader | component or array of components | no | false | show a subheader between the table and table header
-| subHeaderAlign | string | no | right | align the subheader content (left, right, center)
-| subHeaderWrap | bool | no | true | whether the subheader content should wrap
+| fixedHeaderScrollHeight | string | no | 100vh | in order for fixedHeader to work this property allows you to set a static height to the TableBody. height must be a fixed value |
+| subHeader | component or array of components | no | false | show a sub header between the table and table header
+| subHeaderAlign | string | no | right | align the sub header content (left, right, center)
+| subHeaderWrap | bool | no | true | whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
 
 #### Advanced Selectable Component Options
-Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hardcoded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
+Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
 
 Example Usage:
 
