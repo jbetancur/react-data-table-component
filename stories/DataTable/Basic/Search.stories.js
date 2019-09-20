@@ -43,6 +43,7 @@ const columns = [
 const BasicTable = () => {
   const [filterText, setFilterText] = React.useState('');
   const filteredItems = data.filter(item => item.title.includes(filterText));
+  const subHeaderComponentMemo = React.useMemo(() => <Filter onFilter={value => setFilterText(value)} />, []);
 
   return (
     <DataTable
@@ -50,7 +51,7 @@ const BasicTable = () => {
       columns={columns}
       data={filteredItems}
       subHeader
-      subHeaderComponent={<Filter onFilter={value => setFilterText(value)} />}
+      subHeaderComponent={subHeaderComponentMemo}
     />
   );
 };

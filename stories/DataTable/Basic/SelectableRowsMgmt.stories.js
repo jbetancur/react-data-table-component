@@ -5,7 +5,7 @@ import differenceBy from 'lodash/differenceBy';
 import 'react-md/dist/react-md.pink-blue.min.css';
 import tableDataItems from '../constants/sampleDesserts';
 import Button from '../shared/Button';
-import DataTable, { memoize } from '../../../src/index';
+import DataTable from '../../../src/index';
 
 const actions = <Button key="add">Add</Button>;
 const columns = [
