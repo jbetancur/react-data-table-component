@@ -91,6 +91,9 @@ const DataTable = memo(({
   defaultSortAsc,
   clearSelectedRows,
   onTableUpdate, // Deprecated
+  exportTable, // Export Props
+  exportHeader,
+  exportFileName
 }) => {
   const preSelectedRows = selectableRowsPreSelectedField
     ? data.filter(row => row[selectableRowsPreSelectedField])
@@ -242,7 +245,9 @@ const DataTable = memo(({
               pending={progressPending}
             />
           )}
-
+                       
+          {exportTable && <ExportTable columns={columns} data={calculatedRows} exportHeader={exportHeader} exportFileName={exportFileName} />}
+                       
           {subHeader && (
             <TableSubheader
               align={subHeaderAlign}
