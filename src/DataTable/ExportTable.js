@@ -4,71 +4,74 @@ import styled from 'styled-components';
 import { getProperty } from './util';
 
 const ExportGroupStyle = styled.div`
-    position:relative;
-    float:right;
+  position: relative;
+  float: right;
 `;
 
 const ExportButtonStyle = styled.button`
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  padding-bottom: 0.3rem;
+  font-size: 0.86rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+
+  ::after {
     display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    padding-bottom: .3rem;
-    font-size: .86rem;
-    border-radius: .25rem;
-    cursor: pointer;
-    outline: none;
-    ::after {
-      display: inline-block;
-      margin-left: .5em;
-      vertical-align: .16em;
-      content: "";
-      border-top: .3em solid;
-      border-right: .3em solid transparent;
-      border-bottom: 0;
-      border-left: .3em solid transparent;
-    }
+    margin-left: 0.5em;
+    vertical-align: 0.16em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
 `;
+
 const ExportDropdownStyle = styled.div`
-    position: absolute;
-    top: 100%;
-    right: 0;
-    z-index: 1000;
-    float: left;
-    min-width: 5.6rem;
-    padding: .2rem 0;
-    margin: .125rem 0 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-    display: ${props => (props.show ? 'block' : 'none')};
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  float: left;
+  min-width: 5.6rem;
+  padding: 0.2rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  display: ${props => (props.show ? 'block' : 'none')};
 `;
 
 const ExportDropdownItemSyle = styled.a`
-display: block;
-padding: .4rem .9rem .4em 2.4rem;
-font-weight: 400;
-color: #212529;
-text-align: inherit;
-white-space: nowrap;
-border: 0;
-text-decoration: none;
-background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAzElEQVQ4T+3TP1JCMRDH8Q/jBajtvIUlJZ2tBwBrG/6UlCoU1HgBWzs6oOMWdtZcgIFZJk8zmfcEx9ZtNtns75vNJmn5o7XO6Mc44Lkp7yfACE9JGOOXOkgTYIgeNknUwQLTElIHGKCPED0kwStWCTLLISXgBu/o4hOTlBz+Gkvc4aOC1FVwhX0mjGEFytdOKeduIa+g9iL+Ad9NvMUj7otOtdN8V8TfMMe2amI8muh4+EtsnfLXOSDefVlBEywqiI/2BYgjRPA3Fpttj1+6JBGSfdGFAAAAAElFTkSuQmCC);
-background-position: .6rem .4em;
-background-repeat: no-repeat;
-:hover {
-  background-color: #f1f1f1;
-}
+  display: block;
+  padding: 0.4rem 0.9rem 0.4em 2.4rem;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  border: 0;
+  text-decoration: none;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAzElEQVQ4T+3TP1JCMRDH8Q/jBajtvIUlJZ2tBwBrG/6UlCoU1HgBWzs6oOMWdtZcgIFZJk8zmfcEx9ZtNtns75vNJmn5o7XO6Mc44Lkp7yfACE9JGOOXOkgTYIgeNknUwQLTElIHGKCPED0kwStWCTLLISXgBu/o4hOTlBz+Gkvc4aOC1FVwhX0mjGEFytdOKeduIa+g9iL+Ad9NvMUj7otOtdN8V8TfMMe2amI8muh4+EtsnfLXOSDefVlBEywqiI/2BYgjRPA3Fpttj1+6JBGSfdGFAAAAAElFTkSuQmCC);
+  background-position: 0.6rem 0.4em;
+  background-repeat: no-repeat;
+
+  :hover {
+    background-color: #f1f1f1;
+  }
 `;
 
 export class ExportTable extends Component {
