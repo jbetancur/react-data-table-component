@@ -23,7 +23,7 @@ const ExportButtonStyle = styled.button`
     border-radius: .25rem;
     cursor: pointer;
     outline: none;
-    &:after {
+    ::after {
       display: inline-block;
       margin-left: .5em;
       vertical-align: .16em;
@@ -52,23 +52,23 @@ const ExportDropdownStyle = styled.div`
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
     display: ${props => (props.show ? 'block' : 'none')};
-> a {
-  display: block;
-  width: 100%;
-  padding: .4rem .9rem .4em 2.4rem;
-  clear: both;
-  font-weight: 400;
-  color: #212529;
-  text-align: inherit;
-  white-space: nowrap;
-  border: 0;
-  text-decoration: none;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAzElEQVQ4T+3TP1JCMRDH8Q/jBajtvIUlJZ2tBwBrG/6UlCoU1HgBWzs6oOMWdtZcgIFZJk8zmfcEx9ZtNtns75vNJmn5o7XO6Mc44Lkp7yfACE9JGOOXOkgTYIgeNknUwQLTElIHGKCPED0kwStWCTLLISXgBu/o4hOTlBz+Gkvc4aOC1FVwhX0mjGEFytdOKeduIa+g9iL+Ad9NvMUj7otOtdN8V8TfMMe2amI8muh4+EtsnfLXOSDefVlBEywqiI/2BYgjRPA3Fpttj1+6JBGSfdGFAAAAAElFTkSuQmCC);
-  background-position: .6rem .4em;
-  background-repeat: no-repeat;
-  &:hover {
-    background-color: #f1f1f1;
-  }
+`;
+
+const ExportDropdownItemSyle = styled.a`
+display: block;
+padding: .4rem .9rem .4em 2.4rem;
+font-weight: 400;
+color: #212529;
+text-align: inherit;
+white-space: nowrap;
+border: 0;
+text-decoration: none;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAzElEQVQ4T+3TP1JCMRDH8Q/jBajtvIUlJZ2tBwBrG/6UlCoU1HgBWzs6oOMWdtZcgIFZJk8zmfcEx9ZtNtns75vNJmn5o7XO6Mc44Lkp7yfACE9JGOOXOkgTYIgeNknUwQLTElIHGKCPED0kwStWCTLLISXgBu/o4hOTlBz+Gkvc4aOC1FVwhX0mjGEFytdOKeduIa+g9iL+Ad9NvMUj7otOtdN8V8TfMMe2amI8muh4+EtsnfLXOSDefVlBEywqiI/2BYgjRPA3Fpttj1+6JBGSfdGFAAAAAElFTkSuQmCC);
+background-position: .6rem .4em;
+background-repeat: no-repeat;
+:hover {
+  background-color: #f1f1f1;
+}
 `;
 
 export class ExportTable extends Component {
@@ -171,8 +171,8 @@ export class ExportTable extends Component {
       <ExportGroupStyle>
         <ExportButtonStyle type="button" onClick={(e) => this.setState(prevState => ({ dropdown: !prevState.dropdown }))}>Export Table</ExportButtonStyle>
         <ExportDropdownStyle show={this.state.dropdown}>
-          <a href="#csv" onClick={(e) => this.onExport(e, "csv")}>Csv File</a>
-          <a href="#excel" onClick={(e) => this.onExport(e, "excel")}>Excel File</a>
+          <ExportDropdownItemSyle href="#csv" onClick={(e) => this.onExport(e, "csv")}>Csv File</ExportDropdownItemSyle>
+          <ExportDropdownItemSyle href="#excel" onClick={(e) => this.onExport(e, "excel")}>Excel File</ExportDropdownItemSyle>
         </ExportDropdownStyle>
       </ExportGroupStyle>
 
