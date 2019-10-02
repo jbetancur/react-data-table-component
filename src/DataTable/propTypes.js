@@ -136,7 +136,7 @@ export const propTypes = {
   dense: PropTypes.bool,
   exportTable: PropTypes.bool,
   exportHeader: PropTypes.bool,
-  exportFileName: PropTypes.string
+  exportFileName: PropTypes.string,
 };
 
 export const defaultProps = {
@@ -212,5 +212,5 @@ export const defaultProps = {
   paginationIconPrevious: <LeftIcon />,
   dense: false,
   exportTable: false,
-  exportHeader: false
+  exportHeader: false,
 };
