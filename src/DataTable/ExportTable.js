@@ -52,7 +52,6 @@ const ExportDropdownStyle = styled.div`
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
     display: ${props => (props.show ? 'block' : 'none')};
-}
 > a {
   display: block;
   width: 100%;
@@ -70,7 +69,6 @@ const ExportDropdownStyle = styled.div`
   &:hover {
     background-color: #f1f1f1;
   }
-}
 `;
 
 export class ExportTable extends Component {
