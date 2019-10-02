@@ -134,6 +134,9 @@ export const propTypes = {
     PropTypes.func,
   ]),
   dense: PropTypes.bool,
+  exportTable: PropTypes.bool,
+  exportHeader: PropTypes.bool,
+  exportFileName: PropTypes.string
 };
 
 export const defaultProps = {
@@ -208,4 +211,6 @@ export const defaultProps = {
   paginationIconNext: <RightIcon />,
   paginationIconPrevious: <LeftIcon />,
   dense: false,
+  exportTable: false,
+  exportHeader: false
 };
