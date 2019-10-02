@@ -23,6 +23,7 @@ import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
 import { sort, decorateColumns, getSortDirection, getNumberOfPages } from './util';
 import getDefaultTheme from '../themes/default';
+import { ExportTable } from './ExportTable';
 
 const DataTable = memo(({
   data,
@@ -93,7 +94,7 @@ const DataTable = memo(({
   onTableUpdate, // Deprecated
   exportTable, // Export Props
   exportHeader,
-  exportFileName
+  exportFileName,
 }) => {
   const preSelectedRows = selectableRowsPreSelectedField
     ? data.filter(row => row[selectableRowsPreSelectedField])
@@ -245,9 +246,16 @@ const DataTable = memo(({
               pending={progressPending}
             />
           )}
-                       
-          {exportTable && <ExportTable columns={columns} data={calculatedRows} exportHeader={exportHeader} exportFileName={exportFileName} />}
-                       
+
+          {exportTable && (
+            <ExportTable
+              columns={columns}
+              data={calculatedRows}
+              exportHeader={exportHeader}
+              exportFileName={exportFileName}
+            />
+          )}
+
           {subHeader && (
             <TableSubheader
               align={subHeaderAlign}
