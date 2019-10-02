@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getProperty } from './util';
 
@@ -75,24 +76,20 @@ const ExportDropdownItemSyle = styled.a`
 `;
 
 export class ExportTable extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      dropdown: false
-    }
+      dropdown: false,
+    };
 
     this.ExportHelper = {
-      fileName: (ext) => {
-        return (props.exportFileName ? `${props.exportFileName}.${ext}` : `${document.title}.${ext}`);
-      },
+      fileName: ext => (props.exportFileName ? `${props.exportFileName}.${ext}` : `${document.title}.${ext}`),
       download: (content, type, fileName) => {
+        const file = new Blob(['\ufeff', content], { type });
+        const link = document.createElement('a');
 
-        const file = new Blob(["\ufeff", content], { type: type });
-        const link = document.createElement("a");
-
-        link.id = "_export_datatable_" + fileName;
+        link.id = `_export_datatable_${fileName}`;
         link.download = fileName;
         link.href = window.URL.createObjectURL(file);
 
@@ -100,85 +97,93 @@ export class ExportTable extends Component {
 
         link.click();
         document.getElementById(link.id).remove();
-      }
-    }
+      },
+    };
 
     this.ExportFile = {
       csv: (data, header) => {
-        let contentHeader = (header ? `${header.map(e => e.name).join(";")}\n` : "");
-        let content = `${contentHeader}${data.map(e => e.join(";")).join("\n")}`;
+        const contentHeader = (header ? `${header.map(e => e.name).join(';')}\n` : '');
+        const content = `${contentHeader}${data.map(e => e.join(';')).join('\n')}`;
 
-        this.ExportHelper.download(content, "text/csv", this.ExportHelper.fileName("csv"));
+        this.ExportHelper.download(content, 'text/csv', this.ExportHelper.fileName('csv'));
       },
       excel: (data, header) => {
+        const contentHeader = (header ? `<thead><tr><td>${header.map(e => e.name).join('</td><td>')}</td><tr></thead>` : '');
+        const contentBody = data.map(e => `<tr><td>${e.join('</td><td>')}</td></tr>`);
+        const table = `<table>${contentHeader}<tbody>${contentBody.join('')}</tbody></table>`;
 
-        let contentHeader = (header ? `<thead><tr><td>${header.map(e => e.name).join("</td><td>")}</td><tr></thead>` : "");
-        let contentBody = data.map(e => "<tr><td>" + e.join("</td><td>") + "</td></tr>");
-        let table = `<table>${contentHeader}<tbody>${contentBody.join("")}</tbody></table>`;
-
-        this.ExportHelper.download(table, "application/vnd.ms-excel", this.ExportHelper.fileName("xls"));
-      }
+        this.ExportHelper.download(table, 'application/vnd.ms-excel', this.ExportHelper.fileName('xls'));
+      },
     };
   }
 
-
   onExport(e, type) {
+    const exportHeaderData = [];
+    const exportDataKeys = [];
+    const exportData = [];
 
-    let exportHeader = [];
-    let exportDataKeys = [];
-    let exportData = [];
+    const { columns, data, exportHeader } = this.props;
 
     // column properties and select fields to export
-    this.props.columns.forEach(element => {
+    columns.forEach(element => {
       if (element.export !== false) {
-        exportHeader.push(element);
+        exportHeaderData.push(element);
         exportDataKeys.push(element.selector);
       }
     });
 
     // get and render data
-    this.props.data.forEach(element => {
-      const row = []
+    data.forEach(element => {
+      const row = [];
       exportDataKeys.forEach((key, index) => {
-
-        const header = exportHeader[index];
+        const header = exportHeaderData[index];
 
         // cell: render component and get innerText
         if (header.cell) {
-
           const div = document.createElement('div');
 
           render(header.cell(element), div);
 
           row.push(div.innerText);
-        }
-        // get property
-        else {
+        } else { // get property
           row.push(getProperty(element, header.selector, header.format));
         }
+      });
 
-      })
       exportData.push(row);
     });
 
     // download file
-    this.ExportFile[type](exportData, (this.props.exportHeader ? exportHeader : null));
+    this.ExportFile[type](exportData, (exportHeader ? exportHeaderData : null));
 
     this.setState({ dropdown: false });
     e.preventDefault();
   }
 
-
   render() {
+    const { dropdown } = this.state;
     return (
       <ExportGroupStyle>
-        <ExportButtonStyle type="button" onClick={(e) => this.setState(prevState => ({ dropdown: !prevState.dropdown }))}>Export Table</ExportButtonStyle>
-        <ExportDropdownStyle show={this.state.dropdown}>
-          <ExportDropdownItemSyle href="#csv" onClick={(e) => this.onExport(e, "csv")}>Csv File</ExportDropdownItemSyle>
-          <ExportDropdownItemSyle href="#excel" onClick={(e) => this.onExport(e, "excel")}>Excel File</ExportDropdownItemSyle>
+        <ExportButtonStyle type="button" onClick={() => this.setState(prevState => ({ dropdown: !prevState.dropdown }))}>Export Table</ExportButtonStyle>
+        <ExportDropdownStyle show={dropdown}>
+          <ExportDropdownItemSyle href="#csv" onClick={e => this.onExport(e, 'csv')}>Csv File</ExportDropdownItemSyle>
+          <ExportDropdownItemSyle href="#excel" onClick={e => this.onExport(e, 'excel')}>Excel File</ExportDropdownItemSyle>
         </ExportDropdownStyle>
       </ExportGroupStyle>
-
-    )
+    );
   }
 }
+
+ExportTable.propTypes = {
+  columns: PropTypes.array,
+  data: PropTypes.array,
+  exportHeader: PropTypes.bool,
+  exportFileName: PropTypes.string,
+};
+
+ExportTable.defaultProps = {
+  columns: [],
+  data: [],
+  exportHeader: false,
+  exportFileName: null,
+};
