@@ -12,6 +12,7 @@ const SubheaderWrapper = styled.header`
   position: relative;
   display: flex;
   flex: 1 1 auto;
+  box-sizing: border-box;
   align-items: center;
   padding: 0 16px 8px 24px;
   width: 100%;
