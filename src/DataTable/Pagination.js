@@ -37,8 +37,8 @@ const Button = styled.button`
 const PageList = styled.div`
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
 `;
 
 const Span = styled.span`
@@ -46,6 +46,14 @@ const Span = styled.span`
   user-select: none;
   font-size: ${props => props.theme.pagination.fontSize};
   color: ${props => props.theme.pagination.fontColor};
+`;
+
+const Range = styled(Span)`
+  margin: 0 24px;
+`;
+
+const RowLabel = styled(Span)`
+  margin: 0 4px;
 `;
 
 const Pagination = ({
@@ -70,7 +78,7 @@ const Pagination = ({
   const disabledLesser = currentPage === 1;
   const disabledGreater = currentPage === numPages;
   const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
-  const status = currentPage === numPages
+  const range = currentPage === numPages
     ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
     : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
 
@@ -82,7 +90,7 @@ const Pagination = ({
 
   return (
     <>
-      <Span>{rowsPerPageText}</Span>
+      <RowLabel>{rowsPerPageText}</RowLabel>
       <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
         {paginationRowsPerPageOptions.map(num => (
           <option
@@ -93,10 +101,9 @@ const Pagination = ({
           </option>
         ))}
       </Select>
-      <Span>
-        {status}
-      </Span>
-
+      <Range>
+        {range}
+      </Range>
       <PageList>
         <Button
           id="pagination-first-page"
