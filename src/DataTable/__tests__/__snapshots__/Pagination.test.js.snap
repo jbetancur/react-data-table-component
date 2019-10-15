@@ -11,6 +11,7 @@ exports[`should render correctly with default props 1`] = `
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <span

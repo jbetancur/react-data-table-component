@@ -8,7 +8,7 @@ const SelectControl = styled.select`
   min-width: 24px;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: ${props => props.theme.pagination.fontSize};
   color: ${props => props.theme.pagination.fontColor};
@@ -16,6 +16,7 @@ const SelectControl = styled.select`
   border: none;
   background-color: transparent;
   appearance: none;
+  direction: ltr;
 
   &::-ms-expand {
     display: none;
@@ -29,8 +30,6 @@ const SelectControl = styled.select`
 const SelectWrapper = styled.div`
   position: relative;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: ${props => props.theme.pagination.fontSize};
   color: ${props => props.theme.pagination.fontColor};
 

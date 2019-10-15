@@ -2304,7 +2304,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -2314,6 +2314,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -2329,8 +2330,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -2351,7 +2350,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -2371,27 +2370,40 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -2404,6 +2416,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -2518,15 +2531,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         1-1 of 2
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-first-page"
         >
@@ -2546,7 +2559,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-previous-page"
         >
@@ -2566,7 +2579,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           id="pagination-next-page"
         >
           <svg
@@ -2585,7 +2598,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           id="pagination-last-page"
         >
           <svg
@@ -2949,7 +2962,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -2959,6 +2972,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -2974,8 +2988,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -2996,7 +3008,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -3016,27 +3028,40 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -3049,6 +3074,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -3163,15 +3189,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         1-1 of 2
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-first-page"
         >
@@ -3191,7 +3217,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-previous-page"
         >
@@ -3211,7 +3237,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           id="pagination-next-page"
         >
           <svg
@@ -3230,7 +3256,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           id="pagination-last-page"
         >
           <svg
@@ -3594,7 +3620,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -3604,6 +3630,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -3619,8 +3646,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -3641,7 +3666,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -3661,27 +3686,40 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -3694,6 +3732,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -3808,15 +3847,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         2-2 of 2
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           id="pagination-first-page"
         >
           <svg
@@ -3835,7 +3874,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           id="pagination-previous-page"
         >
           <svg
@@ -3854,7 +3893,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-next-page"
         >
@@ -3874,7 +3913,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-last-page"
         >
@@ -4239,7 +4278,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -4249,6 +4288,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -4264,8 +4304,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -4286,7 +4324,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -4306,27 +4344,40 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -4339,6 +4390,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -4453,15 +4505,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         2-2 of 2
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           id="pagination-first-page"
         >
           <svg
@@ -4480,7 +4532,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           id="pagination-previous-page"
         >
           <svg
@@ -4499,7 +4551,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-next-page"
         >
@@ -4519,7 +4571,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-last-page"
         >
@@ -4884,7 +4936,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -4894,6 +4946,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -4909,8 +4962,6 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -4931,7 +4982,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -4951,27 +5002,40 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -4984,6 +5048,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -5098,15 +5163,15 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         1-1 of 1
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-first-page"
         >
@@ -5126,7 +5191,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-previous-page"
         >
@@ -5146,7 +5211,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-next-page"
         >
@@ -5166,7 +5231,7 @@ exports[`DataTable::Pagination should navigate back one page if there is only 1 
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-last-page"
         >
@@ -5550,7 +5615,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -5560,6 +5625,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c19::-ms-expand {
@@ -5575,8 +5641,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -5597,7 +5661,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   pointer-events: none;
 }
 
-.c21 {
+.c22 {
   position: relative;
   display: block;
   outline: none;
@@ -5617,27 +5681,40 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   transition: 0.3s;
 }
 
-.c21 svg {
+.c22 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c21:disabled {
+.c22:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c21:hover:not(:disabled) {
+.c22:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c20 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c20 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c17 {
@@ -5650,6 +5727,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -5769,15 +5847,15 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
         </svg>
       </div>
       <span
-        class="c17"
+        class="c20"
       >
         1-1 of 2
       </span>
       <div
-        class="c20"
+        class="c21"
       >
         <button
-          class="c21"
+          class="c22"
           disabled=""
           id="pagination-first-page"
         >
@@ -5797,7 +5875,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           </svg>
         </button>
         <button
-          class="c21"
+          class="c22"
           disabled=""
           id="pagination-previous-page"
         >
@@ -5817,7 +5895,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           </svg>
         </button>
         <button
-          class="c21"
+          class="c22"
           id="pagination-next-page"
         >
           <svg
@@ -5836,7 +5914,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           </svg>
         </button>
         <button
-          class="c21"
+          class="c22"
           id="pagination-last-page"
         >
           <svg
@@ -6200,7 +6278,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -6210,6 +6288,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -6225,8 +6304,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -6247,7 +6324,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -6267,27 +6344,40 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -6300,6 +6390,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -6445,15 +6536,15 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         1-2 of 2
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-first-page"
         >
@@ -6473,7 +6564,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-previous-page"
         >
@@ -6493,7 +6584,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-next-page"
         >
@@ -6513,7 +6604,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-last-page"
         >
@@ -6878,7 +6969,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 16px;
+  padding-right: 12px;
   box-sizing: content-box;
   font-size: 13px;
   color: rgba(0,0,0,.54);
@@ -6888,6 +6979,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  direction: ltr;
 }
 
 .c18::-ms-expand {
@@ -6903,8 +6995,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-left: 8px;
-  margin-right: 32px;
   font-size: 13px;
   color: rgba(0,0,0,.54);
 }
@@ -6925,7 +7015,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   pointer-events: none;
 }
 
-.c20 {
+.c21 {
   position: relative;
   display: block;
   outline: none;
@@ -6945,27 +7035,40 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   transition: 0.3s;
 }
 
-.c20 svg {
+.c21 svg {
   fill: rgba(0,0,0,.54);
 }
 
-.c20:disabled {
+.c21:disabled {
   opacity: 0.4;
   cursor: unset;
 }
 
-.c20:hover:not(:disabled) {
+.c21:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  margin-left: 20px;
   white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
 }
 
 .c16 {
@@ -6978,6 +7081,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   user-select: none;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin: 0 4px;
 }
 
 <div
@@ -7123,15 +7227,15 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </svg>
       </div>
       <span
-        class="c16"
+        class="c19"
       >
         1-2 undefined 2
       </span>
       <div
-        class="c19"
+        class="c20"
       >
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-first-page"
         >
@@ -7151,7 +7255,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-previous-page"
         >
@@ -7171,7 +7275,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-next-page"
         >
@@ -7191,7 +7295,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           </svg>
         </button>
         <button
-          class="c20"
+          class="c21"
           disabled=""
           id="pagination-last-page"
         >
