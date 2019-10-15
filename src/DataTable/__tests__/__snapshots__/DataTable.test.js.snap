@@ -27655,6 +27655,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -28081,6 +28082,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -28507,6 +28509,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -28933,6 +28936,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -29359,6 +29363,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
