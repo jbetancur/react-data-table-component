@@ -27,6 +27,8 @@ export const propTypes = {
   expandableRows: PropTypes.bool,
   expandableDisabledField: PropTypes.string,
   defaultExpandedField: PropTypes.string,
+  expandOnRowClicked: PropTypes.bool,
+  expandOnRowDoubleClicked: PropTypes.bool,
   keyField: PropTypes.string,
   progressPending: PropTypes.bool,
   progressComponent: PropTypes.oneOfType([
@@ -150,6 +152,8 @@ export const defaultProps = {
   expandableRows: false,
   expandableDisabledField: '',
   defaultExpandedField: '',
+  expandOnRowClicked: false,
+  expandOnRowDoubleClicked: false,
   progressPending: false,
   progressComponent: <h2>Loading...</h2>,
   progressCentered: false,

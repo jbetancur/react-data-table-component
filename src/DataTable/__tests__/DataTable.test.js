@@ -815,6 +815,90 @@ describe('DataTable::expandableRows', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should not expand a row if the expander row is disabled', () => {
+    const mock = dataMock();
+    mock.data[0].disabled = true;
+    const { container, getByTestId } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandableDisabledField="disabled"
+      />,
+    );
+    fireEvent.click(getByTestId('expander-button-1'));
+
+    expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
+  });
+
+  test('should not expand a row expandableRows is false and expandOnRowClicked is true ', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandOnRowClicked
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+
+    expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
+  });
+
+  test('should expand a row expandableRows is true and expandOnRowClicked is true', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowClicked
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+
+    expect(container.querySelector('.rdt_ExpanderRow')).not.toBe(null);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should expand a row expandableRows is true and expandOnRowDoubleClicked is true', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowDoubleClicked
+      />,
+    );
+
+    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+
+    expect(container.querySelector('.rdt_ExpanderRow')).not.toBe(null);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should not expand a row if the expander row is disabled and expandOnRowClicked is true', () => {
+    const mock = dataMock();
+    mock.data[0].disabled = true;
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowClicked
+        expandableDisabledField="disabled"
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+
+    expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 describe('DataTable::selectableRows', () => {

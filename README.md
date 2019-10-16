@@ -147,6 +147,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | expandableDisabledField | string | no |  | React Data Table looks for this property in each item from your data and checks if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature. **note** this field can only be one level deep
 | defaultExpandedField | string | no |  | React Data Table looks for this property in each item from your data and checks if that item should be expanded on initial render. You must set a `bool` value in the `defaultExpandedField` field of your data if you want to use this feature. **note** this field can only be one level deep
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
+| expandOnRowClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when the an area within the row is clicked. Requires `expandableRows` be set to true |
+| expandOnRowDoubleClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when the an area within the row is double clicked. Requires `expandableRows` be set to true |
 
 #### Sorting
 | Property | Type | Required | Default | Description |
