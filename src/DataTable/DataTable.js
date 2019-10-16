@@ -1,4 +1,4 @@
-import React, { memo, useReducer, useMemo, useCallback } from 'react';
+import React, { memo, useReducer, useMemo, useCallback, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
@@ -92,17 +92,13 @@ const DataTable = memo(({
   clearSelectedRows,
   onTableUpdate, // Deprecated
 }) => {
-  const preSelectedRows = selectableRowsPreSelectedField
-    ? data.filter(row => row[selectableRowsPreSelectedField])
-    : [];
   const initialState = {
-    allSelected: preSelectedRows.length === data.length,
-    selectedCount: preSelectedRows.length,
-    selectedRows: preSelectedRows,
+    allSelected: false,
+    selectedCount: 0,
+    selectedRows: [],
     sortColumn: defaultSortField,
     selectedColumn: {},
     sortDirection: getSortDirection(defaultSortAsc),
-    selectedRowsFlag: false,
     currentPage: paginationDefaultPage,
     rowsPerPage: paginationPerPage,
   };
@@ -116,7 +112,6 @@ const DataTable = memo(({
     sortColumn,
     selectedColumn,
     sortDirection,
-    selectedRowsFlag,
   }, dispatch] = useReducer(tableReducer, initialState);
 
   const sortedData = useMemo(() => {
@@ -166,9 +161,16 @@ const DataTable = memo(({
     onSort(selectedColumn, sortDirection);
   }, [sortColumn, sortDirection]);
 
-  if (clearSelectedRows !== selectedRowsFlag) {
+  useEffect(() => {
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
-  }
+  }, [clearSelectedRows]);
+
+  useEffect(() => {
+    const preSelectedRows = selectableRowsPreSelectedField
+      ? data.filter(row => row[selectableRowsPreSelectedField])
+      : [];
+    dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
+  }, [data, selectableRowsPreSelectedField]);
 
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
