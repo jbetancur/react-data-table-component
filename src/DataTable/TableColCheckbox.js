@@ -17,7 +17,7 @@ const TableCol = () => {
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = data.filter(row => !row[selectableRowsDisabledField]);
   const isDisabled = rows.length === 0;
-  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL', rows });
+  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL_ROWS', rows });
 
   return (
     <TableColStyle className="rdt_TableCol">

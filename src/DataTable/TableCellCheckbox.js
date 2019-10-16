@@ -16,7 +16,7 @@ const TableCellCheckbox = ({ name, row }) => {
   const isRowSelected = selectedRows.some(srow => srow === row);
   const isRowDisabled = row[selectableRowsDisabledField];
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleOnRowSelected = useCallback(() => dispatch({ type: 'ROW_SELECTED', row, rows: data, isRowSelected }), [data, isRowSelected, row]);
+  const handleOnRowSelected = useCallback(() => dispatch({ type: 'SELECT_SINGLE_ROW', row, rows: data, isRowSelected }), [data, isRowSelected, row]);
 
   return (
     <TableCellCheckboxStyle

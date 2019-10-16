@@ -2,7 +2,7 @@ import { insertItem, removeItem } from './util';
 
 export function tableReducer(state, action) {
   switch (action.type) {
-    case 'SELECT_ALL': {
+    case 'SELECT_ALL_ROWS': {
       const allChecked = !state.allSelected;
 
       return {
@@ -10,6 +10,37 @@ export function tableReducer(state, action) {
         allSelected: allChecked,
         selectedCount: allChecked ? action.rows.length : 0,
         selectedRows: allChecked ? action.rows : [],
+      };
+    }
+
+    case 'SELECT_SINGLE_ROW': {
+      const { row, rows, isRowSelected } = action;
+
+      if (isRowSelected) {
+        return {
+          ...state,
+          selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
+          allSelected: false,
+          selectedRows: removeItem(state.selectedRows, row),
+        };
+      }
+
+      return {
+        ...state,
+        selectedCount: state.selectedRows.length + 1,
+        allSelected: state.selectedRows.length + 1 === rows.length,
+        selectedRows: insertItem(state.selectedRows, row),
+      };
+    }
+
+    case 'SELECT_MULTIPLE_ROWS': {
+      const { selectedRows, rows } = action;
+
+      return {
+        ...state,
+        selectedCount: selectedRows.length,
+        allSelected: selectedRows.length === rows.length,
+        selectedRows,
       };
     }
 
@@ -28,26 +59,6 @@ export function tableReducer(state, action) {
           selectedCount: 0,
           selectedRows: [],
         }),
-      };
-    }
-
-    case 'ROW_SELECTED': {
-      const { row, rows, isRowSelected } = action;
-
-      if (isRowSelected) {
-        return {
-          ...state,
-          selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
-          allSelected: false,
-          selectedRows: removeItem(state.selectedRows, row),
-        };
-      }
-
-      return {
-        ...state,
-        selectedCount: state.selectedRows.length + 1,
-        allSelected: state.selectedRows.length + 1 === rows.length,
-        selectedRows: insertItem(state.selectedRows, row),
       };
     }
 
