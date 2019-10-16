@@ -86,6 +86,8 @@ const DataTable = memo(({
   sortServer,
   expandableRowsComponent,
   expandableDisabledField,
+  expandOnRowClicked,
+  expandOnRowDoubleClicked,
   defaultExpandedField,
   defaultSortField,
   defaultSortAsc,
@@ -310,6 +312,8 @@ const DataTable = memo(({
                         highlightOnHover={highlightOnHover}
                         pointerOnHover={pointerOnHover}
                         dense={dense}
+                        expandOnRowClicked={expandOnRowClicked}
+                        expandOnRowDoubleClicked={expandOnRowDoubleClicked}
                         expandableRowsComponent={expandableRowsComponentMemo}
                         expandableDisabledField={expandableDisabledField}
                         defaultExpanded={defaultExpanded}

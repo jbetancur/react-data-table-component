@@ -15577,6 +15577,1618 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
 </div>
 `;
 
+exports[`DataTable::expandableRows should expand a row expandableRows is true and expandOnRowClicked is true 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
+  width: 100%;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+}
+
+.c17 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c17:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c17:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c17 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: rgba(0,0,0,.54);
+}
+
+.c16:disabled {
+  color: rgba(0,0,0,.12);
+}
+
+.c16:hover:enabled {
+  cursor: pointer;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
+  white-space: nowrap;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(0,0,0,.87);
+}
+
+.c15:not(:first-of-type) {
+  padding-left: 0;
+}
+
+.c18 {
+  width: 100%;
+  box-sizing: border-box;
+  color: rgba(0,0,0,.87);
+  background-color: transparent;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:hover {
+  cursor: pointer;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c11:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c12 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7 rdt_Table"
+    >
+      <div
+        class="c8 rdt_TableHead"
+      >
+        <div
+          class="c9 rdt_TableHeadRow"
+        >
+          <div
+            class="c10"
+          />
+          <div
+            class="c11 rdt_TableCol"
+          >
+            <div
+              class="c12 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c13 rdt_TableBody"
+        offset="250px"
+      >
+        <div
+          class="c14 rdt_TableRow"
+          id="row-1"
+        >
+          <div
+            class="c15"
+          >
+            <button
+              class="c16"
+              data-testid="expander-button-1"
+              role="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"
+                />
+                <path
+                  d="M0-.75h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c17 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c18 rdt_ExpanderRow"
+        >
+          <div
+            data="[object Object]"
+          >
+            Add a custom expander component. Use props.data for row data
+          </div>
+        </div>
+        <div
+          class="c14 rdt_TableRow"
+          id="row-2"
+        >
+          <div
+            class="c15"
+          >
+            <button
+              class="c16"
+              data-testid="expander-button-2"
+              role="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c17 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::expandableRows should expand a row expandableRows is true and expandOnRowDoubleClicked is true 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
+  width: 100%;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+}
+
+.c17 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c17:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c17:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c17 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: rgba(0,0,0,.54);
+}
+
+.c16:disabled {
+  color: rgba(0,0,0,.12);
+}
+
+.c16:hover:enabled {
+  cursor: pointer;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
+  white-space: nowrap;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(0,0,0,.87);
+}
+
+.c15:not(:first-of-type) {
+  padding-left: 0;
+}
+
+.c18 {
+  width: 100%;
+  box-sizing: border-box;
+  color: rgba(0,0,0,.87);
+  background-color: transparent;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:hover {
+  cursor: pointer;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c11:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c12 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7 rdt_Table"
+    >
+      <div
+        class="c8 rdt_TableHead"
+      >
+        <div
+          class="c9 rdt_TableHeadRow"
+        >
+          <div
+            class="c10"
+          />
+          <div
+            class="c11 rdt_TableCol"
+          >
+            <div
+              class="c12 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c13 rdt_TableBody"
+        offset="250px"
+      >
+        <div
+          class="c14 rdt_TableRow"
+          id="row-1"
+        >
+          <div
+            class="c15"
+          >
+            <button
+              class="c16"
+              data-testid="expander-button-1"
+              role="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"
+                />
+                <path
+                  d="M0-.75h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c17 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c18 rdt_ExpanderRow"
+        >
+          <div
+            data="[object Object]"
+          >
+            Add a custom expander component. Use props.data for row data
+          </div>
+        </div>
+        <div
+          class="c14 rdt_TableRow"
+          id="row-2"
+        >
+          <div
+            class="c15"
+          >
+            <button
+              class="c16"
+              data-testid="expander-button-2"
+              role="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c17 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::expandableRows should not expand a row if the expander row is disabled and expandOnRowClicked is true 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
+  width: 100%;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+}
+
+.c17 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c17:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c17:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c17 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: rgba(0,0,0,.54);
+}
+
+.c16:disabled {
+  color: rgba(0,0,0,.12);
+}
+
+.c16:hover:enabled {
+  cursor: pointer;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
+  white-space: nowrap;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(0,0,0,.87);
+}
+
+.c15:not(:first-of-type) {
+  padding-left: 0;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c18:hover {
+  cursor: pointer;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c11:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c11:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c12 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7 rdt_Table"
+    >
+      <div
+        class="c8 rdt_TableHead"
+      >
+        <div
+          class="c9 rdt_TableHeadRow"
+        >
+          <div
+            class="c10"
+          />
+          <div
+            class="c11 rdt_TableCol"
+          >
+            <div
+              class="c12 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c13 rdt_TableBody"
+        offset="250px"
+      >
+        <div
+          class="c14 rdt_TableRow"
+          id="row-1"
+        >
+          <div
+            class="c15"
+          >
+            <button
+              class="c16"
+              data-testid="expander-button-1"
+              disabled=""
+              role="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c17 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c18 rdt_TableRow"
+          id="row-2"
+        >
+          <div
+            class="c15"
+          >
+            <button
+              class="c16"
+              data-testid="expander-button-2"
+              role="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c17 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DataTable::expandableRows should not render expandableRows expandableRows is missing 1`] = `
 .c7 {
   display: -webkit-box;

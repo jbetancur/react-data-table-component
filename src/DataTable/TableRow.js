@@ -76,20 +76,36 @@ const TableRow = memo(({
   expandableRowsComponent,
   expandableDisabledField,
   defaultExpanded,
+  expandOnRowClicked,
+  expandOnRowDoubleClicked,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  const handleExpanded = useCallback(() => {
+    setExpanded(!expanded);
+  }, [expanded]);
+
+  const disableRowClick = row[expandableDisabledField] || false;
+  const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
+
   const handleRowClick = useCallback(e => {
     // use event delegation allow events to propagate only when the element with data-tag ___react-data-table-allow-propagation___ is present
     if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
       onRowClicked(row, e);
+
+      if (!disableRowClick && expandableRows && expandOnRowClicked) {
+        handleExpanded();
+      }
     }
-  }, [onRowClicked, row]);
+  }, [disableRowClick, expandOnRowClicked, expandableRows, handleExpanded, onRowClicked, row]);
 
   const handleRowDoubleClick = useCallback(e => {
     if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
       onRowDoubleClicked(row, e);
+      if (!disableRowClick && expandableRows && expandOnRowDoubleClicked) {
+        handleExpanded();
+      }
     }
-  }, [onRowDoubleClicked, row]);
+  }, [disableRowClick, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row]);
 
   return (
     <>
@@ -97,7 +113,7 @@ const TableRow = memo(({
         id={`row-${id}`}
         striped={striped}
         highlightOnHover={highlightOnHover}
-        pointerOnHover={pointerOnHover}
+        pointerOnHover={!disableRowClick && showPointer}
         dense={dense}
         onClick={handleRowClick}
         onDoubleClick={handleRowDoubleClick}
@@ -114,8 +130,8 @@ const TableRow = memo(({
           <TableCellExpander
             expanded={expanded}
             row={row}
-            onExpandToggled={() => setExpanded(!expanded)}
-            disabled={row[expandableDisabledField] || false}
+            onExpandToggled={handleExpanded}
+            disabled={disableRowClick}
           />
         )}
 
@@ -161,6 +177,8 @@ TableRow.propTypes = {
     PropTypes.func,
   ]).isRequired,
   expandableDisabledField: PropTypes.string.isRequired,
+  expandOnRowClicked: PropTypes.bool.isRequired,
+  expandOnRowDoubleClicked: PropTypes.bool.isRequired,
 };
 
 export default TableRow;

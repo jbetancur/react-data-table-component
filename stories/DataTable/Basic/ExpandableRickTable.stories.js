@@ -67,4 +67,4 @@ const Expandable = () => (
 );
 
 storiesOf('Expandable', module)
-  .add('Custom Cells', Expandable);
+  .add('Custom Expanded Component', Expandable);
