@@ -31,13 +31,14 @@ If you want to achieve balance with the force and want a simple but flexible tab
 ## Key Features
 
 * Declarative Configuration
-* Sortable (client)
-* Selectable Rows
-* Expandable Rows
+* Built in and configurable:
+  * Sorting
+  * Selectable Rows
+  * Expandable Rows
+  * Pagination
 * Themeable via js config
 * Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
 * Responsive (via x-scroll/flex)
-* Pagination
 
 ## Requirements
 React Data Table Component requires the following be installed in your project:
