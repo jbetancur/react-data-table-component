@@ -114,8 +114,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
-| onRowClicked | func | no | | callback to access the row data,index on row click |
-| onRowDoubleClicked | func | no | | callback to access the row data,index on row double click |
+| onRowClicked | func | no | | callback to access the row, event on row click |
+| onRowDoubleClicked | func | no | | callback to access the row, event on row double click |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
@@ -278,7 +278,8 @@ class MyComponent extends Component {
           columns={columns}
           data={data}
           selectableRows // add for checkbox selection
-          onRowSelected={handleChange}
+          Clicked
+          Selected={handleChange}
         />
     )
   }
