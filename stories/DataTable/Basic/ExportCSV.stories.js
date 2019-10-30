@@ -88,4 +88,4 @@ const BasicTable = () => {
 };
 
 storiesOf('Export CSV', module)
-  .add('Using Act', () => <BasicTable />);
+  .add('Using Actions', () => <BasicTable />);
