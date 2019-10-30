@@ -255,7 +255,7 @@ class MyComponent extends Component {
       />
     )
   }
-);
+};
 
 ```
 
@@ -283,7 +283,7 @@ class MyComponent extends Component {
         />
     )
   }
-);
+};
 ```
 
 ### Clearing Selected Rows
@@ -320,7 +320,7 @@ class MyComponent extends Component {
       />
     )
   }
-);
+};
 ```
 
 ### Overriding with a 3rd Party Ui Component Library
@@ -348,7 +348,7 @@ class MyComponent extends Component {
     />
     )
   }
-);
+};
 ```
 
 ## Custom Cells
@@ -388,7 +388,7 @@ class MyComponent extends Component {
       />
     )
   }
-);
+};
 ```
 
 ## Expandable Rows
@@ -433,7 +433,7 @@ class MyComponent extends Component {
       />
     )
   }
-);
+};
 ```
 
 But in some cases we don't have more details to show:
@@ -478,7 +478,7 @@ class MyComponent extends Component {
       />
     )
   }
-);
+};
 ```
 
 ## Optimizing for Performance and Caveats
@@ -667,7 +667,7 @@ class MyComponent extends Component {
       />
     )
   }
-);
+};
 ```
 
 Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
