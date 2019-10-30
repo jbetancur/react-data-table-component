@@ -200,16 +200,16 @@ Example Usage:
 
 ```js
 
-const { Checkbox } from 'react-md';
+import Checkbox from '@mataerial-ui/core/Checkbox';
 
 ...
 
 /*
-  In this example, the react-md ui lib determines its own indeterminate state via the `uncheckedIcon` property.
-  Let's override it. React Data Table is made aware if a checkbox is indeterminate or not because internally we can resolve this   as `yourfunction(checkboxawareindeterminatestate)`
+  In this example, the Material Ui ui lib determines its own indeterminate state via the `indeterminate` property.
+  Let's override it using selectableRowsComponentProps`
 */
 
-const handleIndeterminate = isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>);
+const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
 
 const MyComponent = () => (
   <DataTable
@@ -218,7 +218,7 @@ const MyComponent = () => (
     data={data}
     selectableRows
     selectableRowsComponent={Checkbox} // Pass the function only
-    selectableRowsComponentProps={{ uncheckedIcon: handleIndeterminate  }}
+    selectableRowsComponentProps={selectProps}
   />
 );
 ```
@@ -324,11 +324,14 @@ class MyComponent extends Component {
 ```
 
 ### Overriding with a 3rd Party Ui Component Library
-Don't like those ugly html checkboxes? Let's override them with some [react-md](https://react-md.mlaursen.com) sexyiness. While we are at it we will also override the `sortIcon`:
+Don't like those ugly html checkboxes? Let's override them with some [Material Ui](https://material-ui.com) sexyiness. While we are at it we will also override the `sortIcon`:
 
 ```js
 ...
-import { Checkbox, FontIcon } from 'react-md';
+import Checkbox from '@mataerial-ui/core/Checkbox';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+
+const sortIcon = <ArrowDownward />;
 ...
 
 class MyComponent extends Component {
@@ -339,8 +342,8 @@ class MyComponent extends Component {
       data={data}
       selectableRows
       selectableRowsComponent={Checkbox} // Pass the function only
-      selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass react-md supported props down to our custom checkbox
-      sortIcon={<FontIcon>arrow_downward</FontIcon>} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees
+      selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass Material Ui supported props down to our custom checkbox
+      sortIcon={sortIcon} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees for you
       onRowSelected={handleChange}
     />
     )

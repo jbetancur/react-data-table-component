@@ -2,7 +2,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import differenceBy from 'lodash/differenceBy';
-import 'react-md/dist/react-md.pink-blue.min.css';
 import tableDataItems from '../constants/sampleDesserts';
 import Button from '../shared/Button';
 import DataTable from '../../../src/index';
