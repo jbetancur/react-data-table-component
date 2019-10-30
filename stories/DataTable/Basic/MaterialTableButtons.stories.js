@@ -3,16 +3,34 @@
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import differenceBy from 'lodash/differenceBy';
-import 'react-md/dist/react-md.pink-blue.min.css';
-import { Card, Button, FontIcon, Checkbox } from 'react-md';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Checkbox from '@material-ui/core/Checkbox';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import Delete from '@material-ui/icons/Delete';
+import Add from '@material-ui/icons/Add';
 import CustomMaterialMenu from '../shared/CustomMaterialMenu';
 import tableDataItems from '../constants/sampleDesserts';
 import DataTable, { memoize } from '../../../src/index';
 
-const sortIcon = <FontIcon>arrow_downward</FontIcon>;
-const selectProps = { uncheckedIcon: isIndeterminate => (isIndeterminate ? <FontIcon>indeterminate_check_box</FontIcon> : <FontIcon>check_box_outline_blank</FontIcon>) };
-const actions = <Button key="add" flat secondary iconChildren="add">Add</Button>;
-const contextActions = memoize(deleteHandler => <Button key="delete" onClick={deleteHandler} style={{ color: 'red' }} icon>delete</Button>);
+const sortIcon = <ArrowDownward />;
+const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
+const actions = (
+  <IconButton
+    color="primary"
+  >
+    <Add />
+  </IconButton>
+);
+const contextActions = memoize(deleteHandler => (
+  <IconButton
+    color="secondary"
+    onClick={deleteHandler}
+  >
+    <Delete />
+  </IconButton>
+));
 const columns = memoize(deleteHandler => [
   {
     cell: row => <CustomMaterialMenu row={row} onDeleteRow={deleteHandler} />,
@@ -74,7 +92,7 @@ const columns = memoize(deleteHandler => [
     right: true,
   },
   {
-    cell: () => <Button raised primary>Action</Button>,
+    cell: () => <Button variant="contained" color="primary">Action</Button>,
     button: true,
   },
 ]);
@@ -140,5 +158,5 @@ class MaterialTable extends PureComponent {
   }
 }
 
-storiesOf('UI Libraries', module)
-  .add('react-md: Action Buttons', () => <MaterialTable />);
+storiesOf('Material UI', module)
+  .add('Action Buttons', () => <MaterialTable />);
