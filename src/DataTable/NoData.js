@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const NoDataWrapperMessage = styled.div`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
