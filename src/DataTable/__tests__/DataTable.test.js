@@ -1284,10 +1284,10 @@ describe('DataTable::Pagination', () => {
     expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
   });
 
-  test('should navigate back one page if there is only 1 item and it is removed from the data', () => {
+  test('should recalculate pagination position if there is only 1 item and it is removed from the data', () => {
     const mock = dataMock();
     const mockOneDeleted = dataMock().data.slice(0, 1);
-
+    const onChangePageMock = jest.fn();
     const { container, rerender } = render(
       <DataTable
         data={mock.data}
@@ -1295,6 +1295,7 @@ describe('DataTable::Pagination', () => {
         paginationPerPage={1}
         paginationRowsPerPageOptions={[1, 2]}
         pagination
+
       />,
     );
 
@@ -1305,6 +1306,7 @@ describe('DataTable::Pagination', () => {
       <DataTable
         data={mockOneDeleted}
         columns={mock.columns}
+        onChangePage={onChangePageMock}
         paginationPerPage={1}
         paginationRowsPerPageOptions={[1, 2]}
         pagination
@@ -1312,6 +1314,41 @@ describe('DataTable::Pagination', () => {
     );
 
     expect(container.firstChild).toMatchSnapshot();
+    expect(onChangePageMock).toBeCalledWith(1, 1);
+  });
+
+  test('should not recalculate pagination position when using paginationServer', () => {
+    const mock = dataMock();
+    const mockOneDeleted = dataMock().data.slice(0, 2);
+    const onChangePageMock = jest.fn();
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+        paginationServer
+
+      />,
+    );
+
+    // move to last page
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+
+    rerender(
+      <DataTable
+        data={mockOneDeleted}
+        columns={mock.columns}
+        onChangePage={onChangePageMock}
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        pagination
+        paginationServer
+      />,
+    );
+
+    expect(onChangePageMock).not.toBeCalled();
   });
 
   test('should call onChangePage with the correct values if paged forward', () => {

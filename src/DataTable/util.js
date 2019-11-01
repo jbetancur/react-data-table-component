@@ -72,4 +72,6 @@ export const handleFunctionProps = (object, ...args) => {
 
 export const getNumberOfPages = (rowCount, rowsPerPage) => Math.ceil(rowCount / rowsPerPage);
 
+export const recalculatePage = (prevPage, nextPage) => Math.min(prevPage, nextPage);
+
 export const noop = () => null;
