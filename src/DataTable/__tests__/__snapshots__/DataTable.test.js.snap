@@ -22172,6 +22172,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 }
 
 .c7 {
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32104,6 +32105,7 @@ exports[`should render and empty table correctly 1`] = `
 }
 
 .c7 {
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
