@@ -21,7 +21,7 @@ import NoData from './NoData';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
-import { sort, decorateColumns, getSortDirection, getNumberOfPages } from './util';
+import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage } from './util';
 import getDefaultTheme from '../themes/default';
 
 const DataTable = memo(({
@@ -183,16 +183,18 @@ const DataTable = memo(({
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
-  // for client-side pagination it should navigate back one page when there is only 1 item on the last page and it is removed from the data set
-  // as long as there is data and the calculated rows (the rows calculated for the current page slice) are 0
+  // recaclulate the pagination and currentPage if the data length changes
   if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {
-    handleChangePage(currentPage - 1);
+    const updatedPage = getNumberOfPages(data.length, rowsPerPage);
+    const recalculatedPage = recalculatePage(currentPage, updatedPage);
+
+    handleChangePage(recalculatedPage);
   }
 
   const handleChangeRowsPerPage = newRowsPerPage => {
     const rowCount = paginationTotalRows || calculatedRows.length;
     const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
-    const recalculatedPage = Math.min(currentPage, updatedPage);
+    const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
     // update the currentPage for client-side pagination
     // server - side should be handled by onChangeRowsPerPage
