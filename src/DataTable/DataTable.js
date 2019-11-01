@@ -47,6 +47,7 @@ const DataTable = memo(({
   paginationServer,
   paginationTotalRows,
   paginationDefaultPage,
+  paginationResetDefaultPage,
   paginationPerPage,
   paginationRowsPerPageOptions,
   paginationIconLastPage,
@@ -137,6 +138,15 @@ const DataTable = memo(({
     return sortedData;
   }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
 
+  const enabledPagination = pagination && !progressPending && data.length > 0;
+  const Pagination = paginationComponent || NativePagination;
+  const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
+  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
+  const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
+  const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
+  const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
+
   /* istanbul ignore next */
   if (onTableUpdate) {
     // eslint-disable-next-line no-console
@@ -163,6 +173,10 @@ const DataTable = memo(({
     onSort(selectedColumn, sortDirection);
   }, [sortColumn, sortDirection]);
 
+  useDidUpdateEffect(() => {
+    handleChangePage(paginationDefaultPage);
+  }, [paginationDefaultPage, paginationResetDefaultPage]);
+
   useEffect(() => {
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
   }, [clearSelectedRows]);
@@ -173,15 +187,6 @@ const DataTable = memo(({
       : [];
     dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
   }, [data, selectableRowsPreSelectedField]);
-
-  const enabledPagination = pagination && !progressPending && data.length > 0;
-  const Pagination = paginationComponent || NativePagination;
-  const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
-  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
-  const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
-  const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
-  const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
   // recaclulate the pagination and currentPage if the data length changes
   if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {

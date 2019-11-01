@@ -167,6 +167,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | pagination | bool | no | false | enable pagination with defaults. by default the total record set will be sliced depending on the page, rows per page. if you wish to use server side pagination then use the `paginationServer` property |
 | paginationServer | bool | no | false | changes the default pagination to work with server side pagination |
 | paginationDefaultPage | number | no | 1 | the default page to use when the table initially loads |
+| paginationResetDefaultPage | bool | no | false | the prop can be "toggled" to reset the pagination back to `paginationDefaultPage`. For this to work make sure you are using some sort of state and toggling the prop. e.g. `setResetPaginationToggle(!resetPaginationToggle)` or for a class component `setState(resetPaginationToggle: !resetPaginationToggle)` |
 | paginationTotalRows | number | no | 0 | allows you to provide the total row count for your table as represented by your API when performing server side pagination. if this property is not provided then react-data-table will use `data.length` |
 | paginationPerPage | number | no | 10 | the default rows per page to use when the table initially loads |
 | paginationRowsPerPageOptions | number | no | [10, 15, 20, 25, 30] | row page dropdown selection options |
@@ -704,9 +705,9 @@ yarn storybook
 ```
 
 ## Including NPM packages
-This project uses two package.json structure.
+This project uses two package.json structure.**
 
-### Library dependencies -- <root_dir>/package.json
+### Library dependencies -- <root_dir>/package.**json
 
 ```sh
 yarn add [package-name] --dev # for dev tools

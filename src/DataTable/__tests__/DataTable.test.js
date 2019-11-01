@@ -1513,6 +1513,34 @@ describe('DataTable::Pagination', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly when paginationResetDefaultPage is toggled', () => {
+    const mock = dataMock();
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1} // force 2 pages
+        paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+        pagination
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-next-page'));
+
+    rerender(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        paginationPerPage={1} // force 2 pages
+        paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+        pagination
+        paginationResetDefaultPage // this will toggle true and reset to page 1
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 describe('DataTable::subHeader', () => {
