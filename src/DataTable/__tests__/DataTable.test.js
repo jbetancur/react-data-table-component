@@ -1514,6 +1514,20 @@ describe('DataTable::Pagination', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when a paginationComponentOptions to hide the per page dropdown are passed', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationComponentOptions={{ noRowsPerPage: true }}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should render correctly when paginationResetDefaultPage is toggled', () => {
     const mock = dataMock();
     const { container, rerender } = render(
