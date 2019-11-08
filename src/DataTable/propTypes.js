@@ -205,10 +205,7 @@ export const defaultProps = {
   onChangePage: () => null,
   onChangeRowsPerPage: () => null,
   paginationComponent: null,
-  paginationComponentOptions: {
-    rowsPerPageText: 'Rows per page:',
-    rangeSeparatorText: 'of',
-  },
+  paginationComponentOptions: {},
   paginationIconFirstPage: <FirstPageIcon />,
   paginationIconLastPage: <LastPageIcon />,
   paginationIconNext: <RightIcon />,

@@ -5,6 +5,12 @@ import { useTableContext } from './DataTableContext';
 import Select from './Select';
 import { getNumberOfPages } from './util';
 
+const defaultComponentOptions = {
+  rowsPerPageText: 'Rows per page:',
+  rangeSeparatorText: 'of',
+  noRowsPerPage: false,
+};
+
 const Button = styled.button`
   position: relative;
   display: block;
@@ -77,7 +83,7 @@ const Pagination = ({
   const firstIndex = (lastIndex - rowsPerPage) + 1;
   const disabledLesser = currentPage === 1;
   const disabledGreater = currentPage === numPages;
-  const { rowsPerPageText, rangeSeparatorText } = paginationComponentOptions;
+  const { rowsPerPageText, rangeSeparatorText, noRowsPerPage } = { ...defaultComponentOptions, ...paginationComponentOptions };
   const range = currentPage === numPages
     ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
     : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
@@ -90,17 +96,21 @@ const Pagination = ({
 
   return (
     <>
-      <RowLabel>{rowsPerPageText}</RowLabel>
-      <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
-        {paginationRowsPerPageOptions.map(num => (
-          <option
-            key={num}
-            value={num}
-          >
-            {num}
-          </option>
-        ))}
-      </Select>
+      {!noRowsPerPage && (
+        <>
+          <RowLabel>{rowsPerPageText}</RowLabel>
+          <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
+            {paginationRowsPerPageOptions.map(num => (
+              <option
+                key={num}
+                value={num}
+              >
+                {num}
+              </option>
+            ))}
+          </Select>
+        </>
+      )}
       <Range>
         {range}
       </Range>
