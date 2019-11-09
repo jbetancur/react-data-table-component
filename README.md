@@ -20,6 +20,7 @@ If you want to achieve balance with the force and want a simple but flexible tab
 * [Selectable Rows](#selectable-rows)
 * [Custom Cells](#custom-cells)
 * [Expandable Rows](#expandable-rows)
+* [UI Library Integration](#ui-library-integration)
 * [Optimizing for Performance and Caveats](#optimizing-for-performance-and-caveats)
 * [Theming](#theming)
 * [CSS Overrides](#css-overrides)
@@ -481,6 +482,10 @@ class MyComponent extends Component {
   }
 };
 ```
+
+## UI Library Integration
+[MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
+[Boostrap 4]https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
 
 ## Optimizing for Performance and Caveats
 Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
