@@ -484,8 +484,8 @@ class MyComponent extends Component {
 ```
 
 ## UI Library Integration
-[MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
-[Boostrap 4]https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
+* [MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
+* [Bootstrap 4]https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
 
 ## Optimizing for Performance and Caveats
 Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
