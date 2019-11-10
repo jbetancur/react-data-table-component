@@ -195,7 +195,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | subHeaderWrap | bool | no | true | whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
 
-#### Conditional Styling
+#### Conditional Row Styling
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | conditionalRowStyles | array | no | [] | Allows an array of conditional expressions and a [style object](https://www.styled-components.com/docs/advanced#style-objects) that apply custom css to a row |
