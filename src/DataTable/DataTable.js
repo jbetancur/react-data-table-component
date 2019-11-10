@@ -94,6 +94,7 @@ const DataTable = memo(({
   defaultSortAsc,
   clearSelectedRows,
   onTableUpdate, // Deprecated
+  conditionalRowStyles,
 }) => {
   const initialState = {
     allSelected: false,
@@ -326,6 +327,7 @@ const DataTable = memo(({
                         defaultExpanded={defaultExpanded}
                         onRowClicked={handleRowClicked}
                         onRowDoubleClicked={handleRowDoubleClicked}
+                        conditionalRowStyles={conditionalRowStyles}
                       />
                     );
                   })}

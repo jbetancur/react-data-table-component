@@ -6,6 +6,7 @@ import {
   decorateColumns,
   getSortDirection,
   handleFunctionProps,
+  getRowStyle,
 } from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
@@ -118,5 +119,46 @@ describe('handleFunctionProps', () => {
     const prop = handleFunctionProps({ fakeProp: 'haha' });
 
     expect(prop).toEqual({ fakeProp: 'haha' });
+  });
+});
+
+
+describe('getRowStyle', () => {
+  test('should return a row style if the expression matches', () => {
+    const rowStyleExpression = [
+      {
+        when: r => r.name === 'luke',
+        style: {
+          backgroundColor: 'green',
+        },
+      },
+    ];
+
+    const style = getRowStyle({ name: 'luke' }, rowStyleExpression);
+
+    expect(style).toEqual({ backgroundColor: 'green' });
+  });
+
+  test('should return {} if the expression does not match', () => {
+    const rowStyleExpression = [
+      {
+        when: r => r.name === 'wookie',
+        style: {
+          backgroundColor: 'green',
+        },
+      },
+    ];
+
+    const style = getRowStyle({ name: 'luke' }, rowStyleExpression);
+
+    expect(style).toEqual({});
+  });
+
+  test('should return {} if there are no expressions', () => {
+    const rowStyleExpression = [];
+
+    const style = getRowStyle({ name: 'luke' }, rowStyleExpression);
+
+    expect(style).toEqual({});
   });
 });

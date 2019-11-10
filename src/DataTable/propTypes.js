@@ -137,6 +137,12 @@ export const propTypes = {
     PropTypes.func,
   ]),
   dense: PropTypes.bool,
+  conditionalRowStyles: PropTypes.arrayOf(
+    PropTypes.shape({
+      when: PropTypes.func.isRequired,
+      style: PropTypes.object.isRequired,
+    }),
+  ),
 };
 
 export const defaultProps = {
@@ -211,4 +217,5 @@ export const defaultProps = {
   paginationIconNext: <RightIcon />,
   paginationIconPrevious: <LeftIcon />,
   dense: false,
+  conditionalRowStyles: [],
 };

@@ -5,6 +5,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
+import { getRowStyle } from './util';
 
 const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
 
@@ -58,6 +59,7 @@ const TableRowStyle = styled.div`
   ${props => props.striped && stripedCSS};
   ${props => props.highlightOnHover && highlightCSS};
   ${props => props.pointerOnHover && pointerCSS};
+  ${props => props.extendedRowStyle}
 `;
 
 const TableRow = memo(({
@@ -78,6 +80,7 @@ const TableRow = memo(({
   defaultExpanded,
   expandOnRowClicked,
   expandOnRowDoubleClicked,
+  conditionalRowStyles,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleExpanded = useCallback(() => {
@@ -107,6 +110,8 @@ const TableRow = memo(({
     }
   }, [disableRowClick, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row]);
 
+  const extendedRowStyle = getRowStyle(row, conditionalRowStyles);
+
   return (
     <>
       <TableRowStyle
@@ -118,6 +123,7 @@ const TableRow = memo(({
         onClick={handleRowClick}
         onDoubleClick={handleRowDoubleClick}
         className="rdt_TableRow"
+        extendedRowStyle={extendedRowStyle}
       >
         {selectableRows && (
           <TableCellCheckbox
@@ -179,6 +185,7 @@ TableRow.propTypes = {
   expandableDisabledField: PropTypes.string.isRequired,
   expandOnRowClicked: PropTypes.bool.isRequired,
   expandOnRowDoubleClicked: PropTypes.bool.isRequired,
+  conditionalRowStyles: PropTypes.array.isRequired,
 };
 
 export default TableRow;
