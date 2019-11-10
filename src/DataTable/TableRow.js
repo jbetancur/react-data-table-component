@@ -10,16 +10,18 @@ import { getRowStyle } from './util';
 const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
 
 const defaultRowsCSS = css`
-  border-top-style: solid;
-  border-top-width: ${props => props.theme.rows.borderWidth};
-  border-top-color: ${props => props.theme.rows.borderColor};
+  &:not(:first-child) {
+    border-top-style: ${props => props.theme.rows.borderStyle};
+    border-top-width: ${props => props.theme.rows.borderWidth};
+    border-top-color: ${props => props.theme.rows.borderColor};
+  }
 `;
 
 const spacedRowsCSS = css`
   margin-top: ${props => props.theme.rows.spacingMargin || 0};
   margin-bottom: ${props => props.theme.rows.spacingMargin || 0};
   border-radius: ${props => props.theme.rows.spacingBorderRadius || 0};
-  border-style: solid;
+  border-style: ${props => props.theme.rows.borderStyle};
   border-width: ${props => props.theme.rows.borderWidth};
   border-color: ${props => props.theme.rows.borderColor};
   ${props => props.theme.rows.spacingShadow && `box-shadow: ${props.theme.rows.spacingShadow}`};
