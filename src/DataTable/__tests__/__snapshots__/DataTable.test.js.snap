@@ -2368,6 +2368,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -3032,6 +3033,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -3696,6 +3698,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -4360,6 +4363,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -5043,6 +5047,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c18 svg {
@@ -5712,6 +5717,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -6378,6 +6384,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -7075,6 +7082,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {
@@ -8348,6 +8356,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   flex-shrink: 0;
   font-size: 13px;
   color: rgba(0,0,0,.54);
+  margin-top: 2px;
 }
 
 .c17 svg {

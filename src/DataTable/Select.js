@@ -32,6 +32,7 @@ const SelectWrapper = styled.div`
   flex-shrink: 0;
   font-size: ${props => props.theme.pagination.fontSize};
   color: ${props => props.theme.pagination.fontColor};
+  margin-top: 2px;
 
   svg {
     top: 0;
