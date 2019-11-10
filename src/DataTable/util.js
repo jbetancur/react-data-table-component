@@ -75,3 +75,17 @@ export const getNumberOfPages = (rowCount, rowsPerPage) => Math.ceil(rowCount / 
 export const recalculatePage = (prevPage, nextPage) => Math.min(prevPage, nextPage);
 
 export const noop = () => null;
+
+export const getRowStyle = (row = {}, conditionalRowStyles = []) => {
+  let rowStyle = {};
+
+  if (conditionalRowStyles.length > 0) {
+    conditionalRowStyles.forEach(exp => {
+      if (exp.when && exp.when(row)) {
+        rowStyle = exp.style;
+      }
+    });
+  }
+
+  return rowStyle;
+};

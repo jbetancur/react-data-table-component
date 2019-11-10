@@ -1842,7 +1842,6 @@ describe('DataTable::Theming', () => {
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        expandableRows
         customTheme={theme}
       />,
     );
@@ -1863,8 +1862,82 @@ describe('DataTable::Theming', () => {
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        expandableRows
         customTheme={theme}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+describe('DataTable::conditionalRowStyles', () => {
+  test('should render correctly when no conditionalRowStyles are an empty array', () => {
+    const mock = dataMock();
+    mock.data[0].completed = true;
+    const conditionalRowStyles = [];
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        conditionalRowStyles={conditionalRowStyles}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when conditionalRowStyles is defined and there is a match', () => {
+    const mock = dataMock();
+    mock.data[0].completed = true;
+    const conditionalRowStyles = [
+      {
+        when: row => row.completed,
+        style: {
+          backgroundColor: 'rgba(63, 195, 128, 0.9)',
+          color: 'white',
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        },
+      },
+    ];
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        conditionalRowStyles={conditionalRowStyles}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when conditionalRowStyles is defined and there is no match', () => {
+    const mock = dataMock();
+    mock.data[0].completed = false;
+    const conditionalRowStyles = [
+      {
+        when: row => row.completed,
+        style: {
+          backgroundColor: 'rgba(63, 195, 128, 0.9)',
+          color: 'white',
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        },
+      },
+    ];
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        conditionalRowStyles={conditionalRowStyles}
       />,
     );
 

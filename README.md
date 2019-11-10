@@ -195,6 +195,47 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | subHeaderWrap | bool | no | true | whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
 
+#### Conditional Styling
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| conditionalRowStyles | array | no | [] | Allows an array of conditional expressions and a [style object](https://www.styled-components.com/docs/advanced#style-objects) that apply custom css to a row |
+
+##### ConditionalRowStyles object props
+| Property | Type     | Required  | Description                                                                                                           |
+|----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
+| when     | function | yes       | `when` provides you a callback with access to your `row` data. The function must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the status field in your row data is set to  `completed` |
+| style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects)                                 |
+
+##### Example
+The following will `style` the background color of a row to green and set a hover effect `when` the expression `row => row.calories < 300` evaluates to true
+| Property | Type     | Required | Example
+
+```js
+...
+const conditionalRowStyles = [
+  {
+    when: row => row.calories < 300,
+    style: {
+      backgroundColor: 'green',
+      color: 'white',
+      '&:hover': {
+        cursor: 'pointer',
+      },
+    },
+  },
+];
+
+const MyTable = () => (
+  <DataTable
+    title="Desserts"
+    columns={columns}
+    data={data}
+    conditionalRowStyles={conditionalRowStyles}
+  />
+);
+
+```
+
 #### Advanced Selectable Component Options
 Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
 
