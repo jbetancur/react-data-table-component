@@ -34,6 +34,9 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -95,11 +98,14 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -440,6 +446,9 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c16 {
@@ -522,11 +531,14 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -923,6 +935,9 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -984,11 +999,14 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -1321,6 +1339,9 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -1382,11 +1403,14 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c8:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c5 {
@@ -1600,6 +1624,9 @@ exports[`DataTable::Header title should render correctly 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -1661,11 +1688,14 @@ exports[`DataTable::Header title should render correctly 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -2023,6 +2053,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -2084,11 +2117,14 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -2681,6 +2717,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -2742,11 +2781,14 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -3339,6 +3381,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -3400,11 +3445,14 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -3997,6 +4045,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -4058,11 +4109,14 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -4655,6 +4709,9 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -4716,11 +4773,14 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -5337,6 +5397,9 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -5398,11 +5461,14 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -5997,6 +6063,9 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -6058,11 +6127,14 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -6688,6 +6760,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -6749,11 +6824,14 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -7379,6 +7457,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -7440,11 +7521,14 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -7949,6 +8033,9 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -8010,11 +8097,14 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -8582,6 +8672,9 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -8981,6 +9074,9 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -9381,6 +9477,9 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -9446,11 +9545,14 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -9785,6 +9887,9 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -9846,11 +9951,14 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -10193,6 +10301,9 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -10254,11 +10365,14 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -10601,6 +10715,9 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -10662,11 +10779,14 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -11009,6 +11129,9 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -11070,11 +11193,14 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -11417,6 +11543,9 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -11478,11 +11607,14 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -11813,6 +11945,9 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -11874,11 +12009,14 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -12209,6 +12347,9 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -12274,11 +12415,14 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -12613,6 +12757,9 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -12676,11 +12823,14 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -13013,6 +13163,9 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -13074,11 +13227,14 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -13409,6 +13565,9 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -13474,11 +13633,14 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -13808,6 +13970,9 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -13869,11 +14034,14 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -14200,6 +14368,9 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -14262,11 +14433,14 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -14598,6 +14772,9 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -14659,11 +14836,14 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -15023,6 +15203,9 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -15084,11 +15267,14 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -15419,6 +15605,9 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -15480,11 +15669,14 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -15809,6 +16001,9 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -15870,11 +16065,14 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -16205,6 +16403,9 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -16266,11 +16467,14 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c15:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c13 {
@@ -16288,13 +16492,16 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
   background-color: transparent;
   color: rgba(0,0,0,.87);
   background-color: rgba(63,195,128,0.9);
   color: white;
+}
+
+.c13:not(:first-child) {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c13:hover {
@@ -16629,6 +16836,9 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -16690,11 +16900,14 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -17025,6 +17238,9 @@ exports[`DataTable::conditionalRowStyles should render correctly when no conditi
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -17086,11 +17302,14 @@ exports[`DataTable::conditionalRowStyles should render correctly when no conditi
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -17421,6 +17640,9 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   align-items: stretch;
   min-height: 32px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -17482,11 +17704,14 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 32px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -17817,6 +18042,9 @@ exports[`DataTable::expandableRows should expand a row expandableRows is true an
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -17951,11 +18179,14 @@ exports[`DataTable::expandableRows should expand a row expandableRows is true an
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c14:hover {
@@ -18352,6 +18583,9 @@ exports[`DataTable::expandableRows should expand a row expandableRows is true an
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -18486,11 +18720,14 @@ exports[`DataTable::expandableRows should expand a row expandableRows is true an
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c14:hover {
@@ -18887,6 +19124,9 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -19014,11 +19254,14 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c18 {
@@ -19036,11 +19279,14 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c18:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c18:hover {
@@ -19429,6 +19675,9 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -19490,11 +19739,14 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -19825,6 +20077,9 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -19959,11 +20214,14 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -20356,6 +20614,9 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -20483,11 +20744,14 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -20871,6 +21135,9 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -21005,11 +21272,14 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -21402,6 +21672,9 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -21463,11 +21736,14 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -21801,6 +22077,9 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -21862,11 +22141,14 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -22200,6 +22482,9 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -22261,11 +22546,14 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -22601,6 +22889,9 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -22662,11 +22953,14 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -23002,6 +23296,9 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -23063,11 +23360,14 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c13:hover {
@@ -23407,6 +23707,9 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -23468,11 +23771,14 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c13:hover {
@@ -24626,6 +24932,9 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -24687,11 +24996,14 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -25024,6 +25336,9 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -25085,11 +25400,14 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -25420,6 +25738,9 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -25481,11 +25802,14 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -25815,6 +26139,9 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -25913,11 +26240,14 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -26271,6 +26601,9 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c16 {
@@ -26353,11 +26686,14 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -26744,6 +27080,9 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -26805,11 +27144,14 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -27164,6 +27506,9 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -27225,11 +27570,14 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -27587,6 +27935,9 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -27648,11 +27999,14 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -27983,6 +28337,9 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -28044,11 +28401,14 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -28403,6 +28763,9 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -28464,11 +28827,14 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -28823,6 +29189,9 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -28884,11 +29253,14 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -29232,6 +29604,9 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -29297,11 +29672,14 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -29649,6 +30027,9 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -29714,11 +30095,14 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -30077,6 +30461,9 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -30138,11 +30525,14 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -30497,6 +30887,9 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -30558,11 +30951,14 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c12 {
@@ -30920,6 +31316,9 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -30981,11 +31380,14 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c13:nth-child(odd) {
@@ -31320,6 +31722,9 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -31381,11 +31786,14 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -31747,6 +32155,9 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -31808,11 +32219,14 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -32174,6 +32588,9 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -32235,11 +32652,14 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -32601,6 +33021,9 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -32662,11 +33085,14 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -33028,6 +33454,9 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c15 {
@@ -33089,11 +33518,14 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c14:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c11 {
@@ -33455,6 +33887,9 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -33516,11 +33951,14 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -33835,6 +34273,9 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -33896,11 +34337,14 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -34398,6 +34842,9 @@ exports[`should render correctly when disabled 1`] = `
   align-items: stretch;
   min-height: 48px;
   width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14 {
@@ -34459,11 +34906,14 @@ exports[`should render correctly when disabled 1`] = `
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
-  background-color: transparent;
-  color: rgba(0,0,0,.87);
 }
 
 .c10 {

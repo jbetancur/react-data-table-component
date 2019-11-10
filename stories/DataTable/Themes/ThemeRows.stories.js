@@ -5,6 +5,9 @@ import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
 
 const rowTheme = {
+  header: {
+    borderColor: 'transparent',
+  },
   rows: {
     // spaced allows the following properties
     spacing: 'spaced',
@@ -38,7 +41,7 @@ const columns = [
   },
 ];
 
-const BasicTable = () => (
+const ThemedTable = () => (
   <DataTable
     title="Movie List"
     columns={columns}
@@ -49,6 +52,5 @@ const BasicTable = () => (
   />
 );
 
-
 storiesOf('Theming', module)
-  .add('Custom Rows', BasicTable);
+  .add('Custom Rows', ThemedTable);

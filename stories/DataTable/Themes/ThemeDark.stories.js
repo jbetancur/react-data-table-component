@@ -19,6 +19,7 @@ const darkTheme = {
     fontColorActive: 'FFFFFF',
     fontColor: '#FFFFFF',
     backgroundColor: '#363640',
+    borderColor: 'rgba(255, 255, 255, .12)',
   },
   rows: {
     fontColor: '#FFFFFF',
@@ -62,7 +63,7 @@ const columns = [
   },
 ];
 
-const BasicTable = () => (
+const DarkTable = () => (
   <DataTable
     title="Movie List"
     columns={columns}
@@ -78,4 +79,4 @@ const BasicTable = () => (
 
 
 storiesOf('Theming', module)
-  .add('Dark Theme', BasicTable);
+  .add('Dark Theme', DarkTable);
