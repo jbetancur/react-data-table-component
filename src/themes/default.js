@@ -55,8 +55,8 @@ export default () => ({
     buttonHoverBackground: 'rgba(0,0,0,.12)',
   },
   footer: {
-    seperatorStyle: 'solid',
-    seperatorWidth: '1px',
-    seperatorColor: 'rgba(0,0,0,.12)',
+    separatorStyle: 'solid',
+    separatorWidth: '1px',
+    separatorColor: 'rgba(0,0,0,.12)',
   },
 });

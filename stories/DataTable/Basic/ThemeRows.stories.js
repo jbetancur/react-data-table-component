@@ -22,7 +22,7 @@ const rowTheme = {
     cellPadding: '48px',
   },
   footer: {
-    seperatorStyle: 'none',
+    separatorStyle: 'none',
   },
 };
 
