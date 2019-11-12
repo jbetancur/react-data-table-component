@@ -238,37 +238,6 @@ const MyTable = () => (
 | when     | function | yes       | `when` accepts a callback with access to your `row` data. The function must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field in your row data is set to  `completed` |
 | style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects) to conditionally apply css styles to a row |
 
-#### Advanced Selectable Component Options
-Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
-
-Example Usage:
-
-```js
-
-import Checkbox from '@mataerial-ui/core/Checkbox';
-
-...
-
-/*
-  In this example, the Material Ui ui lib determines its own indeterminate state via the `indeterminate` property.
-  Let's override it using selectableRowsComponentProps`
-*/
-
-const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
-
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows
-    selectableRowsComponent={Checkbox} // Pass the function only
-    selectableRowsComponentProps={selectProps}
-  />
-);
-```
-**Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
-
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
 
@@ -368,7 +337,7 @@ class MyComponent extends Component {
 };
 ```
 
-### Overriding with a 3rd Party Ui Component Library
+### Overriding with Ui Component Library Component
 Don't like those ugly html checkboxes? Let's override them with some [Material Ui](https://material-ui.com) sexyiness. While we are at it we will also override the `sortIcon`:
 
 ```js
@@ -379,22 +348,49 @@ import ArrowDownward from '@material-ui/icons/ArrowDownward';
 const sortIcon = <ArrowDownward />;
 ...
 
-class MyComponent extends Component {
-  render() {
-    return (
-      title="Arnold Movies"
-      columns={columns}
-      data={data}
-      selectableRows
-      selectableRowsComponent={Checkbox} // Pass the function only
-      selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass Material Ui supported props down to our custom checkbox
-      sortIcon={sortIcon} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees for you
-      onRowSelected={handleChange}
-    />
-    )
-  }
-};
+const MyComponent = () => (
+  <DataTable
+    title="Arnold Movies"
+    columns={columns}
+    data={data}
+    selectableRows
+    selectableRowsComponent={Checkbox} // Pass the function only
+    selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass Material Ui supported props down to our custom checkbox
+    sortIcon={sortIcon} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees for you
+    onRowSelected={handleChange}
+  />
+);
 ```
+
+## Using Custom Checkboxes and Indeterminate State
+Sometimes UI Library checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
+
+Example Usage:
+
+```js
+
+import Checkbox from '@mataerial-ui/core/Checkbox';
+
+...
+
+/*
+  In this example, the Material Ui ui lib determines its own indeterminate state via the `indeterminate` property.
+  Let's override it using selectableRowsComponentProps`
+*/
+const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
+
+const MyComponent = () => (
+  <DataTable
+    title="Arnold Movies"
+    columns={columns}
+    data={data}
+    selectableRows
+    selectableRowsComponent={Checkbox} // Pass the function only
+    selectableRowsComponentProps={selectProps}
+  />
+);
+```
+**Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
 
 ## Custom Cells
 Let's give our Movie list a summary, but in the same cell as `Name`:
