@@ -21,6 +21,9 @@ const rowTheme = {
   cells: {
     cellPadding: '48px',
   },
+  footer: {
+    seperatorStyle: 'none',
+  },
 };
 
 const columns = [

@@ -11,7 +11,9 @@ const TableFooter = styled.footer`
   padding-left: 8px;
   width: 100%;
   background-color: ${props => props.theme.pagination.backgroundColor};
-  border-top: 1px solid ${props => props.theme.rows.borderColor};
+  border-top-style: ${props => props.theme.footer.seperatorStyle};
+  border-top-width: ${props => props.theme.footer.seperatorWidth};
+  border-top-color: ${props => props.theme.footer.seperatorColor};
 `;
 
 export default TableFooter;
