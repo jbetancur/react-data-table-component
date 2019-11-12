@@ -235,8 +235,8 @@ const MyTable = () => (
 #### Conditional Style Object
 | Property | Type     | Required  | Description                                                                                                             |
 |----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
-| when     | function | yes       | `when` accepts a callback with access to your `row` data. The function must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field in your row data is set to  `completed` |
-| style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects) to conditionally apply css styles to a row |
+| when     | function | yes       | `when` accepts a callback that gives you access to your `row` data. The when callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
+| style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects) |
 
 ## Basic Table
 The following declarative structure creates a sortable table of Arnold movie titles:
