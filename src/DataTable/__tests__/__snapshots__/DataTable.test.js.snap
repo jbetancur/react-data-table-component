@@ -2039,7 +2039,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -2704,7 +2706,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -3369,7 +3373,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -4034,7 +4040,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -4699,7 +4707,9 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -5388,7 +5398,9 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -6055,7 +6067,9 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -6753,7 +6767,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -7451,7 +7467,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
@@ -8027,7 +8045,9 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   padding-left: 8px;
   width: 100%;
   background-color: transparent;
-  border-top: 1px solid rgba(0,0,0,.12);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
 }
 
 .c9 {
