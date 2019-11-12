@@ -43,6 +43,9 @@ const darkTheme = {
     backgroundColor: '#363640',
     expanderColor: '#FFFFFF',
   },
+  footer: {
+    separatorColor: 'rgba(255, 255, 255, .12)',
+  },
 };
 
 const columns = [
