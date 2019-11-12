@@ -10,6 +10,10 @@ const columns = [
     selector: 'name',
     sortable: true,
     grow: 2,
+    style: {
+      backgroundColor: 'rgba(63, 195, 128, 0.9)',
+      color: 'white',
+    },
   },
   {
     name: 'Type',
@@ -21,6 +25,9 @@ const columns = [
     selector: 'calories',
     sortable: true,
     right: true,
+    style: {
+      backgroundColor: 'rgba(187, 204, 221, 1)',
+    },
   },
   {
     name: 'Fat (g)',
@@ -33,6 +40,9 @@ const columns = [
     selector: 'carbs',
     sortable: true,
     right: true,
+    style: {
+      backgroundColor: 'rgba(187, 204, 221, 1)',
+    },
   },
   {
     name: 'Protein (g)',
@@ -45,6 +55,9 @@ const columns = [
     selector: 'sodium',
     sortable: true,
     right: true,
+    style: {
+      backgroundColor: 'rgba(187, 204, 221, 1)',
+    },
   },
   {
     name: 'Calcium (%)',
@@ -57,50 +70,19 @@ const columns = [
     selector: 'iron',
     sortable: true,
     right: true,
-  },
-];
-
-const conditionalRowStyles = [
-  {
-    when: row => row.calories < 300,
     style: {
-      backgroundColor: 'rgba(63, 195, 128, 0.9)',
-      color: 'white',
-      '&:hover': {
-        cursor: 'pointer',
-      },
-    },
-  },
-  {
-    when: row => row.calories >= 300 && row.calories < 400,
-    style: {
-      backgroundColor: 'rgba(248, 148, 6, 0.9)',
-      color: 'white',
-      '&:hover': {
-        cursor: 'pointer',
-      },
-    },
-  },
-  {
-    when: row => row.calories >= 400,
-    style: {
-      backgroundColor: 'rgba(242, 38, 19, 0.9)',
-      color: 'white',
-      '&:hover': {
-        cursor: 'not-allowed',
-      },
+      backgroundColor: 'rgba(187, 204, 221, 1)',
     },
   },
 ];
 
-const ConditionalRowStyle = () => (
+const ConditionalCellStyle = () => (
   <DataTable
-    title="Desserts - Conditional Rows"
+    title="Desserts - Cell Styling"
     columns={columns}
     data={tableDataItems}
-    conditionalRowStyles={conditionalRowStyles}
   />
 );
 
 storiesOf('Styling', module)
-  .add('Conditional Rows', ConditionalRowStyle);
+  .add('Cells', ConditionalCellStyle);

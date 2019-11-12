@@ -1871,7 +1871,7 @@ describe('DataTable::Theming', () => {
 });
 
 describe('DataTable::conditionalRowStyles', () => {
-  test('should render correctly when no conditionalRowStyles are an empty array', () => {
+  test('should render correctly when conditionalRowStyles are an empty array', () => {
     const mock = dataMock();
     mock.data[0].completed = true;
     const conditionalRowStyles = [];
@@ -1880,7 +1880,6 @@ describe('DataTable::conditionalRowStyles', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         conditionalRowStyles={conditionalRowStyles}
       />,
     );
@@ -1908,7 +1907,6 @@ describe('DataTable::conditionalRowStyles', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         conditionalRowStyles={conditionalRowStyles}
       />,
     );
@@ -1936,8 +1934,71 @@ describe('DataTable::conditionalRowStyles', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultSortField="some.name"
         conditionalRowStyles={conditionalRowStyles}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+describe('DataTable::column.style', () => {
+  test('should render correctly when a style is set on a column', () => {
+    const mock = dataMock();
+    mock.columns[0].style = {
+      backgroundColor: 'rgba(63, 195, 128, 0.9)',
+    };
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+describe('DataTable::conditionalCellStyles', () => {
+  test('should render correctly when conditionalCellStyles is defined and there is a match', () => {
+    const mock = dataMock();
+    mock.data[0].completed = true;
+    mock.columns[0].conditionalCellStyles = [
+      {
+        when: row => row.completed,
+        style: {
+          backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        },
+      },
+    ];
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when conditionalCellStyles is defined and there is no match', () => {
+    const mock = dataMock();
+    mock.data[0].completed = false;
+    mock.columns[0].conditionalCellStyles = [
+      {
+        when: row => row.completed,
+        style: {
+          backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        },
+      },
+    ];
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
       />,
     );
 

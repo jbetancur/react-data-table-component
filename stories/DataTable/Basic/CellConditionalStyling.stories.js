@@ -1,12 +1,9 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import differenceBy from 'lodash/differenceBy';
 import tableDataItems from '../constants/sampleDesserts';
-import Button from '../shared/Button';
 import DataTable from '../../../src/index';
 
-const actions = <Button key="add">Add</Button>;
 const columns = [
   {
     name: 'Name',
@@ -24,6 +21,38 @@ const columns = [
     selector: 'calories',
     sortable: true,
     right: true,
+    conditionalCellStyles: [
+      {
+        when: row => row.calories < 300,
+        style: {
+          backgroundColor: 'rgba(63, 195, 128, 0.9)',
+          color: 'white',
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        },
+      },
+      {
+        when: row => row.calories >= 300 && row.calories < 400,
+        style: {
+          backgroundColor: 'rgba(248, 148, 6, 0.9)',
+          color: 'white',
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        },
+      },
+      {
+        when: row => row.calories >= 400,
+        style: {
+          backgroundColor: 'rgba(242, 38, 19, 0.9)',
+          color: 'white',
+          '&:hover': {
+            cursor: 'not-allowed',
+          },
+        },
+      },
+    ],
   },
   {
     name: 'Fat (g)',
@@ -95,40 +124,13 @@ const columns = [
   },
 ];
 
-const SelectableRowsManagement = () => {
-  const [selectedRows, setSelectedRows] = React.useState([]);
-  const [toggleCleared, setToggleCleared] = React.useState(false);
-  const [data, setData] = React.useState(tableDataItems);
+const ConditionalCellStyle = () => (
+  <DataTable
+    title="Desserts - Conditional Cells"
+    columns={columns}
+    data={tableDataItems}
+  />
+);
 
-  const handleRowSelected = React.useCallback(state => {
-    setSelectedRows(state.selectedRows);
-  }, []);
-
-  const contextActions = React.useMemo(() => {
-    const handleDelete = () => {
-      // eslint-disable-next-line no-alert
-      if (window.confirm(`Are you sure you want to delete:\r ${selectedRows.map(r => r.name)}?`)) {
-        setToggleCleared(!toggleCleared);
-        setData(differenceBy(data, selectedRows, 'name'));
-      }
-    };
-
-    return <Button key="delete" onClick={handleDelete} style={{ backgroundColor: 'red' }} icon>Delete</Button>;
-  }, [data, selectedRows, toggleCleared]);
-
-  return (
-    <DataTable
-      title="Desserts"
-      columns={columns}
-      data={data}
-      selectableRows
-      actions={actions}
-      contextActions={contextActions}
-      onRowSelected={handleRowSelected}
-      clearSelectedRows={toggleCleared}
-    />
-  );
-};
-
-storiesOf('Selectable Rows', module)
-  .add('Selected Row Toggle', () => <SelectableRowsManagement />);
+storiesOf('Styling', module)
+  .add('Conditional Cells', ConditionalCellStyle);

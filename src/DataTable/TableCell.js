@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Cell } from './Cell';
-import { getProperty } from './util';
+import { getProperty, getConditionalStyle } from './util';
 
 const TableCellStyle = styled(Cell)`
   font-size: ${props => props.theme.rows.fontSize};
@@ -13,14 +13,24 @@ const TableCellStyle = styled(Cell)`
     overflow: ${props => (props.column.allowOverflow ? 'visible' : 'hidden')};
     text-overflow: ellipsis;
   }
+
+  ${props => props.column.style};
+  ${props => props.extendedCellStyle};
 `;
 
 const TableCell = memo(({ id, column, row }) => {
   // apply a tag that TableRow will use to stop event propagation when TableCell is clicked
   const dataTag = column.ignoreRowClick || column.button ? null : '___react-data-table-allow-propagation___';
+  const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
 
   return (
-    <TableCellStyle id={id} column={column} data-tag={dataTag} className="rdt_TableCell">
+    <TableCellStyle
+      id={id}
+      column={column}
+      data-tag={dataTag}
+      className="rdt_TableCell"
+      extendedCellStyle={extendedCellStyle}
+    >
       {!column.cell && (
         <div data-tag={dataTag}>
           {getProperty(row, column.selector, column.format)}
