@@ -81,11 +81,13 @@ Nothing new here - we are using an array of object literals and properties to de
 | right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | reduces the padding in the cell by 50%                                     |
-| ignoreRowClick   | bool | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
+| ignoreRowClick    | bool    | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
 | button   | bool   | no       | this is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
 | wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
-| allowOverflow  | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
-| hide   | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
+| allowOverflow     | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
+| hide     | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
+| style    | object   | no     | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
+| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#conditional-style-object) to conditionally apply css styles to a cell |
 
 #### column.hide media presets
 When the breakpoint is reached the column will be hidden. These are the built-in media breakpoint presets when hiding columns
@@ -198,13 +200,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 #### Conditional Row Styling
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| conditionalRowStyles | array | no | [] | Allows an array of conditional expressions and a [style object](https://www.styled-components.com/docs/advanced#style-objects) that apply custom css to a row |
-
-##### ConditionalRowStyles object props
-| Property | Type     | Required  | Description                                                                                                           |
-|----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
-| when     | function | yes       | `when` provides you a callback with access to your `row` data. The function must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the status field in your row data is set to  `completed` |
-| style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects)                                 |
+| conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#conditional-style-object)
 
 ##### Example
 The following will `style` the background color of a row to green and set a hover effect `when` the expression `row => row.calories < 300` evaluates to true
@@ -235,6 +231,12 @@ const MyTable = () => (
 );
 
 ```
+
+#### Conditional Style Object
+| Property | Type     | Required  | Description                                                                                                             |
+|----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
+| when     | function | yes       | `when` accepts a callback with access to your `row` data. The function must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field in your row data is set to  `completed` |
+| style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects) to conditionally apply css styles to a row |
 
 #### Advanced Selectable Component Options
 Sometimes 3rd party checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
@@ -525,6 +527,8 @@ class MyComponent extends Component {
 ```
 
 ## UI Library Integration
+React Data Table Component makes it easy to incorporate ui components from other libraries for overriding things like the sort icon, select checkbox.
+
 * [MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
 * [Bootstrap 4](https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
 

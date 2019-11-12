@@ -6,7 +6,7 @@ import {
   decorateColumns,
   getSortDirection,
   handleFunctionProps,
-  getRowStyle,
+  getConditionalStyle,
 } from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
@@ -123,7 +123,7 @@ describe('handleFunctionProps', () => {
 });
 
 
-describe('getRowStyle', () => {
+describe('getConditionalStyle', () => {
   test('should return a row style if the expression matches', () => {
     const rowStyleExpression = [
       {
@@ -134,7 +134,7 @@ describe('getRowStyle', () => {
       },
     ];
 
-    const style = getRowStyle({ name: 'luke' }, rowStyleExpression);
+    const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
     expect(style).toEqual({ backgroundColor: 'green' });
   });
@@ -149,16 +149,53 @@ describe('getRowStyle', () => {
       },
     ];
 
-    const style = getRowStyle({ name: 'luke' }, rowStyleExpression);
+    const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
     expect(style).toEqual({});
   });
 
-  test('should return {} if there are no expressions', () => {
+  test('should return {} if there are no style object expressions', () => {
     const rowStyleExpression = [];
 
-    const style = getRowStyle({ name: 'luke' }, rowStyleExpression);
+    const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
     expect(style).toEqual({});
+  });
+
+  test('should default to an empty object if the style property is not provided', () => {
+    const rowStyleExpression = [
+      {
+        when: r => r.name === 'luke',
+      },
+    ];
+
+    const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+
+    expect(style).toEqual({});
+  });
+
+  test('should throw an error if the when expression is not a function', () => {
+    const rowStyleExpression = [
+      {
+        when: 'poopy',
+        style: {
+          backgroundColor: 'green',
+        },
+      },
+    ];
+
+    expect(() => getConditionalStyle({ name: 'luke' }, rowStyleExpression)).toThrow();
+  });
+
+  test('should throw an error if the when property is not provided', () => {
+    const rowStyleExpression = [
+      {
+        style: {
+          backgroundColor: 'green',
+        },
+      },
+    ];
+
+    expect(() => getConditionalStyle({ name: 'luke' }, rowStyleExpression)).toThrow();
   });
 });

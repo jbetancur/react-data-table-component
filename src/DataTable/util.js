@@ -76,13 +76,18 @@ export const recalculatePage = (prevPage, nextPage) => Math.min(prevPage, nextPa
 
 export const noop = () => null;
 
-export const getRowStyle = (row = {}, conditionalRowStyles = []) => {
+export const getConditionalStyle = (row = {}, conditionalRowStyles = []) => {
   let rowStyle = {};
 
-  if (conditionalRowStyles.length > 0) {
+  if (conditionalRowStyles.length) {
     conditionalRowStyles.forEach(exp => {
-      if (exp.when && exp.when(row)) {
-        rowStyle = exp.style;
+      if (!exp.when || typeof exp.when !== 'function') {
+        throw new Error('"when" must be defined in the conditional style object and must be function');
+      }
+
+      // evaluate the field and if true return a the style to be applied
+      if (exp.when(row)) {
+        rowStyle = exp.style || {};
       }
     });
   }
