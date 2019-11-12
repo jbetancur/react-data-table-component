@@ -30,38 +30,6 @@ const columns = [
     selector: 'fat',
     sortable: true,
     right: true,
-    conditionalCellStyles: [
-      {
-        when: row => row.fat <= 5,
-        style: {
-          backgroundColor: 'rgba(63, 195, 128, 0.9)',
-          color: 'white',
-          '&:hover': {
-            cursor: 'pointer',
-          },
-        },
-      },
-      {
-        when: row => row.fat > 5 && row.fat < 10,
-        style: {
-          backgroundColor: 'rgba(248, 148, 6, 0.9)',
-          color: 'white',
-          '&:hover': {
-            cursor: 'pointer',
-          },
-        },
-      },
-      {
-        when: row => row.fat > 10,
-        style: {
-          backgroundColor: 'rgba(242, 38, 19, 0.9)',
-          color: 'white',
-          '&:hover': {
-            cursor: 'not-allowed',
-          },
-        },
-      },
-    ],
   },
   {
     name: 'Carbs (g)',

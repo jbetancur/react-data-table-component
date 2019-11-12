@@ -85,4 +85,4 @@ const ConditionalCellStyle = () => (
 );
 
 storiesOf('Styling', module)
-  .add('Cells', ConditionalCellStyle);
+  .add('Static Cell Style', ConditionalCellStyle);
