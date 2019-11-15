@@ -138,8 +138,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
 | clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
 | onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
-| selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`) |
-| selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Advanced Selectable Component Options](#advanced-selectable-component-options) to learn how you can override indeterminate state |
+| selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`). You can also find UI Library Integration examples [here](#ui-library-integration) |
+| selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Overriding with Ui Component Library](#overriding-with-ui-component-library) to learn how you can override indeterminate state |
 | selectableRowsPreSelectedField | string | no |  | a `bool` field on your data set that controls whether a row is pre-selected. **note** this field can only be one level deep |
 | selectableRowsDisabledField | string | no |  | a `bool` field on your data set that controls whether a row can be selected. **note** this field can only be one level deep |
 
@@ -337,8 +337,8 @@ class MyComponent extends Component {
 };
 ```
 
-### Overriding with Ui Component Library Component
-Don't like those ugly html checkboxes? Let's override them with some [Material Ui](https://material-ui.com) sexyiness. While we are at it we will also override the `sortIcon`:
+### Overriding with Ui Component Library
+Don't like those ugly html checkboxes? Let's override them with some [Material Ui](https://material-ui.com) sexiness. While we are at it we will also override the `sortIcon`:
 
 ```js
 ...
