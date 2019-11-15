@@ -58,9 +58,10 @@ const CustomLoader = () => (
 const ProgressPendingCustom = () => {
   const [pending, setPending] = React.useState(true);
   React.useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setPending(false);
     }, 2000);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (

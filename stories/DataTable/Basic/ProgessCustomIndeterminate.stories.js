@@ -1,8 +1,20 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { makeStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
+import { clear } from 'store2';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 const columns = [
   {
@@ -22,7 +34,17 @@ const columns = [
   },
 ];
 
-const ProgressPendingDefault = () => {
+const LinearIndeterminate = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <LinearProgress />
+    </div>
+  );
+};
+
+const ProgressPendingIndeterminate = () => {
   const [pending, setPending] = React.useState(true);
   React.useEffect(() => {
     const timeout = setTimeout(() => {
@@ -37,9 +59,10 @@ const ProgressPendingDefault = () => {
       columns={columns}
       data={data}
       progressPending={pending}
+      progressComponent={<LinearIndeterminate />}
     />
   );
 };
 
 storiesOf('Progress Indicator', module)
-  .add('Default', () => <ProgressPendingDefault />);
+  .add('Custom Indeterminate', () => <ProgressPendingIndeterminate />);
