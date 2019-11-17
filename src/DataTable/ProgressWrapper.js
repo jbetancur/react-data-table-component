@@ -3,32 +3,28 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ProgressWrapperStyle = styled.div`
-  position: ${props => (props.centered ? 'absolute' : 'relative')};
-  ${props => props.centered && 'align-items: center'};
-  text-align: center;
+  position: relative;
   display: flex;
+  align-items: center;
+  text-align: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
 `;
 
-const ProgressWrapper = ({ component, centered }) => (
-  <ProgressWrapperStyle centered={centered}>
-    {component}
+const ProgressWrapper = ({ children }) => (
+  <ProgressWrapperStyle>
+    {children}
   </ProgressWrapperStyle>
 );
 
 ProgressWrapper.propTypes = {
-  component: PropTypes.oneOfType([
+  children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
     PropTypes.func,
   ]).isRequired,
-  centered: PropTypes.bool,
-};
-
-ProgressWrapper.defaultProps = {
-  centered: false,
 };
 
 export default ProgressWrapper;

@@ -2,6 +2,8 @@
 
 exports[`DataTable::Header actions should render correctly 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -414,6 +416,8 @@ exports[`DataTable::Header actions should render correctly 1`] = `
 
 exports[`DataTable::Header context menu should render correctly when selectableRows 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -903,6 +907,8 @@ exports[`DataTable::Header context menu should render correctly when selectableR
 
 exports[`DataTable::Header contextTitle should render correctly 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1307,6 +1313,8 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
 
 exports[`DataTable::Header should render without a header if noHeader is true 1`] = `
 .c2 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1592,6 +1600,8 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
 
 exports[`DataTable::Header title should render correctly 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1996,6 +2006,8 @@ exports[`DataTable::Header title should render correctly 1`] = `
 
 exports[`DataTable::Pagination should have the correct amount of rows when paging backward 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2663,6 +2675,8 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 exports[`DataTable::Pagination should have the correct amount of rows when paging backward to the first page 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3330,6 +3344,8 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 exports[`DataTable::Pagination should have the correct amount of rows when paging forward 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3997,6 +4013,8 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 exports[`DataTable::Pagination should have the correct amount of rows when paging to the last page 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4664,6 +4682,8 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5355,6 +5375,8 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 
 exports[`DataTable::Pagination should recalculate pagination position if there is only 1 item and it is removed from the data 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6024,6 +6046,8 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
 
 exports[`DataTable::Pagination should render correctly if pagination is enabled 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6724,6 +6748,8 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 
 exports[`DataTable::Pagination should render correctly when a paginationComponentOptions are passed 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7424,6 +7450,8 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 exports[`DataTable::Pagination should render correctly when a paginationComponentOptions to hide the per page dropdown are passed 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8002,6 +8030,8 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 exports[`DataTable::Pagination should render correctly when paginationResetDefaultPage is toggled 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8669,6 +8699,8 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
 
 exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9071,6 +9103,8 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 
 exports[`DataTable::Theming should render correctly when rows spaced with spacingShadow 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9474,6 +9508,8 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
 
 exports[`DataTable::column.style should render correctly when a style is set on a column 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9877,6 +9913,8 @@ exports[`DataTable::column.style should render correctly when a style is set on 
 
 exports[`DataTable::columns should render correctly if column.center 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10287,6 +10325,8 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 
 exports[`DataTable::columns should render correctly if column.hide is an integer 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10701,6 +10741,8 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 
 exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11115,6 +11157,8 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 
 exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11529,6 +11573,8 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 
 exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11943,6 +11989,8 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 
 exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12345,6 +12393,8 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 
 exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12747,6 +12797,8 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 
 exports[`DataTable::columns should render correctly if column.right 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13157,6 +13209,8 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 
 exports[`DataTable::columns should render correctly if column.width 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13563,6 +13617,8 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 
 exports[`DataTable::columns should render correctly when column.allowOverflow = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13965,6 +14021,8 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 
 exports[`DataTable::columns should render correctly when column.button = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14370,6 +14428,8 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 
 exports[`DataTable::columns should render correctly when column.cell is set to a component 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14768,6 +14828,8 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 
 exports[`DataTable::columns should render correctly when column.compact = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15172,6 +15234,8 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 
 exports[`DataTable::columns should render correctly when column.sortable = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15603,6 +15667,8 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
 
 exports[`DataTable::columns should render correctly when column.wrap = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16005,6 +16071,8 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 
 exports[`DataTable::columns should render correctly when ignoreRowClick = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16401,6 +16469,8 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
 
 exports[`DataTable::columns should render correctly with columns/data 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16803,6 +16873,8 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 
 exports[`DataTable::conditionalCellStyles should render correctly when conditionalCellStyles is defined and there is a match 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -17250,6 +17322,8 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 exports[`DataTable::conditionalCellStyles should render correctly when conditionalCellStyles is defined and there is no match 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -17652,6 +17726,8 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 exports[`DataTable::conditionalRowStyles should render correctly when conditionalRowStyles are an empty array 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18054,6 +18130,8 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 exports[`DataTable::conditionalRowStyles should render correctly when conditionalRowStyles is defined and there is a match 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18487,6 +18565,8 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 exports[`DataTable::conditionalRowStyles should render correctly when conditionalRowStyles is defined and there is no match 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18889,6 +18969,8 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 exports[`DataTable::dense should render correctly when dense 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19291,6 +19373,8 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
 
 exports[`DataTable::expandableRows should expand a row expandableRows is true and expandOnRowClicked is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19832,6 +19916,8 @@ exports[`DataTable::expandableRows should expand a row expandableRows is true an
 
 exports[`DataTable::expandableRows should expand a row expandableRows is true and expandOnRowDoubleClicked is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20373,6 +20459,8 @@ exports[`DataTable::expandableRows should expand a row expandableRows is true an
 
 exports[`DataTable::expandableRows should not expand a row if the expander row is disabled and expandOnRowClicked is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20924,6 +21012,8 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 
 exports[`DataTable::expandableRows should not render expandableRows expandableRows is missing 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21326,6 +21416,8 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 
 exports[`DataTable::expandableRows should render correctly when defaultExpandedField is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21863,6 +21955,8 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
 
 exports[`DataTable::expandableRows should render correctly when expandableRows is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22384,6 +22478,8 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 exports[`DataTable::expandableRows should render correctly when expandableRows is true and the row is toggled 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22921,6 +23017,8 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23326,6 +23424,8 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 
 exports[`DataTable::fixedHeader should render correctly when fixedHeader and fixedHeaderScrollHeight 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23731,6 +23831,8 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 
 exports[`DataTable::fixedHeader should render correctly when fixedHeader with an offset 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24138,6 +24240,8 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 exports[`DataTable::fixedHeader should render correctly when fixedHeader with an offset with a value 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24545,6 +24649,8 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 exports[`DataTable::highlightOnHover should render correctly when highlightOnHover 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24956,6 +25062,8 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 
 exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25360,7 +25468,22 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 </div>
 `;
 
-exports[`DataTable::progress/nodata should render correctly when a component is passed that is a react component 1`] = `
+exports[`DataTable::progress/nodata should only show Loading if progressPending prop changes 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -25468,15 +25591,20 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c7 {
   position: relative;
-  text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
 }
@@ -25515,15 +25643,35 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
     <div
       class="c7"
     >
-      <div>
-        A String that is passed in
+      <div
+        style="font-size: 24px; font-weight: 700;"
+      >
+        Loading...
       </div>
     </div>
+    <div
+      class="c8 rdt_Table"
+    />
   </div>
 </div>
 `;
 
-exports[`DataTable::progress/nodata should render correctly when a component is passed that is a react component 2`] = `
+exports[`DataTable::progress/nodata should render correctly when a component is passed that is a react component 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -25630,20 +25778,21 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 }
 
 .c7 {
-  position: absolute;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
 }
@@ -25686,11 +25835,29 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
         A String that is passed in
       </div>
     </div>
+    <div
+      class="c8 rdt_Table"
+    />
   </div>
 </div>
 `;
 
 exports[`DataTable::progress/nodata should render correctly when a component is passed that is a string 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -25798,15 +25965,20 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 
 .c7 {
   position: relative;
-  text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
 }
@@ -25847,11 +26019,29 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
     >
       A Component that is passed in
     </div>
+    <div
+      class="c8 rdt_Table"
+    />
   </div>
 </div>
 `;
 
 exports[`DataTable::progress/nodata should render correctly when progressPending is false and there are no row items 1`] = `
+.c7 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -25964,7 +26154,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   height: 100%;
 }
 
-.c7 {
+.c8 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -26008,15 +26198,34 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
     class="c6"
   >
     <div
-      class="c7"
+      class="c7 rdt_Table"
     >
-      There are no records to display
+      <div
+        class="c8"
+      >
+        There are no records to display
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`DataTable::progress/nodata should render correctly when progressPending is true 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -26124,15 +26333,20 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 
 .c7 {
   position: relative;
-  text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
 }
@@ -26171,9 +26385,522 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
     <div
       class="c7"
     >
-      <h2>
+      <div
+        style="font-size: 24px; font-weight: 700;"
+      >
         Loading...
-      </h2>
+      </div>
+    </div>
+    <div
+      class="c8 rdt_Table"
+    />
+  </div>
+</div>
+`;
+
+exports[`DataTable::progress/nodata when noTableHead should only Loading if progressPending prop changes 1`] = `
+.c7 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c8 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7 rdt_Table"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          style="font-size: 24px; font-weight: 700;"
+        >
+          Loading...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::progress/nodata when progressShowTableHead should only Loading and TableHead if progressPending prop changes 1`] = `
+.c7 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  pointer-events: none;
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c10:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c12 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div />
+    </div>
+  </header>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7 rdt_Table"
+    >
+      <div
+        class="c8 rdt_TableHead"
+      >
+        <div
+          class="c9 rdt_TableHeadRow"
+          disabled=""
+        >
+          <div
+            class="c10 rdt_TableCol"
+          >
+            <div
+              class="c11 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c12"
+      >
+        <div
+          style="font-size: 24px; font-weight: 700;"
+        >
+          Loading...
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -26181,6 +26908,8 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 
 exports[`DataTable::responsive should not apply overFlowY without an overflowYOffset or not responsive 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26585,6 +27314,8 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
 
 exports[`DataTable::responsive should render correctly responsive by default 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26987,6 +27718,8 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 
 exports[`DataTable::responsive should render correctly when responsive=false 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27388,6 +28121,8 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 
 exports[`DataTable::selectableRows should not render a select all checkbox when selectableRowsNoSelectAll is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27850,6 +28585,8 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
 
 exports[`DataTable::selectableRows should render correctly when selectableRows is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28329,6 +29066,8 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 
 exports[`DataTable::sorting should render correctly and bypass internal sort when sortServer = true and asc sort 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28755,6 +29494,8 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 
 exports[`DataTable::sorting should render correctly and bypass internal sort when sortServer = true and desc sort 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29184,6 +29925,8 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 
 exports[`DataTable::sorting should render correctly and not be sorted when a column.sort === false 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29586,6 +30329,8 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
 
 exports[`DataTable::sorting should render correctly when a column is sorted from asc to desc 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30012,6 +30757,8 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 
 exports[`DataTable::sorting should render correctly when a column is sorted in default asc 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30438,6 +31185,8 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 
 exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30853,6 +31602,8 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 
 exports[`DataTable::sorting should render correctly with a custom sortIcon and column.right = true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -31276,6 +32027,8 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
 
 exports[`DataTable::sorting should render correctly with a default sort field and the icon to the right when column.right = true and the native sort icon 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -31710,6 +32463,8 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 
 exports[`DataTable::sorting should render correctly with a default sort field and the native sort icon 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32136,6 +32891,8 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 
 exports[`DataTable::sorting should render correctly with a defaultSortAsc = false 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32565,6 +33322,8 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 
 exports[`DataTable::striped should render correctly when striped 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32971,6 +33730,8 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 
 exports[`DataTable::subHeader should render correctly when a subheader is enabled 1`] = `
 .c8 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33404,6 +34165,8 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
 
 exports[`DataTable::subHeader should render correctly with center align 1`] = `
 .c8 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33837,6 +34600,8 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
 
 exports[`DataTable::subHeader should render correctly with left align 1`] = `
 .c8 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34270,6 +35035,8 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
 
 exports[`DataTable::subHeader should render correctly with right align 1`] = `
 .c8 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34703,6 +35470,8 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
 
 exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
 .c8 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35136,6 +35905,8 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
 
 exports[`data prop changes should update state if the data prop changes 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35522,6 +36293,8 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 
 exports[`should not show the TableHead when noTableHead is true 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35923,6 +36696,21 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
 `;
 
 exports[`should render and empty table correctly 1`] = `
+.c7 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
 .c5 {
   color: rgba(0,0,0,.87);
   font-size: 18px;
@@ -36035,7 +36823,7 @@ exports[`should render and empty table correctly 1`] = `
   height: 100%;
 }
 
-.c7 {
+.c8 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -36079,9 +36867,13 @@ exports[`should render and empty table correctly 1`] = `
     class="c6"
   >
     <div
-      class="c7"
+      class="c7 rdt_Table"
     >
-      There are no records to display
+      <div
+        class="c8"
+      >
+        There are no records to display
+      </div>
     </div>
   </div>
 </div>
@@ -36089,6 +36881,8 @@ exports[`should render and empty table correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 .c7 {
+  position: relative;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -6,6 +6,8 @@ const disabled = css`
 `;
 
 const TableStyle = styled.div`
+  position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100%;
