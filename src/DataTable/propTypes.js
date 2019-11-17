@@ -163,7 +163,7 @@ export const defaultProps = {
   expandOnRowDoubleClicked: false,
   progressPending: false,
   // progressComponent: <h2>Loading...</h2>,
-  progressComponent: <div style={{ fontSize: '24px', fontWeight: 700 }}>Loading...</div>,
+  progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
   progressShowTableHead: false,
   expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
   expandableIcon: {
