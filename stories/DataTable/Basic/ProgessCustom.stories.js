@@ -57,18 +57,22 @@ const CustomLoader = () => (
 
 const ProgressPendingCustom = () => {
   const [pending, setPending] = React.useState(true);
+  const [rows, setRows] = React.useState([]);
+
   React.useEffect(() => {
     const timeout = setTimeout(() => {
+      setRows(data);
       setPending(false);
     }, 2000);
     return () => clearTimeout(timeout);
   }, []);
 
+
   return (
     <DataTable
       title="Movie List"
       columns={columns}
-      data={data}
+      data={rows}
       progressPending={pending}
       progressComponent={<CustomLoader />}
     />

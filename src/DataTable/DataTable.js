@@ -64,7 +64,7 @@ const DataTable = memo(({
   overflowYOffset,
   progressPending,
   progressComponent,
-  progressCentered,
+  progressShowTableHead,
   noDataComponent,
   disabled,
   noTableHead,
@@ -189,7 +189,7 @@ const DataTable = memo(({
     dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
   }, [data, selectableRowsPreSelectedField]);
 
-  // recaclulate the pagination and currentPage if the data length changes
+  // recalculate the pagination and currentPage if the data length changes
   if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {
     const updatedPage = getNumberOfPages(data.length, rowsPerPage);
     const recalculatedPage = recalculatePage(currentPage, updatedPage);
@@ -237,6 +237,18 @@ const DataTable = memo(({
     paginationComponentOptions,
   };
 
+  const showTableHead = () => {
+    if (noTableHead) {
+      return false;
+    }
+
+    if (progressShowTableHead) {
+      return true;
+    }
+
+    return data.length > 0 && !progressPending;
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <DataTableProvider initialState={init}>
@@ -264,38 +276,50 @@ const DataTable = memo(({
           )}
 
           <TableWrapper>
-            {progressPending && (
-              <ProgressWrapper component={progressComponent} centered={progressCentered} />
+            {progressPending && !progressShowTableHead && (
+              <ProgressWrapper>
+                {progressComponent}
+              </ProgressWrapper>
             )}
 
-            {!data.length > 0 && !progressPending && (
-              <NoData component={noDataComponent} />
-            )}
+            <Table disabled={disabled} className="rdt_Table">
+              {showTableHead() && (
+                <TableHead className="rdt_TableHead">
+                  <TableHeadRow
+                    className="rdt_TableHeadRow"
+                    dense={dense}
+                    disabled={progressPending}
+                  >
+                    {selectableRows && (
+                      selectableRowsNoSelectAll
+                        ? <CellBase style={{ flex: '0 0 48px' }} />
+                        : <TableColCheckbox />
+                    )}
+                    {expandableRows && (
+                      <CellBase style={{ flex: '0 0 56px' }} />
+                    )}
+                    {columnsMemo.map(column => (
+                      <TableCol
+                        key={column.id}
+                        column={column}
+                        sortIcon={sortIcon}
+                      />
+                    ))}
+                  </TableHeadRow>
+                </TableHead>
+              )}
 
-            {data.length > 0 && !progressPending && (
-              <Table disabled={disabled} className="rdt_Table">
-                {!noTableHead && (
-                  <TableHead className="rdt_TableHead">
-                    <TableHeadRow className="rdt_TableHeadRow" dense={dense}>
-                      {selectableRows && (
-                        selectableRowsNoSelectAll
-                          ? <CellBase style={{ flex: '0 0 48px' }} />
-                          : <TableColCheckbox />
-                      )}
-                      {expandableRows && (
-                        <CellBase style={{ flex: '0 0 56px' }} />
-                      )}
-                      {columnsMemo.map(column => (
-                        <TableCol
-                          key={column.id}
-                          column={column}
-                          sortIcon={sortIcon}
-                        />
-                      ))}
-                    </TableHeadRow>
-                  </TableHead>
-                )}
+              {!data.length > 0 && !progressPending && (
+                <NoData component={noDataComponent} />
+              )}
 
+              {progressPending && progressShowTableHead && (
+                <ProgressWrapper>
+                  {progressComponent}
+                </ProgressWrapper>
+              )}
+
+              {!progressPending && data.length > 0 && (
                 <TableBody
                   fixedHeader={fixedHeader}
                   fixedHeaderScrollHeight={fixedHeaderScrollHeight}
@@ -332,8 +356,8 @@ const DataTable = memo(({
                     );
                   })}
                 </TableBody>
-              </Table>
-            )}
+              )}
+            </Table>
 
             {enabledPagination && (
               <TableFooter className="rdt_TableFooter">

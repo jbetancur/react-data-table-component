@@ -434,7 +434,7 @@ describe('DataTable::progress/nodata', () => {
 
   test('should only show Loading if progressPending prop changes', () => {
     const mock = dataMock();
-    const { getByText, rerender } = render(
+    const { getByText, rerender, container } = render(
       <DataTable
         data={mock.data}
         columns={mock.columns}
@@ -453,8 +453,69 @@ describe('DataTable::progress/nodata', () => {
     );
 
     expect(getByText('Loading...')).toBeDefined();
+    expect(container.querySelector('.rdt_TableHead')).toBeNull();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
+  describe('when progressShowTableHead', () => {
+    test('should only Loading and TableHead if progressPending prop changes', () => {
+      const mock = dataMock();
+      const { getByText, rerender, container } = render(
+        <DataTable
+          data={mock.data}
+          columns={mock.columns}
+          defaultSortField="some.name"
+          progressPending={false}
+          progressShowTableHead
+        />,
+      );
+
+      rerender(
+        <DataTable
+          data={mock.data}
+          columns={mock.columns}
+          defaultSortField="some.name"
+          progressPending
+          progressShowTableHead
+        />,
+      );
+
+      expect(getByText('Loading...')).toBeDefined();
+      expect(container.querySelector('.rdt_TableHead')).toBeDefined();
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe('when noTableHead', () => {
+    test('should only Loading if progressPending prop changes', () => {
+      const mock = dataMock();
+      const { getByText, rerender, container } = render(
+        <DataTable
+          data={mock.data}
+          columns={mock.columns}
+          defaultSortField="some.name"
+          progressPending={false}
+          progressShowTableHead
+          noTableHead
+        />,
+      );
+
+      rerender(
+        <DataTable
+          data={mock.data}
+          columns={mock.columns}
+          defaultSortField="some.name"
+          progressPending
+          progressShowTableHead
+          noTableHead
+        />,
+      );
+
+      expect(getByText('Loading...')).toBeDefined();
+      expect(container.querySelector('.rdt_TableHead')).toBeNull();
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
 
   test('should render correctly when progressPending is false and there are no row items', () => {
     const mock = dataMock();
@@ -492,22 +553,6 @@ describe('DataTable::progress/nodata', () => {
         columns={mock.columns}
         defaultSortField="some.name"
         progressPending
-        progressComponent={<div>A String that is passed in</div>}
-      />,
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  test('should render correctly when a component is passed that is a react component', () => {
-    const mock = dataMock();
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        defaultSortField="some.name"
-        progressPending
-        progressCentered
         progressComponent={<div>A String that is passed in</div>}
       />,
     );

@@ -127,9 +127,9 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 #### Progress Indicator
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| progressPending | bool | no |  | disables the table and displays a plain text Loading Indicator |
-| progressComponent | component | no |  | allows you to use your own custom progress component |
-| progressCentered | bool | no |  | absolutely position and center the progress over the table |
+| progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
+| progressComponent | component | no |  | Allows you to use your own custom progress component. Note that in some cases (e.g. animated/spinning circular indicators) you will need to add a wrapping div with padding. |
+| progressShowTableHead | bool | no |  | Show the table head (columns) when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `progressShowTableHead` |
 
 #### Row Selection
 | Property | Type | Required | Default | Description |

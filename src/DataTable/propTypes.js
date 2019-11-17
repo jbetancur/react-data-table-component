@@ -36,7 +36,7 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
-  progressCentered: PropTypes.bool,
+  progressShowTableHead: PropTypes.bool,
   expandableRowsComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -162,8 +162,9 @@ export const defaultProps = {
   expandOnRowClicked: false,
   expandOnRowDoubleClicked: false,
   progressPending: false,
-  progressComponent: <h2>Loading...</h2>,
-  progressCentered: false,
+  // progressComponent: <h2>Loading...</h2>,
+  progressComponent: <div style={{ fontSize: '24px', fontWeight: 700 }}>Loading...</div>,
+  progressShowTableHead: false,
   expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
   expandableIcon: {
     collapsed: <ExpanderCollapsedIcon />,
