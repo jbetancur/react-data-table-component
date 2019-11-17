@@ -25644,7 +25644,7 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
       class="c7"
     >
       <div
-        style="font-size: 24px; font-weight: 700;"
+        style="font-size: 24px; font-weight: 700; padding: 24px;"
       >
         Loading...
       </div>
@@ -26386,7 +26386,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
       class="c7"
     >
       <div
-        style="font-size: 24px; font-weight: 700;"
+        style="font-size: 24px; font-weight: 700; padding: 24px;"
       >
         Loading...
       </div>
@@ -26577,7 +26577,7 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
         class="c8"
       >
         <div
-          style="font-size: 24px; font-weight: 700;"
+          style="font-size: 24px; font-weight: 700; padding: 24px;"
         >
           Loading...
         </div>
@@ -26896,7 +26896,7 @@ exports[`DataTable::progress/nodata when progressShowTableHead should only Loadi
         class="c12"
       >
         <div
-          style="font-size: 24px; font-weight: 700;"
+          style="font-size: 24px; font-weight: 700; padding: 24px;"
         >
           Loading...
         </div>
