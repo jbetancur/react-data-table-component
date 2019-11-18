@@ -89,7 +89,6 @@ class AdvancedPaginationTable extends Component {
         paginationTotalRows={totalRows}
         onChangeRowsPerPage={this.handlePerRowsChange}
         onChangePage={this.handlePageChange}
-        progressShowTableHead
       />
     );
   }
