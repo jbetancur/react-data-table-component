@@ -121,7 +121,7 @@
       transitionTime?: string;
     };
     rows?: {
-      spacing?: "defaut" | "spaced";
+      spacing?: "default" | "spaced";
       fontSize?: string;
       fontColor?: string;
       backgroundColor?: string;
