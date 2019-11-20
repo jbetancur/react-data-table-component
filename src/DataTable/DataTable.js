@@ -160,7 +160,7 @@ const DataTable = memo(({
 
   useDidUpdateEffect(() => {
     onRowSelected({ allSelected, selectedCount, selectedRows });
-  }, [allSelected, selectedCount, selectedRows]);
+  }, [selectedCount]);
 
   useDidUpdateEffect(() => {
     onChangePage(currentPage, paginationTotalRows || data.length);

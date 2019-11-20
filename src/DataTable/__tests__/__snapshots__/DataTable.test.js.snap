@@ -34033,7 +34033,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 8px 24px;
+  padding: 4px 16px 4px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
@@ -34468,7 +34468,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 8px 24px;
+  padding: 4px 16px 4px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: center;
@@ -34903,7 +34903,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 8px 24px;
+  padding: 4px 16px 4px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: start;
@@ -35338,7 +35338,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 8px 24px;
+  padding: 4px 16px 4px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
@@ -35773,7 +35773,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 16px 8px 24px;
+  padding: 4px 16px 4px 24px;
   width: 100%;
   background-color: transparent;
   -webkit-box-pack: end;
