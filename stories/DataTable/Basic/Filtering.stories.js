@@ -21,7 +21,7 @@ const fakeUsers = createUsers(2000);
 
 const TextField = styled.input`
   height: 32px;
-  width: 200x;
+  width: 200px;
   border-radius: 3px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -99,6 +99,7 @@ const BasicTable = () => {
       paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
       subHeader
       subHeaderComponent={subHeaderComponentMemo}
+      selectableRows
     />
   );
 };
