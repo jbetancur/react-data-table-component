@@ -6,7 +6,8 @@
   "module": "dist/index.es.js",
   "browser": "dist/index.cjs.js",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "keywords": [
     "react",
