@@ -93,7 +93,6 @@ const DataTable = memo(({
   defaultSortField,
   defaultSortAsc,
   clearSelectedRows,
-  onTableUpdate, // Deprecated
   conditionalRowStyles,
 }) => {
   const initialState = {
@@ -147,16 +146,6 @@ const DataTable = memo(({
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
-
-  /* istanbul ignore next */
-  if (onTableUpdate) {
-    // eslint-disable-next-line no-console
-    console.error('Warning: onTableUpdate has been deprecated. Please switch to onRowSelected.');
-
-    useDidUpdateEffect(() => {
-      onTableUpdate({ allSelected, selectedCount, selectedRows, sortColumn, sortDirection });
-    }, [allSelected, selectedCount, selectedRows, sortColumn, sortDirection]);
-  }
 
   useDidUpdateEffect(() => {
     onRowSelected({ allSelected, selectedCount, selectedRows });
