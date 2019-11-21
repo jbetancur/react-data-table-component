@@ -8,8 +8,6 @@ cache:
 
 script:
   - yarn lint
-  # - yarn flow-typed
-  # - yarn flow
   - yarn test
   - yarn build
 

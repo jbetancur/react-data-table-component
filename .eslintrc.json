@@ -1,7 +1,7 @@
 {
     "parser": "babel-eslint",
-    "extends": ["airbnb", "plugin:flowtype/recommended"],
-    "plugins": ["flowtype", "jest", "react-hooks"],
+    "extends": ["airbnb"],
+    "plugins": ["jest", "react-hooks"],
     "rules": {
         "max-len": 0,
         "react/forbid-prop-types": 0,
