@@ -162,7 +162,8 @@
     style: CSSProperties;
   }
 
-  export interface IDataTablePaginationOptions {
+export interface IDataTablePaginationOptions {
+    noRowsPerPage?: boolean;
     rowsPerPageText?: string;
     rangeSeparatorText?: string;
   }
