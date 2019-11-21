@@ -9,6 +9,7 @@
     striped?: boolean;
     highlightOnHover?: boolean;
     pointerOnHover?: boolean;
+    noDataComponent?: React.ReactNode;
     className?: string;
     style?: CSSProperties;
     responsive?: boolean;
@@ -52,10 +53,12 @@
     paginationIconNext?: React.ReactNode;
     paginationIconPrevious?: React.ReactNode;
     progressPending?: boolean;
+    progressShowTableHead?: boolean;
     progressComponent?: React.ReactNode;
     expandableRows?: boolean;
     expandableRowsComponent?: React.ReactNode;
     expandOnRowClicked?: boolean;
+    expandOnRowDoubleClicked?: boolean;
     defaultExpandedField?: string;
     expandableDisabledField?: string;
     selectableRows?: boolean;
