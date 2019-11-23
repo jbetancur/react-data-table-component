@@ -41,6 +41,7 @@ const DataTable = memo(({
   selectableRowsComponent,
   selectableRowsComponentProps,
   onRowSelected,
+  onSelectedRowsChange,
   expandableIcon,
   onChangeRowsPerPage,
   onChangePage,
@@ -117,6 +118,15 @@ const DataTable = memo(({
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
 
+  const enabledPagination = pagination && !progressPending && data.length > 0;
+  const Pagination = paginationComponent || NativePagination;
+  const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
+  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
+  const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
+  const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
+  const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
+
   const sortedData = useMemo(() => {
     // server-side sorting bypasses internal sorting
     if (!sortServer) {
@@ -138,17 +148,15 @@ const DataTable = memo(({
     return sortedData;
   }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
 
-  const enabledPagination = pagination && !progressPending && data.length > 0;
-  const Pagination = paginationComponent || NativePagination;
-  const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
-  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
-  const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
-  const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
-  const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
-
   useDidUpdateEffect(() => {
-    onRowSelected({ allSelected, selectedCount, selectedRows });
+    /* istanbul ignore next */
+    if (onRowSelected) {
+      onRowSelected({ allSelected, selectedCount, selectedRows });
+      // eslint-disable-next-line no-console
+      console.error('Warning: onRowSelected has been deprecated. Please switch to onSelectedRowsChange.');
+    }
+
+    onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
   }, [selectedCount]);
 
   useDidUpdateEffect(() => {
@@ -171,12 +179,15 @@ const DataTable = memo(({
     dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
   }, [clearSelectedRows]);
 
-  useEffect(() => {
-    const preSelectedRows = selectableRowsPreSelectedField
-      ? data.filter(row => row[selectableRowsPreSelectedField])
-      : [];
-    dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
-  }, [data, selectableRowsPreSelectedField]);
+  // if the selectableRowsPreSelectedField is defined then attempt to set the selectedRows state when the table initially loads
+  if (selectableRowsPreSelectedField) {
+    useEffect(() => {
+      const preSelectedRows = data.filter(row => row[selectableRowsPreSelectedField]);
+
+      dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
 
   // recalculate the pagination and currentPage if the data length changes
   if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {

@@ -136,12 +136,12 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
 | selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
-| clearSelectedRows | bool | no | false | toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| onRowSelected | func | no |  | callback to access the row selected state ({ allSelected, selectedCount, selectedRows }). <br /> **note** It's highly recommended that you memoize the callback that you pass to `onRowSelected` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
+| clearSelectedRows | bool | no | false | Toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
+| onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /> **note** It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`). You can also find UI Library Integration examples [here](#ui-library-integration) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Overriding with Ui Component Library](#overriding-with-ui-component-library) to learn how you can override indeterminate state |
-| selectableRowsPreSelectedField | string | no |  | a `bool` field on your data set that controls whether a row is pre-selected. **note** this field can only be one level deep |
-| selectableRowsDisabledField | string | no |  | a `bool` field on your data set that controls whether a row can be selected. **note** this field can only be one level deep |
+| selectableRowsPreSelectedField | string | no |  | A `bool` field on your data set that controls whether a row is pre-selected. **note** this field can only be one level deep |
+| selectableRowsDisabledField | string | no |  | A `bool` field on your data set that controls whether a row can be selected. **note** this field can only be one level deep |
 
 #### Row Expander
 | Property | Type | Required | Default | Description |
@@ -329,7 +329,7 @@ class MyComponent extends Component {
         columns={columns}
         data={data}
         selectableRows // add for checkbox selection
-        onRowSelected={handleChange}
+        onSelectedRowsChange={handleChange}
         clearSelectedRows={this.state.toggledClearRows}
       />
     )
@@ -357,7 +357,7 @@ const MyComponent = () => (
     selectableRowsComponent={Checkbox} // Pass the function only
     selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass Material Ui supported props down to our custom checkbox
     sortIcon={sortIcon} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees for you
-    onRowSelected={handleChange}
+    onSelectedRowsChange={handleChange}
   />
 );
 ```
@@ -425,7 +425,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onRowSelected={handleChange}
+        onSelectedRowsChange={handleChange}
       />
     )
   }
@@ -468,7 +468,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onRowSelected={handleChange}
+        onSelectedRowsChange={handleChange}
         expandableRows
         expandableRowsComponent={<ExpanableComponent />}
       />
@@ -512,7 +512,7 @@ class MyComponent extends Component {
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={{ inkDisabled: true }}
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
-        onRowSelected={handleChange}
+        onSelectedRowsChange={handleChange}
         expandableRows
         expandableDisabledField="expanderDisabled"
         expandableRowsComponent={<ExpanableComponent />}
@@ -538,7 +538,7 @@ While RDT has internal optimizations to try and prevent re-renders on deeper int
 You can typically achieve this by moving props such as objects, arrays, functions or other React components that you pass to RDT outside of the `render` method. Additionally, RDT provides you with a `memoize` helper for cases where you are using a function to generate those values.
 
 ##### Examples of Optimizations
-The following component will cause RDT to fully re-render every time `onRowSelected` is triggered. Why? Because when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this decision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
+The following component will cause RDT to fully re-render every time `onSelectedRowsChange` is triggered. Why? Because when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this decision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
 
 However, in the example below `columns` changes on every re-render because it's being re-created. This is due to referential equality checking, simply: `columns[] !== columns[]`. In other words, while both instances of `columns` contain the same elements, they are "different" arrays.
 
@@ -561,7 +561,7 @@ class MyComponent extends Component {
       <DataTable
         data={data}
         columns={columns}
-        onRowSelected={this.updateState}
+        onSelectedRowsChange={this.updateState}
         selectableRows
       />
     )
@@ -590,7 +590,7 @@ class MyComponent extends Component {
       <DataTable
         data={data}
         columns={columns}
-        onRowSelected={this.updateState}
+        onSelectedRowsChange={this.updateState}
         selectableRows
       />
     )
@@ -647,7 +647,7 @@ class MyComponent extends Component {
       <DataTable
         data={data}
         columns={columns(this.updateState)}
-        onRowSelected={this.updateState}
+        onSelectedRowsChange={this.updateState}
         selectableRows
       />
     );
@@ -667,7 +667,7 @@ import DataTable from 'react-data-table';
 const MyComponentHook = () => {
   const [thing, setThing] = useState();
   const handleAction = value => setThing(value);
-  // unlike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onRowSelected are memoized using useCallback
+  // unlike class methods updateState will be re-created on each render pass, therefore, make sure that callbacks passed to onSelectedRowsChange are memoized using useCallback
   const updateState = useCallback(state => console.log(state));
   const columns = useMemo(() => [
     ...
@@ -684,7 +684,7 @@ const MyComponentHook = () => {
     <DataTable
       data={data}
       columns={columns}
-      onRowSelected={updateState}
+      onSelectedRowsChange={updateState}
       selectableRows
     />
   );

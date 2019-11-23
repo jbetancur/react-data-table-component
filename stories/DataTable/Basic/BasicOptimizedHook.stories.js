@@ -89,7 +89,7 @@ const OptimizedHooks = () => {
       title="Desserts"
       data={tableDataItems}
       columns={columns}
-      onRowSelected={handleChange}
+      onSelectedRowsChange={handleChange}
       selectableRows
     />
   );

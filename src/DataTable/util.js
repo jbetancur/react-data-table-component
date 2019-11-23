@@ -11,7 +11,7 @@ export const sort = (rows, field = '', direction, sortFn) => {
 
 export const getProperty = (row, selector, format) => {
   if (typeof selector !== 'string') {
-    throw new Error('selector must be a . delimted string eg (my.property)');
+    throw new Error('selector must be a . delimited string eg (my.property)');
   }
 
   if (format && typeof format === 'function') {
@@ -19,10 +19,6 @@ export const getProperty = (row, selector, format) => {
   }
 
   return selector.split('.').reduce((acc, part) => {
-    if (!acc) {
-      return null;
-    }
-
     // O(n2) when querying for an array (e.g. items[0].name)
     // Likely, the object depth will be reasonable enough that performance is not a concern
     const arr = part.match(/[^\]\\[.]+/g);
@@ -93,4 +89,12 @@ export const getConditionalStyle = (row = {}, conditionalRowStyles = []) => {
   }
 
   return rowStyle;
+};
+
+export const isRowSelected = (row = {}, selectedRows = [], keyField = 'id') => {
+  if (row[keyField]) {
+    return selectedRows.some(r => r[keyField] === row[keyField]);
+  }
+
+  return selectedRows.some(r => r === row);
 };

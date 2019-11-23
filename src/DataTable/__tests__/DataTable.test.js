@@ -66,9 +66,8 @@ test('should not show the TableHead when noTableHead is true', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-
-describe('DataTable::onRowSelected', () => {
-  test('should call onRowSelected with the correct values when select all rows is selected', () => {
+describe('DataTable::onSelectedRowsChange', () => {
+  test('should call onSelectedRowsChange with the correct values when select all rows is selected', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
@@ -76,7 +75,7 @@ describe('DataTable::onRowSelected', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        onRowSelected={updatedMock}
+        onSelectedRowsChange={updatedMock}
       />,
     );
 
@@ -89,7 +88,7 @@ describe('DataTable::onRowSelected', () => {
     });
   });
 
-  test('should call onRowSelected with the correct values when all rows are selected', () => {
+  test('should call onSelectedRowsChange with the correct values when all rows are selected', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
@@ -97,7 +96,7 @@ describe('DataTable::onRowSelected', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        onRowSelected={updatedMock}
+        onSelectedRowsChange={updatedMock}
       />,
     );
 
@@ -111,7 +110,7 @@ describe('DataTable::onRowSelected', () => {
     });
   });
 
-  test('should call onRowSelected with the correct values when a row is selected', () => {
+  test('should call onSelectedRowsChange with the correct values when a row is selected', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
@@ -119,7 +118,7 @@ describe('DataTable::onRowSelected', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        onRowSelected={updatedMock}
+        onSelectedRowsChange={updatedMock}
       />,
     );
 
@@ -153,7 +152,6 @@ describe('data prop changes', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
-
 
 describe('DataTable::columns', () => {
   test('should render correctly with columns/data', () => {
