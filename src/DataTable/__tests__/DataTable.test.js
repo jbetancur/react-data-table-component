@@ -59,7 +59,7 @@ test('should not show the TableHead when noTableHead is true', () => {
     <DataTable
       data={mock.data}
       columns={mock.columns}
-      TableHead
+      noTableHead
     />,
   );
 
@@ -221,65 +221,6 @@ describe('DataTable::columns', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should not call onRowClicked when ignoreRowClick = true', () => {
-    const onRowClickedMock = jest.fn();
-    const mock = dataMock({ ignoreRowClick: true });
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        onRowClicked={onRowClickedMock}
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
-    expect(onRowClickedMock).not.toBeCalled();
-  });
-
-  test('should not call onRowClicked when button = true', () => {
-    const onRowClickedMock = jest.fn();
-    const mock = dataMock({ button: true });
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        onRowClicked={onRowClickedMock}
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
-    expect(onRowClickedMock).not.toBeCalled();
-  });
-
-  test('should not call onRowDoubleClicked when ignoreRowClick = true', () => {
-    const onRowDoubleClickedMock = jest.fn();
-    const mock = dataMock({ ignoreRowClick: true });
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        onRowDoubleClicked={onRowDoubleClickedMock}
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
-    expect(onRowDoubleClickedMock).not.toBeCalled();
-  });
-
-  test('should not call onRowDoubleClicked when button = true', () => {
-    const onRowDoubleClickedMock = jest.fn();
-    const mock = dataMock({ button: true });
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        onRowDoubleClicked={onRowDoubleClickedMock}
-      />,
-    );
-
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
-    expect(onRowDoubleClickedMock).not.toBeCalled();
-  });
 
   test('should render correctly when ignoreRowClick = true', () => {
     const mock = dataMock({ ignoreRowClick: true });
@@ -414,6 +355,68 @@ describe('DataTable::columns', () => {
   });
 });
 
+describe('DataTable:RowClicks', () => {
+  test('should not call onRowClicked when ignoreRowClick = true', () => {
+    const onRowClickedMock = jest.fn();
+    const mock = dataMock({ ignoreRowClick: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowClicked={onRowClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowClickedMock).not.toBeCalled();
+  });
+
+  test('should not call onRowClicked when button = true', () => {
+    const onRowClickedMock = jest.fn();
+    const mock = dataMock({ button: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowClicked={onRowClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowClickedMock).not.toBeCalled();
+  });
+
+  test('should not call onRowDoubleClicked when ignoreRowClick = true', () => {
+    const onRowDoubleClickedMock = jest.fn();
+    const mock = dataMock({ ignoreRowClick: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowDoubleClicked={onRowDoubleClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowDoubleClickedMock).not.toBeCalled();
+  });
+
+  test('should not call onRowDoubleClicked when button = true', () => {
+    const onRowDoubleClickedMock = jest.fn();
+    const mock = dataMock({ button: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onRowDoubleClicked={onRowDoubleClickedMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    expect(onRowDoubleClickedMock).not.toBeCalled();
+  });
+});
+
 describe('DataTable::progress/nodata', () => {
   test('should render correctly when progressPending is true', () => {
     const mock = dataMock();
@@ -455,7 +458,7 @@ describe('DataTable::progress/nodata', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  describe('when progressShowTableHead', () => {
+  describe('when persistTableHead', () => {
     test('should only Loading and TableHead if progressPending prop changes', () => {
       const mock = dataMock();
       const { getByText, rerender, container } = render(
@@ -464,7 +467,7 @@ describe('DataTable::progress/nodata', () => {
           columns={mock.columns}
           defaultSortField="some.name"
           progressPending={false}
-          progressShowTableHead
+          persistTableHead
         />,
       );
 
@@ -474,12 +477,41 @@ describe('DataTable::progress/nodata', () => {
           columns={mock.columns}
           defaultSortField="some.name"
           progressPending
-          progressShowTableHead
+          persistTableHead
         />,
       );
 
       expect(getByText('Loading...')).toBeDefined();
       expect(container.querySelector('.rdt_TableHead')).toBeDefined();
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    test('should disable TableHead if no data', () => {
+      const mock = dataMock();
+      const { container } = render(
+        <DataTable
+          data={[]}
+          columns={mock.columns}
+          defaultSortField="some.name"
+          persistTableHead
+        />,
+      );
+
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    test('should disable TableHead if progressPending', () => {
+      const mock = dataMock();
+      const { container } = render(
+        <DataTable
+          data={[]}
+          columns={mock.columns}
+          defaultSortField="some.name"
+          persistTableHead
+          progressPending
+        />,
+      );
+
       expect(container.firstChild).toMatchSnapshot();
     });
   });
@@ -493,7 +525,7 @@ describe('DataTable::progress/nodata', () => {
           columns={mock.columns}
           defaultSortField="some.name"
           progressPending={false}
-          progressShowTableHead
+          persistTableHead
           noTableHead
         />,
       );
@@ -504,7 +536,7 @@ describe('DataTable::progress/nodata', () => {
           columns={mock.columns}
           defaultSortField="some.name"
           progressPending
-          progressShowTableHead
+          persistTableHead
           noTableHead
         />,
       );
@@ -875,7 +907,7 @@ describe('DataTable::expandableRows', () => {
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
   });
 
-  test('should not expand a row expandableRows is false and expandOnRowClicked is true ', () => {
+  test('should not expand a row if expandableRows is false and expandOnRowClicked is true ', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
@@ -890,7 +922,7 @@ describe('DataTable::expandableRows', () => {
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
   });
 
-  test('should expand a row expandableRows is true and expandOnRowClicked is true', () => {
+  test('should expand a row if expandableRows is true and expandOnRowClicked is true', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
@@ -907,7 +939,22 @@ describe('DataTable::expandableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should expand a row expandableRows is true and expandOnRowDoubleClicked is true', () => {
+  test('should not expand a row if expandableRows is false and expandOnRowDoubleClicked is true ', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandOnRowDoubleClicked
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+
+    expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
+  });
+
+  test('should expand a row if expandableRows is true and expandOnRowDoubleClicked is true', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable

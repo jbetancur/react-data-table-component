@@ -101,6 +101,7 @@ const BasicTable = () => {
       subHeader
       subHeaderComponent={subHeaderComponentMemo}
       selectableRows
+      persistTableHead
     />
   );
 };
