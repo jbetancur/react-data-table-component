@@ -92,7 +92,7 @@ const SelectableRowsManagement = () => {
       selectableRows
       actions={actions}
       contextActions={contextActions}
-      onRowSelected={handleRowSelected}
+      onSelectedRowsChange={handleRowSelected}
       clearSelectedRows={toggleCleared}
     />
   );

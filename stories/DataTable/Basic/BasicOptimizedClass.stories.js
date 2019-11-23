@@ -91,7 +91,7 @@ class OptimizedClass extends PureComponent {
         title="Desserts"
         data={tableDataItems}
         columns={columns(this.handleButtonClick)}
-        onRowSelected={this.handleChange}
+        onSelectedRowsChange={this.handleChange}
         selectableRows
       />
     );

@@ -123,7 +123,7 @@ class MaterialTable extends PureComponent {
           sortIcon={sortIcon}
           selectableRowsComponent={Checkbox}
           selectableRowsComponentProps={selectProps}
-          onRowSelected={this.handleChange}
+          onSelectedRowsChange={this.handleChange}
           clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
           pagination

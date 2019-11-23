@@ -63,7 +63,8 @@
     expandableDisabledField?: string;
     selectableRows?: boolean;
     clearSelectedRows?: boolean;
-    onRowSelected?: (row: T) => void;
+    onSelectedRow?: (selectedRowState: T) => void; // Deprecated: will be removed in v5.0
+    onSelectedRowsChange?: (selectedRowState: T) => void;
     actions?: React.ReactNode | React.ReactNode[];
     contextTitle?: string;
     contextActions?: React.ReactNode | React.ReactNode[];

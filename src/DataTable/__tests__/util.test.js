@@ -7,6 +7,8 @@ import {
   getSortDirection,
   handleFunctionProps,
   getConditionalStyle,
+  // updateSelectedRows,
+  isRowSelected,
 } from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
@@ -30,6 +32,12 @@ describe('sort', () => {
     sort([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc', mockSort);
 
     expect(mockSort).toBeCalledWith([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc');
+  });
+
+  test('should handle when field is empty', () => {
+    const rows = sort([{ name: 'luke' }, { name: 'vadar' }], undefined, 'asc');
+
+    expect(rows[0].name).toEqual('luke');
   });
 });
 
@@ -197,5 +205,36 @@ describe('getConditionalStyle', () => {
     ];
 
     expect(() => getConditionalStyle({ name: 'luke' }, rowStyleExpression)).toThrow();
+  });
+
+  test('with default values', () => {
+    expect(getConditionalStyle()).toEqual({});
+  });
+});
+
+describe('isRowSelected', () => {
+  test('when there is a keyField in the data set', () => {
+    const currentRow = { id: 2, name: 'vadar' };
+    const selectedRows = [{ id: 1, name: 'luke' }, { id: 2, name: 'vadar' }];
+
+    expect(isRowSelected(currentRow, selectedRows, 'id')).toBe(true);
+  });
+
+  test('when the keyField is missing in the data set', () => {
+    const selectedRows = [{ name: 'luke' }, { name: 'vadar' }];
+    const currentRow = selectedRows[1];
+
+    expect(isRowSelected(currentRow, selectedRows, 'id')).toBe(true);
+  });
+
+  test('when the row is not selected', () => {
+    const currentRow = { id: 3, name: 'leia' };
+    const selectedRows = [{ id: 1, name: 'luke' }, { id: 2, name: 'vadar' }];
+
+    expect(isRowSelected(currentRow, selectedRows, 'id')).toBe(false);
+  });
+
+  test('with default values', () => {
+    expect(isRowSelected()).toBe(false);
   });
 });
