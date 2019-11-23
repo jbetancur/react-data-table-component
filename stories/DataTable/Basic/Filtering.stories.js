@@ -7,6 +7,7 @@ import Button from '../shared/Button';
 import DataTable from '../../../src/index';
 
 const createUser = () => ({
+  id: faker.random.uuid(),
   name: faker.name.findName(),
   email: faker.internet.email(),
   address: faker.address.streetAddress(),
