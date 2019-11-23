@@ -65,7 +65,7 @@ const DataTable = memo(({
   overflowYOffset,
   progressPending,
   progressComponent,
-  progressShowTableHead,
+  persistTableHead,
   noDataComponent,
   disabled,
   noTableHead,
@@ -242,7 +242,7 @@ const DataTable = memo(({
       return false;
     }
 
-    if (progressShowTableHead) {
+    if (persistTableHead) {
       return true;
     }
 
@@ -276,7 +276,7 @@ const DataTable = memo(({
           )}
 
           <TableWrapper>
-            {progressPending && !progressShowTableHead && (
+            {progressPending && !persistTableHead && (
               <ProgressWrapper>
                 {progressComponent}
               </ProgressWrapper>
@@ -288,7 +288,7 @@ const DataTable = memo(({
                   <TableHeadRow
                     className="rdt_TableHeadRow"
                     dense={dense}
-                    disabled={progressPending}
+                    disabled={progressPending || data.length === 0}
                   >
                     {selectableRows && (
                       selectableRowsNoSelectAll
@@ -313,7 +313,7 @@ const DataTable = memo(({
                 <NoData component={noDataComponent} />
               )}
 
-              {progressPending && progressShowTableHead && (
+              {progressPending && persistTableHead && (
                 <ProgressWrapper>
                   {progressComponent}
                 </ProgressWrapper>

@@ -62,7 +62,7 @@ const ProgressPendingIndeterminateHeader = () => {
       data={rows}
       progressPending={pending}
       progressComponent={<LinearIndeterminate />}
-      progressShowTableHead
+      persistTableHead
     />
   );
 };

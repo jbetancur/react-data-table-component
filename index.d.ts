@@ -53,7 +53,7 @@
     paginationIconNext?: React.ReactNode;
     paginationIconPrevious?: React.ReactNode;
     progressPending?: boolean;
-    progressShowTableHead?: boolean;
+    persistTableHead?: boolean;
     progressComponent?: React.ReactNode;
     expandableRows?: boolean;
     expandableRowsComponent?: React.ReactNode;

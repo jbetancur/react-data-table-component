@@ -46,6 +46,7 @@ const SortingServerSide = () => {
       onSort={handleSort}
       sortServer
       progressPending={loading}
+      persistTableHead
     />
   );
 };
