@@ -6044,6 +6044,679 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
 </div>
 `;
 
+exports[`DataTable::Pagination should recalculate pagination position when the total number of items changes on pagination is set it on server 1`] = `
+.c7 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  background-color: transparent;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 56px;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  background-color: transparent;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 48px;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c14 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c14:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c14:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c14 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  background-color: transparent;
+  color: rgba(0,0,0,.87);
+}
+
+.c13:not(:first-child) {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: calc(48px / 6);
+  padding-right: calc(48px / 6);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c10:first-of-type {
+  padding-left: calc(48px / 2);
+}
+
+.c10:last-child {
+  padding-right: calc(48px / 2);
+}
+
+.c11 {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 span.__rdt_custom_sort_icon__ i,
+.c11 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c11 span.__rdt_custom_sort_icon__.asc i,
+.c11 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  color: rgba(0,0,0,.87);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  background-color: #e3f2fd;
+  z-index: 1;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 225ms;
+  transition-duration: 225ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  will-change: transform;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 16px 16px 24px;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px 16px 4px 24px;
+  min-height: 56px;
+  width: 100%;
+  background-color: transparent;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: rgba(0,0,0,.87);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.c6 {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.c18 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 12px;
+  box-sizing: content-box;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  direction: ltr;
+}
+
+.c18::-ms-expand {
+  display: none;
+}
+
+.c18:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c17 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin-top: 2px;
+}
+
+.c17 svg {
+  top: 0;
+  right: 0;
+  color: rgba(0,0,0,.54);
+  position: absolute;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.c21 {
+  position: relative;
+  display: block;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c21 svg {
+  fill: rgba(0,0,0,.54);
+}
+
+.c21:disabled {
+  opacity: 0.4;
+  cursor: unset;
+}
+
+.c21:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.c19 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 24px;
+}
+
+.c16 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  margin: 0 4px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <header
+      class="c1 rdt_TableHeader"
+    >
+      <div
+        class="c2"
+      />
+      <div
+        class="c3"
+      />
+      <div
+        class="c4"
+      >
+        <div
+          class="c5"
+        />
+        <div />
+      </div>
+    </header>
+    <div
+      class="c6"
+    >
+      <div
+        class="c7 rdt_Table"
+      >
+        <div
+          class="c8 rdt_TableHead"
+        >
+          <div
+            class="c9 rdt_TableHeadRow"
+          >
+            <div
+              class="c10 rdt_TableCol"
+            >
+              <div
+                class="c11 rdt_TableCol_Sortable"
+                id="column-some.name"
+                role="button"
+              >
+                <div>
+                  Test
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="c12 rdt_TableBody"
+          offset="250px"
+        >
+          <div
+            class="c13 rdt_TableRow"
+            id="row-1"
+          >
+            <div
+              class="c14 rdt_TableCell"
+              data-tag="___react-data-table-allow-propagation___"
+              id="cell-1-1"
+            >
+              <div
+                data-tag="___react-data-table-allow-propagation___"
+              >
+                Apple
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="c15 rdt_TableFooter"
+      >
+        <span
+          class="c16"
+        >
+          Rows per page:
+        </span>
+        <div
+          class="c17"
+        >
+          <select
+            class="c18"
+          >
+            <option
+              selected=""
+              value="1"
+            >
+              1
+            </option>
+            <option
+              value="2"
+            >
+              2
+            </option>
+          </select>
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </div>
+        <span
+          class="c19"
+        >
+          1-1 of 1
+        </span>
+        <div
+          class="c20"
+        >
+          <button
+            class="c21"
+            disabled=""
+            id="pagination-first-page"
+          >
+            <svg
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+              />
+              <path
+                d="M24 24H0V0h24v24z"
+                fill="none"
+              />
+            </svg>
+          </button>
+          <button
+            class="c21"
+            disabled=""
+            id="pagination-previous-page"
+          >
+            <svg
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </button>
+          <button
+            class="c21"
+            disabled=""
+            id="pagination-next-page"
+          >
+            <svg
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </button>
+          <button
+            class="c21"
+            disabled=""
+            id="pagination-last-page"
+          >
+            <svg
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+              />
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+            </svg>
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DataTable::Pagination should render correctly if pagination is enabled 1`] = `
 .c7 {
   position: relative;
@@ -19797,6 +20470,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -20340,6 +21014,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -20901,6 +21576,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -21836,6 +22512,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -22368,6 +23045,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -22898,6 +23576,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -29138,6 +29817,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
         >
           <div
             class="c10"
+            style="flex: 0 0 48px;"
           />
           <div
             class="c11 rdt_TableCol"

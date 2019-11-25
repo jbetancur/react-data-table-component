@@ -1407,6 +1407,45 @@ describe('DataTable::Pagination', () => {
     expect(onChangePageMock).toBeCalledWith(1, 1);
   });
 
+  test('should recalculate pagination position when the total number of items changes on pagination is set it on server', () => {
+    const mock = dataMock();
+    const mockOneDeleted = dataMock().data.slice(0, 1);
+    const onChangePageMock = jest.fn();
+    const onChangeRowsPerPageMock = jest.fn();
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        onChangePage={onChangePageMock}
+        paginationPerPage={1}
+        paginationTotalRows={2}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangeRowsPerPage={onChangeRowsPerPageMock}
+        paginationServer
+        pagination
+      />,
+    );
+
+    // move to last page
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+
+    rerender(
+      <DataTable
+        data={mockOneDeleted}
+        columns={mock.columns}
+        onChangePage={onChangePageMock}
+        paginationPerPage={1}
+        paginationTotalRows={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangeRowsPerPage={onChangeRowsPerPageMock}
+        paginationServer
+        pagination
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   test('should not recalculate pagination position when using paginationServer', () => {
     const mock = dataMock();
     const mockOneDeleted = dataMock().data.slice(0, 2);

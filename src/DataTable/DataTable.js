@@ -125,7 +125,7 @@ const DataTable = memo(({
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
+  const handleChangePage = useCallback(page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer }));
 
   const sortedData = useMemo(() => {
     // server-side sorting bypasses internal sorting
@@ -195,6 +195,18 @@ const DataTable = memo(({
     const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
     handleChangePage(recalculatedPage);
+  }
+
+  if (paginationServer) {
+    useEffect(() => {
+      if (paginationTotalRows > 0) {
+        const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
+        const recalculatedPage = recalculatePage(currentPage, updatedPage);
+        if (currentPage !== recalculatedPage) {
+          handleChangePage(recalculatedPage);
+        }
+      }
+    }, [paginationTotalRows, currentPage, rowsPerPage, handleChangePage]);
   }
 
   const handleChangeRowsPerPage = newRowsPerPage => {
