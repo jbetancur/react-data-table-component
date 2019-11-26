@@ -125,7 +125,7 @@ const DataTable = memo(({
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = useCallback(page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer }));
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
   useDidUpdateEffect(() => {
     /* istanbul ignore next */
