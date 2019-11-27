@@ -127,27 +127,6 @@ const DataTable = memo(({
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
-  const sortedData = useMemo(() => {
-    // server-side sorting bypasses internal sorting
-    if (!sortServer) {
-      return sort(data, sortColumn, sortDirection, sortFunction);
-    }
-
-    return data;
-  }, [data, sortColumn, sortDirection, sortFunction, sortServer]);
-
-  const calculatedRows = useMemo(() => {
-    if (pagination && !paginationServer) {
-      // when using client-side pagination we can just slice the data set
-      const lastIndex = currentPage * rowsPerPage;
-      const firstIndex = lastIndex - rowsPerPage;
-
-      return sortedData.slice(firstIndex, lastIndex);
-    }
-
-    return sortedData;
-  }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
-
   useDidUpdateEffect(() => {
     /* istanbul ignore next */
     if (onRowSelected) {
@@ -171,23 +150,44 @@ const DataTable = memo(({
     onSort(selectedColumn, sortDirection);
   }, [sortColumn, sortDirection]);
 
+  useEffect(() => {
+    dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
+  }, [clearSelectedRows]);
+
   useDidUpdateEffect(() => {
     handleChangePage(paginationDefaultPage);
   }, [paginationDefaultPage, paginationResetDefaultPage]);
 
   useEffect(() => {
-    dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
-  }, [clearSelectedRows]);
-
-  // if the selectableRowsPreSelectedField is defined then attempt to set the selectedRows state when the table initially loads
-  if (selectableRowsPreSelectedField) {
-    useEffect(() => {
+    // if the selectableRowsPreSelectedField is defined then attempt to set the selectedRows state when the table initially loads
+    if (selectableRowsPreSelectedField) {
       const preSelectedRows = data.filter(row => row[selectableRowsPreSelectedField]);
 
       dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-  }
+  }, []);
+
+  const sortedData = useMemo(() => {
+    // server-side sorting bypasses internal sorting
+    if (!sortServer) {
+      return sort(data, sortColumn, sortDirection, sortFunction);
+    }
+
+    return data;
+  }, [data, sortColumn, sortDirection, sortFunction, sortServer]);
+
+  const calculatedRows = useMemo(() => {
+    if (pagination && !paginationServer) {
+      // when using client-side pagination we can just slice the data set
+      const lastIndex = currentPage * rowsPerPage;
+      const firstIndex = lastIndex - rowsPerPage;
+
+      return sortedData.slice(firstIndex, lastIndex);
+    }
+
+    return sortedData;
+  }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
 
   // recalculate the pagination and currentPage if the data length changes
   if (pagination && !paginationServer && data.length > 0 && calculatedRows.length === 0) {
