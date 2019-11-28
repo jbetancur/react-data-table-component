@@ -168,6 +168,16 @@ const DataTable = memo(({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (paginationTotalRows > 0) {
+      const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
+      const recalculatedPage = recalculatePage(currentPage, updatedPage);
+      if (currentPage !== recalculatedPage) {
+        handleChangePage(recalculatedPage);
+      }
+    }
+  }, [paginationTotalRows, currentPage, rowsPerPage, handleChangePage]);
+
   const sortedData = useMemo(() => {
     // server-side sorting bypasses internal sorting
     if (!sortServer) {
@@ -195,18 +205,6 @@ const DataTable = memo(({
     const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
     handleChangePage(recalculatedPage);
-  }
-
-  if (paginationServer) {
-    useEffect(() => {
-      if (paginationTotalRows > 0) {
-        const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
-        const recalculatedPage = recalculatePage(currentPage, updatedPage);
-        if (currentPage !== recalculatedPage) {
-          handleChangePage(recalculatedPage);
-        }
-      }
-    }, [paginationTotalRows, currentPage, rowsPerPage, handleChangePage]);
   }
 
   const handleChangeRowsPerPage = newRowsPerPage => {
