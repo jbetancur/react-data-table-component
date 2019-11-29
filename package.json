@@ -5,7 +5,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "browser": "dist/index.cjs.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -115,6 +115,7 @@
     "rollup": "^1.27.4",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-scss": "^1.0.2",
     "rollup-plugin-terser": "^5.1.2",
