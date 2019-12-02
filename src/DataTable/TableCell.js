@@ -18,13 +18,15 @@ const TableCellStyle = styled(Cell)`
   ${props => props.extendedCellStyle};
 `;
 
-const TableCell = memo(({ id, column, row }) => {
+const TableCell = memo(({ id, index, column, row }) => {
   // apply a tag that TableRow will use to stop event propagation when TableCell is clicked
   const dataTag = column.ignoreRowClick || column.button ? null : '___react-data-table-allow-propagation___';
   const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
 
   return (
     <TableCellStyle
+      role="cell"
+      aria-colindex={index}
       id={id}
       column={column}
       data-tag={dataTag}

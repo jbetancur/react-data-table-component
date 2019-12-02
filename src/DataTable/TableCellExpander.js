@@ -17,15 +17,20 @@ const TableCellExpanderStyle = styled(CellBase)`
 `;
 
 const TableCellExpander = ({
+  id,
+  index,
   column,
   row,
   expanded,
   onExpandToggled,
   disabled,
 }) => (
-  <TableCellExpanderStyle
-    column={column}
-    onClick={e => e.stopPropagation()}
+    <TableCellExpanderStyle
+      role="cell"
+      aria-colindex={index}
+      id={id}
+      column={column}
+      onClick={e => e.stopPropagation()}
   >
     <ExpanderButton
       onToggled={onExpandToggled}

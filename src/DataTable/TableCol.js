@@ -58,6 +58,7 @@ const ColumnSortable = styled.div`
 
 
 const TableCol = memo(({
+  tableId,
   column,
   sortIcon,
 }) => {
@@ -104,12 +105,13 @@ const TableCol = memo(({
 
   return (
     <TableColStyle
+      role="columnheader"
       className="rdt_TableCol"
       column={column} // required by Cell.js
     >
       {column.name && (
         <ColumnSortable
-          id={`column-${column.selector}`}
+          id={`${tableId}-column-${column.selector}`}
           role="button"
           className="rdt_TableCol_Sortable"
           onClick={handleSortChange}

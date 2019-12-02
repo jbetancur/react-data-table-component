@@ -12,7 +12,7 @@ const TableCellCheckboxStyle = styled(CellBase)`
   color: ${props => props.theme.rows.fontColor};
 `;
 
-const TableCellCheckbox = ({ name, row }) => {
+const TableCellCheckbox = ({ id, index, name, row }) => {
   const { dispatch, data, keyField, selectedRows, selectableRowsComponent, selectableRowsComponentProps, selectableRowsDisabledField } = useTableContext();
   const checked = isRowSelected(row, selectedRows, keyField);
   const disabled = row[selectableRowsDisabledField];
@@ -21,6 +21,9 @@ const TableCellCheckbox = ({ name, row }) => {
 
   return (
     <TableCellCheckboxStyle
+      role="cell"
+      id={id}
+      aria-colindex={index}
       onClick={e => e.stopPropagation()}
       className="rdt_TableCell"
     >

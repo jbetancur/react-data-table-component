@@ -36,8 +36,8 @@ const Actions = styled.div`
   }
 `;
 
-const TableHeader = ({ title, actions }) => (
-  <TableHeaderStyle className="rdt_TableHeader">
+const TableHeader = ({ id, title, actions }) => (
+  <TableHeaderStyle id={id} className="rdt_TableHeader">
     <Title>
       {title}
     </Title>
