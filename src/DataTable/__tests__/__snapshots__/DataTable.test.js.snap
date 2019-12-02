@@ -20470,6 +20470,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -21013,6 +21014,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -21574,6 +21576,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -22509,6 +22512,7 @@ exports[`DataTable::expandableRows should render correctly when defaultExpandedF
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -23041,6 +23045,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -23571,6 +23576,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c10"
+            style="flex: 0 0 56px;"
           />
           <div
             class="c11 rdt_TableCol"
@@ -29811,6 +29817,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
         >
           <div
             class="c10"
+            style="flex: 0 0 48px;"
           />
           <div
             class="c11 rdt_TableCol"
