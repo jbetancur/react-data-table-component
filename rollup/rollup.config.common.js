@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
+import copy from 'rollup-plugin-copy';
 
 export const plugins = [
   resolve({
@@ -13,6 +14,11 @@ export const plugins = [
   }),
   babel({
     exclude: 'node_modules/**',
+  }),
+  copy({
+    targets: [
+      { src: 'index.d.ts', dest: 'dist' },
+    ],
   }),
 ];
 
