@@ -25,12 +25,12 @@ const TableCellExpander = ({
   onExpandToggled,
   disabled,
 }) => (
-    <TableCellExpanderStyle
-      role="cell"
-      aria-colindex={index}
-      id={id}
-      column={column}
-      onClick={e => e.stopPropagation()}
+  <TableCellExpanderStyle
+    role="cell"
+    aria-colindex={index}
+    id={id}
+    column={column}
+    onClick={e => e.stopPropagation()}
   >
     <ExpanderButton
       onToggled={onExpandToggled}
@@ -42,6 +42,8 @@ const TableCellExpander = ({
 );
 
 TableCellExpander.propTypes = {
+  id: PropTypes.any.isRequired,
+  index: PropTypes.number.isRequired,
   column: PropTypes.object,
   row: PropTypes.object,
   expanded: PropTypes.bool,

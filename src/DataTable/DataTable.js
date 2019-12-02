@@ -3,39 +3,39 @@ import React, {
   useReducer,
   useMemo,
   useCallback,
-  useEffect
-} from "react";
-import { ThemeProvider } from "styled-components";
-import merge from "lodash/merge";
-import { DataTableProvider } from "./DataTableContext";
-import { tableReducer } from "./tableReducer";
-import Table from "./Table";
-import TableHead from "./TableHead";
-import TableFooter from "./TableFooter";
-import TableHeadRow from "./TableHeadRow";
-import TableRow from "./TableRow";
-import TableCol from "./TableCol";
-import TableColCheckbox from "./TableColCheckbox";
-import TableHeader from "./TableHeader";
-import TableSubheader from "./TableSubheader";
-import TableBody from "./TableBody";
-import ResponsiveWrapper from "./ResponsiveWrapper";
-import ProgressWrapper from "./ProgressWrapper";
-import TableWrapper from "./TableWrapper";
-import { CellBase } from "./Cell";
-import NoData from "./NoData";
-import NativePagination from "./Pagination";
-import useDidUpdateEffect from "./useDidUpdateEffect";
-import styled from 'styled-components';
-import { propTypes, defaultProps } from "./propTypes";
+  useEffect,
+} from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import merge from 'lodash/merge';
+import { DataTableProvider } from './DataTableContext';
+import { tableReducer } from './tableReducer';
+import Table from './Table';
+import TableHead from './TableHead';
+import TableFooter from './TableFooter';
+import TableHeadRow from './TableHeadRow';
+import TableRow from './TableRow';
+import TableCol from './TableCol';
+import TableColCheckbox from './TableColCheckbox';
+import TableHeader from './TableHeader';
+import TableSubheader from './TableSubheader';
+import TableBody from './TableBody';
+import ResponsiveWrapper from './ResponsiveWrapper';
+import ProgressWrapper from './ProgressWrapper';
+import TableWrapper from './TableWrapper';
+import { CellBase } from './Cell';
+import NoData from './NoData';
+import NativePagination from './Pagination';
+import useDidUpdateEffect from './useDidUpdateEffect';
+
+import { propTypes, defaultProps } from './propTypes';
 import {
   sort,
   decorateColumns,
   getSortDirection,
   getNumberOfPages,
-  recalculatePage
-} from "./util";
-import getDefaultTheme from "../themes/default";
+  recalculatePage,
+} from './util';
+import getDefaultTheme from '../themes/default';
 
 let dtCount = 0;
 
@@ -122,7 +122,7 @@ const DataTable = memo(
     defaultSortAsc,
     clearSelectedRows,
     conditionalRowStyles,
-    id
+    id,
   }) => {
     const initialState = {
       allSelected: false,
@@ -133,7 +133,7 @@ const DataTable = memo(
       sortDirection: getSortDirection(defaultSortAsc),
       currentPage: paginationDefaultPage,
       rowsPerPage: paginationPerPage,
-      myId: id ? id : `data-table-${++dtCount}`
+      myId: id || `data-table-${(dtCount += 1)}`,
     };
 
     const [
@@ -146,29 +146,29 @@ const DataTable = memo(
         selectedCount,
         sortColumn,
         selectedColumn,
-        sortDirection
+        sortDirection,
       },
-      dispatch
+      dispatch,
     ] = useReducer(tableReducer, initialState);
 
     const enabledPagination = pagination && !progressPending && data.length > 0;
     const Pagination = paginationComponent || NativePagination;
     const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
     const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [
-      customTheme
+      customTheme,
     ]);
     const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [
-      expandableRowsComponent
+      expandableRowsComponent,
     ]);
     const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [
-      onRowClicked
+      onRowClicked,
     ]);
     const handleRowDoubleClicked = useCallback(
       (row, e) => onRowDoubleClicked(row, e),
-      [onRowDoubleClicked]
+      [onRowDoubleClicked],
     );
     const handleChangePage = page =>
-      dispatch({ type: "CHANGE_PAGE", page, paginationServer });
+      dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
     useDidUpdateEffect(() => {
       /* istanbul ignore next */
@@ -176,7 +176,7 @@ const DataTable = memo(
         onRowSelected({ allSelected, selectedCount, selectedRows });
         // eslint-disable-next-line no-console
         console.error(
-          "Warning: onRowSelected has been deprecated. Please switch to onSelectedRowsChange."
+          'Warning: onRowSelected has been deprecated. Please switch to onSelectedRowsChange.',
         );
       }
 
@@ -197,8 +197,8 @@ const DataTable = memo(
 
     useEffect(() => {
       dispatch({
-        type: "CLEAR_SELECTED_ROWS",
-        selectedRowsFlag: clearSelectedRows
+        type: 'CLEAR_SELECTED_ROWS',
+        selectedRowsFlag: clearSelectedRows,
       });
     }, [clearSelectedRows]);
 
@@ -210,13 +210,13 @@ const DataTable = memo(
       // if the selectableRowsPreSelectedField is defined then attempt to set the selectedRows state when the table initially loads
       if (selectableRowsPreSelectedField) {
         const preSelectedRows = data.filter(
-          row => row[selectableRowsPreSelectedField]
+          row => row[selectableRowsPreSelectedField],
         );
 
         dispatch({
-          type: "SELECT_MULTIPLE_ROWS",
+          type: 'SELECT_MULTIPLE_ROWS',
           selectedRows: preSelectedRows,
-          rows: data
+          rows: data,
         });
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -278,9 +278,9 @@ const DataTable = memo(
       }
 
       dispatch({
-        type: "CHANGE_ROWS_PER_PAGE",
+        type: 'CHANGE_ROWS_PER_PAGE',
         page: recalculatedPage,
-        rowsPerPage: newRowsPerPage
+        rowsPerPage: newRowsPerPage,
       });
     };
 
@@ -307,7 +307,7 @@ const DataTable = memo(
       paginationIconFirstPage,
       paginationIconNext,
       paginationIconPrevious,
-      paginationComponentOptions
+      paginationComponentOptions,
     };
 
     const showTableHead = () => {
@@ -322,7 +322,17 @@ const DataTable = memo(
       return data.length > 0 && !progressPending;
     };
     let rowIndex = 0;
+    // workaround for eslint no-plusplus
+    const rowIncrement = () => {
+      rowIndex += 1;
+      return rowIndex;
+    };
     let colIndex = 0;
+    // workaround for eslint no-plusplus
+    const colIncrement = () => {
+      colIndex += 1;
+      return colIndex;
+    };
     const extraCols = (selectableRows ? 1 : 0) + (expandableRows ? 2 : 0);
     return (
       <ThemeProvider theme={theme}>
@@ -368,9 +378,9 @@ const DataTable = memo(
                     ? -1
                     : (paginationTotalRows || data.length) + 1
                 }
-                {...(!noHeader ? { "aria-labelledby": `${myId}-header` } : {})}
+                {...(!noHeader ? { 'aria-labelledby': `${myId}-header` } : {})}
                 {...(subHeader
-                  ? { "aria-describedby": `${myId}-subheader` }
+                  ? { 'aria-describedby': `${myId}-subheader` }
                   : {})}
               >
                 {showTableHead() && (
@@ -380,7 +390,7 @@ const DataTable = memo(
                     className="rdt_TableHead"
                   >
                     <TableHeadRow
-                      aria-rowindex={++rowIndex}
+                      aria-rowindex={rowIncrement()}
                       id={`${myId}-thead-row`}
                       role="row"
                       className="rdt_TableHeadRow"
@@ -390,32 +400,32 @@ const DataTable = memo(
                       {selectableRows &&
                         (selectableRowsNoSelectAll ? (
                           <CellBase
-                            aria-colindex={++colIndex}
+                            aria-colindex={colIncrement()}
                             role="columnheader"
-                            style={{ flex: "0 0 48px" }}
+                            style={{ flex: '0 0 48px' }}
                           >
                             <ScreenReaderLabelStyle>
                               Row Selector
                             </ScreenReaderLabelStyle>
                           </CellBase>
                         ) : (
-                          <TableColCheckbox index={++colIndex} />
+                          <TableColCheckbox index={colIncrement()} />
                         ))}
                       {expandableRows && (
                         <CellBase
-                          aria-colindex={++colIndex}
+                          aria-colindex={colIncrement()}
                           role="columnheader"
-                          style={{ flex: "0 0 56px" }}
+                          style={{ flex: '0 0 56px' }}
                         >
-                        <ScreenReaderLabelStyle>
+                          <ScreenReaderLabelStyle>
                           Toggle Expanded Details
-                        </ScreenReaderLabelStyle>
-                      </CellBase>
+                          </ScreenReaderLabelStyle>
+                        </CellBase>
                       )}
                       {columnsMemo.map(column => (
                         <TableCol
                           tableId={myId}
-                          aria-colindex={++colIndex}
+                          aria-colindex={colIncrement()}
                           key={column.id}
                           column={column}
                           sortIcon={sortIcon}
@@ -423,7 +433,7 @@ const DataTable = memo(
                       ))}
                       {expandableRows && (
                         <ScreenReaderLabelStyle
-                          aria-colindex={++colIndex}
+                          aria-colindex={colIncrement()}
                           role="columnheader"
                         >
                           Expanded Details
@@ -453,11 +463,11 @@ const DataTable = memo(
                     {calculatedRows.map(row => {
                       // aria-rowindex includes header rows
                       const index =
-                        ++rowIndex +
+                        rowIncrement() +
                         (enabledPagination
                           ? (currentPage - 1) * rowsPerPage
                           : 0);
-                      const id = row[keyField] || rowIndex;
+                      const ident = row[keyField] || rowIndex;
                       const defaultExpanded =
                         row[defaultExpandedField] || false;
 
@@ -465,8 +475,8 @@ const DataTable = memo(
                         <TableRow
                           index={index}
                           tableId={myId}
-                          id={id}
-                          key={id}
+                          id={ident}
+                          key={ident}
                           keyField={keyField}
                           row={row}
                           columns={columnsMemo}
@@ -508,7 +518,7 @@ const DataTable = memo(
         </DataTableProvider>
       </ThemeProvider>
     );
-  }
+  },
 );
 
 DataTable.propTypes = propTypes;

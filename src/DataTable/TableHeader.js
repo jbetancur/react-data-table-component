@@ -51,6 +51,7 @@ const TableHeader = ({ id, title, actions }) => (
 );
 
 TableHeader.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,

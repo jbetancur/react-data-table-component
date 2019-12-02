@@ -44,7 +44,8 @@ const TableCell = memo(({ id, index, column, row }) => {
 });
 
 TableCell.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.any.isRequired,
+  index: PropTypes.number.isRequired,
   column: PropTypes.object.isRequired,
   row: PropTypes.object.isRequired,
 };

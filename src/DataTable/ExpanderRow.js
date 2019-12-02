@@ -1,6 +1,6 @@
-import React, { Children, cloneElement } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React, { Children, cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 // Make "data" available on our any child component
 // eslint-disable-next-line arrow-body-style
@@ -23,16 +23,18 @@ const ExpanderRow = ({ data, children, id, index }) => (
 );
 
 ExpanderRow.propTypes = {
+  id: PropTypes.any.isRequired,
+  index: PropTypes.number.isRequired,
   data: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
+    PropTypes.node,
+  ]),
 };
 
 ExpanderRow.defaultProps = {
   data: {},
-  children: null
+  children: null,
 };
 
 export default ExpanderRow;

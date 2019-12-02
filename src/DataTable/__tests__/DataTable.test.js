@@ -43,7 +43,8 @@ test('should render correctly if data has no unique key', () => {
 test('should render correctly when disabled', () => {
   const mock = dataMock();
   const { container } = render(
-    <DataTable id="dt"
+    <DataTable
+      id="dt"
       data={mock.data}
       columns={mock.columns}
       disabled
@@ -56,7 +57,8 @@ test('should render correctly when disabled', () => {
 test('should not show the TableHead when noTableHead is true', () => {
   const mock = dataMock();
   const { container } = render(
-    <DataTable id="dt"
+    <DataTable
+      id="dt"
       data={mock.data}
       columns={mock.columns}
       noTableHead
@@ -71,7 +73,8 @@ describe('DataTable::onSelectedRowsChange', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -92,7 +95,8 @@ describe('DataTable::onSelectedRowsChange', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -114,7 +118,8 @@ describe('DataTable::onSelectedRowsChange', () => {
     const mock = dataMock();
     const updatedMock = jest.fn();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -136,14 +141,16 @@ describe('data prop changes', () => {
   test('should update state if the data prop changes', () => {
     const mock = dataMock();
     const { container, rerender } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
     );
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={[{ id: 1, some: { name: 'Someone else' } }]}
         columns={mock.columns}
       />,
@@ -164,7 +171,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when column.sortable = true', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -176,7 +184,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when column.wrap = true', () => {
     const mock = dataMock({ wrap: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -188,7 +197,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when column.allowOverflow = true', () => {
     const mock = dataMock({ allowOverflow: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -200,7 +210,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when column.compact = true', () => {
     const mock = dataMock({ compact: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -212,7 +223,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when column.button = true', () => {
     const mock = dataMock({ button: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -225,7 +237,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when ignoreRowClick = true', () => {
     const mock = dataMock({ ignoreRowClick: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -237,7 +250,8 @@ describe('DataTable::columns', () => {
   test('should render correctly when column.cell is set to a component', () => {
     const mock = dataMock({ cell: row => <div>{row.some.name}</div> });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -249,7 +263,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.right', () => {
     const mock = dataMock({ right: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -261,7 +276,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.center', () => {
     const mock = dataMock({ center: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -273,7 +289,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.minWidth', () => {
     const mock = dataMock({ minWidth: '200px' });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -285,7 +302,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.maxWidth', () => {
     const mock = dataMock({ maxWidth: '600px' });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -297,7 +315,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.width', () => {
     const mock = dataMock({ width: '200px' });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -309,7 +328,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.hide sm', () => {
     const mock = dataMock({ hide: 'sm' });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -321,7 +341,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.hide md', () => {
     const mock = dataMock({ hide: 'md' });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -333,7 +354,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.hide lg', () => {
     const mock = dataMock({ hide: 'lg' });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -345,7 +367,8 @@ describe('DataTable::columns', () => {
   test('should render correctly if column.hide is an integer', () => {
     const mock = dataMock({ hide: 300 });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -360,7 +383,8 @@ describe('DataTable:RowClicks', () => {
     const onRowClickedMock = jest.fn();
     const mock = dataMock({ ignoreRowClick: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onRowClicked={onRowClickedMock}
@@ -375,7 +399,8 @@ describe('DataTable:RowClicks', () => {
     const onRowClickedMock = jest.fn();
     const mock = dataMock({ button: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onRowClicked={onRowClickedMock}
@@ -390,7 +415,8 @@ describe('DataTable:RowClicks', () => {
     const onRowDoubleClickedMock = jest.fn();
     const mock = dataMock({ ignoreRowClick: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onRowDoubleClicked={onRowDoubleClickedMock}
@@ -405,7 +431,8 @@ describe('DataTable:RowClicks', () => {
     const onRowDoubleClickedMock = jest.fn();
     const mock = dataMock({ button: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onRowDoubleClicked={onRowDoubleClickedMock}
@@ -421,7 +448,8 @@ describe('DataTable::progress/nodata', () => {
   test('should render correctly when progressPending is true', () => {
     const mock = dataMock();
     const { container, getByText } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -436,7 +464,8 @@ describe('DataTable::progress/nodata', () => {
   test('should only show Loading if progressPending prop changes', () => {
     const mock = dataMock();
     const { getByText, rerender, container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -445,7 +474,8 @@ describe('DataTable::progress/nodata', () => {
     );
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -462,7 +492,8 @@ describe('DataTable::progress/nodata', () => {
     test('should only Loading and TableHead if progressPending prop changes', () => {
       const mock = dataMock();
       const { getByText, rerender, container } = render(
-        <DataTable id="dt"
+        <DataTable
+          id="dt"
           data={mock.data}
           columns={mock.columns}
           defaultSortField="some.name"
@@ -472,7 +503,8 @@ describe('DataTable::progress/nodata', () => {
       );
 
       rerender(
-        <DataTable id="dt"
+        <DataTable
+          id="dt"
           data={mock.data}
           columns={mock.columns}
           defaultSortField="some.name"
@@ -489,7 +521,8 @@ describe('DataTable::progress/nodata', () => {
     test('should disable TableHead if no data', () => {
       const mock = dataMock();
       const { container } = render(
-        <DataTable id="dt"
+        <DataTable
+          id="dt"
           data={[]}
           columns={mock.columns}
           defaultSortField="some.name"
@@ -503,7 +536,8 @@ describe('DataTable::progress/nodata', () => {
     test('should disable TableHead if progressPending', () => {
       const mock = dataMock();
       const { container } = render(
-        <DataTable id="dt"
+        <DataTable
+          id="dt"
           data={[]}
           columns={mock.columns}
           defaultSortField="some.name"
@@ -520,7 +554,8 @@ describe('DataTable::progress/nodata', () => {
     test('should only Loading if progressPending prop changes', () => {
       const mock = dataMock();
       const { getByText, rerender, container } = render(
-        <DataTable id="dt"
+        <DataTable
+          id="dt"
           data={mock.data}
           columns={mock.columns}
           defaultSortField="some.name"
@@ -531,7 +566,8 @@ describe('DataTable::progress/nodata', () => {
       );
 
       rerender(
-        <DataTable id="dt"
+        <DataTable
+          id="dt"
           data={mock.data}
           columns={mock.columns}
           defaultSortField="some.name"
@@ -550,7 +586,8 @@ describe('DataTable::progress/nodata', () => {
   test('should render correctly when progressPending is false and there are no row items', () => {
     const mock = dataMock();
     const { container, getByText } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={[]}
         columns={mock.columns}
       />,
@@ -563,7 +600,8 @@ describe('DataTable::progress/nodata', () => {
   test('should render correctly when a component is passed that is a string', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -578,7 +616,8 @@ describe('DataTable::progress/nodata', () => {
   test('should render correctly when a component is passed that is a react component', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -595,7 +634,8 @@ describe('DataTable::responsive', () => {
   test('should render correctly responsive by default', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -607,7 +647,8 @@ describe('DataTable::responsive', () => {
   test('should render correctly when responsive=false', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         responsive={false}
@@ -620,7 +661,8 @@ describe('DataTable::responsive', () => {
   test('should not apply overFlowY without an overflowYOffset or not responsive', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         responsive
@@ -639,7 +681,8 @@ describe('DataTable::sorting', () => {
     const onSortMock = jest.fn();
     const mock = dataMock({ sortable: false });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onSort={onSortMock}
@@ -654,7 +697,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly with a default sort field and the native sort icon', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -667,7 +711,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly with a default sort field and the icon to the right when column.right = true and the native sort icon', () => {
     const mock = dataMock({ sortable: true, right: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -680,7 +725,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly and not be sorted when a column.sort === false', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -694,7 +740,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly when a column is sorted in default asc', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -708,7 +755,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly when a column is sorted from asc to desc', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -728,7 +776,8 @@ describe('DataTable::sorting', () => {
     const onSortMock = jest.fn();
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onSort={onSortMock}
@@ -744,7 +793,8 @@ describe('DataTable::sorting', () => {
     const onSortMock = jest.fn();
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onSort={onSortMock}
@@ -761,7 +811,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly with a custom sortIcon', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -775,7 +826,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly with a custom sortIcon and column.right = true', () => {
     const mock = dataMock({ sortable: true, right: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -789,7 +841,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly with a defaultSortAsc = false', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -803,7 +856,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly and bypass internal sort when sortServer = true and asc sort', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         sortServer
@@ -818,7 +872,8 @@ describe('DataTable::sorting', () => {
   test('should render correctly and bypass internal sort when sortServer = true and desc sort', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         sortServer
@@ -837,7 +892,8 @@ describe('DataTable::expandableRows', () => {
   test('should render correctly when expandableRows is true', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -851,7 +907,8 @@ describe('DataTable::expandableRows', () => {
     const mock = dataMock();
     mock.data[0].defaultExpanded = true;
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultExpandedField="defaultExpanded"
@@ -864,7 +921,8 @@ describe('DataTable::expandableRows', () => {
   test('should render correctly when expandableRows is true and the row is toggled', () => {
     const mock = dataMock();
     const { container, getByTestId } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -880,7 +938,8 @@ describe('DataTable::expandableRows', () => {
     const mock = dataMock();
     mock.data[0].defaultExpanded = true;
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -895,7 +954,8 @@ describe('DataTable::expandableRows', () => {
     const mock = dataMock();
     mock.data[0].disabled = true;
     const { container, getByTestId } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -910,7 +970,8 @@ describe('DataTable::expandableRows', () => {
   test('should not expand a row if expandableRows is false and expandOnRowClicked is true ', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandOnRowClicked
@@ -925,7 +986,8 @@ describe('DataTable::expandableRows', () => {
   test('should expand a row if expandableRows is true and expandOnRowClicked is true', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -942,7 +1004,8 @@ describe('DataTable::expandableRows', () => {
   test('should not expand a row if expandableRows is false and expandOnRowDoubleClicked is true ', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandOnRowDoubleClicked
@@ -957,7 +1020,8 @@ describe('DataTable::expandableRows', () => {
   test('should expand a row if expandableRows is true and expandOnRowDoubleClicked is true', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -975,7 +1039,8 @@ describe('DataTable::expandableRows', () => {
     const mock = dataMock();
     mock.data[0].disabled = true;
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         expandableRows
@@ -995,7 +1060,8 @@ describe('DataTable::selectableRows', () => {
   test('should render correctly when selectableRows is true', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1008,7 +1074,8 @@ describe('DataTable::selectableRows', () => {
   test('should not render a select all checkbox when selectableRowsNoSelectAll is true', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1023,7 +1090,8 @@ describe('DataTable::selectableRows', () => {
   test('select-all-rows should be true is all rows are selected', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1038,7 +1106,8 @@ describe('DataTable::selectableRows', () => {
   test('select-all-rows should be false and not when all rows is de-selected', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1054,7 +1123,8 @@ describe('DataTable::selectableRows', () => {
   test('should render correctly when selectableRows is true and a single row is checked', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1070,7 +1140,8 @@ describe('DataTable::selectableRows', () => {
   test('select-all-rows should not be indeterminate when all rows are selected', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1086,7 +1157,8 @@ describe('DataTable::selectableRows', () => {
   test('select-all-rows should be indeterminate when a single row is selected', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1102,7 +1174,8 @@ describe('DataTable::selectableRows', () => {
     const mock = dataMock();
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1118,7 +1191,8 @@ describe('DataTable::selectableRows', () => {
   test('should render correctly when selectableRows is true and a single row is un-checked', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1136,7 +1210,8 @@ describe('DataTable::selectableRows', () => {
     mock.data[0].disabled = true;
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1155,7 +1230,8 @@ describe('DataTable::selectableRows', () => {
     mock.data[0].disabled = true;
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1175,7 +1251,8 @@ describe('DataTable::selectableRows', () => {
     mock.data[1].disabled = true;
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1195,7 +1272,8 @@ describe('DataTable::selectableRows', () => {
     mock.data[0].selected = true;
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1213,7 +1291,8 @@ describe('DataTable::selectableRows', () => {
     mock.data[1].selected = true;
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1228,7 +1307,8 @@ describe('DataTable::selectableRows', () => {
   test('should render correctly when clearSelectedRows is toggled', () => {
     const mock = dataMock();
     const { container, rerender } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1238,7 +1318,8 @@ describe('DataTable::selectableRows', () => {
     fireEvent.click(container.querySelector('input[name="select-row-1"]'));
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1253,7 +1334,8 @@ describe('DataTable::selectableRows', () => {
     const rowClickedMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         selectableRows
@@ -1272,7 +1354,8 @@ describe('DataTable::Pagination', () => {
   test('should render correctly if pagination is enabled', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1285,7 +1368,8 @@ describe('DataTable::Pagination', () => {
   test('should have the correct amount of rows when paging forward', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1}
@@ -1303,7 +1387,8 @@ describe('DataTable::Pagination', () => {
   test('should have the correct amount of rows when paging backward', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationDefaultPage={2}
@@ -1322,7 +1407,8 @@ describe('DataTable::Pagination', () => {
   test('should have the correct amount of rows when paging to the last page', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1}
@@ -1340,7 +1426,8 @@ describe('DataTable::Pagination', () => {
   test('should have the correct amount of rows when paging backward to the first page', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationDefaultPage={2}
@@ -1359,7 +1446,8 @@ describe('DataTable::Pagination', () => {
   test('should navigate to page 1 if the table is sorted', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1}
@@ -1379,7 +1467,8 @@ describe('DataTable::Pagination', () => {
     const mockOneDeleted = dataMock().data.slice(0, 1);
     const onChangePageMock = jest.fn();
     const { container, rerender } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1}
@@ -1393,7 +1482,8 @@ describe('DataTable::Pagination', () => {
     fireEvent.click(container.querySelector('button#pagination-last-page'));
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mockOneDeleted}
         columns={mock.columns}
         onChangePage={onChangePageMock}
@@ -1413,7 +1503,8 @@ describe('DataTable::Pagination', () => {
     const onChangePageMock = jest.fn();
     const onChangeRowsPerPageMock = jest.fn();
     const { container, rerender } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         onChangePage={onChangePageMock}
@@ -1430,7 +1521,8 @@ describe('DataTable::Pagination', () => {
     fireEvent.click(container.querySelector('button#pagination-last-page'));
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mockOneDeleted}
         columns={mock.columns}
         onChangePage={onChangePageMock}
@@ -1452,7 +1544,8 @@ describe('DataTable::Pagination', () => {
     const mockOneDeleted = dataMock().data.slice(0, 2);
     const onChangePageMock = jest.fn();
     const { container, rerender } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1}
@@ -1466,7 +1559,8 @@ describe('DataTable::Pagination', () => {
     fireEvent.click(container.querySelector('button#pagination-last-page'));
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mockOneDeleted}
         columns={mock.columns}
         onChangePage={onChangePageMock}
@@ -1484,7 +1578,8 @@ describe('DataTable::Pagination', () => {
     const onChangePageMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1502,7 +1597,8 @@ describe('DataTable::Pagination', () => {
     const onChangePageMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1521,7 +1617,8 @@ describe('DataTable::Pagination', () => {
   test('should not deselect all rows if using pagination and selectedRows', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1540,7 +1637,8 @@ describe('DataTable::Pagination', () => {
   test('should deselect all rows if using paginationServer and selectedRows', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1560,7 +1658,8 @@ describe('DataTable::Pagination', () => {
   test('should deselect all rows if using pagination && paginationServer and selectedRows and the table is sorted', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1581,7 +1680,8 @@ describe('DataTable::Pagination', () => {
     const onChangePageMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1600,7 +1700,8 @@ describe('DataTable::Pagination', () => {
     const onChangeRowsPerPageMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1616,7 +1717,8 @@ describe('DataTable::Pagination', () => {
     const onChangeRowsPerPageMock = jest.fn();
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1632,7 +1734,8 @@ describe('DataTable::Pagination', () => {
   test('should render correctly when a paginationComponentOptions are passed', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1646,7 +1749,8 @@ describe('DataTable::Pagination', () => {
   test('should render correctly when a paginationComponentOptions to hide the per page dropdown are passed', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pagination
@@ -1660,7 +1764,8 @@ describe('DataTable::Pagination', () => {
   test('should render correctly when paginationResetDefaultPage is toggled', () => {
     const mock = dataMock();
     const { container, rerender } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1} // force 2 pages
@@ -1672,7 +1777,8 @@ describe('DataTable::Pagination', () => {
     fireEvent.click(container.querySelector('button#pagination-next-page'));
 
     rerender(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         paginationPerPage={1} // force 2 pages
@@ -1690,7 +1796,8 @@ describe('DataTable::subHeader', () => {
   test('should render correctly when a subheader is enabled', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         subHeader
@@ -1705,7 +1812,8 @@ describe('DataTable::subHeader', () => {
   test('should render when subHeaderWrap is false', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         subHeader
@@ -1720,7 +1828,8 @@ describe('DataTable::subHeader', () => {
   test('should render correctly with left align', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         subHeader
@@ -1735,7 +1844,8 @@ describe('DataTable::subHeader', () => {
   test('should render correctly with center align', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         subHeader
@@ -1750,7 +1860,8 @@ describe('DataTable::subHeader', () => {
   test('should render correctly with right align', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         subHeader
@@ -1768,7 +1879,8 @@ describe('DataTable::Header', () => {
   test('should render without a header if noHeader is true', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         noHeader
@@ -1781,7 +1893,8 @@ describe('DataTable::Header', () => {
   test('title should render correctly', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         title="whoa!"
@@ -1794,7 +1907,8 @@ describe('DataTable::Header', () => {
   test('contextTitle should render correctly', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         title="whoa!"
@@ -1808,7 +1922,8 @@ describe('DataTable::Header', () => {
   test('actions should render correctly', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         title="whoa!"
@@ -1823,7 +1938,8 @@ describe('DataTable::Header', () => {
   test('context menu should render correctly when selectableRows', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         title="whoa!"
@@ -1844,7 +1960,8 @@ describe('DataTable::fixedHeader', () => {
   test('should render correctly when fixedHeader', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         fixedHeader
@@ -1857,7 +1974,8 @@ describe('DataTable::fixedHeader', () => {
   test('should render correctly when fixedHeader and fixedHeaderScrollHeight', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         fixedHeader
@@ -1871,7 +1989,8 @@ describe('DataTable::fixedHeader', () => {
   test('should render correctly when fixedHeader with an offset', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         fixedHeader
@@ -1885,7 +2004,8 @@ describe('DataTable::fixedHeader', () => {
   test('should render correctly when fixedHeader with an offset with a value', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         fixedHeader
@@ -1902,7 +2022,8 @@ describe('DataTable::striped', () => {
   test('should render correctly when striped', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         striped
@@ -1917,7 +2038,8 @@ describe('DataTable::highlightOnHover', () => {
   test('should render correctly when highlightOnHover', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         highlightOnHover
@@ -1932,7 +2054,8 @@ describe('DataTable::pointerOnHover', () => {
   test('should render correctly when pointerOnHover', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         pointerOnHover
@@ -1947,7 +2070,8 @@ describe('DataTable::dense', () => {
   test('should render correctly when dense', () => {
     const mock = dataMock();
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         dense
@@ -1967,7 +2091,8 @@ describe('DataTable::Theming', () => {
       },
     };
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -1987,7 +2112,8 @@ describe('DataTable::Theming', () => {
       },
     };
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
@@ -2006,7 +2132,8 @@ describe('DataTable::conditionalRowStyles', () => {
     const conditionalRowStyles = [];
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         conditionalRowStyles={conditionalRowStyles}
@@ -2033,7 +2160,8 @@ describe('DataTable::conditionalRowStyles', () => {
     ];
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         conditionalRowStyles={conditionalRowStyles}
@@ -2060,7 +2188,8 @@ describe('DataTable::conditionalRowStyles', () => {
     ];
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
         conditionalRowStyles={conditionalRowStyles}
@@ -2079,7 +2208,8 @@ describe('DataTable::column.style', () => {
     };
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -2103,7 +2233,8 @@ describe('DataTable::conditionalCellStyles', () => {
     ];
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,
@@ -2125,7 +2256,8 @@ describe('DataTable::conditionalCellStyles', () => {
     ];
 
     const { container } = render(
-      <DataTable id="dt"
+      <DataTable
+        id="dt"
         data={mock.data}
         columns={mock.columns}
       />,

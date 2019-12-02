@@ -1,13 +1,13 @@
-import React, { memo, useCallback, useState } from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import TableCell from "./TableCell";
-import TableCellCheckbox from "./TableCellCheckbox";
-import TableCellExpander from "./TableCellExpander";
-import ExpanderRow from "./ExpanderRow";
-import { getConditionalStyle } from "./util";
+import React, { memo, useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import TableCell from './TableCell';
+import TableCellCheckbox from './TableCellCheckbox';
+import TableCellExpander from './TableCellExpander';
+import ExpanderRow from './ExpanderRow';
+import { getConditionalStyle } from './util';
 
-const STOP_PROP_TAG = "___react-data-table-allow-propagation___";
+const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
 
 const defaultRowsCSS = css`
   &:not(:first-child) {
@@ -58,9 +58,9 @@ const TableRowStyle = styled.div`
   width: 100%;
   box-sizing: border-box;
   min-height: ${props =>
-    props.dense ? props.theme.rows.denseHeight : props.theme.rows.height};
+    (props.dense ? props.theme.rows.denseHeight : props.theme.rows.height)};
   ${props =>
-    props.theme.rows.spacing === "spaced" ? spacedRowsCSS : defaultRowsCSS};
+    (props.theme.rows.spacing === 'spaced' ? spacedRowsCSS : defaultRowsCSS)};
   background-color: ${props => props.theme.rows.backgroundColor};
   color: ${props => props.theme.rows.fontColor};
   ${props => props.striped && stripedCSS};
@@ -90,7 +90,7 @@ const TableRow = memo(
     defaultExpanded,
     expandOnRowClicked,
     expandOnRowDoubleClicked,
-    conditionalRowStyles
+    conditionalRowStyles,
   }) => {
     const [expanded, setExpanded] = useState(defaultExpanded);
     const handleExpanded = useCallback(() => {
@@ -105,7 +105,7 @@ const TableRow = memo(
     const handleRowClick = useCallback(
       e => {
         // use event delegation allow events to propagate only when the element with data-tag ___react-data-table-allow-propagation___ is present
-        if (e.target && e.target.getAttribute("data-tag") === STOP_PROP_TAG) {
+        if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
           onRowClicked(row, e);
 
           if (!disableRowClick && expandableRows && expandOnRowClicked) {
@@ -119,13 +119,13 @@ const TableRow = memo(
         expandableRows,
         handleExpanded,
         onRowClicked,
-        row
-      ]
+        row,
+      ],
     );
 
     const handleRowDoubleClick = useCallback(
       e => {
-        if (e.target && e.target.getAttribute("data-tag") === STOP_PROP_TAG) {
+        if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
           onRowDoubleClicked(row, e);
           if (!disableRowClick && expandableRows && expandOnRowDoubleClicked) {
             handleExpanded();
@@ -138,12 +138,17 @@ const TableRow = memo(
         expandableRows,
         handleExpanded,
         onRowDoubleClicked,
-        row
-      ]
+        row,
+      ],
     );
 
     const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
     let columnIndex = 0;
+    // workaround for eslint no-plusplus
+    const colIncrement = () => {
+      columnIndex += 1;
+      return columnIndex;
+    };
     const rowId = `${tableId}-row-${id}`;
     return (
       <TableRowStyle
@@ -161,7 +166,7 @@ const TableRow = memo(
       >
         {selectableRows && (
           <TableCellCheckbox
-            index={++columnIndex}
+            index={colIncrement()}
             id={`${tableId}-selector-${id}`}
             key={`selector-${id}`}
             name={`select-row-${row[keyField]}`}
@@ -171,7 +176,7 @@ const TableRow = memo(
 
         {expandableRows && (
           <TableCellExpander
-            index={++columnIndex}
+            index={colIncrement()}
             id={`${tableId}-expander-${id}`}
             key={`expander-${id}`}
             expanded={expanded}
@@ -183,7 +188,7 @@ const TableRow = memo(
 
         {columns.map(column => (
           <TableCell
-            index={++columnIndex}
+            index={colIncrement()}
             rowId={rowId}
             id={`${tableId}-cell-${id}-${columnIndex}`}
             key={`cell-${id}-${columnIndex}`}
@@ -193,17 +198,19 @@ const TableRow = memo(
         ))}
 
         {expandableRows && expanded && (
-          <ExpanderRow id={`${tableId}-expanded-content-${id}`} index={++columnIndex} key={`expanded-content-${row[keyField]}`} data={row}>
+          <ExpanderRow id={`${tableId}-expanded-content-${id}`} index={colIncrement()} key={`expanded-content-${row[keyField]}`} data={row}>
             {expandableRowsComponent}
           </ExpanderRow>
         )}
       </TableRowStyle>
     );
-  }
+  },
 );
 
 TableRow.propTypes = {
   id: PropTypes.any.isRequired,
+  tableId: PropTypes.any.isRequired,
+  index: PropTypes.number.isRequired,
   keyField: PropTypes.string.isRequired,
   columns: PropTypes.array.isRequired,
   row: PropTypes.object.isRequired,
@@ -219,12 +226,12 @@ TableRow.propTypes = {
   expandableRowsComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-    PropTypes.func
+    PropTypes.func,
   ]).isRequired,
   expandableDisabledField: PropTypes.string.isRequired,
   expandOnRowClicked: PropTypes.bool.isRequired,
   expandOnRowDoubleClicked: PropTypes.bool.isRequired,
-  conditionalRowStyles: PropTypes.array.isRequired
+  conditionalRowStyles: PropTypes.array.isRequired,
 };
 
 export default TableRow;

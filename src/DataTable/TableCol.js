@@ -132,6 +132,7 @@ const TableCol = memo(({
 });
 
 TableCol.propTypes = {
+  tableId: PropTypes.string.isRequired,
   column: PropTypes.object.isRequired,
   sortIcon: PropTypes.oneOfType([
     PropTypes.bool,

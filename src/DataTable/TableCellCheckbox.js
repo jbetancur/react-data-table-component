@@ -40,6 +40,8 @@ const TableCellCheckbox = ({ id, index, name, row }) => {
 };
 
 TableCellCheckbox.propTypes = {
+  id: PropTypes.any.isRequired,
+  index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   row: PropTypes.object.isRequired,
 };
