@@ -168,6 +168,16 @@ const DataTable = memo(({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useDidUpdateEffect(() => {
+    if (pagination && paginationServer && paginationTotalRows > 0) {
+      const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
+      const recalculatedPage = recalculatePage(currentPage, updatedPage);
+      if (currentPage !== recalculatedPage) {
+        handleChangePage(recalculatedPage);
+      }
+    }
+  }, [paginationTotalRows]);
+
   const sortedData = useMemo(() => {
     // server-side sorting bypasses internal sorting
     if (!sortServer) {
