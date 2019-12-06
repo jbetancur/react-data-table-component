@@ -81,9 +81,21 @@ describe('insertItem', () => {
 
 describe('removeItem', () => {
   test('should return the correct array items', () => {
+    const array = removeItem([{ id: 1, name: 'foo' }, { id: 2, name: 'bar' }], { id: 2, name: 'bar' }, 'id');
+
+    expect(array).toEqual([{ id: 1, name: 'foo' }]);
+  });
+
+  test('should return the correct array items when no keyfield is provided', () => {
     const array = removeItem([{ name: 'foo' }, { name: 'bar' }], { name: 'bar' });
 
     expect(array).toEqual([{ name: 'foo' }]);
+  });
+
+  test('should fallback to referne check is the keyField is mismatched', () => {
+    const array = removeItem([{ id: 1, name: 'foo' }, { id: 2, name: 'bar' }], { id: 2, name: 'bar' }, 'UUID');
+
+    expect(array).toEqual([{ id: 1, name: 'foo' }]);
   });
 });
 
