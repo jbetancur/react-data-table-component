@@ -33,15 +33,20 @@ export const getProperty = (row, selector, format) => {
   }, row);
 };
 
-export const insertItem = (array, item, index = 0) => [
+export const insertItem = (array = [], item = {}, index = 0) => [
   ...array.slice(0, index),
   item,
   ...array.slice(index),
 ];
 
-export const removeItem = (array, item) => {
+export const removeItem = (array = [], item = {}, keyField) => {
   const newArray = array.slice();
-  newArray.splice(newArray.findIndex(a => a === item), 1);
+
+  if (item[keyField]) {
+    newArray.splice(newArray.findIndex(a => a[keyField] === item[keyField]), 1);
+  } else {
+    newArray.splice(newArray.findIndex(a => a === item), 1);
+  }
 
   return newArray;
 };

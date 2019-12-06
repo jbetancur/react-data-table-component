@@ -14,14 +14,14 @@ export function tableReducer(state, action) {
     }
 
     case 'SELECT_SINGLE_ROW': {
-      const { row, rows, isRowSelected } = action;
+      const { row, rows, isRowSelected, keyField } = action;
 
       if (isRowSelected) {
         return {
           ...state,
           selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
           allSelected: false,
-          selectedRows: removeItem(state.selectedRows, row),
+          selectedRows: removeItem(state.selectedRows, row, keyField),
         };
       }
 
