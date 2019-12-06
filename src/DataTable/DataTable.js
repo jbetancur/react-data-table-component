@@ -87,10 +87,10 @@ const DataTable = memo(({
   sortFunction,
   sortServer,
   expandableRowsComponent,
-  expandableDisabledField,
+  expandableRowDisabled,
   expandOnRowClicked,
   expandOnRowDoubleClicked,
-  defaultExpandedField,
+  expandableRowExpanded,
   defaultSortField,
   defaultSortAsc,
   clearSelectedRows,
@@ -339,7 +339,13 @@ const DataTable = memo(({
                 >
                   {calculatedRows.map((row, i) => {
                     const id = row[keyField] || i;
-                    const defaultExpanded = row[defaultExpandedField] || false;
+                    const expanderExpander = expandableRows
+                      && expandableRowExpanded
+                      && expandableRowExpanded(row);
+
+                    const expanderDisabled = expandableRows
+                      && expandableRowDisabled
+                      && expandableRowDisabled(row);
 
                     return (
                       <TableRow
@@ -357,8 +363,8 @@ const DataTable = memo(({
                         expandOnRowClicked={expandOnRowClicked}
                         expandOnRowDoubleClicked={expandOnRowDoubleClicked}
                         expandableRowsComponent={expandableRowsComponentMemo}
-                        expandableDisabledField={expandableDisabledField}
-                        defaultExpanded={defaultExpanded}
+                        defaultExpanderDisabled={expanderDisabled}
+                        defaultExpanded={expanderExpander}
                         onRowClicked={handleRowClicked}
                         onRowDoubleClicked={handleRowDoubleClicked}
                         conditionalRowStyles={conditionalRowStyles}

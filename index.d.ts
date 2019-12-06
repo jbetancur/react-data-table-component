@@ -59,8 +59,8 @@ export interface IDataTableProps<T> {
   expandableRowsComponent?: React.ReactNode;
   expandOnRowClicked?: boolean;
   expandOnRowDoubleClicked?: boolean;
-  defaultExpandedField?: string;
-  expandableDisabledField?: string;
+  expandableRowExpanded?: (row: T) => void;
+  expandableRowDisabled?: (row: T) => void;
   selectableRows?: boolean;
   clearSelectedRows?: boolean;
   onSelectedRow?: (selectedRowState: T) => void; // Deprecated: will be removed in v5.0

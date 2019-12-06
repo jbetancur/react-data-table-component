@@ -78,7 +78,7 @@ const TableRow = memo(({
   pointerOnHover,
   dense,
   expandableRowsComponent,
-  expandableDisabledField,
+  defaultExpanderDisabled,
   defaultExpanded,
   expandOnRowClicked,
   expandOnRowDoubleClicked,
@@ -89,7 +89,6 @@ const TableRow = memo(({
     setExpanded(!expanded);
   }, [expanded]);
 
-  const disableRowClick = row[expandableDisabledField] || false;
   const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
 
   const handleRowClick = useCallback(e => {
@@ -97,20 +96,20 @@ const TableRow = memo(({
     if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
       onRowClicked(row, e);
 
-      if (!disableRowClick && expandableRows && expandOnRowClicked) {
+      if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
         handleExpanded();
       }
     }
-  }, [disableRowClick, expandOnRowClicked, expandableRows, handleExpanded, onRowClicked, row]);
+  }, [defaultExpanderDisabled, expandOnRowClicked, expandableRows, handleExpanded, onRowClicked, row]);
 
   const handleRowDoubleClick = useCallback(e => {
     if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
       onRowDoubleClicked(row, e);
-      if (!disableRowClick && expandableRows && expandOnRowDoubleClicked) {
+      if (!defaultExpanderDisabled && expandableRows && expandOnRowDoubleClicked) {
         handleExpanded();
       }
     }
-  }, [disableRowClick, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row]);
+  }, [defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row]);
 
   const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
 
@@ -120,7 +119,7 @@ const TableRow = memo(({
         id={`row-${id}`}
         striped={striped}
         highlightOnHover={highlightOnHover}
-        pointerOnHover={!disableRowClick && showPointer}
+        pointerOnHover={!defaultExpanderDisabled && showPointer}
         dense={dense}
         onClick={handleRowClick}
         onDoubleClick={handleRowDoubleClick}
@@ -139,7 +138,7 @@ const TableRow = memo(({
             expanded={expanded}
             row={row}
             onExpandToggled={handleExpanded}
-            disabled={disableRowClick}
+            disabled={defaultExpanderDisabled}
           />
         )}
 
@@ -172,7 +171,8 @@ TableRow.propTypes = {
   row: PropTypes.object.isRequired,
   onRowClicked: PropTypes.func.isRequired,
   onRowDoubleClicked: PropTypes.func.isRequired,
-  defaultExpanded: PropTypes.bool.isRequired,
+  defaultExpanded: PropTypes.bool,
+  defaultExpanderDisabled: PropTypes.bool,
   selectableRows: PropTypes.bool.isRequired,
   expandableRows: PropTypes.bool.isRequired,
   striped: PropTypes.bool.isRequired,
@@ -184,10 +184,14 @@ TableRow.propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]).isRequired,
-  expandableDisabledField: PropTypes.string.isRequired,
   expandOnRowClicked: PropTypes.bool.isRequired,
   expandOnRowDoubleClicked: PropTypes.bool.isRequired,
   conditionalRowStyles: PropTypes.array.isRequired,
+};
+
+TableRow.defaultProps = {
+  defaultExpanded: false,
+  defaultExpanderDisabled: false,
 };
 
 export default TableRow;

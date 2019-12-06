@@ -31,11 +31,11 @@ const columns = [
 
 const BasicTableExpanderDisabled = () => {
   const data = tableDataItems.map(item => {
-    let expanderDisabled = false;
+    let disabled = false;
     if (Number(item.year) < 2000) {
-      expanderDisabled = true;
+      disabled = true;
     }
-    return { ...item, expanderDisabled };
+    return { ...item, disabled };
   });
   return (
     <DataTable
@@ -43,7 +43,7 @@ const BasicTableExpanderDisabled = () => {
       columns={columns}
       data={data}
       expandableRows
-      expandableDisabledField="expanderDisabled"
+      expandableRowDisabled={row => row.disabled}
       highlightOnHover
       defaultSortField="name"
       expandableRowsComponent={<ExpandedComponent />}

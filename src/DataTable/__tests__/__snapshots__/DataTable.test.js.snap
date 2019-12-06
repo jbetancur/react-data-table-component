@@ -22090,7 +22090,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 </div>
 `;
 
-exports[`DataTable::expandableRows should render correctly when defaultExpandedField is true 1`] = `
+exports[`DataTable::expandableRows should render correctly when expandableRowExpanded is true 1`] = `
 .c7 {
   position: relative;
   box-sizing: border-box;

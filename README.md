@@ -148,8 +148,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
 | expandableIcon | object | no | default expander icons | you may pass in your own custom icons using the `expandableIcon: { collapsed: <svg>...</svg>, expanded: <svg>...</svg>` |
-| expandableDisabledField | string | no |  | React Data Table looks for this property in each item from your data and checks if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature. **note** this field can only be one level deep
-| defaultExpandedField | string | no |  | React Data Table looks for this property in each item from your data and checks if that item should be expanded on initial render. You must set a `bool` value in the `defaultExpandedField` field of your data if you want to use this feature. **note** this field can only be one level deep
+| expandableRowDisabled | string | no |  | React Data Table looks for this property in each item from your data and checks if that item can be expanded or not. You must set a bool value in the `expandableRowDisabled` of your data if you want to use this feature. **note** this field can only be one level deep
+| expandableRowExpanded | function | no |  | Expand a row based on a property in your data. e.g. `row => row.isExpanded`. `expandableRowExpanded` must return a boolean to determine if the field should be programatically expanded.
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | expandOnRowClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when an area within the row is clicked. Requires `expandableRows` be set to true |
 | expandOnRowDoubleClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true |
@@ -514,7 +514,7 @@ class MyComponent extends Component {
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
         onSelectedRowsChange={handleChange}
         expandableRows
-        expandableDisabledField="expanderDisabled"
+        expandableRowDisabled={row => row.disabled}
         expandableRowsComponent={<ExpanableComponent />}
       />
     )
