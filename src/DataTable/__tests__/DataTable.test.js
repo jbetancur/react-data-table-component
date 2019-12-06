@@ -854,7 +854,7 @@ describe('DataTable::expandableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultExpandedField="defaultExpanded"
+        expandableRowExpanded={row => row.defaultExpanded}
       />,
     );
 
@@ -876,7 +876,7 @@ describe('DataTable::expandableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should render correctly when defaultExpandedField is true', () => {
+  test('should render correctly when expandableRowExpanded is true', () => {
     const mock = dataMock();
     mock.data[0].defaultExpanded = true;
     const { container } = render(
@@ -884,7 +884,7 @@ describe('DataTable::expandableRows', () => {
         data={mock.data}
         columns={mock.columns}
         expandableRows
-        defaultExpandedField="defaultExpanded"
+        expandableRowExpanded={row => row.defaultExpanded}
       />,
     );
 
@@ -899,7 +899,7 @@ describe('DataTable::expandableRows', () => {
         data={mock.data}
         columns={mock.columns}
         expandableRows
-        expandableDisabledField="disabled"
+        expandableRowDisabled={row => row.disabled}
       />,
     );
     fireEvent.click(getByTestId('expander-button-1'));
@@ -980,7 +980,7 @@ describe('DataTable::expandableRows', () => {
         columns={mock.columns}
         expandableRows
         expandOnRowClicked
-        expandableDisabledField="disabled"
+        expandableRowDisabled={row => row.disabled}
       />,
     );
 
