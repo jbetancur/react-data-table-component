@@ -949,7 +949,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
   });
@@ -988,6 +988,74 @@ describe('DataTable::expandableRows', () => {
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+
+  test('should call onRowExpandToggled with the correct values if a row is expanded', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { getByTestId } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.click(getByTestId('expander-button-1'));
+    expect(onRowExpandToggledMock).toBeCalledWith(true, mock.data[0]);
+  });
+
+  test('should call onRowExpandToggled with the correct values if a row is collapsed', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { getByTestId } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.click(getByTestId('expander-button-1'));
+    fireEvent.click(getByTestId('expander-button-1'));
+    expect(onRowExpandToggledMock).toBeCalledWith(false, mock.data[0]);
+  });
+
+  test('should call onRowExpandToggled if expandOnRowClicked', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowClicked
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    expect(onRowExpandToggledMock).toBeCalled();
+  });
+
+  test('should call onRowExpandToggled if expandOnRowDoubleClicked', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowDoubleClicked
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    expect(onRowExpandToggledMock).toBeCalled();
   });
 });
 
