@@ -36,11 +36,11 @@ const DataTable = memo(({
   dense,
   selectableRows,
   selectableRowsNoSelectAll,
-  selectableRowsDisabledField,
-  selectableRowsPreSelectedField,
+  selectableRowSelected,
+  selectableRowDisabled,
   selectableRowsComponent,
   selectableRowsComponentProps,
-  onRowSelected,
+  onRowExpandToggled,
   onSelectedRowsChange,
   expandableIcon,
   onChangeRowsPerPage,
@@ -87,10 +87,10 @@ const DataTable = memo(({
   sortFunction,
   sortServer,
   expandableRowsComponent,
-  expandableDisabledField,
+  expandableRowDisabled,
   expandOnRowClicked,
   expandOnRowDoubleClicked,
-  defaultExpandedField,
+  expandableRowExpanded,
   defaultSortField,
   defaultSortAsc,
   clearSelectedRows,
@@ -128,13 +128,6 @@ const DataTable = memo(({
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
   useDidUpdateEffect(() => {
-    /* istanbul ignore next */
-    if (onRowSelected) {
-      onRowSelected({ allSelected, selectedCount, selectedRows });
-      // eslint-disable-next-line no-console
-      console.error('Warning: onRowSelected has been deprecated. Please switch to onSelectedRowsChange.');
-    }
-
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
   }, [selectedCount]);
 
@@ -159,14 +152,12 @@ const DataTable = memo(({
   }, [paginationDefaultPage, paginationResetDefaultPage]);
 
   useEffect(() => {
-    // if the selectableRowsPreSelectedField is defined then attempt to set the selectedRows state when the table initially loads
-    if (selectableRowsPreSelectedField) {
-      const preSelectedRows = data.filter(row => row[selectableRowsPreSelectedField]);
+    if (selectableRowSelected) {
+      const preSelectedRows = data.filter(row => selectableRowSelected(row));
 
       dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data, selectableRowSelected]);
 
   useDidUpdateEffect(() => {
     if (pagination && paginationServer && paginationTotalRows > 0) {
@@ -232,8 +223,8 @@ const DataTable = memo(({
     keyField,
     contextTitle,
     contextActions,
-    selectableRowsPreSelectedField,
-    selectableRowsDisabledField,
+    selectableRowSelected,
+    selectableRowDisabled,
     selectableRowsComponent,
     selectableRowsComponentProps,
     expandableIcon,
@@ -339,7 +330,13 @@ const DataTable = memo(({
                 >
                   {calculatedRows.map((row, i) => {
                     const id = row[keyField] || i;
-                    const defaultExpanded = row[defaultExpandedField] || false;
+                    const expanderExpander = expandableRows
+                      && expandableRowExpanded
+                      && expandableRowExpanded(row);
+
+                    const expanderDisabled = expandableRows
+                      && expandableRowDisabled
+                      && expandableRowDisabled(row);
 
                     return (
                       <TableRow
@@ -357,8 +354,9 @@ const DataTable = memo(({
                         expandOnRowClicked={expandOnRowClicked}
                         expandOnRowDoubleClicked={expandOnRowDoubleClicked}
                         expandableRowsComponent={expandableRowsComponentMemo}
-                        expandableDisabledField={expandableDisabledField}
-                        defaultExpanded={defaultExpanded}
+                        onRowExpandToggled={onRowExpandToggled}
+                        defaultExpanderDisabled={expanderDisabled}
+                        defaultExpanded={expanderExpander}
                         onRowClicked={handleRowClicked}
                         onRowDoubleClicked={handleRowDoubleClicked}
                         conditionalRowStyles={conditionalRowStyles}

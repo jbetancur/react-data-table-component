@@ -29,6 +29,8 @@ const columns = [
   },
 ];
 
+const isExpanded = row => row.defaultExpanded;
+
 const BasicTableDefaultRowExpanded = () => {
   const data = tableDataItems;
   data[0].defaultExpanded = true;
@@ -39,7 +41,7 @@ const BasicTableDefaultRowExpanded = () => {
       columns={columns}
       data={data}
       expandableRows
-      defaultExpandedField="defaultExpanded"
+      expandableRowExpanded={isExpanded}
       expandableRowsComponent={<ExpandedComponent />}
     />
   );

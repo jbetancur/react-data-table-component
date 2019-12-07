@@ -123,7 +123,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
 | noTableHead | bool | no | false | hides the the sort columns and titles (TableHead) - this will obviously negate sorting |
-| persistTableHead | bool | no |  | Show the table head (columns) when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
+| persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
 
 #### Progress Indicator
 | Property | Type | Required | Default | Description |
@@ -140,19 +140,20 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /> **note** It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`). You can also find UI Library Integration examples [here](#ui-library-integration) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Overriding with Ui Component Library](#overriding-with-ui-component-library) to learn how you can override indeterminate state |
-| selectableRowsPreSelectedField | string | no |  | A `bool` field on your data set that controls whether a row is pre-selected. **note** this field can only be one level deep |
-| selectableRowsDisabledField | string | no |  | A `bool` field on your data set that controls whether a row can be selected. **note** this field can only be one level deep |
+| selectableRowSelected | func | no |  | Select a row based on a property in your data. e.g. `row => row.isSelected`. `selectableRowSelected` must return a boolean to determine if the row should be programatically selected. |
+| selectableRowDisabled | func | no |  | Disable row select based on a property in your data. e.g. `row => row.isDisabled`. `selectableRowDisabled` must return a boolean to determine if the row should be programatically disabled.  |
 
 #### Row Expander
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
 | expandableIcon | object | no | default expander icons | you may pass in your own custom icons using the `expandableIcon: { collapsed: <svg>...</svg>, expanded: <svg>...</svg>` |
-| expandableDisabledField | string | no |  | React Data Table looks for this property in each item from your data and checks if that item can be expanded or not. You must set a bool value in the `expandableDisabledField` of your data if you want to use this feature. **note** this field can only be one level deep
-| defaultExpandedField | string | no |  | React Data Table looks for this property in each item from your data and checks if that item should be expanded on initial render. You must set a `bool` value in the `defaultExpandedField` field of your data if you want to use this feature. **note** this field can only be one level deep
+| expandableRowExpanded | func | no |  | Expand a row based on a property in your data. e.g. `row => row.expandMe`. `expandableRowExpanded` must return a boolean to determine if the row should be programatically expanded. |
+| expandableRowDisabled | func | no |  | Disable a row expand based on a property in your data. e.g. `row => row.expandDisabled`. `expandableRowDisabled` must return a boolean to determine if the row should be programatically disabled. |
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
 | expandOnRowClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when an area within the row is clicked. Requires `expandableRows` be set to true |
 | expandOnRowDoubleClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true |
+| onRowExpandToggled | func | false |  | When a row is Expanded or Collapsed `onRowExpandToggled` will fire and return (toggleState, row) |
 
 #### Sorting
 | Property | Type | Required | Default | Description |
@@ -514,7 +515,7 @@ class MyComponent extends Component {
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
         onSelectedRowsChange={handleChange}
         expandableRows
-        expandableDisabledField="expanderDisabled"
+        expandableRowDisabled={row => row.disabled}
         expandableRowsComponent={<ExpanableComponent />}
       />
     )

@@ -59,18 +59,13 @@ const columns = [
   },
 ];
 
-const customData = data.map(datum => ({ ...datum, preSelected: false }));
-
-customData[1].preSelected = true;
-customData[3].preSelected = true;
-
 const BasicSelectDisabledRow = () => (
   <DataTable
     title="Desserts"
     columns={columns}
-    data={customData}
+    data={data}
     selectableRows
-    selectableRowsPreSelectedField="preSelected"
+    selectableRowSelected={row => row.fat > 6}
   />
 );
 

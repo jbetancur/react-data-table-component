@@ -854,7 +854,7 @@ describe('DataTable::expandableRows', () => {
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        defaultExpandedField="defaultExpanded"
+        expandableRowExpanded={row => row.defaultExpanded}
       />,
     );
 
@@ -876,7 +876,7 @@ describe('DataTable::expandableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('should render correctly when defaultExpandedField is true', () => {
+  test('should render correctly when expandableRowExpanded is true', () => {
     const mock = dataMock();
     mock.data[0].defaultExpanded = true;
     const { container } = render(
@@ -884,7 +884,7 @@ describe('DataTable::expandableRows', () => {
         data={mock.data}
         columns={mock.columns}
         expandableRows
-        defaultExpandedField="defaultExpanded"
+        expandableRowExpanded={row => row.defaultExpanded}
       />,
     );
 
@@ -899,7 +899,7 @@ describe('DataTable::expandableRows', () => {
         data={mock.data}
         columns={mock.columns}
         expandableRows
-        expandableDisabledField="disabled"
+        expandableRowDisabled={row => row.disabled}
       />,
     );
     fireEvent.click(getByTestId('expander-button-1'));
@@ -949,7 +949,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
   });
@@ -980,7 +980,7 @@ describe('DataTable::expandableRows', () => {
         columns={mock.columns}
         expandableRows
         expandOnRowClicked
-        expandableDisabledField="disabled"
+        expandableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -988,6 +988,74 @@ describe('DataTable::expandableRows', () => {
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+
+  test('should call onRowExpandToggled with the correct values if a row is expanded', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { getByTestId } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.click(getByTestId('expander-button-1'));
+    expect(onRowExpandToggledMock).toBeCalledWith(true, mock.data[0]);
+  });
+
+  test('should call onRowExpandToggled with the correct values if a row is collapsed', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { getByTestId } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.click(getByTestId('expander-button-1'));
+    fireEvent.click(getByTestId('expander-button-1'));
+    expect(onRowExpandToggledMock).toBeCalledWith(false, mock.data[0]);
+  });
+
+  test('should call onRowExpandToggled if expandOnRowClicked', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowClicked
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    expect(onRowExpandToggledMock).toBeCalled();
+  });
+
+  test('should call onRowExpandToggled if expandOnRowDoubleClicked', () => {
+    const onRowExpandToggledMock = jest.fn();
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandOnRowDoubleClicked
+        onRowExpandToggled={onRowExpandToggledMock}
+      />,
+    );
+
+    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    expect(onRowExpandToggledMock).toBeCalled();
   });
 });
 
@@ -1106,7 +1174,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsPreSelectedField="selected"
+        selectableRowSelected={row => row.selected}
       />,
     );
 
@@ -1140,7 +1208,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsDisabledField="disabled"
+        selectableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -1159,7 +1227,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsDisabledField="disabled"
+        selectableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -1179,7 +1247,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsDisabledField="disabled"
+        selectableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -1199,7 +1267,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsPreSelectedField="selected"
+        selectableRowSelected={row => row.selected}
       />,
     );
 
@@ -1217,7 +1285,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsPreSelectedField="selected"
+        selectableRowSelected={row => row.selected}
       />,
     );
 

@@ -20,7 +20,7 @@ const TableCellExpander = ({
   column,
   row,
   expanded,
-  onExpandToggled,
+  onRowExpandToggled,
   disabled,
 }) => (
   <TableCellExpanderStyle
@@ -28,7 +28,7 @@ const TableCellExpander = ({
     onClick={e => e.stopPropagation()}
   >
     <ExpanderButton
-      onToggled={onExpandToggled}
+      onToggled={onRowExpandToggled}
       row={row}
       expanded={expanded}
       disabled={disabled}
@@ -40,7 +40,7 @@ TableCellExpander.propTypes = {
   column: PropTypes.object,
   row: PropTypes.object,
   expanded: PropTypes.bool,
-  onExpandToggled: PropTypes.func.isRequired,
+  onRowExpandToggled: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
 };
 
