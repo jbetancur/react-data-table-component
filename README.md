@@ -123,7 +123,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
 | noTableHead | bool | no | false | hides the the sort columns and titles (TableHead) - this will obviously negate sorting |
-| persistTableHead | bool | no |  | Show the table head (columns) when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
+| persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
 
 #### Progress Indicator
 | Property | Type | Required | Default | Description |
