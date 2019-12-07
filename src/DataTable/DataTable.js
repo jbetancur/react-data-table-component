@@ -40,7 +40,7 @@ const DataTable = memo(({
   selectableRowDisabled,
   selectableRowsComponent,
   selectableRowsComponentProps,
-  onRowSelected,
+  onRowExpandToggled,
   onSelectedRowsChange,
   expandableIcon,
   onChangeRowsPerPage,
@@ -354,6 +354,7 @@ const DataTable = memo(({
                         expandOnRowClicked={expandOnRowClicked}
                         expandOnRowDoubleClicked={expandOnRowDoubleClicked}
                         expandableRowsComponent={expandableRowsComponentMemo}
+                        onRowExpandToggled={onRowExpandToggled}
                         defaultExpanderDisabled={expanderDisabled}
                         defaultExpanded={expanderExpander}
                         onRowClicked={handleRowClicked}

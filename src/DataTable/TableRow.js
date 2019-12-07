@@ -83,11 +83,13 @@ const TableRow = memo(({
   expandOnRowClicked,
   expandOnRowDoubleClicked,
   conditionalRowStyles,
+  onRowExpandToggled,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleExpanded = useCallback(() => {
     setExpanded(!expanded);
-  }, [expanded]);
+    onRowExpandToggled(!expanded, row);
+  }, [expanded, onRowExpandToggled, row]);
 
   const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
 
@@ -137,7 +139,7 @@ const TableRow = memo(({
           <TableCellExpander
             expanded={expanded}
             row={row}
-            onExpandToggled={handleExpanded}
+            onRowExpandToggled={handleExpanded}
             disabled={defaultExpanderDisabled}
           />
         )}
@@ -171,6 +173,7 @@ TableRow.propTypes = {
   row: PropTypes.object.isRequired,
   onRowClicked: PropTypes.func.isRequired,
   onRowDoubleClicked: PropTypes.func.isRequired,
+  onRowExpandToggled: PropTypes.func.isRequired,
   defaultExpanded: PropTypes.bool,
   defaultExpanderDisabled: PropTypes.bool,
   selectableRows: PropTypes.bool.isRequired,
