@@ -22,7 +22,6 @@ export const propTypes = {
     PropTypes.func,
   ]),
   selectableRowsComponentProps: PropTypes.object,
-  onSelectedRow: PropTypes.func,
   onRowsSelectedUpdate: PropTypes.func,
   clearSelectedRows: PropTypes.bool,
   expandableRows: PropTypes.bool,
@@ -154,7 +153,6 @@ export const defaultProps = {
   selectableRowDisabled: null,
   selectableRowsComponent: 'input',
   selectableRowsComponentProps: {},
-  onSelectedRow: () => null, // Deprecated - superseded by onSelectedRowsChange - will be removed in 5.0
   onSelectedRowsChange: () => null,
   clearSelectedRows: false,
   expandableRows: false,

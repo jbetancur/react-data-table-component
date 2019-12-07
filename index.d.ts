@@ -65,7 +65,6 @@ export interface IDataTableProps<T> {
   selectableRowSelected?: (row: T) => void;
   selectableRowDisabled?: (row: T) => void;
   clearSelectedRows?: boolean;
-  onSelectedRow?: (selectedRowState: T) => void; // Deprecated: will be removed in v5.0
   onSelectedRowsChange?: (selectedRowState: T) => void;
   actions?: React.ReactNode | React.ReactNode[];
   contextTitle?: string;
