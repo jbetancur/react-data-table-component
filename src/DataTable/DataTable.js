@@ -128,13 +128,6 @@ const DataTable = memo(({
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
 
   useDidUpdateEffect(() => {
-    /* istanbul ignore next */
-    if (onRowSelected) {
-      onRowSelected({ allSelected, selectedCount, selectedRows });
-      // eslint-disable-next-line no-console
-      console.error('Warning: onRowSelected has been deprecated. Please switch to onSelectedRowsChange.');
-    }
-
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
   }, [selectedCount]);
 
