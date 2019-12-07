@@ -13,9 +13,9 @@ const TableColStyle = styled(CellBase)`
 `;
 
 const TableCol = () => {
-  const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowsDisabledField } = useTableContext();
+  const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowDisabled } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
-  const rows = data.filter(row => !row[selectableRowsDisabledField]);
+  const rows = selectableRowDisabled ? data.filter(row => !selectableRowDisabled(row)) : data;
   const isDisabled = rows.length === 0;
   const handleSelectAll = () => dispatch({ type: 'SELECT_ALL_ROWS', rows });
 
