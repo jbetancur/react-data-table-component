@@ -1106,7 +1106,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsPreSelectedField="selected"
+        selectableRowSelected={row => row.selected}
       />,
     );
 
@@ -1140,7 +1140,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsDisabledField="disabled"
+        selectableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -1159,7 +1159,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsDisabledField="disabled"
+        selectableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -1179,7 +1179,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsDisabledField="disabled"
+        selectableRowDisabled={row => row.disabled}
       />,
     );
 
@@ -1199,7 +1199,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsPreSelectedField="selected"
+        selectableRowSelected={row => row.selected}
       />,
     );
 
@@ -1217,7 +1217,7 @@ describe('DataTable::selectableRows', () => {
         data={mock.data}
         columns={mock.columns}
         selectableRows
-        selectableRowsPreSelectedField="selected"
+        selectableRowSelected={row => row.selected}
       />,
     );
 

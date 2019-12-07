@@ -62,6 +62,8 @@ export interface IDataTableProps<T> {
   expandableRowExpanded?: (row: T) => void;
   expandableRowDisabled?: (row: T) => void;
   selectableRows?: boolean;
+  selectableRowSelected?: (row: T) => void;
+  selectableRowDisabled?: (row: T) => void;
   clearSelectedRows?: boolean;
   onSelectedRow?: (selectedRowState: T) => void; // Deprecated: will be removed in v5.0
   onSelectedRowsChange?: (selectedRowState: T) => void;

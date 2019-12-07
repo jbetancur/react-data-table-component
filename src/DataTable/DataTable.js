@@ -36,8 +36,8 @@ const DataTable = memo(({
   dense,
   selectableRows,
   selectableRowsNoSelectAll,
-  selectableRowsDisabledField,
-  selectableRowsPreSelectedField,
+  selectableRowSelected,
+  selectableRowDisabled,
   selectableRowsComponent,
   selectableRowsComponentProps,
   onRowSelected,
@@ -159,14 +159,12 @@ const DataTable = memo(({
   }, [paginationDefaultPage, paginationResetDefaultPage]);
 
   useEffect(() => {
-    // if the selectableRowsPreSelectedField is defined then attempt to set the selectedRows state when the table initially loads
-    if (selectableRowsPreSelectedField) {
-      const preSelectedRows = data.filter(row => row[selectableRowsPreSelectedField]);
+    if (selectableRowSelected) {
+      const preSelectedRows = data.filter(row => selectableRowSelected(row));
 
       dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data, selectableRowSelected]);
 
   useDidUpdateEffect(() => {
     if (pagination && paginationServer && paginationTotalRows > 0) {
@@ -232,8 +230,8 @@ const DataTable = memo(({
     keyField,
     contextTitle,
     contextActions,
-    selectableRowsPreSelectedField,
-    selectableRowsDisabledField,
+    selectableRowSelected,
+    selectableRowDisabled,
     selectableRowsComponent,
     selectableRowsComponentProps,
     expandableIcon,

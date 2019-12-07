@@ -76,7 +76,7 @@ const BasicSelectDisabledRow = () => (
     columns={columns}
     data={customData}
     selectableRows
-    selectableRowsDisabledField="isOutOfStock"
+    selectableRowDisabled={row => row.isOutOfStock}
   />
 );
 
