@@ -4,25 +4,28 @@ import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
 
-const rowTheme = {
-  header: {
-    borderColor: 'transparent',
+const customTheme = {
+  headRow: {
+    style: {
+      border: 'none',
+    },
   },
   rows: {
-    // spaced allows the following properties
-    spacing: 'spaced',
-    spacingBorderRadius: '50px',
-    spacingMargin: '3px',
-
-    borderColor: 'rgba(0,0,0,.12)',
-    backgroundColor: 'white',
-    height: '52px',
+    style: {
+      marginTop: '6px',
+      marginBottom: '6px',
+      minHeight: '52px',
+      borderRadius: '2px',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: 'rgba(0,0,0,.12)',
+      boxShadow: '0 1px 5px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.12)',
+    },
   },
-  cells: {
-    cellPadding: '48px',
-  },
-  footer: {
-    separatorStyle: 'none',
+  pagination: {
+    style: {
+      border: 'none',
+    },
   },
 };
 
@@ -49,11 +52,13 @@ const ThemedTable = () => (
     title="Movie List"
     columns={columns}
     data={data}
-    customTheme={rowTheme}
+    customTheme={customTheme}
     pointerOnHover
     pagination
+    selectableRows
+    expandableRows
   />
 );
 
 storiesOf('Theming', module)
-  .add('Custom Rows', ThemedTable);
+  .add('Custom Theme', ThemedTable);

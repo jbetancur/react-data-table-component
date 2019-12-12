@@ -10,6 +10,7 @@ const NoDataWrapperMessage = styled.div`
   width: 100%;
   height: 100%;
   padding: 16px;
+  ${props => props.theme.noData.style};
 `;
 
 const NoDataWrapper = ({ component }) => (

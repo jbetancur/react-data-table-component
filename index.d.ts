@@ -1,5 +1,5 @@
-import * as React from "react";
-import { CSSProperties } from "styled-components";
+import * as React from 'react';
+import { CSSProperties } from 'styled-components';
 
 export interface IDataTableProps<T> {
   title?: React.ReactNode;
@@ -102,64 +102,51 @@ export interface IDataTableColumn<T> {
 }
 
 export interface IDataTableTheme {
-  title?: {
-    fontSize?: string;
-    fontColor?: string;
-    backgroundColor?: string;
-    height?: string;
-  };
   header?: {
-    fontSize?: string;
-    fontWeight?: string;
-    fontColor?: string;
-    fontColorActive?: string;
-    backgroundColor?: string;
-    borderWidth?: string;
-    borderColor?: string;
-    borderStyle?: string;
-    height?: string;
-    denseHeight?: string;
+    style: CSSProperties;
   };
-  contextMenu?: {
-    backgroundColor?: string;
-    fontSize?: string;
-    fontColor?: string;
-    transitionTime?: string;
+  subHeader?: {
+    style: CSSProperties;
   };
-  rows?: {
-    spacing?: "default" | "spaced";
-    fontSize?: string;
-    fontColor?: string;
-    backgroundColor?: string;
-    borderStyle?: string;
-    borderWidth?: string;
-    borderColor?: string;
-    stripedColor?: string;
-    hoverFontColor?: string;
-    hoverBackgroundColor?: string;
-    height?: string;
-    denseHeight?: string;
+  head?: {
+    style: CSSProperties;
+  };
+  headRow?: {
+    style: CSSProperties;
+    denseStyle: CSSProperties;
+  };
+  headCells: {
+    style: CSSProperties;
+    activeStyle: CSSProperties;
+  };
+  contextMenu: {
+    style: CSSProperties;
+    activeStyle: CSSProperties;
   };
   cells?: {
-    cellPadding?: string;
+    style: CSSProperties;
   };
-  expander?: {
-    fontColor?: string;
-    expanderColor?: string;
-    expanderColorDisabled?: string;
-    backgroundColor?: string;
+  rows: {
+    style: CSSProperties;
+    denseStyle: CSSProperties;
+    highlightOnHoverStyle: CSSProperties;
+    stripedStyle: CSSProperties;
+  };
+  expanderRow?: {
+    style: CSSProperties;
+  };
+  expanderButton?: {
+    style: CSSProperties;
   };
   pagination?: {
-    fontSize?: string;
-    fontColor?: string;
-    backgroundColor?: string;
-    buttonFontColor?: string;
-    buttonHoverBackground?: string;
+    style: CSSProperties;
+    pageButtonsStyle: CSSProperties;
   };
-  footer?: {
-    separatorStyle?: string;
-    separatorWidth?: string;
-    separatorColor?: string;
+  noData: {
+    style: CSSProperties;
+  };
+  progress: {
+    style: CSSProperties;
   };
 }
 

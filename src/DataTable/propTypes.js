@@ -143,6 +143,7 @@ export const propTypes = {
       style: PropTypes.object.isRequired,
     }),
   ),
+  theme: PropTypes.string,
 };
 
 export const defaultProps = {
@@ -218,4 +219,5 @@ export const defaultProps = {
   paginationIconPrevious: <LeftIcon />,
   dense: false,
   conditionalRowStyles: [],
+  theme: 'light',
 };

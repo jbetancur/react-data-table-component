@@ -34,6 +34,8 @@ const BasicSelectable = () => (
     columns={columns}
     data={data}
     selectableRows
+    highlightOnHover
+    pagination
   />
 );
 
