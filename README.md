@@ -80,7 +80,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | maxWidth | string | no       | give the column a maxWidth                                                                                    |
 | right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
-| compact  | bool   | no       | reduces the padding in the cell by 50%                                     |
+| compact  | bool   | no       | sets cell padding to 0                                                                                        |
 | ignoreRowClick    | bool    | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
 | button   | bool   | no       | this is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
 | wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
@@ -115,7 +115,6 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | className | string | no |  | override the className on the Table wrapper |
 | style | object | no |  | override the style on the Table wrapper |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
-| customTheme | object | no |  | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged. [See Theming](#theming) for more information |
 | disabled | bool | no | false | disables the Table section |
 | onRowClicked | func | no | | callback to access the row, event on row click |
 | onRowDoubleClicked | func | no | | callback to access the row, event on row double click |
@@ -197,6 +196,50 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | subHeaderAlign | string | no | right | align the sub header content (left, right, center)
 | subHeaderWrap | bool | no | true | whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
+
+#### Theming
+| Property    | Type   | Required | Default | Description |
+|-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| theme       | string | no       | light   | Possible values are `light` or `dark` |
+| customTheme | object | no       |         | Override the [default theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged. [See Theming](#theming) for more information |
+
+##### Light and Dark Mode
+Using React Data Table's default theme you can easily toggle to dark mode by setting `theme="light | dark"`
+
+##### Customization
+For more advanced use cases you can override or replace the default theme using the `customTheme` prop. Internally, this just deep merges your theme with the default theme.
+
+For Example to override the default row height and change the cell padding:
+
+```js
+const mySweetTheme = {
+  rows: {
+    style: {
+      minHeight: '72px',
+    }
+  },
+  headCells: {
+    style: {
+      paddingLeft: '8px',
+      paddingRight: '8px',
+    },
+  },
+  cells: {
+    style: {
+      paddingLeft: '8px',
+      paddingRight: '8px',
+    },
+  },
+};
+
+const MyComponent = () => (
+  <DataTable
+    title="Arnold Movies"
+    columns={columns}
+    customTheme={mySweetTheme}
+  />
+);
+```
 
 #### Conditional Row Styling
 | Property | Type | Required | Default | Description |
@@ -691,34 +734,6 @@ const MyComponentHook = () => {
   );
 }
 ```
-
-## Theming
-You can override or replace the default theme using the `customTheme` prop. Internally, this just deep merges your theme with the default theme.
-
-For Example:
-
-```js
-// Override the row default height
-const mySweetTheme = {
-  rows: {
-    height: '64px'
-  }
-}
-
-class MyComponent extends Component {
-  render() {
-    return (
-      <DataTable
-        title="Arnold Movies"
-        columns={columns}
-        customTheme={mySweetTheme}
-      />
-    )
-  }
-};
-```
-
-Refer to [Default Theme](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for reference and avaiilable properties to override
 
 ## CSS Overrides
 If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. pre-processor you may use the following classNames:

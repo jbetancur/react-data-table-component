@@ -10,8 +10,8 @@ const SelectControl = styled.select`
   padding-left: 8px;
   padding-right: 12px;
   box-sizing: content-box;
-  font-size: ${props => props.theme.pagination.fontSize};
-  color: ${props => props.theme.pagination.fontColor};
+  font-size: inherit;
+  color: inherit;
   outline: none;
   border: none;
   background-color: transparent;
@@ -30,14 +30,14 @@ const SelectControl = styled.select`
 const SelectWrapper = styled.div`
   position: relative;
   flex-shrink: 0;
-  font-size: ${props => props.theme.pagination.fontSize};
-  color: ${props => props.theme.pagination.fontColor};
+  font-size: inherit;
+  color: inherit;
   margin-top: 2px;
 
   svg {
     top: 0;
     right: 0;
-    color: ${props => props.theme.pagination.fontColor};
+    color: inherit;
     position: absolute;
     fill: currentColor;
     width: 24px;

@@ -140,7 +140,7 @@ class MaterialTable extends PureComponent {
           title="Desserts"
           columns={columns(this.deleteOne)}
           data={data}
-          selectableRows
+          // selectableRows
           highlightOnHover
           defaultSortField="name"
           actions={actions}
@@ -152,6 +152,7 @@ class MaterialTable extends PureComponent {
           clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
           pagination
+          // expandableRows
         />
       </Card>
     );

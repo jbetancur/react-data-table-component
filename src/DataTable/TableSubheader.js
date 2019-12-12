@@ -16,9 +16,9 @@ const SubheaderWrapper = styled.header`
   align-items: center;
   padding: 4px 16px 4px 24px;
   width: 100%;
-  background-color: ${props => props.theme.title.backgroundColor};
   justify-content: ${props => alignMap[props.align]};
   flex-wrap: ${props => (props.wrapContent ? 'wrap' : 'nowrap')};
+  ${props => props.theme.subHeader.style}
 `;
 
 const TableSubheader = ({ align, wrapContent, component }) => (

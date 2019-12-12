@@ -5,15 +5,9 @@ import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 
 const TableCellExpanderStyle = styled(CellBase)`
-  flex: 0 0 56px;
+  flex: 0 0 48px;
   white-space: nowrap;
   font-weight: 400;
-  font-size: ${props => props.theme.rows.fontSize};
-  color: ${props => props.theme.rows.fontColor};
-
-  &:not(:first-of-type) {
-    padding-left: 0;
-  }
 `;
 
 const TableCellExpander = ({
@@ -26,6 +20,7 @@ const TableCellExpander = ({
   <TableCellExpanderStyle
     column={column}
     onClick={e => e.stopPropagation()}
+    noPadding
   >
     <ExpanderButton
       onToggled={onRowExpandToggled}

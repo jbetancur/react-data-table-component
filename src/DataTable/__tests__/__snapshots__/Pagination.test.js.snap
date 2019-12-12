@@ -1,7 +1,136 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly with default props 1`] = `
+.c3 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 12px;
+  box-sizing: content-box;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  direction: ltr;
+}
+
+.c3::-ms-expand {
+  display: none;
+}
+
+.c3:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c2 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: inherit;
+  color: inherit;
+  margin-top: 2px;
+}
+
+.c2 svg {
+  top: 0;
+  right: 0;
+  color: inherit;
+  position: absolute;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  color: rgba(0,0,0,.87);
+  font-size: 13px;
+  min-height: 56px;
+  background-color: transparent;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+}
+
+.c6 {
+  position: relative;
+  display: block;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: 2px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  color: rgba(0,0,0,.87);
+}
+
+.c6 svg {
+  fill: rgba(0,0,0,.54);
+}
+
+.c6:disabled {
+  opacity: 0.4;
+  cursor: unset;
+}
+
+.c6:hover:not(:disabled) {
+  background-color: transparent;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.c4 {
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
@@ -9,14 +138,162 @@ exports[`should render correctly with default props 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-size: 13px;
-  color: rgba(0,0,0,.54);
+  margin: 0 24px;
+}
+
+.c1 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   margin: 0 4px;
 }
 
-<span
-  class="c0"
+<footer
+  class="c0 rdt_Pagination"
 >
-  Rows per page:
-</span>
+  <span
+    class="c1"
+  >
+    Rows per page:
+  </span>
+  <div
+    class="c2"
+  >
+    <select
+      class="c3"
+    >
+      <option
+        selected=""
+        value="10"
+      >
+        10
+      </option>
+      <option
+        value="15"
+      >
+        15
+      </option>
+      <option
+        value="20"
+      >
+        20
+      </option>
+      <option
+        value="25"
+      >
+        25
+      </option>
+      <option
+        value="30"
+      >
+        30
+      </option>
+    </select>
+    <svg
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </div>
+  <span
+    class="c4"
+  >
+    1-10 of 40
+  </span>
+  <div
+    class="c5"
+  >
+    <button
+      class="c6"
+      disabled=""
+      id="pagination-first-page"
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+        />
+        <path
+          d="M24 24H0V0h24v24z"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <button
+      class="c6"
+      disabled=""
+      id="pagination-previous-page"
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <button
+      class="c6"
+      id="pagination-next-page"
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <button
+      class="c6"
+      id="pagination-last-page"
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+        />
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+  </div>
+</footer>
 `;

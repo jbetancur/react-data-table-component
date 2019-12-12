@@ -1,28 +1,21 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Cell } from './Cell';
 import { useTableContext } from './DataTableContext';
 import NativeSortIcon from '../icons/NativeSortIcon';
-
-const activeColCSS = css`
-  color: ${props => props.theme.header.fontColorActive};
-`;
 
 const TableColStyle = styled(Cell)`
   ${props => props.column.button && 'text-align: center'};
 `;
 
 const ColumnSortable = styled.div`
-  color: ${props => props.theme.header.fontColor};
-  font-size: ${props => props.theme.header.fontSize};
-  font-weight: ${props => props.theme.header.fontWeight};
   display: inline-flex;
   align-items: center;
   height: 100%;
   line-height: 1;
   user-select: none;
-  ${props => props.sortActive && activeColCSS};
+  ${props => props.sortActive && props.theme.headCells.activeStyle};
 
   span.__rdt_custom_sort_icon__ {
     i,
@@ -46,7 +39,7 @@ const ColumnSortable = styled.div`
 
   &:hover {
     ${({ column }) => column.sortable && 'cursor: pointer'};
-    ${({ column }) => column.sortable && activeColCSS};
+    ${({ column, theme }) => column.sortable && theme.headCells.activeStyle};
     ${({ sortActive, column }) => !sortActive && column.sortable && 'opacity: 1'};
 
     span,
@@ -106,6 +99,7 @@ const TableCol = memo(({
     <TableColStyle
       className="rdt_TableCol"
       column={column} // required by Cell.js
+      head
     >
       {column.name && (
         <ColumnSortable

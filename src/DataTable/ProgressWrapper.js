@@ -11,6 +11,7 @@ const ProgressWrapperStyle = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  ${props => props.theme.progress.style};
 `;
 
 const ProgressWrapper = ({ children }) => (
