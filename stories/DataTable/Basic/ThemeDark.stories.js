@@ -37,5 +37,5 @@ const DarkTable = () => (
 );
 
 
-storiesOf('Theming', module)
-  .add('Dark Theme', DarkTable);
+storiesOf('Theming & Customization', module)
+  .add('Dark Mode', DarkTable);

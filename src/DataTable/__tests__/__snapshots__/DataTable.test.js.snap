@@ -91,15 +91,15 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -117,7 +117,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -201,11 +201,11 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -235,15 +235,15 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -522,15 +522,15 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -548,7 +548,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -623,7 +623,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   padding: 0;
@@ -669,11 +669,11 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -703,15 +703,15 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -815,7 +815,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -848,7 +848,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -874,7 +874,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -987,15 +987,15 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -1013,7 +1013,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -1097,11 +1097,11 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -1131,15 +1131,15 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -1377,15 +1377,15 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c8:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c8:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c5 {
@@ -1403,7 +1403,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -1649,15 +1649,15 @@ exports[`DataTable::Header title should render correctly 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -1675,7 +1675,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -1759,11 +1759,11 @@ exports[`DataTable::Header title should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -1793,15 +1793,15 @@ exports[`DataTable::Header title should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -2039,15 +2039,15 @@ exports[`DataTable::Pagination should change the page position when using pagina
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -2065,7 +2065,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -2149,11 +2149,11 @@ exports[`DataTable::Pagination should change the page position when using pagina
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -2183,15 +2183,15 @@ exports[`DataTable::Pagination should change the page position when using pagina
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -2322,7 +2322,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -2349,20 +2349,18 @@ exports[`DataTable::Pagination should change the page position when using pagina
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -2695,15 +2693,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -2721,7 +2719,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -2805,11 +2803,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -2839,15 +2837,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -2978,7 +2976,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -3005,20 +3003,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -3347,15 +3343,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -3373,7 +3369,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -3457,11 +3453,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -3491,15 +3487,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -3630,7 +3626,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -3657,20 +3653,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -3999,15 +3993,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -4025,7 +4019,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -4109,11 +4103,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -4143,15 +4137,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -4282,7 +4276,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -4309,20 +4303,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -4651,15 +4643,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -4677,7 +4669,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -4761,11 +4753,11 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -4795,15 +4787,15 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -4934,7 +4926,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -4961,20 +4953,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -5303,15 +5293,15 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -5342,7 +5332,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -5374,7 +5364,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -5405,7 +5395,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -5432,11 +5422,11 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -5466,15 +5456,15 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -5605,7 +5595,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -5632,20 +5622,18 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c22 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c22:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c22:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c21 {
@@ -5979,15 +5967,15 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -6005,7 +5993,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -6089,11 +6077,11 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -6123,15 +6111,15 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -6262,7 +6250,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -6289,20 +6277,18 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -6633,15 +6619,15 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -6659,7 +6645,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -6743,11 +6729,11 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -6777,15 +6763,15 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -6916,7 +6902,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -6943,20 +6929,18 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -7318,15 +7302,15 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -7344,7 +7328,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -7428,11 +7412,11 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -7462,15 +7446,15 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -7601,7 +7585,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -7628,20 +7612,18 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -8003,15 +7985,15 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -8029,7 +8011,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -8113,11 +8095,11 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -8147,15 +8129,15 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -8230,7 +8212,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -8257,20 +8239,18 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c18 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c18:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c18:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c17 {
@@ -8568,15 +8548,15 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -8594,7 +8574,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -8678,11 +8658,11 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -8712,15 +8692,15 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -8851,7 +8831,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: transparent;
@@ -8878,20 +8858,18 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   margin: 2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: rgba(0,0,0,.87);
-}
-
-.c21 svg {
+  color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
 }
 
 .c21:disabled {
   opacity: 0.4;
   cursor: unset;
+  color: rgba(0,0,0,.12);
 }
 
 .c21:hover:not(:disabled) {
-  background-color: transparent;
+  background-color: rgba(0,0,0,.08);
 }
 
 .c20 {
@@ -9220,15 +9198,15 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -9246,7 +9224,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -9330,11 +9308,11 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -9364,15 +9342,15 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -9608,15 +9586,15 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -9634,7 +9612,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -9718,11 +9696,11 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -9752,15 +9730,15 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -9997,15 +9975,15 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -10023,7 +10001,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -10107,11 +10085,11 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -10141,15 +10119,15 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -10389,15 +10367,15 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -10415,7 +10393,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -10503,11 +10481,11 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -10537,15 +10515,15 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -10781,15 +10759,15 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -10807,7 +10785,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -10891,11 +10869,11 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -10925,15 +10903,15 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -11181,15 +11159,15 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -11207,7 +11185,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -11291,11 +11269,11 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -11325,15 +11303,15 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -11581,15 +11559,15 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -11607,7 +11585,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -11691,11 +11669,11 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -11725,15 +11703,15 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -11981,15 +11959,15 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -12007,7 +11985,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -12091,11 +12069,11 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -12125,15 +12103,15 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -12381,15 +12359,15 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -12407,7 +12385,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -12491,11 +12469,11 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -12525,15 +12503,15 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -12769,15 +12747,15 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -12795,7 +12773,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -12879,11 +12857,11 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -12913,15 +12891,15 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -13161,15 +13139,15 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -13187,7 +13165,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -13275,11 +13253,11 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -13309,15 +13287,15 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -13555,15 +13533,15 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -13581,7 +13559,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -13667,11 +13645,11 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -13701,15 +13679,15 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -13945,15 +13923,15 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -13971,7 +13949,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -14055,11 +14033,11 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -14089,15 +14067,15 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -14338,15 +14316,15 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -14364,7 +14342,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 0;
@@ -14454,11 +14432,11 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -14488,15 +14466,15 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -14726,15 +14704,15 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -14752,7 +14730,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -14836,11 +14814,11 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -14870,15 +14848,15 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -15111,15 +15089,15 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -15137,7 +15115,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -15222,11 +15200,11 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -15256,15 +15234,15 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -15500,15 +15478,15 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -15539,7 +15517,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -15601,7 +15579,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   opacity: 1;
 }
 
@@ -15634,11 +15612,11 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -15668,15 +15646,15 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -15917,15 +15895,15 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -15943,7 +15921,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -16027,11 +16005,11 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -16061,15 +16039,15 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -16305,15 +16283,15 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -16331,7 +16309,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -16415,11 +16393,11 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -16449,15 +16427,15 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -16687,15 +16665,15 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -16713,7 +16691,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -16797,11 +16775,11 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -16831,15 +16809,15 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -17111,15 +17089,15 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -17137,7 +17115,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -17221,11 +17199,11 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -17255,15 +17233,15 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -17499,15 +17477,15 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -17525,7 +17503,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -17609,11 +17587,11 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -17643,15 +17621,15 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -17887,15 +17865,15 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -17913,7 +17891,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -17997,11 +17975,11 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -18031,15 +18009,15 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -18275,15 +18253,15 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c15:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c15:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c13 {
@@ -18301,17 +18279,17 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
   background-color: rgba(63,195,128,0.9);
   color: white;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c13:hover {
@@ -18333,7 +18311,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -18417,11 +18395,11 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -18451,15 +18429,15 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -18695,15 +18673,15 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -18721,7 +18699,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -18805,11 +18783,11 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -18839,15 +18817,15 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -19084,16 +19062,16 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
   min-height: 32px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -19111,7 +19089,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -19195,11 +19173,11 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -19229,15 +19207,15 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -19438,7 +19416,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -19497,7 +19475,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   background-color: transparent;
   height: 100%;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,.54);
 }
 
 .c16:hover:enabled {
@@ -19509,7 +19487,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 }
 
 .c16 svg {
-  color: rgba(0,0,0,.54);
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -19539,7 +19516,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 .c18 {
   width: 100%;
   box-sizing: border-box;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -19558,15 +19535,15 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14:hover {
@@ -19588,7 +19565,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -19672,11 +19649,11 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -19706,15 +19683,15 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -19978,7 +19955,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -20037,7 +20014,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   background-color: transparent;
   height: 100%;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,.54);
 }
 
 .c16:hover:enabled {
@@ -20049,7 +20026,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 }
 
 .c16 svg {
-  color: rgba(0,0,0,.54);
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -20079,7 +20055,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 .c18 {
   width: 100%;
   box-sizing: border-box;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -20098,15 +20074,15 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c14:hover {
@@ -20128,7 +20104,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -20212,11 +20188,11 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -20246,15 +20222,15 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -20518,7 +20494,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -20577,7 +20553,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   background-color: transparent;
   height: 100%;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,.54);
 }
 
 .c16:hover:enabled {
@@ -20589,7 +20565,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 }
 
 .c16 svg {
-  color: rgba(0,0,0,.54);
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -20631,15 +20606,15 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c18 {
@@ -20657,15 +20632,15 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c18:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c18:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c18:hover {
@@ -20687,7 +20662,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -20771,11 +20746,11 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -20805,15 +20780,15 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -21104,15 +21079,15 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -21130,7 +21105,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -21214,11 +21189,11 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -21248,15 +21223,15 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -21457,7 +21432,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -21516,7 +21491,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   background-color: transparent;
   height: 100%;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,.54);
 }
 
 .c16:hover:enabled {
@@ -21528,7 +21503,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 }
 
 .c16 svg {
-  color: rgba(0,0,0,.54);
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -21558,7 +21532,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 .c18 {
   width: 100%;
   box-sizing: border-box;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -21577,15 +21551,15 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -21603,7 +21577,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -21687,11 +21661,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -21721,15 +21695,15 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -21993,7 +21967,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -22052,7 +22026,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   background-color: transparent;
   height: 100%;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,.54);
 }
 
 .c16:hover:enabled {
@@ -22064,7 +22038,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c16 svg {
-  color: rgba(0,0,0,.54);
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -22106,15 +22079,15 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -22132,7 +22105,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -22216,11 +22189,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -22250,15 +22223,15 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -22513,7 +22486,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -22572,7 +22545,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   background-color: transparent;
   height: 100%;
   width: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,.54);
 }
 
 .c16:hover:enabled {
@@ -22584,7 +22557,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c16 svg {
-  color: rgba(0,0,0,.54);
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -22614,7 +22586,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 .c18 {
   width: 100%;
   box-sizing: border-box;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -22633,15 +22605,15 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -22659,7 +22631,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -22743,11 +22715,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -22777,15 +22749,15 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -23084,15 +23056,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -23110,7 +23082,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -23194,11 +23166,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -23228,15 +23200,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -23475,15 +23447,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -23501,7 +23473,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -23585,11 +23557,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -23619,15 +23591,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -23866,15 +23838,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -23892,7 +23864,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -23976,11 +23948,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -24010,15 +23982,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -24259,15 +24231,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -24285,7 +24257,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -24369,11 +24341,11 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -24403,15 +24375,15 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -24652,19 +24624,19 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c13:hover {
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: rgba(0,0,0,.08);
   -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
@@ -24687,7 +24659,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -24771,11 +24743,11 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -24805,15 +24777,15 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -25049,15 +25021,15 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c13:hover {
@@ -25079,7 +25051,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -25163,11 +25135,11 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -25197,15 +25169,15 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -25390,11 +25362,11 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -25424,15 +25396,15 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -25488,7 +25460,7 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -25579,11 +25551,11 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -25613,15 +25585,15 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -25677,7 +25649,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -25766,11 +25738,11 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -25800,15 +25772,15 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -25864,7 +25836,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -25951,11 +25923,11 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -25985,15 +25957,15 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -26055,7 +26027,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   width: 100%;
   height: 100%;
   padding: 16px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -26136,11 +26108,11 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -26170,15 +26142,15 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -26234,7 +26206,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -26325,11 +26297,11 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -26359,15 +26331,15 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -26423,7 +26395,7 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -26532,7 +26504,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -26616,11 +26588,11 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -26650,15 +26622,15 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -26720,7 +26692,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   width: 100%;
   height: 100%;
   padding: 16px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -26840,7 +26812,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -26924,11 +26896,11 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -26958,15 +26930,15 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -27022,7 +26994,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -27153,7 +27125,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -27237,11 +27209,11 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -27271,15 +27243,15 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -27335,7 +27307,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -27500,15 +27472,15 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -27526,7 +27498,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -27610,11 +27582,11 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -27644,15 +27616,15 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -27890,15 +27862,15 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -27916,7 +27888,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -28000,11 +27972,11 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -28034,15 +28006,15 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -28278,15 +28250,15 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -28304,7 +28276,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -28388,11 +28360,11 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -28422,15 +28394,15 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -28714,15 +28686,15 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -28740,7 +28712,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -28824,11 +28796,11 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -28858,15 +28830,15 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -28987,7 +28959,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -29013,7 +28985,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -29159,15 +29131,15 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -29185,7 +29157,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -29260,7 +29232,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   padding: 0;
@@ -29306,11 +29278,11 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -29340,15 +29312,15 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -29442,7 +29414,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-all-rows"
               name="select-all-rows"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -29475,7 +29447,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-row-1"
               name="select-row-1"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -29501,7 +29473,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             <input
               aria-label="select-row-2"
               name="select-row-2"
-              style="font-size: 18px; cursor: pointer; padding: 0px; margin-left: 8px; margin-top: 1px; vertical-align: middle; position: relative;"
+              style="font-size: 18px; cursor: pointer; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
               type="checkbox"
             />
           </div>
@@ -29614,15 +29586,15 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -29653,7 +29625,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -29685,7 +29657,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -29716,7 +29688,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -29743,11 +29715,11 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -29777,15 +29749,15 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -30026,15 +29998,15 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -30068,7 +30040,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -30100,7 +30072,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -30131,7 +30103,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -30158,11 +30130,11 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -30192,15 +30164,15 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -30441,15 +30413,15 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -30467,7 +30439,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -30551,11 +30523,11 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -30585,15 +30557,15 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -30829,15 +30801,15 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -30868,7 +30840,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -30900,7 +30872,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -30931,7 +30903,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -30958,11 +30930,11 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -30992,15 +30964,15 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -31241,15 +31213,15 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -31280,7 +31252,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -31312,7 +31284,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -31343,7 +31315,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -31370,11 +31342,11 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -31404,15 +31376,15 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -31653,15 +31625,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -31679,7 +31651,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -31711,7 +31683,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -31742,7 +31714,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -31769,11 +31741,11 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -31803,15 +31775,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -32058,15 +32030,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -32084,7 +32056,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -32120,7 +32092,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -32151,7 +32123,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -32178,11 +32150,11 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -32212,15 +32184,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -32467,15 +32439,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -32506,7 +32478,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -32542,7 +32514,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -32573,7 +32545,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -32600,11 +32572,11 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -32634,15 +32606,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -32883,15 +32855,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -32922,7 +32894,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -32954,7 +32926,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -32985,7 +32957,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -33012,11 +32984,11 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -33046,15 +33018,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -33295,15 +33267,15 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -33337,7 +33309,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -33369,7 +33341,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c11 span.__rdt_custom_sort_icon__ i,
@@ -33400,7 +33372,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 
 .c11:hover {
   cursor: pointer;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
 }
 
 .c5 {
@@ -33427,11 +33399,11 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -33461,15 +33433,15 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -33710,15 +33682,15 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c13:nth-child(odd) {
@@ -33740,7 +33712,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -33824,11 +33796,11 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -33858,15 +33830,15 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -34102,15 +34074,15 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -34128,7 +34100,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -34212,11 +34184,11 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -34246,15 +34218,15 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -34522,15 +34494,15 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -34548,7 +34520,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -34632,11 +34604,11 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -34666,15 +34638,15 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -34942,15 +34914,15 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -34968,7 +34940,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -35052,11 +35024,11 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -35086,15 +35058,15 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -35362,15 +35334,15 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -35388,7 +35360,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -35472,11 +35444,11 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -35506,15 +35478,15 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -35782,15 +35754,15 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c14:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -35808,7 +35780,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -35892,11 +35864,11 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -35926,15 +35898,15 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -36202,15 +36174,15 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -36228,7 +36200,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -36312,11 +36284,11 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -36346,15 +36318,15 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -36549,15 +36521,15 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c9:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c9:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c5 {
@@ -36584,11 +36556,11 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -36618,15 +36590,15 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -36790,11 +36762,11 @@ exports[`should render and empty table correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -36824,15 +36796,15 @@ exports[`should render and empty table correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {
@@ -36894,7 +36866,7 @@ exports[`should render and empty table correctly 1`] = `
   width: 100%;
   height: 100%;
   padding: 16px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
 }
 
@@ -37028,15 +37000,15 @@ exports[`should render correctly when disabled 1`] = `
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 48px;
 }
 
-.c13:not(:first-of-type) {
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
+.c13:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c10 {
@@ -37054,7 +37026,7 @@ exports[`should render correctly when disabled 1`] = `
   background-color: transparent;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   padding-left: 16px;
   padding-right: 16px;
   -webkit-box-flex: 1;
@@ -37138,11 +37110,11 @@ exports[`should render correctly when disabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16px 16px 16px 24px;
   background-color: #e3f2fd;
   font-size: 18px;
   font-weight: 400;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
+  padding: 16px 16px 16px 24px;
   -webkit-transform: translate3d(0,-100%,0);
   -ms-transform: translate3d(0,-100%,0);
   transform: translate3d(0,-100%,0);
@@ -37172,15 +37144,15 @@ exports[`should render correctly when disabled 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 22px;
-  color: rgba(0,0,0,.87);
+  color: rgba(0,0,0,0.87);
   background-color: transparent;
   min-height: 56px;
+  padding: 4px 8px 4px 16px;
 }
 
 .c2 {

@@ -6,7 +6,6 @@ const calculateBaseStyle = disabled => ({
   fontSize: '18px',
   ...!disabled && { cursor: 'pointer' },
   padding: 0,
-  marginLeft: '8px',
   marginTop: '1px',
   verticalAlign: 'middle',
   position: 'relative',
