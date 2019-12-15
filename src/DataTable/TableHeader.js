@@ -11,7 +11,6 @@ const TableHeaderStyle = styled.header`
   flex: 1 1 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
   width: 100%;
   flex-wrap: wrap;
   ${props => props.theme.header.style}

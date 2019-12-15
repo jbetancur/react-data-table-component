@@ -1,53 +1,64 @@
 import merge from 'lodash/merge';
 
-const palette = {
-  background: {
-    light: 'transparent',
-    dark: '#3C3C46',
+export const palette = {
+  light: {
+    text: {
+      primary: 'rgba(0, 0, 0, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.54)',
+      disabled: 'rgba(0, 0, 0, 0.38)',
+    },
+    background: {
+      default: 'transparent',
+      context: '#e3f2fd',
+    },
+    divider: {
+      default: 'rgba(0,0,0,.12)',
+    },
+    action: {
+      button: 'rgba(0,0,0,.54)',
+      hover: 'rgba(0,0,0,.08)',
+      disabled: 'rgba(0,0,0,.12)',
+      striped: 'rgba(0,0,0,.03)',
+    },
   },
-  border: {
-    light: 'rgba(0,0,0,.12)',
-    dark: 'rgba(255,255,255,.12)',
-  },
-  hover: {
-    light: 'rgba(0,0,0,.08)',
-    dark: 'rgba(60, 60, 70, .87)',
-  },
-  striped: {
-    light: 'rgba(0,0,0,.03)',
-    dark: '#666671',
-  },
-  contextMenu: {
-    light: '#e3f2fd',
-    dark: '#E91E63',
-  },
-  text: {
-    light: 'rgba(0,0,0,.87)',
-    dark: '#fff',
-  },
-  button: {
-    light: 'rgba(0,0,0,.54)',
-    dark: '#fff',
-  },
-  disabled: {
-    light: 'rgba(0,0,0,.12)',
-    dark: 'rgba(0,0,0,.12)',
+  dark: {
+    text: {
+      primary: '#FFFFFF',
+      secondary: 'rgba(255, 255, 255, 0.7)',
+      disabled: 'rgba(255, 255, 255, 0.5)',
+    },
+    background: {
+      default: '#3C3C46',
+      context: '#E91E63',
+    },
+    divider: {
+      default: 'rgba(255, 255, 255, 0.12)',
+    },
+    action: {
+      button: '#FFFFFF',
+      hover: 'rgba(60, 60, 70, .87)',
+      disabled: 'rgba(0,0,0,.12)',
+      striped: 'rgba(60, 60, 70, 0.95)',
+    },
   },
 };
 
-export default (theme = 'light', customTheme) => (
-  merge({
+export default (theme = 'light', customTheme) => {
+  const themeType = palette[theme] ? theme : 'light';
+
+  return merge({
     header: {
       style: {
         fontSize: '22px',
-        color: palette.text[theme],
-        backgroundColor: palette.background[theme],
+        color: palette[themeType].text.primary,
+        backgroundColor: palette[themeType].background.default,
         minHeight: '56px',
+        padding: '4px 8px 4px 16px',
       },
     },
     subHeader: {
       style: {
-        backgroundColor: palette.background[theme],
+        backgroundColor: palette[themeType].background.default,
         minHeight: '52px',
       },
     },
@@ -56,10 +67,10 @@ export default (theme = 'light', customTheme) => (
     },
     headRow: {
       style: {
-        backgroundColor: palette.background[theme],
+        backgroundColor: palette[themeType].background.default,
         minHeight: '56px',
         borderBottomWidth: '1px',
-        borderBottomColor: palette.border[theme],
+        borderBottomColor: palette[themeType].divider.default,
         borderBottomStyle: 'solid',
       },
       denseStyle: {
@@ -68,23 +79,24 @@ export default (theme = 'light', customTheme) => (
     },
     headCells: {
       style: {
-        backgroundColor: palette.background[theme],
+        backgroundColor: palette[themeType].background.default,
         fontSize: '12px',
         fontWeight: 500,
-        color: palette.text[theme],
+        color: palette[themeType].text.primary,
         paddingLeft: '16px',
         paddingRight: '16px',
       },
       activeStyle: {
-        color: palette.text[theme],
+        color: palette[themeType].text.primary,
       },
     },
     contextMenu: {
       style: {
-        backgroundColor: palette.contextMenu[theme],
+        backgroundColor: palette[themeType].background.context,
         fontSize: '18px',
         fontWeight: 400,
-        color: palette.text[theme],
+        color: palette[themeType].text.primary,
+        padding: '16px 16px 16px 24px',
         transform: 'translate3d(0, -100%, 0)',
         transitionDuration: '225ms',
         transitionTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -103,47 +115,46 @@ export default (theme = 'light', customTheme) => (
     rows: {
       style: {
         fontSize: '13px',
-        color: palette.text[theme],
-        backgroundColor: palette.background[theme],
+        color: palette[themeType].text.primary,
+        backgroundColor: palette[themeType].background.default,
         minHeight: '48px',
-        '&:not(:first-of-type)': {
-          borderTopStyle: 'solid',
-          borderTopWidth: '1px',
-          borderTopColor: palette.border[theme],
+        '&:not(:last-of-type)': {
+          borderBottomStyle: 'solid',
+          borderBottomWidth: '1px',
+          borderBottomColor: palette[themeType].divider.default,
         },
       },
       denseStyle: {
         minHeight: '32px',
       },
       highlightOnHoverStyle: {
-        color: palette.text[theme],
-        backgroundColor: palette.hover[theme],
+        color: palette[themeType].text.primary,
+        backgroundColor: palette[themeType].action.hover,
         transitionDuration: '0.15s',
         transitionProperty: 'background-color',
       },
       stripedStyle: {
         '&:nth-child(odd)': {
-          backgroundColor: palette.striped[theme],
+          backgroundColor: palette[themeType].action.striped,
         },
       },
     },
     expanderRow: {
       style: {
-        color: palette.text[theme],
-        backgroundColor: palette.background[theme],
+        color: palette[themeType].text.primary,
+        backgroundColor: palette[themeType].background.default,
       },
     },
     expanderButton: {
       style: {
-        color: palette.text[theme],
+        color: palette[themeType].action.button,
         '&:hover:enabled': {
           cursor: 'pointer',
         },
         '&:disabled': {
-          color: palette.disabled[theme],
+          color: palette[themeType].action.disabled,
         },
         svg: {
-          color: palette.button[theme],
           paddingLeft: '4px',
           paddingRight: '4px',
         },
@@ -151,39 +162,39 @@ export default (theme = 'light', customTheme) => (
     },
     pagination: {
       style: {
-        color: palette.text[theme],
+        color: palette[themeType].text.secondary,
         fontSize: '13px',
         minHeight: '56px',
-        backgroundColor: palette.background[theme],
+        backgroundColor: palette[themeType].background.default,
         borderTopStyle: 'solid',
         borderTopWidth: '1px',
-        borderTopColor: palette.border[theme],
+        borderTopColor: palette[themeType].divider.default,
       },
       pageButtonsStyle: {
         transition: '0.4s',
-        color: palette.text[theme],
-        svg: {
-          fill: palette.button[theme],
-        },
+        color: palette[themeType].action.button,
+        fill: palette[themeType].action.button,
         '&:disabled': {
           opacity: '0.4',
           cursor: 'unset',
+          color: palette[themeType].action.disabled,
         },
         '&:hover:not(:disabled)': {
-          backgroundColor: palette.background[theme],
+          backgroundColor: palette[themeType].action.hover,
         },
       },
     },
     noData: {
       style: {
-        color: palette.text[theme],
-        backgroundColor: palette.background[theme],
+        color: palette[themeType].text.primary,
+        backgroundColor: palette[themeType].background.default,
       },
     },
     progress: {
       style: {
-        color: palette.text[theme],
-        backgroundColor: palette.background[theme],
+        color: palette[themeType].text.primary,
+        backgroundColor: palette[themeType].background.default,
       },
     },
-  }, customTheme));
+  }, customTheme);
+};

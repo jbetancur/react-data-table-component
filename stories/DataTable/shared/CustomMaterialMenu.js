@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 
 // eslint-disable-next-line react/prop-types
-export default ({ row, onDeleteRow }) => {
+export default ({ row, onDeleteRow, size }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -30,6 +30,7 @@ export default ({ row, onDeleteRow }) => {
         aria-controls="long-menu"
         aria-haspopup="true"
         onClick={handleClick}
+        size={size}
       >
         <MoreVertIcon />
       </IconButton>

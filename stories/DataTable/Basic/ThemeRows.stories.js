@@ -1,8 +1,36 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import data from '../constants/sampleMovieData';
+import Icon from '@material-ui/icons/Apps';
 import DataTable from '../../../src/index';
+import CustomMaterialMenu from '../shared/CustomMaterialMenu';
+
+const data = [
+  {
+    id: 1,
+    title: 'Cutting Costs',
+    by: 'me',
+    lastOpened: 'Aug 7 9:52 AM',
+  },
+  {
+    id: 2,
+    title: 'Wedding Planner',
+    by: 'me',
+    lastOpened: 'Sept 14 2:52 PM',
+  },
+  {
+    id: 3,
+    title: 'Expense Tracker',
+    by: 'me',
+    lastOpened: 'Sept 12 2:41 PM',
+  },
+  {
+    id: 4,
+    title: 'Home Brew Water Calculator',
+    by: 'me',
+    lastOpened: 'Jube 3 5:45 PM',
+  },
+];
 
 const customTheme = {
   headRow: {
@@ -10,16 +38,18 @@ const customTheme = {
       border: 'none',
     },
   },
-  rows: {
+  headCells: {
     style: {
-      marginTop: '6px',
-      marginBottom: '6px',
-      minHeight: '52px',
-      borderRadius: '2px',
-      borderStyle: 'solid',
-      borderWidth: '1px',
-      borderColor: 'rgba(0,0,0,.12)',
-      boxShadow: '0 1px 5px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.12)',
+      color: '#202124',
+      fontSize: '14px',
+    },
+  },
+  rows: {
+    highlightOnHoverStyle: {
+      backgroundColor: 'rgb(230, 244, 244)',
+      borderBottomColor: '#FFFFFF',
+      borderRadius: '25px',
+      outline: '1px solid #FFFFFF',
     },
   },
   pagination: {
@@ -31,34 +61,58 @@ const customTheme = {
 
 const columns = [
   {
+    cell: () => <Icon style={{ fill: '#43a047' }} />,
+    width: '56px', // custom width for icon button
+    style: {
+      borderBottom: '1px solid #FFFFFF',
+      marginBottom: '-1px',
+    },
+  },
+  {
     name: 'Title',
     selector: 'title',
     sortable: true,
+    grow: 2,
+    style: {
+      color: '#202124',
+      fontSize: '14px',
+      fontWeight: 500,
+    },
   },
   {
-    name: 'Director',
-    selector: 'director',
+    name: 'Owner',
+    selector: 'by',
     sortable: true,
+    style: {
+      color: 'rgba(0,0,0,.54)',
+    },
   },
   {
-    name: 'Year',
-    selector: 'year',
+    name: 'Last opened',
+    selector: 'lastOpened',
     sortable: true,
+    style: {
+      color: 'rgba(0,0,0,.54)',
+    },
+  },
+  {
+    cell: row => <CustomMaterialMenu size="small" row={row} />,
+    allowOverflow: true,
+    button: true,
+    width: '56px',
   },
 ];
 
 const ThemedTable = () => (
   <DataTable
-    title="Movie List"
+    title="Google Sheets-esqe"
     columns={columns}
     data={data}
     customTheme={customTheme}
+    highlightOnHover
     pointerOnHover
-    pagination
-    selectableRows
-    expandableRows
   />
 );
 
-storiesOf('Theming', module)
-  .add('Custom Theme', ThemedTable);
+storiesOf('Theming & Customization', module)
+  .add('Google Sheets-esqe', ThemedTable);

@@ -19,7 +19,6 @@ const ContextMenuStyle = styled.div`
   align-items: center;
   justify-content: space-between;
   display: flex;
-  padding: 16px 16px 16px 24px;
   ${props => props.theme.contextMenu.style};
   ${props => props.visible && props.theme.contextMenu.activeStyle};
 `;
