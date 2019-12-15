@@ -127,6 +127,7 @@ class MaterialTable extends PureComponent {
           clearSelectedRows={toggleCleared}
           onRowClicked={this.handleRowClicked}
           pagination
+          expandableRows
         />
       </Card>
     );

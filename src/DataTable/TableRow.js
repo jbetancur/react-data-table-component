@@ -9,36 +9,9 @@ import { getConditionalStyle } from './util';
 
 const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
 
-const defaultRowsCSS = css`
-  &:not(:first-child) {
-    border-top-style: ${props => props.theme.rows.borderStyle};
-    border-top-width: ${props => props.theme.rows.borderWidth};
-    border-top-color: ${props => props.theme.rows.borderColor};
-  }
-`;
-
-const spacedRowsCSS = css`
-  margin-top: ${props => props.theme.rows.spacingMargin || 0};
-  margin-bottom: ${props => props.theme.rows.spacingMargin || 0};
-  border-radius: ${props => props.theme.rows.spacingBorderRadius || 0};
-  border-style: ${props => props.theme.rows.borderStyle};
-  border-width: ${props => props.theme.rows.borderWidth};
-  border-color: ${props => props.theme.rows.borderColor};
-  ${props => props.theme.rows.spacingShadow && `box-shadow: ${props.theme.rows.spacingShadow}`};
-`;
-
-const stripedCSS = css`
-  &:nth-child(odd) {
-    background-color: ${props => props.theme.rows.stripedColor};
-  }
-`;
-
 const highlightCSS = css`
   &:hover {
-    color: ${props => props.theme.rows.hoverFontColor};
-    background-color: ${props => props.theme.rows.hoverBackgroundColor};
-    transition-duration: 0.15s;
-    transition-property: background-color;
+    ${props => props.highlightOnHover && props.theme.rows.highlightOnHoverStyle};
   }
 `;
 
@@ -54,11 +27,9 @@ const TableRowStyle = styled.div`
   align-content: stretch;
   width: 100%;
   box-sizing: border-box;
-  min-height: ${props => (props.dense ? props.theme.rows.denseHeight : props.theme.rows.height)};
-  ${props => (props.theme.rows.spacing === 'spaced' ? spacedRowsCSS : defaultRowsCSS)};
-  background-color: ${props => props.theme.rows.backgroundColor};
-  color: ${props => props.theme.rows.fontColor};
-  ${props => props.striped && stripedCSS};
+  ${props => props.theme.rows.style};
+  ${props => (props.dense && props.theme.rows.denseStyle)};
+  ${props => props.striped && props.theme.rows.stripedStyle};
   ${props => props.highlightOnHover && highlightCSS};
   ${props => props.pointerOnHover && pointerCSS};
   ${props => props.extendedRowStyle};

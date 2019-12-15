@@ -11,6 +11,18 @@ const defaultComponentOptions = {
   noRowsPerPage: false,
 };
 
+const PaginationWrapper = styled.footer`
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  ${props => props.theme.pagination.style};
+`;
+
 const Button = styled.button`
   position: relative;
   display: block;
@@ -24,20 +36,7 @@ const Button = styled.button`
   width: 40px;
   padding: 8px;
   margin: 2px;
-  transition: 0.3s;
-
-  svg {
-    fill: ${props => props.theme.pagination.buttonFontColor};
-  }
-
-  &:disabled {
-    opacity: 0.4;
-    cursor: unset;
-  }
-
-  &:hover:not(:disabled) {
-    background-color: ${props => props.theme.pagination.buttonHoverBackground};
-  }
+  ${props => props.theme.pagination.pageButtonsStyle};
 `;
 
 const PageList = styled.div`
@@ -50,8 +49,6 @@ const PageList = styled.div`
 const Span = styled.span`
   flex-shrink: 1;
   user-select: none;
-  font-size: ${props => props.theme.pagination.fontSize};
-  color: ${props => props.theme.pagination.fontColor};
 `;
 
 const Range = styled(Span)`
@@ -67,7 +64,6 @@ const Pagination = ({
   rowCount,
   onChangePage,
   onChangeRowsPerPage,
-  theme,
   currentPage,
 }) => {
   const {
@@ -95,7 +91,7 @@ const Pagination = ({
   const handleRowsPerPage = useCallback(({ target }) => onChangeRowsPerPage(Number(target.value), currentPage), [currentPage, onChangeRowsPerPage]);
 
   return (
-    <>
+    <PaginationWrapper className="rdt_Pagination">
       {!noRowsPerPage && (
         <>
           <RowLabel>{rowsPerPageText}</RowLabel>
@@ -119,7 +115,6 @@ const Pagination = ({
           id="pagination-first-page"
           onClick={handleFirst}
           disabled={disabledLesser}
-          theme={theme}
         >
           {paginationIconFirstPage}
         </Button>
@@ -128,7 +123,6 @@ const Pagination = ({
           id="pagination-previous-page"
           onClick={handlePrevious}
           disabled={disabledLesser}
-          theme={theme}
         >
           {paginationIconPrevious}
         </Button>
@@ -137,7 +131,6 @@ const Pagination = ({
           id="pagination-next-page"
           onClick={handleNext}
           disabled={disabledGreater}
-          theme={theme}
         >
           {paginationIconNext}
         </Button>
@@ -146,12 +139,11 @@ const Pagination = ({
           id="pagination-last-page"
           onClick={handleLast}
           disabled={disabledGreater}
-          theme={theme}
         >
           {paginationIconLastPage}
         </Button>
       </PageList>
-    </>
+    </PaginationWrapper>
   );
 };
 
@@ -160,7 +152,6 @@ Pagination.propTypes = {
   rowCount: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
   onChangeRowsPerPage: PropTypes.func.isRequired,
-  theme: PropTypes.object.isRequired,
   currentPage: PropTypes.number.isRequired,
 };
 
