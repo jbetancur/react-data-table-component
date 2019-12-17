@@ -7,8 +7,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import Delete from '@material-ui/icons/Delete';
 import Add from '@material-ui/icons/Add';
+import memoize from 'memoize-one';
 import tableDataItems from '../constants/sampleDesserts';
-import DataTable, { memoize } from '../../../src/index';
+import DataTable from '../../../src/index';
 
 const sortIcon = <ArrowDownward />;
 const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
