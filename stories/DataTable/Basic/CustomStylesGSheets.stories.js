@@ -103,7 +103,7 @@ const columns = [
   },
 ];
 
-const ThemeGSheets = () => (
+const CustomStylesGSheets = () => (
   <DataTable
     title="Google Sheets-esqe"
     columns={columns}
@@ -114,5 +114,5 @@ const ThemeGSheets = () => (
   />
 );
 
-storiesOf('Theming & Customization', module)
-  .add('Google Sheets-esqe', ThemeGSheets);
+storiesOf('Custom Styling', module)
+  .add('Google Sheets-esqe', CustomStylesGSheets);

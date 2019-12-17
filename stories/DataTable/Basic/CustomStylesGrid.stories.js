@@ -54,7 +54,7 @@ const columns = [
   },
 ];
 
-const ThemedTable = () => (
+const CustomStylesGrid = () => (
   <DataTable
     title="Movie List"
     columns={columns}
@@ -66,5 +66,5 @@ const ThemedTable = () => (
   />
 );
 
-storiesOf('Theming & Customization', module)
-  .add('Compact Grid Lines', ThemedTable);
+storiesOf('Custom Styling', module)
+  .add('Compact Grid Lines', CustomStylesGrid);

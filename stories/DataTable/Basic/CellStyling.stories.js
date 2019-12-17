@@ -84,5 +84,5 @@ const CellStatic = () => (
   />
 );
 
-storiesOf('Theming & Customization', module)
+storiesOf('Custom Styling', module)
   .add('Column Styling', CellStatic);

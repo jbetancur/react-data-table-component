@@ -247,7 +247,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | theme       | string | no       | default   | Possible values are `default` or `dark` |
-| customStyles | object | no       |         | Override the [default styling](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. |
+| customStyles | object | no       |         | Override the [default styling](https://github.com/jbetancur/react-data-table-component/blob/master/src/theme/default.js), by overriding specific props. |
 
 ##### 1.6.2.8.1. Dark Mode Theme
 
@@ -329,7 +329,7 @@ const MyComponent = () => (
 );
 ```
 
-[Click here](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js) for a detailed catalog of RDT styles
+[Click here](https://github.com/jbetancur/react-data-table-component/blob/master/src/theme/default.js) for a detailed catalog of RDT styles
 
 #### 1.6.2.9. Conditional Row Styling
 

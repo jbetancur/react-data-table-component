@@ -132,5 +132,5 @@ const ConditionalCellStyle = () => (
   />
 );
 
-storiesOf('Conditional Formatting', module)
+storiesOf('Conditional Styling', module)
   .add('Conditional Cells', ConditionalCellStyle);

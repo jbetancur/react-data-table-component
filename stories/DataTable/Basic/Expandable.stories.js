@@ -39,5 +39,5 @@ const ExpandableTable = () => (
   />
 );
 
-storiesOf('Expandable', module)
+storiesOf('Expandable Rows', module)
   .add('Basic', ExpandableTable);
