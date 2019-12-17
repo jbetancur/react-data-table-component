@@ -80,7 +80,7 @@ exports[`should render correctly with default props 1`] = `
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);

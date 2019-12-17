@@ -34,7 +34,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -92,7 +92,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -114,7 +114,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -241,7 +241,7 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -432,7 +432,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -523,7 +523,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -545,7 +545,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -620,7 +620,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -709,7 +709,7 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -930,7 +930,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -988,7 +988,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -1010,7 +1010,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -1137,7 +1137,7 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -1320,7 +1320,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -1378,7 +1378,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -1400,7 +1400,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -1592,7 +1592,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -1650,7 +1650,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -1672,7 +1672,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -1799,7 +1799,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -1982,7 +1982,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -2040,7 +2040,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -2062,7 +2062,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -2189,7 +2189,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -2325,7 +2325,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -2636,7 +2636,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -2694,7 +2694,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -2716,7 +2716,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -2843,7 +2843,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -2979,7 +2979,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -3286,7 +3286,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -3344,7 +3344,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -3366,7 +3366,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -3493,7 +3493,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -3629,7 +3629,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -3936,7 +3936,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -3994,7 +3994,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -4016,7 +4016,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -4143,7 +4143,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -4279,7 +4279,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -4586,7 +4586,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -4644,7 +4644,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -4666,7 +4666,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -4793,7 +4793,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -4929,7 +4929,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -5236,7 +5236,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -5294,7 +5294,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -5329,7 +5329,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -5462,7 +5462,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -5598,7 +5598,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -5910,7 +5910,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -5968,7 +5968,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -5990,7 +5990,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -6117,7 +6117,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -6253,7 +6253,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -6562,7 +6562,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -6620,7 +6620,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -6642,7 +6642,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -6769,7 +6769,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -6905,7 +6905,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -7245,7 +7245,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -7303,7 +7303,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -7325,7 +7325,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -7452,7 +7452,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -7588,7 +7588,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -7928,7 +7928,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -7986,7 +7986,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -8008,7 +8008,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -8135,7 +8135,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -8215,7 +8215,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -8491,7 +8491,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -8549,7 +8549,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -8571,7 +8571,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -8698,7 +8698,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -8834,7 +8834,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   color: rgba(0,0,0,0.54);
   font-size: 13px;
   min-height: 56px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: rgba(0,0,0,.12);
@@ -9141,7 +9141,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -9199,7 +9199,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -9221,7 +9221,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -9348,7 +9348,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -9529,7 +9529,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -9587,7 +9587,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -9609,7 +9609,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -9736,7 +9736,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -9917,7 +9917,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -9976,7 +9976,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -9998,7 +9998,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -10125,7 +10125,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -10306,7 +10306,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -10368,7 +10368,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -10390,7 +10390,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -10521,7 +10521,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -10702,7 +10702,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -10760,7 +10760,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -10782,7 +10782,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -10909,7 +10909,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -11102,7 +11102,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -11160,7 +11160,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -11182,7 +11182,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -11309,7 +11309,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -11502,7 +11502,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -11560,7 +11560,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -11582,7 +11582,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -11709,7 +11709,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -11902,7 +11902,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -11960,7 +11960,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -11982,7 +11982,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -12109,7 +12109,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -12302,7 +12302,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -12360,7 +12360,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -12382,7 +12382,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -12509,7 +12509,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -12690,7 +12690,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -12748,7 +12748,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -12770,7 +12770,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -12897,7 +12897,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -13078,7 +13078,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -13140,7 +13140,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -13162,7 +13162,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -13293,7 +13293,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -13474,7 +13474,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -13534,7 +13534,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -13556,7 +13556,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -13685,7 +13685,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -13866,7 +13866,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -13924,7 +13924,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -13946,7 +13946,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -14073,7 +14073,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -14254,7 +14254,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -14317,7 +14317,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -14339,7 +14339,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -14472,7 +14472,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -14647,7 +14647,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -14705,7 +14705,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -14727,7 +14727,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -14854,7 +14854,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -15031,7 +15031,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -15090,7 +15090,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -15112,7 +15112,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -15240,7 +15240,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -15421,7 +15421,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -15479,7 +15479,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -15514,7 +15514,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -15652,7 +15652,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -15838,7 +15838,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -15896,7 +15896,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -15918,7 +15918,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -16045,7 +16045,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -16226,7 +16226,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -16284,7 +16284,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -16306,7 +16306,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -16433,7 +16433,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -16608,7 +16608,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -16666,7 +16666,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -16688,7 +16688,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -16815,7 +16815,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -16996,7 +16996,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -17090,7 +17090,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -17112,7 +17112,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -17239,7 +17239,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -17420,7 +17420,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -17478,7 +17478,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -17500,7 +17500,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -17627,7 +17627,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -17808,7 +17808,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -17866,7 +17866,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -17888,7 +17888,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -18015,7 +18015,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -18196,7 +18196,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -18254,7 +18254,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -18280,7 +18280,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
   background-color: rgba(63,195,128,0.9);
   color: white;
@@ -18308,7 +18308,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -18435,7 +18435,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -18616,7 +18616,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -18674,7 +18674,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -18696,7 +18696,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -18823,7 +18823,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -19004,7 +19004,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -19063,7 +19063,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
   min-height: 32px;
 }
@@ -19086,7 +19086,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -19213,7 +19213,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -19394,7 +19394,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -19413,7 +19413,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -19517,7 +19517,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   width: 100%;
   box-sizing: border-box;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c14 {
@@ -19536,7 +19536,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -19562,7 +19562,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -19689,7 +19689,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -19933,7 +19933,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -19952,7 +19952,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20056,7 +20056,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   width: 100%;
   box-sizing: border-box;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c14 {
@@ -20075,7 +20075,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -20101,7 +20101,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20228,7 +20228,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -20472,7 +20472,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -20491,7 +20491,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20607,7 +20607,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -20633,7 +20633,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -20659,7 +20659,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20786,7 +20786,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -21022,7 +21022,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -21080,7 +21080,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -21102,7 +21102,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -21229,7 +21229,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -21410,7 +21410,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -21429,7 +21429,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -21533,7 +21533,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   width: 100%;
   box-sizing: border-box;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c14 {
@@ -21552,7 +21552,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -21574,7 +21574,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -21701,7 +21701,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -21945,7 +21945,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -21964,7 +21964,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22080,7 +22080,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -22102,7 +22102,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22229,7 +22229,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -22464,7 +22464,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -22483,7 +22483,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22587,7 +22587,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   width: 100%;
   box-sizing: border-box;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c14 {
@@ -22606,7 +22606,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -22628,7 +22628,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22755,7 +22755,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -22999,7 +22999,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -23057,7 +23057,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -23079,7 +23079,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -23206,7 +23206,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -23390,7 +23390,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -23448,7 +23448,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -23470,7 +23470,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -23597,7 +23597,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -23781,7 +23781,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -23839,7 +23839,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -23861,7 +23861,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -23988,7 +23988,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -24174,7 +24174,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -24232,7 +24232,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -24254,7 +24254,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -24381,7 +24381,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -24567,7 +24567,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -24625,7 +24625,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -24644,6 +24644,13 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   transition-property: background-color;
 }
 
+.c13:hover:not(:last-of-type) {
+  border-bottom-color: #FFFFFF;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #FFFFFF;
+}
+
 .c10 {
   position: relative;
   display: -webkit-box;
@@ -24656,7 +24663,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -24783,7 +24790,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -24964,7 +24971,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -25022,7 +25029,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -25048,7 +25055,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -25175,7 +25182,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -25402,7 +25409,7 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -25461,7 +25468,7 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -25591,7 +25598,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -25650,7 +25657,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -25778,7 +25785,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -25837,7 +25844,7 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -25963,7 +25970,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -26028,7 +26035,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   height: 100%;
   padding: 16px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 <div
@@ -26148,7 +26155,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -26207,7 +26214,7 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -26337,7 +26344,7 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -26396,7 +26403,7 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -26481,7 +26488,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -26501,7 +26508,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -26628,7 +26635,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -26693,7 +26700,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   height: 100%;
   padding: 16px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 <div
@@ -26789,7 +26796,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -26809,7 +26816,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -26936,7 +26943,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -26995,7 +27002,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -27102,7 +27109,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -27122,7 +27129,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -27249,7 +27256,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -27308,7 +27315,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   width: 100%;
   height: 100%;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 .c6 {
@@ -27415,7 +27422,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -27473,7 +27480,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -27495,7 +27502,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -27622,7 +27629,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -27805,7 +27812,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -27863,7 +27870,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -27885,7 +27892,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -28012,7 +28019,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -28193,7 +28200,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -28251,7 +28258,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -28273,7 +28280,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -28400,7 +28407,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -28580,7 +28587,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -28687,7 +28694,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -28709,7 +28716,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -28836,7 +28843,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -29041,7 +29048,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -29132,7 +29139,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -29154,7 +29161,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -29229,7 +29236,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -29318,7 +29325,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -29529,7 +29536,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -29587,7 +29594,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -29622,7 +29629,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -29755,7 +29762,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -29941,7 +29948,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -29999,7 +30006,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -30037,7 +30044,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -30170,7 +30177,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -30356,7 +30363,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -30414,7 +30421,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -30436,7 +30443,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -30563,7 +30570,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -30744,7 +30751,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -30802,7 +30809,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -30837,7 +30844,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -30970,7 +30977,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -31156,7 +31163,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -31214,7 +31221,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -31249,7 +31256,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -31382,7 +31389,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -31568,7 +31575,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -31626,7 +31633,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -31648,7 +31655,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -31781,7 +31788,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -31969,7 +31976,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -32031,7 +32038,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -32053,7 +32060,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -32190,7 +32197,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -32378,7 +32385,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -32440,7 +32447,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -32475,7 +32482,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -32612,7 +32619,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -32798,7 +32805,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -32856,7 +32863,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -32891,7 +32898,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -33024,7 +33031,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -33210,7 +33217,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -33268,7 +33275,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -33306,7 +33313,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -33439,7 +33446,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -33625,7 +33632,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -33683,7 +33690,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -33694,7 +33701,8 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 }
 
 .c13:nth-child(odd) {
-  background-color: rgba(0,0,0,.03);
+  color: rgba(0,0,0,0.87);
+  background-color: rgba(0,0,0,.87);
 }
 
 .c10 {
@@ -33709,7 +33717,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -33836,7 +33844,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -34017,7 +34025,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -34075,7 +34083,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -34097,7 +34105,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -34224,7 +34232,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -34281,7 +34289,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 52px;
 }
 
@@ -34437,7 +34445,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -34495,7 +34503,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -34517,7 +34525,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -34644,7 +34652,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -34701,7 +34709,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 52px;
 }
 
@@ -34857,7 +34865,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -34915,7 +34923,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -34937,7 +34945,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -35064,7 +35072,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -35121,7 +35129,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 52px;
 }
 
@@ -35277,7 +35285,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -35335,7 +35343,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -35357,7 +35365,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -35484,7 +35492,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -35541,7 +35549,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 52px;
 }
 
@@ -35697,7 +35705,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -35755,7 +35763,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -35777,7 +35785,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -35904,7 +35912,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -35961,7 +35969,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 52px;
 }
 
@@ -36117,7 +36125,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -36175,7 +36183,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -36197,7 +36205,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -36324,7 +36332,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -36522,7 +36530,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -36596,7 +36604,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -36802,7 +36810,7 @@ exports[`should render and empty table correctly 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }
@@ -36867,7 +36875,7 @@ exports[`should render and empty table correctly 1`] = `
   height: 100%;
   padding: 16px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
 }
 
 <div
@@ -36943,7 +36951,7 @@ exports[`should render correctly when disabled 1`] = `
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -37001,7 +37009,7 @@ exports[`should render correctly when disabled 1`] = `
   box-sizing: border-box;
   font-size: 13px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 48px;
 }
 
@@ -37023,7 +37031,7 @@ exports[`should render correctly when disabled 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: transparent;
+  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -37150,7 +37158,7 @@ exports[`should render correctly when disabled 1`] = `
   flex-wrap: wrap;
   font-size: 22px;
   color: rgba(0,0,0,0.87);
-  background-color: transparent;
+  background-color: #FFFFFF;
   min-height: 56px;
   padding: 4px 8px 4px 16px;
 }

@@ -32,7 +32,7 @@ const data = [
   },
 ];
 
-const customTheme = {
+const customStyles = {
   headRow: {
     style: {
       border: 'none',
@@ -103,16 +103,16 @@ const columns = [
   },
 ];
 
-const ThemedTable = () => (
+const ThemeGSheets = () => (
   <DataTable
     title="Google Sheets-esqe"
     columns={columns}
     data={data}
-    customTheme={customTheme}
+    customStyles={customStyles}
     highlightOnHover
     pointerOnHover
   />
 );
 
 storiesOf('Theming & Customization', module)
-  .add('Google Sheets-esqe', ThemedTable);
+  .add('Google Sheets-esqe', ThemeGSheets);

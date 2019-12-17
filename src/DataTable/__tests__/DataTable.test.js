@@ -2039,7 +2039,7 @@ describe('DataTable::Theming', () => {
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        customTheme={theme}
+        customStyles={theme}
       />,
     );
 
@@ -2059,7 +2059,7 @@ describe('DataTable::Theming', () => {
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        customTheme={theme}
+        customStyles={theme}
       />,
     );
 

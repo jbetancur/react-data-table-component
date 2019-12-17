@@ -1,4 +1,3 @@
-
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import differenceBy from 'lodash/differenceBy';

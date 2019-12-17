@@ -102,5 +102,5 @@ const ConditionalRowStyle = () => (
   />
 );
 
-storiesOf('Styling', module)
+storiesOf('Conditional Formatting', module)
   .add('Conditional Rows', ConditionalRowStyle);
