@@ -20,7 +20,7 @@ import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
 import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage } from './util';
-import { generateTheme } from '../theme/default';
+import { generateStyles } from '../theme/default';
 
 const DataTable = memo(({
   data,
@@ -120,7 +120,7 @@ const DataTable = memo(({
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
-  const currentTheme = useMemo(() => generateTheme(theme, customStyles), [customStyles, theme]);
+  const currentTheme = useMemo(() => generateStyles(customStyles, theme), [customStyles, theme]);
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);

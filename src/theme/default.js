@@ -63,11 +63,11 @@ export const defaultThemes = {
   },
 };
 
-export const createTheme = (name, customPalette = {}) => {
-  defaultThemes[name] = merge(JSON.parse(JSON.stringify(defaultThemes.default)), customPalette);
+export const createTheme = (name, customTheme = {}) => {
+  defaultThemes[name] = merge(JSON.parse(JSON.stringify(defaultThemes.default)), customTheme);
 };
 
-export const generateTheme = (theme = 'default', customStyles = {}) => {
+export const generateStyles = (customStyles = {}, theme = 'default') => {
   const p = JSON.parse(JSON.stringify(defaultThemes));
   const themeType = p[theme] ? theme : 'default';
 

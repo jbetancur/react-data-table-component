@@ -20,7 +20,7 @@
       - [1.6.2.6. Pagination](#1626-pagination)
       - [1.6.2.7. Header](#1627-header)
       - [1.6.2.8. Theming and Customization](#1628-theming-and-customization)
-        - [1.6.2.8.1. Built in Themes](#16281-built-in-themes)
+        - [1.6.2.8.1. Dark Mode Theme](#16281-dark-mode-theme)
         - [1.6.2.8.2. Defining Your Own Theme Using createTheme](#16282-defining-your-own-theme-using-createtheme)
         - [1.6.2.8.3. Overidding Styling using css-in-js](#16283-overidding-styling-using-css-in-js)
       - [1.6.2.9. Conditional Row Styling](#1629-conditional-row-styling)
@@ -247,10 +247,9 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | theme       | string | no       | default   | Possible values are `default` or `dark` |
-| customStyles | object | no       |         | Override the [default styling](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged. |
-| customPalette | object | no       |         | Override the [default palette](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. Your changes will be merged.|
+| customStyles | object | no       |         | Override the [default styling](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes/default.js), by overriding specific props. |
 
-##### 1.6.2.8.1. Built in Themes
+##### 1.6.2.8.1. Dark Mode Theme
 
 You can easily toggle to dark mode by setting `theme="dark"`
 
