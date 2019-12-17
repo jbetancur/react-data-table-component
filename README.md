@@ -125,7 +125,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | allowOverflow     | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
 | hide     | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
 | style    | object   | no     | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
-| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#conditional-style-object) to conditionally apply css styles to a cell |
+| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#16210-conditional-style-object) to conditionally apply css styles to a cell |
 
 #### 1.6.1.1. column.hide media presets
 
@@ -335,7 +335,7 @@ const MyComponent = () => (
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#conditional-style-object)
+| conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#16210-conditional-style-object)
 
 ##### 1.6.2.9.1. Example
 
