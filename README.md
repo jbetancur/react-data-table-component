@@ -19,7 +19,7 @@
       - [1.6.2.5. Sorting](#1625-sorting)
       - [1.6.2.6. Pagination](#1626-pagination)
       - [1.6.2.7. Header](#1627-header)
-      - [1.6.2.8. Theming &amp; Customization](#1628-theming-amp-customization)
+      - [1.6.2.8. Theming and Customization](#1628-theming-and-customization)
         - [1.6.2.8.1. Built in Themes](#16281-built-in-themes)
         - [1.6.2.8.2. Defining Your Own Theme Using createTheme](#16282-defining-your-own-theme-using-createtheme)
         - [1.6.2.8.3. Overidding Styling using css-in-js](#16283-overidding-styling-using-css-in-js)
@@ -137,7 +137,6 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | md      | 959px       | medium(landscape tablets) |
 | lg      | 1280px      | large(laptops/desktops)   |
 
-
 ### 1.6.2. DataTable Properties
 
 #### 1.6.2.1. Basic
@@ -243,7 +242,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | subHeaderWrap | bool | no | true | whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
 
-#### 1.6.2.8. Theming & Customization
+#### 1.6.2.8. Theming and Customization
 
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
