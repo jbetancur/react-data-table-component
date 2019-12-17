@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
-import DataTable, { palette } from '../../../src/index';
+import DataTable, { defaultThemes } from '../../../src/index';
 
-const customTheme = {
+const customStyles = {
   header: {
     style: {
       minHeight: '56px',
@@ -13,7 +13,7 @@ const customTheme = {
     style: {
       borderTopStyle: 'solid',
       borderTopWidth: '1px',
-      borderTopColor: palette.light.divider.default,
+      borderTopColor: defaultThemes.default.divider.default,
     },
   },
   headCells: {
@@ -21,7 +21,7 @@ const customTheme = {
       '&:not(:last-of-type)': {
         borderRightStyle: 'solid',
         borderRightWidth: '1px',
-        borderRightColor: palette.light.divider.default,
+        borderRightColor: defaultThemes.default.divider.default,
       },
     },
   },
@@ -30,7 +30,7 @@ const customTheme = {
       '&:not(:last-of-type)': {
         borderRightStyle: 'solid',
         borderRightWidth: '1px',
-        borderRightColor: palette.light.divider.default,
+        borderRightColor: defaultThemes.default.divider.default,
       },
     },
   },
@@ -59,8 +59,7 @@ const ThemedTable = () => (
     title="Movie List"
     columns={columns}
     data={data}
-    customTheme={customTheme}
-    pointerOnHover
+    customStyles={customStyles}
     pagination
     selectableRows
     dense

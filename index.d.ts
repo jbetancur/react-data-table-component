@@ -13,7 +13,6 @@ export interface IDataTableProps<T> {
   className?: string;
   style?: CSSProperties;
   responsive?: boolean;
-  customTheme?: IDataTableTheme;
   disabled?: boolean;
   onRowClicked?: (row: T) => void;
   onRowDoubleClicked?: (row: T) => void;
@@ -26,12 +25,12 @@ export interface IDataTableProps<T> {
   sortIcon?: React.ReactNode;
   onSort?: (
     column: IDataTableColumn<T>,
-    sortDirection: "asc" | "desc"
+    sortDirection: 'asc' | 'desc'
   ) => void;
   sortFunction?: (
     rows: T[],
     field: string,
-    sortDirection: "asc" | "desc"
+    sortDirection: 'asc' | 'desc'
   ) => T[];
   sortServer?: boolean;
   pagination?: boolean;
@@ -77,6 +76,8 @@ export interface IDataTableProps<T> {
   subHeaderAlign?: string;
   subHeaderWrap?: boolean;
   subHeaderComponent?: React.ReactNode | React.ReactNode[];
+  customStyles?: IDataTableStyles;
+  theme?: string | 'default' | 'dark';
 }
 
 export interface IDataTableColumn<T> {
@@ -96,12 +97,12 @@ export interface IDataTableColumn<T> {
   button?: boolean;
   wrap?: boolean;
   allowOverflow?: boolean;
-  hide?: number | "sm" | "md" | "lg";
+  hide?: number | 'sm' | 'md' | 'lg';
   style?: CSSProperties;
   conditionalCellStyles?: IDataTableConditionalCellStyles<T>;
 }
 
-export interface IDataTableTheme {
+export interface IDataTableStyles {
   header?: {
     style: CSSProperties;
   };

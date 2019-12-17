@@ -20,7 +20,9 @@ export default ({ row, onDeleteRow, size }) => {
     setAnchorEl(null);
   };
   const deleteRow = () => {
-    onDeleteRow(row);
+    if (onDeleteRow) {
+      onDeleteRow(row);
+    }
   };
 
   return (

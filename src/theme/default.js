@@ -1,15 +1,18 @@
 import merge from 'lodash/merge';
 
-export const palette = {
-  light: {
+export const defaultThemes = {
+  default: {
     text: {
       primary: 'rgba(0, 0, 0, 0.87)',
       secondary: 'rgba(0, 0, 0, 0.54)',
       disabled: 'rgba(0, 0, 0, 0.38)',
     },
     background: {
-      default: 'transparent',
-      context: '#e3f2fd',
+      default: '#FFFFFF',
+    },
+    context: {
+      background: '#e3f2fd',
+      text: 'rgba(0, 0, 0, 0.87)',
     },
     divider: {
       default: 'rgba(0,0,0,.12)',
@@ -18,47 +21,69 @@ export const palette = {
       button: 'rgba(0,0,0,.54)',
       hover: 'rgba(0,0,0,.08)',
       disabled: 'rgba(0,0,0,.12)',
-      striped: 'rgba(0,0,0,.03)',
+    },
+    highlightOnHover: {
+      default: 'rgba(0,0,0,.08)',
+      text: 'rgba(0, 0, 0, 0.87)',
+    },
+    striped: {
+      default: 'rgba(0, 0, 0, .87)',
+      text: 'rgba(0, 0, 0, 0.87)',
     },
   },
   dark: {
     text: {
       primary: '#FFFFFF',
       secondary: 'rgba(255, 255, 255, 0.7)',
-      disabled: 'rgba(255, 255, 255, 0.5)',
+      disabled: 'rgba(0,0,0,.12)',
     },
     background: {
-      default: '#3C3C46',
-      context: '#E91E63',
+      default: '#424242',
+    },
+    context: {
+      background: '#E91E63',
+      text: '#FFFFFF',
     },
     divider: {
-      default: 'rgba(255, 255, 255, 0.12)',
+      default: 'rgba(81, 81, 81, 1)',
     },
     action: {
       button: '#FFFFFF',
-      hover: 'rgba(60, 60, 70, .87)',
+      hover: 'rgba(255, 255, 255, .12)',
       disabled: 'rgba(0,0,0,.12)',
-      striped: 'rgba(60, 60, 70, 0.95)',
+    },
+    highlightOnHover: {
+      default: 'rgba(0, 0, 0, .7)',
+      text: '#FFFFFF',
+    },
+    striped: {
+      default: 'rgba(0, 0, 0, .87)',
+      text: '#FFFFFF',
     },
   },
 };
 
-export default (theme = 'light', customTheme) => {
-  const themeType = palette[theme] ? theme : 'light';
+export const createTheme = (name, customPalette = {}) => {
+  defaultThemes[name] = merge(JSON.parse(JSON.stringify(defaultThemes.default)), customPalette);
+};
+
+export const generateTheme = (theme = 'default', customStyles = {}) => {
+  const p = JSON.parse(JSON.stringify(defaultThemes));
+  const themeType = p[theme] ? theme : 'default';
 
   return merge({
     header: {
       style: {
         fontSize: '22px',
-        color: palette[themeType].text.primary,
-        backgroundColor: palette[themeType].background.default,
+        color: p[themeType].text.primary,
+        backgroundColor: p[themeType].background.default,
         minHeight: '56px',
         padding: '4px 8px 4px 16px',
       },
     },
     subHeader: {
       style: {
-        backgroundColor: palette[themeType].background.default,
+        backgroundColor: p[themeType].background.default,
         minHeight: '52px',
       },
     },
@@ -67,10 +92,10 @@ export default (theme = 'light', customTheme) => {
     },
     headRow: {
       style: {
-        backgroundColor: palette[themeType].background.default,
+        backgroundColor: p[themeType].background.default,
         minHeight: '56px',
         borderBottomWidth: '1px',
-        borderBottomColor: palette[themeType].divider.default,
+        borderBottomColor: p[themeType].divider.default,
         borderBottomStyle: 'solid',
       },
       denseStyle: {
@@ -79,23 +104,23 @@ export default (theme = 'light', customTheme) => {
     },
     headCells: {
       style: {
-        backgroundColor: palette[themeType].background.default,
+        backgroundColor: p[themeType].background.default,
         fontSize: '12px',
         fontWeight: 500,
-        color: palette[themeType].text.primary,
+        color: p[themeType].text.primary,
         paddingLeft: '16px',
         paddingRight: '16px',
       },
       activeStyle: {
-        color: palette[themeType].text.primary,
+        color: p[themeType].text.primary,
       },
     },
     contextMenu: {
       style: {
-        backgroundColor: palette[themeType].background.context,
+        backgroundColor: p[themeType].context.background,
         fontSize: '18px',
         fontWeight: 400,
-        color: palette[themeType].text.primary,
+        color: p[themeType].context.text,
         padding: '16px 16px 16px 24px',
         transform: 'translate3d(0, -100%, 0)',
         transitionDuration: '225ms',
@@ -115,44 +140,51 @@ export default (theme = 'light', customTheme) => {
     rows: {
       style: {
         fontSize: '13px',
-        color: palette[themeType].text.primary,
-        backgroundColor: palette[themeType].background.default,
+        color: p[themeType].text.primary,
+        backgroundColor: p[themeType].background.default,
         minHeight: '48px',
         '&:not(:last-of-type)': {
           borderBottomStyle: 'solid',
           borderBottomWidth: '1px',
-          borderBottomColor: palette[themeType].divider.default,
+          borderBottomColor: p[themeType].divider.default,
         },
       },
       denseStyle: {
         minHeight: '32px',
       },
       highlightOnHoverStyle: {
-        color: palette[themeType].text.primary,
-        backgroundColor: palette[themeType].action.hover,
+        color: p[themeType].highlightOnHover.text,
+        backgroundColor: p[themeType].highlightOnHover.default,
         transitionDuration: '0.15s',
         transitionProperty: 'background-color',
+        '&:not(:last-of-type)': {
+          borderBottomColor: p[themeType].background.default,
+          outlineStyle: 'solid',
+          outlineWidth: '1px',
+          outlineColor: p[themeType].background.default,
+        },
       },
       stripedStyle: {
         '&:nth-child(odd)': {
-          backgroundColor: palette[themeType].action.striped,
+          color: p[themeType].striped.text,
+          backgroundColor: p[themeType].striped.default,
         },
       },
     },
     expanderRow: {
       style: {
-        color: palette[themeType].text.primary,
-        backgroundColor: palette[themeType].background.default,
+        color: p[themeType].text.primary,
+        backgroundColor: p[themeType].background.default,
       },
     },
     expanderButton: {
       style: {
-        color: palette[themeType].action.button,
+        color: p[themeType].action.button,
         '&:hover:enabled': {
           cursor: 'pointer',
         },
         '&:disabled': {
-          color: palette[themeType].action.disabled,
+          color: p[themeType].action.disabled,
         },
         svg: {
           paddingLeft: '4px',
@@ -162,39 +194,39 @@ export default (theme = 'light', customTheme) => {
     },
     pagination: {
       style: {
-        color: palette[themeType].text.secondary,
+        color: p[themeType].text.secondary,
         fontSize: '13px',
         minHeight: '56px',
-        backgroundColor: palette[themeType].background.default,
+        backgroundColor: p[themeType].background.default,
         borderTopStyle: 'solid',
         borderTopWidth: '1px',
-        borderTopColor: palette[themeType].divider.default,
+        borderTopColor: p[themeType].divider.default,
       },
       pageButtonsStyle: {
         transition: '0.4s',
-        color: palette[themeType].action.button,
-        fill: palette[themeType].action.button,
+        color: p[themeType].action.button,
+        fill: p[themeType].action.button,
         '&:disabled': {
           opacity: '0.4',
           cursor: 'unset',
-          color: palette[themeType].action.disabled,
+          color: p[themeType].action.disabled,
         },
         '&:hover:not(:disabled)': {
-          backgroundColor: palette[themeType].action.hover,
+          backgroundColor: p[themeType].action.hover,
         },
       },
     },
     noData: {
       style: {
-        color: palette[themeType].text.primary,
-        backgroundColor: palette[themeType].background.default,
+        color: p[themeType].text.primary,
+        backgroundColor: p[themeType].background.default,
       },
     },
     progress: {
       style: {
-        color: palette[themeType].text.primary,
-        backgroundColor: palette[themeType].background.default,
+        color: p[themeType].text.primary,
+        backgroundColor: p[themeType].background.default,
       },
     },
-  }, customTheme);
+  }, customStyles);
 };
