@@ -13,12 +13,12 @@
       - [1.6.1.1. column.hide media presets](#1611-columnhide-media-presets)
     - [1.6.2. DataTable Properties](#162-datatable-properties)
       - [1.6.2.1. Basic](#1621-basic)
-      - [1.6.2.2. Progress Indicator](#1622-progress-indicator)
-      - [1.6.2.3. Row Selection](#1623-row-selection)
-      - [1.6.2.4. Row Expander](#1624-row-expander)
-      - [1.6.2.5. Sorting](#1625-sorting)
-      - [1.6.2.6. Pagination](#1626-pagination)
-      - [1.6.2.7. Header](#1627-header)
+      - [1.6.2.2. Row Selection](#1622-row-selection)
+      - [1.6.2.3. Row Expander](#1623-row-expander)
+      - [1.6.2.4. Sorting](#1624-sorting)
+      - [1.6.2.5. Pagination](#1625-pagination)
+      - [1.6.2.6. Header](#1626-header)
+      - [1.6.2.7. Progress Indicator](#1627-progress-indicator)
       - [1.6.2.8. Theming and Customization](#1628-theming-and-customization)
         - [1.6.2.8.1. Dark Mode Theme](#16281-dark-mode-theme)
         - [1.6.2.8.2. Defining Your Own Theme Using createTheme](#16282-defining-your-own-theme-using-createtheme)
@@ -64,22 +64,22 @@ If you want to achieve balance with the force and want a simple but flexible tab
 
 ## 1.2. Key Features
 
-* Declarative Configuration
-* Built in and configurable:
-  * Sorting
-  * Selectable Rows
-  * Expandable Rows
-  * Pagination
-* Themeable via js config
-* Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
-* Responsive (via x-scroll/flex)
+- Declarative Configuration
+- Built in and configurable:
+  - Sorting
+  - Selectable Rows
+  - Expandable Rows
+  - Pagination
+- Themeable via js config
+- Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
+- Responsive (via x-scroll/flex)
 
 ## 1.3. Requirements
 
 React Data Table Component requires the following be installed in your project:
 
-  * React 16.8.0+
-  * styled-components 3.2.3+ || 4.0.0+ || 5.0.0+
+- React 16.8.0+
+- styled-components 3.2.3+ || 4.0.0+ || 5.0.0+
 
 ## 1.4. Installation
 
@@ -111,7 +111,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | selector | string | yes      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
 | format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
-| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` <br /> **negates  `format`** |
+| cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` <br /> **negates  `format`*- |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
@@ -119,7 +119,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | sets cell padding to 0                                                                                        |
-| ignoreRowClick    | bool    | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
+| ignoreRowClick    | bool    | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really*- useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
 | button   | bool   | no       | this is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
 | wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
 | allowOverflow     | bool   | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
@@ -145,8 +145,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
-| data | array<Object> | no | [] | it is **highly recommended** that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
-| keyField | string | no | 'id' | **Your data should have a unique identifier.** By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time or use the expander feature. If a unique `id` is not present, React Data Table will use the row index and by reference checks as fallbacks, however, this is highly discouraged |
+| data | array<Object> | no | [] | it is **highly recommended*- that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
+| keyField | string | no | 'id' | **Your data should have a unique identifier.*- By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time or use the expander feature. If a unique `id` is not present, React Data Table will use the row index and by reference checks as fallbacks, however, this is highly discouraged |
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
 | pointerOnHover | bool | no | false | if rows show a point icon on hover |
@@ -163,31 +163,24 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | noTableHead | bool | no | false | hides the the sort columns and titles (TableHead) - this will obviously negate sorting |
 | persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
 
-#### 1.6.2.2. Progress Indicator
-
-| Property | Type | Required | Default | Description |
-|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
-| progressComponent | component | no |  | Allows you to use your own custom progress component. Note that in some cases (e.g. animated/spinning circular indicators) you will need to add a wrapping div with padding. |
-
-#### 1.6.2.3. Row Selection
+#### 1.6.2.2. Row Selection
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
 | selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
 | clearSelectedRows | bool | no | false | Toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /> **note** It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
+| onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /> **note*- It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`). You can also find UI Library Integration examples [here](#ui-library-integration) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Overriding with Ui Component Library](#overriding-with-ui-component-library) to learn how you can override indeterminate state |
 | selectableRowSelected | func | no |  | Select a row based on a property in your data. e.g. `row => row.isSelected`. `selectableRowSelected` must return a boolean to determine if the row should be programatically selected. |
 | selectableRowDisabled | func | no |  | Disable row select based on a property in your data. e.g. `row => row.isDisabled`. `selectableRowDisabled` must return a boolean to determine if the row should be programatically disabled.  |
 
-#### 1.6.2.4. Row Expander
+#### 1.6.2.3. Row Expander
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended** your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
+| expandableRows | bool | no | false | Whether to make a row expandable, if true it requires an `expandableRowsComponent`. It is **highly recommended*- your data set have a unique identifier defined as the `keyField` for row expansion to work properly.
 | expandableIcon | object | no | default expander icons | you may pass in your own custom icons using the `expandableIcon: { collapsed: <svg>...</svg>, expanded: <svg>...</svg>` |
 | expandableRowExpanded | func | no |  | Expand a row based on a property in your data. e.g. `row => row.expandMe`. `expandableRowExpanded` must return a boolean to determine if the row should be programatically expanded. |
 | expandableRowDisabled | func | no |  | Disable a row expand based on a property in your data. e.g. `row => row.expandDisabled`. `expandableRowDisabled` must return a boolean to determine if the row should be programatically disabled. |
@@ -196,7 +189,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | expandOnRowDoubleClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true |
 | onRowExpandToggled | func | false |  | When a row is Expanded or Collapsed `onRowExpandToggled` will fire and return (toggleState, row) |
 
-#### 1.6.2.5. Sorting
+#### 1.6.2.4. Sorting
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -207,7 +200,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}. you must return an array |
 | sortServer   | bool | no | false | disables internal sorting for use with server-side sorting or when you want to manually control the sort behavior. place your sorting logic and/or api calls in an `onSort` handler. note that `sortFunction` is a better choice if you simply want to override the internal sorting behavior |
 
-#### 1.6.2.6. Pagination
+#### 1.6.2.5. Pagination
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -227,7 +220,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination |
 | paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination |
 
-#### 1.6.2.7. Header
+#### 1.6.2.6. Header
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -241,6 +234,13 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | subHeaderAlign | string | no | right | align the sub header content (left, right, center)
 | subHeaderWrap | bool | no | true | whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | a component you want to render |
+
+#### 1.6.2.7. Progress Indicator
+
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
+| progressComponent | component | no |  | Allows you to use your own custom progress component. Note that in some cases (e.g. animated/spinning circular indicators) you will need to add a wrapping div with padding. |
 
 #### 1.6.2.8. Theming and Customization
 
@@ -376,6 +376,7 @@ const MyTable = () => (
 | style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects) |
 
 ## 1.7. Basic Table
+
 The following declarative structure creates a sortable table of Arnold movie titles:
 
 ```js
@@ -532,7 +533,7 @@ const MyComponent = () => (
 );
 ```
 
-**Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
+**Note*- This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
 
 ## 1.10. Custom Cells
 
@@ -673,8 +674,8 @@ class MyComponent extends Component {
 
 React Data Table Component makes it easy to incorporate ui components from other libraries for overriding things like the sort icon, select checkbox.
 
-* [MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
-* [Bootstrap 4](https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
+- [MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
+- [Bootstrap 4](https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
 
 ## 1.13. Optimizing for Performance and Caveats
 
@@ -850,17 +851,17 @@ const MyComponentHook = () => {
 
 If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. pre-processor you may use the following classNames:
 
-* rdt_Table
-* rdt_TableRow
-* rdt_TableCol
-* rdt_TableCol_Sortable
-* rdt_TableCell
-* rdt_TableHeader
-* rdt_TableFooter
-* rdt_TableHead
-* rdt_TableHeadRow
-* rdt_TableBody
-* rdt_ExpanderRow
+- rdt_Table
+- rdt_TableRow
+- rdt_TableCol
+- rdt_TableCol_Sortable
+- rdt_TableCell
+- rdt_TableHeader
+- rdt_TableFooter
+- rdt_TableHead
+- rdt_TableHeadRow
+- rdt_TableBody
+- rdt_ExpanderRow
 
 # 2. Development
 
