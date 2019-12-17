@@ -48,5 +48,5 @@ const BasicTableDefaultRowExpanded = () => {
 };
 
 
-storiesOf('Expandable', module)
+storiesOf('Expandable Rows', module)
   .add('Default Expanded Row', BasicTableDefaultRowExpanded);

@@ -40,5 +40,5 @@ const ExpandableTable = () => (
   />
 );
 
-storiesOf('Expandable', module)
+storiesOf('Expandable Rows', module)
   .add('Expandable on Row Click', ExpandableTable);

@@ -51,5 +51,5 @@ const BasicTableExpanderDisabled = () => {
   );
 };
 
-storiesOf('Expandable', module)
+storiesOf('Expandable Rows', module)
   .add('Disable Expanded Row', BasicTableExpanderDisabled);

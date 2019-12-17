@@ -54,5 +54,5 @@ const CreatePaletteTheme = () => (
   />
 );
 
-storiesOf('Theming & Customization', module)
+storiesOf('Theming', module)
   .add('Create Theme', CreatePaletteTheme);

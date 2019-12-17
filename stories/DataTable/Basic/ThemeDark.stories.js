@@ -62,5 +62,5 @@ const DarkTable = () => {
 };
 
 
-storiesOf('Theming & Customization', module)
+storiesOf('Theming', module)
   .add('Built in Themes', DarkTable);
