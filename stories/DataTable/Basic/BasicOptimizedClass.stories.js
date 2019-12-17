@@ -1,8 +1,9 @@
 
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
+import memoize from 'memoize-one';
 import tableDataItems from '../constants/sampleDesserts';
-import DataTable, { memoize } from '../../../src/index';
+import DataTable from '../../../src/index';
 
 const columns = memoize(clickHandler => [
   {
