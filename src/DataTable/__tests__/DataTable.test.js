@@ -2029,7 +2029,7 @@ describe('DataTable::dense', () => {
 describe('DataTable::Theming', () => {
   test('should render correctly when rows spaced', () => {
     const mock = dataMock();
-    const theme = {
+    const customStyles = {
       rows: {
         spacing: 'spaced',
       },
@@ -2039,7 +2039,7 @@ describe('DataTable::Theming', () => {
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        customStyles={theme}
+        customStyles={customStyles}
       />,
     );
 
@@ -2048,7 +2048,7 @@ describe('DataTable::Theming', () => {
 
   test('should render correctly when rows spaced with spacingShadow', () => {
     const mock = dataMock();
-    const theme = {
+    const customStyles = {
       rows: {
         spacing: 'spaced',
         spacingShadow: '0',
@@ -2059,7 +2059,7 @@ describe('DataTable::Theming', () => {
         data={mock.data}
         columns={mock.columns}
         defaultSortField="some.name"
-        customStyles={theme}
+        customStyles={customStyles}
       />,
     );
 

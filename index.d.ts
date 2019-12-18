@@ -77,7 +77,7 @@ export interface IDataTableProps<T> {
   subHeaderWrap?: boolean;
   subHeaderComponent?: React.ReactNode | React.ReactNode[];
   customStyles?: IDataTableStyles;
-  theme?: string | 'default' | 'dark';
+  theme?: string;
 }
 
 export interface IDataTableColumn<T> {
