@@ -66,5 +66,5 @@ const Expandable = () => (
   />
 );
 
-storiesOf('Expandable', module)
+storiesOf('Expandable Rows', module)
   .add('Custom Expanded Component', Expandable);

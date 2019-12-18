@@ -42,22 +42,28 @@ describe('sort', () => {
 });
 
 describe('getProperty', () => {
-  test('getProperty return a value when a selector is passed', () => {
+  test('getProperty return a value when a string selector is passed', () => {
     const property = getProperty(row, 'name');
 
     expect(property).toEqual('iamaname');
   });
 
-  test('getProperty return a value when there is a nested selector', () => {
+  test('getProperty return a value when there is a nested string selector', () => {
     const property = getProperty(row, 'properties.nested');
 
     expect(property).toEqual('iamnesting');
   });
 
-  test('getProperty return a value when a selector is an array', () => {
+  test('getProperty return a value when a string selector is an array', () => {
     const property = getProperty(row, 'properties.items[0].name');
 
     expect(property).toEqual('iamarrayname');
+  });
+
+  test('getProperty sreturn a value when a string selector is an function', () => {
+    const property = getProperty(row, r => r.name);
+
+    expect(property).toEqual('iamaname');
   });
 
   test('getProperty should handle when a format function is passed', () => {
@@ -66,7 +72,7 @@ describe('getProperty', () => {
     expect(property).toEqual('IAMANAME');
   });
 
-  test('getProperty should thrown an error if the selector is not a string', () => {
+  test('getProperty should throw an error if the selector is not a string or function', () => {
     expect(() => getProperty(row, { data: 'incorrect' })).toThrow();
   });
 });

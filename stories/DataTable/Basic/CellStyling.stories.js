@@ -76,7 +76,7 @@ const columns = [
   },
 ];
 
-const ConditionalCellStyle = () => (
+const CellStatic = () => (
   <DataTable
     title="Desserts - Cell Styling"
     columns={columns}
@@ -84,5 +84,5 @@ const ConditionalCellStyle = () => (
   />
 );
 
-storiesOf('Styling', module)
-  .add('Static Cell Style', ConditionalCellStyle);
+storiesOf('Custom Styling', module)
+  .add('Column Styling', CellStatic);

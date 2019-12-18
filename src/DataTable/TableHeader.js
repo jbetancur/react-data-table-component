@@ -11,17 +11,15 @@ const TableHeaderStyle = styled.header`
   flex: 1 1 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 16px 4px 24px;
-  min-height: ${props => props.theme.title.height};
   width: 100%;
-  background-color: ${props => props.theme.title.backgroundColor};
   flex-wrap: wrap;
+  ${props => props.theme.header.style}
 `;
 
 const Title = styled.div`
   flex: 1 0 auto;
-  color: ${props => props.theme.title.fontColor};
-  font-size: ${props => props.theme.title.fontSize};
+  color: ${props => props.theme.header.fontColor};
+  font-size: ${props => props.theme.header.fontSize};
   font-weight: 400;
 `;
 

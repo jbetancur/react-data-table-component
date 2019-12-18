@@ -15,17 +15,12 @@ const ContextMenuStyle = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: inherit;
-  background-color: ${props => props.theme.contextMenu.backgroundColor};
   z-index: 1;
-  transform: ${props => (props.visible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -100%, 0)')};
-  transition-duration: ${props => props.theme.contextMenu.transitionTime};
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  transition-delay: 0;
-  will-change: transform;
   align-items: center;
   justify-content: space-between;
   display: flex;
-  padding: 16px 16px 16px 24px;
+  ${props => props.theme.contextMenu.style};
+  ${props => props.visible && props.theme.contextMenu.activeStyle};
 `;
 
 const generateDefaultContextTitle = (contextTitle, selectedCount) => {

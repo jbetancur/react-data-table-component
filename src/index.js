@@ -1,6 +1,6 @@
-import memoize from 'memoize-one';
 import DataTable from './DataTable/DataTable';
+import { createTheme, defaultThemes } from './DataTable/themes';
 
-export { memoize };
+export { defaultThemes, createTheme };
 
 export default DataTable;

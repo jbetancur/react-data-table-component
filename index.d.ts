@@ -1,5 +1,5 @@
-import * as React from "react";
-import { CSSProperties } from "styled-components";
+import * as React from 'react';
+import { CSSProperties } from 'styled-components';
 
 export interface IDataTableProps<T> {
   title?: React.ReactNode;
@@ -13,7 +13,6 @@ export interface IDataTableProps<T> {
   className?: string;
   style?: CSSProperties;
   responsive?: boolean;
-  customTheme?: IDataTableTheme;
   disabled?: boolean;
   onRowClicked?: (row: T) => void;
   onRowDoubleClicked?: (row: T) => void;
@@ -26,12 +25,12 @@ export interface IDataTableProps<T> {
   sortIcon?: React.ReactNode;
   onSort?: (
     column: IDataTableColumn<T>,
-    sortDirection: "asc" | "desc"
+    sortDirection: 'asc' | 'desc'
   ) => void;
   sortFunction?: (
     rows: T[],
     field: string,
-    sortDirection: "asc" | "desc"
+    sortDirection: 'asc' | 'desc'
   ) => T[];
   sortServer?: boolean;
   pagination?: boolean;
@@ -77,6 +76,8 @@ export interface IDataTableProps<T> {
   subHeaderAlign?: string;
   subHeaderWrap?: boolean;
   subHeaderComponent?: React.ReactNode | React.ReactNode[];
+  customStyles?: IDataTableStyles;
+  theme?: string;
 }
 
 export interface IDataTableColumn<T> {
@@ -96,70 +97,57 @@ export interface IDataTableColumn<T> {
   button?: boolean;
   wrap?: boolean;
   allowOverflow?: boolean;
-  hide?: number | "sm" | "md" | "lg";
+  hide?: number | 'sm' | 'md' | 'lg';
   style?: CSSProperties;
   conditionalCellStyles?: IDataTableConditionalCellStyles<T>;
 }
 
-export interface IDataTableTheme {
-  title?: {
-    fontSize?: string;
-    fontColor?: string;
-    backgroundColor?: string;
-    height?: string;
-  };
+export interface IDataTableStyles {
   header?: {
-    fontSize?: string;
-    fontWeight?: string;
-    fontColor?: string;
-    fontColorActive?: string;
-    backgroundColor?: string;
-    borderWidth?: string;
-    borderColor?: string;
-    borderStyle?: string;
-    height?: string;
-    denseHeight?: string;
+    style: CSSProperties;
   };
-  contextMenu?: {
-    backgroundColor?: string;
-    fontSize?: string;
-    fontColor?: string;
-    transitionTime?: string;
+  subHeader?: {
+    style: CSSProperties;
   };
-  rows?: {
-    spacing?: "default" | "spaced";
-    fontSize?: string;
-    fontColor?: string;
-    backgroundColor?: string;
-    borderStyle?: string;
-    borderWidth?: string;
-    borderColor?: string;
-    stripedColor?: string;
-    hoverFontColor?: string;
-    hoverBackgroundColor?: string;
-    height?: string;
-    denseHeight?: string;
+  head?: {
+    style: CSSProperties;
+  };
+  headRow?: {
+    style: CSSProperties;
+    denseStyle: CSSProperties;
+  };
+  headCells: {
+    style: CSSProperties;
+    activeStyle: CSSProperties;
+  };
+  contextMenu: {
+    style: CSSProperties;
+    activeStyle: CSSProperties;
   };
   cells?: {
-    cellPadding?: string;
+    style: CSSProperties;
   };
-  expander?: {
-    fontColor?: string;
-    expanderColor?: string;
-    expanderColorDisabled?: string;
-    backgroundColor?: string;
+  rows: {
+    style: CSSProperties;
+    denseStyle: CSSProperties;
+    highlightOnHoverStyle: CSSProperties;
+    stripedStyle: CSSProperties;
+  };
+  expanderRow?: {
+    style: CSSProperties;
+  };
+  expanderButton?: {
+    style: CSSProperties;
   };
   pagination?: {
-    fontSize?: string;
-    fontColor?: string;
-    backgroundColor?: string;
-    buttonFontColor?: string;
-    buttonHoverBackground?: string;
+    style: CSSProperties;
+    pageButtonsStyle: CSSProperties;
   };
-  footer?: {
-    separatorStyle?: string;
-    separatorWidth?: string;
-    separatorColor?: string;
+  noData: {
+    style: CSSProperties;
+  };
+  progress: {
+    style: CSSProperties;
   };
 }
 

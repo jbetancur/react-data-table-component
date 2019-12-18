@@ -10,8 +10,12 @@ export const sort = (rows, field = '', direction, sortFn) => {
 };
 
 export const getProperty = (row, selector, format) => {
-  if (typeof selector !== 'string') {
-    throw new Error('selector must be a . delimited string eg (my.property)');
+  if (typeof selector !== 'string' && typeof selector !== 'function') {
+    throw new Error('selector must be a . delimited string eg (my.property) or function (e.g. row => row.field');
+  }
+
+  if (selector && typeof selector === 'function') {
+    return selector(row);
   }
 
   if (format && typeof format === 'function') {

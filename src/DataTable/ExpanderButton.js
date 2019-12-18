@@ -6,18 +6,14 @@ import { useTableContext } from './DataTableContext';
 const ButtonStyle = styled.button`
   display: inline-flex;
   align-items: center;
+  user-select: none;
+  white-space: nowrap;
   outline: none;
   border: none;
   background-color: transparent;
-  color: ${props => props.theme.expander.expanderColor};
-
-  &:disabled {
-    color: ${props => props.theme.expander.expanderColorDisabled};
-  }
-
-  &:hover:enabled {
-    cursor: pointer;
-  }
+  height: 100%;
+  width: 100%;
+  ${props => props.theme.expanderButton.style};
 `;
 
 const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {

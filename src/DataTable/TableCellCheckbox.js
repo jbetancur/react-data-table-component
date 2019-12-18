@@ -8,8 +8,10 @@ import { isRowSelected } from './util';
 
 const TableCellCheckboxStyle = styled(CellBase)`
   flex: 0 0 48px;
-  font-size: ${props => props.theme.rows.fontSize};
-  color: ${props => props.theme.rows.fontColor};
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  white-space: nowrap;
 `;
 
 const TableCellCheckbox = ({ name, row }) => {
@@ -23,6 +25,7 @@ const TableCellCheckbox = ({ name, row }) => {
     <TableCellCheckboxStyle
       onClick={e => e.stopPropagation()}
       className="rdt_TableCell"
+      noPadding
     >
       <Checkbox
         name={name}

@@ -49,7 +49,7 @@ const columns = [
 ];
 
 const CustomLoader = () => (
-  <div>
+  <div style={{ padding: '24px' }}>
     <Spinner />
     <div>Fancy Loader...</div>
   </div>

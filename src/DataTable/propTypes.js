@@ -55,7 +55,6 @@ export const propTypes = {
       PropTypes.func,
     ]),
   }),
-  customTheme: PropTypes.object,
   sortIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   sortFunction: PropTypes.func,
   sortServer: PropTypes.bool,
@@ -143,6 +142,8 @@ export const propTypes = {
       style: PropTypes.object.isRequired,
     }),
   ),
+  theme: PropTypes.string,
+  customStyles: PropTypes.object,
 };
 
 export const defaultProps = {
@@ -170,7 +171,6 @@ export const defaultProps = {
     collapsed: <ExpanderCollapsedIcon />,
     expanded: <ExpanderExpandedIcon />,
   },
-  customTheme: {},
   sortIcon: false,
   sortFunction: null,
   sortServer: false,
@@ -218,4 +218,6 @@ export const defaultProps = {
   paginationIconPrevious: <LeftIcon />,
   dense: false,
   conditionalRowStyles: [],
+  theme: 'default',
+  customStyles: {},
 };

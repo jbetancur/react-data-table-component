@@ -1,11 +1,9 @@
 import React, { memo, useReducer, useMemo, useCallback, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import merge from 'lodash/merge';
 import { DataTableProvider } from './DataTableContext';
 import { tableReducer } from './tableReducer';
 import Table from './Table';
 import TableHead from './TableHead';
-import TableFooter from './TableFooter';
 import TableHeadRow from './TableHeadRow';
 import TableRow from './TableRow';
 import TableCol from './TableCol';
@@ -22,7 +20,7 @@ import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
 import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage } from './util';
-import getDefaultTheme from '../themes/default';
+import { createStyles } from './styles';
 
 const DataTable = memo(({
   data,
@@ -57,7 +55,6 @@ const DataTable = memo(({
   paginationIconPrevious,
   paginationComponent,
   paginationComponentOptions,
-  customTheme,
   className,
   style,
   responsive,
@@ -95,6 +92,8 @@ const DataTable = memo(({
   defaultSortAsc,
   clearSelectedRows,
   conditionalRowStyles,
+  theme,
+  customStyles,
 }) => {
   const initialState = {
     allSelected: false,
@@ -121,7 +120,7 @@ const DataTable = memo(({
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
-  const theme = useMemo(() => merge(getDefaultTheme(), customTheme), [customTheme]);
+  const currentTheme = useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
@@ -251,7 +250,7 @@ const DataTable = memo(({
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={currentTheme}>
       <DataTableProvider initialState={init}>
         <ResponsiveWrapper
           responsive={responsive}
@@ -297,7 +296,7 @@ const DataTable = memo(({
                         : <TableColCheckbox />
                     )}
                     {expandableRows && (
-                      <CellBase style={{ flex: '0 0 56px' }} />
+                      <CellBase head style={{ flex: '0 0 48px' }} />
                     )}
                     {columnsMemo.map(column => (
                       <TableCol
@@ -368,16 +367,13 @@ const DataTable = memo(({
             </Table>
 
             {enabledPagination && (
-              <TableFooter className="rdt_TableFooter">
-                <Pagination
-                  onChangePage={handleChangePage}
-                  onChangeRowsPerPage={handleChangeRowsPerPage}
-                  rowCount={paginationTotalRows || data.length}
-                  currentPage={currentPage}
-                  rowsPerPage={rowsPerPage}
-                  theme={theme}
-                />
-              </TableFooter>
+              <Pagination
+                onChangePage={handleChangePage}
+                onChangeRowsPerPage={handleChangeRowsPerPage}
+                rowCount={paginationTotalRows || data.length}
+                currentPage={currentPage}
+                rowsPerPage={rowsPerPage}
+              />
             )}
           </TableWrapper>
         </ResponsiveWrapper>
