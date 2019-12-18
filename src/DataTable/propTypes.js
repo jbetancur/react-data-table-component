@@ -20,6 +20,7 @@ export const propTypes = {
     PropTypes.string,
     PropTypes.node,
     PropTypes.func,
+    PropTypes.object,
   ]),
   selectableRowsComponentProps: PropTypes.object,
   onRowsSelectedUpdate: PropTypes.func,

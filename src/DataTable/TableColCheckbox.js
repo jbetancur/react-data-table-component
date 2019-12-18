@@ -13,7 +13,7 @@ const TableColStyle = styled(CellBase)`
   white-space: nowrap;
 `;
 
-const TableCol = ({ head }) => {
+const TableColCheckbox = ({ head }) => {
   const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowDisabled } = useTableContext();
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = selectableRowDisabled ? data.filter(row => !selectableRowDisabled(row)) : data;
@@ -35,11 +35,11 @@ const TableCol = ({ head }) => {
   );
 };
 
-TableCol.propTypes = {
+TableColCheckbox.propTypes = {
   head: PropTypes.bool,
 };
 
-TableCol.defaultProps = {
+TableColCheckbox.defaultProps = {
   head: true,
 };
-export default TableCol;
+export default TableColCheckbox;
