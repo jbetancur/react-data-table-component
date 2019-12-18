@@ -1,5 +1,5 @@
 import DataTable from './DataTable/DataTable';
-import { defaultThemes, createTheme } from './theme/default';
+import { createTheme, defaultThemes } from './DataTable/themes';
 
 export { defaultThemes, createTheme };
 

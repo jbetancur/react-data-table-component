@@ -247,7 +247,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | theme       | string | no       | default   | Possible values are `default` or `dark` |
-| customStyles | object | no       |         | Override the [default styling](https://github.com/jbetancur/react-data-table-component/blob/master/src/theme/default.js), by overriding specific props. |
+| customStyles | object | no       |         | [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects |
 
 ##### 1.6.2.8.1. Dark Mode Theme
 
@@ -256,6 +256,8 @@ You can easily toggle to dark mode by setting `theme="dark"`
 ##### 1.6.2.8.2. Defining Your Own Theme Using `createTheme`
 
 You can also create your own theme using the `createTheme` helper. Note that `createTheme` inherits from the default theme. No that this theme will now be available to all DataTables across your project so you may want to define your themes in a seperate file.
+
+Refer to [themes.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes.js) for properties you can use to create your own color theme.
 
 ```js
 import DataTable, { createTheme } from 'react-data-table-component';
@@ -329,7 +331,7 @@ const MyComponent = () => (
 );
 ```
 
-[Click here](https://github.com/jbetancur/react-data-table-component/blob/master/src/theme/default.js) for a detailed catalog of RDT styles
+View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
 
 #### 1.6.2.9. Conditional Row Styling
 
