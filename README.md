@@ -108,9 +108,9 @@ Nothing new here - we are using an array of object literals and properties to de
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | string | yes      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` |
+| selector | string or function | yes      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp` |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
-| format   | func   | no       | format the selector e.g. `row => moment(row.timestamp).format('lll')`                                         |
+| format   | func   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value                                        |
 | cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` <br /> **negates  `format`*- |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
