@@ -255,7 +255,7 @@ You can easily toggle to dark mode by setting `theme="dark"`
 
 ##### 1.6.2.8.2. Defining Your Own Theme Using `createTheme`
 
-You can also create your own theme using the `createTheme` helper. Note that `createTheme` inherits from the default theme. No that this theme will now be available to all DataTables across your project so you may want to define your themes in a seperate file.
+You can create your very own theme using the `createTheme` helper. Note that `createTheme` inherits from the default theme. Note that this theme will now be available to all DataTables across your project so you may want to define your custom themes in a seperate file.
 
 Refer to [themes.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes.js) for properties you can use to create your own color theme.
 
