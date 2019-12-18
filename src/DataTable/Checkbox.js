@@ -55,6 +55,7 @@ Checkbox.propTypes = {
     PropTypes.string,
     PropTypes.node,
     PropTypes.func,
+    PropTypes.object,
   ]),
   componentOptions: PropTypes.object,
   checked: PropTypes.bool,
