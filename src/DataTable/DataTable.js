@@ -15,7 +15,7 @@ import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
 import { CellBase } from './Cell';
-import NoData from './NoData';
+import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
@@ -310,7 +310,9 @@ const DataTable = memo(({
               )}
 
               {!data.length > 0 && !progressPending && (
-                <NoData component={noDataComponent} />
+                <NoData>
+                  {noDataComponent}
+                </NoData>
               )}
 
               {progressPending && persistTableHead && (
