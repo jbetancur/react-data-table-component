@@ -4,10 +4,6 @@ import styled from 'styled-components';
 
 const ProgressWrapperStyle = styled.div`
   position: relative;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
   box-sizing: border-box;
   width: 100%;
   height: 100%;

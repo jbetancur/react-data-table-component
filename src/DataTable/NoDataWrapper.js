@@ -2,25 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const NoDataWrapperMessage = styled.div`
+const NoDataWrapperStyle = styled.div`
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 16px;
   ${props => props.theme.noData.style};
 `;
 
-const NoDataWrapper = ({ component }) => (
-  <NoDataWrapperMessage>
-    {component}
-  </NoDataWrapperMessage>
+const NoDataWrapper = ({ children }) => (
+  <NoDataWrapperStyle>
+    {children}
+  </NoDataWrapperStyle>
 );
 
 NoDataWrapper.propTypes = {
-  component: PropTypes.oneOfType([
+  children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
   ]).isRequired,

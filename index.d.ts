@@ -103,6 +103,9 @@ export interface IDataTableColumn<T> {
 }
 
 export interface IDataTableStyles {
+  table?: {
+    style: CSSProperties;
+  };
   header?: {
     style: CSSProperties;
   };

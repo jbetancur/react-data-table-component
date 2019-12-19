@@ -167,7 +167,7 @@ export const defaultProps = {
   progressPending: false,
   progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
   persistTableHead: false,
-  expandableRowsComponent: <div>Add a custom expander component. Use props.data for row data</div>,
+  expandableRowsComponent: <div style={{ padding: '24px' }}>Add a custom expander component. Use props.data for row data</div>,
   expandableIcon: {
     collapsed: <ExpanderCollapsedIcon />,
     expanded: <ExpanderExpandedIcon />,
@@ -190,7 +190,7 @@ export const defaultProps = {
   responsive: true,
   overflowY: false,
   overflowYOffset: '250px',
-  noDataComponent: 'There are no records to display',
+  noDataComponent: <div style={{ padding: '24px' }}>There are no records to display</div>,
   disabled: false,
   noTableHead: false,
   noHeader: false,

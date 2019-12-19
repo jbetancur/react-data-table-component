@@ -14,6 +14,7 @@ const TableStyle = styled.div`
   height: 100%;
   max-width: 100%;
   ${props => props.disabled && disabled};
+  ${props => props.theme.table.style};
 `;
 
 export default TableStyle;

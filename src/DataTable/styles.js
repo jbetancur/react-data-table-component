@@ -2,6 +2,12 @@ import merge from 'lodash/merge';
 import { defaultThemes } from './themes';
 
 export const defaultStyles = theme => ({
+  table: {
+    style: {
+      color: theme.text.primary,
+      backgroundColor: theme.background.default,
+    },
+  },
   header: {
     style: {
       fontSize: '22px',
@@ -148,12 +154,18 @@ export const defaultStyles = theme => ({
   },
   noData: {
     style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       color: theme.text.primary,
       backgroundColor: theme.background.default,
     },
   },
   progress: {
     style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       color: theme.text.primary,
       backgroundColor: theme.background.default,
     },
