@@ -116,7 +116,6 @@ exports[`DataTable::Header actions should render correctly 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -549,7 +548,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -624,7 +622,6 @@ exports[`DataTable::Header context menu should render correctly when selectableR
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -1016,7 +1013,6 @@ exports[`DataTable::Header contextTitle should render correctly 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -1408,7 +1404,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -1682,7 +1677,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -2074,7 +2068,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -2730,7 +2723,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -3382,7 +3374,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -4034,7 +4025,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -4686,7 +4676,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -5351,7 +5340,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -6014,7 +6002,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -6668,7 +6655,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -7353,7 +7339,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -8038,7 +8023,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -8603,7 +8587,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -9255,7 +9238,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -9645,7 +9627,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -10036,7 +10017,6 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -10430,7 +10410,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -10824,7 +10803,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -11226,7 +11204,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -11628,7 +11605,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -12030,7 +12006,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -12432,7 +12407,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -12822,7 +12796,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -13216,7 +13189,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -13612,7 +13584,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -14004,7 +13975,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -14399,7 +14369,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -14789,7 +14758,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -15176,7 +15144,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -15580,7 +15547,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -15986,7 +15952,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -16376,7 +16341,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -16760,7 +16724,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -17186,7 +17149,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -17576,7 +17538,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -17966,7 +17927,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -18388,7 +18348,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -18778,7 +18737,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -19170,7 +19128,6 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -19499,7 +19456,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -19648,7 +19604,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20041,7 +19996,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20190,7 +20144,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20583,7 +20536,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -20751,7 +20703,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -21196,7 +21147,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -21525,7 +21475,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -21670,7 +21619,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22063,7 +22011,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22201,7 +22148,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22584,7 +22530,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -22729,7 +22674,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -23183,7 +23127,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -23576,7 +23519,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -23969,7 +23911,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -24364,7 +24305,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -24775,7 +24715,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -25169,7 +25108,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -26634,7 +26572,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -26947,7 +26884,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -27261,7 +27197,6 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -27635,7 +27570,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -28027,7 +27961,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -28417,7 +28350,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -28855,7 +28787,6 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -29302,7 +29233,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -29377,7 +29307,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -29772,7 +29701,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -30189,7 +30117,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -30590,7 +30517,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -30993,7 +30919,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -31407,7 +31332,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -31808,7 +31732,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -32215,7 +32138,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -32639,7 +32561,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -33057,7 +32978,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -33474,7 +33394,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -33880,7 +33799,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -34270,7 +34188,6 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -34692,7 +34609,6 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -35114,7 +35030,6 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -35536,7 +35451,6 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -35958,7 +35872,6 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -36380,7 +36293,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);
@@ -37215,7 +37127,6 @@ exports[`should render correctly when disabled 1`] = `
   align-items: center;
   box-sizing: border-box;
   line-height: normal;
-  background-color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.87);

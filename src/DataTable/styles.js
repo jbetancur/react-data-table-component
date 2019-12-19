@@ -40,7 +40,6 @@ export const defaultStyles = theme => ({
   },
   headCells: {
     style: {
-      backgroundColor: theme.background.default,
       fontSize: '12px',
       fontWeight: 500,
       color: theme.text.primary,
