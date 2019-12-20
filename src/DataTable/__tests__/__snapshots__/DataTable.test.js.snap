@@ -24689,7 +24689,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 
 .c13:hover {
   color: rgba(0,0,0,0.87);
-  background-color: rgba(0,0,0,.08);
+  background-color: #EEEEEE;
   -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
   -webkit-transition-property: background-color;
@@ -33784,7 +33784,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 
 .c13:nth-child(odd) {
   color: rgba(0,0,0,0.87);
-  background-color: rgba(0,0,0,.87);
+  background-color: #FAFAFA;
 }
 
 .c10 {

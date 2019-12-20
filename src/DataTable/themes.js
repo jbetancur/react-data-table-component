@@ -24,11 +24,11 @@ export const defaultThemes = {
       disabled: 'rgba(0,0,0,.12)',
     },
     highlightOnHover: {
-      default: 'rgba(0,0,0,.08)',
+      default: '#EEEEEE',
       text: 'rgba(0, 0, 0, 0.87)',
     },
     striped: {
-      default: 'rgba(0, 0, 0, .87)',
+      default: '#FAFAFA',
       text: 'rgba(0, 0, 0, 0.87)',
     },
   },
