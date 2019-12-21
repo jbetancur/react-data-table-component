@@ -14,30 +14,75 @@ import {
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
 
 describe('sort', () => {
-  test('built in sort', () => {
-    const rows = sort([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc');
+  test('built in sort when already sorted asc', () => {
+    const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'asc');
+
+    expect(rows[0].name).toEqual('anakin');
+    expect(rows[rows.length - 1].name).toEqual('vadar');
+  });
+
+  test('built in sort when already sorted desc', () => {
+    const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', 'desc');
 
     expect(rows[0].name).toEqual('vadar');
+    expect(rows[rows.length - 1].name).toEqual('anakin');
+  });
+
+  test('built in sort when desc', () => {
+    const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'desc');
+
+    expect(rows[0].name).toEqual('vadar');
+    expect(rows[rows.length - 1].name).toEqual('anakin');
+  });
+
+  test('built in sort when asc', () => {
+    const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', 'asc');
+
+    expect(rows[0].name).toEqual('anakin');
+    expect(rows[rows.length - 1].name).toEqual('vadar');
+  });
+
+  test('built in sort when a value is not a string and asc', () => {
+    const rows = sort([{ count: 20 }, { count: 10 }, { count: 1 }], 'count', 'asc');
+
+    expect(rows[0].count).toEqual(1);
+    expect(rows[rows.length - 1].count).toEqual(20);
+  });
+
+  test('built in sort when a value is not a string and desc', () => {
+    const rows = sort([{ count: 1 }, { count: 10 }, { count: 20 }], 'count', 'desc');
+
+    expect(rows[0].count).toEqual(20);
+    expect(rows[rows.length - 1].count).toEqual(1);
+  });
+
+  test('built in sort nested keys', () => {
+    const rows = sort([{ item: { name: 'anakin' } }, { item: { name: 'leia' } }, { item: { name: 'vadar' } }], 'item.name', 'desc');
+
+    expect(rows[0].item.name).toEqual('vadar');
+    expect(rows[rows.length - 1].item.name).toEqual('anakin');
   });
 
   test('should handle a null field and not sort', () => {
-    const rows = sort([{ name: 'luke' }, { name: 'vadar' }], null, 'desc');
+    const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], null, 'desc');
 
-    expect(rows[0].name).toEqual('luke');
+    expect(rows[0].name).toEqual('anakin');
+    expect(rows[rows.length - 1].name).toEqual('vadar');
   });
 
   test('custom sort should be called', () => {
     const mockSort = jest.fn();
 
-    sort([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc', mockSort);
+    sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'desc', mockSort);
 
-    expect(mockSort).toBeCalledWith([{ name: 'luke' }, { name: 'vadar' }], 'name', 'desc');
+    expect(mockSort).toBeCalledWith([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'desc');
   });
 
   test('should handle when field is empty', () => {
-    const rows = sort([{ name: 'luke' }, { name: 'vadar' }], undefined, 'asc');
+    const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], undefined, 'asc');
 
-    expect(rows[0].name).toEqual('luke');
+    expect(rows[0].name).toEqual('anakin');
+    expect(rows[rows.length - 1].name).toEqual('vadar');
   });
 });
 

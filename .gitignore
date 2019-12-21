@@ -69,3 +69,6 @@ package-lock.json
 .DS_Store
 .vscode
 .idea
+
+# visualizer
+stats.html

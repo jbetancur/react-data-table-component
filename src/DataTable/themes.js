@@ -1,5 +1,4 @@
-import merge from 'lodash/merge';
-import cloneDeep from 'lodash/cloneDeep';
+import merge from 'deepmerge';
 
 export const defaultThemes = {
   default: {
@@ -65,7 +64,7 @@ export const defaultThemes = {
 };
 
 export const createTheme = (name, customTheme = {}) => {
-  defaultThemes[name] = merge(cloneDeep(defaultThemes.default), customTheme);
+  defaultThemes[name] = merge(defaultThemes.default, customTheme);
 
   return defaultThemes[name];
 };

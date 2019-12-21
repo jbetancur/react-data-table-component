@@ -1,5 +1,5 @@
 import shortid from 'shortid';
-import orderBy from 'lodash/orderBy';
+import orderBy from 'lodash.orderby';
 
 export const sort = (rows, field = '', direction, sortFn) => {
   if (sortFn && typeof sortFn === 'function') {

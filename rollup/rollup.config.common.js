@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
+import visualizer from 'rollup-plugin-visualizer';
 
 export const plugins = [
   resolve({
@@ -20,6 +21,7 @@ export const plugins = [
       { src: 'index.d.ts', dest: 'dist' },
     ],
   }),
+  visualizer(),
 ];
 
 export default {
