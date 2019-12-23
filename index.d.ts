@@ -31,7 +31,7 @@ export interface IDataTableProps<T> {
     rows: T[],
     field: string,
     sortDirection: 'asc' | 'desc'
-) => T[];
+  ) => T[];
   sortServer?: boolean;
   pagination?: boolean;
   paginationServer?: boolean;
