@@ -78,6 +78,7 @@ export interface IDataTableProps<T> {
   subHeaderComponent?: React.ReactNode | React.ReactNode[];
   customStyles?: IDataTableStyles;
   theme?: string;
+  conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
 }
 
 export interface IDataTableColumn<T> {
@@ -99,7 +100,7 @@ export interface IDataTableColumn<T> {
   allowOverflow?: boolean;
   hide?: number | 'sm' | 'md' | 'lg';
   style?: CSSProperties;
-  conditionalCellStyles?: IDataTableConditionalCellStyles<T>;
+  conditionalCellStyles?: IDataTableConditionalCellStyles<T>[];
 }
 
 export interface IDataTableStyles {
@@ -155,6 +156,11 @@ export interface IDataTableStyles {
 }
 
 export interface IDataTableConditionalCellStyles<T> {
+  when: (row: T) => boolean;
+  style: CSSProperties;
+}
+
+export interface IDataTableConditionalRowStyles<T> {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
