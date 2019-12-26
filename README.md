@@ -194,7 +194,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | defaultSortField | string | no |  | setting this ensures the table data is presorted before it renders and the field(selector) is focused |
-| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order |
+| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order. Note that this will apply work when the table is initially loaded |
 | sortIcon | component | no |  | override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table |
 | onSort | func | no |  | callback to access the sort state when a column is clicked. returns ([column](https://github.com/jbetancur/react-data-table-component#columns), sortDirection, event) |
 | sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}. you must return an array |
@@ -247,7 +247,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | theme       | string | no       | default   | Possible values are `default` or `dark` |
-| customStyles | object | no       |         | [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects |
+| customStyles | object | no       |         | [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects |
 
 ##### 1.6.2.8.1. Dark Mode Theme
 
@@ -257,7 +257,7 @@ You can easily toggle to dark mode by setting `theme="dark"`
 
 You can create your very own theme using the `createTheme` helper. Note that `createTheme` inherits from the default theme. Note that this theme will now be available to all DataTables across your project so you may want to define your custom themes in a seperate file.
 
-Refer to [themes.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/themes.js) for properties you can use to create your own color theme.
+Refer to [themes.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/themes.js) for properties you can use to create your own color theme.
 
 ```js
 import DataTable, { createTheme } from 'react-data-table-component';
@@ -331,7 +331,7 @@ const MyComponent = () => (
 );
 ```
 
-View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
+View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
 
 #### 1.6.2.9. Conditional Row Styling
 
