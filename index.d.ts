@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { CSSProperties } from 'styled-components';
+import { createTheme, defaultThemes } from './src/DataTable/themes';
+
+export { defaultThemes, createTheme };
 
 export interface IDataTableProps<T> {
   title?: React.ReactNode;
@@ -83,7 +86,7 @@ export interface IDataTableProps<T> {
 
 export interface IDataTableColumn<T> {
   name?: string;
-  selector: string;
+  selector: string | ((row: T) => React.ReactNode);
   sortable?: boolean;
   format?: (row: T) => React.ReactNode;
   cell?: (row: T) => React.ReactNode;
