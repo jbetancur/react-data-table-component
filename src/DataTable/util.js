@@ -14,12 +14,12 @@ export const getProperty = (row, selector, format) => {
     throw new Error('selector must be a . delimited string eg (my.property) or function (e.g. row => row.field');
   }
 
-  if (selector && typeof selector === 'function') {
-    return selector(row);
-  }
-
   if (format && typeof format === 'function') {
     return format(row);
+  }
+
+  if (selector && typeof selector === 'function') {
+    return selector(row);
   }
 
   return selector.split('.').reduce((acc, part) => {
