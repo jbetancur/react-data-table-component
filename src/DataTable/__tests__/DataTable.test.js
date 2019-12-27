@@ -24,6 +24,22 @@ test('should render and empty table correctly', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('should render the correctly when using selector function', () => {
+  const columns = [{ name: 'Name', selector: row => row.name }];
+  const data = [{ id: 1, name: 'Leia' }];
+  const { container } = render(<DataTable data={data} columns={columns} />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('should render the correctly when using selector function and a format function', () => {
+  const columns = [{ name: 'Name', selector: row => row.name, format: row => row.name.slice(0, 2) }];
+  const data = [{ id: 1, name: 'Leia' }];
+  const { container } = render(<DataTable data={data} columns={columns} />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('should render correctly if the keyField is overridden', () => {
   const mock = dataMock();
   const data = [{ uuid: 123, some: { name: 'Henry the 8th' } }];
