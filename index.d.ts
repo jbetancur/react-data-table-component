@@ -113,6 +113,9 @@ export interface IDataTableStyles {
   table?: {
     style: CSSProperties;
   };
+  tableWrapper?: {
+    style: CSSProperties;
+  };
   header?: {
     style: CSSProperties;
   };
