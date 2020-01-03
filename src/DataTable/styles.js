@@ -92,6 +92,13 @@ export const defaultStyles = theme => ({
     denseStyle: {
       minHeight: '32px',
     },
+    selectedHighlighStyle: {
+      color: theme.selected.text,
+      backgroundColor: theme.selected.default,
+      '&:not(:last-of-type)': {
+        borderBottomColor: theme.background.default,
+      },
+    },
     highlightOnHoverStyle: {
       color: theme.highlightOnHover.text,
       backgroundColor: theme.highlightOnHover.default,

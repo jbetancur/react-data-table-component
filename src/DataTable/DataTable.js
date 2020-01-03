@@ -19,7 +19,7 @@ import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
-import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage } from './util';
+import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage, isRowSelected } from './util';
 import { createStyles } from './styles';
 
 const DataTable = memo(({
@@ -33,6 +33,7 @@ const DataTable = memo(({
   pointerOnHover,
   dense,
   selectableRows,
+  selectableRowsHighlight,
   selectableRowsNoSelectAll,
   selectableRowSelected,
   selectableRowDisabled,
@@ -335,6 +336,7 @@ const DataTable = memo(({
                 >
                   {calculatedRows.map((row, i) => {
                     const id = row[keyField] || i;
+                    const selected = isRowSelected(row, selectedRows, keyField);
                     const expanderExpander = expandableRows
                       && expandableRowExpanded
                       && expandableRowExpanded(row);
@@ -365,6 +367,8 @@ const DataTable = memo(({
                         onRowClicked={handleRowClicked}
                         onRowDoubleClicked={handleRowDoubleClicked}
                         conditionalRowStyles={conditionalRowStyles}
+                        selected={selected}
+                        selectableRowsHighlight={selectableRowsHighlight}
                       />
                     );
                   })}
