@@ -4627,7 +4627,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -5314,7 +5313,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -5997,7 +5995,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -6680,7 +6677,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -7363,7 +7359,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -8065,7 +8060,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c21 {
@@ -8753,7 +8747,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -9438,7 +9431,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -10154,7 +10146,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
@@ -10814,7 +10805,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c17 {
@@ -11466,7 +11456,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c20 {
