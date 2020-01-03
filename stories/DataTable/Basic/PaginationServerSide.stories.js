@@ -23,6 +23,7 @@ const columns = [
 ];
 
 class AdvancedPaginationTable extends Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     data: [],
     loading: false,
