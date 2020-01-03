@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { useTableContext } from './DataTableContext';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
-import { isRowSelected } from './util';
 
 const TableCellCheckboxStyle = styled(CellBase)`
   flex: 0 0 48px;
@@ -14,12 +13,11 @@ const TableCellCheckboxStyle = styled(CellBase)`
   white-space: nowrap;
 `;
 
-const TableCellCheckbox = ({ name, row }) => {
-  const { dispatch, data, keyField, selectedRows, selectableRowsComponent, selectableRowsComponentProps, selectableRowDisabled } = useTableContext();
-  const checked = isRowSelected(row, selectedRows, keyField);
+const TableCellCheckbox = ({ name, row, selected }) => {
+  const { dispatch, data, keyField, selectableRowsComponent, selectableRowsComponentProps, selectableRowDisabled } = useTableContext();
   const disabled = selectableRowDisabled && selectableRowDisabled(row);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleOnRowSelected = useCallback(() => dispatch({ type: 'SELECT_SINGLE_ROW', row, rows: data, isRowSelected: checked, keyField }), [data, checked, row]);
+  const handleOnRowSelected = useCallback(() => dispatch({ type: 'SELECT_SINGLE_ROW', row, rows: data, isRowSelected: selected, keyField }), [data, selected, row]);
 
   return (
     <TableCellCheckboxStyle
@@ -31,7 +29,7 @@ const TableCellCheckbox = ({ name, row }) => {
         name={name}
         component={selectableRowsComponent}
         componentOptions={selectableRowsComponentProps}
-        checked={checked}
+        checked={selected}
         onClick={handleOnRowSelected}
         disabled={disabled}
       />
@@ -42,6 +40,7 @@ const TableCellCheckbox = ({ name, row }) => {
 TableCellCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   row: PropTypes.object.isRequired,
+  selected: PropTypes.bool.isRequired,
 };
 
 export default TableCellCheckbox;
