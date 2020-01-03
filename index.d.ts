@@ -66,6 +66,7 @@ export interface IDataTableProps<T> {
   expandableRowDisabled?: (row: T) => boolean;
   expandableIcon?: IExpandableIcon;
   selectableRows?: boolean;
+  selectableRowsHighlight?: boolean;
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
   clearSelectedRows?: boolean;
@@ -142,6 +143,7 @@ export interface IDataTableStyles {
   };
   rows: {
     style: CSSProperties;
+    selectedHighlighStyle: CSSProperties;
     denseStyle: CSSProperties;
     highlightOnHoverStyle: CSSProperties;
     stripedStyle: CSSProperties;

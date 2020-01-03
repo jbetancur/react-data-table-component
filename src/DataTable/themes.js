@@ -22,6 +22,10 @@ export const defaultThemes = {
       hover: 'rgba(0,0,0,.08)',
       disabled: 'rgba(0,0,0,.12)',
     },
+    selected: {
+      default: '#EEEEEE',
+      text: 'rgba(0, 0, 0, 0.87)',
+    },
     highlightOnHover: {
       default: '#EEEEEE',
       text: 'rgba(0, 0, 0, 0.87)',
@@ -51,6 +55,10 @@ export const defaultThemes = {
       button: '#FFFFFF',
       hover: 'rgba(255, 255, 255, .12)',
       disabled: 'rgba(0,0,0,.12)',
+    },
+    selected: {
+      default: 'rgba(0, 0, 0, .7)',
+      text: '#FFFFFF',
     },
     highlightOnHover: {
       default: 'rgba(0, 0, 0, .7)',

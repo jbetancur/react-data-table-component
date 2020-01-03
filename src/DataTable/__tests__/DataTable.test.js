@@ -1089,6 +1089,22 @@ describe('DataTable::selectableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when selectableRowsHighlight is true and a row is selected', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        selectableRowsHighlight
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should not render a select all checkbox when selectableRowsNoSelectAll is true', () => {
     const mock = dataMock();
     const { container } = render(
