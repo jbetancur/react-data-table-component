@@ -64,6 +64,7 @@ export interface IDataTableProps<T> {
   onRowExpandToggled?: (expanded: boolean, row: T) => void;
   expandableRowExpanded?: (row: T) => boolean;
   expandableRowDisabled?: (row: T) => boolean;
+  expandableIcon?: IExpandableIcon;
   selectableRows?: boolean;
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
@@ -87,7 +88,7 @@ export interface IDataTableProps<T> {
 }
 
 export interface IDataTableColumn<T> {
-  name?: string;
+  name: string;
   selector: string | ((row: T) => React.ReactNode);
   sortable?: boolean;
   format?: (row: T) => React.ReactNode;
@@ -174,6 +175,11 @@ export interface IDataTablePaginationOptions {
   noRowsPerPage?: boolean;
   rowsPerPageText?: string;
   rangeSeparatorText?: string;
+}
+
+export interface IExpandableIcon {
+  collapsed: React.ReactNode;
+  expanded: React.ReactNode;
 }
 
 export interface IContextMessage<T> {
