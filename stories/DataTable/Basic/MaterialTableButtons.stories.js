@@ -1,5 +1,3 @@
-
-
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import differenceBy from 'lodash/differenceBy';
@@ -99,6 +97,7 @@ const columns = memoize(deleteHandler => [
 ]);
 
 class MaterialTable extends PureComponent {
+  // eslint-disable-next-line react/state-in-constructor
   state = { selectedRows: [], toggleCleared: false, data: tableDataItems };
 
   handleChange = state => {
