@@ -8,6 +8,11 @@ export const defaultStyles = theme => ({
       backgroundColor: theme.background.default,
     },
   },
+  tableWrapper: {
+    style: {
+      display: 'table',
+    },
+  },
   header: {
     style: {
       fontSize: '22px',
