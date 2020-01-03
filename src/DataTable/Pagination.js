@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useTableContext } from './DataTableContext';
 import Select from './Select';
-import { getNumberOfPages } from './util';
+import { getNumberOfPages, detectRTL } from './util';
 
 const defaultComponentOptions = {
   rowsPerPageText: 'Rows per page:',
@@ -37,13 +37,13 @@ const Button = styled.button`
   padding: 8px;
   margin: 2px;
   ${props => props.theme.pagination.pageButtonsStyle};
+  ${props => props.isRTL && 'transform: scale(-1, -1)'};
 `;
 
 const PageList = styled.div`
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 `;
 
 const Span = styled.span`
@@ -89,6 +89,7 @@ const Pagination = ({
   const handleFirst = useCallback(() => onChangePage(1), [onChangePage]);
   const handleLast = useCallback(() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)), [onChangePage, rowCount, rowsPerPage]);
   const handleRowsPerPage = useCallback(({ target }) => onChangeRowsPerPage(Number(target.value), currentPage), [currentPage, onChangeRowsPerPage]);
+  const isRTL = detectRTL();
 
   return (
     <PaginationWrapper className="rdt_Pagination">
@@ -115,6 +116,7 @@ const Pagination = ({
           id="pagination-first-page"
           onClick={handleFirst}
           disabled={disabledLesser}
+          isRTL={isRTL}
         >
           {paginationIconFirstPage}
         </Button>
@@ -123,6 +125,7 @@ const Pagination = ({
           id="pagination-previous-page"
           onClick={handlePrevious}
           disabled={disabledLesser}
+          isRTL={isRTL}
         >
           {paginationIconPrevious}
         </Button>
@@ -131,6 +134,7 @@ const Pagination = ({
           id="pagination-next-page"
           onClick={handleNext}
           disabled={disabledGreater}
+          isRTL={isRTL}
         >
           {paginationIconNext}
         </Button>
@@ -139,6 +143,7 @@ const Pagination = ({
           id="pagination-last-page"
           onClick={handleLast}
           disabled={disabledGreater}
+          isRTL={isRTL}
         >
           {paginationIconLastPage}
         </Button>

@@ -125,7 +125,6 @@ exports[`should render correctly with default props 1`] = `
   display: flex;
   border-radius: 4px;
   white-space: nowrap;
-  direction: ltr;
 }
 
 .c4 {
