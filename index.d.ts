@@ -70,8 +70,10 @@ export interface IDataTableProps<T> {
   clearSelectedRows?: boolean;
   onSelectedRowsChange?: (selectedRowState: T) => void;
   actions?: React.ReactNode | React.ReactNode[];
-  contextTitle?: string;
+  noContextMenu?: boolean;
+  contextMessage?: IContextMessage;
   contextActions?: React.ReactNode | React.ReactNode[];
+  contextComponent?: React.ReactNode;
   noHeader?: boolean;
   fixedHeader?: boolean;
   fixedHeaderScrollHeight?: string;
@@ -172,6 +174,20 @@ export interface IDataTablePaginationOptions {
   noRowsPerPage?: boolean;
   rowsPerPageText?: string;
   rangeSeparatorText?: string;
+}
+
+export interface IContextMessage<T> {
+  singular: string;
+  plural: string;
+  message: string;
+}
+
+export interface ICreateTheme {
+  createTheme?: T;
+}
+
+export interface IDefaultThemes {
+  defaultThemes?: T;
 }
 
 export default function DataTable<T>(

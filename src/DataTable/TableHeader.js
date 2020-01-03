@@ -34,7 +34,7 @@ const Actions = styled.div`
   }
 `;
 
-const TableHeader = ({ title, actions }) => (
+const TableHeader = ({ title, actions, showMenu }) => (
   <TableHeaderStyle className="rdt_TableHeader">
     <Title>
       {title}
@@ -44,7 +44,7 @@ const TableHeader = ({ title, actions }) => (
       {actions}
     </Actions>
 
-    <ContextMenu />
+    {showMenu && <ContextMenu />}
   </TableHeaderStyle>
 );
 
@@ -57,10 +57,12 @@ TableHeader.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  showMenu: PropTypes.bool,
 };
 
 TableHeader.defaultProps = {
   actions: [],
+  showMenu: true,
 };
 
 export default TableHeader;
