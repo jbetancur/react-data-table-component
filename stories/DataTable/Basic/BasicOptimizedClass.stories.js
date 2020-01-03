@@ -69,6 +69,7 @@ const columns = memoize(clickHandler => [
 ]);
 
 class OptimizedClass extends PureComponent {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     // eslint-disable-next-line react/no-unused-state
     selectedRows: [],

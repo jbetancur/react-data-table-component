@@ -1,5 +1,3 @@
 node_modules
-/dist
-/stories/node_modules
-stories
+dist
 coverage
