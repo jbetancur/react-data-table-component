@@ -199,4 +199,3 @@ export interface IDefaultThemes {
 export default function DataTable<T>(
   props: IDataTableProps<T>
 ): React.ReactElement;
-

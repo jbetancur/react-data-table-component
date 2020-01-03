@@ -1,2 +1,5 @@
+node_modules
 /dist
 /stories/node_modules
+stories
+coverage
