@@ -56,7 +56,7 @@ export const defaultStyles = theme => ({
       fontSize: '18px',
       fontWeight: 400,
       color: theme.context.text,
-      padding: '16px 16px 16px 24px',
+      padding: '16px',
       transform: 'translate3d(0, -100%, 0)',
       transitionDuration: '225ms',
       transitionTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',

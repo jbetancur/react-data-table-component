@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import styled from 'styled-components';
 import { useTableContext } from './DataTableContext';
+import { detectRTL } from './util';
 
 const Title = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  height: 100%;
   color: ${props => props.theme.contextMenu.fontColor};
   font-size: ${props => props.theme.contextMenu.fontSize};
   font-weight: 400;
+`;
+
+const ContextActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 `;
 
 const ContextMenuStyle = styled.div`
@@ -23,26 +35,41 @@ const ContextMenuStyle = styled.div`
   ${props => props.visible && props.theme.contextMenu.activeStyle};
 `;
 
-const generateDefaultContextTitle = (contextTitle, selectedCount) => {
+const generateDefaultContextTitle = (contextMessage, selectedCount) => {
   if (selectedCount === 0) {
     return null;
   }
 
-  return contextTitle || `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
+  const datumName = selectedCount === 1 ? contextMessage.singular : contextMessage.plural;
+
+  // TODO: add mock document rtl tests
+  if (detectRTL()) {
+    return `${selectedCount} ${contextMessage.message || ''} ${datumName}`;
+  }
+
+  return `${selectedCount} ${datumName} ${contextMessage.message || ''}`;
 };
 
 const ContextMenu = () => {
-  const { contextTitle, contextActions, selectedCount } = useTableContext();
+  const { contextMessage, contextActions, contextComponent, selectedCount } = useTableContext();
+  const visible = selectedCount > 0;
+
+  if (contextComponent) {
+    return (
+      <ContextMenuStyle visible={visible}>
+        {cloneElement(contextComponent, { selectedCount })}
+      </ContextMenuStyle>
+    );
+  }
 
   return (
-    <ContextMenuStyle visible={selectedCount > 0}>
+    <ContextMenuStyle visible={visible}>
       <Title>
-        {generateDefaultContextTitle(contextTitle, selectedCount)}
+        {generateDefaultContextTitle(contextMessage, selectedCount)}
       </Title>
-
-      <div>
+      <ContextActions>
         {contextActions}
-      </div>
+      </ContextActions>
     </ContextMenuStyle>
   );
 };

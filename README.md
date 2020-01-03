@@ -18,14 +18,15 @@
       - [1.6.2.4. Sorting](#1624-sorting)
       - [1.6.2.5. Pagination](#1625-pagination)
       - [1.6.2.6. Header](#1626-header)
-      - [1.6.2.7. Progress Indicator](#1627-progress-indicator)
-      - [1.6.2.8. Theming and Customization](#1628-theming-and-customization)
-        - [1.6.2.8.1. Dark Mode Theme](#16281-dark-mode-theme)
-        - [1.6.2.8.2. Defining Your Own Theme Using createTheme](#16282-defining-your-own-theme-using-createtheme)
-        - [1.6.2.8.3. Overidding Styling using css-in-js](#16283-overidding-styling-using-css-in-js)
-      - [1.6.2.9. Conditional Row Styling](#1629-conditional-row-styling)
-        - [1.6.2.9.1. Example](#16291-example)
-      - [1.6.2.10. Conditional Style Object](#16210-conditional-style-object)
+      - [1.6.2.7. Header Context Menu when using Selectable Rows](#1627-header-context-menu-when-using-selectable-rows)
+      - [1.6.2.8. Progress Indicator](#1628-progress-indicator)
+      - [1.6.2.9. Theming and Customization](#1629-theming-and-customization)
+        - [1.6.2.9.1. Dark Mode Theme](#16291-dark-mode-theme)
+        - [1.6.2.9.2. Defining Your Own Theme Using createTheme](#16292-defining-your-own-theme-using-createtheme)
+        - [1.6.2.9.3. Overidding Styling using css-in-js](#16293-overidding-styling-using-css-in-js)
+      - [1.6.2.10. Conditional Row Styling](#16210-conditional-row-styling)
+        - [1.6.2.10.1. Example](#162101-example)
+      - [1.6.2.11. Conditional Style Object](#16211-conditional-style-object)
   - [1.7. Basic Table](#17-basic-table)
   - [1.8. Selectable Rows](#18-selectable-rows)
     - [1.8.1. Clearing Selected Rows](#181-clearing-selected-rows)
@@ -225,35 +226,42 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | actions | component or array of components | no |  | add actions to the TableHeader |
-| contextTitle | string | no |  | override the context menu title |
-| contextActions | component or array of components| no |  | add context actions to the TableHeader context|
-| noHeader | bool | no | false | removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
-| fixedHeader | bool | no | false | makes the table header fixed allowing you to scroll the table body |
-| fixedHeaderScrollHeight | string | no | 100vh | in order for fixedHeader to work this property allows you to set a static height to the TableBody. height must be a fixed value |
-| subHeader | component or array of components | no | false | show a sub header between the table and table header
-| subHeaderAlign | string | no | right | align the sub header content (left, right, center)
-| subHeaderWrap | bool | no | true | whether the sub header content should wrap
-| subHeaderComponent |  component or array of components | no | [] | a component you want to render |
+| noHeader | bool | no | false | Removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
+| fixedHeader | bool | no | false | Makes the table header fixed allowing you to scroll the table body |
+| fixedHeaderScrollHeight | string | no | 100vh | In order for fixedHeader to work this property allows you to set a static height to the TableBody. height must be a fixed value |
+| subHeader | component or array of components | no | false | Show a sub header between the table and table header
+| subHeaderAlign | string | no | right | Align the sub header content (left, right, center)
+| subHeaderWrap | bool | no | true | Whether the sub header content should wrap
+| subHeaderComponent |  component or array of components | no | [] | A component you want to render |
 
-#### 1.6.2.7. Progress Indicator
+#### 1.6.2.7. Header Context Menu when using Selectable Rows
+
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| contextMessage | object | no | `{ singular: 'item', plural: 'items', message: 'selected' }` | override the context menu selected message when using `selectableRows` |
+| contextActions | component or array of components| no |  | add context actions to the context menu when using `selectableRows` |
+| contextComponent | bool | no | false | Overide the default context menu when using `selectableRows` with your own custom componet. RDT will compose the `selectedCount` prop to your custom component. This will negate `contextMessage` and `contextActions` |
+| noContextMenu | bool | no | false | Do not display the context menu when using `selectableRows` |
+
+#### 1.6.2.8. Progress Indicator
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
 | progressComponent | component | no |  | Allows you to use your own custom progress component. Note that in some cases (e.g. animated/spinning circular indicators) you will need to add a wrapping div with padding. |
 
-#### 1.6.2.8. Theming and Customization
+#### 1.6.2.9. Theming and Customization
 
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | theme       | string | no       | default   | Possible values are `default` or `dark` |
 | customStyles | object | no       |         | [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects |
 
-##### 1.6.2.8.1. Dark Mode Theme
+##### 1.6.2.9.1. Dark Mode Theme
 
 You can easily toggle to dark mode by setting `theme="dark"`
 
-##### 1.6.2.8.2. Defining Your Own Theme Using `createTheme`
+##### 1.6.2.9.2. Defining Your Own Theme Using `createTheme`
 
 You can create your very own theme using the `createTheme` helper. Note that `createTheme` inherits from the default theme. Note that this theme will now be available to all DataTables across your project so you may want to define your custom themes in a seperate file.
 
@@ -293,7 +301,7 @@ const MyComponent = () => (
 );
 ```
 
-##### 1.6.2.8.3. Overidding Styling using css-in-js
+##### 1.6.2.9.3. Overidding Styling using css-in-js
 
 For more advanced use cases you can override or replace the default styling using the `customStyles` prop and passing in css-in-js. Internally, this just deep merges your customStyles with the default styling. Disclaimer: you're on your own here since you will have the power to not only cusotmize but break RDT. This is the sky's the limit escape hatch feature.
 
@@ -333,13 +341,13 @@ const MyComponent = () => (
 
 View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
 
-#### 1.6.2.9. Conditional Row Styling
+#### 1.6.2.10. Conditional Row Styling
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#16210-conditional-style-object)
 
-##### 1.6.2.9.1. Example
+##### 1.6.2.10.1. Example
 
 The following will `style` the background color of a row to green and set a hover effect `when` the expression `row => row.calories < 300` evaluates to true
 | Property | Type     | Required | Example
@@ -370,7 +378,7 @@ const MyTable = () => (
 
 ```
 
-#### 1.6.2.10. Conditional Style Object
+#### 1.6.2.11. Conditional Style Object
 
 | Property | Type     | Required  | Description                                                                                                             |
 |----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|

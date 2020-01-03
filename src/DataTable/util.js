@@ -107,3 +107,6 @@ export const isRowSelected = (row = {}, selectedRows = [], keyField = 'id') => {
 
   return selectedRows.some(r => r === row);
 };
+
+export const detectRTL = () =>
+  document.getElementsByTagName('BODY')[0] === 'rtl' || document.getElementsByTagName('HTML')[0].dir === 'rtl';

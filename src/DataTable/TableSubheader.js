@@ -21,14 +21,14 @@ const SubheaderWrapper = styled.header`
   ${props => props.theme.subHeader.style}
 `;
 
-const TableSubheader = ({ align, wrapContent, component }) => (
+const TableSubheader = ({ align, wrapContent, children }) => (
   <SubheaderWrapper align={align} wrapContent={wrapContent}>
-    {component}
+    {children}
   </SubheaderWrapper>
 );
 
 TableSubheader.propTypes = {
-  component: PropTypes.oneOfType([
+  children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
     PropTypes.string,
@@ -38,7 +38,7 @@ TableSubheader.propTypes = {
 };
 
 TableSubheader.defaultProps = {
-  component: null,
+  children: null,
   align: 'right',
   wrapContent: true,
 };

@@ -74,8 +74,10 @@ const DataTable = memo(({
   subHeaderAlign,
   subHeaderWrap,
   subHeaderComponent,
-  contextTitle,
+  noContextMenu,
+  contextMessage,
   contextActions,
+  contextComponent,
   expandableRows,
   onRowClicked,
   onRowDoubleClicked,
@@ -220,8 +222,9 @@ const DataTable = memo(({
     sortColumn,
     sortDirection,
     keyField,
-    contextTitle,
+    contextMessage,
     contextActions,
+    contextComponent,
     selectableRowSelected,
     selectableRowDisabled,
     selectableRowsComponent,
@@ -263,7 +266,7 @@ const DataTable = memo(({
             <TableHeader
               title={title}
               actions={actions}
-              pending={progressPending}
+              showMenu={!noContextMenu}
             />
           )}
 
@@ -271,8 +274,9 @@ const DataTable = memo(({
             <TableSubheader
               align={subHeaderAlign}
               wrapContent={subHeaderWrap}
-              component={subHeaderComponent}
-            />
+            >
+              {subHeaderComponent}
+            </TableSubheader>
           )}
 
           <TableWrapper>

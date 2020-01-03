@@ -1875,21 +1875,7 @@ describe('DataTable::Header', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('contextTitle should render correctly', () => {
-    const mock = dataMock();
-    const { container } = render(
-      <DataTable
-        data={mock.data}
-        columns={mock.columns}
-        title="whoa!"
-        contextTitle="items!!!"
-      />,
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  test('actions should render correctly', () => {
+  test('should render header actions when they are provided', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
@@ -1904,25 +1890,111 @@ describe('DataTable::Header', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('context menu should render correctly when selectableRows', () => {
+  test('should render the default context menu when using selectableRows', () => {
     const mock = dataMock();
     const { container } = render(
       <DataTable
         data={mock.data}
         columns={mock.columns}
         title="whoa!"
-        // eslint-disable-next-line react/jsx-one-expression-per-line
-        actions={<><div>some action</div>, <div>some action 2</div></>}
         selectableRows
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render context menu actions when they are provided and a row is selected', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        title="whoa!"
+        selectableRows
+        // eslint-disable-next-line react/jsx-one-expression-per-line
+        contextActions={<><div>some action</div>, <div>some action 2</div></>}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when a custom contextMessage object is provided', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        title="whoa!"
+        selectableRows
+        contextMessage={{ singular: 'artículo', plural: 'artículos', message: 'seleccionada' }}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when a custom contextMessage object is provided without a message prop', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        title="whoa!"
+        selectableRows
+        contextMessage={{ singular: 'artículo', plural: 'artículos' }}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should not render a context menu when noContextMenu and a row is selected', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        title="whoa!"
+        selectableRows
+        noContextMenu
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render a custom component within the context menu when contextComponent', () => {
+    const mock = dataMock();
+    // eslint-disable-next-line react/prop-types
+    const CustomContext = ({ selectedCount }) => <div>{`Nice! You totally just selected ${selectedCount} sweet items!`}</div>;
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        title="whoa!"
+        selectableRows
+        // eslint-disable-next-line react/jsx-one-expression-per-line
+        contextComponent={<CustomContext />}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 });
-
 
 describe('DataTable::fixedHeader', () => {
   test('should render correctly when fixedHeader', () => {
