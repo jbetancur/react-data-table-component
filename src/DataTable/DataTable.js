@@ -91,6 +91,7 @@ const DataTable = memo(({
   expandOnRowClicked,
   expandOnRowDoubleClicked,
   expandableRowExpanded,
+  expandableInheritConditionalStyles,
   defaultSortField,
   defaultSortAsc,
   clearSelectedRows,
@@ -364,6 +365,7 @@ const DataTable = memo(({
                         onRowExpandToggled={onRowExpandToggled}
                         defaultExpanderDisabled={expanderDisabled}
                         defaultExpanded={expanderExpander}
+                        inheritConditionalStyles={expandableInheritConditionalStyles}
                         onRowClicked={handleRowClicked}
                         onRowDoubleClicked={handleRowDoubleClicked}
                         conditionalRowStyles={conditionalRowStyles}

@@ -65,6 +65,7 @@ export interface IDataTableProps<T> {
   expandableRowExpanded?: (row: T) => boolean;
   expandableRowDisabled?: (row: T) => boolean;
   expandableIcon?: IExpandableIcon;
+  expandableInheritConditionalStyles?: boolean;
   selectableRows?: boolean;
   selectableRowsHighlight?: boolean;
   selectableRowSelected?: (row: T) => boolean;
