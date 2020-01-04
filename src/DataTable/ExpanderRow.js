@@ -12,13 +12,15 @@ const ExpanderRowStyle = styled.div`
   width: 100%;
   box-sizing: border-box;
   ${props => props.theme.expanderRow.style};
+  ${props => props.extendedRowStyle};
 `;
 
 const ExpanderRow = ({
   data,
   children,
+  extendedRowStyle,
 }) => (
-  <ExpanderRowStyle className="rdt_ExpanderRow">
+  <ExpanderRowStyle className="rdt_ExpanderRow" extendedRowStyle={extendedRowStyle}>
     {renderChildren(children, data)}
   </ExpanderRowStyle>
 );
@@ -29,11 +31,13 @@ ExpanderRow.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  extendedRowStyle: PropTypes.object,
 };
 
 ExpanderRow.defaultProps = {
   data: {},
   children: null,
+  extendedRowStyle: null,
 };
 
 export default ExpanderRow;

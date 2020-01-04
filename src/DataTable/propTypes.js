@@ -32,6 +32,7 @@ export const propTypes = {
   expandOnRowClicked: PropTypes.bool,
   expandOnRowDoubleClicked: PropTypes.bool,
   onRowExpandToggled: PropTypes.func,
+  expandableInheritConditionalStyles: PropTypes.bool,
   keyField: PropTypes.string,
   progressPending: PropTypes.bool,
   progressComponent: PropTypes.oneOfType([
@@ -174,6 +175,7 @@ export const defaultProps = {
   expandableRowExpanded: null,
   expandOnRowClicked: false,
   expandOnRowDoubleClicked: false,
+  expandableInheritConditionalStyles: false,
   onRowExpandToggled: () => null,
   progressPending: false,
   progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
