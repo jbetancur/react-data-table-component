@@ -55,6 +55,7 @@ const TableRow = memo(({
   expandOnRowClicked,
   expandOnRowDoubleClicked,
   conditionalRowStyles,
+  inheritConditionalStyles,
   onRowExpandToggled,
   selected,
   selectableRowsHighlight,
@@ -89,6 +90,7 @@ const TableRow = memo(({
 
   const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
   const hightlightSelected = selectableRowsHighlight && selected;
+  const inheritStyles = inheritConditionalStyles ? extendedRowStyle : null;
 
   return (
     <>
@@ -136,6 +138,7 @@ const TableRow = memo(({
         <ExpanderRow
           key={`expander--${row[keyField]}`}
           data={row}
+          extendedRowStyle={inheritStyles}
         >
           {expandableRowsComponent}
         </ExpanderRow>
@@ -168,6 +171,7 @@ TableRow.propTypes = {
   expandOnRowClicked: PropTypes.bool.isRequired,
   expandOnRowDoubleClicked: PropTypes.bool.isRequired,
   conditionalRowStyles: PropTypes.array.isRequired,
+  inheritConditionalStyles: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   selectableRowsHighlight: PropTypes.bool.isRequired,
 };

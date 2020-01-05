@@ -2260,6 +2260,38 @@ describe('DataTable::conditionalRowStyles', () => {
   });
 });
 
+test('should render correctly when conditionalRowStyles is used with an expandableRows an expandableInheritConditionalStyles', () => {
+  const mock = dataMock();
+  mock.data[0].completed = true;
+  const conditionalRowStyles = [
+    {
+      when: row => row.completed,
+      style: {
+        backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        color: 'white',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+  ];
+
+  const { container, getByTestId } = render(
+    <DataTable
+      data={mock.data}
+      columns={mock.columns}
+      conditionalRowStyles={conditionalRowStyles}
+      expandableRows
+      expandableInheritConditionalStyles
+    />,
+  );
+
+  fireEvent.click(getByTestId('expander-button-1'));
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+
 describe('DataTable::column.style', () => {
   test('should render correctly when a style is set on a column', () => {
     const mock = dataMock();

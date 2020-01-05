@@ -187,9 +187,10 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | expandableRowExpanded | func | no |  | Expand a row based on a property in your data. e.g. `row => row.expandMe`. `expandableRowExpanded` must return a boolean to determine if the row should be programatically expanded. |
 | expandableRowDisabled | func | no |  | Disable a row expand based on a property in your data. e.g. `row => row.expandDisabled`. `expandableRowDisabled` must return a boolean to determine if the row should be programatically disabled. |
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
-| expandOnRowClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when an area within the row is clicked. Requires `expandableRows` be set to true |
-| expandOnRowDoubleClicked | bool | false |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true |
+| expandOnRowClicked | bool | no |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when an area within the row is clicked. Requires `expandableRows` be set to true |
+| expandOnRowDoubleClicked | bool | no |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true |
 | onRowExpandToggled | func | false |  | When a row is Expanded or Collapsed `onRowExpandToggled` will fire and return (toggleState, row) |
+| expandableInheritConditionalStyles | bool | no | false  | Whether to apply `conditionalRowStyles to the expander row |
 
 #### 1.6.2.4. Sorting
 
