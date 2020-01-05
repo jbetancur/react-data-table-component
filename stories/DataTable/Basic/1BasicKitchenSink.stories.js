@@ -5,14 +5,11 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Icon1 from '@material-ui/icons/ReplyAll';
 import Icon2 from '@material-ui/icons/Markunread';
 import Icon3 from '@material-ui/icons/CloudDownload';
-import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
@@ -54,24 +51,9 @@ const KitchenSink = () => {
   const [subHeader, setSubHeader] = React.useState(false);
   const [subHeaderAlign, setSubHeaderAlign] = React.useState('right');
   const [fixedHeader, setFixedheader] = React.useState(false);
-  const [theme, setTheme] = React.useState('default');
 
   return (
     <div>
-      <FormGroup row>
-        <FormControl>
-          <InputLabel id="demo-customized-select-label">Theme</InputLabel>
-          <Select
-            labelId="demo-customized-select-label"
-            id="demo-customized-select"
-            value={theme}
-            onChange={e => setTheme(e.target.value)}
-          >
-            <MenuItem value="default">Default</MenuItem>
-            <MenuItem value="dark">Dark</MenuItem>
-          </Select>
-        </FormControl>
-      </FormGroup>
       <FormControlLabel
         control={<Checkbox size="small" checked={loading} onChange={() => setLoading(!loading)} />}
         label="Simulate Loading State"
@@ -224,7 +206,6 @@ const KitchenSink = () => {
         subHeaderAlign={subHeaderAlign}
         fixedHeader={fixedHeader}
         fixedHeaderScrollHeight="300px"
-        theme={theme}
       />
     </div>
   );
