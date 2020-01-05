@@ -12,7 +12,6 @@ const SelectControl = styled.select`
   box-sizing: content-box;
   font-size: inherit;
   color: inherit;
-  outline: none;
   border: none;
   background-color: transparent;
   appearance: none;

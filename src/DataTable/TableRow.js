@@ -32,6 +32,7 @@ const TableRowStyle = styled.div`
   ${props => props.striped && props.theme.rows.stripedStyle};
   ${props => props.highlightOnHover && highlightCSS};
   ${props => props.pointerOnHover && pointerCSS};
+  ${props => props.selected && props.theme.rows.selectedHighlighStyle};
   ${props => props.extendedRowStyle};
 `;
 
@@ -55,6 +56,8 @@ const TableRow = memo(({
   expandOnRowDoubleClicked,
   conditionalRowStyles,
   onRowExpandToggled,
+  selected,
+  selectableRowsHighlight,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const handleExpanded = useCallback(() => {
@@ -85,11 +88,13 @@ const TableRow = memo(({
   }, [defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row]);
 
   const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
+  const hightlightSelected = selectableRowsHighlight && selected;
 
   return (
     <>
       <TableRowStyle
         id={`row-${id}`}
+        role="row"
         striped={striped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={!defaultExpanderDisabled && showPointer}
@@ -98,11 +103,13 @@ const TableRow = memo(({
         onDoubleClick={handleRowDoubleClick}
         className="rdt_TableRow"
         extendedRowStyle={extendedRowStyle}
+        selected={hightlightSelected}
       >
         {selectableRows && (
           <TableCellCheckbox
             name={`select-row-${row[keyField]}`}
             row={row}
+            selected={selected}
           />
         )}
 
@@ -161,6 +168,8 @@ TableRow.propTypes = {
   expandOnRowClicked: PropTypes.bool.isRequired,
   expandOnRowDoubleClicked: PropTypes.bool.isRequired,
   conditionalRowStyles: PropTypes.array.isRequired,
+  selected: PropTypes.bool.isRequired,
+  selectableRowsHighlight: PropTypes.bool.isRequired,
 };
 
 TableRow.defaultProps = {

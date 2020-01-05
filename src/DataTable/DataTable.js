@@ -19,7 +19,7 @@ import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
-import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage } from './util';
+import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage, isRowSelected } from './util';
 import { createStyles } from './styles';
 
 const DataTable = memo(({
@@ -33,6 +33,7 @@ const DataTable = memo(({
   pointerOnHover,
   dense,
   selectableRows,
+  selectableRowsHighlight,
   selectableRowsNoSelectAll,
   selectableRowSelected,
   selectableRowDisabled,
@@ -286,21 +287,22 @@ const DataTable = memo(({
               </ProgressWrapper>
             )}
 
-            <Table disabled={disabled} className="rdt_Table">
+            <Table disabled={disabled} className="rdt_Table" role="table">
               {showTableHead() && (
-                <TableHead className="rdt_TableHead">
+                <TableHead className="rdt_TableHead" role="rowgroup">
                   <TableHeadRow
                     className="rdt_TableHeadRow"
+                    role="row"
                     dense={dense}
                     disabled={progressPending || data.length === 0}
                   >
                     {selectableRows && (
                       selectableRowsNoSelectAll
-                        ? <CellBase style={{ flex: '0 0 48px' }} />
-                        : <TableColCheckbox />
+                        ? <CellBase style={{ flex: '0 0 48px' }} role="columnheader" />
+                        : <TableColCheckbox role="columnheader" />
                     )}
                     {expandableRows && (
-                      <CellBase head style={{ flex: '0 0 48px' }} />
+                      <CellBase head style={{ flex: '0 0 48px' }} role="columnheader" />
                     )}
                     {columnsMemo.map(column => (
                       <TableCol
@@ -332,9 +334,11 @@ const DataTable = memo(({
                   hasOffset={overflowY}
                   offset={overflowYOffset}
                   className="rdt_TableBody"
+                  role="rowgroup"
                 >
                   {calculatedRows.map((row, i) => {
                     const id = row[keyField] || i;
+                    const selected = isRowSelected(row, selectedRows, keyField);
                     const expanderExpander = expandableRows
                       && expandableRowExpanded
                       && expandableRowExpanded(row);
@@ -365,6 +369,8 @@ const DataTable = memo(({
                         onRowClicked={handleRowClicked}
                         onRowDoubleClicked={handleRowDoubleClicked}
                         conditionalRowStyles={conditionalRowStyles}
+                        selected={selected}
+                        selectableRowsHighlight={selectableRowsHighlight}
                       />
                     );
                   })}

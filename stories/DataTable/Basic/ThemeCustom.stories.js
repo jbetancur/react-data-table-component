@@ -18,10 +18,14 @@ createTheme('solarized', {
   divider: {
     default: '#073642',
   },
-  action: {
-    button: 'rgba(0,0,0,.54)',
+  button: {
+    default: '#2aa198',
     hover: 'rgba(0,0,0,.08)',
+    focus: 'rgba(255,255,255,.12)',
     disabled: 'rgba(0,0,0,.12)',
+  },
+  sortFocus: {
+    default: '#2aa198',
   },
 });
 

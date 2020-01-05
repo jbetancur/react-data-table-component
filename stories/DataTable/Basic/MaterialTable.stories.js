@@ -86,6 +86,7 @@ const columns = memoize(() => [
 ]);
 
 class MaterialTable extends PureComponent {
+  // eslint-disable-next-line react/state-in-constructor
   state = { selectedRows: [], toggleCleared: false, data: tableDataItems };
 
   handleChange = state => {
