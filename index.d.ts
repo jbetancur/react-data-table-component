@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { CSSProperties } from 'styled-components';
-import { createTheme, defaultThemes } from './src/DataTable/themes';
-
-export { defaultThemes, createTheme };
 
 export interface IDataTableProps<T> {
   title?: React.ReactNode;
@@ -65,7 +62,9 @@ export interface IDataTableProps<T> {
   expandableRowExpanded?: (row: T) => boolean;
   expandableRowDisabled?: (row: T) => boolean;
   expandableIcon?: IExpandableIcon;
+  expandableInheritConditionalStyles?: boolean;
   selectableRows?: boolean;
+  selectableRowsHighlight?: boolean;
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
   clearSelectedRows?: boolean;
@@ -142,6 +141,7 @@ export interface IDataTableStyles {
   };
   rows: {
     style: CSSProperties;
+    selectedHighlighStyle: CSSProperties;
     denseStyle: CSSProperties;
     highlightOnHoverStyle: CSSProperties;
     stripedStyle: CSSProperties;
@@ -185,19 +185,54 @@ export interface IExpandableIcon {
   expanded: React.ReactNode;
 }
 
-export interface IContextMessage<T> {
+export interface IContextMessage {
   singular: string;
   plural: string;
   message: string;
 }
 
-export interface ICreateTheme {
-  createTheme?: T;
+export interface ITheme {
+  text: {
+    primary: string;
+    secondary: string;
+    disabled: string;
+  };
+  background: {
+    default: string;
+  };
+  context: {
+    background: string;
+    text: string;
+  };
+  divider: {
+    default: string;
+  };
+  action: {
+    button: string;
+    hover: string;
+    disabled: string;
+  };
+  selected: {
+    default: string;
+    text: string;
+  };
+  highlightOnHover: {
+    default: string;
+    text: string;
+  };
+  striped: {
+    default: string;
+    text: string;
+  };
 }
 
-export interface IDefaultThemes {
-  defaultThemes?: T;
+interface IDefaultThemes {
+  default: ITheme;
+  dark: ITheme;
 }
+
+export function createTheme<T>(name: string, customTheme: T): ITheme;
+export const defaultThemes: IDefaultThemes;
 
 export default function DataTable<T>(
   props: IDataTableProps<T>
