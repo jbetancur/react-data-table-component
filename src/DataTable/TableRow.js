@@ -94,6 +94,7 @@ const TableRow = memo(({
     <>
       <TableRowStyle
         id={`row-${id}`}
+        role="row"
         striped={striped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={!defaultExpanderDisabled && showPointer}

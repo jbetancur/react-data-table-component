@@ -740,6 +740,23 @@ describe('DataTable::sorting', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should sort if the column is selected and the Enter key is pressed', () => {
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    // select the column to sort
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // press enter
+    fireEvent.keyPress(container.querySelector('div[id="column-some.name"]'), { keyCode: 13 });
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should call onSort with the correct params', () => {
     const onSortMock = jest.fn();
     const mock = dataMock({ sortable: true });

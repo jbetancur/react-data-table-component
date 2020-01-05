@@ -287,21 +287,22 @@ const DataTable = memo(({
               </ProgressWrapper>
             )}
 
-            <Table disabled={disabled} className="rdt_Table">
+            <Table disabled={disabled} className="rdt_Table" role="table">
               {showTableHead() && (
-                <TableHead className="rdt_TableHead">
+                <TableHead className="rdt_TableHead" role="rowgroup">
                   <TableHeadRow
                     className="rdt_TableHeadRow"
+                    role="row"
                     dense={dense}
                     disabled={progressPending || data.length === 0}
                   >
                     {selectableRows && (
                       selectableRowsNoSelectAll
-                        ? <CellBase style={{ flex: '0 0 48px' }} />
-                        : <TableColCheckbox />
+                        ? <CellBase style={{ flex: '0 0 48px' }} role="columnheader" />
+                        : <TableColCheckbox role="columnheader" />
                     )}
                     {expandableRows && (
-                      <CellBase head style={{ flex: '0 0 48px' }} />
+                      <CellBase head style={{ flex: '0 0 48px' }} role="columnheader" />
                     )}
                     {columnsMemo.map(column => (
                       <TableCol
@@ -333,6 +334,7 @@ const DataTable = memo(({
                   hasOffset={overflowY}
                   offset={overflowYOffset}
                   className="rdt_TableBody"
+                  role="rowgroup"
                 >
                   {calculatedRows.map((row, i) => {
                     const id = row[keyField] || i;

@@ -14,7 +14,6 @@ exports[`should render correctly with default props 1`] = `
   box-sizing: content-box;
   font-size: inherit;
   color: inherit;
-  outline: none;
   border: none;
   background-color: transparent;
   -webkit-appearance: none;
@@ -89,33 +88,37 @@ exports[`should render correctly with default props 1`] = `
 .c6 {
   position: relative;
   display: block;
-  outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer;
   border: none;
   border-radius: 50%;
-  background-color: transparent;
   height: 40px;
   width: 40px;
   padding: 8px;
-  margin: 2px;
+  margin: px;
+  cursor: pointer;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
+  background-color: transparent;
 }
 
 .c6:disabled {
   opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,0.12);
 }
 
 .c6:hover:not(:disabled) {
-  background-color: rgba(0,0,0,.08);
+  background-color: rgba(0,0,0,.12);
+}
+
+.c6:focus {
+  outline: none;
+  background-color: rgba(0,0,0,.12);
 }
 
 .c5 {
@@ -149,7 +152,7 @@ exports[`should render correctly with default props 1`] = `
   margin: 0 4px;
 }
 
-<footer
+<nav
   class="c0 rdt_Pagination"
 >
   <span
@@ -214,12 +217,16 @@ exports[`should render correctly with default props 1`] = `
     class="c5"
   >
     <button
+      aria-disabled="true"
+      aria-label="First Page"
       class="c6"
       disabled=""
       id="pagination-first-page"
     >
       <svg
+        aria-hidden="true"
         height="24"
+        role="presentation"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
@@ -234,12 +241,16 @@ exports[`should render correctly with default props 1`] = `
       </svg>
     </button>
     <button
+      aria-disabled="true"
+      aria-label="Previous Page"
       class="c6"
       disabled=""
       id="pagination-previous-page"
     >
       <svg
+        aria-hidden="true"
         height="24"
+        role="presentation"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
@@ -254,11 +265,15 @@ exports[`should render correctly with default props 1`] = `
       </svg>
     </button>
     <button
+      aria-disabled="false"
+      aria-label="Next Page"
       class="c6"
       id="pagination-next-page"
     >
       <svg
+        aria-hidden="true"
         height="24"
+        role="presentation"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
@@ -273,11 +288,15 @@ exports[`should render correctly with default props 1`] = `
       </svg>
     </button>
     <button
+      aria-disabled="false"
+      aria-label="Last Page"
       class="c6"
       id="pagination-last-page"
     >
       <svg
+        aria-hidden="true"
         height="24"
+        role="presentation"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
@@ -292,5 +311,5 @@ exports[`should render correctly with default props 1`] = `
       </svg>
     </button>
   </div>
-</footer>
+</nav>
 `;

@@ -30,6 +30,7 @@ const TableCellCheckbox = ({ name, row, selected }) => {
         component={selectableRowsComponent}
         componentOptions={selectableRowsComponentProps}
         checked={selected}
+        aria-checked={selected}
         onClick={handleOnRowSelected}
         disabled={disabled}
       />

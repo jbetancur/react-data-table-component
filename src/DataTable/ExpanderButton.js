@@ -8,11 +8,8 @@ const ButtonStyle = styled.button`
   align-items: center;
   user-select: none;
   white-space: nowrap;
-  outline: none;
   border: none;
   background-color: transparent;
-  height: 100%;
-  width: 100%;
   ${props => props.theme.expanderButton.style};
 `;
 
@@ -25,6 +22,7 @@ const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
 
   return (
     <ButtonStyle
+      aria-disabled={disabled}
       onClick={handleToggle}
       data-testid={`expander-button-${row[keyField]}`}
       disabled={disabled}

@@ -19,7 +19,8 @@ export const defaultStyles = theme => ({
       color: theme.text.primary,
       backgroundColor: theme.background.default,
       minHeight: '56px',
-      padding: '4px 8px 4px 16px',
+      paddingLeft: '16px',
+      paddingRight: '8px',
     },
   },
   subHeader: {
@@ -51,8 +52,23 @@ export const defaultStyles = theme => ({
       paddingLeft: '16px',
       paddingRight: '16px',
     },
-    activeStyle: {
+    activeSortStyle: {
       color: theme.text.primary,
+      '&:focus': {
+        outline: 'none',
+      },
+      '&:hover:not(:focus)': {
+        color: theme.sortFocus.default,
+      },
+    },
+    inactiveSortStyle: {
+      '&:focus': {
+        outline: 'none',
+        color: theme.sortFocus.default,
+      },
+      '&:hover': {
+        color: theme.sortFocus.default,
+      },
     },
   },
   contextMenu: {
@@ -61,9 +77,10 @@ export const defaultStyles = theme => ({
       fontSize: '18px',
       fontWeight: 400,
       color: theme.context.text,
-      padding: '16px',
+      paddingLeft: '16px',
+      paddingRight: '8px',
       transform: 'translate3d(0, -100%, 0)',
-      transitionDuration: '225ms',
+      transitionDuration: '125ms',
       transitionTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
       willChange: 'transform',
     },
@@ -126,16 +143,29 @@ export const defaultStyles = theme => ({
   },
   expanderButton: {
     style: {
-      color: theme.action.button,
+      color: theme.button.default,
+      fill: theme.button.default,
+      backgroundColor: 'transparent',
+      borderRadius: '2px',
+      transition: '0.25s',
+      height: '100%',
+      width: '100%',
       '&:hover:enabled': {
         cursor: 'pointer',
       },
       '&:disabled': {
-        color: theme.action.disabled,
+        color: theme.button.disabled,
+      },
+      '&:hover:not(:disabled)': {
+        cursor: 'pointer',
+        backgroundColor: theme.button.hover,
+      },
+      '&:focus': {
+        outline: 'none',
+        backgroundColor: theme.button.focus,
       },
       svg: {
-        paddingLeft: '4px',
-        paddingRight: '4px',
+        margin: 'auto',
       },
     },
   },
@@ -150,16 +180,27 @@ export const defaultStyles = theme => ({
       borderTopColor: theme.divider.default,
     },
     pageButtonsStyle: {
+      borderRadius: '50%',
+      height: '40px',
+      width: '40px',
+      padding: '8px',
+      margin: 'px',
+      cursor: 'pointer',
       transition: '0.4s',
-      color: theme.action.button,
-      fill: theme.action.button,
+      color: theme.button.default,
+      fill: theme.button.default,
+      backgroundColor: 'transparent',
       '&:disabled': {
         opacity: '0.4',
         cursor: 'unset',
-        color: theme.action.disabled,
+        color: theme.button.disabled,
       },
       '&:hover:not(:disabled)': {
-        backgroundColor: theme.action.hover,
+        backgroundColor: theme.button.hover,
+      },
+      '&:focus': {
+        outline: 'none',
+        backgroundColor: theme.button.focus,
       },
     },
   },

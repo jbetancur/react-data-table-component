@@ -66,13 +66,13 @@ If you want to achieve balance with the force and want a simple but flexible tab
 ## 1.2. Key Features
 
 - Declarative Configuration
-- Built in and configurable:
+- Built-in and configurable:
   - Sorting
   - Selectable Rows
   - Expandable Rows
   - Pagination
-- Themeable via js config
-- Data Aware (i.e. easily callback to a parent component get the DataTable state, e.g. `selectedRows`
+- Themeable/Customizable
+- Accessibility
 - Responsive (via x-scroll/flex)
 
 ## 1.3. Requirements

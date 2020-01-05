@@ -17,10 +17,14 @@ export const defaultThemes = {
     divider: {
       default: 'rgba(0,0,0,.12)',
     },
-    action: {
-      button: 'rgba(0,0,0,.54)',
-      hover: 'rgba(0,0,0,.08)',
-      disabled: 'rgba(0,0,0,.12)',
+    button: {
+      default: 'rgba(0,0,0,.54)',
+      focus: 'rgba(0,0,0,.12)',
+      hover: 'rgba(0,0,0,.12)',
+      disabled: 'rgba(0, 0, 0, 0.12)',
+    },
+    sortFocus: {
+      default: 'rgba(0, 0, 0, .54)',
     },
     selected: {
       default: '#EEEEEE',
@@ -51,10 +55,14 @@ export const defaultThemes = {
     divider: {
       default: 'rgba(81, 81, 81, 1)',
     },
-    action: {
-      button: '#FFFFFF',
+    button: {
+      default: '#FFFFFF',
+      focus: 'rgba(255, 255, 255, .54)',
       hover: 'rgba(255, 255, 255, .12)',
       disabled: 'rgba(0,0,0,.12)',
+    },
+    sortFocus: {
+      default: 'rgba(255, 255, 255, .54)',
     },
     selected: {
       default: 'rgba(0, 0, 0, .7)',

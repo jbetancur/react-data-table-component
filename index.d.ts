@@ -130,7 +130,8 @@ export interface IDataTableStyles {
   };
   headCells: {
     style: CSSProperties;
-    activeStyle: CSSProperties;
+    activeSortStyle: CSSProperties;
+    inactiveSortStyle: CSSProperties;
   };
   contextMenu: {
     style: CSSProperties;
@@ -207,10 +208,14 @@ export interface ITheme {
   divider: {
     default: string;
   };
-  action: {
-    button: string;
+  button: {
+    default: string;
+    focus: string;
     hover: string;
     disabled: string;
+  };
+  sortFocus: {
+    default: string;
   };
   selected: {
     default: string;

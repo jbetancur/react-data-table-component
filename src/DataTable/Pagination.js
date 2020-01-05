@@ -11,7 +11,7 @@ const defaultComponentOptions = {
   noRowsPerPage: false,
 };
 
-const PaginationWrapper = styled.footer`
+const PaginationWrapper = styled.nav`
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
@@ -26,16 +26,8 @@ const PaginationWrapper = styled.footer`
 const Button = styled.button`
   position: relative;
   display: block;
-  outline: none;
   user-select: none;
-  cursor: pointer;
   border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  height: 40px;
-  width: 40px;
-  padding: 8px;
-  margin: 2px;
   ${props => props.theme.pagination.pageButtonsStyle};
   ${props => props.isRTL && 'transform: scale(-1, -1)'};
 `;
@@ -114,6 +106,8 @@ const Pagination = ({
       <PageList>
         <Button
           id="pagination-first-page"
+          aria-label="First Page"
+          aria-disabled={disabledLesser}
           onClick={handleFirst}
           disabled={disabledLesser}
           isRTL={isRTL}
@@ -123,6 +117,8 @@ const Pagination = ({
 
         <Button
           id="pagination-previous-page"
+          aria-label="Previous Page"
+          aria-disabled={disabledLesser}
           onClick={handlePrevious}
           disabled={disabledLesser}
           isRTL={isRTL}
@@ -132,6 +128,8 @@ const Pagination = ({
 
         <Button
           id="pagination-next-page"
+          aria-label="Next Page"
+          aria-disabled={disabledGreater}
           onClick={handleNext}
           disabled={disabledGreater}
           isRTL={isRTL}
@@ -141,6 +139,8 @@ const Pagination = ({
 
         <Button
           id="pagination-last-page"
+          aria-label="Last Page"
+          aria-disabled={disabledGreater}
           onClick={handleLast}
           disabled={disabledGreater}
           isRTL={isRTL}

@@ -15,7 +15,7 @@ const ColumnSortable = styled.div`
   height: 100%;
   line-height: 1;
   user-select: none;
-  ${props => props.sortActive && props.theme.headCells.activeStyle};
+  ${props => (props.sortActive ? props.theme.headCells.activeSortStyle : props.theme.headCells.inactiveSortStyle)};
 
   span.__rdt_custom_sort_icon__ {
     i,
@@ -40,11 +40,10 @@ const ColumnSortable = styled.div`
   &:hover {
     ${({ column }) => column.sortable && 'cursor: pointer'};
     ${({ column, theme }) => column.sortable && theme.headCells.activeStyle};
-    ${({ sortActive, column }) => !sortActive && column.sortable && 'opacity: 1'};
 
     span,
     span.__rdt_custom_sort_icon__ * {
-      ${({ sortActive, column }) => !sortActive && column.sortable && 'opacity: 0.60'};
+      ${({ sortActive, column }) => !sortActive && column.sortable && 'opacity: 1'};
     }
   }
 `;
@@ -72,6 +71,12 @@ const TableCol = memo(({
         pagination,
         paginationServer,
       });
+    }
+  };
+
+  const handleKeyPress = event => {
+    if (event.key === 'Enter') {
+      handleSortChange();
     }
   };
 
@@ -105,8 +110,11 @@ const TableCol = memo(({
         <ColumnSortable
           id={`column-${column.selector}`}
           role="button"
+          aria-pressed={sortActive}
+          tabIndex={0}
           className="rdt_TableCol_Sortable"
           onClick={handleSortChange}
+          onKeyPress={handleKeyPress}
           sortActive={sortActive}
           column={column}
         >

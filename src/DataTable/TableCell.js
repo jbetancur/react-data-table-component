@@ -26,6 +26,7 @@ const TableCell = memo(({ id, column, row }) => {
   return (
     <TableCellStyle
       id={id}
+      role="cell"
       column={column}
       data-tag={dataTag}
       className="rdt_TableCell"
