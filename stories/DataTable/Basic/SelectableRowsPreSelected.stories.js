@@ -59,13 +59,15 @@ const columns = [
   },
 ];
 
+const rowSelectCritera = row => row.fat > 6;
+
 const BasicSelectDisabledRow = () => (
   <DataTable
     title="Desserts"
     columns={columns}
     data={data}
     selectableRows
-    selectableRowSelected={row => row.fat > 6}
+    selectableRowSelected={rowSelectCritera}
   />
 );
 

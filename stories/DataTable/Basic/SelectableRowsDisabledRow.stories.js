@@ -70,13 +70,15 @@ const customData = data.map(datum => ({ ...datum, isOutOfStock: false }));
 customData[1].isOutOfStock = true;
 customData[3].isOutOfStock = true;
 
+const rowDisabledCriteria = row => row.isOutOfStock;
+
 const BasicSelectDisabledRow = () => (
   <DataTable
     title="Desserts"
     columns={columns}
     data={customData}
     selectableRows
-    selectableRowDisabled={row => row.isOutOfStock}
+    selectableRowDisabled={rowDisabledCriteria}
   />
 );
 
