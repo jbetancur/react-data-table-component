@@ -108,7 +108,7 @@ Nothing new here - we are using an array of object literals and properties to de
 
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
-| name     | string or component | no       | the display name of our Column e.g. 'Name'                                                                    |
+| name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
 | selector | string or function | yes      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp` |
 | sortable | bool   | no       | if the column is sortable                                                                                     |
 | format   | func   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value                                        |
