@@ -87,7 +87,7 @@ export interface IDataTableProps<T> {
 }
 
 export interface IDataTableColumn<T> {
-  name: string;
+  name: string | number | React.ReactNode;
   selector: string | ((row: T) => React.ReactNode);
   sortable?: boolean;
   format?: (row: T) => React.ReactNode;
