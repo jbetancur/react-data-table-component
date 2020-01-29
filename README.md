@@ -22,7 +22,7 @@
       - [1.6.2.8. Progress Indicator](#1628-progress-indicator)
       - [1.6.2.9. Theming and Customization](#1629-theming-and-customization)
         - [1.6.2.9.1. Dark Mode Theme](#16291-dark-mode-theme)
-        - [1.6.2.9.2. Defining Your Own Theme Using createTheme](#16292-defining-your-own-theme-using-createtheme)
+        - [1.6.2.9.2. Defining Your Own Theme Using `createTheme`](#16292-defining-your-own-theme-using-createtheme)
         - [1.6.2.9.3. Overidding Styling using css-in-js](#16293-overidding-styling-using-css-in-js)
       - [1.6.2.10. Conditional Row Styling](#16210-conditional-row-styling)
         - [1.6.2.10.1. Example](#162101-example)
@@ -45,8 +45,8 @@
   - [2.1. Setup](#21-setup)
   - [2.2. Local development](#22-local-development)
   - [2.3. Including NPM packages](#23-including-npm-packages)
-    - [2.3.1. Library dependencies -- &lt;root_dir&gt;/package.**json](#231-library-dependencies----ltrootdirgtpackagejson)
-    - [2.3.2. Storybook dependencies -- &lt;root_dir&gt;/stories/package.json](#232-storybook-dependencies----ltrootdirgtstoriespackagejson)
+    - [2.3.1. Library dependencies -- <root_dir>/package.**json](#231-library-dependencies----rootdirpackagejson)
+    - [2.3.2. Storybook dependencies -- <root_dir>/stories/package.json](#232-storybook-dependencies----rootdirstoriespackagejson)
   - [2.4. Lint](#24-lint)
   - [2.5. Test](#25-test)
   - [2.6. Build](#26-build)
@@ -109,8 +109,8 @@ Nothing new here - we are using an array of object literals and properties to de
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | string or function | yes      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp` |
-| sortable | bool   | no       | if the column is sortable                                                                                     |
+| selector | string or function | no      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp`. A `selector` is required anytime you want to display data but can be ommitted if your column does not require showing data (e.g. an actions column) |
+| sortable | bool   | no       | if the column is sortable. note that `selector` is required for the column to sort                                                            |
 | format   | func   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value                                        |
 | cell     | func   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` <br /> **negates  `format`*- |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |

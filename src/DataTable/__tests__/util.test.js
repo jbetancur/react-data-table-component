@@ -87,6 +87,12 @@ describe('sort', () => {
 });
 
 describe('getProperty', () => {
+  test('getProperty return null if a selector is null or undefined', () => {
+    const property = getProperty(row);
+
+    expect(property).toEqual(null);
+  });
+
   test('getProperty return a value when a string selector is passed', () => {
     const property = getProperty(row, 'name');
 
@@ -151,7 +157,7 @@ describe('removeItem', () => {
 });
 
 describe('decorateColumns', () => {
-  test('should proeprty decorate columms', () => {
+  test('should decorate columms', () => {
     const array = decorateColumns([{ name: 'foo' }, { name: 'bar' }]);
 
     expect(array[0]).toHaveProperty('id');
