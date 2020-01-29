@@ -156,7 +156,7 @@ exports[`should render correctly with default props 1`] = `
   class="c0 rdt_Pagination"
 >
   <span
-    class="c1"
+    class="Pagination__Span-sc-1iha5ux-3 c1"
   >
     Rows per page:
   </span>
@@ -209,7 +209,7 @@ exports[`should render correctly with default props 1`] = `
     </svg>
   </div>
   <span
-    class="c4"
+    class="Pagination__Span-sc-1iha5ux-3 c4"
   >
     1-10 of 40
   </span>

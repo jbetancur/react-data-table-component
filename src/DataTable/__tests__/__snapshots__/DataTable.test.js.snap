@@ -370,7 +370,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
           role="row"
         >
           <div
-            class="c8 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c8 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -380,7 +380,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
             />
           </div>
           <div
-            class="c9 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c9 rdt_TableCol"
           >
             <div
               class="c10 rdt_TableCol_Sortable"
@@ -406,7 +406,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
           role="row"
         >
           <div
-            class="c13 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c13 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -416,7 +416,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
             />
           </div>
           <div
-            class="c14 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c14 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -434,7 +434,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
           role="row"
         >
           <div
-            class="c13 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c13 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -444,7 +444,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
             />
           </div>
           <div
-            class="c14 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c14 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -878,7 +878,7 @@ exports[`DataTable::Header should render a custom component within the context m
           role="row"
         >
           <div
-            class="c9 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c9 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -888,7 +888,7 @@ exports[`DataTable::Header should render a custom component within the context m
             />
           </div>
           <div
-            class="c10 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c10 rdt_TableCol"
           >
             <div
               class="c11 rdt_TableCol_Sortable"
@@ -914,7 +914,7 @@ exports[`DataTable::Header should render a custom component within the context m
           role="row"
         >
           <div
-            class="c14 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c14 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -924,7 +924,7 @@ exports[`DataTable::Header should render a custom component within the context m
             />
           </div>
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -942,7 +942,7 @@ exports[`DataTable::Header should render a custom component within the context m
           role="row"
         >
           <div
-            class="c14 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c14 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -952,7 +952,7 @@ exports[`DataTable::Header should render a custom component within the context m
             />
           </div>
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -1433,7 +1433,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c11 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -1443,7 +1443,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
             />
           </div>
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -1469,7 +1469,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -1479,7 +1479,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -1497,7 +1497,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -1507,7 +1507,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -1980,7 +1980,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c11 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -1990,7 +1990,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
             />
           </div>
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -2016,7 +2016,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -2026,7 +2026,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -2044,7 +2044,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -2054,7 +2054,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -2527,7 +2527,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c11 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -2537,7 +2537,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
             />
           </div>
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -2563,7 +2563,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -2573,7 +2573,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -2591,7 +2591,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -2601,7 +2601,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -3008,7 +3008,7 @@ exports[`DataTable::Header should render header actions when they are provided 1
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -3034,7 +3034,7 @@ exports[`DataTable::Header should render header actions when they are provided 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -3052,7 +3052,7 @@ exports[`DataTable::Header should render header actions when they are provided 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -3525,7 +3525,7 @@ exports[`DataTable::Header should render the default context menu when using sel
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c11 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -3535,7 +3535,7 @@ exports[`DataTable::Header should render the default context menu when using sel
             />
           </div>
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -3561,7 +3561,7 @@ exports[`DataTable::Header should render the default context menu when using sel
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -3571,7 +3571,7 @@ exports[`DataTable::Header should render the default context menu when using sel
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -3589,7 +3589,7 @@ exports[`DataTable::Header should render the default context menu when using sel
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -3599,7 +3599,7 @@ exports[`DataTable::Header should render the default context menu when using sel
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -3846,7 +3846,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
           role="row"
         >
           <div
-            class="c5 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c5 rdt_TableCol"
           >
             <div
               class="c6 rdt_TableCol_Sortable"
@@ -3872,7 +3872,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
           role="row"
         >
           <div
-            class="c9 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c9 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -3890,7 +3890,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
           role="row"
         >
           <div
-            class="c9 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c9 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -4289,7 +4289,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -4315,7 +4315,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -4333,7 +4333,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -4882,7 +4882,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
             role="row"
           >
             <div
-              class="c11 rdt_TableCol"
+              class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
             >
               <div
                 class="c12 rdt_TableCol_Sortable"
@@ -4908,7 +4908,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
             role="row"
           >
             <div
-              class="c15 rdt_TableCell"
+              class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
               data-tag="___react-data-table-allow-propagation___"
               id="cell-1-1"
               role="cell"
@@ -4926,7 +4926,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
         class="c16 rdt_Pagination"
       >
         <span
-          class="c17"
+          class="Pagination__Span-sc-1iha5ux-3 c17"
         >
           Rows per page:
         </span>
@@ -4964,7 +4964,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
           </svg>
         </div>
         <span
-          class="c20"
+          class="Pagination__Span-sc-1iha5ux-3 c20"
         >
           1-1 of 1
         </span>
@@ -5604,7 +5604,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -5630,7 +5630,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -5648,7 +5648,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -5686,7 +5686,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         1-1 of 2
       </span>
@@ -6323,7 +6323,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -6349,7 +6349,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -6367,7 +6367,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -6405,7 +6405,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         1-1 of 2
       </span>
@@ -7042,7 +7042,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -7068,7 +7068,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -7086,7 +7086,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -7124,7 +7124,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         2-2 of 2
       </span>
@@ -7761,7 +7761,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -7787,7 +7787,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -7805,7 +7805,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -7843,7 +7843,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         2-2 of 2
       </span>
@@ -8497,7 +8497,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -8529,7 +8529,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -8547,7 +8547,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
       class="c17 rdt_Pagination"
     >
       <span
-        class="c18"
+        class="Pagination__Span-sc-1iha5ux-3 c18"
       >
         Rows per page:
       </span>
@@ -8585,7 +8585,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
         </svg>
       </div>
       <span
-        class="c21"
+        class="Pagination__Span-sc-1iha5ux-3 c21"
       >
         1-1 of 2
       </span>
@@ -9222,7 +9222,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -9248,7 +9248,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -9266,7 +9266,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -9304,7 +9304,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         1-1 of 1
       </span>
@@ -9943,7 +9943,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -9969,7 +9969,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -9987,7 +9987,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -10005,7 +10005,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -10058,7 +10058,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         1-2 of 2
       </span>
@@ -10697,7 +10697,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -10723,7 +10723,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -10741,7 +10741,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -10759,7 +10759,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Fila por página
       </span>
@@ -10812,7 +10812,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         1-2 of 2
       </span>
@@ -11385,7 +11385,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -11411,7 +11411,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -11429,7 +11429,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -11447,7 +11447,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         1-2 of 2
       </span>
@@ -12086,7 +12086,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -12112,7 +12112,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -12130,7 +12130,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
       class="c16 rdt_Pagination"
     >
       <span
-        class="c17"
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
         Rows per page:
       </span>
@@ -12168,7 +12168,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
         </svg>
       </div>
       <span
-        class="c20"
+        class="Pagination__Span-sc-1iha5ux-3 c20"
       >
         1-1 of 2
       </span>
@@ -12654,7 +12654,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -12680,7 +12680,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -12698,7 +12698,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -13095,7 +13095,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -13121,7 +13121,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -13139,7 +13139,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -13537,7 +13537,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -13563,7 +13563,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -13581,7 +13581,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -13986,7 +13986,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -14012,7 +14012,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -14030,7 +14030,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -14439,7 +14439,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -14465,7 +14465,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -14483,7 +14483,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -14892,7 +14892,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -14918,7 +14918,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -14936,7 +14936,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -15345,7 +15345,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -15371,7 +15371,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -15389,7 +15389,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -15798,7 +15798,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -15824,7 +15824,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -15842,7 +15842,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -16239,7 +16239,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -16265,7 +16265,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -16283,7 +16283,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -16680,7 +16680,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -16706,7 +16706,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -16724,7 +16724,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -17129,7 +17129,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -17155,7 +17155,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -17173,7 +17173,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -17574,7 +17574,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -17600,7 +17600,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -17618,7 +17618,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -18015,7 +18015,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -18041,7 +18041,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -18059,7 +18059,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -18467,7 +18467,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -18493,7 +18493,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             id="cell-1-1"
             role="cell"
           >
@@ -18508,7 +18508,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             id="cell-1-2"
             role="cell"
           >
@@ -18902,7 +18902,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -18928,7 +18928,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -18944,7 +18944,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -19341,7 +19341,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -19367,7 +19367,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -19385,7 +19385,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -19804,7 +19804,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="false"
@@ -19836,7 +19836,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -19854,7 +19854,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -20251,7 +20251,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -20277,7 +20277,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -20295,7 +20295,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -20692,7 +20692,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -20718,7 +20718,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             id="cell-1-1"
             role="cell"
           >
@@ -20733,7 +20733,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             id="cell-1-2"
             role="cell"
           >
@@ -21127,7 +21127,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -21153,7 +21153,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -21171,7 +21171,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -21232,41 +21232,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   border-bottom-style: solid;
 }
 
-.c16 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: 16px;
-  padding-right: 16px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-  font-weight: 400;
-}
-
-.c16 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .c15 {
   position: relative;
   display: -webkit-box;
@@ -21298,6 +21263,41 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 }
 
 .c15 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c16 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-weight: 400;
+}
+
+.c16 div:first-child {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -21604,7 +21604,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -21630,7 +21630,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -21648,7 +21648,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -22045,7 +22045,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -22071,7 +22071,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -22089,7 +22089,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -22486,7 +22486,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -22512,7 +22512,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -22530,7 +22530,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -22626,32 +22626,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   text-overflow: ellipsis;
 }
 
-.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c16:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
 .c14 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -22682,6 +22656,32 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 .c14:hover {
   cursor: pointer;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c16:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -22959,7 +22959,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -22985,7 +22985,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -23003,7 +23003,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -23400,7 +23400,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -23426,7 +23426,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -23444,7 +23444,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -23843,7 +23843,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -23869,7 +23869,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -23887,7 +23887,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -24389,7 +24389,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -24440,7 +24440,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -24493,7 +24493,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -24995,7 +24995,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -25046,7 +25046,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -25099,7 +25099,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -25620,7 +25620,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -25673,7 +25673,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -25717,7 +25717,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -26114,7 +26114,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -26140,7 +26140,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -26158,7 +26158,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -26656,7 +26656,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -26707,7 +26707,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -26760,7 +26760,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -27251,7 +27251,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -27302,7 +27302,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -27345,7 +27345,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -27843,7 +27843,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -27894,7 +27894,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -27947,7 +27947,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -28347,7 +28347,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -28373,7 +28373,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -28391,7 +28391,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -28791,7 +28791,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -28817,7 +28817,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -28835,7 +28835,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -29237,7 +29237,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -29263,7 +29263,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -29281,7 +29281,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -29683,7 +29683,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -29709,7 +29709,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -29727,7 +29727,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -30140,7 +30140,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -30166,7 +30166,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -30184,7 +30184,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -30585,7 +30585,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -30611,7 +30611,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -30629,7 +30629,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -32322,7 +32322,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -32682,7 +32682,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -33042,7 +33042,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -33452,7 +33452,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -33478,7 +33478,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -33496,7 +33496,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -33893,7 +33893,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -33919,7 +33919,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -33937,7 +33937,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -34333,7 +34333,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -34359,7 +34359,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -34377,7 +34377,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -34828,7 +34828,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -34864,7 +34864,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -34892,7 +34892,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -35358,7 +35358,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c11 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -35368,7 +35368,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             />
           </div>
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -35394,7 +35394,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -35404,7 +35404,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -35422,7 +35422,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -35432,7 +35432,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -35935,7 +35935,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 c11 rdt_TableCol"
           >
             <input
               aria-label="select-all-rows"
@@ -35945,7 +35945,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
             />
           </div>
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -35971,7 +35971,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-1"
@@ -35981,7 +35981,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -35999,7 +35999,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 c16 rdt_TableCell"
           >
             <input
               aria-label="select-row-2"
@@ -36009,7 +36009,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
             />
           </div>
           <div
-            class="c17 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c17 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -36423,7 +36423,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -36455,7 +36455,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -36473,7 +36473,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -36890,7 +36890,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -36922,7 +36922,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -36940,7 +36940,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -37337,7 +37337,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -37363,7 +37363,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -37381,7 +37381,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -37795,7 +37795,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -37827,7 +37827,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -37845,7 +37845,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -38259,7 +38259,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -38291,7 +38291,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -38309,7 +38309,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -38710,7 +38710,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -38744,7 +38744,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -38762,7 +38762,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -39171,7 +39171,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -39205,7 +39205,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -39223,7 +39223,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -39645,7 +39645,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -39677,7 +39677,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -39695,7 +39695,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -40109,7 +40109,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -40141,7 +40141,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -40159,7 +40159,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -40576,7 +40576,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -40608,7 +40608,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -40626,7 +40626,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -41043,7 +41043,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               aria-pressed="true"
@@ -41075,7 +41075,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -41093,7 +41093,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -41495,7 +41495,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -41521,7 +41521,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -41539,7 +41539,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -41968,7 +41968,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
           role="row"
         >
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -41994,7 +41994,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -42012,7 +42012,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -42441,7 +42441,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
           role="row"
         >
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -42467,7 +42467,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -42485,7 +42485,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -42914,7 +42914,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
           role="row"
         >
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -42940,7 +42940,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -42958,7 +42958,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -43387,7 +43387,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
           role="row"
         >
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -43413,7 +43413,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -43431,7 +43431,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -43860,7 +43860,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
           role="row"
         >
           <div
-            class="c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -43886,7 +43886,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -43904,7 +43904,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
           role="row"
         >
           <div
-            class="c16 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c16 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -44301,7 +44301,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -44327,7 +44327,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -44618,7 +44618,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -44636,7 +44636,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -45059,32 +45059,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   cursor: pointer;
 }
 
-.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c20:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
 .c15 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -45115,6 +45089,32 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 
 .c15:hover {
   cursor: pointer;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c20:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c12 {
@@ -45397,7 +45397,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             style="flex: 0 0 48px;"
           />
           <div
-            class="c12 rdt_TableCol"
+            class="Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -45448,7 +45448,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -45501,7 +45501,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             </button>
           </div>
           <div
-            class="c18 rdt_TableCell"
+            class="Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -45901,7 +45901,7 @@ exports[`should render correctly when disabled 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -45927,7 +45927,7 @@ exports[`should render correctly when disabled 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -45945,7 +45945,7 @@ exports[`should render correctly when disabled 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -46342,7 +46342,7 @@ exports[`should render the correctly when using selector function 1`] = `
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -46368,7 +46368,7 @@ exports[`should render the correctly when using selector function 1`] = `
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -46765,7 +46765,7 @@ exports[`should render the correctly when using selector function and a format f
           role="row"
         >
           <div
-            class="c11 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
           >
             <div
               class="c12 rdt_TableCol_Sortable"
@@ -46791,7 +46791,7 @@ exports[`should render the correctly when using selector function and a format f
           role="row"
         >
           <div
-            class="c15 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
