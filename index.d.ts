@@ -125,27 +125,27 @@ export interface IDataTableStyles {
     style: CSSProperties;
   };
   headRow?: {
-    style: CSSProperties;
-    denseStyle: CSSProperties;
+    style?: CSSProperties;
+    denseStyle?: CSSProperties;
   };
-  headCells: {
-    style: CSSProperties;
-    activeSortStyle: CSSProperties;
-    inactiveSortStyle: CSSProperties;
+  headCells?: {
+    style?: CSSProperties;
+    activeSortStyle?: CSSProperties;
+    inactiveSortStyle?: CSSProperties;
   };
-  contextMenu: {
-    style: CSSProperties;
-    activeStyle: CSSProperties;
+  contextMenu?: {
+    style?: CSSProperties;
+    activeStyle?: CSSProperties;
   };
   cells?: {
     style: CSSProperties;
   };
-  rows: {
-    style: CSSProperties;
-    selectedHighlighStyle: CSSProperties;
-    denseStyle: CSSProperties;
-    highlightOnHoverStyle: CSSProperties;
-    stripedStyle: CSSProperties;
+  rows?: {
+    style?: CSSProperties;
+    selectedHighlighStyle?: CSSProperties;
+    denseStyle?: CSSProperties;
+    highlightOnHoverStyle?: CSSProperties;
+    stripedStyle?: CSSProperties;
   };
   expanderRow?: {
     style: CSSProperties;
@@ -154,13 +154,13 @@ export interface IDataTableStyles {
     style: CSSProperties;
   };
   pagination?: {
-    style: CSSProperties;
-    pageButtonsStyle: CSSProperties;
+    style?: CSSProperties;
+    pageButtonsStyle?: CSSProperties;
   };
-  noData: {
+  noData?: {
     style: CSSProperties;
   };
-  progress: {
+  progress?: {
     style: CSSProperties;
   };
 }
