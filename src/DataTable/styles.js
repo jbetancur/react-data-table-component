@@ -92,6 +92,7 @@ export const defaultStyles = theme => ({
     style: {
       paddingLeft: '16px',
       paddingRight: '16px',
+      wordBreak: 'break-word',
     },
   },
   rows: {
