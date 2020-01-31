@@ -57,6 +57,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -92,6 +93,7 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -519,6 +521,7 @@ exports[`DataTable::Header should render a custom component within the context m
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -554,6 +557,7 @@ exports[`DataTable::Header should render a custom component within the context m
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -1027,6 +1031,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1062,6 +1067,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -1582,6 +1588,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1617,6 +1624,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -2129,6 +2137,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2164,6 +2173,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -2676,6 +2686,7 @@ exports[`DataTable::Header should render header actions when they are provided 1
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3127,6 +3138,7 @@ exports[`DataTable::Header should render the default context menu when using sel
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3162,6 +3174,7 @@ exports[`DataTable::Header should render the default context menu when using sel
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -3674,6 +3687,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3965,6 +3979,7 @@ exports[`DataTable::Header title should render correctly 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -4408,6 +4423,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -5131,6 +5147,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -5850,6 +5867,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -6569,6 +6587,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -7288,6 +7307,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -8007,6 +8027,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -8749,6 +8770,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -9470,6 +9492,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -10224,6 +10247,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -10978,6 +11002,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -11613,6 +11638,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -12332,6 +12358,7 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -12773,6 +12800,7 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13214,6 +13242,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -13656,6 +13685,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14105,6 +14135,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -14558,6 +14589,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15011,6 +15043,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15464,6 +15497,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -15917,6 +15951,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16358,6 +16393,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -16799,6 +16835,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -17248,6 +17285,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -17693,6 +17731,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -18134,6 +18173,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -18580,6 +18620,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -19017,6 +19058,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -19460,6 +19502,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -19929,6 +19972,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20370,6 +20414,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -20805,6 +20850,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21246,6 +21292,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21282,6 +21329,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -21723,6 +21771,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22164,6 +22213,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -22605,6 +22655,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23078,6 +23129,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23520,6 +23572,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -23981,6 +24034,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -24064,6 +24118,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -24587,6 +24642,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -24670,6 +24726,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -25193,6 +25250,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -25276,6 +25334,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -25792,6 +25851,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26252,6 +26312,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26335,6 +26396,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -26854,6 +26916,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -26937,6 +27000,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -27439,6 +27503,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -27522,6 +27587,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -28022,6 +28088,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28466,6 +28533,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -28910,6 +28978,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -29356,6 +29425,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -29802,6 +29872,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -30259,6 +30330,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -33128,6 +33200,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -33571,6 +33644,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -34012,6 +34086,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -34452,6 +34527,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
 }
 
 .c17 {
@@ -34468,6 +34544,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -34503,6 +34580,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -34967,6 +35045,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -35002,6 +35081,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -35507,6 +35587,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -35542,6 +35623,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -36084,6 +36166,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -36548,6 +36631,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -37015,6 +37099,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -37456,6 +37541,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -37920,6 +38006,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -38384,6 +38471,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -38837,6 +38925,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -39298,6 +39387,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -39770,6 +39860,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -40234,6 +40325,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -40701,6 +40793,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -41168,6 +41261,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -41614,6 +41708,7 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -42087,6 +42182,7 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -42560,6 +42656,7 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -43033,6 +43130,7 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -43506,6 +43604,7 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -43979,6 +44078,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -44377,6 +44477,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -44955,6 +45056,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -45038,6 +45140,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   padding: 0;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
@@ -45578,6 +45681,7 @@ exports[`should render correctly when disabled 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -46020,6 +46124,7 @@ exports[`should render the correctly when using selector function 1`] = `
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -46443,6 +46548,7 @@ exports[`should render the correctly when using selector function and a format f
   line-height: normal;
   padding-left: 16px;
   padding-right: 16px;
+  word-break: break-word;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
