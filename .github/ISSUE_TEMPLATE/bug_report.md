@@ -11,7 +11,7 @@ assignees: ''
 - [ ] Agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
 - [ ] Read the README
 - [ ] You are using React 16.8.0+
-- [ ] You installed 'styled-components`
+- [ ] You installed `styled-components`
 - [ ] Include relevant code or preferably a [code sandbox](https://codesandbox.io/embed/react-data-table-sandbox-ccyuu
 )
 
