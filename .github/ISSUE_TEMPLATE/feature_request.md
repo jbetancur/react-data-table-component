@@ -1,14 +1,20 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: ''
+title: "[DESCRIPTION]"
 labels: ''
 assignees: ''
 
 ---
 
+## Issue Check list
+- [ ] Agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
+- [ ] Read the README to ensure the feature is not already present
+- [ ] Considered the value versus complexity for all users of the library as well as library maintenance
+- [ ] Considered if this can be a storybook or documentation example
+
 **Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+A clear and concise description of what the featre is.
 
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
