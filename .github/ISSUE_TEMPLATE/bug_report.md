@@ -7,6 +7,13 @@ assignees: ''
 
 ---
 
+## Issue Check list
+- [ ] Read the README
+- [ ] You are using React 16.8.0+
+- [ ] You installed 'styled-components`
+- [ ] Include relevant code or preferably a [code sandbox](https://codesandbox.io/embed/react-data-table-sandbox-ccyuu
+)
+
 ## Describe the bug
 A clear and concise description of what the bug is.
 
@@ -20,20 +27,18 @@ Steps to reproduce the behavior:
 ## Expected behavior
 A clear and concise description of what you expected to happen.
 
-## Code Sandbox
-Please include a codesandbox to help duplicate your issue
+## Code Sandbox, Screenshots, or Relevant Code
+Please include a codesandbox to help **expedite** troublshooting.
 
 https://codesandbox.io/embed/react-data-table-sandbox-ccyuu
 
-## Screenshots
-If applicable, add screenshots to help explain your problem.
+Otherwise, add screenshots and/or complete sample code to help explain your problem.
 
 ## Versions (please complete the following information)
- - React
+ - React (RDT requires 16.8.0+)
  - Styled Components
  - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+ - Browser [e.g. chrome, safari, firefox]
 
 ## Additional context
 Add any other context about the problem here.
