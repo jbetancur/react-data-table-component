@@ -9,7 +9,13 @@ import styled, { css } from 'styled-components';
 const ResponsiveWrapper = styled.div`
   position: relative;
   width: 100%;
-  ${props => props.responsive && 'overflow-x: auto'};
+  ${props => props.responsive && css`
+    overflow-x: auto;
+
+    // prevents vertical scrolling in firefox
+    overflow-y: hidden;
+    min-height: 0;
+  `};
   ${props => props.overflowY && props.responsive && props.overflowYOffset && css`
     padding-bottom: ${props.overflowYOffset};
     margin-bottom: -${props.overflowYOffset};
