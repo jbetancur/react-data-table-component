@@ -24537,25 +24537,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   border-bottom-style: solid;
 }
 
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .c18 {
   position: relative;
   display: -webkit-box;
@@ -24656,11 +24637,11 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c19 {
@@ -24938,6 +24919,27 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -24977,12 +24979,10 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -25008,7 +25008,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -25033,7 +25033,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -25061,7 +25061,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -25086,7 +25086,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -25147,25 +25147,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   border-bottom-style: solid;
 }
 
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .c18 {
   position: relative;
   display: -webkit-box;
@@ -25266,11 +25247,11 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c19 {
@@ -25548,6 +25529,27 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -25587,12 +25589,10 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -25618,7 +25618,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -25643,7 +25643,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -25671,7 +25671,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -25696,7 +25696,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -25755,25 +25755,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
 }
 
 .c18 {
@@ -25876,11 +25857,11 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c15 {
@@ -26177,6 +26158,27 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -26216,12 +26218,10 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -26247,7 +26247,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               aria-disabled="true"
@@ -26274,7 +26274,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -26292,7 +26292,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               aria-disabled="false"
@@ -26318,7 +26318,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -26823,25 +26823,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   border-bottom-style: solid;
 }
 
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .c18 {
   position: relative;
   display: -webkit-box;
@@ -26942,11 +26923,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c19 {
@@ -27220,6 +27201,27 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -27259,12 +27261,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -27290,7 +27290,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -27315,7 +27315,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -27343,7 +27343,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -27368,7 +27368,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -27429,25 +27429,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   border-bottom-style: solid;
 }
 
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .c18 {
   position: relative;
   display: -webkit-box;
@@ -27548,11 +27529,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c15 {
@@ -27819,6 +27800,27 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -27858,12 +27860,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -27889,7 +27889,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -27914,7 +27914,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -27932,7 +27932,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -27957,7 +27957,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -28016,25 +28016,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
 }
 
 .c18 {
@@ -28137,11 +28118,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c19 {
@@ -28415,6 +28396,27 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -28454,12 +28456,10 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -28485,7 +28485,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -28510,7 +28510,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -28538,7 +28538,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -28563,7 +28563,451 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::expandableRows should render correctly when expandableRowsHideExpander is true 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 56px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-weight: 400;
+}
+
+.c15 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 16px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12:focus {
+  outline: none;
+  color: rgba(0,0,0,.54);
+}
+
+.c12:hover {
+  color: rgba(0,0,0,.54);
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 100%;
+  font-weight: 400;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  z-index: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #e3f2fd;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 8px;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  will-change: transform;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 22px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 56px;
+  padding-left: 16px;
+  padding-right: 8px;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c7 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div
+        class="c6"
+      />
+    </div>
+  </header>
+  <div
+    class="c7"
+  >
+    <div
+      class="c8 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c9 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
+          >
+            <div
+              class="c12 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+              tabindex="0"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c13 rdt_TableBody"
+        offset="250px"
+        role="rowgroup"
+      >
+        <div
+          class="c14 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c14 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"
@@ -45653,25 +46097,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   border-bottom-style: solid;
 }
 
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .c18 {
   position: relative;
   display: -webkit-box;
@@ -45772,11 +46197,11 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   padding-right: 16px;
   word-break: break-word;
   padding: 0;
+  white-space: nowrap;
+  font-weight: 400;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  white-space: nowrap;
-  font-weight: 400;
 }
 
 .c19 {
@@ -46088,6 +46513,27 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   display: table;
 }
 
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
 <div
   class="c0"
 >
@@ -46127,12 +46573,10 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           role="row"
         >
           <div
-            class="c11"
-            role="columnheader"
-            style="flex: 0 0 48px;"
+            class="Cell__CellBase-yhpecj-0 c11"
           />
           <div
-            class="Cell-yhpecj-1 c12 rdt_TableCol"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c12 rdt_TableCol"
           >
             <div
               class="c13 rdt_TableCol_Sortable"
@@ -46158,7 +46602,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -46183,7 +46627,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="cell"
@@ -46211,7 +46655,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           role="row"
         >
           <div
-            class="c16"
+            class="Cell__CellBase-yhpecj-0 c16"
           >
             <button
               class="c17"
@@ -46236,7 +46680,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             </button>
           </div>
           <div
-            class="Cell-yhpecj-1 c18 rdt_TableCell"
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c18 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="cell"

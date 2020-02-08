@@ -14,6 +14,7 @@ import TableBody from './TableBody';
 import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
 import TableWrapper from './TableWrapper';
+import TableColExpander from './TableColExpander';
 import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
@@ -88,6 +89,7 @@ const DataTable = memo(({
   sortServer,
   expandableRowsComponent,
   expandableRowDisabled,
+  expandableRowsHideExpander,
   expandOnRowClicked,
   expandOnRowDoubleClicked,
   expandableRowExpanded,
@@ -304,8 +306,8 @@ const DataTable = memo(({
                         ? <CellBase style={{ flex: '0 0 48px' }} role="columnheader" />
                         : <TableColCheckbox role="columnheader" />
                     )}
-                    {expandableRows && (
-                      <CellBase head style={{ flex: '0 0 48px' }} role="columnheader" />
+                    {expandableRows && !expandableRowsHideExpander && (
+                      <TableColExpander />
                     )}
                     {columnsMemo.map(column => (
                       <TableCol
@@ -366,6 +368,7 @@ const DataTable = memo(({
                         expandOnRowClicked={expandOnRowClicked}
                         expandOnRowDoubleClicked={expandOnRowDoubleClicked}
                         expandableRowsComponent={expandableRowsComponentMemo}
+                        expandableRowsHideExpander={expandableRowsHideExpander}
                         onRowExpandToggled={onRowExpandToggled}
                         defaultExpanderDisabled={expanderDisabled}
                         defaultExpanded={expanderExpander}

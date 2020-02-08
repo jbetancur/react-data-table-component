@@ -895,6 +895,20 @@ describe('DataTable::expandableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when expandableRowsHideExpander is true', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandableRowsHideExpander
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should not render expandableRows expandableRows is missing', () => {
     const mock = dataMock();
     mock.data[0].defaultExpanded = true;

@@ -52,6 +52,7 @@ const TableRow = memo(({
   expandableRowsComponent,
   defaultExpanderDisabled,
   defaultExpanded,
+  expandableRowsHideExpander,
   expandOnRowClicked,
   expandOnRowDoubleClicked,
   conditionalRowStyles,
@@ -115,7 +116,7 @@ const TableRow = memo(({
           />
         )}
 
-        {expandableRows && (
+        {expandableRows && !expandableRowsHideExpander && (
           <TableCellExpander
             expanded={expanded}
             row={row}
@@ -168,6 +169,7 @@ TableRow.propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]).isRequired,
+  expandableRowsHideExpander: PropTypes.bool.isRequired,
   expandOnRowClicked: PropTypes.bool.isRequired,
   expandOnRowDoubleClicked: PropTypes.bool.isRequired,
   conditionalRowStyles: PropTypes.array.isRequired,
