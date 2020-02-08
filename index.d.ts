@@ -58,6 +58,7 @@ export interface IDataTableProps<T> {
   expandableRowsComponent?: React.ReactNode;
   expandOnRowClicked?: boolean;
   expandOnRowDoubleClicked?: boolean;
+  expandableRowsHideExpander?: boolean;
   onRowExpandToggled?: (expanded: boolean, row: T) => void;
   expandableRowExpanded?: (row: T) => boolean;
   expandableRowDisabled?: (row: T) => boolean;
@@ -149,6 +150,9 @@ export interface IDataTableStyles {
     stripedStyle?: CSSProperties;
   };
   expanderRow?: {
+    style: CSSProperties;
+  };
+  expanderCell?: {
     style: CSSProperties;
   };
   expanderButton?: {

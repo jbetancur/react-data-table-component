@@ -5,9 +5,9 @@ import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 
 const TableCellExpanderStyle = styled(CellBase)`
-  flex: 0 0 48px;
   white-space: nowrap;
   font-weight: 400;
+  ${props => props.theme.expanderCell.style};
 `;
 
 const TableCellExpander = ({

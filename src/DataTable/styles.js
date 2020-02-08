@@ -142,6 +142,11 @@ export const defaultStyles = theme => ({
       backgroundColor: theme.background.default,
     },
   },
+  expanderCell: {
+    style: {
+      flex: '0 0 48px',
+    },
+  },
   expanderButton: {
     style: {
       color: theme.button.default,
