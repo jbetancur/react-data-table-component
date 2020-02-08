@@ -104,6 +104,7 @@ export interface IDataTableColumn<T> {
   wrap?: boolean;
   allowOverflow?: boolean;
   hide?: number | 'sm' | 'md' | 'lg';
+  omit?: boolean;
   style?: CSSProperties;
   conditionalCellStyles?: IDataTableConditionalCellStyles<T>[];
 }
