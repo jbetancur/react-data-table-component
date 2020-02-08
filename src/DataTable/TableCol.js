@@ -54,6 +54,11 @@ const TableCol = memo(({
   sortIcon,
 }) => {
   const { dispatch, pagination, paginationServer, sortColumn, sortDirection } = useTableContext();
+
+  if (column.omit) {
+    return null;
+  }
+
   const handleSortChange = () => {
     if (column.sortable) {
       let direction = sortDirection;

@@ -369,6 +369,21 @@ describe('DataTable::columns', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly if column.omit is true', () => {
+    const mock = dataMock();
+    const mockColumns = mock.columns.slice();
+    mockColumns.push({ id: 2, name: 'HideMe', selector: 'some.name', omit: true });
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mockColumns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 describe('DataTable:RowClicks', () => {
