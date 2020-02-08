@@ -54,11 +54,11 @@ export default ({ row, onDeleteRow, size }) => {
       >
 
         <MenuItem>
-        Item One
+          Item One
         </MenuItem>
 
         <MenuItem>
-        Item Two
+          Item Two
         </MenuItem>
 
         <Divider />
