@@ -1,34 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { storiesOf } from "@storybook/react";
-import data from "../constants/sampleMovieData";
-import DataTable from "../../../src/index";
-import { getNumberOfPages } from "../../../src/DataTable/util";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { storiesOf } from '@storybook/react';
 
-import TablePagination from "@material-ui/core/TablePagination";
+import TablePagination from '@material-ui/core/TablePagination';
 
-import IconButton from "@material-ui/core/IconButton";
-import FirstPageIcon from "@material-ui/icons/FirstPage";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import LastPageIcon from "@material-ui/icons/LastPage";
+import IconButton from '@material-ui/core/IconButton';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import LastPageIcon from '@material-ui/icons/LastPage';
+import { getNumberOfPages } from '../../../src/DataTable/util';
+import DataTable from '../../../src/index';
+import data from '../constants/sampleMovieData';
 
 const columns = [
   {
-    name: "Title",
-    selector: "title",
-    sortable: true
+    name: 'Title',
+    selector: 'title',
+    sortable: true,
   },
   {
-    name: "Director",
-    selector: "director",
-    sortable: true
+    name: 'Director',
+    selector: 'director',
+    sortable: true,
   },
   {
-    name: "Year",
-    selector: "year",
-    sortable: true
-  }
+    name: 'Year',
+    selector: 'year',
+    sortable: true,
+  },
 ];
 
 function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
@@ -88,7 +88,7 @@ TablePaginationActions.propTypes = {
   count: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired
+  rowsPerPage: PropTypes.number.isRequired,
 };
 
 const CustomMaterialPagination = ({
@@ -96,7 +96,7 @@ const CustomMaterialPagination = ({
   rowCount,
   onChangePage,
   onChangeRowsPerPage,
-  currentPage
+  currentPage,
 }) => (
   <TablePagination
     component="nav"
@@ -105,8 +105,7 @@ const CustomMaterialPagination = ({
     page={currentPage - 1}
     onChangePage={onChangePage}
     onChangeRowsPerPage={({ target }) =>
-      onChangeRowsPerPage(Number(target.value))
-    }
+      onChangeRowsPerPage(Number(target.value))}
     ActionsComponent={TablePaginationActions}
   />
 );
@@ -116,7 +115,7 @@ CustomMaterialPagination.propTypes = {
   rowCount: PropTypes.number.isRequired, // calculated row count from DataTable
   onChangePage: PropTypes.func.isRequired, // you want to "callback" the updated page number to DataTable so it can update its state
   onChangeRowsPerPage: PropTypes.func.isRequired, // you want to "callback" the updated rows per (newRowsPerPage, currentPage) to DataTable so it can update its state
-  currentPage: PropTypes.number.isRequired // the current page state from DataTable
+  currentPage: PropTypes.number.isRequired, // the current page state from DataTable
 };
 
 const CustomPaginationTable = () => (
@@ -129,7 +128,7 @@ const CustomPaginationTable = () => (
   />
 );
 
-storiesOf("Pagination", module).add(
-  "Custom Component (Material UI)",
-  CustomPaginationTable
+storiesOf('Pagination', module).add(
+  'Custom Component (Material UI)',
+  CustomPaginationTable,
 );
