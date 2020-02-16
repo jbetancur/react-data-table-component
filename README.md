@@ -43,6 +43,7 @@
   - [1.14. CSS Overrides](#114-css-overrides)
 - [2. Development](#2-development)
   - [2.1. Setup](#21-setup)
+  - [Contributors](#contributors)
   - [2.2. Local development](#22-local-development)
   - [2.3. Including NPM packages](#23-including-npm-packages)
     - [2.3.1. Library dependencies -- <root_dir>/package.**json](#231-library-dependencies----rootdirpackagejson)
@@ -885,6 +886,11 @@ If you would like to customize the layout components of React Data Table using s
 Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run `yarn` or `yarn install` command in the root and stories directory.
 
 > It is advised to run the script whenever NPM packages are installed.
+
+## Contributors
+
+Thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/jbetancur/react-data-table-component/graphs/contributors"><img src="https://opencollective.com/react-data-table-component/contributors.svg?width=890" /></a>
 
 ## 2.2. Local development
 
