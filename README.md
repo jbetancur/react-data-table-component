@@ -43,7 +43,6 @@
   - [1.14. CSS Overrides](#114-css-overrides)
 - [2. Development](#2-development)
   - [2.1. Setup](#21-setup)
-  - [Contributors](#contributors)
   - [2.2. Local development](#22-local-development)
   - [2.3. Including NPM packages](#23-including-npm-packages)
     - [2.3.1. Library dependencies -- <root_dir>/package.**json](#231-library-dependencies----rootdirpackagejson)
@@ -51,6 +50,7 @@
   - [2.4. Lint](#24-lint)
   - [2.5. Test](#25-test)
   - [2.6. Build](#26-build)
+- [Contributors](#contributors)
 
 <!-- /TOC -->
 
@@ -887,11 +887,6 @@ Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg
 
 > It is advised to run the script whenever NPM packages are installed.
 
-## Contributors
-
-Thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/jbetancur/react-data-table-component/graphs/contributors"><img src="https://opencollective.com/react-data-table-component/contributors.svg?width=890" /></a>
-
 ## 2.2. Local development
 
 During development:
@@ -943,3 +938,8 @@ yarn test --coverage # with coverage
 ```sh
 yarn build # builds sources at src/
 ```
+
+# Contributors
+
+Thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/jbetancur/react-data-table-component/graphs/contributors"><img src="https://opencollective.com/react-data-table-component/contributors.svg?width=890" /></a>
