@@ -220,11 +220,11 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onChangePage | func | no | null | callback when paged that returns `onChangePage(page, totalRows)` |
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed returns `onChangeRowsPerPage(currentRowsPerPage, currentPage)` |
 | paginationComponent | component | no | [Pagination](src/DataTable/Pagination.js) | a component that overrides the default pagination component. It must satisfy the following API: ```{  rowsPerPage: PropTypes.number.isRequired,  rowCount: PropTypes.number.isRequired,  onChangePage: PropTypes.func.isRequired,  onChangeRowsPerPage: PropTypes.func.isRequired,  currentPage: PropTypes.number.isRequired };``` |
-| paginationComponentOptions | object | no | `{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of', noRowsPerPage: false }` | override options for the built in pagination component. If you are developing a custom pagination component you can use `paginationComponentOptions` to pass in your own custom props.|
-| paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination |
-| paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination |
-| paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination |
-| paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination |
+| paginationComponentOptions | object | no | `{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of', noRowsPerPage: false }` | override options for the built in pagination component. Note that this prop only works with the build in Pagination component |
+| paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
+| paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
+| paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
+| paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
 
 #### Header
 
