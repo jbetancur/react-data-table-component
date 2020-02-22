@@ -1,6 +1,10 @@
 import shortid from 'shortid';
 import orderBy from 'lodash.orderby';
 
+export const isEmpty = (field = '') => {
+  return typeof field === 'undefined' || field === null || field.length === 0;
+};
+
 export const sort = (rows, field = '', direction, sortFn) => {
   if (sortFn && typeof sortFn === 'function') {
     return sortFn(rows, field, direction);

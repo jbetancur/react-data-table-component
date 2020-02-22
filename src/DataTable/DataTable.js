@@ -20,7 +20,7 @@ import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
-import { sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage, isRowSelected } from './util';
+import { isEmpty, sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage, isRowSelected } from './util';
 import { createStyles } from './styles';
 
 const DataTable = memo(({
@@ -342,7 +342,7 @@ const DataTable = memo(({
                   role="rowgroup"
                 >
                   {calculatedRows.map((row, i) => {
-                    const id = row[keyField] || i;
+                    const id = isEmpty(row[keyField]) ? i : row[keyField];
                     const selected = isRowSelected(row, selectedRows, keyField);
                     const expanderExpander = expandableRows
                       && expandableRowExpanded

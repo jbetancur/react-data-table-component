@@ -1,4 +1,5 @@
 import {
+  isEmpty,
   sort,
   getProperty,
   insertItem,
@@ -12,6 +13,32 @@ import {
 } from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
+
+describe('isEmpty', () => {
+  test('if the value is a number return false', () => {
+    expect(isEmpty(1)).toBe(false);
+  });
+
+  test('if the value is a string return true', () => {
+    expect(isEmpty('1')).toBe(false);
+  });
+
+  test('if the value is a 0 return false', () => {
+    expect(isEmpty(0)).toBe(false);
+  });
+
+  test('if the value is an empty string return true', () => {
+    expect(isEmpty('')).toBe(true);
+  });
+
+  test('if the value is null return true', () => {
+    expect(isEmpty(null)).toBe(true);
+  });
+
+  test('if the value is undefined return true', () => {
+    expect(isEmpty(undefined)).toBe(true);
+  });
+});
 
 describe('sort', () => {
   test('built in sort when already sorted asc', () => {
