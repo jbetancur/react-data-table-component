@@ -1830,6 +1830,47 @@ describe('DataTable::Pagination', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should call onChangePage with with page 1 of the table is sorted on a page > 1', () => {
+    const onChangePageMock = jest.fn();
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangePage={onChangePageMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // only check the 2nd call because in this case onChangePage is called twice - once on the page and another time when the sort is done to reset back to page 1
+    expect(onChangePageMock).toHaveBeenNthCalledWith(2, 1, 2);
+  });
+
+  test('should not call onChangePage with with page 1 of the table is sorted on a page > 1 and paginationServer is true', () => {
+    const onChangePageMock = jest.fn();
+    const mock = dataMock({ sortable: true });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationServer
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        onChangePage={onChangePageMock}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('button#pagination-last-page'));
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // only have fired onChangePage once
+    expect(onChangePageMock).toBeCalledWith(2, 2);
+  });
 });
 
 describe('DataTable::subHeader', () => {
