@@ -17,7 +17,7 @@ assignees: ''
 
 ## Is your feature request related to a problem? Please describe
 
-A clear and concise description of what the featre is.
+A clear and concise description of what the feature is.
 
 ## Describe the solution you'd like
 
