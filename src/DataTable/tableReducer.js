@@ -8,6 +8,7 @@ export function tableReducer(state, action) {
       return {
         ...state,
         allSelected: allChecked,
+        lastAffectedRows: action.rows,
         selectedCount: allChecked ? action.rows.length : 0,
         selectedRows: allChecked ? action.rows : [],
       };
@@ -19,6 +20,7 @@ export function tableReducer(state, action) {
       if (isRowSelected) {
         return {
           ...state,
+          lastAffectedRows: [row],
           selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
           allSelected: false,
           selectedRows: removeItem(state.selectedRows, row, keyField),
@@ -27,6 +29,7 @@ export function tableReducer(state, action) {
 
       return {
         ...state,
+        lastAffectedRows: [row],
         selectedCount: state.selectedRows.length + 1,
         allSelected: state.selectedRows.length + 1 === rows.length,
         selectedRows: insertItem(state.selectedRows, row),
@@ -38,6 +41,7 @@ export function tableReducer(state, action) {
 
       return {
         ...state,
+        lastAffectedRows: [rows],
         selectedCount: selectedRows.length,
         allSelected: selectedRows.length === rows.length,
         selectedRows,
@@ -93,6 +97,7 @@ export function tableReducer(state, action) {
         ...state,
         allSelected: false,
         selectedCount: 0,
+        lastAffectedRows: state.selectedRows,
         selectedRows: [],
         selectedRowsFlag,
       };
