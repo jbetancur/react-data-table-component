@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## Issue Check list
+## Feature Check list
 
 - [ ] Agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
 - [ ] Read the README to ensure the feature is not already present
