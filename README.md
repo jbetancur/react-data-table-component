@@ -85,7 +85,7 @@ React Data Table Component requires the following be installed in your project:
 
 ## Installation
 
-React Data Table requires the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
+React Data Table utilizes the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
 
 ```sh
 npm install react-data-table-component styled-components
@@ -171,7 +171,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selectableRows | bool | no | false | Whether to show selectable checkboxes |
-| selectableRowsHighlight | bool | no | false | Highlight a row whhen it is selected |
+| selectableRowsHighlight | bool | no | false | Highlight a row when it is selected |
 | selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
 | clearSelectedRows | bool | no | false | Toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
 | onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /> **note*- It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
