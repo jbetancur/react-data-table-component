@@ -24,8 +24,19 @@ const TableCell = memo(({ id, column, row }) => {
   }
 
   // apply a tag that TableRow will use to stop event propagation when TableCell is clicked
-  const dataTag = column.ignoreRowClick || column.button ? null : '___react-data-table-allow-propagation___';
-  const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
+  const dataTag =
+    column.ignoreRowClick || column.button
+      ? null
+      : '___react-data-table-allow-propagation___';
+  const extendedCellStyle = getConditionalStyle(
+    row,
+    column.conditionalCellStyles
+  );
+
+  // apply row & column className
+  let className = 'rdt_TableCell';
+  if (row.className) className += ' ' + row.className;
+  if (column.className) className += ' ' + column.className;
 
   return (
     <TableCellStyle
@@ -33,7 +44,7 @@ const TableCell = memo(({ id, column, row }) => {
       role="cell"
       column={column}
       data-tag={dataTag}
-      className="rdt_TableCell"
+      className={className}
       extendedCellStyle={extendedCellStyle}
     >
       {!column.cell && (
@@ -49,7 +60,7 @@ const TableCell = memo(({ id, column, row }) => {
 TableCell.propTypes = {
   id: PropTypes.string.isRequired,
   column: PropTypes.object.isRequired,
-  row: PropTypes.object.isRequired,
+  row: PropTypes.object.isRequired
 };
 
 export default TableCell;

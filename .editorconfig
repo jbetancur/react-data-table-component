@@ -9,6 +9,7 @@ root = true
 # Change these settings to your own preference
 indent_style = space
 indent_size = 2
+quote_type = single
 
 # We recommend you to keep these unchanged
 end_of_line = lf
