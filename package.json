@@ -1,6 +1,6 @@
 {
-  "name": "react-data-table-component",
-  "version": "6.3.1",
+  "name": "@jaxtis.apia/react-data-table-component",
+  "version": "6.3.3",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
