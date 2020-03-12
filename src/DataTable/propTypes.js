@@ -148,6 +148,7 @@ export const propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  shouldShowPagination: PropTypes.bool,
   dense: PropTypes.bool,
   conditionalRowStyles: PropTypes.arrayOf(
     PropTypes.shape({
@@ -234,6 +235,7 @@ export const defaultProps = {
   paginationIconLastPage: <LastPageIcon />,
   paginationIconNext: <RightIcon />,
   paginationIconPrevious: <LeftIcon />,
+  shouldShowPagination: false,
   dense: false,
   conditionalRowStyles: [],
   theme: 'default',

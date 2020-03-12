@@ -57,6 +57,7 @@ const DataTable = memo(({
   paginationIconPrevious,
   paginationComponent,
   paginationComponentOptions,
+  shouldShowPagination,
   className,
   style,
   responsive,
@@ -123,7 +124,7 @@ const DataTable = memo(({
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
 
-  const enabledPagination = pagination && !progressPending && data.length > 0;
+  const enabledPagination = shouldShowPagination || (pagination && !progressPending && data.length > 0);
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
   const currentTheme = useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
