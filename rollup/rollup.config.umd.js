@@ -12,6 +12,7 @@ export default Object.assign(config, {
         react: 'React',
         'styled-components': 'styled',
       },
+      exports: 'named',
     },
   ],
   plugins: plugins.concat([
