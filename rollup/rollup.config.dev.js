@@ -6,6 +6,7 @@ export default Object.assign(config, {
     name: 'ReactDataTable',
     file: `dist/${pkg.name}.dev.js`,
     format: 'cjs',
+    exports: 'named',
   },
   plugins: plugins.concat([
     // add additional plugins here

@@ -8,6 +8,7 @@ export default Object.assign(config, {
     {
       file: pkg.main,
       format: 'cjs',
+      exports: 'named',
     },
   ],
   plugins: plugins.concat([
