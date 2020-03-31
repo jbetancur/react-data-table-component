@@ -65,6 +65,8 @@ export interface IDataTableProps<T> {
   expandableIcon?: IExpandableIcon;
   expandableInheritConditionalStyles?: boolean;
   selectableRows?: boolean;
+  selectableRowsComponent?: React.ReactNode;
+  selectableRowsComponentProps?: T;
   selectableRowsHighlight?: boolean;
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
