@@ -222,6 +222,7 @@ exports[`should render correctly with default props 1`] = `
       class="c6"
       disabled=""
       id="pagination-first-page"
+      type="button"
     >
       <svg
         aria-hidden="true"
@@ -246,6 +247,7 @@ exports[`should render correctly with default props 1`] = `
       class="c6"
       disabled=""
       id="pagination-previous-page"
+      type="button"
     >
       <svg
         aria-hidden="true"
@@ -269,6 +271,7 @@ exports[`should render correctly with default props 1`] = `
       aria-label="Next Page"
       class="c6"
       id="pagination-next-page"
+      type="button"
     >
       <svg
         aria-hidden="true"
@@ -292,6 +295,7 @@ exports[`should render correctly with default props 1`] = `
       aria-label="Last Page"
       class="c6"
       id="pagination-last-page"
+      type="button"
     >
       <svg
         aria-hidden="true"

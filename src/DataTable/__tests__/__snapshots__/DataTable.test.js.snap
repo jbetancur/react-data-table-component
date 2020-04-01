@@ -5013,6 +5013,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
             class="c22"
             disabled=""
             id="pagination-first-page"
+            type="button"
           >
             <svg
               aria-hidden="true"
@@ -5037,6 +5038,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
             class="c22"
             disabled=""
             id="pagination-previous-page"
+            type="button"
           >
             <svg
               aria-hidden="true"
@@ -5061,6 +5063,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
             class="c22"
             disabled=""
             id="pagination-next-page"
+            type="button"
           >
             <svg
               aria-hidden="true"
@@ -5085,6 +5088,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
             class="c22"
             disabled=""
             id="pagination-last-page"
+            type="button"
           >
             <svg
               aria-hidden="true"
@@ -5738,6 +5742,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -5762,6 +5767,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -5785,6 +5791,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="Next Page"
           class="c22"
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -5808,6 +5815,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="Last Page"
           class="c22"
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -6460,6 +6468,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -6484,6 +6493,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -6507,6 +6517,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="Next Page"
           class="c22"
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -6530,6 +6541,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="Last Page"
           class="c22"
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7181,6 +7193,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="First Page"
           class="c22"
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7204,6 +7217,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="Previous Page"
           class="c22"
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7228,6 +7242,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7252,6 +7267,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7903,6 +7919,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="First Page"
           class="c22"
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7926,6 +7943,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           aria-label="Previous Page"
           class="c22"
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7950,6 +7968,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -7974,6 +7993,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
           class="c22"
           disabled=""
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -8649,6 +8669,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           class="c23"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -8673,6 +8694,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           class="c23"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -8696,6 +8718,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           aria-label="Next Page"
           class="c23"
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -8719,6 +8742,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
           aria-label="Last Page"
           class="c23"
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -9371,6 +9395,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
           class="c22"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -9395,6 +9420,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
           class="c22"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -9419,6 +9445,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
           class="c22"
           disabled=""
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -9443,6 +9470,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
           class="c22"
           disabled=""
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10128,6 +10156,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           class="c22"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10152,6 +10181,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           class="c22"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10176,6 +10206,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           class="c22"
           disabled=""
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10200,6 +10231,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
           class="c22"
           disabled=""
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10885,6 +10917,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c22"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10909,6 +10942,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c22"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10933,6 +10967,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c22"
           disabled=""
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -10957,6 +10992,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c22"
           disabled=""
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -11523,6 +11559,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c19"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -11547,6 +11584,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c19"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -11571,6 +11609,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c19"
           disabled=""
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -11595,6 +11634,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
           class="c19"
           disabled=""
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -12247,6 +12287,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
           class="c22"
           disabled=""
           id="pagination-first-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -12271,6 +12312,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
           class="c22"
           disabled=""
           id="pagination-previous-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -12294,6 +12336,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
           aria-label="Next Page"
           class="c22"
           id="pagination-next-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -12317,6 +12360,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
           aria-label="Last Page"
           class="c22"
           id="pagination-last-page"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -25014,6 +25058,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
               class="c17"
               data-testid="expander-button-1"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -25067,6 +25112,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -25624,6 +25670,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
               class="c17"
               data-testid="expander-button-1"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -25677,6 +25724,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -26255,6 +26303,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
               data-testid="expander-button-1"
               disabled=""
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -26299,6 +26348,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -27296,6 +27346,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
               class="c17"
               data-testid="expander-button-1"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -27349,6 +27400,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -27895,6 +27947,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
               class="c17"
               data-testid="expander-button-1"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -27938,6 +27991,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -28491,6 +28545,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
               class="c17"
               data-testid="expander-button-1"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -28544,6 +28599,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -46608,6 +46664,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
               class="c17"
               data-testid="expander-button-1"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"
@@ -46661,6 +46718,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
               class="c17"
               data-testid="expander-button-2"
               role="button"
+              type="button"
             >
               <svg
                 fill="currentColor"

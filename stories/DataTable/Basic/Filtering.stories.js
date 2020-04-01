@@ -53,7 +53,7 @@ const ClearButton = styled(Button)`
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
     <TextField id="search" type="text" placeholder="Filter By Name" value={filterText} onChange={onFilter} />
-    <ClearButton onClick={onClear}>X</ClearButton>
+    <ClearButton type="button" onClick={onClear}>X</ClearButton>
   </>
 );
 

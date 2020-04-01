@@ -27,6 +27,7 @@ const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
       data-testid={`expander-button-${row[keyField]}`}
       disabled={disabled}
       role="button"
+      type="button"
     >
       {icon}
     </ButtonStyle>
