@@ -106,6 +106,7 @@ const Pagination = ({
       <PageList>
         <Button
           id="pagination-first-page"
+          type="button"
           aria-label="First Page"
           aria-disabled={disabledLesser}
           onClick={handleFirst}
@@ -117,6 +118,7 @@ const Pagination = ({
 
         <Button
           id="pagination-previous-page"
+          type="button"
           aria-label="Previous Page"
           aria-disabled={disabledLesser}
           onClick={handlePrevious}
@@ -128,6 +130,7 @@ const Pagination = ({
 
         <Button
           id="pagination-next-page"
+          type="button"
           aria-label="Next Page"
           aria-disabled={disabledGreater}
           onClick={handleNext}
@@ -139,6 +142,7 @@ const Pagination = ({
 
         <Button
           id="pagination-last-page"
+          type="button"
           aria-label="Last Page"
           aria-disabled={disabledGreater}
           onClick={handleLast}
