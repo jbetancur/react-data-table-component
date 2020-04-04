@@ -71,7 +71,11 @@ export interface IDataTableProps<T> {
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
   clearSelectedRows?: boolean;
-  onSelectedRowsChange?: (selectedRowState: T) => void;
+  onSelectedRowsChange?: (selectedRowState: {
+    allSelected: boolean;
+    selectedCount: number;
+    selectedRows: T[];
+  }) => void;
   actions?: React.ReactNode | React.ReactNode[];
   noContextMenu?: boolean;
   contextMessage?: IContextMessage;
