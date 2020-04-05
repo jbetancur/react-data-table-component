@@ -70,6 +70,7 @@ export interface IDataTableProps<T> {
   selectableRowsHighlight?: boolean;
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
+  selectableRowsNoSelectAll?: boolean;
   clearSelectedRows?: boolean;
   onSelectedRowsChange?: (selectedRowState: {
     allSelected: boolean;
