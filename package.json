@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "6.3.6",
+  "version": "6.4.0",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
