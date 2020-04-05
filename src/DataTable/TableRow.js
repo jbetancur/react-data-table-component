@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import TableCell from './TableCell';
@@ -62,6 +62,10 @@ const TableRow = memo(({
   selectableRowsHighlight,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  useEffect(() => {
+    setExpanded(defaultExpanded);
+  }, [defaultExpanded]);
+
   const handleExpanded = useCallback(() => {
     setExpanded(!expanded);
     onRowExpandToggled(!expanded, row);

@@ -953,6 +953,32 @@ describe('DataTable::expandableRows', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when expandableRowExpanded changes on render', () => {
+    const mock = dataMock();
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        expandableRows
+        expandableRowExpanded={row => row.defaultExpanded}
+      />,
+    );
+
+    // expand all rows
+    const expandedData = mock.data.slice().map(i => ({ ...i, defaultExpanded: !i.defaultExpanded }));
+
+    rerender(
+      <DataTable
+        data={expandedData}
+        columns={mock.columns}
+        selectableRows
+        clearSelectedRows
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should not expand a row if the expander row is disabled', () => {
     const mock = dataMock();
     mock.data[0].disabled = true;
