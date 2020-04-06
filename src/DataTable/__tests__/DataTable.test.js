@@ -1438,6 +1438,33 @@ describe('DataTable::selectableRows', () => {
     expect(rowClickedMock.mock.calls[0][0]).toEqual(mock.data[0]);
     expect(rowClickedMock.mock.calls[0][1]).toBeDefined(); // TODO: mock event?
   });
+
+  test('should render correctly when selectableRows, selectableRowsVisibleOnly and pagination', () => {
+    const mock = dataMock({ sortable: true });
+    const onSelectedRowsChange = jest.fn();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationPerPage={1}
+        paginationRowsPerPageOptions={[1, 2]}
+        selectableRows
+        selectableRowsVisibleOnly
+        onSelectedRowsChange={onSelectedRowsChange}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-all-rows"]'));
+
+    // not ideal for testing but we can use the onSelectedRowsChange handler
+    // to check that we only have 1 items selected (on page1) out of a total of 2
+    expect(onSelectedRowsChange).toBeCalledWith({
+      allSelected: true,
+      selectedCount: 1,
+      selectedRows: [{ id: 1, some: { name: 'Apple' } }],
+    });
+  });
 });
 
 describe('DataTable::Pagination', () => {
@@ -1557,7 +1584,6 @@ describe('DataTable::Pagination', () => {
         paginationPerPage={1}
         paginationRowsPerPageOptions={[1, 2]}
         pagination
-
       />,
     );
 
