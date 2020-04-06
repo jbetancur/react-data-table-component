@@ -40,12 +40,12 @@ export function tableReducer(state, action) {
         ...state,
         selectedCount: selectedRows.length,
         allSelected: selectedRows.length === rows.length,
-        selectedRows,
+        selectedRows: [...state.selectedRows, ...selectedRows],
       };
     }
 
     case 'SORT_CHANGE': {
-      const { sortColumn, sortDirection, selectedColumn, pagination, paginationServer } = action;
+      const { sortColumn, sortDirection, selectedColumn, pagination, paginationServer, persistSelectedRowsOnSortChange } = action;
 
       return {
         ...state,
@@ -54,7 +54,7 @@ export function tableReducer(state, action) {
         sortDirection,
         currentPage: 1,
         // when using server-side paging reset selected row counts when sorting
-        ...pagination && paginationServer && ({
+        ...pagination && paginationServer && !persistSelectedRowsOnSortChange && ({
           allSelected: false,
           selectedCount: 0,
           selectedRows: [],
@@ -63,12 +63,12 @@ export function tableReducer(state, action) {
     }
 
     case 'CHANGE_PAGE': {
-      const { page, paginationServer } = action;
+      const { page, paginationServer, persistSelectedRowsOnPageChange } = action;
       return {
         ...state,
         currentPage: page,
         // when using server-side paging reset selected row counts
-        ...paginationServer && ({
+        ...paginationServer && !persistSelectedRowsOnPageChange && ({
           allSelected: false,
           selectedCount: 0,
           selectedRows: [],

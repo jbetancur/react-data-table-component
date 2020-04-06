@@ -77,6 +77,8 @@ export interface IDataTableProps<T> {
     selectedCount: number;
     selectedRows: T[];
   }) => void;
+  persistSelectedRowsOnSortChange?: boolean;
+  persistSelectedRowsOnPageChange?: boolean;
   actions?: React.ReactNode | React.ReactNode[];
   noContextMenu?: boolean;
   contextMessage?: IContextMessage;
