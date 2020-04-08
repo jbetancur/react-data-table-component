@@ -35,6 +35,10 @@ export interface IDataTableProps<T> {
   sortServer?: boolean;
   pagination?: boolean;
   paginationServer?: boolean;
+  paginationServerOptions: {
+    persistSelectedOnSort?: boolean;
+    persistSelectedOnPageChange?: boolean;
+  };
   paginationDefaultPage?: number;
   paginationResetDefaultPage?: boolean;
   paginationTotalRows?: number;
@@ -77,8 +81,6 @@ export interface IDataTableProps<T> {
     selectedCount: number;
     selectedRows: T[];
   }) => void;
-  persistSelectedRowsOnSortChange?: boolean;
-  persistSelectedRowsOnPageChange?: boolean;
   actions?: React.ReactNode | React.ReactNode[];
   noContextMenu?: boolean;
   contextMessage?: IContextMessage;

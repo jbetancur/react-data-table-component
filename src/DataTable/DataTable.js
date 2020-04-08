@@ -40,14 +40,13 @@ const DataTable = memo(({
   selectableRowDisabled,
   selectableRowsComponent,
   selectableRowsComponentProps,
-  persistSelectedRowsOnSortChange,
-  persistSelectedRowsOnPageChange,
   onRowExpandToggled,
   onSelectedRowsChange,
   expandableIcon,
   onChangeRowsPerPage,
   onChangePage,
   paginationServer,
+  paginationServerOptions,
   paginationTotalRows,
   paginationDefaultPage,
   paginationResetDefaultPage,
@@ -125,6 +124,7 @@ const DataTable = memo(({
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
 
+  const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
@@ -132,7 +132,7 @@ const DataTable = memo(({
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer, persistSelectedRowsOnPageChange });
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer, persistSelectedOnPageChange });
 
   useDidUpdateEffect(() => {
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
@@ -237,7 +237,7 @@ const DataTable = memo(({
     selectableRowDisabled,
     selectableRowsComponent,
     selectableRowsComponentProps,
-    persistSelectedRowsOnSortChange,
+    persistSelectedOnSort,
     expandableIcon,
     pagination,
     paginationServer,
