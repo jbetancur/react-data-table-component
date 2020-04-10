@@ -36,6 +36,7 @@ const DataTable = memo(({
   selectableRows,
   selectableRowsHighlight,
   selectableRowsNoSelectAll,
+  selectableRowsVisibleOnly,
   selectableRowSelected,
   selectableRowDisabled,
   selectableRowsComponent,
@@ -130,7 +131,7 @@ const DataTable = memo(({
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer });
+  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer, visibleOnly: selectableRowsVisibleOnly });
 
   useDidUpdateEffect(() => {
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
@@ -221,7 +222,7 @@ const DataTable = memo(({
 
   const init = {
     dispatch,
-    data,
+    data: selectableRowsVisibleOnly ? calculatedRows : data,
     allSelected,
     selectedRows,
     selectedCount,
@@ -231,6 +232,8 @@ const DataTable = memo(({
     contextMessage,
     contextActions,
     contextComponent,
+    sortServer,
+    selectableRowsVisibleOnly,
     selectableRowSelected,
     selectableRowDisabled,
     selectableRowsComponent,

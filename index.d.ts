@@ -68,6 +68,7 @@ export interface IDataTableProps<T> {
   selectableRowsComponent?: React.ReactNode;
   selectableRowsComponentProps?: T;
   selectableRowsHighlight?: boolean;
+  selectableRowsVisibleOnly?: boolean;
   selectableRowSelected?: (row: T) => boolean;
   selectableRowDisabled?: (row: T) => boolean;
   selectableRowsNoSelectAll?: boolean;
