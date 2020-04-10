@@ -3,13 +3,14 @@ import { insertItem, removeItem } from './util';
 export function tableReducer(state, action) {
   switch (action.type) {
     case 'SELECT_ALL_ROWS': {
+      const { rows } = action;
       const allChecked = !state.allSelected;
 
       return {
         ...state,
         allSelected: allChecked,
-        selectedCount: allChecked ? action.rows.length : 0,
-        selectedRows: allChecked ? action.rows : [],
+        selectedCount: allChecked ? rows.length : 0,
+        selectedRows: allChecked ? rows : [],
       };
     }
 
@@ -45,8 +46,8 @@ export function tableReducer(state, action) {
     }
 
     case 'SORT_CHANGE': {
-      const { sortColumn, sortDirection, selectedColumn, pagination, paginationServer, persistSelectedOnSort } = action;
-
+      const { sortColumn, sortDirection, sortServer, selectedColumn, pagination, paginationServer, persistSelectedOnSort, visibleOnly } = action;
+      const clearSelectedOnSort = (pagination && paginationServer && !persistSelectedOnSort) || sortServer || visibleOnly;
       return {
         ...state,
         sortColumn,
@@ -54,7 +55,7 @@ export function tableReducer(state, action) {
         sortDirection,
         currentPage: 1,
         // when using server-side paging reset selected row counts when sorting if !persistSelectedOnSort
-        ...pagination && paginationServer && !persistSelectedOnSort && ({
+        ...clearSelectedOnSort && ({
           allSelected: false,
           selectedCount: 0,
           selectedRows: [],
@@ -63,12 +64,13 @@ export function tableReducer(state, action) {
     }
 
     case 'CHANGE_PAGE': {
-      const { page, paginationServer, persistSelectedOnPageChange } = action;
+      const { page, paginationServer, visibleOnly, persistSelectedOnPageChange } = action;
+      const clearSelectedOnPage = (paginationServer && !persistSelectedOnPageChange) || visibleOnly;
       return {
         ...state,
         currentPage: page,
         // when using server-side paging reset selected row counts if !persistSelectedOnPageChange
-        ...paginationServer && !persistSelectedOnPageChange && ({
+        ...clearSelectedOnPage && ({
           allSelected: false,
           selectedCount: 0,
           selectedRows: [],

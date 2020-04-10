@@ -53,7 +53,7 @@ const TableCol = memo(({
   column,
   sortIcon,
 }) => {
-  const { dispatch, pagination, paginationServer, sortColumn, sortDirection, persistSelectedOnSort } = useTableContext();
+  const { dispatch, pagination, paginationServer, sortColumn, sortDirection, sortServer, selectableRowsVisibleOnly, persistSelectedOnSort } = useTableContext();
 
   if (column.omit) {
     return null;
@@ -72,9 +72,11 @@ const TableCol = memo(({
         type: 'SORT_CHANGE',
         sortDirection: direction,
         sortColumn: column.selector,
+        sortServer,
         selectedColumn: column,
         pagination,
         paginationServer,
+        visibleOnly: selectableRowsVisibleOnly,
         persistSelectedOnSort,
       });
     }

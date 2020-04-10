@@ -14,11 +14,23 @@ const TableColStyle = styled(CellBase)`
 `;
 
 const TableColCheckbox = ({ head }) => {
-  const { dispatch, data, selectedRows, allSelected, selectableRowsComponent, selectableRowsComponentProps, selectableRowDisabled } = useTableContext();
+  const {
+    dispatch,
+    data,
+    selectedRows,
+    allSelected,
+    selectableRowsComponent,
+    selectableRowsComponentProps,
+    selectableRowDisabled,
+  } = useTableContext();
+
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = selectableRowDisabled ? data.filter(row => !selectableRowDisabled(row)) : data;
   const isDisabled = rows.length === 0;
-  const handleSelectAll = () => dispatch({ type: 'SELECT_ALL_ROWS', rows });
+  const handleSelectAll = () => dispatch({
+    type: 'SELECT_ALL_ROWS',
+    rows,
+  });
 
   return (
     <TableColStyle className="rdt_TableCol" head={head} noPadding>

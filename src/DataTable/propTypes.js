@@ -14,6 +14,7 @@ export const propTypes = {
   ]),
   selectableRows: PropTypes.bool,
   selectableRowsHighlight: PropTypes.bool,
+  selectableRowsVisibleOnly: PropTypes.bool,
   selectableRowsNoSelectAll: PropTypes.bool,
   selectableRowSelected: PropTypes.func,
   selectableRowDisabled: PropTypes.func,

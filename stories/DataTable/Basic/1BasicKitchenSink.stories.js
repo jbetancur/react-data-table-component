@@ -35,6 +35,7 @@ const columns = [
 const KitchenSink = () => {
   const [selectableRows, setSelectableRows] = React.useState(false);
   const [noSelectAll, setNoSelectAll] = React.useState(false);
+  const [selectableRowsVisibleOnly, setSelectableRowsVisibleOnly] = React.useState(false);
   const [selectableRowsHighlight, setSelectableRowsHighlight] = React.useState(false);
   const [expandableRows, setExpandableRows] = React.useState(false);
   const [expandOnRowClick, setExpandOnRowClick] = React.useState(false);
@@ -68,6 +69,11 @@ const KitchenSink = () => {
             <FormControlLabel
               control={<Checkbox size="small" checked={noSelectAll} onChange={() => setNoSelectAll(!noSelectAll)} />}
               label="Disable Select All Rows"
+            />
+
+            <FormControlLabel
+              control={<Checkbox size="small" checked={selectableRowsVisibleOnly} onChange={() => setSelectableRowsVisibleOnly(!selectableRowsVisibleOnly)} />}
+              label="Allow Visible Rows Only"
             />
 
             <FormControlLabel
@@ -181,6 +187,7 @@ const KitchenSink = () => {
         selectableRows={selectableRows}
         selectableRowsNoSelectAll={noSelectAll}
         selectableRowsHighlight={selectableRowsHighlight}
+        selectableRowsVisibleOnly={selectableRowsVisibleOnly}
         expandableRows={expandableRows}
         expandOnRowClicked={expandOnRowClick}
         pagination={pagination}
