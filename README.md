@@ -105,7 +105,7 @@ Please use the github issue templates feature for logging issues or feature prop
 
 ### Columns
 
-Nothing new here - we are using an array of object literals and properties to describle the columns:
+Nothing new here - we are using an array of object literals and properties to describe the columns:
 
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
@@ -699,7 +699,7 @@ Pre-optimizaton can be the root of all evil, however, there are some best practi
 
 ### Passing non-primitive props (objects, arrays and functions)
 
-While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into RDT are not re-created on every render cycyle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
+While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into RDT are not re-created on every render cycle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
 #### Optimizing Class Components
 
