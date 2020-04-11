@@ -148,7 +148,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
-| data | array<Object> | no | [] | it is **highly recommended*- that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
+| data | array<Object> | no | [] | it is **highly recommended** that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` |
 | keyField | string | no | 'id' | **Your data should have a unique identifier.*- By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time or use the expander feature. If a unique `id` is not present, React Data Table will use the row index and by reference checks as fallbacks, however, this is highly discouraged |
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
