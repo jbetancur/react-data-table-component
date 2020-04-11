@@ -9,6 +9,8 @@ const defaultComponentOptions = {
   rowsPerPageText: 'Rows per page:',
   rangeSeparatorText: 'of',
   noRowsPerPage: false,
+  selectAllRowsItem: false,
+  selectAllRowsItemText: 'All',
 };
 
 const PaginationWrapper = styled.nav`
@@ -59,6 +61,7 @@ const Pagination = ({
   currentPage,
 }) => {
   const {
+    data,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
     paginationIconFirstPage,
@@ -71,10 +74,10 @@ const Pagination = ({
   const firstIndex = (lastIndex - rowsPerPage) + 1;
   const disabledLesser = currentPage === 1;
   const disabledGreater = currentPage === numPages;
-  const { rowsPerPageText, rangeSeparatorText, noRowsPerPage } = { ...defaultComponentOptions, ...paginationComponentOptions };
+  const options = { ...defaultComponentOptions, ...paginationComponentOptions };
   const range = currentPage === numPages
-    ? `${firstIndex}-${rowCount} ${rangeSeparatorText} ${rowCount}`
-    : `${firstIndex}-${lastIndex} ${rangeSeparatorText} ${rowCount}`;
+    ? `${firstIndex}-${rowCount} ${options.rangeSeparatorText} ${rowCount}`
+    : `${firstIndex}-${lastIndex} ${options.rangeSeparatorText} ${rowCount}`;
 
   const handlePrevious = useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
   const handleNext = useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
@@ -82,21 +85,35 @@ const Pagination = ({
   const handleLast = useCallback(() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)), [onChangePage, rowCount, rowsPerPage]);
   const handleRowsPerPage = useCallback(({ target }) => onChangeRowsPerPage(Number(target.value), currentPage), [currentPage, onChangeRowsPerPage]);
   const isRTL = detectRTL();
+  const selectOptions = paginationRowsPerPageOptions.map(num => (
+    <option
+      key={num}
+      value={num}
+    >
+      {num}
+    </option>
+  ));
+
+  if (options.selectAllRowsItem) {
+    selectOptions.push(
+      (
+        <option
+          key={-1}
+          value={data.length}
+        >
+          {options.selectAllRowsItemText}
+        </option>
+      ),
+    );
+  }
 
   return (
     <PaginationWrapper className="rdt_Pagination">
-      {!noRowsPerPage && (
+      {!options.noRowsPerPage && (
         <>
-          <RowLabel>{rowsPerPageText}</RowLabel>
+          <RowLabel>{options.rowsPerPageText}</RowLabel>
           <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
-            {paginationRowsPerPageOptions.map(num => (
-              <option
-                key={num}
-                value={num}
-              >
-                {num}
-              </option>
-            ))}
+            {selectOptions}
           </Select>
         </>
       )}

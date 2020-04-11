@@ -192,6 +192,8 @@ export interface IDataTablePaginationOptions {
   noRowsPerPage?: boolean;
   rowsPerPageText?: string;
   rangeSeparatorText?: string;
+  selectAllRowsItem?: boolean;
+  selectAllRowsItemText?: string;
 }
 
 export interface IExpandableIcon {
