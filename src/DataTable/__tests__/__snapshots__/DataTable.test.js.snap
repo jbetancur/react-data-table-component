@@ -11017,6 +11017,1538 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 </div>
 `;
 
+exports[`DataTable::Pagination should render correctly when a paginationComponentOptions selectAllRowsItem is true 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 56px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-weight: 400;
+}
+
+.c15 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 16px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12:focus {
+  outline: none;
+  color: rgba(0,0,0,.54);
+}
+
+.c12:hover {
+  color: rgba(0,0,0,.54);
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 100%;
+  font-weight: 400;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  z-index: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #e3f2fd;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 8px;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  will-change: transform;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 22px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 56px;
+  padding-left: 16px;
+  padding-right: 8px;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c7 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.c19 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 12px;
+  box-sizing: content-box;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  direction: ltr;
+}
+
+.c19::-ms-expand {
+  display: none;
+}
+
+.c19:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c18 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: inherit;
+  color: inherit;
+  margin-top: 2px;
+}
+
+.c18 svg {
+  top: 0;
+  right: 0;
+  color: inherit;
+  position: absolute;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  color: rgba(0,0,0,0.54);
+  font-size: 13px;
+  min-height: 56px;
+  background-color: #FFFFFF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+}
+
+.c22 {
+  position: relative;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: px;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  color: rgba(0,0,0,.54);
+  fill: rgba(0,0,0,.54);
+  background-color: transparent;
+}
+
+.c22:disabled {
+  opacity: 0.4;
+  cursor: unset;
+  color: rgba(0,0,0,0.12);
+}
+
+.c22:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c22:focus {
+  outline: none;
+  background-color: rgba(0,0,0,.12);
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.c20 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0 24px;
+}
+
+.c17 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0 4px;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div
+        class="c6"
+      />
+    </div>
+  </header>
+  <div
+    class="c7"
+  >
+    <div
+      class="c8 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c9 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
+          >
+            <div
+              class="c12 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+              tabindex="0"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c13 rdt_TableBody"
+        offset="250px"
+        role="rowgroup"
+      >
+        <div
+          class="c14 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c14 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav
+      class="c16 rdt_Pagination"
+    >
+      <span
+        class="Pagination__Span-sc-1iha5ux-3 c17"
+      >
+        Rows per page:
+      </span>
+      <div
+        class="c18"
+      >
+        <select
+          class="c19"
+        >
+          <option
+            selected=""
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="15"
+          >
+            15
+          </option>
+          <option
+            value="20"
+          >
+            20
+          </option>
+          <option
+            value="25"
+          >
+            25
+          </option>
+          <option
+            value="30"
+          >
+            30
+          </option>
+          <option
+            value="2"
+          >
+            All
+          </option>
+        </select>
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </div>
+      <span
+        class="Pagination__Span-sc-1iha5ux-3 c20"
+      >
+        1-2 of 2
+      </span>
+      <div
+        class="c21"
+      >
+        <button
+          aria-disabled="true"
+          aria-label="First Page"
+          class="c22"
+          disabled=""
+          id="pagination-first-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            />
+            <path
+              d="M24 24H0V0h24v24z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Previous Page"
+          class="c22"
+          disabled=""
+          id="pagination-previous-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Next Page"
+          class="c22"
+          disabled=""
+          id="pagination-next-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Last Page"
+          class="c22"
+          disabled=""
+          id="pagination-last-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            />
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DataTable::Pagination should render correctly when a paginationComponentOptions selectAllRowsItem is true and selectAllRowsItemText is provided 1`] = `
+.c8 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 56px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+  font-weight: 400;
+}
+
+.c15 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c14:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 16px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c12:focus {
+  outline: none;
+  color: rgba(0,0,0,.54);
+}
+
+.c12:hover {
+  color: rgba(0,0,0,.54);
+}
+
+.c12 span.__rdt_custom_sort_icon__ i,
+.c12 span.__rdt_custom_sort_icon__ svg {
+  opacity: 0;
+  color: inherit;
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c12 span.__rdt_custom_sort_icon__.asc i,
+.c12 span.__rdt_custom_sort_icon__.asc svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 100%;
+  font-weight: 400;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: inherit;
+  z-index: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #e3f2fd;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 8px;
+  -webkit-transform: translate3d(0,-100%,0);
+  -ms-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  will-change: transform;
+}
+
+.c1 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 22px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 56px;
+  padding-left: 16px;
+  padding-right: 8px;
+}
+
+.c2 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  font-weight: 400;
+}
+
+.c3 {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c3 > * {
+  margin-left: 5px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c7 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.c19 {
+  cursor: pointer;
+  height: 24px;
+  min-width: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 8px;
+  padding-right: 12px;
+  box-sizing: content-box;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  direction: ltr;
+}
+
+.c19::-ms-expand {
+  display: none;
+}
+
+.c19:disabled::-ms-expand {
+  background: #f60;
+}
+
+.c18 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: inherit;
+  color: inherit;
+  margin-top: 2px;
+}
+
+.c18 svg {
+  top: 0;
+  right: 0;
+  color: inherit;
+  position: absolute;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  color: rgba(0,0,0,0.54);
+  font-size: 13px;
+  min-height: 56px;
+  background-color: #FFFFFF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+}
+
+.c22 {
+  position: relative;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: px;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  color: rgba(0,0,0,.54);
+  fill: rgba(0,0,0,.54);
+  background-color: transparent;
+}
+
+.c22:disabled {
+  opacity: 0.4;
+  cursor: unset;
+  color: rgba(0,0,0,0.12);
+}
+
+.c22:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c22:focus {
+  outline: none;
+  background-color: rgba(0,0,0,.12);
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.c20 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0 24px;
+}
+
+.c17 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0 4px;
+}
+
+<div
+  class="c0"
+>
+  <header
+    class="c1 rdt_TableHeader"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+    />
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+      <div
+        class="c6"
+      />
+    </div>
+  </header>
+  <div
+    class="c7"
+  >
+    <div
+      class="c8 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c9 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
+          >
+            <div
+              class="c12 rdt_TableCol_Sortable"
+              id="column-some.name"
+              role="button"
+              tabindex="0"
+            >
+              <div>
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c13 rdt_TableBody"
+        offset="250px"
+        role="rowgroup"
+      >
+        <div
+          class="c14 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c14 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
+            data-tag="___react-data-table-allow-propagation___"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="___react-data-table-allow-propagation___"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav
+      class="c16 rdt_Pagination"
+    >
+      <span
+        class="Pagination__Span-sc-1iha5ux-3 c17"
+      >
+        Rows per page:
+      </span>
+      <div
+        class="c18"
+      >
+        <select
+          class="c19"
+        >
+          <option
+            selected=""
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="15"
+          >
+            15
+          </option>
+          <option
+            value="20"
+          >
+            20
+          </option>
+          <option
+            value="25"
+          >
+            25
+          </option>
+          <option
+            value="30"
+          >
+            30
+          </option>
+          <option
+            value="2"
+          >
+            Todos
+          </option>
+        </select>
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </div>
+      <span
+        class="Pagination__Span-sc-1iha5ux-3 c20"
+      >
+        1-2 of 2
+      </span>
+      <div
+        class="c21"
+      >
+        <button
+          aria-disabled="true"
+          aria-label="First Page"
+          class="c22"
+          disabled=""
+          id="pagination-first-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            />
+            <path
+              d="M24 24H0V0h24v24z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Previous Page"
+          class="c22"
+          disabled=""
+          id="pagination-previous-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Next Page"
+          class="c22"
+          disabled=""
+          id="pagination-next-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Last Page"
+          class="c22"
+          disabled=""
+          id="pagination-last-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            />
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
 exports[`DataTable::Pagination should render correctly when a paginationComponentOptions to hide the per page dropdown are passed 1`] = `
 .c8 {
   position: relative;

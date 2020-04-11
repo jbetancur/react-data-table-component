@@ -1855,6 +1855,34 @@ describe('DataTable::Pagination', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when a paginationComponentOptions selectAllRowsItem is true', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationComponentOptions={{ selectAllRowsItem: true }}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when a paginationComponentOptions selectAllRowsItem is true and selectAllRowsItemText is provided', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination
+        paginationComponentOptions={{ selectAllRowsItem: true, selectAllRowsItemText: 'Todos' }}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should render correctly when paginationResetDefaultPage is toggled', () => {
     const mock = dataMock();
     const { container, rerender } = render(
