@@ -62,6 +62,7 @@ const Pagination = ({
 }) => {
   const {
     data,
+    rtl,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
     paginationIconFirstPage,
@@ -69,6 +70,7 @@ const Pagination = ({
     paginationIconPrevious,
     paginationComponentOptions,
   } = useTableContext();
+  const isRTL = rtl || detectRTL();
   const numPages = getNumberOfPages(rowCount, rowsPerPage);
   const lastIndex = currentPage * rowsPerPage;
   const firstIndex = (lastIndex - rowsPerPage) + 1;
@@ -84,7 +86,7 @@ const Pagination = ({
   const handleFirst = useCallback(() => onChangePage(1), [onChangePage]);
   const handleLast = useCallback(() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)), [onChangePage, rowCount, rowsPerPage]);
   const handleRowsPerPage = useCallback(({ target }) => onChangeRowsPerPage(Number(target.value), currentPage), [currentPage, onChangeRowsPerPage]);
-  const isRTL = detectRTL();
+
   const selectOptions = paginationRowsPerPageOptions.map(num => (
     <option
       key={num}

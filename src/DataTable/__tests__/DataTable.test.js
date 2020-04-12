@@ -2464,3 +2464,20 @@ describe('DataTable::conditionalCellStyles', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
+
+describe('DataTable::rtl', () => {
+  test('should render correctly when rtl', () => {
+    const mock = dataMock();
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination // test pagiantion is this requires special handling for rtl cases
+        rtl
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});

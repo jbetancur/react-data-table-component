@@ -52,6 +52,7 @@ const KitchenSink = () => {
   const [subHeader, setSubHeader] = React.useState(false);
   const [subHeaderAlign, setSubHeaderAlign] = React.useState('right');
   const [fixedHeader, setFixedheader] = React.useState(false);
+  const [rtl, setRTL] = React.useState(false);
 
   return (
     <div>
@@ -179,6 +180,13 @@ const KitchenSink = () => {
         )}
       </FormGroup>
 
+      <FormGroup row>
+        <FormControlLabel
+          control={<Checkbox size="small" checked={rtl} onChange={() => setRTL(!rtl)} />}
+          label="Force RTL"
+        />
+      </FormGroup>
+
       <DataTable
         title="Movie List"
         columns={columns}
@@ -213,6 +221,7 @@ const KitchenSink = () => {
         subHeaderAlign={subHeaderAlign}
         fixedHeader={fixedHeader}
         fixedHeaderScrollHeight="300px"
+        rtl={rtl}
       />
     </div>
   );
