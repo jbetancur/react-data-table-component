@@ -31,7 +31,7 @@ const SelectWrapper = styled.div`
   flex-shrink: 0;
   font-size: inherit;
   color: inherit;
-  margin-top: 2px;
+  margin-top: 1px;
 
   svg {
     top: 0;

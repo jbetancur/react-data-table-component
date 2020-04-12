@@ -158,6 +158,7 @@ export const propTypes = {
   ),
   theme: PropTypes.string,
   customStyles: PropTypes.object,
+  rtl: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -239,4 +240,5 @@ export const defaultProps = {
   conditionalRowStyles: [],
   theme: 'default',
   customStyles: {},
+  rtl: false,
 };

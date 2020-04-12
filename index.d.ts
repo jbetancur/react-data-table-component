@@ -93,6 +93,7 @@ export interface IDataTableProps<T> {
   customStyles?: IDataTableStyles;
   theme?: string;
   conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
+  rtl?: boolean;
 }
 
 export interface IDataTableColumn<T> {

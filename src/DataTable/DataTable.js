@@ -101,6 +101,7 @@ const DataTable = memo(({
   conditionalRowStyles,
   theme,
   customStyles,
+  rtl,
 }) => {
   const initialState = {
     allSelected: false,
@@ -124,6 +125,7 @@ const DataTable = memo(({
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
 
+  const direction = rtl ? 'rtl' : 'ltr';
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
@@ -247,6 +249,7 @@ const DataTable = memo(({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
+    rtl,
   };
 
   const showTableHead = () => {
@@ -270,6 +273,7 @@ const DataTable = memo(({
           style={style}
           overflowYOffset={overflowYOffset}
           overflowY={overflowY}
+          dir={direction}
         >
           {!noHeader && (
             <TableHeader
