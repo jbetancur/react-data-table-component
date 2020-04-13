@@ -153,7 +153,7 @@ export interface IDataTableStyles {
   };
   rows?: {
     style?: CSSProperties;
-    selectedHighlighStyle?: CSSProperties;
+    selectedHighlightStyle?: CSSProperties;
     denseStyle?: CSSProperties;
     highlightOnHoverStyle?: CSSProperties;
     stripedStyle?: CSSProperties;
