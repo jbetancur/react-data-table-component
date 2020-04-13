@@ -93,7 +93,7 @@ export interface IDataTableProps<T> {
   customStyles?: IDataTableStyles;
   theme?: string;
   conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
-  direction?: 'ltr' | 'rtl' | 'autodetect';
+  direction?: 'ltr' | 'rtl' | 'auto';
 }
 
 export interface IDataTableColumn<T> {
