@@ -62,7 +62,7 @@ const Pagination = ({
 }) => {
   const {
     data,
-    rtl,
+    direction,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
     paginationIconFirstPage,
@@ -70,7 +70,7 @@ const Pagination = ({
     paginationIconPrevious,
     paginationComponentOptions,
   } = useTableContext();
-  const isRTL = rtl || detectRTL();
+  const isRTL = detectRTL(direction);
   const numPages = getNumberOfPages(rowCount, rowsPerPage);
   const lastIndex = currentPage * rowsPerPage;
   const firstIndex = (lastIndex - rowsPerPage) + 1;
