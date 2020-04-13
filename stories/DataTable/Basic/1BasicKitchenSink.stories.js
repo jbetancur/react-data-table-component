@@ -52,7 +52,8 @@ const KitchenSink = () => {
   const [subHeader, setSubHeader] = React.useState(false);
   const [subHeaderAlign, setSubHeaderAlign] = React.useState('right');
   const [fixedHeader, setFixedheader] = React.useState(false);
-  const [rtl, setRTL] = React.useState(false);
+  const [direction, setDirection] = React.useState(false);
+  const [directionValue, setDirectionValue] = React.useState('auto');
 
   return (
     <div>
@@ -182,9 +183,32 @@ const KitchenSink = () => {
 
       <FormGroup row>
         <FormControlLabel
-          control={<Checkbox size="small" checked={rtl} onChange={() => setRTL(!rtl)} />}
-          label="Force RTL"
+          control={<Checkbox size="small" checked={direction} onChange={() => setDirection(!direction)} />}
+          label="Set Direction"
         />
+        {direction && (
+          <>
+            <FormControl component="fieldset">
+              <RadioGroup aria-label="position" name="position" value={directionValue} onChange={e => setDirectionValue(e.target.value)} row>
+                <FormControlLabel
+                  value="auto"
+                  control={<Radio color="primary" />}
+                  label="auto"
+                />
+                <FormControlLabel
+                  value="rtl"
+                  control={<Radio color="primary" />}
+                  label="rtl"
+                />
+                <FormControlLabel
+                  value="ltr"
+                  control={<Radio color="primary" />}
+                  label="ltr"
+                />
+              </RadioGroup>
+            </FormControl>
+          </>
+        )}
       </FormGroup>
 
       <DataTable
@@ -221,7 +245,7 @@ const KitchenSink = () => {
         subHeaderAlign={subHeaderAlign}
         fixedHeader={fixedHeader}
         fixedHeaderScrollHeight="300px"
-        rtl={rtl}
+        direction={directionValue}
       />
     </div>
   );

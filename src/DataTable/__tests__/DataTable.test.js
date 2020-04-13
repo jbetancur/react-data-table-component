@@ -2465,18 +2465,65 @@ describe('DataTable::conditionalCellStyles', () => {
   });
 });
 
-describe('DataTable::rtl', () => {
-  test('should render correctly when rtl', () => {
+describe('DataTable::direction', () => {
+  test('should render correctly when direction is auto', () => {
     const mock = dataMock();
 
     const { container } = render(
       <DataTable
         data={mock.data}
         columns={mock.columns}
-        pagination // test pagiantion is this requires special handling for rtl cases
-        rtl
+        pagination // pagination requires special handling for rtl cases
+        direction="auto"
       />,
     );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when direction is rtl', () => {
+    const mock = dataMock();
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination // pagination requires special handling for rtl cases
+        direction="rtl"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when direction is ltr', () => {
+    const mock = dataMock();
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        pagination // pagination requires special handling for rtl cases
+        direction="ltr"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when direction is rtl when using a context menu', () => {
+    const mock = dataMock();
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+        direction="rtl"
+      />,
+    );
+
+    fireEvent.click(container.querySelector('input[name="select-row-1"]'));
 
     expect(container.firstChild).toMatchSnapshot();
   });
