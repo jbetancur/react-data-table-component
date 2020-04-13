@@ -110,10 +110,11 @@ export const defaultStyles = theme => ({
     denseStyle: {
       minHeight: '32px',
     },
-    selectedHighlighStyle: {
-      color: theme.selected.text,
-      backgroundColor: theme.selected.default,
-      '&:not(:last-of-type)': {
+    selectedHighlightStyle: {
+      // use nth-of-type(n) to override other nth selectors
+      '&:nth-of-type(n)': {
+        color: theme.selected.text,
+        backgroundColor: theme.selected.default,
         borderBottomColor: theme.background.default,
       },
     },
@@ -122,15 +123,13 @@ export const defaultStyles = theme => ({
       backgroundColor: theme.highlightOnHover.default,
       transitionDuration: '0.15s',
       transitionProperty: 'background-color',
-      '&:not(:last-of-type)': {
-        borderBottomColor: theme.background.default,
-        outlineStyle: 'solid',
-        outlineWidth: '1px',
-        outlineColor: theme.background.default,
-      },
+      borderBottomColor: theme.background.default,
+      outlineStyle: 'solid',
+      outlineWidth: '1px',
+      outlineColor: theme.background.default,
     },
     stripedStyle: {
-      '&:nth-child(odd)': {
+      '&:nth-of-type(odd)': {
         color: theme.striped.text,
         backgroundColor: theme.striped.default,
       },

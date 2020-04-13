@@ -35899,9 +35899,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   transition-duration: 0.15s;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-}
-
-.c14:hover:not(:last-of-type) {
   border-bottom-color: #FFFFFF;
   outline-style: solid;
   outline-width: 1px;
@@ -41689,8 +41686,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   color: rgba(0,0,0,0.87);
   background-color: #FFFFFF;
   min-height: 48px;
-  color: rgba(0,0,0,0.87);
-  background-color: #EEEEEE;
 }
 
 .c15:not(:last-of-type) {
@@ -41699,7 +41694,9 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   border-bottom-color: rgba(0,0,0,.12);
 }
 
-.c15:not(:last-of-type) {
+.c15:nth-of-type(n) {
+  color: rgba(0,0,0,0.87);
+  background-color: #e3f2fd;
   border-bottom-color: #FFFFFF;
 }
 
@@ -47335,7 +47332,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   border-bottom-color: rgba(0,0,0,.12);
 }
 
-.c14:nth-child(odd) {
+.c14:nth-of-type(odd) {
   color: rgba(0,0,0,0.87);
   background-color: #FAFAFA;
 }
