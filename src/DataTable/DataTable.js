@@ -162,8 +162,8 @@ const DataTable = memo(({
   useEffect(() => {
     if (selectableRowSelected) {
       const preSelectedRows = data.filter(row => selectableRowSelected(row));
-
-      dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
+      const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
+      dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data, mergeSelections });
     }
     // We only want to re-render if the data changes
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -35,19 +35,21 @@ export function tableReducer(state, action) {
     }
 
     case 'SELECT_MULTIPLE_ROWS': {
-      const { selectedRows, rows } = action;
+      const { selectedRows, rows, mergeSelections } = action;
+      const selections = !mergeSelections ? selectedRows :
+        [...state.selectedRows, ...selectedRows.filter(row => !state.selectedRows.includes(row))];
 
       return {
         ...state,
-        selectedCount: selectedRows.length,
-        allSelected: selectedRows.length === rows.length,
-        selectedRows: [...state.selectedRows, ...selectedRows],
+        selectedCount: selections.length,
+        allSelected: selections.length === rows.length,
+        selectedRows: selections,
       };
     }
 
     case 'SORT_CHANGE': {
       const { sortColumn, sortDirection, sortServer, selectedColumn, pagination, paginationServer, persistSelectedOnSort, visibleOnly } = action;
-      const clearSelectedOnSort = (pagination && paginationServer && !persistSelectedOnSort) || sortServer || visibleOnly;
+      const clearSelectedOnSort = (pagination && paginationServer && !persistSelectedOnSort) || (sortServer && !persistSelectedOnSort) || visibleOnly;
       return {
         ...state,
         sortColumn,
