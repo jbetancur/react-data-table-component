@@ -102,6 +102,7 @@ const DataTable = memo(({
   conditionalRowStyles,
   theme,
   customStyles,
+  direction,
 }) => {
   const initialState = {
     allSelected: false,
@@ -124,13 +125,13 @@ const DataTable = memo(({
     selectedColumn,
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
-
   const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
   const currentTheme = useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
   const expandableRowsComponentMemo = useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
+  const wrapperProps = useMemo(() => ({ ...direction !== 'auto' && ({ dir: direction }) }), [direction]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
   const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer, visibleOnly: selectableRowsVisibleOnly, persistSelectedOnPageChange });
@@ -250,6 +251,7 @@ const DataTable = memo(({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
+    direction,
   };
 
   const showTableHead = () => {
@@ -273,6 +275,7 @@ const DataTable = memo(({
           style={style}
           overflowYOffset={overflowYOffset}
           overflowY={overflowY}
+          {...wrapperProps}
         >
           {!noHeader && (
             <TableHeader

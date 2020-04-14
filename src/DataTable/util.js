@@ -116,5 +116,12 @@ export const isRowSelected = (row = {}, selectedRows = [], keyField = 'id') => {
   return selectedRows.some(r => r === row);
 };
 
-export const detectRTL = () =>
-  document.getElementsByTagName('BODY')[0] === 'rtl' || document.getElementsByTagName('HTML')[0].dir === 'rtl';
+export const detectRTL = (direction = 'auto') => {
+  if (direction === 'auto') {
+    const canUse = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+    return canUse && (document.getElementsByTagName('BODY')[0] === 'rtl' || document.getElementsByTagName('HTML')[0].dir === 'rtl');
+  }
+
+  return direction === 'rtl';
+};

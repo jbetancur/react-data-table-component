@@ -35,7 +35,7 @@ const ContextMenuStyle = styled.div`
   ${props => props.visible && props.theme.contextMenu.activeStyle};
 `;
 
-const generateDefaultContextTitle = (contextMessage, selectedCount) => {
+const generateDefaultContextTitle = (contextMessage, selectedCount, direction) => {
   if (selectedCount === 0) {
     return null;
   }
@@ -43,7 +43,7 @@ const generateDefaultContextTitle = (contextMessage, selectedCount) => {
   const datumName = selectedCount === 1 ? contextMessage.singular : contextMessage.plural;
 
   // TODO: add mock document rtl tests
-  if (detectRTL()) {
+  if (detectRTL(direction)) {
     return `${selectedCount} ${contextMessage.message || ''} ${datumName}`;
   }
 
@@ -51,7 +51,7 @@ const generateDefaultContextTitle = (contextMessage, selectedCount) => {
 };
 
 const ContextMenu = () => {
-  const { contextMessage, contextActions, contextComponent, selectedCount } = useTableContext();
+  const { contextMessage, contextActions, contextComponent, selectedCount, direction } = useTableContext();
   const visible = selectedCount > 0;
 
   if (contextComponent) {
@@ -65,7 +65,7 @@ const ContextMenu = () => {
   return (
     <ContextMenuStyle visible={visible}>
       <Title>
-        {generateDefaultContextTitle(contextMessage, selectedCount)}
+        {generateDefaultContextTitle(contextMessage, selectedCount, direction)}
       </Title>
       <ContextActions>
         {contextActions}

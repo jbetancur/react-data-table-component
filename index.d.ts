@@ -70,7 +70,7 @@ export interface IDataTableProps<T> {
   expandableInheritConditionalStyles?: boolean;
   selectableRows?: boolean;
   selectableRowsComponent?: React.ReactNode;
-  selectableRowsComponentProps?: T;
+  selectableRowsComponentProps?: {};
   selectableRowsHighlight?: boolean;
   selectableRowsVisibleOnly?: boolean;
   selectableRowSelected?: (row: T) => boolean;
@@ -97,6 +97,7 @@ export interface IDataTableProps<T> {
   customStyles?: IDataTableStyles;
   theme?: string;
   conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
+  direction?: 'ltr' | 'rtl' | 'auto';
 }
 
 export interface IDataTableColumn<T> {
@@ -156,7 +157,7 @@ export interface IDataTableStyles {
   };
   rows?: {
     style?: CSSProperties;
-    selectedHighlighStyle?: CSSProperties;
+    selectedHighlightStyle?: CSSProperties;
     denseStyle?: CSSProperties;
     highlightOnHoverStyle?: CSSProperties;
     stripedStyle?: CSSProperties;
@@ -196,6 +197,8 @@ export interface IDataTablePaginationOptions {
   noRowsPerPage?: boolean;
   rowsPerPageText?: string;
   rangeSeparatorText?: string;
+  selectAllRowsItem?: boolean;
+  selectAllRowsItemText?: string;
 }
 
 export interface IExpandableIcon {

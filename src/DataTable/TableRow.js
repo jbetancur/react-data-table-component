@@ -32,7 +32,7 @@ const TableRowStyle = styled.div`
   ${props => props.striped && props.theme.rows.stripedStyle};
   ${props => props.highlightOnHover && highlightCSS};
   ${props => props.pointerOnHover && pointerCSS};
-  ${props => props.selected && props.theme.rows.selectedHighlighStyle};
+  ${props => props.selected && props.theme.rows.selectedHighlightStyle};
   ${props => props.extendedRowStyle};
 `;
 

@@ -22,7 +22,7 @@ const columns = [
   },
 ];
 
-const paginationOptions = { rowsPerPageText: 'Filas por página', rangeSeparatorText: 'de' };
+const paginationOptions = { rowsPerPageText: 'Filas por página', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todos' };
 
 const BasicTable = () => (
   <DataTable

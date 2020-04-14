@@ -10,6 +10,7 @@ import {
   getConditionalStyle,
   // updateSelectedRows,
   isRowSelected,
+  detectRTL,
 } from '../util';
 
 const row = Object.freeze({ id: 1, name: 'iamaname', properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] } });
@@ -332,5 +333,25 @@ describe('isRowSelected', () => {
 
   test('with default values', () => {
     expect(isRowSelected()).toBe(false);
+  });
+});
+
+describe('detectRTL', () => {
+  test('with no args should default to auto and return false', () => {
+    // this will be false because there is no dom in test
+    expect(detectRTL()).toBe(false);
+  });
+
+  test('with auto should return false', () => {
+    // this will be false because there is no dom in test
+    expect(detectRTL('auto')).toBe(false);
+  });
+
+  test('with rtl should return true', () => {
+    expect(detectRTL('rtl')).toBe(true);
+  });
+
+  test('with ltr should return false', () => {
+    expect(detectRTL('ltr')).toBe(false);
   });
 });

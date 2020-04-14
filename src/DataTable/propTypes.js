@@ -162,6 +162,11 @@ export const propTypes = {
   ),
   theme: PropTypes.string,
   customStyles: PropTypes.object,
+  direction: PropTypes.oneOf([
+    'ltr',
+    'rtl',
+    'auto',
+  ]),
 };
 
 export const defaultProps = {
@@ -247,4 +252,5 @@ export const defaultProps = {
   conditionalRowStyles: [],
   theme: 'default',
   customStyles: {},
+  direction: 'auto',
 };

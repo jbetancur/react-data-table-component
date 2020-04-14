@@ -105,7 +105,7 @@ Please use the github issue templates feature for logging issues or feature prop
 
 ### Columns
 
-Nothing new here - we are using an array of object literals and properties to describle the columns:
+Nothing new here - we are using an array of object literals and properties to describe the columns:
 
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
@@ -148,7 +148,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | title | string or component | no |  | The Title displayed in the Table Header |
 | columns | array<Columns> | yes | [] | The column configuration |
-| data | array<Object> | no | [] | it is **highly recommended*- that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` [DataTable Properties](dataTable-properties). |
+| data | array<Object> | no | [] | it is **highly recommended** that your data has a unique identifier (keyField). The default `keyField` is `id`. If you need to override this value then see `keyField` |
 | keyField | string | no | 'id' | **Your data should have a unique identifier.*- By default, React Data Table looks for an `id` property for each item in your data. You must match `keyField` to your identifier key, especially if you want to manage row state at a later time or use the expander feature. If a unique `id` is not present, React Data Table will use the row index and by reference checks as fallbacks, however, this is highly discouraged |
 | striped | bool | no | false | stripe color the odd rows |
 | highlightOnHover | bool | no | false | if rows are to be highlighted on hover |
@@ -165,6 +165,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
 | noTableHead | bool | no | false | hides the the sort columns and titles (TableHead) - this will obviously negate sorting |
 | persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
+| direction | string | no | auto | Accepts: `ltr, rtl, or auto`. When set to `auto` (default), RDT will attempt to detect direction by checking the HTML and DIV tags. For cases where you need to force rtl, or ltr just set this option manually (i.e. SSR) |
 
 #### Row Selection
 
@@ -222,7 +223,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onChangePage | func | no | null | callback when paged that returns `onChangePage(page, totalRows)` |
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed returns `onChangeRowsPerPage(currentRowsPerPage, currentPage)` |
 | paginationComponent | component | no | [Pagination](src/DataTable/Pagination.js) | a component that overrides the default pagination component. It must satisfy the following API: ```{  rowsPerPage: PropTypes.number.isRequired,  rowCount: PropTypes.number.isRequired,  onChangePage: PropTypes.func.isRequired,  onChangeRowsPerPage: PropTypes.func.isRequired,  currentPage: PropTypes.number.isRequired };``` |
-| paginationComponentOptions | object | no | `{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of', noRowsPerPage: false }` | override options for the built in pagination component. Note that this prop only works with the build in Pagination component |
+| paginationComponentOptions | object | no | `{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of', noRowsPerPage: false, selectAllRowsItem: false, selectAllRowsItemText: 'All' }` | override options for the built in pagination component. Note that this prop only works with the built-in Pagination component |
 | paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
 | paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
 | paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
@@ -700,7 +701,7 @@ Pre-optimizaton can be the root of all evil, however, there are some best practi
 
 ### Passing non-primitive props (objects, arrays and functions)
 
-While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into RDT are not re-created on every render cycyle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
+While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into RDT are not re-created on every render cycle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
 #### Optimizing Class Components
 
