@@ -70,6 +70,11 @@ const AdvancedPaginationTable = () => {
       pagination
       paginationServer
       paginationTotalRows={totalRows}
+      selectableRows
+      paginationServerOptions={{
+        persistSelectedOnSort: true,
+        persistSelectedOnPageChange: true,
+      }}
       onChangeRowsPerPage={handlePerRowsChange}
       onChangePage={handlePageChange}
     />

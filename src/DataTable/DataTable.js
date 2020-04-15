@@ -164,6 +164,7 @@ const DataTable = memo(({
     if (selectableRowSelected) {
       const preSelectedRows = data.filter(row => selectableRowSelected(row));
       const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
+
       dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data, mergeSelections });
     }
     // We only want to re-render if the data changes
@@ -245,6 +246,8 @@ const DataTable = memo(({
     expandableIcon,
     pagination,
     paginationServer,
+    paginationServerOptions,
+    paginationTotalRows,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
     paginationIconFirstPage,

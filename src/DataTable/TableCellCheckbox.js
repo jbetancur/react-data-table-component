@@ -21,16 +21,22 @@ const TableCellCheckbox = ({ name, row, selected }) => {
     selectableRowsComponent,
     selectableRowsComponentProps,
     selectableRowDisabled,
+    paginationServer,
+    paginationServerOptions,
+    paginationTotalRows,
   } = useTableContext();
   const disabled = selectableRowDisabled && selectableRowDisabled(row);
+  const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
+  const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
+  const rowCount = mergeSelections ? paginationTotalRows : data.length;
 
   const handleOnRowSelected = useCallback(() => dispatch({
     type: 'SELECT_SINGLE_ROW',
     row,
-    rows: data,
     isRowSelected: selected,
     keyField,
-  }), [dispatch, row, data, selected, keyField]);
+    rowCount,
+  }), [dispatch, row, selected, keyField, rowCount]);
 
   return (
     <TableCellCheckboxStyle

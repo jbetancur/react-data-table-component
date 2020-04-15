@@ -3,19 +3,19 @@ import { insertItem, removeItem } from './util';
 export function tableReducer(state, action) {
   switch (action.type) {
     case 'SELECT_ALL_ROWS': {
-      const { rows } = action;
+      const { rows, rowCount } = action;
       const allChecked = !state.allSelected;
 
       return {
         ...state,
         allSelected: allChecked,
-        selectedCount: allChecked ? rows.length : 0,
+        selectedCount: allChecked ? rowCount : 0,
         selectedRows: allChecked ? rows : [],
       };
     }
 
     case 'SELECT_SINGLE_ROW': {
-      const { row, rows, isRowSelected, keyField } = action;
+      const { row, isRowSelected, keyField, rowCount } = action;
 
       if (isRowSelected) {
         return {
@@ -29,34 +29,36 @@ export function tableReducer(state, action) {
       return {
         ...state,
         selectedCount: state.selectedRows.length + 1,
-        allSelected: state.selectedRows.length + 1 === rows.length,
+        allSelected: state.selectedRows.length + 1 === rowCount,
         selectedRows: insertItem(state.selectedRows, row),
       };
     }
 
     case 'SELECT_MULTIPLE_ROWS': {
-      const { selectedRows, rows, mergeSelections } = action;
-      const selections = !mergeSelections ? selectedRows :
-        [...state.selectedRows, ...selectedRows.filter(row => !state.selectedRows.includes(row))];
+      const { selectedRows, rowCount, mergeSelections } = action;
+      const selections = mergeSelections
+        ? [...state.selectedRows, ...selectedRows.filter(row => !state.selectedRows.includes(row))]
+        : selectedRows;
 
       return {
         ...state,
         selectedCount: selections.length,
-        allSelected: selections.length === rows.length,
+        allSelected: selections.length === rowCount,
         selectedRows: selections,
       };
     }
 
     case 'SORT_CHANGE': {
-      const { sortColumn, sortDirection, sortServer, selectedColumn, pagination, paginationServer, persistSelectedOnSort, visibleOnly } = action;
-      const clearSelectedOnSort = (pagination && paginationServer && !persistSelectedOnSort) || (sortServer && !persistSelectedOnSort) || visibleOnly;
+      const { sortColumn, sortDirection, sortServer, selectedColumn, pagination, paginationServer, visibleOnly, persistSelectedOnSort } = action;
+      const clearSelectedOnSort = (pagination && paginationServer && !persistSelectedOnSort) || sortServer || visibleOnly;
+
       return {
         ...state,
         sortColumn,
         selectedColumn,
         sortDirection,
         currentPage: 1,
-        // when using server-side paging reset selected row counts when sorting if !persistSelectedOnSort
+        // when using server-side paging reset selected row counts when sorting
         ...clearSelectedOnSort && ({
           allSelected: false,
           selectedCount: 0,
@@ -68,10 +70,11 @@ export function tableReducer(state, action) {
     case 'CHANGE_PAGE': {
       const { page, paginationServer, visibleOnly, persistSelectedOnPageChange } = action;
       const clearSelectedOnPage = (paginationServer && !persistSelectedOnPageChange) || visibleOnly;
+
       return {
         ...state,
         currentPage: page,
-        // when using server-side paging reset selected row counts if !persistSelectedOnPageChange
+        // when using server-side paging reset selected row counts
         ...clearSelectedOnPage && ({
           allSelected: false,
           selectedCount: 0,
