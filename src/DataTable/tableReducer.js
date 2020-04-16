@@ -1,10 +1,23 @@
-import { insertItem, removeItem } from './util';
+import { insertItem, isRowSelected, removeItem } from './util';
 
 export function tableReducer(state, action) {
   switch (action.type) {
     case 'SELECT_ALL_ROWS': {
-      const { rows, rowCount } = action;
+      const { rows, rowCount, mergeSelections, keyField } = action;
       const allChecked = !state.allSelected;
+
+      if (mergeSelections) {
+        const selections = allChecked
+          ? [...state.selectedRows, ...rows.filter(row => !isRowSelected(row, state.selectedRows, keyField))]
+          : state.selectedRows.filter(row => !isRowSelected(row, rows, keyField));
+
+        return {
+          ...state,
+          allSelected: allChecked,
+          selectedCount: selections.length,
+          selectedRows: selections,
+        };
+      }
 
       return {
         ...state,
@@ -15,9 +28,9 @@ export function tableReducer(state, action) {
     }
 
     case 'SELECT_SINGLE_ROW': {
-      const { row, isRowSelected, keyField, rowCount } = action;
+      const { row, isSelected, keyField, rowCount } = action;
 
-      if (isRowSelected) {
+      if (isSelected) {
         return {
           ...state,
           selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
@@ -35,15 +48,15 @@ export function tableReducer(state, action) {
     }
 
     case 'SELECT_MULTIPLE_ROWS': {
-      const { selectedRows, rowCount, mergeSelections } = action;
+      const { selectedRows, rowCount, mergeSelections, keyField } = action;
       const selections = mergeSelections
-        ? [...state.selectedRows, ...selectedRows.filter(row => !state.selectedRows.includes(row))]
+        ? [...state.selectedRows, ...selectedRows.filter(row => !isRowSelected(row, state.selectedRows, keyField))]
         : selectedRows;
 
       return {
         ...state,
         selectedCount: selections.length,
-        allSelected: selections.length === rowCount,
+        allSelected: selectedRows.length > rowCount,
         selectedRows: selections,
       };
     }
@@ -69,11 +82,15 @@ export function tableReducer(state, action) {
 
     case 'CHANGE_PAGE': {
       const { page, paginationServer, visibleOnly, persistSelectedOnPageChange } = action;
+      const mergeSelections = paginationServer && persistSelectedOnPageChange;
       const clearSelectedOnPage = (paginationServer && !persistSelectedOnPageChange) || visibleOnly;
 
       return {
         ...state,
         currentPage: page,
+        ...mergeSelections && ({
+          allSelected: false,
+        }),
         // when using server-side paging reset selected row counts
         ...clearSelectedOnPage && ({
           allSelected: false,

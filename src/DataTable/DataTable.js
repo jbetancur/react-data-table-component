@@ -134,7 +134,13 @@ const DataTable = memo(({
   const wrapperProps = useMemo(() => ({ ...direction !== 'auto' && ({ dir: direction }) }), [direction]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer, visibleOnly: selectableRowsVisibleOnly, persistSelectedOnPageChange });
+  const handleChangePage = page => dispatch({
+    type: 'CHANGE_PAGE',
+    page,
+    paginationServer,
+    visibleOnly: selectableRowsVisibleOnly,
+    persistSelectedOnPageChange,
+  });
 
   useDidUpdateEffect(() => {
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });

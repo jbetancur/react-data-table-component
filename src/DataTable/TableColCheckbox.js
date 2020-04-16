@@ -23,8 +23,8 @@ const TableColCheckbox = ({ head }) => {
     selectableRowsComponentProps,
     selectableRowDisabled,
     paginationServer,
-    paginationTotalRows,
     paginationServerOptions,
+    keyField,
   } = useTableContext();
 
   const indeterminate = selectedRows.length > 0 && !allSelected;
@@ -32,12 +32,14 @@ const TableColCheckbox = ({ head }) => {
   const isDisabled = rows.length === 0;
   const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
   const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
-  const rowCount = mergeSelections ? paginationTotalRows : data.length;
+  const rowCount = data.length;
 
   const handleSelectAll = () => dispatch({
     type: 'SELECT_ALL_ROWS',
     rows,
     rowCount,
+    mergeSelections,
+    keyField,
   });
 
   return (
