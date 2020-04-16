@@ -48,16 +48,27 @@ export function tableReducer(state, action) {
     }
 
     case 'SELECT_MULTIPLE_ROWS': {
-      const { selectedRows, rowCount, mergeSelections, keyField } = action;
-      const selections = mergeSelections
-        ? [...state.selectedRows, ...selectedRows.filter(row => !isRowSelected(row, state.selectedRows, keyField))]
-        : selectedRows;
+      const { selectedRows, rows, mergeSelections, keyField } = action;
+
+      if (mergeSelections) {
+        const selections = [
+          ...state.selectedRows,
+          ...selectedRows.filter(row => !isRowSelected(row, state.selectedRows, keyField)),
+        ];
+
+        return {
+          ...state,
+          selectedCount: selections.length,
+          allSelected: false,
+          selectedRows: selections,
+        };
+      }
 
       return {
         ...state,
-        selectedCount: selections.length,
-        allSelected: selectedRows.length > rowCount,
-        selectedRows: selections,
+        selectedCount: selectedRows.length,
+        allSelected: selectedRows.length === rows.length,
+        selectedRows,
       };
     }
 
