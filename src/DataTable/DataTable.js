@@ -18,7 +18,7 @@ import TableColExpander from './TableColExpander';
 import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
-import useDidUpdateEffect from './useDidUpdateEffect';
+import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { propTypes, defaultProps } from './propTypes';
 import { isEmpty, sort, decorateColumns, getSortDirection, getNumberOfPages, recalculatePage, isRowSelected } from './util';
 import { createStyles } from './styles';
@@ -393,17 +393,17 @@ const DataTable = memo(({
                 </TableBody>
               )}
             </Table>
-
-            {enabledPagination && (
-              <Pagination
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-                rowCount={paginationTotalRows || data.length}
-                currentPage={currentPage}
-                rowsPerPage={rowsPerPage}
-              />
-            )}
           </TableWrapper>
+
+          {enabledPagination && (
+            <Pagination
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+              rowCount={paginationTotalRows || data.length}
+              currentPage={currentPage}
+              rowsPerPage={rowsPerPage}
+            />
+          )}
         </ResponsiveWrapper>
       </DataTableProvider>
     </ThemeProvider>

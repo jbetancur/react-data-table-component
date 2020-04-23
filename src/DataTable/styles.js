@@ -199,6 +199,7 @@ export const defaultStyles = theme => ({
         opacity: '0.4',
         cursor: 'unset',
         color: theme.button.disabled,
+        fill: theme.button.disabled,
       },
       '&:hover:not(:disabled)': {
         backgroundColor: theme.button.hover,

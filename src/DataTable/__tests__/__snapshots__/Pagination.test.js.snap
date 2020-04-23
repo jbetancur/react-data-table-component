@@ -109,7 +109,8 @@ exports[`should render correctly with default props 1`] = `
 .c6:disabled {
   opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,0.54);
+  fill: rgba(0,0,0,0.54);
 }
 
 .c6:hover:not(:disabled) {
@@ -126,6 +127,10 @@ exports[`should render correctly with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -150,6 +155,16 @@ exports[`should render correctly with default props 1`] = `
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c5 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <nav
