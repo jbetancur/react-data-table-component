@@ -21,7 +21,7 @@ export const defaultThemes = {
       default: 'rgba(0,0,0,.54)',
       focus: 'rgba(0,0,0,.12)',
       hover: 'rgba(0,0,0,.12)',
-      disabled: 'rgba(0, 0, 0, 0.12)',
+      disabled: 'rgba(0, 0, 0, .18)',
     },
     sortFocus: {
       default: 'rgba(0, 0, 0, .54)',
@@ -59,7 +59,7 @@ export const defaultThemes = {
       default: '#FFFFFF',
       focus: 'rgba(255, 255, 255, .54)',
       hover: 'rgba(255, 255, 255, .12)',
-      disabled: 'rgba(0,0,0,.12)',
+      disabled: 'rgba(255, 255, 255, .18)',
     },
     sortFocus: {
       default: 'rgba(255, 255, 255, .54)',

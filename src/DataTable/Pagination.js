@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useTableContext } from './DataTableContext';
 import Select from './Select';
 import { getNumberOfPages, detectRTL } from './util';
+import useWindowSize from '../hooks/useWindowSize';
+import { media, SMALL } from './media';
 
 const defaultComponentOptions = {
   rowsPerPageText: 'Rows per page:',
@@ -36,8 +38,13 @@ const Button = styled.button`
 
 const PageList = styled.div`
   display: flex;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
+  ${media.sm`
+    width: 100%;
+    justify-content: space-around;
+  `};
 `;
 
 const Span = styled.span`
@@ -70,6 +77,8 @@ const Pagination = ({
     paginationIconPrevious,
     paginationComponentOptions,
   } = useTableContext();
+  const windowSize = useWindowSize();
+  const shouldShow = windowSize.width > SMALL;
   const isRTL = detectRTL(direction);
   const numPages = getNumberOfPages(rowCount, rowsPerPage);
   const lastIndex = currentPage * rowsPerPage;
@@ -109,19 +118,25 @@ const Pagination = ({
     );
   }
 
+  const select = (
+    <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
+      {selectOptions}
+    </Select>
+  );
+
   return (
     <PaginationWrapper className="rdt_Pagination">
-      {!options.noRowsPerPage && (
+      {!options.noRowsPerPage && shouldShow && (
         <>
           <RowLabel>{options.rowsPerPageText}</RowLabel>
-          <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage}>
-            {selectOptions}
-          </Select>
+          {select}
         </>
       )}
-      <Range>
-        {range}
-      </Range>
+      {shouldShow && (
+        <Range>
+          {range}
+        </Range>
+      )}
       <PageList>
         <Button
           id="pagination-first-page"
@@ -146,6 +161,8 @@ const Pagination = ({
         >
           {paginationIconPrevious}
         </Button>
+
+        {!shouldShow && select}
 
         <Button
           id="pagination-next-page"

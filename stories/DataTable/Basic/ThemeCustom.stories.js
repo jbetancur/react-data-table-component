@@ -22,7 +22,7 @@ createTheme('solarized', {
     default: '#2aa198',
     hover: 'rgba(0,0,0,.08)',
     focus: 'rgba(255,255,255,.12)',
-    disabled: 'rgba(0,0,0,.12)',
+    disabled: 'rgba(255, 255, 255, .34)',
   },
   sortFocus: {
     default: '#2aa198',

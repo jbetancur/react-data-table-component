@@ -4833,9 +4833,9 @@ exports[`DataTable::Pagination should change the page position when using pagina
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -4852,6 +4852,10 @@ exports[`DataTable::Pagination should change the page position when using pagina
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -4876,6 +4880,16 @@ exports[`DataTable::Pagination should change the page position when using pagina
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div>
@@ -4958,158 +4972,158 @@ exports[`DataTable::Pagination should change the page position when using pagina
           </div>
         </div>
       </div>
-      <nav
-        class="c16 rdt_Pagination"
+    </div>
+    <nav
+      class="c16 rdt_Pagination"
+    >
+      <span
+        class="Pagination__Span-sc-1iha5ux-3 c17"
       >
-        <span
-          class="Pagination__Span-sc-1iha5ux-3 c17"
+        Rows per page:
+      </span>
+      <div
+        class="c18"
+      >
+        <select
+          class="c19"
         >
-          Rows per page:
-        </span>
-        <div
-          class="c18"
-        >
-          <select
-            class="c19"
+          <option
+            selected=""
+            value="1"
           >
-            <option
-              selected=""
-              value="1"
-            >
-              1
-            </option>
-            <option
-              value="2"
-            >
-              2
-            </option>
-          </select>
+            1
+          </option>
+          <option
+            value="2"
+          >
+            2
+          </option>
+        </select>
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </div>
+      <span
+        class="Pagination__Span-sc-1iha5ux-3 c20"
+      >
+        1-1 of 1
+      </span>
+      <div
+        class="c21"
+      >
+        <button
+          aria-disabled="true"
+          aria-label="First Page"
+          class="c22"
+          disabled=""
+          id="pagination-first-page"
+          type="button"
+        >
           <svg
+            aria-hidden="true"
             height="24"
+            role="presentation"
             viewBox="0 0 24 24"
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7 10l5 5 5-5z"
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            />
+            <path
+              d="M24 24H0V0h24v24z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Previous Page"
+          class="c22"
+          disabled=""
+          id="pagination-previous-page"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
             />
             <path
               d="M0 0h24v24H0z"
               fill="none"
             />
           </svg>
-        </div>
-        <span
-          class="Pagination__Span-sc-1iha5ux-3 c20"
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Next Page"
+          class="c22"
+          disabled=""
+          id="pagination-next-page"
+          type="button"
         >
-          1-1 of 1
-        </span>
-        <div
-          class="c21"
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+        <button
+          aria-disabled="true"
+          aria-label="Last Page"
+          class="c22"
+          disabled=""
+          id="pagination-last-page"
+          type="button"
         >
-          <button
-            aria-disabled="true"
-            aria-label="First Page"
-            class="c22"
-            disabled=""
-            id="pagination-first-page"
-            type="button"
+          <svg
+            aria-hidden="true"
+            height="24"
+            role="presentation"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              height="24"
-              role="presentation"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-              />
-              <path
-                d="M24 24H0V0h24v24z"
-                fill="none"
-              />
-            </svg>
-          </button>
-          <button
-            aria-disabled="true"
-            aria-label="Previous Page"
-            class="c22"
-            disabled=""
-            id="pagination-previous-page"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              height="24"
-              role="presentation"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-              />
-              <path
-                d="M0 0h24v24H0z"
-                fill="none"
-              />
-            </svg>
-          </button>
-          <button
-            aria-disabled="true"
-            aria-label="Next Page"
-            class="c22"
-            disabled=""
-            id="pagination-next-page"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              height="24"
-              role="presentation"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-              <path
-                d="M0 0h24v24H0z"
-                fill="none"
-              />
-            </svg>
-          </button>
-          <button
-            aria-disabled="true"
-            aria-label="Last Page"
-            class="c22"
-            disabled=""
-            id="pagination-last-page"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              height="24"
-              role="presentation"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-              />
-              <path
-                d="M0 0h24v24H0V0z"
-                fill="none"
-              />
-            </svg>
-          </button>
-        </div>
-      </nav>
-    </div>
+            <path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            />
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
   </div>
 </div>
 `;
@@ -5563,9 +5577,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -5582,6 +5596,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -5606,6 +5624,16 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -5687,156 +5715,156 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-1 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Next Page"
+        class="c22"
+        id="pagination-next-page"
+        type="button"
       >
-        1-1 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Last Page"
+        class="c22"
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Next Page"
-          class="c22"
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Last Page"
-          class="c22"
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -6289,9 +6317,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -6308,6 +6336,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -6332,6 +6364,16 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -6413,156 +6455,156 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-1 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Next Page"
+        class="c22"
+        id="pagination-next-page"
+        type="button"
       >
-        1-1 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Last Page"
+        class="c22"
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Next Page"
-          class="c22"
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Last Page"
-          class="c22"
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -7015,9 +7057,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -7034,6 +7076,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -7058,6 +7104,16 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -7139,156 +7195,156 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      2-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="false"
+        aria-label="First Page"
+        class="c22"
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Previous Page"
+        class="c22"
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        2-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="false"
-          aria-label="First Page"
-          class="c22"
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Previous Page"
-          class="c22"
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -7741,9 +7797,9 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -7760,6 +7816,10 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -7784,6 +7844,16 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -7865,156 +7935,156 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      2-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="false"
+        aria-label="First Page"
+        class="c22"
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Previous Page"
+        class="c22"
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        2-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="false"
-          aria-label="First Page"
-          class="c22"
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Previous Page"
-          class="c22"
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -8484,9 +8554,9 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 }
 
 .c23:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c23:hover:not(:disabled) {
@@ -8503,6 +8573,10 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -8527,6 +8601,16 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c22 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -8614,156 +8698,156 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
         </div>
       </div>
     </div>
-    <nav
-      class="c17 rdt_Pagination"
+  </div>
+  <nav
+    class="c17 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c18"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c18"
+      Rows per page:
+    </span>
+    <div
+      class="c19"
+    >
+      <select
+        class="c20"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c19"
-      >
-        <select
-          class="c20"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c21"
+    >
+      1-1 of 2
+    </span>
+    <div
+      class="c22"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c23"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c23"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c21"
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Next Page"
+        class="c23"
+        id="pagination-next-page"
+        type="button"
       >
-        1-1 of 2
-      </span>
-      <div
-        class="c22"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Last Page"
+        class="c23"
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c23"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c23"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Next Page"
-          class="c23"
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Last Page"
-          class="c23"
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -9216,9 +9300,9 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -9235,6 +9319,10 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -9259,6 +9347,16 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -9340,158 +9438,158 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-1 of 1
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-1 of 1
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -9944,9 +10042,9 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -9963,6 +10061,10 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -9987,6 +10089,16 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -10086,173 +10198,173 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -10705,9 +10817,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -10724,6 +10836,10 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -10748,6 +10864,16 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -10847,173 +10973,173 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Fila por página
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Fila por página
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -11466,9 +11592,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -11485,6 +11611,10 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -11509,6 +11639,16 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -11608,178 +11748,178 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-          <option
-            value="2"
-          >
-            All
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+        <option
+          value="2"
+        >
+          All
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -12232,9 +12372,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -12251,6 +12391,10 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -12275,6 +12419,16 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -12374,178 +12528,178 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-          <option
-            value="2"
-          >
-            Todos
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+        <option
+          value="2"
+        >
+          Todos
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -12943,9 +13097,9 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c19:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c19:hover:not(:disabled) {
@@ -12962,6 +13116,10 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -12975,6 +13133,16 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-user-select: none;
   user-select: none;
   margin: 0 24px;
+}
+
+@media screen and (max-width:599px) {
+  .c18 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -13074,120 +13242,120 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
-    >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
-      >
-        1-2 of 2
-      </span>
-      <div
-        class="c18"
-      >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c19"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c19"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c19"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c19"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
   </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c18"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c19"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c19"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c19"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c19"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -13640,9 +13808,9 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -13659,6 +13827,10 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -13683,6 +13855,16 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -13764,156 +13946,156 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="1"
         >
-          <option
-            selected=""
-            value="1"
-          >
-            1
-          </option>
-          <option
-            value="2"
-          >
-            2
-          </option>
-        </select>
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-1 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Next Page"
+        class="c22"
+        id="pagination-next-page"
+        type="button"
       >
-        1-1 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="false"
+        aria-label="Last Page"
+        class="c22"
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Next Page"
-          class="c22"
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="false"
-          aria-label="Last Page"
-          class="c22"
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -26519,9 +26701,9 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -26538,6 +26720,10 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -26562,6 +26748,16 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -26661,173 +26857,173 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -27280,9 +27476,9 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -27299,6 +27495,10 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -27323,6 +27523,16 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -27423,173 +27633,173 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -28045,9 +28255,9 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
 }
 
 .c22:disabled {
-  opacity: 0.4;
   cursor: unset;
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
 }
 
 .c22:hover:not(:disabled) {
@@ -28064,6 +28274,10 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -28088,6 +28302,16 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
   -ms-user-select: none;
   user-select: none;
   margin: 0 4px;
+}
+
+@media screen and (max-width:599px) {
+  .c21 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
 }
 
 <div
@@ -28188,173 +28412,173 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
         </div>
       </div>
     </div>
-    <nav
-      class="c16 rdt_Pagination"
+  </div>
+  <nav
+    class="c16 rdt_Pagination"
+  >
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c17"
     >
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+      Rows per page:
+    </span>
+    <div
+      class="c18"
+    >
+      <select
+        class="c19"
       >
-        Rows per page:
-      </span>
-      <div
-        class="c18"
-      >
-        <select
-          class="c19"
+        <option
+          selected=""
+          value="10"
         >
-          <option
-            selected=""
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-          <option
-            value="25"
-          >
-            25
-          </option>
-          <option
-            value="30"
-          >
-            30
-          </option>
-        </select>
+          10
+        </option>
+        <option
+          value="15"
+        >
+          15
+        </option>
+        <option
+          value="20"
+        >
+          20
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="30"
+        >
+          30
+        </option>
+      </select>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+    <span
+      class="Pagination__Span-sc-1iha5ux-3 c20"
+    >
+      1-2 of 2
+    </span>
+    <div
+      class="c21"
+    >
+      <button
+        aria-disabled="true"
+        aria-label="First Page"
+        class="c22"
+        disabled=""
+        id="pagination-first-page"
+        type="button"
+      >
         <svg
+          aria-hidden="true"
           height="24"
+          role="presentation"
           viewBox="0 0 24 24"
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7 10l5 5 5-5z"
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+          <path
+            d="M24 24H0V0h24v24z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Previous Page"
+        class="c22"
+        disabled=""
+        id="pagination-previous-page"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
           />
           <path
             d="M0 0h24v24H0z"
             fill="none"
           />
         </svg>
-      </div>
-      <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Next Page"
+        class="c22"
+        disabled=""
+        id="pagination-next-page"
+        type="button"
       >
-        1-2 of 2
-      </span>
-      <div
-        class="c21"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled="true"
+        aria-label="Last Page"
+        class="c22"
+        disabled=""
+        id="pagination-last-page"
+        type="button"
       >
-        <button
-          aria-disabled="true"
-          aria-label="First Page"
-          class="c22"
-          disabled=""
-          id="pagination-first-page"
-          type="button"
+        <svg
+          aria-hidden="true"
+          height="24"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            />
-            <path
-              d="M24 24H0V0h24v24z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Previous Page"
-          class="c22"
-          disabled=""
-          id="pagination-previous-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Next Page"
-          class="c22"
-          disabled=""
-          id="pagination-next-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-        <button
-          aria-disabled="true"
-          aria-label="Last Page"
-          class="c22"
-          disabled=""
-          id="pagination-last-page"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            height="24"
-            role="presentation"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            />
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
 </div>
 `;
 
@@ -29018,7 +29242,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
@@ -29630,7 +29854,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
@@ -30242,7 +30466,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
@@ -31854,7 +32078,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
@@ -32462,7 +32686,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
@@ -33053,7 +33277,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
@@ -51131,7 +51355,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 }
 
 .c17:disabled {
-  color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,.18);
 }
 
 .c17:hover:not(:disabled) {
