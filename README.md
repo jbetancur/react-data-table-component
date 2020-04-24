@@ -117,7 +117,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
-| maxWidth | string | no       | give the column a maxWidth                                                                                    |
+| maxWidth | string | no       | give the column a maxWidth (_minWidth_ defaults to 100px, and min overrides max in CSS) |
 | right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
 | center   | bool   | no       | center aligns the content in the cell                                                                         |
 | compact  | bool   | no       | sets cell padding to 0                                                                                        |
