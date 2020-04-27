@@ -1,16 +1,10 @@
 import { css } from 'styled-components';
 
-export const XSMALL = 320;
 export const SMALL = 599;
 export const MEDIUM = 959;
 export const LARGE = 1280;
 
 export const media = {
-  xs: (...args) => css`
-  @media screen and (max-width: ${XSMALL}px) {
-    ${css(...args)}
-  }
-`,
   sm: (...args) => css`
     @media screen and (max-width: ${SMALL}px) {
       ${css(...args)}
