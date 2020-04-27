@@ -23,15 +23,14 @@ const TableCellCheckbox = ({ name, row, selected }) => {
     selectableRowDisabled,
   } = useTableContext();
   const disabled = selectableRowDisabled && selectableRowDisabled(row);
-  const rowCount = data.length;
 
   const handleOnRowSelected = useCallback(() => dispatch({
     type: 'SELECT_SINGLE_ROW',
     row,
     isSelected: selected,
     keyField,
-    rowCount,
-  }), [dispatch, row, selected, keyField, rowCount]);
+    rowCount: data.length,
+  }), [dispatch, row, selected, keyField, data.length]);
 
   return (
     <TableCellCheckboxStyle
