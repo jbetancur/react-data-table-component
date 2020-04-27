@@ -47,6 +47,7 @@ const DataTable = memo(({
   onChangeRowsPerPage,
   onChangePage,
   paginationServer,
+  paginationServerOptions,
   paginationTotalRows,
   paginationDefaultPage,
   paginationResetDefaultPage,
@@ -124,6 +125,7 @@ const DataTable = memo(({
     selectedColumn,
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
+  const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
   const columnsMemo = useMemo(() => decorateColumns(columns), [columns]);
@@ -132,7 +134,13 @@ const DataTable = memo(({
   const wrapperProps = useMemo(() => ({ ...direction !== 'auto' && ({ dir: direction }) }), [direction]);
   const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
   const handleRowDoubleClicked = useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
-  const handleChangePage = page => dispatch({ type: 'CHANGE_PAGE', page, paginationServer, visibleOnly: selectableRowsVisibleOnly });
+  const handleChangePage = page => dispatch({
+    type: 'CHANGE_PAGE',
+    page,
+    paginationServer,
+    visibleOnly: selectableRowsVisibleOnly,
+    persistSelectedOnPageChange,
+  });
 
   useDidUpdateEffect(() => {
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
@@ -161,8 +169,9 @@ const DataTable = memo(({
   useEffect(() => {
     if (selectableRowSelected) {
       const preSelectedRows = data.filter(row => selectableRowSelected(row));
+      const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
 
-      dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data });
+      dispatch({ type: 'SELECT_MULTIPLE_ROWS', selectedRows: preSelectedRows, rows: data, mergeSelections });
     }
     // We only want to re-render if the data changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -239,9 +248,12 @@ const DataTable = memo(({
     selectableRowDisabled,
     selectableRowsComponent,
     selectableRowsComponentProps,
+    persistSelectedOnSort,
     expandableIcon,
     pagination,
     paginationServer,
+    paginationServerOptions,
+    paginationTotalRows,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
     paginationIconFirstPage,

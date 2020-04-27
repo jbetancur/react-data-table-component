@@ -116,6 +116,10 @@ export const propTypes = {
   fixedHeaderScrollHeight: PropTypes.string,
   pagination: PropTypes.bool,
   paginationServer: PropTypes.bool,
+  paginationServerOptions: PropTypes.shape({
+    persistSelectedOnSort: PropTypes.bool,
+    persistSelectedOnPageChange: PropTypes.bool,
+  }),
   paginationDefaultPage: PropTypes.number,
   paginationResetDefaultPage: PropTypes.bool,
   paginationTotalRows: PropTypes.number,
@@ -227,6 +231,10 @@ export const defaultProps = {
   fixedHeaderScrollHeight: '100vh',
   pagination: false,
   paginationServer: false,
+  paginationServerOptions: {
+    persistSelectedOnSort: false,
+    persistSelectedOnPageChange: false,
+  },
   paginationDefaultPage: 1,
   paginationResetDefaultPage: false,
   paginationTotalRows: 0,

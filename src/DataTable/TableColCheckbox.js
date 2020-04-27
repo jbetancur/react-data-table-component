@@ -22,14 +22,24 @@ const TableColCheckbox = ({ head }) => {
     selectableRowsComponent,
     selectableRowsComponentProps,
     selectableRowDisabled,
+    paginationServer,
+    paginationServerOptions,
+    keyField,
   } = useTableContext();
 
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = selectableRowDisabled ? data.filter(row => !selectableRowDisabled(row)) : data;
   const isDisabled = rows.length === 0;
+  const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
+  const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
+  const rowCount = data.length;
+
   const handleSelectAll = () => dispatch({
     type: 'SELECT_ALL_ROWS',
     rows,
+    rowCount,
+    mergeSelections,
+    keyField,
   });
 
   return (
