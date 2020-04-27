@@ -189,12 +189,23 @@ const DataTable = memo(({
 
   const sortedData = useMemo(() => {
     // server-side sorting bypasses internal sorting
-    if (!sortServer) {
+    if (sortServer) {
+      return data;
+    }
+
+    // use general sorting function when columns has no sort function on it's own
+    const column = sortColumn && columns.find(item => item.selector === sortColumn);
+    if (!column || !column.sortFunction) {
       return sort(data, sortColumn, sortDirection, sortFunction);
     }
 
-    return data;
-  }, [data, sortColumn, sortDirection, sortFunction, sortServer]);
+    // use column's custom sorting function
+    const customSortFunction = sortDirection === 'asc'
+      ? column.sortFunction
+      : (a, b) => column.sortFunction(a, b) * -1;
+
+    return [...data].sort(customSortFunction);
+  }, [data, columns, sortColumn, sortDirection, sortFunction, sortServer]);
 
   const calculatedRows = useMemo(() => {
     if (pagination && !paginationServer) {
