@@ -104,7 +104,7 @@ export interface IDataTableColumn<T> {
   name: string | number | React.ReactNode;
   selector?: string | ((row: T) => React.ReactNode);
   sortable?: boolean;
-  sortFunction?: <T>(a: T, b: T) => number;
+  sortFunction?: (a: T, b: T) => number;
   format?: (row: T) => React.ReactNode;
   cell?: (row: T) => React.ReactNode;
   grow?: number;

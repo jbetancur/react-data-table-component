@@ -67,7 +67,7 @@ export const removeItem = (array = [], item = {}, keyField) => {
 export const decorateColumns = columns => columns.map(column => ({
   id: shortid.generate(),
   ...column,
-  sortable: column.sortable || column.sortFunction || undefined,
+  sortable: column.sortable || !!column.sortFunction || undefined,
 }));
 
 export const getSortDirection = direction => (direction ? 'asc' : 'desc');
