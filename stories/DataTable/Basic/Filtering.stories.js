@@ -78,7 +78,7 @@ const columns = [
 const BasicTable = () => {
   const [filterText, setFilterText] = React.useState('');
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
-  const filteredItems = fakeUsers.filter(item => item.name && item.name.includes(filterText));
+  const filteredItems = fakeUsers.filter(item => item.name && item.name.toLowerCase().includes(filterText.toLowerCase()));
 
   const subHeaderComponentMemo = React.useMemo(() => {
     const handleClear = () => {
