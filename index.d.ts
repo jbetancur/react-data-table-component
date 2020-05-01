@@ -35,7 +35,7 @@ export interface IDataTableProps<T> {
   sortServer?: boolean;
   pagination?: boolean;
   paginationServer?: boolean;
-  paginationServerOptions: {
+  paginationServerOptions?: {
     persistSelectedOnSort?: boolean;
     persistSelectedOnPageChange?: boolean;
   };
