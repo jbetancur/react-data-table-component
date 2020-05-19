@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useTableContext } from './DataTableContext';
@@ -25,19 +25,18 @@ const TableColCheckbox = ({ head }) => {
     keyField,
     mergeSelections,
   } = useTableContext();
-
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = selectableRowDisabled ? data.filter(row => !selectableRowDisabled(row)) : data;
   const isDisabled = rows.length === 0;
   const rowCount = data.length;
 
-  const handleSelectAll = () => dispatch({
+  const handleSelectAll = useCallback(() => dispatch({
     type: 'SELECT_ALL_ROWS',
     rows,
     rowCount,
     mergeSelections,
     keyField,
-  });
+  }), [dispatch, keyField, mergeSelections, rowCount, rows]);
 
   return (
     <TableColStyle className="rdt_TableCol" head={head} noPadding>

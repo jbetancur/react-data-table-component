@@ -339,7 +339,6 @@ exports[`DataTable::Header should not render a context menu when noContextMenu a
 .c4 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -844,7 +843,6 @@ exports[`DataTable::Header should render a custom component within the context m
 .c5 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -1390,7 +1388,6 @@ exports[`DataTable::Header should render context menu actions when they are prov
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -1949,7 +1946,6 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -2500,7 +2496,6 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -2978,7 +2973,6 @@ exports[`DataTable::Header should render header actions when they are provided 1
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -3505,7 +3499,6 @@ exports[`DataTable::Header should render the default context menu when using sel
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -3853,7 +3846,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
 .c1 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -4277,7 +4269,6 @@ exports[`DataTable::Header title should render correctly 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -4723,7 +4714,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -5467,7 +5457,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -6207,7 +6196,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -6947,7 +6935,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -7687,7 +7674,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -8444,7 +8430,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -9190,7 +9175,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -9932,7 +9916,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -10707,7 +10690,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -11482,7 +11464,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -12262,7 +12243,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -13042,7 +13022,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -13698,7 +13677,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -14438,7 +14416,6 @@ exports[`DataTable::Theming should render correctly when rows spaced 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -14882,7 +14859,6 @@ exports[`DataTable::Theming should render correctly when rows spaced with spacin
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -15327,7 +15303,6 @@ exports[`DataTable::column.style should render correctly when a style is set on 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -15779,7 +15754,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -16223,7 +16197,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -16679,7 +16652,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -17135,7 +17107,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -17591,7 +17562,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -18047,7 +18017,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -18491,7 +18460,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -18935,7 +18903,6 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -19387,7 +19354,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -19835,7 +19801,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -20279,7 +20244,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -20734,7 +20698,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -21172,7 +21135,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -21614,7 +21576,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -22080,7 +22041,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -22530,7 +22490,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -22974,7 +22933,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -23412,7 +23370,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -23893,7 +23850,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -24337,7 +24293,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -24781,7 +24736,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -25257,7 +25211,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -25701,7 +25654,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -26147,7 +26099,6 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -26591,7 +26542,6 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -27366,7 +27316,6 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -28142,7 +28091,6 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -28994,7 +28942,6 @@ exports[`DataTable::direction should render correctly when direction is rtl when
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -29553,7 +29500,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -30165,7 +30111,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -30796,7 +30741,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -31319,7 +31263,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -31833,7 +31776,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -32385,7 +32327,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -32986,7 +32927,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -33584,7 +33524,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -34114,7 +34053,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -34561,7 +34499,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -35008,7 +34945,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -35457,7 +35393,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -35906,7 +35841,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -36363,7 +36297,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -36811,7 +36744,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -37096,7 +37028,6 @@ exports[`DataTable::progress/nodata should only show Loading if progressPending 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -37323,7 +37254,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -37548,7 +37478,6 @@ exports[`DataTable::progress/nodata should render correctly when a component is 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -37750,7 +37679,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -37998,7 +37926,6 @@ exports[`DataTable::progress/nodata should render correctly when progressPending
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -38225,7 +38152,6 @@ exports[`DataTable::progress/nodata when noTableHead should only Loading if prog
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -38541,7 +38467,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -38923,7 +38848,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -39285,7 +39209,6 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -39699,7 +39622,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -40143,7 +40065,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -40584,7 +40505,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -41079,7 +40999,6 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -41618,7 +41537,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -42197,7 +42115,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -42690,7 +42607,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -43160,7 +43076,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -43610,7 +43525,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -44071,7 +43985,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -44538,7 +44451,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -44992,7 +44904,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -45456,7 +45367,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -45933,7 +45843,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -46400,7 +46309,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -46870,7 +46778,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -47340,7 +47247,6 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -47795,7 +47701,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -48266,7 +48171,6 @@ exports[`DataTable::subHeader should render correctly when a subheader is enable
 .c8 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -48742,7 +48646,6 @@ exports[`DataTable::subHeader should render correctly with center align 1`] = `
 .c8 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -49218,7 +49121,6 @@ exports[`DataTable::subHeader should render correctly with left align 1`] = `
 .c8 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -49694,7 +49596,6 @@ exports[`DataTable::subHeader should render correctly with right align 1`] = `
 .c8 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -50170,7 +50071,6 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
 .c8 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -50619,7 +50519,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -50937,7 +50836,6 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -51177,7 +51075,6 @@ exports[`should render and empty table correctly 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -51700,7 +51597,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -52232,7 +52128,6 @@ exports[`should render correctly when disabled 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -52677,7 +52572,6 @@ exports[`should render the correctly when using selector function 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
@@ -53103,7 +52997,6 @@ exports[`should render the correctly when using selector function and a format f
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
