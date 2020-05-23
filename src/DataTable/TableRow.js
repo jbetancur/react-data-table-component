@@ -60,6 +60,7 @@ const TableRow = memo(({
   onRowExpandToggled,
   selected,
   selectableRowsHighlight,
+  expandableColumnAtLast
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   useEffect(() => {
@@ -120,7 +121,7 @@ const TableRow = memo(({
           />
         )}
 
-        {expandableRows && !expandableRowsHideExpander && (
+        {expandableRows && !expandableRowsHideExpander && !expandableColumnAtLast && (
           <TableCellExpander
             expanded={expanded}
             row={row}
@@ -137,6 +138,15 @@ const TableRow = memo(({
             row={row}
           />
         ))}
+
+        {expandableRows && !expandableRowsHideExpander && expandableColumnAtLast && (
+          <TableCellExpander
+            expanded={expanded}
+            row={row}
+            onRowExpandToggled={handleExpanded}
+            disabled={defaultExpanderDisabled}
+          />
+        )}
       </TableRowStyle>
 
       {expandableRows && expanded && (

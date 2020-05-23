@@ -83,6 +83,7 @@ const DataTable = memo(({
   contextActions,
   contextComponent,
   expandableRows,
+  expandableColumnAtLast,
   onRowClicked,
   onRowDoubleClicked,
   sortIcon,
@@ -327,7 +328,7 @@ const DataTable = memo(({
                         ? <CellBase style={{ flex: '0 0 48px' }} role="columnheader" />
                         : <TableColCheckbox role="columnheader" />
                     )}
-                    {expandableRows && !expandableRowsHideExpander && (
+                    {expandableRows && !expandableRowsHideExpander && !expandableColumnAtLast && (
                       <TableColExpander />
                     )}
                     {columnsMemo.map(column => (
@@ -337,6 +338,9 @@ const DataTable = memo(({
                         sortIcon={sortIcon}
                       />
                     ))}
+                    {expandableRows && !expandableRowsHideExpander && expandableColumnAtLast && (
+                      <TableColExpander />
+                    )}
                   </TableHeadRow>
                 </TableHead>
               )}
@@ -399,6 +403,7 @@ const DataTable = memo(({
                         conditionalRowStyles={conditionalRowStyles}
                         selected={selected}
                         selectableRowsHighlight={selectableRowsHighlight}
+                        expandableColumnAtLast={expandableColumnAtLast}
                       />
                     );
                   })}
