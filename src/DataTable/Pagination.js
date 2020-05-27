@@ -68,7 +68,6 @@ const Pagination = ({
   currentPage,
 }) => {
   const {
-    data,
     direction,
     paginationRowsPerPageOptions,
     paginationIconLastPage,
@@ -110,7 +109,7 @@ const Pagination = ({
       (
         <option
           key={-1}
-          value={data.length}
+          value={rowCount}
         >
           {options.selectAllRowsItemText}
         </option>
