@@ -755,6 +755,25 @@ describe('DataTable::sorting', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('a custom column sorting function is used', () => {
+    const mock = dataMock({ sortFunction: (a, b) => a.id - b.id });
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    // select the column to sort
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // sort asc
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+    // sort desc
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should sort if the column is selected and the Enter key is pressed', () => {
     const mock = dataMock({ sortable: true });
     const { container } = render(
