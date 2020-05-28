@@ -188,7 +188,7 @@ const DataTable = memo(({
   }, [paginationTotalRows]);
 
   const columnsBySelector = useMemo(() => {
-    return columns.reduce((acc, item) => ({...acc, [item.selector]: item}), {})
+    return columns.reduce((acc, item) => ({ ...acc, [item.selector]: item }), {});
   }, [columns]);
 
   const sortedData = useMemo(() => {
@@ -209,7 +209,7 @@ const DataTable = memo(({
       : (a, b) => column.sortFunction(a, b) * -1;
 
     return [...data].sort(customSortFunction);
-  }, [data, columns, sortColumn, sortDirection, sortFunction, sortServer]);
+  }, [sortServer, sortColumn, columnsBySelector, sortDirection, data, sortFunction]);
 
   const calculatedRows = useMemo(() => {
     if (pagination && !paginationServer) {
