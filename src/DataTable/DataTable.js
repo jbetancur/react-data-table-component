@@ -187,6 +187,10 @@ const DataTable = memo(({
     }
   }, [paginationTotalRows]);
 
+  const columnsBySelector = useMemo(() => {
+    return columns.reduce((acc, item) => ({...acc, [item.selector]: item}), {})
+  }, [columns]);
+
   const sortedData = useMemo(() => {
     // server-side sorting bypasses internal sorting
     if (sortServer) {
@@ -194,7 +198,7 @@ const DataTable = memo(({
     }
 
     // use general sorting function when columns has no sort function on it's own
-    const column = sortColumn && columns.find(item => item.selector === sortColumn);
+    const column = sortColumn && columnsBySelector[sortColumn];
     if (!column || !column.sortFunction) {
       return sort(data, sortColumn, sortDirection, sortFunction);
     }
