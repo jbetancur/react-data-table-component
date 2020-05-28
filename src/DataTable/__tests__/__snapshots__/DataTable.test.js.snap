@@ -42607,7 +42607,6 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
 .c7 {
   position: relative;
   width: 100%;
-  height: 100%;
   display: table;
 }
 
