@@ -88,6 +88,7 @@ const DataTable = memo(({
   sortIcon,
   onSort,
   sortFunction,
+  sortResetDefaultField,
   sortServer,
   expandableRowsComponent,
   expandableRowDisabled,
@@ -142,6 +143,17 @@ const DataTable = memo(({
     visibleOnly: selectableRowsVisibleOnly,
     persistSelectedOnPageChange,
   });
+  const handleSortChange = (column, columnDirection) => dispatch({
+    type: 'SORT_CHANGE',
+    sortDirection: columnDirection,
+    sortColumn: column,
+    sortServer,
+    selectedColumn: {},
+    pagination,
+    paginationServer,
+    visibleOnly: selectableRowsVisibleOnly,
+    persistSelectedOnSort,
+  });
 
   useDidUpdateEffect(() => {
     onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
@@ -166,6 +178,10 @@ const DataTable = memo(({
   useDidUpdateEffect(() => {
     handleChangePage(paginationDefaultPage);
   }, [paginationDefaultPage, paginationResetDefaultPage]);
+
+  useDidUpdateEffect(() => {
+    handleSortChange(defaultSortField, getSortDirection(defaultSortAsc));
+  }, [defaultSortField, defaultSortAsc, sortResetDefaultField]);
 
   useEffect(() => {
     if (selectableRowSelected) {
