@@ -897,6 +897,32 @@ describe('DataTable::sorting', () => {
     // note row order should not change, but sort arrows should
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly when sortResetDefaultField is toggled', () => {
+    const mock = dataMock({ sortable: true });
+    const { container, rerender } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        defaultSortAsc={false}
+      />,
+    );
+
+    fireEvent.click(container.querySelector('div[id="column-some.name"]'));
+
+    rerender(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        defaultSortField="some.name"
+        defaultSortAsc={false}
+        sortResetDefaultField
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 
