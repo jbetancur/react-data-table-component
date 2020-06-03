@@ -238,7 +238,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | noHeader | bool | no | false | Removes the table header. `title`, `contextTitle` and `contextActions` will be ignored |
 | fixedHeader | bool | no | false | Makes the table header fixed allowing you to scroll the table body |
 | fixedHeaderScrollHeight | string | no | 100vh | In order for fixedHeader to work this property allows you to set a static height to the TableBody. height must be a fixed value |
-| subHeader | component or array of components | no | false | Show a sub header between the table and table header
+| subHeader | bool | no | false | Show a sub header between the table and table header
 | subHeaderAlign | string | no | right | Align the sub header content (left, right, center)
 | subHeaderWrap | bool | no | true | Whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | A component you want to render |
