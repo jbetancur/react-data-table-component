@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Cell } from './Cell';
 import { useTableContext } from './DataTableContext';
 import NativeSortIcon from '../icons/NativeSortIcon';
+import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 
 const TableColStyle = styled(Cell)`
   ${props => props.column.button && 'text-align: center'};
@@ -53,7 +54,7 @@ const TableCol = memo(({
   column,
   sortIcon,
 }) => {
-  const { dispatch, pagination, paginationServer, sortColumn, sortDirection, sortServer, selectableRowsVisibleOnly, persistSelectedOnSort } = useTableContext();
+  const { dispatch, pagination, paginationServer, sortColumn, sortDirection, sortServer, selectableRowsVisibleOnly, persistSelectedOnSort, defaultSortField, defaultSortDirection, sortResetDefaultField } = useTableContext();
 
   if (column.omit) {
     return null;
@@ -61,7 +62,7 @@ const TableCol = memo(({
 
   const handleSortChange = () => {
     if (column.sortable) {
-      let direction = sortDirection;
+      let direction = !sortResetDefaultField ? sortDirection : defaultSortDirection;
       // change sort direction only if sortColumn (currently selected column) is === the newly clicked column
       // otherwise, retain sort direction if the column is switched
       if (sortColumn === column.selector) {
@@ -101,6 +102,12 @@ const TableCol = memo(({
       {sortIcon}
     </span>
   );
+
+  useDidUpdateEffect(() => {
+    if (sortResetDefaultField && defaultSortField === column.selector) {
+      handleSortChange();
+    }
+  }, [sortResetDefaultField, defaultSortField, column]);
 
   const sortActive = column.sortable && sortColumn === column.selector;
   const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
