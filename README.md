@@ -208,6 +208,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onSort | func | no |  | callback to access the sort state when a column is clicked. returns ([column](https://github.com/jbetancur/react-data-table-component#columns), sortDirection, event) |
 | sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}. you must return an array |
 | sortServer   | bool | no | false | disables internal sorting for use with server-side sorting or when you want to manually control the sort behavior. place your sorting logic and/or api calls in an `onSort` handler. note that `sortFunction` is a better choice if you simply want to override the internal sorting behavior |
+| sortResetDefaultField | bool | no | false | the prop can be "toggled" to reset the sort column and direction back to `defaultSortField` & `defaultSortAsc`. For this to work make sure you are using some sort of state and toggling the prop. e.g. `setResetSortToggle(!resetSortToggle)` or for a class component `setState(resetSortToggle: !resetSortToggle)`
 
 #### Pagination
 
