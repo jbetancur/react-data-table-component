@@ -20461,6 +20461,12 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   font-weight: 400;
 }
 
+.c15 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .c14 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -20897,12 +20903,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   max-width: 100%;
   min-width: 100px;
   font-weight: 400;
-}
-
-.c15 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .c14 {
