@@ -45,8 +45,8 @@
   - [Setup](#setup)
   - [Local development](#local-development)
   - [Including NPM packages](#including-npm-packages)
-    - [Library dependencies -- <root_dir>/package.**json](#library-dependencies----rootdirpackagejson)
-    - [Storybook dependencies -- <root_dir>/stories/package.json](#storybook-dependencies----rootdirstoriespackagejson)
+    - [Library dependencies -- <root_dir>/package.**json](#library-dependencies----root_dirpackagejson)
+    - [Storybook dependencies -- <root_dir>/stories/package.json](#storybook-dependencies----root_dirstoriespackagejson)
   - [Lint](#lint)
   - [Test](#test)
   - [Build](#build)
@@ -130,6 +130,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | omit     | bool   | no       | omits the column from the table. useful if you need to hide access to data. |
 | style    | object | no       | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
 | conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#16210-conditional-style-object) to conditionally apply css styles to a cell |
+| id       | string or number | no       | in most cases you should not need to set a column `id` as RDT will auto generate one for each column. However, when developing an SSR app you may encounder an `id did not match` warning. In this case, you can explicitly set the `id` to fix the warning |
 
 #### column.hide media presets
 
