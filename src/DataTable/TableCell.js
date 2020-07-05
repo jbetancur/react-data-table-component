@@ -15,7 +15,7 @@ const overflowCSS = css`
 const TableCellStyle = styled(Cell)`
   font-size: ${props => props.theme.rows.fontSize};
   font-weight: 400;
-  ${props => !props.column.button && overflowCSS};
+  ${props => !props.column.cell && overflowCSS};
   ${props => props.column.style};
   ${props => props.extendedCellStyle};
 `;
