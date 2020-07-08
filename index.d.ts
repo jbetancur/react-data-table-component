@@ -115,7 +115,7 @@ export interface IDataTableColumn<T> {
   right?: boolean;
   center?: boolean;
   compact?: boolean;
-  ignoreOnRowClick?: boolean;
+  ignoreRowClick?: boolean;
   button?: boolean;
   wrap?: boolean;
   allowOverflow?: boolean;
