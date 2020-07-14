@@ -20,7 +20,7 @@
   ],
   "repository": "https://github.com/jbetancur/react-data-table-component",
   "author": "jbetancur",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build:dev": "rollup -c rollup/rollup.config.dev.js -m",
