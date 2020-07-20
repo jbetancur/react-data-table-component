@@ -1,19 +1,21 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
 import { getProperty, getConditionalStyle } from './util';
 
-const TableCellStyle = styled(Cell)`
-  font-size: ${props => props.theme.rows.fontSize};
-  font-weight: 400;
-
+const overflowCSS = css`
   div:first-child {
     white-space: ${props => (props.column.wrap ? 'normal' : 'nowrap')};
     overflow: ${props => (props.column.allowOverflow ? 'visible' : 'hidden')};
     text-overflow: ellipsis;
   }
+`;
 
+const TableCellStyle = styled(Cell)`
+  font-size: ${props => props.theme.rows.fontSize};
+  font-weight: 400;
+  ${props => !props.column.cell && overflowCSS};
   ${props => props.column.style};
   ${props => props.extendedCellStyle};
 `;

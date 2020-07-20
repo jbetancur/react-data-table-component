@@ -14,8 +14,8 @@ export interface IDataTableProps<T> {
   style?: CSSProperties;
   responsive?: boolean;
   disabled?: boolean;
-  onRowClicked?: (row: T) => void;
-  onRowDoubleClicked?: (row: T) => void;
+  onRowClicked?: (row: T, e: MouseEvent) => void;
+  onRowDoubleClicked?: (row: T, e: MouseEvent) => void;
   overflowY?: boolean;
   overflowYOffset?: string;
   dense?: boolean;
@@ -99,6 +99,7 @@ export interface IDataTableProps<T> {
 }
 
 export interface IDataTableColumn<T> {
+  id?: string | number;
   name: string | number | React.ReactNode;
   selector?: string | ((row: T) => React.ReactNode);
   sortable?: boolean;
@@ -112,7 +113,7 @@ export interface IDataTableColumn<T> {
   right?: boolean;
   center?: boolean;
   compact?: boolean;
-  ignoreOnRowClick?: boolean;
+  ignoreRowClick?: boolean;
   button?: boolean;
   wrap?: boolean;
   allowOverflow?: boolean;
