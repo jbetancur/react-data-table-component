@@ -1,5 +1,5 @@
-import * as React from "react";
-import { CSSProperties } from "styled-components";
+import * as React from 'react';
+import { CSSProperties } from 'styled-components';
 
 export interface IDataTableProps<T> {
   title?: React.ReactNode;
@@ -23,11 +23,11 @@ export interface IDataTableProps<T> {
   defaultSortField?: string;
   defaultSortAsc?: boolean;
   sortIcon?: React.ReactNode;
-  onSort?: (column: IDataTableColumn<T>, sortDirection: "asc" | "desc") => void;
+  onSort?: (column: IDataTableColumn<T>, sortDirection: 'asc' | 'desc') => void;
   sortFunction?: (
     rows: T[],
     field: string,
-    sortDirection: "asc" | "desc"
+    sortDirection: 'asc' | 'desc'
   ) => T[];
   sortServer?: boolean;
   pagination?: boolean;
@@ -95,7 +95,7 @@ export interface IDataTableProps<T> {
   customStyles?: IDataTableStyles;
   theme?: string;
   conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
-  direction?: "ltr" | "rtl" | "auto";
+  direction?: 'ltr' | 'rtl' | 'auto';
 }
 
 export interface IDataTableColumn<T> {
@@ -116,7 +116,7 @@ export interface IDataTableColumn<T> {
   button?: boolean;
   wrap?: boolean;
   allowOverflow?: boolean;
-  hide?: number | "sm" | "md" | "lg";
+  hide?: number | 'sm' | 'md' | 'lg';
   omit?: boolean;
   style?: CSSProperties;
   conditionalCellStyles?: IDataTableConditionalCellStyles<T>[];

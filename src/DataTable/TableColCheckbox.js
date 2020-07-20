@@ -35,7 +35,7 @@ const TableColCheckbox = ({ head }) => {
 
   var selectAllOverride = false;
   if (showSelectAllOverride) {
-    if (!selectedRows.length == 0) {
+    if (!selectedRows.length === 0) {
       for (var i = 0; i < data.length; i++) {
         let selected = selectedRows.some((item) => {
           if (data[i]) {
@@ -54,7 +54,7 @@ const TableColCheckbox = ({ head }) => {
   const handleSelectAll = useCallback(
     () =>
       dispatch({
-        type: "SELECT_ALL_ROWS",
+        type: 'SELECT_ALL_ROWS',
         rows,
         rowCount,
         mergeSelections,
@@ -64,9 +64,9 @@ const TableColCheckbox = ({ head }) => {
   );
 
   return (
-    <TableColStyle className="rdt_TableCol" head={head} noPadding>
+    <TableColStyle className='rdt_TableCol' head={head} noPadding>
       <Checkbox
-        name="select-all-rows"
+        name='select-all-rows'
         component={selectableRowsComponent}
         componentOptions={selectableRowsComponentProps}
         onClick={handleSelectAll}

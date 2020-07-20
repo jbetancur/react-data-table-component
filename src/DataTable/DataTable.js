@@ -4,28 +4,28 @@ import React, {
   useMemo,
   useCallback,
   useEffect,
-} from "react";
-import { ThemeProvider } from "styled-components";
-import { DataTableProvider } from "./DataTableContext";
-import { tableReducer } from "./tableReducer";
-import Table from "./Table";
-import TableHead from "./TableHead";
-import TableHeadRow from "./TableHeadRow";
-import TableRow from "./TableRow";
-import TableCol from "./TableCol";
-import TableColCheckbox from "./TableColCheckbox";
-import TableHeader from "./TableHeader";
-import TableSubheader from "./TableSubheader";
-import TableBody from "./TableBody";
-import ResponsiveWrapper from "./ResponsiveWrapper";
-import ProgressWrapper from "./ProgressWrapper";
-import TableWrapper from "./TableWrapper";
-import TableColExpander from "./TableColExpander";
-import { CellBase } from "./Cell";
-import NoData from "./NoDataWrapper";
-import NativePagination from "./Pagination";
-import useDidUpdateEffect from "../hooks/useDidUpdateEffect";
-import { propTypes, defaultProps } from "./propTypes";
+} from 'react';
+import { ThemeProvider } from 'styled-components';
+import { DataTableProvider } from './DataTableContext';
+import { tableReducer } from './tableReducer';
+import Table from './Table';
+import TableHead from './TableHead';
+import TableHeadRow from './TableHeadRow';
+import TableRow from './TableRow';
+import TableCol from './TableCol';
+import TableColCheckbox from './TableColCheckbox';
+import TableHeader from './TableHeader';
+import TableSubheader from './TableSubheader';
+import TableBody from './TableBody';
+import ResponsiveWrapper from './ResponsiveWrapper';
+import ProgressWrapper from './ProgressWrapper';
+import TableWrapper from './TableWrapper';
+import TableColExpander from './TableColExpander';
+import { CellBase } from './Cell';
+import NoData from './NoDataWrapper';
+import NativePagination from './Pagination';
+import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
+import { propTypes, defaultProps } from './propTypes';
 import {
   isEmpty,
   sort,
@@ -34,8 +34,8 @@ import {
   getNumberOfPages,
   recalculatePage,
   isRowSelected,
-} from "./util";
-import { createStyles } from "./styles";
+} from './util';
+import { createStyles } from './styles';
 
 const DataTable = memo(
   ({
@@ -162,7 +162,7 @@ const DataTable = memo(
       expandableRowsComponent,
     ]);
     const wrapperProps = useMemo(
-      () => ({ ...(direction !== "auto" && { dir: direction }) }),
+      () => ({ ...(direction !== 'auto' && { dir: direction }) }),
       [direction]
     );
     const handleRowClicked = useCallback((row, e) => onRowClicked(row, e), [
@@ -174,7 +174,7 @@ const DataTable = memo(
     );
     const handleChangePage = (page) =>
       dispatch({
-        type: "CHANGE_PAGE",
+        type: 'CHANGE_PAGE',
         page,
         paginationServer,
         visibleOnly: selectableRowsVisibleOnly,
@@ -199,7 +199,7 @@ const DataTable = memo(
 
     useEffect(() => {
       dispatch({
-        type: "CLEAR_SELECTED_ROWS",
+        type: 'CLEAR_SELECTED_ROWS',
         selectedRowsFlag: clearSelectedRows,
       });
     }, [clearSelectedRows]);
@@ -215,7 +215,7 @@ const DataTable = memo(
         );
 
         dispatch({
-          type: "SELECT_MULTIPLE_ROWS",
+          type: 'SELECT_MULTIPLE_ROWS',
           selectedRows: preSelectedRows,
           rows: data,
           mergeSelections,
@@ -256,7 +256,7 @@ const DataTable = memo(
 
       // use column's custom sorting function
       const customSortFunction =
-        sortDirection === "asc"
+        sortDirection === 'asc'
           ? column.sortFunction
           : (a, b) => column.sortFunction(a, b) * -1;
 
@@ -307,7 +307,7 @@ const DataTable = memo(
       }
 
       dispatch({
-        type: "CHANGE_ROWS_PER_PAGE",
+        type: 'CHANGE_ROWS_PER_PAGE',
         page: recalculatedPage,
         rowsPerPage: newRowsPerPage,
       });
@@ -400,23 +400,23 @@ const DataTable = memo(
                 {showTableHead() && (
                   <TableHead className="rdt_TableHead" role="rowgroup">
                     <TableHeadRow
-                      className="rdt_TableHeadRow"
-                      role="row"
+                      className='rdt_TableHeadRow'
+                      role='row'
                       dense={dense}
                       disabled={progressPending || data.length === 0}
                     >
                       {selectableRows &&
                         (showSelectAll ? (
                           <CellBase
-                            style={{ flex: "0 0 48px" }}
-                            role="columnheader"
+                            style={{ flex: '0 0 48px' }}
+                            role='columnheader'
                           />
                         ) : (
-                          <TableColCheckbox
-                            role="columnheader"
-                            showSelectAllOverride={showSelectAllOverride}
-                          />
-                        ))}
+                            <TableColCheckbox
+                              role='columnheader'
+                              showSelectAllOverride={showSelectAllOverride}
+                            />
+                          ))}
                       {expandableRows && !expandableRowsHideExpander && (
                         <TableColExpander />
                       )}
@@ -445,8 +445,8 @@ const DataTable = memo(
                     fixedHeaderScrollHeight={fixedHeaderScrollHeight}
                     hasOffset={overflowY}
                     offset={overflowYOffset}
-                    className="rdt_TableBody"
-                    role="rowgroup"
+                    className='rdt_TableBody'
+                    role='rowgroup'
                   >
                     {calculatedRows.map((row, i) => {
                       const id = isEmpty(row[keyField]) ? i : row[keyField];
