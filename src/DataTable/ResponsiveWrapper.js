@@ -9,6 +9,7 @@ import styled, { css } from 'styled-components';
 const ResponsiveWrapper = styled.div`
   position: relative;
   width: 100%;
+  border-radius: inherit;
   ${props => props.responsive && css`
     overflow-x: auto;
 
