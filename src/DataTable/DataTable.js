@@ -59,6 +59,7 @@ const DataTable = memo(({
   paginationIconPrevious,
   paginationComponent,
   paginationComponentOptions,
+  paginationPosition,
   className,
   style,
   responsive,
@@ -312,6 +313,16 @@ const DataTable = memo(({
             />
           )}
 
+          {enabledPagination && paginationPosition === 'top' && (
+            <Pagination
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+              rowCount={paginationTotalRows || data.length}
+              currentPage={currentPage}
+              rowsPerPage={rowsPerPage}
+            />
+          )}
+
           {subHeader && (
             <TableSubheader
               align={subHeaderAlign}
@@ -422,7 +433,7 @@ const DataTable = memo(({
             </Table>
           </TableWrapper>
 
-          {enabledPagination && (
+          {enabledPagination && paginationPosition === 'bottom' && (
             <Pagination
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}

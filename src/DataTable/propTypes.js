@@ -125,6 +125,7 @@ export const propTypes = {
   paginationTotalRows: PropTypes.number,
   paginationPerPage: PropTypes.number,
   paginationRowsPerPageOptions: PropTypes.array,
+  paginationPosition: PropTypes.oneOf(['bottom', 'top']),
   onChangePage: PropTypes.func,
   onChangeRowsPerPage: PropTypes.func,
   paginationComponent: PropTypes.oneOfType([
@@ -240,6 +241,7 @@ export const defaultProps = {
   paginationTotalRows: 0,
   paginationPerPage: 10,
   paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
+  paginationPosition: 'bottom',
   onChangePage: () => null,
   onChangeRowsPerPage: () => null,
   paginationComponent: null,
