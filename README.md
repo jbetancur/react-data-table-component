@@ -129,7 +129,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | hide     | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
 | omit     | bool   | no       | omits the column from the table. useful if you need to hide access to data. |
 | style    | object | no       | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
-| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#16210-conditional-style-object) to conditionally apply css styles to a cell |
+| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#-conditional-row-styling) to conditionally apply css styles to a cell |
 | id       | string or number | no       | in most cases you should not need to set a column `id` as RDT will auto generate one for each column. However, when developing an SSR app you may encounder an `id did not match` warning. In this case, you can explicitly set the `id` to fix the warning |
 
 #### column.hide media presets
