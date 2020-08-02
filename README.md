@@ -400,7 +400,7 @@ const MyTable = () => (
 | Property | Type     | Required  | Description                                                                                                             |
 |----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
 | when     | function | yes       | `when` accepts a callback that gives you access to your `row` data. The when callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
-| style    | object or (row) => object   | yes       | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can also specify callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial 'pink' : inherit })` |
+| style    | object or (row) => object   | yes       | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can also specify callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial ? 'pink' : inherit })` |
 
 ## Basic Table
 
