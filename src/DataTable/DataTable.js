@@ -414,6 +414,7 @@ const DataTable = memo(({
                         conditionalRowStyles={conditionalRowStyles}
                         selected={selected}
                         selectableRowsHighlight={selectableRowsHighlight}
+                        rowIndex={i}
                       />
                     );
                   })}
