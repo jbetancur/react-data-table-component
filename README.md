@@ -355,7 +355,7 @@ View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/ma
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#16210-conditional-style-object)
+| conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#conditional-style-object)
 
 ##### Example
 
