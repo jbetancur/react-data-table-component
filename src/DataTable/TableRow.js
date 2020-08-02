@@ -60,6 +60,7 @@ const TableRow = memo(({
   onRowExpandToggled,
   selected,
   selectableRowsHighlight,
+  rowIndex,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   useEffect(() => {
@@ -135,6 +136,7 @@ const TableRow = memo(({
             key={`cell-${column.id}-${row[keyField]}`}
             column={column}
             row={row}
+            rowIndex={rowIndex}
           />
         ))}
       </TableRowStyle>
@@ -157,6 +159,7 @@ TableRow.propTypes = {
   keyField: PropTypes.string.isRequired,
   columns: PropTypes.array.isRequired,
   row: PropTypes.object.isRequired,
+  rowIndex: PropTypes.number.isRequired,
   onRowClicked: PropTypes.func.isRequired,
   onRowDoubleClicked: PropTypes.func.isRequired,
   onRowExpandToggled: PropTypes.func.isRequired,

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { CSSProperties } from 'styled-components';
 
-export interface IDataTableProps<T> {
+export interface IDataTableProps {
   title?: React.ReactNode;
-  columns: IDataTableColumn<T>[];
-  data: T[];
+  columns: IDataTableColumn[];
+  data: any[];
   keyField?: string;
   striped?: boolean;
   highlightOnHover?: boolean;
@@ -24,7 +24,7 @@ export interface IDataTableProps<T> {
   defaultSortAsc?: boolean;
   sortIcon?: React.ReactNode;
   onSort?: (
-    column: IDataTableColumn<T>,
+    column: IDataTableColumn,
     sortDirection: 'asc' | 'desc'
   ) => void;
   sortFunction?: (
@@ -96,18 +96,18 @@ export interface IDataTableProps<T> {
   subHeaderComponent?: React.ReactNode | React.ReactNode[];
   customStyles?: IDataTableStyles;
   theme?: string;
-  conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
+  conditionalRowStyles?: IDataTableConditionalRowStyles[];
   direction?: 'ltr' | 'rtl' | 'auto';
 }
 
-export interface IDataTableColumn<T> {
+export interface IDataTableColumn {
   id?: string | number;
   name: string | number | React.ReactNode;
-  selector?: string | ((row: T) => React.ReactNode);
+  selector?: string | ((row: T, rowIndex: number) => React.ReactNode);
   sortable?: boolean;
   sortFunction?: (a: T, b: T) => number;
-  format?: (row: T) => React.ReactNode;
-  cell?: (row: T) => React.ReactNode;
+  format?: (row: T, rowIndex: number) => React.ReactNode;
+  cell?: (row: T, rowIndex: number, column: IDataTableColumn, id: string | number) => React.ReactNode;
   grow?: number;
   width?: string;
   minWidth?: string;
@@ -122,7 +122,7 @@ export interface IDataTableColumn<T> {
   hide?: number | 'sm' | 'md' | 'lg';
   omit?: boolean;
   style?: CSSProperties;
-  conditionalCellStyles?: IDataTableConditionalCellStyles<T>[];
+  conditionalCellStyles?: IDataTableConditionalCellStyles[];
 }
 
 export interface IDataTableStyles {
@@ -185,12 +185,12 @@ export interface IDataTableStyles {
   };
 }
 
-export interface IDataTableConditionalCellStyles<T> {
+export interface IDataTableConditionalCellStyles {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
 
-export interface IDataTableConditionalRowStyles<T> {
+export interface IDataTableConditionalRowStyles {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
@@ -258,9 +258,9 @@ interface IDefaultThemes {
   dark: ITheme;
 }
 
-export function createTheme<T>(name: string, customTheme: T): ITheme;
+export function createTheme(name: string, customTheme: T): ITheme;
 export const defaultThemes: IDefaultThemes;
 
-export default function DataTable<T>(
-  props: IDataTableProps<T>
+export default function DataTable(
+  props: IDataTableProps
 ): React.ReactElement;

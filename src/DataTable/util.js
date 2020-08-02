@@ -13,7 +13,7 @@ export const sort = (rows, field = '', direction, sortFn) => {
   return orderBy(rows, field, direction);
 };
 
-export const getProperty = (row, selector, format) => {
+export const getProperty = (row, selector, format, rowIndex) => {
   if (!selector) {
     return null;
   }
@@ -23,11 +23,11 @@ export const getProperty = (row, selector, format) => {
   }
 
   if (format && typeof format === 'function') {
-    return format(row);
+    return format(row, rowIndex);
   }
 
   if (selector && typeof selector === 'function') {
-    return selector(row);
+    return selector(row, rowIndex);
   }
 
   return selector.split('.').reduce((acc, part) => {

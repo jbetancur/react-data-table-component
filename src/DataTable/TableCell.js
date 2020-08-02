@@ -20,7 +20,7 @@ const TableCellStyle = styled(Cell)`
   ${props => props.extendedCellStyle};
 `;
 
-const TableCell = memo(({ id, column, row }) => {
+const TableCell = memo(({ id, rowIndex, column, row }) => {
   if (column.omit) {
     return null;
   }
@@ -40,16 +40,17 @@ const TableCell = memo(({ id, column, row }) => {
     >
       {!column.cell && (
         <div data-tag={dataTag}>
-          {getProperty(row, column.selector, column.format)}
+          {getProperty(row, column.selector, column.format, rowIndex)}
         </div>
       )}
-      {column.cell && column.cell(row)}
+      {column.cell && column.cell(row, rowIndex, column, id)}
     </TableCellStyle>
   );
 });
 
 TableCell.propTypes = {
   id: PropTypes.string.isRequired,
+  rowIndex: PropTypes.number.isRequired,
   column: PropTypes.object.isRequired,
   row: PropTypes.object.isRequired,
 };
