@@ -375,6 +375,13 @@ const conditionalRowStyles = [
       },
     },
   },
+  // You can also pass a callback to style for additional customization
+  {
+    when: row => row.calories < 300,
+    style: row => ({
+      backgroundColor: row.isSpecia ? 'pink' : 'inerit',
+    }),
+  },
 ];
 
 const MyTable = () => (
@@ -393,7 +400,7 @@ const MyTable = () => (
 | Property | Type     | Required  | Description                                                                                                             |
 |----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
 | when     | function | yes       | `when` accepts a callback that gives you access to your `row` data. The when callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
-| style    | object   | yes       | css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects) |
+| style    | object or (row) => object   | yes       | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can access using a callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial 'pink' : inherit })` |
 
 ## Basic Table
 
