@@ -2686,6 +2686,29 @@ describe('DataTable::conditionalCellStyles', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('should render correctly when conditionalCellStyles style is a function', () => {
+    const mock = dataMock();
+    mock.data[0].completed = true;
+    mock.data[0].isSpecial = true;
+    mock.columns[0].conditionalCellStyles = [
+      {
+        when: row => row.completed,
+        style: row => ({
+          color: row.isSpecial ? 'pink' : 'inherit',
+        }),
+      },
+    ];
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('should render correctly when conditionalCellStyles is defined and there is no match', () => {
     const mock = dataMock();
     mock.data[0].completed = false;

@@ -105,6 +105,10 @@ export const getConditionalStyle = (row = {}, conditionalRowStyles = []) => {
       // evaluate the field and if true return a the style to be applied
       if (exp.when(row)) {
         rowStyle = exp.style || {};
+
+        if (typeof exp.style === 'function') {
+          rowStyle = exp.style(row) || {};
+        }
       }
     });
   }
