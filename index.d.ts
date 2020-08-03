@@ -45,6 +45,7 @@ export interface IDataTableProps<T> {
   paginationPerPage?: number;
   paginationRowsPerPageOptions?: number[];
   paginationComponentOptions?: IDataTablePaginationOptions;
+  paginationPosition?: 'top' | 'bottom';
   onChangeRowsPerPage?: (
     currentRowsPerPage: number,
     currentPage: number
