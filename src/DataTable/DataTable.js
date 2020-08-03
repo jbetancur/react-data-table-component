@@ -294,6 +294,17 @@ const DataTable = memo(({
 
   const showSelectAll = persistSelectedOnPageChange || selectableRowsNoSelectAll;
 
+  const renderPagination = () => (
+    <Pagination
+      onChangePage={handleChangePage}
+      onChangeRowsPerPage={handleChangeRowsPerPage}
+      // eslint-disable-next-line react/prop-types
+      rowCount={paginationTotalRows || data.length}
+      currentPage={currentPage}
+      rowsPerPage={rowsPerPage}
+    />
+  );
+
   return (
     <ThemeProvider theme={currentTheme}>
       <DataTableProvider initialState={init}>
@@ -313,15 +324,8 @@ const DataTable = memo(({
             />
           )}
 
-          {enabledPagination && paginationPosition === 'top' && (
-            <Pagination
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              rowCount={paginationTotalRows || data.length}
-              currentPage={currentPage}
-              rowsPerPage={rowsPerPage}
-            />
-          )}
+          {enabledPagination && paginationPosition === 'top' &&
+            renderPagination()}
 
           {subHeader && (
             <TableSubheader
@@ -433,15 +437,8 @@ const DataTable = memo(({
             </Table>
           </TableWrapper>
 
-          {enabledPagination && paginationPosition === 'bottom' && (
-            <Pagination
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              rowCount={paginationTotalRows || data.length}
-              currentPage={currentPage}
-              rowsPerPage={rowsPerPage}
-            />
-          )}
+          {enabledPagination && paginationPosition === 'bottom' &&
+            renderPagination()}
         </ResponsiveWrapper>
       </DataTableProvider>
     </ThemeProvider>
