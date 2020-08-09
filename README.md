@@ -207,7 +207,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order. Note that this will apply work when the table is initially loaded |
 | sortIcon | component | no |  | override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table |
 | onSort | func | no |  | callback to access the sort state when a column is clicked. returns ([column](https://github.com/jbetancur/react-data-table-component#columns), sortDirection, event) |
-| sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}. you must return an array |
+| sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}`. **Your function must return an new array reference**, otherwise RDT will not "know" to re-render. For example, `Array.sort` sorts the array in place but because of JavaScript object equality it will be the same reference and will not re-render. A common pattern is to return `yourArray.slice(0)` which creates a new array.|
 | sortServer   | bool | no | false | disables internal sorting for use with server-side sorting or when you want to manually control the sort behavior. place your sorting logic and/or api calls in an `onSort` handler. note that `sortFunction` is a better choice if you simply want to override the internal sorting behavior |
 
 #### Pagination
