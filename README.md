@@ -629,7 +629,7 @@ const columns = [
 ...
 
 // The row data is composed into your custom expandable component via the data prop
-const ExpanableComponent = ({ data }) => <img src={data.image} />;
+const ExpandableComponent = ({ data }) => <img src={data.image} />;
 
 class MyComponent extends Component {
   render() {
@@ -644,7 +644,7 @@ class MyComponent extends Component {
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
         onSelectedRowsChange={handleChange}
         expandableRows
-        expandableRowsComponent={<ExpanableComponent />}
+        expandableRowsComponent={<ExpandableComponent />}
       />
     )
   }
@@ -674,7 +674,7 @@ const columns = [
 ...
 
 // The row data is composed into your custom expandable component via the data prop
-const ExpanableComponent = ({ data }) => <img src={data.image} />;
+const ExpandableComponent = ({ data }) => <img src={data.image} />;
 
 class MyComponent extends Component {
   render() {
@@ -690,7 +690,7 @@ class MyComponent extends Component {
         onSelectedRowsChange={handleChange}
         expandableRows
         expandableRowDisabled={row => row.disabled}
-        expandableRowsComponent={<ExpanableComponent />}
+        expandableRowsComponent={<ExpandableComponent />}
       />
     )
   }
