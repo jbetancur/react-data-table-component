@@ -178,6 +178,7 @@ exports[`should render correctly with default props 1`] = `
     class="c2"
   >
     <select
+      aria-label="Rows Per Page"
       class="c3"
     >
       <option

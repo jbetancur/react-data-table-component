@@ -26,6 +26,7 @@ const ExpanderButton = ({ expanded, row, onToggled, disabled }) => {
       onClick={handleToggle}
       data-testid={`expander-button-${row[keyField]}`}
       disabled={disabled}
+      aria-label={expanded ? 'Collapse Row' : 'Expand Row'}
       role="button"
       type="button"
     >
