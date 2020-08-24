@@ -48593,9 +48593,32 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   border-bottom-color: rgba(0,0,0,.12);
 }
 
-.c14:nth-of-type(odd) {
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
   color: rgba(0,0,0,0.87);
   background-color: #FAFAFA;
+}
+
+.c16:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
 }
 
 .c11 {
@@ -48915,7 +48938,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
           </div>
         </div>
         <div
-          class="c14 rdt_TableRow"
+          class="c16 rdt_TableRow"
           id="row-2"
           role="row"
         >

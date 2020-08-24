@@ -5,7 +5,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
-import { getConditionalStyle } from './util';
+import { getConditionalStyle, isOdd } from './util';
 
 const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
 
@@ -97,13 +97,14 @@ const TableRow = memo(({
   const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
   const hightlightSelected = selectableRowsHighlight && selected;
   const inheritStyles = inheritConditionalStyles ? extendedRowStyle : null;
+  const isStriped = striped && isOdd(rowIndex);
 
   return (
     <>
       <TableRowStyle
         id={`row-${id}`}
         role="row"
-        striped={striped}
+        striped={isStriped}
         highlightOnHover={highlightOnHover}
         pointerOnHover={!defaultExpanderDisabled && showPointer}
         dense={dense}
