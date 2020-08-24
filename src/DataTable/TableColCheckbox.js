@@ -28,7 +28,8 @@ const TableColCheckbox = ({ head }) => {
   const indeterminate = selectedRows.length > 0 && !allSelected;
   const rows = selectableRowDisabled ? data.filter(row => !selectableRowDisabled(row)) : data;
   const isDisabled = rows.length === 0;
-  const rowCount = data.length;
+  // The row count should subtrtact rows that are disabled
+  const rowCount = Math.min(data.length, rows.length);
 
   const handleSelectAll = useCallback(() => dispatch({
     type: 'SELECT_ALL_ROWS',
