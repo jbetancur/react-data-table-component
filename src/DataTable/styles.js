@@ -129,10 +129,8 @@ export const defaultStyles = theme => ({
       outlineColor: theme.background.default,
     },
     stripedStyle: {
-      '&:nth-of-type(odd)': {
-        color: theme.striped.text,
-        backgroundColor: theme.striped.default,
-      },
+      color: theme.striped.text,
+      backgroundColor: theme.striped.default,
     },
   },
   expanderRow: {

@@ -133,3 +133,7 @@ export const detectRTL = (direction = 'auto') => {
 
   return direction === 'rtl';
 };
+
+export const isOdd = num => {
+  return num % 2;
+};
