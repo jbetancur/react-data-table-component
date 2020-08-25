@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CSSProperties } from 'styled-components';
 
-export interface IDataTableProps<T> {
+export interface IDataTableProps<T = any> {
   title?: React.ReactNode;
   columns: IDataTableColumn<T>[];
   data: T[];
@@ -100,7 +100,7 @@ export interface IDataTableProps<T> {
   direction?: 'ltr' | 'rtl' | 'auto';
 }
 
-export interface IDataTableColumn<T> {
+export interface IDataTableColumn<T = any> {
   id?: string | number;
   name: string | number | React.ReactNode;
   selector?: string | ((row: T, rowIndex: number) => React.ReactNode);
@@ -185,12 +185,12 @@ export interface IDataTableStyles {
   };
 }
 
-export interface IDataTableConditionalCellStyles<T> {
+export interface IDataTableConditionalCellStyles<T = any> {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
 
-export interface IDataTableConditionalRowStyles<T> {
+export interface IDataTableConditionalRowStyles<T = any> {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
@@ -258,9 +258,9 @@ interface IDefaultThemes {
   dark: ITheme;
 }
 
-export function createTheme<T>(name: string, customTheme: T): ITheme;
+export function createTheme<T = any>(name: string, customTheme: T): ITheme;
 export const defaultThemes: IDefaultThemes;
 
-export default function DataTable<T>(
+export default function DataTable<T = any>(
   props: IDataTableProps<T>
 ): React.ReactElement;
