@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { CSSProperties } from 'styled-components';
 
-export interface IDataTableProps {
+export interface IDataTableProps<T = any> {
   title?: React.ReactNode;
-  columns: IDataTableColumn[];
-  data: any[];
+  columns: IDataTableColumn<T>[];
+  data: T[];
   keyField?: string;
   striped?: boolean;
   highlightOnHover?: boolean;
@@ -24,7 +24,7 @@ export interface IDataTableProps {
   defaultSortAsc?: boolean;
   sortIcon?: React.ReactNode;
   onSort?: (
-    column: IDataTableColumn,
+    column: IDataTableColumn<T>,
     sortDirection: 'asc' | 'desc'
   ) => void;
   sortFunction?: (
@@ -96,11 +96,11 @@ export interface IDataTableProps {
   subHeaderComponent?: React.ReactNode | React.ReactNode[];
   customStyles?: IDataTableStyles;
   theme?: string;
-  conditionalRowStyles?: IDataTableConditionalRowStyles[];
+  conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
   direction?: 'ltr' | 'rtl' | 'auto';
 }
 
-export interface IDataTableColumn {
+export interface IDataTableColumn<T = any> {
   id?: string | number;
   name: string | number | React.ReactNode;
   selector?: string | ((row: T, rowIndex: number) => React.ReactNode);
@@ -122,7 +122,7 @@ export interface IDataTableColumn {
   hide?: number | 'sm' | 'md' | 'lg';
   omit?: boolean;
   style?: CSSProperties;
-  conditionalCellStyles?: IDataTableConditionalCellStyles[];
+  conditionalCellStyles?: IDataTableConditionalCellStyles<T>[];
 }
 
 export interface IDataTableStyles {
@@ -185,12 +185,12 @@ export interface IDataTableStyles {
   };
 }
 
-export interface IDataTableConditionalCellStyles {
+export interface IDataTableConditionalCellStyles<T = any> {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
 
-export interface IDataTableConditionalRowStyles {
+export interface IDataTableConditionalRowStyles<T = any> {
   when: (row: T) => boolean;
   style: CSSProperties;
 }
@@ -258,9 +258,9 @@ interface IDefaultThemes {
   dark: ITheme;
 }
 
-export function createTheme(name: string, customTheme: T): ITheme;
+export function createTheme<T = any>(name: string, customTheme: T): ITheme;
 export const defaultThemes: IDefaultThemes;
 
-export default function DataTable(
-  props: IDataTableProps
+export default function DataTable<T = any>(
+  props: IDataTableProps<T>
 ): React.ReactElement;
