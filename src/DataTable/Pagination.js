@@ -118,7 +118,7 @@ const Pagination = ({
   }
 
   const select = (
-    <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage} aria-label="Rows Per Page">
+    <Select onChange={handleRowsPerPage} defaultValue={rowsPerPage} aria-label={paginationComponentOptions.rowsPerPageText}>
       {selectOptions}
     </Select>
   );
