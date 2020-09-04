@@ -11,6 +11,15 @@ function loadStories() {
 }
 
 const optionsCallback = (options) => ({ panelExclude: [...options.panelExclude, /Warning/] });
+
 addDecorator((storyFn, context) => withConsole(optionsCallback)(storyFn)(context));
 
 configure(loadStories, module);
+export const parameters = {
+  a11y: {
+    element: '#root',
+    config: {},
+    options: {},
+    manual: true,
+  },
+};

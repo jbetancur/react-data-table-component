@@ -339,8 +339,8 @@ const DataTable = memo(({
                   >
                     {selectableRows && (
                       showSelectAll
-                        ? <CellBase style={{ flex: '0 0 48px' }} role="columnheader" />
-                        : <TableColCheckbox role="columnheader" />
+                        ? <CellBase style={{ flex: '0 0 48px' }} />
+                        : <TableColCheckbox />
                     )}
                     {expandableRows && !expandableRowsHideExpander && (
                       <TableColExpander />

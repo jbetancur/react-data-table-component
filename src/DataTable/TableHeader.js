@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ContextMenu from './ContextMenu';
 
-const TableHeaderStyle = styled.header`
+const TableHeaderStyle = styled.div`
   position: relative;
   box-sizing: border-box;
   overflow: visible;
@@ -35,7 +35,7 @@ const Actions = styled.div`
 `;
 
 const TableHeader = ({ title, actions, showMenu }) => (
-  <TableHeaderStyle className="rdt_TableHeader" role="rowheader">
+  <TableHeaderStyle className="rdt_TableHeader" role="heading" aria-level="1">
     <Title>
       {title}
     </Title>

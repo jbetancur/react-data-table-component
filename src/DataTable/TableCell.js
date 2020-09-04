@@ -32,7 +32,7 @@ const TableCell = memo(({ id, rowIndex, column, row }) => {
   return (
     <TableCellStyle
       id={id}
-      role="cell"
+      role="gridcell"
       column={column}
       data-tag={dataTag}
       className="rdt_TableCell"

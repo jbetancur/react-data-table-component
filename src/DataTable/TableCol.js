@@ -117,8 +117,7 @@ const TableCol = memo(({
       {column.name && (
         <ColumnSortable
           id={`column-${column.selector}`}
-          role="button"
-          aria-pressed={sortActive}
+          role="columnheader"
           tabIndex={0}
           className="rdt_TableCol_Sortable"
           onClick={handleSortChange}
