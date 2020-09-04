@@ -5003,7 +5003,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
         class="c18"
       >
         <select
-          aria-label="Rows Per Page"
+          aria-label="Rows per page:"
           class="c19"
         >
           <option
@@ -5749,7 +5749,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -6492,7 +6492,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -7235,7 +7235,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -7978,7 +7978,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -8743,7 +8743,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
       class="c19"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c20"
       >
         <option
@@ -9486,7 +9486,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -10249,7 +10249,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -11027,7 +11027,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Fila por página"
         class="c19"
       >
         <option
@@ -11805,7 +11805,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -12588,7 +12588,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -14011,7 +14011,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -27455,7 +27455,7 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -28234,7 +28234,7 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
@@ -29016,7 +29016,7 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
       class="c18"
     >
       <select
-        aria-label="Rows Per Page"
+        aria-label="Rows per page:"
         class="c19"
       >
         <option
