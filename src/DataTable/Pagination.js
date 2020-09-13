@@ -25,6 +25,7 @@ const PaginationWrapper = styled.nav`
   padding-left: 8px;
   width: 100%;
   ${props => props.theme.pagination.style};
+  ${props => props.paginationTop ? "border-top: none;" : ""};
 `;
 
 const Button = styled.button`
@@ -66,6 +67,7 @@ const Pagination = ({
   onChangePage,
   onChangeRowsPerPage,
   currentPage,
+  paginationTop,
 }) => {
   const {
     direction,
@@ -124,7 +126,7 @@ const Pagination = ({
   );
 
   return (
-    <PaginationWrapper className="rdt_Pagination">
+    <PaginationWrapper className="rdt_Pagination" paginationTop={paginationTop}>
       {!options.noRowsPerPage && shouldShow && (
         <>
           <RowLabel>{options.rowsPerPageText}</RowLabel>
@@ -197,6 +199,7 @@ Pagination.propTypes = {
   onChangePage: PropTypes.func.isRequired,
   onChangeRowsPerPage: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
+  paginationTop: PropTypes.bool,
 };
 
 export default Pagination;

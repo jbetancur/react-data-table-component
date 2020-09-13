@@ -74,6 +74,7 @@ const DataTable = memo(({
   fixedHeader,
   fixedHeaderScrollHeight,
   pagination,
+  paginationTop,
   subHeader,
   subHeaderAlign,
   subHeaderWrap,
@@ -266,6 +267,7 @@ const DataTable = memo(({
     persistSelectedOnSort,
     expandableIcon,
     pagination,
+    paginationTop,
     paginationServer,
     paginationServerOptions,
     paginationTotalRows,
@@ -319,6 +321,17 @@ const DataTable = memo(({
             >
               {subHeaderComponent}
             </TableSubheader>
+          )}
+
+          {enabledPagination && paginationTop && (
+            <Pagination
+              paginationTop={true}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+              rowCount={paginationTotalRows || data.length}
+              currentPage={currentPage}
+              rowsPerPage={rowsPerPage}
+            />
           )}
 
           <TableWrapper>

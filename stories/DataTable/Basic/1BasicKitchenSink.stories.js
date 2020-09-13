@@ -40,6 +40,7 @@ const KitchenSink = () => {
   const [expandableRows, setExpandableRows] = React.useState(false);
   const [expandOnRowClick, setExpandOnRowClick] = React.useState(false);
   const [pagination, setPagination] = React.useState(true);
+  const [paginationTop, setPaginationTop] = React.useState(false);
   const [highlight, setHighlight] = React.useState(false);
   const [striped, setStriped] = React.useState(false);
   const [pointer, setPointer] = React.useState(false);
@@ -113,6 +114,10 @@ const KitchenSink = () => {
         <FormControlLabel
           control={<Checkbox size="small" checked={pagination} onChange={() => setPagination(!pagination)} />}
           label="Pagination"
+        />
+        <FormControlLabel
+          control={<Checkbox size="small" checked={paginationTop} onChange={() => setPaginationTop(!paginationTop)} />}
+          label="Top Pagination"
         />
       </FormGroup>
 
@@ -223,6 +228,7 @@ const KitchenSink = () => {
         expandableRows={expandableRows}
         expandOnRowClicked={expandOnRowClick}
         pagination={pagination}
+        paginationTop={paginationTop}
         highlightOnHover={highlight}
         striped={striped}
         pointerOnHover={pointer}
