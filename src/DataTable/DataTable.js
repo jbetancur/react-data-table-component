@@ -296,6 +296,23 @@ const DataTable = memo(({
   return (
     <ThemeProvider theme={currentTheme}>
       <DataTableProvider initialState={init}>
+        {!noHeader && (
+          <TableHeader
+            title={title}
+            actions={actions}
+            showMenu={!noContextMenu}
+          />
+        )}
+
+        {subHeader && (
+          <TableSubheader
+            align={subHeaderAlign}
+            wrapContent={subHeaderWrap}
+          >
+            {subHeaderComponent}
+          </TableSubheader>
+        )}
+
         <ResponsiveWrapper
           responsive={responsive}
           className={className}
@@ -304,23 +321,6 @@ const DataTable = memo(({
           overflowY={overflowY}
           {...wrapperProps}
         >
-          {!noHeader && (
-            <TableHeader
-              title={title}
-              actions={actions}
-              showMenu={!noContextMenu}
-            />
-          )}
-
-          {subHeader && (
-            <TableSubheader
-              align={subHeaderAlign}
-              wrapContent={subHeaderWrap}
-            >
-              {subHeaderComponent}
-            </TableSubheader>
-          )}
-
           <TableWrapper>
             {progressPending && !persistTableHead && (
               <ProgressWrapper>
@@ -422,8 +422,10 @@ const DataTable = memo(({
               )}
             </Table>
           </TableWrapper>
+        </ResponsiveWrapper>
 
-          {enabledPagination && (
+        {enabledPagination && (
+          <div>
             <Pagination
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -431,8 +433,8 @@ const DataTable = memo(({
               currentPage={currentPage}
               rowsPerPage={rowsPerPage}
             />
-          )}
-        </ResponsiveWrapper>
+          </div>
+        )}
       </DataTableProvider>
     </ThemeProvider>
   );
