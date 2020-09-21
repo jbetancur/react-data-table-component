@@ -24,6 +24,10 @@ const SelectControl = styled.select`
   &:disabled::-ms-expand {
     background: #f60;
   }
+
+  option {
+    color: initial;
+  }
 `;
 
 const SelectWrapper = styled.div`

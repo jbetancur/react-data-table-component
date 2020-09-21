@@ -1844,6 +1844,10 @@ exports[`DataTable::Pagination should change the page position when using pagina
   background: #f60;
 }
 
+.c19 option {
+  color: initial;
+}
+
 .c18 {
   position: relative;
   -webkit-flex-shrink: 0;

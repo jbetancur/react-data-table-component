@@ -30,6 +30,10 @@ exports[`should render correctly with default props 1`] = `
   background: #f60;
 }
 
+.c3 option {
+  color: initial;
+}
+
 .c2 {
   position: relative;
   -webkit-flex-shrink: 0;
