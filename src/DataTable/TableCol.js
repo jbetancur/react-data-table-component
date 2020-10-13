@@ -37,7 +37,7 @@ const ColumnSortable = styled.div`
     }
   }
 
-  &.sortable:hover {
+  &:hover {
     ${({ column }) => column.sortable && 'cursor: pointer'};
     ${({ column, theme }) => column.sortable && theme.headCells.activeStyle};
 
@@ -120,7 +120,7 @@ const TableCol = memo(({
           id={`column-${column.selector}`}
           role="columnheader"
           tabIndex={0}
-          className={`rdt_TableCol_Sortable${sortable ? ' sortable' : ''}`}
+          className="rdt_TableCol_Sortable"
           onClick={sortable ? handleSortChange : undefined}
           onKeyPress={sortable ? handleKeyPress : undefined}
           sortActive={sortable && sortActive}
