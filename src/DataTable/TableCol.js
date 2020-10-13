@@ -15,12 +15,12 @@ const ColumnSortable = styled.div`
   height: 100%;
   line-height: 1;
   user-select: none;
-  ${props => (props.sortActive ? props.theme.headCells.activeSortStyle : props.theme.headCells.inactiveSortStyle)};
+  ${props => (props.sortActive && props.sortable ? props.theme.headCells.activeSortStyle : props.theme.headCells.inactiveSortStyle)};
 
   span.__rdt_custom_sort_icon__ {
     i,
     svg {
-      ${props => (props.sortActive ? 'opacity: 1' : 'opacity: 0')};
+      ${props => (props.sortActive && props.sortable ? 'opacity: 1' : 'opacity: 0')};
       color: inherit;
       font-size: 18px !important;
       height: 18px !important;
@@ -37,7 +37,7 @@ const ColumnSortable = styled.div`
     }
   }
 
-  &:hover {
+  &.sortable:hover {
     ${({ column }) => column.sortable && 'cursor: pointer'};
     ${({ column, theme }) => column.sortable && theme.headCells.activeStyle};
 
@@ -116,28 +116,24 @@ const TableCol = memo(({
       head
     >
       {column.name && (
-        sortable
-          ? (
-            <ColumnSortable
-              id={`column-${column.selector}`}
-              role="columnheader"
-              tabIndex={0}
-              className="rdt_TableCol_Sortable"
-              onClick={handleSortChange}
-              onKeyPress={handleKeyPress}
-              sortActive={sortActive}
-              column={column}
-            >
-              {customSortIconRight && renderCustomSortIcon()}
-              {nativeSortIconRight && renderNativeSortIcon(sortActive)}
-              <div>
-                {column.name}
-              </div>
-              {customSortIconLeft && renderCustomSortIcon()}
-              {nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-            </ColumnSortable>
-          )
-          : null
+        <ColumnSortable
+          id={`column-${column.selector}`}
+          role="columnheader"
+          tabIndex={0}
+          className={`rdt_TableCol_Sortable${sortable ? ' sortable' : ''}`}
+          onClick={sortable ? handleSortChange : undefined}
+          onKeyPress={sortable ? handleKeyPress : undefined}
+          sortActive={sortable && sortActive}
+          column={column}
+        >
+          {sortable && customSortIconRight && renderCustomSortIcon()}
+          {sortable && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+          <div>
+            {column.name}
+          </div>
+          {sortable && customSortIconLeft && renderCustomSortIcon()}
+          {sortable && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+        </ColumnSortable>
       )}
     </TableColStyle>
   );
