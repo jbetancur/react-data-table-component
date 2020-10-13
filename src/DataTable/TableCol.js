@@ -52,6 +52,7 @@ const ColumnSortable = styled.div`
 const TableCol = memo(({
   column,
   sortIcon,
+  sortable,
 }) => {
   const { dispatch, pagination, paginationServer, sortColumn, sortDirection, sortServer, selectableRowsVisibleOnly, persistSelectedOnSort } = useTableContext();
 
@@ -115,24 +116,28 @@ const TableCol = memo(({
       head
     >
       {column.name && (
-        <ColumnSortable
-          id={`column-${column.selector}`}
-          role="columnheader"
-          tabIndex={0}
-          className="rdt_TableCol_Sortable"
-          onClick={handleSortChange}
-          onKeyPress={handleKeyPress}
-          sortActive={sortActive}
-          column={column}
-        >
-          {customSortIconRight && renderCustomSortIcon()}
-          {nativeSortIconRight && renderNativeSortIcon(sortActive)}
-          <div>
-            {column.name}
-          </div>
-          {customSortIconLeft && renderCustomSortIcon()}
-          {nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-        </ColumnSortable>
+        sortable
+          ? (
+            <ColumnSortable
+              id={`column-${column.selector}`}
+              role="columnheader"
+              tabIndex={0}
+              className="rdt_TableCol_Sortable"
+              onClick={handleSortChange}
+              onKeyPress={handleKeyPress}
+              sortActive={sortActive}
+              column={column}
+            >
+              {customSortIconRight && renderCustomSortIcon()}
+              {nativeSortIconRight && renderNativeSortIcon(sortActive)}
+              <div>
+                {column.name}
+              </div>
+              {customSortIconLeft && renderCustomSortIcon()}
+              {nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+            </ColumnSortable>
+          )
+          : null
       )}
     </TableColStyle>
   );
@@ -144,6 +149,11 @@ TableCol.propTypes = {
     PropTypes.bool,
     PropTypes.object,
   ]).isRequired,
+  sortable: PropTypes.bool,
+};
+
+TableCol.defaultProps = {
+  sortable: true,
 };
 
 export default TableCol;
