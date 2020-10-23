@@ -1064,7 +1064,26 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   border-bottom-style: solid;
 }
 
-.c9 {
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c10 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1079,6 +1098,9 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   padding-left: 16px;
   padding-right: 16px;
   word-break: break-word;
+}
+
+.c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1091,16 +1113,19 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
+}
+
+.c11 {
   font-weight: 400;
 }
 
-.c9 div:first-child {
+.c11 div:first-child {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1120,44 +1145,13 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   min-height: 48px;
 }
 
-.c8:not(:last-of-type) {
+.c9:not(:last-of-type) {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
 }
 
-.c5 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-}
-
-.c6 {
+.c7 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1174,17 +1168,17 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   user-select: none;
 }
 
-.c6:focus {
+.c7:focus {
   outline: none;
   color: rgba(0,0,0,.54);
 }
 
-.c6:hover {
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
-.c6 span.__rdt_custom_sort_icon__ i,
-.c6 span.__rdt_custom_sort_icon__ svg {
+.c7 span.__rdt_custom_sort_icon__ i,
+.c7 span.__rdt_custom_sort_icon__ svg {
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -1202,14 +1196,14 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   transition-property: transform;
 }
 
-.c6 span.__rdt_custom_sort_icon__.asc i,
-.c6 span.__rdt_custom_sort_icon__.asc svg {
+.c7 span.__rdt_custom_sort_icon__.asc i,
+.c7 span.__rdt_custom_sort_icon__.asc svg {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1253,10 +1247,10 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
           role="row"
         >
           <div
-            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c5 rdt_TableCol"
+            class="c5 c6 rdt_TableCol"
           >
             <div
-              class="c6 rdt_TableCol_Sortable"
+              class="c7 rdt_TableCol_Sortable"
               id="column-some.name"
               role="columnheader"
               tabindex="0"
@@ -1269,17 +1263,17 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         </div>
       </div>
       <div
-        class="c7 rdt_TableBody"
+        class="c8 rdt_TableBody"
         offset="250px"
         role="rowgroup"
       >
         <div
-          class="c8 rdt_TableRow"
+          class="c9 rdt_TableRow"
           id="row-1"
           role="row"
         >
           <div
-            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c9 rdt_TableCell"
+            class="c10 c6 c11 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-1"
             role="gridcell"
@@ -1292,12 +1286,12 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
           </div>
         </div>
         <div
-          class="c8 rdt_TableRow"
+          class="c9 rdt_TableRow"
           id="row-2"
           role="row"
         >
           <div
-            class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c9 rdt_TableCell"
+            class="c10 c6 c11 rdt_TableCell"
             data-tag="___react-data-table-allow-propagation___"
             id="cell-1-2"
             role="gridcell"
@@ -1515,7 +1509,26 @@ exports[`DataTable::Pagination should change the page position when using pagina
   border-bottom-style: solid;
 }
 
-.c15 {
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c16 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1530,6 +1543,9 @@ exports[`DataTable::Pagination should change the page position when using pagina
   padding-left: 16px;
   padding-right: 16px;
   word-break: break-word;
+}
+
+.c12 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1542,16 +1558,19 @@ exports[`DataTable::Pagination should change the page position when using pagina
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
+}
+
+.c17 {
   font-weight: 400;
 }
 
-.c15 div:first-child {
+.c17 div:first-child {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c14 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1571,44 +1590,13 @@ exports[`DataTable::Pagination should change the page position when using pagina
   min-height: 48px;
 }
 
-.c14:not(:last-of-type) {
+.c15:not(:last-of-type) {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
 }
 
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-}
-
-.c12 {
+.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1625,17 +1613,17 @@ exports[`DataTable::Pagination should change the page position when using pagina
   user-select: none;
 }
 
-.c12:focus {
+.c13:focus {
   outline: none;
   color: rgba(0,0,0,.54);
 }
 
-.c12:hover {
+.c13:hover {
   color: rgba(0,0,0,.54);
 }
 
-.c12 span.__rdt_custom_sort_icon__ i,
-.c12 span.__rdt_custom_sort_icon__ svg {
+.c13 span.__rdt_custom_sort_icon__ i,
+.c13 span.__rdt_custom_sort_icon__ svg {
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -1653,8 +1641,8 @@ exports[`DataTable::Pagination should change the page position when using pagina
   transition-property: transform;
 }
 
-.c12 span.__rdt_custom_sort_icon__.asc i,
-.c12 span.__rdt_custom_sort_icon__.asc svg {
+.c13 span.__rdt_custom_sort_icon__.asc i,
+.c13 span.__rdt_custom_sort_icon__.asc svg {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -1790,7 +1778,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   margin-left: 5px;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1815,7 +1803,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   display: table;
 }
 
-.c19 {
+.c22 {
   cursor: pointer;
   height: 24px;
   min-width: 24px;
@@ -1836,19 +1824,19 @@ exports[`DataTable::Pagination should change the page position when using pagina
   direction: ltr;
 }
 
-.c19::-ms-expand {
+.c22::-ms-expand {
   display: none;
 }
 
-.c19:disabled::-ms-expand {
+.c22:disabled::-ms-expand {
   background: #f60;
 }
 
-.c19 option {
+.c22 option {
   color: initial;
 }
 
-.c18 {
+.c21 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1858,7 +1846,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   margin-top: 1px;
 }
 
-.c18 svg {
+.c21 svg {
   top: 0;
   right: 0;
   color: inherit;
@@ -1874,7 +1862,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   pointer-events: none;
 }
 
-.c16 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1903,7 +1891,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   border-top-color: rgba(0,0,0,.12);
 }
 
-.c22 {
+.c25 {
   position: relative;
   display: block;
   -webkit-user-select: none;
@@ -1924,22 +1912,22 @@ exports[`DataTable::Pagination should change the page position when using pagina
   background-color: transparent;
 }
 
-.c22:disabled {
+.c25:disabled {
   cursor: unset;
   color: rgba(0,0,0,.18);
   fill: rgba(0,0,0,.18);
 }
 
-.c22:hover:not(:disabled) {
+.c25:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c22:focus {
+.c25:focus {
   outline: none;
   background-color: rgba(0,0,0,.12);
 }
 
-.c21 {
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1952,7 +1940,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   white-space: nowrap;
 }
 
-.c20 {
+.c19 {
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
@@ -1960,22 +1948,18 @@ exports[`DataTable::Pagination should change the page position when using pagina
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.c23 {
   margin: 0 24px;
 }
 
-.c17 {
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.c20 {
   margin: 0 4px;
 }
 
 @media screen and (max-width:599px) {
-  .c21 {
+  .c24 {
     width: 100%;
     -webkit-box-pack: space-around;
     -webkit-justify-content: space-around;
@@ -2026,10 +2010,10 @@ exports[`DataTable::Pagination should change the page position when using pagina
             role="row"
           >
             <div
-              class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c11 rdt_TableCol"
+              class="c11 c12 rdt_TableCol"
             >
               <div
-                class="c12 rdt_TableCol_Sortable"
+                class="c13 rdt_TableCol_Sortable"
                 id="column-some.name"
                 role="columnheader"
                 tabindex="0"
@@ -2042,17 +2026,17 @@ exports[`DataTable::Pagination should change the page position when using pagina
           </div>
         </div>
         <div
-          class="c13 rdt_TableBody"
+          class="c14 rdt_TableBody"
           offset="250px"
           role="rowgroup"
         >
           <div
-            class="c14 rdt_TableRow"
+            class="c15 rdt_TableRow"
             id="row-1"
             role="row"
           >
             <div
-              class="Cell__CellBase-yhpecj-0 Cell-yhpecj-1 c15 rdt_TableCell"
+              class="c16 c12 c17 rdt_TableCell"
               data-tag="___react-data-table-allow-propagation___"
               id="cell-1-1"
               role="gridcell"
@@ -2070,19 +2054,19 @@ exports[`DataTable::Pagination should change the page position when using pagina
   </div>
   <div>
     <nav
-      class="c16 rdt_Pagination"
+      class="c18 rdt_Pagination"
     >
       <span
-        class="Pagination__Span-sc-1iha5ux-3 c17"
+        class="c19 c20"
       >
         Rows per page:
       </span>
       <div
-        class="c18"
+        class="c21"
       >
         <select
           aria-label="Rows per page:"
-          class="c19"
+          class="c22"
         >
           <option
             selected=""
@@ -2112,17 +2096,17 @@ exports[`DataTable::Pagination should change the page position when using pagina
         </svg>
       </div>
       <span
-        class="Pagination__Span-sc-1iha5ux-3 c20"
+        class="c19 c23"
       >
         1-1 of 1
       </span>
       <div
-        class="c21"
+        class="c24"
       >
         <button
           aria-disabled="true"
           aria-label="First Page"
-          class="c22"
+          class="c25"
           disabled=""
           id="pagination-first-page"
           type="button"
@@ -2147,7 +2131,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
         <button
           aria-disabled="true"
           aria-label="Previous Page"
-          class="c22"
+          class="c25"
           disabled=""
           id="pagination-previous-page"
           type="button"
@@ -2172,7 +2156,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
         <button
           aria-disabled="true"
           aria-label="Next Page"
-          class="c22"
+          class="c25"
           disabled=""
           id="pagination-next-page"
           type="button"
@@ -2197,7 +2181,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
         <button
           aria-disabled="true"
           aria-label="Last Page"
-          class="c22"
+          class="c25"
           disabled=""
           id="pagination-last-page"
           type="button"
@@ -4888,10 +4872,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 
 }
 
-@media screen and (max-width:300px) {
-
-}
-
 <div
   aria-level="1"
   class="c0 rdt_TableHeader"
@@ -5045,10 +5025,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 
 .c2 > * {
   margin-left: 5px;
-}
-
-@media screen and (max-width:1280px) {
-
 }
 
 @media screen and (max-width:1280px) {
@@ -5214,10 +5190,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 
 }
 
-@media screen and (max-width:959px) {
-
-}
-
 <div
   aria-level="1"
   class="c0 rdt_TableHeader"
@@ -5371,10 +5343,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 
 .c2 > * {
   margin-left: 5px;
-}
-
-@media screen and (max-width:599px) {
-
 }
 
 @media screen and (max-width:599px) {

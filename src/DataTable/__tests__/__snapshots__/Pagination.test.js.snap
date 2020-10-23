@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly with default props 1`] = `
-.c3 {
+.c4 {
   cursor: pointer;
   height: 24px;
   min-width: 24px;
@@ -22,19 +22,19 @@ exports[`should render correctly with default props 1`] = `
   direction: ltr;
 }
 
-.c3::-ms-expand {
+.c4::-ms-expand {
   display: none;
 }
 
-.c3:disabled::-ms-expand {
+.c4:disabled::-ms-expand {
   background: #f60;
 }
 
-.c3 option {
+.c4 option {
   color: initial;
 }
 
-.c2 {
+.c3 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -44,7 +44,7 @@ exports[`should render correctly with default props 1`] = `
   margin-top: 1px;
 }
 
-.c2 svg {
+.c3 svg {
   top: 0;
   right: 0;
   color: inherit;
@@ -89,7 +89,7 @@ exports[`should render correctly with default props 1`] = `
   border-top-color: rgba(0,0,0,.12);
 }
 
-.c6 {
+.c7 {
   position: relative;
   display: block;
   -webkit-user-select: none;
@@ -110,22 +110,22 @@ exports[`should render correctly with default props 1`] = `
   background-color: transparent;
 }
 
-.c6:disabled {
+.c7:disabled {
   cursor: unset;
   color: rgba(0,0,0,.18);
   fill: rgba(0,0,0,.18);
 }
 
-.c6:hover:not(:disabled) {
+.c7:hover:not(:disabled) {
   background-color: rgba(0,0,0,.12);
 }
 
-.c6:focus {
+.c7:focus {
   outline: none;
   background-color: rgba(0,0,0,.12);
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -138,17 +138,6 @@ exports[`should render correctly with default props 1`] = `
   white-space: nowrap;
 }
 
-.c4 {
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  margin: 0 24px;
-}
-
 .c1 {
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
@@ -157,11 +146,18 @@ exports[`should render correctly with default props 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.c5 {
+  margin: 0 24px;
+}
+
+.c2 {
   margin: 0 4px;
 }
 
 @media screen and (max-width:599px) {
-  .c5 {
+  .c6 {
     width: 100%;
     -webkit-box-pack: space-around;
     -webkit-justify-content: space-around;
@@ -174,16 +170,16 @@ exports[`should render correctly with default props 1`] = `
   class="c0 rdt_Pagination"
 >
   <span
-    class="Pagination__Span-sc-1iha5ux-3 c1"
+    class="c1 c2"
   >
     Rows per page:
   </span>
   <div
-    class="c2"
+    class="c3"
   >
     <select
       aria-label="Rows per page:"
-      class="c3"
+      class="c4"
     >
       <option
         selected=""
@@ -228,17 +224,17 @@ exports[`should render correctly with default props 1`] = `
     </svg>
   </div>
   <span
-    class="Pagination__Span-sc-1iha5ux-3 c4"
+    class="c1 c5"
   >
     1-10 of 40
   </span>
   <div
-    class="c5"
+    class="c6"
   >
     <button
       aria-disabled="true"
       aria-label="First Page"
-      class="c6"
+      class="c7"
       disabled=""
       id="pagination-first-page"
       type="button"
@@ -263,7 +259,7 @@ exports[`should render correctly with default props 1`] = `
     <button
       aria-disabled="true"
       aria-label="Previous Page"
-      class="c6"
+      class="c7"
       disabled=""
       id="pagination-previous-page"
       type="button"
@@ -288,7 +284,7 @@ exports[`should render correctly with default props 1`] = `
     <button
       aria-disabled="false"
       aria-label="Next Page"
-      class="c6"
+      class="c7"
       id="pagination-next-page"
       type="button"
     >
@@ -312,7 +308,7 @@ exports[`should render correctly with default props 1`] = `
     <button
       aria-disabled="false"
       aria-label="Last Page"
-      class="c6"
+      class="c7"
       id="pagination-last-page"
       type="button"
     >

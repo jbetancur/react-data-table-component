@@ -111,7 +111,7 @@
   "dependencies": {
     "deepmerge": "^4.2.2",
     "lodash.orderby": "^4.6.0",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.16"
   },
   "peerDependencies": {
     "react": ">= ^16.8.0",
