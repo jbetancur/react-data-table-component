@@ -1,23 +1,18 @@
-import { configure, addDecorator } from '@storybook/react';
-import { withConsole } from '@storybook/addon-console';
-import './base.css';
+import { addDecorator } from "@storybook/react";
+import { withConsole } from "@storybook/addon-console";
+import "./base.css";
 
-const req = require.context('../stories', true, /\.stories\.(js|jsx)$/);
+const optionsCallback = (options) => ({
+  panelExclude: [...options.panelExclude, /Warning/],
+});
 
-function loadStories() {
-  req.keys().sort().forEach(filename => {
-    req(filename);
-  });
-}
+addDecorator((storyFn, context) =>
+  withConsole(optionsCallback)(storyFn)(context)
+);
 
-const optionsCallback = (options) => ({ panelExclude: [...options.panelExclude, /Warning/] });
-
-addDecorator((storyFn, context) => withConsole(optionsCallback)(storyFn)(context));
-
-configure(loadStories, module);
 export const parameters = {
   a11y: {
-    element: '#root',
+    element: "#root",
     config: {},
     options: {},
     manual: true,

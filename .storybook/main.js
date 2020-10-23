@@ -1,3 +1,11 @@
+// import './base.css';
+
 module.exports = {
-  addons: ['@storybook/addon-a11y'],
+  stories: ["../**/*.stories.@(ts|js)"],
+  addons: [
+    "@storybook/addon-actions",
+    "@storybook/addon-storysource",
+    "@storybook/addon-links",
+    "@storybook/addon-a11y",
+  ],
 };
