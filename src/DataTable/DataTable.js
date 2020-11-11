@@ -103,7 +103,6 @@ const DataTable = memo(({
   theme,
   customStyles,
   direction,
-  passAdjacentKeyFields,
 }) => {
   const initialState = {
     allSelected: false,
@@ -388,12 +387,6 @@ const DataTable = memo(({
                     const expanderDisabled = expandableRows
                       && expandableRowDisabled
                       && expandableRowDisabled(row);
-
-
-                    if ( passAdjacentKeyFields ) {
-                       row.prevKeyField = typeof(calculatedRows[i-1]) != "undefined" ? calculatedRows[i-1][keyField] : false;
-                       row.nextKeyField = typeof(calculatedRows[i+1]) != "undefined" ? calculatedRows[i+1][keyField] : false;
-                    }
 
                     return (
                       <TableRow
