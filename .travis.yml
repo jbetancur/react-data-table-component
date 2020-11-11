@@ -1,7 +1,9 @@
+dist: trusty
+
 language: node_js
 
 node_js:
-  - 14
+  - "14"
 
 cache:
   yarn: true
