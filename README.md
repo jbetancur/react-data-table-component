@@ -160,13 +160,13 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | style | object | no |  | override the style on the Table wrapper |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | disabled | bool | no | false | disables the Table section |
-| onRowClicked | func | no | | callback to access the row, event on row click. <br /> Note that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `onRowClicked` event to. |
-| onRowDoubleClicked | func | no | | callback to access the row, event on row double click. <br /> Note that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `onRowDoubleClicked` event to. |
+| onRowClicked | func | no | | callback to access the row, event on row click. <br /> <br /><br />**Note** that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `onRowClicked` event to. |
+| onRowDoubleClicked | func | no | | callback to access the row, event on row double click. <br /><br />**Note** that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `onRowDoubleClicked` event to. |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
-| dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
+| dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. <br /><br />**Note** that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
 | noTableHead | bool | no | false | hides the the sort columns and titles (TableHead) - this will obviously negate sorting |
-| persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. Note that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
+| persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. <br /><br />**Note** that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
 | direction | string | no | auto | Accepts: `ltr, rtl, or auto`. When set to `auto` (default), RDT will attempt to detect direction by checking the HTML and DIV tags. For cases where you need to force rtl, or ltr just set this option manually (i.e. SSR) |
 
 #### Row Selection
@@ -178,7 +178,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | selectableRowsHighlight | bool | no | false | Highlight a row when it is selected |
 | selectableRowsNoSelectAll | bool | no | false | Whether to show the select all rows checkbox |
 | clearSelectedRows | bool | no | false | Toggling this property clears the selectedRows. If you use redux or react state you need to make sure that you pass a toggled value or the component will not update. See [Clearing Selected Rows](#clearing-selected-rows)|
-| onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /> **note** It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
+| onSelectedRowsChange | func | no |  | Callback that fires anytime the rows selected state changes. Returns ({ allSelected, selectedCount, selectedRows }).<br /><br />**Note** It's highly recommended that you memoize the callback that you pass to `onSelectedRowsChange` if it updates the state of your parent component. This prevents `DataTable` from unnecessary re-renders every time your parent component is re-rendered |
 | selectableRowsComponent | func | no |  | Override the default checkbox component - must be passed as a function (e.g. `Checkbox` not `<Checkbox />`). You can also find UI Library Integration examples [here](#ui-library-integration) |
 | selectableRowsComponentProps | object | no |  | Additional props you want to pass to `selectableRowsComponent`. See [Overriding with Ui Component Library](#overriding-with-ui-component-library) to learn how you can override indeterminate state |
 | selectableRowSelected | func | no |  | Select a row based on a property in your data. e.g. `row => row.isSelected`. `selectableRowSelected` must return a boolean to determine if the row should be programatically selected. Note that changing the state of selectableRowSelected will NOT re-render RDT, instead you should change your data if you want to update the items that are selected. |
@@ -226,10 +226,10 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed returns `onChangeRowsPerPage(currentRowsPerPage, currentPage)` |
 | paginationComponent | component | no | [Pagination](src/DataTable/Pagination.js) | a component that overrides the default pagination component. It must satisfy the following API: ```{  rowsPerPage: PropTypes.number.isRequired,  rowCount: PropTypes.number.isRequired,  onChangePage: PropTypes.func.isRequired,  onChangeRowsPerPage: PropTypes.func.isRequired,  currentPage: PropTypes.number.isRequired };``` |
 | paginationComponentOptions | object | no | `{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of', noRowsPerPage: false, selectAllRowsItem: false, selectAllRowsItemText: 'All' }` | override options for the built in pagination component. *Note that this prop only works with the built-in Pagination component* |
-| paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
-| paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
-| paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
-| paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination. *Note that this prop only works with the build in Pagination component* |
+| paginationIconFirstPage |  | no | JSX | a component that overrides the first page icon for the pagination. <br /><br />**Note** that this prop only works with the build in Pagination component* |
+| paginationIconLastPage |  | no | JSX | a component that overrides the last page icon for the pagination. <br /><br />**Note** that this prop only works with the build in Pagination component* |
+| paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination. <br /><br />**Note** that this prop only works with the build in Pagination component* |
+| paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination. <br /><br />**Note** that this prop only works with the build in Pagination component* |
 
 #### Header
 
@@ -273,7 +273,7 @@ You can easily toggle to dark mode by setting `theme="dark"`
 
 ##### Defining Your Own Theme Using `createTheme`
 
-You can create your very own theme using the `createTheme` helper. Note that `createTheme` inherits from the default theme. Note that this theme will now be available to all DataTables across your project so you may want to define your custom themes in a seperate file.
+You can create your very own theme using the `createTheme` helper. <br /><br />**Note** that `createTheme` inherits from the default theme. Also, this theme will now be available to all DataTables across your project so you may want to define your custom themes in a seperate file.
 
 Refer to [themes.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/themes.js) for properties you can use to create your own color theme.
 
