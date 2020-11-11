@@ -19,7 +19,7 @@ const columns = [
     name: 'Genres',
     selector: 'genres',
     // eslint-disable-next-line react/no-array-index-key
-    cell: row => row.genres.map((genre, i) => <div key={i}>{genre}</div>),
+    cell: row => row.genres.map((genre, i) => <div data-tag="allowRowEvents" key={i}>{genre }</div>),
   },
   {
     name: 'Year',

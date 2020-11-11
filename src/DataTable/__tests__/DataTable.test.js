@@ -2,6 +2,7 @@ import 'jest-styled-components';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import DataTable from '../DataTable';
+import { STOP_PROP_TAG } from '../constants';
 
 // eslint-disable-next-line arrow-body-style
 jest.mock('shortid', () => {
@@ -1021,7 +1022,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
   });
@@ -1037,7 +1038,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
 
     expect(container.querySelector('.rdt_ExpanderRow')).not.toBe(null);
     expect(container.firstChild).toMatchSnapshot();
@@ -1053,7 +1054,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
   });
@@ -1069,7 +1070,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.doubleClick(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
 
     expect(container.querySelector('.rdt_ExpanderRow')).not.toBe(null);
     expect(container.firstChild).toMatchSnapshot();
@@ -1088,7 +1089,7 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
 
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
     expect(container.firstChild).toMatchSnapshot();
@@ -1140,7 +1141,8 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
+
     expect(onRowExpandToggledMock).toBeCalled();
   });
 
@@ -1157,7 +1159,8 @@ describe('DataTable::expandableRows', () => {
       />,
     );
 
-    fireEvent.doubleClick(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.doubleClick(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
+
     expect(onRowExpandToggledMock).toBeCalled();
   });
 });
@@ -1448,7 +1451,7 @@ describe('DataTable::selectableRows', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[data-tag="___react-data-table-allow-propagation___"]'));
+    fireEvent.click(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`));
 
     expect(rowClickedMock.mock.calls[0][0]).toEqual(mock.data[0]);
     expect(rowClickedMock.mock.calls[0][1]).toBeDefined(); // TODO: mock event?

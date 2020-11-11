@@ -13,7 +13,7 @@ const CustomTitle = ({ row }) => (
     {/* eslint-disable-next-line react/prop-types */}
     <div>{row.title}</div>
     <div>
-      <div style={{ color: 'grey', overflow: 'hidden', whiteSpace: 'wrap', textOverflow: 'ellipses' }}>
+      <div data-tag="allowRowEvents" style={{ color: 'grey', overflow: 'hidden', whiteSpace: 'wrap', textOverflow: 'ellipses' }}>
         {/* eslint-disable-next-line react/prop-types */}
         {row.plot}
       </div>
