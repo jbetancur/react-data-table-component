@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Button from '../shared/Button';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
-
 
 // Blatant "inspiration" from https://codepen.io/Jacqueline34/pen/pyVoWr
 function convertArrayOfObjectsToCSV(array) {
@@ -49,7 +47,6 @@ function downloadCSV(array) {
   link.setAttribute('download', filename);
   link.click();
 }
-
 
 // eslint-disable-next-line react/prop-types
 const Export = ({ onExport }) => (

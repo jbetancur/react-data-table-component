@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
@@ -32,7 +31,6 @@ const ProgressPendingDefault = () => {
     }, 2000);
     return () => clearTimeout(timeout);
   }, []);
-
 
   return (
     <DataTable

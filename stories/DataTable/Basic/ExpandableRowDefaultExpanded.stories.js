@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import tableDataItems from '../constants/sampleMovieData';
@@ -46,7 +45,6 @@ const BasicTableDefaultRowExpanded = () => {
     />
   );
 };
-
 
 storiesOf('Expandable Rows', module)
   .add('Default Expanded Row', BasicTableDefaultRowExpanded);

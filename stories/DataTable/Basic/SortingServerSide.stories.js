@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { orderBy } from 'lodash';
@@ -50,7 +49,6 @@ const SortingServerSide = () => {
     />
   );
 };
-
 
 storiesOf('Sorting', module)
   .add('Server-Side', () => <SortingServerSide />);

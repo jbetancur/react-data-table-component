@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
@@ -66,7 +65,6 @@ const BasicTable = () => (
     data={data}
   />
 );
-
 
 storiesOf('Custom Cells', module)
   .add('Example 1', BasicTable);

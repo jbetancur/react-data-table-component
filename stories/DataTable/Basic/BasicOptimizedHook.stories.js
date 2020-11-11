@@ -1,4 +1,3 @@
-
 import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import tableDataItems from '../constants/sampleDesserts';

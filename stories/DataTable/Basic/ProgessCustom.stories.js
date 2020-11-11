@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled, { keyframes } from 'styled-components';
@@ -28,7 +27,6 @@ const Spinner = styled.div`
   height: 80px;
   border-radius: 50%;
 `;
-
 
 const columns = [
   {
@@ -66,7 +64,6 @@ const ProgressPendingCustom = () => {
     }, 2000);
     return () => clearTimeout(timeout);
   }, []);
-
 
   return (
     <DataTable

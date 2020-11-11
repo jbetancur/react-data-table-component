@@ -1,11 +1,9 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
-
 
 const useStyles = makeStyles(theme => ({
   root: {

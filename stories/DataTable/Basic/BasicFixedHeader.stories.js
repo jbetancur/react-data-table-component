@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
@@ -31,7 +30,6 @@ const BasicFixedHeader = () => (
     fixedHeaderScrollHeight="300px"
   />
 );
-
 
 storiesOf('General', module)
   .add('Fixed Header', BasicFixedHeader);

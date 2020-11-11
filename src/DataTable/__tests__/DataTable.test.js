@@ -237,7 +237,6 @@ describe('DataTable::columns', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-
   test('should render correctly when ignoreRowClick = true', () => {
     const mock = dataMock({ ignoreRowClick: true });
     const { container } = render(
@@ -664,7 +663,6 @@ describe('DataTable::responsive', () => {
   });
 });
 
-
 describe('DataTable::sorting', () => {
   test('should not call onSort if the column is not sortable', () => {
     const onSortMock = jest.fn();
@@ -899,7 +897,6 @@ describe('DataTable::sorting', () => {
   });
 });
 
-
 describe('DataTable::expandableRows', () => {
   test('should render correctly when expandableRows is true', () => {
     const mock = dataMock();
@@ -1096,7 +1093,6 @@ describe('DataTable::expandableRows', () => {
     expect(container.querySelector('.rdt_ExpanderRow')).toBe(null);
     expect(container.firstChild).toMatchSnapshot();
   });
-
 
   test('should call onRowExpandToggled with the correct values if a row is expanded', () => {
     const onRowExpandToggledMock = jest.fn();
@@ -2171,7 +2167,6 @@ describe('DataTable::subHeader', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-
   test('should render when subHeaderWrap is false', () => {
     const mock = dataMock();
     const { container } = render(
@@ -2232,7 +2227,6 @@ describe('DataTable::subHeader', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
-
 
 describe('DataTable::Header', () => {
   test('should render without a header if noHeader is true', () => {
@@ -2643,7 +2637,6 @@ test('should render correctly when conditionalRowStyles is used with an expandab
 
   expect(container.firstChild).toMatchSnapshot();
 });
-
 
 describe('DataTable::column.style', () => {
   test('should render correctly when a style is set on a column', () => {
