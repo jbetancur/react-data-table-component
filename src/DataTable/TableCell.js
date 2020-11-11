@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Cell } from './Cell';
 import { getProperty, getConditionalStyle } from './util';
+import { STOP_PROP_TAG } from './constants';
 
 const overflowCSS = css`
   div:first-child {
@@ -26,7 +27,7 @@ const TableCell = memo(({ id, rowIndex, column, row }) => {
   }
 
   // apply a tag that TableRow will use to stop event propagation when TableCell is clicked
-  const dataTag = column.ignoreRowClick || column.button ? null : '___react-data-table-allow-propagation___';
+  const dataTag = column.ignoreRowClick || column.button ? null : STOP_PROP_TAG;
   const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
 
   return (

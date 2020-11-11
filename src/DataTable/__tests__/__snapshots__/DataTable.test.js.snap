@@ -1274,12 +1274,12 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         >
           <div
             class="c10 c6 c11 rdt_TableCell"
-            data-tag="___react-data-table-allow-propagation___"
+            data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
           >
             <div
-              data-tag="___react-data-table-allow-propagation___"
+              data-tag="allowRowEvents"
             >
               Apple
             </div>
@@ -1292,12 +1292,12 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         >
           <div
             class="c10 c6 c11 rdt_TableCell"
-            data-tag="___react-data-table-allow-propagation___"
+            data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
           >
             <div
-              data-tag="___react-data-table-allow-propagation___"
+              data-tag="allowRowEvents"
             >
               Zuchinni
             </div>
@@ -2037,12 +2037,12 @@ exports[`DataTable::Pagination should change the page position when using pagina
           >
             <div
               class="c16 c12 c17 rdt_TableCell"
-              data-tag="___react-data-table-allow-propagation___"
+              data-tag="allowRowEvents"
               id="cell-1-1"
               role="gridcell"
             >
               <div
-                data-tag="___react-data-table-allow-propagation___"
+                data-tag="allowRowEvents"
               >
                 Apple
               </div>

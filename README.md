@@ -111,10 +111,10 @@ Nothing new here - we are using an array of object literals and properties to de
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
 | selector | string or (row, index) => {} | no      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp`. A `selector` is required anytime you want to display data but can be ommitted if your column does not require showing data (e.g. an actions column) |
-| sortable | bool   | no       | if the column is sortable. note that `selector` is required for the column to sort                                                            |
+| sortable | bool   | no       | if the column is sortable. <br /><br />**Note:** `selector` is required for the column to sort                                                            |
 | sortFunction | function | no | custom sorting function e.g. `(rowA, rowB) => rowA.myIndex - rowB.myIndex` (see [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)) |
 | format   | (row, index) => {}   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value.                                        |
-| cell     | (row, index, column, id) => {}   | no       | for ultimate control use `cell` to render your own custom component! e.g `row => <h2>{row.title}</h2>` <br /> **negates  `format`** |
+| cell     | (row, index, column, id) => {}   | no       | for ultimate control use `cell` to render your own custom component!<br />e.g `row => <h2>{row.title}</h2>`. <br /> <br />if you are using properties such as `onRowClicked` or `onRowDoubleClicked` those click events will be ignored when clicking on your custom cell. If your component is more complex and has nested elements you want to add `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the click event to. <br />e.g `row => <h2 data-tag="allowRowEvents">{row.title}</h2>` <br /><br />**Note:** that using `cell` **negates  `format`**. |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
 | width    | string | no       | give the column a fixed width                                                                                 |
 | minWidth | string | no       | give the column a minWidth                                                                                    |
@@ -160,8 +160,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | style | object | no |  | override the style on the Table wrapper |
 | responsive | bool | no | true | makes the table horizontally scrollable on smaller screen widths |
 | disabled | bool | no | false | disables the Table section |
-| onRowClicked | func | no | | callback to access the row, event on row click |
-| onRowDoubleClicked | func | no | | callback to access the row, event on row double click |
+| onRowClicked | func | no | | callback to access the row, event on row click. <br /> Note that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `onRowClicked` event to. |
+| onRowDoubleClicked | func | no | | callback to access the row, event on row double click. <br /> Note that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `onRowDoubleClicked` event to. |
 | overflowY | bool | no | false | if a table is responsive, items such as layovers/menus/dropdowns will be clipped on the last row(s) due to to [overflow-x-y behavior](https://www.brunildo.org/test/Overflowxy2.html) - setting this value ensures there is invisible space below the table to prevent "clipping". However, if possible, the **correct approach is to use menus/layovers/dropdowns that support smart positioning**. **If used, the table parent element must have a fixed `height` or `height: 100%`**. |
 | overflowYOffset | string | no | 250px | used with overflowY to "fine tune" the offset |
 | dense           | bool   | no | false | compacts the row height. can be overridden via theming `rows.denseHeight`. note that if any custom elements exceed the dense height then the row will only compact to the tallest element any of your cells |
@@ -193,9 +193,9 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | expandableRowExpanded | func | no |  | Expand a row based on a property in your data. e.g. `row => row.expandMe`. `expandableRowExpanded` must return a boolean to determine if the row should be programatically expanded. |
 | expandableRowDisabled | func | no |  | Disable a row expand based on a property in your data. e.g. `row => row.expandDisabled`. `expandableRowDisabled` must return a boolean to determine if the row should be programatically disabled. |
 | expandableRowsComponent | string or component | no |  | A custom component to display in the expanded row. It will have the `data` prop composed  so that you may access the row data |
-| expandOnRowClicked | bool | no |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when an area within the row is clicked. Requires `expandableRows` be set to true. Note that if you are using custom cells you will need to apply the following to the root of your custom cell `data-tag="___react-data-table-allow-propagation___"` so that the event handler can be attached to your custom component |
-| expandOnRowDoubleClicked | bool | no |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true. Note that if you are using custom cells you will need to apply the following to the root of your custom cell `data-tag="___react-data-table-allow-propagation___"` so that the event handler can be attached to your custom component |
-| expandableRowsHideExpander | vool | no | false | Do not render the expander button. This is useful when using `expandOnRowClicked` or `expandOnRowDoubleClicked` |
+| expandOnRowClicked | bool | no |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowClicked` allows expanding the row when an area within the row is clicked. Requires `expandableRows` be set to true. <br /><br />**Note:** that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `expandOnRowClicked` event to. |
+| expandOnRowDoubleClicked | bool | no |  | The default behavior is to expand the row when the expander button is clicked. `expandOnRowDoubleClicked` allows expanding the row when an area within the row is double clicked. Requires `expandableRows` be set to true. <br /><br />**Note:** that if you are using custom cells (`column[].cell`), you will need to apply the `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the `expandOnRowDoubleClicked` event to. t |
+| expandableRowsHideExpander | bool | no | false | Do not render the expander button. This is useful when using `expandOnRowClicked` or `expandOnRowDoubleClicked` |
 | onRowExpandToggled | func | false |  | When a row is Expanded or Collapsed `onRowExpandToggled` will fire and return (toggleState, row) |
 | expandableInheritConditionalStyles | bool | no | false  | Whether to apply `conditionalRowStyles` to the expander row |
 
@@ -204,11 +204,11 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | defaultSortField | string | no |  | setting this ensures the table data is presorted before it renders and the field(selector) is focused |
-| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order. Note that this will apply work when the table is initially loaded |
+| defaultSortAsc | bool | no | true  | set this to false if you want the table data to be sorted in DESC order. <br /><br />**Note:** This will apply work when the table is initially loaded |
 | sortIcon | component | no |  | override the default sort icon - the icon must be a font or svg icon and it should be a "downward" icon since animation will be handled by React Data Table |
 | onSort | func | no |  | callback to access the sort state when a column is clicked. returns ([column](https://github.com/jbetancur/react-data-table-component#columns), sortDirection, event) |
 | sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}`. **Your function must return an new array reference**, otherwise RDT will not "know" to re-render. For example, `Array.sort` sorts the array in place but because of JavaScript object equality it will be the same reference and will not re-render. A common pattern is to return `yourArray.slice(0)` which creates a new array.|
-| sortServer   | bool | no | false | disables internal sorting for use with server-side sorting or when you want to manually control the sort behavior. place your sorting logic and/or api calls in an `onSort` handler. note that `sortFunction` is a better choice if you simply want to override the internal sorting behavior |
+| sortServer   | bool | no | false | disables internal sorting for use with server-side sorting or when you want to manually control the sort behavior. place your sorting logic and/or api calls in an `onSort` handler. <br /><br />**Note:** `sortFunction` is a better choice if you simply want to override the internal sorting behavior |
 
 #### Pagination
 
@@ -216,7 +216,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | pagination | bool | no | false | enable pagination with defaults. by default the total record set will be sliced depending on the page, rows per page. if you wish to use server side pagination then use the `paginationServer` property |
 | paginationServer | bool | no | false | changes the default pagination to work with server side pagination |
-| paginationServerOptions | object | no | `{ persistSelectedOnPageChange: false, persistSelectedOnSort: false }` | when using `selectableRows` is used to make selected rows persist on page change and on sort when using server side pagination. *Note that when using `persistSelectedOnPageChange` that select all checkbox will not be visible (i.e. you cannot select rows there you have to retrieved from the server)* |
+| paginationServerOptions | object | no | `{ persistSelectedOnPageChange: false, persistSelectedOnSort: false }` | when using `selectableRows` is used to make selected rows persist on page change and on sort when using server side pagination. <br /><br />**Note:** when using `persistSelectedOnPageChange` that select all checkbox will not be visible (i.e. you cannot select rows there you have to retrieved from the server) |
 | paginationDefaultPage | number | no | 1 | the default page to use when the table initially loads |
 | paginationResetDefaultPage | bool | no | false | the prop can be "toggled" to reset the pagination back to `paginationDefaultPage`. For this to work make sure you are using some sort of state and toggling the prop. e.g. `setResetPaginationToggle(!resetPaginationToggle)` or for a class component `setState(resetPaginationToggle: !resetPaginationToggle)` |
 | paginationTotalRows | number | no | 0 | allows you to provide the total row count for your table as represented by your API when performing server side pagination. if this property is not provided then react-data-table will use `data.length` |
@@ -574,7 +574,7 @@ const columns = [
   {
     name: 'Title',
     sortable: true,
-    cell: row => <div><div style={{ fontWeight: bold }}>{row.title}</div>{row.summary}</div>,
+    cell: row => <div data-tag="allowRowEvents"><div style={{ fontWeight: bold }}>{row.title}</div>{row.summary}</div>,
   },
   {
     name: 'Year',

@@ -6,8 +6,7 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import { getConditionalStyle, isOdd } from './util';
-
-const STOP_PROP_TAG = '___react-data-table-allow-propagation___';
+import { STOP_PROP_TAG } from './constants';
 
 const highlightCSS = css`
   &:hover {
@@ -75,7 +74,7 @@ const TableRow = memo(({
   const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
 
   const handleRowClick = useCallback(e => {
-    // use event delegation allow events to propagate only when the element with data-tag ___react-data-table-allow-propagation___ is present
+    // use event delegation allow events to propagate only when the element with data-tag STOP_PROP_TAG is present
     if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
       onRowClicked(row, e);
 
