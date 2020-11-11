@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Switch from '@material-ui/core/Switch';
@@ -60,7 +59,6 @@ const DarkTable = () => {
     </>
   );
 };
-
 
 storiesOf('Theming', module)
   .add('Built in Themes', DarkTable);

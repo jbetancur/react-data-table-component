@@ -182,7 +182,6 @@ describe('when clicking the Previous Page button', () => {
   });
 });
 
-
 describe('when there is no paging to be done', () => {
   test('should NOT call onChangePage with correct with any nav action when there are less rows that the page size', () => {
     const onChangePageMock = jest.fn();
@@ -197,7 +196,6 @@ describe('when there is no paging to be done', () => {
         />
       </DataTableProvider>,
     );
-
 
     fireEvent.click(container.querySelector('button#pagination-last-page'));
     expect(onChangePageMock).not.toBeCalled();

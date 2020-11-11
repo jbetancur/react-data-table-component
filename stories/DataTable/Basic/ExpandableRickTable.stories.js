@@ -29,7 +29,6 @@ const SampleExpandedComponent = ({ data }) => (
   </SampleStyle>
 );
 
-
 const columns = [
   {
     name: 'Name',

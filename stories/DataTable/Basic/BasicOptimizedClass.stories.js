@@ -1,4 +1,3 @@
-
 import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 import memoize from 'memoize-one';

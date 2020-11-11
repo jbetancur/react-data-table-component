@@ -227,7 +227,6 @@ describe('handleFunctionProps', () => {
   });
 });
 
-
 describe('getConditionalStyle', () => {
   test('should return a row style if the expression matches', () => {
     const rowStyleExpression = [

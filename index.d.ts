@@ -1,103 +1,9 @@
 import * as React from 'react';
 import { CSSProperties } from 'styled-components';
 
-export interface IDataTableProps<T = any> {
-  title?: React.ReactNode;
-  columns: IDataTableColumn<T>[];
-  data: T[];
-  keyField?: string;
-  striped?: boolean;
-  highlightOnHover?: boolean;
-  pointerOnHover?: boolean;
-  noDataComponent?: React.ReactNode;
-  className?: string;
-  style?: CSSProperties;
-  responsive?: boolean;
-  disabled?: boolean;
-  onRowClicked?: (row: T, e: MouseEvent) => void;
-  onRowDoubleClicked?: (row: T, e: MouseEvent) => void;
-  overflowY?: boolean;
-  overflowYOffset?: string;
-  dense?: boolean;
-  noTableHead?: boolean;
-  defaultSortField?: string;
-  defaultSortAsc?: boolean;
-  sortIcon?: React.ReactNode;
-  onSort?: (
-    column: IDataTableColumn<T>,
-    sortDirection: 'asc' | 'desc'
-  ) => void;
-  sortFunction?: (
-    rows: T[],
-    field: string,
-    sortDirection: 'asc' | 'desc'
-  ) => T[];
-  sortServer?: boolean;
-  pagination?: boolean;
-  paginationServer?: boolean;
-  paginationServerOptions?: {
-    persistSelectedOnSort?: boolean;
-    persistSelectedOnPageChange?: boolean;
-  };
-  paginationDefaultPage?: number;
-  paginationResetDefaultPage?: boolean;
-  paginationTotalRows?: number;
-  paginationPerPage?: number;
-  paginationRowsPerPageOptions?: number[];
-  paginationComponentOptions?: IDataTablePaginationOptions;
-  onChangeRowsPerPage?: (
-    currentRowsPerPage: number,
-    currentPage: number
-  ) => void;
-  onChangePage?: (page: number, totalRows: number) => void;
-  paginationComponent?: React.ReactNode;
-  paginationIconFirstPage?: React.ReactNode;
-  paginationIconLastPage?: React.ReactNode;
-  paginationIconNext?: React.ReactNode;
-  paginationIconPrevious?: React.ReactNode;
-  progressPending?: boolean;
-  persistTableHead?: boolean;
-  progressComponent?: React.ReactNode;
-  expandableRows?: boolean;
-  expandableRowsComponent?: React.ReactNode;
-  expandOnRowClicked?: boolean;
-  expandOnRowDoubleClicked?: boolean;
-  expandableRowsHideExpander?: boolean;
-  onRowExpandToggled?: (expanded: boolean, row: T) => void;
-  expandableRowExpanded?: (row: T) => boolean;
-  expandableRowDisabled?: (row: T) => boolean;
-  expandableIcon?: IExpandableIcon;
-  expandableInheritConditionalStyles?: boolean;
-  selectableRows?: boolean;
-  selectableRowsComponent?: React.ReactNode;
-  selectableRowsComponentProps?: {};
-  selectableRowsHighlight?: boolean;
-  selectableRowsVisibleOnly?: boolean;
-  selectableRowSelected?: (row: T) => boolean;
-  selectableRowDisabled?: (row: T) => boolean;
-  selectableRowsNoSelectAll?: boolean;
-  clearSelectedRows?: boolean;
-  onSelectedRowsChange?: (selectedRowState: {
-    allSelected: boolean;
-    selectedCount: number;
-    selectedRows: T[];
-  }) => void;
-  actions?: React.ReactNode | React.ReactNode[];
-  noContextMenu?: boolean;
-  contextMessage?: IContextMessage;
-  contextActions?: React.ReactNode | React.ReactNode[];
-  contextComponent?: React.ReactNode;
-  noHeader?: boolean;
-  fixedHeader?: boolean;
-  fixedHeaderScrollHeight?: string;
-  subHeader?: React.ReactNode | React.ReactNode[];
-  subHeaderAlign?: string;
-  subHeaderWrap?: boolean;
-  subHeaderComponent?: React.ReactNode | React.ReactNode[];
-  customStyles?: IDataTableStyles;
-  theme?: string;
-  conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
-  direction?: 'ltr' | 'rtl' | 'auto';
+export interface IDataTableConditionalCellStyles<T = any> {
+  when: (row: T) => boolean;
+  style: CSSProperties;
 }
 
 export interface IDataTableColumn<T = any> {
@@ -185,11 +91,6 @@ export interface IDataTableStyles {
   };
 }
 
-export interface IDataTableConditionalCellStyles<T = any> {
-  when: (row: T) => boolean;
-  style: CSSProperties;
-}
-
 export interface IDataTableConditionalRowStyles<T = any> {
   when: (row: T) => boolean;
   style: CSSProperties;
@@ -212,6 +113,105 @@ export interface IContextMessage {
   singular: string;
   plural: string;
   message: string;
+}
+
+export interface IDataTableProps<T = any> {
+  title?: React.ReactNode;
+  columns: IDataTableColumn<T>[];
+  data: T[];
+  keyField?: string;
+  striped?: boolean;
+  highlightOnHover?: boolean;
+  pointerOnHover?: boolean;
+  noDataComponent?: React.ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  responsive?: boolean;
+  disabled?: boolean;
+  onRowClicked?: (row: T, e: MouseEvent) => void;
+  onRowDoubleClicked?: (row: T, e: MouseEvent) => void;
+  overflowY?: boolean;
+  overflowYOffset?: string;
+  dense?: boolean;
+  noTableHead?: boolean;
+  defaultSortField?: string;
+  defaultSortAsc?: boolean;
+  sortIcon?: React.ReactNode;
+  onSort?: (
+    column: IDataTableColumn<T>,
+    sortDirection: 'asc' | 'desc'
+  ) => void;
+  sortFunction?: (
+    rows: T[],
+    field: string,
+    sortDirection: 'asc' | 'desc'
+  ) => T[];
+  sortServer?: boolean;
+  pagination?: boolean;
+  paginationServer?: boolean;
+  paginationServerOptions?: {
+    persistSelectedOnSort?: boolean;
+    persistSelectedOnPageChange?: boolean;
+  };
+  paginationDefaultPage?: number;
+  paginationResetDefaultPage?: boolean;
+  paginationTotalRows?: number;
+  paginationPerPage?: number;
+  paginationRowsPerPageOptions?: number[];
+  paginationComponentOptions?: IDataTablePaginationOptions;
+  onChangeRowsPerPage?: (
+    currentRowsPerPage: number,
+    currentPage: number
+  ) => void;
+  onChangePage?: (page: number, totalRows: number) => void;
+  paginationComponent?: React.ReactNode;
+  paginationIconFirstPage?: React.ReactNode;
+  paginationIconLastPage?: React.ReactNode;
+  paginationIconNext?: React.ReactNode;
+  paginationIconPrevious?: React.ReactNode;
+  progressPending?: boolean;
+  persistTableHead?: boolean;
+  progressComponent?: React.ReactNode;
+  expandableRows?: boolean;
+  expandableRowsComponent?: React.ReactNode;
+  expandOnRowClicked?: boolean;
+  expandOnRowDoubleClicked?: boolean;
+  expandableRowsHideExpander?: boolean;
+  onRowExpandToggled?: (expanded: boolean, row: T) => void;
+  expandableRowExpanded?: (row: T) => boolean;
+  expandableRowDisabled?: (row: T) => boolean;
+  expandableIcon?: IExpandableIcon;
+  expandableInheritConditionalStyles?: boolean;
+  selectableRows?: boolean;
+  selectableRowsComponent?: React.ReactNode;
+  selectableRowsComponentProps?: any;
+  selectableRowsHighlight?: boolean;
+  selectableRowsVisibleOnly?: boolean;
+  selectableRowSelected?: (row: T) => boolean;
+  selectableRowDisabled?: (row: T) => boolean;
+  selectableRowsNoSelectAll?: boolean;
+  clearSelectedRows?: boolean;
+  onSelectedRowsChange?: (selectedRowState: {
+    allSelected: boolean;
+    selectedCount: number;
+    selectedRows: T[];
+  }) => void;
+  actions?: React.ReactNode | React.ReactNode[];
+  noContextMenu?: boolean;
+  contextMessage?: IContextMessage;
+  contextActions?: React.ReactNode | React.ReactNode[];
+  contextComponent?: React.ReactNode;
+  noHeader?: boolean;
+  fixedHeader?: boolean;
+  fixedHeaderScrollHeight?: string;
+  subHeader?: React.ReactNode | React.ReactNode[];
+  subHeaderAlign?: string;
+  subHeaderWrap?: boolean;
+  subHeaderComponent?: React.ReactNode | React.ReactNode[];
+  customStyles?: IDataTableStyles;
+  theme?: string;
+  conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
+  direction?: 'ltr' | 'rtl' | 'auto';
 }
 
 export interface ITheme {

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
@@ -33,7 +32,6 @@ const BasicTable = () => (
     paginationComponentOptions={paginationOptions}
   />
 );
-
 
 storiesOf('Pagination', module)
   .add('Options', BasicTable);

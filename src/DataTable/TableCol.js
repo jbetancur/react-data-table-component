@@ -48,7 +48,6 @@ const ColumnSortable = styled.div`
   }
 `;
 
-
 const TableCol = memo(({
   column,
   sortIcon,
