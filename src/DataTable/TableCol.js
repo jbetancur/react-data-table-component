@@ -63,14 +63,14 @@ const TableCol = memo(({
       let direction = sortDirection;
       // change sort direction only if sortColumn (currently selected column) is === the newly clicked column
       // otherwise, retain sort direction if the column is switched
-      if (sortColumn === column.selector) {
+      if (sortColumn === column.id) {
         direction = sortDirection === 'asc' ? 'desc' : 'asc';
       }
 
       dispatch({
         type: 'SORT_CHANGE',
         sortDirection: direction,
-        sortColumn: column.selector,
+        sortColumn: column.id,
         sortServer,
         selectedColumn: column,
         pagination,
@@ -101,7 +101,7 @@ const TableCol = memo(({
     </span>
   );
 
-  const sortActive = column.sortable && sortColumn === column.selector;
+  const sortActive = column.sortable && sortColumn === column.id;
   const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
   const nativeSortIconRight = column.sortable && !sortIcon && column.right;
   const customSortIconLeft = column.sortable && sortIcon && !column.right;
@@ -115,7 +115,7 @@ const TableCol = memo(({
     >
       {column.name && (
         <ColumnSortable
-          id={`column-${column.selector}`}
+          id={`column-${column.id}`}
           role="columnheader"
           tabIndex={0}
           className="rdt_TableCol_Sortable"

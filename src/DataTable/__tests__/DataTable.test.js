@@ -14,7 +14,7 @@ jest.mock('shortid', () => {
 // eslint-disable-next-line arrow-body-style
 const dataMock = colProps => {
   return {
-    columns: [{ name: 'Test', selector: 'some.name', ...colProps }],
+    columns: [{ name: 'Test', id: 'some.name', selector: 'some.name', ...colProps }],
     data: [{ id: 1, some: { name: 'Apple' } }, { id: 2, some: { name: 'Zuchinni' } }],
   };
 };
@@ -398,7 +398,7 @@ describe('DataTable:RowClicks', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    fireEvent.click(container.querySelector('div[id="cell-some.name-1"]'));
     expect(onRowClickedMock).not.toBeCalled();
   });
 
@@ -413,7 +413,7 @@ describe('DataTable:RowClicks', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    fireEvent.click(container.querySelector('div[id="cell-some.name-1"]'));
     expect(onRowClickedMock).not.toBeCalled();
   });
 
@@ -428,7 +428,7 @@ describe('DataTable:RowClicks', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    fireEvent.click(container.querySelector('div[id="cell-some.name-1"]'));
     expect(onRowDoubleClickedMock).not.toBeCalled();
   });
 
@@ -443,7 +443,7 @@ describe('DataTable:RowClicks', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('div[id="cell-1-1"]'));
+    fireEvent.click(container.querySelector('div[id="cell-some.name-1"]'));
     expect(onRowDoubleClickedMock).not.toBeCalled();
   });
 });
