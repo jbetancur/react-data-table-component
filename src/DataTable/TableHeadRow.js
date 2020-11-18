@@ -6,7 +6,6 @@ const TableHeadRow = styled.div`
   width: 100%;
   ${props => props.theme.headRow.style};
   ${props => (props.dense && props.theme.headRow.denseStyle)};
-  ${props => props.disabled};
 `;
 
 export default TableHeadRow;
