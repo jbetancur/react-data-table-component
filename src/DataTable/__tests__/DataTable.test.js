@@ -2794,4 +2794,26 @@ describe('DataTable::direction', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render correctly when sortable column is false', () => {
+    let testClicked = false;
+    const mock = dataMock({
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events, no-return-assign
+      name: (<div id="testColName" onClick={() => testClicked = true}>Test</div>),
+      sortable: false,
+    });
+
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        selectableRows
+      />,
+    );
+
+    fireEvent.click(container.querySelector('#testColName'));
+
+    expect(testClicked).toBe(true);
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
