@@ -7,7 +7,7 @@
   "rules": {
     "declaration-colon-newline-after": null,
     "value-list-max-empty-lines": null,
-    "value-keyword-case": null
-  },
-  "syntax": "scss"
+    "value-keyword-case": null,
+		"indentation": "tab"
+  }
 }
