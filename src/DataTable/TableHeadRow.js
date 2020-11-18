@@ -1,8 +1,4 @@
-import styled, { css } from 'styled-components';
-
-const disabled = css`
-  pointer-events: none;
-`;
+import styled from 'styled-components';
 
 const TableHeadRow = styled.div`
   display: flex;
@@ -10,7 +6,7 @@ const TableHeadRow = styled.div`
   width: 100%;
   ${props => props.theme.headRow.style};
   ${props => (props.dense && props.theme.headRow.denseStyle)};
-  ${props => props.disabled && disabled};
+  ${props => props.disabled};
 `;
 
 export default TableHeadRow;

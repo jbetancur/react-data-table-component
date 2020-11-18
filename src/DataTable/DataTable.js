@@ -348,8 +348,8 @@ const DataTable = memo(({
                       <TableCol
                         key={column.id}
                         column={column}
+                        disabled={progressPending || data.length === 0}
                         sortIcon={sortIcon}
-                        sortable={!progressPending && data.length > 0}
                       />
                     ))}
                   </TableHeadRow>

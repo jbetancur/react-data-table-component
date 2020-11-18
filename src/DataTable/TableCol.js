@@ -51,8 +51,8 @@ const ColumnSortable = styled.div`
 
 const TableCol = memo(({
   column,
+  disabled,
   sortIcon,
-  sortable,
 }) => {
   const { dispatch, pagination, paginationServer, sortColumn, sortDirection, sortServer, selectableRowsVisibleOnly, persistSelectedOnSort } = useTableContext();
 
@@ -121,18 +121,18 @@ const TableCol = memo(({
           role="columnheader"
           tabIndex={0}
           className="rdt_TableCol_Sortable"
-          onClick={sortable ? handleSortChange : undefined}
-          onKeyPress={sortable ? handleKeyPress : undefined}
-          sortActive={sortable && sortActive}
+          onClick={!disabled ? handleSortChange : undefined}
+          onKeyPress={!disabled ? handleKeyPress : undefined}
+          sortActive={!disabled && sortActive}
           column={column}
         >
-          {sortable && customSortIconRight && renderCustomSortIcon()}
-          {sortable && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+          {!disabled && customSortIconRight && renderCustomSortIcon()}
+          {!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
           <div>
             {column.name}
           </div>
-          {sortable && customSortIconLeft && renderCustomSortIcon()}
-          {sortable && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+          {!disabled && customSortIconLeft && renderCustomSortIcon()}
+          {!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
         </ColumnSortable>
       )}
     </TableColStyle>
@@ -141,15 +141,15 @@ const TableCol = memo(({
 
 TableCol.propTypes = {
   column: PropTypes.object.isRequired,
+  disabled: PropTypes.bool,
   sortIcon: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object,
   ]).isRequired,
-  sortable: PropTypes.bool,
 };
 
 TableCol.defaultProps = {
-  sortable: true,
+  disabled: false,
 };
 
 export default TableCol;
