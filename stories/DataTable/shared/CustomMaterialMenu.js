@@ -10,68 +10,55 @@ import Typography from '@material-ui/core/Typography';
 
 // eslint-disable-next-line react/prop-types
 export default ({ row, onDeleteRow, size }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
+	const handleClick = event => {
+		setAnchorEl(event.currentTarget);
+	};
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const deleteRow = () => {
-    if (onDeleteRow) {
-      onDeleteRow(row);
-    }
-  };
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+	const deleteRow = () => {
+		if (onDeleteRow) {
+			onDeleteRow(row);
+		}
+	};
 
-  return (
-    <div>
-      <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-        size={size}
-      >
-        <MoreVertIcon />
-      </IconButton>
-      <Menu
-        id="menu"
-        getContentAnchorEl={null}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
+	return (
+		<div>
+			<IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={handleClick} size={size}>
+				<MoreVertIcon />
+			</IconButton>
+			<Menu
+				id="menu"
+				getContentAnchorEl={null}
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'center',
+				}}
+				transformOrigin={{
+					vertical: 'top',
+					horizontal: 'center',
+				}}
+				anchorEl={anchorEl}
+				keepMounted
+				open={Boolean(anchorEl)}
+				onClose={handleClose}
+			>
+				<MenuItem>Item One</MenuItem>
 
-        <MenuItem>
-          Item One
-        </MenuItem>
+				<MenuItem>Item Two</MenuItem>
 
-        <MenuItem>
-          Item Two
-        </MenuItem>
+				<Divider />
 
-        <Divider />
-
-        <MenuItem onClick={deleteRow}>
-          <ListItemIcon>
-            <DeleteIcon fontSize="small" color="secondary" />
-          </ListItemIcon>
-          <Typography variant="inherit">
-            Delete
-          </Typography>
-        </MenuItem>
-      </Menu>
-    </div>
-  );
+				<MenuItem onClick={deleteRow}>
+					<ListItemIcon>
+						<DeleteIcon fontSize="small" color="secondary" />
+					</ListItemIcon>
+					<Typography variant="inherit">Delete</Typography>
+				</MenuItem>
+			</Menu>
+		</div>
+	);
 };
