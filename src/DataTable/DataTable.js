@@ -125,7 +125,7 @@ const DataTable = memo(({
     selectedColumn,
     sortDirection,
   }, dispatch] = useReducer(tableReducer, initialState);
-  const { persistSelectedOnSort, persistSelectedOnPageChange } = paginationServerOptions;
+  const { persistSelectedOnSort, persistSelectedOnPageChange, persistCurrentPageOnSort } = paginationServerOptions;
   const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
   const enabledPagination = pagination && !progressPending && data.length > 0;
   const Pagination = paginationComponent || NativePagination;
@@ -275,6 +275,7 @@ const DataTable = memo(({
     paginationIconNext,
     paginationIconPrevious,
     paginationComponentOptions,
+    persistCurrentPageOnSort,
     direction,
     mergeSelections,
   };

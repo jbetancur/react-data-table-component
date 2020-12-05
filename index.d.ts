@@ -152,6 +152,7 @@ export interface IDataTableProps<T = any> {
   paginationServerOptions?: {
     persistSelectedOnSort?: boolean;
     persistSelectedOnPageChange?: boolean;
+    persistCurrentPageOnSort?: boolean;
   };
   paginationDefaultPage?: number;
   paginationResetDefaultPage?: boolean;

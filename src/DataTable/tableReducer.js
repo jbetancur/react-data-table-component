@@ -73,15 +73,16 @@ export function tableReducer(state, action) {
     }
 
     case 'SORT_CHANGE': {
-      const { sortColumn, sortDirection, sortServer, selectedColumn, pagination, paginationServer, visibleOnly, persistSelectedOnSort } = action;
+      const { sortColumn, sortDirection, sortServer, selectedColumn, pagination, paginationServer, visibleOnly, persistSelectedOnSort, persistCurrentPageOnSort } = action;
       const clearSelectedOnSort = (pagination && paginationServer && !persistSelectedOnSort) || sortServer || visibleOnly;
+      const keepPage = pagination && paginationServer && persistCurrentPageOnSort;
 
       return {
         ...state,
         sortColumn,
         selectedColumn,
         sortDirection,
-        currentPage: 1,
+        currentPage: keepPage ? state.currentPage : 1,
         // when using server-side paging reset selected row counts when sorting
         ...clearSelectedOnSort && ({
           allSelected: false,

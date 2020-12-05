@@ -119,6 +119,7 @@ export const propTypes = {
   paginationServerOptions: PropTypes.shape({
     persistSelectedOnSort: PropTypes.bool,
     persistSelectedOnPageChange: PropTypes.bool,
+    persistCurrentPageOnSort: PropTypes.bool,
   }),
   paginationDefaultPage: PropTypes.number,
   paginationResetDefaultPage: PropTypes.bool,
@@ -234,6 +235,7 @@ export const defaultProps = {
   paginationServerOptions: {
     persistSelectedOnSort: false,
     persistSelectedOnPageChange: false,
+    persistCurrentPageOnSort: false,
   },
   paginationDefaultPage: 1,
   paginationResetDefaultPage: false,
