@@ -8,6 +8,7 @@ const TableHeadRow = styled.div`
   display: flex;
   align-items: stretch;
   width: 100%;
+  background-color: unset;
   ${props => props.theme.headRow.style};
   ${props => (props.dense && props.theme.headRow.denseStyle)};
   ${props => props.disabled && disabled};

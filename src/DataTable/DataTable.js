@@ -328,7 +328,7 @@ const DataTable = memo(({
               </ProgressWrapper>
             )}
 
-            <Table disabled={disabled} className="rdt_Table" role="table">
+            <Table disabled={disabled} fixedHeader={fixedHeader} fixedHeaderScrollHeight={fixedHeaderScrollHeight} hasOffset={overflowY} offset={overflowYOffset}  className="rdt_Table" role="table">
               {showTableHead() && (
                 <TableHead className="rdt_TableHead" role="rowgroup">
                   <TableHeadRow

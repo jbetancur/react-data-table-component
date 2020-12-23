@@ -13,6 +13,11 @@ const TableStyle = styled.div`
   width: 100%;
   height: 100%;
   max-width: 100%;
+  overflow-y: auto;
+  ${({ fixedHeader, hasOffset, offset, fixedHeaderScrollHeight }) => fixedHeader && css`
+    max-height: ${hasOffset ? `calc(${fixedHeaderScrollHeight} - ${offset})` : fixedHeaderScrollHeight};
+    -webkit-overflow-scrolling: touch;
+  `};
   ${props => props.disabled && disabled};
   ${props => props.theme.table.style};
 `;
