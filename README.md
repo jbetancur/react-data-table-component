@@ -510,7 +510,7 @@ Don't like those ugly html checkboxes? Let's override them with some [Material U
 
 ```js
 ...
-import Checkbox from '@mataerial-ui/core/Checkbox';
+import Checkbox from '@material-ui/core/Checkbox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 
 const sortIcon = <ArrowDownward />;
@@ -538,7 +538,7 @@ Example Usage:
 
 ```js
 
-import Checkbox from '@mataerial-ui/core/Checkbox';
+import Checkbox from '@material-ui/core/Checkbox';
 
 ...
 
