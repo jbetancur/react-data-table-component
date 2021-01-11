@@ -336,7 +336,7 @@ const DataTable = memo(({
                     className="rdt_TableHeadRow"
                     role="row"
                     dense={dense}
-                    disabled={forceEnableTableHeadRow ? false : (progressPending || data.length === 0) }
+                    disabled={forceEnableTableHeadRow ? false : (progressPending || data.length === 0)}
                   >
                     {selectableRows && (
                       showSelectAll
