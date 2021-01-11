@@ -43,6 +43,7 @@ export const propTypes = {
     PropTypes.func,
   ]),
   persistTableHead: PropTypes.bool,
+  forceEnableTableHeadRow: PropTypes.bool,
   expandableRowsComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -192,6 +193,7 @@ export const defaultProps = {
   progressPending: false,
   progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
   persistTableHead: false,
+  forceEnableTableHeadRow: false,
   expandableRowsComponent: <div style={{ padding: '24px' }}>Add a custom expander component. Use props.data for row data</div>,
   expandableIcon: {
     collapsed: <ExpanderCollapsedIcon />,

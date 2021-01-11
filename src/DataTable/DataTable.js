@@ -66,6 +66,7 @@ const DataTable = memo(({
   overflowYOffset,
   progressPending,
   progressComponent,
+  forceEnableTableHeadRow,
   persistTableHead,
   noDataComponent,
   disabled,
@@ -335,7 +336,7 @@ const DataTable = memo(({
                     className="rdt_TableHeadRow"
                     role="row"
                     dense={dense}
-                    disabled={progressPending || data.length === 0}
+                    disabled={forceEnableTableHeadRow ? false : (progressPending || data.length === 0) }
                   >
                     {selectableRows && (
                       showSelectAll
