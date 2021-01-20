@@ -48,7 +48,7 @@ type TableHeaderProps = {
 
 const TableHeader = ({
 	title,
-	actions = [],
+	actions = null,
 	contextMessage,
 	contextActions,
 	contextComponent,
@@ -58,7 +58,7 @@ const TableHeader = ({
 }: TableHeaderProps): JSX.Element => (
 	<TableHeaderStyle className="rdt_TableHeader" role="heading" aria-level={1}>
 		<Title>{title}</Title>
-		<Actions>{actions}</Actions>
+		{actions && <Actions>{actions}</Actions>}
 
 		{showMenu && (
 			<ContextMenu

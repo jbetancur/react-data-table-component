@@ -121,18 +121,25 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		defaultSortFieldId,
 	]);
 
-	const initialState: TableState<T> = {
-		allSelected: false,
-		rows: [],
-		selectedCount: 0,
-		selectedRows: [],
-		selectedColumn: defaultSortColumn || { name: '' },
-		sortDirection: defaultSortDirection,
-		currentPage: paginationDefaultPage,
-		rowsPerPage: paginationPerPage,
-		selectedRowsFlag: false,
-		contextMessage: defaultProps.contextMessage,
-	};
+	// Run once
+	const initialState: TableState<T> = React.useMemo(
+		() => ({
+			allSelected: false,
+			rows: defaultSortColumn?.selector
+				? sort(data, defaultSortColumn.selector, defaultSortDirection, sortFunction)
+				: data,
+			selectedCount: 0,
+			selectedRows: [],
+			selectedColumn: defaultSortColumn || { name: '' },
+			sortDirection: defaultSortDirection,
+			currentPage: paginationDefaultPage,
+			rowsPerPage: paginationPerPage,
+			selectedRowsFlag: false,
+			contextMessage: defaultProps.contextMessage,
+		}),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[],
+	);
 
 	const [
 		{ rowsPerPage, rows, currentPage, selectedRows, allSelected, selectedCount, selectedColumn, sortDirection },
@@ -147,6 +154,18 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const expandableRowsComponentMemo = React.useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
+
+	const calculatedRows = React.useMemo(() => {
+		if (pagination && !paginationServer) {
+			// when using client-side pagination we can just slice the rows set
+			const lastIndex = currentPage * rowsPerPage;
+			const firstIndex = lastIndex - rowsPerPage;
+
+			return rows.slice(firstIndex, lastIndex);
+		}
+
+		return rows;
+	}, [currentPage, pagination, paginationServer, rows, rowsPerPage]);
 
 	const handleSort = (action: SortAction<T>) => {
 		dispatch(action);
@@ -199,17 +218,21 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		return rows.length > 0 && !progressPending;
 	};
 
-	const calculatedRows = React.useMemo(() => {
-		if (pagination && !paginationServer) {
-			// when using client-side pagination we can just slice the rows set
-			const lastIndex = currentPage * rowsPerPage;
-			const firstIndex = lastIndex - rowsPerPage;
-
-			return rows.slice(firstIndex, lastIndex);
+	const showHeader = () => {
+		if (noHeader) {
+			return false;
 		}
 
-		return rows;
-	}, [currentPage, pagination, paginationServer, rows, rowsPerPage]);
+		if (title) {
+			return true;
+		}
+
+		if (actions) {
+			return true;
+		}
+
+		return false;
+	};
 
 	// recalculate the pagination and currentPage if the rows length changes
 	if (pagination && !paginationServer && rows.length > 0 && calculatedRows.length === 0) {
@@ -278,7 +301,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 	return (
 		<ThemeProvider theme={currentTheme}>
-			{!noHeader && (
+			{showHeader() && (
 				<TableHeader
 					title={title}
 					actions={actions}
