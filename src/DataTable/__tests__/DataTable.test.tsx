@@ -1853,6 +1853,13 @@ describe('DataTable::Header', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('header should not display with no title', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
 	test('should render header actions when they are provided', () => {
 		const mock = dataMock();
 		const { container } = render(
