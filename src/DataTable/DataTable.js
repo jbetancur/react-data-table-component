@@ -104,6 +104,7 @@ const DataTable = memo(({
   customStyles,
   direction,
   footer,
+  footerBold,
 }) => {
   const initialState = {
     allSelected: false,
@@ -426,7 +427,12 @@ const DataTable = memo(({
                       id={-1}
                       rowIndex={-1}
                       keyField={keyField}
-                      row={footer}
+                      row={footerBold ? Object.keys(footer).reduce((dict, key) => {
+                        // eslint-disable-next-line no-param-reassign
+                        dict[key] = (<b>{footer[key]}</b>);
+
+                        return dict;
+                      }, {}) : footer}
                       columns={columnsMemo}
                       selectableRows={selectableRows}
                       expandableRows={expandableRows}

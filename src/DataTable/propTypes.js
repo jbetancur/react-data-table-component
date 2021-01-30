@@ -168,6 +168,7 @@ export const propTypes = {
     'auto',
   ]),
   footer: PropTypes.object,
+  footerBold: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -255,4 +256,5 @@ export const defaultProps = {
   customStyles: {},
   direction: 'auto',
   footer: false,
+  footerBold: true,
 };

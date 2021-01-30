@@ -169,6 +169,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. <br /><br />**Note** that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
 | direction | string | no | auto | Accepts: `ltr, rtl, or auto`. When set to `auto` (default), RDT will attempt to detect direction by checking the HTML and DIV tags. For cases where you need to force rtl, or ltr just set this option manually (i.e. SSR) |
 | footer | Object | no | | An object that when defined with row data, will display a fixed footer at the bottom of the table |
+| footerBold | bool | no | true | Set columns data of the footer bold |
 
 #### Row Selection
 

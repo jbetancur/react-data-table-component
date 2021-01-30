@@ -52,6 +52,7 @@ const KitchenSink = () => {
   const [subHeaderAlign, setSubHeaderAlign] = React.useState('right');
   const [fixedHeader, setFixedHeader] = React.useState(false);
   const [footer, setFooter] = React.useState(false);
+  const [footerBold, setFooterBold] = React.useState(true);
   const [direction, setDirection] = React.useState(false);
   const [directionValue, setDirectionValue] = React.useState('auto');
 
@@ -149,10 +150,20 @@ const KitchenSink = () => {
           control={<Checkbox size="small" checked={fixedHeader} onChange={() => setFixedHeader(!fixedHeader)} />}
           label="Fixed Header"
         />
+      </FormGroup>
+
+      <FormGroup row>
         <FormControlLabel
           control={<Checkbox size="small" checked={footer} onChange={() => setFooter(!footer)} />}
           label="Show Fixed Footer"
         />
+
+        {footer && (
+          <FormControlLabel
+            control={<Checkbox size="small" checked={footerBold} onChange={() => setFooterBold(!footerBold)}/>}
+            label="Bold Footer"
+          />
+        )}
       </FormGroup>
 
       <FormGroup row>
@@ -251,6 +262,7 @@ const KitchenSink = () => {
         fixedHeaderScrollHeight="300px"
         direction={directionValue}
         footer={footer && { title: 'Movie Footer', director: 'Director Footer', year: 'Year Footer' }}
+        footerBold={footerBold}
       />
     </div>
   );
