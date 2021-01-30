@@ -160,7 +160,7 @@ const KitchenSink = () => {
 
         {footer && (
           <FormControlLabel
-            control={<Checkbox size="small" checked={footerBold} onChange={() => setFooterBold(!footerBold)}/>}
+            control={<Checkbox size="small" checked={footerBold} onChange={() => setFooterBold(!footerBold)} />}
             label="Bold Footer"
           />
         )}
