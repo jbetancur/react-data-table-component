@@ -424,6 +424,7 @@ const DataTable = memo(({
                   {footer && (
                     <TableRow
                       id={-1}
+                      rowIndex={-1}
                       keyField={keyField}
                       row={footer}
                       columns={columnsMemo}
