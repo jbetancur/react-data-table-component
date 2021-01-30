@@ -11,9 +11,10 @@ const TableCellCheckboxStyle = styled(CellBase)`
   align-items: center;
   user-select: none;
   white-space: nowrap;
+  visibility: ${({ footer }) => (footer ? 'hidden' : 'visible')};
 `;
 
-const TableCellCheckbox = ({ name, row, selected }) => {
+const TableCellCheckbox = ({ name, row, selected, footer }) => {
   const {
     dispatch,
     data,
@@ -36,6 +37,7 @@ const TableCellCheckbox = ({ name, row, selected }) => {
     <TableCellCheckboxStyle
       onClick={e => e.stopPropagation()}
       className="rdt_TableCell"
+      footer={footer}
       noPadding
     >
       <Checkbox
@@ -55,6 +57,7 @@ TableCellCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   row: PropTypes.object.isRequired,
   selected: PropTypes.bool.isRequired,
+  footer: PropTypes.bool.isRequired,
 };
 
 export default TableCellCheckbox;

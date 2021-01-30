@@ -103,6 +103,7 @@ const DataTable = memo(({
   theme,
   customStyles,
   direction,
+  footer,
 }) => {
   const initialState = {
     allSelected: false,
@@ -414,10 +415,40 @@ const DataTable = memo(({
                         conditionalRowStyles={conditionalRowStyles}
                         selected={selected}
                         selectableRowsHighlight={selectableRowsHighlight}
+                        footer={false}
                         rowIndex={i}
                       />
                     );
                   })}
+
+                  {footer && (
+                    <TableRow
+                      id={-1}
+                      keyField={keyField}
+                      row={footer}
+                      columns={columnsMemo}
+                      selectableRows={selectableRows}
+                      expandableRows={expandableRows}
+                      striped={striped}
+                      highlightOnHover={highlightOnHover}
+                      pointerOnHover={pointerOnHover}
+                      dense={dense}
+                      expandOnRowClicked={expandOnRowClicked}
+                      expandOnRowDoubleClicked={expandOnRowDoubleClicked}
+                      expandableRowsComponent={expandableRowsComponentMemo}
+                      expandableRowsHideExpander={expandableRowsHideExpander}
+                      onRowExpandToggled={onRowExpandToggled}
+                      defaultExpanded={false}
+                      inheritConditionalStyles={expandableInheritConditionalStyles}
+                      onRowClicked={handleRowClicked}
+                      onRowDoubleClicked={handleRowDoubleClicked}
+                      conditionalRowStyles={conditionalRowStyles}
+                      selectableRowsHighlight={selectableRowsHighlight}
+                      selected={false}
+                      defaultExpanderDisabled
+                      footer
+                    />
+                  )}
                 </TableBody>
               )}
             </Table>

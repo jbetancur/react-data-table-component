@@ -167,6 +167,7 @@ export const propTypes = {
     'rtl',
     'auto',
   ]),
+  footer: PropTypes.object,
 };
 
 export const defaultProps = {
@@ -253,4 +254,5 @@ export const defaultProps = {
   theme: 'default',
   customStyles: {},
   direction: 'auto',
+  footer: false,
 };

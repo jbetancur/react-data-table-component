@@ -7,6 +7,7 @@ import ExpanderButton from './ExpanderButton';
 const TableCellExpanderStyle = styled(CellBase)`
   white-space: nowrap;
   font-weight: 400;
+  visibility: ${({ footer }) => (footer ? 'hidden' : 'visible')};
   ${props => props.theme.expanderCell.style};
 `;
 
@@ -16,9 +17,11 @@ const TableCellExpander = ({
   expanded,
   onRowExpandToggled,
   disabled,
+  footer,
 }) => (
   <TableCellExpanderStyle
     column={column}
+    footer={footer}
     onClick={e => e.stopPropagation()}
     noPadding
   >
@@ -36,6 +39,7 @@ TableCellExpander.propTypes = {
   row: PropTypes.object,
   expanded: PropTypes.bool,
   onRowExpandToggled: PropTypes.func.isRequired,
+  footer: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
 };
 

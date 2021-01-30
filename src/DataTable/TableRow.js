@@ -60,6 +60,7 @@ const TableRow = memo(({
   selected,
   selectableRowsHighlight,
   rowIndex,
+  footer,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   useEffect(() => {
@@ -117,6 +118,7 @@ const TableRow = memo(({
           <TableCellCheckbox
             name={`select-row-${row[keyField]}`}
             row={row}
+            footer={footer}
             selected={selected}
           />
         )}
@@ -124,6 +126,7 @@ const TableRow = memo(({
         {expandableRows && !expandableRowsHideExpander && (
           <TableCellExpander
             expanded={expanded}
+            footer={footer}
             row={row}
             onRowExpandToggled={handleExpanded}
             disabled={defaultExpanderDisabled}
@@ -183,6 +186,7 @@ TableRow.propTypes = {
   inheritConditionalStyles: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   selectableRowsHighlight: PropTypes.bool.isRequired,
+  footer: PropTypes.bool.isRequired,
 };
 
 TableRow.defaultProps = {
