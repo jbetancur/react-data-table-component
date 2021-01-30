@@ -2452,6 +2452,35 @@ describe('DataTable::striped', () => {
   });
 });
 
+describe('DataTable::footer', () => {
+  test('should render correctly when using footer', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        footer={{ id: 'Total', some: { name: 'Total Name' } }}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render correctly when using no bold footer', () => {
+    const mock = dataMock();
+    const { container } = render(
+      <DataTable
+        data={mock.data}
+        columns={mock.columns}
+        footerBold={false}
+        footer={{ id: 'Total', some: { name: 'Total Name' } }}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
 describe('DataTable::highlightOnHover', () => {
   test('should render correctly when highlightOnHover', () => {
     const mock = dataMock();
