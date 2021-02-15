@@ -82,6 +82,15 @@ function TableCol<T>({
 	selectableRowsVisibleOnly,
 	onSort,
 }: TableColProps<T>): JSX.Element | null {
+	React.useEffect(() => {
+		if (typeof column.selector === 'string') {
+			console.error(
+				`Warning: ${column.selector} is a string based column selector which has been deprecated as of v7 and will be removed in v8. Instead, use a selector function e.g. row => row[field]...`,
+			);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	if (column.omit) {
 		return null;
 	}

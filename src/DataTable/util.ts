@@ -53,6 +53,7 @@ export function getProperty<T extends Record<string, any>>(
 		throw new Error('selector must be a . delimited string eg (my.property) or function (e.g. row => row.field');
 	}
 
+	// format will override how the selector is displayed but the original dataset is used for sorting
 	if (format && typeof format === 'function') {
 		return format(row, rowIndex);
 	}
@@ -61,6 +62,7 @@ export function getProperty<T extends Record<string, any>>(
 		return selector(row, rowIndex);
 	}
 
+	// string based selectors will be removed in v8
 	return selector.split('.').reduce((acc, part) => {
 		// O(n2) when querying for an array (e.g. items[0].name)
 		// Likely, the object depth will be reasonable enough that performance is not a concern
