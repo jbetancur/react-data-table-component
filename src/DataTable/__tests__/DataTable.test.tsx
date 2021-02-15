@@ -45,6 +45,10 @@ const dataMock = (colProps?: any) => {
 	};
 };
 
+beforeEach(() => {
+	console.error = jest.fn();
+});
+
 test('should render and empty table correctly', () => {
 	const { container } = render(<DataTable data={[]} columns={[]} />);
 
