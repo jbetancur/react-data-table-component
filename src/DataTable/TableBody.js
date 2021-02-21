@@ -5,7 +5,7 @@ const TableBody = styled.div`
   flex-direction: column;
   ${({ fixedHeader, hasOffset, offset, fixedHeaderScrollHeight }) => fixedHeader && css`
     max-height: ${hasOffset ? `calc(${fixedHeaderScrollHeight} - ${offset})` : fixedHeaderScrollHeight};
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   `};
 `;
