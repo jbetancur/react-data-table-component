@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "7.0.0-alpha-7",
+  "version": "7.0.0-alpha-8",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -101,7 +101,7 @@
     "lodash.orderby": "^4.6.0"
   },
   "peerDependencies": {
-    "react": ">= ^16.8.0",
-    "styled-components": ">= ^4.0.0"
+    "react": ">= ^16.8.0 || >= ^17.0.0",
+    "styled-components": ">= ^4.0.0 || >= ^5.0.0"
   }
 }
