@@ -180,6 +180,7 @@ function TableCol<T>({
 			maxWidth={column.maxWidth}
 			minWidth={column.minWidth}
 			right={column.right}
+			center={column.center}
 			width={column.width}
 		>
 			{column.name && (

@@ -5866,32 +5866,17 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   flex-basis: 0;
   max-width: 100%;
   min-width: 100px;
-}
-
-.c12 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
 }
 
-.c13 {
+.c12 {
   font-weight: 400;
 }
 
-.c13 div:first-child {
+.c12 div:first-child {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -6021,7 +6006,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
           role="row"
         >
           <div
-            class="c11 c12 c13 rdt_TableCell"
+            class="c11 c6 c12 rdt_TableCell"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -6039,7 +6024,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
           role="row"
         >
           <div
-            class="c11 c12 c13 rdt_TableCell"
+            class="c11 c6 c12 rdt_TableCell"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
