@@ -23,7 +23,9 @@ const pointerCSS = css`
 	}
 `;
 
-const TableRowStyle = styled.div<{
+const TableRowStyle = styled.div.attrs(props => ({
+	style: props.style,
+}))<{
 	dense?: boolean;
 	extendedRowStyle?: CSSObject;
 	highlightOnHover?: boolean;
@@ -171,8 +173,8 @@ function TableRow<T extends RowRecord>({
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
 				className="rdt_TableRow"
-				extendedRowStyle={extendedRowStyle}
 				selected={hightlightSelected}
+				style={extendedRowStyle}
 			>
 				{selectableRows && (
 					<TableCellCheckbox
