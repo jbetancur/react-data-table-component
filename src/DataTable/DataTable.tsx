@@ -332,12 +332,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 					<Table disabled={disabled} className="rdt_Table" role="table">
 						{showTableHead() && (
 							<TableHead className="rdt_TableHead" role="rowgroup">
-								<TableHeadRow
-									className="rdt_TableHeadRow"
-									role="row"
-									dense={dense}
-									disabled={progressPending || rows.length === 0}
-								>
+								<TableHeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
 									{selectableRows &&
 										(showSelectAll ? (
 											<CellBase style={{ flex: '0 0 48px' }} />
@@ -359,6 +354,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 										<TableCol
 											key={column.id}
 											column={column}
+											disabled={progressPending || rows.length === 0}
 											rows={rows}
 											pagination={pagination}
 											paginationServer={paginationServer}

@@ -1,8 +1,4 @@
-import styled, { css } from 'styled-components';
-
-const disabledCSS = css`
-	pointer-events: none;
-`;
+import styled from 'styled-components';
 
 const TableHeadRow = styled.div<{
 	dense?: boolean;
@@ -13,7 +9,6 @@ const TableHeadRow = styled.div<{
 	width: 100%;
 	${({ theme }) => theme.headRow.style};
 	${({ dense, theme }) => dense && theme.headRow.denseStyle};
-	${({ disabled }) => disabled && disabledCSS};
 `;
 
 export default TableHeadRow;

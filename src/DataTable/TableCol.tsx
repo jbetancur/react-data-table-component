@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Cell, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { sort } from './util';
@@ -10,16 +10,12 @@ const TableColStyle = styled(Cell)<CellProps>`
 `;
 
 interface ColumnSortableProps {
-	sortable: boolean | undefined;
+	disabled: boolean;
 	sortActive: boolean;
+	sortable: boolean | undefined;
 }
 
-const ColumnSortable = styled.div<ColumnSortableProps>`
-	display: inline-flex;
-	align-items: center;
-	height: 100%;
-	line-height: 1;
-	user-select: none;
+const sortableCSS = css<ColumnSortableProps>`
 	${({ theme, sortActive }) => (sortActive ? theme.headCells.activeSortStyle : theme.headCells.inactiveSortStyle)};
 
 	span.__rdt_custom_sort_icon__ {
@@ -43,19 +39,38 @@ const ColumnSortable = styled.div<ColumnSortableProps>`
 	}
 
 	&:hover {
-		${({ sortable }) => sortable && 'cursor: pointer'};
-		${({ sortable, theme }) => sortable && theme.headCells.activeStyle};
+		cursor: pointer;
+		${({ theme }) => theme.headCells.activeStyle};
 
 		span,
 		span.__rdt_custom_sort_icon__ * {
-			${({ sortActive, sortable }) => !sortActive && sortable && 'opacity: 1'};
+			${({ sortActive }) => !sortActive && 'opacity: 1'};
 		}
 	}
+`;
+
+const ColumnSortable = styled.div<ColumnSortableProps>`
+	align-items: center;
+	height: 100%;
+	line-height: 1;
+	outline: none;
+	user-select: none;
+	display: inline-flex;
+	overflow: hidden;
+	${({ disabled, sortable }) => sortable && !disabled && sortableCSS};
+`;
+
+const ColumnText = styled.div`
+	overflow: hidden;
+	font-weight: 500;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 `;
 
 type TableColProps<T> = {
 	rows: T[];
 	column: TableColumn<T>;
+	disabled: boolean;
 	sortIcon?: React.ReactNode;
 	pagination: boolean;
 	paginationServer: boolean;
@@ -71,6 +86,7 @@ type TableColProps<T> = {
 function TableCol<T>({
 	rows,
 	column,
+	disabled,
 	selectedColumn,
 	sortDirection,
 	sortFunction,
@@ -103,16 +119,19 @@ function TableCol<T>({
 				direction = sortDirection === 'asc' ? 'desc' : 'asc';
 			}
 
-			let sortedRows = sort<T>(rows, column.selector, direction, sortFunction);
+			let sortedRows = rows;
 
-			// declare this as a const since ts throws strict null check on a ternary line 108
-			// sortFn is still checked for undefined or null
-			const sortFn = column.sortFunction;
+			if (!sortServer) {
+				sortedRows = sort(rows, column.selector, direction, sortFunction);
 
-			if (sortFn) {
-				const customSortFunction = direction === 'asc' ? sortFn : (a: T, b: T) => sortFn(a, b) * -1;
+				// colCustomSortFn is still checked for undefined or null
+				const colCustomSortFn = column.sortFunction;
 
-				sortedRows = [...rows].sort(customSortFunction);
+				if (colCustomSortFn) {
+					const customSortFunction = direction === 'asc' ? colCustomSortFn : (a: T, b: T) => colCustomSortFn(a, b) * -1;
+
+					sortedRows = [...rows].sort(customSortFunction);
+				}
 			}
 
 			onSort({
@@ -169,16 +188,17 @@ function TableCol<T>({
 					role="columnheader"
 					tabIndex={0}
 					className="rdt_TableCol_Sortable"
-					onClick={handleSortChange}
-					onKeyPress={handleKeyPress}
+					onClick={!disabled ? handleSortChange : undefined}
+					onKeyPress={!disabled ? handleKeyPress : undefined}
+					sortActive={!disabled && sortActive}
 					sortable={column.sortable}
-					sortActive={sortActive}
+					disabled={disabled}
 				>
-					{customSortIconRight && renderCustomSortIcon()}
-					{nativeSortIconRight && renderNativeSortIcon(sortActive)}
-					<div>{column.name}</div>
-					{customSortIconLeft && renderCustomSortIcon()}
-					{nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+					{!disabled && customSortIconRight && renderCustomSortIcon()}
+					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+					<ColumnText>{column.name}</ColumnText>
+					{!disabled && customSortIconLeft && renderCustomSortIcon()}
+					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</ColumnSortable>
 			)}
 		</TableColStyle>
