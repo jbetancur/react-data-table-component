@@ -1,36 +1,40 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import orderBy from 'lodash/orderBy';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
 
-// eslint-disable-next-line arrow-body-style
-const customSort = (rows, field, direction) => {
-	const handleField = row => {
-		if (row[field]) {
-			return row[field].toLowerCase();
+const customSort = (rows, selector, direction) => {
+	return rows.sort((a, b) => {
+		// use the selector to resolve your field names by passing the sort comparitors
+		const aField = selector(a).toLowerCase();
+		const bField = selector(b).toLowerCase();
+
+		let comparison = 0;
+
+		if (aField > bField) {
+			comparison = 1;
+		} else if (aField < bField) {
+			comparison = -1;
 		}
 
-		return row[field];
-	};
-
-	return orderBy(rows, handleField, direction);
+		return direction === 'desc' ? comparison * -1 : comparison;
+	});
 };
 
 const columns = [
 	{
 		name: 'Title',
-		selector: 'title',
+		selector: row => row.title,
 		sortable: true,
 	},
 	{
 		name: 'Director',
-		selector: 'director',
+		selector: row => row.director,
 		sortable: true,
 	},
 	{
 		name: 'Year',
-		selector: 'year',
+		selector: row => row.year,
 		sortable: true,
 	},
 ];

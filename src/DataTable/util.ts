@@ -22,22 +22,21 @@ export function isEmpty(field: string | number | undefined = ''): boolean {
 
 export function sort<T = RowRecord>(
 	rows: Array<T>,
-	field: Selector<T> | null,
+	selector: Selector<T> | null,
 	direction: SortDirection,
-	sortFn: SortFunction<T> | null = null,
+	sortFn?: SortFunction<T> | null,
 ): T[] {
-	if (!field) {
+	if (!selector) {
 		return rows;
 	}
 
 	if (sortFn && typeof sortFn === 'function') {
-		return sortFn(rows, <string>field, direction);
+		return sortFn(rows, selector, direction);
 	}
 
-	return orderBy(rows, field, direction);
+	return orderBy(rows, selector, direction);
 }
 
-// May deprecate this in the future since using function selectors is way more performant
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getProperty<T extends Record<string, any>>(
 	row: T,

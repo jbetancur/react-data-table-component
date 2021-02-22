@@ -10,11 +10,12 @@ export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
 export type RowState<T> = ((row: T) => boolean) | null;
 export type Selector<T> = string | ((row: T, rowIndex: number) => React.ReactNode);
 export type SortDirection = 'asc' | 'desc';
-export type SortFunction<T> = (rows: T[], field: string, sortDirection: 'asc' | 'desc') => T[];
+export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RowRecord = Record<string, any>;
 
 export type TableProps<T = RowRecord> = {
+	/** actions */
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
 	clearSelectedRows?: boolean;
@@ -95,6 +96,9 @@ export type TableProps<T = RowRecord> = {
 	subHeaderComponent?: React.ReactNode | React.ReactNode[];
 	subHeaderWrap?: boolean;
 	theme?: Themes;
+	/**
+	 *  Shows and displays a header with a title
+	 *  */
 	title?: string | React.ReactNode;
 };
 

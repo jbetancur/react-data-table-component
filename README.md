@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/jbetancur/react-data-table-component.svg?branch=master)](	) [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://jbetancur.github.io/react-data-table-component)
+[![Build Status](https://travis-ci.com/jbetancur/react-data-table-component.svg?branch=master)]( ) [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://jbetancur.github.io/react-data-table-component)
 
 <!-- TOC -->
 
@@ -34,6 +34,7 @@
 	- [Using Custom Checkboxes and Indeterminate State](#using-custom-checkboxes-and-indeterminate-state)
 	- [Custom Cells](#custom-cells)
 	- [Expandable Rows](#expandable-rows)
+	- [Custom Sort Function](#custom-sort-function)
 	- [UI Library Integration](#ui-library-integration)
 	- [Optimizing for Performance and Caveats](#optimizing-for-performance-and-caveats)
 		- [Passing non-primitive props (objects, arrays and functions)](#passing-non-primitive-props-objects-arrays-and-functions)
@@ -112,7 +113,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
 | selector | string or (row, index) => {} | no      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp`. A `selector` is required anytime you want to display data but can be ommitted if your column does not require showing data (e.g. an actions column) |
 | sortable | bool   | no       | if the column is sortable. <br /><br />**Note:** `selector` is required for the column to sort                                                            |
-| sortFunction | function | no | custom sorting function e.g. `(rowA, rowB) => rowA.myIndex - rowB.myIndex` (see [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)) |
+| sortFunction | function | no | by default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](#-custom-sort-function)   |
 | format   | (row, index) => {}   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value.                                        |
 | cell     | (row, index, column, id) => {}   | no       | for ultimate control use `cell` to render your own custom component!<br />e.g `row => <h2>{row.title}</h2>`. <br /> <br />if you are using properties such as: `onRowClicked`, `onRowDoubleClicked`, `expandOnRowClicked` or `expandOnRowDoubleClicked` then those click events will be ignored when clicking on your custom cell. To allow `RowClicked` events you can add `data-tag="allowRowEvents"` to your custom cell component elements. If your custom cell component is more complex and has nested elements you want to add `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the click event to. <br />e.g `row => <h2 data-tag="allowRowEvents">{row.title}</h2>` <br /><br />**Note:** that using `cell` **negates  `format`**. |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
@@ -695,6 +696,37 @@ class MyComponent extends Component {
     )
   }
 };
+```
+
+## Custom Sort Function
+
+By default RDT uses lodash.orderBy, however, if you wish to override the internal sorting you can pass in your own sorting algorithm. The callback signature will give you access to RDT internal fields. Here is an example of how to use `Array.sort`;
+
+- `rows` your data rows
+- `selector` is the function you defined on your column.selector. We're going to call this function and pass in the row data in the example below.
+- `direction` RDT's current sorting position.
+
+```js
+const customSort = (rows, selector, direction) => {
+ return rows.sort((rowA, rowB) => {
+  // use the selector function to resolve your field names by passing the sort comparitors
+  const aField = selector(rowA)
+  const bField = selector(rowB)
+
+  let comparison = 0;
+
+  if (aField > bField) {
+   comparison = 1;
+  } else if (aField < bField) {
+   comparison = -1;
+  }
+
+  return direction === 'desc' ? comparison * -1 : comparison;
+ });
+};
+
+...
+<DataTable .... sortFunction={customSort} />
 ```
 
 ## UI Library Integration
