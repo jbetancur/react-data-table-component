@@ -8,7 +8,6 @@ interface TableCellStyleProps {
 	wrapCell: boolean | undefined;
 	allowOverflow: boolean | undefined;
 	cellStyle: CSSObject | undefined;
-	extendedCellStyle: CSSObject;
 }
 
 const overflowCSS = css<TableCellStyleProps>`
@@ -19,12 +18,13 @@ const overflowCSS = css<TableCellStyleProps>`
 	}
 `;
 
-const TableCellStyle = styled(Cell)<TableCellStyleProps>`
+const TableCellStyle = styled(Cell).attrs(props => ({
+	style: props.style,
+}))<TableCellStyleProps>`
 	font-size: ${({ theme }) => theme.rows.fontSize};
 	font-weight: 400;
 	${({ renderAsCell }) => !renderAsCell && overflowCSS};
 	${({ cellStyle }) => cellStyle};
-	${({ extendedCellStyle }) => extendedCellStyle};
 `;
 
 interface TableCellProps extends TableColumnBase {
@@ -44,7 +44,6 @@ function TableCell({ column, dataTag, extendedCellStyle, id, renderAsCell, child
 			className="rdt_TableCell"
 			data-tag={dataTag}
 			cellStyle={column.style}
-			extendedCellStyle={extendedCellStyle}
 			renderAsCell={renderAsCell}
 			allowOverflow={column.allowOverflow}
 			button={column.button}
@@ -57,6 +56,7 @@ function TableCell({ column, dataTag, extendedCellStyle, id, renderAsCell, child
 			right={column.right}
 			width={column.width}
 			wrapCell={column.wrap}
+			style={extendedCellStyle}
 		>
 			{children}
 		</TableCellStyle>

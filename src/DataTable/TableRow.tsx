@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { css, CSSObject } from 'styled-components';
+import styled, { css } from 'styled-components';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
@@ -23,9 +23,10 @@ const pointerCSS = css`
 	}
 `;
 
-const TableRowStyle = styled.div<{
+const TableRowStyle = styled.div.attrs(props => ({
+	style: props.style,
+}))<{
 	dense?: boolean;
-	extendedRowStyle?: CSSObject;
 	highlightOnHover?: boolean;
 	pointerOnHover?: boolean;
 	selected?: boolean;
@@ -42,7 +43,6 @@ const TableRowStyle = styled.div<{
 	${({ highlightOnHover }) => highlightOnHover && highlightCSS};
 	${({ pointerOnHover }) => pointerOnHover && pointerCSS};
 	${({ selected, theme }) => selected && theme.rows.selectedHighlightStyle};
-	${({ extendedRowStyle }) => extendedRowStyle};
 `;
 
 type DProps<T> = Pick<
@@ -171,8 +171,8 @@ function TableRow<T extends RowRecord>({
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
 				className="rdt_TableRow"
-				extendedRowStyle={extendedRowStyle}
 				selected={hightlightSelected}
+				style={extendedRowStyle}
 			>
 				{selectableRows && (
 					<TableCellCheckbox

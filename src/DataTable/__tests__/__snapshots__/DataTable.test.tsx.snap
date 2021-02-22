@@ -10724,20 +10724,9 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 .c12 {
   font-weight: 400;
-  background-color: rgba(63,195,128,0.9);
 }
 
 .c12 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c13 {
-  font-weight: 400;
-}
-
-.c13 div:first-child {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -10871,6 +10860,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
+            style="background-color: rgba(63, 195, 128, 0.9);"
           >
             <div
               data-tag="allowRowEvents"
@@ -10885,7 +10875,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c11 c6 c13 rdt_TableCell"
+            class="c11 c6 c12 rdt_TableCell"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -11263,20 +11253,9 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 .c12 {
   font-weight: 400;
-  color: pink;
 }
 
 .c12 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c13 {
-  font-weight: 400;
-}
-
-.c13 div:first-child {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -11410,6 +11389,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
+            style="color: pink;"
           >
             <div
               data-tag="allowRowEvents"
@@ -11424,7 +11404,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
           role="row"
         >
           <div
-            class="c11 c6 c13 rdt_TableCell"
+            class="c11 c6 c12 rdt_TableCell"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -11828,41 +11808,9 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   color: rgba(0,0,0,0.87);
   background-color: #FFFFFF;
   min-height: 48px;
-  background-color: rgba(63,195,128,0.9);
-  color: white;
 }
 
 .c10:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
-.c10:hover {
-  cursor: pointer;
-}
-
-.c13 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c13:not(:last-of-type) {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -11964,6 +11912,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           class="c10 rdt_TableRow"
           id="row-1"
           role="row"
+          style="background-color: rgba(63, 195, 128, 0.9); color: white;"
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
@@ -11979,7 +11928,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
           </div>
         </div>
         <div
-          class="c13 rdt_TableRow"
+          class="c10 rdt_TableRow"
           id="row-2"
           role="row"
         >
@@ -26651,41 +26600,9 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   color: rgba(0,0,0,0.87);
   background-color: #FFFFFF;
   min-height: 48px;
-  background-color: rgba(63,195,128,0.9);
-  color: white;
 }
 
 .c12:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
-.c12:hover {
-  cursor: pointer;
-}
-
-.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c18:not(:last-of-type) {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
@@ -26797,6 +26714,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           class="c12 rdt_TableRow"
           id="row-1"
           role="row"
+          style="background-color: rgba(63, 195, 128, 0.9); color: white;"
         >
           <div
             class="c13 c14"
@@ -26850,7 +26768,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           </div>
         </div>
         <div
-          class="c18 rdt_TableRow"
+          class="c12 rdt_TableRow"
           id="row-2"
           role="row"
         >
