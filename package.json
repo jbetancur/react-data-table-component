@@ -41,12 +41,12 @@
   "devDependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@storybook/addon-a11y": "^6.1.18",
-    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-a11y": "^6.1.19",
+    "@storybook/addon-actions": "^6.1.19",
     "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-links": "^6.1.18",
-    "@storybook/addon-storysource": "^6.1.18",
-    "@storybook/react": "^6.1.18",
+    "@storybook/addon-links": "^6.1.19",
+    "@storybook/addon-storysource": "^6.1.19",
+    "@storybook/react": "^6.1.19",
     "@testing-library/react": "^11.2.5",
     "@types/faker": "^5.1.7",
     "@types/jest": "^26.0.20",
@@ -56,8 +56,8 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/styled-components": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "codecov": "^3.8.1",
@@ -101,7 +101,7 @@
     "lodash.orderby": "^4.6.0"
   },
   "peerDependencies": {
-    "react": ">= ^16.8.0 || >= ^17.0.0",
-    "styled-components": ">= ^4.0.0 || >= ^5.0.0"
+    "react": "^16.8.0 || ^17.0.0",
+    "styled-components": "^4.0.0 || ^5.0.0"
   }
 }
