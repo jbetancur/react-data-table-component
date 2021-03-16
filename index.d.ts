@@ -212,6 +212,8 @@ export interface IDataTableProps<T = any> {
   theme?: string;
   conditionalRowStyles?: IDataTableConditionalRowStyles<T>[];
   direction?: 'ltr' | 'rtl' | 'auto';
+  footer?: T;
+  footerBold?: boolean;
 }
 
 export interface ITheme {
