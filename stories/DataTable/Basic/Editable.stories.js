@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
@@ -112,7 +112,7 @@ const BasicTable = () => {
     };
   });
 
-  const createColumns = () => {
+  const createColumns = useCallback(() => {
     return [
       ...mergedColumns,
       {
@@ -133,7 +133,8 @@ const BasicTable = () => {
         },
       },
     ];
-  };
+  }, [mergedColumns]);
+
   return (
     <DataTable
       title="Movie List"
