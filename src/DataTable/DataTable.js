@@ -335,7 +335,6 @@ const DataTable = memo(({
                     className="rdt_TableHeadRow"
                     role="row"
                     dense={dense}
-                    disabled={progressPending || data.length === 0}
                   >
                     {selectableRows && (
                       showSelectAll
@@ -349,6 +348,7 @@ const DataTable = memo(({
                       <TableCol
                         key={column.id}
                         column={column}
+                        disabled={progressPending || data.length === 0}
                         sortIcon={sortIcon}
                       />
                     ))}

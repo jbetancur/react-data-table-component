@@ -15,12 +15,12 @@ const ColumnSortable = styled.div`
   height: 100%;
   line-height: 1;
   user-select: none;
-  ${props => (props.sortActive ? props.theme.headCells.activeSortStyle : props.theme.headCells.inactiveSortStyle)};
+  ${props => (props.sortActive && props.sortable ? props.theme.headCells.activeSortStyle : props.theme.headCells.inactiveSortStyle)};
 
   span.__rdt_custom_sort_icon__ {
     i,
     svg {
-      ${props => (props.sortActive ? 'opacity: 1' : 'opacity: 0')};
+      ${props => (props.sortActive && props.sortable ? 'opacity: 1' : 'opacity: 0')};
       color: inherit;
       font-size: 18px !important;
       height: 18px !important;
@@ -50,6 +50,7 @@ const ColumnSortable = styled.div`
 
 const TableCol = memo(({
   column,
+  disabled,
   sortIcon,
 }) => {
   const { dispatch, pagination, paginationServer, sortColumn, sortDirection, sortServer, selectableRowsVisibleOnly, persistSelectedOnSort } = useTableContext();
@@ -119,18 +120,18 @@ const TableCol = memo(({
           role="columnheader"
           tabIndex={0}
           className="rdt_TableCol_Sortable"
-          onClick={handleSortChange}
-          onKeyPress={handleKeyPress}
-          sortActive={sortActive}
+          onClick={!disabled ? handleSortChange : undefined}
+          onKeyPress={!disabled ? handleKeyPress : undefined}
+          sortActive={!disabled && sortActive}
           column={column}
         >
-          {customSortIconRight && renderCustomSortIcon()}
-          {nativeSortIconRight && renderNativeSortIcon(sortActive)}
+          {!disabled && customSortIconRight && renderCustomSortIcon()}
+          {!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
           <div>
             {column.name}
           </div>
-          {customSortIconLeft && renderCustomSortIcon()}
-          {nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+          {!disabled && customSortIconLeft && renderCustomSortIcon()}
+          {!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
         </ColumnSortable>
       )}
     </TableColStyle>
@@ -139,10 +140,15 @@ const TableCol = memo(({
 
 TableCol.propTypes = {
   column: PropTypes.object.isRequired,
+  disabled: PropTypes.bool,
   sortIcon: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object,
   ]).isRequired,
+};
+
+TableCol.defaultProps = {
+  disabled: false,
 };
 
 export default TableCol;

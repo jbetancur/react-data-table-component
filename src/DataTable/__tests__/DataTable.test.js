@@ -545,6 +545,31 @@ describe('DataTable::progress/nodata', () => {
 
       expect(container.firstChild).toMatchSnapshot();
     });
+
+    test('should render correctly when persistTableHead and no data', () => {
+      const functionHadToBeClicked = jest.fn(() => true);
+      const onSortMock = jest.fn();
+
+      const mock = dataMock({
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
+        name: (<div id="testColName" onClick={functionHadToBeClicked}>Test</div>),
+        sortable: false,
+      });
+
+      const { container } = render(
+        <DataTable
+          data={[]}
+          columns={mock.columns}
+          onSortMock={onSortMock}
+          persistTableHead
+          selectableRows
+        />,
+      );
+
+      fireEvent.click(container.querySelector('#testColName'));
+      expect(functionHadToBeClicked.mock.calls.length).toBe(1);
+      expect(onSortMock.mock.calls.length).toBe(0);
+    });
   });
 
   describe('when noTableHead', () => {
