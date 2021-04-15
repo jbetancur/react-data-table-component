@@ -13418,6 +13418,7 @@ exports[`DataTable::direction should render correctly when direction is rtl when
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
+  min-width: 48px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -13816,6 +13817,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -14241,6 +14243,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -14666,6 +14669,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -15338,6 +15342,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
+  min-width: 48px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -15735,6 +15740,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -16156,6 +16162,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -16560,6 +16567,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
@@ -20632,6 +20640,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
+  min-width: 48px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -20977,6 +20986,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
+  min-width: 48px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -21347,6 +21357,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
+  min-width: 48px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -26549,6 +26560,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 .c14 {
   white-space: nowrap;
   font-weight: 400;
+  min-width: 48px;
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
