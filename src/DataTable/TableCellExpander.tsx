@@ -7,6 +7,7 @@ import { ExpandableIcon } from './types';
 const TableCellExpanderStyle = styled(CellBase)`
 	white-space: nowrap;
 	font-weight: 400;
+	min-width: 48px;
 	${({ theme }) => theme.expanderCell.style};
 `;
 
