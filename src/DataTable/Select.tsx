@@ -5,10 +5,10 @@ import DropDownIcon from '../icons/Dropdown';
 const SelectControl = styled.select`
 	cursor: pointer;
 	height: 24px;
-	min-width: 24px;
+	max-width: 100%;
 	user-select: none;
 	padding-left: 8px;
-	padding-right: 12px;
+	padding-right: 24px;
 	box-sizing: content-box;
 	font-size: inherit;
 	color: inherit;
@@ -16,6 +16,7 @@ const SelectControl = styled.select`
 	background-color: transparent;
 	appearance: none;
 	direction: ltr;
+	flex-shrink: 0;
 
 	&::-ms-expand {
 		display: none;
