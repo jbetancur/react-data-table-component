@@ -6,6 +6,7 @@ import { RowRecord, RowState, SingleRowAction } from './types';
 
 const TableCellCheckboxStyle = styled(CellBase)`
 	flex: 0 0 48px;
+	min-width: 48px;
 	justify-content: center;
 	align-items: center;
 	user-select: none;
