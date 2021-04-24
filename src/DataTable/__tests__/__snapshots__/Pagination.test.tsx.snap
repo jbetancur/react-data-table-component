@@ -4,13 +4,13 @@ exports[`should render correctly with default props 1`] = `
 .c4 {
   cursor: pointer;
   height: 24px;
-  min-width: 24px;
+  max-width: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
-  padding-right: 12px;
+  padding-right: 24px;
   box-sizing: content-box;
   font-size: inherit;
   color: inherit;
@@ -20,6 +20,9 @@ exports[`should render correctly with default props 1`] = `
   -moz-appearance: none;
   appearance: none;
   direction: ltr;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4::-ms-expand {
