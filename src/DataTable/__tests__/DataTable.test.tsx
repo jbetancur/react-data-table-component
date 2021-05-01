@@ -567,7 +567,7 @@ describe('DataTable::sorting', () => {
 
 		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
 
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
+		expect(onSortMock).toBeCalledWith({ selectedColumn: { id: 1, ...mock.columns[0] }, sortDirection: 'asc' });
 	});
 
 	test('should call onSort with the correct params if the sort is clicked twice', () => {
@@ -576,10 +576,10 @@ describe('DataTable::sorting', () => {
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
 		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
+		expect(onSortMock).toBeCalledWith({ selectedColumn: { id: 1, ...mock.columns[0] }, sortDirection: 'asc' });
 
 		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'desc');
+		expect(onSortMock).toBeCalledWith({ selectedColumn: { id: 1, ...mock.columns[0] }, sortDirection: 'desc' });
 	});
 
 	test('should render correctly with a custom sortIcon', () => {
@@ -1051,8 +1051,10 @@ describe('DataTable::selectableRows', () => {
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				selectableRowsVisibleOnly
 				onSelectedRowsChange={onSelectedRowsChange}
@@ -1097,8 +1099,10 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1116,9 +1120,11 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationDefaultPage={2}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					defaultPage: 2,
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1136,8 +1142,10 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1154,9 +1162,11 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationDefaultPage={2}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					defaultPage: 2,
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1174,8 +1184,10 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1195,8 +1207,10 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1209,14 +1223,21 @@ describe('DataTable::Pagination', () => {
 				data={mockOneDeleted}
 				columns={mock.columns}
 				onChangePage={onChangePageMock}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
 
 		expect(container.firstChild).toMatchSnapshot();
-		expect(onChangePageMock).toBeCalledWith(1, 1);
+		expect(onChangePageMock).toBeCalledWith({
+			page: 1,
+			selectedColumn: { name: '' },
+			sortDirection: 'asc',
+			totalRows: 1,
+		});
 	});
 
 	test('should change the page position when using paginationServer if the last item is removed from a page', () => {
@@ -1229,11 +1250,13 @@ describe('DataTable::Pagination', () => {
 				data={mock.data}
 				columns={mock.columns}
 				onChangePage={onChangePageMock}
-				paginationPerPage={1}
-				paginationTotalRows={2}
-				paginationRowsPerPageOptions={[1, 2]}
 				onChangeRowsPerPage={onChangeRowsPerPageMock}
+				paginationServerOptions={{ totalRows: 2 }}
 				paginationServer
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1246,17 +1269,24 @@ describe('DataTable::Pagination', () => {
 				data={mockOneDeleted}
 				columns={mock.columns}
 				onChangePage={onChangePageMock}
-				paginationPerPage={1}
-				paginationTotalRows={1}
-				paginationRowsPerPageOptions={[1, 2]}
 				onChangeRowsPerPage={onChangeRowsPerPageMock}
+				paginationServerOptions={{ totalRows: 1 }}
 				paginationServer
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
 
 		expect(container).toMatchSnapshot();
-		expect(onChangePageMock).toBeCalledWith(1, 1);
+		expect(onChangePageMock).toBeCalledWith({
+			page: 1,
+			selectedColumn: { name: '' },
+			sortDirection: 'asc',
+			totalRows: 1,
+		});
 	});
 
 	test('should not change the page position when using paginationServer if there is only one page', () => {
@@ -1267,8 +1297,10 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 				paginationServer
 			/>,
@@ -1282,8 +1314,10 @@ describe('DataTable::Pagination', () => {
 				data={mockOneDeleted}
 				columns={mock.columns}
 				onChangePage={onChangePageMock}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 				paginationServer
 			/>,
@@ -1300,14 +1334,21 @@ describe('DataTable::Pagination', () => {
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				onChangePage={onChangePageMock}
 			/>,
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(2, 2);
+		expect(onChangePageMock).toBeCalledWith({
+			page: 2,
+			selectedColumn: { name: '' },
+			sortDirection: 'asc',
+			totalRows: 2,
+		});
 	});
 
 	test('should call onChangePage with the correct values if paged backward', () => {
@@ -1318,17 +1359,29 @@ describe('DataTable::Pagination', () => {
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				onChangePage={onChangePageMock}
 			/>,
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(2, 2);
+		expect(onChangePageMock).toBeCalledWith({
+			page: 2,
+			selectedColumn: { name: '' },
+			sortDirection: 'asc',
+			totalRows: 2,
+		});
 
 		fireEvent.click(container.querySelector('button#pagination-previous-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(1, 2);
+		expect(onChangePageMock).toBeCalledWith({
+			page: 1,
+			selectedColumn: { name: '' },
+			sortDirection: 'asc',
+			totalRows: 2,
+		});
 	});
 
 	test('should not deselect all rows if using pagination and selectedRows', () => {
@@ -1338,8 +1391,10 @@ describe('DataTable::Pagination', () => {
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 			/>,
 		);
@@ -1360,8 +1415,10 @@ describe('DataTable::Pagination', () => {
 				columns={mock.columns}
 				pagination
 				paginationServer
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 			/>,
 		);
@@ -1383,8 +1440,10 @@ describe('DataTable::Pagination', () => {
 				columns={mock.columns}
 				pagination
 				paginationServer
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				onSelectedRowsChange={onSelectedRowsChange}
 			/>,
@@ -1407,8 +1466,10 @@ describe('DataTable::Pagination', () => {
 				pagination
 				paginationServer
 				paginationServerOptions={{ persistSelectedOnPageChange: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				onSelectedRowsChange={onSelectedRowsChange}
 			/>,
@@ -1430,8 +1491,10 @@ describe('DataTable::Pagination', () => {
 				pagination
 				paginationServer
 				paginationServerOptions={{ persistSelectedOnPageChange: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 			/>,
 		);
@@ -1450,8 +1513,10 @@ describe('DataTable::Pagination', () => {
 				onSort={onSortMock}
 				pagination
 				paginationServer
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				onSelectedRowsChange={onSelectedRowsChange}
 			/>,
@@ -1477,8 +1542,10 @@ describe('DataTable::Pagination', () => {
 				pagination
 				paginationServer
 				paginationServerOptions={{ persistSelectedOnSort: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				onSelectedRowsChange={onSelectedRowsChange}
 			/>,
@@ -1509,8 +1576,10 @@ describe('DataTable::Pagination', () => {
 				pagination
 				paginationServer
 				paginationServerOptions={{ persistSelectedOnSort: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				onSelectedRowsChange={onSelectedRowsChange}
 			/>,
@@ -1544,8 +1613,10 @@ describe('DataTable::Pagination', () => {
 				pagination
 				paginationServer
 				paginationServerOptions={{ persistSelectedOnSort: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				onSelectedRowsChange={onSelectedRowsChange}
 			/>,
@@ -1588,8 +1659,10 @@ describe('DataTable::Pagination', () => {
 				pagination
 				paginationServer
 				paginationServerOptions={{ persistSelectedOnSort: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 				selectableRowSelected={row => row.selected}
 				onSelectedRowsChange={onSelectedRowsChange}
@@ -1625,8 +1698,10 @@ describe('DataTable::Pagination', () => {
 				columns={mock.columns}
 				pagination
 				paginationServer
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				selectableRows
 			/>,
 		);
@@ -1639,25 +1714,6 @@ describe('DataTable::Pagination', () => {
 		expect(allCheck.checked).toBe(false);
 	});
 
-	test('should call onChangePage if paged with an the optional paginationTotalRows prop', () => {
-		const onChangePageMock = jest.fn();
-		const mock = dataMock();
-		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				pagination
-				paginationTotalRows={10}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
-				onChangePage={onChangePageMock}
-			/>,
-		);
-
-		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(2, 10);
-	});
-
 	test('should call onChangeRowsPerPage if paged', () => {
 		const onChangeRowsPerPageMock = jest.fn();
 		const mock = dataMock();
@@ -1666,7 +1722,7 @@ describe('DataTable::Pagination', () => {
 		);
 
 		fireEvent.change(container.querySelector('select') as HTMLSelectElement, { target: { value: 20 } });
-		expect(onChangeRowsPerPageMock).toBeCalledWith(20, 1);
+		expect(onChangeRowsPerPageMock).toBeCalledWith({ page: 1, rowsPerPage: 20 });
 	});
 
 	test('should call onChangeRowsPerPage if paged when paginationServer is true', () => {
@@ -1683,7 +1739,7 @@ describe('DataTable::Pagination', () => {
 		);
 
 		fireEvent.change(container.querySelector('select') as HTMLSelectElement, { target: { value: 20 } });
-		expect(onChangeRowsPerPageMock).toBeCalledWith(20, 1);
+		expect(onChangeRowsPerPageMock).toBeCalledWith({ page: 1, rowsPerPage: 20 });
 	});
 
 	test('should render correctly when a paginationComponentOptions are passed', () => {
@@ -1693,7 +1749,9 @@ describe('DataTable::Pagination', () => {
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationComponentOptions={{ rowsPerPageText: 'Fila por página' }}
+				paginationOptions={{
+					rowsPerPageText: 'Fila por página',
+				}}
 			/>,
 		);
 
@@ -1703,12 +1761,7 @@ describe('DataTable::Pagination', () => {
 	test('should render correctly when a paginationComponentOptions to hide the per page dropdown are passed', () => {
 		const mock = dataMock();
 		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				pagination
-				paginationComponentOptions={{ noRowsPerPage: true }}
-			/>,
+			<DataTable data={mock.data} columns={mock.columns} pagination paginationOptions={{ noRowsPerPage: true }} />,
 		);
 
 		expect(container.firstChild).toMatchSnapshot();
@@ -1717,12 +1770,7 @@ describe('DataTable::Pagination', () => {
 	test('should render correctly when a paginationComponentOptions selectAllRowsItem is true', () => {
 		const mock = dataMock();
 		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				pagination
-				paginationComponentOptions={{ selectAllRowsItem: true }}
-			/>,
+			<DataTable data={mock.data} columns={mock.columns} pagination paginationOptions={{ selectAllRowsItem: true }} />,
 		);
 
 		expect(container.firstChild).toMatchSnapshot();
@@ -1735,7 +1783,7 @@ describe('DataTable::Pagination', () => {
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationComponentOptions={{ selectAllRowsItem: true, selectAllRowsItemText: 'Todos' }}
+				paginationOptions={{ selectAllRowsItem: true, selectAllRowsItemText: 'Todos' }}
 			/>,
 		);
 
@@ -1748,8 +1796,11 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1} // force 2 pages
-				paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+				// force 2 pages
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+				}}
 				pagination
 			/>,
 		);
@@ -1760,10 +1811,13 @@ describe('DataTable::Pagination', () => {
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
-				paginationPerPage={1} // force 2 pages
-				paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+				// force 2 pages
+				paginationOptions={{
+					perPage: 1,
+					rowsPerPageOptions: [1, 2],
+					resetDefaultPage: true,
+				}}
 				pagination
-				paginationResetDefaultPage // this will toggle true and reset to page 1
 			/>,
 		);
 

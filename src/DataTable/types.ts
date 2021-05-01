@@ -1,8 +1,6 @@
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
 
-export type ChangePage = (page: number, totalRows: number) => void;
-export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
 export type DefaultSortField = string | number | null | undefined;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
@@ -13,6 +11,29 @@ export type SortDirection = 'asc' | 'desc';
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RowRecord = Record<string, any>;
+
+export type ChangePageProps = {
+	page: number;
+	totalRows: number;
+	selectedColumn: TableColumnBase;
+	sortDirection: SortDirection;
+};
+
+export type SortProps<T> = {
+	selectedColumn: TableColumn<T>;
+	sortDirection: SortDirection;
+};
+
+export type SelectedRowsProps<T> = {
+	allSelected: boolean;
+	selectedCount: number;
+	selectedRows: T[];
+};
+
+export type ChangeRowsPerPageProps = {
+	rowsPerPage: number;
+	page: number;
+};
 
 export type TableProps<T = RowRecord> = {
 	/** actions */
@@ -49,30 +70,12 @@ export type TableProps<T = RowRecord> = {
 	noHeader?: boolean;
 	noTableHead?: boolean;
 	offset?: string;
-	onChangePage?: ChangePage;
-	onChangeRowsPerPage?: ChangeRowsPerPage;
-	onRowClicked?: (row: T, e: React.MouseEvent) => void;
-	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
-	onRowExpandToggled?: ExpandRowToggled<T>;
-	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort?: (column: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
 	overflowY?: boolean;
 	overflowYOffset?: string;
 	pagination?: boolean;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	paginationComponent?: React.ComponentType<any>;
-	paginationComponentOptions?: PaginationOptions;
-	paginationDefaultPage?: number;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
-	paginationPerPage?: number;
-	paginationResetDefaultPage?: boolean;
-	paginationRowsPerPageOptions?: number[];
+	paginationOptions?: PaginationOptions;
 	paginationServer?: boolean;
 	paginationServerOptions?: PaginationServerOptions;
-	paginationTotalRows?: number;
 	persistTableHead?: boolean;
 	pointerOnHover?: boolean;
 	progressComponent?: React.ReactNode;
@@ -100,6 +103,13 @@ export type TableProps<T = RowRecord> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	onChangePage?: (props: ChangePageProps) => void;
+	onChangeRowsPerPage?: (props: ChangeRowsPerPageProps) => void;
+	onRowClicked?: (row: T, e: React.MouseEvent) => void;
+	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
+	onRowExpandToggled?: ExpandRowToggled<T>;
+	onSelectedRowsChange?: (props: SelectedRowsProps<T>) => void;
+	onSort?: (props: SortProps<T>) => void;
 };
 
 export interface TableColumnBase {
@@ -129,6 +139,7 @@ export interface TableColumn<T = RowRecord> extends TableColumnBase {
 	format?: Format<T> | undefined;
 	selector?: Selector<T>;
 	sortFunction?: ColumnSortFunction<T>;
+	sortServerField?: string;
 }
 
 export interface ConditionalStyles<T = RowRecord> {
@@ -197,6 +208,16 @@ export interface TableStyles {
 }
 
 export interface PaginationOptions {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	component?: React.ComponentType<any> | null;
+	defaultPage?: number;
+	iconFirstPage?: React.ReactNode;
+	iconLastPage?: React.ReactNode;
+	iconNext?: React.ReactNode;
+	iconPrevious?: React.ReactNode;
+	perPage?: number;
+	resetDefaultPage?: boolean;
+	rowsPerPageOptions?: number[];
 	noRowsPerPage?: boolean;
 	rowsPerPageText?: string;
 	rangeSeparatorText?: string;
@@ -207,6 +228,7 @@ export interface PaginationOptions {
 export interface PaginationServerOptions {
 	persistSelectedOnSort?: boolean;
 	persistSelectedOnPageChange?: boolean;
+	totalRows?: number;
 }
 
 export interface ExpandableIcon {

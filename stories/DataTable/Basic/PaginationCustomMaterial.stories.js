@@ -103,14 +103,12 @@ CustomMaterialPagination.propTypes = {
 	currentPage: PropTypes.number.isRequired, // the current page state from DataTable
 };
 
+const paginationOptions = {
+	component: CustomMaterialPagination,
+};
+
 const CustomPaginationTable = () => (
-	<DataTable
-		title="Movie List"
-		columns={columns}
-		data={data}
-		pagination
-		paginationComponent={CustomMaterialPagination}
-	/>
+	<DataTable title="Movie List" columns={columns} data={data} pagination paginationOptions={paginationOptions} />
 );
 
 storiesOf('Pagination', module).add('Custom Component (Material UI)', CustomPaginationTable);

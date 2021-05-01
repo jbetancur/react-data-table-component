@@ -8,14 +8,6 @@ import { Direction } from './constants';
 import { PaginationOptions } from './types';
 import { defaultProps } from './defaultProps';
 
-const defaultComponentOptions = {
-	rowsPerPageText: 'Rows per page:',
-	rangeSeparatorText: 'of',
-	noRowsPerPage: false,
-	selectAllRowsItem: false,
-	selectAllRowsItemText: 'All',
-};
-
 const PaginationWrapper = styled.nav`
 	display: flex;
 	flex: 1 1 auto;
@@ -68,12 +60,7 @@ interface PaginationProps {
 	rowCount: number;
 	currentPage: number;
 	direction?: Direction;
-	paginationRowsPerPageOptions?: number[];
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
-	paginationComponentOptions?: PaginationOptions;
+	paginationOptions: Required<PaginationOptions>;
 	onChangePage: (page: number) => void;
 	onChangeRowsPerPage: (numRows: number, currentPage: number) => void;
 }
@@ -83,12 +70,7 @@ function Pagination({
 	rowCount,
 	currentPage,
 	direction = defaultProps.direction,
-	paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
-	paginationIconLastPage = defaultProps.paginationIconLastPage,
-	paginationIconFirstPage = defaultProps.paginationIconFirstPage,
-	paginationIconNext = defaultProps.paginationIconNext,
-	paginationIconPrevious = defaultProps.paginationIconPrevious,
-	paginationComponentOptions = defaultProps.paginationComponentOptions,
+	paginationOptions,
 	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 	onChangePage = defaultProps.onChangePage,
 }: PaginationProps): JSX.Element {
@@ -100,11 +82,11 @@ function Pagination({
 	const firstIndex = lastIndex - rowsPerPage + 1;
 	const disabledLesser = currentPage === 1;
 	const disabledGreater = currentPage === numPages;
-	const options = { ...defaultComponentOptions, ...paginationComponentOptions };
+
 	const range =
 		currentPage === numPages
-			? `${firstIndex}-${rowCount} ${options.rangeSeparatorText} ${rowCount}`
-			: `${firstIndex}-${lastIndex} ${options.rangeSeparatorText} ${rowCount}`;
+			? `${firstIndex}-${rowCount} ${paginationOptions.rangeSeparatorText} ${rowCount}`
+			: `${firstIndex}-${lastIndex} ${paginationOptions.rangeSeparatorText} ${rowCount}`;
 
 	const handlePrevious = React.useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
 	const handleNext = React.useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
@@ -119,31 +101,32 @@ function Pagination({
 		[currentPage, onChangeRowsPerPage],
 	);
 
-	const selectOptions = paginationRowsPerPageOptions.map((num: number) => (
-		<option key={num} value={num}>
-			{num}
-		</option>
-	));
+	const selectOptions =
+		paginationOptions.rowsPerPageOptions.map((num: number) => (
+			<option key={num} value={num}>
+				{num}
+			</option>
+		)) || [];
 
-	if (options.selectAllRowsItem) {
+	if (paginationOptions.selectAllRowsItem) {
 		selectOptions.push(
 			<option key={-1} value={rowCount}>
-				{options.selectAllRowsItemText}
+				{paginationOptions.selectAllRowsItemText}
 			</option>,
 		);
 	}
 
 	const select = (
-		<Select onChange={handleRowsPerPage} defaultValue={rowsPerPage} aria-label={options.rowsPerPageText}>
+		<Select onChange={handleRowsPerPage} defaultValue={rowsPerPage} aria-label={paginationOptions.rowsPerPageText}>
 			{selectOptions}
 		</Select>
 	);
 
 	return (
 		<PaginationWrapper className="rdt_Pagination">
-			{!options.noRowsPerPage && shouldShow && (
+			{!paginationOptions.noRowsPerPage && shouldShow && (
 				<>
-					<RowLabel>{options.rowsPerPageText}</RowLabel>
+					<RowLabel>{paginationOptions.rowsPerPageText}</RowLabel>
 					{select}
 				</>
 			)}
@@ -158,7 +141,7 @@ function Pagination({
 					disabled={disabledLesser}
 					isRTL={isRTL}
 				>
-					{paginationIconFirstPage}
+					{paginationOptions.iconFirstPage}
 				</Button>
 
 				<Button
@@ -170,7 +153,7 @@ function Pagination({
 					disabled={disabledLesser}
 					isRTL={isRTL}
 				>
-					{paginationIconPrevious}
+					{paginationOptions.iconPrevious}
 				</Button>
 
 				{!shouldShow && select}
@@ -184,7 +167,7 @@ function Pagination({
 					disabled={disabledGreater}
 					isRTL={isRTL}
 				>
-					{paginationIconNext}
+					{paginationOptions.iconNext}
 				</Button>
 
 				<Button
@@ -196,7 +179,7 @@ function Pagination({
 					disabled={disabledGreater}
 					isRTL={isRTL}
 				>
-					{paginationIconLastPage}
+					{paginationOptions.iconLastPage}
 				</Button>
 			</PageList>
 		</PaginationWrapper>

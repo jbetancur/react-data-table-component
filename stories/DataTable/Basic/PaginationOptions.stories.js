@@ -34,7 +34,7 @@ const BasicTable = () => (
 		columns={columns}
 		data={data}
 		pagination
-		paginationComponentOptions={paginationOptions}
+		paginationOptions={paginationOptions}
 	/>
 );
 

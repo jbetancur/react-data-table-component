@@ -6,17 +6,17 @@ import DataTable from '../../../src/index';
 const columns = [
 	{
 		name: 'First Name',
-		selector: 'first_name',
+		selector: row => row.first_name,
 		sortable: true,
 	},
 	{
 		name: 'Last Name',
-		selector: 'last_name',
+		selector: row => row.last_name,
 		sortable: true,
 	},
 	{
 		name: 'Email',
-		selector: 'email',
+		selector: row => row.email,
 		sortable: true,
 	},
 ];
@@ -44,7 +44,7 @@ class AdvancedPaginationTable extends Component {
 		});
 	}
 
-	handlePageChange = async page => {
+	handlePageChange = async ({ page }) => {
 		const { perPage } = this.state;
 
 		this.setState({ loading: true });
@@ -57,15 +57,15 @@ class AdvancedPaginationTable extends Component {
 		});
 	};
 
-	handlePerRowsChange = async (perPage, page) => {
+	handlePerRowsChange = async ({ page, rowsPerPage }) => {
 		this.setState({ loading: true });
 
-		const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${perPage}&delay=1`);
+		const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${rowsPerPage}&delay=1`);
 
 		this.setState({
 			loading: false,
 			data: response.data.data,
-			perPage,
+			perPage: rowsPerPage,
 		});
 	};
 
@@ -80,7 +80,9 @@ class AdvancedPaginationTable extends Component {
 				progressPending={loading}
 				pagination
 				paginationServer
-				paginationTotalRows={totalRows}
+				paginationServerOptions={{
+					totalRows,
+				}}
 				onChangeRowsPerPage={this.handlePerRowsChange}
 				onChangePage={this.handlePageChange}
 			/>

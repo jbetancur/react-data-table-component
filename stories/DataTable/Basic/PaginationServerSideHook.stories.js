@@ -6,17 +6,17 @@ import DataTable from '../../../src/index';
 const columns = [
 	{
 		name: 'First Name',
-		selector: 'first_name',
+		selector: row => row.first_name,
 		sortable: true,
 	},
 	{
 		name: 'Last Name',
-		selector: 'last_name',
+		selector: row => row.last_name,
 		sortable: true,
 	},
 	{
 		name: 'Email',
-		selector: 'email',
+		selector: row => row.email,
 		sortable: true,
 	},
 ];
@@ -27,7 +27,7 @@ const AdvancedPaginationTable = () => {
 	const [totalRows, setTotalRows] = useState(0);
 	const [perPage, setPerPage] = useState(10);
 
-	const fetchUsers = async page => {
+	const fetchUsers = async ({ page }) => {
 		setLoading(true);
 
 		const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${perPage}&delay=1`);
@@ -41,13 +41,13 @@ const AdvancedPaginationTable = () => {
 		fetchUsers(page);
 	};
 
-	const handlePerRowsChange = async (newPerPage, page) => {
+	const handlePerRowsChange = async ({ page, rowsPerPage }) => {
 		setLoading(true);
 
-		const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${newPerPage}&delay=1`);
+		const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${rowsPerPage}&delay=1`);
 
 		setData(response.data.data);
-		setPerPage(newPerPage);
+		setPerPage(rowsPerPage);
 		setLoading(false);
 	};
 
@@ -64,7 +64,9 @@ const AdvancedPaginationTable = () => {
 			progressPending={loading}
 			pagination
 			paginationServer
-			paginationTotalRows={totalRows}
+			paginationServerOptions={{
+				totalRows,
+			}}
 			selectableRows
 			onChangeRowsPerPage={handlePerRowsChange}
 			onChangePage={handlePageChange}

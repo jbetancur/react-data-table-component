@@ -56,19 +56,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		expandableIcon = defaultProps.expandableIcon,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 		onChangePage = defaultProps.onChangePage,
+		pagination = defaultProps.pagination,
+		paginationOptions = defaultProps.paginationOptions,
 		paginationServer = defaultProps.paginationServer,
 		paginationServerOptions = defaultProps.paginationServerOptions,
-		paginationTotalRows = defaultProps.paginationTotalRows,
-		paginationDefaultPage = defaultProps.paginationDefaultPage,
-		paginationResetDefaultPage = defaultProps.paginationResetDefaultPage,
-		paginationPerPage = defaultProps.paginationPerPage,
-		paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
-		paginationIconLastPage = defaultProps.paginationIconLastPage,
-		paginationIconFirstPage = defaultProps.paginationIconFirstPage,
-		paginationIconNext = defaultProps.paginationIconNext,
-		paginationIconPrevious = defaultProps.paginationIconPrevious,
-		paginationComponent = defaultProps.paginationComponent,
-		paginationComponentOptions = defaultProps.paginationComponentOptions,
 		responsive = defaultProps.responsive,
 		overflowY = defaultProps.overflowY,
 		overflowYOffset = defaultProps.overflowYOffset,
@@ -81,7 +72,6 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		noHeader = defaultProps.noHeader,
 		fixedHeader = defaultProps.fixedHeader,
 		fixedHeaderScrollHeight = defaultProps.fixedHeaderScrollHeight,
-		pagination = defaultProps.pagination,
 		subHeader = defaultProps.subHeader,
 		subHeaderAlign = defaultProps.subHeaderAlign,
 		subHeaderWrap = defaultProps.subHeaderWrap,
@@ -121,6 +111,9 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		defaultSortFieldId,
 	]);
 
+	// merge object based related properties
+	const paginationOptionsMerged = { ...defaultProps.paginationOptions, ...paginationOptions };
+
 	// Run once
 	const initialState: TableState<T> = React.useMemo(
 		() => ({
@@ -132,8 +125,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 			selectedRows: [],
 			selectedColumn: defaultSortColumn || { name: '' },
 			sortDirection: defaultSortDirection,
-			currentPage: paginationDefaultPage,
-			rowsPerPage: paginationPerPage,
+			currentPage: paginationOptionsMerged.defaultPage,
+			rowsPerPage: paginationOptionsMerged.perPage,
 			selectedRowsFlag: false,
 			contextMessage: defaultProps.contextMessage,
 		}),
@@ -146,10 +139,12 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, initialState);
 
-	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
-	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
+	const mergeSelections = !!(
+		paginationServer &&
+		(paginationServerOptions.persistSelectedOnPageChange || paginationServerOptions.persistSelectedOnSort)
+	);
 	const enabledPagination = pagination && !progressPending && data.length > 0;
-	const Pagination = paginationComponent || NativePagination;
+	const Pagination = paginationOptionsMerged.component || NativePagination;
 
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const expandableRowsComponentMemo = React.useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
@@ -189,11 +184,11 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 			page,
 			paginationServer,
 			visibleOnly: selectableRowsVisibleOnly,
-			persistSelectedOnPageChange,
+			persistSelectedOnPageChange: paginationServerOptions.persistSelectedOnPageChange || false,
 		});
 
 	const handleChangeRowsPerPage = (newRowsPerPage: number) => {
-		const rowCount = paginationTotalRows || calculatedRows.length;
+		const rowCount = paginationServerOptions.totalRows || calculatedRows.length;
 		const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
 		const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
@@ -247,30 +242,36 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	}, [selectedCount]);
 
 	useDidUpdateEffect(() => {
-		onChangePage(currentPage, paginationTotalRows || rows.length);
+		onChangePage({
+			page: currentPage,
+			totalRows: paginationServerOptions.totalRows || rows.length,
+			selectedColumn,
+			sortDirection,
+		});
 	}, [currentPage]);
 
 	useDidUpdateEffect(() => {
-		onChangeRowsPerPage(rowsPerPage, currentPage);
+		onChangeRowsPerPage({ rowsPerPage, page: currentPage });
 	}, [rowsPerPage]);
 
 	useDidUpdateEffect(() => {
-		onSort(selectedColumn, sortDirection);
+		onSort({ selectedColumn, sortDirection });
 	}, [selectedColumn, sortDirection]);
 
 	useDidUpdateEffect(() => {
-		handleChangePage(paginationDefaultPage);
-	}, [paginationDefaultPage, paginationResetDefaultPage]);
+		handleChangePage(paginationOptionsMerged.defaultPage || 1);
+	}, [paginationOptionsMerged.defaultPage, paginationOptionsMerged.resetDefaultPage]);
 
 	useDidUpdateEffect(() => {
-		if (pagination && paginationServer && paginationTotalRows > 0) {
-			const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
+		if (pagination && paginationServer) {
+			const updatedPage = getNumberOfPages(paginationServerOptions?.totalRows || 0, rowsPerPage);
 			const recalculatedPage = recalculatePage(currentPage, updatedPage);
+
 			if (currentPage !== recalculatedPage) {
 				handleChangePage(recalculatedPage);
 			}
 		}
-	}, [paginationTotalRows]);
+	}, [paginationServerOptions.totalRows]);
 
 	React.useEffect(() => {
 		dispatch({
@@ -297,7 +298,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	}, [rows]);
 
 	const rowData = selectableRowsVisibleOnly ? calculatedRows : rows;
-	const showSelectAll = persistSelectedOnPageChange || selectableRowsNoSelectAll;
+	const showSelectAll = paginationServerOptions.persistSelectedOnPageChange || selectableRowsNoSelectAll;
 
 	return (
 		<ThemeProvider theme={currentTheme}>
@@ -358,7 +359,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											rows={rows}
 											pagination={pagination}
 											paginationServer={paginationServer}
-											persistSelectedOnSort={persistSelectedOnSort}
+											persistSelectedOnSort={paginationServerOptions.persistSelectedOnSort || false}
 											selectableRowsVisibleOnly={selectableRowsVisibleOnly}
 											selectedColumn={selectedColumn}
 											sortFunction={sortFunction}
@@ -438,16 +439,11 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 					<Pagination
 						onChangePage={handleChangePage}
 						onChangeRowsPerPage={handleChangeRowsPerPage}
-						rowCount={paginationTotalRows || rows.length}
+						rowCount={paginationServerOptions.totalRows || rows.length}
 						currentPage={currentPage}
 						rowsPerPage={rowsPerPage}
 						direction={direction}
-						paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-						paginationIconLastPage={paginationIconLastPage}
-						paginationIconFirstPage={paginationIconFirstPage}
-						paginationIconNext={paginationIconNext}
-						paginationIconPrevious={paginationIconPrevious}
-						paginationComponentOptions={paginationComponentOptions}
+						paginationOptions={paginationOptionsMerged}
 					/>
 				</div>
 			)}
@@ -455,4 +451,5 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	);
 }
 
-export default React.memo(DataTable) as typeof DataTable;
+// export default React.memo(DataTable) as typeof DataTable;
+export default DataTable;
