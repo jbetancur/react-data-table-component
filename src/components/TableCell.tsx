@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css, CSSObject } from 'styled-components';
 import { Cell } from './Cell';
-import { TableColumnBase } from './types';
+import { TableColumnBase } from '../types';
 
 interface TableCellStyleProps {
 	renderAsCell: boolean | undefined;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { handleFunctionProps, noop } from './util';
+import { handleFunctionProps, noop } from '../util';
 
 const defaultComponentName = 'input';
 

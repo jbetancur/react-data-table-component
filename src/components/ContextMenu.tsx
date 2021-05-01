@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { detectRTL } from './util';
-import { Direction } from './constants';
-import { ContextMessage } from './types';
+import { detectRTL } from '../util';
+import { Direction } from '../constants';
+import { ContextMessage } from '../types';
 
 const Title = styled.div`
 	display: flex;

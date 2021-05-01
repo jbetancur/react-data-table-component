@@ -226,35 +226,37 @@ const KitchenSink = () => {
 				title="Movie List"
 				columns={columns}
 				data={data}
-				defaultSortField="title"
-				selectableRows={selectableRows}
-				selectableRowsNoSelectAll={noSelectAll}
-				selectableRowsHighlight={selectableRowsHighlight}
-				selectableRowsVisibleOnly={selectableRowsVisibleOnly}
-				expandableRows={expandableRows}
-				expandOnRowClicked={expandOnRowClick}
-				pagination={pagination}
-				highlightOnHover={highlight}
-				striped={striped}
-				pointerOnHover={pointer}
-				dense={dense}
-				noTableHead={tableHead}
-				persistTableHead={persist}
-				progressPending={loading}
-				noHeader={noHeader}
-				subHeader={subHeader}
-				subHeaderComponent={
-					<div style={{ display: 'flex', alignItems: 'center' }}>
-						<TextField id="outlined-basic" label="Search" variant="outlined" size="small" style={{ margin: '5px' }} />
-						<Icon1 style={{ margin: '5px' }} color="action" />
-						<Icon2 style={{ margin: '5px' }} color="action" />
-						<Icon3 style={{ margin: '5px' }} color="action" />
-					</div>
-				}
-				subHeaderAlign={subHeaderAlign}
-				fixedHeader={fixedHeader}
-				fixedHeaderScrollHeight="300px"
-				direction={directionValue}
+				options={{
+					defaultSortField: 'title',
+					selectableRows: selectableRows,
+					selectableRowsNoSelectAll: noSelectAll,
+					selectableRowsHighlight: selectableRowsHighlight,
+					selectableRowsVisibleOnly: selectableRowsVisibleOnly,
+					expandableRows: expandableRows,
+					expandOnRowClicked: expandOnRowClick,
+					pagination: pagination,
+					highlightOnHover: highlight,
+					striped: striped,
+					pointerOnHover: pointer,
+					dense: dense,
+					noTableHead: tableHead,
+					persistTableHead: persist,
+					progressPending: loading,
+					noHeader: noHeader,
+					subHeader: subHeader,
+					subHeaderComponent: (
+						<div style={{ display: 'flex', alignItems: 'center' }}>
+							<TextField id="outlined-basic" label="Search" variant="outlined" size="small" style={{ margin: '5px' }} />
+							<Icon1 style={{ margin: '5px' }} color="action" />
+							<Icon2 style={{ margin: '5px' }} color="action" />
+							<Icon3 style={{ margin: '5px' }} color="action" />
+						</div>
+					),
+					subHeaderAlign: subHeaderAlign,
+					fixedHeader: fixedHeader,
+					fixedHeaderScrollHeight: '300px',
+					direction: directionValue,
+				}}
 			/>
 		</div>
 	);

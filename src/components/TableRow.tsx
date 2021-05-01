@@ -4,10 +4,9 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
-import { getConditionalStyle, getProperty, isOdd, noop } from './util';
-import { defaultProps } from './defaultProps';
-import { STOP_PROP_TAG } from './constants';
-import { RowRecord, SingleRowAction, TableProps } from './types';
+import { getConditionalStyle, getProperty, isOdd } from '../util';
+import { STOP_PROP_TAG } from '../constants';
+import { RowRecord, SingleRowAction, TableColumn, TableOptions, ExpandRowToggled } from '../types';
 
 const highlightCSS = css<{
 	highlightOnHover?: boolean;
@@ -45,37 +44,39 @@ const TableRowStyle = styled.div.attrs(props => ({
 	${({ selected, theme }) => selected && theme.rows.selectedHighlightStyle};
 `;
 
-type DProps<T> = Pick<
-	TableProps<T>,
-	| 'columns'
-	| 'conditionalRowStyles'
-	| 'dense'
-	| 'expandableIcon'
-	| 'expandableRows'
-	| 'expandableRowsComponent'
-	| 'expandableRowsHideExpander'
-	| 'expandOnRowClicked'
-	| 'expandOnRowDoubleClicked'
-	| 'highlightOnHover'
-	| 'expandableInheritConditionalStyles'
-	| 'keyField'
-	| 'onRowClicked'
-	| 'onRowDoubleClicked'
-	| 'onRowExpandToggled'
-	| 'pointerOnHover'
-	| 'selectableRowDisabled'
-	| 'selectableRows'
-	| 'selectableRowsComponent'
-	| 'selectableRowsComponentProps'
-	| 'selectableRowsHighlight'
-	| 'striped'
+type DProps<T> = Required<
+	Pick<
+		TableOptions<T>,
+		| 'conditionalRowStyles'
+		| 'dense'
+		| 'expandableIcon'
+		| 'expandableRows'
+		| 'expandableRowsComponent'
+		| 'expandableRowsHideExpander'
+		| 'expandOnRowClicked'
+		| 'expandOnRowDoubleClicked'
+		| 'highlightOnHover'
+		| 'expandableInheritConditionalStyles'
+		| 'keyField'
+		| 'pointerOnHover'
+		| 'selectableRowDisabled'
+		| 'selectableRows'
+		| 'selectableRowsComponent'
+		| 'selectableRowsComponentProps'
+		| 'selectableRowsHighlight'
+		| 'striped'
+	>
 >;
 
-interface TableRowProps<T> extends Required<DProps<T>> {
-	defaultExpanded?: boolean;
+interface TableRowProps<T> extends DProps<T> {
+	onRowClicked: (row: T, e: React.MouseEvent) => void;
+	onRowDoubleClicked: (row: T, e: React.MouseEvent) => void;
+	onSelectedRow: (action: SingleRowAction<T>) => void;
+	onRowExpandToggled: ExpandRowToggled<T>;
+	columns: TableColumn<T>[];
+	defaultExpanded: boolean;
 	defaultExpanderDisabled: boolean;
 	id: string | number;
-	onSelectedRow: (action: SingleRowAction<T>) => void;
 	pointerOnHover: boolean;
 	row: T;
 	rowCount: number;
@@ -84,36 +85,36 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 }
 
 function TableRow<T extends RowRecord>({
-	columns = [],
-	conditionalRowStyles = [],
-	defaultExpanded = false,
-	defaultExpanderDisabled = false,
-	dense = false,
-	expandableIcon = defaultProps.expandableIcon,
-	expandableRows = false,
-	expandableRowsComponent = defaultProps.expandableRowsComponent,
+	columns,
+	onRowClicked,
+	onRowDoubleClicked,
+	onRowExpandToggled,
+	onSelectedRow,
+	conditionalRowStyles,
+	defaultExpanded,
+	defaultExpanderDisabled,
+	expandableIcon,
+	expandableRows,
+	expandableRowsComponent,
 	expandableRowsHideExpander,
-	expandOnRowClicked = false,
-	expandOnRowDoubleClicked = false,
-	highlightOnHover = false,
+	expandOnRowClicked,
+	expandOnRowDoubleClicked,
+	highlightOnHover,
 	id,
 	expandableInheritConditionalStyles,
-	keyField = defaultProps.keyField,
-	onRowClicked = noop,
-	onRowDoubleClicked = noop,
-	onRowExpandToggled = noop,
-	onSelectedRow = noop,
-	pointerOnHover = false,
+	keyField,
+	pointerOnHover,
 	row,
 	rowCount,
 	rowIndex,
-	selectableRowDisabled = null,
-	selectableRows = false,
-	selectableRowsComponent = defaultProps.selectableRowsComponent,
-	selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
-	selectableRowsHighlight = false,
+	selectableRowDisabled,
+	selectableRows,
+	selectableRowsComponent,
+	selectableRowsComponentProps,
+	selectableRowsHighlight,
 	selected,
-	striped = false,
+	striped,
+	dense,
 }: TableRowProps<T>): JSX.Element {
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
 
@@ -123,7 +124,7 @@ function TableRow<T extends RowRecord>({
 
 	const handleExpanded = React.useCallback(() => {
 		setExpanded(!expanded);
-		onRowExpandToggled(!expanded, row);
+		onRowExpandToggled && onRowExpandToggled(!expanded, row);
 	}, [expanded, onRowExpandToggled, row]);
 
 	const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
@@ -132,7 +133,7 @@ function TableRow<T extends RowRecord>({
 		e => {
 			// use event delegation allow events to propagate only when the element with data-tag STOP_PROP_TAG is present
 			if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
-				onRowClicked(row, e);
+				onRowClicked && onRowClicked(row, e);
 
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
 					handleExpanded();
@@ -145,7 +146,7 @@ function TableRow<T extends RowRecord>({
 	const handleRowDoubleClick = React.useCallback(
 		e => {
 			if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
-				onRowDoubleClicked(row, e);
+				onRowDoubleClicked && onRowDoubleClicked(row, e);
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowDoubleClicked) {
 					handleExpanded();
 				}

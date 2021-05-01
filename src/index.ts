@@ -1,7 +1,7 @@
-import DataTable from './DataTable/DataTable';
+import DataTable from './components/DataTable';
 
-export { defaultThemes, createTheme } from './DataTable/themes';
-export * from './DataTable/constants';
-export * from './DataTable/types';
+export { defaultThemes, createTheme } from './themes';
+export * from './constants';
+export * from './types';
 
 export default DataTable;

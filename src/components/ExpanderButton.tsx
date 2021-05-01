@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { ExpandableIcon } from './types';
+import { ExpandableIcon } from '../types';
 
 const ButtonStyle = styled.button`
 	display: inline-flex;

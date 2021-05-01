@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Cell, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
-import { sort } from './util';
-import { TableColumn, SortAction, SortDirection, SortFunction } from './types';
+import { sort } from '../util';
+import { TableColumn, SortAction, SortDirection, SortFunction } from '../types';
 
 const TableColStyle = styled(Cell)<CellProps>`
 	${({ button }) => button && 'text-align: center'};

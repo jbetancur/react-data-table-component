@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
-import { ExpandableIcon } from './types';
+import { ExpandableIcon } from '../types';
 
 const TableCellExpanderStyle = styled(CellBase)`
 	white-space: nowrap;

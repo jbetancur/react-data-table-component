@@ -35,29 +35,20 @@ export type ChangeRowsPerPageProps = {
 	page: number;
 };
 
-export type TableProps<T = RowRecord> = {
-	/** actions */
-	actions?: React.ReactNode | React.ReactNode[];
-	className?: string;
-	clearSelectedRows?: boolean;
-	columns: TableColumn<T>[];
+export type TableOptions<T = RowRecord> = {
 	conditionalRowStyles?: ConditionalStyles<T>[];
-	contextActions?: React.ReactNode | React.ReactNode[];
-	contextComponent?: React.ReactElement;
+
 	contextMessage?: ContextMessage;
 	customStyles?: TableStyles;
-	data: T[];
 	defaultSortAsc?: boolean;
 	defaultSortFieldId?: DefaultSortField;
 	dense?: boolean;
 	direction?: Direction;
-	disabled?: boolean;
 	expandableIcon?: ExpandableIcon;
 	expandableInheritConditionalStyles?: boolean;
 	expandableRowDisabled?: RowState<T>;
 	expandableRowExpanded?: RowState<T>;
 	expandableRows?: boolean;
-	expandableRowsComponent?: React.ReactElement;
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
@@ -69,40 +60,46 @@ export type TableProps<T = RowRecord> = {
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
-	offset?: string;
-	overflowY?: boolean;
-	overflowYOffset?: string;
 	pagination?: boolean;
 	paginationOptions?: PaginationOptions;
 	paginationServer?: boolean;
 	paginationServerOptions?: PaginationServerOptions;
 	persistTableHead?: boolean;
 	pointerOnHover?: boolean;
-	progressComponent?: React.ReactNode;
-	progressPending?: boolean;
 	responsive?: boolean;
-	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
-	selectableRowsComponent?: 'input' | React.ReactElement;
-	selectableRowsComponentProps?: RowRecord;
 	selectableRowSelected?: RowState<T>;
+	selectableRowDisabled?: RowState<T>;
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;
 	selectableRowsVisibleOnly?: boolean;
-	sortFunction?: SortFunction<T>;
+	sortFunction?: SortFunction<T> | null;
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
 	striped?: boolean;
-	style?: CSSObject;
 	subHeader?: React.ReactNode | React.ReactNode[];
 	subHeaderAlign?: Alignment;
-	subHeaderComponent?: React.ReactNode | React.ReactNode[];
 	subHeaderWrap?: boolean;
 	theme?: Themes;
-	/**
-	 *  Shows and displays a header with a title
-	 *  */
+	// components
+	contextComponent?: React.ReactElement | null;
+	subHeaderComponent?: React.ReactNode | React.ReactNode[];
+	expandableRowsComponent?: React.ReactElement;
+	progressComponent?: React.ReactNode;
+	selectableRowsComponent?: 'input' | React.ReactElement;
+	selectableRowsComponentProps?: RowRecord;
+};
+
+export interface TableProps<T = RowRecord> {
 	title?: string | React.ReactNode;
+	columns: TableColumn<T>[];
+	data: T[];
+	options?: TableOptions<T>;
+	progressPending?: boolean;
+	disabled?: boolean;
+	actions?: React.ReactNode | React.ReactNode[];
+	contextActions?: React.ReactNode | React.ReactNode[];
+	clearSelectedRows?: boolean;
 	onChangePage?: (props: ChangePageProps) => void;
 	onChangeRowsPerPage?: (props: ChangeRowsPerPageProps) => void;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
@@ -110,7 +107,7 @@ export type TableProps<T = RowRecord> = {
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (props: SelectedRowsProps<T>) => void;
 	onSort?: (props: SortProps<T>) => void;
-};
+}
 
 export interface TableColumnBase {
 	allowOverflow?: boolean;

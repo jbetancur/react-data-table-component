@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
-import { RowRecord, RowState, SingleRowAction } from './types';
+import { RowRecord, RowState, SingleRowAction } from '../types';
 
 const TableCellCheckboxStyle = styled(CellBase)`
 	flex: 0 0 48px;

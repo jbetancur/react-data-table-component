@@ -80,6 +80,17 @@ const columns = memoize(() => [
 	},
 ]);
 
+const options = {
+	selectableRows: true,
+	highlightOnHover: true,
+	defaultSortFieldId: 1,
+	sortIcon: sortIcon,
+	selectableRowsComponent: Checkbox,
+	selectableRowsComponentProps: selectProps,
+	pagination: true,
+	expandableRows: true,
+};
+
 class MaterialTable extends PureComponent {
 	// eslint-disable-next-line react/state-in-constructor
 	state = { selectedRows: [], toggleCleared: false, data: tableDataItems };
@@ -114,19 +125,12 @@ class MaterialTable extends PureComponent {
 					title="Desserts"
 					columns={columns()}
 					data={data}
-					selectableRows
-					highlightOnHover
-					defaultSortField="name"
 					actions={actions}
 					contextActions={contextActions(this.deleteAll)}
-					sortIcon={sortIcon}
-					selectableRowsComponent={Checkbox}
-					selectableRowsComponentProps={selectProps}
-					onSelectedRowsChange={this.handleChange}
+					options={options}
 					clearSelectedRows={toggleCleared}
+					onSelectedRowsChange={this.handleChange}
 					onRowClicked={this.handleRowClicked}
-					pagination
-					expandableRows
 				/>
 			</Card>
 		);

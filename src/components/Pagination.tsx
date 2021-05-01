@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Select from './Select';
-import { getNumberOfPages, detectRTL } from './util';
+import { getNumberOfPages, detectRTL } from '../util';
 import useWindowSize from '../hooks/useWindowSize';
-import { media, SMALL } from './media';
-import { Direction } from './constants';
-import { PaginationOptions } from './types';
-import { defaultProps } from './defaultProps';
+import { media, SMALL } from '../media';
+import { Direction } from '../constants';
+import { PaginationOptions } from '../types';
+import { defaultProps } from '../defaultProps';
 
 const PaginationWrapper = styled.nav`
 	display: flex;
@@ -69,7 +69,7 @@ function Pagination({
 	rowsPerPage,
 	rowCount,
 	currentPage,
-	direction = defaultProps.direction,
+	direction,
 	paginationOptions,
 	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 	onChangePage = defaultProps.onChangePage,

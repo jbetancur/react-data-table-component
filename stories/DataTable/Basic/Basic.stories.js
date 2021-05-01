@@ -21,6 +21,10 @@ const columns = [
 	},
 ];
 
-const BasicTable = () => <DataTable title="Movie List" columns={columns} data={data} defaultSortField="title" />;
+const options = {
+	defaultSortFieldId: 1,
+};
+
+const BasicTable = () => <DataTable title="Movie List" columns={columns} data={data} options={options} />;
 
 storiesOf('General', module).add('Sortable', BasicTable);

@@ -1,5 +1,5 @@
-import { insertItem, isRowSelected, removeItem } from './util';
-import { Action, RowRecord, TableState } from './types';
+import { insertItem, isRowSelected, removeItem } from '../util';
+import { Action, RowRecord, TableState } from '../types';
 
 export function tableReducer<T extends RowRecord>(state: TableState<T>, action: Action<T>): TableState<T> {
 	switch (action.type) {

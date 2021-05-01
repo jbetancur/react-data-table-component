@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import ContextMenu from './ContextMenu';
-import { Direction } from './constants';
-import { ContextMessage } from './types';
+import { Direction } from '../constants';
+import { ContextMessage } from '../types';
 
 const TableHeaderStyle = styled.div`
 	position: relative;
