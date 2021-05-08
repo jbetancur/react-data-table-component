@@ -117,6 +117,7 @@ export interface TableColumnBase {
 	omit?: boolean;
 	right?: boolean;
 	sortable?: boolean;
+	filterable?: boolean;
 	style?: CSSObject;
 	width?: string;
 	wrap?: boolean;
@@ -224,6 +225,9 @@ export type TableState<T> = {
 	allSelected: boolean;
 	contextMessage: ContextMessage;
 	rows: T[];
+	allRows: T[];
+	filterActive: boolean;
+	filters: [{[k: string]:any}]
 	selectedCount: number;
 	selectedRows: T[];
 	selectedColumn: TableColumn<T>;

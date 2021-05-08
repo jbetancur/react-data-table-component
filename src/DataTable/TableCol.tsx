@@ -183,7 +183,7 @@ function TableCol<T>({
 			center={column.center}
 			width={column.width}
 		>
-			{column.name && (
+			{column.name && (<div>
 				<ColumnSortable
 					id={`column-${column.id}`}
 					role="columnheader"
@@ -198,9 +198,16 @@ function TableCol<T>({
 					{!disabled && customSortIconRight && renderCustomSortIcon()}
 					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 					<ColumnText>{column.name}</ColumnText>
+
 					{!disabled && customSortIconLeft && renderCustomSortIcon()}
 					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+
+
 				</ColumnSortable>
+				{column.filterable && <div style={{ display: 'block' }}>
+						<input name={column.name || `column-${column.id}`} />
+					</div>}
+				</div>
 			)}
 		</TableColStyle>
 	);
