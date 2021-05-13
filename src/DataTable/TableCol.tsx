@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Cell, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { sort } from './util';
-import { TableColumn, SortAction, SortDirection, SortFunction } from './types';
+import { TableColumn, SortAction, SortDirection, SortFunction, FilterAction } from './types';
 
 const TableColStyle = styled(Cell)<CellProps>`
 	${({ button }) => button && 'text-align: center'};
@@ -79,8 +79,10 @@ type TableColProps<T> = {
 	sortDirection: SortDirection;
 	sortFunction: SortFunction<T> | null;
 	sortServer: boolean;
+	filterServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	onSort: (action: SortAction<T>) => void;
+	onFilter: (action: FilterAction<T>) => void;
 };
 
 function TableCol<T>({
@@ -92,11 +94,13 @@ function TableCol<T>({
 	sortFunction,
 	sortIcon,
 	sortServer,
+	filterServer,
 	pagination,
 	paginationServer,
 	persistSelectedOnSort,
 	selectableRowsVisibleOnly,
 	onSort,
+	onFilter,
 }: TableColProps<T>): JSX.Element | null {
 	React.useEffect(() => {
 		if (typeof column.selector === 'string') {
@@ -139,6 +143,26 @@ function TableCol<T>({
 				rows: sortedRows,
 				sortDirection: direction,
 				sortServer,
+				selectedColumn: column,
+				pagination,
+				paginationServer,
+				visibleOnly: selectableRowsVisibleOnly,
+				persistSelectedOnSort,
+			});
+		}
+	};
+
+	const handleFilterChange = (e) => {
+		if (column.filterable && column.selector) {
+
+			console.log("Is there something?")
+
+			onFilter({
+				type: 'FILTER_CHANGE',
+				//rows: sortedRows,
+				//sortDirection: direction,
+				filterServer: filterServer,
+				filterText: e.target.value,
 				selectedColumn: column,
 				pagination,
 				paginationServer,
@@ -205,7 +229,10 @@ function TableCol<T>({
 
 				</ColumnSortable>
 				{column.filterable && <div style={{ display: 'block' }}>
-						<input name={column.name || `column-${column.id}`} />
+					<input name={column.name || `column-${column.selector || column.id}`}
+						onChange={handleFilterChange}
+						placeholder="filter"
+					/>
 					</div>}
 				</div>
 			)}

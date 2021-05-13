@@ -65,6 +65,7 @@ export const defaultProps = {
 	subHeaderComponent: null,
 	fixedHeader: false,
 	fixedHeaderScrollHeight: '100vh',
+	filterServer: false,
 	pagination: false,
 	paginationServer: false,
 	paginationServerOptions: {
@@ -94,4 +95,5 @@ export const defaultProps = {
 	onRowExpandToggled: noop,
 	onSelectedRowsChange: noop,
 	onSort: noop,
+	onFilter: noop,
 };

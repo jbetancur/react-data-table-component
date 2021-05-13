@@ -30,7 +30,7 @@ import {
 } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState } from './types';
+import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState, FilterAction } from './types';
 
 function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const {
@@ -95,8 +95,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
 		sortIcon = defaultProps.sortIcon,
 		onSort = defaultProps.onSort,
+		onFilter = defaultProps.onFilter,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
+		filterServer = defaultProps.filterServer,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
 		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		expandableRowsHideExpander = defaultProps.expandableRowsHideExpander,
@@ -125,6 +127,9 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const initialState: TableState<T> = React.useMemo(
 		() => ({
 			allSelected: false,
+			allRows: [],
+			filterActive: false,
+			filters: {},
 			rows: defaultSortColumn?.selector
 				? sort(data, defaultSortColumn.selector, defaultSortDirection, sortFunction)
 				: data,
@@ -142,7 +147,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	);
 
 	const [
-		{ rowsPerPage, rows, currentPage, selectedRows, allSelected, selectedCount, selectedColumn, sortDirection },
+		{ rowsPerPage, rows, currentPage, selectedRows, allSelected, selectedCount,
+			selectedColumn, sortDirection, filters, filterActive },
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, initialState);
 
@@ -168,6 +174,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	}, [currentPage, pagination, paginationServer, rows, rowsPerPage]);
 
 	const handleSort = (action: SortAction<T>) => {
+		dispatch(action);
+	};
+
+	const handleFilter = (action: FilterAction<T>) => {
 		dispatch(action);
 	};
 
@@ -215,7 +225,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 			return true;
 		}
 
-		return rows.length > 0 && !progressPending;
+		return filterActive || (rows.length > 0 && !progressPending);
 	};
 
 	const showHeader = () => {
@@ -257,6 +267,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	useDidUpdateEffect(() => {
 		onSort(selectedColumn, sortDirection);
 	}, [selectedColumn, sortDirection]);
+
+	useDidUpdateEffect(() => {
+		onFilter(filters)
+	}, [filters]);
 
 	useDidUpdateEffect(() => {
 		handleChangePage(paginationDefaultPage);
@@ -365,14 +379,16 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											sortDirection={sortDirection}
 											sortIcon={sortIcon}
 											sortServer={sortServer}
+											filterServer={ filterServer }
 											onSort={handleSort}
+											onFilter={handleFilter}
 										/>
 									))}
 								</TableHeadRow>
 							</TableHead>
 						)}
 
-						{!rows.length && !progressPending && <NoData>{noDataComponent}</NoData>}
+						{!rows.length && !progressPending && !filterActive && <NoData>{noDataComponent}</NoData>}
 
 						{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 

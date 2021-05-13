@@ -40,6 +40,7 @@ export type TableProps<T = RowRecord> = {
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
+	filterServer?: boolean;
 	fixedHeader?: boolean;
 	fixedHeaderScrollHeight?: string;
 	highlightOnHover?: boolean;
@@ -56,6 +57,7 @@ export type TableProps<T = RowRecord> = {
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort?: (column: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
+	onFilter?: (filters: { [k: string]: {column: TableColumn<T>, value: string}}) => void;
 	overflowY?: boolean;
 	overflowYOffset?: string;
 	pagination?: boolean;
@@ -227,7 +229,7 @@ export type TableState<T> = {
 	rows: T[];
 	allRows: T[];
 	filterActive: boolean;
-	filters: [{[k: string]:any}]
+	filters: { [k: string]: { column: TableColumn<T>, value: string } };
 	selectedCount: number;
 	selectedRows: T[];
 	selectedColumn: TableColumn<T>;
@@ -346,6 +348,18 @@ export interface SortAction<T> {
 	persistSelectedOnSort: boolean;
 }
 
+export interface FilterAction<T> {
+	type: 'FILTER_CHANGE';
+	//rows: T[];
+	filterServer: boolean;
+	filterText: string;
+	selectedColumn: TableColumn<T>;
+	pagination: boolean;
+	paginationServer: boolean;
+	visibleOnly: boolean;
+	persistSelectedOnSort: boolean;
+}
+
 export interface PaginationPageAction {
 	type: 'CHANGE_PAGE';
 	page: number;
@@ -375,6 +389,7 @@ export type Action<T> =
 	| SingleRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
+  | FilterAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
 	| ClearSelectedRowsAction

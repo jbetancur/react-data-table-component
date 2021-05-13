@@ -32,6 +32,7 @@ const columns = [
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
+		filterable: true,
 	},
 	{
 		name: 'Year',

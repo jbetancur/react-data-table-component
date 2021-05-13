@@ -13,16 +13,18 @@ import TextField from '@material-ui/core/TextField';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
 
-const columns = [
+const columns = (filter) => [
 	{
 		name: 'Title',
 		selector: 'title',
 		sortable: true,
+		filterable: filter,
 	},
 	{
 		name: 'Director',
 		selector: 'director',
 		sortable: true,
+		filterable: filter,
 	},
 	{
 		name: 'Year',
@@ -53,6 +55,7 @@ const KitchenSink = () => {
 	const [fixedHeader, setFixedheader] = React.useState(false);
 	const [direction, setDirection] = React.useState(false);
 	const [directionValue, setDirectionValue] = React.useState('auto');
+	const [filter, setFilter] = React.useState(true);
 
 	return (
 		<div>
@@ -141,6 +144,13 @@ const KitchenSink = () => {
 
 			<FormGroup row>
 				<FormControlLabel
+					control={<Checkbox size="small" checked={filter} onChange={() => setFilter(!filter)} />}
+					label="Column Filter"
+				/>
+			</FormGroup>
+
+			<FormGroup row>
+				<FormControlLabel
 					control={<Checkbox size="small" checked={highlight} onChange={() => setHighlight(!highlight)} />}
 					label="Highlight on Hover"
 				/>
@@ -224,7 +234,7 @@ const KitchenSink = () => {
 
 			<DataTable
 				title="Movie List"
-				columns={columns}
+				columns={columns(filter)}
 				data={data}
 				defaultSortField="title"
 				selectableRows={selectableRows}

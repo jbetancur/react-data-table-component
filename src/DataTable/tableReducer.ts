@@ -1,5 +1,6 @@
-import { insertItem, isRowSelected, removeItem } from './util';
+import { getProperty, insertItem, isRowSelected, removeItem } from './util';
 import { Action, RowRecord, TableState } from './types';
+import { STATUS_CODES } from 'node:http';
 
 export function tableReducer<T extends RowRecord>(state: TableState<T>, action: Action<T>): TableState<T> {
 	switch (action.type) {
@@ -109,6 +110,32 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 					selectedRows: [],
 				}),
 			};
+		}
+
+		case 'FILTER_CHANGE': {
+			const { filterText, selectedColumn } = action
+			let rows = state.rows
+			const keyName = selectedColumn.name?.toString() || selectedColumn.id?.toString() || "noname"
+			let filterState = { ...state.filters }
+			if (!filterText && keyName in filterState) {
+				delete filterState[keyName]
+			} else {
+				filterState = { ...filterState, [keyName]: { column: selectedColumn, value: filterText } }
+			}
+			if (!state.filterActive) {
+				state.allRows = rows;
+				state.filterActive = true;
+			}
+			if (Object.keys(filterState).length === 0) {
+				state.filterActive = false;
+				rows = state.allRows
+			}
+			if (state.filterActive && !action.filterServer) {		//
+				rows = state.allRows.filter((row,idx) => Object.entries(filterState)  //
+					.reduce((acc: boolean, [_, { column, value }]) =>
+						(new RegExp(`.*${value}.*`, 'i')).test(getProperty(row,column.selector,null,idx)?.toString() ?? "") ? acc : false, true))
+			}
+			return { ...state, rows, filters: filterState }
 		}
 
 		case 'CHANGE_PAGE': {
