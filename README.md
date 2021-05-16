@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.com/jbetancur/react-data-table-component.svg?branch=master)]( ) [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://jbetancur.github.io/react-data-table-component)
 
+# Notice: 
+
+This is a clone of [https://github.com/jbetancur/react-data-table-component](https://github.com/jbetancur/react-data-table-component) with one additional feature: [Column Filtering](https://anothercodeartist.github.io/react-data-table-component/?path=/story/general--kitchen-sink). Once [jbetancur](https://github.com/jbetancur) merges the corresponding PR and publishes an updated version of his data table component, this site will get depricated!
+
 <!-- TOC -->
 
 - [React Data Table Component](#react-data-table-component)
@@ -63,7 +67,7 @@ If you want to achieve balance with the force and want a simple but flexible tab
 
 ## Demo and Examples
 
-[React Data Table Component Demo](https://jbetancur.github.io/react-data-table-component)
+[React Data Table Component Demo](https://anothercodeartist.github.io/react-data-table-component)
 
 ## Key Features
 
@@ -416,6 +420,7 @@ const columns = [
     name: 'Title',
     selector: 'title',
     sortable: true,
+		filterable: true,
   },
   {
     name: 'Year',
