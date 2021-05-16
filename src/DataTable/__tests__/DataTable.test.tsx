@@ -505,12 +505,15 @@ describe('DataTable::filtering', () => {
 		const onFilterMock = jest.fn();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock}/>);
 		const filterInput = container.querySelector('input[name="Test"]') as HTMLInputElement;
-		fireEvent.change(filterInput, { target: {value: "test" }})
-		expect(onFilterMock).toBeCalled();
-		const filterArgument = onFilterMock.mock.calls[0][0];
-		expect(filterArgument).toHaveProperty('Test');
-		expect(filterArgument.Test.value).toBe('test')
-		expect(filterArgument.Test.column.name).toBe('Test')
+		fireEvent.change(filterInput, { target: { value: "test" } })
+		fireEvent.change(filterInput, { target: {value: "" }})
+		expect(onFilterMock).toHaveBeenCalledTimes(2);
+		const filterArgument1 = onFilterMock.mock.calls[0][0];
+		expect(filterArgument1).toHaveProperty('Test');
+		expect(filterArgument1.Test.value).toBe('test')
+		expect(filterArgument1.Test.column.name).toBe('Test')
+		const filterArgument2 = onFilterMock.mock.calls[1][0];
+		expect(Object.keys(filterArgument2)).toHaveLength(0);
 	})
 
 
