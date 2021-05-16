@@ -157,8 +157,6 @@ function TableCol<T>({
 		if (column.filterable && column.selector) {
 			onFilter({
 				type: 'FILTER_CHANGE',
-				//rows: sortedRows,
-				//sortDirection: direction,
 				filterServer: filterServer,
 				filterText: e.target.value,
 				selectedColumn: column,

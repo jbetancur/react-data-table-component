@@ -511,6 +511,16 @@ describe('DataTable::filtering', () => {
 		const filterArgument2 = onFilterMock.mock.calls[1][0];
 		expect(Object.keys(filterArgument2)).toHaveLength(0);
 	});
+
+	test('should should not call onFilter if no selector exists', () => {
+		const mock = dataMock({ filterable: true , selector: null});
+		const onFilterMock = jest.fn();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock} />);
+		const filterInput = container.querySelector('input[name="Test"]') as HTMLInputElement;
+		fireEvent.change(filterInput, { target: { value: 'test' } });
+		expect(onFilterMock).not.toHaveBeenCalled()
+	});
+
 });
 
 describe('DataTable::sorting', () => {
