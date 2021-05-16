@@ -1,7 +1,7 @@
 {
-  "name": "react-data-table-component",
+  "name": "react-data-table-component-with-filter",
   "version": "7.0.0-alpha-10",
-  "description": "A declarative react based data table",
+  "description": "A declarative react based data table with column filters",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "browser": "dist/index.cjs.js",
@@ -47,6 +47,7 @@
     "@storybook/addon-links": "^6.2.9",
     "@storybook/addon-storysource": "^6.2.9",
     "@storybook/react": "^6.2.9",
+    "@storybook/storybook-deployer": "^2.8.8",
     "@testing-library/react": "^11.2.6",
     "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.22",
