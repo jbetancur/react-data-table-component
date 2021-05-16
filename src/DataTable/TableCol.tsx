@@ -4,6 +4,7 @@ import { Cell, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { sort } from './util';
 import { TableColumn, SortAction, SortDirection, SortFunction, FilterAction } from './types';
+import { ChangeEvent } from 'react';
 
 const TableColStyle = styled(Cell)<CellProps>`
 	${({ button }) => button && 'text-align: center'};
@@ -152,7 +153,7 @@ function TableCol<T>({
 		}
 	};
 
-	const handleFilterChange = (e) => {
+	const handleFilterChange = (e: ChangeEvent<HTMLInputElement> ) => {
 		if (column.filterable && column.selector) {
 
 			console.log("Is there something?")
@@ -229,7 +230,7 @@ function TableCol<T>({
 
 				</ColumnSortable>
 				{column.filterable && <div style={{ display: 'block' }}>
-					<input name={column.name || `column-${column.selector || column.id}`}
+					<input name={column.name?.toString() || `column-${column.selector || column.id}`}
 						onChange={handleFilterChange}
 						placeholder="filter"
 					/>

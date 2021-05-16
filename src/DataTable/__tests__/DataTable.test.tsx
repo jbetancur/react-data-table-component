@@ -305,6 +305,9 @@ describe('DataTable::columns', () => {
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
+
+
+
 });
 
 describe('DataTable:RowClicks', () => {
@@ -476,6 +479,42 @@ describe('DataTable::responsive', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 });
+
+describe('DataTable::filtering', () => {
+
+	test('should render correctly if filterable is enabled', () => {
+		const mock = dataMock({ filterable: true });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+		const filterInput = container.querySelector('input[name="Test"]');
+
+		expect(filterInput).toBeDefined();
+		expect(container.firstChild).toMatchSnapshot();
+	})
+
+	test('should not be rendered if filterable is disabled', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+		const filterInput = container.querySelector('input[name="Test"]');
+
+		expect(filterInput).toBeNull();
+		expect(container.firstChild).toMatchSnapshot();
+	})
+
+	test('should should call onFilter if filtertext gets inserted', () => {
+		const mock = dataMock({ filterable: true });
+		const onFilterMock = jest.fn();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock}/>);
+		const filterInput = container.querySelector('input[name="Test"]') as HTMLInputElement;
+		fireEvent.change(filterInput, { target: {value: "test" }})
+		expect(onFilterMock).toBeCalled();
+		const filterArgument = onFilterMock.mock.calls[0][0];
+		expect(filterArgument).toHaveProperty('Test');
+		expect(filterArgument.Test.value).toBe('test')
+		expect(filterArgument.Test.column.name).toBe('Test')
+	})
+
+
+})
 
 describe('DataTable::sorting', () => {
 	test('should not call onSort if the column is not sortable', () => {
