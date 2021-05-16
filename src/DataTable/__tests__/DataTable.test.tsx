@@ -487,6 +487,14 @@ describe('DataTable::filtering', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('should not be rendered if column.name is missing', () => {
+		const mock = dataMock({ filterable: true, name: null });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+		const filterInput = container.querySelector('input[name="Test"]');
+		expect(filterInput).toBeNull();
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
 	test('should not be rendered if filterable is disabled', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
@@ -513,14 +521,13 @@ describe('DataTable::filtering', () => {
 	});
 
 	test('should should not call onFilter if no selector exists', () => {
-		const mock = dataMock({ filterable: true , selector: null});
+		const mock = dataMock({ filterable: true, selector: null });
 		const onFilterMock = jest.fn();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock} />);
 		const filterInput = container.querySelector('input[name="Test"]') as HTMLInputElement;
 		fireEvent.change(filterInput, { target: { value: 'test' } });
-		expect(onFilterMock).not.toHaveBeenCalled()
+		expect(onFilterMock).not.toHaveBeenCalled();
 	});
-
 });
 
 describe('DataTable::sorting', () => {

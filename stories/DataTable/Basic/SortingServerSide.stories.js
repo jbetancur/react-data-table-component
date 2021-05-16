@@ -13,7 +13,7 @@ const columns = [
 		filterable: true,
 	},
 	{
-		name: 'Director',
+		// name: 'Director',
 		selector: row => row.director,
 		sortable: true,
 		filterable: true,
