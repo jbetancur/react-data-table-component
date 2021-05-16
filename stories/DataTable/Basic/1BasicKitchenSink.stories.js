@@ -13,7 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
 
-const columns = (filter) => [
+const columns = filter => [
 	{
 		name: 'Title',
 		selector: 'title',

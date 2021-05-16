@@ -57,7 +57,7 @@ export type TableProps<T = RowRecord> = {
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort?: (column: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
-	onFilter?: (filters: { [k: string]: {column: TableColumn<T>, value: string}}) => void;
+	onFilter?: (filters: { [k: string]: { column: TableColumn<T>; value: string } }) => void;
 	overflowY?: boolean;
 	overflowYOffset?: string;
 	pagination?: boolean;
@@ -229,7 +229,7 @@ export type TableState<T> = {
 	rows: T[];
 	allRows: T[];
 	filterActive: boolean;
-	filters: { [k: string]: { column: TableColumn<T>, value: string } };
+	filters: { [k: string]: { column: TableColumn<T>; value: string } };
 	selectedCount: number;
 	selectedRows: T[];
 	selectedColumn: TableColumn<T>;
@@ -389,7 +389,7 @@ export type Action<T> =
 	| SingleRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
-  | FilterAction<T>
+	| FilterAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
 	| ClearSelectedRowsAction

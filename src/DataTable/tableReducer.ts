@@ -112,14 +112,14 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 		}
 
 		case 'FILTER_CHANGE': {
-			const { filterText, selectedColumn } = action
-			let rows = state.rows
-			const keyName = selectedColumn.name?.toString() || selectedColumn.id?.toString() || "noname"
-			let filterState = { ...state.filters }
+			const { filterText, selectedColumn } = action;
+			let rows = state.rows;
+			const keyName = selectedColumn.name?.toString() || selectedColumn.id?.toString() || 'noname';
+			let filterState = { ...state.filters };
 			if (!filterText && keyName in filterState) {
-				delete filterState[keyName]
+				delete filterState[keyName];
 			} else {
-				filterState = { ...filterState, [keyName]: { column: selectedColumn, value: filterText } }
+				filterState = { ...filterState, [keyName]: { column: selectedColumn, value: filterText } };
 			}
 			if (!state.filterActive) {
 				state.allRows = rows;
@@ -127,14 +127,20 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 			}
 			if (Object.keys(filterState).length === 0) {
 				state.filterActive = false;
-				rows = state.allRows
+				rows = state.allRows;
 			}
-			if (state.filterActive && !action.filterServer) {		//
-				rows = state.allRows.filter((row,idx) => Object.entries(filterState)  //
-					.reduce((acc: boolean, [_, { column, value }]) =>
-						(new RegExp(`.*${value}.*`, 'i')).test(getProperty(row,column.selector,null,idx)?.toString() ?? "") ? acc : false, true))
+			if (state.filterActive && !action.filterServer) {
+				rows = state.allRows.filter((row, idx) =>
+					Object.entries(filterState).reduce(
+						(acc: boolean, [_, { column, value }]) =>
+							new RegExp(`.*${value}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
+								? acc
+								: false,
+						true,
+					),
+				);
 			}
-			return { ...state, rows, filters: filterState }
+			return { ...state, rows, filters: filterState };
 		}
 
 		case 'CHANGE_PAGE': {

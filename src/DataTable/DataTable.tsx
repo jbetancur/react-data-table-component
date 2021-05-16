@@ -30,7 +30,16 @@ import {
 } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState, FilterAction } from './types';
+import {
+	Action,
+	AllRowsAction,
+	SingleRowAction,
+	RowRecord,
+	SortAction,
+	TableProps,
+	TableState,
+	FilterAction,
+} from './types';
 
 function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const {
@@ -147,8 +156,18 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	);
 
 	const [
-		{ rowsPerPage, rows, currentPage, selectedRows, allSelected, selectedCount,
-			selectedColumn, sortDirection, filters, filterActive },
+		{
+			rowsPerPage,
+			rows,
+			currentPage,
+			selectedRows,
+			allSelected,
+			selectedCount,
+			selectedColumn,
+			sortDirection,
+			filters,
+			filterActive,
+		},
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, initialState);
 
@@ -269,7 +288,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	}, [selectedColumn, sortDirection]);
 
 	useDidUpdateEffect(() => {
-		onFilter(filters)
+		onFilter(filters);
 	}, [filters]);
 
 	useDidUpdateEffect(() => {
@@ -379,7 +398,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											sortDirection={sortDirection}
 											sortIcon={sortIcon}
 											sortServer={sortServer}
-											filterServer={ filterServer }
+											filterServer={filterServer}
 											onSort={handleSort}
 											onFilter={handleFilter}
 										/>

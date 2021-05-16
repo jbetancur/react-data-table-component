@@ -153,11 +153,8 @@ function TableCol<T>({
 		}
 	};
 
-	const handleFilterChange = (e: ChangeEvent<HTMLInputElement> ) => {
+	const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (column.filterable && column.selector) {
-
-			console.log("Is there something?")
-
 			onFilter({
 				type: 'FILTER_CHANGE',
 				//rows: sortedRows,
@@ -208,33 +205,35 @@ function TableCol<T>({
 			center={column.center}
 			width={column.width}
 		>
-			{column.name && (<div>
-				<ColumnSortable
-					id={`column-${column.id}`}
-					role="columnheader"
-					tabIndex={0}
-					className="rdt_TableCol_Sortable"
-					onClick={!disabled ? handleSortChange : undefined}
-					onKeyPress={!disabled ? handleKeyPress : undefined}
-					sortActive={!disabled && sortActive}
-					sortable={column.sortable}
-					disabled={disabled}
-				>
-					{!disabled && customSortIconRight && renderCustomSortIcon()}
-					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
-					<ColumnText>{column.name}</ColumnText>
+			{column.name && (
+				<div>
+					<ColumnSortable
+						id={`column-${column.id}`}
+						role="columnheader"
+						tabIndex={0}
+						className="rdt_TableCol_Sortable"
+						onClick={!disabled ? handleSortChange : undefined}
+						onKeyPress={!disabled ? handleKeyPress : undefined}
+						sortActive={!disabled && sortActive}
+						sortable={column.sortable}
+						disabled={disabled}
+					>
+						{!disabled && customSortIconRight && renderCustomSortIcon()}
+						{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+						<ColumnText>{column.name}</ColumnText>
 
-					{!disabled && customSortIconLeft && renderCustomSortIcon()}
-					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-
-
-				</ColumnSortable>
-				{column.filterable && <div style={{ display: 'block' }}>
-					<input name={column.name?.toString() || `column-${column.selector || column.id}`}
-						onChange={handleFilterChange}
-						placeholder="filter"
-					/>
-					</div>}
+						{!disabled && customSortIconLeft && renderCustomSortIcon()}
+						{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+					</ColumnSortable>
+					{column.filterable && (
+						<div style={{ display: 'block' }}>
+							<input
+								name={column.name?.toString() || `column-${column.selector || column.id}`}
+								onChange={handleFilterChange}
+								placeholder="filter"
+							/>
+						</div>
+					)}
 				</div>
 			)}
 		</TableColStyle>

@@ -305,9 +305,6 @@ describe('DataTable::columns', () => {
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
-
-
-
 });
 
 describe('DataTable:RowClicks', () => {
@@ -481,7 +478,6 @@ describe('DataTable::responsive', () => {
 });
 
 describe('DataTable::filtering', () => {
-
 	test('should render correctly if filterable is enabled', () => {
 		const mock = dataMock({ filterable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
@@ -489,7 +485,7 @@ describe('DataTable::filtering', () => {
 
 		expect(filterInput).toBeDefined();
 		expect(container.firstChild).toMatchSnapshot();
-	})
+	});
 
 	test('should not be rendered if filterable is disabled', () => {
 		const mock = dataMock();
@@ -498,26 +494,24 @@ describe('DataTable::filtering', () => {
 
 		expect(filterInput).toBeNull();
 		expect(container.firstChild).toMatchSnapshot();
-	})
+	});
 
 	test('should should call onFilter if filtertext gets inserted', () => {
 		const mock = dataMock({ filterable: true });
 		const onFilterMock = jest.fn();
-		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock}/>);
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock} />);
 		const filterInput = container.querySelector('input[name="Test"]') as HTMLInputElement;
-		fireEvent.change(filterInput, { target: { value: "test" } })
-		fireEvent.change(filterInput, { target: {value: "" }})
+		fireEvent.change(filterInput, { target: { value: 'test' } });
+		fireEvent.change(filterInput, { target: { value: '' } });
 		expect(onFilterMock).toHaveBeenCalledTimes(2);
 		const filterArgument1 = onFilterMock.mock.calls[0][0];
 		expect(filterArgument1).toHaveProperty('Test');
-		expect(filterArgument1.Test.value).toBe('test')
-		expect(filterArgument1.Test.column.name).toBe('Test')
+		expect(filterArgument1.Test.value).toBe('test');
+		expect(filterArgument1.Test.column.name).toBe('Test');
 		const filterArgument2 = onFilterMock.mock.calls[1][0];
 		expect(Object.keys(filterArgument2)).toHaveLength(0);
-	})
-
-
-})
+	});
+});
 
 describe('DataTable::sorting', () => {
 	test('should not call onSort if the column is not sortable', () => {

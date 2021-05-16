@@ -26,7 +26,7 @@ const columns = [
 		name: 'Title',
 		selector: row => row.title,
 		sortable: true,
-		filterable: true
+		filterable: true,
 	},
 	{
 		name: 'Director',
