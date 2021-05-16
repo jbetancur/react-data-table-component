@@ -2,7 +2,7 @@
 
 # Notice: 
 
-This is a clone of [https://github.com/jbetancur/react-data-table-component](https://github.com/jbetancur/react-data-table-component) with one additional feature: [Column Filtering](https://anothercodeartist.github.io/react-data-table-component/?path=/story/general--kitchen-sink). Once [jbetancur](https://github.com/jbetancur) merges the corresponding PR and publishes an updated version of his data table component, this site will get depricated!
+This is a clone of [https://github.com/jbetancur/react-data-table-component](https://github.com/jbetancur/react-data-table-component) with one additional feature: [Column Filtering](https://anothercodeartist.github.io/react-data-table-component/?path=/story/general--kitchen-sink). Once [jbetancur](https://github.com/jbetancur) merges the corresponding PR and publishes an updated version of his data table component, this site will get deprecated!
 
 <!-- TOC -->
 
