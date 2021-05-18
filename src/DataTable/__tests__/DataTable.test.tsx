@@ -307,6 +307,17 @@ describe('DataTable::columns', () => {
 	});
 });
 
+describe('DataTable:RowHover', () => {
+	test('should call onRowHovered callback when row is hoovered', () => {
+		const onRowHoveredMock = jest.fn();
+		const mock = dataMock({});
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onRowHovered={onRowHoveredMock} />);
+
+		fireEvent.mouseEnter(container.querySelector('div.rdt_TableRow') as HTMLElement);
+		expect(onRowHoveredMock).toHaveBeenCalled();
+	});
+});
+
 describe('DataTable:RowClicks', () => {
 	test('should not call onRowClicked when ignoreRowClick = true', () => {
 		const onRowClickedMock = jest.fn();
