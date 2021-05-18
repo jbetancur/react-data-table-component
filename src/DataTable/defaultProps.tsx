@@ -91,6 +91,7 @@ export const defaultProps = {
 	onChangeRowsPerPage: noop,
 	onRowClicked: noop,
 	onRowDoubleClicked: noop,
+	onRowHovered: noop,
 	onRowExpandToggled: noop,
 	onSelectedRowsChange: noop,
 	onSort: noop,

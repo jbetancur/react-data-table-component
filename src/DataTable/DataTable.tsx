@@ -93,6 +93,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
+		onRowHovered = defaultProps.onRowHovered,
 		sortIcon = defaultProps.sortIcon,
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
@@ -182,6 +183,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const handleRowClicked = React.useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
 
 	const handleRowDoubleClicked = React.useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
+
+	const handleRowHovered = React.useCallback((row, e) => onRowHovered(row, e), [onRowHovered]);
 
 	const handleChangePage = (page: number) =>
 		dispatch({
@@ -423,6 +426,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
+											onRowHovered={handleRowHovered}
 											onSelectedRow={handleSelectedRow}
 										/>
 									);
