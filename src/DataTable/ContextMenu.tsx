@@ -56,7 +56,7 @@ const generateDefaultContextTitle = (contextMessage: ContextMessage, selectedCou
 type ContextMenuProps = {
 	contextMessage: ContextMessage;
 	contextActions: React.ReactNode | React.ReactNode[];
-	contextComponent: React.ReactElement | null;
+	contextComponent: React.ReactNode | null;
 	selectedCount: number;
 	direction: Direction;
 };
@@ -72,7 +72,9 @@ function ContextMenu({
 
 	if (contextComponent) {
 		return (
-			<ContextMenuStyle visible={visible}>{React.cloneElement(contextComponent, { selectedCount })}</ContextMenuStyle>
+			<ContextMenuStyle visible={visible}>
+				{React.cloneElement(contextComponent as React.ReactElement, { selectedCount })}
+			</ContextMenuStyle>
 		);
 	}
 
