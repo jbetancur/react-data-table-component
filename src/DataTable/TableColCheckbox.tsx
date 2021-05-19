@@ -14,7 +14,7 @@ const TableColStyle = styled(CellBase)`
 
 interface TableColCheckboxProps<T> {
 	head?: boolean;
-	selectableRowsComponent: 'input' | React.ReactElement;
+	selectableRowsComponent: 'input' | React.ReactNode;
 	selectableRowsComponentProps: Record<string, unknown>;
 	selectableRowDisabled: RowState<T>;
 	keyField: string;

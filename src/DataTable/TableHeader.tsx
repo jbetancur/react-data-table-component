@@ -43,7 +43,7 @@ type TableHeaderProps = {
 	showMenu?: boolean;
 	contextMessage: ContextMessage;
 	contextActions: React.ReactNode | React.ReactNode[];
-	contextComponent: React.ReactElement | null;
+	contextComponent: React.ReactNode | null;
 };
 
 const TableHeader = ({
