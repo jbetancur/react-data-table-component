@@ -102,15 +102,14 @@ const columns = [
 	},
 ];
 
+const options = {
+	customStyles: customStyles,
+	highlightOnHover: true,
+	pointerOnHover: true,
+};
+
 const CustomStylesGSheets = () => (
-	<DataTable
-		title="Google Sheets-esqe"
-		columns={columns}
-		data={data}
-		customStyles={customStyles}
-		highlightOnHover
-		pointerOnHover
-	/>
+	<DataTable title="Google Sheets-esqe" columns={columns} data={data} options={options} />
 );
 
 storiesOf('Custom Styling', module).add('Google Sheets-esqe', CustomStylesGSheets);

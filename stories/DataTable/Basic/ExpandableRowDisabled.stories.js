@@ -28,6 +28,14 @@ const columns = [
 	},
 ];
 
+const options = {
+	defaultSortFieldId: 1,
+	highlightOnHover: true,
+	expandableRows: true,
+	expandableRowDisabled: row => row.disabled,
+	expandableRowsComponent: <ExpandedComponent />,
+};
+
 const BasicTableExpanderDisabled = () => {
 	const data = tableDataItems.map(item => {
 		let disabled = false;
@@ -41,11 +49,7 @@ const BasicTableExpanderDisabled = () => {
 			title="Movie List - No additional info for old movies (Before 2000)"
 			columns={columns}
 			data={data}
-			expandableRows
-			expandableRowDisabled={row => row.disabled}
-			highlightOnHover
-			defaultSortField="name"
-			expandableRowsComponent={<ExpandedComponent />}
+			options={options}
 		/>
 	);
 };

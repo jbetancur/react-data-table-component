@@ -5,8 +5,7 @@ import { getNumberOfPages, detectRTL } from '../util';
 import useWindowSize from '../hooks/useWindowSize';
 import { media, SMALL } from '../media';
 import { Direction } from '../constants';
-import { PaginationOptions } from '../types';
-import { defaultProps } from '../defaultProps';
+import { LocalizationOptions, PaginationOptions } from '../types';
 
 const PaginationWrapper = styled.nav`
 	display: flex;
@@ -61,6 +60,7 @@ interface PaginationProps {
 	currentPage: number;
 	direction?: Direction;
 	paginationOptions: Required<PaginationOptions>;
+	localization: LocalizationOptions;
 	onChangePage: (page: number) => void;
 	onChangeRowsPerPage: (numRows: number, currentPage: number) => void;
 }
@@ -71,8 +71,9 @@ function Pagination({
 	currentPage,
 	direction,
 	paginationOptions,
-	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
-	onChangePage = defaultProps.onChangePage,
+	localization,
+	onChangeRowsPerPage,
+	onChangePage,
 }: PaginationProps): JSX.Element {
 	const windowSize = useWindowSize();
 	const shouldShow = windowSize.width && windowSize.width > SMALL;
@@ -85,8 +86,8 @@ function Pagination({
 
 	const range =
 		currentPage === numPages
-			? `${firstIndex}-${rowCount} ${paginationOptions.rangeSeparatorText} ${rowCount}`
-			: `${firstIndex}-${lastIndex} ${paginationOptions.rangeSeparatorText} ${rowCount}`;
+			? `${firstIndex}-${rowCount} ${localization.pagination.rangeSeparatorText} ${rowCount}`
+			: `${firstIndex}-${lastIndex} ${localization.pagination.rangeSeparatorText} ${rowCount}`;
 
 	const handlePrevious = React.useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
 	const handleNext = React.useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
@@ -111,22 +112,26 @@ function Pagination({
 	if (paginationOptions.selectAllRowsItem) {
 		selectOptions.push(
 			<option key={-1} value={rowCount}>
-				{paginationOptions.selectAllRowsItemText}
+				{localization.selectableRows.allRowsItemText}
 			</option>,
 		);
 	}
 
 	const select = (
-		<Select onChange={handleRowsPerPage} defaultValue={rowsPerPage} aria-label={paginationOptions.rowsPerPageText}>
+		<Select
+			onChange={handleRowsPerPage}
+			defaultValue={rowsPerPage}
+			aria-label={localization.pagination.rowsPerPageText}
+		>
 			{selectOptions}
 		</Select>
 	);
 
 	return (
 		<PaginationWrapper className="rdt_Pagination">
-			{!paginationOptions.noRowsPerPage && shouldShow && (
+			{!localization.pagination.noRowsPerPage && shouldShow && (
 				<>
-					<RowLabel>{paginationOptions.rowsPerPageText}</RowLabel>
+					<RowLabel>{localization.pagination.rowsPerPageText}</RowLabel>
 					{select}
 				</>
 			)}

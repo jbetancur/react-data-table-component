@@ -3,6 +3,10 @@ import { storiesOf } from '@storybook/react';
 import tableDataItems from '../constants/sampleDesserts';
 import DataTable from '../../../src/index';
 
+const options = {
+	selectableRows: true,
+};
+
 const OptimizedHooks = () => {
 	const [selectedRows, setSelectedRows] = useState([]);
 
@@ -92,7 +96,7 @@ const OptimizedHooks = () => {
 			data={tableDataItems}
 			columns={columns}
 			onSelectedRowsChange={handleChange}
-			selectableRows
+			options={options}
 		/>
 	);
 };

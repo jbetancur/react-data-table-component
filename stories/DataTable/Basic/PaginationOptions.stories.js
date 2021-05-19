@@ -21,21 +21,23 @@ const columns = [
 	},
 ];
 
-const paginationOptions = {
-	rowsPerPageText: 'Filas por página',
-	rangeSeparatorText: 'de',
+const localization = {
+	pagination: {
+		rowsPerPageText: 'Filas por página',
+		rangeSeparatorText: 'de',
+	},
+	selectableRows: {
+		allRowsItemText: 'Todos',
+	},
+};
+
+const options = {
 	selectAllRowsItem: true,
-	selectAllRowsItemText: 'Todos',
+	pagination: true,
 };
 
 const BasicTable = () => (
-	<DataTable
-		title="Lista de Peliculas"
-		columns={columns}
-		data={data}
-		pagination
-		paginationOptions={paginationOptions}
-	/>
+	<DataTable title="Lista de Peliculas" columns={columns} data={data} options={options} localization={localization} />
 );
 
 storiesOf('Pagination', module).add('Options', BasicTable);

@@ -67,6 +67,10 @@ const columns = memoize(clickHandler => [
 	},
 ]);
 
+const options = {
+	selectableRows: true,
+};
+
 class OptimizedClass extends PureComponent {
 	// eslint-disable-next-line react/state-in-constructor
 	state = {
@@ -92,8 +96,8 @@ class OptimizedClass extends PureComponent {
 				title="Desserts"
 				data={tableDataItems}
 				columns={columns(this.handleButtonClick)}
+				options={options}
 				onSelectedRowsChange={this.handleChange}
-				selectableRows
 			/>
 		);
 	}

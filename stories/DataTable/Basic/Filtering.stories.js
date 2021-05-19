@@ -102,17 +102,24 @@ const BasicTable = () => {
 		);
 	}, [filterText, resetPaginationToggle]);
 
+	const options = React.useMemo(
+		() => ({
+			pagination: true,
+			subHeader: true,
+			subHeaderComponent: subHeaderComponentMemo,
+			selectableRows: true,
+			persistTableHead: true,
+		}),
+		[subHeaderComponentMemo],
+	);
+
 	return (
 		<DataTable
 			title="Contact List"
 			columns={columns}
 			data={filteredItems}
-			pagination
-			paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
-			subHeader
-			subHeaderComponent={subHeaderComponentMemo}
-			selectableRows
-			persistTableHead
+			options={options}
+			paginationResetDefaultPage={resetPaginationToggle}
 		/>
 	);
 };

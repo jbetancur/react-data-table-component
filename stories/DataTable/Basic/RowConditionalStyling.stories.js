@@ -92,13 +92,12 @@ const conditionalRowStyles = [
 	},
 ];
 
+const options = {
+	conditionalRowStyles: conditionalRowStyles,
+};
+
 const ConditionalRowStyle = () => (
-	<DataTable
-		title="Desserts - Conditional Rows"
-		columns={columns}
-		data={tableDataItems}
-		conditionalRowStyles={conditionalRowStyles}
-	/>
+	<DataTable title="Desserts - Conditional Rows" columns={columns} data={tableDataItems} options={options} />
 );
 
 storiesOf('Conditional Styling', module).add('Conditional Rows', ConditionalRowStyle);

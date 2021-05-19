@@ -54,6 +54,9 @@ const KitchenSink = () => {
 	const [direction, setDirection] = React.useState(false);
 	const [directionValue, setDirectionValue] = React.useState('auto');
 
+	const test = React.useRef();
+	console.log(test);
+
 	return (
 		<div>
 			<FormControlLabel
@@ -226,8 +229,11 @@ const KitchenSink = () => {
 				title="Movie List"
 				columns={columns}
 				data={data}
+				progressPending={loading}
+				ref={test}
 				options={{
-					defaultSortField: 'title',
+					defaultSortFieldId: 1,
+					defaultSortDirection: 'desc',
 					selectableRows: selectableRows,
 					selectableRowsNoSelectAll: noSelectAll,
 					selectableRowsHighlight: selectableRowsHighlight,
@@ -241,7 +247,6 @@ const KitchenSink = () => {
 					dense: dense,
 					noTableHead: tableHead,
 					persistTableHead: persist,
-					progressPending: loading,
 					noHeader: noHeader,
 					subHeader: subHeader,
 					subHeaderComponent: (

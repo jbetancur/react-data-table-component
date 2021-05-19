@@ -52,16 +52,13 @@ const columns = [
 	},
 ];
 
-const Expandable = () => (
-	<DataTable
-		title="Rick & Morty Episodes"
-		columns={columns}
-		data={data}
-		expandableRows
-		highlightOnHover
-		defaultSortField="name"
-		expandableRowsComponent={<SampleExpandedComponent />}
-	/>
-);
+const options = {
+	expandableRows: true,
+	highlightOnHover: true,
+	defaultSortField: 'name',
+	expandableRowsComponent: <SampleExpandedComponent />,
+};
+
+const Expandable = () => <DataTable title="Rick & Morty Episodes" columns={columns} data={data} options={options} />;
 
 storiesOf('Expandable Rows', module).add('Custom Expanded Component', Expandable);

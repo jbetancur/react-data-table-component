@@ -54,16 +54,13 @@ const columns = [
 	},
 ];
 
-const CustomStylesGrid = () => (
-	<DataTable
-		title="Movie List"
-		columns={columns}
-		data={data}
-		customStyles={customStyles}
-		pagination
-		selectableRows
-		dense
-	/>
-);
+const options = {
+	customStyles: customStyles,
+	pagination: true,
+	selectableRows: true,
+	dense: true,
+};
+
+const CustomStylesGrid = () => <DataTable title="Movie List" columns={columns} data={data} options={options} />;
 
 storiesOf('Custom Styling', module).add('Compact Grid Lines', CustomStylesGrid);

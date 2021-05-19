@@ -37,12 +37,14 @@ function DataTable<T extends RowRecord>({
 	data = defaultProps.data,
 	columns = defaultProps.columns,
 	title = defaultProps.title,
-	options = defaultProps.options,
 	progressPending = defaultProps.progressPending,
 	disabled = defaultProps.disabled,
 	actions = defaultProps.actions,
 	contextActions = defaultProps.contextActions,
 	clearSelectedRows = defaultProps.clearSelectedRows,
+	paginationResetDefaultPage = defaultProps.paginationResetDefaultPage,
+	localization,
+	options,
 	onRowExpandToggled = defaultProps.onRowExpandToggled,
 	onSelectedRowsChange = defaultProps.onSelectedRowsChange,
 	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
@@ -53,11 +55,12 @@ function DataTable<T extends RowRecord>({
 }: TableProps<T>): JSX.Element {
 	// merge object based related properties
 	const optionsMerged = { ...defaultProps.options, ...options };
-	const paginationOptionsMerged = { ...defaultProps.options.paginationOptions, ...options.paginationOptions };
+	const paginationOptionsMerged = { ...defaultProps.options.paginationOptions, ...(options?.paginationOptions || {}) };
 	const paginationServerOptionsMerged = {
 		...defaultProps.options.paginationServerOptions,
-		...options.paginationServerOptions,
+		...(options?.paginationServerOptions || {}),
 	};
+	const localizationOptionsMerged = { ...defaultProps.localization, ...localization };
 
 	// decorate columns with additional metadata required by RDT
 	const columnsMemo = React.useMemo(() => decorateColumns<T>(columns), [columns]);
@@ -81,7 +84,7 @@ function DataTable<T extends RowRecord>({
 			currentPage: paginationOptionsMerged.defaultPage,
 			rowsPerPage: paginationOptionsMerged.perPage,
 			selectedRowsFlag: false,
-			contextMessage: optionsMerged.contextMessage,
+			contextMessage: localizationOptionsMerged.contextMessage,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[],
@@ -219,7 +222,7 @@ function DataTable<T extends RowRecord>({
 
 	useDidUpdateEffect(() => {
 		handleChangePage(paginationOptionsMerged.defaultPage || 1);
-	}, [paginationOptionsMerged.defaultPage, paginationOptionsMerged.resetDefaultPage]);
+	}, [paginationOptionsMerged.defaultPage, paginationResetDefaultPage]);
 
 	useDidUpdateEffect(() => {
 		if (optionsMerged.pagination && optionsMerged.paginationServer) {
@@ -279,7 +282,7 @@ function DataTable<T extends RowRecord>({
 					direction={optionsMerged.direction}
 					contextActions={contextActions}
 					contextComponent={optionsMerged.contextComponent}
-					contextMessage={optionsMerged.contextMessage}
+					contextMessage={localizationOptionsMerged.contextMessage}
 				/>
 			)}
 
@@ -419,6 +422,7 @@ function DataTable<T extends RowRecord>({
 						rowsPerPage={rowsPerPage}
 						direction={optionsMerged.direction}
 						paginationOptions={paginationOptionsMerged}
+						localization={localizationOptionsMerged}
 					/>
 				</div>
 			)}

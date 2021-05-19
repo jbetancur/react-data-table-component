@@ -28,14 +28,13 @@ const columns = [
 	},
 ];
 
+const options = {
+	expandableRows: true,
+	expandableRowsComponent: <ExpandedComponent />,
+};
+
 const ExpandableTable = () => (
-	<DataTable
-		title="Movie List"
-		columns={columns}
-		data={tableDataItems}
-		expandableRows
-		expandableRowsComponent={<ExpandedComponent />}
-	/>
+	<DataTable title="Movie List" columns={columns} data={tableDataItems} options={options} />
 );
 
 storiesOf('Expandable Rows', module).add('Basic', ExpandableTable);

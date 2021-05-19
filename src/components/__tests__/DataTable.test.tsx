@@ -2,9 +2,9 @@ import 'jest-styled-components';
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import DataTable from '../DataTable';
-import { Direction, STOP_PROP_TAG } from '../constants';
+import { Direction, STOP_PROP_TAG } from '../../constants';
 import { Alignment } from '../../index';
-import { ConditionalStyles } from '../types';
+import { ConditionalStyles } from '../../types';
 
 interface Data {
 	id: number;
@@ -86,7 +86,9 @@ test('should render the correctly when using selector function and a format func
 test('should render correctly if the keyField is overridden', () => {
 	const mock = dataMock();
 	const data = [{ uuid: 123, some: { name: 'Henry the 8th' } }];
-	const { container } = render(<DataTable data={data} columns={mock.columns} keyField="uuid" />);
+	const options = { keyField: 'uuid' };
+
+	const { container } = render(<DataTable data={data} columns={mock.columns} options={options} />);
 
 	expect(container.querySelector('div[id="row-123"]')).not.toBeNull();
 });
@@ -108,7 +110,8 @@ test('should render correctly when disabled', () => {
 
 test('should not show the TableHead when noTableHead is true', () => {
 	const mock = dataMock();
-	const { container } = render(<DataTable data={mock.data} columns={mock.columns} noTableHead />);
+	const options = { noTableHead: true };
+	const { container } = render(<DataTable data={mock.data} columns={mock.columns} options={options} />);
 
 	expect(container.firstChild).toMatchSnapshot();
 });
@@ -117,8 +120,9 @@ describe('DataTable::onSelectedRowsChange', () => {
 	test('should call onSelectedRowsChange with the correct values when select all rows is selected', () => {
 		const mock = dataMock();
 		const updatedMock = jest.fn();
+		const options = { selectableRows: true };
 		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
+			<DataTable data={mock.data} columns={mock.columns} options={options} onSelectedRowsChange={updatedMock} />,
 		);
 
 		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
@@ -133,8 +137,9 @@ describe('DataTable::onSelectedRowsChange', () => {
 	test('should call onSelectedRowsChange with the correct values when all rows are selected', () => {
 		const mock = dataMock();
 		const updatedMock = jest.fn();
+		const options = { selectableRows: true };
 		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
+			<DataTable data={mock.data} columns={mock.columns} options={options} onSelectedRowsChange={updatedMock} />,
 		);
 
 		fireEvent.click(container.querySelector('input[name="select-row-2"]') as HTMLInputElement);
@@ -150,8 +155,9 @@ describe('DataTable::onSelectedRowsChange', () => {
 	test('should call onSelectedRowsChange with the correct values when a row is selected', () => {
 		const mock = dataMock();
 		const updatedMock = jest.fn();
+		const options = { selectableRows: true };
 		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
+			<DataTable data={mock.data} columns={mock.columns} options={options} onSelectedRowsChange={updatedMock} />,
 		);
 
 		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
@@ -1776,14 +1782,14 @@ describe('DataTable::Pagination', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
-	test('should render correctly when a paginationComponentOptions selectAllRowsItem is true and selectAllRowsItemText is provided', () => {
+	test('should render correctly when a paginationComponentOptions selectAllRowsItem is true and allRowsItemText is provided', () => {
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
 				columns={mock.columns}
 				pagination
-				paginationOptions={{ selectAllRowsItem: true, selectAllRowsItemText: 'Todos' }}
+				paginationOptions={{ selectAllRowsItem: true, allRowsItemText: 'Todos' }}
 			/>,
 		);
 

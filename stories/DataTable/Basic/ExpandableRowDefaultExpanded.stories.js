@@ -28,22 +28,19 @@ const columns = [
 	},
 ];
 
+const options = {
+	expandableRows: true,
+	expandableRowExpanded: isExpanded,
+	expandableRowsComponent: <ExpandedComponent />,
+};
+
 const isExpanded = row => row.defaultExpanded;
 
 const BasicTableDefaultRowExpanded = () => {
 	const data = tableDataItems;
 	data[0].defaultExpanded = true;
 
-	return (
-		<DataTable
-			title="Movie List - First row expanded"
-			columns={columns}
-			data={data}
-			expandableRows
-			expandableRowExpanded={isExpanded}
-			expandableRowsComponent={<ExpandedComponent />}
-		/>
-	);
+	return <DataTable title="Movie List - First row expanded" columns={columns} data={data} options={options} />;
 };
 
 storiesOf('Expandable Rows', module).add('Default Expanded Row', BasicTableDefaultRowExpanded);

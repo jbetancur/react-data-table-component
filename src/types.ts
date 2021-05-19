@@ -37,8 +37,6 @@ export type ChangeRowsPerPageProps = {
 
 export type TableOptions<T = RowRecord> = {
 	conditionalRowStyles?: ConditionalStyles<T>[];
-
-	contextMessage?: ContextMessage;
 	customStyles?: TableStyles;
 	defaultSortAsc?: boolean;
 	defaultSortFieldId?: DefaultSortField;
@@ -57,7 +55,6 @@ export type TableOptions<T = RowRecord> = {
 	highlightOnHover?: boolean;
 	keyField?: string;
 	noContextMenu?: boolean;
-	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
 	pagination?: boolean;
@@ -85,6 +82,7 @@ export type TableOptions<T = RowRecord> = {
 	contextComponent?: React.ReactElement | null;
 	subHeaderComponent?: React.ReactNode | React.ReactNode[];
 	expandableRowsComponent?: React.ReactElement;
+	noDataComponent?: React.ReactNode;
 	progressComponent?: React.ReactNode;
 	selectableRowsComponent?: 'input' | React.ReactElement;
 	selectableRowsComponentProps?: RowRecord;
@@ -100,6 +98,8 @@ export interface TableProps<T = RowRecord> {
 	actions?: React.ReactNode | React.ReactNode[];
 	contextActions?: React.ReactNode | React.ReactNode[];
 	clearSelectedRows?: boolean;
+	paginationResetDefaultPage?: boolean;
+	localization?: LocalizationOptions;
 	onChangePage?: (props: ChangePageProps) => void;
 	onChangeRowsPerPage?: (props: ChangeRowsPerPageProps) => void;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
@@ -204,6 +204,18 @@ export interface TableStyles {
 	};
 }
 
+export interface LocalizationOptions {
+	pagination: {
+		noRowsPerPage?: boolean;
+		rowsPerPageText?: string;
+		rangeSeparatorText?: string;
+	};
+	contextMessage?: ContextMessage;
+	selectableRows: {
+		allRowsItemText?: string;
+	};
+}
+
 export interface PaginationOptions {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	component?: React.ComponentType<any> | null;
@@ -213,13 +225,8 @@ export interface PaginationOptions {
 	iconNext?: React.ReactNode;
 	iconPrevious?: React.ReactNode;
 	perPage?: number;
-	resetDefaultPage?: boolean;
 	rowsPerPageOptions?: number[];
-	noRowsPerPage?: boolean;
-	rowsPerPageText?: string;
-	rangeSeparatorText?: string;
 	selectAllRowsItem?: boolean;
-	selectAllRowsItemText?: string;
 }
 
 export interface PaginationServerOptions {
