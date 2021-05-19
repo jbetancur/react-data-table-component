@@ -18,7 +18,7 @@ type TableCellCheckboxProps<T> = {
 	row: T;
 	rowCount: number;
 	selected: boolean;
-	selectableRowsComponent: 'input' | React.ReactElement;
+	selectableRowsComponent: 'input' | React.ReactNode;
 	selectableRowsComponentProps: Record<string, unknown>;
 	selectableRowDisabled: RowState<T>;
 	onSelectedRow: (action: SingleRowAction<T>) => void;
