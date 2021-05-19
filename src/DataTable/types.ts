@@ -22,7 +22,7 @@ export type TableProps<T = RowRecord> = {
 	columns: TableColumn<T>[];
 	conditionalRowStyles?: ConditionalStyles<T>[];
 	contextActions?: React.ReactNode | React.ReactNode[];
-	contextComponent?: React.ReactElement;
+	contextComponent?: React.ReactNode;
 	contextMessage?: ContextMessage;
 	customStyles?: TableStyles;
 	data: T[];
@@ -36,7 +36,7 @@ export type TableProps<T = RowRecord> = {
 	expandableRowDisabled?: RowState<T>;
 	expandableRowExpanded?: RowState<T>;
 	expandableRows?: boolean;
-	expandableRowsComponent?: React.ReactElement;
+	expandableRowsComponent?: React.ReactNode;
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
@@ -80,7 +80,7 @@ export type TableProps<T = RowRecord> = {
 	responsive?: boolean;
 	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
-	selectableRowsComponent?: 'input' | React.ReactElement;
+	selectableRowsComponent?: 'input' | React.ReactNode;
 	selectableRowsComponentProps?: RowRecord;
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;
