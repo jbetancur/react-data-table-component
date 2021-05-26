@@ -247,16 +247,16 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	}, [selectedCount]);
 
 	useDidUpdateEffect(() => {
+		onSort(selectedColumn, sortDirection);
+	}, [selectedColumn, sortDirection]);
+
+	useDidUpdateEffect(() => {
 		onChangePage(currentPage, paginationTotalRows || rows.length);
 	}, [currentPage]);
 
 	useDidUpdateEffect(() => {
 		onChangeRowsPerPage(rowsPerPage, currentPage);
 	}, [rowsPerPage]);
-
-	useDidUpdateEffect(() => {
-		onSort(selectedColumn, sortDirection);
-	}, [selectedColumn, sortDirection]);
 
 	useDidUpdateEffect(() => {
 		handleChangePage(paginationDefaultPage);
