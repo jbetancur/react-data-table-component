@@ -308,7 +308,7 @@ describe('DataTable::columns', () => {
 });
 
 describe('DataTable:RowHover', () => {
-	test('should call onRowHovered callback when row is hoovered', () => {
+	test('should call onRowHovered callback when row is hovered', () => {
 		const onRowHoveredMock = jest.fn();
 		const mock = dataMock({});
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onRowHovered={onRowHoveredMock} />);
