@@ -1,6 +1,5 @@
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
-import React from 'react';
 
 export type ChangePage = (page: number, totalRows: number) => void;
 export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
