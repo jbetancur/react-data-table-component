@@ -460,7 +460,7 @@ class MyComponent extends Component {
           data={data}
           selectableRows // add for checkbox selection
           Clicked
-          Selected={handleChange}
+          onSelectedRowsChange={handleChange}
         />
     )
   }
