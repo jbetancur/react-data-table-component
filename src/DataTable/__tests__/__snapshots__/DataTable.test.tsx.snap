@@ -14015,7 +14015,11 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            Add a custom expander component. Use props.data for row data
+            To add an expander pass in a component instance via 
+            <strong>
+              expandableRowsComponent
+            </strong>
+            . You can then access props.data from this component.
           </div>
         </div>
         <div
@@ -14438,7 +14442,11 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            Add a custom expander component. Use props.data for row data
+            To add an expander pass in a component instance via 
+            <strong>
+              expandableRowsComponent
+            </strong>
+            . You can then access props.data from this component.
           </div>
         </div>
         <div
@@ -15928,7 +15936,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            Add a custom expander component. Use props.data for row data
+            To add an expander pass in a component instance via 
+            <strong>
+              expandableRowsComponent
+            </strong>
+            . You can then access props.data from this component.
           </div>
         </div>
         <div
@@ -16752,7 +16764,11 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            Add a custom expander component. Use props.data for row data
+            To add an expander pass in a component instance via 
+            <strong>
+              expandableRowsComponent
+            </strong>
+            . You can then access props.data from this component.
           </div>
         </div>
         <div
@@ -26749,7 +26765,11 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            Add a custom expander component. Use props.data for row data
+            To add an expander pass in a component instance via 
+            <strong>
+              expandableRowsComponent
+            </strong>
+            . You can then access props.data from this component.
           </div>
         </div>
         <div
