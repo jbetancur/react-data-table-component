@@ -1,11 +1,6 @@
 import * as React from 'react';
 import styled, { CSSObject } from 'styled-components';
-
-// Make "data" available on our any child component
-// eslint-disable-next-line arrow-body-style
-function renderChildren<T>(children: React.ReactElement, data: T) {
-	return React.Children.map(children, child => React.cloneElement(child, { data }));
-}
+import { ComponentProps, ExpandableRowsComponent } from './types';
 
 const ExpanderRowStyle = styled.div<{
 	extendedRowStyle: CSSObject;
@@ -18,16 +13,19 @@ const ExpanderRowStyle = styled.div<{
 
 type ExpanderRowProps<T> = {
 	data: T;
-	children: React.ReactElement;
+	component: ExpandableRowsComponent;
 	extendedRowStyle: CSSObject;
+	componentProps: ComponentProps;
 };
 
-function ExpanderRow<T>({ data, children, extendedRowStyle }: ExpanderRowProps<T>): JSX.Element {
+function ExpanderRow<T>({ data, component, componentProps, extendedRowStyle }: ExpanderRowProps<T>): JSX.Element {
+	const ExpandableComponent = component;
+
 	return (
 		<ExpanderRowStyle className="rdt_ExpanderRow" extendedRowStyle={extendedRowStyle}>
-			{renderChildren(children, data)}
+			<ExpandableComponent data={data} {...componentProps} />
 		</ExpanderRowStyle>
 	);
 }
 
-export default ExpanderRow;
+export default React.memo(ExpanderRow);

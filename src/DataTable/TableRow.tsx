@@ -5,7 +5,6 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import { getConditionalStyle, getProperty, isOdd, noop } from './util';
-import { defaultProps } from './defaultProps';
 import { STOP_PROP_TAG } from './constants';
 import { RowRecord, SingleRowAction, TableProps } from './types';
 
@@ -53,6 +52,7 @@ type DProps<T> = Pick<
 	| 'expandableIcon'
 	| 'expandableRows'
 	| 'expandableRowsComponent'
+	| 'expandableRowsComponentProps'
 	| 'expandableRowsHideExpander'
 	| 'expandOnRowClicked'
 	| 'expandOnRowDoubleClicked'
@@ -89,16 +89,17 @@ function TableRow<T extends RowRecord>({
 	defaultExpanded = false,
 	defaultExpanderDisabled = false,
 	dense = false,
-	expandableIcon = defaultProps.expandableIcon,
+	expandableIcon,
 	expandableRows = false,
-	expandableRowsComponent = defaultProps.expandableRowsComponent,
+	expandableRowsComponent,
+	expandableRowsComponentProps,
 	expandableRowsHideExpander,
 	expandOnRowClicked = false,
 	expandOnRowDoubleClicked = false,
 	highlightOnHover = false,
 	id,
 	expandableInheritConditionalStyles,
-	keyField = defaultProps.keyField,
+	keyField,
 	onRowClicked = noop,
 	onRowDoubleClicked = noop,
 	onRowExpandToggled = noop,
@@ -109,8 +110,8 @@ function TableRow<T extends RowRecord>({
 	rowIndex,
 	selectableRowDisabled = null,
 	selectableRows = false,
-	selectableRowsComponent = defaultProps.selectableRowsComponent,
-	selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
+	selectableRowsComponent,
+	selectableRowsComponentProps,
 	selectableRowsHighlight = false,
 	selected,
 	striped = false,
@@ -226,9 +227,13 @@ function TableRow<T extends RowRecord>({
 			</TableRowStyle>
 
 			{expandableRows && expanded && (
-				<ExpanderRow key={`expander--${row[keyField]}`} data={row} extendedRowStyle={inheritStyles}>
-					{expandableRowsComponent}
-				</ExpanderRow>
+				<ExpanderRow
+					key={`expander-${row[keyField]}`}
+					data={row}
+					extendedRowStyle={inheritStyles}
+					component={expandableRowsComponent}
+					componentProps={expandableRowsComponentProps}
+				/>
 			)}
 		</>
 	);

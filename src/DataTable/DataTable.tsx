@@ -98,6 +98,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
+		expandableRowsComponentProps = defaultProps.expandableRowsComponentProps,
 		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		expandableRowsHideExpander = defaultProps.expandableRowsHideExpander,
 		expandOnRowClicked = defaultProps.expandOnRowClicked,
@@ -152,7 +153,6 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const Pagination = paginationComponent || NativePagination;
 
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
-	const expandableRowsComponentMemo = React.useMemo(() => expandableRowsComponent, [expandableRowsComponent]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
 	const calculatedRows = React.useMemo(() => {
@@ -406,7 +406,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											dense={dense}
 											expandOnRowClicked={expandOnRowClicked}
 											expandOnRowDoubleClicked={expandOnRowDoubleClicked}
-											expandableRowsComponent={expandableRowsComponentMemo}
+											expandableRowsComponent={expandableRowsComponent}
+											expandableRowsComponentProps={expandableRowsComponentProps}
 											expandableRowsHideExpander={expandableRowsHideExpander}
 											defaultExpanderDisabled={expanderDisabled}
 											defaultExpanded={expanderExpander}
