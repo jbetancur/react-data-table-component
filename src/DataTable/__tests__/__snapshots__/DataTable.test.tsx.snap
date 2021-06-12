@@ -14014,10 +14014,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         <div
           class="c17 rdt_ExpanderRow"
         >
-          <div
-            data="[object Object]"
-            style="padding: 24px;"
-          >
+          <div>
             Add a custom expander component. Use props.data for row data
           </div>
         </div>
@@ -14440,10 +14437,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         <div
           class="c17 rdt_ExpanderRow"
         >
-          <div
-            data="[object Object]"
-            style="padding: 24px;"
-          >
+          <div>
             Add a custom expander component. Use props.data for row data
           </div>
         </div>
@@ -15933,10 +15927,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
         <div
           class="c17 rdt_ExpanderRow"
         >
-          <div
-            data="[object Object]"
-            style="padding: 24px;"
-          >
+          <div>
             Add a custom expander component. Use props.data for row data
           </div>
         </div>
@@ -16760,10 +16751,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         <div
           class="c17 rdt_ExpanderRow"
         >
-          <div
-            data="[object Object]"
-            style="padding: 24px;"
-          >
+          <div>
             Add a custom expander component. Use props.data for row data
           </div>
         </div>
@@ -26760,10 +26748,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
         <div
           class="c17 rdt_ExpanderRow"
         >
-          <div
-            data="[object Object]"
-            style="padding: 24px;"
-          >
+          <div>
             Add a custom expander component. Use props.data for row data
           </div>
         </div>

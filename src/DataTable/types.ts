@@ -13,9 +13,13 @@ export type SortDirection = 'asc' | 'desc';
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RowRecord = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ExpandableRowsComponent = React.ComponentType<any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PaginationComponent = React.ComponentType<any>;
+export type ComponentProps = Record<string, unknown>;
 
 export type TableProps<T = RowRecord> = {
-	/** actions */
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
 	clearSelectedRows?: boolean;
@@ -36,7 +40,8 @@ export type TableProps<T = RowRecord> = {
 	expandableRowDisabled?: RowState<T>;
 	expandableRowExpanded?: RowState<T>;
 	expandableRows?: boolean;
-	expandableRowsComponent?: React.ReactNode;
+	expandableRowsComponent?: ExpandableRowsComponent;
+	expandableRowsComponentProps?: ComponentProps;
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
@@ -59,8 +64,7 @@ export type TableProps<T = RowRecord> = {
 	overflowY?: boolean;
 	overflowYOffset?: string;
 	pagination?: boolean;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	paginationComponent?: React.ComponentType<any>;
+	paginationComponent?: PaginationComponent;
 	paginationComponentOptions?: PaginationOptions;
 	paginationDefaultPage?: number;
 	paginationIconFirstPage?: React.ReactNode;
@@ -81,12 +85,12 @@ export type TableProps<T = RowRecord> = {
 	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
 	selectableRowsComponent?: 'input' | React.ReactNode;
-	selectableRowsComponentProps?: RowRecord;
+	selectableRowsComponentProps?: ComponentProps;
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;
 	selectableRowsVisibleOnly?: boolean;
-	sortFunction?: SortFunction<T>;
+	sortFunction?: SortFunction<T> | null;
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
 	striped?: boolean;

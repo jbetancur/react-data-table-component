@@ -29,16 +29,22 @@ export const defaultProps = {
 	expandableRowsHideExpander: false,
 	expandOnRowDoubleClicked: false,
 	expandableInheritConditionalStyles: false,
-	progressPending: false,
-	progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
-	persistTableHead: false,
-	expandableRowsComponent: (
-		<div style={{ padding: '24px' }}>Add a custom expander component. Use props.data for row data</div>
-	),
+	expandableRowsComponent: function DefaultExpander(): JSX.Element {
+		return (
+			<div>
+				To add an expander pass in a component instance via <strong>expandableRowsComponent</strong>. You can then
+				access props.data from this component.
+			</div>
+		);
+	},
 	expandableIcon: {
 		collapsed: <ExpanderCollapsedIcon />,
 		expanded: <ExpanderExpandedIcon />,
 	},
+	expandableRowsComponentProps: {},
+	progressPending: false,
+	progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
+	persistTableHead: false,
 	sortIcon: null,
 	sortFunction: null,
 	sortServer: false,
