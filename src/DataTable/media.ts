@@ -20,9 +20,12 @@ export const media = {
 			${css(literals, ...args)}
 		}
 	`,
-	custom: (value: number) => (literals: TemplateStringsArray, ...args: CSSObject[]): FlattenSimpleInterpolation => css`
-		@media screen and (max-width: ${value}px) {
-			${css(literals, ...args)}
-		}
-	`,
+	custom:
+		(value: number) =>
+		(literals: TemplateStringsArray, ...args: CSSObject[]): FlattenSimpleInterpolation =>
+			css`
+				@media screen and (max-width: ${value}px) {
+					${css(literals, ...args)}
+				}
+			`,
 };

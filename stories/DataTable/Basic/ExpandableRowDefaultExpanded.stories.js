@@ -41,7 +41,7 @@ const BasicTableDefaultRowExpanded = () => {
 			data={data}
 			expandableRows
 			expandableRowExpanded={isExpanded}
-			expandableRowsComponent={<ExpandedComponent />}
+			expandableRowsComponent={ExpandedComponent}
 		/>
 	);
 };

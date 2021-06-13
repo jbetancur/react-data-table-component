@@ -118,10 +118,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	// decorate columns with additional metadata required by RDT
 	const columnsMemo = React.useMemo(() => decorateColumns<T>(columns), [columns]);
 	const defaultSortDirection = getSortDirection(defaultSortAsc);
-	const defaultSortColumn = React.useMemo(() => getColumnById<T>(defaultSortFieldId, columnsMemo), [
-		columnsMemo,
-		defaultSortFieldId,
-	]);
+	const defaultSortColumn = React.useMemo(
+		() => getColumnById<T>(defaultSortFieldId, columnsMemo),
+		[columnsMemo, defaultSortFieldId],
+	);
 
 	// Run once
 	const initialState: TableState<T> = React.useMemo(

@@ -39,7 +39,7 @@ const ExpandableTable = () => (
 		columns={columns}
 		data={tableDataItems}
 		expandableRows
-		expandableRowsComponent={<ExpandedComponent />}
+		expandableRowsComponent={ExpandedComponent}
 		expandOnRowClicked
 	/>
 );

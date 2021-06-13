@@ -41,10 +41,10 @@ function Checkbox({
 
 	const TagName = component;
 	const baseStyle = TagName !== defaultComponentName ? componentOptions.style : calculateBaseStyle(disabled);
-	const resolvedComponentOptions = React.useMemo(() => handleFunctionProps(componentOptions, indeterminate), [
-		componentOptions,
-		indeterminate,
-	]);
+	const resolvedComponentOptions = React.useMemo(
+		() => handleFunctionProps(componentOptions, indeterminate),
+		[componentOptions, indeterminate],
+	);
 
 	return (
 		<TagName
