@@ -22730,9 +22730,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-negative: 0;
   flex-shrink: 0;
   opacity: 1;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 .c7 {

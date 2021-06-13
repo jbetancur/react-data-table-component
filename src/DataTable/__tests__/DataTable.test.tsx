@@ -21,7 +21,7 @@ interface Data {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dataMock = (colProps?: any) => {
 	return {
-		columns: [{ name: 'Test', selector: 'some.name', ...colProps }],
+		columns: [{ name: 'Test', selector: (row: { name: string }[]) => row.some.name, ...colProps }],
 		data: [
 			{
 				id: 1,
@@ -614,7 +614,9 @@ describe('DataTable::sorting', () => {
 
 	test('should render correctly and bypass internal sort when sortServer = true and desc sort', () => {
 		const mock = dataMock({ sortable: true });
-		const { container } = render(<DataTable data={mock.data} columns={mock.columns} sortServer />);
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} sortServer defaultSortFieldId={1} />,
+		);
 
 		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
 		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
