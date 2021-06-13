@@ -25,17 +25,17 @@ const subHeaderComponent = (
 const columns = [
 	{
 		name: 'Title',
-		selector: 'title',
+		selector: row => row.title,
 		sortable: true,
 	},
 	{
 		name: 'Director',
-		selector: 'director',
+		selector: row => row.director,
 		sortable: true,
 	},
 	{
 		name: 'Year',
-		selector: 'year',
+		selector: row => row.year,
 		sortable: true,
 	},
 ];
@@ -266,7 +266,7 @@ const KitchenSink = () => {
 				title="Movie List"
 				columns={columns}
 				data={data}
-				defaultSortField="title"
+				defaultSortFieldId={1}
 				selectableRows={selectableRows}
 				selectableRowsComponentProps={selectableRowsComponentProps}
 				selectableRowsNoSelectAll={noSelectAll}

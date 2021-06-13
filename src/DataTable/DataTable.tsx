@@ -23,10 +23,10 @@ import {
 	getColumnById,
 	getNumberOfPages,
 	getSortDirection,
+	setRowData,
 	isEmpty,
 	isRowSelected,
 	recalculatePage,
-	sort,
 } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
@@ -127,9 +127,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const initialState: TableState<T> = React.useMemo(
 		() => ({
 			allSelected: false,
-			rows: defaultSortColumn?.selector
-				? sort(data, defaultSortColumn.selector, defaultSortDirection, sortFunction)
-				: data,
+			rows: setRowData(data, defaultSortColumn?.selector, defaultSortDirection, sortServer, sortFunction),
 			selectedCount: 0,
 			selectedRows: [],
 			selectedColumn: defaultSortColumn || { name: '' },
@@ -272,13 +270,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 			}
 		}
 	}, [paginationTotalRows]);
-
-	React.useEffect(() => {
+	useDidUpdateEffect(() => {
 		dispatch({
 			type: 'UPDATE_ROWS',
-			rows: defaultSortColumn?.selector
-				? sort(data, defaultSortColumn.selector, defaultSortDirection, sortFunction)
-				: data,
+			rows: setRowData(data, defaultSortColumn?.selector, defaultSortDirection, sortServer, sortFunction),
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);

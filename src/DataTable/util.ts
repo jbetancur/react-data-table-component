@@ -20,9 +20,23 @@ export function isEmpty(field: string | number | undefined = ''): boolean {
 	return !field || field.length === 0;
 }
 
+export function setRowData<T>(
+	rows: Array<T>,
+	selector: Selector<T> | null | undefined,
+	direction: SortDirection,
+	sortServer: boolean,
+	sortFn?: SortFunction<T> | null,
+): Array<T> {
+	if (sortServer || !selector) {
+		return rows;
+	}
+
+	return sort(rows, selector, direction, sortFn);
+}
+
 export function sort<T = RowRecord>(
 	rows: Array<T>,
-	selector: Selector<T> | null,
+	selector: Selector<T> | null | undefined,
 	direction: SortDirection,
 	sortFn?: SortFunction<T> | null,
 ): T[] {
