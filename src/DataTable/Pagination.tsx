@@ -109,11 +109,10 @@ function Pagination({
 	const handlePrevious = React.useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
 	const handleNext = React.useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
 	const handleFirst = React.useCallback(() => onChangePage(1), [onChangePage]);
-	const handleLast = React.useCallback(() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)), [
-		onChangePage,
-		rowCount,
-		rowsPerPage,
-	]);
+	const handleLast = React.useCallback(
+		() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)),
+		[onChangePage, rowCount, rowsPerPage],
+	);
 	const handleRowsPerPage = React.useCallback(
 		(e: React.ChangeEvent<HTMLSelectElement>) => onChangeRowsPerPage(Number(e.target.value), currentPage),
 		[currentPage, onChangeRowsPerPage],

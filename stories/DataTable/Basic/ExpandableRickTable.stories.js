@@ -60,7 +60,7 @@ const Expandable = () => (
 		expandableRows
 		highlightOnHover
 		defaultSortField="name"
-		expandableRowsComponent={<SampleExpandedComponent />}
+		expandableRowsComponent={SampleExpandedComponent}
 	/>
 );
 

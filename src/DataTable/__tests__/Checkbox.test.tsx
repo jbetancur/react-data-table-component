@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import 'jest-styled-components';
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';

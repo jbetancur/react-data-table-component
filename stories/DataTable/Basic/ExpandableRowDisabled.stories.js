@@ -45,7 +45,7 @@ const BasicTableExpanderDisabled = () => {
 			expandableRowDisabled={row => row.disabled}
 			highlightOnHover
 			defaultSortField="name"
-			expandableRowsComponent={<ExpandedComponent />}
+			expandableRowsComponent={ExpandedComponent}
 		/>
 	);
 };
