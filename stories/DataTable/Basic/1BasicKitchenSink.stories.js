@@ -13,6 +13,15 @@ import TextField from '@material-ui/core/TextField';
 import data from '../constants/sampleMovieData';
 import DataTable from '../../../src/index';
 
+const subHeaderComponent = (
+	<div style={{ display: 'flex', alignItems: 'center' }}>
+		<TextField id="outlined-basic" label="Search" variant="outlined" size="small" style={{ margin: '5px' }} />
+		<Icon1 style={{ margin: '5px' }} color="action" />
+		<Icon2 style={{ margin: '5px' }} color="action" />
+		<Icon3 style={{ margin: '5px' }} color="action" />
+	</div>
+);
+
 const columns = [
 	{
 		name: 'Title',
@@ -37,6 +46,7 @@ const KitchenSink = () => {
 	const [selectableRowsVisibleOnly, setSelectableRowsVisibleOnly] = React.useState(false);
 	const [selectableRowsHighlight, setSelectableRowsHighlight] = React.useState(false);
 	const [selectableRowsSingle, setSelectableRowsSingle] = React.useState(false);
+	const [selectableRowsRadio, setSelectableRowsRadio] = React.useState(false);
 	const [expandableRows, setExpandableRows] = React.useState(false);
 	const [expandOnRowClick, setExpandOnRowClick] = React.useState(false);
 	const [pagination, setPagination] = React.useState(true);
@@ -54,6 +64,13 @@ const KitchenSink = () => {
 	const [fixedHeader, setFixedheader] = React.useState(false);
 	const [direction, setDirection] = React.useState(false);
 	const [directionValue, setDirectionValue] = React.useState('auto');
+
+	const selectableRowsComponentProps = React.useMemo(
+		() => ({
+			type: selectableRowsRadio ? 'radio' : 'checkbox',
+		}),
+		[selectableRowsRadio],
+	);
 
 	return (
 		<div>
@@ -106,6 +123,17 @@ const KitchenSink = () => {
 								/>
 							}
 							label="Single Select Mode"
+						/>
+
+						<FormControlLabel
+							control={
+								<Checkbox
+									size="small"
+									checked={selectableRowsRadio}
+									onChange={() => setSelectableRowsRadio(!selectableRowsRadio)}
+								/>
+							}
+							label="Radio Button"
 						/>
 
 						<FormControlLabel
@@ -240,7 +268,7 @@ const KitchenSink = () => {
 				data={data}
 				defaultSortField="title"
 				selectableRows={selectableRows}
-				selectableRowsComponentProps={{ type: 'radio' }}
+				selectableRowsComponentProps={selectableRowsComponentProps}
 				selectableRowsNoSelectAll={noSelectAll}
 				selectableRowsHighlight={selectableRowsHighlight}
 				selectableRowsSingle={selectableRowsSingle}
@@ -257,14 +285,8 @@ const KitchenSink = () => {
 				progressPending={loading}
 				noHeader={noHeader}
 				subHeader={subHeader}
-				subHeaderComponent={
-					<div style={{ display: 'flex', alignItems: 'center' }}>
-						<TextField id="outlined-basic" label="Search" variant="outlined" size="small" style={{ margin: '5px' }} />
-						<Icon1 style={{ margin: '5px' }} color="action" />
-						<Icon2 style={{ margin: '5px' }} color="action" />
-						<Icon3 style={{ margin: '5px' }} color="action" />
-					</div>
-				}
+				noContextMenu={noContextMenu}
+				subHeaderComponent={subHeaderComponent}
 				subHeaderAlign={subHeaderAlign}
 				fixedHeader={fixedHeader}
 				fixedHeaderScrollHeight="300px"

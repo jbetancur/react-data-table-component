@@ -861,6 +861,22 @@ describe('DataTable::selectableRows', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('should de-select a single row when clicked again', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsSingle />,
+		);
+
+		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+
+		fireEvent.click(rowCheck);
+		expect(rowCheck.checked).toBe(true);
+
+		fireEvent.click(rowCheck);
+
+		expect(rowCheck.checked).toBe(false);
+	});
+
 	test('should clear all rows selectableRowsSingle is changed', () => {
 		const mock = dataMock();
 		const { container, rerender } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
