@@ -40,16 +40,26 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 		case 'SELECT_SINGLE_ROW': {
 			const { keyField, row, isSelected, rowCount, singleSelect } = action;
 
-			//  single select mode allows only 1 row to be selected at a time
+			// handle single select mode
 			if (singleSelect) {
+				if (isSelected) {
+					return {
+						...state,
+						selectedCount: 0,
+						allSelected: false,
+						selectedRows: [],
+					};
+				}
+
 				return {
 					...state,
-					selectedCount: 0, // this also has the effect of disabling the context menu
+					selectedCount: 1,
 					allSelected: false,
 					selectedRows: insertItem([], row),
 				};
 			}
 
+			// handlesmulti select mode
 			if (isSelected) {
 				return {
 					...state,
