@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
-import { RowRecord, RowState, SingleRowAction } from './types';
+import { RowRecord, RowState, SingleRowAction, ComponentProps } from './types';
 
 const TableCellCheckboxStyle = styled(CellBase)`
 	flex: 0 0 48px;
@@ -19,7 +19,8 @@ type TableCellCheckboxProps<T> = {
 	rowCount: number;
 	selected: boolean;
 	selectableRowsComponent: 'input' | React.ReactNode;
-	selectableRowsComponentProps: Record<string, unknown>;
+	selectableRowsComponentProps: ComponentProps;
+	selectableRowsSingle: boolean;
 	selectableRowDisabled: RowState<T>;
 	onSelectedRow: (action: SingleRowAction<T>) => void;
 };
@@ -31,6 +32,7 @@ function TableCellCheckbox<T extends RowRecord>({
 	selected,
 	selectableRowsComponent,
 	selectableRowsComponentProps,
+	selectableRowsSingle,
 	selectableRowDisabled,
 	onSelectedRow,
 }: TableCellCheckboxProps<T>): JSX.Element {
@@ -43,6 +45,7 @@ function TableCellCheckbox<T extends RowRecord>({
 			isSelected: selected,
 			keyField,
 			rowCount,
+			singleSelect: selectableRowsSingle,
 		});
 	};
 

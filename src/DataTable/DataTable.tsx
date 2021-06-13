@@ -44,6 +44,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		pointerOnHover = defaultProps.pointerOnHover,
 		dense = defaultProps.dense,
 		selectableRows = defaultProps.selectableRows,
+		selectableRowsSingle = defaultProps.selectableRowsSingle,
 		selectableRowsHighlight = defaultProps.selectableRowsHighlight,
 		selectableRowsNoSelectAll = defaultProps.selectableRowsNoSelectAll,
 		selectableRowsVisibleOnly = defaultProps.selectableRowsVisibleOnly,
@@ -284,10 +285,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 	React.useEffect(() => {
 		dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
-	}, [clearSelectedRows]);
+	}, [selectableRowsSingle, clearSelectedRows]);
 
 	React.useEffect(() => {
-		if (selectableRowSelected) {
+		if (selectableRowSelected && !selectableRowsSingle) {
 			const preSelectedRows = rows.filter(row => selectableRowSelected(row));
 
 			dispatch({ type: 'SELECT_MULTIPLE_ROWS', keyField, selectedRows: preSelectedRows, rows: rows, mergeSelections });
@@ -297,7 +298,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	}, [rows]);
 
 	const rowData = selectableRowsVisibleOnly ? calculatedRows : rows;
-	const showSelectAll = persistSelectedOnPageChange || selectableRowsNoSelectAll;
+	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
 	return (
 		<ThemeProvider theme={currentTheme}>
@@ -420,6 +421,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											selectableRowsComponent={selectableRowsComponent}
 											selectableRowsComponentProps={selectableRowsComponentProps}
 											selectableRowDisabled={selectableRowDisabled}
+											selectableRowsSingle={selectableRowsSingle}
 											striped={striped}
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}

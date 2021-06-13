@@ -90,6 +90,7 @@ export type TableProps<T = RowRecord> = {
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;
 	selectableRowsVisibleOnly?: boolean;
+	selectableRowsSingle?: boolean;
 	sortFunction?: SortFunction<T> | null;
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
@@ -324,6 +325,7 @@ export interface SingleRowAction<T> {
 	row: T;
 	isSelected: boolean;
 	rowCount: number;
+	singleSelect: boolean;
 }
 
 export interface MultiRowAction<T> {

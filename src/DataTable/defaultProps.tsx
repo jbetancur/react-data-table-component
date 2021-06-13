@@ -21,6 +21,7 @@ export const defaultProps = {
 	selectableRowsComponent: 'input' as const,
 	selectableRowsComponentProps: {},
 	selectableRowsVisibleOnly: false,
+	selectableRowsSingle: false,
 	clearSelectedRows: false,
 	expandableRows: false,
 	expandableRowDisabled: null,

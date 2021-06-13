@@ -844,6 +844,38 @@ describe('DataTable::selectableRows', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('should only select a single row when selectableRowsSingle is true and a row is selected', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsSingle />,
+		);
+
+		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+
+		fireEvent.click(rowCheck1);
+		fireEvent.click(rowCheck2);
+
+		expect(rowCheck1.checked).toBe(false);
+		expect(rowCheck2.checked).toBe(true);
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
+	test('should clear all rows selectableRowsSingle is changed', () => {
+		const mock = dataMock();
+		const { container, rerender } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
+		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+
+		fireEvent.click(rowCheck1);
+		fireEvent.click(rowCheck2);
+
+		rerender(<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsSingle />);
+
+		expect(rowCheck1.checked).toBe(false);
+		expect(rowCheck2.checked).toBe(false);
+	});
+
 	test('should not render a select all checkbox when selectableRowsNoSelectAll is true', () => {
 		const mock = dataMock();
 		const { container } = render(
