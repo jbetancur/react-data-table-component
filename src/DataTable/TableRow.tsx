@@ -68,6 +68,7 @@ type DProps<T> = Pick<
 	| 'selectableRowsComponent'
 	| 'selectableRowsComponentProps'
 	| 'selectableRowsHighlight'
+	| 'selectableRowsSingle'
 	| 'striped'
 >;
 
@@ -113,6 +114,7 @@ function TableRow<T extends RowRecord>({
 	selectableRowsComponent,
 	selectableRowsComponentProps,
 	selectableRowsHighlight = false,
+	selectableRowsSingle = false,
 	selected,
 	striped = false,
 }: TableRowProps<T>): JSX.Element {
@@ -184,6 +186,7 @@ function TableRow<T extends RowRecord>({
 						selectableRowsComponent={selectableRowsComponent}
 						selectableRowsComponentProps={selectableRowsComponentProps}
 						selectableRowDisabled={selectableRowDisabled}
+						selectableRowsSingle={selectableRowsSingle}
 						onSelectedRow={onSelectedRow}
 					/>
 				)}

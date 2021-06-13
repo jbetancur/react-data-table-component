@@ -36,6 +36,7 @@ const KitchenSink = () => {
 	const [noSelectAll, setNoSelectAll] = React.useState(false);
 	const [selectableRowsVisibleOnly, setSelectableRowsVisibleOnly] = React.useState(false);
 	const [selectableRowsHighlight, setSelectableRowsHighlight] = React.useState(false);
+	const [selectableRowsSingle, setSelectableRowsSingle] = React.useState(false);
 	const [expandableRows, setExpandableRows] = React.useState(false);
 	const [expandOnRowClick, setExpandOnRowClick] = React.useState(false);
 	const [pagination, setPagination] = React.useState(true);
@@ -94,6 +95,17 @@ const KitchenSink = () => {
 								/>
 							}
 							label="Highlight Selected Rows"
+						/>
+
+						<FormControlLabel
+							control={
+								<Checkbox
+									size="small"
+									checked={selectableRowsSingle}
+									onChange={() => setSelectableRowsSingle(!selectableRowsSingle)}
+								/>
+							}
+							label="Single Select Mode"
 						/>
 
 						<FormControlLabel
@@ -228,8 +240,10 @@ const KitchenSink = () => {
 				data={data}
 				defaultSortField="title"
 				selectableRows={selectableRows}
+				selectableRowsComponentProps={{ type: 'radio' }}
 				selectableRowsNoSelectAll={noSelectAll}
 				selectableRowsHighlight={selectableRowsHighlight}
+				selectableRowsSingle={selectableRowsSingle}
 				selectableRowsVisibleOnly={selectableRowsVisibleOnly}
 				expandableRows={expandableRows}
 				expandOnRowClicked={expandOnRowClick}
