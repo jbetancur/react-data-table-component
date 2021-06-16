@@ -70,6 +70,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		paginationIconPrevious = defaultProps.paginationIconPrevious,
 		paginationComponent = defaultProps.paginationComponent,
 		paginationComponentOptions = defaultProps.paginationComponentOptions,
+		paginationPosition = defaultProps.paginationPosition,
 		responsive = defaultProps.responsive,
 		overflowY = defaultProps.overflowY,
 		overflowYOffset = defaultProps.overflowYOffset,
@@ -295,6 +296,25 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const rowData = selectableRowsVisibleOnly ? calculatedRows : rows;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
+	const renderPagination = () => (
+		<div>
+			<Pagination
+				onChangePage={handleChangePage}
+				onChangeRowsPerPage={handleChangeRowsPerPage}
+				rowCount={paginationTotalRows || rows.length}
+				currentPage={currentPage}
+				rowsPerPage={rowsPerPage}
+				direction={direction}
+				paginationRowsPerPageOptions={paginationRowsPerPageOptions}
+				paginationIconLastPage={paginationIconLastPage}
+				paginationIconFirstPage={paginationIconFirstPage}
+				paginationIconNext={paginationIconNext}
+				paginationIconPrevious={paginationIconPrevious}
+				paginationComponentOptions={paginationComponentOptions}
+			/>
+		</div>
+	);
+
 	return (
 		<ThemeProvider theme={currentTheme}>
 			{showHeader() && (
@@ -315,6 +335,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 					{subHeaderComponent}
 				</TableSubheader>
 			)}
+
+			{enabledPagination && paginationPosition === 'top' && renderPagination()}
 
 			<ResponsiveWrapper
 				responsive={responsive}
@@ -431,24 +453,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 				</TableWrapper>
 			</ResponsiveWrapper>
 
-			{enabledPagination && (
-				<div>
-					<Pagination
-						onChangePage={handleChangePage}
-						onChangeRowsPerPage={handleChangeRowsPerPage}
-						rowCount={paginationTotalRows || rows.length}
-						currentPage={currentPage}
-						rowsPerPage={rowsPerPage}
-						direction={direction}
-						paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-						paginationIconLastPage={paginationIconLastPage}
-						paginationIconFirstPage={paginationIconFirstPage}
-						paginationIconNext={paginationIconNext}
-						paginationIconPrevious={paginationIconPrevious}
-						paginationComponentOptions={paginationComponentOptions}
-					/>
-				</div>
-			)}
+			{enabledPagination && paginationPosition === 'bottom' && renderPagination()}
 		</ThemeProvider>
 	);
 }

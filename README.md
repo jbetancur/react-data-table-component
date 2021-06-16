@@ -225,6 +225,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | paginationTotalRows | number | no | 0 | allows you to provide the total row count for your table as represented by your API when performing server side pagination. if this property is not provided then react-data-table will use `data.length` |
 | paginationPerPage | number | no | 10 | the default rows per page to use when the table initially loads |
 | paginationRowsPerPageOptions | number | no | `[10, 15, 20, 25, 30]` | row page dropdown selection options |
+| paginationPosition | string | no | `'bottom'` | Position of pagination, relative to the table: `'top'` or `'bottom'` |
 | onChangePage | func | no | null | callback when paged that returns `onChangePage(page, totalRows)` |
 | onChangeRowsPerPage | func | no | null | callback when rows per page is changed returns `onChangeRowsPerPage(currentRowsPerPage, currentPage)` |
 | paginationComponent | component | no | [Pagination](src/DataTable/Pagination.js) | a component that overrides the default pagination component. It must satisfy the following API: ```{  rowsPerPage: PropTypes.number.isRequired,  rowCount: PropTypes.number.isRequired,  onChangePage: PropTypes.func.isRequired,  onChangeRowsPerPage: PropTypes.func.isRequired,  currentPage: PropTypes.number.isRequired };``` |

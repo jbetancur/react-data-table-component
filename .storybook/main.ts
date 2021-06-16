@@ -6,4 +6,7 @@ module.exports = {
 		'@storybook/addon-links',
 		'@storybook/addon-a11y',
 	],
+	typescript: {
+		reactDocgen: 'none',
+	},
 };
