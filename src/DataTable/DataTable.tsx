@@ -336,7 +336,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 				</TableSubheader>
 			)}
 
-			{enabledPagination && (paginationPosition === 'top' || 'both') && renderPagination()}
+			{enabledPagination && (paginationPosition === 'top' || paginationPosition === 'both') && renderPagination()}
 
 			<ResponsiveWrapper
 				responsive={responsive}
@@ -453,7 +453,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 				</TableWrapper>
 			</ResponsiveWrapper>
 
-			{enabledPagination && (paginationPosition === 'bottom' || 'both') && renderPagination()}
+			{enabledPagination && (paginationPosition === 'bottom' || paginationPosition === 'both') && renderPagination()}
 		</ThemeProvider>
 	);
 }

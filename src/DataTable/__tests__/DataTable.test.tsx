@@ -1154,7 +1154,6 @@ describe('DataTable::Pagination', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
-
 	test('should render correctly if with pagination on both top and bottom', () => {
 		const mock = dataMock();
 		const { container } = render(

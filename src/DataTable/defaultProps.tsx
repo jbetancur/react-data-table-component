@@ -85,7 +85,7 @@ export const defaultProps = {
 	paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
 	paginationComponent: null,
 	paginationComponentOptions: {},
-  paginationPosition: 'bottom',
+	paginationPosition: 'bottom',
 	paginationIconFirstPage: <FirstPageIcon />,
 	paginationIconLastPage: <LastPageIcon />,
 	paginationIconNext: <RightIcon />,
