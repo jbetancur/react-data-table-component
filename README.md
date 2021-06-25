@@ -316,7 +316,7 @@ const MyComponent = () => (
 
 ##### Overidding Styling using css-in-js
 
-For more advanced use cases you can override or replace the default styling using the `customStyles` prop and passing in css-in-js. Internally, this just deep merges your customStyles with the default styling. Disclaimer: you're on your own here since you will have the power to not only cusotmize but break RDT. This is the sky's the limit escape hatch feature.
+For more advanced use cases you can override or replace the default styling using the `customStyles` prop and passing in css-in-js. Internally, this just deep merges your customStyles with the default styling. Disclaimer: you're on your own here since you will have the power to not only customize but break RDT. This is the sky's the limit escape hatch feature.
 
 Let's apply a simple `customStyles` to override the default row height and change the cell padding:
 
