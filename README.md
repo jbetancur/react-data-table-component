@@ -111,7 +111,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | Property | Type   | Required | Example                                                                                                       |
 |----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | string or (row, index) => {} | no      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp`. A `selector` is required anytime you want to display data but can be ommitted if your column does not require showing data (e.g. an actions column) |
+| selector | string or (row, index) => {} | no      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp`. A `selector` is required anytime you want to display data but can be omitted if your column does not require showing data (e.g. an actions column) |
 | sortable | bool   | no       | if the column is sortable. <br /><br />**Note:** `selector` is required for the column to sort                                                            |
 | sortFunction | function | no | by default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](#-custom-sort-function)   |
 | format   | (row, index) => {}   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value.                                        |
@@ -316,7 +316,7 @@ const MyComponent = () => (
 
 ##### Overidding Styling using css-in-js
 
-For more advanced use cases you can override or replace the default styling using the `customStyles` prop and passing in css-in-js. Internally, this just deep merges your customStyles with the default styling. Disclaimer: you're on your own here since you will have the power to not only cusotmize but break RDT. This is the sky's the limit escape hatch feature.
+For more advanced use cases you can override or replace the default styling using the `customStyles` prop and passing in css-in-js. Internally, this just deep merges your customStyles with the default styling. Disclaimer: you're on your own here since you will have the power to not only customize but break RDT. This is the sky's the limit escape hatch feature.
 
 Let's apply a simple `customStyles` to override the default row height and change the cell padding:
 
