@@ -2,6 +2,8 @@ import { insertItem, isRowSelected, removeItem } from './util';
 import { Action, RowRecord, TableState } from './types';
 
 export function tableReducer<T extends RowRecord>(state: TableState<T>, action: Action<T>): TableState<T> {
+	const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;
+
 	switch (action.type) {
 		case 'UPDATE_ROWS': {
 			const { rows } = action;
@@ -15,6 +17,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 		case 'SELECT_ALL_ROWS': {
 			const { keyField, rows, rowCount, mergeSelections } = action;
 			const allChecked = !state.allSelected;
+			const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;
 
 			if (mergeSelections) {
 				const selections = allChecked
@@ -26,6 +29,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 					allSelected: allChecked,
 					selectedCount: selections.length,
 					selectedRows: selections,
+					toggleOnSelectedRowsChange,
 				};
 			}
 
@@ -34,6 +38,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 				allSelected: allChecked,
 				selectedCount: allChecked ? rowCount : 0,
 				selectedRows: allChecked ? rows : [],
+				toggleOnSelectedRowsChange,
 			};
 		}
 
@@ -48,6 +53,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 						selectedCount: 0,
 						allSelected: false,
 						selectedRows: [],
+						toggleOnSelectedRowsChange,
 					};
 				}
 
@@ -55,17 +61,19 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 					...state,
 					selectedCount: 1,
 					allSelected: false,
-					selectedRows: insertItem([], row),
+					selectedRows: [row],
+					toggleOnSelectedRowsChange,
 				};
 			}
 
-			// handlesmulti select mode
+			// handle multi select mode
 			if (isSelected) {
 				return {
 					...state,
 					selectedCount: state.selectedRows.length > 0 ? state.selectedRows.length - 1 : 0,
 					allSelected: false,
 					selectedRows: removeItem(state.selectedRows, row, keyField),
+					toggleOnSelectedRowsChange,
 				};
 			}
 
@@ -74,6 +82,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 				selectedCount: state.selectedRows.length + 1,
 				allSelected: state.selectedRows.length + 1 === rowCount,
 				selectedRows: insertItem(state.selectedRows, row),
+				toggleOnSelectedRowsChange,
 			};
 		}
 
@@ -91,6 +100,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 					selectedCount: selections.length,
 					allSelected: false,
 					selectedRows: selections,
+					toggleOnSelectedRowsChange,
 				};
 			}
 
@@ -99,22 +109,24 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 				selectedCount: selectedRows.length,
 				allSelected: selectedRows.length === rows.length,
 				selectedRows,
+				toggleOnSelectedRowsChange,
+			};
+		}
+
+		case 'CLEAR_SELECTED_ROWS': {
+			const { selectedRowsFlag } = action;
+
+			return {
+				...state,
+				allSelected: false,
+				selectedCount: 0,
+				selectedRows: [],
+				selectedRowsFlag,
 			};
 		}
 
 		case 'SORT_CHANGE': {
-			const {
-				rows,
-				sortDirection,
-				sortServer,
-				selectedColumn,
-				pagination,
-				paginationServer,
-				visibleOnly,
-				persistSelectedOnSort,
-			} = action;
-			const clearSelectedOnSort =
-				(pagination && paginationServer && !persistSelectedOnSort) || sortServer || visibleOnly;
+			const { rows, sortDirection, selectedColumn, clearSelectedOnSort } = action;
 
 			return {
 				...state,
@@ -127,6 +139,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 					allSelected: false,
 					selectedCount: 0,
 					selectedRows: [],
+					toggleOnSelectedRowsChange,
 				}),
 			};
 		}
@@ -147,6 +160,7 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 					allSelected: false,
 					selectedCount: 0,
 					selectedRows: [],
+					toggleOnSelectedRowsChange,
 				}),
 			};
 		}
@@ -159,22 +173,6 @@ export function tableReducer<T extends RowRecord>(state: TableState<T>, action: 
 				currentPage: page,
 				rowsPerPage,
 			};
-		}
-
-		case 'CLEAR_SELECTED_ROWS': {
-			const { selectedRowsFlag } = action;
-
-			return {
-				...state,
-				allSelected: false,
-				selectedCount: 0,
-				selectedRows: [],
-				selectedRowsFlag,
-			};
-		}
-
-		default: {
-			throw new Error(`Unhandled action type: ${action.type}`);
 		}
 	}
 }

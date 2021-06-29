@@ -138,12 +138,9 @@ function TableCol<T>({
 				type: 'SORT_CHANGE',
 				rows: sortedRows,
 				sortDirection: direction,
-				sortServer,
 				selectedColumn: column,
-				pagination,
-				paginationServer,
-				visibleOnly: selectableRowsVisibleOnly,
-				persistSelectedOnSort,
+				clearSelectedOnSort:
+					(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
 			});
 		}
 	};

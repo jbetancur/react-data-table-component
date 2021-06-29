@@ -128,7 +128,7 @@ export interface TableColumnBase {
 }
 
 export interface TableColumn<T = RowRecord> extends TableColumnBase {
-	name: string | number | React.ReactNode;
+	name?: string | number | React.ReactNode;
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
 	conditionalCellStyles?: ConditionalStyles<T>[];
 	format?: Format<T> | undefined;
@@ -236,6 +236,11 @@ export type TableState<T> = {
 	currentPage: number;
 	rowsPerPage: number;
 	selectedRowsFlag: boolean;
+	/* server-side pagination and server-side sorting will cause selectedRows to change
+	 because of this behavior onSelectedRowsChange useEffect is triggered (by design it should notify if there was a change)
+	 however, when using selectableRowsSingle
+	*/
+	toggleOnSelectedRowsChange: boolean;
 };
 
 // Theming
@@ -340,12 +345,8 @@ export interface SortAction<T> {
 	type: 'SORT_CHANGE';
 	rows: T[];
 	sortDirection: SortDirection;
-	sortServer: boolean;
 	selectedColumn: TableColumn<T>;
-	pagination: boolean;
-	paginationServer: boolean;
-	visibleOnly: boolean;
-	persistSelectedOnSort: boolean;
+	clearSelectedOnSort: boolean;
 }
 
 export interface PaginationPageAction {
@@ -380,5 +381,4 @@ export type Action<T> =
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
 	| ClearSelectedRowsAction
-	| RowsAction<T>
-	| { type: '' };
+	| RowsAction<T>;

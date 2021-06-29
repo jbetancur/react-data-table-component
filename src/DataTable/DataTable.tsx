@@ -119,7 +119,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const columnsMemo = React.useMemo(() => decorateColumns<T>(columns), [columns]);
 	const defaultSortDirection = getSortDirection(defaultSortAsc);
 	const defaultSortColumn = React.useMemo(
-		() => getColumnById<T>(defaultSortFieldId, columnsMemo),
+		() => getColumnById<T>(defaultSortFieldId, columnsMemo) || {},
 		[columnsMemo, defaultSortFieldId],
 	);
 
@@ -130,7 +130,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 			rows: setRowData(data, defaultSortColumn?.selector, defaultSortDirection, sortServer, sortFunction),
 			selectedCount: 0,
 			selectedRows: [],
-			selectedColumn: defaultSortColumn || { name: '' },
+			selectedColumn: defaultSortColumn,
+			toggleOnSelectedRowsChange: false,
 			sortDirection: defaultSortDirection,
 			currentPage: paginationDefaultPage,
 			rowsPerPage: paginationPerPage,
@@ -142,7 +143,17 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	);
 
 	const [
-		{ rowsPerPage, rows, currentPage, selectedRows, allSelected, selectedCount, selectedColumn, sortDirection },
+		{
+			rowsPerPage,
+			rows,
+			currentPage,
+			selectedRows,
+			allSelected,
+			selectedCount,
+			selectedColumn,
+			sortDirection,
+			toggleOnSelectedRowsChange,
+		},
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, initialState);
 
@@ -243,7 +254,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 	useDidUpdateEffect(() => {
 		onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
-	}, [selectedCount]);
+		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
+	}, [toggleOnSelectedRowsChange]);
 
 	useDidUpdateEffect(() => {
 		onSort(selectedColumn, sortDirection);
@@ -265,17 +277,18 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		if (pagination && paginationServer && paginationTotalRows > 0) {
 			const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
 			const recalculatedPage = recalculatePage(currentPage, updatedPage);
+
 			if (currentPage !== recalculatedPage) {
 				handleChangePage(recalculatedPage);
 			}
 		}
 	}, [paginationTotalRows]);
+
 	useDidUpdateEffect(() => {
 		dispatch({
 			type: 'UPDATE_ROWS',
 			rows: setRowData(data, defaultSortColumn?.selector, defaultSortDirection, sortServer, sortFunction),
 		});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);
 
 	React.useEffect(() => {
@@ -288,7 +301,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 			dispatch({ type: 'SELECT_MULTIPLE_ROWS', keyField, selectedRows: preSelectedRows, rows: rows, mergeSelections });
 		}
-		// We only want to re-render if the rows changes
+		// We only want to update the selectedRowState if the rows change
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [rows]);
 
