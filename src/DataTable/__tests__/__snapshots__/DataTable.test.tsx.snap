@@ -20847,7 +20847,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
 </div>
 `;
 
-exports[`DataTable::selectableRows should only select a single row when selectableRowsSingle is true and a row is selected 1`] = `
+exports[`DataTable::selectableRows should only select a single row when and a row is selected 1`] = `
 .c2 {
   position: relative;
   box-sizing: border-box;

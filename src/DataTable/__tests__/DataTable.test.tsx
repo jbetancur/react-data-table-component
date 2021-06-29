@@ -166,6 +166,98 @@ describe('DataTable::onSelectedRowsChange', () => {
 			selectedRows: [mock.data[0]],
 		});
 	});
+
+	test('should call onSelectedRowsChange with the correct values when a row is selected when selectableRowsSingle is true', () => {
+		const onSelectedRowsChange = jest.fn();
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				selectableRows
+				selectableRowsSingle
+				onSelectedRowsChange={onSelectedRowsChange}
+			/>,
+		);
+
+		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+
+		fireEvent.click(rowCheck1);
+
+		expect(onSelectedRowsChange).toBeCalledWith({
+			allSelected: false,
+			selectedCount: 1,
+			selectedRows: [
+				{
+					id: 1,
+					some: {
+						name: 'Apple',
+					},
+					completed: false,
+					defaultExpanded: false,
+					disabled: false,
+					isSpecial: false,
+					selected: false,
+				},
+			],
+		});
+
+		fireEvent.click(rowCheck2);
+
+		expect(onSelectedRowsChange).toBeCalledWith({
+			allSelected: false,
+			selectedCount: 1,
+			selectedRows: [
+				{
+					id: 2,
+					some: {
+						name: 'Zuchinni',
+					},
+					completed: false,
+					defaultExpanded: false,
+					disabled: false,
+					isSpecial: false,
+					selected: false,
+				},
+			],
+		});
+	});
+
+	test('should call onSelectedRowsChange when a row is preselected using selectableRowSelected', () => {
+		const mock = dataMock();
+		mock.data[0].selected = true;
+
+		const onSelectedRowsChange = jest.fn();
+
+		render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				selectableRows
+				selectableRowSelected={row => row.selected}
+				onSelectedRowsChange={onSelectedRowsChange}
+			/>,
+		);
+
+		expect(onSelectedRowsChange).toBeCalledWith({
+			allSelected: false,
+			selectedCount: 1,
+			selectedRows: [
+				{
+					id: 1,
+					some: {
+						name: 'Apple',
+					},
+					completed: false,
+					defaultExpanded: false,
+					disabled: false,
+					isSpecial: false,
+					selected: true,
+				},
+			],
+		});
+	});
 });
 
 describe('data prop changes', () => {
@@ -850,7 +942,7 @@ describe('DataTable::selectableRows', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
-	test('should only select a single row when selectableRowsSingle is true and a row is selected', () => {
+	test('should only select a single row when and a row is selected', () => {
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsSingle />,
@@ -1551,6 +1643,46 @@ describe('DataTable::Pagination', () => {
 		});
 	});
 
+	test('should call onSelectedRowsChange when using paginationServer, selectedRows, and persistSelectedOnSort', () => {
+		const mock = dataMock();
+		mock.data[0].selected = true;
+
+		const onSelectedRowsChange = jest.fn();
+
+		render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				selectableRows
+				selectableRowSelected={row => row.selected}
+				onSelectedRowsChange={onSelectedRowsChange}
+				pagination
+				paginationServer
+				paginationServerOptions={{ persistSelectedOnSort: true }}
+				paginationPerPage={1}
+				paginationRowsPerPageOptions={[1, 2]}
+			/>,
+		);
+
+		expect(onSelectedRowsChange).toBeCalledWith({
+			allSelected: false,
+			selectedCount: 1,
+			selectedRows: [
+				{
+					id: 1,
+					some: {
+						name: 'Apple',
+					},
+					completed: false,
+					defaultExpanded: false,
+					disabled: false,
+					isSpecial: false,
+					selected: true,
+				},
+			],
+		});
+	});
+
 	test('should call onSelectedRowsChange the correct amount of times when using paginationServer, selectedRows, and persistSelectedOnSort and all rows un-checked', () => {
 		const mock = dataMock({ sortable: true });
 		const onSelectedRowsChange = jest.fn();
@@ -1625,47 +1757,6 @@ describe('DataTable::Pagination', () => {
 					disabled: false,
 					isSpecial: false,
 					selected: false,
-				},
-			],
-		});
-	});
-
-	test('should call onSelectedRowsChange the correct amount of times when using paginationServer, selectedRows, and persistSelectedOnSort and a row is preselected using selectableRowSelected', () => {
-		const mock = dataMock();
-		mock.data[0].selected = true;
-		const onSelectedRowsChange = jest.fn();
-
-		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				pagination
-				paginationServer
-				paginationServerOptions={{ persistSelectedOnSort: true }}
-				paginationPerPage={1}
-				paginationRowsPerPageOptions={[1, 2]}
-				selectableRows
-				selectableRowSelected={row => row.selected}
-				onSelectedRowsChange={onSelectedRowsChange}
-			/>,
-		);
-
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
-		expect(onSelectedRowsChange).toBeCalledTimes(1);
-		expect(onSelectedRowsChange).toBeCalledWith({
-			allSelected: false,
-			selectedCount: 1,
-			selectedRows: [
-				{
-					id: 1,
-					selected: true,
-					some: {
-						name: 'Apple',
-					},
-					completed: false,
-					defaultExpanded: false,
-					disabled: false,
-					isSpecial: false,
 				},
 			],
 		});
