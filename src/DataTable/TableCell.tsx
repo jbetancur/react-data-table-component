@@ -8,6 +8,7 @@ interface TableCellStyleProps {
 	wrapCell: boolean | undefined;
 	allowOverflow: boolean | undefined;
 	cellStyle: CSSObject | undefined;
+	isDragging: boolean;
 }
 
 const overflowCSS = css<TableCellStyleProps>`
@@ -24,22 +25,43 @@ const TableCellStyle = styled(Cell).attrs(props => ({
 	font-size: ${({ theme }) => theme.rows.fontSize};
 	font-weight: 400;
 	${({ renderAsCell }) => !renderAsCell && overflowCSS};
+	${({ theme, isDragging }) => isDragging && theme.cells.draggingStyle};
 	${({ cellStyle }) => cellStyle};
 `;
 
 interface TableCellProps extends TableColumnBase {
+	id: string;
 	dataTag: string | null;
 	extendedCellStyle: CSSObject;
-	id: string;
 	column: TableColumnBase;
 	renderAsCell: boolean;
+	isDragging: boolean;
+	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 	children?: React.ReactNode;
 }
 
-function TableCell({ column, dataTag, extendedCellStyle, id, renderAsCell, children }: TableCellProps): JSX.Element {
+function TableCell({
+	id,
+	column,
+	dataTag,
+	extendedCellStyle,
+	renderAsCell,
+	isDragging,
+	onDragStart,
+	onDragOver,
+	onDragEnd,
+	onDragEnter,
+	onDragLeave,
+	children,
+}: TableCellProps): JSX.Element {
 	return (
 		<TableCellStyle
 			id={id}
+			data-column-id={column.id}
 			role="gridcell"
 			className="rdt_TableCell"
 			data-tag={dataTag}
@@ -57,6 +79,12 @@ function TableCell({ column, dataTag, extendedCellStyle, id, renderAsCell, child
 			width={column.width}
 			wrapCell={column.wrap}
 			style={extendedCellStyle}
+			isDragging={isDragging}
+			onDragStart={onDragStart}
+			onDragOver={onDragOver}
+			onDragEnd={onDragEnd}
+			onDragEnter={onDragEnter}
+			onDragLeave={onDragLeave}
 		>
 			{children}
 		</TableCellStyle>

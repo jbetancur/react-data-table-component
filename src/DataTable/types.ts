@@ -4,7 +4,6 @@ import { CSSObject } from 'styled-components';
 export type ChangePage = (page: number, totalRows: number) => void;
 export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
-export type DefaultSortField = string | number | null | undefined;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
 export type RowState<T> = ((row: T) => boolean) | null;
@@ -31,7 +30,7 @@ export type TableProps<T = RowRecord> = {
 	customStyles?: TableStyles;
 	data: T[];
 	defaultSortAsc?: boolean;
-	defaultSortFieldId?: DefaultSortField;
+	defaultSortFieldId?: string | number | null | undefined;
 	dense?: boolean;
 	direction?: Direction;
 	disabled?: boolean;
@@ -61,6 +60,7 @@ export type TableProps<T = RowRecord> = {
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort?: (column: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
+	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	overflowY?: boolean;
 	overflowYOffset?: string;
 	pagination?: boolean;
@@ -112,6 +112,7 @@ export interface TableColumnBase {
 	button?: boolean;
 	center?: boolean;
 	compact?: boolean;
+	reorder?: boolean;
 	grow?: number;
 	hide?: number | ((value: number) => CSSObject) | Media;
 	id?: string | number;
@@ -163,6 +164,7 @@ export interface TableStyles {
 	};
 	headCells?: {
 		style?: CSSObject;
+		draggingStyle?: CSSObject;
 		activeSortStyle?: CSSObject;
 		inactiveSortStyle?: CSSObject;
 	};
@@ -172,6 +174,7 @@ export interface TableStyles {
 	};
 	cells?: {
 		style: CSSObject;
+		draggingStyle?: CSSObject;
 	};
 	rows?: {
 		style?: CSSObject;
@@ -371,6 +374,16 @@ export interface ClearSelectedRowsAction {
 export interface RowsAction<T> {
 	type: 'UPDATE_ROWS';
 	rows: T[];
+}
+
+export interface RowsAction<T> {
+	type: 'UPDATE_ROWS';
+	rows: T[];
+}
+
+export interface ColumnsAction<T> {
+	type: 'UPDATE_COLUMNS';
+	cols: TableColumn<T>[];
 }
 
 export type Action<T> =

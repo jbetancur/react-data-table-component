@@ -53,6 +53,9 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			paddingLeft: '16px',
 			paddingRight: '16px',
 		},
+		draggingStyle: {
+			cursor: 'move',
+		},
 		activeSortStyle: {
 			color: theme.text.primary,
 			'&:focus': {
@@ -95,6 +98,7 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			paddingRight: '16px',
 			wordBreak: 'break-word',
 		},
+		draggingStyle: {},
 	},
 	rows: {
 		style: {
