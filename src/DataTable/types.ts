@@ -57,6 +57,7 @@ export type TableProps<T = RowRecord> = {
 	onChangePage?: ChangePage;
 	onChangeRowsPerPage?: ChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
+	onRowHovered?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;

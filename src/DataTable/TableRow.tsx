@@ -61,6 +61,7 @@ type DProps<T> = Pick<
 	| 'keyField'
 	| 'onRowClicked'
 	| 'onRowDoubleClicked'
+	| 'onRowHovered'
 	| 'onRowExpandToggled'
 	| 'pointerOnHover'
 	| 'selectableRowDisabled'
@@ -102,6 +103,7 @@ function TableRow<T extends RowRecord>({
 	expandableInheritConditionalStyles,
 	keyField,
 	onRowClicked = noop,
+	onRowHovered = noop,
 	onRowDoubleClicked = noop,
 	onRowExpandToggled = noop,
 	onSelectedRow = noop,
@@ -157,6 +159,13 @@ function TableRow<T extends RowRecord>({
 		[defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row],
 	);
 
+	const handleRowHovered = React.useCallback(
+		e => {
+			onRowHovered(row, e);
+		},
+		[onRowHovered, row],
+	);
+
 	const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
 	const hightlightSelected = selectableRowsHighlight && selected;
 	const inheritStyles = expandableInheritConditionalStyles ? extendedRowStyle : {};
@@ -173,6 +182,7 @@ function TableRow<T extends RowRecord>({
 				dense={dense}
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
+				onMouseEnter={handleRowHovered}
 				className="rdt_TableRow"
 				selected={hightlightSelected}
 				style={extendedRowStyle}
