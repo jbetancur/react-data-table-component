@@ -72,6 +72,7 @@ export type TableProps<T = RowRecord> = {
 	paginationIconNext?: React.ReactNode;
 	paginationIconPrevious?: React.ReactNode;
 	paginationPerPage?: number;
+	paginationPosition?: 'top' | 'bottom' | 'both';
 	paginationResetDefaultPage?: boolean;
 	paginationRowsPerPageOptions?: number[];
 	paginationServer?: boolean;

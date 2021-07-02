@@ -1237,6 +1237,25 @@ describe('DataTable::Pagination', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('should render correctly if with pagination on the top', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} pagination paginationPosition="top" />,
+		);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
+	test('should render correctly if with pagination on both top and bottom', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} pagination paginationPosition="both" />,
+		);
+
+		expect(container.firstChild).toMatchSnapshot();
+		expect(container.lastChild).toMatchSnapshot();
+	});
+
 	test('should have the correct amount of rows when paging forward', () => {
 		const mock = dataMock();
 		const { container } = render(
