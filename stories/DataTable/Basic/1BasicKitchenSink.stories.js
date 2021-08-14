@@ -27,16 +27,19 @@ const columns = [
 		name: 'Title',
 		selector: row => row.title,
 		sortable: true,
+		reorder: true,
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
+		reorder: true,
 	},
 	{
 		name: 'Year',
 		selector: row => row.year,
 		sortable: true,
+		reorder: true,
 	},
 ];
 

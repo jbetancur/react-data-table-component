@@ -1,16 +1,7 @@
 import orderBy from 'lodash.orderby';
 import { CSSObject } from 'styled-components';
 import { Direction } from './constants';
-import {
-	ConditionalStyles,
-	TableColumn,
-	DefaultSortField,
-	Format,
-	RowRecord,
-	Selector,
-	SortDirection,
-	SortFunction,
-} from './types';
+import { ConditionalStyles, TableColumn, Format, RowRecord, Selector, SortDirection, SortFunction } from './types';
 
 export function isEmpty(field: string | number | undefined = ''): boolean {
 	if (typeof field === 'number') {
@@ -130,14 +121,6 @@ export function decorateColumns<T>(columns: TableColumn<T>[]): TableColumn<T>[] 
 	});
 }
 
-export function getColumnById<T>(id: DefaultSortField, columns: TableColumn<T>[]): TableColumn<T> | undefined {
-	if (typeof id === undefined) {
-		return undefined;
-	}
-
-	return columns.find(col => col.id === id);
-}
-
 export function getSortDirection(ascDirection: boolean | undefined = false): SortDirection {
 	return ascDirection ? 'asc' : 'desc';
 }
@@ -218,4 +201,18 @@ export function detectRTL(direction: Direction = Direction.AUTO): boolean {
 
 export function isOdd(num: number): boolean {
 	return num % 2 === 0;
+}
+
+export function findColumnIndexById<T>(columns: TableColumn<T>[], id: string | undefined): number {
+	if (!id) {
+		return -1;
+	}
+
+	return columns.findIndex(c => {
+		return equalizeId(c.id, id);
+	});
+}
+
+export function equalizeId(a: string | number | undefined, b: string | number | undefined): boolean {
+	return a == b;
 }

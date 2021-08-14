@@ -1,59 +1,55 @@
-[![Build Status](https://travis-ci.com/jbetancur/react-data-table-component.svg?branch=master)]( ) [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://jbetancur.github.io/react-data-table-component)
+<!-- vscode-markdown-toc -->
+* 1. [Demo and Examples](#DemoandExamples)
+* 2. [Key Features](#KeyFeatures)
+* 3. [Requirements](#Requirements)
+* 4. [Installation](#Installation)
+* 5. [Logging Issues and Contributions](#LoggingIssuesandContributions)
+* 6. [API and Usage](#APIandUsage)
+	* 6.1. [Columns](#Columns)
+		* 6.1.1. [Column Reordering](#ColumnReordering)
+		* 6.1.2. [column.hide media presets](#column.hidemediapresets)
+	* 6.2. [DataTable Properties](#DataTableProperties)
+		* 6.2.1. [Basic](#Basic)
+		* 6.2.2. [Row Selection](#RowSelection)
+		* 6.2.3. [Row Expander](#RowExpander)
+		* 6.2.4. [Sorting](#Sorting)
+		* 6.2.5. [Pagination](#Pagination)
+		* 6.2.6. [Header](#Header)
+		* 6.2.7. [Header Context Menu when using Selectable Rows](#HeaderContextMenuwhenusingSelectableRows)
+		* 6.2.8. [Progress Indicator](#ProgressIndicator)
+		* 6.2.9. [Theming and Customization](#ThemingandCustomization)
+		* 6.2.10. [Conditional Row Styling](#ConditionalRowStyling)
+		* 6.2.11. [Conditional Style Object](#ConditionalStyleObject)
+* 7. [Basic Table](#BasicTable)
+* 8. [Selectable Rows](#SelectableRows)
+	* 8.1. [Clearing Selected Rows](#ClearingSelectedRows)
+	* 8.2. [Overriding with Ui Component Library](#OverridingwithUiComponentLibrary)
+* 9. [Using Custom Checkboxes and Indeterminate State](#UsingCustomCheckboxesandIndeterminateState)
+* 10. [Custom Cells](#CustomCells)
+* 11. [Expandable Rows](#ExpandableRows)
+* 12. [Custom Sort Function](#CustomSortFunction)
+* 13. [UI Library Integration](#UILibraryIntegration)
+* 14. [Optimizing for Performance and Caveats](#OptimizingforPerformanceandCaveats)
+	* 14.1. [Passing non-primitive props (objects, arrays and functions)](#Passingnon-primitivepropsobjectsarraysandfunctions)
+		* 14.1.1. [Optimizing Class Components](#OptimizingClassComponents)
+		* 14.1.2. [Optimizing Functional Components](#OptimizingFunctionalComponents)
+* 15. [CSS Overrides](#CSSOverrides)
+* 16. [Setup](#Setup)
+* 17. [Local development](#Localdevelopment)
+* 18. [Including NPM packages](#IncludingNPMpackages)
+	* 18.1. [Library dependencies -- <root_dir>/package.**json](#Librarydependencies--root_dirpackage.json)
+	* 18.2. [Storybook dependencies -- <root_dir>/stories/package.json](#Storybookdependencies--root_dirstoriespackage.json)
+* 19. [Lint](#Lint)
+* 20. [Test](#Test)
+* 21. [Build](#Build)
 
-<!-- TOC -->
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->[![Build Status](https://travis-ci.com/jbetancur/react-data-table-component.svg?branch=master)]( ) [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://jbetancur.github.io/react-data-table-component)
 
-- [React Data Table Component](#react-data-table-component)
-	- [Demo and Examples](#demo-and-examples)
-	- [Key Features](#key-features)
-	- [Requirements](#requirements)
-	- [Installation](#installation)
-	- [Logging Issues and Contributions](#logging-issues-and-contributions)
-	- [API and Usage](#api-and-usage)
-		- [Columns](#columns)
-			- [column.hide media presets](#columnhide-media-presets)
-		- [DataTable Properties](#datatable-properties)
-			- [Basic](#basic)
-			- [Row Selection](#row-selection)
-			- [Row Expander](#row-expander)
-			- [Sorting](#sorting)
-			- [Pagination](#pagination)
-			- [Header](#header)
-			- [Header Context Menu when using Selectable Rows](#header-context-menu-when-using-selectable-rows)
-			- [Progress Indicator](#progress-indicator)
-			- [Theming and Customization](#theming-and-customization)
-				- [Dark Mode Theme](#dark-mode-theme)
-				- [Defining Your Own Theme Using `createTheme`](#defining-your-own-theme-using-createtheme)
-				- [Overidding Styling using css-in-js](#overidding-styling-using-css-in-js)
-			- [Conditional Row Styling](#conditional-row-styling)
-				- [Example](#example)
-			- [Conditional Style Object](#conditional-style-object)
-	- [Basic Table](#basic-table)
-	- [Selectable Rows](#selectable-rows)
-		- [Clearing Selected Rows](#clearing-selected-rows)
-		- [Overriding with Ui Component Library](#overriding-with-ui-component-library)
-	- [Using Custom Checkboxes and Indeterminate State](#using-custom-checkboxes-and-indeterminate-state)
-	- [Custom Cells](#custom-cells)
-	- [Expandable Rows](#expandable-rows)
-	- [Custom Sort Function](#custom-sort-function)
-	- [UI Library Integration](#ui-library-integration)
-	- [Optimizing for Performance and Caveats](#optimizing-for-performance-and-caveats)
-		- [Passing non-primitive props (objects, arrays and functions)](#passing-non-primitive-props-objects-arrays-and-functions)
-			- [Optimizing Class Components](#optimizing-class-components)
-				- [Examples of Optimizations](#examples-of-optimizations)
-			- [Optimizing Functional Components](#optimizing-functional-components)
-	- [CSS Overrides](#css-overrides)
-- [Development](#development)
-	- [Setup](#setup)
-	- [Local development](#local-development)
-	- [Including NPM packages](#including-npm-packages)
-		- [Library dependencies -- <root_dir>/package.**json](#library-dependencies----root_dirpackagejson)
-		- [Storybook dependencies -- <root_dir>/stories/package.json](#storybook-dependencies----root_dirstoriespackagejson)
-	- [Lint](#lint)
-	- [Test](#test)
-	- [Build](#build)
-- [Contributors](#contributors)
 
-<!-- /TOC -->
 
 # React Data Table Component
 
@@ -61,11 +57,11 @@ Creating yet another React table library came out of necessity while developing 
 
 If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone or heavy "enterprise" capabilities, then this is not the React table library you are looking for 👋
 
-## Demo and Examples
+##  1. <a name='DemoandExamples'></a>Demo and Examples
 
 [React Data Table Component Demo](https://jbetancur.github.io/react-data-table-component)
 
-## Key Features
+##  2. <a name='KeyFeatures'></a>Key Features
 
 - Declarative Configuration
 - Built-in and configurable:
@@ -77,14 +73,14 @@ If you want to achieve balance with the force and want a simple but flexible tab
 - Accessibility
 - Responsive (via x-scroll/flex)
 
-## Requirements
+##  3. <a name='Requirements'></a>Requirements
 
 React Data Table Component requires the following be installed in your project:
 
 - React 16.8.0+
 - styled-components 3.2.3+ || 4.0.0+ || 5.0.0+
 
-## Installation
+##  4. <a name='Installation'></a>Installation
 
 React Data Table utilizes the wonderful `styled-components` library. If you've already installed `styled-components` there is no need to install it again.
 
@@ -98,13 +94,13 @@ or
 yarn add react-data-table-component styled-components
 ```
 
-## Logging Issues and Contributions
+##  5. <a name='LoggingIssuesandContributions'></a>Logging Issues and Contributions
 
 Please use the github issue templates feature for logging issues or feature proposals. Including a codesandbox and providing clear details on the feature/issue will elicit a much quicker response 😉
 
-## API and Usage
+##  6. <a name='APIandUsage'></a>API and Usage
 
-### Columns
+###  6.1. <a name='Columns'></a>Columns
 
 Nothing new here - we are using an array of object literals and properties to describe the columns:
 
@@ -132,8 +128,15 @@ Nothing new here - we are using an array of object literals and properties to de
 | style    | object | no       | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
 | conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#-conditional-row-styling) to conditionally apply css styles to a cell |
 | id       | string or number | no       | in most cases you should not need to set a column `id` as RDT will auto generate one for each column. However, when developing an SSR app you may encounder an `id did not match` warning. In this case, you can explicitly set the `id` to fix the warning |
+| reorder       | boolean | no       | allows a column to be dragged and reordered |
 
-#### column.hide media presets
+####  6.1.1. <a name='ColumnReordering'></a>Column Reordering
+
+| Property | Type | Required | Default | Description |
+|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| onColumnOrderChange      | func | no |  | returns an array of TableColumns |
+
+####  6.1.2. <a name='column.hidemediapresets'></a>column.hide media presets
 
 When the breakpoint is reached the column will be hidden. These are the built-in media breakpoint presets when hiding columns
 
@@ -143,9 +146,9 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | md      | 959px       | medium(landscape tablets) |
 | lg      | 1280px      | large(laptops/desktops)   |
 
-### DataTable Properties
+###  6.2. <a name='DataTableProperties'></a>DataTable Properties
 
-#### Basic
+####  6.2.1. <a name='Basic'></a>Basic
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -170,7 +173,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | persistTableHead | bool | no |  | Show the table head (columns) even when `progressPending` is true. <br /><br />**Note** that the `noTableHead` will always hide the table head (columns) even when using  `persistTableHead` |
 | direction | string | no | auto | Accepts: `ltr, rtl, or auto`. When set to `auto` (default), RDT will attempt to detect direction by checking the HTML and DIV tags. For cases where you need to force rtl, or ltr just set this option manually (i.e. SSR) |
 
-#### Row Selection
+####  6.2.2. <a name='RowSelection'></a>Row Selection
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -186,7 +189,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | selectableRowSelected | func | no |  | Select a row based on a property in your data. e.g. `row => row.isSelected`. `selectableRowSelected` must return a boolean to determine if the row should be programatically selected. Note that changing the state of selectableRowSelected will NOT re-render RDT, instead you should change your data if you want to update the items that are selected. |
 | selectableRowDisabled | func | no |  | Disable row select based on a property in your data. e.g. `row => row.isDisabled`. `selectableRowDisabled` must return a boolean to determine if the row should be programatically disabled.  |
 
-#### Row Expander
+####  6.2.3. <a name='RowExpander'></a>Row Expander
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -202,7 +205,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | onRowExpandToggled | func | false |  | When a row is Expanded or Collapsed `onRowExpandToggled` will fire and return (toggleState, row) |
 | expandableInheritConditionalStyles | bool | no | false  | Whether to apply `conditionalRowStyles` to the expander row |
 
-#### Sorting
+####  6.2.4. <a name='Sorting'></a>Sorting
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -213,7 +216,8 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | sortFunction | func | no |  | pass in your own custom sort function e.g. `(rows, field, direction) => {...yourSortLogicHere}`. **Your function must return an new array reference**, otherwise RDT will not "know" to re-render. For example, `Array.sort` sorts the array in place but because of JavaScript object equality it will be the same reference and will not re-render. A common pattern is to return `yourArray.slice(0)` which creates a new array.|
 | sortServer   | bool | no | false | disables internal sorting for use with server-side sorting or when you want to manually control the sort behavior. place your sorting logic and/or api calls in an `onSort` handler. <br /><br />**Note:** `sortFunction` is a better choice if you simply want to override the internal sorting behavior |
 
-#### Pagination
+
+####  6.2.5. <a name='Pagination'></a>Pagination
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -234,7 +238,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | paginationIconNext |  | no | JSX | a component that overrides the next page icon for the pagination. <br /><br />**Note** that this prop only works with the build in Pagination component* |
 | paginationIconPrevious |  | no | JSX | a component that overrides the previous page icon for the pagination. <br /><br />**Note** that this prop only works with the build in Pagination component* |
 
-#### Header
+####  6.2.6. <a name='Header'></a>Header
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -247,7 +251,7 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | subHeaderWrap | bool | no | true | Whether the sub header content should wrap
 | subHeaderComponent |  component or array of components | no | [] | A component you want to render |
 
-#### Header Context Menu when using Selectable Rows
+####  6.2.7. <a name='HeaderContextMenuwhenusingSelectableRows'></a>Header Context Menu when using Selectable Rows
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -256,14 +260,14 @@ When the breakpoint is reached the column will be hidden. These are the built-in
 | contextComponent | component | no | null | Overide the default context menu when using `selectableRows` with your own custom componet. RDT will compose the `selectedCount` prop to your custom component. This will negate `contextMessage` and `contextActions` |
 | noContextMenu | bool | no | false | Do not display the context menu when using `selectableRows` |
 
-#### Progress Indicator
+####  6.2.8. <a name='ProgressIndicator'></a>Progress Indicator
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | progressPending | bool | no |  | Disables the table and displays a plain text Loading Indicator |
 | progressComponent | component | no |  | Allows you to use your own custom progress component. Note that in some cases (e.g. animated/spinning circular indicators) you will need to add a wrapping div with padding. |
 
-#### Theming and Customization
+####  6.2.9. <a name='ThemingandCustomization'></a>Theming and Customization
 
 | Property    | Type   | Required | Default | Description |
 |-------------|--------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -354,7 +358,7 @@ const MyComponent = () => (
 
 View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
 
-#### Conditional Row Styling
+####  6.2.10. <a name='ConditionalRowStyling'></a>Conditional Row Styling
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -398,14 +402,14 @@ const MyTable = () => (
 
 ```
 
-#### Conditional Style Object
+####  6.2.11. <a name='ConditionalStyleObject'></a>Conditional Style Object
 
 | Property | Type     | Required  | Description                                                                                                             |
 |----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
 | when     | function | yes       | `when` accepts a callback that gives you access to your `row` data. The when callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
 | style    | object or (row) => object   | yes       | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can also specify callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial ? 'pink' : inherit })` |
 
-## Basic Table
+##  7. <a name='BasicTable'></a>Basic Table
 
 The following declarative structure creates a sortable table of Arnold movie titles:
 
@@ -441,7 +445,7 @@ class MyComponent extends Component {
 
 ```
 
-## Selectable Rows
+##  8. <a name='SelectableRows'></a>Selectable Rows
 
 Let's make our rows selectable so we can access the selected results
 
@@ -469,7 +473,7 @@ class MyComponent extends Component {
 };
 ```
 
-### Clearing Selected Rows
+###  8.1. <a name='ClearingSelectedRows'></a>Clearing Selected Rows
 
 We need some hook to trigger all the selectedRows to clear. If you were building your own table component, you would manage the selected rows state in some parent component, however, in our case, since we to keep row management within React Data Table, a `clearSelectedRows` prop is provided so you can pass a toggled state.
 
@@ -507,7 +511,7 @@ class MyComponent extends Component {
 };
 ```
 
-### Overriding with Ui Component Library
+###  8.2. <a name='OverridingwithUiComponentLibrary'></a>Overriding with Ui Component Library
 
 Don't like those ugly html checkboxes? Let's override them with some [Material Ui](https://material-ui.com) sexiness. While we are at it we will also override the `sortIcon`:
 
@@ -533,7 +537,7 @@ const MyComponent = () => (
 );
 ```
 
-## Using Custom Checkboxes and Indeterminate State
+##  9. <a name='UsingCustomCheckboxesandIndeterminateState'></a>Using Custom Checkboxes and Indeterminate State
 
 Sometimes UI Library checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
 
@@ -565,7 +569,7 @@ const MyComponent = () => (
 
 **Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
 
-## Custom Cells
+##  10. <a name='CustomCells'></a>Custom Cells
 
 Let's give our Movie list a summary, but in the same cell as `Name`:
 
@@ -607,7 +611,7 @@ class MyComponent extends Component {
 };
 ```
 
-## Expandable Rows
+##  11. <a name='ExpandableRows'></a>Expandable Rows
 
 Let's make our rows expandable so we can view more details:
 
@@ -700,7 +704,7 @@ class MyComponent extends Component {
 };
 ```
 
-## Custom Sort Function
+##  12. <a name='CustomSortFunction'></a>Custom Sort Function
 
 By default RDT uses lodash.orderBy, however, if you wish to override the internal sorting you can pass in your own sorting algorithm. The callback signature will give you access to RDT internal fields. Here is an example of how to use `Array.sort`;
 
@@ -731,22 +735,22 @@ const customSort = (rows, selector, direction) => {
 <DataTable .... sortFunction={customSort} />
 ```
 
-## UI Library Integration
+##  13. <a name='UILibraryIntegration'></a>UI Library Integration
 
 React Data Table Component makes it easy to incorporate ui components from other libraries for overriding things like the sort icon, select checkbox.
 
 - [MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
 - [Bootstrap 4](https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
 
-## Optimizing for Performance and Caveats
+##  14. <a name='OptimizingforPerformanceandCaveats'></a>Optimizing for Performance and Caveats
 
 Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the performance that you expect.
 
-### Passing non-primitive props (objects, arrays and functions)
+###  14.1. <a name='Passingnon-primitivepropsobjectsarraysandfunctions'></a>Passing non-primitive props (objects, arrays and functions)
 
 While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into RDT are not re-created on every render cycle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
-#### Optimizing Class Components
+####  14.1.1. <a name='OptimizingClassComponents'></a>Optimizing Class Components
 
 You can typically achieve this by moving props such as objects, arrays, functions or other React components that you pass to RDT outside of the `render` method. For cases where you need to memoize [memoize-one](https://github.com/alexreardon/memoize-one) is a great library.
 
@@ -874,7 +878,7 @@ class MyComponent extends Component {
 
 Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once. This however, is a different matter with functional components.
 
-#### Optimizing Functional Components
+####  14.1.2. <a name='OptimizingFunctionalComponents'></a>Optimizing Functional Components
 
 If you're building functional components in React 16.8+ you get access to React Hooks such as `useMemo` and `useCallback`. In this example, simply wrap `columns` in a `useMemo` callback and your `updateState` into `useCallback`:
 
@@ -909,7 +913,7 @@ const MyComponentHook = () => {
 }
 ```
 
-## CSS Overrides
+##  15. <a name='CSSOverrides'></a>CSS Overrides
 
 If you would like to customize the layout components of React Data Table using styled-components (e.g. `styled(DataTable)`), or your favorite CSS, SCSS, LESS, etc.. pre-processor you may use the following classNames:
 
@@ -927,13 +931,13 @@ If you would like to customize the layout components of React Data Table using s
 
 # Development
 
-## Setup
+##  16. <a name='Setup'></a>Setup
 
 Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run `yarn` or `yarn install` command in the root and stories directory.
 
 > It is advised to run the script whenever NPM packages are installed.
 
-## Local development
+##  17. <a name='Localdevelopment'></a>Local development
 
 During development:
 
@@ -944,25 +948,25 @@ yarn start
 yarn storybook
 ```
 
-## Including NPM packages
+##  18. <a name='IncludingNPMpackages'></a>Including NPM packages
 
 This project uses two package.json structure.**
 
-### Library dependencies -- <root_dir>/package.**json
+###  18.1. <a name='Librarydependencies--root_dirpackage.json'></a>Library dependencies -- <root_dir>/package.**json
 
 ```sh
 yarn add [package-name] --dev # for dev tools
 yarn add [package-name] # for app
 ```
 
-### Storybook dependencies -- <root_dir>/stories/package.json
+###  18.2. <a name='Storybookdependencies--root_dirstoriespackage.json'></a>Storybook dependencies -- <root_dir>/stories/package.json
 
 ```sh
 cd stories/
 yarn add [package-name]
 ```
 
-## Lint
+##  19. <a name='Lint'></a>Lint
 
 ```sh
 yarn lint # runs linter to detect any style issues (css & js)
@@ -971,7 +975,7 @@ yarn lint:js # lint only js
 yarn lint:js --fix # tries to fix js lint issues
 ```
 
-## Test
+##  20. <a name='Test'></a>Test
 
 ```sh
 yarn test:tdd # runs functional/unit tests using Jest with watcher
@@ -979,7 +983,7 @@ yarn test # runs functional/unit tests using Jest
 yarn test --coverage # with coverage
 ```
 
-## Build
+##  21. <a name='Build'></a>Build
 
 ```sh
 yarn build # builds sources at src/

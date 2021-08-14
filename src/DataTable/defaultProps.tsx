@@ -101,4 +101,5 @@ export const defaultProps = {
 	onRowExpandToggled: noop,
 	onSelectedRowsChange: noop,
 	onSort: noop,
+	onColumnOrderChange: noop,
 };

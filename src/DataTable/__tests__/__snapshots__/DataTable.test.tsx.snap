@@ -151,7 +151,6 @@ exports[`DataTable::Header header should not display with no title 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -201,15 +200,18 @@ exports[`DataTable::Header header should not display with no title 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -229,6 +231,7 @@ exports[`DataTable::Header header should not display with no title 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -247,6 +250,7 @@ exports[`DataTable::Header header should not display with no title 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -1286,7 +1290,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -1336,15 +1339,18 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -1364,6 +1370,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -1382,6 +1389,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -1682,7 +1690,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -1901,15 +1908,18 @@ exports[`DataTable::Pagination should change the page position when using pagina
           >
             <div
               class="c5 c6 rdt_TableCol"
+              data-column-id="1"
             >
               <div
                 class="c7 rdt_TableCol_Sortable"
-                id="column-1"
+                data-column-id="1"
+                data-sort-id="1"
                 role="columnheader"
                 tabindex="0"
               >
                 <div
                   class="c8"
+                  data-column-id="1"
                 >
                   Test
                 </div>
@@ -1929,6 +1939,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
           >
             <div
               class="c11 c6 c12 rdt_TableCell"
+              data-column-id="1"
               data-tag="allowRowEvents"
               id="cell-1-1"
               role="gridcell"
@@ -2252,7 +2263,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -2306,15 +2316,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -2334,6 +2347,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -2502,7 +2516,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -2556,15 +2569,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -2584,6 +2600,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -2752,7 +2769,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -2806,15 +2822,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -2834,6 +2853,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -3002,7 +3022,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -3056,15 +3075,18 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -3084,6 +3106,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -3304,7 +3327,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -3358,15 +3380,18 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -3391,6 +3416,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -3559,7 +3585,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -3613,15 +3638,18 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -3641,6 +3669,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -3809,7 +3838,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -3863,15 +3891,18 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -3891,6 +3922,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -3909,6 +3941,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -4077,7 +4110,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -4131,15 +4163,18 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -4159,6 +4194,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -4177,6 +4213,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -4345,7 +4382,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -4399,15 +4435,18 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -4427,6 +4466,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -4445,6 +4485,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -4613,7 +4654,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -4667,15 +4707,18 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -4695,6 +4738,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -4713,6 +4757,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -4881,7 +4926,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -4935,15 +4979,18 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -4963,6 +5010,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -4981,6 +5029,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -5149,7 +5198,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -5203,15 +5251,18 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -5231,6 +5282,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -5399,7 +5451,6 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -5449,15 +5500,18 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -5477,6 +5531,7 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -5495,6 +5550,7 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -5664,7 +5720,6 @@ exports[`DataTable::column.style should render correctly when a style is set on 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -5714,15 +5769,18 @@ exports[`DataTable::column.style should render correctly when a style is set on 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -5742,6 +5800,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -5760,6 +5819,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -5932,7 +5992,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -5982,15 +6041,18 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -6010,6 +6072,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -6028,6 +6091,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -6196,7 +6260,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -6252,15 +6315,18 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -6280,6 +6346,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -6298,6 +6365,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -6466,7 +6534,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -6522,15 +6589,18 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -6550,6 +6620,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -6568,6 +6639,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -6736,7 +6808,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -6792,15 +6863,18 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -6820,6 +6894,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -6838,6 +6913,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -7006,7 +7082,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -7062,15 +7137,18 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -7090,6 +7168,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -7108,6 +7187,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -7276,7 +7356,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -7326,15 +7405,18 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -7354,6 +7436,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -7372,6 +7455,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -7540,7 +7624,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -7590,15 +7673,18 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -7618,6 +7704,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -7636,6 +7723,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -7804,7 +7892,6 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -7854,15 +7941,18 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -7882,6 +7972,7 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -7900,6 +7991,7 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -8072,7 +8164,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -8122,15 +8213,18 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -8150,6 +8244,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -8168,6 +8263,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -8338,7 +8434,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -8388,16 +8483,19 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
             width="200px"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -8417,6 +8515,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -8436,6 +8535,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -8605,7 +8705,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -8655,15 +8754,18 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -8683,6 +8785,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -8701,6 +8804,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -8878,7 +8982,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 
 .c9 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -8928,15 +9031,18 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
         >
           <div
             class="c5 c6 c7 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c8 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c9"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -8956,6 +9062,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             id="cell-1-1"
             role="gridcell"
           >
@@ -8971,6 +9078,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             id="cell-1-2"
             role="gridcell"
           >
@@ -9130,7 +9238,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -9180,15 +9287,18 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -9208,6 +9318,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -9224,6 +9335,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -9391,7 +9503,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -9441,15 +9552,18 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -9469,6 +9583,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -9487,6 +9602,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -9712,7 +9828,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -9762,15 +9877,18 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -9795,6 +9913,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -9813,6 +9932,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -9981,7 +10101,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -10031,15 +10150,18 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -10059,6 +10181,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -10077,6 +10200,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -10245,7 +10369,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -10295,15 +10418,18 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -10323,6 +10449,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             id="cell-1-1"
             role="gridcell"
           >
@@ -10338,6 +10465,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             id="cell-1-2"
             role="gridcell"
           >
@@ -10503,7 +10631,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -10553,15 +10680,18 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -10581,6 +10711,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -10599,6 +10730,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -10767,7 +10899,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -10817,15 +10948,18 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -10845,6 +10979,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -10864,6 +10999,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -11032,7 +11168,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -11082,15 +11217,18 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -11110,6 +11248,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -11128,6 +11267,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -11296,7 +11436,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -11346,15 +11485,18 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -11374,6 +11516,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -11393,6 +11536,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -11561,7 +11705,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -11611,15 +11754,18 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -11639,6 +11785,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -11657,6 +11804,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -11825,7 +11973,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -11875,15 +12022,18 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -11904,6 +12054,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -11922,6 +12073,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -12090,7 +12242,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -12140,15 +12291,18 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -12168,6 +12322,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -12186,6 +12341,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -12356,7 +12512,6 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -12406,15 +12561,18 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -12434,6 +12592,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -12452,6 +12611,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -12620,7 +12780,6 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -12674,15 +12833,18 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -12702,6 +12864,7 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -12720,6 +12883,7 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -12888,7 +13052,6 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -12943,15 +13106,18 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -12971,6 +13137,7 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -12989,6 +13156,7 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -13157,7 +13325,6 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -13212,15 +13379,18 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -13240,6 +13410,7 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -13258,6 +13429,7 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -13484,7 +13656,6 @@ exports[`DataTable::direction should render correctly when direction is rtl when
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -13564,15 +13735,18 @@ exports[`DataTable::direction should render correctly when direction is rtl when
           </div>
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -13602,6 +13776,7 @@ exports[`DataTable::direction should render correctly when direction is rtl when
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -13630,6 +13805,7 @@ exports[`DataTable::direction should render correctly when direction is rtl when
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -13884,7 +14060,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -13944,15 +14119,18 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -14000,6 +14178,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -14057,6 +14236,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -14311,7 +14491,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -14371,15 +14550,18 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -14427,6 +14609,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -14484,6 +14667,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -14757,7 +14941,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -14817,15 +15000,18 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -14874,6 +15060,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -14920,6 +15107,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -15088,7 +15276,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -15138,15 +15325,18 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -15166,6 +15356,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -15184,6 +15375,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -15410,7 +15602,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -15489,15 +15680,18 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           </div>
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -15527,6 +15721,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -15555,6 +15750,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -15805,7 +16001,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -15865,15 +16060,18 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -15921,6 +16119,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -15978,6 +16177,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -16221,7 +16421,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -16281,15 +16480,18 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -16337,6 +16539,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -16383,6 +16586,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -16633,7 +16837,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -16693,15 +16896,18 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -16749,6 +16955,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -16806,6 +17013,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -16974,7 +17182,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -17024,15 +17231,18 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -17052,6 +17262,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -17070,6 +17281,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -17238,7 +17450,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -17291,15 +17502,18 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -17319,6 +17533,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -17337,6 +17552,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -17505,7 +17721,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -17558,15 +17773,18 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -17586,6 +17804,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -17604,6 +17823,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -17772,7 +17992,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -17827,15 +18046,18 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -17855,6 +18077,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -17873,6 +18096,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -18041,7 +18265,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -18096,15 +18319,18 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -18124,6 +18350,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -18142,6 +18369,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader with an
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -18323,7 +18551,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -18373,15 +18600,18 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -18401,6 +18631,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -18419,6 +18650,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -18591,7 +18823,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -18641,15 +18872,18 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -18669,6 +18903,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -18687,6 +18922,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -19259,7 +19495,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -19319,16 +19554,19 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
               disabled=""
-              id="column-1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -19448,7 +19686,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -19509,16 +19746,19 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
               disabled=""
-              id="column-1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -19638,7 +19878,6 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -19699,16 +19938,19 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
               disabled=""
-              id="column-1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -19881,7 +20123,6 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -19933,15 +20174,18 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -19961,6 +20205,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -19979,6 +20224,7 @@ exports[`DataTable::responsive should not apply overFlowY without an overflowYOf
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -20147,7 +20393,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -20197,15 +20442,18 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -20225,6 +20473,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -20243,6 +20492,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -20411,7 +20661,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -20458,15 +20707,18 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -20486,6 +20738,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -20504,6 +20757,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -20710,7 +20964,6 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
 
 .c9 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -20764,15 +21017,18 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
           />
           <div
             class="c6 c7 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c8 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c9"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -20802,6 +21058,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
           </div>
           <div
             class="c5 c7 c14 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -20830,6 +21087,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
           </div>
           <div
             class="c5 c7 c14 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -21036,7 +21294,6 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
 
 .c9 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -21090,15 +21347,18 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
           />
           <div
             class="c6 c7 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c8 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c9"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -21128,6 +21388,7 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
           </div>
           <div
             class="c5 c7 c14 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -21156,6 +21417,7 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
           </div>
           <div
             class="c5 c7 c14 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -21382,7 +21644,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -21461,15 +21722,18 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           </div>
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -21499,6 +21763,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -21527,6 +21792,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -21785,7 +22051,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -21864,15 +22129,18 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
           </div>
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -21902,6 +22170,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -21930,6 +22199,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
           </div>
           <div
             class="c15 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -22150,7 +22420,6 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -22200,15 +22469,18 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -22233,6 +22505,7 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -22251,6 +22524,7 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -22471,7 +22745,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -22521,15 +22794,18 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -22554,6 +22830,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -22572,6 +22849,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -22730,6 +23008,9 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-negative: 0;
   flex-shrink: 0;
   opacity: 1;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .c7 {
@@ -22792,7 +23073,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -22842,15 +23122,18 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -22875,6 +23158,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -22893,6 +23177,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -23061,7 +23346,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -23111,15 +23395,18 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -23139,6 +23426,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -23157,6 +23445,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -23377,7 +23666,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -23427,15 +23715,18 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -23460,6 +23751,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -23478,6 +23770,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -23698,7 +23991,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -23748,15 +24040,18 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -23781,6 +24076,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -23799,6 +24095,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -24011,7 +24308,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -24061,15 +24357,18 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -24096,6 +24395,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -24114,6 +24414,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -24330,7 +24631,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -24380,10 +24680,12 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
@@ -24396,6 +24698,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
               </span>
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -24415,6 +24718,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -24433,6 +24737,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -24662,7 +24967,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 
 .c9 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -24712,10 +25016,12 @@ exports[`DataTable::sorting should render correctly with a default sort field an
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
@@ -24726,6 +25032,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
               </span>
               <div
                 class="c9"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -24745,6 +25052,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -24763,6 +25071,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -24988,7 +25297,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -25038,15 +25346,18 @@ exports[`DataTable::sorting should render correctly with a default sort field an
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -25071,6 +25382,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -25089,6 +25401,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -25317,7 +25630,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -25367,15 +25679,18 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -25400,6 +25715,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -25418,6 +25734,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -25641,7 +25958,6 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -25691,15 +26007,18 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -25724,6 +26043,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -25742,6 +26062,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
         >
           <div
             class="c12 c6 c13 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -25938,7 +26259,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -25988,15 +26308,18 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -26016,6 +26339,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -26034,6 +26358,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -26377,7 +26702,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -26427,15 +26751,18 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -26455,6 +26782,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -26605,6 +26933,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
         >
           <div
             class="c5 c6 c7 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -26623,6 +26952,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
         >
           <div
             class="c5 c6 c7 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -26956,7 +27286,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 
 .c10 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -27016,15 +27345,18 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           />
           <div
             class="c7 c8 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c9 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c10"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -27073,6 +27405,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -27130,6 +27463,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -27300,7 +27634,6 @@ exports[`should render correctly when disabled 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -27351,15 +27684,18 @@ exports[`should render correctly when disabled 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Test
               </div>
@@ -27379,6 +27715,7 @@ exports[`should render correctly when disabled 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -27397,6 +27734,7 @@ exports[`should render correctly when disabled 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
             role="gridcell"
@@ -27565,7 +27903,6 @@ exports[`should render the correctly when using selector function 1`] = `
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -27615,15 +27952,18 @@ exports[`should render the correctly when using selector function 1`] = `
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Name
               </div>
@@ -27643,6 +27983,7 @@ exports[`should render the correctly when using selector function 1`] = `
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"
@@ -27811,7 +28152,6 @@ exports[`should render the correctly when using selector function and a format f
 
 .c8 {
   overflow: hidden;
-  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -27861,15 +28201,18 @@ exports[`should render the correctly when using selector function and a format f
         >
           <div
             class="c5 c6 rdt_TableCol"
+            data-column-id="1"
           >
             <div
               class="c7 rdt_TableCol_Sortable"
-              id="column-1"
+              data-column-id="1"
+              data-sort-id="1"
               role="columnheader"
               tabindex="0"
             >
               <div
                 class="c8"
+                data-column-id="1"
               >
                 Name
               </div>
@@ -27889,6 +28232,7 @@ exports[`should render the correctly when using selector function and a format f
         >
           <div
             class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
             role="gridcell"

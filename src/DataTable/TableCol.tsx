@@ -2,11 +2,21 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Cell, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
-import { sort } from './util';
+import { equalizeId, sort } from './util';
 import { TableColumn, SortAction, SortDirection, SortFunction } from './types';
 
-const TableColStyle = styled(Cell)<CellProps>`
+interface TableColStyleProps extends CellProps {
+	isDragging?: boolean;
+	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+}
+
+const TableColStyled = styled(Cell)<TableColStyleProps>`
 	${({ button }) => button && 'text-align: center'};
+	${({ theme, isDragging }) => isDragging && theme.headCells.draggingStyle};
 `;
 
 interface ColumnSortableProps {
@@ -62,7 +72,6 @@ const ColumnSortable = styled.div<ColumnSortableProps>`
 
 const ColumnText = styled.div`
 	overflow: hidden;
-	font-weight: 500;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 `;
@@ -71,6 +80,7 @@ type TableColProps<T> = {
 	rows: T[];
 	column: TableColumn<T>;
 	disabled: boolean;
+	draggingColumnId?: string | number;
 	sortIcon?: React.ReactNode;
 	pagination: boolean;
 	paginationServer: boolean;
@@ -81,13 +91,19 @@ type TableColProps<T> = {
 	sortServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	onSort: (action: SortAction<T>) => void;
+	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 };
 
 function TableCol<T>({
 	rows,
 	column,
 	disabled,
-	selectedColumn,
+	draggingColumnId,
+	selectedColumn = {},
 	sortDirection,
 	sortFunction,
 	sortIcon,
@@ -97,6 +113,11 @@ function TableCol<T>({
 	persistSelectedOnSort,
 	selectableRowsVisibleOnly,
 	onSort,
+	onDragStart,
+	onDragOver,
+	onDragEnd,
+	onDragEnter,
+	onDragLeave,
 }: TableColProps<T>): JSX.Element | null {
 	React.useEffect(() => {
 		if (typeof column.selector === 'string') {
@@ -115,7 +136,7 @@ function TableCol<T>({
 		if (column.sortable && column.selector) {
 			let direction = sortDirection;
 
-			if (selectedColumn.id === column.id) {
+			if (equalizeId(selectedColumn.id, column.id)) {
 				direction = sortDirection === 'asc' ? 'desc' : 'asc';
 			}
 
@@ -159,14 +180,15 @@ function TableCol<T>({
 		<span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>{sortIcon}</span>
 	);
 
-	const sortActive = !!(column.sortable && selectedColumn.id === column.id);
+	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
 	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
 	const customSortIconLeft = column.sortable && sortIcon && !column.right;
 	const customSortIconRight = column.sortable && sortIcon && column.right;
 
 	return (
-		<TableColStyle
+		<TableColStyled
+			data-column-id={column.id}
 			className="rdt_TableCol"
 			head
 			allowOverflow={column.allowOverflow}
@@ -179,10 +201,18 @@ function TableCol<T>({
 			right={column.right}
 			center={column.center}
 			width={column.width}
+			draggable={column.reorder}
+			isDragging={equalizeId(column.id, draggingColumnId)}
+			onDragStart={onDragStart}
+			onDragOver={onDragOver}
+			onDragEnd={onDragEnd}
+			onDragEnter={onDragEnter}
+			onDragLeave={onDragLeave}
 		>
 			{column.name && (
 				<ColumnSortable
-					id={`column-${column.id}`}
+					data-column-id={column.id}
+					data-sort-id={column.id}
 					role="columnheader"
 					tabIndex={0}
 					className="rdt_TableCol_Sortable"
@@ -194,12 +224,12 @@ function TableCol<T>({
 				>
 					{!disabled && customSortIconRight && renderCustomSortIcon()}
 					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
-					<ColumnText>{column.name}</ColumnText>
+					<ColumnText data-column-id={column.id}>{column.name}</ColumnText>
 					{!disabled && customSortIconLeft && renderCustomSortIcon()}
 					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</ColumnSortable>
 			)}
-		</TableColStyle>
+		</TableColStyled>
 	);
 }
 

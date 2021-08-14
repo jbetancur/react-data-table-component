@@ -4,7 +4,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
-import { getConditionalStyle, getProperty, isOdd, noop } from './util';
+import { equalizeId, getConditionalStyle, getProperty, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
 import { RowRecord, SingleRowAction, TableProps } from './types';
 
@@ -73,6 +73,7 @@ type DProps<T> = Pick<
 >;
 
 interface TableRowProps<T> extends Required<DProps<T>> {
+	draggingColumnId: number | string;
 	defaultExpanded?: boolean;
 	defaultExpanderDisabled: boolean;
 	id: string | number;
@@ -82,6 +83,11 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 	rowCount: number;
 	rowIndex: number;
 	selected: boolean;
+	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
 function TableRow<T extends RowRecord>({
@@ -117,6 +123,12 @@ function TableRow<T extends RowRecord>({
 	selectableRowsSingle = false,
 	selected,
 	striped = false,
+	draggingColumnId,
+	onDragStart,
+	onDragOver,
+	onDragEnd,
+	onDragEnter,
+	onDragLeave,
 }: TableRowProps<T>): JSX.Element {
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
 
@@ -219,6 +231,12 @@ function TableRow<T extends RowRecord>({
 							dataTag={dataTag}
 							renderAsCell={!!column.cell}
 							column={column}
+							isDragging={equalizeId(draggingColumnId, column.id)}
+							onDragStart={onDragStart}
+							onDragOver={onDragOver}
+							onDragEnd={onDragEnd}
+							onDragEnter={onDragEnter}
+							onDragLeave={onDragLeave}
 						>
 							{!column.cell && (
 								<div data-tag={dataTag}>{getProperty(row, column.selector, column.format, rowIndex)}</div>

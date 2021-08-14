@@ -579,7 +579,7 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock({ sortable: false });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(onSortMock).not.toBeCalled();
 	});
@@ -602,7 +602,7 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -611,7 +611,7 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -621,11 +621,11 @@ describe('DataTable::sorting', () => {
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
 		// select the column to sort
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// sort asc
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// sort desc
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -635,11 +635,11 @@ describe('DataTable::sorting', () => {
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
 		// select the column to sort
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// sort asc
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// sort desc
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -649,9 +649,9 @@ describe('DataTable::sorting', () => {
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
 		// select the column to sort
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// press enter
-		fireEvent.keyPress(container.querySelector('div[id="column-1"]') as HTMLElement, { keyCode: 13 });
+		fireEvent.keyPress(container.querySelector('div[data-sort-id="1"]') as HTMLElement, { keyCode: 13 });
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -661,7 +661,7 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
 	});
@@ -671,10 +671,10 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'desc');
 	});
 
@@ -703,7 +703,7 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} sortServer />);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// note row order should not change, but sort arrows should
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -714,8 +714,8 @@ describe('DataTable::sorting', () => {
 			<DataTable data={mock.data} columns={mock.columns} sortServer defaultSortFieldId={1} />,
 		);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// note row order should not change, but sort arrows should
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -1327,7 +1327,7 @@ describe('DataTable::Pagination', () => {
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
 		expect(container.firstChild).toMatchSnapshot();
 		expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
@@ -1606,7 +1606,7 @@ describe('DataTable::Pagination', () => {
 		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLButtonElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLButtonElement);
 		expect(onSortMock).toBeCalled();
 		expect(onSelectedRowsChange).toBeCalledTimes(2);
 	});
@@ -1633,7 +1633,7 @@ describe('DataTable::Pagination', () => {
 		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		expect(onSortMock).toBeCalled();
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 		expect(onSelectedRowsChange).toBeCalledWith({
@@ -1707,7 +1707,7 @@ describe('DataTable::Pagination', () => {
 		fireEvent.click(allCheck);
 		// uncheck select all
 		fireEvent.click(allCheck);
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLInputElement);
 
 		expect(onSortMock).toBeCalled();
 		expect(onSelectedRowsChange).toBeCalledTimes(2);
@@ -1740,7 +1740,7 @@ describe('DataTable::Pagination', () => {
 		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		expect(onSortMock).toBeCalled();
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 		expect(onSelectedRowsChange).toBeCalledWith({
@@ -1780,7 +1780,7 @@ describe('DataTable::Pagination', () => {
 		fireEvent.click(allCheck);
 		expect(allCheck.checked).toBe(true);
 
-		fireEvent.click(container.querySelector('div[id="column-1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		expect(allCheck.checked).toBe(false);
 	});
 
