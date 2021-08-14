@@ -8,7 +8,7 @@ export interface IDataTableConditionalCellStyles<T = any> {
 
 export interface IDataTableColumn<T = any> {
   id?: string | number;
-  name: string | number | React.ReactNode;
+  name?: string | number | React.ReactNode;
   selector?: string | ((row: T, rowIndex: number) => React.ReactNode);
   sortable?: boolean;
   sortFunction?: (a: T, b: T) => number;
