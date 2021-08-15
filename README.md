@@ -825,7 +825,7 @@ class MyComponent extends Component {
 But that only works if you don't need to pass component props/methods to the column object. For example what if you want to attach an event handler to a button in the row using `column.cell`?
 
 ```js
-const columns = [;
+const columns = [
   {
     cell: () => <Button raised primary onClick={this.handleAction}>Action</Button>,
     ignoreRowClick: true,
