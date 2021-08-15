@@ -654,7 +654,7 @@ class MyComponent extends Component {
         sortIcon={<FontIcon>arrow_downward</FontIcon>}
         onSelectedRowsChange={handleChange}
         expandableRows
-        expandableRowsComponent={<ExpandableComponent />}
+        expandableRowsComponent={ExpandableComponent}
       />
     )
   }
@@ -700,7 +700,7 @@ class MyComponent extends Component {
         onSelectedRowsChange={handleChange}
         expandableRows
         expandableRowDisabled={row => row.disabled}
-        expandableRowsComponent={<ExpandableComponent />}
+        expandableRowsComponent={ExpandableComponent}
       />
     )
   }
