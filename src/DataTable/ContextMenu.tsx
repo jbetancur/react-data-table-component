@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { detectRTL } from './util';
+import useRTL from '../hooks/useRTL';
 import { Direction } from './constants';
 import { ContextMessage } from './types';
 
@@ -22,6 +22,7 @@ const ContextActions = styled.div`
 `;
 
 const ContextMenuStyle = styled.div<{
+	rtl?: boolean;
 	visible: boolean;
 }>`
 	position: absolute;
@@ -34,11 +35,12 @@ const ContextMenuStyle = styled.div<{
 	align-items: center;
 	justify-content: space-between;
 	display: flex;
+	${({ rtl }) => rtl && 'direction: rtl'};
 	${({ theme }) => theme.contextMenu.style};
 	${({ theme, visible }) => visible && theme.contextMenu.activeStyle};
 `;
 
-const generateDefaultContextTitle = (contextMessage: ContextMessage, selectedCount: number, direction: Direction) => {
+const generateDefaultContextTitle = (contextMessage: ContextMessage, selectedCount: number, rtl: boolean) => {
 	if (selectedCount === 0) {
 		return null;
 	}
@@ -46,7 +48,7 @@ const generateDefaultContextTitle = (contextMessage: ContextMessage, selectedCou
 	const datumName = selectedCount === 1 ? contextMessage.singular : contextMessage.plural;
 
 	// TODO: add mock document rtl tests
-	if (detectRTL(direction)) {
+	if (rtl) {
 		return `${selectedCount} ${contextMessage.message || ''} ${datumName}`;
 	}
 
@@ -68,6 +70,7 @@ function ContextMenu({
 	selectedCount,
 	direction,
 }: ContextMenuProps): JSX.Element {
+	const isRTL = useRTL(direction);
 	const visible = selectedCount > 0;
 
 	if (contextComponent) {
@@ -79,8 +82,8 @@ function ContextMenu({
 	}
 
 	return (
-		<ContextMenuStyle visible={visible}>
-			<Title>{generateDefaultContextTitle(contextMessage, selectedCount, direction as Direction)}</Title>
+		<ContextMenuStyle visible={visible} rtl={isRTL}>
+			<Title>{generateDefaultContextTitle(contextMessage, selectedCount, isRTL)}</Title>
 			<ContextActions>{contextActions}</ContextActions>
 		</ContextMenuStyle>
 	);

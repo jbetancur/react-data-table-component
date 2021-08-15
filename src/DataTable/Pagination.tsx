@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Select from './Select';
-import { getNumberOfPages, detectRTL } from './util';
+import { getNumberOfPages } from './util';
 import useWindowSize from '../hooks/useWindowSize';
+import useRTL from '../hooks/useRTL';
 import { media, SMALL } from './media';
 import { Direction } from './constants';
 import { PaginationOptions } from './types';
@@ -93,8 +94,9 @@ function Pagination({
 	onChangePage = defaultProps.onChangePage,
 }: PaginationProps): JSX.Element {
 	const windowSize = useWindowSize();
+	const isRTL = useRTL(direction);
 	const shouldShow = windowSize.width && windowSize.width > SMALL;
-	const isRTL = detectRTL(direction);
+	// const isRTL = detectRTL(direction);
 	const numPages = getNumberOfPages(rowCount, rowsPerPage);
 	const lastIndex = currentPage * rowsPerPage;
 	const firstIndex = lastIndex - rowsPerPage + 1;

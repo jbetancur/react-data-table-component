@@ -13,10 +13,8 @@ import {
 	handleFunctionProps,
 	getConditionalStyle,
 	isRowSelected,
-	detectRTL,
 } from '../util';
 import { ConditionalStyles } from '../types';
-import { Direction } from '../constants';
 
 const row = Object.freeze({
 	id: 1,
@@ -317,25 +315,5 @@ describe('isRowSelected', () => {
 		];
 
 		expect(isRowSelected(currentRow, selectedRows, 'id')).toBe(false);
-	});
-});
-
-describe('detectRTL', () => {
-	test('with no args should default to auto and return false', () => {
-		// this will be false because there is no dom in test
-		expect(detectRTL()).toBe(false);
-	});
-
-	test('with auto should return false', () => {
-		// this will be false because there is no dom in test
-		expect(detectRTL(Direction.AUTO)).toBe(false);
-	});
-
-	test('with rtl should return true', () => {
-		expect(detectRTL(Direction.RTL)).toBe(true);
-	});
-
-	test('with ltr should return false', () => {
-		expect(detectRTL(Direction.LTR)).toBe(false);
 	});
 });

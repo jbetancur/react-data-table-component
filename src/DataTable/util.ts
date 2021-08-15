@@ -1,6 +1,5 @@
 import orderBy from 'lodash.orderby';
 import { CSSObject } from 'styled-components';
-import { Direction } from './constants';
 import { ConditionalStyles, TableColumn, Format, RowRecord, Selector, SortDirection, SortFunction } from './types';
 
 export function isEmpty(field: string | number | undefined = ''): boolean {
@@ -184,19 +183,6 @@ export function isRowSelected<T extends RowRecord>(row: T, selectedRows: Array<T
 	}
 
 	return selectedRows.some(r => r === row);
-}
-
-export function detectRTL(direction: Direction = Direction.AUTO): boolean {
-	if (direction === 'auto') {
-		const canUse = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-		const bodyRTL = <HTMLScriptElement>document.getElementsByTagName('BODY')[0];
-		const htmlTRL = <HTMLScriptElement>document.getElementsByTagName('HTML')[0];
-		const hasRTL = bodyRTL.dir === 'rtl' || htmlTRL.dir === 'rtl';
-
-		return canUse && hasRTL;
-	}
-
-	return direction === 'rtl';
 }
 
 export function isOdd(num: number): boolean {
