@@ -562,15 +562,6 @@ describe('DataTable::responsive', () => {
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
-
-	test('should not apply overFlowY without an overflowYOffset or not responsive', () => {
-		const mock = dataMock();
-		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} responsive overflowY overflowYOffset="250px" />,
-		);
-
-		expect(container.firstChild).toMatchSnapshot();
-	});
 });
 
 describe('DataTable::sorting', () => {
@@ -2138,22 +2129,6 @@ describe('DataTable::fixedHeader', () => {
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} fixedHeader fixedHeaderScrollHeight="100px" />,
-		);
-
-		expect(container.firstChild).toMatchSnapshot();
-	});
-
-	test('should render correctly when fixedHeader with an offset', () => {
-		const mock = dataMock();
-		const { container } = render(<DataTable data={mock.data} columns={mock.columns} fixedHeader overflowY />);
-
-		expect(container.firstChild).toMatchSnapshot();
-	});
-
-	test('should render correctly when fixedHeader with an offset with a value', () => {
-		const mock = dataMock();
-		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} fixedHeader overflowY offset="100px" />,
 		);
 
 		expect(container.firstChild).toMatchSnapshot();

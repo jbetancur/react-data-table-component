@@ -52,7 +52,6 @@ export type TableProps<T = RowRecord> = {
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
-	offset?: string;
 	onChangePage?: ChangePage;
 	onChangeRowsPerPage?: ChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
@@ -61,8 +60,6 @@ export type TableProps<T = RowRecord> = {
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort?: (column: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
-	overflowY?: boolean;
-	overflowYOffset?: string;
 	pagination?: boolean;
 	paginationComponent?: PaginationComponent;
 	paginationComponentOptions?: PaginationOptions;

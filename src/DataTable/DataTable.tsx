@@ -63,8 +63,6 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		paginationComponent = defaultProps.paginationComponent,
 		paginationComponentOptions = defaultProps.paginationComponentOptions,
 		responsive = defaultProps.responsive,
-		overflowY = defaultProps.overflowY,
-		overflowYOffset = defaultProps.overflowYOffset,
 		progressPending = defaultProps.progressPending,
 		progressComponent = defaultProps.progressComponent,
 		persistTableHead = defaultProps.persistTableHead,
@@ -321,8 +319,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 			<ResponsiveWrapper
 				responsive={responsive}
-				overflowYOffset={overflowYOffset}
-				overflowY={overflowY}
+				fixedHeader={fixedHeader}
+				fixedHeaderScrollHeight={fixedHeaderScrollHeight}
 				{...wrapperProps}
 			>
 				<TableWrapper>
@@ -330,7 +328,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 					<Table disabled={disabled} className="rdt_Table" role="table">
 						{showTableHead() && (
-							<TableHead className="rdt_TableHead" role="rowgroup">
+							<TableHead className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
 								<TableHeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
 									{selectableRows &&
 										(showSelectAll ? (
@@ -382,14 +380,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 						{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
 						{!progressPending && rows.length > 0 && (
-							<TableBody
-								fixedHeader={fixedHeader}
-								fixedHeaderScrollHeight={fixedHeaderScrollHeight}
-								hasOffset={overflowY}
-								offset={overflowYOffset}
-								className="rdt_TableBody"
-								role="rowgroup"
-							>
+							<TableBody className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
 									const id = isEmpty(row[keyField]) ? i : row[keyField];
 									const selected = isRowSelected(row, selectedRows, keyField);
