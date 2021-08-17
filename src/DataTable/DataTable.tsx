@@ -291,9 +291,9 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 
 			dispatch({ type: 'SELECT_MULTIPLE_ROWS', keyField, selectedRows: preSelectedRows, rows: rows, mergeSelections });
 		}
-		// We only want to update the selectedRowState if the rows change
+		// We only want to update the selectedRowState if data changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [rows]);
+	}, [data]);
 
 	const rowData = selectableRowsVisibleOnly ? tableRows : rows;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;

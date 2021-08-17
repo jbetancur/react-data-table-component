@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { decorateColumns, findColumnIndexById, getSortDirection } from '../DataTable/util';
+import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { SortDirection, TableColumn } from '../DataTable/types';
 
 type ColumnsHook<T> = {
@@ -20,19 +21,20 @@ function useColumns<T>(
 	defaultSortFieldId: string | number | null | undefined,
 	defaultSortAsc: boolean,
 ): ColumnsHook<T> {
-	// decorate columns with additional metadata required by RDT
-	const columnsMemo = React.useMemo(() => decorateColumns(columns), [columns]);
-
-	const [tableColumns, setCalculatedColumns] = React.useState(columnsMemo);
+	const [tableColumns, setTableColumns] = React.useState<TableColumn<T>[]>(() => decorateColumns(columns));
 	const [draggingColumnId, setDraggingColumn] = React.useState('');
 	const sourceColumnId = React.useRef('');
+
+	useDidUpdateEffect(() => {
+		setTableColumns(decorateColumns(columns));
+	}, [columns]);
 
 	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
 		const { attributes } = e.target as HTMLDivElement;
 		const id = attributes.getNamedItem('data-column-id')?.value;
 
 		if (id) {
-			sourceColumnId.current = columnsMemo[findColumnIndexById(columnsMemo, id)]?.id?.toString() || '';
+			sourceColumnId.current = tableColumns[findColumnIndexById(tableColumns, id)]?.id?.toString() || '';
 
 			setDraggingColumn(sourceColumnId.current);
 		}
@@ -50,7 +52,7 @@ function useColumns<T>(
 			reorderedCols[selectedColIndex] = tableColumns[targetColIndex];
 			reorderedCols[targetColIndex] = tableColumns[selectedColIndex];
 
-			setCalculatedColumns(reorderedCols);
+			setTableColumns(reorderedCols);
 
 			onColumnOrderChange(reorderedCols);
 		}
