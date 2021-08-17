@@ -112,7 +112,7 @@ Nothing new here - we are using an array of object literals and properties to de
 | name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
 | selector | string or (row, index) => {} | no      | a data set property in dot notation. e.g. <br /> `property1.nested1.nested2` <br /> `property1.items[0].nested2` <br /> or as a function e.g. <br /> `row => row.timestamp`. A `selector` is required anytime you want to display data but can be omitted if your column does not require showing data (e.g. an actions column) |
 | sortable | bool   | no       | if the column is sortable. <br /><br />**Note:** `selector` is required for the column to sort                                                            |
-| sortFunction | function | no | by default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](#-custom-sort-function)   |
+| sortFunction | function | no | by default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](#CustomSortFunction)   |
 | format   | (row, index) => {}   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value.                                        |
 | cell     | (row, index, column, id) => {}   | no       | for ultimate control use `cell` to render your own custom component!<br />e.g `row => <h2>{row.title}</h2>`. <br /> <br />if you are using properties such as: `onRowClicked`, `onRowDoubleClicked`, `expandOnRowClicked` or `expandOnRowDoubleClicked` then those click events will be ignored when clicking on your custom cell. To allow `RowClicked` events you can add `data-tag="allowRowEvents"` to your custom cell component elements. If your custom cell component is more complex and has nested elements you want to add `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the click event to. <br />e.g `row => <h2 data-tag="allowRowEvents">{row.title}</h2>` <br /><br />**Note:** that using `cell` **negates  `format`**. |
 | grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
@@ -736,6 +736,31 @@ const customSort = (rows, selector, direction) => {
 
 ...
 <DataTable .... sortFunction={customSort} />
+```
+
+For individual columns the custom sorting function takes only two arguments, rowA and rowB. 
+
+```js
+const customColumnSort = (rowA, rowB) => {
+  if (rowA.columnName > rowB.columnName) {
+   return 1;
+  } else if (rowB.columnName > rowA.columnName) {
+   return -1;
+  }
+  return 0;
+};
+
+const columns = [
+  {
+    name: 'Quantity',
+    selector: 'quantity',
+    sortable: true,
+    sortFunction: customColumnSort
+  }
+];
+
+...
+<DataTable .... columns={columns} />
 ```
 
 ##  13. <a name='UILibraryIntegration'></a>UI Library Integration
