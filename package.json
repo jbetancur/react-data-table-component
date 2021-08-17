@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "7.0.0-rc4",
+  "version": "7.0.0-rc5",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -56,8 +56,8 @@
     "@types/react": "^17.0.18",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.12",
-    "@typescript-eslint/eslint-plugin": "^4.29.1",
-    "@typescript-eslint/parser": "^4.29.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "codecov": "^3.8.3",
