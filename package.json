@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "7.0.0-rc5",
+  "version": "7.0.0-rc6",
   "description": "A declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -93,7 +93,7 @@
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
-    "ts-jest": "^27.0.4",
+    "ts-jest": "^27.0.5",
     "typescript": "^4.3.5"
   },
   "dependencies": {

@@ -23,7 +23,7 @@ exports[`DataTable::Header header should not display with no title 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -221,7 +221,6 @@ exports[`DataTable::Header header should not display with no title 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -1162,7 +1161,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -1360,7 +1359,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -1562,7 +1560,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -1929,7 +1927,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
         </div>
         <div
           class="c9 rdt_TableBody"
-          offset="250px"
           role="rowgroup"
         >
           <div
@@ -2135,7 +2132,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -2337,7 +2334,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -2388,7 +2384,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -2590,7 +2586,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -2641,7 +2636,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -2843,7 +2838,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -2894,7 +2888,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -3096,7 +3090,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -3147,7 +3140,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -3406,7 +3399,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -3457,7 +3449,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -3659,7 +3651,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -3710,7 +3701,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -3912,7 +3903,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -3982,7 +3972,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -4184,7 +4174,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -4254,7 +4243,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -4456,7 +4445,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -4526,7 +4514,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -4728,7 +4716,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -4798,7 +4785,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -5000,7 +4987,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -5070,7 +5056,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -5272,7 +5258,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -5323,7 +5308,7 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -5521,7 +5506,6 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -5591,7 +5575,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -5790,7 +5774,6 @@ exports[`DataTable::column.style should render correctly when a style is set on 
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -5860,7 +5843,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -6062,7 +6045,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -6132,7 +6114,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -6336,7 +6318,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -6406,7 +6387,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -6610,7 +6591,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -6680,7 +6660,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -6884,7 +6864,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -6954,7 +6933,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -7158,7 +7137,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -7228,7 +7206,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -7426,7 +7404,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -7496,7 +7473,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -7694,7 +7671,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -7764,7 +7740,7 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -7962,7 +7938,6 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -8032,7 +8007,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -8234,7 +8209,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -8304,7 +8278,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -8505,7 +8479,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -8577,7 +8550,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -8775,7 +8748,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -8845,7 +8817,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -9052,7 +9024,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -9116,7 +9087,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -9308,7 +9279,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -9374,7 +9344,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -9573,7 +9543,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -9643,7 +9612,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -9903,7 +9872,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -9973,7 +9941,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -10171,7 +10139,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -10241,7 +10208,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -10439,7 +10406,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -10503,7 +10469,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -10701,7 +10667,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -10771,7 +10736,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -10969,7 +10934,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -11040,7 +11004,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -11238,7 +11202,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -11308,7 +11271,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -11506,7 +11469,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -11577,7 +11539,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -11775,7 +11737,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -11845,7 +11806,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -12043,7 +12004,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -12114,7 +12074,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -12312,7 +12272,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -12382,7 +12341,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -12582,7 +12541,6 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -12652,7 +12610,7 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -12854,7 +12812,6 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -12924,7 +12881,7 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -13127,7 +13084,6 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -13197,7 +13153,7 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -13400,7 +13356,6 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -13470,7 +13425,7 @@ exports[`DataTable::direction should render correctly when direction is rtl when
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -13756,7 +13711,6 @@ exports[`DataTable::direction should render correctly when direction is rtl when
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -13846,7 +13800,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -14140,7 +14094,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -14277,7 +14230,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -14571,7 +14524,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -14708,7 +14660,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -15021,7 +14973,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -15148,7 +15099,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -15346,7 +15297,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -15416,7 +15366,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -15701,7 +15651,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -15791,7 +15740,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -16081,7 +16030,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -16218,7 +16166,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -16501,7 +16449,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -16627,7 +16574,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -16917,7 +16864,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -17054,7 +17000,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -17252,7 +17198,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -17322,7 +17267,12 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .c4 {
@@ -17462,9 +17412,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-height: 100vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .c0 {
@@ -17472,8 +17419,10 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   width: 100%;
   border-radius: inherit;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   min-height: 0;
+  max-height: 100vh;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c1 {
@@ -17523,7 +17472,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -17593,7 +17541,12 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .c4 {
@@ -17733,18 +17686,17 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: auto;
+  min-height: 0;
   max-height: 100px;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-.c0 {
-  position: relative;
-  width: 100%;
-  border-radius: inherit;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-height: 0;
 }
 
 .c1 {
@@ -17794,553 +17746,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
-        role="rowgroup"
-      >
-        <div
-          class="c10 rdt_TableRow"
-          id="row-1"
-          role="row"
-        >
-          <div
-            class="c11 c6 c12 rdt_TableCell"
-            data-column-id="1"
-            data-tag="allowRowEvents"
-            id="cell-1-1"
-            role="gridcell"
-          >
-            <div
-              data-tag="allowRowEvents"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="c10 rdt_TableRow"
-          id="row-2"
-          role="row"
-        >
-          <div
-            class="c11 c6 c12 rdt_TableCell"
-            data-column-id="1"
-            data-tag="allowRowEvents"
-            id="cell-1-2"
-            role="gridcell"
-          >
-            <div
-              data-tag="allowRowEvents"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`DataTable::fixedHeader should render correctly when fixedHeader with an offset 1`] = `
-.c2 {
-  position: relative;
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  width: 100%;
-  background-color: #FFFFFF;
-  min-height: 56px;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-  border-bottom-style: solid;
-}
-
-.c5 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: 16px;
-  padding-right: 16px;
-  word-break: break-word;
-}
-
-.c6 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-}
-
-.c12 {
-  font-weight: 400;
-}
-
-.c12 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c10:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
-.c7 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  overflow: hidden;
-}
-
-.c8 {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-height: calc(100vh - 250px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.c0 {
-  position: relative;
-  width: 100%;
-  border-radius: inherit;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-height: 0;
-  padding-bottom: 250px;
-  margin-bottom: -250px;
-}
-
-.c1 {
-  position: relative;
-  width: 100%;
-  display: table;
-}
-
-<div
-  class="c0"
->
-  <div
-    class="c1"
-  >
-    <div
-      class="c2 rdt_Table"
-      role="table"
-    >
-      <div
-        class="c3 rdt_TableHead"
-        role="rowgroup"
-      >
-        <div
-          class="c4 rdt_TableHeadRow"
-          role="row"
-        >
-          <div
-            class="c5 c6 rdt_TableCol"
-            data-column-id="1"
-          >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
-              <div
-                class="c8"
-                data-column-id="1"
-              >
-                Test
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="c9 rdt_TableBody"
-        offset="250px"
-        role="rowgroup"
-      >
-        <div
-          class="c10 rdt_TableRow"
-          id="row-1"
-          role="row"
-        >
-          <div
-            class="c11 c6 c12 rdt_TableCell"
-            data-column-id="1"
-            data-tag="allowRowEvents"
-            id="cell-1-1"
-            role="gridcell"
-          >
-            <div
-              data-tag="allowRowEvents"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="c10 rdt_TableRow"
-          id="row-2"
-          role="row"
-        >
-          <div
-            class="c11 c6 c12 rdt_TableCell"
-            data-column-id="1"
-            data-tag="allowRowEvents"
-            id="cell-1-2"
-            role="gridcell"
-          >
-            <div
-              data-tag="allowRowEvents"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`DataTable::fixedHeader should render correctly when fixedHeader with an offset with a value 1`] = `
-.c2 {
-  position: relative;
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  width: 100%;
-  background-color: #FFFFFF;
-  min-height: 56px;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-  border-bottom-style: solid;
-}
-
-.c5 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: 16px;
-  padding-right: 16px;
-  word-break: break-word;
-}
-
-.c6 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-}
-
-.c12 {
-  font-weight: 400;
-}
-
-.c12 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c10:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
-.c7 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  overflow: hidden;
-}
-
-.c8 {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-height: calc(100vh - 250px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.c0 {
-  position: relative;
-  width: 100%;
-  border-radius: inherit;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-height: 0;
-  padding-bottom: 250px;
-  margin-bottom: -250px;
-}
-
-.c1 {
-  position: relative;
-  width: 100%;
-  display: table;
-}
-
-<div
-  class="c0"
->
-  <div
-    class="c1"
-  >
-    <div
-      class="c2 rdt_Table"
-      role="table"
-    >
-      <div
-        class="c3 rdt_TableHead"
-        role="rowgroup"
-      >
-        <div
-          class="c4 rdt_TableHeadRow"
-          role="row"
-        >
-          <div
-            class="c5 c6 rdt_TableCol"
-            data-column-id="1"
-          >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
-              <div
-                class="c8"
-                data-column-id="1"
-              >
-                Test
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -18410,7 +17815,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -18621,7 +18026,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -18691,7 +18095,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -18893,7 +18297,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -19420,7 +18823,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -19611,7 +19014,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -19803,7 +19206,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -19972,276 +19375,6 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
 </div>
 `;
 
-exports[`DataTable::responsive should not apply overFlowY without an overflowYOffset or not responsive 1`] = `
-.c2 {
-  position: relative;
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: left;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  width: 100%;
-  background-color: #FFFFFF;
-  min-height: 56px;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-  border-bottom-style: solid;
-}
-
-.c5 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.87);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.c11 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  line-height: normal;
-  padding-left: 16px;
-  padding-right: 16px;
-  word-break: break-word;
-}
-
-.c6 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-flex-basis: 0;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  min-width: 100px;
-}
-
-.c12 {
-  font-weight: 400;
-}
-
-.c12 div:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  color: rgba(0,0,0,0.87);
-  background-color: #FFFFFF;
-  min-height: 48px;
-}
-
-.c10:not(:last-of-type) {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
-.c7 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  line-height: 1;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  overflow: hidden;
-}
-
-.c8 {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0 {
-  position: relative;
-  width: 100%;
-  border-radius: inherit;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-height: 0;
-  padding-bottom: 250px;
-  margin-bottom: -250px;
-}
-
-.c1 {
-  position: relative;
-  width: 100%;
-  display: table;
-}
-
-<div
-  class="c0"
->
-  <div
-    class="c1"
-  >
-    <div
-      class="c2 rdt_Table"
-      role="table"
-    >
-      <div
-        class="c3 rdt_TableHead"
-        role="rowgroup"
-      >
-        <div
-          class="c4 rdt_TableHeadRow"
-          role="row"
-        >
-          <div
-            class="c5 c6 rdt_TableCol"
-            data-column-id="1"
-          >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
-              <div
-                class="c8"
-                data-column-id="1"
-              >
-                Test
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="c9 rdt_TableBody"
-        offset="250px"
-        role="rowgroup"
-      >
-        <div
-          class="c10 rdt_TableRow"
-          id="row-1"
-          role="row"
-        >
-          <div
-            class="c11 c6 c12 rdt_TableCell"
-            data-column-id="1"
-            data-tag="allowRowEvents"
-            id="cell-1-1"
-            role="gridcell"
-          >
-            <div
-              data-tag="allowRowEvents"
-            >
-              Apple
-            </div>
-          </div>
-        </div>
-        <div
-          class="c10 rdt_TableRow"
-          id="row-2"
-          role="row"
-        >
-          <div
-            class="c11 c6 c12 rdt_TableCell"
-            data-column-id="1"
-            data-tag="allowRowEvents"
-            id="cell-1-2"
-            role="gridcell"
-          >
-            <div
-              data-tag="allowRowEvents"
-            >
-              Zuchinni
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`DataTable::responsive should render correctly responsive by default 1`] = `
 .c2 {
   position: relative;
@@ -20265,7 +19398,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -20463,7 +19596,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -20533,7 +19665,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -20728,7 +19860,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -20798,7 +19929,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -21038,7 +20169,6 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -21128,7 +20258,7 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -21368,7 +20498,6 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -21458,7 +20587,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -21743,7 +20872,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -21833,7 +20961,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -22150,7 +21278,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -22240,7 +21367,7 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -22495,7 +21622,6 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -22565,7 +21691,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -22820,7 +21946,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -22890,7 +22015,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -23148,7 +22273,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -23218,7 +22342,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -23416,7 +22540,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -23486,7 +22609,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -23741,7 +22864,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -23811,7 +22933,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -24066,7 +23188,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -24136,7 +23257,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -24385,7 +23506,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -24455,7 +23575,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -24708,7 +23828,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -24778,7 +23897,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -25042,7 +24161,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -25112,7 +24230,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -25372,7 +24490,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -25442,7 +24559,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -25705,7 +24822,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -25775,7 +24891,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -26033,7 +25149,6 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
       </div>
       <div
         class="c10 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -26103,7 +25218,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -26329,7 +25444,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -26574,7 +25688,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -26772,7 +25886,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -26923,7 +26036,6 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
     >
       <div
         class="c3 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -27070,7 +26182,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -27366,7 +26478,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
       </div>
       <div
         class="c11 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -27506,7 +26617,7 @@ exports[`should render correctly when disabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -27705,7 +26816,6 @@ exports[`should render correctly when disabled 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -27775,7 +26885,7 @@ exports[`should render the correctly when using selector function 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -27973,7 +27083,6 @@ exports[`should render the correctly when using selector function 1`] = `
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div
@@ -28024,7 +27133,7 @@ exports[`should render the correctly when using selector function and a format f
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  width: 100%;
 }
 
 .c4 {
@@ -28222,7 +27331,6 @@ exports[`should render the correctly when using selector function and a format f
       </div>
       <div
         class="c9 rdt_TableBody"
-        offset="250px"
         role="rowgroup"
       >
         <div

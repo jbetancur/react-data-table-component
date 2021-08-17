@@ -8,28 +8,27 @@ import styled, { css } from 'styled-components';
 
 const ResponsiveWrapper = styled.div<{
 	responsive: boolean;
-	overflowYOffset: string;
-	overflowY: boolean;
+	fixedHeader?: boolean;
+	fixedHeaderScrollHeight?: string;
 }>`
 	position: relative;
 	width: 100%;
 	border-radius: inherit;
-	${({ responsive }) =>
+	${({ responsive, fixedHeader }) =>
 		responsive &&
 		css`
 			overflow-x: auto;
 
-			// prevents vertical scrolling in firefox
-			overflow-y: hidden;
+			// hidden prevents vertical scrolling in firefox when fixedHeader is disabled
+			overflow-y: ${fixedHeader ? 'auto' : 'hidden'};
 			min-height: 0;
 		`};
-	${({ overflowY, overflowYOffset, responsive }) =>
-		overflowY &&
-		responsive &&
-		overflowYOffset &&
+
+	${({ fixedHeader = false, fixedHeaderScrollHeight = '100vh' }) =>
+		fixedHeader &&
 		css`
-			padding-bottom: ${overflowYOffset};
-			margin-bottom: -${overflowYOffset};
+			max-height: ${fixedHeaderScrollHeight};
+			-webkit-overflow-scrolling: touch;
 		`};
 `;
 

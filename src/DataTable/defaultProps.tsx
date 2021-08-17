@@ -60,8 +60,6 @@ export const defaultProps = {
 	defaultSortFieldId: null,
 	defaultSortAsc: true,
 	responsive: true,
-	overflowY: false,
-	overflowYOffset: '250px',
 	noDataComponent: <div style={{ padding: '24px' }}>There are no records to display</div>,
 	disabled: false,
 	noTableHead: false,
