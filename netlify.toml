@@ -1,6 +1,6 @@
 [build]
-  publish = "build-storybook"
-  command = "yarn lint && yarn test && yarn build && yarn build-storybook"
+  publish = "yarn build-storybook"
+  command = "yarn lint && yarn test && yarn build"
 [build.environment]
   NODE_VERSION = "14"
   YARN_VERSION = "1.22.10"
