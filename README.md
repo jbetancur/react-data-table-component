@@ -736,7 +736,7 @@ const customSort = (rows, selector, direction) => {
 <DataTable .... sortFunction={customSort} />
 ```
 
-For individual columns the custom sorting function takes only two arguments, rowA and rowB. 
+For individual columns the custom sorting function takes only two arguments, rowA and rowB.
 
 ```js
 const customColumnSort = (rowA, rowB) => {

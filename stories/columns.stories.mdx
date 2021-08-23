@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="API/Columns" id="api-columns" />
+
+# Columns
+
+| Property | Type   | Required | Example                                                                                                       |
+|----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
+| name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
+| selector | (row, index) => {} | no      | A `selector` is required anytime you want to display data but can be omitted if your column does not require showing data (e.g. an actions column) |
+| sortable | bool   | no       | if the column is sortable. <br /><br />**Note:** `selector` is required for the column to sort                                                            |
+| sortFunction | function | no | by default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](#CustomSortFunction)   |
+| format   | (row, index) => {}   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value.                                        |
+| cell     | (row, index, column, id) => {}   | no       | for ultimate control use `cell` to render your own custom component!<br />e.g `row => <h2>{row.title}</h2>`. <br /> <br />if you are using properties such as: `onRowClicked`, `onRowDoubleClicked`, `expandOnRowClicked` or `expandOnRowDoubleClicked` then those click events will be ignored when clicking on your custom cell. To allow `RowClicked` events you can add `data-tag="allowRowEvents"` to your custom cell component elements. If your custom cell component is more complex and has nested elements you want to add `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the click event to. <br />e.g `row => <h2 data-tag="allowRowEvents">{row.title}</h2>` <br /><br />**Note:** that using `cell` **negates  `format`**. |
+| grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
+| width    | string | no       | give the column a fixed width                                                                                 |
+| minWidth | string | no       | give the column a minWidth                                                                                    |
+| maxWidth | string | no       | give the column a maxWidth                                                                                    |
+| right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
+| center   | bool   | no       | center aligns the content in the cell                                                                         |
+| compact  | bool   | no       | sets cell padding to 0                                                                                        |
+| ignoreRowClick    | bool    | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
+| button   | bool   | no       | this is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
+| wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
+| allowOverflow     | bool     | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
+| hide     | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
+| omit     | bool   | no       | omits the column from the table. useful if you need to hide access to data. |
+| style    | object | no       | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
+| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#-conditional-row-styling) to conditionally apply css styles to a cell |
+| id       | string or number | no       | in most cases you should not need to set a column `id` as RDT will auto generate one for each column. However, when developing an SSR app you may encounder an `id did not match` warning. In this case, you can explicitly set the `id` to fix the warning |
+| reorder       | boolean | no       | allows a column to be dragged and reordered |
+
+##  Built-in Breakpoints
+
+When the breakpoint is reached the column will be hidden. These are the built-in media breakpoint presets when hiding columns:
+
+| Value   | Breakpoint  | Description               |
+| ------- | ----------- | ------------------------- |
+| sm      | 599px       | small (phones)            |
+| md      | 959px       | medium(landscape tablets) |
+| lg      | 1280px      | large(laptops/desktops)   |
+
+# Columns Example
+
+```js
+const columns = [
+	{
+		name: 'Title',
+		selector: row => row.title,
+	},
+	{
+		name: 'Year',
+		selector: row => row.year,
+	},
+];
+```
+
+# Column ID's
+
+Internally, `columns` require an `id` property. Particularly, if you use the `defaultSortFieldId` property and you want to defined a pre sorted columns by `id`. If you omit `id` from a column object RDT will auto genereate id's starting at 1, 2, 3 and so on... It is however recommended that you use your own `id`, which can be wither a `string` or a `number`.
+
+```js
+const columns = [
+	{
+    id: 'title',
+		name: 'Title',
+		selector: row => row.title,
+	},
+	{
+    id: 'year',
+		name: 'Year',
+		selector: row => row.year,
+	},
+];
+```

@@ -62,7 +62,7 @@ const sortableCSS = css<ColumnSortableProps>`
 const ColumnSortable = styled.div<ColumnSortableProps>`
 	align-items: center;
 	height: 100%;
-	line-height: 1;
+	line-height: 1.5;
 	outline: none;
 	user-select: none;
 	display: inline-flex;
