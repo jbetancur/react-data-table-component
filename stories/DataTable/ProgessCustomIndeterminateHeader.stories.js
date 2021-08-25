@@ -50,6 +50,7 @@ const ProgressStory = ({ progressPending, persistTableHead }) => {
 			progressPending={progressPending}
 			progressComponent={<LinearIndeterminate />}
 			persistTableHead={persistTableHead}
+			pagination
 		/>
 	);
 };

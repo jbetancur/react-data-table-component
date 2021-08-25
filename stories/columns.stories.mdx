@@ -2,33 +2,34 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="API/Columns" id="api-columns" />
 
-# Columns
+# Column Definitions API
 
-| Property | Type   | Required | Example                                                                                                       |
-|----------|--------|----------|---------------------------------------------------------------------------------------------------------------|
-| name     | string, component or number | no       | the display name of our Column e.g. 'Name'                                                                    |
-| selector | (row, index) => {} | no      | A `selector` is required anytime you want to display data but can be omitted if your column does not require showing data (e.g. an actions column) |
-| sortable | bool   | no       | if the column is sortable. <br /><br />**Note:** `selector` is required for the column to sort                                                            |
-| sortFunction | function | no | by default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](#CustomSortFunction)   |
-| format   | (row, index) => {}   | no       | apply formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value.                                        |
-| cell     | (row, index, column, id) => {}   | no       | for ultimate control use `cell` to render your own custom component!<br />e.g `row => <h2>{row.title}</h2>`. <br /> <br />if you are using properties such as: `onRowClicked`, `onRowDoubleClicked`, `expandOnRowClicked` or `expandOnRowDoubleClicked` then those click events will be ignored when clicking on your custom cell. To allow `RowClicked` events you can add `data-tag="allowRowEvents"` to your custom cell component elements. If your custom cell component is more complex and has nested elements you want to add `data-tag="allowRowEvents"` to the innermost element or on the elements you want to propagate the click event to. <br />e.g `row => <h2 data-tag="allowRowEvents">{row.title}</h2>` <br /><br />**Note:** that using `cell` **negates  `format`**. |
-| grow     | number | no       | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
-| width    | string | no       | give the column a fixed width                                                                                 |
-| minWidth | string | no       | give the column a minWidth                                                                                    |
-| maxWidth | string | no       | give the column a maxWidth                                                                                    |
-| right    | bool   | no       | right aligns the content in the cell. useful for numbers                                                      |
-| center   | bool   | no       | center aligns the content in the cell                                                                         |
-| compact  | bool   | no       | sets cell padding to 0                                                                                        |
-| ignoreRowClick    | bool    | no | prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
-| button   | bool   | no       | this is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
-| wrap     | bool   | no       | whether the cell content should be allowed to wrap.                                                            |
-| allowOverflow     | bool     | no       | allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
-| hide     | integer or string preset (`sm`, `md`, `lg`) | no | specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large) |
-| omit     | bool   | no       | omits the column from the table. useful if you need to hide access to data. |
-| style    | object | no       | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
-| conditionalCellStyles    | array   | no     | allows an array of [conditional style objects](#-conditional-row-styling) to conditionally apply css styles to a cell |
-| id       | string or number | no       | in most cases you should not need to set a column `id` as RDT will auto generate one for each column. However, when developing an SSR app you may encounder an `id did not match` warning. In this case, you can explicitly set the `id` to fix the warning |
-| reorder       | boolean | no       | allows a column to be dragged and reordered |
+| Property							| Type   | Required | Example                                                                                                       |
+|-----------------------|--------|----------|---------------------------------------------------------------------------------------------------------------|
+| id										| string or number | no | RDT will auto generate an id for each column as: 1,2,3..., but you can provide your own id's if you wish as long as each column id is unique. When developing an SSR app you may encounder an `id did not match` warning. In this case, you must explicitly set the `id` to fix the warning |
+| name									| string, component or number | no | The display name of our Column e.g. 'Name' |
+| selector							| `(row, index) => {}` | no | A `selector` is required anytime you want to display data but can be omitted if your column does not require showing data (e.g. an actions column) |
+| format								| `(row, index) => {}` | no | Applies formatting to the selector e.g. `row => moment(row.timestamp).format('lll')` without changing the actual selector value |
+| sortable							| boolean | no | If the column is sortable.<br /><br />**Note:** `selector` is required for the column to sort                                                            |
+| cell									| `(row, index, column, id) => {}` | no | `cell` lets you replace a table cell with your own custom component.<br /><br />If you are using properties such as: `onRowClicked`, `onRowDoubleClicked`, `expandOnRowClicked` or `expandOnRowDoubleClicked` then click events will be ignored when clicking on your custom cell.<br /><br />To allow `RowClicked` events you can add `data-tag="allowRowEvents"` to your custom cell component elements. <br />If your custom cell component is more complex and has nested elements you want to add `data-tag="allowRowEvents"` to the innermost element or on every element you want to propagate the click event to.<br /><br /> **Note:** that using `cell` negates `format` |
+| grow									| number | no | [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) of the column. This is useful if you want a column to take up more width than its relatives (without having to set widths explicitly).  this will be affected by other columns where you have explicitly set widths |
+| width									| string | no | Give the column a fixed width |
+| minWidth							| string | no | Give the column a minWidth |
+| maxWidth							| string | no | Give the column a maxWidth |
+| right									| boolean | no | Right aligns the content in the cell. useful for numbers |
+| center								| boolean | no | Center aligns the content in the cell |
+| compact								| boolean | no | Sets cell padding to 0 |
+| ignoreRowClick				| boolean | no | Prevents the `onRowClicked` and `onRowDoubleClicked` event from being passed on the specific TableCell column. This is **really** useful for a menu or button where you do not want the `onRowClicked` triggered, such as when using `onRowClicked` for navigation or routing |
+| button								| boolean | no | This is like `ignoreRowClick` except it will apply additional styling for button placement. you do not need to set `ignoreRowClick` when using `button` |
+| wrap									| boolean | no | Whether the cell content should be allowed to wrap.<br /><br />**Note:** `cell` negates `wrap` |
+| allowOverflow					| boolean | no | Allows content in the cell to overflow. useful for menus/layovers that do not rely on "smart" positioning |
+| hide									| integer or `sm`, `md`, `lg` | no | Specify a screen size (breakpoint) as an integer (in pixels) that hides the column when resizing the browser window. You can also use the preset values of: `sm` (small), `md`(medium), and `lg`(large). The default breakpoints are defined [here](#built-in-breakpoints) |
+| omit									| boolean | no | omits the column from the table. useful if you need to hide access to data. |
+| reorder								| boolean | no | Allows a column to be dragged and reordered |
+| sortFunction					| `(a, b) => {}` | no | By default RDT uses lodash `lodash.orderBy`, however, you can override the default behavior by passing in a custom sort function. [defining a custom sort function](/docs/api-custom-sorting--page#custom-sorting---sortfunction) |
+| style									| object | no | allows you to customize the css of the cell using css-in-js [style objects](https://www.styled-components.com/docs/advanced#style-objects) |
+| conditionalCellStyles	| array | no | Allows an array of [conditional style objects](/docs/api-custom-conditional-formatting--page#conditional-style-object) to conditionally apply css styles to a cell |
+
 
 ##  Built-in Breakpoints
 

@@ -96,6 +96,7 @@ export const Rows = () => (
 		columns={columns}
 		data={tableDataItems}
 		conditionalRowStyles={conditionalRowStyles}
+		pagination
 	/>
 );
 

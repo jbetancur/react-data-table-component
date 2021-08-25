@@ -21,7 +21,7 @@ const columns = [
 	},
 ];
 
-export const Omit = () => <DataTable title="Movie List" columns={columns} data={data} />;
+export const Omit = () => <DataTable title="Movie List" columns={columns} data={data} pagination />;
 
 export default {
 	title: 'Columns/Omit',

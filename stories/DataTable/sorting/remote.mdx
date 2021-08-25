@@ -1,0 +1,32 @@
+import { Story, Preview } from '@storybook/addon-docs';
+
+# Remote Sorting
+
+Remote/Server-side sorting via `sortServer` disables the internal sorting. It will be up to you to implement your own sort logic. A common use case is if you want to use remote sorting via an external API.
+
+If you just want to replace the internal sort logic you should use [sortFunction](/docs/sorting-custom-sort--custom-sort).
+
+```js
+function MyComponent() {
+	const [items, setData] = useState(data);
+
+	const handleSort = (column, sortDirection) => {
+    /// reach out to some API and get new data
+    // e.g. https://api.github.com/search/repositories?q=blog&sort=created&order=${sortDirection}
+	  setData(remoteData);
+	};
+
+	return (
+		<DataTable
+			columns={columns}
+			data={items}
+			onSort={handleSort}
+			sortServer
+		/>
+	);
+}
+```
+
+<Preview>
+  <Story id="sorting-remote-sort--remote-sort" />
+</Preview>

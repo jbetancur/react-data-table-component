@@ -86,8 +86,8 @@ class ClassicComponentStory extends PureComponent {
 				title="Desserts"
 				data={tableDataItems}
 				columns={columns(this.handleButtonClick)}
-				onSelectedRowsChange={this.handleChange}
 				selectableRows
+				onSelectedRowsChange={this.handleChange}
 			/>
 		);
 	}
