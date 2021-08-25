@@ -202,3 +202,7 @@ export function findColumnIndexById<T>(columns: TableColumn<T>[], id: string | u
 export function equalizeId(a: string | number | undefined, b: string | number | undefined): boolean {
 	return a == b;
 }
+
+export function cleanColumnsArray<T>(arr: TableColumn<T>[]): TableColumn<T>[] {
+	return arr.filter(item => item);
+}

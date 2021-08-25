@@ -18,10 +18,10 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage } from './util';
+import { getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage, cleanColumnsArray } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState } from './types';
+import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState, TableColumn } from './types';
 import useColumns from '../hooks/useColumns';
 
 function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
@@ -347,7 +347,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											/>
 										))}
 									{expandableRows && !expandableRowsHideExpander && <TableColExpander />}
-									{tableColumns.map(column => (
+									{cleanColumnsArray(tableColumns).map(column => (
 										<TableCol
 											key={column.id}
 											column={column}
