@@ -1,6 +1,7 @@
 import React from 'react';
-import DataTable from '../../src/index';
-import data from '../constants/sampleDesserts';
+import doc from './preSelected.mdx';
+import DataTable from '../../../src/index';
+import data from '../../constants/sampleDesserts';
 
 const columns = [
 	{
@@ -31,39 +32,27 @@ const columns = [
 		sortable: true,
 		right: true,
 	},
-	{
-		name: 'Protein (g)',
-		selector: row => row.protien,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Sodium (mg)',
-		selector: row => row.sodium,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Calcium (%)',
-		selector: row => row.calcium,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Iron (%)',
-		selector: row => row.iron,
-		sortable: true,
-		right: true,
-	},
 ];
 
 const rowSelectCritera = row => row.fat > 6;
 
 export const PreSelected = () => (
-	<DataTable title="Desserts" columns={columns} data={data} selectableRows selectableRowSelected={rowSelectCritera} />
+	<DataTable
+		title="Desserts"
+		columns={columns}
+		data={data}
+		selectableRows
+		selectableRowSelected={rowSelectCritera}
+		pagination
+	/>
 );
 
 export default {
 	title: 'Selectable/Pre Selected',
 	component: PreSelected,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };

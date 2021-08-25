@@ -68,7 +68,9 @@ const columns = [
 	},
 ];
 
-export const CustomCells = () => <DataTable title="Movie List - Custom Cells" columns={columns} data={data} />;
+export const CustomCells = () => (
+	<DataTable title="Movie List - Custom Cells" columns={columns} data={data} pagination />
+);
 
 export default {
 	title: 'Columns/Cells/Custom Cells',

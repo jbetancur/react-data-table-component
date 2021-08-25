@@ -1,13 +1,14 @@
 import React from 'react';
-import data from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import doc from './sortFunction.mdx';
+import data from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const customSort = (rows, selector, direction) => {
 	return rows.sort((a, b) => {
 		// use the selector to resolve your field names by passing the sort comparitors
 		const aField = selector(a).toLowerCase();
 		const bField = selector(b).toLowerCase();
-
+		console.log(aField);
 		let comparison = 0;
 
 		if (aField > bField) {
@@ -39,13 +40,15 @@ const columns = [
 ];
 
 export const CustomSort = () => {
-	// eslint-disable-next-line no-console
-	const handleSort = (column, sortDirection) => console.log(column.selector, sortDirection);
-
-	return <DataTable title="Movie List" columns={columns} data={data} onSort={handleSort} sortFunction={customSort} />;
+	return <DataTable title="Movie List" columns={columns} data={data} sortFunction={customSort} pagination />;
 };
 
 export default {
 	title: 'Sorting/Custom Sort',
 	component: CustomSort,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };

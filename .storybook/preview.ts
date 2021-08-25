@@ -2,10 +2,11 @@ import "./base.css";
 
 export const parameters = {
   // controls: { expanded: true },
+  viewMode: 'docs',
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ['Getting Started', ['Introduction', 'Installation', 'Basic Examples'], 'API', ['Columns', 'Properties'], '*', 'Performance', ['Optimization', '*'], 'Contributing'],
+      order: ['Getting Started', ['Introduction', 'Installation', 'Basic Examples'], 'API', ['Columns', 'Properties'], 'Columns', 'Sorting', 'Selectable', 'Expandable', 'Pagination', 'Headers', 'Loading', '*', 'Performance', ['Optimization', '*'], 'Contributing'],
     },
   },
   a11y: {

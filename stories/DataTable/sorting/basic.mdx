@@ -1,0 +1,29 @@
+import { Story, Preview } from '@storybook/addon-docs';
+
+# Sorting
+
+Enabling Sorting in React Data Table is easy. Simply add the `sortable` prop to any column definition you want to be sortable. Also make sure a `selector` has been defined.
+
+```js
+const columns = [
+	{
+		name: 'Title',
+		selector: row => row.title,
+		sortable: true,
+	},
+	{
+		name: 'Director',
+		selector: row => row.director,
+		sortable: true,
+	},
+	{
+		name: 'Year',
+		selector: row => row.year,
+		sortable: true,
+	},
+];
+```
+
+<Preview>
+  <Story id="sorting-basic--basic" />
+</Preview>

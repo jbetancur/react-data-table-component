@@ -31,7 +31,7 @@ export const Basic = () => {
 		return () => clearTimeout(timeout);
 	}, []);
 
-	return <DataTable title="Movie List" columns={columns} data={rows} progressPending={pending} />;
+	return <DataTable title="Movie List" columns={columns} data={rows} progressPending={pending} pagination />;
 };
 
 export default {

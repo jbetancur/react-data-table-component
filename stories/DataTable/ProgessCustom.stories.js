@@ -71,6 +71,7 @@ export const Custom = () => {
 			data={rows}
 			progressPending={pending}
 			progressComponent={<CustomLoader />}
+			pagination
 		/>
 	);
 };

@@ -90,8 +90,8 @@ export const HookComponent = () => {
 			title="Desserts"
 			data={tableDataItems}
 			columns={columns}
-			onSelectedRowsChange={handleChange}
 			selectableRows
+			onSelectedRowsChange={handleChange}
 		/>
 	);
 };

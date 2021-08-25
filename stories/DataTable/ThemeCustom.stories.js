@@ -47,7 +47,7 @@ const columns = [
 ];
 
 export const Custom = () => (
-	<DataTable title="Solarized Movie List" columns={columns} data={data} pagination theme="solarized" selectableRows />
+	<DataTable title="Solarized Movie List" columns={columns} data={data} theme="solarized" selectableRows pagination />
 );
 
 export default {

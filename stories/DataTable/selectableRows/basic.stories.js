@@ -1,6 +1,7 @@
 import React from 'react';
-import data from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import doc from './basic.mdx';
+import data from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const columns = [
 	{
@@ -14,12 +15,6 @@ const columns = [
 		sortable: true,
 	},
 	{
-		name: 'Genres',
-		selector: row => row.genres,
-		// eslint-disable-next-line react/no-array-index-key
-		cell: row => row.genres.map((genre, i) => <div key={i}>{genre}</div>),
-	},
-	{
 		name: 'Year',
 		selector: row => row.year,
 		sortable: true,
@@ -31,4 +26,9 @@ export const Basic = () => <DataTable title="Movie List" columns={columns} data=
 export default {
 	title: 'Selectable/Basic',
 	component: Basic,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };

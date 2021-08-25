@@ -31,7 +31,7 @@ export const OmitDynamically = () => {
 	return (
 		<>
 			<Button onClick={() => setHideDirector(!hideDirector)}>Hide Directory Column</Button>
-			<DataTable title="Movie List" columns={columns} data={data} />
+			<DataTable title="Movie List" columns={columns} data={data} pagination />
 		</>
 	);
 };

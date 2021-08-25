@@ -1,6 +1,7 @@
 import React from 'react';
-import DataTable from '../../src/index';
-import data from '../constants/sampleDesserts';
+import doc from './preDisabled.mdx';
+import DataTable from '../../../src/index';
+import data from '../../constants/sampleDesserts';
 
 const columns = [
 	{
@@ -12,6 +13,12 @@ const columns = [
 		name: 'Type',
 		selector: row => row.type,
 		sortable: true,
+	},
+	{
+		name: 'Out of Stock',
+		selector: row => row.isOutOfStock,
+		sortable: true,
+		cell: row => <div>{row.isOutOfStock ? 'Yes' : 'No'}</div>,
 	},
 	{
 		name: 'Calories (g)',
@@ -29,37 +36,6 @@ const columns = [
 		name: 'Carbs (g)',
 		selector: row => row.carbs,
 		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Protein (g)',
-		selector: row => row.protien,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Sodium (mg)',
-		selector: row => row.sodium,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Calcium (%)',
-		selector: row => row.calcium,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Iron (%)',
-		selector: row => row.iron,
-		sortable: true,
-		right: true,
-	},
-	{
-		name: 'Out of Stock',
-		selector: row => row.isOutOfStock,
-		sortable: true,
-		cell: row => <div>{row.isOutOfStock ? 'Yes' : 'No'}</div>,
 	},
 ];
 
@@ -77,10 +53,16 @@ export const PreDisabled = () => (
 		data={customData}
 		selectableRows
 		selectableRowDisabled={rowDisabledCriteria}
+		pagination
 	/>
 );
 
 export default {
 	title: 'Selectable/Pre Disabled',
 	component: PreDisabled,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };
