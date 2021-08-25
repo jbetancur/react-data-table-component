@@ -21,7 +21,7 @@ import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage, cleanColumnsArray } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState, TableColumn } from './types';
+import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState } from './types';
 import useColumns from '../hooks/useColumns';
 
 function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
