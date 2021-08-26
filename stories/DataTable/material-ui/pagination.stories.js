@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import doc from './pagination.mdx';
 import TablePagination from '@material-ui/core/TablePagination';
-
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { getNumberOfPages } from '../../src/DataTable/util';
-import DataTable from '../../src/index';
-import data from '../constants/sampleMovieData';
+import { getNumberOfPages } from '../../../src/DataTable/util';
+import DataTable from '../../../src/index';
+import data from '../../constants/sampleMovieData';
 
 const columns = [
 	{
@@ -75,13 +73,6 @@ function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
 	);
 }
 
-TablePaginationActions.propTypes = {
-	count: PropTypes.number.isRequired,
-	onChangePage: PropTypes.func.isRequired,
-	page: PropTypes.number.isRequired,
-	rowsPerPage: PropTypes.number.isRequired,
-};
-
 const CustomMaterialPagination = ({ rowsPerPage, rowCount, onChangePage, onChangeRowsPerPage, currentPage }) => (
 	<TablePagination
 		component="nav"
@@ -94,25 +85,24 @@ const CustomMaterialPagination = ({ rowsPerPage, rowCount, onChangePage, onChang
 	/>
 );
 
-CustomMaterialPagination.propTypes = {
-	rowsPerPage: PropTypes.number.isRequired, // calculated rows per page state from DataTable
-	rowCount: PropTypes.number.isRequired, // calculated row count from DataTable
-	onChangePage: PropTypes.func.isRequired, // you want to "callback" the updated page number to DataTable so it can update its state
-	onChangeRowsPerPage: PropTypes.func.isRequired, // you want to "callback" the updated rows per (newRowsPerPage, currentPage) to DataTable so it can update its state
-	currentPage: PropTypes.number.isRequired, // the current page state from DataTable
-};
-
-export const Pagination = () => (
-	<DataTable
-		title="Movie List"
-		columns={columns}
-		data={data}
-		pagination
-		paginationComponent={CustomMaterialPagination}
-	/>
-);
+export function Pagination() {
+	return (
+		<DataTable
+			title="Movie List"
+			columns={columns}
+			data={data}
+			pagination
+			paginationComponent={CustomMaterialPagination}
+		/>
+	);
+}
 
 export default {
 	title: 'UI Library/Material UI/Pagination',
 	component: Pagination,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };

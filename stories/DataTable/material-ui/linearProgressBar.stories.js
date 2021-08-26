@@ -1,8 +1,9 @@
 import React from 'react';
+import doc from './linearProgressBar.mdx';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import data from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import data from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -67,4 +68,9 @@ Progress.args = {
 export default {
 	title: 'UI Library/Material UI/Progress',
 	component: Progress,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };

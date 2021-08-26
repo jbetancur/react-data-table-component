@@ -1,14 +1,14 @@
 import React from 'react';
+import doc from './table.mdx';
 import differenceBy from 'lodash/differenceBy';
 import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Checkbox from '@material-ui/core/Checkbox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import Delete from '@material-ui/icons/Delete';
 import Add from '@material-ui/icons/Add';
-import tableDataItems from '../constants/sampleDesserts';
-import DataTable from '../../src/index';
+import tableDataItems from '../../constants/sampleDesserts';
+import DataTable from '../../../src/index';
 
 const sortIcon = <ArrowDownward />;
 const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
@@ -86,14 +86,6 @@ const columns = [
 		right: true,
 		reorder: true,
 	},
-	{
-		cell: () => (
-			<Button variant="contained" color="primary">
-				Action
-			</Button>
-		),
-		button: true,
-	},
 ];
 
 function MaterialStory({ selectableRows, expandableRows }) {
@@ -155,4 +147,9 @@ Table.args = {
 export default {
 	title: 'UI Library/Material UI/Table',
 	component: Table,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };
