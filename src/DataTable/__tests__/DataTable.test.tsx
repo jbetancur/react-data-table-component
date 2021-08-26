@@ -1940,7 +1940,7 @@ describe('DataTable::subHeader', () => {
 				columns={mock.columns}
 				subHeader
 				subHeaderComponent={<div />}
-				subHeaderAlign={Alignment.Left}
+				subHeaderAlign={Alignment.LEFT}
 			/>,
 		);
 
@@ -1955,7 +1955,7 @@ describe('DataTable::subHeader', () => {
 				columns={mock.columns}
 				subHeader
 				subHeaderComponent={<div />}
-				subHeaderAlign={Alignment.Center}
+				subHeaderAlign={Alignment.CENTER}
 			/>,
 		);
 
@@ -1970,7 +1970,7 @@ describe('DataTable::subHeader', () => {
 				columns={mock.columns}
 				subHeader
 				subHeaderComponent={<div />}
-				subHeaderAlign={Alignment.Right}
+				subHeaderAlign={Alignment.RIGHT}
 			/>,
 		);
 

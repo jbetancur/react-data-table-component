@@ -7,9 +7,9 @@ export enum Direction {
 }
 
 export enum Alignment {
-	Left = 'left',
-	Right = 'right',
-	Center = 'center',
+	LEFT = 'left',
+	RIGHT = 'right',
+	CENTER = 'center',
 }
 
 export enum Media {

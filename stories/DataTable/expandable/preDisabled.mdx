@@ -6,20 +6,20 @@ To pre-disable rows based on your data:
 
 ```js
 ...
-const rowDisabledCriteria = row => row.isOutOfStock;
+const rowPreDisabled = row => row.disabled;
 
 function MyComponent() {
   return (
     <DataTable
       columns={columns}
       data={data}
-      selectableRows
-      selectableRowSelected={rowDisabledCriteria}
+			expandableRows
+			expandableRowDisabled={rowPreDisabled}
     />
   );
 }
 ```
 
 <Canvas>
-  <Story id="selectable-pre-disabled--pre-disabled" />
+  <Story id="expandable-pre-disabled--pre-disabled" />
 </Canvas>

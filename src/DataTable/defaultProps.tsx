@@ -65,7 +65,7 @@ export const defaultProps = {
 	noTableHead: false,
 	noHeader: false,
 	subHeader: false,
-	subHeaderAlign: Alignment.Right,
+	subHeaderAlign: Alignment.RIGHT,
 	subHeaderWrap: true,
 	subHeaderComponent: null,
 	fixedHeader: false,

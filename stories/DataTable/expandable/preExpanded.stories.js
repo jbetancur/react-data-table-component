@@ -1,6 +1,7 @@
 import React from 'react';
-import tableDataItems from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import doc from './preExpanded.mdx';
+import tableDataItems from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
 
@@ -16,19 +17,11 @@ const columns = [
 		sortable: true,
 	},
 	{
-		name: 'Genres',
-		selector: row => row.genres,
-		// eslint-disable-next-line react/no-array-index-key
-		cell: row => row.genres.map((genre, i) => <div key={i}>{genre}</div>),
-	},
-	{
 		name: 'Year',
 		selector: row => row.year,
 		sortable: true,
 	},
 ];
-
-const isExpanded = row => row.defaultExpanded;
 
 export const PreExpanded = () => {
 	const data = tableDataItems;
@@ -40,7 +33,7 @@ export const PreExpanded = () => {
 			columns={columns}
 			data={data}
 			expandableRows
-			expandableRowExpanded={isExpanded}
+			expandableRowExpanded={row => row.defaultExpanded}
 			expandableRowsComponent={ExpandedComponent}
 			pagination
 		/>
@@ -50,4 +43,9 @@ export const PreExpanded = () => {
 export default {
 	title: 'Expandable/Pre Expanded ',
 	component: PreExpanded,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };
