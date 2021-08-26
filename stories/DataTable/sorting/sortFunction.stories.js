@@ -5,10 +5,10 @@ import DataTable from '../../../src/index';
 
 const customSort = (rows, selector, direction) => {
 	return rows.sort((a, b) => {
-		// use the selector to resolve your field names by passing the sort comparitors
+		// use the selector to resolve your field names by passing the sort comparators
 		const aField = selector(a).toLowerCase();
 		const bField = selector(b).toLowerCase();
-		console.log(aField);
+
 		let comparison = 0;
 
 		if (aField > bField) {

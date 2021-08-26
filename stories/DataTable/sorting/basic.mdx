@@ -1,4 +1,4 @@
-import { Story, Preview } from '@storybook/addon-docs';
+import { Story, Canvas } from '@storybook/addon-docs';
 
 # Sorting
 
@@ -24,6 +24,21 @@ const columns = [
 ];
 ```
 
-<Preview>
-  <Story id="sorting-basic--basic" />
-</Preview>
+<Canvas>
+	<Story id="sorting-basic--basic" />
+</Canvas>
+
+# Default Sort Field
+
+To load your table with a pre sorted column specify the `defaultSortFieldId`. The `defaultSortFieldId` will correspond to the order of your columns starting at the number 1:
+
+```js
+const columns = [
+<DataTable title="Movie List" columns={columns} data={data} defaultSortFieldId={1} />
+```
+
+You can also specify your own column `id` as long as each column definition `id` is unique.
+
+<Canvas>
+	<Story id="sorting-basic--basic" />
+</Canvas>

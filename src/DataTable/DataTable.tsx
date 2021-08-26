@@ -293,7 +293,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);
 
-	const rowData = selectableRowsVisibleOnly ? tableRows : rows;
+	const visibleRows = selectableRowsVisibleOnly ? tableRows : rows;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
 	return (
@@ -340,7 +340,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 												selectableRowsComponent={selectableRowsComponent}
 												selectableRowsComponentProps={selectableRowsComponentProps}
 												selectableRowDisabled={selectableRowDisabled}
-												rowData={rowData}
+												rowData={visibleRows}
 												keyField={keyField}
 												mergeSelections={mergeSelections}
 												onSelectAllRows={handleSelectAllRows}
