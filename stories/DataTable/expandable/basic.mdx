@@ -1,0 +1,46 @@
+import { Story, Canvas } from '@storybook/addon-docs';
+
+# Expandable Rows
+
+Adding Expandable Rows functionality is easy. Let's make our rows expandable:
+
+```js
+function MyComponent() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      expandableRows
+    />
+  );
+};
+```
+
+## Custom Expander component
+Next, we'll need to create a custom component to display our data and pass it into `DataTable`:
+
+```js
+// data provides access to your row data
+const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+
+function MyComponent() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      expandableRows
+      expandableRowsComponent={ExpandedComponent}
+    />
+  );
+};
+```
+
+You'll notice that `expandableRowsComponent` has a function signtaure of `({ data }) => ...`. React Data Table handles passing your row `data` into your custom expandable component so you can access that rows fields.
+
+<Canvas>
+  <Story id="expandable-basic--basic" />
+</Canvas>
+
+## Accessibility
+
+You can tab through expanders and use the space bar or enter keys to expand.

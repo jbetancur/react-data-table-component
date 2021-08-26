@@ -1,6 +1,7 @@
 import React from 'react';
-import tableDataItems from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import doc from './basic.mdx';
+import tableDataItems from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
 
@@ -14,12 +15,6 @@ const columns = [
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
-	},
-	{
-		name: 'Genres',
-		selector: row => row.genres,
-		// eslint-disable-next-line react/no-array-index-key
-		cell: row => row.genres.map((genre, i) => <div key={i}>{genre}</div>),
 	},
 	{
 		name: 'Year',
@@ -56,4 +51,9 @@ Basic.args = {
 export default {
 	title: 'Expandable/Basic',
 	component: Basic,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };
