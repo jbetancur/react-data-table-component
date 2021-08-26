@@ -1,72 +1,12 @@
-
- [![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component)
-
+[![npm version](https://badge.fury.io/js/react-data-table-component.svg)](https://badge.fury.io/js/react-data-table-component) [![codecov](https://codecov.io/gh/jbetancur/react-data-table-component/branch/master/graph/badge.svg)](https://codecov.io/gh/jbetancur/react-data-table-component)
 
 ## Documentation Website
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/26e0d16d-a986-46b1-9097-1a76c10d7cad/deploy-status)](https://app.netlify.com/sites/react-data-table-component/deploys)
 
 The documentation contains information about installation and usage.
 
-https://react-data-table-component.netlify.app/
-
-
-## SOverriding with Ui Component Library
-
-Don't like those ugly html checkboxes? Let's override them with some [Material Ui](https://material-ui.com) sexiness. While we are at it we will also override the `sortIcon`:
-
-```js
-...
-import Checkbox from '@mataerial-ui/core/Checkbox';
-import ArrowDownward from '@material-ui/icons/ArrowDownward';
-
-const sortIcon = <ArrowDownward />;
-...
-
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows
-    selectableRowsComponent={Checkbox} // Pass the function only
-    selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass Material Ui supported props down to our custom checkbox
-    sortIcon={sortIcon} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees for you
-    onSelectedRowsChange={handleChange}
-  />
-);
-```
-
-## Using Custom Checkboxes and Indeterminate State
-
-Sometimes UI Library checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
-
-Example Usage:
-
-```js
-
-import Checkbox from '@mataerial-ui/core/Checkbox';
-
-...
-
-/*
-  In this example, the Material Ui ui lib determines its own indeterminate state via the `indeterminate` property.
-  Let's override it using selectableRowsComponentProps`
-*/
-const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
-
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    data={data}
-    selectableRows
-    selectableRowsComponent={Checkbox} // Pass the function only
-    selectableRowsComponentProps={selectProps}
-  />
-);
-```
-
-**Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand
+https://react-data-table-component.netlify.app
 
 ## Custom Cells
 
@@ -209,9 +149,6 @@ React Data Table Component makes it easy to incorporate ui components from other
 
 - [MaterialUI](https://codesandbox.io/s/react-data-table-materialui-72gdo)
 - [Bootstrap 4](https://codesandbox.io/s/react-data-table-sandbox-z6gtg)
-
-
-Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once. This however, is a different matter with functional components.
 
 # Contributors
 

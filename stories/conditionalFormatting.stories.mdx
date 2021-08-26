@@ -4,11 +4,10 @@ import { Meta } from '@storybook/addon-docs';
 
 # Conditional Style Object
 
-| Property | Type     | Required  | Description                                                                                                             |
-|----------|----------|-----------|-------------------------------------------------------------------------------------------------------------------------|
-| when     | function | yes       | `when` accepts a callback that gives you access to your data. The `when` callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
-| style    | object or (row) => object   | yes       | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can also specify callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial ? 'pink' : inherit })` |
-
+| Property | Type                      | Required | Description                                                                                                                                                                                                                                                       |
+| -------- | ------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| when     | function                  | yes      | `when` accepts a callback that gives you access to your data. The `when` callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
+| style    | object or (row) => object | yes      | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can also specify callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial ? 'pink' : inherit })`          |
 
 A Conditional Style Object allows you to apply a specific `style` object based on you data:
 
@@ -27,7 +26,7 @@ For example, let's say you want to apply a style `when` calories exceed 300:
       },
     },
   },
-  ```
+```
 
 ## Style Callback
 
@@ -38,22 +37,20 @@ Alternativly, you can use a callback instead of a `style` object that has access
     when: row => row.calories < 300,
     style: row => ({ backgroundColor: row.isSpecial ? 'pink' : 'green' }),
   },
-  ```
-
+```
 
 # Conditional Row Styling
 
 RDT allows you to override styling based on your data. Currently, you can apply conditional logic for rows using the `DataTable` property `
 
-| Property | Type | Required | Default | Description |
-|--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| conditionalRowStyles | array | no | [] | Allows an array of [conditional style objects](#conditional-style-object)
-
+| Property             | Type  | Required | Default | Description                                                               |
+| -------------------- | ----- | -------- | ------- | ------------------------------------------------------------------------- |
+| conditionalRowStyles | array | no       | []      | Allows an array of [conditional style objects](#conditional-style-object) |
 
 ## Example
 
 The following will `style` the background color of a row to green and set a hover effect `when` the expression `row => row.calories < 300` evaluates to true
-| Property | Type     | Required | Example
+| Property | Type | Required | Example
 
 ```js
 ...
