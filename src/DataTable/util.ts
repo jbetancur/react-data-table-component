@@ -35,7 +35,8 @@ export function sort<T = RowRecord>(
 	}
 
 	if (sortFn && typeof sortFn === 'function') {
-		return sortFn(rows, selector, direction);
+		// we must create a new rows reference
+		return sortFn(rows.slice(0), selector, direction);
 	}
 
 	return orderBy(rows, selector, direction);

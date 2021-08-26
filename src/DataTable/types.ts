@@ -58,7 +58,7 @@ export type TableProps<T = RowRecord> = {
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort?: (column: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
+	onSort?: (selectedColumn: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
 	paginationComponent?: PaginationComponent;
@@ -127,6 +127,7 @@ export interface TableColumnBase {
 
 export interface TableColumn<T = RowRecord> extends TableColumnBase {
 	name?: string | number | React.ReactNode;
+	sortfield?: string;
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
 	conditionalCellStyles?: ConditionalStyles<T>[];
 	format?: Format<T> | undefined;

@@ -10,6 +10,8 @@ By default RDT uses `lodash.orderBy`, however, if you wish to override the inter
 - `selector` is the function you defined on your column.selector. We're going to call this function and pass in the row data in the example below.
 - `direction` RDT's current sorting position.
 
+**IMPORTANT:** `selector is a function that is used to retrieve a field in your data, therefore you need to pass the row to the selector as below in the example:
+
 ```js
 const customSort = (rows, selector, direction) => {
  return rows.sort((rowA, rowB) => {
@@ -34,6 +36,7 @@ const customSort = (rows, selector, direction) => {
 ```
 
 # Custom Sorting Individual Columns - sortFunction
+
 If you only need to change the sorting behavior for a specific column(s). In this case, the custom sorting function takes only provides you access to two arguments, rowA and rowB.
 
 ```js

@@ -9,16 +9,19 @@ const columns = [
 		name: 'Title',
 		selector: row => row.title,
 		sortable: true,
+		sortField: 'title',
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
+		sortField: 'director',
 	},
 	{
 		name: 'Year',
 		selector: row => row.year,
 		sortable: true,
+		sortField: 'year',
 	},
 ];
 
@@ -28,12 +31,12 @@ export function RemoteSort() {
 
 	const handleSort = (column, sortDirection) => {
 		// simulate server sort
-		console.log(column);
+		console.log(column, sortDirection);
 		setLoading(true);
 
 		// instead of setTimeout this is where you would handle your API call.
 		setTimeout(() => {
-			setData(orderBy(data, column.selector, sortDirection));
+			setData(orderBy(data, column.sortField, sortDirection));
 			setLoading(false);
 		}, 100);
 	};
@@ -43,8 +46,8 @@ export function RemoteSort() {
 			title="Movie List"
 			columns={columns}
 			data={data}
-			onSort={handleSort}
 			sortServer
+			onSort={handleSort}
 			progressPending={loading}
 			persistTableHead
 			pagination

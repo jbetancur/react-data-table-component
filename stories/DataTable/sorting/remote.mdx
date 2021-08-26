@@ -1,4 +1,4 @@
-import { Story, Preview } from '@storybook/addon-docs';
+import { Story, Canvas } from '@storybook/addon-docs';
 
 # Remote Sorting
 
@@ -10,9 +10,10 @@ If you just want to replace the internal sort logic you should use [sortFunction
 function MyComponent() {
 	const [items, setData] = useState(data);
 
-	const handleSort = (column, sortDirection) => {
+	const handleSort = async (column, sortDirection) => {
     /// reach out to some API and get new data
-    // e.g. https://api.github.com/search/repositories?q=blog&sort=created&order=${sortDirection}
+    // e.g. https://api.github.com/search/repositories?q=blog&sort=${column.sortField}&order=${sortDirection}
+
 	  setData(remoteData);
 	};
 
@@ -27,6 +28,6 @@ function MyComponent() {
 }
 ```
 
-<Preview>
+<Canvas>
   <Story id="sorting-remote-sort--remote-sort" />
-</Preview>
+</Canvas>
