@@ -43,7 +43,3 @@ If you would like to support the project financially, visit
 <a href="https://github.com/jbetancur/react-data-table-component/graphs/contributors">
 	<img src="https://opencollective.com/react-data-table-component/contributors.svg?width=890" />
 </a>
-
-# Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/jbetancur/react-data-table-component.svg)](https://starchart.cc/jbetancur/react-data-table-component)
