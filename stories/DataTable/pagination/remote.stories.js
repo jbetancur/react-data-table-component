@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import doc from './remote.mdx';
 import axios from 'axios';
-import DataTable from '../../src/index';
+import DataTable from '../../../src/index';
 
 const columns = [
 	{
@@ -20,7 +21,7 @@ const columns = [
 	},
 ];
 
-export const Remote = () => {
+export function Remote() {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [totalRows, setTotalRows] = useState(0);
@@ -51,7 +52,7 @@ export const Remote = () => {
 	};
 
 	useEffect(() => {
-		fetchUsers(1);
+		fetchUsers(1); // fetch page 1 of users
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -64,14 +65,18 @@ export const Remote = () => {
 			pagination
 			paginationServer
 			paginationTotalRows={totalRows}
-			selectableRows
 			onChangeRowsPerPage={handlePerRowsChange}
 			onChangePage={handlePageChange}
 		/>
 	);
-};
+}
 
 export default {
 	title: 'Pagination/Remote',
 	component: Remote,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };

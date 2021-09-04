@@ -1,6 +1,7 @@
 import React from 'react';
-import data from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import doc from './basic.mdx';
+import data from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const columns = [
 	{
@@ -25,4 +26,9 @@ export const Basic = () => <DataTable title="Movie List" columns={columns} data=
 export default {
 	title: 'Pagination/Basic',
 	component: Basic,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };
