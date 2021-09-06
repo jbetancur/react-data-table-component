@@ -1,17 +1,19 @@
 import React from 'react';
-import tableDataItems from '../constants/sampleDesserts';
-import DataTable from '../../src/index';
+import tableDataItems from '../../constants/sampleDesserts';
+import DataTable from '../../../src/index';
 
 const columns = [
 	{
 		name: 'Name',
 		selector: row => row.name,
 		sortable: true,
+		fixed: true,
 	},
 	{
 		name: 'Type',
 		selector: row => row.type,
 		sortable: true,
+		fixed: true,
 	},
 	{
 		name: 'Calories (g)',

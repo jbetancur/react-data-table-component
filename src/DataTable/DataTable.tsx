@@ -165,44 +165,50 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		return rows;
 	}, [currentPage, pagination, paginationServer, rows, rowsPerPage]);
 
-	const handleSort = (action: SortAction<T>) => {
+	const handleSort = React.useCallback((action: SortAction<T>) => {
 		dispatch(action);
-	};
+	}, []);
 
-	const handleSelectAllRows = (action: AllRowsAction<T>) => {
+	const handleSelectAllRows = React.useCallback((action: AllRowsAction<T>) => {
 		dispatch(action);
-	};
+	}, []);
 
-	const handleSelectedRow = (action: SingleRowAction<T>) => {
+	const handleSelectedRow = React.useCallback((action: SingleRowAction<T>) => {
 		dispatch(action);
-	};
+	}, []);
 
 	const handleRowClicked = React.useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
 
 	const handleRowDoubleClicked = React.useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
 
-	const handleChangePage = (page: number) =>
-		dispatch({
-			type: 'CHANGE_PAGE',
-			page,
-			paginationServer,
-			visibleOnly: selectableRowsVisibleOnly,
-			persistSelectedOnPageChange,
-		});
+	const handleChangePage = React.useCallback(
+		(page: number) =>
+			dispatch({
+				type: 'CHANGE_PAGE',
+				page,
+				paginationServer,
+				visibleOnly: selectableRowsVisibleOnly,
+				persistSelectedOnPageChange,
+			}),
+		[paginationServer, persistSelectedOnPageChange, selectableRowsVisibleOnly],
+	);
 
-	const handleChangeRowsPerPage = (newRowsPerPage: number) => {
-		const rowCount = paginationTotalRows || tableRows.length;
-		const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
-		const recalculatedPage = recalculatePage(currentPage, updatedPage);
+	const handleChangeRowsPerPage = React.useCallback(
+		(newRowsPerPage: number) => {
+			const rowCount = paginationTotalRows || tableRows.length;
+			const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
+			const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
-		// update the currentPage for client-side pagination
-		// server - side should be handled by onChangeRowsPerPage
-		if (!paginationServer) {
-			handleChangePage(recalculatedPage);
-		}
+			// update the currentPage for client-side pagination
+			// server - side should be handled by onChangeRowsPerPage
+			if (!paginationServer) {
+				handleChangePage(recalculatedPage);
+			}
 
-		dispatch({ type: 'CHANGE_ROWS_PER_PAGE', page: recalculatedPage, rowsPerPage: newRowsPerPage });
-	};
+			dispatch({ type: 'CHANGE_ROWS_PER_PAGE', page: recalculatedPage, rowsPerPage: newRowsPerPage });
+		},
+		[currentPage, handleChangePage, paginationServer, paginationTotalRows, tableRows.length],
+	);
 
 	const showTableHead = () => {
 		if (noTableHead) {

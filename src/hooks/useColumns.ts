@@ -29,50 +29,56 @@ function useColumns<T>(
 		setTableColumns(decorateColumns(columns));
 	}, [columns]);
 
-	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-		const { attributes } = e.target as HTMLDivElement;
-		const id = attributes.getNamedItem('data-column-id')?.value;
+	const handleDragStart = React.useCallback(
+		(e: React.DragEvent<HTMLDivElement>) => {
+			const { attributes } = e.target as HTMLDivElement;
+			const id = attributes.getNamedItem('data-column-id')?.value;
 
-		if (id) {
-			sourceColumnId.current = tableColumns[findColumnIndexById(tableColumns, id)]?.id?.toString() || '';
+			if (id) {
+				sourceColumnId.current = tableColumns[findColumnIndexById(tableColumns, id)]?.id?.toString() || '';
 
-			setDraggingColumn(sourceColumnId.current);
-		}
-	};
+				setDraggingColumn(sourceColumnId.current);
+			}
+		},
+		[tableColumns],
+	);
 
-	const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
-		const { attributes } = e.target as HTMLDivElement;
-		const id = attributes.getNamedItem('data-column-id')?.value;
+	const handleDragEnter = React.useCallback(
+		(e: React.DragEvent<HTMLDivElement>) => {
+			const { attributes } = e.target as HTMLDivElement;
+			const id = attributes.getNamedItem('data-column-id')?.value;
 
-		if (id && sourceColumnId.current && id !== sourceColumnId.current) {
-			const selectedColIndex = findColumnIndexById(tableColumns, sourceColumnId.current);
-			const targetColIndex = findColumnIndexById(tableColumns, id);
-			const reorderedCols = [...tableColumns];
+			if (id && sourceColumnId.current && id !== sourceColumnId.current) {
+				const selectedColIndex = findColumnIndexById(tableColumns, sourceColumnId.current);
+				const targetColIndex = findColumnIndexById(tableColumns, id);
+				const reorderedCols = [...tableColumns];
 
-			reorderedCols[selectedColIndex] = tableColumns[targetColIndex];
-			reorderedCols[targetColIndex] = tableColumns[selectedColIndex];
+				reorderedCols[selectedColIndex] = tableColumns[targetColIndex];
+				reorderedCols[targetColIndex] = tableColumns[selectedColIndex];
 
-			setTableColumns(reorderedCols);
+				setTableColumns(reorderedCols);
 
-			onColumnOrderChange(reorderedCols);
-		}
-	};
+				onColumnOrderChange(reorderedCols);
+			}
+		},
+		[onColumnOrderChange, tableColumns],
+	);
 
-	const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+	const handleDragOver = React.useCallback((e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
-	};
+	}, []);
 
-	const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+	const handleDragLeave = React.useCallback((e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
-	};
+	}, []);
 
-	const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+	const handleDragEnd = React.useCallback((e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
 
 		sourceColumnId.current = '';
 
 		setDraggingColumn('');
-	};
+	}, []);
 
 	const defaultSortDirection = getSortDirection(defaultSortAsc);
 	const defaultSortColumn = React.useMemo(
