@@ -40,7 +40,7 @@ function TableColCheckbox<T>({
 	const indeterminate = selectedRows.length > 0 && !allSelected;
 	const rows = selectableRowDisabled ? rowData.filter((row: T) => !selectableRowDisabled(row)) : rowData;
 	const isDisabled = rows.length === 0;
-	// The row count should subtrtact rows that are disabled
+	// The row count should subtract rows that are disabled
 	const rowCount = Math.min(rowData.length, rows.length);
 
 	const handleSelectAll = () => {

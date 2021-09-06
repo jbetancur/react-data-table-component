@@ -4,19 +4,19 @@ import { Meta } from '@storybook/addon-docs';
 
 # Optimizing for Performance and Caveats
 
-Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table (RDT) is giving you the best possible performance.
+Pre-optimizaton can be the root of all evil, however, there are some best practices you can adhere to that will ensure React Data Table is giving you the best possible performance.
 
 # Passing non-primitive props (objects, arrays and functions)
 
-While RDT has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into RDT are not re-created on every render cycle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
+While React Data Table has internal optimizations to try and prevent re-renders on deeper internal components, it's up to you to make sure that you understand how React manages rendering when props/state change as well as how JavaScript determines equality for non-primitives. As a general rule, or if you are experiencing performance issues you should ensure that any non-primitive props passed into React Data Table are not re-created on every render cycle. This is ever important when you have larger data sets or you are passing complex components and columns to `DataTable`.
 
 # Optimizing Class Components
 
-You can typically achieve this by moving props such as objects, arrays, functions or other React components that you pass to RDT outside of the `render` method. For cases where you need to memoize [memoize-one](https://github.com/alexreardon/memoize-one) is a great library.
+You can typically achieve this by moving props such as objects, arrays, functions or other React components that you pass to React Data Table outside of the `render` method. For cases where you need to memoize [memoize-one](https://github.com/alexreardon/memoize-one) is a great library.
 
 ## Examples of Optimizations
 
-The following component will cause RDT to fully re-render every time `onSelectedRowsChange` is triggered. Why? Because when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this decision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
+The following component will cause React Data Table to fully re-render every time `onSelectedRowsChange` is triggered. Why? Because when `setState` is called it triggers `myComponent` to re-render which by design triggers a re-render on all child components i.e. `DataTable`. But luckily for you React optimally handles this decision on when and how to re-render `DataTable` and a full re-render should not occur **as long as `DataTable` props are the same**.
 
 However, in the example below `columns` changes on every re-render because it's being re-created. This is due to referential equality checking, simply: `columns[] !== columns[]`. In other words, while both instances of `columns` contain the same elements, they are "different" arrays.
 
@@ -135,7 +135,7 @@ class MyComponent extends Component {
 }
 ```
 
-Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once. This however, is a different matter with functional components.
+Notice that `this.updateState` does not require memoization. That's because `this.updateState` is defined as a class method and therefore only created once.
 
 ### Optimizing Functional/Hook Components
 

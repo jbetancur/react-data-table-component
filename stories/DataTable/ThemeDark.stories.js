@@ -39,7 +39,7 @@ const Template = args => <BuiltinStory {...args} />;
 export const Builtin = Template.bind({});
 
 Builtin.args = {
-	theme: 'light',
+	theme: 'default',
 };
 
 export default {
@@ -47,12 +47,12 @@ export default {
 	component: Builtin,
 	argTypes: {
 		theme: {
-			options: ['light', 'dark'],
+			options: ['default', 'dark'],
 			control: { type: 'radio' },
 			description: 'toggle between light and dark themes',
 			table: {
 				type: { summary: 'string' },
-				defaultValue: { summary: 'Hello' },
+				defaultValue: { summary: 'default' },
 			},
 		},
 	},

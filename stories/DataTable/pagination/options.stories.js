@@ -1,6 +1,7 @@
 import React from 'react';
-import data from '../constants/sampleMovieData';
-import DataTable from '../../src/index';
+import doc from './options.mdx';
+import data from '../../constants/sampleMovieData';
+import DataTable from '../../../src/index';
 
 const columns = [
 	{
@@ -20,7 +21,7 @@ const columns = [
 	},
 ];
 
-const paginationOptions = {
+const paginationComponentOptions = {
 	rowsPerPageText: 'Filas por página',
 	rangeSeparatorText: 'de',
 	selectAllRowsItem: true,
@@ -33,11 +34,16 @@ export const Options = () => (
 		columns={columns}
 		data={data}
 		pagination
-		paginationComponentOptions={paginationOptions}
+		paginationComponentOptions={paginationComponentOptions}
 	/>
 );
 
 export default {
 	title: 'Pagination/Options',
 	component: Options,
+	parameters: {
+		docs: {
+			page: doc,
+		},
+	},
 };
