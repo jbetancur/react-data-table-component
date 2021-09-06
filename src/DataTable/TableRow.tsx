@@ -4,7 +4,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
-import { equalizeId, getConditionalStyle, getProperty, isOdd, noop } from './util';
+import { equalizeId, getConditionalStyle, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
 import { RowRecord, SingleRowAction, TableProps } from './types';
 
@@ -170,7 +170,7 @@ function TableRow<T extends RowRecord>({
 	);
 
 	const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
-	const hightlightSelected = selectableRowsHighlight && selected;
+	const highlightSelected = selectableRowsHighlight && selected;
 	const inheritStyles = expandableInheritConditionalStyles ? extendedRowStyle : {};
 	const isStriped = striped && isOdd(rowIndex);
 
@@ -186,7 +186,7 @@ function TableRow<T extends RowRecord>({
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
 				className="rdt_TableRow"
-				selected={hightlightSelected}
+				selected={highlightSelected}
 				style={extendedRowStyle}
 			>
 				{selectableRows && (
@@ -221,28 +221,22 @@ function TableRow<T extends RowRecord>({
 
 					// apply a tag that TableRow will use to stop event propagation when TableCell is clicked
 					const dataTag = column.ignoreRowClick || column.button ? null : STOP_PROP_TAG;
-					const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
 
 					return (
 						<TableCell
 							id={`cell-${column.id}-${row[keyField]}`}
 							key={`cell-${column.id}-${row[keyField]}`}
-							extendedCellStyle={extendedCellStyle}
 							dataTag={dataTag}
-							renderAsCell={!!column.cell}
-							column={column}
+							column={column as T}
+							row={row}
+							rowIndex={rowIndex}
 							isDragging={equalizeId(draggingColumnId, column.id)}
 							onDragStart={onDragStart}
 							onDragOver={onDragOver}
 							onDragEnd={onDragEnd}
 							onDragEnter={onDragEnter}
 							onDragLeave={onDragLeave}
-						>
-							{!column.cell && (
-								<div data-tag={dataTag}>{getProperty(row, column.selector, column.format, rowIndex)}</div>
-							)}
-							{column.cell && column.cell(row, rowIndex, column, id)}
-						</TableCell>
+						/>
 					);
 				})}
 			</TableRowStyle>

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled, { css, CSSObject } from 'styled-components';
 import { Cell } from './Cell';
-import { TableColumnBase } from './types';
+import { getProperty, getConditionalStyle } from './util';
+import { TableColumn } from './types';
 
 interface TableCellStyleProps {
 	renderAsCell: boolean | undefined;
@@ -29,35 +30,35 @@ const TableCellStyle = styled(Cell).attrs(props => ({
 	${({ cellStyle }) => cellStyle};
 `;
 
-interface TableCellProps extends TableColumnBase {
+interface TableCellProps<T> {
 	id: string;
 	dataTag: string | null;
-	extendedCellStyle: CSSObject;
-	column: TableColumnBase;
-	renderAsCell: boolean;
+	column: TableColumn<T>;
+	row: T;
+	rowIndex: number;
 	isDragging: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-	children?: React.ReactNode;
 }
 
-function TableCell({
+function TableCell<T>({
 	id,
 	column,
+	row,
+	rowIndex,
 	dataTag,
-	extendedCellStyle,
-	renderAsCell,
 	isDragging,
 	onDragStart,
 	onDragOver,
 	onDragEnd,
 	onDragEnter,
 	onDragLeave,
-	children,
-}: TableCellProps): JSX.Element {
+}: TableCellProps<T>): JSX.Element {
+	const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
+
 	return (
 		<TableCellStyle
 			id={id}
@@ -66,7 +67,7 @@ function TableCell({
 			className="rdt_TableCell"
 			data-tag={dataTag}
 			cellStyle={column.style}
-			renderAsCell={renderAsCell}
+			renderAsCell={!!column.cell}
 			allowOverflow={column.allowOverflow}
 			button={column.button}
 			center={column.center}
@@ -86,7 +87,8 @@ function TableCell({
 			onDragEnter={onDragEnter}
 			onDragLeave={onDragLeave}
 		>
-			{children}
+			{!column.cell && <div data-tag={dataTag}>{getProperty(row, column.selector, column.format, rowIndex)}</div>}
+			{column.cell && column.cell(row, rowIndex, column, id)}
 		</TableCellStyle>
 	);
 }
