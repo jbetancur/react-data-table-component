@@ -388,7 +388,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 						{!progressPending && rows.length > 0 && (
 							<TableBody className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
-									const id = isEmpty(row[keyField]) ? i : row[keyField];
+									const id = (isEmpty(row[keyField] as string | number) ? i : row[keyField]) as string | number;
 									const selected = isRowSelected(row, selectedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
@@ -398,9 +398,11 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											id={id}
 											key={id}
 											keyField={keyField}
-											row={row}
 											data-row-id={row[keyField]}
 											columns={tableColumns}
+											row={row}
+											rowCount={rows.length}
+											rowIndex={i}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
 											expandableIcon={expandableIcon}
@@ -416,8 +418,6 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											defaultExpanded={expanderExpander}
 											expandableInheritConditionalStyles={expandableInheritConditionalStyles}
 											conditionalRowStyles={conditionalRowStyles}
-											rowCount={rows.length}
-											rowIndex={i}
 											selected={selected}
 											selectableRowsHighlight={selectableRowsHighlight}
 											selectableRowsComponent={selectableRowsComponent}

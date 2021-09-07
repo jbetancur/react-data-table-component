@@ -190,7 +190,7 @@ function TableCol<T>({
 		<TableColStyled
 			data-column-id={column.id}
 			className="rdt_TableCol"
-			head
+			headCell
 			allowOverflow={column.allowOverflow}
 			button={column.button}
 			compact={column.compact}
@@ -224,7 +224,9 @@ function TableCol<T>({
 				>
 					{!disabled && customSortIconRight && renderCustomSortIcon()}
 					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+
 					<ColumnText data-column-id={column.id}>{column.name}</ColumnText>
+
 					{!disabled && customSortIconLeft && renderCustomSortIcon()}
 					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</ColumnSortable>

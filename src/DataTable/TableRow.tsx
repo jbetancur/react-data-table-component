@@ -219,15 +219,13 @@ function TableRow<T extends RowRecord>({
 						return null;
 					}
 
-					// apply a tag that TableRow will use to stop event propagation when TableCell is clicked
-					const dataTag = column.ignoreRowClick || column.button ? null : STOP_PROP_TAG;
-
 					return (
 						<TableCell
 							id={`cell-${column.id}-${row[keyField]}`}
 							key={`cell-${column.id}-${row[keyField]}`}
-							dataTag={dataTag}
-							column={column as T}
+							// apply a tag that TableRow will use to stop event propagation when TableCell is clicked
+							dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
+							column={column}
 							row={row}
 							rowIndex={rowIndex}
 							isDragging={equalizeId(draggingColumnId, column.id)}
