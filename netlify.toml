@@ -1,0 +1,12 @@
+[build]
+  publish = "storybook-static"
+  command = "yarn lint && yarn test && yarn build && yarn build-storybook"
+[build.environment]
+  NODE_VERSION = "14"
+  YARN_VERSION = "1.22.10"
+  DOTENV_DISPLAY_WARNING = "none"
+  STORYBOOK_EXAMPLE_APP ="true"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"

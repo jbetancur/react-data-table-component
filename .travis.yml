@@ -23,7 +23,6 @@ deploy:
   token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   local_dir: storybook-static
   on:
-    branch: master
-
+    branch: next
 after_script:
   - yarn codecov

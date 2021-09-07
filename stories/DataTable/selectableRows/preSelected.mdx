@@ -1,0 +1,25 @@
+import { Story, Canvas } from '@storybook/addon-docs';
+
+# Pre Selected Rows
+
+To pre-select rows based on your data:
+
+```js
+...
+const rowSelectCritera = row => row.fat > 6;
+
+function MyComponent() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      selectableRows
+      selectableRowSelected={rowSelectCritera}
+    />
+  );
+}
+```
+
+<Canvas>
+	<Story id="selectable-pre-selected--pre-selected" />
+</Canvas>

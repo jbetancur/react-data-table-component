@@ -1,0 +1,22 @@
+import { Story, Canvas } from '@storybook/addon-docs';
+
+# Pagination
+
+Adding client side pagination functionality is easy:
+
+```js
+function MyComponent() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pagination
+    />
+  );
+};
+```
+
+<Canvas>
+  <Story id="pagination-basic--basic" />
+</Canvas>
+

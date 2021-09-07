@@ -1,0 +1,63 @@
+import { Story, Canvas } from '@storybook/addon-docs';
+
+# Make Our Table Material Design
+
+Let's override the built-in checkboxes and sort icon with some [Material Ui](https://material-ui.com) sexiness:
+
+```js
+...
+import Checkbox from '@mataerial-ui/core/Checkbox';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+
+...
+
+const MyComponent = () => (
+  <DataTable
+    title="Desserts"
+    columns={columns}
+    data={data}
+    selectableRows
+    selectableRowsComponent={Checkbox} // Pass the function only
+    selectableRowsComponentProps={{ inkDisabled: true }} // optionally, pass Material Ui supported props down to our custom checkbox
+    sortIcon={<ArrowDownward />} // use a material icon for our sort icon. rdt will rotate the icon 180 degrees for you
+  />
+);
+```
+
+## Using Custom Checkboxes and Indeterminate State
+
+Sometimes UI Library checkbox components have their own way of handling indeterminate state. We don't want React Data Table hard coded to a specific ui lib or custom component, so instead a "hook" is provided to allow you to pass a function that will be resolved by React Data Table's internal `Checkbox` for use with `indeterminate` functionality.
+
+Example Usage:
+
+```js
+
+import Checkbox from '@mataerial-ui/core/Checkbox';
+
+...
+
+/*
+  In this example, the Material Ui ui lib determines its own indeterminate state via the `indeterminate` property.
+  Let's override it using selectableRowsComponentProps`
+*/
+const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
+
+const MyComponent = () => (
+  <DataTable
+    title="Desserts"
+    columns={columns}
+    data={data}
+    selectableRows
+    selectableRowsComponent={Checkbox} // Pass the function only
+    selectableRowsComponentProps={selectProps}
+  />
+);
+```
+
+**Note** This is currently only supported for indeterminate state, but may be expanded in the future if there is a demand.
+
+# Material Compliant Table!
+
+<Canvas>
+  <Story id="ui-library-material-ui-table--table" />
+</Canvas>

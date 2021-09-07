@@ -59,7 +59,6 @@ typings/
 
 # dist
 dist/*
-!dist/index.js
 
 # Storybook
 storybook-static

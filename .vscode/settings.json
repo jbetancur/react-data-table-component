@@ -1,24 +1,41 @@
 {
-    "files.associations": {
-        ".editorconfig": "javascriptreact"
-    },
-    "editor.formatOnType": true,
-    // "eslint.options": {"configFile": "./package.json"},
-    "editor.tabSize": 2,
-    "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": true,
-    "eslint.nodePath": "./src",
-    "editor.formatOnSave": false,
-    "window.zoomLevel": 0,
-    "workbench.iconTheme": "material-icon-theme",
-    // "terminal.integrated.fontFamily": "Knack Nerd Font",
-    "terminal.integrated.fontSize": 13,
-    "terminal.integrated.shellArgs.osx": [
-      "-l"
-    ],
-    "terminal.integrated.shell.osx": "zsh",
-    "terminal.integrated.scrollback": 5000,
-    "editor.fontSize": 13,
-    // "editor.minimap.enabled": true,
-    "extensions.autoUpdate": true
-  }
+	"files.associations": {
+		".editorconfig": "javascriptreact"
+	},
+	"editor.formatOnType": true,
+	// "eslint.options": {"configFile": "./package.json"},
+	"editor.tabSize": 2,
+	"editor.trimAutoWhitespace": true,
+	"files.trimTrailingWhitespace": true,
+	"eslint.nodePath": "./src",
+	"editor.formatOnSave": false,
+	"window.zoomLevel": 0,
+	"workbench.iconTheme": "material-icon-theme",
+	// "terminal.integrated.fontFamily": "Knack Nerd Font",
+	"terminal.integrated.fontSize": 13,
+	"terminal.integrated.shellArgs.osx": [
+		"-l"
+	],
+	"terminal.integrated.shell.osx": "zsh",
+	"terminal.integrated.scrollback": 5000,
+	"editor.fontSize": 13,
+	// "editor.minimap.enabled": true,
+	"extensions.autoUpdate": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"[javascript]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"prettier.useTabs": true,
+}
