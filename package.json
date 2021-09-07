@@ -58,7 +58,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "axios": "^0.21.4",
     "babel-eslint": "^10.1.0",
     "codecov": "^3.8.3",
