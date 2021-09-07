@@ -31,7 +31,11 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 		},
 	},
 	head: {
-		style: {},
+		style: {
+			color: theme.text.primary,
+			fontSize: '12px',
+			fontWeight: 500,
+		},
 	},
 	headRow: {
 		style: {
@@ -47,9 +51,6 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 	},
 	headCells: {
 		style: {
-			fontSize: '12px',
-			fontWeight: 500,
-			color: theme.text.primary,
 			paddingLeft: '16px',
 			paddingRight: '16px',
 		},
@@ -103,6 +104,7 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 	rows: {
 		style: {
 			fontSize: '13px',
+			fontWeight: 400,
 			color: theme.text.primary,
 			backgroundColor: theme.background.default,
 			minHeight: '48px',

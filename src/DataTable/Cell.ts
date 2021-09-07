@@ -3,7 +3,7 @@ import { media } from './media';
 import { TableColumnBase } from './types';
 
 export const CellBase = styled.div<{
-	head?: boolean;
+	headCell?: boolean;
 	noPadding?: boolean;
 }>`
 	position: relative;
@@ -11,7 +11,7 @@ export const CellBase = styled.div<{
 	align-items: center;
 	box-sizing: border-box;
 	line-height: normal;
-	${({ theme, head }) => theme[head ? 'headCells' : 'cells'].style};
+	${({ theme, headCell }) => theme[headCell ? 'headCells' : 'cells'].style};
 	${({ noPadding }) => noPadding && 'padding: 0'};
 `;
 

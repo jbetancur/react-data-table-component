@@ -10,12 +10,9 @@ export type RowState<T> = ((row: T) => boolean) | null;
 export type Selector<T> = string | ((row: T, rowIndex: number) => React.ReactNode);
 export type SortDirection = 'asc' | 'desc';
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RowRecord = Record<string, any>;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ExpandableRowsComponent = React.ComponentType<any>;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type PaginationComponent = React.ComponentType<any>;
+export type RowRecord = Record<string, unknown>;
+export type ExpandableRowsComponent = React.ComponentType<Record<string, unknown>>;
+export type PaginationComponent = React.ComponentType<Record<string, unknown>>;
 export type ComponentProps = Record<string, unknown>;
 
 export type TableProps<T = RowRecord> = {

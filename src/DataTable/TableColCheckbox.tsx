@@ -10,10 +10,11 @@ const TableColStyle = styled(CellBase)`
 	align-items: center;
 	user-select: none;
 	white-space: nowrap;
+	font-size: unset;
 `;
 
 interface TableColCheckboxProps<T> {
-	head?: boolean;
+	headCell?: boolean;
 	selectableRowsComponent: 'input' | React.ReactNode;
 	selectableRowsComponentProps: Record<string, unknown>;
 	selectableRowDisabled: RowState<T>;
@@ -26,7 +27,7 @@ interface TableColCheckboxProps<T> {
 }
 
 function TableColCheckbox<T>({
-	head = true,
+	headCell = true,
 	rowData,
 	keyField,
 	allSelected,
@@ -54,7 +55,7 @@ function TableColCheckbox<T>({
 	};
 
 	return (
-		<TableColStyle className="rdt_TableCol" head={head} noPadding>
+		<TableColStyle className="rdt_TableCol" headCell={headCell} noPadding>
 			<Checkbox
 				name="select-all-rows"
 				component={selectableRowsComponent}

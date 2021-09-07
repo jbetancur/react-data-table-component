@@ -23,8 +23,6 @@ const overflowCSS = css<TableCellStyleProps>`
 const TableCellStyle = styled(Cell).attrs(props => ({
 	style: props.style,
 }))<TableCellStyleProps>`
-	font-size: ${({ theme }) => theme.rows.fontSize};
-	font-weight: 400;
 	${({ renderAsCell }) => !renderAsCell && overflowCSS};
 	${({ theme, isDragging }) => isDragging && theme.cells.draggingStyle};
 	${({ cellStyle }) => cellStyle};
@@ -57,8 +55,6 @@ function TableCell<T>({
 	onDragEnter,
 	onDragLeave,
 }: TableCellProps<T>): JSX.Element {
-	const extendedCellStyle = getConditionalStyle(row, column.conditionalCellStyles);
-
 	return (
 		<TableCellStyle
 			id={id}
@@ -79,7 +75,7 @@ function TableCell<T>({
 			right={column.right}
 			width={column.width}
 			wrapCell={column.wrap}
-			style={extendedCellStyle}
+			style={getConditionalStyle(row, column.conditionalCellStyles)}
 			isDragging={isDragging}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
@@ -93,4 +89,4 @@ function TableCell<T>({
 	);
 }
 
-export default React.memo(TableCell);
+export default React.memo(TableCell) as typeof TableCell;
