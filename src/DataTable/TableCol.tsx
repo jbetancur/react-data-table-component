@@ -27,10 +27,10 @@ interface ColumnSortableProps {
 
 const sortableCSS = css<ColumnSortableProps>`
 	${({ theme }) => theme.headCells.sortStyle};
-
 	span.__rdt_custom_sort_icon__ {
 		i,
 		svg {
+			transform: 'translate3d(0, 0, 0)';
 			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
 			font-size: 18px !important;

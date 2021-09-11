@@ -82,8 +82,8 @@ function useColumns<T>(
 
 	const defaultSortDirection = getSortDirection(defaultSortAsc);
 	const defaultSortColumn = React.useMemo(
-		() => columns[findColumnIndexById(columns, defaultSortFieldId?.toString())] || {},
-		[columns, defaultSortFieldId],
+		() => tableColumns[findColumnIndexById(tableColumns, defaultSortFieldId?.toString())] || {},
+		[defaultSortFieldId, tableColumns],
 	);
 
 	return {

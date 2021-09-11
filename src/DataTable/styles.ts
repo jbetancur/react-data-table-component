@@ -68,6 +68,9 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			'&:hover': {
 				color: theme.sortFocus.default,
 			},
+			'&:hover:active': {
+				color: theme.sortFocus.default,
+			},
 		},
 	},
 	contextMenu: {

@@ -3253,8 +3253,15 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -9656,8 +9663,15 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -21303,8 +21317,15 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -21624,8 +21645,15 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -21911,9 +21939,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-negative: 0;
   flex-shrink: 0;
   opacity: 1;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 .c7 {
@@ -21948,8 +21973,15 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -22533,8 +22565,15 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -22854,8 +22893,15 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
@@ -23162,8 +23208,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -23481,8 +23534,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -23813,8 +23873,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -24139,8 +24206,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -24468,8 +24542,15 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 0;
   color: inherit;
   font-size: 18px !important;
@@ -24797,8 +24878,15 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   color: rgba(0,0,0,.54);
 }
 
+.c7:hover:active {
+  color: rgba(0,0,0,.54);
+}
+
 .c7 span.__rdt_custom_sort_icon__ i,
 .c7 span.__rdt_custom_sort_icon__ svg {
+  -webkit-transform: 'translate3d(0, 0, 0)';
+  -ms-transform: 'translate3d(0, 0, 0)';
+  transform: 'translate3d(0, 0, 0)';
   opacity: 1;
   color: inherit;
   font-size: 18px !important;
