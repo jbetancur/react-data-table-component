@@ -21,7 +21,7 @@ export type CellProps = Pick<
 >;
 
 // Flex calculations
-export const Cell = styled(CellBase)<CellProps>`
+export const CellExtended = styled(CellBase)<CellProps>`
 	flex-grow: ${({ button, grow }) => (grow === 0 || button ? 0 : grow || 1)};
 	flex-shrink: 0;
 	flex-basis: 0;

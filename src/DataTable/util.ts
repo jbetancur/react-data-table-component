@@ -1,6 +1,6 @@
 import orderBy from 'lodash.orderby';
 import { CSSObject } from 'styled-components';
-import { ConditionalStyles, TableColumn, Format, RowRecord, Selector, SortDirection, SortFunction } from './types';
+import { ConditionalStyles, TableColumn, Format, TableRow, Selector, SortDirection, SortFunction } from './types';
 
 export function isEmpty(field: string | number | undefined = ''): boolean {
 	if (typeof field === 'number') {
@@ -11,12 +11,12 @@ export function isEmpty(field: string | number | undefined = ''): boolean {
 }
 
 export function setRowData<T>(
-	rows: Array<T>,
+	rows: T[],
 	selector: Selector<T> | null | undefined,
 	direction: SortDirection,
 	sortServer: boolean,
 	sortFn?: SortFunction<T> | null,
-): Array<T> {
+): T[] {
 	if (sortServer || !selector) {
 		return rows;
 	}
@@ -24,8 +24,8 @@ export function setRowData<T>(
 	return sort(rows, selector, direction, sortFn);
 }
 
-export function sort<T = RowRecord>(
-	rows: Array<T>,
+export function sort<T = TableRow>(
+	rows: T[],
 	selector: Selector<T> | null | undefined,
 	direction: SortDirection,
 	sortFn?: SortFunction<T> | null,
@@ -81,11 +81,11 @@ export function getProperty<T extends Record<string, any>>(
 	}, row);
 }
 
-export function insertItem<T>(array: Array<T> = [], item: T, index = 0): Array<T> {
+export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {
 	return [...array.slice(0, index), item, ...array.slice(index)];
 }
 
-export function removeItem<T extends RowRecord>(array: Array<T> = [], item: T, keyField = 'id'): Array<T> {
+export function removeItem<T extends TableRow>(array: T[] = [], item: T, keyField = 'id'): T[] {
 	const newArray = array.slice();
 
 	if (item[keyField]) {
@@ -178,7 +178,7 @@ export function getConditionalStyle<T>(row: T, conditionalRowStyles: Conditional
 	return rowStyle;
 }
 
-export function isRowSelected<T extends RowRecord>(row: T, selectedRows: Array<T> = [], keyField = 'id'): boolean {
+export function isRowSelected<T extends TableRow>(row: T, selectedRows: T[] = [], keyField = 'id'): boolean {
 	if (row[keyField]) {
 		return selectedRows.some(r => r[keyField] === row[keyField]);
 	}

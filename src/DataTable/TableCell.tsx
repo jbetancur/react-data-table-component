@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled, { css, CSSObject } from 'styled-components';
-import { Cell } from './Cell';
+import { CellExtended } from './Cell';
 import { getProperty, getConditionalStyle } from './util';
 import { TableColumn } from './types';
 
-interface TableCellStyleProps {
+interface CellStyleProps {
 	renderAsCell: boolean | undefined;
 	wrapCell: boolean | undefined;
 	allowOverflow: boolean | undefined;
@@ -12,7 +12,7 @@ interface TableCellStyleProps {
 	isDragging: boolean;
 }
 
-const overflowCSS = css<TableCellStyleProps>`
+const overflowCSS = css<CellStyleProps>`
 	div:first-child {
 		white-space: ${({ wrapCell }) => (wrapCell ? 'normal' : 'nowrap')};
 		overflow: ${({ allowOverflow }) => (allowOverflow ? 'visible' : 'hidden')};
@@ -20,15 +20,15 @@ const overflowCSS = css<TableCellStyleProps>`
 	}
 `;
 
-const TableCellStyle = styled(Cell).attrs(props => ({
+const CellStyle = styled(CellExtended).attrs(props => ({
 	style: props.style,
-}))<TableCellStyleProps>`
+}))<CellStyleProps>`
 	${({ renderAsCell }) => !renderAsCell && overflowCSS};
 	${({ theme, isDragging }) => isDragging && theme.cells.draggingStyle};
 	${({ cellStyle }) => cellStyle};
 `;
 
-interface TableCellProps<T> {
+interface CellProps<T> {
 	id: string;
 	dataTag: string | null;
 	column: TableColumn<T>;
@@ -42,7 +42,7 @@ interface TableCellProps<T> {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function TableCell<T>({
+function Cell<T>({
 	id,
 	column,
 	row,
@@ -54,9 +54,9 @@ function TableCell<T>({
 	onDragEnd,
 	onDragEnter,
 	onDragLeave,
-}: TableCellProps<T>): JSX.Element {
+}: CellProps<T>): JSX.Element {
 	return (
-		<TableCellStyle
+		<CellStyle
 			id={id}
 			data-column-id={column.id}
 			role="gridcell"
@@ -85,8 +85,8 @@ function TableCell<T>({
 		>
 			{!column.cell && <div data-tag={dataTag}>{getProperty(row, column.selector, column.format, rowIndex)}</div>}
 			{column.cell && column.cell(row, rowIndex, column, id)}
-		</TableCellStyle>
+		</CellStyle>
 	);
 }
 
-export default React.memo(TableCell) as typeof TableCell;
+export default React.memo(Cell) as typeof Cell;

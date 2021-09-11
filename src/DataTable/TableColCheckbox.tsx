@@ -4,7 +4,7 @@ import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 import { AllRowsAction, RowState } from './types';
 
-const TableColStyle = styled(CellBase)`
+const ColumnStyle = styled(CellBase)`
 	flex: 0 0 48px;
 	justify-content: center;
 	align-items: center;
@@ -13,7 +13,7 @@ const TableColStyle = styled(CellBase)`
 	font-size: unset;
 `;
 
-interface TableColCheckboxProps<T> {
+interface ColumnCheckboxProps<T> {
 	headCell?: boolean;
 	selectableRowsComponent: 'input' | React.ReactNode;
 	selectableRowsComponentProps: Record<string, unknown>;
@@ -26,7 +26,7 @@ interface TableColCheckboxProps<T> {
 	onSelectAllRows: (action: AllRowsAction<T>) => void;
 }
 
-function TableColCheckbox<T>({
+function ColumnCheckbox<T>({
 	headCell = true,
 	rowData,
 	keyField,
@@ -37,7 +37,7 @@ function TableColCheckbox<T>({
 	selectableRowsComponentProps,
 	selectableRowDisabled,
 	onSelectAllRows,
-}: TableColCheckboxProps<T>): JSX.Element {
+}: ColumnCheckboxProps<T>): JSX.Element {
 	const indeterminate = selectedRows.length > 0 && !allSelected;
 	const rows = selectableRowDisabled ? rowData.filter((row: T) => !selectableRowDisabled(row)) : rowData;
 	const isDisabled = rows.length === 0;
@@ -55,7 +55,7 @@ function TableColCheckbox<T>({
 	};
 
 	return (
-		<TableColStyle className="rdt_TableCol" headCell={headCell} noPadding>
+		<ColumnStyle className="rdt_TableCol" headCell={headCell} noPadding>
 			<Checkbox
 				name="select-all-rows"
 				component={selectableRowsComponent}
@@ -65,8 +65,8 @@ function TableColCheckbox<T>({
 				indeterminate={indeterminate}
 				disabled={isDisabled}
 			/>
-		</TableColStyle>
+		</ColumnStyle>
 	);
 }
 
-export default TableColCheckbox;
+export default ColumnCheckbox;

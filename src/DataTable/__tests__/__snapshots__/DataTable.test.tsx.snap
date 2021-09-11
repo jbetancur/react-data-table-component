@@ -351,9 +351,6 @@ exports[`DataTable::Header should render a custom component within the context m
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -483,9 +480,6 @@ exports[`DataTable::Header should render context menu actions when they are prov
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -628,9 +622,6 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -765,9 +756,6 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -1067,9 +1055,6 @@ exports[`DataTable::Header should render the default context menu when using sel
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -3253,14 +3238,18 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -3288,10 +3277,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {
@@ -9656,11 +9641,15 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
-  color: rgba(0,0,0,.54);
+}
+
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
 }
 
 .c7:hover {
@@ -9693,13 +9682,9 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   transform: rotate(180deg);
 }
 
-.c7:hover {
-  cursor: pointer;
-}
-
 .c7:hover span,
 .c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .c8 {
@@ -21303,14 +21288,18 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -21338,10 +21327,6 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {
@@ -21624,14 +21609,18 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -21659,10 +21648,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {
@@ -21948,14 +21933,18 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -21983,10 +21972,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {
@@ -22533,14 +22518,18 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -22568,10 +22557,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {
@@ -22854,14 +22839,18 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -22889,10 +22878,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {
@@ -23162,11 +23147,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
-  color: rgba(0,0,0,.54);
+}
+
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
 }
 
 .c7:hover {
@@ -23199,13 +23188,9 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   transform: rotate(180deg);
 }
 
-.c7:hover {
-  cursor: pointer;
-}
-
 .c7:hover span,
 .c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .c8 {
@@ -23481,11 +23466,15 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
-  color: rgba(0,0,0,.54);
+}
+
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
 }
 
 .c7:hover {
@@ -23518,13 +23507,9 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   transform: rotate(180deg);
 }
 
-.c7:hover {
-  cursor: pointer;
-}
-
 .c7:hover span,
 .c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .c8 {
@@ -23813,11 +23798,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
-  color: rgba(0,0,0,.54);
+}
+
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
 }
 
 .c7:hover {
@@ -23850,13 +23839,9 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   transform: rotate(180deg);
 }
 
-.c7:hover {
-  cursor: pointer;
-}
-
 .c7:hover span,
 .c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .c9 {
@@ -24139,11 +24124,15 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
-  color: rgba(0,0,0,.54);
+}
+
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
 }
 
 .c7:hover {
@@ -24176,13 +24165,9 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   transform: rotate(180deg);
 }
 
-.c7:hover {
-  cursor: pointer;
-}
-
 .c7:hover span,
 .c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .c8 {
@@ -24468,11 +24453,15 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
-  color: rgba(0,0,0,.54);
+}
+
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
 }
 
 .c7:hover {
@@ -24505,13 +24494,9 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   transform: rotate(180deg);
 }
 
-.c7:hover {
-  cursor: pointer;
-}
-
 .c7:hover span,
 .c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .c8 {
@@ -24797,14 +24782,18 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
-  color: rgba(0,0,0,0.87);
+  cursor: pointer;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c7:hover:not(:focus) {
+.c7:hover:focus {
+  color: rgba(0,0,0,0.87);
+}
+
+.c7:hover {
   color: rgba(0,0,0,.54);
 }
 
@@ -24832,10 +24821,6 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c7:hover {
-  cursor: pointer;
 }
 
 .c8 {

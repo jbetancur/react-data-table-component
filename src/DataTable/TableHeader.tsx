@@ -4,7 +4,7 @@ import ContextMenu from './ContextMenu';
 import { Direction } from './constants';
 import { ContextMessage } from './types';
 
-const TableHeaderStyle = styled.div`
+const HeaderStyle = styled.div`
 	position: relative;
 	box-sizing: border-box;
 	overflow: hidden;
@@ -35,7 +35,7 @@ const Actions = styled.div`
 	}
 `;
 
-type TableHeaderProps = {
+type HeaderProps = {
 	title?: string | React.ReactNode;
 	actions?: React.ReactNode | React.ReactNode[];
 	direction: Direction;
@@ -46,7 +46,7 @@ type TableHeaderProps = {
 	contextComponent: React.ReactNode | null;
 };
 
-const TableHeader = ({
+const Header = ({
 	title,
 	actions = null,
 	contextMessage,
@@ -55,8 +55,8 @@ const TableHeader = ({
 	selectedCount,
 	direction,
 	showMenu = true,
-}: TableHeaderProps): JSX.Element => (
-	<TableHeaderStyle className="rdt_TableHeader" role="heading" aria-level={1}>
+}: HeaderProps): JSX.Element => (
+	<HeaderStyle className="rdt_TableHeader" role="heading" aria-level={1}>
 		<Title>{title}</Title>
 		{actions && <Actions>{actions}</Actions>}
 
@@ -69,7 +69,7 @@ const TableHeader = ({
 				selectedCount={selectedCount}
 			/>
 		)}
-	</TableHeaderStyle>
+	</HeaderStyle>
 );
 
-export default TableHeader;
+export default Header;

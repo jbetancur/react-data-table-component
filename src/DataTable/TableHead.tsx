@@ -7,7 +7,7 @@ const fixedCSS = css`
 	z-index: 1;
 `;
 
-const TableHead = styled.div<{
+const Head = styled.div<{
 	fixedHeader?: boolean;
 }>`
 	display: flex;
@@ -16,4 +16,4 @@ const TableHead = styled.div<{
 	${({ theme }) => theme.head.style};
 `;
 
-export default TableHead;
+export default Head;

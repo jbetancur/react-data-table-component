@@ -6,7 +6,7 @@ import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import { equalizeId, getConditionalStyle, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
-import { RowRecord, SingleRowAction, TableProps } from './types';
+import { TableRow, SingleRowAction, TableProps } from './types';
 
 const highlightCSS = css<{
 	highlightOnHover?: boolean;
@@ -90,7 +90,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function TableRow<T extends RowRecord>({
+function Row<T extends TableRow>({
 	columns = [],
 	conditionalRowStyles = [],
 	defaultExpanded = false,
@@ -223,7 +223,7 @@ function TableRow<T extends RowRecord>({
 						<TableCell
 							id={`cell-${column.id}-${row[keyField]}`}
 							key={`cell-${column.id}-${row[keyField]}`}
-							// apply a tag that TableRow will use to stop event propagation when TableCell is clicked
+							// apply a tag that Row will use to stop event propagation when TableCell is clicked
 							dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
 							column={column}
 							row={row}
@@ -252,4 +252,4 @@ function TableRow<T extends RowRecord>({
 	);
 }
 
-export default TableRow;
+export default Row;

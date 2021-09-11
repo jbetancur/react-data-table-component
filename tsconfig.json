@@ -1,5 +1,5 @@
 {
-  "compilerOptions": {
+	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
@@ -10,27 +10,30 @@
 		"noUnusedLocals": true,
 		"removeComments": true,
 		"resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
+		"skipLibCheck": true,
+		"strict": true,
 		"sourceMap": true,
 		"baseUrl": "src",
-    "jsx": "react",
+		"jsx": "react",
 		"moduleResolution": "node",
 		"outDir": "dist",
 		"target": "es6",
 		"module": "esnext",
-    "lib": [
-      "es6",
-      "es7",
-      "dom"
+		"lib": [
+			"es6",
+			"es7",
+			"dom"
 		],
 		"declaration": true
 	},
-	"include": ["src/**/*"],
+	"include": [
+		"src/**/*",
+		"stories/**/*"
+	],
 	"exclude": [
-    "node_modules",
+		"node_modules",
 		"dist",
 		"src/**/__tests__",
 		"src/**/internal"
-  ]
+	]
 }

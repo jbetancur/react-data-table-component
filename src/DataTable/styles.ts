@@ -57,19 +57,13 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 		draggingStyle: {
 			cursor: 'move',
 		},
-		activeSortStyle: {
-			color: theme.text.primary,
+		sortStyle: {
+			cursor: 'pointer',
 			'&:focus': {
 				outline: 'none',
 			},
-			'&:hover:not(:focus)': {
-				color: theme.sortFocus.default,
-			},
-		},
-		inactiveSortStyle: {
-			'&:focus': {
-				outline: 'none',
-				color: theme.sortFocus.default,
+			'&:hover:focus': {
+				color: theme.text.primary,
 			},
 			'&:hover': {
 				color: theme.sortFocus.default,
@@ -88,9 +82,6 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			transitionDuration: '125ms',
 			transitionTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
 			willChange: 'transform',
-		},
-		activeStyle: {
-			transform: 'translate3d(0, 0, 0)',
 		},
 	},
 	cells: {
