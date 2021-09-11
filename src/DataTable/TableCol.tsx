@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Cell, CellProps } from './Cell';
+import { CellExtended, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { equalizeId, sort } from './util';
 import { TableColumn, SortAction, SortDirection, SortFunction } from './types';
 
-interface TableColStyleProps extends CellProps {
+interface ColumnStyleProps extends CellProps {
 	isDragging?: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -14,7 +14,7 @@ interface TableColStyleProps extends CellProps {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-const TableColStyled = styled(Cell)<TableColStyleProps>`
+const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 	${({ button }) => button && 'text-align: center'};
 	${({ theme, isDragging }) => isDragging && theme.headCells.draggingStyle};
 `;
@@ -26,11 +26,11 @@ interface ColumnSortableProps {
 }
 
 const sortableCSS = css<ColumnSortableProps>`
-	${({ theme, sortActive }) => (sortActive ? theme.headCells.activeSortStyle : theme.headCells.inactiveSortStyle)};
-
+	${({ theme }) => theme.headCells.sortStyle};
 	span.__rdt_custom_sort_icon__ {
 		i,
 		svg {
+			transform: 'translate3d(0, 0, 0)';
 			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
 			font-size: 18px !important;
@@ -49,12 +49,9 @@ const sortableCSS = css<ColumnSortableProps>`
 	}
 
 	&:hover {
-		cursor: pointer;
-		${({ theme }) => theme.headCells.activeStyle};
-
 		span,
 		span.__rdt_custom_sort_icon__ * {
-			${({ sortActive }) => !sortActive && 'opacity: 1'};
+			${({ sortActive }) => !sortActive && 'opacity: 0.8'};
 		}
 	}
 `;
@@ -187,7 +184,7 @@ function TableCol<T>({
 	const customSortIconRight = column.sortable && sortIcon && column.right;
 
 	return (
-		<TableColStyled
+		<ColumnStyled
 			data-column-id={column.id}
 			className="rdt_TableCol"
 			headCell
@@ -231,7 +228,7 @@ function TableCol<T>({
 					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</ColumnSortable>
 			)}
-		</TableColStyled>
+		</ColumnStyled>
 	);
 }
 

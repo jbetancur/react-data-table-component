@@ -1,10 +1,19 @@
 import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import Icon1 from '@material-ui/icons/ReplyAll';
 import Icon2 from '@material-ui/icons/Markunread';
 import Icon3 from '@material-ui/icons/CloudDownload';
 import TextField from '@material-ui/core/TextField';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import data from '../constants/sampleMovieData';
-import DataTable, { Alignment, Direction } from '../../src/index';
+import DataTable, { Alignment, Direction, TableProps, TableColumn } from '../../src/index';
+
+type Row = {
+	title: string;
+	director: string;
+	year: string;
+};
 
 const subHeaderComponent = (
 	<div style={{ display: 'flex', alignItems: 'center' }}>
@@ -15,7 +24,7 @@ const subHeaderComponent = (
 	</div>
 );
 
-const columns = [
+const columns: TableColumn<Row>[] = [
 	{
 		name: 'Title',
 		selector: row => row.title,
@@ -36,7 +45,11 @@ const columns = [
 	},
 ];
 
-const KitchenSinkStory = ({
+interface TablePropsExtended extends TableProps {
+	selectableRowsRadio: boolean;
+}
+
+function KitchenSinkStory({
 	selectableRows,
 	selectableRowsNoSelectAll,
 	selectableRowsVisibleOnly,
@@ -65,7 +78,7 @@ const KitchenSinkStory = ({
 	subHeaderWrap,
 	responsive,
 	disabled,
-}) => {
+}: TablePropsExtended): JSX.Element {
 	const selectableRowsComponentProps = React.useMemo(
 		() => ({
 			type: selectableRowsRadio ? 'radio' : 'checkbox',
@@ -110,15 +123,13 @@ const KitchenSinkStory = ({
 			disabled={disabled}
 		/>
 	);
-};
+}
 
-const Template = args => <KitchenSinkStory {...args} />;
+const Template: Story<TablePropsExtended> = args => <KitchenSinkStory {...args} />;
 
-export const KitchenSink = Template.bind({});
+export const KitchenSinkTS = Template.bind({});
 
-// KitchenSink.parameters = { controls: { include: ['foo', 'bar'] } };
-
-KitchenSink.args = {
+KitchenSinkTS.args = {
 	selectableRows: false,
 	selectableRowsNoSelectAll: false,
 	selectableRowsVisibleOnly: false,
@@ -149,14 +160,11 @@ KitchenSink.args = {
 };
 
 export default {
-	title: 'Getting Started/Kitchen Sink',
-	component: KitchenSink,
+	title: 'Getting Started/Kitchen Sink TS',
+	component: KitchenSinkTS,
 	parameters: {
 		controls: {
 			sort: 'requiredFirst',
-			// docs: {
-			// 	page: KitchenSinkMDX,
-			// },
 		},
 	},
 	argTypes: {
@@ -221,4 +229,4 @@ export default {
 			},
 		},
 	},
-};
+} as Meta;

@@ -25,14 +25,14 @@ const SubheaderWrapper = styled.header<{
 	${({ theme }) => theme.subHeader.style}
 `;
 
-type TableSubheaderProps = {
+type SubheaderProps = {
 	align?: AlignItems;
 	wrapContent?: boolean;
 	children?: React.ReactNode;
 };
 
-const TableSubheader = ({ align = 'right', wrapContent = true, ...rest }: TableSubheaderProps): JSX.Element => (
+const Subheader = ({ align = 'right', wrapContent = true, ...rest }: SubheaderProps): JSX.Element => (
 	<SubheaderWrapper align={align} wrapContent={wrapContent} {...rest} />
 );
 
-export default TableSubheader;
+export default Subheader;

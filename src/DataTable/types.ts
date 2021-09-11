@@ -10,12 +10,12 @@ export type RowState<T> = ((row: T) => boolean) | null;
 export type Selector<T> = string | ((row: T, rowIndex: number) => React.ReactNode);
 export type SortDirection = 'asc' | 'desc';
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
-export type RowRecord = Record<string, unknown>;
+export type TableRow = Record<string, unknown>;
 export type ExpandableRowsComponent = React.ComponentType<Record<string, unknown>>;
 export type PaginationComponent = React.ComponentType<Record<string, unknown>>;
 export type ComponentProps = Record<string, unknown>;
 
-export type TableProps<T = RowRecord> = {
+export type TableProps<T = TableRow> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
 	clearSelectedRows?: boolean;
@@ -101,7 +101,7 @@ export type TableProps<T = RowRecord> = {
 	title?: string | React.ReactNode;
 };
 
-export interface TableColumnBase {
+export type TableColumnBase = {
 	allowOverflow?: boolean;
 	button?: boolean;
 	center?: boolean;
@@ -120,9 +120,9 @@ export interface TableColumnBase {
 	style?: CSSObject;
 	width?: string;
 	wrap?: boolean;
-}
+};
 
-export interface TableColumn<T = RowRecord> extends TableColumnBase {
+export interface TableColumn<T = TableRow> extends TableColumnBase {
 	name?: string | number | React.ReactNode;
 	sortfield?: string;
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
@@ -132,7 +132,7 @@ export interface TableColumn<T = RowRecord> extends TableColumnBase {
 	sortFunction?: ColumnSortFunction<T>;
 }
 
-export interface ConditionalStyles<T = RowRecord> {
+export interface ConditionalStyles<T = TableRow> {
 	when: (row: T) => boolean;
 	style?: CSSObject | ((row: T) => CSSObject);
 }
@@ -160,8 +160,7 @@ export interface TableStyles {
 	headCells?: {
 		style?: CSSObject;
 		draggingStyle?: CSSObject;
-		activeSortStyle?: CSSObject;
-		inactiveSortStyle?: CSSObject;
+		sortStyle?: CSSObject;
 	};
 	contextMenu?: {
 		style?: CSSObject;
@@ -286,18 +285,6 @@ type ThemeStriped = {
 	default: string;
 	text: string;
 };
-
-export interface ThemeCustom {
-	text?: ThemeText;
-	background?: ThemeBackground;
-	context?: ThemeContext;
-	divider?: ThemeDivider;
-	button?: ThemeButton;
-	sortFocus?: ThemeSortFocus;
-	selected?: ThemeSelected;
-	highlightOnHover?: ThemeHighlightOnHover;
-	striped?: ThemeStriped;
-}
 
 export type Themes = 'default' | 'dark' | string | undefined;
 

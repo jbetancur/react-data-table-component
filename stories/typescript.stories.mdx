@@ -1,0 +1,99 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="API Reference/TypeScript" id="api-typescript" />
+
+# TypeScript
+
+React Data Table is built with TypeScript so typings are buit in. Let's implement React Data Table in a TypeScript project:
+
+First, we'll need to define our data type (or interface):
+
+```ts
+import DataTable, { TableColumn } from 'react-data-table-component';
+
+type DataRow {
+	title: string;
+	director: string;
+	year: string;
+}
+```
+
+Alternatively, if you want to define `DataRow` as an interface you will need to extend the built in `TableRow` type:
+
+```ts
+import DataTable, { TableColumn, TableRow } from 'react-data-table-component';
+
+interface DataRow extends TableRow {
+	title: string;
+	director: string;
+	year: string;
+}
+```
+
+Next, we can create our columns. `TableColumn` is an interface representing a column definition that takes a generic parameter. By passing `TableColumn<DataRow>[]` we now have access to our `dataRow` props on any property in our table `columns` for any propery that accesses our data:
+
+```ts
+const columns: TableColumn<DataRow>[] = [
+	{
+		name: 'Title',
+		selector: row => row.title,
+	},
+	{
+		name: 'Director',
+		selector: row => row.director,
+	},
+	{
+		name: 'Year',
+		selector: row => row.year,
+	},
+];
+```
+
+Finally, we can implement our TypeScript component that uses `DataTable`:
+
+```ts
+function MyComponent(): JSX.Element {
+	return <DataTable columns={columns} data={data} />;
+}
+```
+
+Alternatively, if you prefer using `React.FC`:
+
+```ts
+const MyComponent: React.FC = () => {
+	return <DataTable columns={columns} data={data} />;
+};
+```
+
+Putting it all together:
+
+```ts
+import DataTable, { TableColumn } from 'react-data-table-component';
+
+type DataRow {
+	title: string;
+	director: string;
+	year: string;
+}
+
+const columns: TableColumn<DataRow>[] = [
+	{
+		name: 'Title',
+		selector: row => row.title,
+	},
+	{
+		name: 'Director',
+		selector: row => row.director,
+	},
+	{
+		name: 'Year',
+		selector: row => row.year,
+	},
+];
+
+function MyComponent(): JSX.Element {
+	return <DataTable columns={columns} data={data} />;
+}
+
+export default MyComponent;
+```

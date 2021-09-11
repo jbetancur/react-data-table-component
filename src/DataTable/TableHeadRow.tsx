@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TableHeadRow = styled.div<{
+const HeadRow = styled.div<{
 	dense?: boolean;
 	disabled?: boolean;
 }>`
@@ -11,4 +11,4 @@ const TableHeadRow = styled.div<{
 	${({ dense, theme }) => dense && theme.headRow.denseStyle};
 `;
 
-export default TableHeadRow;
+export default HeadRow;

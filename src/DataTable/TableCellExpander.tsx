@@ -4,14 +4,14 @@ import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 import { ExpandableIcon } from './types';
 
-const TableCellExpanderStyle = styled(CellBase)`
+const CellExpanderStyle = styled(CellBase)`
 	white-space: nowrap;
 	font-weight: 400;
 	min-width: 48px;
 	${({ theme }) => theme.expanderCell.style};
 `;
 
-type TableCellExpanderProps<T> = {
+type CellExpanderProps<T> = {
 	disabled: boolean;
 	expanded: boolean;
 	expandableIcon: ExpandableIcon;
@@ -20,16 +20,16 @@ type TableCellExpanderProps<T> = {
 	onToggled: (row: T) => void;
 };
 
-function TableCellExpander<T>({
+function CellExpander<T>({
 	row,
 	expanded = false,
 	expandableIcon,
 	id,
 	onToggled,
 	disabled = false,
-}: TableCellExpanderProps<T>): JSX.Element {
+}: CellExpanderProps<T>): JSX.Element {
 	return (
-		<TableCellExpanderStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} noPadding>
+		<CellExpanderStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} noPadding>
 			<ExpanderButton
 				id={id}
 				row={row}
@@ -38,8 +38,8 @@ function TableCellExpander<T>({
 				disabled={disabled}
 				onToggled={onToggled}
 			/>
-		</TableCellExpanderStyle>
+		</CellExpanderStyle>
 	);
 }
 
-export default TableCellExpander;
+export default CellExpander;

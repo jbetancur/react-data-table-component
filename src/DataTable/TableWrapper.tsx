@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const TableWrapper = styled.div`
+const Wrapper = styled.div`
 	position: relative;
 	width: 100%;
 	${({ theme }) => theme.tableWrapper.style};
 `;
 
-export default TableWrapper;
+export default Wrapper;

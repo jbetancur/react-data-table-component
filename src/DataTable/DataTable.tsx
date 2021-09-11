@@ -2,18 +2,18 @@ import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { tableReducer } from './tableReducer';
 import Table from './Table';
-import TableHead from './TableHead';
-import TableHeadRow from './TableHeadRow';
-import TableRow from './TableRow';
-import TableCol from './TableCol';
-import TableColCheckbox from './TableColCheckbox';
-import TableHeader from './TableHeader';
-import TableSubheader from './TableSubheader';
-import TableBody from './TableBody';
+import Head from './TableHead';
+import HeadRow from './TableHeadRow';
+import Row from './TableRow';
+import Column from './TableCol';
+import ColumnCheckbox from './TableColCheckbox';
+import Header from './TableHeader';
+import Subheader from './TableSubheader';
+import Body from './TableBody';
 import ResponsiveWrapper from './ResponsiveWrapper';
 import ProgressWrapper from './ProgressWrapper';
-import TableWrapper from './TableWrapper';
-import TableColExpander from './TableColExpander';
+import Wrapper from './TableWrapper';
+import ColumnExpander from './TableColExpander';
 import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
@@ -21,10 +21,10 @@ import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { Action, AllRowsAction, SingleRowAction, RowRecord, SortAction, TableProps, TableState } from './types';
+import { Action, AllRowsAction, SingleRowAction, TableRow, SortAction, TableProps, TableState } from './types';
 import useColumns from '../hooks/useColumns';
 
-function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
+function DataTable<T extends TableRow>(props: TableProps<T>): JSX.Element {
 	const {
 		data = defaultProps.data,
 		columns = defaultProps.columns,
@@ -305,7 +305,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	return (
 		<ThemeProvider theme={currentTheme}>
 			{showHeader() && (
-				<TableHeader
+				<Header
 					title={title}
 					actions={actions}
 					showMenu={!noContextMenu}
@@ -318,9 +318,9 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 			)}
 
 			{subHeader && (
-				<TableSubheader align={subHeaderAlign} wrapContent={subHeaderWrap}>
+				<Subheader align={subHeaderAlign} wrapContent={subHeaderWrap}>
 					{subHeaderComponent}
-				</TableSubheader>
+				</Subheader>
 			)}
 
 			<ResponsiveWrapper
@@ -329,18 +329,18 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 				fixedHeaderScrollHeight={fixedHeaderScrollHeight}
 				{...wrapperProps}
 			>
-				<TableWrapper>
+				<Wrapper>
 					{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
 					<Table disabled={disabled} className="rdt_Table" role="table">
 						{showTableHead() && (
-							<TableHead className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
-								<TableHeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
+							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
+								<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
 									{selectableRows &&
 										(showSelectAll ? (
 											<CellBase style={{ flex: '0 0 48px' }} />
 										) : (
-											<TableColCheckbox
+											<ColumnCheckbox
 												allSelected={allSelected}
 												selectedRows={selectedRows}
 												selectableRowsComponent={selectableRowsComponent}
@@ -352,9 +352,9 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 												onSelectAllRows={handleSelectAllRows}
 											/>
 										))}
-									{expandableRows && !expandableRowsHideExpander && <TableColExpander />}
+									{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
 									{tableColumns.map(column => (
-										<TableCol
+										<Column
 											key={column.id}
 											column={column}
 											selectedColumn={selectedColumn}
@@ -377,8 +377,8 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 											draggingColumnId={draggingColumnId}
 										/>
 									))}
-								</TableHeadRow>
-							</TableHead>
+								</HeadRow>
+							</Head>
 						)}
 
 						{!rows.length && !progressPending && <NoData>{noDataComponent}</NoData>}
@@ -386,15 +386,17 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 						{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
 						{!progressPending && rows.length > 0 && (
-							<TableBody className="rdt_TableBody" role="rowgroup">
+							<Body className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
-									const id = (isEmpty(row[keyField] as string | number) ? i : row[keyField]) as string | number;
+									// we need to cast key since the type is unknown beforehand
+									const key = row[keyField] as string | number;
+									const id = isEmpty(key) ? i : key;
 									const selected = isRowSelected(row, selectedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
 
 									return (
-										<TableRow
+										<Row
 											id={id}
 											key={id}
 											keyField={keyField}
@@ -438,10 +440,10 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 										/>
 									);
 								})}
-							</TableBody>
+							</Body>
 						)}
 					</Table>
-				</TableWrapper>
+				</Wrapper>
 			</ResponsiveWrapper>
 
 			{enabledPagination && (

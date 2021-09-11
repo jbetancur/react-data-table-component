@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const TableBody = styled.div`
+const Body = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
 
-export default TableBody;
+export default Body;
