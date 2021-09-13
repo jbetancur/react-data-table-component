@@ -1,11 +1,11 @@
 {
   "name": "react-data-table-component",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "A simple to use declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "browser": "dist/index.cjs.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist"
   ],
@@ -51,7 +51,7 @@
     "@testing-library/react": "^12.1.0",
     "@types/faker": "^5.5.8",
     "@types/jest": "^27.0.1",
-    "@types/lodash-es": "^4.17.4",
+    "@types/lodash-es": "^4.17.5",
     "@types/lodash.orderby": "^4.6.6",
     "@types/node": "^16.9.1",
     "@types/react": "^17.0.20",
@@ -73,7 +73,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "faker": "^5.5.3",
     "gh-pages": "^3.2.3",
-    "jest": "^27.1.1",
+    "jest": "^27.2.0",
     "jest-styled-components": "^7.0.5",
     "jest-watch-typeahead": "^0.6.4",
     "lodash-es": "^4.17.21",

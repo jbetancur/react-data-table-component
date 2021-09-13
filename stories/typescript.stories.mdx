@@ -11,7 +11,7 @@ First, we'll need to define our data type (or interface):
 ```ts
 import DataTable, { TableColumn } from 'react-data-table-component';
 
-type DataRow {
+type DataRow = {
 	title: string;
 	director: string;
 	year: string;
@@ -70,7 +70,7 @@ Putting it all together:
 ```ts
 import DataTable, { TableColumn } from 'react-data-table-component';
 
-type DataRow {
+type DataRow = {
 	title: string;
 	director: string;
 	year: string;
