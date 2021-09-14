@@ -243,8 +243,7 @@ describe('getConditionalStyle', () => {
 				},
 			},
 		];
-
-		const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
 		expect(style).toEqual({ backgroundColor: 'green' });
 	});
@@ -258,8 +257,7 @@ describe('getConditionalStyle', () => {
 				},
 			},
 		];
-
-		const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
 		expect(style).toEqual({});
 	});
@@ -267,7 +265,7 @@ describe('getConditionalStyle', () => {
 	test('should return {} if there are no style object expressions', () => {
 		const rowStyleExpression: ConditionalStyles[] = [];
 
-		const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
 		expect(style).toEqual({});
 	});
@@ -279,9 +277,34 @@ describe('getConditionalStyle', () => {
 			},
 		];
 
-		const style = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
 		expect(style).toEqual({});
+	});
+
+	test('should return "" if there are no classNames', () => {
+		const { classNames } = getConditionalStyle({ name: 'luke' }, []);
+
+		expect(classNames).toEqual('');
+	});
+
+	test('should return "leia" a base class is provided', () => {
+		const { classNames } = getConditionalStyle({ name: 'luke' }, [], ['leia']);
+
+		expect(classNames).toEqual('leia');
+	});
+
+	test('should return "anakin leia" if the expression matches and a base class is provided', () => {
+		const rowStyleExpression: ConditionalStyles[] = [
+			{
+				when: r => r.name === 'luke',
+				classNames: ['leia'],
+			},
+		];
+
+		const { classNames } = getConditionalStyle({ name: 'luke' }, rowStyleExpression, ['anakin']);
+
+		expect(classNames).toEqual('anakin leia');
 	});
 });
 

@@ -169,9 +169,9 @@ function Row<T extends TableRow>({
 		[defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row],
 	);
 
-	const extendedRowStyle = getConditionalStyle(row, conditionalRowStyles);
+	const { style, classNames } = getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']);
 	const highlightSelected = selectableRowsHighlight && selected;
-	const inheritStyles = expandableInheritConditionalStyles ? extendedRowStyle : {};
+	const inheritStyles = expandableInheritConditionalStyles ? style : {};
 	const isStriped = striped && isOdd(rowIndex);
 
 	return (
@@ -185,9 +185,9 @@ function Row<T extends TableRow>({
 				dense={dense}
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
-				className="rdt_TableRow"
+				className={classNames}
 				selected={highlightSelected}
-				style={extendedRowStyle}
+				style={style}
 			>
 				{selectableRows && (
 					<TableCellCheckbox
@@ -244,6 +244,7 @@ function Row<T extends TableRow>({
 					key={`expander-${row[keyField]}`}
 					data={row}
 					extendedRowStyle={inheritStyles}
+					extendedClassNames={classNames}
 					component={expandableRowsComponent}
 					componentProps={expandableRowsComponentProps}
 				/>

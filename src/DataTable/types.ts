@@ -135,6 +135,7 @@ export interface TableColumn<T = TableRow> extends TableColumnBase {
 export interface ConditionalStyles<T = TableRow> {
 	when: (row: T) => boolean;
 	style?: CSSObject | ((row: T) => CSSObject);
+	classNames?: string[];
 }
 
 export interface TableStyles {

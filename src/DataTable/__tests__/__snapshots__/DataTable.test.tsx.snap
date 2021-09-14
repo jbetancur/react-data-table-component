@@ -11404,6 +11404,270 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 </div>
 `;
 
+exports[`DataTable::conditionalCellStyles should render correctly when conditionalCellStyles with classNames is defined and there is a match 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 56px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1.5;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div
+              class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
+              role="columnheader"
+              tabindex="0"
+            >
+              <div
+                class="c8"
+                data-column-id="1"
+              >
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell leia"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="gridcell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="gridcell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DataTable::conditionalRowStyles should render correctly when conditionalRowStyles are an empty array 1`] = `
 .c2 {
   position: relative;
@@ -26402,6 +26666,693 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           </div>
           <div
             class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="gridcell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when conditionalRowStyles is used with an expandableRows an expandableInheritConditionalStyles with classNames instead of style 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 56px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c7 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c13 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+  padding: 0;
+}
+
+.c8 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c16 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c15 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  border: none;
+  background-color: transparent;
+  color: rgba(0,0,0,.54);
+  fill: rgba(0,0,0,.54);
+  background-color: transparent;
+  border-radius: 2px;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  height: 100%;
+  width: 100%;
+}
+
+.c15:hover:enabled {
+  cursor: pointer;
+}
+
+.c15:disabled {
+  color: rgba(0,0,0,.18);
+}
+
+.c15:hover:not(:disabled) {
+  cursor: pointer;
+  background-color: rgba(0,0,0,.12);
+}
+
+.c15:focus {
+  outline: none;
+  background-color: rgba(0,0,0,.12);
+}
+
+.c15 svg {
+  margin: auto;
+}
+
+.c14 {
+  white-space: nowrap;
+  font-weight: 400;
+  min-width: 48px;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
+.c17 {
+  width: 100%;
+  box-sizing: border-box;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c12:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1.5;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.c10 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+.c6 {
+  white-space: nowrap;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6"
+          />
+          <div
+            class="c7 c8 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div
+              class="c9 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
+              role="columnheader"
+              tabindex="0"
+            >
+              <div
+                class="c10"
+                data-column-id="1"
+              >
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c11 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c12 rdt_TableRow leia"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c13 c14"
+          >
+            <button
+              aria-disabled="false"
+              aria-label="Collapse Row"
+              class="c15"
+              data-testid="expander-button-1"
+              role="button"
+              type="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"
+                />
+                <path
+                  d="M0-.75h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="gridcell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c17 rdt_ExpanderRow leia"
+        >
+          <div>
+            To add an expander pass in a component instance via 
+            <strong>
+              expandableRowsComponent
+            </strong>
+            . You can then access props.data from this component.
+          </div>
+        </div>
+        <div
+          class="c12 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c13 c14"
+          >
+            <button
+              aria-disabled="false"
+              aria-label="Expand Row"
+              class="c15"
+              data-testid="expander-button-2"
+              role="button"
+              type="button"
+            >
+              <svg
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                />
+                <path
+                  d="M0-.25h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="c5 c8 c16 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="gridcell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when conditionalRowStyles with classNames is used and there is a match 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 56px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  line-height: 1.5;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div
+              class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
+              role="columnheader"
+              tabindex="0"
+            >
+              <div
+                class="c8"
+                data-column-id="1"
+              >
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow leia"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="gridcell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
