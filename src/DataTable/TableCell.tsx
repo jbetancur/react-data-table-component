@@ -55,12 +55,14 @@ function Cell<T>({
 	onDragEnter,
 	onDragLeave,
 }: CellProps<T>): JSX.Element {
+	const { style, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
+
 	return (
 		<CellStyle
 			id={id}
 			data-column-id={column.id}
 			role="gridcell"
-			className="rdt_TableCell"
+			className={classNames}
 			data-tag={dataTag}
 			cellStyle={column.style}
 			renderAsCell={!!column.cell}
@@ -75,7 +77,7 @@ function Cell<T>({
 			right={column.right}
 			width={column.width}
 			wrapCell={column.wrap}
-			style={getConditionalStyle(row, column.conditionalCellStyles)}
+			style={style}
 			isDragging={isDragging}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}

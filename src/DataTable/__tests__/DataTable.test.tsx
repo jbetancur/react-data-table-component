@@ -2245,6 +2245,24 @@ describe('DataTable::conditionalRowStyles', () => {
 	});
 });
 
+test('should render correctly when conditionalRowStyles with classNames is used and there is a match', () => {
+	const mock = dataMock();
+	mock.data[0].completed = true;
+
+	const conditionalRowStyles: ConditionalStyles<Data>[] = [
+		{
+			when: row => !!row.completed,
+			classNames: ['leia'],
+		},
+	];
+
+	const { container } = render(
+		<DataTable data={mock.data} columns={mock.columns} conditionalRowStyles={conditionalRowStyles} />,
+	);
+
+	expect(container.firstChild).toMatchSnapshot();
+});
+
 test('should render correctly when conditionalRowStyles is used with an expandableRows an expandableInheritConditionalStyles', () => {
 	const mock = dataMock();
 	mock.data[0].completed = true;
@@ -2258,6 +2276,31 @@ test('should render correctly when conditionalRowStyles is used with an expandab
 					cursor: 'pointer',
 				},
 			},
+		},
+	];
+
+	const { container, getByTestId } = render(
+		<DataTable
+			data={mock.data}
+			columns={mock.columns}
+			conditionalRowStyles={conditionalRowStyles}
+			expandableRows
+			expandableInheritConditionalStyles
+		/>,
+	);
+
+	fireEvent.click(getByTestId('expander-button-1'));
+
+	expect(container.firstChild).toMatchSnapshot();
+});
+
+test('should render correctly when conditionalRowStyles is used with an expandableRows an expandableInheritConditionalStyles with classNames instead of style', () => {
+	const mock = dataMock();
+	mock.data[0].completed = true;
+	const conditionalRowStyles: ConditionalStyles<Data>[] = [
+		{
+			when: row => !!row.completed,
+			classNames: ['leia'],
 		},
 	];
 
@@ -2334,6 +2377,21 @@ describe('DataTable::conditionalCellStyles', () => {
 				style: {
 					backgroundColor: 'rgba(63, 195, 128, 0.9)',
 				},
+			},
+		];
+
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
+	test('should render correctly when conditionalCellStyles with classNames is defined and there is a match', () => {
+		const mock = dataMock();
+		mock.data[0].completed = true;
+		mock.columns[0].conditionalCellStyles = [
+			{
+				when: (row: Data) => row.completed,
+				classNames: ['leia'],
 			},
 		];
 

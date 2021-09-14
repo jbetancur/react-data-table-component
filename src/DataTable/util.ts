@@ -155,8 +155,13 @@ export function recalculatePage(prevPage: number, nextPage: number): number {
 
 export const noop = (): null => null;
 
-export function getConditionalStyle<T>(row: T, conditionalRowStyles: ConditionalStyles<T>[] = []): CSSObject {
+export function getConditionalStyle<T>(
+	row: T,
+	conditionalRowStyles: ConditionalStyles<T>[] = [],
+	baseClassNames: string[] = [],
+): { style: CSSObject; classNames: string } {
 	let rowStyle = {};
+	let classNames: string[] = [...baseClassNames];
 
 	if (conditionalRowStyles.length) {
 		conditionalRowStyles.forEach(crs => {
@@ -168,6 +173,10 @@ export function getConditionalStyle<T>(row: T, conditionalRowStyles: Conditional
 			if (crs.when(row)) {
 				rowStyle = crs.style || {};
 
+				if (crs.classNames) {
+					classNames = [...classNames, ...crs.classNames];
+				}
+
 				if (typeof crs.style === 'function') {
 					rowStyle = crs.style(row) || {};
 				}
@@ -175,7 +184,7 @@ export function getConditionalStyle<T>(row: T, conditionalRowStyles: Conditional
 		});
 	}
 
-	return rowStyle;
+	return { style: rowStyle, classNames: classNames.join(' ') };
 }
 
 export function isRowSelected<T extends TableRow>(row: T, selectedRows: T[] = [], keyField = 'id'): boolean {
