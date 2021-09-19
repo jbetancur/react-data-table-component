@@ -4,9 +4,19 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 
 # TypeScript
 
-React Data Table is built with TypeScript so typings are buit in. Let's implement React Data Table in a TypeScript project:
+React Data Table is built with TypeScript so typings are buit in. First, we'll need to define our data type (or interface):
 
-First, we'll need to define our data type (or interface):
+```ts
+import DataTable, { TableColumn } from 'react-data-table-component';
+
+interface DataRow {
+	title: string;
+	director: string;
+	year: string;
+}
+```
+
+Alternatively, if you want to define `DataRow` as a type:
 
 ```ts
 import DataTable, { TableColumn } from 'react-data-table-component';
@@ -15,22 +25,11 @@ type DataRow = {
 	title: string;
 	director: string;
 	year: string;
-}
+};
 ```
 
-Alternatively, if you want to define `DataRow` as an interface you will need to extend the built in `TableRow` type:
-
-```ts
-import DataTable, { TableColumn, TableRow } from 'react-data-table-component';
-
-interface DataRow extends TableRow {
-	title: string;
-	director: string;
-	year: string;
-}
-```
-
-Next, we can create our columns. `TableColumn` is an interface representing a column definition that takes a generic parameter. By passing `TableColumn<DataRow>[]` we now have access to our `dataRow` props on any property in our table `columns` for any propery that accesses our data:
+Next, we'll create our columns definitions. `TableColumn` is an interface representing a column definition.
+`TableColumn` takes a generic parameter `<T>`. By passing `TableColumn<DataRow>[]` (columns is an array) we now have access to our `dataRow` props on any property in our table `columns` that accesses our data:
 
 ```ts
 const columns: TableColumn<DataRow>[] = [
@@ -49,7 +48,7 @@ const columns: TableColumn<DataRow>[] = [
 ];
 ```
 
-Finally, we can implement our TypeScript component that uses `DataTable`:
+Finally, we'll implement our TypeScript component that uses `DataTable`:
 
 ```ts
 function MyComponent(): JSX.Element {
@@ -57,7 +56,7 @@ function MyComponent(): JSX.Element {
 }
 ```
 
-Alternatively, if you prefer using `React.FC`:
+Or, if you prefer using `React.FC`:
 
 ```ts
 const MyComponent: React.FC = () => {
@@ -70,7 +69,7 @@ Putting it all together:
 ```ts
 import DataTable, { TableColumn } from 'react-data-table-component';
 
-type DataRow = {
+interface DataRow {
 	title: string;
 	director: string;
 	year: string;
@@ -97,3 +96,23 @@ function MyComponent(): JSX.Element {
 
 export default MyComponent;
 ```
+
+## Types
+
+In addition to `TableColumn` we can also access various other React Data Table types.
+
+The following are going to be the most commonly used and accept a generic `T` parameter, which will always be your data's type or interface:
+
+- `TableProps<T>`
+- `TableColumn<T>`
+- `ConditionalStyles<T>`
+
+The following types are less commonly used but available for niche cases:
+
+- `TableRow`
+- `TableStyles`
+- `Theme`
+- `Themes`
+- `PaginationOptions`
+- `PaginationServerOptions`
+- `ContextMessage`

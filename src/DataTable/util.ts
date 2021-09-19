@@ -2,6 +2,10 @@ import orderBy from 'lodash.orderby';
 import { CSSObject } from 'styled-components';
 import { ConditionalStyles, TableColumn, Format, TableRow, Selector, SortDirection, SortFunction } from './types';
 
+export function prop<T, K extends keyof T>(obj: T, key: K): T[K] {
+	return obj[key];
+}
+
 export function isEmpty(field: string | number | undefined = ''): boolean {
 	if (typeof field === 'number') {
 		return false;
@@ -24,7 +28,7 @@ export function setRowData<T>(
 	return sort(rows, selector, direction, sortFn);
 }
 
-export function sort<T = TableRow>(
+export function sort<T>(
 	rows: T[],
 	selector: Selector<T> | null | undefined,
 	direction: SortDirection,
@@ -85,12 +89,17 @@ export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {
 	return [...array.slice(0, index), item, ...array.slice(index)];
 }
 
-export function removeItem<T extends TableRow>(array: T[] = [], item: T, keyField = 'id'): T[] {
+export function removeItem<T>(array: T[] = [], item: T, keyField = 'id'): T[] {
 	const newArray = array.slice();
+	const outerField = prop(item as TableRow, keyField);
 
-	if (item[keyField]) {
+	if (outerField) {
 		newArray.splice(
-			newArray.findIndex((a: T) => a[keyField] === item[keyField]),
+			newArray.findIndex((a: T) => {
+				const innerField = prop(a as TableRow, keyField);
+
+				return innerField === outerField;
+			}),
 			1,
 		);
 	} else {
@@ -187,9 +196,16 @@ export function getConditionalStyle<T>(
 	return { style: rowStyle, classNames: classNames.join(' ') };
 }
 
-export function isRowSelected<T extends TableRow>(row: T, selectedRows: T[] = [], keyField = 'id'): boolean {
-	if (row[keyField]) {
-		return selectedRows.some(r => r[keyField] === row[keyField]);
+export function isRowSelected<T>(row: T, selectedRows: T[] = [], keyField = 'id'): boolean {
+	// cast row as TableRow because the property is unknown in advance therefore, typescript will throw an error
+	const outerField = prop(row as TableRow, keyField);
+
+	if (outerField) {
+		return selectedRows.some(r => {
+			const innerField = prop(r as TableRow, keyField);
+
+			return innerField === outerField;
+		});
 	}
 
 	return selectedRows.some(r => r === row);

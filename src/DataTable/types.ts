@@ -15,7 +15,7 @@ export type ExpandableRowsComponent = React.ComponentType<Record<string, unknown
 export type PaginationComponent = React.ComponentType<Record<string, unknown>>;
 export type ComponentProps = Record<string, unknown>;
 
-export type TableProps<T = TableRow> = {
+export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
 	clearSelectedRows?: boolean;
@@ -122,7 +122,7 @@ export type TableColumnBase = {
 	wrap?: boolean;
 };
 
-export interface TableColumn<T = TableRow> extends TableColumnBase {
+export interface TableColumn<T> extends TableColumnBase {
 	name?: string | number | React.ReactNode;
 	sortfield?: string;
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
@@ -132,7 +132,7 @@ export interface TableColumn<T = TableRow> extends TableColumnBase {
 	sortFunction?: ColumnSortFunction<T>;
 }
 
-export interface ConditionalStyles<T = TableRow> {
+export interface ConditionalStyles<T> {
 	when: (row: T) => boolean;
 	style?: CSSObject | ((row: T) => CSSObject);
 	classNames?: string[];

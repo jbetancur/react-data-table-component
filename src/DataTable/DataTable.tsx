@@ -18,13 +18,13 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage } from './util';
+import { prop, getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
 import { Action, AllRowsAction, SingleRowAction, TableRow, SortAction, TableProps, TableState } from './types';
 import useColumns from '../hooks/useColumns';
 
-function DataTable<T extends TableRow>(props: TableProps<T>): JSX.Element {
+function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const {
 		data = defaultProps.data,
 		columns = defaultProps.columns,
@@ -388,8 +388,7 @@ function DataTable<T extends TableRow>(props: TableProps<T>): JSX.Element {
 						{!progressPending && rows.length > 0 && (
 							<Body className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
-									// we need to cast key since the type is unknown beforehand
-									const key = row[keyField] as string | number;
+									const key = prop(row as TableRow, keyField) as string | number;
 									const id = isEmpty(key) ? i : key;
 									const selected = isRowSelected(row, selectedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
@@ -400,7 +399,7 @@ function DataTable<T extends TableRow>(props: TableProps<T>): JSX.Element {
 											id={id}
 											key={id}
 											keyField={keyField}
-											data-row-id={row[keyField]}
+											data-row-id={id}
 											columns={tableColumns}
 											row={row}
 											rowCount={rows.length}

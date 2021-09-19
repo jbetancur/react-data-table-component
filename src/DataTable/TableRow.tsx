@@ -4,7 +4,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
-import { equalizeId, getConditionalStyle, isOdd, noop } from './util';
+import { prop, equalizeId, getConditionalStyle, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
 import { TableRow, SingleRowAction, TableProps } from './types';
 
@@ -90,7 +90,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function Row<T extends TableRow>({
+function Row<T>({
 	columns = [],
 	conditionalRowStyles = [],
 	defaultExpanded = false,
@@ -169,6 +169,7 @@ function Row<T extends TableRow>({
 		[defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row],
 	);
 
+	const rowKeyField = prop(row as TableRow, keyField);
 	const { style, classNames } = getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']);
 	const highlightSelected = selectableRowsHighlight && selected;
 	const inheritStyles = expandableInheritConditionalStyles ? style : {};
@@ -191,6 +192,7 @@ function Row<T extends TableRow>({
 			>
 				{selectableRows && (
 					<TableCellCheckbox
+						name={`select-row-${rowKeyField}`}
 						keyField={keyField}
 						row={row}
 						rowCount={rowCount}
@@ -205,7 +207,7 @@ function Row<T extends TableRow>({
 
 				{expandableRows && !expandableRowsHideExpander && (
 					<TableCellExpander
-						id={row[keyField] as string}
+						id={rowKeyField as string}
 						expandableIcon={expandableIcon}
 						expanded={expanded}
 						row={row}
@@ -221,8 +223,8 @@ function Row<T extends TableRow>({
 
 					return (
 						<TableCell
-							id={`cell-${column.id}-${row[keyField]}`}
-							key={`cell-${column.id}-${row[keyField]}`}
+							id={`cell-${column.id}-${rowKeyField}`}
+							key={`cell-${column.id}-${rowKeyField}`}
 							// apply a tag that Row will use to stop event propagation when TableCell is clicked
 							dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
 							column={column}
@@ -241,7 +243,7 @@ function Row<T extends TableRow>({
 
 			{expandableRows && expanded && (
 				<ExpanderRow
-					key={`expander-${row[keyField]}`}
+					key={`expander-${rowKeyField}`}
 					data={row}
 					extendedRowStyle={inheritStyles}
 					extendedClassNames={classNames}
