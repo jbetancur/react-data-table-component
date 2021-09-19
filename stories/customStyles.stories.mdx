@@ -15,32 +15,26 @@ import DataTable from 'react-data-table-component';
 
 //  Internally, customStyles will deep merges your customStyles with the default styling.
 const customStyles = {
-  rows: {
-    style: {
-      minHeight: '72px', // override the row height
-    },
-  },
-  headCells: {
-    style: {
-      paddingLeft: '8px', // override the cell padding for head cells
-      paddingRight: '8px',
-    },
-  },
-  cells: {
-    style: {
-      paddingLeft: '8px', // override the cell padding for data cells
-      paddingRight: '8px',
-    },
-  },
+	rows: {
+		style: {
+			minHeight: '72px', // override the row height
+		},
+	},
+	headCells: {
+		style: {
+			paddingLeft: '8px', // override the cell padding for head cells
+			paddingRight: '8px',
+		},
+	},
+	cells: {
+		style: {
+			paddingLeft: '8px', // override the cell padding for data cells
+			paddingRight: '8px',
+		},
+	},
 };
 
-const MyComponent = () => (
-  <DataTable
-    title="Arnold Movies"
-    columns={columns}
-    customStyles={customStyles}
-  />
-);
+const MyComponent = () => <DataTable title="Arnold Movies" columns={columns} customStyles={customStyles} />;
 ```
 
-View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.js) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
+View [styles.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/styles.ts) for a detailed catalog of RDT styles that you can override or extend using css-in-js objects.
