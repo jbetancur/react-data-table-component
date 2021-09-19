@@ -9,11 +9,11 @@ import TextField from '@material-ui/core/TextField';
 import data from '../constants/sampleMovieData';
 import DataTable, { Alignment, Direction, TableProps, TableColumn } from '../../src/index';
 
-type Row = {
+interface Row {
 	title: string;
 	director: string;
 	year: string;
-};
+}
 
 const subHeaderComponent = (
 	<div style={{ display: 'flex', alignItems: 'center' }}>
@@ -45,7 +45,7 @@ const columns: TableColumn<Row>[] = [
 	},
 ];
 
-interface TablePropsExtended extends TableProps {
+interface TablePropsExtended extends TableProps<Row> {
 	selectableRowsRadio: boolean;
 }
 

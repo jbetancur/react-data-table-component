@@ -18,6 +18,15 @@ const row = Object.freeze({
 	properties: { nested: 'iamnesting', items: [{ id: 1, name: 'iamarrayname' }] },
 });
 
+type DataRow = {
+	id?: number;
+	name?: string;
+	properties?: {
+		nested: string;
+		items: { id: number; name: string }[];
+	};
+};
+
 describe('isEmpty', () => {
 	test('if the value is a number return false', () => {
 		expect(isEmpty(1)).toBe(false);
@@ -235,7 +244,7 @@ describe('handleFunctionProps', () => {
 
 describe('getConditionalStyle', () => {
 	test('should return a row style if the expression matches', () => {
-		const rowStyleExpression: ConditionalStyles[] = [
+		const rowStyleExpression: ConditionalStyles<DataRow>[] = [
 			{
 				when: r => r.name === 'luke',
 				style: {
@@ -249,7 +258,7 @@ describe('getConditionalStyle', () => {
 	});
 
 	test('should return {} if the expression does not match', () => {
-		const rowStyleExpression: ConditionalStyles[] = [
+		const rowStyleExpression: ConditionalStyles<DataRow>[] = [
 			{
 				when: r => r.name === 'wookie',
 				style: {
@@ -263,7 +272,7 @@ describe('getConditionalStyle', () => {
 	});
 
 	test('should return {} if there are no style object expressions', () => {
-		const rowStyleExpression: ConditionalStyles[] = [];
+		const rowStyleExpression: ConditionalStyles<DataRow>[] = [];
 
 		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
@@ -271,7 +280,7 @@ describe('getConditionalStyle', () => {
 	});
 
 	test('should default to an empty object if the style property is not provided', () => {
-		const rowStyleExpression: ConditionalStyles[] = [
+		const rowStyleExpression: ConditionalStyles<DataRow>[] = [
 			{
 				when: r => r.name === 'luke',
 			},
@@ -295,7 +304,7 @@ describe('getConditionalStyle', () => {
 	});
 
 	test('should return "anakin leia" if the expression matches and a base class is provided', () => {
-		const rowStyleExpression: ConditionalStyles[] = [
+		const rowStyleExpression: ConditionalStyles<DataRow>[] = [
 			{
 				when: r => r.name === 'luke',
 				classNames: ['leia'],
