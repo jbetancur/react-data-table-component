@@ -98,7 +98,7 @@ const columns = [
 	},
 	{
 		name: 'Protein (g)',
-		selector: row => row.protien,
+		selector: row => row.protein,
 		sortable: true,
 		right: true,
 	},
