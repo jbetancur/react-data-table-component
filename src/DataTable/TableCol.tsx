@@ -222,7 +222,11 @@ function TableCol<T>({
 					{!disabled && customSortIconRight && renderCustomSortIcon()}
 					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
-					<ColumnText data-column-id={column.id}>{column.name}</ColumnText>
+					{typeof column.name === 'string' ? (
+						<ColumnText data-column-id={column.id}>{column.name}</ColumnText>
+					) : (
+						column.name
+					)}
 
 					{!disabled && customSortIconLeft && renderCustomSortIcon()}
 					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
