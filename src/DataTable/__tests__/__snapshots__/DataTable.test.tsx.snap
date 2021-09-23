@@ -133,7 +133,6 @@ exports[`DataTable::Header header should not display with no title 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1253,7 +1252,6 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1649,7 +1647,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2218,7 +2215,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2467,7 +2463,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2716,7 +2711,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2965,7 +2959,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3227,7 +3220,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3527,7 +3519,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3776,7 +3767,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -4044,7 +4034,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -4312,7 +4301,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -4580,7 +4568,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -4848,7 +4835,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -5116,7 +5102,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -5365,7 +5350,6 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -5633,7 +5617,6 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -5901,7 +5884,6 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6165,7 +6147,6 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6435,7 +6416,6 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6705,7 +6685,6 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6975,7 +6954,6 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -7245,7 +7223,6 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -7509,7 +7486,6 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -7773,7 +7749,6 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8041,7 +8016,6 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8307,7 +8281,6 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8574,7 +8547,6 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8847,7 +8819,6 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -9099,7 +9070,6 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -9360,7 +9330,6 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -9637,7 +9606,6 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -9957,7 +9925,6 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -10221,7 +10188,6 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -10479,7 +10445,6 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -10743,7 +10708,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -11008,7 +10972,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -11272,7 +11235,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -11537,7 +11499,6 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -11801,7 +11762,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -12065,7 +12025,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -12330,7 +12289,6 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -12596,7 +12554,6 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -12860,7 +12817,6 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -13128,7 +13084,6 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -13397,7 +13352,6 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -13721,7 +13675,6 @@ exports[`DataTable::direction should render correctly when direction is rtl when
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -14122,7 +14075,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -14549,7 +14501,6 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -14996,7 +14947,6 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -15327,7 +15277,6 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -15646,7 +15595,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -16042,7 +15990,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -16458,7 +16405,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -16870,7 +16816,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -17211,7 +17156,6 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -17480,7 +17424,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -17751,7 +17694,6 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -18030,7 +17972,6 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -18298,7 +18239,6 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -18969,7 +18909,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -19160,7 +19099,6 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -19352,7 +19290,6 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -19594,7 +19531,6 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -19858,7 +19794,6 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20157,7 +20092,6 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20483,7 +20417,6 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20826,7 +20759,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -21228,7 +21160,6 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -21555,7 +21486,6 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -21883,7 +21813,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22211,7 +22140,6 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22526,7 +22454,6 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22803,7 +22730,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -23131,7 +23057,6 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -23446,7 +23371,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -23772,7 +23696,6 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -24111,7 +24034,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -24444,7 +24366,6 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -24780,7 +24701,6 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -25116,7 +25036,6 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -25460,7 +25379,6 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -25899,7 +25817,6 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -26475,7 +26392,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -26899,7 +26815,6 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -27240,7 +27155,6 @@ exports[`should render correctly when conditionalRowStyles with classNames is us
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -27506,7 +27420,6 @@ exports[`should render correctly when disabled 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -27771,7 +27684,6 @@ exports[`should render the correctly when using selector function 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -28016,7 +27928,6 @@ exports[`should render the correctly when using selector function and a format f
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  line-height: 1.5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
