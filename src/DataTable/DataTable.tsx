@@ -278,10 +278,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		}
 	}, [paginationTotalRows]);
 
+	// handle updating data and persisting sort state when data changes after initial re-render
 	useDidUpdateEffect(() => {
 		dispatch({
 			type: 'UPDATE_ROWS',
-			rows: setRowData(data, defaultSortColumn?.selector, defaultSortDirection, sortServer, sortFunction),
+			rows: setRowData(data, selectedColumn?.selector, sortDirection, sortServer, sortFunction),
 		});
 	}, [data]);
 

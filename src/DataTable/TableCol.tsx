@@ -59,7 +59,6 @@ const sortableCSS = css<ColumnSortableProps>`
 const ColumnSortable = styled.div<ColumnSortableProps>`
 	align-items: center;
 	height: 100%;
-	line-height: 1.5;
 	outline: none;
 	user-select: none;
 	display: inline-flex;
@@ -124,6 +123,15 @@ function TableCol<T>({
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	const [showTooltip, setShowTooltip] = React.useState(false);
+	const columnRef = React.useRef<HTMLDivElement | null>(null);
+
+	React.useEffect(() => {
+		if (columnRef.current) {
+			setShowTooltip(columnRef.current.scrollWidth > columnRef.current.clientWidth);
+		}
+	}, [showTooltip]);
 
 	if (column.omit) {
 		return null;
@@ -223,7 +231,9 @@ function TableCol<T>({
 					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
 					{typeof column.name === 'string' ? (
-						<ColumnText data-column-id={column.id}>{column.name}</ColumnText>
+						<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
+							{column.name}
+						</ColumnText>
 					) : (
 						column.name
 					)}
