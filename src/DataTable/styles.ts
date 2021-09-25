@@ -86,6 +86,9 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			transitionTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
 			willChange: 'transform',
 		},
+		activeStyle: {
+			transform: 'translate3d(0, 0, 0)',
+		},
 	},
 	cells: {
 		style: {
