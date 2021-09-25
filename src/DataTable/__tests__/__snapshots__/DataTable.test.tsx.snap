@@ -350,6 +350,9 @@ exports[`DataTable::Header should render a custom component within the context m
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -479,6 +482,9 @@ exports[`DataTable::Header should render context menu actions when they are prov
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -621,6 +627,9 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -755,6 +764,9 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 .c0 {
@@ -1054,6 +1066,9 @@ exports[`DataTable::Header should render the default context menu when using sel
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
   transition-timing-function: cubic-bezier(0,0,0.2,1);
   will-change: transform;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 .c0 {
