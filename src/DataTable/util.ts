@@ -1,4 +1,3 @@
-import orderBy from 'lodash.orderby';
 import { CSSObject } from 'styled-components';
 import { ConditionalStyles, TableColumn, Format, TableRow, Selector, SortDirection, SortFunction } from './types';
 
@@ -30,7 +29,8 @@ export function setRowData<T>(
 
 export function sort<T>(
 	rows: T[],
-	selector: Selector<T> | null | undefined,
+	// TODO: remove string in V8
+	selector: Selector<T> | string | null | undefined,
 	direction: SortDirection,
 	sortFn?: SortFunction<T> | null,
 ): T[] {
@@ -40,16 +40,68 @@ export function sort<T>(
 
 	if (sortFn && typeof sortFn === 'function') {
 		// we must create a new rows reference
-		return sortFn(rows.slice(0), selector, direction);
+		return sortFn(rows.slice(0), selector as Selector<T>, direction);
 	}
 
-	return orderBy(rows, selector, direction);
+	return rows
+		.sort((a: T, b: T) => {
+			let aValue;
+			let bValue;
+
+			if (typeof selector === 'string') {
+				aValue = parseSelector(a, selector);
+				bValue = parseSelector(b, selector);
+			} else {
+				aValue = selector(a);
+				bValue = selector(b);
+			}
+
+			if (direction === 'asc') {
+				if (aValue < bValue) {
+					return -1;
+				}
+
+				if (aValue > bValue) {
+					return 1;
+				}
+			}
+
+			if (direction === 'desc') {
+				if (aValue > bValue) {
+					return -1;
+				}
+
+				if (aValue < bValue) {
+					return 1;
+				}
+			}
+
+			return 0;
+		})
+		.slice(0);
 }
 
+// TODO: string based selectors will be removed in v8
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getProperty<T extends Record<string, any>>(
+export function parseSelector<T extends Record<string, any>>(row: T, selector: string): T {
+	return selector.split('.').reduce((acc, part) => {
+		// O(n2) when querying for an array (e.g. items[0].name)
+		// Likely, the object depth will be reasonable enough that performance is not a concern
+		const arr = part.match(/[^\]\\[.]+/g);
+		if (arr && arr.length > 1) {
+			for (let i = 0; i < arr.length; i++) {
+				return acc[arr[i]][arr[i + 1]];
+			}
+		}
+
+		return acc[part];
+	}, row);
+}
+
+export function getProperty<T>(
 	row: T,
-	selector: Selector<T> | undefined | null | unknown,
+	// TODO: remove string type in V8
+	selector: Selector<T> | string | undefined | null | unknown, // unknown allows us to throw an error for JS code
 	format: Format<T> | undefined | null,
 	rowIndex: number,
 ): React.ReactNode {
@@ -57,6 +109,7 @@ export function getProperty<T extends Record<string, any>>(
 		return null;
 	}
 
+	// TODO: remove  string check in V8
 	if (typeof selector !== 'string' && typeof selector !== 'function') {
 		throw new Error('selector must be a . delimited string eg (my.property) or function (e.g. row => row.field');
 	}
@@ -70,19 +123,8 @@ export function getProperty<T extends Record<string, any>>(
 		return selector(row, rowIndex);
 	}
 
-	// string based selectors will be removed in v8
-	return selector.split('.').reduce((acc, part) => {
-		// O(n2) when querying for an array (e.g. items[0].name)
-		// Likely, the object depth will be reasonable enough that performance is not a concern
-		const arr = part.match(/[^\]\\[.]+/g);
-		if (arr && arr.length > 1) {
-			for (let i = 0; i < arr.length; i++) {
-				return acc[arr[i]][arr[i + 1]];
-			}
-		}
-
-		return acc[part];
-	}, row);
+	// TODO: Remove in V8
+	return parseSelector(row, selector);
 }
 
 export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {
