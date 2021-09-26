@@ -1,13 +1,14 @@
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
 
+export type Primitive = string | number | boolean | bigint;
 export type ChangePage = (page: number, totalRows: number) => void;
 export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
 export type RowState<T> = ((row: T) => boolean) | null;
-export type Selector<T> = string | ((row: T, rowIndex: number) => React.ReactNode);
+export type Selector<T> = (row: T, rowIndex?: number) => Primitive;
 export type SortDirection = 'asc' | 'desc';
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
 export type TableRow = Record<string, unknown>;
@@ -124,7 +125,7 @@ export type TableColumnBase = {
 
 export interface TableColumn<T> extends TableColumnBase {
 	name?: string | number | React.ReactNode;
-	sortfield?: string;
+	sortField?: string;
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
 	conditionalCellStyles?: ConditionalStyles<T>[];
 	format?: Format<T> | undefined;
