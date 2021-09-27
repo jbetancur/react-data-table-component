@@ -162,7 +162,6 @@ export interface TableStyles {
 	headCells?: {
 		style?: CSSObject;
 		draggingStyle?: CSSObject;
-		sortStyle?: CSSObject;
 	};
 	contextMenu?: {
 		style?: CSSObject;
@@ -269,10 +268,6 @@ type ThemeButton = {
 	disabled: string;
 };
 
-type ThemeSortFocus = {
-	default: string;
-};
-
 type ThemeSelected = {
 	default: string;
 	text: string;
@@ -296,7 +291,6 @@ export interface Theme {
 	context: ThemeContext;
 	divider: ThemeDivider;
 	button: ThemeButton;
-	sortFocus: ThemeSortFocus;
 	selected: ThemeSelected;
 	highlightOnHover: ThemeHighlightOnHover;
 	striped: ThemeStriped;

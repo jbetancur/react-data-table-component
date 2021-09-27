@@ -117,6 +117,7 @@ function MaterialStory({ selectableRows, expandableRows }) {
 				title="Desserts"
 				columns={columns}
 				data={data}
+				defaultSortFieldId={1}
 				selectableRows={selectableRows}
 				highlightOnHover
 				defaultSortField="name"

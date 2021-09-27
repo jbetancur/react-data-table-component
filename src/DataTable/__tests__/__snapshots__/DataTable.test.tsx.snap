@@ -40,7 +40,7 @@ exports[`DataTable::Header header should not display with no title 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -128,20 +128,25 @@ exports[`DataTable::Header header should not display with no title 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -202,6 +207,7 @@ exports[`DataTable::Header header should not display with no title 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -1174,7 +1180,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -1262,20 +1268,25 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -1336,6 +1347,7 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -1569,7 +1581,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -1657,20 +1669,25 @@ exports[`DataTable::Pagination should change the page position when using pagina
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -1900,6 +1917,7 @@ exports[`DataTable::Pagination should change the page position when using pagina
                 class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
                 data-sort-id="1"
+                disabled=""
                 role="columnheader"
                 tabindex="0"
               >
@@ -2137,7 +2155,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -2225,20 +2243,25 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -2303,6 +2326,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -2385,7 +2409,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -2473,20 +2497,25 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -2551,6 +2580,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -2633,7 +2663,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -2721,20 +2751,25 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -2799,6 +2834,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -2881,7 +2917,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -2969,20 +3005,25 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -3047,6 +3088,7 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -3129,7 +3171,7 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -3230,38 +3272,27 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -3279,8 +3310,8 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -3441,7 +3472,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -3529,20 +3560,25 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -3607,6 +3643,7 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -3689,7 +3726,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -3777,20 +3814,25 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -3855,6 +3897,7 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -3956,7 +3999,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -4044,20 +4087,25 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -4122,6 +4170,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -4223,7 +4272,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -4311,20 +4360,25 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -4389,6 +4443,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -4490,7 +4545,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -4578,20 +4633,25 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -4656,6 +4716,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -4757,7 +4818,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -4845,20 +4906,25 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -4923,6 +4989,7 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -5024,7 +5091,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -5112,20 +5179,25 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -5190,6 +5262,7 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -5272,7 +5345,7 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -5360,20 +5433,25 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -5434,6 +5512,7 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -5535,7 +5614,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -5627,20 +5706,25 @@ exports[`DataTable::column.style should render correctly when a style is set on 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -5701,6 +5785,7 @@ exports[`DataTable::column.style should render correctly when a style is set on 
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -5802,7 +5887,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -5894,20 +5979,25 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -5968,6 +6058,7 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -6069,7 +6160,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -6157,20 +6248,25 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -6237,6 +6333,7 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -6338,7 +6435,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -6426,20 +6523,25 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -6506,6 +6608,7 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -6607,7 +6710,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -6695,20 +6798,25 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -6775,6 +6883,7 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -6876,7 +6985,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -6964,20 +7073,25 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -7044,6 +7158,7 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -7145,7 +7260,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -7233,20 +7348,25 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -7307,6 +7427,7 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -7408,7 +7529,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -7496,20 +7617,25 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -7570,6 +7696,7 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -7671,7 +7798,7 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -7759,20 +7886,25 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -7833,6 +7965,7 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -7934,7 +8067,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -8026,20 +8159,25 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -8100,6 +8238,7 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -8201,7 +8340,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -8291,20 +8430,25 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -8366,6 +8510,7 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -8469,7 +8614,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -8557,20 +8702,25 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -8631,6 +8781,7 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -8732,7 +8883,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -8829,20 +8980,25 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
 }
 
 .c8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -8903,6 +9059,7 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
               class="c8 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -8998,7 +9155,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -9080,20 +9237,25 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -9154,6 +9316,7 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -9251,7 +9414,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -9340,20 +9503,25 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -9414,6 +9582,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -9515,7 +9684,7 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -9616,38 +9785,27 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -9665,8 +9823,8 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -9679,9 +9837,16 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
   transform: rotate(180deg);
 }
 
+.c7:hover,
+.c7:focus {
+  opacity: 0.7;
+}
+
 .c7:hover span,
-.c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 0.8;
+.c7:focus span,
+.c7:hover span.__rdt_custom_sort_icon__ *,
+.c7:focus span.__rdt_custom_sort_icon__ * {
+  opacity: 0.7;
 }
 
 .c8 {
@@ -9847,7 +10012,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -9935,20 +10100,25 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -10009,6 +10179,7 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -10110,7 +10281,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -10198,20 +10369,25 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -10272,6 +10448,7 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -10367,7 +10544,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -10455,20 +10632,25 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -10529,6 +10711,7 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -10630,7 +10813,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -10718,20 +10901,25 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -10792,6 +10980,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -10894,7 +11083,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -10982,20 +11171,25 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -11056,6 +11250,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -11157,7 +11352,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -11245,20 +11440,25 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -11319,6 +11519,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -11421,7 +11622,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -11509,20 +11710,25 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -11583,6 +11789,7 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -11684,7 +11891,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -11772,20 +11979,25 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -11846,6 +12058,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -11947,7 +12160,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -12035,20 +12248,25 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -12109,6 +12327,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -12211,7 +12430,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -12299,20 +12518,25 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -12373,6 +12597,7 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -12474,7 +12699,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -12564,20 +12789,25 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -12638,6 +12868,7 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -12739,7 +12970,7 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -12827,20 +13058,25 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -12905,6 +13141,7 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -13006,7 +13243,7 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -13094,20 +13331,25 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -13173,6 +13415,7 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -13274,7 +13517,7 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -13362,20 +13605,25 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -13441,6 +13689,7 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -13542,7 +13791,7 @@ exports[`DataTable::direction should render correctly when direction is rtl when
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -13685,20 +13934,25 @@ exports[`DataTable::direction should render correctly when direction is rtl when
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -13790,6 +14044,7 @@ exports[`DataTable::direction should render correctly when direction is rtl when
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -13911,7 +14166,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -14085,20 +14340,25 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -14169,6 +14429,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -14337,7 +14598,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -14511,20 +14772,25 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -14595,6 +14861,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -14763,7 +15030,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -14957,20 +15224,25 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -15041,6 +15313,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -15199,7 +15472,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -15287,20 +15560,25 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -15361,6 +15639,7 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -15462,7 +15741,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -15605,20 +15884,25 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -15709,6 +15993,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -15830,7 +16115,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -16000,20 +16285,25 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -16084,6 +16374,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -16252,7 +16543,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -16415,20 +16706,25 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -16499,6 +16795,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -16656,7 +16953,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -16826,20 +17123,25 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -16910,6 +17212,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -17078,7 +17381,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -17166,20 +17469,25 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -17240,6 +17548,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -17346,7 +17655,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -17434,20 +17743,25 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -17510,6 +17824,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -17616,7 +17931,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -17704,20 +18019,25 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -17780,6 +18100,7 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -17881,7 +18202,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -17982,20 +18303,25 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -18056,6 +18382,7 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -18157,7 +18484,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -18249,20 +18576,25 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -18323,6 +18655,7 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -18881,7 +19214,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -18919,20 +19252,25 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -19071,7 +19409,7 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -19109,20 +19447,25 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -19262,7 +19605,7 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -19300,20 +19643,25 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -19453,7 +19801,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -19541,20 +19889,25 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -19615,6 +19968,7 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -19716,7 +20070,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -19804,20 +20158,25 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -19875,6 +20234,7 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -19976,7 +20336,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -20102,20 +20462,25 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
 }
 
 .c8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -20180,6 +20545,7 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
               class="c8 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -20301,7 +20667,7 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -20427,20 +20793,25 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
 }
 
 .c8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -20505,6 +20876,7 @@ exports[`DataTable::selectableRows should only select a single row when and a ro
               class="c8 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -20626,7 +20998,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -20769,20 +21141,25 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -20873,6 +21250,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -20994,7 +21372,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -21170,20 +21548,25 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -21274,6 +21657,7 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -21395,7 +21779,7 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -21496,38 +21880,27 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -21545,8 +21918,8 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -21722,7 +22095,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -21823,38 +22196,27 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -21872,8 +22234,8 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -22049,7 +22411,7 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -22150,38 +22512,27 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -22199,8 +22550,8 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -22376,7 +22727,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -22464,20 +22815,25 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -22538,6 +22894,7 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -22639,7 +22996,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -22740,38 +23097,27 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -22789,8 +23135,8 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -22966,7 +23312,7 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -23067,38 +23413,27 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -23116,8 +23451,8 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -23293,7 +23628,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -23381,38 +23716,27 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -23430,8 +23754,8 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -23444,9 +23768,16 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
   transform: rotate(180deg);
 }
 
+.c7:hover,
+.c7:focus {
+  opacity: 0.7;
+}
+
 .c7:hover span,
-.c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 0.8;
+.c7:focus span,
+.c7:hover span.__rdt_custom_sort_icon__ *,
+.c7:focus span.__rdt_custom_sort_icon__ * {
+  opacity: 0.7;
 }
 
 .c8 {
@@ -23614,7 +23945,7 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -23706,38 +24037,27 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -23755,8 +24075,8 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -23769,9 +24089,16 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
   transform: rotate(180deg);
 }
 
+.c7:hover,
+.c7:focus {
+  opacity: 0.7;
+}
+
 .c7:hover span,
-.c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 0.8;
+.c7:focus span,
+.c7:hover span.__rdt_custom_sort_icon__ *,
+.c7:focus span.__rdt_custom_sort_icon__ * {
+  opacity: 0.7;
 }
 
 .c8 {
@@ -23939,7 +24266,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -24044,38 +24371,27 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -24093,8 +24409,8 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -24107,9 +24423,16 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   transform: rotate(180deg);
 }
 
+.c7:hover,
+.c7:focus {
+  opacity: 0.7;
+}
+
 .c7:hover span,
-.c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 0.8;
+.c7:focus span,
+.c7:hover span.__rdt_custom_sort_icon__ *,
+.c7:focus span.__rdt_custom_sort_icon__ * {
+  opacity: 0.7;
 }
 
 .c9 {
@@ -24275,7 +24598,7 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -24376,38 +24699,27 @@ exports[`DataTable::sorting should render correctly with a default sort field an
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -24425,8 +24737,8 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -24439,9 +24751,16 @@ exports[`DataTable::sorting should render correctly with a default sort field an
   transform: rotate(180deg);
 }
 
+.c7:hover,
+.c7:focus {
+  opacity: 0.7;
+}
+
 .c7:hover span,
-.c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 0.8;
+.c7:focus span,
+.c7:hover span.__rdt_custom_sort_icon__ *,
+.c7:focus span.__rdt_custom_sort_icon__ * {
+  opacity: 0.7;
 }
 
 .c8 {
@@ -24607,7 +24926,7 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -24711,38 +25030,27 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -24760,8 +25068,8 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -24774,9 +25082,16 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
   transform: rotate(180deg);
 }
 
+.c7:hover,
+.c7:focus {
+  opacity: 0.7;
+}
+
 .c7:hover span,
-.c7:hover span.__rdt_custom_sort_icon__ * {
-  opacity: 0.8;
+.c7:focus span,
+.c7:hover span.__rdt_custom_sort_icon__ *,
+.c7:focus span.__rdt_custom_sort_icon__ * {
+  opacity: 0.7;
 }
 
 .c8 {
@@ -24942,7 +25257,7 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -25046,38 +25361,27 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
   cursor: pointer;
-}
-
-.c7:focus {
-  outline: none;
-}
-
-.c7:hover:focus {
-  color: rgba(0,0,0,0.87);
-}
-
-.c7:hover {
-  color: rgba(0,0,0,.54);
-}
-
-.c7:hover:active {
-  color: rgba(0,0,0,.54);
 }
 
 .c7 span.__rdt_custom_sort_icon__ i,
@@ -25095,8 +25399,8 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition-duration: 125ms;
-  transition-duration: 125ms;
+  -webkit-transition-duration: 95ms;
+  transition-duration: 95ms;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
@@ -25272,7 +25576,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -25389,20 +25693,25 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -25463,6 +25772,7 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -25739,7 +26049,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -25827,20 +26137,25 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -25901,6 +26216,7 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -26226,7 +26542,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -26402,20 +26718,25 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -26486,6 +26807,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -26655,7 +26977,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -26825,20 +27147,25 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -26909,6 +27236,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
               class="c9 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -27077,7 +27405,7 @@ exports[`should render correctly when conditionalRowStyles with classNames is us
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -27165,20 +27493,25 @@ exports[`should render correctly when conditionalRowStyles with classNames is us
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -27239,6 +27572,7 @@ exports[`should render correctly when conditionalRowStyles with classNames is us
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -27342,7 +27676,7 @@ exports[`should render correctly when disabled 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -27430,20 +27764,25 @@ exports[`should render correctly when disabled 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -27505,6 +27844,7 @@ exports[`should render correctly when disabled 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -27606,7 +27946,7 @@ exports[`should render the correctly when using selector function 1`] = `
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -27694,20 +28034,25 @@ exports[`should render the correctly when using selector function 1`] = `
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -27768,6 +28113,7 @@ exports[`should render the correctly when using selector function 1`] = `
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >
@@ -27850,7 +28196,7 @@ exports[`should render the correctly when using selector function and a format f
   align-items: stretch;
   width: 100%;
   background-color: #FFFFFF;
-  min-height: 56px;
+  min-height: 52px;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-style: solid;
@@ -27938,20 +28284,25 @@ exports[`should render the correctly when using selector function and a format f
 }
 
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
   height: 100%;
+  width: 100%;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   overflow: hidden;
 }
 
@@ -28012,6 +28363,7 @@ exports[`should render the correctly when using selector function and a format f
               class="c7 rdt_TableCol_Sortable"
               data-column-id="1"
               data-sort-id="1"
+              disabled=""
               role="columnheader"
               tabindex="0"
             >

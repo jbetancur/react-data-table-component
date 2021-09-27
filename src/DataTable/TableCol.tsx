@@ -22,11 +22,10 @@ const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 interface ColumnSortableProps {
 	disabled: boolean;
 	sortActive: boolean;
-	sortable: boolean | undefined;
 }
 
 const sortableCSS = css<ColumnSortableProps>`
-	${({ theme }) => theme.headCells.sortStyle};
+	cursor: pointer;
 	span.__rdt_custom_sort_icon__ {
 		i,
 		svg {
@@ -38,7 +37,7 @@ const sortableCSS = css<ColumnSortableProps>`
 			width: 18px !important;
 			backface-visibility: hidden;
 			transform-style: preserve-3d;
-			transition-duration: 125ms;
+			transition-duration: 95ms;
 			transition-property: transform;
 		}
 
@@ -48,22 +47,31 @@ const sortableCSS = css<ColumnSortableProps>`
 		}
 	}
 
-	&:hover {
-		span,
-		span.__rdt_custom_sort_icon__ * {
-			${({ sortActive }) => !sortActive && 'opacity: 0.8'};
-		}
-	}
+	${({ sortActive }) =>
+		!sortActive &&
+		css`
+			&:hover,
+			&:focus {
+				opacity: 0.7;
+
+				span,
+				span.__rdt_custom_sort_icon__ * {
+					opacity: 0.7;
+				}
+			}
+		`};
 `;
 
 const ColumnSortable = styled.div<ColumnSortableProps>`
+	display: inline-flex;
 	align-items: center;
+	justify-content: inherit;
 	height: 100%;
+	width: 100%;
 	outline: none;
 	user-select: none;
-	display: inline-flex;
 	overflow: hidden;
-	${({ disabled, sortable }) => sortable && !disabled && sortableCSS};
+	${({ disabled }) => !disabled && sortableCSS};
 `;
 
 const ColumnText = styled.div`
@@ -138,37 +146,39 @@ function TableCol<T>({
 	}
 
 	const handleSortChange = () => {
-		if (column.sortable && column.selector) {
-			let direction = sortDirection;
-
-			if (equalizeId(selectedColumn.id, column.id)) {
-				direction = sortDirection === 'asc' ? 'desc' : 'asc';
-			}
-
-			let sortedRows = rows;
-
-			if (!sortServer) {
-				sortedRows = sort(rows, column.selector, direction, sortFunction);
-
-				// colCustomSortFn is still checked for undefined or null
-				const colCustomSortFn = column.sortFunction;
-
-				if (colCustomSortFn) {
-					const customSortFunction = direction === 'asc' ? colCustomSortFn : (a: T, b: T) => colCustomSortFn(a, b) * -1;
-
-					sortedRows = [...rows].sort(customSortFunction);
-				}
-			}
-
-			onSort({
-				type: 'SORT_CHANGE',
-				rows: sortedRows,
-				sortDirection: direction,
-				selectedColumn: column,
-				clearSelectedOnSort:
-					(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
-			});
+		if (!column.sortable && !column.selector) {
+			return;
 		}
+
+		let direction = sortDirection;
+
+		if (equalizeId(selectedColumn.id, column.id)) {
+			direction = sortDirection === 'asc' ? 'desc' : 'asc';
+		}
+
+		let sortedRows = [...rows];
+
+		if (!sortServer) {
+			sortedRows = sort(rows, column.selector, direction, sortFunction);
+
+			// colCustomSortFn is still checked for undefined or null
+			const colCustomSortFn = column.sortFunction;
+
+			if (colCustomSortFn) {
+				const customSortFunction = direction === 'asc' ? colCustomSortFn : (a: T, b: T) => colCustomSortFn(a, b) * -1;
+
+				sortedRows = [...rows].sort(customSortFunction);
+			}
+		}
+
+		onSort({
+			type: 'SORT_CHANGE',
+			rows: sortedRows,
+			sortDirection: direction,
+			selectedColumn: column,
+			clearSelectedOnSort:
+				(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
+		});
 	};
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -186,6 +196,7 @@ function TableCol<T>({
 	);
 
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
+	const disableSort = !column.sortable || disabled;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
 	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
 	const customSortIconLeft = column.sortable && sortIcon && !column.right;
@@ -221,14 +232,13 @@ function TableCol<T>({
 					role="columnheader"
 					tabIndex={0}
 					className="rdt_TableCol_Sortable"
-					onClick={!disabled ? handleSortChange : undefined}
-					onKeyPress={!disabled ? handleKeyPress : undefined}
-					sortActive={!disabled && sortActive}
-					sortable={column.sortable}
-					disabled={disabled}
+					onClick={!disableSort ? handleSortChange : undefined}
+					onKeyPress={!disableSort ? handleKeyPress : undefined}
+					sortActive={!disableSort && sortActive}
+					disabled={disableSort}
 				>
-					{!disabled && customSortIconRight && renderCustomSortIcon()}
-					{!disabled && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+					{!disableSort && customSortIconRight && renderCustomSortIcon()}
+					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
 					{typeof column.name === 'string' ? (
 						<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
@@ -238,8 +248,8 @@ function TableCol<T>({
 						column.name
 					)}
 
-					{!disabled && customSortIconLeft && renderCustomSortIcon()}
-					{!disabled && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
+					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</ColumnSortable>
 			)}
 		</ColumnStyled>

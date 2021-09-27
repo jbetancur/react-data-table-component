@@ -2,7 +2,7 @@ import { Story, Canvas } from '@storybook/addon-docs';
 
 # Custom Sorting - sortFunction
 
-By default RDT uses `lodash.orderBy`, however, if you wish to override the internal sorting you can instead pass in your own sorting function into the `sortFunction` property. The callback signature will give you access to RDT's internal sorting properties. Here is an example using plain old `Array.sort`;
+By default RDT uses `Array.sort`, however, if you wish to override the internal sorting you can instead pass in your own sorting function into the `sortFunction` property. The callback signature will give you access to RDT's internal sorting properties. Here is an example using plain old `Array.sort`;
 
 - `rows` your data rows
 - `selector` is the function you defined on your column.selector. We're going to call this function and pass in the row data in the example below.
@@ -25,6 +25,17 @@ const customSort = (rows, selector, direction) => {
 
   return direction === 'desc' ? comparison * -1 : comparison;
  });
+};
+
+...
+<DataTable ... sortFunction={customSort} />
+```
+
+Or maybe you prefer to use something like lodash orderBy:
+
+```js
+const customSort = (rows, selector, direction) => {
+	return orderBy(rows, selector, direction);
 };
 
 ...

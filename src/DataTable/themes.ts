@@ -28,9 +28,6 @@ export const defaultThemes: ThemeMapping = {
 			hover: 'rgba(0,0,0,.12)',
 			disabled: 'rgba(0, 0, 0, .18)',
 		},
-		sortFocus: {
-			default: 'rgba(0, 0, 0, .54)',
-		},
 		selected: {
 			default: '#e3f2fd',
 			text: 'rgba(0, 0, 0, 0.87)',
@@ -65,9 +62,6 @@ export const defaultThemes: ThemeMapping = {
 			focus: 'rgba(255, 255, 255, .54)',
 			hover: 'rgba(255, 255, 255, .12)',
 			disabled: 'rgba(255, 255, 255, .18)',
-		},
-		sortFocus: {
-			default: 'rgba(255, 255, 255, .54)',
 		},
 		selected: {
 			default: 'rgba(0, 0, 0, .7)',

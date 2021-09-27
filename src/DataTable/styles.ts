@@ -40,7 +40,7 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 	headRow: {
 		style: {
 			backgroundColor: theme.background.default,
-			minHeight: '56px',
+			minHeight: '52px',
 			borderBottomWidth: '1px',
 			borderBottomColor: theme.divider.default,
 			borderBottomStyle: 'solid',
@@ -56,21 +56,6 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 		},
 		draggingStyle: {
 			cursor: 'move',
-		},
-		sortStyle: {
-			cursor: 'pointer',
-			'&:focus': {
-				outline: 'none',
-			},
-			'&:hover:focus': {
-				color: theme.text.primary,
-			},
-			'&:hover': {
-				color: theme.sortFocus.default,
-			},
-			'&:hover:active': {
-				color: theme.sortFocus.default,
-			},
 		},
 	},
 	contextMenu: {
