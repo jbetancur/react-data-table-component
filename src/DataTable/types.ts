@@ -129,7 +129,7 @@ export interface TableColumn<T> extends TableColumnBase {
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
 	conditionalCellStyles?: ConditionalStyles<T>[];
 	format?: Format<T> | undefined;
-	selector?: Selector<T>;
+	selector?: string | Selector<T>;
 	sortFunction?: ColumnSortFunction<T>;
 }
 
