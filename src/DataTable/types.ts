@@ -129,7 +129,7 @@ export interface TableColumn<T> extends TableColumnBase {
 	cell?: (row: T, rowIndex: number, column: TableColumn<T>, id: string | number) => React.ReactNode;
 	conditionalCellStyles?: ConditionalStyles<T>[];
 	format?: Format<T> | undefined;
-	selector?: string | Selector<T>;
+	selector?: Selector<T>;
 	sortFunction?: ColumnSortFunction<T>;
 }
 
@@ -283,7 +283,7 @@ type ThemeStriped = {
 	text: string;
 };
 
-export type Themes = 'default' | 'dark' | string | undefined;
+export type Themes = 'default' | 'light' | 'dark';
 
 export interface Theme {
 	text: ThemeText;

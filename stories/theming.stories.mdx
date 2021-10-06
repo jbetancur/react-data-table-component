@@ -4,16 +4,18 @@ import { Meta } from '@storybook/addon-docs';
 
 # Defining Your Own Theme
 
-By default RDT comes with a `light` and `dark` theme, however, you can create your very own theme using the `createTheme` helper or tweak the existing built in `light` and `dark` themes.
+By default RDT comes with a `light` and `dark` theme that can be set on the `theme` property, however, you can create your very own theme using the `createTheme` helper or tweak the existing built in `light` and `dark` themes.
 
-Refer to [themes.js](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/themes.js) for properties you can use to create your own color theme.
+Refer to [themes.ts](https://github.com/jbetancur/react-data-table-component/blob/master/src/DataTable/themes.ts) for properties you can use to create your own color theme.
 
-Let's create a `solarized` theme:
+# Custom Solarized Theme
+
+Let's create a `solarized` theme that inherits from the build in `dark` theme:
 
 ```js
 import DataTable, { createTheme } from 'react-data-table-component';
 
-// createTheme inherits from the default `light` theme.
+// createTheme creates a new theme named solarized that overrides the build in dark theme
 createTheme('solarized', {
   text: {
     primary: '#268bd2',
@@ -33,6 +35,29 @@ createTheme('solarized', {
     button: 'rgba(0,0,0,.54)',
     hover: 'rgba(0,0,0,.08)',
     disabled: 'rgba(0,0,0,.12)',
+  },
+}, 'dark');
+
+const MyComponent = () => (
+  <DataTable
+    title="Arnold Movies"
+    columns={columns}
+    theme="solarized"
+  />
+);
+```
+
+## Tweaking the built in light and dark themes
+
+You can also take an existing theme and tweak the colors without much effort:
+
+```js
+import DataTable, { createTheme } from 'react-data-table-component';
+
+// createTheme creates a new theme named solarized that overrides the build in dark theme
+createTheme('dark', {
+  background: {
+    default: 'transparent',
   },
 });
 
