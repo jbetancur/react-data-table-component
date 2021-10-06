@@ -87,7 +87,7 @@ export function createTheme<T>(name = 'default', customTheme?: T, inherit: Theme
 	}
 
 	// allow tweaking default or light themes if the theme passed in matches
-	defaultThemes[name] = merge(defaultThemes[inherit], customTheme || {});
+	defaultThemes[name] = merge(defaultThemes[name], customTheme || {});
 
 	return defaultThemes[name];
 }
