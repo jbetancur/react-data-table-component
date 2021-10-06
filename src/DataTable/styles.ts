@@ -216,8 +216,12 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 	},
 });
 
-export const createStyles = (customStyles: TableStyles = {}, themeName: Themes = 'default'): TableStyles => {
-	const themeType = defaultThemes[themeName] ? themeName : 'default';
+export const createStyles = (
+	customStyles: TableStyles = {},
+	themeName = 'default',
+	inherit: Themes = 'default',
+): TableStyles => {
+	const themeType = defaultThemes[themeName] ? themeName : inherit;
 
 	return merge(defaultStyles(defaultThemes[themeType]), customStyles);
 };

@@ -5,42 +5,45 @@ type ThemeMapping = {
 	[propertyName: string]: Theme;
 };
 
-export const defaultThemes: ThemeMapping = {
-	default: {
-		text: {
-			primary: 'rgba(0, 0, 0, 0.87)',
-			secondary: 'rgba(0, 0, 0, 0.54)',
-			disabled: 'rgba(0, 0, 0, 0.38)',
-		},
-		background: {
-			default: '#FFFFFF',
-		},
-		context: {
-			background: '#e3f2fd',
-			text: 'rgba(0, 0, 0, 0.87)',
-		},
-		divider: {
-			default: 'rgba(0,0,0,.12)',
-		},
-		button: {
-			default: 'rgba(0,0,0,.54)',
-			focus: 'rgba(0,0,0,.12)',
-			hover: 'rgba(0,0,0,.12)',
-			disabled: 'rgba(0, 0, 0, .18)',
-		},
-		selected: {
-			default: '#e3f2fd',
-			text: 'rgba(0, 0, 0, 0.87)',
-		},
-		highlightOnHover: {
-			default: '#EEEEEE',
-			text: 'rgba(0, 0, 0, 0.87)',
-		},
-		striped: {
-			default: '#FAFAFA',
-			text: 'rgba(0, 0, 0, 0.87)',
-		},
+const defaultTheme = {
+	text: {
+		primary: 'rgba(0, 0, 0, 0.87)',
+		secondary: 'rgba(0, 0, 0, 0.54)',
+		disabled: 'rgba(0, 0, 0, 0.38)',
 	},
+	background: {
+		default: '#FFFFFF',
+	},
+	context: {
+		background: '#e3f2fd',
+		text: 'rgba(0, 0, 0, 0.87)',
+	},
+	divider: {
+		default: 'rgba(0,0,0,.12)',
+	},
+	button: {
+		default: 'rgba(0,0,0,.54)',
+		focus: 'rgba(0,0,0,.12)',
+		hover: 'rgba(0,0,0,.12)',
+		disabled: 'rgba(0, 0, 0, .18)',
+	},
+	selected: {
+		default: '#e3f2fd',
+		text: 'rgba(0, 0, 0, 0.87)',
+	},
+	highlightOnHover: {
+		default: '#EEEEEE',
+		text: 'rgba(0, 0, 0, 0.87)',
+	},
+	striped: {
+		default: '#FAFAFA',
+		text: 'rgba(0, 0, 0, 0.87)',
+	},
+};
+
+export const defaultThemes: ThemeMapping = {
+	default: defaultTheme,
+	light: defaultTheme,
 	dark: {
 		text: {
 			primary: '#FFFFFF',
@@ -78,8 +81,13 @@ export const defaultThemes: ThemeMapping = {
 	},
 };
 
-export function createTheme<T>(name: Themes = 'default', customTheme?: T): Theme {
-	defaultThemes[name] = merge(defaultThemes.default, customTheme || {});
+export function createTheme<T>(name = 'default', customTheme?: T, inherit: Themes = 'default'): Theme {
+	if (!defaultThemes[name]) {
+		defaultThemes[name] = merge(defaultThemes[inherit], customTheme || {});
+	}
+
+	// allow tweaking default or light themes if the theme passed in matches
+	defaultThemes[name] = merge(defaultThemes[inherit], customTheme || {});
 
 	return defaultThemes[name];
 }
