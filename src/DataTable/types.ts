@@ -152,6 +152,9 @@ export interface TableStyles {
 	subHeader?: {
 		style: CSSObject;
 	};
+	tableResponsiveWrapper?:{
+		style: CSSObject;
+	};
 	head?: {
 		style: CSSObject;
 	};

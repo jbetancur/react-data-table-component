@@ -14,6 +14,11 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			display: 'table',
 		},
 	},
+	tableResponsiveWrapper:{
+		style: {
+			borderRadius: "20px"
+		},
+	},
 	header: {
 		style: {
 			fontSize: '22px',
