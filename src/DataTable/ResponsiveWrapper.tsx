@@ -14,6 +14,7 @@ const ResponsiveWrapper = styled.div<{
 	position: relative;
 	width: 100%;
 	border-radius: inherit;
+	${({ theme }) => theme.tableResponsiveWrapper.style};
 	${({ responsive, fixedHeader }) =>
 		responsive &&
 		css`
