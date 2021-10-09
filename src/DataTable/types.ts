@@ -1,12 +1,12 @@
-import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
+import { Alignment, Direction, Media } from './constants';
 
 export enum SortOrder {
 	ASC = 'asc',
 	DESC = 'desc',
 }
 
-export type Primitive = string | number | boolean | bigint;
+export type Primitive = string | number | boolean | bigint | null | undefined;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
