@@ -1,5 +1,5 @@
 import { CSSObject } from 'styled-components';
-import { ConditionalStyles, TableColumn, Format, TableRow, Selector, SortOrder, SortFunction } from './types';
+import { ConditionalStyles, Format, Selector, SortFunction, SortOrder, TableColumn, TableRow } from './types';
 
 export function prop<T, K extends keyof T>(obj: T, key: K): T[K] {
 	return obj[key];
@@ -42,6 +42,14 @@ export function sort<T>(
 		}
 
 		if (direction === 'asc') {
+			if (aValue == null) {
+				return -1;
+			}
+
+			if (bValue == null) {
+				return 1;
+			}
+
 			if (aValue < bValue) {
 				return -1;
 			}
@@ -52,6 +60,14 @@ export function sort<T>(
 		}
 
 		if (direction === 'desc') {
+			if (aValue == null) {
+				return 1;
+			}
+
+			if (bValue == null) {
+				return -1;
+			}
+
 			if (aValue > bValue) {
 				return -1;
 			}
