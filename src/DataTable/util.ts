@@ -29,42 +29,40 @@ export function sort<T>(
 		return sortFn(rows.slice(0), selector as Selector<T>, direction);
 	}
 
-	return rows
-		.sort((a: T, b: T) => {
-			let aValue;
-			let bValue;
+	return rows.slice(0).sort((a: T, b: T) => {
+		let aValue;
+		let bValue;
 
-			if (typeof selector === 'string') {
-				aValue = parseSelector(a, selector);
-				bValue = parseSelector(b, selector);
-			} else {
-				aValue = selector(a);
-				bValue = selector(b);
+		if (typeof selector === 'string') {
+			aValue = parseSelector(a, selector);
+			bValue = parseSelector(b, selector);
+		} else {
+			aValue = selector(a);
+			bValue = selector(b);
+		}
+
+		if (direction === 'asc') {
+			if (aValue < bValue) {
+				return -1;
 			}
 
-			if (direction === 'asc') {
-				if (aValue < bValue) {
-					return -1;
-				}
+			if (aValue > bValue) {
+				return 1;
+			}
+		}
 
-				if (aValue > bValue) {
-					return 1;
-				}
+		if (direction === 'desc') {
+			if (aValue > bValue) {
+				return -1;
 			}
 
-			if (direction === 'desc') {
-				if (aValue > bValue) {
-					return -1;
-				}
-
-				if (aValue < bValue) {
-					return 1;
-				}
+			if (aValue < bValue) {
+				return 1;
 			}
+		}
 
-			return 0;
-		})
-		.slice(0);
+		return 0;
+	});
 }
 
 // TODO: string based selectors will be removed in v8
