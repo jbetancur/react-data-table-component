@@ -15,6 +15,16 @@ interface Row {
 	year: string;
 }
 
+const ExpandableRowComponent: React.FC<{ data: Row }> = ({ data }) => {
+	return (
+		<>
+			<p>{data.title}</p>
+			<p>{data.director}</p>
+			<p>{data.year}</p>
+		</>
+	);
+};
+
 const subHeaderComponent = (
 	<div style={{ display: 'flex', alignItems: 'center' }}>
 		<TextField id="outlined-basic" label="Search" variant="outlined" size="small" style={{ margin: '5px' }} />
@@ -99,6 +109,7 @@ function KitchenSinkStory({
 			selectableRowsSingle={selectableRowsSingle}
 			selectableRowsVisibleOnly={selectableRowsVisibleOnly}
 			expandableRows={expandableRows}
+			expandableRowsComponent={ExpandableRowComponent}
 			expandOnRowClicked={expandOnRowClicked}
 			expandOnRowDoubleClicked={expandOnRowDoubleClicked}
 			expandableRowsHideExpander={expandableRowsHideExpander}
