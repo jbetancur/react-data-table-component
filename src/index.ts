@@ -14,6 +14,7 @@ export type {
 	PaginationOptions,
 	PaginationServerOptions,
 	ContextMessage,
+	SortOrder,
 } from './DataTable/types';
 
 export default DataTable;

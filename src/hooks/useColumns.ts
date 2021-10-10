@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { decorateColumns, findColumnIndexById, getSortDirection } from '../DataTable/util';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { SortDirection, TableColumn } from '../DataTable/types';
+import { SortOrder, TableColumn } from '../DataTable/types';
 
 type ColumnsHook<T> = {
 	tableColumns: TableColumn<T>[];
@@ -11,7 +11,7 @@ type ColumnsHook<T> = {
 	handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	handleDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 	handleDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-	defaultSortDirection: SortDirection;
+	defaultSortDirection: SortOrder;
 	defaultSortColumn: TableColumn<T>;
 };
 

@@ -5,15 +5,6 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 	const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;
 
 	switch (action.type) {
-		case 'UPDATE_ROWS': {
-			const { rows } = action;
-
-			return {
-				...state,
-				rows,
-			};
-		}
-
 		case 'SELECT_ALL_ROWS': {
 			const { keyField, rows, rowCount, mergeSelections } = action;
 			const allChecked = !state.allSelected;
@@ -87,7 +78,7 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 		}
 
 		case 'SELECT_MULTIPLE_ROWS': {
-			const { keyField, selectedRows, rows, mergeSelections } = action;
+			const { keyField, selectedRows, totalRows, mergeSelections } = action;
 
 			if (mergeSelections) {
 				const selections = [
@@ -107,7 +98,7 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			return {
 				...state,
 				selectedCount: selectedRows.length,
-				allSelected: selectedRows.length === rows.length,
+				allSelected: selectedRows.length === totalRows,
 				selectedRows,
 				toggleOnSelectedRowsChange,
 			};
@@ -126,11 +117,10 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 		}
 
 		case 'SORT_CHANGE': {
-			const { rows, sortDirection, selectedColumn, clearSelectedOnSort } = action;
+			const { sortDirection, selectedColumn, clearSelectedOnSort } = action;
 
 			return {
 				...state,
-				rows,
 				selectedColumn,
 				sortDirection,
 				currentPage: 1,

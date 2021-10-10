@@ -1,6 +1,11 @@
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
 
+export enum SortOrder {
+	ASC = 'asc',
+	DESC = 'desc',
+}
+
 export type Primitive = string | number | boolean | bigint;
 export type ChangePage = (page: number, totalRows: number) => void;
 export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
@@ -9,8 +14,7 @@ export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
 export type RowState<T> = ((row: T) => boolean) | null;
 export type Selector<T> = (row: T, rowIndex?: number) => Primitive;
-export type SortDirection = 'asc' | 'desc';
-export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: 'asc' | 'desc') => T[];
+export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: SortOrder) => T[];
 export type TableRow = Record<string, unknown>;
 export type ExpandableRowsComponent = React.ComponentType<Record<string, unknown>>;
 export type PaginationComponent = React.ComponentType<Record<string, unknown>>;
@@ -56,7 +60,7 @@ export type TableProps<T> = {
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort?: (selectedColumn: TableColumn<T>, sortDirection: 'asc' | 'desc') => void;
+	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
 	paginationComponent?: PaginationComponent;
@@ -226,11 +230,10 @@ export interface ContextMessage {
 export type TableState<T> = {
 	allSelected: boolean;
 	contextMessage: ContextMessage;
-	rows: T[];
 	selectedCount: number;
 	selectedRows: T[];
 	selectedColumn: TableColumn<T>;
-	sortDirection: SortDirection;
+	sortDirection: SortOrder;
 	currentPage: number;
 	rowsPerPage: number;
 	selectedRowsFlag: boolean;
@@ -318,14 +321,13 @@ export interface MultiRowAction<T> {
 	type: 'SELECT_MULTIPLE_ROWS';
 	keyField: string;
 	selectedRows: T[];
-	rows: T[];
+	totalRows: number;
 	mergeSelections: boolean;
 }
 
 export interface SortAction<T> {
 	type: 'SORT_CHANGE';
-	rows: T[];
-	sortDirection: SortDirection;
+	sortDirection: SortOrder;
 	selectedColumn: TableColumn<T>;
 	clearSelectedOnSort: boolean;
 }
@@ -349,16 +351,6 @@ export interface ClearSelectedRowsAction {
 	selectedRowsFlag: boolean;
 }
 
-export interface RowsAction<T> {
-	type: 'UPDATE_ROWS';
-	rows: T[];
-}
-
-export interface RowsAction<T> {
-	type: 'UPDATE_ROWS';
-	rows: T[];
-}
-
 export interface ColumnsAction<T> {
 	type: 'UPDATE_COLUMNS';
 	cols: TableColumn<T>[];
@@ -371,5 +363,4 @@ export type Action<T> =
 	| SortAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
-	| ClearSelectedRowsAction
-	| RowsAction<T>;
+	| ClearSelectedRowsAction;
