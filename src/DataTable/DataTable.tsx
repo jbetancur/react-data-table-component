@@ -18,10 +18,19 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, setRowData, isEmpty, isRowSelected, recalculatePage } from './util';
+import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { Action, AllRowsAction, SingleRowAction, TableRow, SortAction, TableProps, TableState } from './types';
+import {
+	Action,
+	AllRowsAction,
+	SingleRowAction,
+	TableRow,
+	SortAction,
+	TableProps,
+	TableState,
+	SortOrder,
+} from './types';
 import useColumns from '../hooks/useColumns';
 
 function DataTable<T>(props: TableProps<T>): JSX.Element {
@@ -121,7 +130,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const [
 		{
 			rowsPerPage,
-			rows,
 			currentPage,
 			selectedRows,
 			allSelected,
@@ -132,7 +140,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		},
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, {
-		rows: setRowData(data, defaultSortColumn?.selector, defaultSortDirection, sortServer, sortFunction),
 		allSelected: false,
 		selectedCount: 0,
 		selectedRows: [],
@@ -153,17 +160,33 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
+	const sortedData = React.useMemo(() => {
+		// server-side sorting bypasses internal sorting
+		if (sortServer) {
+			return data;
+		}
+
+		if (selectedColumn?.sortFunction && typeof selectedColumn.sortFunction === 'function') {
+			const sortFn = selectedColumn.sortFunction;
+			const customSortFunction = sortDirection === SortOrder.ASC ? sortFn : (a: T, b: T) => sortFn(a, b) * -1;
+
+			return [...data].sort(customSortFunction);
+		}
+
+		return sort(data, selectedColumn?.selector, sortDirection, sortFunction);
+	}, [sortServer, selectedColumn, sortDirection, data, sortFunction]);
+
 	const tableRows = React.useMemo(() => {
 		if (pagination && !paginationServer) {
 			// when using client-side pagination we can just slice the rows set
 			const lastIndex = currentPage * rowsPerPage;
 			const firstIndex = lastIndex - rowsPerPage;
 
-			return rows.slice(firstIndex, lastIndex);
+			return sortedData.slice(firstIndex, lastIndex);
 		}
 
-		return rows;
-	}, [currentPage, pagination, paginationServer, rows, rowsPerPage]);
+		return sortedData;
+	}, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
 
 	const handleSort = React.useCallback((action: SortAction<T>) => {
 		dispatch(action);
@@ -219,7 +242,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			return true;
 		}
 
-		return rows.length > 0 && !progressPending;
+		return sortedData.length > 0 && !progressPending;
 	};
 
 	const showHeader = () => {
@@ -239,8 +262,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	};
 
 	// recalculate the pagination and currentPage if the rows length changes
-	if (pagination && !paginationServer && rows.length > 0 && tableRows.length === 0) {
-		const updatedPage = getNumberOfPages(rows.length, rowsPerPage);
+	if (pagination && !paginationServer && sortedData.length > 0 && tableRows.length === 0) {
+		const updatedPage = getNumberOfPages(sortedData.length, rowsPerPage);
 		const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
 		handleChangePage(recalculatedPage);
@@ -256,7 +279,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [selectedColumn, sortDirection]);
 
 	useDidUpdateEffect(() => {
-		onChangePage(currentPage, paginationTotalRows || rows.length);
+		onChangePage(currentPage, paginationTotalRows || sortedData.length);
 	}, [currentPage]);
 
 	useDidUpdateEffect(() => {
@@ -278,29 +301,27 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		}
 	}, [paginationTotalRows]);
 
-	// handle updating data and persisting sort state when data changes after initial re-render
-	useDidUpdateEffect(() => {
-		dispatch({
-			type: 'UPDATE_ROWS',
-			rows: setRowData(data, selectedColumn?.selector, sortDirection, sortServer, sortFunction),
-		});
-	}, [data]);
-
 	React.useEffect(() => {
 		dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
 	}, [selectableRowsSingle, clearSelectedRows]);
 
 	React.useEffect(() => {
 		if (selectableRowSelected && !selectableRowsSingle) {
-			const preSelectedRows = rows.filter(row => selectableRowSelected(row));
+			const preSelectedRows = sortedData.filter(row => selectableRowSelected(row));
 
-			dispatch({ type: 'SELECT_MULTIPLE_ROWS', keyField, selectedRows: preSelectedRows, rows: rows, mergeSelections });
+			dispatch({
+				type: 'SELECT_MULTIPLE_ROWS',
+				keyField,
+				selectedRows: preSelectedRows,
+				totalRows: sortedData.length,
+				mergeSelections,
+			});
 		}
 		// We only want to update the selectedRowState if data changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);
 
-	const visibleRows = selectableRowsVisibleOnly ? tableRows : rows;
+	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
 	return (
@@ -359,13 +380,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											key={column.id}
 											column={column}
 											selectedColumn={selectedColumn}
-											disabled={progressPending || rows.length === 0}
-											rows={rows}
+											disabled={progressPending || sortedData.length === 0}
 											pagination={pagination}
 											paginationServer={paginationServer}
 											persistSelectedOnSort={persistSelectedOnSort}
 											selectableRowsVisibleOnly={selectableRowsVisibleOnly}
-											sortFunction={sortFunction}
 											sortDirection={sortDirection}
 											sortIcon={sortIcon}
 											sortServer={sortServer}
@@ -382,11 +401,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 							</Head>
 						)}
 
-						{!rows.length && !progressPending && <NoData>{noDataComponent}</NoData>}
+						{!sortedData.length && !progressPending && <NoData>{noDataComponent}</NoData>}
 
 						{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
-						{!progressPending && rows.length > 0 && (
+						{!progressPending && sortedData.length > 0 && (
 							<Body className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
 									const key = prop(row as TableRow, keyField) as string | number;
@@ -403,7 +422,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											data-row-id={id}
 											columns={tableColumns}
 											row={row}
-											rowCount={rows.length}
+											rowCount={sortedData.length}
 											rowIndex={i}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
@@ -451,7 +470,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 					<Pagination
 						onChangePage={handleChangePage}
 						onChangeRowsPerPage={handleChangeRowsPerPage}
-						rowCount={paginationTotalRows || rows.length}
+						rowCount={paginationTotalRows || sortedData.length}
 						currentPage={currentPage}
 						rowsPerPage={rowsPerPage}
 						direction={direction}

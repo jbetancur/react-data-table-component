@@ -8,7 +8,7 @@ import { render, fireEvent } from '@testing-library/react';
 import DataTable from '../DataTable';
 import { Direction, STOP_PROP_TAG } from '../constants';
 import { Alignment } from '../../index';
-import { ConditionalStyles } from '../types';
+import { ConditionalStyles, SortOrder } from '../types';
 
 interface Data {
 	id: number;
@@ -654,7 +654,7 @@ describe('DataTable::sorting', () => {
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
+		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC);
 	});
 
 	test('should call onSort with the correct params if the sort is clicked twice', () => {
@@ -663,10 +663,10 @@ describe('DataTable::sorting', () => {
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'asc');
+		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC);
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, 'desc');
+		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.DESC);
 	});
 
 	test('should render correctly with a custom sortIcon', () => {

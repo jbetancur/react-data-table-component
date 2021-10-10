@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { CellExtended, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
-import { equalizeId, sort } from './util';
-import { TableColumn, SortAction, SortDirection, SortFunction } from './types';
+import { equalizeId } from './util';
+import { TableColumn, SortAction, SortOrder } from './types';
 
 interface ColumnStyleProps extends CellProps {
 	isDragging?: boolean;
@@ -81,7 +81,6 @@ const ColumnText = styled.div`
 `;
 
 type TableColProps<T> = {
-	rows: T[];
 	column: TableColumn<T>;
 	disabled: boolean;
 	draggingColumnId?: string | number;
@@ -90,8 +89,7 @@ type TableColProps<T> = {
 	paginationServer: boolean;
 	persistSelectedOnSort: boolean;
 	selectedColumn: TableColumn<T>;
-	sortDirection: SortDirection;
-	sortFunction: SortFunction<T> | null;
+	sortDirection: SortOrder;
 	sortServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	onSort: (action: SortAction<T>) => void;
@@ -103,13 +101,11 @@ type TableColProps<T> = {
 };
 
 function TableCol<T>({
-	rows,
 	column,
 	disabled,
 	draggingColumnId,
 	selectedColumn = {},
 	sortDirection,
-	sortFunction,
 	sortIcon,
 	sortServer,
 	pagination,
@@ -153,27 +149,11 @@ function TableCol<T>({
 		let direction = sortDirection;
 
 		if (equalizeId(selectedColumn.id, column.id)) {
-			direction = sortDirection === 'asc' ? 'desc' : 'asc';
-		}
-
-		let sortedRows = [...rows];
-
-		if (!sortServer) {
-			sortedRows = sort(rows, column.selector, direction, sortFunction);
-
-			// colCustomSortFn is still checked for undefined or null
-			const colCustomSortFn = column.sortFunction;
-
-			if (colCustomSortFn) {
-				const customSortFunction = direction === 'asc' ? colCustomSortFn : (a: T, b: T) => colCustomSortFn(a, b) * -1;
-
-				sortedRows = [...rows].sort(customSortFunction);
-			}
+			direction = sortDirection === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC;
 		}
 
 		onSort({
 			type: 'SORT_CHANGE',
-			rows: sortedRows,
 			sortDirection: direction,
 			selectedColumn: column,
 			clearSelectedOnSort:

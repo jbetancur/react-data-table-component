@@ -9,9 +9,12 @@ const caseInsensitiveSort = (rowA, rowB) => {
 
 	if (a > b) {
 		return 1;
-	} else if (b > a) {
+	}
+
+	if (b > a) {
 		return -1;
 	}
+
 	return 0;
 };
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SortDirection } from '../DataTable/types';
+import { SortOrder } from '../DataTable/types';
 
 const Icon = styled.span<{
 	sortActive: boolean;
-	sortDirection: SortDirection;
+	sortDirection: SortOrder;
 }>`
 	padding: 2px;
 	color: inherit;
@@ -16,7 +16,7 @@ const Icon = styled.span<{
 
 interface NativeSortIconProps {
 	sortActive: boolean;
-	sortDirection: SortDirection;
+	sortDirection: SortOrder;
 }
 
 const NativeSortIcon: React.FC<NativeSortIconProps> = ({ sortActive, sortDirection }) => (

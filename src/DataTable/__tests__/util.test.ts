@@ -10,7 +10,7 @@ import {
 	getConditionalStyle,
 	isRowSelected,
 } from '../util';
-import { ConditionalStyles } from '../types';
+import { ConditionalStyles, SortOrder } from '../types';
 
 const row = Object.freeze({
 	id: 1,
@@ -47,42 +47,42 @@ describe('isEmpty', () => {
 
 describe('sort', () => {
 	test('built in sort when already sorted asc', () => {
-		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'asc');
+		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.ASC);
 
 		expect(rows[0].name).toEqual('anakin');
 		expect(rows[rows.length - 1].name).toEqual('vadar');
 	});
 
 	test('built in sort when already sorted desc', () => {
-		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', 'desc');
+		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', SortOrder.DESC);
 
 		expect(rows[0].name).toEqual('vadar');
 		expect(rows[rows.length - 1].name).toEqual('anakin');
 	});
 
 	test('built in sort when desc', () => {
-		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'desc');
+		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.DESC);
 
 		expect(rows[0].name).toEqual('vadar');
 		expect(rows[rows.length - 1].name).toEqual('anakin');
 	});
 
 	test('built in sort when asc', () => {
-		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', 'asc');
+		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', SortOrder.ASC);
 
 		expect(rows[0].name).toEqual('anakin');
 		expect(rows[rows.length - 1].name).toEqual('vadar');
 	});
 
 	test('built in sort when a value is not a string and asc', () => {
-		const rows = sort([{ count: 20 }, { count: 10 }, { count: 1 }], 'count', 'asc');
+		const rows = sort([{ count: 20 }, { count: 10 }, { count: 1 }], 'count', SortOrder.ASC);
 
 		expect(rows[0].count).toEqual(1);
 		expect(rows[rows.length - 1].count).toEqual(20);
 	});
 
 	test('built in sort when a value is not a string and desc', () => {
-		const rows = sort([{ count: 1 }, { count: 10 }, { count: 20 }], 'count', 'desc');
+		const rows = sort([{ count: 1 }, { count: 10 }, { count: 20 }], 'count', SortOrder.DESC);
 
 		expect(rows[0].count).toEqual(20);
 		expect(rows[rows.length - 1].count).toEqual(1);
@@ -92,7 +92,7 @@ describe('sort', () => {
 		const rows = sort(
 			[{ item: { name: 'anakin' } }, { item: { name: 'leia' } }, { item: { name: 'vadar' } }],
 			'item.name',
-			'desc',
+			SortOrder.DESC,
 		);
 
 		expect(rows[0].item.name).toEqual('vadar');
@@ -100,7 +100,7 @@ describe('sort', () => {
 	});
 
 	test('should handle a null field and not sort', () => {
-		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], null, 'desc');
+		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], null, SortOrder.DESC);
 
 		expect(rows[0].name).toEqual('anakin');
 		expect(rows[rows.length - 1].name).toEqual('vadar');
@@ -109,9 +109,9 @@ describe('sort', () => {
 	test('custom sort should be called', () => {
 		const mockSort = jest.fn();
 
-		sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'desc', mockSort);
+		sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.DESC, mockSort);
 
-		expect(mockSort).toBeCalledWith([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', 'desc');
+		expect(mockSort).toBeCalledWith([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.DESC);
 	});
 });
 
@@ -212,13 +212,13 @@ describe('getSortDirection', () => {
 	test('should return asc if true', () => {
 		const direction = getSortDirection(true);
 
-		expect(direction).toBe('asc');
+		expect(direction).toBe(SortOrder.ASC);
 	});
 
 	test('countIfOne should return desc if false', () => {
 		const direction = getSortDirection();
 
-		expect(direction).toBe('desc');
+		expect(direction).toBe(SortOrder.DESC);
 	});
 });
 
