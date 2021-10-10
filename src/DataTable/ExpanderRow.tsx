@@ -13,29 +13,28 @@ const ExpanderRowStyle = styled.div<{
 
 type ExpanderRowProps<T> = {
 	data: T;
-	component: ExpandableRowsComponent;
+	ExpanderComponent: ExpandableRowsComponent<T>;
 	extendedRowStyle: CSSObject;
 	extendedClassNames: string;
-	componentProps: ComponentProps;
+	expanderComponentProps: ComponentProps;
 };
 
 function ExpanderRow<T>({
 	data,
-	component,
-	componentProps,
+	ExpanderComponent,
+	expanderComponentProps,
 	extendedRowStyle,
 	extendedClassNames,
 }: ExpanderRowProps<T>): JSX.Element {
-	const ExpandableComponent = component;
 	// we need to strip of rdt_TableRow from extendedClassNames
 	const classNamesSplit = extendedClassNames.split(' ').filter(c => c !== 'rdt_TableRow');
 	const classNames = ['rdt_ExpanderRow', ...classNamesSplit].join(' ');
 
 	return (
 		<ExpanderRowStyle className={classNames} extendedRowStyle={extendedRowStyle}>
-			<ExpandableComponent data={data} {...componentProps} />
+			<ExpanderComponent data={data} {...expanderComponentProps} />
 		</ExpanderRowStyle>
 	);
 }
 
-export default React.memo(ExpanderRow);
+export default React.memo(ExpanderRow) as typeof ExpanderRow;

@@ -7,8 +7,6 @@ export enum SortOrder {
 }
 
 export type Primitive = string | number | boolean | bigint;
-export type ChangePage = (page: number, totalRows: number) => void;
-export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
@@ -16,9 +14,18 @@ export type RowState<T> = ((row: T) => boolean) | null;
 export type Selector<T> = (row: T, rowIndex?: number) => Primitive;
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: SortOrder) => T[];
 export type TableRow = Record<string, unknown>;
-export type ExpandableRowsComponent = React.ComponentType<Record<string, unknown>>;
-export type PaginationComponent = React.ComponentType<Record<string, unknown>>;
 export type ComponentProps = Record<string, unknown>;
+export type ExpandableRowsComponent<T> = React.ComponentType<{ data: T }>;
+export type PaginationChangePage = (page: number, totalRows: number) => void;
+export type PaginationChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
+export type PaginationComponentProps = {
+	rowsPerPage: number;
+	rowCount: number;
+	currentPage: number;
+	onChangePage: PaginationChangePage;
+	onChangeRowsPerPage: PaginationChangeRowsPerPage;
+};
+export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
 export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
@@ -41,7 +48,7 @@ export type TableProps<T> = {
 	expandableRowDisabled?: RowState<T>;
 	expandableRowExpanded?: RowState<T>;
 	expandableRows?: boolean;
-	expandableRowsComponent?: ExpandableRowsComponent;
+	expandableRowsComponent?: ExpandableRowsComponent<T>;
 	expandableRowsComponentProps?: ComponentProps;
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
@@ -54,8 +61,8 @@ export type TableProps<T> = {
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
-	onChangePage?: ChangePage;
-	onChangeRowsPerPage?: ChangeRowsPerPage;
+	onChangePage?: PaginationChangePage;
+	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
