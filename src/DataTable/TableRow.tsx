@@ -247,8 +247,8 @@ function Row<T>({
 					data={row}
 					extendedRowStyle={inheritStyles}
 					extendedClassNames={classNames}
-					component={expandableRowsComponent}
-					componentProps={expandableRowsComponentProps}
+					ExpanderComponent={expandableRowsComponent}
+					expanderComponentProps={expandableRowsComponentProps}
 				/>
 			)}
 		</>
