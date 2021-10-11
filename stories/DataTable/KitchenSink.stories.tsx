@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import data from '../constants/sampleMovieData';
-import DataTable, { Alignment, Direction, TableProps, TableColumn } from '../../src/index';
+import DataTable, { Alignment, Direction, TableProps, TableColumn, ExpanderComponentProps } from '../../src/index';
 
 interface Row {
 	title: string;
@@ -15,7 +15,7 @@ interface Row {
 	year: string;
 }
 
-const ExpandableRowComponent: React.FC<{ data: Row }> = ({ data }) => {
+const ExpandableRowComponent: React.FC<ExpanderComponentProps<Row>> = ({ data }) => {
 	return (
 		<>
 			<p>{data.title}</p>

@@ -6,17 +6,12 @@ Adding Expandable Rows functionality is easy. Let's make our rows expandable:
 
 ```js
 function MyComponent() {
-  return (
-    <DataTable
-      columns={columns}
-      data={data}
-      expandableRows
-    />
-  );
-};
+	return <DataTable columns={columns} data={data} expandableRows />;
+}
 ```
 
 ## Custom Expander component
+
 Next, we'll need to create a custom component to display our data and pass it into `DataTable`:
 
 ```js
@@ -24,22 +19,54 @@ Next, we'll need to create a custom component to display our data and pass it in
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
 
 function MyComponent() {
-  return (
-    <DataTable
-      columns={columns}
-      data={data}
-      expandableRows
-      expandableRowsComponent={ExpandedComponent}
-    />
-  );
-};
+	return <DataTable columns={columns} data={data} expandableRows expandableRowsComponent={ExpandedComponent} />;
+}
 ```
 
 You'll notice that `expandableRowsComponent` has a function signtaure of `({ data }) => ...`. React Data Table handles passing your row `data` into your custom expandable component so you can access that rows fields.
 
 <Canvas>
-  <Story id="expandable-basic--basic" />
+	<Story id="expandable-basic--basic" />
 </Canvas>
+
+## TypeScript
+
+With TypeScript we'll need to use `ExpanderComponentProps` and pass it our type or interface. Here's a fully working example:
+
+```ts
+import * as React from 'react';
+import DataTable, { ExpanderComponentProps } from 'react-data-table-component';
+
+type DataRow = {
+	title: string;
+	director: string;
+	year: string;
+};
+
+const columns: TableColumn<DataRow>[] = [
+	{
+		name: 'Title',
+		selector: row => row.title,
+	},
+	{
+		name: 'Director',
+		selector: row => row.director,
+	},
+	{
+		name: 'Year',
+		selector: row => row.year,
+	},
+];
+
+// data provides access to your row data
+const ExpandedComponent: React.FC<ExpanderComponentProps<DataRow>> = ({ data }) => {
+	return <pre>{JSON.stringify(data, null, 2)}</pre>;
+};
+
+function MyComponent() {
+	return <DataTable columns={columns} data={data} expandableRows expandableRowsComponent={ExpandedComponent} />;
+}
+```
 
 ## Accessibility
 
