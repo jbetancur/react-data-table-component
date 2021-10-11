@@ -11,6 +11,7 @@ export type {
 	Theme,
 	Themes,
 	ConditionalStyles,
+	ExpanderComponentProps,
 	PaginationComponentProps,
 	PaginationOptions,
 	PaginationServerOptions,

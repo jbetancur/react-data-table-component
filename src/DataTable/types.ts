@@ -15,7 +15,8 @@ export type Selector<T> = (row: T, rowIndex?: number) => Primitive;
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: SortOrder) => T[];
 export type TableRow = Record<string, unknown>;
 export type ComponentProps = Record<string, unknown>;
-export type ExpandableRowsComponent<T> = React.ComponentType<{ data: T }>;
+export type ExpanderComponentProps<T> = { data: T };
+export type ExpandableRowsComponent<T> = React.ComponentType<ExpanderComponentProps<T>>;
 export type PaginationChangePage = (page: number, totalRows: number) => void;
 export type PaginationChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
 export type PaginationComponentProps = {

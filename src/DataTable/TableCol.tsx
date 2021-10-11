@@ -32,9 +32,9 @@ const sortableCSS = css<ColumnSortableProps>`
 			transform: 'translate3d(0, 0, 0)';
 			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
-			font-size: 18px !important;
-			height: 18px !important;
-			width: 18px !important;
+			font-size: 18px;
+			height: 18px;
+			width: 18px;
 			backface-visibility: hidden;
 			transform-style: preserve-3d;
 			transition-duration: 95ms;
