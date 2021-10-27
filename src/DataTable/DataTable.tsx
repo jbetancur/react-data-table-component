@@ -306,20 +306,25 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [selectableRowsSingle, clearSelectedRows]);
 
 	React.useEffect(() => {
-		if (selectableRowSelected && !selectableRowsSingle) {
-			const preSelectedRows = sortedData.filter(row => selectableRowSelected(row));
-
-			dispatch({
-				type: 'SELECT_MULTIPLE_ROWS',
-				keyField,
-				selectedRows: preSelectedRows,
-				totalRows: sortedData.length,
-				mergeSelections,
-			});
+		if (!selectableRowSelected) {
+			return;
 		}
+
+		const preSelectedRows = sortedData.filter(row => selectableRowSelected(row));
+		// if selectableRowsSingle mode then return the first match
+		const selected = selectableRowsSingle ? preSelectedRows.slice(0, 1) : preSelectedRows;
+
+		dispatch({
+			type: 'SELECT_MULTIPLE_ROWS',
+			keyField,
+			selectedRows: selected,
+			totalRows: sortedData.length,
+			mergeSelections,
+		});
+
 		// We only want to update the selectedRowState if data changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data]);
+	}, [data, selectableRowSelected]);
 
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
