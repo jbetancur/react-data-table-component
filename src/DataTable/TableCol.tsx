@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import { CellExtended, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { equalizeId } from './util';
-import { TableColumn, SortAction, SortOrder } from './types';
+import { TableColumn, SortAction, SortOrder, FilterAction } from './types';
+import { ChangeEvent } from 'react';
 
 interface ColumnStyleProps extends CellProps {
 	isDragging?: boolean;
@@ -91,8 +92,10 @@ type TableColProps<T> = {
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
 	sortServer: boolean;
+	filterServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	onSort: (action: SortAction<T>) => void;
+	onFilter: (action: FilterAction<T>) => void;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -108,11 +111,13 @@ function TableCol<T>({
 	sortDirection,
 	sortIcon,
 	sortServer,
+	filterServer,
 	pagination,
 	paginationServer,
 	persistSelectedOnSort,
 	selectableRowsVisibleOnly,
 	onSort,
+	onFilter,
 	onDragStart,
 	onDragOver,
 	onDragEnd,
@@ -161,6 +166,22 @@ function TableCol<T>({
 		});
 	};
 
+	const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
+		if (column.filterable && column.selector) {
+			onFilter({
+				type: 'FILTER_CHANGE',
+				filterServer: filterServer,
+				filterText: e.target.value,
+				selectedColumn: column,
+				//pagination,
+				//paginationServer,
+				//visibleOnly: selectableRowsVisibleOnly,
+				clearSelectedOnSort:
+					(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
+			});
+		}
+	};
+
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		if (event.key === 'Enter') {
 			handleSortChange();
@@ -206,31 +227,38 @@ function TableCol<T>({
 			onDragLeave={onDragLeave}
 		>
 			{column.name && (
-				<ColumnSortable
-					data-column-id={column.id}
-					data-sort-id={column.id}
-					role="columnheader"
-					tabIndex={0}
-					className="rdt_TableCol_Sortable"
-					onClick={!disableSort ? handleSortChange : undefined}
-					onKeyPress={!disableSort ? handleKeyPress : undefined}
-					sortActive={!disableSort && sortActive}
-					disabled={disableSort}
-				>
-					{!disableSort && customSortIconRight && renderCustomSortIcon()}
-					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+				<div>
+					<ColumnSortable
+						data-column-id={column.id}
+						data-sort-id={column.id}
+						role="columnheader"
+						tabIndex={0}
+						className="rdt_TableCol_Sortable"
+						onClick={!disableSort ? handleSortChange : undefined}
+						onKeyPress={!disableSort ? handleKeyPress : undefined}
+						sortActive={!disableSort && sortActive}
+						disabled={disableSort}
+					>
+						{!disableSort && customSortIconRight && renderCustomSortIcon()}
+						{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
-					{typeof column.name === 'string' ? (
-						<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
-							{column.name}
-						</ColumnText>
-					) : (
-						column.name
+						{typeof column.name === 'string' ? (
+							<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
+								{column.name}
+							</ColumnText>
+						) : (
+							column.name
+						)}
+
+						{!disableSort && customSortIconLeft && renderCustomSortIcon()}
+						{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+					</ColumnSortable>
+					{column.filterable && (
+						<div style={{ display: 'block' }}>
+							<input name={column?.name?.toString()} data-filter-id={column?.name?.toString().toLowerCase()} onChange={handleFilterChange} placeholder="filter" />
+						</div>
 					)}
-
-					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
-					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-				</ColumnSortable>
+				</div>
 			)}
 		</ColumnStyled>
 	);

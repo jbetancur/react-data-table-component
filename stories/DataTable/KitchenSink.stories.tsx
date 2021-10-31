@@ -40,12 +40,14 @@ const columns: TableColumn<Row>[] = [
 		selector: row => row.title,
 		sortable: true,
 		reorder: true,
+		filterable: true,
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
 		reorder: true,
+		filterable: true,
 	},
 	{
 		name: 'Year',

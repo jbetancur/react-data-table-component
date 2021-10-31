@@ -18,7 +18,7 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage, getProperty } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
 import {
@@ -30,6 +30,7 @@ import {
 	TableProps,
 	TableState,
 	SortOrder,
+	FilterAction,
 } from './types';
 import useColumns from '../hooks/useColumns';
 
@@ -95,6 +96,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
 		sortIcon = defaultProps.sortIcon,
 		onSort = defaultProps.onSort,
+		onFilter = defaultProps.onFilter,
+		filterServer = defaultProps.filterServer,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
@@ -136,6 +139,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			selectedCount,
 			selectedColumn,
 			sortDirection,
+			filters,
+			filterActive,
 			toggleOnSelectedRowsChange,
 		},
 		dispatch,
@@ -148,6 +153,9 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		sortDirection: defaultSortDirection,
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
+		filteredData: data,
+		filterActive: false,
+		filters: {},
 		selectedRowsFlag: false,
 		contextMessage: defaultProps.contextMessage,
 	});
@@ -160,21 +168,40 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
+	const currentData = React.useMemo(() => {
+		if (filterActive && !filterServer) {
+			return data.filter((row, idx) =>
+				Object.entries(filters).reduce(
+					(
+						acc: boolean,
+						[_, { column, value }], // eslint-disable-line @typescript-eslint/no-unused-vars
+					) =>
+						new RegExp(`.*${value}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
+							? acc
+							: false,
+					true,
+				),
+			);
+		} else {
+			return data;
+		}
+	}, [filters, filterServer, data, filterActive]);
+
 	const sortedData = React.useMemo(() => {
 		// server-side sorting bypasses internal sorting
 		if (sortServer) {
-			return data;
+			return currentData;
 		}
 
 		if (selectedColumn?.sortFunction && typeof selectedColumn.sortFunction === 'function') {
 			const sortFn = selectedColumn.sortFunction;
 			const customSortFunction = sortDirection === SortOrder.ASC ? sortFn : (a: T, b: T) => sortFn(a, b) * -1;
 
-			return [...data].sort(customSortFunction);
+			return [...currentData].sort(customSortFunction);
 		}
 
-		return sort(data, selectedColumn?.selector, sortDirection, sortFunction);
-	}, [sortServer, selectedColumn, sortDirection, data, sortFunction]);
+		return sort(currentData, selectedColumn?.selector, sortDirection, sortFunction);
+	}, [sortServer, selectedColumn, sortDirection, currentData, sortFunction]);
 
 	const tableRows = React.useMemo(() => {
 		if (pagination && !paginationServer) {
@@ -184,11 +211,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 			return sortedData.slice(firstIndex, lastIndex);
 		}
-
 		return sortedData;
 	}, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
 
 	const handleSort = React.useCallback((action: SortAction<T>) => {
+		dispatch(action);
+	}, []);
+
+	const handleFilter = React.useCallback((action: FilterAction<T>) => {
 		dispatch(action);
 	}, []);
 
@@ -242,7 +272,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			return true;
 		}
 
-		return sortedData.length > 0 && !progressPending;
+		return filterActive || (sortedData.length > 0 && !progressPending);
 	};
 
 	const showHeader = () => {
@@ -281,6 +311,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	useDidUpdateEffect(() => {
 		onChangePage(currentPage, paginationTotalRows || sortedData.length);
 	}, [currentPage]);
+
+	useDidUpdateEffect(() => {
+		onFilter(filters);
+	}, [filters]);
 
 	useDidUpdateEffect(() => {
 		onChangeRowsPerPage(rowsPerPage, currentPage);
@@ -393,7 +427,9 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											sortDirection={sortDirection}
 											sortIcon={sortIcon}
 											sortServer={sortServer}
+											filterServer={filterServer}
 											onSort={handleSort}
+											onFilter={handleFilter}
 											onDragStart={handleDragStart}
 											onDragOver={handleDragOver}
 											onDragEnd={handleDragEnd}
