@@ -610,8 +610,14 @@ describe('DataTable:filter', () => {
 		expect(param['Test'].value).toBe('p')
 		expect(container.querySelector('div#row1') as HTMLInputElement).toBeDefined()
 		expect(container.querySelector('div#row2') as HTMLInputElement).toBeDefined()
+	});
 
-
+	test('should not be rendered if column.name is missing', () => {
+		const mock = dataMock({ filterable: true, name: null });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+		const filterInput = container.querySelector('input[name="Test"]');
+		expect(filterInput).toBeNull();
+		expect(container.firstChild).toMatchSnapshot();
 	});
 
 });

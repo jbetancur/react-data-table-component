@@ -387,6 +387,7 @@ export type Action<T> =
 	| SingleRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
+	| FilterAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
 	| FilterAction<T>

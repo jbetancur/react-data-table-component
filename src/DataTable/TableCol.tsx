@@ -173,9 +173,6 @@ function TableCol<T>({
 				filterServer: filterServer,
 				filterText: e.target.value,
 				selectedColumn: column,
-				//pagination,
-				//paginationServer,
-				//visibleOnly: selectableRowsVisibleOnly,
 				clearSelectedOnSort:
 					(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
 			});

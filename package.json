@@ -18,8 +18,8 @@
     "react-data-table",
     "react-data-table-component"
   ],
-  "repository": "https://github.com/jbetancur/react-data-table-component",
-  "author": "jbetancur",
+  "repository": "https://github.com/anothercodeartist/react-data-table-component",
+  "author": "AnotherCodeArtist",
   "license": "Apache-2.0",
   "prepublish": "tsc",
   "scripts": {
@@ -34,7 +34,7 @@
     "test:tdd": "jest --watch",
     "test:tdd-coverage": "jest --watch --coverage",
     "test:coverage": "jest --coverage",
-    "lint": "eslint . --ext .ts,.tsx && eslint . --ext .js --config eslintrc-js.js",
+    "lint": "eslint . --ext .ts,.tsx  --config eslintrc-ts.js && eslint . --ext .js --config eslintrc-js.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static"

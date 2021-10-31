@@ -26,11 +26,13 @@ const columns = [
 		name: 'Title',
 		selector: row => row.title,
 		sortable: true,
+		filterable: true,
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
+		filterable: true,
 	},
 	{
 		name: 'Year',
