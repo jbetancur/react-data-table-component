@@ -252,7 +252,12 @@ function TableCol<T>({
 					</ColumnSortable>
 					{column.filterable && (
 						<div style={{ display: 'block' }}>
-							<input name={column?.name?.toString()} data-filter-id={column?.name?.toString().toLowerCase()} onChange={handleFilterChange} placeholder="filter" />
+							<input
+								name={column?.name?.toString()}
+								data-filter-id={column?.name?.toString().toLowerCase()}
+								onChange={handleFilterChange}
+								placeholder="filter"
+							/>
 						</div>
 					)}
 				</div>

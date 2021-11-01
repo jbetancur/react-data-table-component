@@ -14,7 +14,7 @@ const columns = [
 		filterable: true,
 	},
 	{
-		// name: 'Director',
+		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
 		sortField: 'director',
@@ -51,7 +51,7 @@ export function RemoteSort() {
 
 		// instead of setTimeout this is where you would handle your API call.
 		setTimeout(() => {
-			const filteredRows = data.filter((row, idx) =>
+			const filteredRows = initData.filter((row, idx) =>
 				Object.entries(filters) //
 					.reduce((acc, [_, { column, value }]) => {
 						return new RegExp(`.*${value}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')

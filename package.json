@@ -99,7 +99,8 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "deepmerge": "^4.2.2"
+    "deepmerge": "^4.2.2",
+    "yocto-queue": "^1.0.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.3",
