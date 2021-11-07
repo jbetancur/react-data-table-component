@@ -17,6 +17,7 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 	header: {
 		style: {
 			fontSize: '22px',
+			fontWeight: 400,
 			color: theme.text.primary,
 			backgroundColor: theme.background.default,
 			minHeight: '56px',

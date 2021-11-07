@@ -21,7 +21,7 @@ const Title = styled.div`
 	flex: 1 0 auto;
 	color: ${({ theme }) => theme.header.fontColor};
 	font-size: ${({ theme }) => theme.header.fontSize};
-	font-weight: 400;
+	font-weight: ${({ theme }) => theme.header.fontWeight};
 `;
 
 const Actions = styled.div`
