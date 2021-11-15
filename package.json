@@ -35,6 +35,7 @@
     "test:tdd-coverage": "jest --watch --coverage",
     "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .ts,.tsx  --config eslintrc-ts.js && eslint . --ext .js --config eslintrc-js.js",
+    "predeploy": "npm run build-storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static"
