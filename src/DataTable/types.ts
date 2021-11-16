@@ -62,6 +62,7 @@ export type TableProps<T> = {
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
+	subHeading?: React.ReactNode;
 	onChangePage?: PaginationChangePage;
 	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;

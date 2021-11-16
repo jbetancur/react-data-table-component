@@ -86,6 +86,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		subHeaderAlign = defaultProps.subHeaderAlign,
 		subHeaderWrap = defaultProps.subHeaderWrap,
 		subHeaderComponent = defaultProps.subHeaderComponent,
+		subHeading = defaultProps.subHeading,
 		noContextMenu = defaultProps.noContextMenu,
 		contextMessage = defaultProps.contextMessage,
 		contextActions = defaultProps.contextActions,
@@ -402,6 +403,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											draggingColumnId={draggingColumnId}
 										/>
 									))}
+								</HeadRow>
+							</Head>
+						)}
+
+						{subHeading && (
+							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
+								<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
+									{subHeading}
 								</HeadRow>
 							</Head>
 						)}
