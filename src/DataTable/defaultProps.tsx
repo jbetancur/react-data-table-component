@@ -68,6 +68,7 @@ export const defaultProps = {
 	subHeaderAlign: Alignment.RIGHT,
 	subHeaderWrap: true,
 	subHeaderComponent: null,
+	subHeading: null,
 	fixedHeader: false,
 	fixedHeaderScrollHeight: '100vh',
 	pagination: false,
