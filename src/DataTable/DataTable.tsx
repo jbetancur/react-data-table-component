@@ -471,7 +471,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			</ResponsiveWrapper>
 
 			{enabledPagination && (
-				<div className="rdt_PaginationContainer">
+				<>
 					<Pagination
 						onChangePage={handleChangePage}
 						onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -486,7 +486,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 						paginationIconPrevious={paginationIconPrevious}
 						paginationComponentOptions={paginationComponentOptions}
 					/>
-				</div>
+				</>
 			)}
 		</ThemeProvider>
 	);
