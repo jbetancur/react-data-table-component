@@ -471,7 +471,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			</ResponsiveWrapper>
 
 			{enabledPagination && (
-				<div>
+				<div className="rdt_PaginationContainer">
 					<Pagination
 						onChangePage={handleChangePage}
 						onChangeRowsPerPage={handleChangeRowsPerPage}
