@@ -25,7 +25,7 @@ const columns = [
 	},
 ];
 
-export function RemoteSort() {
+export const RemoteSort = () => {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState(initData);
 
@@ -53,7 +53,7 @@ export function RemoteSort() {
 			pagination
 		/>
 	);
-}
+};
 
 export default {
 	title: 'Sorting/Remote Sort',

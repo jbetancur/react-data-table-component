@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import users from '../shared/users';
 import DataTable from '../../src/index';
 
-export function Delayed() {
+export const Delayed = () => {
 	const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
 
@@ -31,8 +31,9 @@ export function Delayed() {
 	}, []);
 
 	return <DataTable columns={columns} data={users} progressPending={pending} />;
-}
+};
 
 export default {
 	title: 'Columns/Delayed',
+	Component: Delayed,
 };

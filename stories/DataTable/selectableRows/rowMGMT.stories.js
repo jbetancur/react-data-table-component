@@ -23,7 +23,7 @@ const columns = [
 	},
 ];
 
-export function ManageSelections() {
+export const ManageSelections = () => {
 	const [selectedRows, setSelectedRows] = React.useState([]);
 	const [toggleCleared, setToggleCleared] = React.useState(false);
 	const [data, setData] = React.useState(tableDataItems);
@@ -60,7 +60,7 @@ export function ManageSelections() {
 			pagination
 		/>
 	);
-}
+};
 
 export default {
 	title: 'Selectable/Manage Selections',
