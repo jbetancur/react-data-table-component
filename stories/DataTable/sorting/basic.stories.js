@@ -21,9 +21,9 @@ const columns = [
 	},
 ];
 
-export function Basic() {
+export const Basic = () => {
 	return <DataTable title="Movie List" columns={columns} data={data} pagination />;
-}
+};
 
 export default {
 	title: 'Sorting/Basic',

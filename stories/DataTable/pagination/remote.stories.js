@@ -21,7 +21,7 @@ const columns = [
 	},
 ];
 
-export function Remote() {
+export const Remote = () => {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [totalRows, setTotalRows] = useState(0);
@@ -69,7 +69,7 @@ export function Remote() {
 			onChangePage={handlePageChange}
 		/>
 	);
-}
+};
 
 export default {
 	title: 'Pagination/Remote',

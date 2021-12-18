@@ -294,7 +294,7 @@ type ThemeStriped = {
 	text: string;
 };
 
-export type Themes = 'default' | 'light' | 'dark';
+export type Themes = string;
 
 export interface Theme {
 	text: ThemeText;
