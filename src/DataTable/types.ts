@@ -158,6 +158,9 @@ export interface TableStyles {
 	tableWrapper?: {
 		style: CSSObject;
 	};
+	responsiveWrapper?: {
+		style: CSSObject;
+	};
 	header?: {
 		style: CSSObject;
 	};
