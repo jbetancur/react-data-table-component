@@ -30,6 +30,8 @@ const ResponsiveWrapper = styled.div<{
 			max-height: ${fixedHeaderScrollHeight};
 			-webkit-overflow-scrolling: touch;
 		`};
+
+	${({ theme }) => theme.responsiveWrapper.style};
 `;
 
 export default ResponsiveWrapper;

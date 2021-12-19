@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "7.4.6",
+  "version": "7.4.7",
   "description": "A simple to use declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -81,7 +81,7 @@
     "jest-styled-components": "^7.0.8",
     "jest-watch-typeahead": "^1.0.0",
     "lodash-es": "^4.17.21",
-    "memoize-one": "^5.2.1",
+    "memoize-one": "^6.0.0",
     "moment": "^2.29.1",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
