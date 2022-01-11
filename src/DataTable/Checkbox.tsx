@@ -33,10 +33,8 @@ function Checkbox({
 	onClick = noop,
 }: CheckboxProps): JSX.Element {
 	const setCheckboxRef = (checkbox: HTMLInputElement) => {
-		if (checkbox) {
-			// eslint-disable-next-line no-param-reassign
-			checkbox.indeterminate = indeterminate;
-		}
+		// eslint-disable-next-line no-param-reassign
+		checkbox && checkbox.indeterminate = indeterminate
 	};
 
 	const TagName = component;
