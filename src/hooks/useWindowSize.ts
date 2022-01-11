@@ -8,14 +8,12 @@ type Hook = () => {
 
 const useWindowSize: Hook = () => {
 	const isClient = typeof window === 'object';
-
-	function getSize() {
-		return {
+	
+	const getSize = ()=>({
 			width: isClient ? window.innerWidth : undefined,
 			height: isClient ? window.innerHeight : undefined,
-		};
-	}
-
+	})
+	
 	const [windowSize, setWindowSize] = React.useState(getSize);
 
 	React.useEffect(() => {
