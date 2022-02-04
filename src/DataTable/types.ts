@@ -92,7 +92,7 @@ export type TableProps<T> = {
 	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
 	selectableRowsComponent?: 'input' | React.ReactNode;
-	selectableRowsComponentProps?: ComponentProps;
+	selectableRowsComponentProps?: ComponentProps | ((row: T, keyField: string) => ComponentProps);
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;

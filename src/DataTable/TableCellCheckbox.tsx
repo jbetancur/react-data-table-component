@@ -20,7 +20,7 @@ type TableCellCheckboxProps<T> = {
 	rowCount: number;
 	selected: boolean;
 	selectableRowsComponent: 'input' | React.ReactNode;
-	selectableRowsComponentProps: ComponentProps;
+	selectableRowsComponentProps: ComponentProps | ((row: T, keyField: string) => ComponentProps);
 	selectableRowsSingle: boolean;
 	selectableRowDisabled: RowState<T>;
 	onSelectedRow: (action: SingleRowAction<T>) => void;
@@ -40,6 +40,11 @@ function TableCellCheckbox<T>({
 }: TableCellCheckboxProps<T>): JSX.Element {
 	const disabled = !!(selectableRowDisabled && selectableRowDisabled(row));
 
+	const componentOptions =
+		typeof selectableRowsComponentProps === 'function'
+			? selectableRowsComponentProps(row, keyField)
+			: selectableRowsComponentProps;
+
 	const handleOnRowSelected = () => {
 		onSelectedRow({
 			type: 'SELECT_SINGLE_ROW',
@@ -56,7 +61,7 @@ function TableCellCheckbox<T>({
 			<Checkbox
 				name={name}
 				component={selectableRowsComponent}
-				componentOptions={selectableRowsComponentProps}
+				componentOptions={componentOptions}
 				checked={selected}
 				aria-checked={selected}
 				onClick={handleOnRowSelected}

@@ -21,7 +21,16 @@ const columns = [
 	},
 ];
 
-export const Basic = () => <DataTable title="Movie List" columns={columns} data={data} selectableRows pagination />;
+export const Basic = () => (
+	<DataTable
+		title="Movie List"
+		columns={columns}
+		data={data}
+		selectableRows
+		pagination
+		selectableRowsComponentProps={row => ({ 'aria-label': `Select row ${row.title}` })}
+	/>
+);
 
 export default {
 	title: 'Selectable/Basic',
