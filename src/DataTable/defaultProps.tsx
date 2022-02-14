@@ -64,6 +64,7 @@ export const defaultProps = {
 	disabled: false,
 	noTableHead: false,
 	noHeader: false,
+	rowOnlyCheckboxProps: noop,
 	subHeader: false,
 	subHeaderAlign: Alignment.RIGHT,
 	subHeaderWrap: true,

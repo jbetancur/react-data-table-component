@@ -113,6 +113,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		rowOnlyCheckboxProps = defaultProps.rowOnlyCheckboxProps
 	} = props;
 
 	const {
@@ -461,6 +462,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onDragEnd={handleDragEnd}
 											onDragEnter={handleDragEnter}
 											onDragLeave={handleDragLeave}
+											rowOnlyCheckboxProps={rowOnlyCheckboxProps}
 										/>
 									);
 								})}

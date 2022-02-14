@@ -70,6 +70,7 @@ type DProps<T> = Pick<
 	| 'selectableRowsHighlight'
 	| 'selectableRowsSingle'
 	| 'striped'
+	| 'rowOnlyCheckboxProps'
 >;
 
 interface TableRowProps<T> extends Required<DProps<T>> {
@@ -129,6 +130,7 @@ function Row<T>({
 	onDragEnd,
 	onDragEnter,
 	onDragLeave,
+	rowOnlyCheckboxProps,
 }: TableRowProps<T>): JSX.Element {
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
 
@@ -174,6 +176,7 @@ function Row<T>({
 	const highlightSelected = selectableRowsHighlight && selected;
 	const inheritStyles = expandableInheritConditionalStyles ? style : {};
 	const isStriped = striped && isOdd(rowIndex);
+	const checkboxProps = { ...selectableRowsComponentProps, ...rowOnlyCheckboxProps(row, keyField) };
 
 	return (
 		<>
@@ -198,7 +201,7 @@ function Row<T>({
 						rowCount={rowCount}
 						selected={selected}
 						selectableRowsComponent={selectableRowsComponent}
-						selectableRowsComponentProps={selectableRowsComponentProps}
+						selectableRowsComponentProps={checkboxProps}
 						selectableRowDisabled={selectableRowDisabled}
 						selectableRowsSingle={selectableRowsSingle}
 						onSelectedRow={onSelectedRow}

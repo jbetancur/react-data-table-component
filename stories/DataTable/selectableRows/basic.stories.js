@@ -28,7 +28,8 @@ export const Basic = () => (
 		data={data}
 		selectableRows
 		pagination
-		selectableRowsComponentProps={row => ({ 'aria-label': `Select row ${row.title}` })}
+		selectableRowsComponentProps={{ className: 'every-instance-classname' }}
+		rowOnlyCheckboxProps={row => ({ 'aria-label': `Select row ${row.title}` })}
 	/>
 );
 

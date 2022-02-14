@@ -89,10 +89,11 @@ export type TableProps<T> = {
 	progressComponent?: React.ReactNode;
 	progressPending?: boolean;
 	responsive?: boolean;
+	rowOnlyCheckboxProps?: (row: T, keyField: string) => ComponentProps | null;
 	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
 	selectableRowsComponent?: 'input' | React.ReactNode;
-	selectableRowsComponentProps?: ComponentProps | ((row: T, keyField: string) => ComponentProps);
+	selectableRowsComponentProps?: ComponentProps;
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;
