@@ -113,7 +113,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
-		rowOnlyCheckboxProps = defaultProps.rowOnlyCheckboxProps
+		rowOnlyCheckboxProps = defaultProps.rowOnlyCheckboxProps,
 	} = props;
 
 	const {
