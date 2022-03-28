@@ -66,6 +66,8 @@ export type TableProps<T> = {
 	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
+	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
+	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder) => void;

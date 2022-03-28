@@ -93,6 +93,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
+		onRowMouseEnter = defaultProps.onRowMouseEnter,
+		onRowMouseLeave = defaultProps.onRowMouseLeave,
 		sortIcon = defaultProps.sortIcon,
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
@@ -203,6 +205,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const handleRowClicked = React.useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
 
 	const handleRowDoubleClicked = React.useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
+
+	const handleRowMouseEnter = React.useCallback((row, e) => onRowMouseEnter(row, e), [onRowMouseEnter]);
+
+	const handleRowMouseLeave = React.useCallback((row, e) => onRowMouseLeave(row, e), [onRowMouseLeave]);
 
 	const handleChangePage = React.useCallback(
 		(page: number) =>
@@ -454,6 +460,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
+											onRowMouseEnter={handleRowMouseEnter}
+											onRowMouseLeave={handleRowMouseLeave}
 											onSelectedRow={handleSelectedRow}
 											draggingColumnId={draggingColumnId}
 											onDragStart={handleDragStart}
