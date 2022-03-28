@@ -451,7 +451,12 @@ describe('DataTable:RowMouseEnterAndLeave', () => {
 		const onRowMouseLeaveMock = jest.fn();
 		const mock = dataMock({});
 		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} onRowMouseEnter={onRowMouseEnterMock} onRowMouseLeave={onRowMouseLeaveMock} />,
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				onRowMouseEnter={onRowMouseEnterMock}
+				onRowMouseLeave={onRowMouseLeaveMock}
+			/>,
 		);
 
 		fireEvent.mouseEnter(container.querySelector('div[id="cell-1-1"]') as HTMLElement);
