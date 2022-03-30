@@ -6,7 +6,7 @@ import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import { prop, equalizeId, getConditionalStyle, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
-import { TableRow, SingleRowAction, TableProps } from './types';
+import { TableRow, SingleRowAction, TableProps, ExpandSingleRowAction } from './types';
 
 const highlightCSS = css<{
 	highlightOnHover?: boolean;
@@ -78,6 +78,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 	defaultExpanderDisabled: boolean;
 	id: string | number;
 	onSelectedRow: (action: SingleRowAction<T>) => void;
+	onExpandedRow: (action: ExpandSingleRowAction<T>) => void;
 	pointerOnHover: boolean;
 	row: T;
 	rowCount: number;
@@ -94,7 +95,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 function Row<T>({
 	columns = [],
 	conditionalRowStyles = [],
-	// defaultExpanded = false,
+	defaultExpanded = true,
 	defaultExpanderDisabled = false,
 	dense = false,
 	expandableIcon,
@@ -112,6 +113,7 @@ function Row<T>({
 	onRowDoubleClicked = noop,
 	onRowExpandToggled = noop,
 	onSelectedRow = noop,
+	onExpandedRow = noop,
 	pointerOnHover = false,
 	row,
 	rowCount,
@@ -139,7 +141,6 @@ function Row<T>({
 	// }, [defaultExpanded]);
 
 	const handleExpanded = React.useCallback(() => {
-		// setExpanded(!expanded);
 		onRowExpandToggled(!expanded, row);
 	}, [expanded, onRowExpandToggled, row]);
 
@@ -209,11 +210,13 @@ function Row<T>({
 
 				{expandableRows && !expandableRowsHideExpander && (
 					<TableCellExpander
+						name={`expand-row-${rowKeyField}`}
+						keyField={keyField}
 						id={rowKeyField as string}
 						expandableIcon={expandableIcon}
 						expanded={expanded}
 						row={row}
-						onToggled={handleExpanded}
+						onExpandedRow={onExpandedRow}
 						disabled={defaultExpanderDisabled}
 					/>
 				)}

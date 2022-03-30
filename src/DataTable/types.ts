@@ -343,6 +343,15 @@ export interface SingleRowAction<T> {
 	singleSelect: boolean;
 }
 
+export interface ExpandSingleRowAction<T> {
+	type: 'EXPAND_SINGLE_ROW';
+	keyField: string;
+	row: T;
+	isExpanded: boolean;
+	rowCount: number;
+	singleExpand: boolean;
+}
+
 export interface MultiRowAction<T> {
 	type: 'SELECT_MULTIPLE_ROWS';
 	keyField: string;
@@ -386,6 +395,7 @@ export type Action<T> =
 	| AllRowsAction<T>
 	| ExpandAllRowsAction<T>
 	| SingleRowAction<T>
+	| ExpandSingleRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
 	| PaginationPageAction

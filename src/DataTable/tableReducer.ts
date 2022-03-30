@@ -1,4 +1,4 @@
-import { insertItem, isRowSelected, removeItem } from './util';
+import { insertItem, isRowExpanded, isRowSelected, removeItem } from './util';
 import { Action, TableState } from './types';
 
 export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableState<T> {
@@ -40,15 +40,15 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			const toggleOnExpandedRowsChange = !state.toggleOnExpandedRowsChange;
 
 			if (mergeExpansions) {
-				const selections = allChecked
-					? [...state.selectedRows, ...rows.filter(row => !isRowSelected(row, state.selectedRows, keyField))]
-					: state.selectedRows.filter(row => !isRowSelected(row, rows, keyField));
+				const expansions = allChecked
+					? [...state.expandedRows, ...rows.filter(row => !isRowExpanded(row, state.expandedRows, keyField))]
+					: state.expandedRows.filter(row => !isRowExpanded(row, rows, keyField));
 
 				return {
 					...state,
-					allSelected: allChecked,
-					expandedCount: selections.length,
-					expandedRows: selections,
+					allExpanded: allChecked,
+					expandedCount: expansions.length,
+					expandedRows: expansions,
 					toggleOnExpandedRowsChange,
 				};
 			}
@@ -103,6 +103,50 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				allSelected: state.selectedRows.length + 1 === rowCount,
 				selectedRows: insertItem(state.selectedRows, row),
 				toggleOnSelectedRowsChange,
+			};
+		}
+
+		case 'EXPAND_SINGLE_ROW': {
+			const { keyField, row, isExpanded, rowCount, singleExpand } = action;
+
+			// handle single select mode
+			if (singleExpand) {
+				if (isExpanded) {
+					return {
+						...state,
+						expandedCount: 0,
+						allExpanded: false,
+						expandedRows: [],
+						toggleOnExpandedRowsChange,
+					};
+				}
+
+				return {
+					...state,
+					expandedCount: 1,
+					allExpanded: false,
+					expandedRows: [row],
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			// handle multi expand mode
+			if (isExpanded) {
+				return {
+					...state,
+					expandedCount: state.expandedRows.length > 0 ? state.expandedRows.length - 1 : 0,
+					allExpanded: false,
+					expandedRows: removeItem(state.expandedRows, row, keyField),
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			return {
+				...state,
+				expandedCount: state.expandedRows.length + 1,
+				allExpanded: state.expandedRows.length + 1 === rowCount,
+				expandedRows: insertItem(state.expandedRows, row),
+				toggleOnExpandedRowsChange,
 			};
 		}
 

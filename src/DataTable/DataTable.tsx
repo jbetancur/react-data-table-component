@@ -31,6 +31,7 @@ import {
 	TableState,
 	SortOrder,
 	ExpandAllRowsAction,
+	ExpandSingleRowAction,
 } from './types';
 import useColumns from '../hooks/useColumns';
 
@@ -217,6 +218,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, []);
 
 	const handleSelectedRow = React.useCallback((action: SingleRowAction<T>) => {
+		dispatch(action);
+	}, []);
+
+	const handleExpandedRow = React.useCallback((action: ExpandSingleRowAction<T>) => {
 		dispatch(action);
 	}, []);
 
@@ -491,6 +496,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
 											onSelectedRow={handleSelectedRow}
+											onExpandedRow={handleExpandedRow}
 											draggingColumnId={draggingColumnId}
 											onDragStart={handleDragStart}
 											onDragOver={handleDragOver}
