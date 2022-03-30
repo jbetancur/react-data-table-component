@@ -83,6 +83,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 	rowCount: number;
 	rowIndex: number;
 	selected: boolean;
+	expanded: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -93,7 +94,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 function Row<T>({
 	columns = [],
 	conditionalRowStyles = [],
-	defaultExpanded = false,
+	// defaultExpanded = false,
 	defaultExpanderDisabled = false,
 	dense = false,
 	expandableIcon,
@@ -122,6 +123,7 @@ function Row<T>({
 	selectableRowsHighlight = false,
 	selectableRowsSingle = false,
 	selected,
+	expanded,
 	striped = false,
 	draggingColumnId,
 	onDragStart,
@@ -130,14 +132,14 @@ function Row<T>({
 	onDragEnter,
 	onDragLeave,
 }: TableRowProps<T>): JSX.Element {
-	const [expanded, setExpanded] = React.useState(defaultExpanded);
+	// const [expanded, setExpanded] = React.useState(defaultExpanded);
 
-	React.useEffect(() => {
-		setExpanded(defaultExpanded);
-	}, [defaultExpanded]);
+	// React.useEffect(() => {
+	// 	setExpanded(defaultExpanded);
+	// }, [defaultExpanded]);
 
 	const handleExpanded = React.useCallback(() => {
-		setExpanded(!expanded);
+		// setExpanded(!expanded);
 		onRowExpandToggled(!expanded, row);
 	}, [expanded, onRowExpandToggled, row]);
 

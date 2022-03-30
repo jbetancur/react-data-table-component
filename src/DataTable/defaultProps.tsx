@@ -75,6 +75,8 @@ export const defaultProps = {
 	paginationServerOptions: {
 		persistSelectedOnSort: false,
 		persistSelectedOnPageChange: false,
+		persistExpandedOnSort: false,
+		persistExpandedOnPageChange: false,
 	},
 	paginationDefaultPage: 1,
 	paginationResetDefaultPage: false,
@@ -98,6 +100,7 @@ export const defaultProps = {
 	onRowDoubleClicked: noop,
 	onRowExpandToggled: noop,
 	onSelectedRowsChange: noop,
+	onExpandedRowsChange: noop,
 	onSort: noop,
 	onColumnOrderChange: noop,
 };

@@ -3,6 +3,7 @@ import { Action, TableState } from './types';
 
 export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableState<T> {
 	const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;
+	const toggleOnExpandedRowsChange = !state.toggleOnExpandedRowsChange;
 
 	switch (action.type) {
 		case 'SELECT_ALL_ROWS': {
@@ -30,6 +31,34 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				selectedCount: allChecked ? rowCount : 0,
 				selectedRows: allChecked ? rows : [],
 				toggleOnSelectedRowsChange,
+			};
+		}
+
+		case 'EXPAND_ALL_ROWS': {
+			const { keyField, rows, rowCount, mergeExpansions } = action;
+			const allChecked = !state.allExpanded;
+			const toggleOnExpandedRowsChange = !state.toggleOnExpandedRowsChange;
+
+			if (mergeExpansions) {
+				const selections = allChecked
+					? [...state.selectedRows, ...rows.filter(row => !isRowSelected(row, state.selectedRows, keyField))]
+					: state.selectedRows.filter(row => !isRowSelected(row, rows, keyField));
+
+				return {
+					...state,
+					allSelected: allChecked,
+					expandedCount: selections.length,
+					expandedRows: selections,
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			return {
+				...state,
+				allExpanded: allChecked,
+				expandedCount: allChecked ? rowCount : 0,
+				expandedRows: allChecked ? rows : [],
+				toggleOnExpandedRowsChange,
 			};
 		}
 

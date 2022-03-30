@@ -237,6 +237,21 @@ export function isRowSelected<T>(row: T, selectedRows: T[] = [], keyField = 'id'
 	return selectedRows.some(r => r === row);
 }
 
+export function isRowExpanded<T>(row: T, expandedRows: T[] = [], keyField = 'id'): boolean {
+	// cast row as TableRow because the property is unknown in advance therefore, typescript will throw an error
+	const outerField = prop(row as TableRow, keyField);
+
+	if (outerField) {
+		return expandedRows.some(r => {
+			const innerField = prop(r as TableRow, keyField);
+
+			return innerField === outerField;
+		});
+	}
+
+	return expandedRows.some(r => r === row);
+}
+
 export function isOdd(num: number): boolean {
 	return num % 2 === 0;
 }

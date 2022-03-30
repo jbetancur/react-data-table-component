@@ -18,7 +18,7 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage, isRowExpanded } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
 import {
@@ -30,6 +30,7 @@ import {
 	TableProps,
 	TableState,
 	SortOrder,
+	ExpandAllRowsAction,
 } from './types';
 import useColumns from '../hooks/useColumns';
 
@@ -55,6 +56,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
 		onSelectedRowsChange = defaultProps.onSelectedRowsChange,
+		onExpandedRowsChange = defaultProps.onExpandedRowsChange,
 		expandableIcon = defaultProps.expandableIcon,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 		onChangePage = defaultProps.onChangePage,
@@ -132,19 +134,27 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			rowsPerPage,
 			currentPage,
 			selectedRows,
+			expandedRows,
 			allSelected,
+			allExpanded,
 			selectedCount,
+			expandedCount,
 			selectedColumn,
 			sortDirection,
 			toggleOnSelectedRowsChange,
+			toggleOnExpandedRowsChange,
 		},
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, {
 		allSelected: false,
+		allExpanded: false,
 		selectedCount: 0,
+		expandedCount: 0,
 		selectedRows: [],
+		expandedRows: [],
 		selectedColumn: defaultSortColumn,
 		toggleOnSelectedRowsChange: false,
+		toggleOnExpandedRowsChange: false,
 		sortDirection: defaultSortDirection,
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
@@ -152,8 +162,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		contextMessage: defaultProps.contextMessage,
 	});
 
-	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
+	const {
+		persistSelectedOnSort = false,
+		persistSelectedOnPageChange = false,
+		persistExpandedOnSort = false,
+		persistExpandedOnPageChange = false,
+	} = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
+	const mergeExpansions = !!(paginationServer && (persistExpandedOnPageChange || persistExpandedOnSort));
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
 
@@ -193,6 +209,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, []);
 
 	const handleSelectAllRows = React.useCallback((action: AllRowsAction<T>) => {
+		dispatch(action);
+	}, []);
+
+	const handleExpandAllRows = React.useCallback((action: ExpandAllRowsAction<T>) => {
 		dispatch(action);
 	}, []);
 
@@ -273,6 +293,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
 		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
 	}, [toggleOnSelectedRowsChange]);
+
+	useDidUpdateEffect(() => {
+		onExpandedRowsChange({ allExpanded, expandedCount, expandedRows });
+		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
+	}, [toggleOnExpandedRowsChange]);
 
 	useDidUpdateEffect(() => {
 		onSort(selectedColumn, sortDirection);
@@ -379,7 +404,16 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 												onSelectAllRows={handleSelectAllRows}
 											/>
 										))}
-									{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
+									{expandableRows && !expandableRowsHideExpander && (
+										<ColumnExpander
+											allExpanded={allExpanded}
+											expandedRows={expandedRows}
+											rowData={visibleRows}
+											keyField={keyField}
+											mergeExpansions={mergeExpansions}
+											onExpandAllRows={handleExpandAllRows}
+										/>
+									)}
 									{tableColumns.map(column => (
 										<Column
 											key={column.id}
@@ -416,6 +450,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									const key = prop(row as TableRow, keyField) as string | number;
 									const id = isEmpty(key) ? i : key;
 									const selected = isRowSelected(row, selectedRows, keyField);
+									const expanded = isRowExpanded(row, expandedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
 
@@ -445,6 +480,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											expandableInheritConditionalStyles={expandableInheritConditionalStyles}
 											conditionalRowStyles={conditionalRowStyles}
 											selected={selected}
+											expanded={expanded}
 											selectableRowsHighlight={selectableRowsHighlight}
 											selectableRowsComponent={selectableRowsComponent}
 											selectableRowsComponentProps={selectableRowsComponentProps}

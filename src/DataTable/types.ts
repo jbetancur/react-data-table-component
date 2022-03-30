@@ -68,6 +68,7 @@ export type TableProps<T> = {
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
+	onExpandedRowsChange?: (expanded: { allExpanded: boolean; expandedCount: number; expandedRows: T[] }) => void;
 	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
@@ -225,6 +226,8 @@ export interface PaginationOptions {
 export interface PaginationServerOptions {
 	persistSelectedOnSort?: boolean;
 	persistSelectedOnPageChange?: boolean;
+	persistExpandedOnSort?: boolean;
+	persistExpandedOnPageChange?: boolean;
 }
 
 export interface ExpandableIcon {
@@ -240,9 +243,12 @@ export interface ContextMessage {
 
 export type TableState<T> = {
 	allSelected: boolean;
+	allExpanded: boolean;
 	contextMessage: ContextMessage;
 	selectedCount: number;
+	expandedCount: number;
 	selectedRows: T[];
+	expandedRows: T[];
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
 	currentPage: number;
@@ -253,6 +259,7 @@ export type TableState<T> = {
 	 however, when using selectableRowsSingle
 	*/
 	toggleOnSelectedRowsChange: boolean;
+	toggleOnExpandedRowsChange: boolean;
 };
 
 // Theming
@@ -319,6 +326,14 @@ export interface AllRowsAction<T> {
 	mergeSelections: boolean;
 }
 
+export interface ExpandAllRowsAction<T> {
+	type: 'EXPAND_ALL_ROWS';
+	keyField: string;
+	rows: T[];
+	rowCount: number;
+	mergeExpansions: boolean;
+}
+
 export interface SingleRowAction<T> {
 	type: 'SELECT_SINGLE_ROW';
 	keyField: string;
@@ -369,6 +384,7 @@ export interface ColumnsAction<T> {
 
 export type Action<T> =
 	| AllRowsAction<T>
+	| ExpandAllRowsAction<T>
 	| SingleRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
