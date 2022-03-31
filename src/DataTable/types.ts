@@ -106,6 +106,7 @@ export type TableProps<T> = {
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
 	striped?: boolean;
+	keepExpandableFirst?: boolean;
 	style?: CSSObject;
 	subHeader?: React.ReactNode | React.ReactNode[];
 	subHeaderAlign?: Alignment;

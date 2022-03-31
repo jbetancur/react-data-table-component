@@ -106,4 +106,5 @@ export const defaultProps = {
 	onExpandedRowsChange: noop,
 	onSort: noop,
 	onColumnOrderChange: noop,
+	keepExpandableFirst: false,
 };

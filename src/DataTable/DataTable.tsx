@@ -119,6 +119,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		keepExpandableFirst = defaultProps.keepExpandableFirst,
 	} = props;
 
 	const {
@@ -389,6 +390,41 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 	const showExpandAll = persistExpandedOnPageChange || expandableRowsSingle || expandableRowsNoExpandAll;
 
+	const selectableHeaderCol =
+		selectableRows &&
+		(showSelectAll ? (
+			<CellBase style={{ flex: '0 0 48px' }} />
+		) : (
+			<ColumnCheckbox
+				allSelected={allSelected}
+				selectedRows={selectedRows}
+				selectableRowsComponent={selectableRowsComponent}
+				selectableRowsComponentProps={selectableRowsComponentProps}
+				selectableRowDisabled={selectableRowDisabled}
+				rowData={visibleRows}
+				keyField={keyField}
+				mergeSelections={mergeSelections}
+				onSelectAllRows={handleSelectAllRows}
+			/>
+		));
+
+	const expandableHeaderCol =
+		expandableRows &&
+		(showExpandAll ? (
+			<CellBase style={{ flex: '0 0 48px' }} />
+		) : (
+			<ColumnExpander
+				allExpanded={allExpanded}
+				expandedRows={expandedRows}
+				rowData={visibleRows}
+				keyField={keyField}
+				mergeExpansions={mergeExpansions}
+				onExpandAllRows={handleExpandAllRows}
+				expandableIcon={expandableIcon}
+				expandableRowDisabled={expandableRowDisabled}
+			/>
+		));
+
 	return (
 		<ThemeProvider theme={currentTheme}>
 			{showHeader() && (
@@ -423,38 +459,17 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 						{showTableHead() && (
 							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
 								<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
-									{selectableRows &&
-										(showSelectAll ? (
-											<CellBase style={{ flex: '0 0 48px' }} />
-										) : (
-											<ColumnCheckbox
-												allSelected={allSelected}
-												selectedRows={selectedRows}
-												selectableRowsComponent={selectableRowsComponent}
-												selectableRowsComponentProps={selectableRowsComponentProps}
-												selectableRowDisabled={selectableRowDisabled}
-												rowData={visibleRows}
-												keyField={keyField}
-												mergeSelections={mergeSelections}
-												onSelectAllRows={handleSelectAllRows}
-											/>
-										))}
-
-									{expandableRows &&
-										(showExpandAll ? (
-											<CellBase style={{ flex: '0 0 48px' }} />
-										) : (
-											<ColumnExpander
-												allExpanded={allExpanded}
-												expandedRows={expandedRows}
-												rowData={visibleRows}
-												keyField={keyField}
-												mergeExpansions={mergeExpansions}
-												onExpandAllRows={handleExpandAllRows}
-												expandableIcon={expandableIcon}
-												expandableRowDisabled={expandableRowDisabled}
-											/>
-										))}
+									{keepExpandableFirst ? (
+										<>
+											{expandableHeaderCol}
+											{selectableHeaderCol}
+										</>
+									) : (
+										<>
+											{selectableHeaderCol}
+											{expandableHeaderCol}
+										</>
+									)}
 
 									{tableColumns.map(column => (
 										<Column
@@ -531,6 +546,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											selectableRowsSingle={selectableRowsSingle}
 											expandableRowsSingle={expandableRowsSingle}
 											striped={striped}
+											keepExpandableFirst={keepExpandableFirst}
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}

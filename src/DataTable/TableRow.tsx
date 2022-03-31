@@ -72,6 +72,7 @@ type DProps<T> = Pick<
 	| 'selectableRowsSingle'
 	| 'expandableRowsSingle'
 	| 'striped'
+	| 'keepExpandableFirst'
 >;
 
 interface TableRowProps<T> extends Required<DProps<T>> {
@@ -131,6 +132,7 @@ function Row<T>({
 	selected,
 	expanded,
 	striped = false,
+	keepExpandableFirst = false,
 	draggingColumnId,
 	onDragStart,
 	onDragOver,
@@ -176,6 +178,36 @@ function Row<T>({
 	const inheritStyles = expandableInheritConditionalStyles ? style : {};
 	const isStriped = striped && isOdd(rowIndex);
 
+	const selectableCell = selectableRows && (
+		<TableCellCheckbox
+			name={`select-row-${rowKeyField}`}
+			keyField={keyField}
+			row={row}
+			rowCount={rowCount}
+			selected={selected}
+			selectableRowsComponent={selectableRowsComponent}
+			selectableRowsComponentProps={selectableRowsComponentProps}
+			selectableRowDisabled={selectableRowDisabled}
+			selectableRowsSingle={selectableRowsSingle}
+			onSelectedRow={onSelectedRow}
+		/>
+	);
+
+	const expandableCell = expandableRows && !expandableRowsHideExpander && (
+		<TableCellExpander
+			name={`expand-row-${rowKeyField}`}
+			keyField={keyField}
+			id={rowKeyField as string}
+			expandableIcon={expandableIcon}
+			expanded={expanded}
+			row={row}
+			expandableRowsSingle={expandableRowsSingle}
+			expandableRowDisabled={expandableRowDisabled}
+			onExpandedRow={onExpandedRow}
+			disabled={defaultExpanderDisabled}
+		/>
+	);
+
 	return (
 		<>
 			<TableRowStyle
@@ -191,34 +223,16 @@ function Row<T>({
 				selected={highlightSelected}
 				style={style}
 			>
-				{selectableRows && (
-					<TableCellCheckbox
-						name={`select-row-${rowKeyField}`}
-						keyField={keyField}
-						row={row}
-						rowCount={rowCount}
-						selected={selected}
-						selectableRowsComponent={selectableRowsComponent}
-						selectableRowsComponentProps={selectableRowsComponentProps}
-						selectableRowDisabled={selectableRowDisabled}
-						selectableRowsSingle={selectableRowsSingle}
-						onSelectedRow={onSelectedRow}
-					/>
-				)}
-
-				{expandableRows && !expandableRowsHideExpander && (
-					<TableCellExpander
-						name={`expand-row-${rowKeyField}`}
-						keyField={keyField}
-						id={rowKeyField as string}
-						expandableIcon={expandableIcon}
-						expanded={expanded}
-						row={row}
-						expandableRowsSingle={expandableRowsSingle}
-						expandableRowDisabled={expandableRowDisabled}
-						onExpandedRow={onExpandedRow}
-						disabled={defaultExpanderDisabled}
-					/>
+				{keepExpandableFirst ? (
+					<>
+						{expandableCell}
+						{selectableCell}
+					</>
+				) : (
+					<>
+						{selectableCell}
+						{expandableCell}
+					</>
 				)}
 
 				{columns.map(column => {
