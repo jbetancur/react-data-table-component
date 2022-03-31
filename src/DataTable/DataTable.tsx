@@ -113,6 +113,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		defaultSortFieldId = defaultProps.defaultSortFieldId,
 		defaultSortAsc = defaultProps.defaultSortAsc,
 		clearSelectedRows = defaultProps.clearSelectedRows,
+		clearExpandedRows = defaultProps.clearExpandedRows,
 		conditionalRowStyles = defaultProps.conditionalRowStyles,
 		theme = defaultProps.theme,
 		customStyles = defaultProps.customStyles,
@@ -162,6 +163,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,
+		expandedRowsFlag: false,
 		contextMessage: defaultProps.contextMessage,
 	});
 
@@ -338,6 +340,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [selectableRowsSingle, clearSelectedRows]);
 
 	React.useEffect(() => {
+		dispatch({ type: 'CLEAR_EXPANDED_ROWS', expandedRowsFlag: clearExpandedRows });
+	}, [expandableRowsSingle, clearExpandedRows]);
+
+	React.useEffect(() => {
 		if (!selectableRowSelected) {
 			return;
 		}
@@ -357,6 +363,27 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		// We only want to update the selectedRowState if data changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data, selectableRowSelected]);
+
+	React.useEffect(() => {
+		if (!expandableRowExpanded) {
+			return;
+		}
+
+		const preExpandedRows = sortedData.filter(row => expandableRowExpanded(row));
+		// if selectableRowsSingle mode then return the first match
+		const expanded = expandableRowsSingle ? preExpandedRows.slice(0, 1) : preExpandedRows;
+
+		dispatch({
+			type: 'EXPAND_MULTIPLE_ROWS',
+			keyField,
+			expandedRows: expanded,
+			totalRows: sortedData.length,
+			mergeExpansions,
+		});
+
+		// We only want to update the selectedRowState if data changes
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [data, expandableRowExpanded]);
 
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;

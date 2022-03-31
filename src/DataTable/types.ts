@@ -32,6 +32,7 @@ export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
 	clearSelectedRows?: boolean;
+	clearExpandedRows?: boolean;
 	columns: TableColumn<T>[];
 	conditionalRowStyles?: ConditionalStyles<T>[];
 	contextActions?: React.ReactNode | React.ReactNode[];
@@ -256,6 +257,7 @@ export type TableState<T> = {
 	currentPage: number;
 	rowsPerPage: number;
 	selectedRowsFlag: boolean;
+	expandedRowsFlag: boolean;
 	/* server-side pagination and server-side sorting will cause selectedRows to change
 	 because of this behavior onSelectedRowsChange useEffect is triggered (by design it should notify if there was a change)
 	 however, when using selectableRowsSingle
@@ -362,6 +364,14 @@ export interface MultiRowAction<T> {
 	mergeSelections: boolean;
 }
 
+export interface ExpandMultiRowAction<T> {
+	type: 'EXPAND_MULTIPLE_ROWS';
+	keyField: string;
+	expandedRows: T[];
+	totalRows: number;
+	mergeExpansions: boolean;
+}
+
 export interface SortAction<T> {
 	type: 'SORT_CHANGE';
 	sortDirection: SortOrder;
@@ -388,6 +398,11 @@ export interface ClearSelectedRowsAction {
 	selectedRowsFlag: boolean;
 }
 
+export interface ClearExpandedRowsAction {
+	type: 'CLEAR_EXPANDED_ROWS';
+	expandedRowsFlag: boolean;
+}
+
 export interface ColumnsAction<T> {
 	type: 'UPDATE_COLUMNS';
 	cols: TableColumn<T>[];
@@ -399,7 +414,9 @@ export type Action<T> =
 	| SingleRowAction<T>
 	| ExpandSingleRowAction<T>
 	| MultiRowAction<T>
+	| ExpandMultiRowAction<T>
 	| SortAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
-	| ClearSelectedRowsAction;
+	| ClearSelectedRowsAction
+	| ClearExpandedRowsAction;

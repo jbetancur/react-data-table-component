@@ -96,7 +96,7 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 function Row<T>({
 	columns = [],
 	conditionalRowStyles = [],
-	defaultExpanded = true,
+	// defaultExpanded = true,
 	defaultExpanderDisabled = false,
 	dense = false,
 	expandableIcon,
@@ -136,12 +136,6 @@ function Row<T>({
 	onDragEnter,
 	onDragLeave,
 }: TableRowProps<T>): JSX.Element {
-	// const [expanded, setExpanded] = React.useState(defaultExpanded);
-
-	// React.useEffect(() => {
-	// 	setExpanded(defaultExpanded);
-	// }, [defaultExpanded]);
-
 	const handleExpanded = React.useCallback(() => {
 		onRowExpandToggled(!expanded, row);
 	}, [expanded, onRowExpandToggled, row]);

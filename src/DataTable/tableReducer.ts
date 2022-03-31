@@ -177,6 +177,33 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			};
 		}
 
+		case 'EXPAND_MULTIPLE_ROWS': {
+			const { keyField, expandedRows, totalRows, mergeExpansions } = action;
+
+			if (mergeExpansions) {
+				const expansions = [
+					...state.expandedRows,
+					...expandedRows.filter(row => !isRowExpanded(row, state.expandedRows, keyField)),
+				];
+
+				return {
+					...state,
+					expandedCount: expansions.length,
+					allExpanded: false,
+					expandedRows: expansions,
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			return {
+				...state,
+				expandedCount: expandedRows.length,
+				allExpanded: expandedRows.length === totalRows,
+				expandedRows,
+				toggleOnExpandedRowsChange,
+			};
+		}
+
 		case 'CLEAR_SELECTED_ROWS': {
 			const { selectedRowsFlag } = action;
 
@@ -186,6 +213,18 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				selectedCount: 0,
 				selectedRows: [],
 				selectedRowsFlag,
+			};
+		}
+
+		case 'CLEAR_EXPANDED_ROWS': {
+			const { expandedRowsFlag } = action;
+
+			return {
+				...state,
+				allExpanded: false,
+				expandedCount: 0,
+				expandedRows: [],
+				expandedRowsFlag,
 			};
 		}
 
