@@ -97,8 +97,10 @@ export type TableProps<T> = {
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;
+	expandableRowsNoExpandAll?: boolean;
 	selectableRowsVisibleOnly?: boolean;
 	selectableRowsSingle?: boolean;
+	expandableRowsSingle?: boolean;
 	sortFunction?: SortFunction<T> | null;
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;

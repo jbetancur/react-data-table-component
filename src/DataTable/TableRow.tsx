@@ -69,6 +69,7 @@ type DProps<T> = Pick<
 	| 'selectableRowsComponentProps'
 	| 'selectableRowsHighlight'
 	| 'selectableRowsSingle'
+	| 'expandableRowsSingle'
 	| 'striped'
 >;
 
@@ -124,6 +125,7 @@ function Row<T>({
 	selectableRowsComponentProps,
 	selectableRowsHighlight = false,
 	selectableRowsSingle = false,
+	expandableRowsSingle = false,
 	selected,
 	expanded,
 	striped = false,
@@ -216,6 +218,7 @@ function Row<T>({
 						expandableIcon={expandableIcon}
 						expanded={expanded}
 						row={row}
+						expandableRowsSingle={expandableRowsSingle}
 						onExpandedRow={onExpandedRow}
 						disabled={defaultExpanderDisabled}
 					/>

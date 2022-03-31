@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { CellBase } from './Cell';
-import Checkbox from './Checkbox';
-import { ExpandAllRowsAction } from './types';
+import ExpanderButtonHead from './ExpanderButtonHead';
+import { ExpandableIcon, ExpandAllRowsAction } from './types';
 
 const ColumnStyle = styled(CellBase)`
 	flex: 0 0 48px;
@@ -20,6 +20,7 @@ interface ColumnExpanderProps<T> {
 	rowData: T[];
 	expandedRows: T[];
 	allExpanded: boolean;
+	expandableIcon: ExpandableIcon;
 	onExpandAllRows: (action: ExpandAllRowsAction<T>) => void;
 }
 
@@ -30,6 +31,7 @@ function ColumnExpander<T>({
 	allExpanded,
 	mergeExpansions,
 	expandedRows,
+	expandableIcon,
 	onExpandAllRows,
 }: ColumnExpanderProps<T>): JSX.Element {
 	const indeterminate = expandedRows.length > 0 && !allExpanded;
@@ -50,12 +52,11 @@ function ColumnExpander<T>({
 
 	return (
 		<ColumnStyle className="rdt_TableCol" headCell={headCell} noPadding>
-			<Checkbox
-				name="expand-all-rows"
-				onClick={handleExpandAll}
-				checked={allExpanded}
-				indeterminate={indeterminate}
+			<ExpanderButtonHead
+				expanded={indeterminate || allExpanded}
+				expandableIcon={expandableIcon}
 				disabled={isDisabled}
+				onToggled={handleExpandAll}
 			/>
 		</ColumnStyle>
 	);

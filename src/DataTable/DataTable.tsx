@@ -48,8 +48,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		dense = defaultProps.dense,
 		selectableRows = defaultProps.selectableRows,
 		selectableRowsSingle = defaultProps.selectableRowsSingle,
+		expandableRowsSingle = defaultProps.expandableRowsSingle,
 		selectableRowsHighlight = defaultProps.selectableRowsHighlight,
 		selectableRowsNoSelectAll = defaultProps.selectableRowsNoSelectAll,
+		expandableRowsNoExpandAll = defaultProps.expandableRowsNoExpandAll,
 		selectableRowsVisibleOnly = defaultProps.selectableRowsVisibleOnly,
 		selectableRowSelected = defaultProps.selectableRowSelected,
 		selectableRowDisabled = defaultProps.selectableRowDisabled,
@@ -358,6 +360,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
+	const showExpandAll = persistExpandedOnPageChange || expandableRowsSingle || expandableRowsNoExpandAll;
 
 	return (
 		<ThemeProvider theme={currentTheme}>
@@ -409,16 +412,22 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 												onSelectAllRows={handleSelectAllRows}
 											/>
 										))}
-									{expandableRows && !expandableRowsHideExpander && (
-										<ColumnExpander
-											allExpanded={allExpanded}
-											expandedRows={expandedRows}
-											rowData={visibleRows}
-											keyField={keyField}
-											mergeExpansions={mergeExpansions}
-											onExpandAllRows={handleExpandAllRows}
-										/>
-									)}
+
+									{expandableRows &&
+										(showExpandAll ? (
+											<CellBase style={{ flex: '0 0 48px' }} />
+										) : (
+											<ColumnExpander
+												allExpanded={allExpanded}
+												expandedRows={expandedRows}
+												rowData={visibleRows}
+												keyField={keyField}
+												mergeExpansions={mergeExpansions}
+												onExpandAllRows={handleExpandAllRows}
+												expandableIcon={expandableIcon}
+											/>
+										))}
+
 									{tableColumns.map(column => (
 										<Column
 											key={column.id}
@@ -491,6 +500,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											selectableRowsComponentProps={selectableRowsComponentProps}
 											selectableRowDisabled={selectableRowDisabled}
 											selectableRowsSingle={selectableRowsSingle}
+											expandableRowsSingle={expandableRowsSingle}
 											striped={striped}
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
