@@ -25,6 +25,7 @@ export const defaultProps = {
 	selectableRowsSingle: false,
 	expandableRowsSingle: false,
 	clearSelectedRows: false,
+	clearExpandedRows: false,
 	expandableRows: false,
 	expandableRowDisabled: null,
 	expandableRowExpanded: null,

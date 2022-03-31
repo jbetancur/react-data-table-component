@@ -55,6 +55,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		selectableRowsVisibleOnly = defaultProps.selectableRowsVisibleOnly,
 		selectableRowSelected = defaultProps.selectableRowSelected,
 		selectableRowDisabled = defaultProps.selectableRowDisabled,
+		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		selectableRowsComponent = defaultProps.selectableRowsComponent,
 		selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
@@ -104,7 +105,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		sortServer = defaultProps.sortServer,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
 		expandableRowsComponentProps = defaultProps.expandableRowsComponentProps,
-		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		expandableRowsHideExpander = defaultProps.expandableRowsHideExpander,
 		expandOnRowClicked = defaultProps.expandOnRowClicked,
 		expandOnRowDoubleClicked = defaultProps.expandOnRowDoubleClicked,
@@ -452,6 +452,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 												mergeExpansions={mergeExpansions}
 												onExpandAllRows={handleExpandAllRows}
 												expandableIcon={expandableIcon}
+												expandableRowDisabled={expandableRowDisabled}
 											/>
 										))}
 
@@ -526,6 +527,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											selectableRowsComponent={selectableRowsComponent}
 											selectableRowsComponentProps={selectableRowsComponentProps}
 											selectableRowDisabled={selectableRowDisabled}
+											expandableRowDisabled={expandableRowDisabled}
 											selectableRowsSingle={selectableRowsSingle}
 											expandableRowsSingle={expandableRowsSingle}
 											striped={striped}

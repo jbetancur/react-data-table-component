@@ -64,6 +64,7 @@ type DProps<T> = Pick<
 	| 'onRowExpandToggled'
 	| 'pointerOnHover'
 	| 'selectableRowDisabled'
+	| 'expandableRowDisabled'
 	| 'selectableRows'
 	| 'selectableRowsComponent'
 	| 'selectableRowsComponentProps'
@@ -120,6 +121,7 @@ function Row<T>({
 	rowCount,
 	rowIndex,
 	selectableRowDisabled = null,
+	expandableRowDisabled = null,
 	selectableRows = false,
 	selectableRowsComponent,
 	selectableRowsComponentProps,
@@ -213,6 +215,7 @@ function Row<T>({
 						expanded={expanded}
 						row={row}
 						expandableRowsSingle={expandableRowsSingle}
+						expandableRowDisabled={expandableRowDisabled}
 						onExpandedRow={onExpandedRow}
 						disabled={defaultExpanderDisabled}
 					/>

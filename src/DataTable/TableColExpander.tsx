@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { CellBase } from './Cell';
 import ExpanderButtonHead from './ExpanderButtonHead';
-import { ExpandableIcon, ExpandAllRowsAction } from './types';
+import { ExpandableIcon, ExpandAllRowsAction, RowState } from './types';
 
 const ColumnStyle = styled(CellBase)`
 	flex: 0 0 48px;
@@ -21,6 +21,7 @@ interface ColumnExpanderProps<T> {
 	expandedRows: T[];
 	allExpanded: boolean;
 	expandableIcon: ExpandableIcon;
+	expandableRowDisabled: RowState<T>;
 	onExpandAllRows: (action: ExpandAllRowsAction<T>) => void;
 }
 
@@ -32,10 +33,11 @@ function ColumnExpander<T>({
 	mergeExpansions,
 	expandedRows,
 	expandableIcon,
+	expandableRowDisabled,
 	onExpandAllRows,
 }: ColumnExpanderProps<T>): JSX.Element {
 	const indeterminate = expandedRows.length > 0 && !allExpanded;
-	const rows = rowData;
+	const rows = expandableRowDisabled ? rowData.filter((row: T) => !expandableRowDisabled(row)) : rowData;
 	const isDisabled = rows.length === 0;
 	// The row count should subtract rows that are disabled
 	const rowCount = Math.min(rowData.length, rows.length);
