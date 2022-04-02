@@ -307,7 +307,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	// When paginationPerPage value changes, update in reducer so it displays the correct values on footer
 	React.useEffect(() => {
-		handleChangeRowsPerPage(paginationPerPage)
+		handleChangeRowsPerPage(paginationPerPage);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [paginationPerPage]);
 
 	React.useEffect(() => {
