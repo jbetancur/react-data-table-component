@@ -305,6 +305,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
 	}, [selectableRowsSingle, clearSelectedRows]);
 
+	// When paginationPerPage value changes, update in reducer so it displays the correct values on footer
+	React.useEffect(() => {
+		handleChangeRowsPerPage(paginationPerPage)
+	}, [paginationPerPage]);
+
 	React.useEffect(() => {
 		if (!selectableRowSelected) {
 			return;
