@@ -32,6 +32,7 @@ export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
 	clearSelectedRows?: boolean;
+	clearExpandedRows?: boolean;
 	columns: TableColumn<T>[];
 	conditionalRowStyles?: ConditionalStyles<T>[];
 	contextActions?: React.ReactNode | React.ReactNode[];
@@ -68,6 +69,7 @@ export type TableProps<T> = {
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
+	onExpandedRowsChange?: (expanded: { allExpanded: boolean; expandedCount: number; expandedRows: T[] }) => void;
 	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
@@ -96,12 +98,15 @@ export type TableProps<T> = {
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;
 	selectableRowsNoSelectAll?: boolean;
+	expandableRowsNoExpandAll?: boolean;
 	selectableRowsVisibleOnly?: boolean;
 	selectableRowsSingle?: boolean;
+	expandableRowsSingle?: boolean;
 	sortFunction?: SortFunction<T> | null;
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
 	striped?: boolean;
+	keepExpandableFirst?: boolean;
 	style?: CSSObject;
 	subHeader?: React.ReactNode | React.ReactNode[];
 	subHeaderAlign?: Alignment;
@@ -225,6 +230,8 @@ export interface PaginationOptions {
 export interface PaginationServerOptions {
 	persistSelectedOnSort?: boolean;
 	persistSelectedOnPageChange?: boolean;
+	persistExpandedOnSort?: boolean;
+	persistExpandedOnPageChange?: boolean;
 }
 
 export interface ExpandableIcon {
@@ -240,19 +247,24 @@ export interface ContextMessage {
 
 export type TableState<T> = {
 	allSelected: boolean;
+	allExpanded: boolean;
 	contextMessage: ContextMessage;
 	selectedCount: number;
+	expandedCount: number;
 	selectedRows: T[];
+	expandedRows: T[];
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
 	currentPage: number;
 	rowsPerPage: number;
 	selectedRowsFlag: boolean;
+	expandedRowsFlag: boolean;
 	/* server-side pagination and server-side sorting will cause selectedRows to change
 	 because of this behavior onSelectedRowsChange useEffect is triggered (by design it should notify if there was a change)
 	 however, when using selectableRowsSingle
 	*/
 	toggleOnSelectedRowsChange: boolean;
+	toggleOnExpandedRowsChange: boolean;
 };
 
 // Theming
@@ -319,6 +331,14 @@ export interface AllRowsAction<T> {
 	mergeSelections: boolean;
 }
 
+export interface ExpandAllRowsAction<T> {
+	type: 'EXPAND_ALL_ROWS';
+	keyField: string;
+	rows: T[];
+	rowCount: number;
+	mergeExpansions: boolean;
+}
+
 export interface SingleRowAction<T> {
 	type: 'SELECT_SINGLE_ROW';
 	keyField: string;
@@ -328,12 +348,29 @@ export interface SingleRowAction<T> {
 	singleSelect: boolean;
 }
 
+export interface ExpandSingleRowAction<T> {
+	type: 'EXPAND_SINGLE_ROW';
+	keyField: string;
+	row: T;
+	isExpanded: boolean;
+	rowCount: number;
+	singleExpand: boolean;
+}
+
 export interface MultiRowAction<T> {
 	type: 'SELECT_MULTIPLE_ROWS';
 	keyField: string;
 	selectedRows: T[];
 	totalRows: number;
 	mergeSelections: boolean;
+}
+
+export interface ExpandMultiRowAction<T> {
+	type: 'EXPAND_MULTIPLE_ROWS';
+	keyField: string;
+	expandedRows: T[];
+	totalRows: number;
+	mergeExpansions: boolean;
 }
 
 export interface SortAction<T> {
@@ -362,6 +399,11 @@ export interface ClearSelectedRowsAction {
 	selectedRowsFlag: boolean;
 }
 
+export interface ClearExpandedRowsAction {
+	type: 'CLEAR_EXPANDED_ROWS';
+	expandedRowsFlag: boolean;
+}
+
 export interface ColumnsAction<T> {
 	type: 'UPDATE_COLUMNS';
 	cols: TableColumn<T>[];
@@ -369,9 +411,13 @@ export interface ColumnsAction<T> {
 
 export type Action<T> =
 	| AllRowsAction<T>
+	| ExpandAllRowsAction<T>
 	| SingleRowAction<T>
+	| ExpandSingleRowAction<T>
 	| MultiRowAction<T>
+	| ExpandMultiRowAction<T>
 	| SortAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
-	| ClearSelectedRowsAction;
+	| ClearSelectedRowsAction
+	| ClearExpandedRowsAction;

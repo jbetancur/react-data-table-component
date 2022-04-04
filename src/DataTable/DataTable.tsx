@@ -18,7 +18,7 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage, isRowExpanded } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
 import {
@@ -30,6 +30,8 @@ import {
 	TableProps,
 	TableState,
 	SortOrder,
+	ExpandAllRowsAction,
+	ExpandSingleRowAction,
 } from './types';
 import useColumns from '../hooks/useColumns';
 
@@ -46,15 +48,19 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		dense = defaultProps.dense,
 		selectableRows = defaultProps.selectableRows,
 		selectableRowsSingle = defaultProps.selectableRowsSingle,
+		expandableRowsSingle = defaultProps.expandableRowsSingle,
 		selectableRowsHighlight = defaultProps.selectableRowsHighlight,
 		selectableRowsNoSelectAll = defaultProps.selectableRowsNoSelectAll,
+		expandableRowsNoExpandAll = defaultProps.expandableRowsNoExpandAll,
 		selectableRowsVisibleOnly = defaultProps.selectableRowsVisibleOnly,
 		selectableRowSelected = defaultProps.selectableRowSelected,
 		selectableRowDisabled = defaultProps.selectableRowDisabled,
+		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		selectableRowsComponent = defaultProps.selectableRowsComponent,
 		selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
 		onSelectedRowsChange = defaultProps.onSelectedRowsChange,
+		onExpandedRowsChange = defaultProps.onExpandedRowsChange,
 		expandableIcon = defaultProps.expandableIcon,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 		onChangePage = defaultProps.onChangePage,
@@ -99,7 +105,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		sortServer = defaultProps.sortServer,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
 		expandableRowsComponentProps = defaultProps.expandableRowsComponentProps,
-		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		expandableRowsHideExpander = defaultProps.expandableRowsHideExpander,
 		expandOnRowClicked = defaultProps.expandOnRowClicked,
 		expandOnRowDoubleClicked = defaultProps.expandOnRowDoubleClicked,
@@ -108,11 +113,13 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		defaultSortFieldId = defaultProps.defaultSortFieldId,
 		defaultSortAsc = defaultProps.defaultSortAsc,
 		clearSelectedRows = defaultProps.clearSelectedRows,
+		clearExpandedRows = defaultProps.clearExpandedRows,
 		conditionalRowStyles = defaultProps.conditionalRowStyles,
 		theme = defaultProps.theme,
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		keepExpandableFirst = defaultProps.keepExpandableFirst,
 	} = props;
 
 	const {
@@ -132,28 +139,43 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			rowsPerPage,
 			currentPage,
 			selectedRows,
+			expandedRows,
 			allSelected,
+			allExpanded,
 			selectedCount,
+			expandedCount,
 			selectedColumn,
 			sortDirection,
 			toggleOnSelectedRowsChange,
+			toggleOnExpandedRowsChange,
 		},
 		dispatch,
 	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, {
 		allSelected: false,
+		allExpanded: false,
 		selectedCount: 0,
+		expandedCount: 0,
 		selectedRows: [],
+		expandedRows: [],
 		selectedColumn: defaultSortColumn,
 		toggleOnSelectedRowsChange: false,
+		toggleOnExpandedRowsChange: false,
 		sortDirection: defaultSortDirection,
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,
+		expandedRowsFlag: false,
 		contextMessage: defaultProps.contextMessage,
 	});
 
-	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
+	const {
+		persistSelectedOnSort = false,
+		persistSelectedOnPageChange = false,
+		persistExpandedOnSort = false,
+		persistExpandedOnPageChange = false,
+	} = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
+	const mergeExpansions = !!(paginationServer && (persistExpandedOnPageChange || persistExpandedOnSort));
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
 
@@ -196,7 +218,15 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		dispatch(action);
 	}, []);
 
+	const handleExpandAllRows = React.useCallback((action: ExpandAllRowsAction<T>) => {
+		dispatch(action);
+	}, []);
+
 	const handleSelectedRow = React.useCallback((action: SingleRowAction<T>) => {
+		dispatch(action);
+	}, []);
+
+	const handleExpandedRow = React.useCallback((action: ExpandSingleRowAction<T>) => {
 		dispatch(action);
 	}, []);
 
@@ -275,6 +305,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [toggleOnSelectedRowsChange]);
 
 	useDidUpdateEffect(() => {
+		onExpandedRowsChange({ allExpanded, expandedCount, expandedRows });
+		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
+	}, [toggleOnExpandedRowsChange]);
+
+	useDidUpdateEffect(() => {
 		onSort(selectedColumn, sortDirection);
 	}, [selectedColumn, sortDirection]);
 
@@ -306,6 +341,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [selectableRowsSingle, clearSelectedRows]);
 
 	React.useEffect(() => {
+		dispatch({ type: 'CLEAR_EXPANDED_ROWS', expandedRowsFlag: clearExpandedRows });
+	}, [expandableRowsSingle, clearExpandedRows]);
+
+	React.useEffect(() => {
 		if (!selectableRowSelected) {
 			return;
 		}
@@ -326,8 +365,65 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data, selectableRowSelected]);
 
+	React.useEffect(() => {
+		if (!expandableRowExpanded) {
+			return;
+		}
+
+		const preExpandedRows = sortedData.filter(row => expandableRowExpanded(row));
+		// if selectableRowsSingle mode then return the first match
+		const expanded = expandableRowsSingle ? preExpandedRows.slice(0, 1) : preExpandedRows;
+
+		dispatch({
+			type: 'EXPAND_MULTIPLE_ROWS',
+			keyField,
+			expandedRows: expanded,
+			totalRows: sortedData.length,
+			mergeExpansions,
+		});
+
+		// We only want to update the selectedRowState if data changes
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [data, expandableRowExpanded]);
+
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
+	const showExpandAll = persistExpandedOnPageChange || expandableRowsSingle || expandableRowsNoExpandAll;
+
+	const selectableHeaderCol =
+		selectableRows &&
+		(showSelectAll ? (
+			<CellBase style={{ flex: '0 0 48px' }} />
+		) : (
+			<ColumnCheckbox
+				allSelected={allSelected}
+				selectedRows={selectedRows}
+				selectableRowsComponent={selectableRowsComponent}
+				selectableRowsComponentProps={selectableRowsComponentProps}
+				selectableRowDisabled={selectableRowDisabled}
+				rowData={visibleRows}
+				keyField={keyField}
+				mergeSelections={mergeSelections}
+				onSelectAllRows={handleSelectAllRows}
+			/>
+		));
+
+	const expandableHeaderCol =
+		expandableRows &&
+		(showExpandAll ? (
+			<CellBase style={{ flex: '0 0 48px' }} />
+		) : (
+			<ColumnExpander
+				allExpanded={allExpanded}
+				expandedRows={expandedRows}
+				rowData={visibleRows}
+				keyField={keyField}
+				mergeExpansions={mergeExpansions}
+				onExpandAllRows={handleExpandAllRows}
+				expandableIcon={expandableIcon}
+				expandableRowDisabled={expandableRowDisabled}
+			/>
+		));
 
 	return (
 		<ThemeProvider theme={currentTheme}>
@@ -363,23 +459,18 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 						{showTableHead() && (
 							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
 								<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
-									{selectableRows &&
-										(showSelectAll ? (
-											<CellBase style={{ flex: '0 0 48px' }} />
-										) : (
-											<ColumnCheckbox
-												allSelected={allSelected}
-												selectedRows={selectedRows}
-												selectableRowsComponent={selectableRowsComponent}
-												selectableRowsComponentProps={selectableRowsComponentProps}
-												selectableRowDisabled={selectableRowDisabled}
-												rowData={visibleRows}
-												keyField={keyField}
-												mergeSelections={mergeSelections}
-												onSelectAllRows={handleSelectAllRows}
-											/>
-										))}
-									{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
+									{keepExpandableFirst ? (
+										<>
+											{expandableHeaderCol}
+											{selectableHeaderCol}
+										</>
+									) : (
+										<>
+											{selectableHeaderCol}
+											{expandableHeaderCol}
+										</>
+									)}
+
 									{tableColumns.map(column => (
 										<Column
 											key={column.id}
@@ -416,6 +507,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									const key = prop(row as TableRow, keyField) as string | number;
 									const id = isEmpty(key) ? i : key;
 									const selected = isRowSelected(row, selectedRows, keyField);
+									const expanded = isRowExpanded(row, expandedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
 
@@ -445,16 +537,21 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											expandableInheritConditionalStyles={expandableInheritConditionalStyles}
 											conditionalRowStyles={conditionalRowStyles}
 											selected={selected}
+											expanded={expanded}
 											selectableRowsHighlight={selectableRowsHighlight}
 											selectableRowsComponent={selectableRowsComponent}
 											selectableRowsComponentProps={selectableRowsComponentProps}
 											selectableRowDisabled={selectableRowDisabled}
+											expandableRowDisabled={expandableRowDisabled}
 											selectableRowsSingle={selectableRowsSingle}
+											expandableRowsSingle={expandableRowsSingle}
 											striped={striped}
+											keepExpandableFirst={keepExpandableFirst}
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
 											onSelectedRow={handleSelectedRow}
+											onExpandedRow={handleExpandedRow}
 											draggingColumnId={draggingColumnId}
 											onDragStart={handleDragStart}
 											onDragOver={handleDragOver}

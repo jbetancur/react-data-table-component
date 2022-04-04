@@ -1,8 +1,9 @@
-import { insertItem, isRowSelected, removeItem } from './util';
+import { insertItem, isRowExpanded, isRowSelected, removeItem } from './util';
 import { Action, TableState } from './types';
 
 export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableState<T> {
 	const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;
+	const toggleOnExpandedRowsChange = !state.toggleOnExpandedRowsChange;
 
 	switch (action.type) {
 		case 'SELECT_ALL_ROWS': {
@@ -30,6 +31,34 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				selectedCount: allChecked ? rowCount : 0,
 				selectedRows: allChecked ? rows : [],
 				toggleOnSelectedRowsChange,
+			};
+		}
+
+		case 'EXPAND_ALL_ROWS': {
+			const { keyField, rows, rowCount, mergeExpansions } = action;
+			const allChecked = !state.allExpanded;
+			const toggleOnExpandedRowsChange = !state.toggleOnExpandedRowsChange;
+
+			if (mergeExpansions) {
+				const expansions = allChecked
+					? [...state.expandedRows, ...rows.filter(row => !isRowExpanded(row, state.expandedRows, keyField))]
+					: state.expandedRows.filter(row => !isRowExpanded(row, rows, keyField));
+
+				return {
+					...state,
+					allExpanded: allChecked,
+					expandedCount: expansions.length,
+					expandedRows: expansions,
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			return {
+				...state,
+				allExpanded: allChecked,
+				expandedCount: allChecked ? rowCount : 0,
+				expandedRows: allChecked ? rows : [],
+				toggleOnExpandedRowsChange,
 			};
 		}
 
@@ -77,6 +106,50 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			};
 		}
 
+		case 'EXPAND_SINGLE_ROW': {
+			const { keyField, row, isExpanded, rowCount, singleExpand } = action;
+
+			// handle single select mode
+			if (singleExpand) {
+				if (isExpanded) {
+					return {
+						...state,
+						expandedCount: 0,
+						allExpanded: false,
+						expandedRows: [],
+						toggleOnExpandedRowsChange,
+					};
+				}
+
+				return {
+					...state,
+					expandedCount: 1,
+					allExpanded: false,
+					expandedRows: [row],
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			// handle multi expand mode
+			if (isExpanded) {
+				return {
+					...state,
+					expandedCount: state.expandedRows.length > 0 ? state.expandedRows.length - 1 : 0,
+					allExpanded: false,
+					expandedRows: removeItem(state.expandedRows, row, keyField),
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			return {
+				...state,
+				expandedCount: state.expandedRows.length + 1,
+				allExpanded: state.expandedRows.length + 1 === rowCount,
+				expandedRows: insertItem(state.expandedRows, row),
+				toggleOnExpandedRowsChange,
+			};
+		}
+
 		case 'SELECT_MULTIPLE_ROWS': {
 			const { keyField, selectedRows, totalRows, mergeSelections } = action;
 
@@ -104,6 +177,33 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			};
 		}
 
+		case 'EXPAND_MULTIPLE_ROWS': {
+			const { keyField, expandedRows, totalRows, mergeExpansions } = action;
+
+			if (mergeExpansions) {
+				const expansions = [
+					...state.expandedRows,
+					...expandedRows.filter(row => !isRowExpanded(row, state.expandedRows, keyField)),
+				];
+
+				return {
+					...state,
+					expandedCount: expansions.length,
+					allExpanded: false,
+					expandedRows: expansions,
+					toggleOnExpandedRowsChange,
+				};
+			}
+
+			return {
+				...state,
+				expandedCount: expandedRows.length,
+				allExpanded: expandedRows.length === totalRows,
+				expandedRows,
+				toggleOnExpandedRowsChange,
+			};
+		}
+
 		case 'CLEAR_SELECTED_ROWS': {
 			const { selectedRowsFlag } = action;
 
@@ -113,6 +213,18 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				selectedCount: 0,
 				selectedRows: [],
 				selectedRowsFlag,
+			};
+		}
+
+		case 'CLEAR_EXPANDED_ROWS': {
+			const { expandedRowsFlag } = action;
+
+			return {
+				...state,
+				allExpanded: false,
+				expandedCount: 0,
+				expandedRows: [],
+				expandedRowsFlag,
 			};
 		}
 
