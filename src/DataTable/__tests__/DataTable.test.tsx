@@ -1948,6 +1948,73 @@ describe('DataTable::Pagination', () => {
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
+
+	test('should call onChangePage when paginationPage is used to control the current page', () => {
+		const onChangePageMock = jest.fn();
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPage={1} // force page 1
+				paginationPerPage={1} // force 2 pages
+				paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+				pagination
+				onChangePage={onChangePageMock}
+			/>,
+		);
+
+		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
+		expect(onChangePageMock).toBeCalledWith(2, 2);
+	});
+
+	test('should render correctly when paginationPage is used to control the current page', () => {
+		const mock = dataMock();
+		const { container, rerender } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPage={1} // force page 1
+				paginationPerPage={1} // force 2 pages
+				paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+				pagination
+			/>,
+		);
+
+		rerender(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPage={2} // force page 2
+				paginationPerPage={1} // force 2 pages
+				paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+				pagination
+			/>,
+		);
+
+		// expect to be on page 2
+		expect(container.firstChild).toMatchSnapshot();
+		expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
+	});
+
+	test('should ignore paginationDefaultPage if paginationPage is set on first render', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPage={2} // force page 2
+				paginationDefaultPage={1}
+				paginationPerPage={1} // force 2 pages
+				paginationRowsPerPageOptions={[1, 2]} // force 2 pages
+				pagination
+			/>,
+		);
+
+		// expect to be on page 2
+		expect(container.firstChild).toMatchSnapshot();
+		expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
+	});
 });
 
 describe('DataTable::subHeader', () => {

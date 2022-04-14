@@ -80,6 +80,7 @@ export type TableProps<T> = {
 	paginationIconLastPage?: React.ReactNode;
 	paginationIconNext?: React.ReactNode;
 	paginationIconPrevious?: React.ReactNode;
+	paginationPage?: number;
 	paginationPerPage?: number;
 	paginationResetDefaultPage?: boolean;
 	paginationRowsPerPageOptions?: number[];
