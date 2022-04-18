@@ -70,6 +70,7 @@ function KitchenSinkStory({
 	expandOnRowDoubleClicked,
 	expandableRowsHideExpander,
 	pagination,
+	paginationPage,
 	highlightOnHover,
 	striped,
 	pointerOnHover,
@@ -114,6 +115,7 @@ function KitchenSinkStory({
 			expandOnRowDoubleClicked={expandOnRowDoubleClicked}
 			expandableRowsHideExpander={expandableRowsHideExpander}
 			pagination={pagination}
+			paginationPage={paginationPage}
 			highlightOnHover={highlightOnHover}
 			striped={striped}
 			pointerOnHover={pointerOnHover}
@@ -151,6 +153,7 @@ KitchenSinkTS.args = {
 	expandOnRowDoubleClicked: false,
 	expandableRowsHideExpander: false,
 	pagination: true,
+	paginationPage: 1,
 	highlightOnHover: false,
 	striped: false,
 	pointerOnHover: false,
