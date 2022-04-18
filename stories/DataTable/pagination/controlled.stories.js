@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import doc from './controlled.mdx';
 import data from '../../constants/sampleMovieData';
 import Button from '../../shared/Button';
@@ -23,29 +23,27 @@ const columns = [
 ];
 
 const Flex = ({ children }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-    { children}
-  </div>
+	<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>{children}</div>
 );
 
 export const Controlled = () => {
-  const [page, setPage] = useState(1);
-  const reset = () => setPage(1);
+	const [page, setPage] = useState(1);
+	const reset = () => setPage(1);
 
-  return (
-    <Flex>
-      <Button onClick={reset}>Go to Page 1</Button>
-      <DataTable
-        title="Movie List"
-        columns={columns}
-        data={data}
-        pagination
-        paginationPage={page}
-        onChangePage={setPage}
-      />
-    </Flex>
-  );
-}
+	return (
+		<Flex>
+			<Button onClick={reset}>Go to Page 1</Button>
+			<DataTable
+				title="Movie List"
+				columns={columns}
+				data={data}
+				pagination
+				paginationPage={page}
+				onChangePage={setPage}
+			/>
+		</Flex>
+	);
+};
 
 export default {
 	title: 'Pagination/Controlled',
