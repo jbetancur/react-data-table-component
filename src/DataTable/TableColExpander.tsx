@@ -55,6 +55,7 @@ function ColumnExpander<T>({
 	return (
 		<ColumnStyle className="rdt_TableCol" headCell={headCell} noPadding>
 			<ExpanderButtonHead
+				name="expand-all-rows"
 				expanded={indeterminate || allExpanded}
 				expandableIcon={expandableIcon}
 				disabled={isDisabled}

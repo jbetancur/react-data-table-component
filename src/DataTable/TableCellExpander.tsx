@@ -12,6 +12,7 @@ const CellExpanderStyle = styled(CellBase)`
 `;
 
 type CellExpanderProps<T> = {
+	name: string;
 	disabled: boolean;
 	expanded: boolean;
 	expandableIcon: ExpandableIcon;
@@ -25,6 +26,7 @@ type CellExpanderProps<T> = {
 };
 
 function CellExpander<T>({
+	name,
 	row,
 	expanded = false,
 	expandableIcon,
@@ -51,6 +53,7 @@ function CellExpander<T>({
 	return (
 		<CellExpanderStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} noPadding>
 			<ExpanderButton
+				name={name}
 				id={id}
 				row={row}
 				expanded={expanded}

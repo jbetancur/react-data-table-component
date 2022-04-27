@@ -201,6 +201,7 @@ function Row<T>({
 			expandableIcon={expandableIcon}
 			expanded={expanded}
 			row={row}
+			rowCount={rowCount}
 			expandableRowsSingle={expandableRowsSingle}
 			expandableRowDisabled={expandableRowDisabled}
 			onExpandedRow={onExpandedRow}

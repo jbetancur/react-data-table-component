@@ -13,6 +13,7 @@ const ButtonStyle = styled.button`
 `;
 
 type ExpanderButtonHeadProps = {
+	name: string;
 	disabled?: boolean;
 	expanded?: boolean;
 	expandableIcon: ExpandableIcon;
@@ -20,6 +21,7 @@ type ExpanderButtonHeadProps = {
 };
 
 function ExpanderButtonHead({
+	name,
 	disabled = false,
 	expanded = false,
 	expandableIcon,
@@ -30,6 +32,7 @@ function ExpanderButtonHead({
 
 	return (
 		<ButtonStyle
+			name={name}
 			aria-disabled={disabled}
 			onClick={handleToggle}
 			disabled={disabled}

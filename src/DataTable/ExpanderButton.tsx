@@ -13,6 +13,7 @@ const ButtonStyle = styled.button`
 `;
 
 type ExpanderButtonProps<T> = {
+	name: string;
 	disabled?: boolean;
 	expanded?: boolean;
 	expandableIcon: ExpandableIcon;
@@ -22,6 +23,7 @@ type ExpanderButtonProps<T> = {
 };
 
 function ExpanderButton<T>({
+	name,
 	disabled = false,
 	expanded = false,
 	expandableIcon,
@@ -34,6 +36,7 @@ function ExpanderButton<T>({
 
 	return (
 		<ButtonStyle
+			name={name}
 			aria-disabled={disabled}
 			onClick={handleToggle}
 			data-testid={`expander-button-${id}`}
