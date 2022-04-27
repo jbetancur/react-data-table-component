@@ -43,10 +43,12 @@ jobs:
           yarn build
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: artifacts
+          path: |
+            dist
+            ./package.json
 
   commit-build:
     needs: build
@@ -58,17 +60,16 @@ jobs:
           ref: release
 
       - name: Download Build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: artifacts
 
       - name: Commit and Push
         run: |
           if [ $(git status dist --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
             git config user.name "GitHub Actions"
             git config user.email noreply@github.com
-            git add dist
+            git add .
             git commit -m "chore: updated build"
             git push origin HEAD --force
           fi
