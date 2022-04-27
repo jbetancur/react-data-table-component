@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Get Node Version
+        id: node_version
+        run: |
+          node_version=`cat .nvmrc`
+          echo "::set-output name=node_version::$node_version"
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.node_version.outputs.node_version }}
+
+      - name: Cache Yarn Dependencies
+        id: cache-yarn-dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.NVMRC }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Yarn Dependencies if not cached
+        if: steps.cache-yarn-dependencies.outputs.cache-hit != 'true'
+        run: |
+          yarn
+
+      - name: Build Project
+        run: |
+          yarn build
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+  commit-build:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Repository
+        uses: actions/checkout@v2
+        with:
+          ref: release
+
+      - name: Download Build
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+      - name: Commit and Push
+        run: |
+          if [ $(git status dist --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
+            git config user.name "GitHub Actions"
+            git config user.email noreply@github.com
+            git add dist
+            git commit -m "chore: updated build"
+            git push origin HEAD --force
+          fi
