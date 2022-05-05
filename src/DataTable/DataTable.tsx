@@ -281,8 +281,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [toggleOnSelectedRowsChange]);
 
 	useDidUpdateEffect(() => {
-		onSort(selectedColumn, sortDirection);
-	}, [selectedColumn, sortDirection]);
+		onSort(selectedColumn, sortDirection, sortedData);
+	}, [selectedColumn, sortDirection, sortedData]);
 
 	useDidUpdateEffect(() => {
 		onChangePage(currentPage, paginationTotalRows || sortedData.length);
