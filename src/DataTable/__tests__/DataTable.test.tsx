@@ -675,7 +675,7 @@ describe('DataTable::sorting', () => {
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC);
+		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC, mock.data.slice(0).sort());
 	});
 
 	test('should call onSort with the correct params if the sort is clicked twice', () => {
@@ -684,10 +684,10 @@ describe('DataTable::sorting', () => {
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC);
+		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC, mock.data.slice(0).sort());
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.DESC);
+		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.DESC, mock.data.slice(0).reverse());
 	});
 
 	test('should render correctly with a custom sortIcon', () => {

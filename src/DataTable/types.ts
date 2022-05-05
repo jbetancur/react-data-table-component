@@ -70,7 +70,7 @@ export type TableProps<T> = {
 	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder) => void;
+	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
 	paginationComponent?: PaginationComponent;
