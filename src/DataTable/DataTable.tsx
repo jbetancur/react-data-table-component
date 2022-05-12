@@ -276,13 +276,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}
 
 	useDidUpdateEffect(() => {
-		onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
+		onSelectedRowsChange({ allSelected, selectedCount, selectedRows: selectedRows.slice(0) });
 		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
 	}, [toggleOnSelectedRowsChange]);
 
 	useDidUpdateEffect(() => {
-		onSort(selectedColumn, sortDirection, sortedData);
-	}, [selectedColumn, sortDirection, sortedData]);
+		onSort(selectedColumn, sortDirection, sortedData.slice(0));
+		// do not update on sortedData
+	}, [selectedColumn, sortDirection]);
 
 	useDidUpdateEffect(() => {
 		onChangePage(currentPage, paginationTotalRows || sortedData.length);
