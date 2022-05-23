@@ -117,6 +117,7 @@ export type TableProps<T> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	footer?: React.ReactNode;
 };
 
 export type TableColumnBase = {

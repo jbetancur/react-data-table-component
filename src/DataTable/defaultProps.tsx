@@ -107,4 +107,5 @@ export const defaultProps = {
 	onSort: noop,
 	onColumnOrderChange: noop,
 	keepExpandableFirst: false,
+	footer: null,
 };

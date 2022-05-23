@@ -120,6 +120,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
 		keepExpandableFirst = defaultProps.keepExpandableFirst,
+		footer = defaultProps.footer,
 	} = props;
 
 	const {
@@ -564,6 +565,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 							</Body>
 						)}
 					</Table>
+					{footer && <div>{footer}</div>}
 				</Wrapper>
 			</ResponsiveWrapper>
 
