@@ -115,6 +115,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		className,
 	} = props;
 
 	const {
@@ -361,6 +362,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				responsive={responsive}
 				fixedHeader={fixedHeader}
 				fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+				className={className}
 				{...wrapperProps}
 			>
 				<Wrapper>
