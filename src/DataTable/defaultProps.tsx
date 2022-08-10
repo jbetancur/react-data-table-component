@@ -71,6 +71,7 @@ export const defaultProps = {
 	fixedHeader: false,
 	fixedHeaderScrollHeight: '100vh',
 	pagination: false,
+	showPaginationAtTop: false,
 	paginationServer: false,
 	paginationServerOptions: {
 		persistSelectedOnSort: false,

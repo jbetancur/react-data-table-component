@@ -23,13 +23,14 @@ const columns = [
 	},
 ];
 
-const FixedHeaderStory = ({ fixedHeader, fixedHeaderScrollHeight }) => (
+const FixedHeaderStory = ({ fixedHeader, fixedHeaderScrollHeight, showPaginationAtTop }) => (
 	<DataTable
 		title="Movie List"
 		columns={columns}
 		data={data}
 		fixedHeader={fixedHeader}
 		fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+		showPaginationAtTop={showPaginationAtTop}
 		pagination
 	/>
 );
@@ -41,6 +42,7 @@ export const FixedHeader = Template.bind({});
 FixedHeader.args = {
 	fixedHeader: true,
 	fixedHeaderScrollHeight: '300px',
+	showPaginationAtTop: true,
 };
 
 export default {

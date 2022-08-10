@@ -82,6 +82,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		fixedHeader = defaultProps.fixedHeader,
 		fixedHeaderScrollHeight = defaultProps.fixedHeaderScrollHeight,
 		pagination = defaultProps.pagination,
+		showPaginationAtTop = defaultProps.showPaginationAtTop,
 		subHeader = defaultProps.subHeader,
 		subHeaderAlign = defaultProps.subHeaderAlign,
 		subHeaderWrap = defaultProps.subHeaderWrap,
@@ -335,6 +336,24 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
+	const defaultPaginationComponent = enabledPagination && (
+		<div>
+			<Pagination
+				onChangePage={handleChangePage}
+				onChangeRowsPerPage={handleChangeRowsPerPage}
+				rowCount={paginationTotalRows || sortedData.length}
+				currentPage={currentPage}
+				rowsPerPage={rowsPerPage}
+				direction={direction}
+				paginationRowsPerPageOptions={paginationRowsPerPageOptions}
+				paginationIconLastPage={paginationIconLastPage}
+				paginationIconFirstPage={paginationIconFirstPage}
+				paginationIconNext={paginationIconNext}
+				paginationIconPrevious={paginationIconPrevious}
+				paginationComponentOptions={paginationComponentOptions}
+			/>
+		</div>
+	);
 
 	return (
 		<ThemeProvider theme={currentTheme}>
@@ -354,9 +373,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			{subHeader && (
 				<Subheader align={subHeaderAlign} wrapContent={subHeaderWrap}>
 					{subHeaderComponent}
+
 				</Subheader>
 			)}
-
+			{showPaginationAtTop && defaultPaginationComponent}
 			<ResponsiveWrapper
 				responsive={responsive}
 				fixedHeader={fixedHeader}
@@ -479,24 +499,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				</Wrapper>
 			</ResponsiveWrapper>
 
-			{enabledPagination && (
-				<div>
-					<Pagination
-						onChangePage={handleChangePage}
-						onChangeRowsPerPage={handleChangeRowsPerPage}
-						rowCount={paginationTotalRows || sortedData.length}
-						currentPage={currentPage}
-						rowsPerPage={rowsPerPage}
-						direction={direction}
-						paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-						paginationIconLastPage={paginationIconLastPage}
-						paginationIconFirstPage={paginationIconFirstPage}
-						paginationIconNext={paginationIconNext}
-						paginationIconPrevious={paginationIconPrevious}
-						paginationComponentOptions={paginationComponentOptions}
-					/>
-				</div>
-			)}
+			{defaultPaginationComponent}
 		</ThemeProvider>
 	);
 }

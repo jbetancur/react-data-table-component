@@ -73,6 +73,7 @@ export type TableProps<T> = {
 	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
+	showPaginationAtTop?: boolean;
 	paginationComponent?: PaginationComponent;
 	paginationComponentOptions?: PaginationOptions;
 	paginationDefaultPage?: number;
