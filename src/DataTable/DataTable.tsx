@@ -54,6 +54,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		selectableRowsComponent = defaultProps.selectableRowsComponent,
 		selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
+		expandableCloseAllOnExpand = defaultProps.expandableCloseAllOnExpand, //ab
 		onSelectedRowsChange = defaultProps.onSelectedRowsChange,
 		expandableIcon = defaultProps.expandableIcon,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
@@ -129,6 +130,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		defaultSortColumn,
 	} = useColumns(columns, onColumnOrderChange, defaultSortFieldId, defaultSortAsc);
 
+	const [DataTemp, setDataTemp] = React.useState<Array<any>>([]);
+
+	const [CurrentExpandedRow, SetCurrentExpandedRow] = React.useState<any>(null);
+
+	React.useEffect(() => {
+		//ab
+	}, [DataTemp]);
+
 	const [
 		{
 			rowsPerPage,
@@ -162,8 +171,20 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
+	// const flages = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
+
 	const sortedData = React.useMemo(() => {
-		// server-side sorting bypasses internal sorting
+		let expandableCloseAllFlags: Array<any> = [];
+		[...data].map((row: any) => {
+			if (row.defaultExpanded) {
+				expandableCloseAllFlags[row.id] = true;
+			} else {
+				expandableCloseAllFlags[row.id] = false;
+			}
+		});
+
+		setDataTemp(expandableCloseAllFlags);
+
 		if (sortServer) {
 			return data;
 		}
@@ -176,9 +197,25 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		}
 
 		return sort(data, selectedColumn?.selector, sortDirection, sortFunction);
-	}, [sortServer, selectedColumn, sortDirection, data, sortFunction]);
+	}, [`sortServer`, selectedColumn, sortDirection, data, sortFunction]);
 
 	const tableRows = React.useMemo(() => {
+		sortedData.map((a: any) => {
+			if (expandableCloseAllOnExpand) {
+				if (CurrentExpandedRow && CurrentExpandedRow['id'] == a['id']) {
+					a['expandFlag'] = true;
+				} else {
+					a['expandFlag'] = false;
+				}
+			} else {
+				if (a.defaultExpanded || a['expandFlag']) {
+					a['expandFlag'] = true;
+				} else {
+					a['expandFlag'] = false;
+				}
+			}
+		});
+
 		if (pagination && !paginationServer) {
 			// when using client-side pagination we can just slice the rows set
 			const lastIndex = currentPage * rowsPerPage;
@@ -188,7 +225,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		}
 
 		return sortedData;
-	}, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
+	}, [currentPage, pagination, paginationServer, rowsPerPage, sortedData, CurrentExpandedRow]);
 
 	const handleSort = React.useCallback((action: SortAction<T>) => {
 		dispatch(action);
@@ -239,15 +276,17 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		[currentPage, handleChangePage, paginationServer, paginationTotalRows, tableRows.length],
 	);
 
+	const handleRowExpandToggled = React.useCallback(
+		(expanded, row) => {
+			onRowExpandToggled(expanded, row);
+			SetCurrentExpandedRow(row);
+		},
+		[onRowExpandToggled],
+	);
+
 	const showTableHead = () => {
-		if (noTableHead) {
-			return false;
-		}
-
-		if (persistTableHead) {
-			return true;
-		}
-
+		if (noTableHead) return false;
+		if (persistTableHead) return true;
 		return sortedData.length > 0 && !progressPending;
 	};
 
@@ -419,8 +458,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 						{!progressPending && sortedData.length > 0 && (
 							<Body className="rdt_TableBody" role="rowgroup">
-								{tableRows.map((row, i) => {
-									const key = prop(row as TableRow, keyField) as string | number;
+								{tableRows.map((row: any, i) => {
+									const key = prop(row as TableRow, keyField) as string | number | any;
 									const id = isEmpty(key) ? i : key;
 									const selected = isRowSelected(row, selectedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
@@ -458,7 +497,9 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											selectableRowDisabled={selectableRowDisabled}
 											selectableRowsSingle={selectableRowsSingle}
 											striped={striped}
-											onRowExpandToggled={onRowExpandToggled}
+											onRowExpandToggled={handleRowExpandToggled}
+											expandableCloseAllOnExpand={expandableCloseAllOnExpand}
+											expandableRowFlag={row['expandFlag']}
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
 											onRowMouseEnter={handleRowMouseEnter}
