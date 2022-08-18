@@ -174,7 +174,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	// const flages = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
 	const sortedData = React.useMemo(() => {
-		let expandableCloseAllFlags: Array<any> = [];
+		const expandableCloseAllFlags: Array<any> = [];
 		[...data].map((row: any) => {
 			if (row.defaultExpanded) {
 				expandableCloseAllFlags[row.id] = true;
