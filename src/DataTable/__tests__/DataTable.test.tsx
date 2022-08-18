@@ -14,7 +14,7 @@ interface Data {
 	id: number;
 	defaultExpanded?: boolean;
 	disabled?: boolean;
-	expandFlag?: boolean,
+	expandFlag?: boolean;
 	selected?: boolean;
 	completed?: boolean;
 	isSpecial?: boolean;
@@ -36,7 +36,7 @@ const dataMock = (colProps?: any) => {
 				completed: false,
 				isSpecial: false,
 				defaultExpanded: false,
-				expandFlag: false
+				expandFlag: false,
 			},
 			{
 				id: 2,
@@ -46,7 +46,7 @@ const dataMock = (colProps?: any) => {
 				completed: false,
 				isSpecial: false,
 				defaultExpanded: false,
-				expandFlag: false
+				expandFlag: false,
 			},
 		],
 	};
