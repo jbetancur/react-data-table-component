@@ -14,6 +14,7 @@ interface Data {
 	id: number;
 	defaultExpanded?: boolean;
 	disabled?: boolean;
+	expandFlag?: boolean,
 	selected?: boolean;
 	completed?: boolean;
 	isSpecial?: boolean;
@@ -35,6 +36,7 @@ const dataMock = (colProps?: any) => {
 				completed: false,
 				isSpecial: false,
 				defaultExpanded: false,
+				expandFlag: false
 			},
 			{
 				id: 2,
@@ -44,6 +46,7 @@ const dataMock = (colProps?: any) => {
 				completed: false,
 				isSpecial: false,
 				defaultExpanded: false,
+				expandFlag: false
 			},
 		],
 	};
@@ -197,6 +200,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 					completed: false,
 					defaultExpanded: false,
 					disabled: false,
+					expandFlag: false,
 					isSpecial: false,
 					selected: false,
 				},
@@ -217,6 +221,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 					completed: false,
 					defaultExpanded: false,
 					disabled: false,
+					expandFlag: false,
 					isSpecial: false,
 					selected: false,
 				},
@@ -252,6 +257,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 					completed: false,
 					defaultExpanded: false,
 					disabled: false,
+					expandFlag: false,
 					isSpecial: false,
 					selected: true,
 				},
@@ -1255,6 +1261,7 @@ describe('DataTable::selectableRows', () => {
 					completed: false,
 					defaultExpanded: false,
 					disabled: false,
+					expandFlag: false,
 					isSpecial: false,
 					selected: false,
 				},
@@ -1710,6 +1717,7 @@ describe('DataTable::Pagination', () => {
 					completed: false,
 					defaultExpanded: false,
 					disabled: false,
+					expandFlag: false,
 					isSpecial: false,
 					selected: true,
 				},
@@ -1789,6 +1797,7 @@ describe('DataTable::Pagination', () => {
 					completed: false,
 					defaultExpanded: false,
 					disabled: false,
+					expandFlag: false,
 					isSpecial: false,
 					selected: false,
 				},
