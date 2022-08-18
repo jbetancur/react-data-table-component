@@ -189,6 +189,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			return data;
 		}
 
+		// server-side sorting bypasses internal sorting
 		if (selectedColumn?.sortFunction && typeof selectedColumn.sortFunction === 'function') {
 			const sortFn = selectedColumn.sortFunction;
 			const customSortFunction = sortDirection === SortOrder.ASC ? sortFn : (a: T, b: T) => sortFn(a, b) * -1;
