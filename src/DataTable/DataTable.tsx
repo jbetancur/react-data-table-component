@@ -166,7 +166,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
 	const sortedData = React.useMemo(() => {
-
 		if (sortServer) {
 			return data;
 		}
