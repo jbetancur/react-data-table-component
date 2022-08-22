@@ -54,7 +54,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		selectableRowsComponent = defaultProps.selectableRowsComponent,
 		selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
-		expandableCloseAllOnExpand = defaultProps.expandableCloseAllOnExpand, //ab
+		expandableCloseAllOnExpand = defaultProps.expandableCloseAllOnExpand,
 		onSelectedRowsChange = defaultProps.onSelectedRowsChange,
 		expandableIcon = defaultProps.expandableIcon,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
@@ -130,13 +130,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		defaultSortColumn,
 	} = useColumns(columns, onColumnOrderChange, defaultSortFieldId, defaultSortAsc);
 
-	const [DataTemp, setDataTemp] = React.useState<Array<any>>([]);
-
 	const [CurrentExpandedRow, SetCurrentExpandedRow] = React.useState<any>(null);
-
-	React.useEffect(() => {
-		//ab
-	}, [DataTemp]);
 
 	const [
 		{
@@ -171,19 +165,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
-	// const flages = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
-
 	const sortedData = React.useMemo(() => {
-		const expandableCloseAllFlags: Array<any> = [];
-		[...data].map((row: any) => {
-			if (row.defaultExpanded) {
-				expandableCloseAllFlags[row.id] = true;
-			} else {
-				expandableCloseAllFlags[row.id] = false;
-			}
-		});
-
-		setDataTemp(expandableCloseAllFlags);
 
 		if (sortServer) {
 			return data;
