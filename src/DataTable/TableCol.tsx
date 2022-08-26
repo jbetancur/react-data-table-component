@@ -211,7 +211,7 @@ function TableCol<T>({
 					data-sort-id={column.id}
 					role="columnheader"
 					tabIndex={0}
-					className="rdt_TableCol_Sortable"
+					className={`rdt_TableCol${!disableSort ? '_Sortable' : ''}`}
 					onClick={!disableSort ? handleSortChange : undefined}
 					onKeyPress={!disableSort ? handleKeyPress : undefined}
 					sortActive={!disableSort && sortActive}
