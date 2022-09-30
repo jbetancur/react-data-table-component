@@ -22,7 +22,7 @@ const pointerCSS = css`
 	}
 `;
 
-const TableRowStyle = styled.div.attrs(props => ({
+const TableRowStyle = styled.tr.attrs(props => ({
 	style: props.style,
 }))<{
 	dense?: boolean;

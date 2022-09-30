@@ -4,7 +4,7 @@ import ContextMenu from './ContextMenu';
 import { Direction } from './constants';
 import { ContextMessage } from './types';
 
-const HeaderStyle = styled.div`
+const HeaderStyle = styled.th`
 	position: relative;
 	box-sizing: border-box;
 	overflow: hidden;

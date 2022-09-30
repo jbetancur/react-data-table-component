@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeadRow = styled.div<{
+const HeadRow = styled.tr<{
 	dense?: boolean;
 	disabled?: boolean;
 }>`

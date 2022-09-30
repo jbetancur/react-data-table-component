@@ -5,7 +5,7 @@ const disabledCSS = css`
 	opacity: 0.4;
 `;
 
-const TableStyle = styled.div<{
+const TableStyle = styled.table<{
 	disabled?: boolean;
 }>`
 	position: relative;

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { media } from './media';
 import { TableColumnBase } from './types';
 
-export const CellBase = styled.div<{
+export const CellBase = styled.td<{
 	headCell?: boolean;
 	noPadding?: boolean;
 }>`
