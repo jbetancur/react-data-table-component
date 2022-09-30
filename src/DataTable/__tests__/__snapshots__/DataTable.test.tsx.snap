@@ -26094,7 +26094,7 @@ exports[`should not show the TableHead when noTableHead is true 1`] = `
 </div>
 `;
 
-exports[`should render and empty table correctly 1`] = `
+exports[`should render an empty table correctly 1`] = `
 .c2 {
   position: relative;
   box-sizing: border-box;

@@ -53,7 +53,7 @@ beforeEach(() => {
 	console.error = jest.fn();
 });
 
-test('should render and empty table correctly', () => {
+test('should render an empty table correctly', () => {
 	const { container } = render(<DataTable data={[]} columns={[]} />);
 
 	expect(container.firstChild).toMatchSnapshot();
