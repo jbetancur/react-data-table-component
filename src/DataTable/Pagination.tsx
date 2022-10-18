@@ -174,7 +174,7 @@ function Pagination({
 					{paginationIconPrevious}
 				</Button>
 
-				{!shouldShow && select}
+				{!options.noRowsPerPage && !shouldShow && select}
 
 				<Button
 					id="pagination-next-page"

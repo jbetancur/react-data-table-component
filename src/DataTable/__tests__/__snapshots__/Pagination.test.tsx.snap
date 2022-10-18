@@ -335,3 +335,200 @@ exports[`should render correctly with default props 1`] = `
   </div>
 </nav>
 `;
+
+exports[`when the screensize is small paginationComponentOption noRowsPerPage should be respected 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  width: 100%;
+  color: rgba(0,0,0,0.54);
+  font-size: 13px;
+  min-height: 56px;
+  background-color: #FFFFFF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(0,0,0,.12);
+}
+
+.c2 {
+  position: relative;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  margin: px;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  color: rgba(0,0,0,.54);
+  fill: rgba(0,0,0,.54);
+  background-color: transparent;
+}
+
+.c2:disabled {
+  cursor: unset;
+  color: rgba(0,0,0,.18);
+  fill: rgba(0,0,0,.18);
+}
+
+.c2:hover:not(:disabled) {
+  background-color: rgba(0,0,0,.12);
+}
+
+.c2:focus {
+  outline: none;
+  background-color: rgba(0,0,0,.12);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width:599px) {
+  .c1 {
+    width: 100%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+  }
+}
+
+<nav
+  class="c0 rdt_Pagination"
+>
+  <div
+    class="c1"
+  >
+    <button
+      aria-disabled="true"
+      aria-label="First Page"
+      class="c2"
+      disabled=""
+      id="pagination-first-page"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        height="24"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+        />
+        <path
+          d="M24 24H0V0h24v24z"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="true"
+      aria-label="Previous Page"
+      class="c2"
+      disabled=""
+      id="pagination-previous-page"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        height="24"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Next Page"
+      class="c2"
+      id="pagination-next-page"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        height="24"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Last Page"
+      class="c2"
+      id="pagination-last-page"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        height="24"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+        />
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+  </div>
+</nav>
+`;
