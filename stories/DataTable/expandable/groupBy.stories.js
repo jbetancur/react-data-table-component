@@ -5,51 +5,49 @@ import DataTable from '../../../src/DataTable/DataTable';
 import Row from '../../../src/DataTable/TableRow';
 import tableDataItems from '../../constants/sampleMovieData';
 
-const ExpandedComponent =
-	() =>
-	({ data, rowProps }) => {
-		let rowPropsPlus = {
-			...rowProps,
-			expandableRows: false,
-			columns: [
-				{
-					id: 0,
-					name: 'ID',
-					selector: row => row.id,
-					sortable: true,
-					wrap: true,
-				},
-				{
-					id: 1,
-					name: 'Title',
-					selector: row => row.title,
-					sortable: true,
-					wrap: true,
-				},
-				{
-					id: 2,
-					name: 'Year',
-					selector: row => row.year,
-					sortable: true,
-					wrap: true,
-				},
-				{
-					id: 3,
-					name: 'Runtime',
-					selector: row => row.runtime,
-					sortable: true,
-					wrap: true,
-				},
-			],
-		};
-		return _.map(data.groupData, item => {
-			return (
-				<div key={item.title}>
-					<Row {...rowPropsPlus} row={item} />
-				</div>
-			);
-		});
+const ExpandedComponent = ({ data, rowProps }) => {
+	let rowPropsPlus = {
+		...rowProps,
+		expandableRows: false,
+		columns: [
+			{
+				id: 0,
+				name: 'ID',
+				selector: row => row.id,
+				sortable: true,
+				wrap: true,
+			},
+			{
+				id: 1,
+				name: 'Title',
+				selector: row => row.title,
+				sortable: true,
+				wrap: true,
+			},
+			{
+				id: 2,
+				name: 'Year',
+				selector: row => row.year,
+				sortable: true,
+				wrap: true,
+			},
+			{
+				id: 3,
+				name: 'Runtime',
+				selector: row => row.runtime,
+				sortable: true,
+				wrap: true,
+			},
+		],
 	};
+	return _.map(data.groupData, item => {
+		return (
+			<div key={item.title}>
+				<Row {...rowPropsPlus} row={item} />
+			</div>
+		);
+	});
+};
 
 const columns = [
 	{
@@ -72,11 +70,7 @@ const GroupByStory = props => {
 		return {
 			_groupKey: key,
 			...((props.groupValues && props.groupValues(group)) || {}),
-			groupData: _.map(group, row => {
-				return {
-					...row,
-				};
-			}),
+			groupData: _.map(group, row => row),
 		};
 	});
 
