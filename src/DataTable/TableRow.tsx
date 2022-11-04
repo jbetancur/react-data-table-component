@@ -4,9 +4,9 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
-import { prop, equalizeId, getConditionalStyle, isOdd, noop } from './util';
+import { equalizeId, getConditionalStyle, isOdd, noop, prop } from './util';
 import { STOP_PROP_TAG } from './constants';
-import { TableRow, SingleRowAction, TableProps } from './types';
+import { SingleRowAction, TableProps, TableRow } from './types';
 
 const highlightCSS = css<{
 	highlightOnHover?: boolean;
@@ -74,7 +74,7 @@ type DProps<T> = Pick<
 	| 'striped'
 >;
 
-interface TableRowProps<T> extends Required<DProps<T>> {
+export interface TableRowProps<T> extends Required<DProps<T>> {
 	draggingColumnId: number | string;
 	defaultExpanded?: boolean;
 	defaultExpanderDisabled: boolean;
@@ -92,48 +92,49 @@ interface TableRowProps<T> extends Required<DProps<T>> {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function Row<T>({
-	columns = [],
-	conditionalRowStyles = [],
-	defaultExpanded = false,
-	defaultExpanderDisabled = false,
-	dense = false,
-	expandableIcon,
-	expandableRows = false,
-	expandableRowsComponent,
-	expandableRowsComponentProps,
-	expandableRowsHideExpander,
-	expandOnRowClicked = false,
-	expandOnRowDoubleClicked = false,
-	highlightOnHover = false,
-	id,
-	expandableInheritConditionalStyles,
-	keyField,
-	onRowClicked = noop,
-	onRowDoubleClicked = noop,
-	onRowMouseEnter = noop,
-	onRowMouseLeave = noop,
-	onRowExpandToggled = noop,
-	onSelectedRow = noop,
-	pointerOnHover = false,
-	row,
-	rowCount,
-	rowIndex,
-	selectableRowDisabled = null,
-	selectableRows = false,
-	selectableRowsComponent,
-	selectableRowsComponentProps,
-	selectableRowsHighlight = false,
-	selectableRowsSingle = false,
-	selected,
-	striped = false,
-	draggingColumnId,
-	onDragStart,
-	onDragOver,
-	onDragEnd,
-	onDragEnter,
-	onDragLeave,
-}: TableRowProps<T>): JSX.Element {
+function Row<T>(props: TableRowProps<T>): JSX.Element {
+	const {
+		columns = [],
+		conditionalRowStyles = [],
+		defaultExpanded = false,
+		defaultExpanderDisabled = false,
+		dense = false,
+		expandableIcon,
+		expandableRows = false,
+		expandableRowsComponent,
+		expandableRowsComponentProps,
+		expandableRowsHideExpander,
+		expandOnRowClicked = false,
+		expandOnRowDoubleClicked = false,
+		highlightOnHover = false,
+		id,
+		expandableInheritConditionalStyles,
+		keyField,
+		onRowClicked = noop,
+		onRowDoubleClicked = noop,
+		onRowMouseEnter = noop,
+		onRowMouseLeave = noop,
+		onRowExpandToggled = noop,
+		onSelectedRow = noop,
+		pointerOnHover = false,
+		row,
+		rowCount,
+		rowIndex,
+		selectableRowDisabled = null,
+		selectableRows = false,
+		selectableRowsComponent,
+		selectableRowsComponentProps,
+		selectableRowsHighlight = false,
+		selectableRowsSingle = false,
+		selected,
+		striped = false,
+		draggingColumnId,
+		onDragStart,
+		onDragOver,
+		onDragEnd,
+		onDragEnter,
+		onDragLeave,
+	} = props;
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
 
 	React.useEffect(() => {
@@ -265,6 +266,7 @@ function Row<T>({
 				<ExpanderRow
 					key={`expander-${rowKeyField}`}
 					data={row}
+					rowProps={props}
 					extendedRowStyle={inheritStyles}
 					extendedClassNames={classNames}
 					ExpanderComponent={expandableRowsComponent}

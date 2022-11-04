@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { CSSObject } from 'styled-components';
 import { ComponentProps, ExpandableRowsComponent } from './types';
+import { TableRowProps } from './TableRow';
 
 const ExpanderRowStyle = styled.div<{
 	extendedRowStyle: CSSObject;
@@ -13,6 +14,7 @@ const ExpanderRowStyle = styled.div<{
 
 type ExpanderRowProps<T> = {
 	data: T;
+	rowProps: TableRowProps<T>;
 	ExpanderComponent: ExpandableRowsComponent<T>;
 	extendedRowStyle: CSSObject;
 	extendedClassNames: string;
@@ -21,6 +23,7 @@ type ExpanderRowProps<T> = {
 
 function ExpanderRow<T>({
 	data,
+	rowProps,
 	ExpanderComponent,
 	expanderComponentProps,
 	extendedRowStyle,
@@ -32,7 +35,7 @@ function ExpanderRow<T>({
 
 	return (
 		<ExpanderRowStyle className={classNames} extendedRowStyle={extendedRowStyle}>
-			<ExpanderComponent data={data} {...expanderComponentProps} />
+			<ExpanderComponent data={data} rowProps={rowProps} {...expanderComponentProps} />
 		</ExpanderRowStyle>
 	);
 }
