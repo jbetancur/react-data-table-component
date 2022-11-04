@@ -90,9 +90,6 @@ export const GroupBy = Template.bind({});
 
 GroupBy.args = {
 	expandableRows: true,
-	expandOnRowClicked: false,
-	expandOnRowDoubleClicked: false,
-	expandableRowsHideExpander: false,
 	pagination: true,
 	groupKey: row => `Year: ${row.year} - Runtime: ${row.runtime}`,
 	groupValues: data => {
