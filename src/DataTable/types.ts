@@ -17,7 +17,7 @@ export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: Sor
 export type TableRow = Record<string, unknown>;
 export type ComponentProps = Record<string, unknown>;
 export type ExpanderComponentProps<T> = { data: T; rowProps: TableRowProps<T> };
-export type ExpandableRowsComponent<T> = React.ComponentType<ExpanderComponentProps<T>>;
+export type ExpandableRowsComponent<T> = React.ComponentType<ExpanderComponentProps<T>> | React.ReactElement<any, any>;
 export type PaginationChangePage = (page: number, totalRows: number) => void;
 export type PaginationChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
 export type PaginationComponentProps = {
@@ -39,7 +39,7 @@ export type TableProps<T> = {
 	contextComponent?: React.ReactNode;
 	contextMessage?: ContextMessage;
 	customStyles?: TableStyles;
-	data: T[];
+	data: T[] | any;
 	defaultSortAsc?: boolean;
 	defaultSortFieldId?: string | number | null | undefined;
 	dense?: boolean;
@@ -50,7 +50,7 @@ export type TableProps<T> = {
 	expandableRowDisabled?: RowState<T>;
 	expandableRowExpanded?: RowState<T>;
 	expandableRows?: boolean;
-	expandableRowsComponent?: ExpandableRowsComponent<T>;
+	expandableRowsComponent?: ExpandableRowsComponent<T> | any;
 	expandableRowsComponentProps?: ComponentProps;
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
@@ -115,6 +115,8 @@ export type TableProps<T> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	groupByKey?: (row: T) => string;
+	groupLabel?: (row: T) => string;
 };
 
 export type TableColumnBase = {

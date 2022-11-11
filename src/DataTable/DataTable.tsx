@@ -18,24 +18,24 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import { getNumberOfPages, isEmpty, isRowSelected, prop, recalculatePage, sort } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
 import {
 	Action,
 	AllRowsAction,
 	SingleRowAction,
-	TableRow,
 	SortAction,
-	TableProps,
-	TableState,
 	SortOrder,
+	TableProps,
+	TableRow,
+	TableState,
 } from './types';
 import useColumns from '../hooks/useColumns';
+import _ from 'lodash';
 
 function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const {
-		data = defaultProps.data,
 		columns = defaultProps.columns,
 		title = defaultProps.title,
 		actions = defaultProps.actions,
@@ -90,7 +90,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		contextMessage = defaultProps.contextMessage,
 		contextActions = defaultProps.contextActions,
 		contextComponent = defaultProps.contextComponent,
-		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
 		onRowMouseEnter = defaultProps.onRowMouseEnter,
@@ -99,7 +98,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
-		expandableRowsComponent = defaultProps.expandableRowsComponent,
+		expandableRows = props.groupByKey ? defaultProps.expandableRowsGroup : defaultProps.expandableRows,
+		expandableRowsComponent = props.groupByKey
+			? defaultProps.expandableRowsGroupComponent
+			: defaultProps.expandableRowsComponent,
 		expandableRowsComponentProps = defaultProps.expandableRowsComponentProps,
 		expandableRowDisabled = defaultProps.expandableRowDisabled,
 		expandableRowsHideExpander = defaultProps.expandableRowsHideExpander,
@@ -116,7 +118,29 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
 		className,
+		groupByKey = defaultProps.groupByKey,
+		groupLabel = defaultProps.groupByKey,
 	} = props;
+
+	let data = props.data || defaultProps.data;
+	if (groupByKey) {
+		data = _.map(
+			_.groupBy(props.data, row => groupByKey(row)),
+			(group, key) => {
+				return {
+					_groupKey: key,
+					groupData: group,
+				};
+			},
+		);
+
+		columns[0] = {
+			...columns[0],
+			selector: (row: T | any) => {
+				return row._groupKey ? groupLabel(row) : row.id;
+			},
+		};
+	}
 
 	const {
 		tableColumns,
@@ -156,7 +180,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	});
 
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
-	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
+	const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
 
@@ -318,7 +342,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			return;
 		}
 
-		const preSelectedRows = sortedData.filter(row => selectableRowSelected(row));
+		const preSelectedRows = sortedData.filter((row: T) => selectableRowSelected(row));
 		// if selectableRowsSingle mode then return the first match
 		const selected = selectableRowsSingle ? preSelectedRows.slice(0, 1) : preSelectedRows;
 
@@ -421,7 +445,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 						{!progressPending && sortedData.length > 0 && (
 							<Body className="rdt_TableBody" role="rowgroup">
-								{tableRows.map((row, i) => {
+								{tableRows.map((row: T | TableRow | any, i: number) => {
 									const key = prop(row as TableRow, keyField) as string | number;
 									const id = isEmpty(key) ? i : key;
 									const selected = isRowSelected(row, selectedRows, keyField);
