@@ -32,7 +32,7 @@ import {
 	TableState,
 } from './types';
 import useColumns from '../hooks/useColumns';
-import _ from 'lodash';
+import { groupBy, map } from 'lodash-es';
 
 function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const {
@@ -124,8 +124,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	let data = props.data || defaultProps.data;
 	if (groupByKey) {
-		data = _.map(
-			_.groupBy(props.data, row => groupByKey(row)),
+		data = map(
+			groupBy(props.data, row => groupByKey(row)),
 			(group, key) => {
 				return {
 					_groupKey: key,
