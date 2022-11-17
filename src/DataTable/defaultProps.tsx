@@ -7,8 +7,6 @@ import ExpanderCollapsedIcon from '../icons/ExpanderCollapsedIcon';
 import ExpanderExpandedIcon from '../icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
-import * as _ from 'lodash-es';
-import Row from './TableRow';
 
 export const defaultProps = {
 	columns: [],
@@ -25,7 +23,6 @@ export const defaultProps = {
 	selectableRowsVisibleOnly: false,
 	selectableRowsSingle: false,
 	clearSelectedRows: false,
-	expandableRowsGroup: true,
 	expandableRows: false,
 	expandableRowDisabled: null,
 	expandableRowExpanded: null,
@@ -33,13 +30,6 @@ export const defaultProps = {
 	expandableRowsHideExpander: false,
 	expandOnRowDoubleClicked: false,
 	expandableInheritConditionalStyles: false,
-	expandableRowsGroupComponent: function DefaultGroupExpander({ data, rowProps }: any) {
-		return _.map(data.groupData, item => {
-			return (
-				<Row key={item.title} id={item.title} keyField={item.title} {...rowProps} expandableRows={false} row={item} />
-			);
-		});
-	},
 	expandableRowsComponent: function DefaultExpander(): JSX.Element {
 		return (
 			<div>
@@ -112,6 +102,4 @@ export const defaultProps = {
 	onSelectedRowsChange: noop,
 	onSort: noop,
 	onColumnOrderChange: noop,
-	groupByKey: noop,
-	groupLabel: noop,
 };
