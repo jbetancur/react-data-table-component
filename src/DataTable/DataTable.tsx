@@ -18,20 +18,21 @@ import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import { getNumberOfPages, isEmpty, isRowSelected, prop, recalculatePage, sort } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
 import {
 	Action,
 	AllRowsAction,
 	SingleRowAction,
-	TableRow,
 	SortAction,
-	TableProps,
-	TableState,
 	SortOrder,
+	TableProps,
+	TableRow,
+	TableState,
 } from './types';
 import useColumns from '../hooks/useColumns';
+import { groupBy, map } from 'lodash';
 
 function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const {
@@ -116,6 +117,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
 		className,
+		groupByKey = defaultProps.groupByKey,
+		groupLabel = defaultProps.groupLabel,
 	} = props;
 
 	const {
@@ -337,6 +340,17 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
+	if (groupByKey) {
+		const dataByGroupKey = groupBy(props.data, row => groupByKey(row));
+		const data: any = map(dataByGroupKey, (group, key) => {
+			return {
+				_groupKey: key,
+				groupData: map(group, row => row),
+			};
+		});
+		return <DataTable {...props} groupByKey={undefined} title="Movie List Grouped" data={data} columns={columns} />;
+	}
+
 	return (
 		<ThemeProvider theme={currentTheme}>
 			{showHeader() && (
@@ -427,7 +441,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									const selected = isRowSelected(row, selectedRows, keyField);
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
-
 									return (
 										<Row
 											id={id}
@@ -438,6 +451,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											row={row}
 											rowCount={sortedData.length}
 											rowIndex={i}
+											groupLabel={groupLabel ? groupLabel(row) : undefined}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
 											expandableIcon={expandableIcon}
@@ -472,7 +486,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onDragEnd={handleDragEnd}
 											onDragEnter={handleDragEnter}
 											onDragLeave={handleDragLeave}
-										/>
+										></Row>
 									);
 								})}
 							</Body>

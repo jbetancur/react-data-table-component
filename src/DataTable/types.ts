@@ -115,6 +115,8 @@ export type TableProps<T> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	groupByKey?: (row: T) => string;
+	groupLabel?: (group: T) => string;
 };
 
 export type TableColumnBase = {

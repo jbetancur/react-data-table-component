@@ -90,6 +90,7 @@ export interface TableRowProps<T> extends Required<DProps<T>> {
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	groupLabel?: string;
 }
 
 function Row<T>(props: TableRowProps<T>): JSX.Element {
@@ -134,6 +135,7 @@ function Row<T>(props: TableRowProps<T>): JSX.Element {
 		onDragEnd,
 		onDragEnter,
 		onDragLeave,
+		groupLabel,
 	} = props;
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
 
@@ -240,6 +242,13 @@ function Row<T>(props: TableRowProps<T>): JSX.Element {
 				{columns.map(column => {
 					if (column.omit) {
 						return null;
+					}
+
+					console.log('row', row);
+					console.log('columns', columns);
+
+					if (columns[0] === column && groupLabel) {
+						return <div>{groupLabel}</div>;
 					}
 
 					return (

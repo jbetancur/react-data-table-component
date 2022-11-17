@@ -102,4 +102,6 @@ export const defaultProps = {
 	onSelectedRowsChange: noop,
 	onSort: noop,
 	onColumnOrderChange: noop,
+	groupByKey: null,
+	groupLabel: null,
 };
