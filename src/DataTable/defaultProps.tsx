@@ -7,8 +7,8 @@ import ExpanderCollapsedIcon from '../icons/ExpanderCollapsedIcon';
 import ExpanderExpandedIcon from '../icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
+import * as _ from 'lodash-es';
 import Row from './TableRow';
-import map from 'lodash/map';
 
 export const defaultProps = {
 	columns: [],
@@ -34,7 +34,7 @@ export const defaultProps = {
 	expandOnRowDoubleClicked: false,
 	expandableInheritConditionalStyles: false,
 	expandableRowsGroupComponent: function DefaultGroupExpander({ data, rowProps }: any) {
-		return map(data.groupData, item => {
+		return _.map(data.groupData, item => {
 			return (
 				<Row key={item.title} id={item.title} keyField={item.title} {...rowProps} expandableRows={false} row={item} />
 			);
