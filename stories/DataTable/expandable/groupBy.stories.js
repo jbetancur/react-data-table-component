@@ -35,21 +35,21 @@ const columns = [
 const ExpandedComponent = ({ data, rowProps }) => {
 	let rowPropsPlus = {
 		...rowProps,
-		expandableRows: false,
-		columns: columns,
+		defaultExpanderDisabled: true,
+		expandableIcon: {
+			collapsed: '',
+			expandable: '',
+		},
 	};
-	return _.map(data.groupData, item => {
-		console.log(item);
-		return (
-			<Row
-				{...rowPropsPlus}
-				key={`group-row-${item.id}`}
-				keyField={`group-row-${item.id}`}
-				id={`group-row-${item.id}`}
-				row={item}
-			/>
-		);
-	});
+	return _.map(data.groupData, item => (
+		<Row
+			{...rowPropsPlus}
+			key={`group-row-${item.id}`}
+			keyField={`group-row-${item.id}`}
+			id={`group-row-${item.id}`}
+			row={item}
+		/>
+	));
 };
 
 const GroupByStory = props => {

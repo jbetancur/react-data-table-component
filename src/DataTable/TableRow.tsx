@@ -90,12 +90,11 @@ export interface TableRowProps<T> extends Required<DProps<T>> {
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-	groupLabel?: string;
+	groupLabel?: (group: T) => string;
 }
 
 function Row<T>(props: TableRowProps<T>): JSX.Element {
 	const {
-		columns = [],
 		conditionalRowStyles = [],
 		defaultExpanded = false,
 		defaultExpanderDisabled = false,
@@ -138,6 +137,21 @@ function Row<T>(props: TableRowProps<T>): JSX.Element {
 		groupLabel,
 	} = props;
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
+
+	let columns = props.columns || [];
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	if (row._groupKey && groupLabel) {
+		columns = [
+			{
+				id: 1,
+				name: '_groupKey',
+				selector: row => groupLabel(row),
+				sortable: true,
+				wrap: true,
+			},
+		];
+	}
 
 	React.useEffect(() => {
 		setExpanded(defaultExpanded);
@@ -242,13 +256,6 @@ function Row<T>(props: TableRowProps<T>): JSX.Element {
 				{columns.map(column => {
 					if (column.omit) {
 						return null;
-					}
-
-					console.log('row', row);
-					console.log('columns', columns);
-
-					if (columns[0] === column && groupLabel) {
-						return <div>{groupLabel}</div>;
 					}
 
 					return (

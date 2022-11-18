@@ -348,7 +348,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				groupData: map(group, row => row),
 			};
 		});
-		return <DataTable {...props} groupByKey={undefined} title="Movie List Grouped" data={data} columns={columns} />;
+		return <DataTable {...props} groupByKey={undefined} data={data} columns={columns} />;
 	}
 
 	return (
@@ -451,7 +451,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											row={row}
 											rowCount={sortedData.length}
 											rowIndex={i}
-											groupLabel={groupLabel ? groupLabel(row) : undefined}
+											groupLabel={groupLabel ? groupLabel : undefined}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
 											expandableIcon={expandableIcon}
