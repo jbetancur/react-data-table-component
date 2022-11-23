@@ -90,7 +90,7 @@ export interface TableRowProps<T> extends Required<DProps<T>> {
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-	groupLabel?: (group: T) => string;
+	groupLabel?: (group: { _groupKey: string; groupData: [] } | any) => string;
 }
 
 function Row<T>(props: TableRowProps<T>): JSX.Element {

@@ -7,6 +7,8 @@ import ExpanderCollapsedIcon from '../icons/ExpanderCollapsedIcon';
 import ExpanderExpandedIcon from '../icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
+import Row from './TableRow';
+import { map } from 'lodash';
 
 export const defaultProps = {
 	columns: [],
@@ -30,6 +32,25 @@ export const defaultProps = {
 	expandableRowsHideExpander: false,
 	expandOnRowDoubleClicked: false,
 	expandableInheritConditionalStyles: false,
+	expandableRowsGroupComponent: function DefaultGroupExpander({ data, rowProps }: any) {
+		const props = {
+			...rowProps,
+			defaultExpanderDisabled: true,
+			expandableIcon: {
+				collapsed: '',
+				expandable: '',
+			},
+		};
+		return map(data.groupData, item => (
+			<Row
+				{...props}
+				key={`group-row-${item.id}`}
+				keyField={`group-row-${item.id}`}
+				id={`group-row-${item.id}`}
+				row={item}
+			/>
+		));
+	},
 	expandableRowsComponent: function DefaultExpander(): JSX.Element {
 		return (
 			<div>
@@ -103,5 +124,5 @@ export const defaultProps = {
 	onSort: noop,
 	onColumnOrderChange: noop,
 	groupByKey: null,
-	groupLabel: null,
+	groupLabel: (group: { _groupKey: string; groupData: [] }) => `${group._groupKey} (${group.groupData.length} items)`,
 };

@@ -348,7 +348,20 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				groupData: map(group, row => row),
 			};
 		});
-		return <DataTable {...props} groupByKey={undefined} data={data} columns={columns} />;
+
+		return (
+			<DataTable
+				{...props}
+				groupByKey={undefined}
+				expandableRowsComponent={
+					expandableRowsComponent !== defaultProps.expandableRowsComponent
+						? expandableRowsComponent
+						: defaultProps.expandableRowsGroupComponent
+				}
+				data={data}
+				columns={columns}
+			/>
+		);
 	}
 
 	return (
@@ -451,7 +464,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											row={row}
 											rowCount={sortedData.length}
 											rowIndex={i}
-											groupLabel={groupLabel ? groupLabel : undefined}
+											groupLabel={groupLabel}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
 											expandableIcon={expandableIcon}

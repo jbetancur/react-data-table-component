@@ -50,7 +50,7 @@ export type TableProps<T> = {
 	expandableRowDisabled?: RowState<T>;
 	expandableRowExpanded?: RowState<T>;
 	expandableRows?: boolean;
-	expandableRowsComponent?: ExpandableRowsComponent<T>;
+	expandableRowsComponent?: ExpandableRowsComponent<T> | any;
 	expandableRowsComponentProps?: ComponentProps;
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
