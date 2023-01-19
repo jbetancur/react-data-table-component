@@ -61,7 +61,7 @@ function Cell<T>({
 		<CellStyle
 			id={id}
 			data-column-id={column.id}
-			role="gridcell"
+			role="cell"
 			className={classNames}
 			data-tag={dataTag}
 			cellStyle={column.style}

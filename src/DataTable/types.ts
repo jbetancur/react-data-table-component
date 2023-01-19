@@ -68,9 +68,11 @@ export type TableProps<T> = {
 	onFilter?: (filters: { [k: string]: { column: TableColumn<T>; value: string } }) => void;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
+	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
+	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder) => void;
+	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	pagination?: boolean;
 	paginationComponent?: PaginationComponent;
@@ -159,6 +161,9 @@ export interface TableStyles {
 		style: CSSObject;
 	};
 	tableWrapper?: {
+		style: CSSObject;
+	};
+	responsiveWrapper?: {
 		style: CSSObject;
 	};
 	header?: {
@@ -300,7 +305,7 @@ type ThemeStriped = {
 	text: string;
 };
 
-export type Themes = 'default' | 'light' | 'dark';
+export type Themes = string;
 
 export interface Theme {
 	text: ThemeText;

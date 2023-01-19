@@ -73,7 +73,7 @@ function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
 	);
 }
 
-const CustomMaterialPagination = ({ rowsPerPage, rowCount, onChangePage, onChangeRowsPerPage, currentPage }) => (
+export const CustomMaterialPagination = ({ rowsPerPage, rowCount, onChangePage, onChangeRowsPerPage, currentPage }) => (
 	<TablePagination
 		component="nav"
 		count={rowCount}

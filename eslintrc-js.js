@@ -1,5 +1,14 @@
 module.exports = {
-	parser: 'babel-eslint',
+	parserOptions: {
+		sourceType: 'module',
+		allowImportExportEverywhere: false,
+		ecmaFeatures: {
+			globalReturn: false,
+		},
+		babelOptions: {
+			configFile: './eslintrc-js.js',
+		},
+	},
 	extends: ['plugin:jsx-a11y/recommended'],
 	plugins: ['jest', 'react-hooks', 'jsx-a11y'],
 	rules: {

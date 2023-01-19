@@ -61,6 +61,8 @@ type DProps<T> = Pick<
 	| 'keyField'
 	| 'onRowClicked'
 	| 'onRowDoubleClicked'
+	| 'onRowMouseEnter'
+	| 'onRowMouseLeave'
 	| 'onRowExpandToggled'
 	| 'pointerOnHover'
 	| 'selectableRowDisabled'
@@ -109,6 +111,8 @@ function Row<T>({
 	keyField,
 	onRowClicked = noop,
 	onRowDoubleClicked = noop,
+	onRowMouseEnter = noop,
+	onRowMouseLeave = noop,
 	onRowExpandToggled = noop,
 	onSelectedRow = noop,
 	pointerOnHover = false,
@@ -169,6 +173,20 @@ function Row<T>({
 		[defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row],
 	);
 
+	const handleRowMouseEnter = React.useCallback(
+		e => {
+			onRowMouseEnter(row, e);
+		},
+		[onRowMouseEnter, row],
+	);
+
+	const handleRowMouseLeave = React.useCallback(
+		e => {
+			onRowMouseLeave(row, e);
+		},
+		[onRowMouseLeave, row],
+	);
+
 	const rowKeyField = prop(row as TableRow, keyField);
 	const { style, classNames } = getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']);
 	const highlightSelected = selectableRowsHighlight && selected;
@@ -186,6 +204,8 @@ function Row<T>({
 				dense={dense}
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
+				onMouseEnter={handleRowMouseEnter}
+				onMouseLeave={handleRowMouseLeave}
 				className={classNames}
 				selected={highlightSelected}
 				style={style}

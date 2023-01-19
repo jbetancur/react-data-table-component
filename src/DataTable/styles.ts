@@ -14,6 +14,9 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			display: 'table',
 		},
 	},
+	responsiveWrapper: {
+		style: {},
+	},
 	header: {
 		style: {
 			fontSize: '22px',

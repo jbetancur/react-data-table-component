@@ -98,6 +98,8 @@ export const defaultProps = {
 	onFilter: noop,
 	onRowClicked: noop,
 	onRowDoubleClicked: noop,
+	onRowMouseEnter: noop,
+	onRowMouseLeave: noop,
 	onRowExpandToggled: noop,
 	onSelectedRowsChange: noop,
 	onSort: noop,

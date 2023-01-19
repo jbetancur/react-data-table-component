@@ -210,3 +210,23 @@ describe('when clicking the Previous Page button', () => {
 		expect(onChangeRowsPerPageMock).toBeCalledWith(20, 2);
 	});
 });
+
+describe('when the screensize is small', () => {
+	test('paginationComponentOption noRowsPerPage should be respected', () => {
+		global.innerWidth = 500;
+		const { container } = renderWithTheme(
+			<Pagination
+				currentPage={1}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={jest.fn()}
+				onChangeRowsPerPage={jest.fn()}
+				paginationComponentOptions={{
+					noRowsPerPage: true,
+				}}
+			/>,
+		);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+});

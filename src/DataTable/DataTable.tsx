@@ -94,6 +94,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
+		onRowMouseEnter = defaultProps.onRowMouseEnter,
+		onRowMouseLeave = defaultProps.onRowMouseLeave,
 		sortIcon = defaultProps.sortIcon,
 		onSort = defaultProps.onSort,
 		onFilter = defaultProps.onFilter,
@@ -116,6 +118,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		className,
 	} = props;
 
 	const {
@@ -234,6 +237,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	const handleRowDoubleClicked = React.useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
 
+	const handleRowMouseEnter = React.useCallback((row, e) => onRowMouseEnter(row, e), [onRowMouseEnter]);
+
+	const handleRowMouseLeave = React.useCallback((row, e) => onRowMouseLeave(row, e), [onRowMouseLeave]);
+
 	const handleChangePage = React.useCallback(
 		(page: number) =>
 			dispatch({
@@ -300,12 +307,13 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}
 
 	useDidUpdateEffect(() => {
-		onSelectedRowsChange({ allSelected, selectedCount, selectedRows });
+		onSelectedRowsChange({ allSelected, selectedCount, selectedRows: selectedRows.slice(0) });
 		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
 	}, [toggleOnSelectedRowsChange]);
 
 	useDidUpdateEffect(() => {
-		onSort(selectedColumn, sortDirection);
+		onSort(selectedColumn, sortDirection, sortedData.slice(0));
+		// do not update on sortedData
 	}, [selectedColumn, sortDirection]);
 
 	useDidUpdateEffect(() => {
@@ -388,6 +396,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				responsive={responsive}
 				fixedHeader={fixedHeader}
 				fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+				className={className}
 				{...wrapperProps}
 			>
 				<Wrapper>
@@ -490,6 +499,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
+											onRowMouseEnter={handleRowMouseEnter}
+											onRowMouseLeave={handleRowMouseLeave}
 											onSelectedRow={handleSelectedRow}
 											draggingColumnId={draggingColumnId}
 											onDragStart={handleDragStart}
