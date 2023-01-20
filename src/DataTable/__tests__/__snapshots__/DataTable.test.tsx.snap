@@ -9672,7 +9672,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
@@ -9691,7 +9691,7 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
@@ -26366,7 +26366,7 @@ exports[`DataTable:filter it should filter if filterable is set true 1`] = `
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
@@ -26627,7 +26627,7 @@ exports[`DataTable:filter it should not filter if filterServer is set true 1`] =
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
@@ -26646,7 +26646,7 @@ exports[`DataTable:filter it should not filter if filterServer is set true 1`] =
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
@@ -26851,7 +26851,7 @@ exports[`DataTable:filter should not be rendered if column.name is missing 1`] =
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-1"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
@@ -26870,7 +26870,7 @@ exports[`DataTable:filter should not be rendered if column.name is missing 1`] =
             data-column-id="1"
             data-tag="allowRowEvents"
             id="cell-1-2"
-            role="gridcell"
+            role="cell"
           >
             <div
               data-tag="allowRowEvents"
