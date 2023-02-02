@@ -102,4 +102,5 @@ export const defaultProps = {
 	onSelectedRowsChange: noop,
 	onSort: noop,
 	onColumnOrderChange: noop,
+	renderRow: <T,>(row: T, rowContent: JSX.Element) => rowContent
 };

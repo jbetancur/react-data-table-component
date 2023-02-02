@@ -115,6 +115,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		renderRow = defaultProps.renderRow,
 		className,
 	} = props;
 
@@ -441,50 +442,53 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
 
 									return (
-										<Row
-											id={id}
-											key={id}
-											keyField={keyField}
-											data-row-id={id}
-											columns={tableColumns}
-											row={row}
-											rowCount={sortedData.length}
-											rowIndex={i}
-											selectableRows={selectableRows}
-											expandableRows={expandableRows}
-											expandableIcon={expandableIcon}
-											highlightOnHover={highlightOnHover}
-											pointerOnHover={pointerOnHover}
-											dense={dense}
-											expandOnRowClicked={expandOnRowClicked}
-											expandOnRowDoubleClicked={expandOnRowDoubleClicked}
-											expandableRowsComponent={expandableRowsComponent}
-											expandableRowsComponentProps={expandableRowsComponentProps}
-											expandableRowsHideExpander={expandableRowsHideExpander}
-											defaultExpanderDisabled={expanderDisabled}
-											defaultExpanded={expanderExpander}
-											expandableInheritConditionalStyles={expandableInheritConditionalStyles}
-											conditionalRowStyles={conditionalRowStyles}
-											selected={selected}
-											selectableRowsHighlight={selectableRowsHighlight}
-											selectableRowsComponent={selectableRowsComponent}
-											selectableRowsComponentProps={selectableRowsComponentProps}
-											selectableRowDisabled={selectableRowDisabled}
-											selectableRowsSingle={selectableRowsSingle}
-											striped={striped}
-											onRowExpandToggled={onRowExpandToggled}
-											onRowClicked={handleRowClicked}
-											onRowDoubleClicked={handleRowDoubleClicked}
-											onRowMouseEnter={handleRowMouseEnter}
-											onRowMouseLeave={handleRowMouseLeave}
-											onSelectedRow={handleSelectedRow}
-											draggingColumnId={draggingColumnId}
-											onDragStart={handleDragStart}
-											onDragOver={handleDragOver}
-											onDragEnd={handleDragEnd}
-											onDragEnter={handleDragEnter}
-											onDragLeave={handleDragLeave}
-										/>
+										renderRow(
+											row,
+											<Row
+												id={id}
+												key={id}
+												keyField={keyField}
+												data-row-id={id}
+												columns={tableColumns}
+												row={row}
+												rowCount={sortedData.length}
+												rowIndex={i}
+												selectableRows={selectableRows}
+												expandableRows={expandableRows}
+												expandableIcon={expandableIcon}
+												highlightOnHover={highlightOnHover}
+												pointerOnHover={pointerOnHover}
+												dense={dense}
+												expandOnRowClicked={expandOnRowClicked}
+												expandOnRowDoubleClicked={expandOnRowDoubleClicked}
+												expandableRowsComponent={expandableRowsComponent}
+												expandableRowsComponentProps={expandableRowsComponentProps}
+												expandableRowsHideExpander={expandableRowsHideExpander}
+												defaultExpanderDisabled={expanderDisabled}
+												defaultExpanded={expanderExpander}
+												expandableInheritConditionalStyles={expandableInheritConditionalStyles}
+												conditionalRowStyles={conditionalRowStyles}
+												selected={selected}
+												selectableRowsHighlight={selectableRowsHighlight}
+												selectableRowsComponent={selectableRowsComponent}
+												selectableRowsComponentProps={selectableRowsComponentProps}
+												selectableRowDisabled={selectableRowDisabled}
+												selectableRowsSingle={selectableRowsSingle}
+												striped={striped}
+												onRowExpandToggled={onRowExpandToggled}
+												onRowClicked={handleRowClicked}
+												onRowDoubleClicked={handleRowDoubleClicked}
+												onRowMouseEnter={handleRowMouseEnter}
+												onRowMouseLeave={handleRowMouseLeave}
+												onSelectedRow={handleSelectedRow}
+												draggingColumnId={draggingColumnId}
+												onDragStart={handleDragStart}
+												onDragOver={handleDragOver}
+												onDragEnd={handleDragEnd}
+												onDragEnter={handleDragEnter}
+												onDragLeave={handleDragLeave}
+											/>
+										)
 									);
 								})}
 							</Body>
