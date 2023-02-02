@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "7.5.3",
+  "version": "7.5.5",
   "description": "A simple to use declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -23,6 +23,7 @@
   "license": "Apache-2.0",
   "prepublish": "tsc",
   "scripts": {
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "build:dev": "rollup -c rollup/rollup.config.dev.js -m",
     "build:umd": "rollup -c rollup/rollup.config.umd.js",
