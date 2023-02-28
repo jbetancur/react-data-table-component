@@ -21,12 +21,23 @@ const columns = [
 ];
 
 export const RowLink = () => {
-	return <DataTable title="Movie List" columns={columns} data={data} pagination renderRow={(row, rowContent) => <a href={`/${row.id}`} style={{display: 'block'}} target="_blank">{rowContent}</a>} />;
+	return (
+		<DataTable
+			title="Movie List"
+			columns={columns}
+			data={data}
+			pagination
+			renderRow={(row, rowContent) => (
+				<a href={`/${row.id}`} style={{ display: 'block' }} target="_blank" rel="noreferrer">
+					{rowContent}
+				</a>
+			)}
+		/>
+	);
 };
 
 export default {
 	title: 'RowLink',
 	component: RowLink,
-	parameters: {
-	},
+	parameters: {},
 };
