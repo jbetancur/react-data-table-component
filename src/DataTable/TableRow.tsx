@@ -60,6 +60,7 @@ type DProps<T> = Pick<
 	| 'expandableInheritConditionalStyles'
 	| 'keyField'
 	| 'onRowClicked'
+	| 'onRowRightClicked'
 	| 'onRowDoubleClicked'
 	| 'onRowMouseEnter'
 	| 'onRowMouseLeave'
@@ -110,6 +111,7 @@ function Row<T>({
 	expandableInheritConditionalStyles,
 	keyField,
 	onRowClicked = noop,
+	onRowRightClicked = noop,
 	onRowDoubleClicked = noop,
 	onRowMouseEnter = noop,
 	onRowMouseLeave = noop,
@@ -161,6 +163,16 @@ function Row<T>({
 		[defaultExpanderDisabled, expandOnRowClicked, expandableRows, handleExpanded, onRowClicked, row],
 	);
 
+	const handleRowRightClick = React.useCallback(
+		e => {
+			// use event delegation allow events to propagate only when the element with data-tag STOP_PROP_TAG is present
+			if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
+				onRowRightClicked(row, e);
+			}
+		},
+		[onRowRightClicked, row],
+	);
+
 	const handleRowDoubleClick = React.useCallback(
 		e => {
 			if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
@@ -203,6 +215,7 @@ function Row<T>({
 				pointerOnHover={!defaultExpanderDisabled && showPointer}
 				dense={dense}
 				onClick={handleRowClick}
+				onContextMenu={handleRowRightClick}
 				onDoubleClick={handleRowDoubleClick}
 				onMouseEnter={handleRowMouseEnter}
 				onMouseLeave={handleRowMouseLeave}

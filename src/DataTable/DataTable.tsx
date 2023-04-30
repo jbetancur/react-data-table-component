@@ -92,6 +92,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		contextComponent = defaultProps.contextComponent,
 		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
+		onRowRightClicked = defaultProps.onRowRightClicked,
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
 		onRowMouseEnter = defaultProps.onRowMouseEnter,
 		onRowMouseLeave = defaultProps.onRowMouseLeave,
@@ -204,6 +205,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, []);
 
 	const handleRowClicked = React.useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
+
+	const handleRowRightClicked = React.useCallback((row, e) => onRowRightClicked(row, e), [onRowRightClicked]);
 
 	const handleRowDoubleClicked = React.useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
 
@@ -462,6 +465,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											striped={striped}
 											onRowExpandToggled={onRowExpandToggled}
 											onRowClicked={handleRowClicked}
+											onRowRightClicked={handleRowRightClicked}
 											onRowDoubleClicked={handleRowDoubleClicked}
 											onRowMouseEnter={handleRowMouseEnter}
 											onRowMouseLeave={handleRowMouseLeave}

@@ -102,6 +102,11 @@ function MaterialStory({ selectableRows, expandableRows }) {
 		console.log(`${row.name} was clicked!`);
 	};
 
+	const handleRowRightClicked = row => {
+		// eslint-disable-next-line no-console
+		console.log(`${row.name} was right clicked!`);
+	};
+
 	const deleteAll = () => {
 		const rows = selectedRows.map(r => r.name);
 		// eslint-disable-next-line no-alert
@@ -129,6 +134,7 @@ function MaterialStory({ selectableRows, expandableRows }) {
 				onSelectedRowsChange={handleChange}
 				clearSelectedRows={toggleCleared}
 				onRowClicked={handleRowClicked}
+				onRowRightClicked={handleRowRightClicked}
 				pagination
 				expandableRows={expandableRows}
 			/>

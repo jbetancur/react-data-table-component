@@ -95,6 +95,7 @@ export const defaultProps = {
 	onChangePage: noop,
 	onChangeRowsPerPage: noop,
 	onRowClicked: noop,
+	onRowRightClicked: noop,
 	onRowDoubleClicked: noop,
 	onRowMouseEnter: noop,
 	onRowMouseLeave: noop,
