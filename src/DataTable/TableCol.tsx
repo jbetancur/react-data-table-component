@@ -4,7 +4,6 @@ import { CellExtended, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { equalizeId } from './util';
 import { TableColumn, SortAction, SortOrder } from './types';
-import NativeReorderIcon from '../icons/NativeReorderIcon';
 
 interface ColumnStyleProps extends CellProps {
 	isDragging?: boolean;
@@ -176,8 +175,6 @@ function TableCol<T>({
 		<span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>{sortIcon}</span>
 	);
 
-	const renderNativeReorderIcon = () => <NativeReorderIcon />;
-
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const disableSort = !column.sortable || disabled;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
@@ -220,7 +217,6 @@ function TableCol<T>({
 					sortActive={!disableSort && sortActive}
 					disabled={disableSort}
 				>
-					{column.reorder && renderNativeReorderIcon()}
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
