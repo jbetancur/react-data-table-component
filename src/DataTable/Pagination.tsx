@@ -95,7 +95,7 @@ function Pagination({
 }: PaginationProps): JSX.Element {
 	const windowSize = useWindowSize();
 	const isRTL = useRTL(direction);
-	const shouldShow = windowSize.width && windowSize.width > SMALL;
+	const isLargeWidth = windowSize.width && windowSize.width > SMALL;
 	// const isRTL = detectRTL(direction);
 	const numPages = getNumberOfPages(rowCount, rowsPerPage);
 	const lastIndex = currentPage * rowsPerPage;
@@ -142,13 +142,13 @@ function Pagination({
 
 	return (
 		<PaginationWrapper className="rdt_Pagination">
-			{!options.noRowsPerPage && shouldShow && (
+			{!options.noRowsPerPage && isLargeWidth && (
 				<>
 					<RowLabel>{options.rowsPerPageText}</RowLabel>
 					{select}
 				</>
 			)}
-			{shouldShow && <Range>{range}</Range>}
+			{isLargeWidth && <Range>{range}</Range>}
 			<PageList>
 				<Button
 					id="pagination-first-page"
@@ -174,7 +174,8 @@ function Pagination({
 					{paginationIconPrevious}
 				</Button>
 
-				{!options.noRowsPerPage && !shouldShow && select}
+				{!options.noRowsPerPage && !isLargeWidth && select}
+				{!isLargeWidth && <Range>{range}</Range>}
 
 				<Button
 					id="pagination-next-page"
