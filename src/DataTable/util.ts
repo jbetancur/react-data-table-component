@@ -34,8 +34,10 @@ export function sort<T>(
 		let bValue;
 
 		if (typeof selector === 'string') {
-			aValue = parseSelector(a, selector);
-			bValue = parseSelector(b, selector);
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			aValue = parseSelector(a as Record<string, any>, selector);
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			bValue = parseSelector(b as Record<string, any>, selector);
 		} else {
 			aValue = selector(a);
 			bValue = selector(b);
@@ -108,7 +110,8 @@ export function getProperty<T>(
 	}
 
 	// TODO: Remove in V8
-	return parseSelector(row, selector);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return parseSelector(row as Record<string, any>, selector);
 }
 
 export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {

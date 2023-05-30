@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component-sspenst",
-  "version": "7.5.4",
+  "version": "1.0.0",
   "description": "A simple to use declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
