@@ -704,6 +704,14 @@ describe('DataTable::sorting', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('should render correctly with an active custom sortIcon', () => {
+		const mock = dataMock({ sortable: true });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} sortIcon={<div>ASC</div>} />);
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
 	test('should render correctly with a defaultSortAsc = false', () => {
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} defaultSortAsc={false} />);
