@@ -171,9 +171,13 @@ function TableCol<T>({
 		<NativeSortIcon sortActive={sortActive} sortDirection={sortDirection} />
 	);
 
-	const renderCustomSortIcon = () => (
-		<span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>{sortIcon}</span>
-	);
+	const renderCustomSortIcon = (sortActive: boolean) => {
+		const classes = [sortDirection, '__rdt_custom_sort_icon__'];
+		if (sortActive) {
+			classes.unshift('active_sort');
+		}
+		return <span className={classes.join(' ')}>{sortIcon}</span>;
+	};
 
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const disableSort = !column.sortable || disabled;
@@ -217,7 +221,7 @@ function TableCol<T>({
 					sortActive={!disableSort && sortActive}
 					disabled={disableSort}
 				>
-					{!disableSort && customSortIconRight && renderCustomSortIcon()}
+					{!disableSort && customSortIconRight && renderCustomSortIcon(sortActive)}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
 					{typeof column.name === 'string' ? (
@@ -228,7 +232,7 @@ function TableCol<T>({
 						column.name
 					)}
 
-					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
+					{!disableSort && customSortIconLeft && renderCustomSortIcon(sortActive)}
 					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</ColumnSortable>
 			)}
