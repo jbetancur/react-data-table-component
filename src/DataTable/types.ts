@@ -93,6 +93,7 @@ export type TableProps<T> = {
 	responsive?: boolean;
 	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
+	selectableRowsPosition?: 'left' | 'right';
 	selectableRowsComponent?: 'input' | React.ReactNode;
 	selectableRowsComponentProps?: ComponentProps;
 	selectableRowSelected?: RowState<T>;

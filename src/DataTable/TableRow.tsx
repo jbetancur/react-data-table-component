@@ -67,6 +67,7 @@ type DProps<T> = Pick<
 	| 'pointerOnHover'
 	| 'selectableRowDisabled'
 	| 'selectableRows'
+	| 'selectableRowsPosition'
 	| 'selectableRowsComponent'
 	| 'selectableRowsComponentProps'
 	| 'selectableRowsHighlight'
@@ -121,6 +122,7 @@ function Row<T>({
 	rowIndex,
 	selectableRowDisabled = null,
 	selectableRows = false,
+	selectableRowsPosition,
 	selectableRowsComponent,
 	selectableRowsComponentProps,
 	selectableRowsHighlight = false,
@@ -210,7 +212,7 @@ function Row<T>({
 				selected={highlightSelected}
 				style={style}
 			>
-				{selectableRows && (
+				{selectableRows && selectableRowsPosition === 'left' && (
 					<TableCellCheckbox
 						name={`select-row-${rowKeyField}`}
 						keyField={keyField}
@@ -259,6 +261,20 @@ function Row<T>({
 						/>
 					);
 				})}
+				{selectableRows && selectableRowsPosition === 'right' && (
+					<TableCellCheckbox
+						name={`select-row-${rowKeyField}`}
+						keyField={keyField}
+						row={row}
+						rowCount={rowCount}
+						selected={selected}
+						selectableRowsComponent={selectableRowsComponent}
+						selectableRowsComponentProps={selectableRowsComponentProps}
+						selectableRowDisabled={selectableRowDisabled}
+						selectableRowsSingle={selectableRowsSingle}
+						onSelectedRow={onSelectedRow}
+					/>
+				)}
 			</TableRowStyle>
 
 			{expandableRows && expanded && (
