@@ -14,6 +14,7 @@ export const defaultProps = {
 	title: '',
 	keyField: 'id',
 	selectableRows: false,
+	selectableRowsPosition: 'left' as const,
 	selectableRowsHighlight: false,
 	selectableRowsNoSelectAll: false,
 	selectableRowSelected: null,

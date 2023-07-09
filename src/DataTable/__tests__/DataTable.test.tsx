@@ -943,6 +943,15 @@ describe('DataTable::selectableRows', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test("should render checkbox as the last column when selectableRows is true and selectableRowsPosition is 'right'", () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsPosition="right" />,
+		);
+
+		expect(container.lastChild).toMatchSnapshot();
+	});
+
 	test('should render correctly when selectableRowsHighlight is true and a row is selected', () => {
 		const mock = dataMock();
 		const { container } = render(

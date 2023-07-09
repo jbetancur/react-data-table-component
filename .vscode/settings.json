@@ -9,7 +9,7 @@
 	"files.trimTrailingWhitespace": true,
 	"eslint.nodePath": "./src",
 	"editor.formatOnSave": false,
-	"window.zoomLevel": 0,
+	"window.zoomLevel": 1,
 	"workbench.iconTheme": "material-icon-theme",
 	// "terminal.integrated.fontFamily": "Knack Nerd Font",
 	"terminal.integrated.fontSize": 13,

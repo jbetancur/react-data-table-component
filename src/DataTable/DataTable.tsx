@@ -45,6 +45,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		pointerOnHover = defaultProps.pointerOnHover,
 		dense = defaultProps.dense,
 		selectableRows = defaultProps.selectableRows,
+		selectableRowsPosition = defaultProps.selectableRowsPosition,
 		selectableRowsSingle = defaultProps.selectableRowsSingle,
 		selectableRowsHighlight = defaultProps.selectableRowsHighlight,
 		selectableRowsNoSelectAll = defaultProps.selectableRowsNoSelectAll,
@@ -373,6 +374,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
 								<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
 									{selectableRows &&
+										selectableRowsPosition === 'left' &&
 										(showSelectAll ? (
 											<CellBase style={{ flex: '0 0 48px' }} />
 										) : (
@@ -411,6 +413,23 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											draggingColumnId={draggingColumnId}
 										/>
 									))}
+									{selectableRows &&
+										selectableRowsPosition === 'right' &&
+										(showSelectAll ? (
+											<CellBase style={{ flex: '0 0 48px' }} />
+										) : (
+											<ColumnCheckbox
+												allSelected={allSelected}
+												selectedRows={selectedRows}
+												selectableRowsComponent={selectableRowsComponent}
+												selectableRowsComponentProps={selectableRowsComponentProps}
+												selectableRowDisabled={selectableRowDisabled}
+												rowData={visibleRows}
+												keyField={keyField}
+												mergeSelections={mergeSelections}
+												onSelectAllRows={handleSelectAllRows}
+											/>
+										))}
 								</HeadRow>
 							</Head>
 						)}
@@ -439,6 +458,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											rowCount={sortedData.length}
 											rowIndex={i}
 											selectableRows={selectableRows}
+											selectableRowsPosition={selectableRowsPosition}
 											expandableRows={expandableRows}
 											expandableIcon={expandableIcon}
 											highlightOnHover={highlightOnHover}
