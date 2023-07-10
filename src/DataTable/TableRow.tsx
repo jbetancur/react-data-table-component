@@ -64,6 +64,8 @@ type DProps<T> = Pick<
 	| 'onRowMouseEnter'
 	| 'onRowMouseLeave'
 	| 'onRowExpandToggled'
+	| 'expandableCloseAllOnExpand'
+	| 'expandableRowFlag'
 	| 'pointerOnHover'
 	| 'selectableRowDisabled'
 	| 'selectableRows'
@@ -114,6 +116,8 @@ function Row<T>({
 	onRowMouseEnter = noop,
 	onRowMouseLeave = noop,
 	onRowExpandToggled = noop,
+	expandableCloseAllOnExpand = false,
+	expandableRowFlag = false,
 	onSelectedRow = noop,
 	pointerOnHover = false,
 	row,
@@ -135,13 +139,19 @@ function Row<T>({
 	onDragLeave,
 }: TableRowProps<T>): JSX.Element {
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
+	const [getExpandableRowFlag, setExpandableRowFlag] = React.useState(expandableRowFlag);
 
 	React.useEffect(() => {
 		setExpanded(defaultExpanded);
 	}, [defaultExpanded]);
+	React.useEffect(() => {
+		setExpandableRowFlag(expandableRowFlag);
+	}, [expandableRowFlag]);
 
 	const handleExpanded = React.useCallback(() => {
+		setExpandableRowFlag(!getExpandableRowFlag);
 		setExpanded(!expanded);
+
 		onRowExpandToggled(!expanded, row);
 	}, [expanded, onRowExpandToggled, row]);
 
@@ -192,7 +202,7 @@ function Row<T>({
 	const highlightSelected = selectableRowsHighlight && selected;
 	const inheritStyles = expandableInheritConditionalStyles ? style : {};
 	const isStriped = striped && isOdd(rowIndex);
-
+	const isExpanded = expandableCloseAllOnExpand ? getExpandableRowFlag : expanded;
 	return (
 		<>
 			<TableRowStyle
@@ -229,7 +239,7 @@ function Row<T>({
 					<TableCellExpander
 						id={rowKeyField as string}
 						expandableIcon={expandableIcon}
-						expanded={expanded}
+						expanded={expandableCloseAllOnExpand ? getExpandableRowFlag : expanded}
 						row={row}
 						onToggled={handleExpanded}
 						disabled={defaultExpanderDisabled}
@@ -261,9 +271,9 @@ function Row<T>({
 				})}
 			</TableRowStyle>
 
-			{expandableRows && expanded && (
+			{expandableRows && isExpanded && (
 				<ExpanderRow
-					key={`expander-${rowKeyField}`}
+					key={`expander1-${rowKeyField}`}
 					data={row}
 					extendedRowStyle={inheritStyles}
 					extendedClassNames={classNames}

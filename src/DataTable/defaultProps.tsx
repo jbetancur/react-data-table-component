@@ -99,6 +99,7 @@ export const defaultProps = {
 	onRowMouseEnter: noop,
 	onRowMouseLeave: noop,
 	onRowExpandToggled: noop,
+	expandableCloseAllOnExpand: false,
 	onSelectedRowsChange: noop,
 	onSort: noop,
 	onColumnOrderChange: noop,
