@@ -88,7 +88,7 @@ export function getProperty<T>(
 	selector: Selector<T> | string | undefined | null | unknown, // unknown allows us to throw an error for JS code
 	format: Format<T> | undefined | null,
 	rowIndex: number,
-): React.ReactNode {
+) {
 	if (!selector) {
 		return null;
 	}
@@ -108,7 +108,11 @@ export function getProperty<T>(
 	}
 
 	// TODO: Remove in V8
-	return parseSelector(row, selector);
+	if (typeof selector === 'string') {
+		return parseSelector(row, selector);
+	}
+
+	return null;
 }
 
 export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {
