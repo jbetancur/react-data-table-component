@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TableColumn, SortAction, SortOrder } from './types';
-type TableColProps<T> = {
+export type TableColProps<T> = {
     column: TableColumn<T>;
     disabled: boolean;
     draggingColumnId?: string | number;
