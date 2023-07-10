@@ -222,6 +222,8 @@ export interface PaginationOptions {
 	rangeSeparatorText?: string;
 	selectAllRowsItem?: boolean;
 	selectAllRowsItemText?: string;
+	firstPage?: boolean;
+	lastPage?: boolean;
 }
 
 export interface PaginationServerOptions {
