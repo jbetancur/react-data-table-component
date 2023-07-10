@@ -80,7 +80,7 @@ const ColumnText = styled.div`
 	text-overflow: ellipsis;
 `;
 
-type TableColProps<T> = {
+export type TableColProps<T> = {
 	column: TableColumn<T>;
 	disabled: boolean;
 	draggingColumnId?: string | number;
