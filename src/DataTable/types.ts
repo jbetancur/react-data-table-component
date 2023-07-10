@@ -1,4 +1,4 @@
-import TableCol from './TableCol';
+import { TableColProps } from './TableCol';
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
 
@@ -148,7 +148,7 @@ export interface TableColumn<T> extends TableColumnBase {
 	format?: Format<T> | undefined;
 	selector?: Selector<T>;
 	sortFunction?: ColumnSortFunction<T>;
-	component?: typeof TableCol<T>;
+	component?: React.FC<TableColProps<T>>;
 }
 
 export interface ConditionalStyles<T> {
