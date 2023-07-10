@@ -15,6 +15,8 @@ const defaultComponentOptions = {
 	noRowsPerPage: false,
 	selectAllRowsItem: false,
 	selectAllRowsItemText: 'All',
+	firstPage: true,
+	lastPage: true,
 };
 
 const PaginationWrapper = styled.nav`
@@ -150,17 +152,19 @@ function Pagination({
 			)}
 			{shouldShow && <Range>{range}</Range>}
 			<PageList>
-				<Button
-					id="pagination-first-page"
-					type="button"
-					aria-label="First Page"
-					aria-disabled={disabledLesser}
-					onClick={handleFirst}
-					disabled={disabledLesser}
-					isRTL={isRTL}
-				>
-					{paginationIconFirstPage}
-				</Button>
+				{options.firstPage && (
+					<Button
+						id="pagination-first-page"
+						type="button"
+						aria-label="First Page"
+						aria-disabled={disabledLesser}
+						onClick={handleFirst}
+						disabled={disabledLesser}
+						isRTL={isRTL}
+					>
+						{paginationIconFirstPage}
+					</Button>
+				)}
 
 				<Button
 					id="pagination-previous-page"
@@ -188,17 +192,19 @@ function Pagination({
 					{paginationIconNext}
 				</Button>
 
-				<Button
-					id="pagination-last-page"
-					type="button"
-					aria-label="Last Page"
-					aria-disabled={disabledGreater}
-					onClick={handleLast}
-					disabled={disabledGreater}
-					isRTL={isRTL}
-				>
-					{paginationIconLastPage}
-				</Button>
+				{options.lastPage && (
+					<Button
+						id="pagination-last-page"
+						type="button"
+						aria-label="Last Page"
+						aria-disabled={disabledGreater}
+						onClick={handleLast}
+						disabled={disabledGreater}
+						isRTL={isRTL}
+					>
+						{paginationIconLastPage}
+					</Button>
+				)}
 			</PageList>
 		</PaginationWrapper>
 	);
