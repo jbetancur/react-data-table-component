@@ -410,28 +410,31 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											/>
 										))}
 									{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
-									{tableColumns.map(column => (
-										<Column
-											key={column.id}
-											column={column}
-											selectedColumn={selectedColumn}
-											disabled={progressPending || sortedData.length === 0}
-											pagination={pagination}
-											paginationServer={paginationServer}
-											persistSelectedOnSort={persistSelectedOnSort}
-											selectableRowsVisibleOnly={selectableRowsVisibleOnly}
-											sortDirection={sortDirection}
-											sortIcon={sortIcon}
-											sortServer={sortServer}
-											onSort={handleSort}
-											onDragStart={handleDragStart}
-											onDragOver={handleDragOver}
-											onDragEnd={handleDragEnd}
-											onDragEnter={handleDragEnter}
-											onDragLeave={handleDragLeave}
-											draggingColumnId={draggingColumnId}
-										/>
-									))}
+									{tableColumns.map(column => {
+										const Component = column.component ? column.component : Column;
+										return (
+											<Component
+												key={column.id}
+												column={column}
+												selectedColumn={selectedColumn}
+												disabled={progressPending || sortedData.length === 0}
+												pagination={pagination}
+												paginationServer={paginationServer}
+												persistSelectedOnSort={persistSelectedOnSort}
+												selectableRowsVisibleOnly={selectableRowsVisibleOnly}
+												sortDirection={sortDirection}
+												sortIcon={sortIcon}
+												sortServer={sortServer}
+												onSort={handleSort}
+												onDragStart={handleDragStart}
+												onDragOver={handleDragOver}
+												onDragEnd={handleDragEnd}
+												onDragEnter={handleDragEnter}
+												onDragLeave={handleDragLeave}
+												draggingColumnId={draggingColumnId}
+											/>
+										);
+									})}
 								</HeadRow>
 							</Head>
 						)}
