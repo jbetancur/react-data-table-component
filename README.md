@@ -20,6 +20,9 @@ If you want to achieve balance with the force and want a simple but flexible tab
 - Accessibility
 - Responsive (via x-scroll/flex)
 
+# New Props
+- expandableCloseAllOnExpand: boolean
+
 # Documentation Website
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/26e0d16d-a986-46b1-9097-1a76c10d7cad/deploy-status)](https://app.netlify.com/sites/react-data-table-component/deploys)

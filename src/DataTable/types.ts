@@ -69,6 +69,8 @@ export type TableProps<T> = {
 	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled?: ExpandRowToggled<T>;
+	expandableCloseAllOnExpand?: boolean;
+	expandableRowFlag?: boolean;
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
