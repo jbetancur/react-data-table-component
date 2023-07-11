@@ -4,11 +4,12 @@
 
 import 'jest-styled-components';
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import DataTable from '../DataTable';
 import { Direction, STOP_PROP_TAG } from '../constants';
 import { Alignment } from '../../index';
 import { ConditionalStyles, SortOrder } from '../types';
+import { TableColProps } from '../TableCol';
 
 interface Data {
 	id: number;
@@ -2509,5 +2510,22 @@ describe('DataTable::direction', () => {
 		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
 
 		expect(container.firstChild).toMatchSnapshot();
+	});
+});
+
+describe('DataTable::custom component for column headers', () => {
+	const ColumnHeader: React.FunctionComponent<TableColProps<unknown>> = ({
+		column,
+	}: TableColProps<unknown>): React.ReactElement | null => {
+		return <div>CUSTOM COLUMN HEADING {column.name}</div>;
+	};
+
+	test('should render correctly when a custom component is used for a column header', async () => {
+		const mock = dataMock();
+		mock.columns[0].component = ColumnHeader;
+
+		render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		await screen.findByText(/CUSTOM COLUMN HEADING/);
 	});
 });
