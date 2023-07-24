@@ -98,6 +98,8 @@ type TableColProps<T> = {
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	currentSortColumnId: string | number | null;
+	currentSortDirection: SortOrder;
 };
 
 function TableCol<T>({
@@ -118,6 +120,8 @@ function TableCol<T>({
 	onDragEnd,
 	onDragEnter,
 	onDragLeave,
+	currentSortColumnId,
+	currentSortDirection,
 }: TableColProps<T>): JSX.Element | null {
 	React.useEffect(() => {
 		if (typeof column.selector === 'string') {
@@ -168,14 +172,14 @@ function TableCol<T>({
 	};
 
 	const renderNativeSortIcon = (sortActive: boolean) => (
-		<NativeSortIcon sortActive={sortActive} sortDirection={sortDirection} />
+		<NativeSortIcon sortActive={sortActive} sortDirection={currentSortDirection} />
 	);
 
 	const renderCustomSortIcon = () => (
 		<span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>{sortIcon}</span>
 	);
 
-	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
+	const sortActive = !!(column.sortable && currentSortColumnId !== null && equalizeId(currentSortColumnId, column.id));
 	const disableSort = !column.sortable || disabled;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
 	const nativeSortIconRight = column.sortable && !sortIcon && column.right;

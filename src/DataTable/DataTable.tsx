@@ -121,6 +121,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
 		keepExpandableFirst = defaultProps.keepExpandableFirst,
 		footer = defaultProps.footer,
+		currentSortColumnId = defaultProps.currentSortColumnId,
+		currentSortDirection = defaultProps.currentSortDirection,
 	} = props;
 
 	const {
@@ -492,6 +494,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onDragEnter={handleDragEnter}
 											onDragLeave={handleDragLeave}
 											draggingColumnId={draggingColumnId}
+											currentSortColumnId={currentSortColumnId}
+											currentSortDirection={currentSortDirection}
 										/>
 									))}
 								</HeadRow>
