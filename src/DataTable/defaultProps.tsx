@@ -7,7 +7,7 @@ import ExpanderCollapsedIcon from '../icons/ExpanderCollapsedIcon';
 import ExpanderExpandedIcon from '../icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
-import { SortOrder } from './types';
+// import { SortOrder } from './types';
 
 export const defaultProps = {
 	columns: [],
@@ -110,5 +110,5 @@ export const defaultProps = {
 	keepExpandableFirst: false,
 	footer: null,
 	currentSortColumnId: null,
-	currentSortDirection: 'asc' as SortOrder,
+	currentSortDirection: undefined,
 };

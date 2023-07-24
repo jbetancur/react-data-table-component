@@ -118,8 +118,8 @@ export type TableProps<T> = {
 	 *  */
 	title?: string | React.ReactNode;
 	footer?: React.ReactNode;
-	currentSortColumnId: string | number | null;
-	currentSortDirection: SortOrder;
+	currentSortColumnId?: string | number | null;
+	currentSortDirection?: SortOrder;
 };
 
 export type TableColumnBase = {
