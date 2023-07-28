@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component-with-filter",
-  "version": "7.5.3",
+  "version": "7.5.4",
   "description": "A simple to use declarative react based data table",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
