@@ -1,6 +1,6 @@
 # React Data Table Component
 
-**Note**: This is a clone of [https://github.com/jbetancur/react-data-table-component](https://github.com/jbetancur/react-data-table-component) with one additional feature: [Column Filtering](https://anothercodeartist.github.io/react-data-table-component/?path=/story/general--kitchen-sink). Once [jbetancur](https://github.com/jbetancur) merges the corresponding PR and publishes an updated version of his data table component, this site will get deprecated!
+**Note**: This is a clone of [https://github.com/jbetancur/react-data-table-component](https://github.com/jbetancur/react-data-table-component) with one additional feature: [Column Filtering](https://anothercodeartist.github.io/react-data-table-component/?path=/story/general--kitchen-sink). It seems that there's no development going on any longer there.
 
 Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries out there, some required heavy customization, were missing out of the box features such as built in sorting and pagination, or required understanding the atomic structure of html tables.
 
@@ -18,6 +18,8 @@ If you want to achieve balance with the force and want a simple but flexible tab
 - Themeable/Customizable
 - Accessibility
 - Responsive (via x-scroll/flex)
+
+In this version filterability was further improved by adding an additional column property called `filterValues`, which is a list of values that filtering is restricted to. This is helpful in cases where a column has only a small set of different values.
 
 # Documentation Website
 

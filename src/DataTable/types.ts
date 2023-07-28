@@ -28,6 +28,11 @@ export type PaginationComponentProps = {
 };
 export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
+export type FilterComponentProps = {
+	name: string;
+	onChange: (e: React.ChangeEvent) => void;
+}
+
 export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	className?: string;
@@ -135,6 +140,7 @@ export type TableColumnBase = {
 	right?: boolean;
 	sortable?: boolean;
 	filterable?: boolean;
+	filterValues?: Primitive[] | {value: Primitive, label: string}[];
 	style?: CSSObject;
 	width?: string;
 	wrap?: boolean;

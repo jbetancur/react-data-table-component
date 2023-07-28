@@ -15,7 +15,7 @@ interface ColumnStyleProps extends CellProps {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
+const ColumnStyled = styled(CellExtended) <ColumnStyleProps>`
 	${({ button }) => button && 'text-align: center'};
 	${({ theme, isDragging }) => isDragging && theme.headCells.draggingStyle};
 `;
@@ -166,7 +166,7 @@ function TableCol<T>({
 		});
 	};
 
-	const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleFilterChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		if (column.filterable && column.selector) {
 			onFilter({
 				type: 'FILTER_CHANGE',
@@ -252,12 +252,28 @@ function TableCol<T>({
 					</ColumnSortable>
 					{column.filterable && (
 						<div style={{ display: 'block' }}>
-							<input
-								name={column?.name?.toString()}
-								data-filter-id={column?.name?.toString().toLowerCase()}
-								onChange={handleFilterChange}
-								placeholder="filter"
-							/>
+							{column.filterValues && column.filterValues.length > 0 ?
+								<select name={column?.name?.toString()}
+									data-filter-id={column?.name?.toString().toLowerCase()}
+									onChange={handleFilterChange}>
+									<option value=""></option>
+									{column?.filterValues?.map((filterValue, index) => (
+										<option key={index} value={
+											(typeof filterValue === 'object' && 'value' in filterValue ?
+												filterValue.value : filterValue) as string}>
+											{(typeof filterValue === 'object' && 'label' in filterValue ?
+												filterValue.label : filterValue) }
+										</option>
+									))}
+								</select>
+								:
+								<input
+									name={column?.name?.toString()}
+									data-filter-id={column?.name?.toString().toLowerCase()}
+									onChange={handleFilterChange}
+									placeholder="filter"
+								/>
+							}
 						</div>
 					)}
 				</div>
