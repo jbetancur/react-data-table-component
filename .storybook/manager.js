@@ -8,7 +8,7 @@ addons.setConfig({
 	theme: create({
 		base: 'light',
 		brandTitle: 'React Data Table Component',
-		brandUrl: 'https://github.com/jbetancur/react-data-table-component',
+		brandUrl: 'https://github.com/AnotherCodeArtist/react-data-table-component',
 		gridCellSize: 12,
 	}),
 });

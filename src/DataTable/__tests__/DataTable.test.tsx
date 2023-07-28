@@ -286,6 +286,13 @@ describe('DataTable::columns', () => {
 		expect(container.firstChild).toMatchSnapshot();
 	});
 
+	test('should render correctly when column.filterable = true', () => {
+		const mock = dataMock({ filterable: true });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
 	test('should render correctly when column.wrap = true', () => {
 		const mock = dataMock({ wrap: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
@@ -581,6 +588,57 @@ describe('DataTable::responsive', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} responsive={false} />);
 
+		expect(container.firstChild).toMatchSnapshot();
+	});
+});
+
+describe('DataTable:filter', () => {
+	test('should not call onFilter if the column is not filterable', () => {
+		const onFilterMock = jest.fn();
+		const mock = dataMock({ filterable: false });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock} />);
+		const filterInput = container.querySelector('input[data-filter-id="test"]') as HTMLInputElement;
+		expect(filterInput).toBeNull();
+	});
+
+	test('it should filter if filterable is set true', () => {
+		const onFilterMock = jest.fn();
+		const mock = dataMock({ filterable: true });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onFilter={onFilterMock} />);
+		const filterInput = container.querySelector('input[data-filter-id="test"]') as HTMLInputElement;
+		fireEvent.change(filterInput, { target: { value: 'p' } });
+		expect(container.firstChild).toMatchSnapshot();
+		expect(onFilterMock).toBeCalledTimes(1);
+		const param = onFilterMock.mock.calls[0][0];
+		expect(param['Test'].value).toBe('p');
+		expect(container.querySelector('div#row1') as HTMLInputElement).toBeDefined();
+		expect(container.querySelector('div#row2') as HTMLInputElement).toBeNull();
+		fireEvent.change(filterInput, { target: { value: '' } });
+		expect(container.querySelector('div#row1') as HTMLInputElement).toBeDefined();
+		expect(container.querySelector('div#row2') as HTMLInputElement).toBeDefined();
+	});
+
+	test('it should not filter if filterServer is set true', () => {
+		const onFilterMock = jest.fn();
+		const mock = dataMock({ filterable: true });
+		const { container } = render(
+			<DataTable data={mock.data} filterServer={true} columns={mock.columns} onFilter={onFilterMock} />,
+		);
+		const filterInput = container.querySelector('input[data-filter-id="test"]') as HTMLInputElement;
+		fireEvent.change(filterInput, { target: { value: 'p' } });
+		expect(container.firstChild).toMatchSnapshot();
+		expect(onFilterMock).toBeCalledTimes(1);
+		const param = onFilterMock.mock.calls[0][0];
+		expect(param['Test'].value).toBe('p');
+		expect(container.querySelector('div#row1') as HTMLInputElement).toBeDefined();
+		expect(container.querySelector('div#row2') as HTMLInputElement).toBeDefined();
+	});
+
+	test('should not be rendered if column.name is missing', () => {
+		const mock = dataMock({ filterable: true, name: null });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+		const filterInput = container.querySelector('input[name="Test"]');
+		expect(filterInput).toBeNull();
 		expect(container.firstChild).toMatchSnapshot();
 	});
 });

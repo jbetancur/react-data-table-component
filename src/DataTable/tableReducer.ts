@@ -134,6 +134,22 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			};
 		}
 
+		case 'FILTER_CHANGE': {
+			const { filterText, selectedColumn } = action;
+			const keyName = selectedColumn.name?.toString() || selectedColumn.id?.toString() || 'noname';
+			let filters = { ...state.filters };
+			if (!filterText && keyName in filters) {
+				delete filters[keyName];
+			} else {
+				filters = { ...filters, [keyName]: { column: selectedColumn, value: filterText } };
+			}
+			return {
+				...state,
+				filters,
+				filterActive: Object.keys(filters).length > 0,
+			};
+		}
+
 		case 'CHANGE_PAGE': {
 			const { page, paginationServer, visibleOnly, persistSelectedOnPageChange } = action;
 			const mergeSelections = paginationServer && persistSelectedOnPageChange;

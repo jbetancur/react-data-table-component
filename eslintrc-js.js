@@ -28,6 +28,13 @@ module.exports = {
 		'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
 		'react/jsx-props-no-spreading': 0,
 		'react/display-name': 0,
+		'@typescript-eslint/no-unused-vars': [
+			'error',
+			{
+				ignoreRestSiblings: true,
+				argsIgnorePattern: '_',
+			},
+		],
 	},
 	env: {
 		'jest/globals': true,

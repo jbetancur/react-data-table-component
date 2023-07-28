@@ -40,18 +40,22 @@ const columns: TableColumn<Row>[] = [
 		selector: row => row.title,
 		sortable: true,
 		reorder: true,
+		filterable: true,
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
 		reorder: true,
+		filterable: true,
 	},
 	{
 		name: 'Year',
 		selector: row => row.year,
 		sortable: true,
 		reorder: true,
+		filterable: true,
+		filterValues: [{value: '1998', label: '1998'},{value: '1999', label: '1999'}, {value: '2000', label: 'Millenium'}],
 	},
 ];
 
