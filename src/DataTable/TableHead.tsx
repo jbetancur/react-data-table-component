@@ -8,11 +8,11 @@ const fixedCSS = css`
 `;
 
 const Head = styled.div<{
-	fixedHeader?: boolean;
+	$fixedHeader?: boolean;
 }>`
 	display: flex;
 	width: 100%;
-	${({ fixedHeader }) => fixedHeader && fixedCSS};
+	${({ $fixedHeader }) => $fixedHeader && fixedCSS};
 	${({ theme }) => theme.head.style};
 `;
 

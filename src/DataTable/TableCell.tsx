@@ -5,17 +5,17 @@ import { getProperty, getConditionalStyle } from './util';
 import { TableColumn } from './types';
 
 interface CellStyleProps {
-	renderAsCell: boolean | undefined;
-	wrapCell: boolean | undefined;
-	allowOverflow: boolean | undefined;
-	cellStyle: CSSObject | undefined;
-	isDragging: boolean;
+	$renderAsCell: boolean | undefined;
+	$wrapCell: boolean | undefined;
+	$allowOverflow: boolean | undefined;
+	$cellStyle: CSSObject | undefined;
+	$isDragging: boolean;
 }
 
 const overflowCSS = css<CellStyleProps>`
 	div:first-child {
-		white-space: ${({ wrapCell }) => (wrapCell ? 'normal' : 'nowrap')};
-		overflow: ${({ allowOverflow }) => (allowOverflow ? 'visible' : 'hidden')};
+		white-space: ${({ $wrapCell }) => ($wrapCell ? 'normal' : 'nowrap')};
+		overflow: ${({ $allowOverflow }) => ($allowOverflow ? 'visible' : 'hidden')};
 		text-overflow: ellipsis;
 	}
 `;
@@ -23,9 +23,9 @@ const overflowCSS = css<CellStyleProps>`
 const CellStyle = styled(CellExtended).attrs(props => ({
 	style: props.style,
 }))<CellStyleProps>`
-	${({ renderAsCell }) => !renderAsCell && overflowCSS};
-	${({ theme, isDragging }) => isDragging && theme.cells.draggingStyle};
-	${({ cellStyle }) => cellStyle};
+	${({ $renderAsCell }) => !$renderAsCell && overflowCSS};
+	${({ theme, $isDragging }) => $isDragging && theme.cells.draggingStyle};
+	${({ $cellStyle }) => $cellStyle};
 `;
 
 interface CellProps<T> {
@@ -64,9 +64,9 @@ function Cell<T>({
 			role="cell"
 			className={classNames}
 			data-tag={dataTag}
-			cellStyle={column.style}
-			renderAsCell={!!column.cell}
-			allowOverflow={column.allowOverflow}
+			$cellStyle={column.style}
+			$renderAsCell={!!column.cell}
+			$allowOverflow={column.allowOverflow}
 			button={column.button}
 			center={column.center}
 			compact={column.compact}
@@ -76,9 +76,9 @@ function Cell<T>({
 			minWidth={column.minWidth}
 			right={column.right}
 			width={column.width}
-			wrapCell={column.wrap}
+			$wrapCell={column.wrap}
 			style={style}
-			isDragging={isDragging}
+			$isDragging={isDragging}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
 			onDragEnd={onDragEnd}

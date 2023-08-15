@@ -9,10 +9,10 @@ import { STOP_PROP_TAG } from './constants';
 import { TableRow, SingleRowAction, TableProps } from './types';
 
 const highlightCSS = css<{
-	highlightOnHover?: boolean;
+	$highlightOnHover?: boolean;
 }>`
 	&:hover {
-		${({ highlightOnHover, theme }) => highlightOnHover && theme.rows.highlightOnHoverStyle};
+		${({ $highlightOnHover, theme }) => $highlightOnHover && theme.rows.highlightOnHoverStyle};
 	}
 `;
 
@@ -25,11 +25,11 @@ const pointerCSS = css`
 const TableRowStyle = styled.div.attrs(props => ({
 	style: props.style,
 }))<{
-	dense?: boolean;
-	highlightOnHover?: boolean;
-	pointerOnHover?: boolean;
-	selected?: boolean;
-	striped?: boolean;
+	$dense?: boolean;
+	$highlightOnHover?: boolean;
+	$pointerOnHover?: boolean;
+	$selected?: boolean;
+	$striped?: boolean;
 }>`
 	display: flex;
 	align-items: stretch;
@@ -37,11 +37,11 @@ const TableRowStyle = styled.div.attrs(props => ({
 	width: 100%;
 	box-sizing: border-box;
 	${({ theme }) => theme.rows.style};
-	${({ dense, theme }) => dense && theme.rows.denseStyle};
-	${({ striped, theme }) => striped && theme.rows.stripedStyle};
-	${({ highlightOnHover }) => highlightOnHover && highlightCSS};
-	${({ pointerOnHover }) => pointerOnHover && pointerCSS};
-	${({ selected, theme }) => selected && theme.rows.selectedHighlightStyle};
+	${({ $dense, theme }) => $dense && theme.rows.denseStyle};
+	${({ $striped, theme }) => $striped && theme.rows.stripedStyle};
+	${({ $highlightOnHover }) => $highlightOnHover && highlightCSS};
+	${({ $pointerOnHover }) => $pointerOnHover && pointerCSS};
+	${({ $selected, theme }) => $selected && theme.rows.selectedHighlightStyle};
 `;
 
 type DProps<T> = Pick<
@@ -198,16 +198,16 @@ function Row<T>({
 			<TableRowStyle
 				id={`row-${id}`}
 				role="row"
-				striped={isStriped}
-				highlightOnHover={highlightOnHover}
-				pointerOnHover={!defaultExpanderDisabled && showPointer}
-				dense={dense}
+				$striped={isStriped}
+				$highlightOnHover={highlightOnHover}
+				$pointerOnHover={!defaultExpanderDisabled && showPointer}
+				$dense={dense}
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
 				onMouseEnter={handleRowMouseEnter}
 				onMouseLeave={handleRowMouseLeave}
 				className={classNames}
-				selected={highlightSelected}
+				$selected={highlightSelected}
 				style={style}
 			>
 				{selectableRows && (

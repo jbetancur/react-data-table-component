@@ -6,7 +6,7 @@ import { equalizeId } from './util';
 import { TableColumn, SortAction, SortOrder } from './types';
 
 interface ColumnStyleProps extends CellProps {
-	isDragging?: boolean;
+	$isDragging?: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -16,7 +16,7 @@ interface ColumnStyleProps extends CellProps {
 
 const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 	${({ button }) => button && 'text-align: center'};
-	${({ theme, isDragging }) => isDragging && theme.headCells.draggingStyle};
+	${({ theme, $isDragging }) => $isDragging && theme.headCells.draggingStyle};
 `;
 
 interface ColumnSortableProps {
@@ -186,7 +186,7 @@ function TableCol<T>({
 		<ColumnStyled
 			data-column-id={column.id}
 			className="rdt_TableCol"
-			headCell
+			$headCell
 			allowOverflow={column.allowOverflow}
 			button={column.button}
 			compact={column.compact}
@@ -198,7 +198,7 @@ function TableCol<T>({
 			center={column.center}
 			width={column.width}
 			draggable={column.reorder}
-			isDragging={equalizeId(column.id, draggingColumnId)}
+			$isDragging={equalizeId(column.id, draggingColumnId)}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
 			onDragEnd={onDragEnd}
