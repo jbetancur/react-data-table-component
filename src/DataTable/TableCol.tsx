@@ -20,8 +20,8 @@ const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 `;
 
 interface ColumnSortableProps {
-	disabled: boolean;
-	sortActive: boolean;
+	$disabled: boolean;
+	$sortActive: boolean;
 }
 
 const sortableCSS = css<ColumnSortableProps>`
@@ -30,7 +30,7 @@ const sortableCSS = css<ColumnSortableProps>`
 		i,
 		svg {
 			transform: 'translate3d(0, 0, 0)';
-			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
+			${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
 			font-size: 18px;
 			height: 18px;
@@ -47,8 +47,8 @@ const sortableCSS = css<ColumnSortableProps>`
 		}
 	}
 
-	${({ sortActive }) =>
-		!sortActive &&
+	${({ $sortActive }) =>
+		!$sortActive &&
 		css`
 			&:hover,
 			&:focus {
@@ -71,7 +71,7 @@ const ColumnSortable = styled.div<ColumnSortableProps>`
 	outline: none;
 	user-select: none;
 	overflow: hidden;
-	${({ disabled }) => !disabled && sortableCSS};
+	${({ $disabled }) => !$disabled && sortableCSS};
 `;
 
 const ColumnText = styled.div`
@@ -177,10 +177,10 @@ function TableCol<T>({
 
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const disableSort = !column.sortable || disabled;
-	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
-	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
-	const customSortIconLeft = column.sortable && sortIcon && !column.right;
-	const customSortIconRight = column.sortable && sortIcon && column.right;
+	const nativeSortIconLeft = column.sortable && !sortIcon && !column.$right;
+	const nativeSortIconRight = column.sortable && !sortIcon && column.$right;
+	const customSortIconLeft = column.sortable && sortIcon && !column.$right;
+	const customSortIconRight = column.sortable && sortIcon && column.$right;
 
 	return (
 		<ColumnStyled
@@ -194,7 +194,7 @@ function TableCol<T>({
 			hide={column.hide}
 			maxWidth={column.maxWidth}
 			minWidth={column.minWidth}
-			right={column.right}
+			$right={column.$right}
 			center={column.center}
 			width={column.width}
 			draggable={column.reorder}
@@ -214,8 +214,8 @@ function TableCol<T>({
 					className="rdt_TableCol_Sortable"
 					onClick={!disableSort ? handleSortChange : undefined}
 					onKeyPress={!disableSort ? handleKeyPress : undefined}
-					sortActive={!disableSort && sortActive}
-					disabled={disableSort}
+					$sortActive={!disableSort && sortActive}
+					$disabled={disableSort}
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}

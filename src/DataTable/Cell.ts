@@ -17,7 +17,7 @@ export const CellBase = styled.div<{
 
 export type CellProps = Pick<
 	TableColumnBase,
-	'button' | 'grow' | 'maxWidth' | 'minWidth' | 'width' | 'right' | 'center' | 'compact' | 'hide' | 'allowOverflow'
+	'button' | 'grow' | 'maxWidth' | 'minWidth' | 'width' | '$right' | 'center' | 'compact' | 'hide' | 'allowOverflow'
 >;
 
 // Flex calculations
@@ -33,7 +33,7 @@ export const CellExtended = styled(CellBase)<CellProps>`
 			min-width: ${width};
 			max-width: ${width};
 		`};
-	${({ right }) => right && 'justify-content: flex-end'};
+	${({ $right }) => $right && 'justify-content: flex-end'};
 	${({ button, center }) => (center || button) && 'justify-content: center'};
 	${({ compact, button }) => (compact || button) && 'padding: 0'};
 

@@ -74,7 +74,7 @@ function Cell<T>({
 			hide={column.hide}
 			maxWidth={column.maxWidth}
 			minWidth={column.minWidth}
-			right={column.right}
+			$right={column.$right}
 			width={column.width}
 			$wrapCell={column.wrap}
 			style={style}

@@ -130,7 +130,7 @@ export type TableColumnBase = {
 	minWidth?: string;
 	name?: string | number | React.ReactNode;
 	omit?: boolean;
-	right?: boolean;
+	$right?: boolean;
 	sortable?: boolean;
 	style?: CSSObject;
 	width?: string;

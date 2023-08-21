@@ -38,4 +38,9 @@
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"prettier.useTabs": true,
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#320B88",
+		"titleBar.activeBackground": "#460FBE",
+		"titleBar.activeForeground": "#FCFAFF"
+	},
 }
