@@ -17,8 +17,10 @@ export const CellBase = styled.div<{
 
 export type CellProps = Pick<
 	TableColumnBase,
-	'button' | 'grow' | 'maxWidth' | 'minWidth' | 'width' | '$right' | 'center' | 'compact' | 'hide' | 'allowOverflow'
->;
+	'button' | 'grow' | 'maxWidth' | 'minWidth' | 'width' | 'center' | 'compact' | 'hide' | 'allowOverflow'
+> & {
+	$right?: boolean;
+};
 
 // Flex calculations
 export const CellExtended = styled(CellBase)<CellProps>`

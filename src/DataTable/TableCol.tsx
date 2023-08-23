@@ -177,10 +177,10 @@ function TableCol<T>({
 
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const disableSort = !column.sortable || disabled;
-	const nativeSortIconLeft = column.sortable && !sortIcon && !column.$right;
-	const nativeSortIconRight = column.sortable && !sortIcon && column.$right;
-	const customSortIconLeft = column.sortable && sortIcon && !column.$right;
-	const customSortIconRight = column.sortable && sortIcon && column.$right;
+	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
+	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
+	const customSortIconLeft = column.sortable && sortIcon && !column.right;
+	const customSortIconRight = column.sortable && sortIcon && column.right;
 
 	return (
 		<ColumnStyled
@@ -194,7 +194,7 @@ function TableCol<T>({
 			hide={column.hide}
 			maxWidth={column.maxWidth}
 			minWidth={column.minWidth}
-			$right={column.$right}
+			$right={column.right}
 			center={column.center}
 			width={column.width}
 			draggable={column.reorder}
