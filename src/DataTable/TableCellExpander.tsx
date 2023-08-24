@@ -29,7 +29,7 @@ function CellExpander<T>({
 	disabled = false,
 }: CellExpanderProps<T>): JSX.Element {
 	return (
-		<CellExpanderStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} noPadding>
+		<CellExpanderStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} $noPadding>
 			<ExpanderButton
 				id={id}
 				row={row}

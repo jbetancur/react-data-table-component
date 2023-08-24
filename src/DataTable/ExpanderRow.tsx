@@ -3,12 +3,12 @@ import styled, { CSSObject } from 'styled-components';
 import { ComponentProps, ExpandableRowsComponent } from './types';
 
 const ExpanderRowStyle = styled.div<{
-	extendedRowStyle: CSSObject;
+	$extendedRowStyle: CSSObject;
 }>`
 	width: 100%;
 	box-sizing: border-box;
 	${({ theme }) => theme.expanderRow.style};
-	${({ extendedRowStyle }) => extendedRowStyle};
+	${({ $extendedRowStyle }) => $extendedRowStyle};
 `;
 
 type ExpanderRowProps<T> = {
@@ -31,7 +31,7 @@ function ExpanderRow<T>({
 	const classNames = ['rdt_ExpanderRow', ...classNamesSplit].join(' ');
 
 	return (
-		<ExpanderRowStyle className={classNames} extendedRowStyle={extendedRowStyle}>
+		<ExpanderRowStyle className={classNames} $extendedRowStyle={extendedRowStyle}>
 			<ExpanderComponent data={data} {...expanderComponentProps} />
 		</ExpanderRowStyle>
 	);

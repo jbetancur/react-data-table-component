@@ -359,9 +359,9 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			)}
 
 			<ResponsiveWrapper
-				responsive={responsive}
-				fixedHeader={fixedHeader}
-				fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+				$responsive={responsive}
+				$fixedHeader={fixedHeader}
+				$fixedHeaderScrollHeight={fixedHeaderScrollHeight}
 				className={className}
 				{...wrapperProps}
 			>
@@ -370,8 +370,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 					<Table disabled={disabled} className="rdt_Table" role="table">
 						{showTableHead() && (
-							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
-								<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
+							<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
+								<HeadRow className="rdt_TableHeadRow" role="row" $dense={dense}>
 									{selectableRows &&
 										(showSelectAll ? (
 											<CellBase style={{ flex: '0 0 48px' }} />

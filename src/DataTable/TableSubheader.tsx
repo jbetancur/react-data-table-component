@@ -11,7 +11,7 @@ type AlignItems = 'center' | 'left' | 'right';
 
 const SubheaderWrapper = styled.header<{
 	align: AlignItems;
-	wrapContent: boolean;
+	$wrapContent: boolean;
 }>`
 	position: relative;
 	display: flex;
@@ -21,7 +21,7 @@ const SubheaderWrapper = styled.header<{
 	padding: 4px 16px 4px 24px;
 	width: 100%;
 	justify-content: ${({ align }) => alignMap[align]};
-	flex-wrap: ${({ wrapContent }) => (wrapContent ? 'wrap' : 'nowrap')};
+	flex-wrap: ${({ $wrapContent }) => ($wrapContent ? 'wrap' : 'nowrap')};
 	${({ theme }) => theme.subHeader.style}
 `;
 
@@ -32,7 +32,7 @@ type SubheaderProps = {
 };
 
 const Subheader = ({ align = 'right', wrapContent = true, ...rest }: SubheaderProps): JSX.Element => (
-	<SubheaderWrapper align={align} wrapContent={wrapContent} {...rest} />
+	<SubheaderWrapper align={align} $wrapContent={wrapContent} {...rest} />
 );
 
 export default Subheader;

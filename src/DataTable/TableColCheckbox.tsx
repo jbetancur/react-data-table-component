@@ -55,7 +55,7 @@ function ColumnCheckbox<T>({
 	};
 
 	return (
-		<ColumnStyle className="rdt_TableCol" headCell={headCell} noPadding>
+		<ColumnStyle className="rdt_TableCol" $headCell={headCell} $noPadding>
 			<Checkbox
 				name="select-all-rows"
 				component={selectableRowsComponent}
