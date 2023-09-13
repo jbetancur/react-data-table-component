@@ -108,7 +108,7 @@ import*as e from"react";import t from"react";import n,{css as o,ThemeProvider as
 	font-weight: 400;
 	min-width: 48px;
 	${({theme:e})=>e.expanderCell.style};
-`;function N({row:t,expanded:n=!1,expandableIcon:o,id:a,onToggled:l,disabled:r=!1}){return e.createElement(_,{onClick:e=>e.stopPropagation(),noPadding:!0},e.createElement(M,{id:a,row:t,expanded:n,expandableIcon:o,disabled:r,onToggled:l}))}const z=n.div`
+`;function N({row:t,expanded:n=!1,expandableIcon:o,id:a,onToggled:l,disabled:r=!1}){return e.createElement(_,{onClick:e=>e.stopPropagation(),noPadding:!0,role:"cell"},e.createElement(M,{id:a,row:t,expanded:n,expandableIcon:o,disabled:r,onToggled:l}))}const z=n.div`
 	width: 100%;
 	box-sizing: border-box;
 	${({theme:e})=>e.expanderRow.style};

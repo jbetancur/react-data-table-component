@@ -472,7 +472,7 @@ const CellExpanderStyle = styled__default["default"](CellBase) `
 	${({ theme }) => theme.expanderCell.style};
 `;
 function CellExpander({ row, expanded = false, expandableIcon, id, onToggled, disabled = false, }) {
-    return (React__namespace.createElement(CellExpanderStyle, { onClick: (e) => e.stopPropagation(), noPadding: true },
+    return (React__namespace.createElement(CellExpanderStyle, { onClick: (e) => e.stopPropagation(), noPadding: true, role: "cell" },
         React__namespace.createElement(ExpanderButton, { id: id, row: row, expanded: expanded, expandableIcon: expandableIcon, disabled: disabled, onToggled: onToggled })));
 }
 
