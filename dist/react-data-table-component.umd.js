@@ -108,7 +108,7 @@
 	font-weight: 400;
 	min-width: 48px;
 	${({theme:e})=>e.expanderCell.style};
-`;function B({row:e,expanded:t=!1,expandableIcon:n,id:o,onToggled:a,disabled:l=!1}){return r.createElement(W,{onClick:e=>e.stopPropagation(),noPadding:!0},r.createElement(N,{id:o,row:e,expanded:t,expandableIcon:n,disabled:l,onToggled:a}))}const G=s.default.div`
+`;function B({row:e,expanded:t=!1,expandableIcon:n,id:o,onToggled:a,disabled:l=!1}){return r.createElement(W,{onClick:e=>e.stopPropagation(),noPadding:!0,role:"cell"},r.createElement(N,{id:o,row:e,expanded:t,expandableIcon:n,disabled:l,onToggled:a}))}const G=s.default.div`
 	width: 100%;
 	box-sizing: border-box;
 	${({theme:e})=>e.expanderRow.style};
