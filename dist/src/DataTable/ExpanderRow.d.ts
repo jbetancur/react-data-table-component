@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { CSSObject } from 'styled-components';
 import { ComponentProps, ExpandableRowsComponent } from './types';
 type ExpanderRowProps<T> = {

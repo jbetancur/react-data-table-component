@@ -103,7 +103,7 @@ import*as e from"react";import t from"react";import n,{css as o,ThemeProvider as
 	border: none;
 	background-color: transparent;
 	${({theme:e})=>e.expanderButton.style};
-`;function M({disabled:t=!1,expanded:n=!1,expandableIcon:o,id:a,row:l,onToggled:r}){const i=n?o.expanded:o.collapsed;return e.createElement(L,{"aria-disabled":t,onClick:()=>r&&r(l),"data-testid":`expander-button-${a}`,disabled:t,"aria-label":n?"Collapse Row":"Expand Row",role:"button",type:"button"},i)}const _=n(P)`
+`;function M({disabled:t=!1,expanded:n=!1,expandableIcon:o,id:a,row:l,onToggled:r}){const i=n?o.expanded:o.collapsed;return e.createElement(L,{"aria-disabled":t,onClick:()=>r&&r(l),"data-testid":`expander-button-${a}`,disabled:t,"aria-label":n?"Collapse Row":"Expand Row",role:"button",type:"button"},i,"Test")}const _=n(P)`
 	white-space: nowrap;
 	font-weight: 400;
 	min-width: 48px;

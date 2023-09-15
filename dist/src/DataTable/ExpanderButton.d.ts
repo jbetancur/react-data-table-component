@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { ExpandableIcon } from './types';
 type ExpanderButtonProps<T> = {
     disabled?: boolean;
