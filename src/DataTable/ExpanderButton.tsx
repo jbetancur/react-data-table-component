@@ -43,7 +43,6 @@ function ExpanderButton<T>({
 			type="button"
 		>
 			{icon}
-			Test
 		</ButtonStyle>
 	);
 }

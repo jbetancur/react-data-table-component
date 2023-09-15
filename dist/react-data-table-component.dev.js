@@ -462,9 +462,7 @@ const ButtonStyle = styled__default["default"].button `
 function ExpanderButton({ disabled = false, expanded = false, expandableIcon, id, row, onToggled, }) {
     const icon = expanded ? expandableIcon.expanded : expandableIcon.collapsed;
     const handleToggle = () => onToggled && onToggled(row);
-    return (React__namespace.createElement(ButtonStyle, { "aria-disabled": disabled, onClick: handleToggle, "data-testid": `expander-button-${id}`, disabled: disabled, "aria-label": expanded ? 'Collapse Row' : 'Expand Row', role: "button", type: "button" },
-        icon,
-        "Test"));
+    return (React__namespace.createElement(ButtonStyle, { "aria-disabled": disabled, onClick: handleToggle, "data-testid": `expander-button-${id}`, disabled: disabled, "aria-label": expanded ? 'Collapse Row' : 'Expand Row', role: "button", type: "button" }, icon));
 }
 
 const CellExpanderStyle = styled__default["default"](CellBase) `
