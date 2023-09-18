@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
+import { HTMLAttributes } from 'react';
 import { media } from './media';
 import { TableColumnBase } from './types';
 
-export const CellBase = styled.div<{
+interface CellBaseType extends HTMLAttributes<HTMLDivElement> {
 	headCell?: boolean;
 	noPadding?: boolean;
-}>`
+}
+
+export const CellBase = styled.div<CellBaseType>`
 	position: relative;
 	display: flex;
 	align-items: center;
