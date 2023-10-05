@@ -183,20 +183,23 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	}, [`sortServer`, selectedColumn, sortDirection, data, sortFunction]);
 
 	const tableRows = React.useMemo(() => {
-		sortedData.map((a: any) => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const updatedSortedData = sortedData.map((a: any) => {
+			const datum = { ...a };
 			if (expandableCloseAllOnExpand) {
-				if (CurrentExpandedRow && CurrentExpandedRow['id'] == a['id']) {
-					a['expandFlag'] = true;
+				if (CurrentExpandedRow && CurrentExpandedRow['id'] == datum['id']) {
+					datum.expandFlag = true;
 				} else {
-					a['expandFlag'] = false;
+					datum.expandFlag = false;
 				}
 			} else {
-				if (a.defaultExpanded || a['expandFlag']) {
-					a['expandFlag'] = true;
+				if (datum.defaultExpanded || datum.expandFlag) {
+					datum.expandFlag = true;
 				} else {
-					a['expandFlag'] = false;
+					datum.expandFlag = false;
 				}
 			}
+			return datum;
 		});
 
 		if (pagination && !paginationServer) {
@@ -204,10 +207,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 			const lastIndex = currentPage * rowsPerPage;
 			const firstIndex = lastIndex - rowsPerPage;
 
-			return sortedData.slice(firstIndex, lastIndex);
+			return updatedSortedData.slice(firstIndex, lastIndex);
 		}
 
-		return sortedData;
+		return updatedSortedData;
 	}, [currentPage, pagination, paginationServer, rowsPerPage, sortedData, CurrentExpandedRow]);
 
 	const handleSort = React.useCallback((action: SortAction<T>) => {
