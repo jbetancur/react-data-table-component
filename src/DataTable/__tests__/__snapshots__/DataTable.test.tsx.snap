@@ -14454,6 +14454,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -14512,6 +14513,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -14886,6 +14888,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -14944,6 +14947,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -15338,6 +15342,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="true"
@@ -15386,6 +15391,7 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -16399,6 +16405,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -16457,6 +16464,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -16820,6 +16828,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -16867,6 +16876,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -17237,6 +17247,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -17295,6 +17306,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -26502,6 +26514,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -26560,6 +26573,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -26930,6 +26944,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
@@ -26988,6 +27003,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
         >
           <div
             class="c13 c14"
+            role="cell"
           >
             <button
               aria-disabled="false"
