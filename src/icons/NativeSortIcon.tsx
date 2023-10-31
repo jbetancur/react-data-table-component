@@ -3,24 +3,24 @@ import styled from 'styled-components';
 import { SortOrder } from '../DataTable/types';
 
 const Icon = styled.span<{
-	$sortActive: boolean;
+	$sortactive: boolean;
 	$sortDirection: SortOrder;
 }>`
 	padding: 2px;
 	color: inherit;
 	flex-grow: 0;
 	flex-shrink: 0;
-	${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
+	${({ $sortactive }) => ($sortactive ? 'opacity: 1' : 'opacity: 0')};
 	${({ $sortDirection }) => $sortDirection === 'desc' && 'transform: rotate(180deg)'};
 `;
 
 interface NativeSortIconProps {
-	sortActive: boolean;
+	sortactive: boolean;
 	sortDirection: SortOrder;
 }
 
-const NativeSortIcon: React.FC<NativeSortIconProps> = ({ sortActive, sortDirection }) => (
-	<Icon $sortActive={sortActive} $sortDirection={sortDirection}>
+const NativeSortIcon: React.FC<NativeSortIconProps> = ({ sortactive, sortDirection }) => (
+	<Icon $sortactive={sortactive} $sortDirection={sortDirection}>
 		&#9650;
 	</Icon>
 );
