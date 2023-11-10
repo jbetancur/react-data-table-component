@@ -63,7 +63,7 @@
     "@types/styled-components": "^5.1.18",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
-    "axios": "^0.24.0",
+    "axios": "^1.6.0",
     "codecov": "^3.8.3",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
