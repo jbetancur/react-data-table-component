@@ -65,6 +65,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		paginationResetDefaultPage = defaultProps.paginationResetDefaultPage,
 		paginationPerPage = defaultProps.paginationPerPage,
 		paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
+		paginationPage = defaultProps.paginationPage,
 		paginationIconLastPage = defaultProps.paginationIconLastPage,
 		paginationIconFirstPage = defaultProps.paginationIconFirstPage,
 		paginationIconNext = defaultProps.paginationIconNext,
@@ -149,7 +150,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		selectedColumn: defaultSortColumn,
 		toggleOnSelectedRowsChange: false,
 		sortDirection: defaultSortDirection,
-		currentPage: paginationDefaultPage,
+		currentPage: paginationPage !== null ? paginationPage : paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,
 		contextMessage: defaultProps.contextMessage,
@@ -297,6 +298,12 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	useDidUpdateEffect(() => {
 		handleChangePage(paginationDefaultPage);
 	}, [paginationDefaultPage, paginationResetDefaultPage]);
+
+	useDidUpdateEffect(() => {
+		if (paginationPage !== null && paginationPage !== currentPage) {
+			handleChangePage(paginationPage);
+		}
+	}, [paginationPage]);
 
 	useDidUpdateEffect(() => {
 		if (pagination && paginationServer && paginationTotalRows > 0) {
