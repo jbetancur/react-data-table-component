@@ -21,7 +21,7 @@ const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 
 interface ColumnSortableProps {
 	disabled: boolean;
-	sortActive: boolean;
+	$sortActive: boolean;
 }
 
 const sortableCSS = css<ColumnSortableProps>`
@@ -30,7 +30,7 @@ const sortableCSS = css<ColumnSortableProps>`
 		i,
 		svg {
 			transform: 'translate3d(0, 0, 0)';
-			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
+			${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
 			font-size: 18px;
 			height: 18px;
@@ -47,8 +47,8 @@ const sortableCSS = css<ColumnSortableProps>`
 		}
 	}
 
-	${({ sortActive }) =>
-		!sortActive &&
+	${({ $sortActive }) =>
+		!$sortActive &&
 		css`
 			&:hover,
 			&:focus {
@@ -167,15 +167,15 @@ function TableCol<T>({
 		}
 	};
 
-	const renderNativeSortIcon = (sortActive: boolean) => (
-		<NativeSortIcon sortActive={sortActive} sortDirection={sortDirection} />
+	const renderNativeSortIcon = ($sortActive: boolean) => (
+		<NativeSortIcon $sortActive={$sortActive} sortDirection={sortDirection} />
 	);
 
 	const renderCustomSortIcon = () => (
 		<span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>{sortIcon}</span>
 	);
 
-	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
+	const $sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const disableSort = !column.sortable || disabled;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
 	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
@@ -214,11 +214,11 @@ function TableCol<T>({
 					className="rdt_TableCol_Sortable"
 					onClick={!disableSort ? handleSortChange : undefined}
 					onKeyPress={!disableSort ? handleKeyPress : undefined}
-					sortActive={!disableSort && sortActive}
+					$sortActive={!disableSort && $sortActive}
 					disabled={disableSort}
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
-					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+					{!disableSort && nativeSortIconRight && renderNativeSortIcon($sortActive)}
 
 					{typeof column.name === 'string' ? (
 						<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
@@ -229,7 +229,7 @@ function TableCol<T>({
 					)}
 
 					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
-					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+					{!disableSort && nativeSortIconLeft && renderNativeSortIcon($sortActive)}
 				</ColumnSortable>
 			)}
 		</ColumnStyled>

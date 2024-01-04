@@ -15,12 +15,12 @@ const Icon = styled.span<{
 `;
 
 interface NativeSortIconProps {
-	sortActive: boolean;
+	$sortActive: boolean;
 	sortDirection: SortOrder;
 }
 
-const NativeSortIcon: React.FC<NativeSortIconProps> = ({ sortActive, sortDirection }) => (
-	<Icon $sortActive={sortActive} $sortDirection={sortDirection}>
+const NativeSortIcon: React.FC<NativeSortIconProps> = ({ $sortActive, sortDirection }) => (
+	<Icon $sortActive={$sortActive} $sortDirection={sortDirection}>
 		&#9650;
 	</Icon>
 );
