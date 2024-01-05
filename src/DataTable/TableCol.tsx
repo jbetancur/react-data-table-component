@@ -5,7 +5,7 @@ import NativeSortIcon from '../icons/NativeSortIcon';
 import { equalizeId } from './util';
 import { TableColumn, SortAction, SortOrder } from './types';
 
-interface ColumnStyleProps extends CellProps {
+export interface ColumnStyleProps extends CellProps {
 	isDragging?: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -19,7 +19,7 @@ const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 	${({ theme, isDragging }) => isDragging && theme.headCells.draggingStyle};
 `;
 
-interface ColumnSortableProps {
+export interface ColumnSortableProps {
 	disabled: boolean;
 	sortActive: boolean;
 }

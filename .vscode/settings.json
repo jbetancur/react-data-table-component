@@ -22,7 +22,7 @@
 	// "editor.minimap.enabled": true,
 	"extensions.autoUpdate": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
+		"source.fixAll.eslint": "explicit"
 	},
 	"[javascript]": {
 		"editor.formatOnSave": true,

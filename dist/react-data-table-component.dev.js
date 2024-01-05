@@ -1765,30 +1765,32 @@ function DataTable(props) {
         return sort(data, selectedColumn === null || selectedColumn === void 0 ? void 0 : selectedColumn.selector, sortDirection, sortFunction);
     }, [`sortServer`, selectedColumn, sortDirection, data, sortFunction]);
     const tableRows = React__namespace.useMemo(() => {
-        sortedData.map((a) => {
+        const updatedSortedData = sortedData.map((a) => {
+            const datum = Object.assign({}, a);
             if (expandableCloseAllOnExpand) {
-                if (CurrentExpandedRow && CurrentExpandedRow['id'] == a['id']) {
-                    a['expandFlag'] = true;
+                if (CurrentExpandedRow && CurrentExpandedRow['id'] == datum['id']) {
+                    datum.expandFlag = true;
                 }
                 else {
-                    a['expandFlag'] = false;
+                    datum.expandFlag = false;
                 }
             }
             else {
-                if (a.defaultExpanded || a['expandFlag']) {
-                    a['expandFlag'] = true;
+                if (datum.defaultExpanded || datum.expandFlag) {
+                    datum.expandFlag = true;
                 }
                 else {
-                    a['expandFlag'] = false;
+                    datum.expandFlag = false;
                 }
             }
+            return datum;
         });
         if (pagination && !paginationServer) {
             const lastIndex = currentPage * rowsPerPage;
             const firstIndex = lastIndex - rowsPerPage;
-            return sortedData.slice(firstIndex, lastIndex);
+            return updatedSortedData.slice(firstIndex, lastIndex);
         }
-        return sortedData;
+        return updatedSortedData;
     }, [currentPage, pagination, paginationServer, rowsPerPage, sortedData, CurrentExpandedRow]);
     const handleSort = React__namespace.useCallback((action) => {
         dispatch(action);

@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react';
 import { media } from './media';
 import { TableColumnBase } from './types';
 
-interface CellBaseType extends HTMLAttributes<HTMLDivElement> {
+export interface CellBaseType extends HTMLAttributes<HTMLDivElement> {
 	headCell?: boolean;
 	noPadding?: boolean;
 }

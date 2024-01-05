@@ -1,5 +1,18 @@
 import * as React from 'react';
+import { CellProps } from './Cell';
 import { TableColumn, SortAction, SortOrder } from './types';
+export interface ColumnStyleProps extends CellProps {
+    isDragging?: boolean;
+    onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+    onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+    onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+    onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+    onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+}
+export interface ColumnSortableProps {
+    disabled: boolean;
+    sortActive: boolean;
+}
 export type TableColProps<T> = {
     column: TableColumn<T>;
     disabled: boolean;
