@@ -21,7 +21,7 @@ const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 
 interface ColumnSortableProps {
 	disabled: boolean;
-	sortActive: boolean;
+	$sortActive: boolean;
 }
 
 const sortableCSS = css<ColumnSortableProps>`
@@ -30,7 +30,7 @@ const sortableCSS = css<ColumnSortableProps>`
 		i,
 		svg {
 			transform: 'translate3d(0, 0, 0)';
-			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
+			${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
 			font-size: 18px;
 			height: 18px;
@@ -47,8 +47,8 @@ const sortableCSS = css<ColumnSortableProps>`
 		}
 	}
 
-	${({ sortActive }) =>
-		!sortActive &&
+	${({ $sortActive }) =>
+		!$sortActive &&
 		css`
 			&:hover,
 			&:focus {
@@ -214,7 +214,7 @@ function TableCol<T>({
 					className="rdt_TableCol_Sortable"
 					onClick={!disableSort ? handleSortChange : undefined}
 					onKeyPress={!disableSort ? handleKeyPress : undefined}
-					sortActive={!disableSort && sortActive}
+					$sortActive={!disableSort && sortActive}
 					disabled={disableSort}
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}

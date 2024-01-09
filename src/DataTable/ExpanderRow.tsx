@@ -31,7 +31,7 @@ function ExpanderRow<T>({
 	const classNames = ['rdt_ExpanderRow', ...classNamesSplit].join(' ');
 
 	return (
-		<ExpanderRowStyle className={classNames} $extendedRowStyle={extendedRowStyle}>
+		<ExpanderRowStyle className={classNames} $extendedRowStyle={extendedRowStyle as CSSObject}>
 			<ExpanderComponent data={data} {...expanderComponentProps} />
 		</ExpanderRowStyle>
 	);

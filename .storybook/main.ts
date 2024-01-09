@@ -2,6 +2,7 @@ const prettierConfig = require('../.prettierrc.js');
 
 module.exports = {
 	stories: ['../stories/**/*.stories.@(ts|tsx|js|jsx|mdx)'],
+
 	typescript: {
 		check: false,
 		checkOptions: {},
@@ -11,20 +12,13 @@ module.exports = {
 			propFilter: prop => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
 		},
 	},
+
 	addons: [
 		{
 			name: '@storybook/addon-storysource',
 			options: {
 				loaderOptions: {
 					prettierConfig: prettierConfig,
-					injectStoryParameters: false,
-				},
-			},
-		},
-		{
-			name: '@storybook/addon-docs',
-			options: {
-				sourceLoaderOptions: {
 					injectStoryParameters: false,
 				},
 			},
@@ -42,5 +36,15 @@ module.exports = {
 				},
 			},
 		},
+		'@storybook/addon-mdx-gfm',
 	],
+
+	docs: {
+		autodocs: true,
+	},
+
+	framework: {
+		name: '@storybook/react-webpack5',
+		options: {},
+	},
 };

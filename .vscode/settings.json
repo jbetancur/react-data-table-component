@@ -22,14 +22,14 @@
 	// "editor.minimap.enabled": true,
 	"extensions.autoUpdate": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
+		"source.fixAll.eslint": "explicit"
 	},
 	"[javascript]": {
 		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -15,8 +15,7 @@ export function isEmpty(field: string | number | undefined = ''): boolean {
 
 export function sort<T>(
 	rows: T[],
-	// TODO: remove string in V8
-	selector: Selector<T> | string | null | undefined,
+	selector: Selector<T> | null | undefined,
 	direction: SortOrder,
 	sortFn?: SortFunction<T> | null,
 ): T[] {
@@ -26,20 +25,12 @@ export function sort<T>(
 
 	if (sortFn && typeof sortFn === 'function') {
 		// we must create a new rows reference
-		return sortFn(rows.slice(0), selector as Selector<T>, direction);
+		return sortFn(rows.slice(0), selector, direction);
 	}
 
 	return rows.slice(0).sort((a: T, b: T) => {
-		let aValue;
-		let bValue;
-
-		if (typeof selector === 'string') {
-			aValue = parseSelector(a, selector);
-			bValue = parseSelector(b, selector);
-		} else {
-			aValue = selector(a);
-			bValue = selector(b);
-		}
+		const aValue = selector(a);
+		const bValue = selector(b);
 
 		if (direction === 'asc') {
 			if (aValue < bValue) {
@@ -65,27 +56,10 @@ export function sort<T>(
 	});
 }
 
-// TODO: string based selectors will be removed in v8
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseSelector<T extends Record<string, any>>(row: T, selector: string): T {
-	return selector.split('.').reduce((acc, part) => {
-		// O(n2) when querying for an array (e.g. items[0].name)
-		// Likely, the object depth will be reasonable enough that performance is not a concern
-		const arr = part.match(/[^\]\\[.]+/g);
-		if (arr && arr.length > 1) {
-			for (let i = 0; i < arr.length; i++) {
-				return acc[arr[i]][arr[i + 1]];
-			}
-		}
-
-		return acc[part];
-	}, row);
-}
-
 export function getProperty<T>(
 	row: T,
 	// TODO: remove string type in V8
-	selector: Selector<T> | string | undefined | null | unknown, // unknown allows us to throw an error for JS code
+	selector: Selector<T> | undefined | null,
 	format: Format<T> | undefined | null,
 	rowIndex: number,
 ): React.ReactNode {
@@ -93,22 +67,12 @@ export function getProperty<T>(
 		return null;
 	}
 
-	// TODO: remove  string check in V8
-	if (typeof selector !== 'string' && typeof selector !== 'function') {
-		throw new Error('selector must be a . delimited string eg (my.property) or function (e.g. row => row.field');
-	}
-
 	// format will override how the selector is displayed but the original dataset is used for sorting
 	if (format && typeof format === 'function') {
 		return format(row, rowIndex);
 	}
 
-	if (selector && typeof selector === 'function') {
-		return selector(row, rowIndex);
-	}
-
-	// TODO: Remove in V8
-	return parseSelector(row, selector);
+	return selector(row, rowIndex);
 }
 
 export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {
@@ -194,7 +158,7 @@ export function getConditionalStyle<T>(
 	row: T,
 	conditionalRowStyles: ConditionalStyles<T>[] = [],
 	baseClassNames: string[] = [],
-): { style: CSSObject; classNames: string } {
+): { conditionalStyle: CSSObject; classNames: string } {
 	let rowStyle = {};
 	let classNames: string[] = [...baseClassNames];
 
@@ -219,7 +183,7 @@ export function getConditionalStyle<T>(
 		});
 	}
 
-	return { style: rowStyle, classNames: classNames.join(' ') };
+	return { conditionalStyle: rowStyle, classNames: classNames.join(' ') };
 }
 
 export function isRowSelected<T>(row: T, selectedRows: T[] = [], keyField = 'id'): boolean {

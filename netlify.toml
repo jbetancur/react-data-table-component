@@ -2,8 +2,8 @@
   publish = "storybook-static"
   command = "yarn lint && yarn test && yarn build && yarn build-storybook"
 [build.environment]
-  NODE_VERSION = "14"
-  YARN_VERSION = "1.22.10"
+  NODE_VERSION = "20.11.0"
+  YARN_VERSION = "4.0.2"
   DOTENV_DISPLAY_WARNING = "none"
   STORYBOOK_EXAMPLE_APP ="true"
 [[headers]]

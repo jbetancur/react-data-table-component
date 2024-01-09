@@ -203,13 +203,25 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		dispatch(action);
 	}, []);
 
-	const handleRowClicked = React.useCallback((row, e) => onRowClicked(row, e), [onRowClicked]);
+	const handleRowClicked = React.useCallback(
+		(row: T, e: React.MouseEvent<Element, MouseEvent>) => onRowClicked(row, e),
+		[onRowClicked],
+	);
 
-	const handleRowDoubleClicked = React.useCallback((row, e) => onRowDoubleClicked(row, e), [onRowDoubleClicked]);
+	const handleRowDoubleClicked = React.useCallback(
+		(row: T, e: React.MouseEvent<Element, MouseEvent>) => onRowDoubleClicked(row, e),
+		[onRowDoubleClicked],
+	);
 
-	const handleRowMouseEnter = React.useCallback((row, e) => onRowMouseEnter(row, e), [onRowMouseEnter]);
+	const handleRowMouseEnter = React.useCallback(
+		(row: T, e: React.MouseEvent<Element, MouseEvent>) => onRowMouseEnter(row, e),
+		[onRowMouseEnter],
+	);
 
-	const handleRowMouseLeave = React.useCallback((row, e) => onRowMouseLeave(row, e), [onRowMouseLeave]);
+	const handleRowMouseLeave = React.useCallback(
+		(row: T, e: React.MouseEvent<Element, MouseEvent>) => onRowMouseLeave(row, e),
+		[onRowMouseLeave],
+	);
 
 	const handleChangePage = React.useCallback(
 		(page: number) =>

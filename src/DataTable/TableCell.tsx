@@ -55,7 +55,7 @@ function Cell<T>({
 	onDragEnter,
 	onDragLeave,
 }: CellProps<T>): JSX.Element {
-	const { style, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
+	const { conditionalStyle, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
 
 	return (
 		<CellStyle
@@ -77,7 +77,7 @@ function Cell<T>({
 			right={column.right}
 			width={column.width}
 			$wrapCell={column.wrap}
-			style={style}
+			style={conditionalStyle as React.CSSProperties}
 			$isDragging={isDragging}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
