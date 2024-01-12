@@ -1,13 +1,10 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
+	"plugins": ["stylelint-prettier"],
   "extends": [
-    "stylelint-config-recommended",
-    "stylelint-config-styled-components"
+    "stylelint-config-standard"
   ],
-  "rules": {
-    "declaration-colon-newline-after": null,
-    "value-list-max-empty-lines": null,
-    "value-keyword-case": null,
-		"indentation": "tab"
-  }
+	"rules": {
+    "prettier/prettier": true
+  },
+  "customSyntax": "postcss-styled-syntax"
 }

@@ -7,6 +7,7 @@ import ExpanderRow from './ExpanderRow';
 import { prop, equalizeId, getConditionalStyle, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
 import { TableRow, SingleRowAction, TableProps } from './types';
+import { CSSObject } from 'styled-components';
 
 const highlightCSS = css<{
 	$highlightOnHover?: boolean;
@@ -30,6 +31,7 @@ const TableRowStyle = styled.div.attrs(props => ({
 	$pointerOnHover?: boolean;
 	$selected?: boolean;
 	$striped?: boolean;
+	$conditionalStyle?: CSSObject;
 }>`
 	display: flex;
 	align-items: stretch;
@@ -42,6 +44,7 @@ const TableRowStyle = styled.div.attrs(props => ({
 	${({ $highlightOnHover }) => $highlightOnHover && highlightCSS};
 	${({ $pointerOnHover }) => $pointerOnHover && pointerCSS};
 	${({ $selected, theme }) => $selected && theme.rows.selectedHighlightStyle};
+	${({ $conditionalStyle }) => $conditionalStyle};
 `;
 
 type DProps<T> = Pick<
@@ -148,9 +151,11 @@ function Row<T>({
 	const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
 
 	const handleRowClick = React.useCallback(
-		e => {
+		(e: React.MouseEvent<HTMLDivElement>) => {
 			// use event delegation allow events to propagate only when the element with data-tag STOP_PROP_TAG is present
-			if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
+			const target = e.target as HTMLDivElement;
+
+			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
 				onRowClicked(row, e);
 
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
@@ -162,8 +167,10 @@ function Row<T>({
 	);
 
 	const handleRowDoubleClick = React.useCallback(
-		e => {
-			if (e.target && e.target.getAttribute('data-tag') === STOP_PROP_TAG) {
+		(e: React.MouseEvent<HTMLDivElement>) => {
+			const target = e.target as HTMLDivElement;
+
+			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
 				onRowDoubleClicked(row, e);
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowDoubleClicked) {
 					handleExpanded();
@@ -174,23 +181,23 @@ function Row<T>({
 	);
 
 	const handleRowMouseEnter = React.useCallback(
-		e => {
+		(e: React.MouseEvent<Element, MouseEvent>) => {
 			onRowMouseEnter(row, e);
 		},
 		[onRowMouseEnter, row],
 	);
 
 	const handleRowMouseLeave = React.useCallback(
-		e => {
+		(e: React.MouseEvent<Element, MouseEvent>) => {
 			onRowMouseLeave(row, e);
 		},
 		[onRowMouseLeave, row],
 	);
 
 	const rowKeyField = prop(row as TableRow, keyField);
-	const { style, classNames } = getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']);
+	const { conditionalStyle, classNames } = getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']);
 	const highlightSelected = selectableRowsHighlight && selected;
-	const inheritStyles = expandableInheritConditionalStyles ? style : {};
+	const inheritStyles = expandableInheritConditionalStyles ? conditionalStyle : {};
 	const isStriped = striped && isOdd(rowIndex);
 
 	return (
@@ -208,7 +215,7 @@ function Row<T>({
 				onMouseLeave={handleRowMouseLeave}
 				className={classNames}
 				$selected={highlightSelected}
-				style={style}
+				$conditionalStyle={conditionalStyle}
 			>
 				{selectableRows && (
 					<TableCellCheckbox
