@@ -1,3 +1,5 @@
+const remarkGfm = require('remark-gfm');
+
 const prettierConfig = require('../.prettierrc.js');
 
 module.exports = {
@@ -15,12 +17,21 @@ module.exports = {
 
 	addons: [
 		{
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
+		{
 			name: '@storybook/addon-storysource',
 			options: {
 				loaderOptions: {
-					prettierConfig: prettierConfig,
-					injectStoryParameters: false,
-				},
+          prettierConfig: { printWidth: 80, singleQuote: true },
+        },
 			},
 		},
 		{
@@ -36,7 +47,6 @@ module.exports = {
 				},
 			},
 		},
-		'@storybook/addon-mdx-gfm',
 	],
 
 	docs: {
