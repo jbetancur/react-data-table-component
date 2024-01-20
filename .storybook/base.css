@@ -7,3 +7,8 @@ body {
 table {
     width: 100%;
 }
+
+code.css-1kwwth4 {
+    line-height: unset;
+    white-space: normal;
+}
