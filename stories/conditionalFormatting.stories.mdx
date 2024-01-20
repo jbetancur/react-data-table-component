@@ -8,7 +8,7 @@ import { Meta } from '@storybook/addon-docs';
 | ---------- | ---------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | when       | function: `row => row.<yourfield>` | yes      | `when` accepts a callback that gives you access to your data. The `when` callback must return a boolean to determine if the style will be applied. <br />e.g. `row => row.status === 'completed'` will apply the style when the `row.status` field is `completed` |
 | style      | `object` or `(row) => object`      | no       | Accepts a css-in-js [style object](https://www.styled-components.com/docs/advanced#style-objects). Alternativly, you can also specify callback that has access to the row props. e.g. `(row) => ({ backgroundColor: row.isSpecial ? 'pink' : inherit })`          |
-| classNames | `string[]`                         | no       | In some cases you may want to apply conditional classNames. Accepts an array of classes: e.g. ['class1', 'class2'].                                                                                                                                               |
+| classNames | `string[]`                         | no       | In some cases you may want to apply conditional classNames. Accepts an array of classes: e.g. `['class1', 'class2']`.                                                                                                                                             |
 
 A Conditional Style Object allows you to apply a specific `style` object based on you data:
 
@@ -46,7 +46,7 @@ RDT allows you to override styling based on your data. Currently, you can apply 
 
 | Property             | Type  | Required | Default | Description                                                               |
 | -------------------- | ----- | -------- | ------- | ------------------------------------------------------------------------- |
-| conditionalRowStyles | array | no       | []      | Allows an array of [conditional style objects](#conditional-style-object) |
+| conditionalRowStyles | array | no       | `[]`    | Allows an array of [conditional style objects](#conditional-style-object) |
 
 ## Example `style` Object
 
