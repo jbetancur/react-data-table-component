@@ -115,6 +115,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		renderRow = defaultProps.renderRow,
 		className,
 	} = props;
 
@@ -440,7 +441,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 									const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
 
-									return (
+									return renderRow(
+										row,
 										<Row
 											id={id}
 											key={id}
@@ -484,7 +486,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											onDragEnd={handleDragEnd}
 											onDragEnter={handleDragEnter}
 											onDragLeave={handleDragLeave}
-										/>
+										/>,
 									);
 								})}
 							</Body>

@@ -114,6 +114,7 @@ export type TableProps<T> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	renderRow?: (row: T, rowContent: JSX.Element) => JSX.Element;
 };
 
 export type TableColumnBase = {
