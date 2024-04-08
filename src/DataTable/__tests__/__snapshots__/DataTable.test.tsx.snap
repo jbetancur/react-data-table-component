@@ -403,7 +403,7 @@ exports[`DataTable::Header should render context menu actions when they are prov
       <div>
         some action
       </div>
-      , 
+      ,
       <div>
         some action 2
       </div>
@@ -579,7 +579,7 @@ exports[`DataTable::Header should render correctly when a custom contextMessage 
     <div
       class="c3"
     >
-      1 artículo 
+      1 artículo
     </div>
     <div
       class="c4"
@@ -677,7 +677,7 @@ exports[`DataTable::Header should render header actions when they are provided 1
     <div>
       some action
     </div>
-    , 
+    ,
     <div>
       some action 2
     </div>
@@ -1425,20 +1425,6 @@ exports[`DataTable::Pagination should change the page position when using pagina
             2
           </option>
         </select>
-        <svg
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-        </svg>
       </div>
       <span
         class="c14 c18"
@@ -11276,7 +11262,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            To add an expander pass in a component instance via 
+            To add an expander pass in a component instance via
             <strong>
               expandableRowsComponent
             </strong>
@@ -11630,7 +11616,7 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            To add an expander pass in a component instance via 
+            To add an expander pass in a component instance via
             <strong>
               expandableRowsComponent
             </strong>
@@ -12829,7 +12815,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            To add an expander pass in a component instance via 
+            To add an expander pass in a component instance via
             <strong>
               expandableRowsComponent
             </strong>
@@ -13511,7 +13497,7 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            To add an expander pass in a component instance via 
+            To add an expander pass in a component instance via
             <strong>
               expandableRowsComponent
             </strong>
@@ -20727,7 +20713,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           class="c17 rdt_ExpanderRow"
         >
           <div>
-            To add an expander pass in a component instance via 
+            To add an expander pass in a component instance via
             <strong>
               expandableRowsComponent
             </strong>
@@ -21077,7 +21063,7 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
           class="c17 rdt_ExpanderRow leia"
         >
           <div>
-            To add an expander pass in a component instance via 
+            To add an expander pass in a component instance via
             <strong>
               expandableRowsComponent
             </strong>
