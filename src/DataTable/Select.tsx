@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import DropDownIcon from '../icons/Dropdown';
 
 const SelectControl = styled.select`
 	cursor: pointer;
@@ -61,7 +60,6 @@ type SelectProps = {
 const Select = ({ defaultValue, onChange, ...rest }: SelectProps): JSX.Element => (
 	<SelectWrapper>
 		<SelectControl onChange={onChange} defaultValue={defaultValue} {...rest} />
-		<DropDownIcon />
 	</SelectWrapper>
 );
 
