@@ -218,6 +218,10 @@ export interface TableStyles {
 
 export interface PaginationOptions {
 	noRowsPerPage?: boolean;
+	// If non-null, the "rows per page" dropdown will be hidden when the window width is less than
+	// this value. SMALL == 599 is the default (if this property is undefined); pass `null` to always
+	// show the dropdown (useful for ensuring SSR matches client).
+	minWindowWidth?: number | null;
 	rowsPerPageText?: string;
 	rangeSeparatorText?: string;
 	selectAllRowsItem?: boolean;

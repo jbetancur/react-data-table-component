@@ -95,7 +95,9 @@ function Pagination({
 }: PaginationProps): JSX.Element {
 	const windowSize = useWindowSize();
 	const isRTL = useRTL(direction);
-	const shouldShow = windowSize.width && windowSize.width > SMALL;
+	const { minWindowWidth = SMALL } = paginationComponentOptions;
+	const windowWidth = windowSize.width;
+	const shouldShow = !minWindowWidth || (windowWidth && windowWidth > minWindowWidth);
 	// const isRTL = detectRTL(direction);
 	const numPages = getNumberOfPages(rowCount, rowsPerPage);
 	const lastIndex = currentPage * rowsPerPage;
