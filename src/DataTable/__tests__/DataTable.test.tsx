@@ -2178,6 +2178,24 @@ describe('DataTable::fixedHeader', () => {
 	});
 });
 
+describe('DataTable::footer', () => {
+	test('should render correctly when a footer is enabled', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} showFooter />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
+	test('should render correctly when a footer is enabled and footer cells contain content', () => {
+		const mock = dataMock({
+			footerContent: () => `footer`,
+		});
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} showFooter />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+});
+
 describe('DataTable::striped', () => {
 	test('should render correctly when striped', () => {
 		const mock = dataMock();

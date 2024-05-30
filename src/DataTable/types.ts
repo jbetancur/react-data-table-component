@@ -12,6 +12,7 @@ export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;
 export type RowState<T> = ((row: T) => boolean) | null;
 export type Selector<T> = (row: T, rowIndex?: number) => Primitive;
+export type FooterContent<T> = (rows: T[]) => Primitive;
 export type SortFunction<T> = (rows: T[], field: Selector<T>, sortDirection: SortOrder) => T[];
 export type TableRow = Record<string, unknown>;
 export type ComponentProps = Record<string, unknown>;
@@ -62,6 +63,7 @@ export type TableProps<T> = {
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
+	showFooter?: boolean;
 	onChangePage?: PaginationChangePage;
 	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
@@ -144,6 +146,7 @@ export interface TableColumn<T> extends TableColumnBase {
 	conditionalCellStyles?: ConditionalStyles<T>[];
 	format?: Format<T> | undefined;
 	selector?: Selector<T>;
+	footerContent?: FooterContent<T>;
 	sortFunction?: ColumnSortFunction<T>;
 }
 
@@ -179,6 +182,13 @@ export interface TableStyles {
 	headCells?: {
 		style?: CSSObject;
 		draggingStyle?: CSSObject;
+	};
+	foot?: {
+		style: CSSObject;
+	};
+	footRow?: {
+		style: CSSObject;
+		denseStyle?: CSSObject;
 	};
 	contextMenu?: {
 		style?: CSSObject;

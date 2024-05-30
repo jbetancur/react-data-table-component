@@ -70,6 +70,7 @@ export const defaultProps = {
 	subHeaderComponent: null,
 	fixedHeader: false,
 	fixedHeaderScrollHeight: '100vh',
+	showFooter: false,
 	pagination: false,
 	paginationServer: false,
 	paginationServerOptions: {
