@@ -67,9 +67,9 @@ function Cell<T>({
 			$cellStyle={column.style}
 			$renderAsCell={!!column.cell}
 			$allowOverflow={column.allowOverflow}
-			button={column.button}
-			center={column.center}
-			compact={column.compact}
+			button={column.button ? column.button.toString() : undefined}
+			center={column.center ? column.center.toString() : undefined}
+			compact={column.compact ? column.compact.toString() : undefined}
 			grow={column.grow}
 			hide={column.hide}
 			maxWidth={column.maxWidth}

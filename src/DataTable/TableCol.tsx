@@ -188,14 +188,14 @@ function TableCol<T>({
 			className="rdt_TableCol"
 			$headCell
 			allowOverflow={column.allowOverflow}
-			button={column.button}
-			compact={column.compact}
+			button={column.button ? column.button.toString() : undefined}
+			compact={column.compact ? column.compact.toString() : undefined}
 			grow={column.grow}
 			hide={column.hide}
 			maxWidth={column.maxWidth}
 			minWidth={column.minWidth}
 			right={column.right}
-			center={column.center}
+			center={column.center ? column.center.toString() : undefined}
 			width={column.width}
 			draggable={column.reorder}
 			$isDragging={equalizeId(column.id, draggingColumnId)}

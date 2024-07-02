@@ -118,9 +118,9 @@ export type TableProps<T> = {
 
 export type TableColumnBase = {
 	allowOverflow?: boolean;
-	button?: boolean;
-	center?: boolean;
-	compact?: boolean;
+	button?: boolean | string;
+	center?: boolean | string;
+	compact?: boolean | string;
 	reorder?: boolean;
 	grow?: number;
 	hide?: number | ((value: number) => CSSObject) | Media;
@@ -129,9 +129,9 @@ export type TableColumnBase = {
 	maxWidth?: string;
 	minWidth?: string;
 	name?: string | number | React.ReactNode;
-	omit?: boolean;
+	omit?: boolean | string;
 	right?: boolean;
-	sortable?: boolean;
+	sortable?: boolean | string;
 	style?: CSSObject;
 	width?: string;
 	wrap?: boolean;
