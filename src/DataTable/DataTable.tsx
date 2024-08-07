@@ -137,6 +137,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		defaultSortColumn,
 	} = useColumns(columns, onColumnOrderChange, defaultSortFieldId, defaultSortAsc);
 
+	const freezedColumns = React.useMemo(() => {
+		const index = tableColumns.findIndex(column => column.freeze);
+		return tableColumns.slice(0, index + 1);
+	}, [tableColumns]);
+
 	const [
 		{
 			rowsPerPage,
@@ -448,16 +453,138 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 					{subHeaderComponent}
 				</Subheader>
 			)}
+			<div style={{ position: 'relative' }}>
+				<ResponsiveWrapper
+					responsive={responsive}
+					fixedHeader={fixedHeader}
+					fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+					{...wrapperProps}
+				>
+					<Wrapper>
+						{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
-			<ResponsiveWrapper
-				responsive={responsive}
-				fixedHeader={fixedHeader}
-				fixedHeaderScrollHeight={fixedHeaderScrollHeight}
-				{...wrapperProps}
-			>
-				<Wrapper>
-					{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
+						<Table disabled={disabled} className="rdt_Table" role="table">
+							{showTableHead() && (
+								<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
+									<HeadRow className="rdt_TableHeadRow" role="row" dense={dense}>
+										{keepExpandableFirst ? (
+											<>
+												{expandableHeaderCol}
+												{selectableHeaderCol}
+											</>
+										) : (
+											<>
+												{selectableHeaderCol}
+												{expandableHeaderCol}
+											</>
+										)}
 
+										{tableColumns.map(column => (
+											<Column
+												key={column.id}
+												column={column}
+												selectedColumn={selectedColumn}
+												disabled={progressPending || sortedData.length === 0}
+												pagination={pagination}
+												paginationServer={paginationServer}
+												persistSelectedOnSort={persistSelectedOnSort}
+												selectableRowsVisibleOnly={selectableRowsVisibleOnly}
+												sortDirection={sortDirection}
+												sortIcon={sortIcon}
+												sortServer={sortServer}
+												onSort={handleSort}
+												onDragStart={handleDragStart}
+												onDragOver={handleDragOver}
+												onDragEnd={handleDragEnd}
+												onDragEnter={handleDragEnter}
+												onDragLeave={handleDragLeave}
+												draggingColumnId={draggingColumnId}
+												currentSortColumnId={currentSortColumnId}
+												currentSortDirection={currentSortDirection}
+											/>
+										))}
+									</HeadRow>
+								</Head>
+							)}
+
+							{!sortedData.length && !progressPending && <NoData>{noDataComponent}</NoData>}
+
+							{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
+
+							{!progressPending && sortedData.length > 0 && (
+								<Body className="rdt_TableBody" role="rowgroup">
+									{tableRows.map((row, i) => {
+										const key = prop(row as TableRow, keyField) as string | number;
+										const id = isEmpty(key) ? i : key;
+										const selected = isRowSelected(row, selectedRows, keyField);
+										const expanded = isRowExpanded(row, expandedRows, keyField);
+										const expanderExpander = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
+										const expanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
+
+										return (
+											<Row
+												id={id}
+												key={id}
+												keyField={keyField}
+												data-row-id={id}
+												columns={tableColumns}
+												row={row}
+												rowCount={sortedData.length}
+												rowIndex={i}
+												selectableRows={selectableRows}
+												expandableRows={expandableRows}
+												expandableIcon={expandableIcon}
+												highlightOnHover={highlightOnHover}
+												pointerOnHover={pointerOnHover}
+												dense={dense}
+												expandOnRowClicked={expandOnRowClicked}
+												expandOnRowDoubleClicked={expandOnRowDoubleClicked}
+												expandableRowsComponent={expandableRowsComponent}
+												expandableRowsComponentProps={expandableRowsComponentProps}
+												expandableRowsHideExpander={expandableRowsHideExpander}
+												defaultExpanderDisabled={expanderDisabled}
+												defaultExpanded={expanderExpander}
+												expandableInheritConditionalStyles={expandableInheritConditionalStyles}
+												conditionalRowStyles={conditionalRowStyles}
+												selected={selected}
+												expanded={expanded}
+												selectableRowsHighlight={selectableRowsHighlight}
+												selectableRowsComponent={selectableRowsComponent}
+												selectableRowsComponentProps={selectableRowsComponentProps}
+												selectableRowDisabled={selectableRowDisabled}
+												expandableRowDisabled={expandableRowDisabled}
+												selectableRowsSingle={selectableRowsSingle}
+												expandableRowsSingle={expandableRowsSingle}
+												striped={striped}
+												keepExpandableFirst={keepExpandableFirst}
+												onRowExpandToggled={onRowExpandToggled}
+												onRowClicked={handleRowClicked}
+												onRowDoubleClicked={handleRowDoubleClicked}
+												onSelectedRow={handleSelectedRow}
+												onExpandedRow={handleExpandedRow}
+												draggingColumnId={draggingColumnId}
+												onDragStart={handleDragStart}
+												onDragOver={handleDragOver}
+												onDragEnd={handleDragEnd}
+												onDragEnter={handleDragEnter}
+												onDragLeave={handleDragLeave}
+											/>
+										);
+									})}
+								</Body>
+							)}
+						</Table>
+						{footer && <div>{footer}</div>}
+					</Wrapper>
+				</ResponsiveWrapper>
+
+				<div
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+					}}
+				>
 					<Table disabled={disabled} className="rdt_Table" role="table">
 						{showTableHead() && (
 							<Head className="rdt_TableHead" role="rowgroup" fixedHeader={fixedHeader}>
@@ -474,7 +601,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 										</>
 									)}
 
-									{tableColumns.map(column => (
+									{freezedColumns.slice(0, 3).map(column => (
 										<Column
 											key={column.id}
 											column={column}
@@ -502,10 +629,6 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 							</Head>
 						)}
 
-						{!sortedData.length && !progressPending && <NoData>{noDataComponent}</NoData>}
-
-						{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
-
 						{!progressPending && sortedData.length > 0 && (
 							<Body className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
@@ -522,7 +645,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 											key={id}
 											keyField={keyField}
 											data-row-id={id}
-											columns={tableColumns}
+											columns={freezedColumns}
 											row={row}
 											rowCount={sortedData.length}
 											rowIndex={i}
@@ -570,8 +693,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 						)}
 					</Table>
 					{footer && <div>{footer}</div>}
-				</Wrapper>
-			</ResponsiveWrapper>
+				</div>
+			</div>
 
 			{enabledPagination && (
 				<div>

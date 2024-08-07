@@ -151,6 +151,7 @@ export interface TableColumn<T> extends TableColumnBase {
 	format?: Format<T> | undefined;
 	selector?: Selector<T>;
 	sortFunction?: ColumnSortFunction<T>;
+	freeze?: boolean;
 }
 
 export interface ConditionalStyles<T> {
