@@ -13031,7 +13031,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     remark-gfm: "npm:^3.0.0"
     rimraf: "npm:^5.0.5"
-    rollup: "npm:^2.61.1"
+    rollup: "npm:^3.29.5"
     rollup-plugin-terser: "npm:^7.0.2"
     rollup-plugin-typescript2: "npm:^0.36.0"
     rollup-plugin-visualizer: "npm:^5.5.2"
@@ -13658,9 +13658,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.61.1":
-  version: 2.79.1
-  resolution: "rollup@npm:2.79.1"
+"rollup@npm:^3.29.5":
+  version: 3.29.5
+  resolution: "rollup@npm:3.29.5"
   dependencies:
     fsevents: "npm:~2.3.2"
   dependenciesMeta:
@@ -13668,7 +13668,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 421418687f5dcd7324f4387f203c6bfc7118b7ace789e30f5da022471c43e037a76f5fd93837052754eeeae798a4fb266ac05ccee1e594406d912a59af98dde9
+  checksum: a1fa26f21f0d6cf93b6d05ea284ad5854905b585f28a14c27d439b0f9b859cba13ea25f376303d86770e59b4686bedc52b4706e57442514f0414c6fd3c5b8e71
   languageName: node
   linkType: hard
 
