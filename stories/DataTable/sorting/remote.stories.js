@@ -12,6 +12,7 @@ const columns = [
 		sortable: true,
 		sortField: 'title',
 		filterable: true,
+		filterValue: 'god',
 	},
 	{
 		name: 'Director',

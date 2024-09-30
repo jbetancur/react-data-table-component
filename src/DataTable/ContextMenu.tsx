@@ -22,8 +22,8 @@ const ContextActions = styled.div`
 `;
 
 const ContextMenuStyle = styled.div<{
-	rtl?: boolean;
-	visible: boolean;
+	$rtl?: boolean;
+	$visible: boolean;
 }>`
 	position: absolute;
 	top: 0;
@@ -35,9 +35,9 @@ const ContextMenuStyle = styled.div<{
 	align-items: center;
 	justify-content: space-between;
 	display: flex;
-	${({ rtl }) => rtl && 'direction: rtl'};
+	${({ $rtl }) => $rtl && 'direction: rtl'};
 	${({ theme }) => theme.contextMenu.style};
-	${({ theme, visible }) => visible && theme.contextMenu.activeStyle};
+	${({ theme, $visible }) => $visible && theme.contextMenu.activeStyle};
 `;
 
 const generateDefaultContextTitle = (contextMessage: ContextMessage, selectedCount: number, rtl: boolean) => {
@@ -75,14 +75,14 @@ function ContextMenu({
 
 	if (contextComponent) {
 		return (
-			<ContextMenuStyle visible={visible}>
+			<ContextMenuStyle $visible={visible}>
 				{React.cloneElement(contextComponent as React.ReactElement, { selectedCount })}
 			</ContextMenuStyle>
 		);
 	}
 
 	return (
-		<ContextMenuStyle visible={visible} rtl={isRTL}>
+		<ContextMenuStyle $visible={visible} $rtl={isRTL}>
 			<Title>{generateDefaultContextTitle(contextMessage, selectedCount, isRTL)}</Title>
 			<ContextActions>{contextActions}</ContextActions>
 		</ContextMenuStyle>

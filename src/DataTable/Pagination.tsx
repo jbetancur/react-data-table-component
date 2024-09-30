@@ -30,14 +30,14 @@ const PaginationWrapper = styled.nav`
 `;
 
 const Button = styled.button<{
-	isRTL: boolean;
+	$isRTL: boolean;
 }>`
 	position: relative;
 	display: block;
 	user-select: none;
 	border: none;
 	${({ theme }) => theme.pagination.pageButtonsStyle};
-	${({ isRTL }) => isRTL && 'transform: scale(-1, -1)'};
+	${({ $isRTL }) => $isRTL && 'transform: scale(-1, -1)'};
 `;
 
 const PageList = styled.div`
@@ -157,7 +157,7 @@ function Pagination({
 					aria-disabled={disabledLesser}
 					onClick={handleFirst}
 					disabled={disabledLesser}
-					isRTL={isRTL}
+					$isRTL={isRTL}
 				>
 					{paginationIconFirstPage}
 				</Button>
@@ -169,7 +169,7 @@ function Pagination({
 					aria-disabled={disabledLesser}
 					onClick={handlePrevious}
 					disabled={disabledLesser}
-					isRTL={isRTL}
+					$isRTL={isRTL}
 				>
 					{paginationIconPrevious}
 				</Button>
@@ -183,7 +183,7 @@ function Pagination({
 					aria-disabled={disabledGreater}
 					onClick={handleNext}
 					disabled={disabledGreater}
-					isRTL={isRTL}
+					$isRTL={isRTL}
 				>
 					{paginationIconNext}
 				</Button>
@@ -195,7 +195,7 @@ function Pagination({
 					aria-disabled={disabledGreater}
 					onClick={handleLast}
 					disabled={disabledGreater}
-					isRTL={isRTL}
+					$isRTL={isRTL}
 				>
 					{paginationIconLastPage}
 				</Button>

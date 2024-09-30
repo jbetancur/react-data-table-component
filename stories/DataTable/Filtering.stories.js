@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import Button from '../shared/Button';
 import DataTable from '../../src/index';
 
 const createUser = () => ({
-	id: faker.datatype.uuid(),
-	name: faker.name.findName(),
+	id: faker.string.uuid(),
+	name: faker.internet.userName(),
 	email: faker.internet.email(),
-	address: faker.address.streetAddress(),
+	address: faker.location.streetAddress(),
 	bio: faker.lorem.sentence(),
 	image: faker.image.avatar(),
 });

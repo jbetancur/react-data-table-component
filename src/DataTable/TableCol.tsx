@@ -7,7 +7,7 @@ import { TableColumn, SortAction, SortOrder, FilterAction } from './types';
 import { ChangeEvent } from 'react';
 
 interface ColumnStyleProps extends CellProps {
-	isDragging?: boolean;
+	$isDragging?: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -17,12 +17,12 @@ interface ColumnStyleProps extends CellProps {
 
 const ColumnStyled = styled(CellExtended) <ColumnStyleProps>`
 	${({ button }) => button && 'text-align: center'};
-	${({ theme, isDragging }) => isDragging && theme.headCells.draggingStyle};
+	${({ theme, $isDragging }) => $isDragging && theme.headCells.draggingStyle};
 `;
 
 interface ColumnSortableProps {
 	disabled: boolean;
-	sortActive: boolean;
+	$sortActive: boolean;
 }
 
 const sortableCSS = css<ColumnSortableProps>`
@@ -31,7 +31,7 @@ const sortableCSS = css<ColumnSortableProps>`
 		i,
 		svg {
 			transform: 'translate3d(0, 0, 0)';
-			${({ sortActive }) => (sortActive ? 'opacity: 1' : 'opacity: 0')};
+			${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
 			color: inherit;
 			font-size: 18px;
 			height: 18px;
@@ -48,8 +48,8 @@ const sortableCSS = css<ColumnSortableProps>`
 		}
 	}
 
-	${({ sortActive }) =>
-		!sortActive &&
+	${({ $sortActive }) =>
+		!$sortActive &&
 		css`
 			&:hover,
 			&:focus {
@@ -135,6 +135,7 @@ function TableCol<T>({
 
 	const [showTooltip, setShowTooltip] = React.useState(false);
 	const columnRef = React.useRef<HTMLDivElement | null>(null);
+	const [pristine, setPristine] = React.useState(true);
 
 	React.useEffect(() => {
 		if (columnRef.current) {
@@ -145,6 +146,22 @@ function TableCol<T>({
 	if (column.omit) {
 		return null;
 	}
+
+	React.useEffect(() => {
+		if (pristine) {
+			setPristine(false);
+			if (column.filterable && column.selector && column.filterValue && column.filterValue !== '') {
+				onFilter({
+					type: 'FILTER_CHANGE',
+					filterServer: filterServer,
+					filterText: column.filterValue,
+					selectedColumn: column,
+					clearSelectedOnSort:
+						(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
+				});
+			}
+		}
+	}, [pristine]);
 
 	const handleSortChange = () => {
 		if (!column.sortable && !column.selector) {
@@ -168,6 +185,7 @@ function TableCol<T>({
 
 	const handleFilterChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		if (column.filterable && column.selector) {
+			column.filterValue = e.target.value;
 			onFilter({
 				type: 'FILTER_CHANGE',
 				filterServer: filterServer,
@@ -204,7 +222,7 @@ function TableCol<T>({
 		<ColumnStyled
 			data-column-id={column.id}
 			className="rdt_TableCol"
-			headCell
+			$headCell
 			allowOverflow={column.allowOverflow}
 			button={column.button}
 			compact={column.compact}
@@ -216,7 +234,7 @@ function TableCol<T>({
 			center={column.center}
 			width={column.width}
 			draggable={column.reorder}
-			isDragging={equalizeId(column.id, draggingColumnId)}
+			$isDragging={equalizeId(column.id, draggingColumnId)}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
 			onDragEnd={onDragEnd}
@@ -225,19 +243,19 @@ function TableCol<T>({
 		>
 			{column.name && (
 				<div>
-					<ColumnSortable
-						data-column-id={column.id}
-						data-sort-id={column.id}
-						role="columnheader"
-						tabIndex={0}
-						className="rdt_TableCol_Sortable"
-						onClick={!disableSort ? handleSortChange : undefined}
-						onKeyPress={!disableSort ? handleKeyPress : undefined}
-						sortActive={!disableSort && sortActive}
-						disabled={disableSort}
-					>
-						{!disableSort && customSortIconRight && renderCustomSortIcon()}
-						{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+				<ColumnSortable
+					data-column-id={column.id}
+					data-sort-id={column.id}
+					role="columnheader"
+					tabIndex={0}
+					className="rdt_TableCol_Sortable"
+					onClick={!disableSort ? handleSortChange : undefined}
+					onKeyPress={!disableSort ? handleKeyPress : undefined}
+					$sortActive={!disableSort && sortActive}
+					disabled={disableSort}
+				>
+					{!disableSort && customSortIconRight && renderCustomSortIcon()}
+					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
 						{typeof column.name === 'string' ? (
 							<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
@@ -256,6 +274,7 @@ function TableCol<T>({
 								<select name={column?.name?.toString()}
 									data-filter-id={column?.name?.toString().toLowerCase()}
 									onChange={handleFilterChange}>
+									value={column.filterValue}
 									<option value=""></option>
 									{column?.filterValues?.map((filterValue, index) => (
 										<option key={index} value={
@@ -269,6 +288,7 @@ function TableCol<T>({
 								:
 								<input
 									name={column?.name?.toString()}
+									value={column.filterValue}
 									data-filter-id={column?.name?.toString().toLowerCase()}
 									onChange={handleFilterChange}
 									placeholder="filter"
@@ -276,7 +296,7 @@ function TableCol<T>({
 							}
 						</div>
 					)}
-				</div>
+					</div>
 			)}
 		</ColumnStyled>
 	);

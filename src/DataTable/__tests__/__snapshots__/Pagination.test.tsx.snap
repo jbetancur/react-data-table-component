@@ -5,9 +5,6 @@ exports[`should render correctly with default props 1`] = `
   cursor: pointer;
   height: 24px;
   max-width: 100%;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   padding-left: 8px;
   padding-right: 24px;
@@ -16,12 +13,8 @@ exports[`should render correctly with default props 1`] = `
   color: inherit;
   border: none;
   background-color: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   direction: ltr;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
@@ -39,8 +32,6 @@ exports[`should render correctly with default props 1`] = `
 
 .c3 {
   position: relative;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   font-size: inherit;
   color: inherit;
@@ -56,34 +47,20 @@ exports[`should render correctly with default props 1`] = `
   width: 24px;
   height: 24px;
   display: inline-block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   pointer-events: none;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,0.54);
+  color: rgba(0, 0, 0, 0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: #FFFFFF;
@@ -95,9 +72,6 @@ exports[`should render correctly with default props 1`] = `
 .c7 {
   position: relative;
   display: block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   border: none;
   border-radius: 50%;
@@ -106,7 +80,6 @@ exports[`should render correctly with default props 1`] = `
   padding: 8px;
   margin: px;
   cursor: pointer;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
@@ -115,8 +88,8 @@ exports[`should render correctly with default props 1`] = `
 
 .c7:disabled {
   cursor: unset;
-  color: rgba(0,0,0,.18);
-  fill: rgba(0,0,0,.18);
+  color: rgba(0, 0, 0, .18);
+  fill: rgba(0, 0, 0, .18);
 }
 
 .c7:hover:not(:disabled) {
@@ -129,25 +102,14 @@ exports[`should render correctly with default props 1`] = `
 }
 
 .c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
 
 .c1 {
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -159,12 +121,9 @@ exports[`should render correctly with default props 1`] = `
   margin: 0 4px;
 }
 
-@media screen and (max-width:599px) {
+@media screen and (max-width: 599px) {
   .c6 {
     width: 100%;
-    -webkit-box-pack: space-around;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: space-around;
     justify-content: space-around;
   }
 }
@@ -338,26 +297,15 @@ exports[`should render correctly with default props 1`] = `
 
 exports[`when the screensize is small paginationComponentOption noRowsPerPage should be respected 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
-  color: rgba(0,0,0,0.54);
+  color: rgba(0, 0, 0, 0.54);
   font-size: 13px;
   min-height: 56px;
   background-color: #FFFFFF;
@@ -369,9 +317,6 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
 .c2 {
   position: relative;
   display: block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   border: none;
   border-radius: 50%;
@@ -380,7 +325,6 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
   padding: 8px;
   margin: px;
   cursor: pointer;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   color: rgba(0,0,0,.54);
   fill: rgba(0,0,0,.54);
@@ -389,8 +333,8 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
 
 .c2:disabled {
   cursor: unset;
-  color: rgba(0,0,0,.18);
-  fill: rgba(0,0,0,.18);
+  color: rgba(0, 0, 0, .18);
+  fill: rgba(0, 0, 0, .18);
 }
 
 .c2:hover:not(:disabled) {
@@ -403,24 +347,15 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   border-radius: 4px;
   white-space: nowrap;
 }
 
-@media screen and (max-width:599px) {
+@media screen and (max-width: 599px) {
   .c1 {
     width: 100%;
-    -webkit-box-pack: space-around;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: space-around;
     justify-content: space-around;
   }
 }

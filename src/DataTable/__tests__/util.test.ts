@@ -47,42 +47,42 @@ describe('isEmpty', () => {
 
 describe('sort', () => {
 	test('built in sort when already sorted asc', () => {
-		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.ASC);
+		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], row => row.name, SortOrder.ASC);
 
 		expect(rows[0].name).toEqual('anakin');
 		expect(rows[rows.length - 1].name).toEqual('vadar');
 	});
 
 	test('built in sort when already sorted desc', () => {
-		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', SortOrder.DESC);
+		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], row => row.name, SortOrder.DESC);
 
 		expect(rows[0].name).toEqual('vadar');
 		expect(rows[rows.length - 1].name).toEqual('anakin');
 	});
 
 	test('built in sort when desc', () => {
-		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.DESC);
+		const rows = sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], row => row.name, SortOrder.DESC);
 
 		expect(rows[0].name).toEqual('vadar');
 		expect(rows[rows.length - 1].name).toEqual('anakin');
 	});
 
 	test('built in sort when asc', () => {
-		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], 'name', SortOrder.ASC);
+		const rows = sort([{ name: 'vadar' }, { name: 'leia' }, { name: 'anakin' }], row => row.name, SortOrder.ASC);
 
 		expect(rows[0].name).toEqual('anakin');
 		expect(rows[rows.length - 1].name).toEqual('vadar');
 	});
 
 	test('built in sort when a value is not a string and asc', () => {
-		const rows = sort([{ count: 20 }, { count: 10 }, { count: 1 }], 'count', SortOrder.ASC);
+		const rows = sort([{ count: 20 }, { count: 10 }, { count: 1 }], row => row.count, SortOrder.ASC);
 
 		expect(rows[0].count).toEqual(1);
 		expect(rows[rows.length - 1].count).toEqual(20);
 	});
 
 	test('built in sort when a value is not a string and desc', () => {
-		const rows = sort([{ count: 1 }, { count: 10 }, { count: 20 }], 'count', SortOrder.DESC);
+		const rows = sort([{ count: 1 }, { count: 10 }, { count: 20 }], row => row.count, SortOrder.DESC);
 
 		expect(rows[0].count).toEqual(20);
 		expect(rows[rows.length - 1].count).toEqual(1);
@@ -91,7 +91,7 @@ describe('sort', () => {
 	test('built in sort nested keys', () => {
 		const rows = sort(
 			[{ item: { name: 'anakin' } }, { item: { name: 'leia' } }, { item: { name: 'vadar' } }],
-			'item.name',
+			row => row.item.name,
 			SortOrder.DESC,
 		);
 
@@ -108,10 +108,15 @@ describe('sort', () => {
 
 	test('custom sort should be called', () => {
 		const mockSort = jest.fn();
+		const mockSelector = (row: { name: string }) => row.name;
 
-		sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.DESC, mockSort);
+		sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], mockSelector, SortOrder.DESC, mockSort);
 
-		expect(mockSort).toBeCalledWith([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], 'name', SortOrder.DESC);
+		expect(mockSort).toBeCalledWith(
+			[{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }],
+			mockSelector,
+			SortOrder.DESC,
+		);
 	});
 });
 
@@ -123,21 +128,9 @@ describe('getProperty', () => {
 	});
 
 	test('getProperty return a value when a string selector is passed', () => {
-		const property = getProperty(row, 'name', null, 0);
+		const property = getProperty(row, row => row.name, null, 0);
 
 		expect(property).toEqual('iamaname');
-	});
-
-	test('getProperty return a value when there is a nested string selector', () => {
-		const property = getProperty(row, 'properties.nested', null, 0);
-
-		expect(property).toEqual('iamnesting');
-	});
-
-	test('getProperty return a value when a string selector is an array', () => {
-		const property = getProperty(row, 'properties.items[0].name', null, 0);
-
-		expect(property).toEqual('iamarrayname');
 	});
 
 	test('getProperty sreturn a value when a string selector is an function', () => {
@@ -147,13 +140,14 @@ describe('getProperty', () => {
 	});
 
 	test('getProperty should handle when a format function is passed', () => {
-		const property = getProperty(row, 'name', r => r.name.toUpperCase(), 0);
+		const property = getProperty(
+			row,
+			row => row.name,
+			r => r.name.toUpperCase(),
+			0,
+		);
 
 		expect(property).toEqual('IAMANAME');
-	});
-
-	test('getProperty should throw an error if the selector is not a string or function', () => {
-		expect(() => getProperty(row, { data: 'incorrect' }, null, 0)).toThrow();
 	});
 });
 
@@ -252,9 +246,9 @@ describe('getConditionalStyle', () => {
 				},
 			},
 		];
-		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { conditionalStyle } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
-		expect(style).toEqual({ backgroundColor: 'green' });
+		expect(conditionalStyle).toEqual({ backgroundColor: 'green' });
 	});
 
 	test('should return {} if the expression does not match', () => {
@@ -266,17 +260,17 @@ describe('getConditionalStyle', () => {
 				},
 			},
 		];
-		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { conditionalStyle } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
-		expect(style).toEqual({});
+		expect(conditionalStyle).toEqual({});
 	});
 
 	test('should return {} if there are no style object expressions', () => {
 		const rowStyleExpression: ConditionalStyles<DataRow>[] = [];
 
-		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { conditionalStyle } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
-		expect(style).toEqual({});
+		expect(conditionalStyle).toEqual({});
 	});
 
 	test('should default to an empty object if the style property is not provided', () => {
@@ -286,9 +280,9 @@ describe('getConditionalStyle', () => {
 			},
 		];
 
-		const { style } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
+		const { conditionalStyle } = getConditionalStyle({ name: 'luke' }, rowStyleExpression);
 
-		expect(style).toEqual({});
+		expect(conditionalStyle).toEqual({});
 	});
 
 	test('should return "" if there are no classNames', () => {

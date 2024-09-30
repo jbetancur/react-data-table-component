@@ -3,16 +3,16 @@ import { media } from './media';
 import { TableColumnBase } from './types';
 
 export const CellBase = styled.div<{
-	headCell?: boolean;
-	noPadding?: boolean;
+	$headCell?: boolean;
+	$noPadding?: boolean;
 }>`
 	position: relative;
 	display: flex;
 	align-items: center;
 	box-sizing: border-box;
 	line-height: normal;
-	${({ theme, headCell }) => theme[headCell ? 'headCells' : 'cells'].style};
-	${({ noPadding }) => noPadding && 'padding: 0'};
+	${({ theme, $headCell }) => theme[$headCell ? 'headCells' : 'cells'].style};
+	${({ $noPadding }) => $noPadding && 'padding: 0'};
 `;
 
 export type CellProps = Pick<

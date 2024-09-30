@@ -52,7 +52,7 @@ function TableCellCheckbox<T>({
 	};
 
 	return (
-		<TableCellCheckboxStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} className="rdt_TableCell" noPadding>
+		<TableCellCheckboxStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} className="rdt_TableCell" $noPadding>
 			<Checkbox
 				name={name}
 				component={selectableRowsComponent}
