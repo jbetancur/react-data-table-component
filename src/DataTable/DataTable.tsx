@@ -170,7 +170,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
-
+  const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 	const currentData = React.useMemo(() => {
 		if (filterActive && !filterServer) {
 			return data.filter((row, idx) =>
@@ -179,7 +179,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 						acc: boolean,
 						[_, { column, value }], // eslint-disable-line @typescript-eslint/no-unused-vars
 					) =>
-						new RegExp(`.*${value}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
+						new RegExp(`.*${escapeRegex(value)}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
 							? acc
 							: false,
 					true,

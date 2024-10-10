@@ -55,7 +55,7 @@ export const RemoteSort = () => {
 			const filteredRows = initData.filter((row, idx) =>
 				Object.entries(filters) //
 					.reduce((acc, [_, { column, value }]) => {
-						return new RegExp(`.*${value}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
+						return new RegExp(`.*${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
 							? acc
 							: false;
 					}, true),
