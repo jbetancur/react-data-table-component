@@ -4244,6 +4244,429 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
 </div>
 `;
 
+exports[`DataTable::ariaLabel should render correctly when ariaLabel 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: flex;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: inherit;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: flex;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      aria-label="Test Table"
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div
+              class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
+              disabled=""
+              role="columnheader"
+              tabindex="0"
+            >
+              <div
+                class="c8"
+                data-column-id="1"
+              >
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::ariaLabel should render correctly when not ariaLabel 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: flex;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: inherit;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: flex;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div
+              class="c7 rdt_TableCol_Sortable"
+              data-column-id="1"
+              data-sort-id="1"
+              disabled=""
+              role="columnheader"
+              tabindex="0"
+            >
+              <div
+                class="c8"
+                data-column-id="1"
+              >
+                Test
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DataTable::column.style should render correctly when a style is set on a column 1`] = `
 .c2 {
   position: relative;
