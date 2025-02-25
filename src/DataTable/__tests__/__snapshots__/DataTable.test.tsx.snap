@@ -145,19 +145,21 @@ exports[`DataTable::Header header should not display with no title 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -928,19 +930,21 @@ exports[`DataTable::Header should render without a header if noHeader is true 1`
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -1352,19 +1356,21 @@ exports[`DataTable::Pagination should change the page position when using pagina
               class="c5 c6 rdt_TableCol"
               data-column-id="1"
             >
-              <div
-                class="c7 rdt_TableCol_Sortable"
-                data-column-id="1"
-                data-sort-id="1"
-                disabled=""
-                role="columnheader"
-                tabindex="0"
-              >
+              <div>
                 <div
-                  class="c8"
+                  class="c7 rdt_TableCol_Sortable"
                   data-column-id="1"
+                  data-sort-id="1"
+                  disabled=""
+                  role="columnheader"
+                  tabindex="0"
                 >
-                  Test
+                  <div
+                    class="c8"
+                    data-column-id="1"
+                  >
+                    Test
+                  </div>
                 </div>
               </div>
             </div>
@@ -1703,19 +1709,21 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -1899,19 +1907,21 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -2095,19 +2105,21 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -2291,19 +2303,21 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -2515,24 +2529,26 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -2715,19 +2731,21 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -2911,19 +2929,21 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -3126,19 +3146,21 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -3341,19 +3363,21 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -3556,19 +3580,21 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -3771,19 +3797,21 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -3986,19 +4014,21 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -4178,19 +4208,21 @@ exports[`DataTable::Theming should render correctly when a custom style is appli
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -4816,19 +4848,21 @@ exports[`DataTable::column.style should render correctly when a style is set on 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -5028,19 +5062,21 @@ exports[`DataTable::columns should render correctly if column.center 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -5246,19 +5282,21 @@ exports[`DataTable::columns should render correctly if column.hide is an integer
             data-column-id="1"
             hide="300"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -5466,19 +5504,21 @@ exports[`DataTable::columns should render correctly if column.hide lg 1`] = `
             data-column-id="1"
             hide="lg"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -5686,19 +5726,21 @@ exports[`DataTable::columns should render correctly if column.hide md 1`] = `
             data-column-id="1"
             hide="md"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -5906,19 +5948,21 @@ exports[`DataTable::columns should render correctly if column.hide sm 1`] = `
             data-column-id="1"
             hide="sm"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -6120,19 +6164,21 @@ exports[`DataTable::columns should render correctly if column.maxWidth 1`] = `
             data-column-id="1"
             maxwidth="600px"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -6334,19 +6380,21 @@ exports[`DataTable::columns should render correctly if column.minWidth 1`] = `
             data-column-id="1"
             minwidth="200px"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -6547,19 +6595,21 @@ exports[`DataTable::columns should render correctly if column.omit is true 1`] =
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -6759,19 +6809,21 @@ exports[`DataTable::columns should render correctly if column.right 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -6973,19 +7025,21 @@ exports[`DataTable::columns should render correctly if column.width 1`] = `
             data-column-id="1"
             width="200px"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -7186,19 +7240,21 @@ exports[`DataTable::columns should render correctly when column.allowOverflow = 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -7403,19 +7459,21 @@ exports[`DataTable::columns should render correctly when column.button = true 1`
             class="c5 c6 c7 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c8 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c9"
+                class="c8 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c9"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -7602,19 +7660,21 @@ exports[`DataTable::columns should render correctly when column.cell is set to a
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -7810,19 +7870,301 @@ exports[`DataTable::columns should render correctly when column.compact = true 1
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable::columns should render correctly when column.filterable = true 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div>
+              <div
+                class="c7 rdt_TableCol_Sortable"
+                data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
+              >
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+              </div>
+              <div
+                style="display: block;"
+              >
+                <input
+                  data-filter-id="test"
+                  name="Test"
+                  placeholder="filter"
+                />
               </div>
             </div>
           </div>
@@ -8061,24 +8403,26 @@ exports[`DataTable::columns should render correctly when column.sortable = true 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -8276,19 +8620,21 @@ exports[`DataTable::columns should render correctly when column.wrap = true 1`] 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -8487,19 +8833,21 @@ exports[`DataTable::columns should render correctly when ignoreRowClick = true 1
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -8692,19 +9040,21 @@ exports[`DataTable::columns should render correctly with columns/data 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -8903,19 +9253,21 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -9115,19 +9467,21 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -9326,19 +9680,21 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -9538,19 +9894,21 @@ exports[`DataTable::conditionalCellStyles should render correctly when condition
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -9749,19 +10107,21 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -9985,19 +10345,21 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -10196,19 +10558,21 @@ exports[`DataTable::conditionalRowStyles should render correctly when conditiona
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -10409,19 +10773,21 @@ exports[`DataTable::dense should render correctly when dense 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -10624,19 +10990,21 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -10840,19 +11208,21 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -11056,19 +11426,21 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -11319,19 +11691,21 @@ exports[`DataTable::direction should render correctly when direction is rtl when
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -11626,19 +12000,21 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -11980,19 +12356,21 @@ exports[`DataTable::expandableRows should expand a row if expandableRows is true
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -12346,19 +12724,21 @@ exports[`DataTable::expandableRows should not expand a row if the expander row i
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -12614,19 +12994,21 @@ exports[`DataTable::expandableRows should not render expandableRows expandableRo
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -12876,19 +13258,21 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -13179,19 +13563,21 @@ exports[`DataTable::expandableRows should render correctly when expandableRowExp
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -13522,19 +13908,21 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -13861,19 +14249,21 @@ exports[`DataTable::expandableRows should render correctly when expandableRows i
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -14139,19 +14529,21 @@ exports[`DataTable::expandableRows should render correctly when expandableRowsHi
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -14356,19 +14748,21 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -14573,19 +14967,21 @@ exports[`DataTable::fixedHeader should render correctly when fixedHeader and fix
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -14795,19 +15191,21 @@ exports[`DataTable::highlightOnHover should render correctly when highlightOnHov
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -15010,19 +15408,21 @@ exports[`DataTable::pointerOnHover should render correctly when pointerOnHover 1
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -15564,19 +15964,21 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -15712,19 +16114,21 @@ exports[`DataTable::progress/nodata when persistTableHead should disable TableHe
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -15860,19 +16264,21 @@ exports[`DataTable::progress/nodata when persistTableHead should only Loading an
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -16037,19 +16443,21 @@ exports[`DataTable::responsive should render correctly responsive by default 1`]
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -16245,19 +16653,21 @@ exports[`DataTable::responsive should render correctly when responsive=false 1`]
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -16481,19 +16891,21 @@ exports[`DataTable::selectableRows should not render a select all checkbox when 
             class="c6 c7 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c8 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c9"
+                class="c8 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c9"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -16763,19 +17175,21 @@ exports[`DataTable::selectableRows should render correctly when selectableRows i
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -17070,19 +17484,21 @@ exports[`DataTable::selectableRows should render correctly when selectableRowsHi
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -17329,24 +17745,26 @@ exports[`DataTable::sorting a custom column sorting function is used 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -17572,24 +17990,26 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -17815,24 +18235,26 @@ exports[`DataTable::sorting should render correctly and bypass internal sort whe
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -18030,19 +18452,21 @@ exports[`DataTable::sorting should render correctly and not be sorted when a col
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -18269,24 +18693,26 @@ exports[`DataTable::sorting should render correctly when a column is sorted from
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -18512,24 +18938,26 @@ exports[`DataTable::sorting should render correctly when a column is sorted in d
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -18759,26 +19187,28 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon 1`] =
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
-              </div>
-              <span
-                class="asc __rdt_custom_sort_icon__"
-              >
-                <div>
-                  ASC
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
                 </div>
-              </span>
+                <span
+                  class="asc __rdt_custom_sort_icon__"
+                >
+                  <div>
+                    ASC
+                  </div>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -19009,25 +19439,27 @@ exports[`DataTable::sorting should render correctly with a custom sortIcon and c
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
-              <span
-                class="asc __rdt_custom_sort_icon__"
-              >
-                <div>
-                  ASC
-                </div>
-              </span>
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <span
+                  class="asc __rdt_custom_sort_icon__"
+                >
+                  <div>
+                    ASC
+                  </div>
+                </span>
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -19267,23 +19699,25 @@ exports[`DataTable::sorting should render correctly with a default sort field an
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
-              <span
-                class="c8"
-              >
-                ▲
-              </span>
+            <div>
               <div
-                class="c9"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <span
+                  class="c8"
+                >
+                  ▲
+                </span>
+                <div
+                  class="c9"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -19522,24 +19956,26 @@ exports[`DataTable::sorting should render correctly with a default sort field an
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -19778,24 +20214,26 @@ exports[`DataTable::sorting should render correctly with a defaultSortAsc = fals
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -20022,24 +20460,26 @@ exports[`DataTable::sorting should sort if the column is selected and the Enter 
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+                <span
+                  class="c9"
+                >
+                  ▲
+                </span>
               </div>
-              <span
-                class="c9"
-              >
-                ▲
-              </span>
             </div>
           </div>
         </div>
@@ -20258,19 +20698,21 @@ exports[`DataTable::striped should render correctly when striped 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -20439,6 +20881,771 @@ exports[`DataTable::subHeader should render when subHeaderWrap is false 1`] = `
 </header>
 `;
 
+exports[`DataTable:filter it should filter if filterable is set true 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div>
+              <div
+                class="c7 rdt_TableCol_Sortable"
+                data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
+              >
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+              </div>
+              <div
+                style="display: block;"
+              >
+                <input
+                  data-filter-id="test"
+                  name="Test"
+                  placeholder="filter"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable:filter it should not filter if filterServer is set true 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c12 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c10:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: inherit;
+  -webkit-justify-content: inherit;
+  -ms-flex-pack: inherit;
+  justify-content: inherit;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.c8 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          >
+            <div>
+              <div
+                class="c7 rdt_TableCol_Sortable"
+                data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
+              >
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
+              </div>
+              <div
+                style="display: block;"
+              >
+                <input
+                  data-filter-id="test"
+                  name="Test"
+                  placeholder="filter"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c10 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c11 c6 c12 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataTable:filter should not be rendered if column.name is missing 1`] = `
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  background-color: #FFFFFF;
+  min-height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-style: solid;
+}
+
+.c5 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c9 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  word-break: break-word;
+}
+
+.c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.c10 div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.87);
+  background-color: #FFFFFF;
+  min-height: 48px;
+}
+
+.c8:not(:last-of-type) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  border-radius: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 0;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 rdt_Table"
+      role="table"
+    >
+      <div
+        class="c3 rdt_TableHead"
+        role="rowgroup"
+      >
+        <div
+          class="c4 rdt_TableHeadRow"
+          role="row"
+        >
+          <div
+            class="c5 c6 rdt_TableCol"
+            data-column-id="1"
+          />
+        </div>
+      </div>
+      <div
+        class="c7 rdt_TableBody"
+        role="rowgroup"
+      >
+        <div
+          class="c8 rdt_TableRow"
+          id="row-1"
+          role="row"
+        >
+          <div
+            class="c9 c6 c10 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-1"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Apple
+            </div>
+          </div>
+        </div>
+        <div
+          class="c8 rdt_TableRow"
+          id="row-2"
+          role="row"
+        >
+          <div
+            class="c9 c6 c10 rdt_TableCell"
+            data-column-id="1"
+            data-tag="allowRowEvents"
+            id="cell-1-2"
+            role="cell"
+          >
+            <div
+              data-tag="allowRowEvents"
+            >
+              Zuchinni
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`data prop changes should update state if the data prop changes 1`] = `
 .c2 {
   position: relative;
@@ -20584,19 +21791,21 @@ exports[`data prop changes should update state if the data prop changes 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -21077,19 +22286,21 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -21427,19 +22638,21 @@ exports[`should render correctly when conditionalRowStyles is used with an expan
             class="c7 c8 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c9 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c10"
+                class="c9 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c10"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -21705,19 +22918,21 @@ exports[`should render correctly when conditionalRowStyles with classNames is us
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -21919,19 +23134,21 @@ exports[`should render correctly when disabled 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Test
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Test
+                </div>
               </div>
             </div>
           </div>
@@ -22130,19 +23347,21 @@ exports[`should render the correctly when using selector function 1`] = `
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Name
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Name
+                </div>
               </div>
             </div>
           </div>
@@ -22322,19 +23541,21 @@ exports[`should render the correctly when using selector function and a format f
             class="c5 c6 rdt_TableCol"
             data-column-id="1"
           >
-            <div
-              class="c7 rdt_TableCol_Sortable"
-              data-column-id="1"
-              data-sort-id="1"
-              disabled=""
-              role="columnheader"
-              tabindex="0"
-            >
+            <div>
               <div
-                class="c8"
+                class="c7 rdt_TableCol_Sortable"
                 data-column-id="1"
+                data-sort-id="1"
+                disabled=""
+                role="columnheader"
+                tabindex="0"
               >
-                Name
+                <div
+                  class="c8"
+                  data-column-id="1"
+                >
+                  Name
+                </div>
               </div>
             </div>
           </div>

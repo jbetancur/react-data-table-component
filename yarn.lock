@@ -12977,9 +12977,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-data-table-component@workspace:.":
+"react-data-table-component-with-filter@workspace:.":
   version: 0.0.0-use.local
-  resolution: "react-data-table-component@workspace:."
+  resolution: "react-data-table-component-with-filter@workspace:."
   dependencies:
     "@babel/core": "npm:^7.23.7"
     "@babel/eslint-parser": "npm:^7.23.3"

@@ -28,6 +28,11 @@ export type PaginationComponentProps = {
 };
 export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
+export type FilterComponentProps = {
+	name: string;
+	onChange: (e: React.ChangeEvent) => void;
+}
+
 export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	ariaLabel?: string;
@@ -55,6 +60,7 @@ export type TableProps<T> = {
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
+	filterServer?: boolean;
 	fixedHeader?: boolean;
 	fixedHeaderScrollHeight?: string;
 	highlightOnHover?: boolean;
@@ -65,6 +71,7 @@ export type TableProps<T> = {
 	noTableHead?: boolean;
 	onChangePage?: PaginationChangePage;
 	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
+	onFilter?: (filters: { [k: string]: { column: TableColumn<T>; value: string } }) => void;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
@@ -133,8 +140,11 @@ export type TableColumnBase = {
 	omit?: boolean;
 	right?: boolean;
 	sortable?: boolean;
+	filterable?: boolean;
+	filterValues?: Primitive[] | {value: Primitive, label: string}[];
 	style?: CSSObject;
 	width?: string;
+	filterValue?: string
 	wrap?: boolean;
 };
 
@@ -246,6 +256,9 @@ export type TableState<T> = {
 	contextMessage: ContextMessage;
 	selectedCount: number;
 	selectedRows: T[];
+	filteredData: T[];
+	filterActive: boolean;
+	filters: { [k: string]: { column: TableColumn<T>; value: string } };
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
 	currentPage: number;
@@ -346,6 +359,18 @@ export interface SortAction<T> {
 	clearSelectedOnSort: boolean;
 }
 
+export interface FilterAction<T> {
+	type: 'FILTER_CHANGE';
+	filterServer: boolean;
+	filterText: string;
+	selectedColumn: TableColumn<T>;
+	clearSelectedOnSort: boolean;
+	//pagination: boolean;
+	//paginationServer: boolean;
+	//visibleOnly: boolean;
+	//persistSelectedOnSort: boolean;
+}
+
 export interface PaginationPageAction {
 	type: 'CHANGE_PAGE';
 	page: number;
@@ -375,6 +400,8 @@ export type Action<T> =
 	| SingleRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
+	| FilterAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
+	| FilterAction<T>
 	| ClearSelectedRowsAction;

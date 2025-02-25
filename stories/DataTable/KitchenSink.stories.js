@@ -20,12 +20,14 @@ const columns = [
 		name: 'Title',
 		selector: row => row.title,
 		sortable: true,
+		filterable: true,
 		reorder: true,
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
+		filterable: true,
 		reorder: true,
 	},
 	{
@@ -33,6 +35,8 @@ const columns = [
 		selector: row => row.year,
 		sortable: true,
 		reorder: true,
+		filterable: true,
+		filterValues: [1998, 1999, {value: '2000', label: 'Millenium'}, 2001],
 	},
 ];
 
@@ -74,6 +78,8 @@ const KitchenSinkStory = ({
 	);
 
 	return (
+		<>
+			<p>JavaScript</p>
 		<DataTable
 			title="Movie List"
 			columns={columns}
@@ -108,7 +114,8 @@ const KitchenSinkStory = ({
 			direction={direction}
 			responsive={responsive}
 			disabled={disabled}
-		/>
+			/>
+			</>
 	);
 };
 

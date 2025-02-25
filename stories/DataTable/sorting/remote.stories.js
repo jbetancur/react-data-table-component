@@ -3,6 +3,7 @@ import doc from './remote.mdx';
 import { orderBy } from 'lodash';
 import initData from '../../constants/sampleMovieData';
 import DataTable from '../../../src/index';
+import { getProperty } from '../../../src/DataTable/util';
 
 const columns = [
 	{
@@ -10,12 +11,15 @@ const columns = [
 		selector: row => row.title,
 		sortable: true,
 		sortField: 'title',
+		filterable: true,
+		filterValue: 'god',
 	},
 	{
 		name: 'Director',
 		selector: row => row.director,
 		sortable: true,
 		sortField: 'director',
+		filterable: true,
 	},
 	{
 		name: 'Year',
@@ -41,11 +45,32 @@ export const RemoteSort = () => {
 		}, 100);
 	};
 
+	const handleFilter = filters => {
+		// simulate server sort
+
+		setLoading(true);
+
+		// instead of setTimeout this is where you would handle your API call.
+		setTimeout(() => {
+			const filteredRows = initData.filter((row, idx) =>
+				Object.entries(filters) //
+					.reduce((acc, [_, { column, value }]) => {
+						return new RegExp(`.*${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}.*`, 'i').test(getProperty(row, column.selector, null, idx)?.toString() ?? '')
+							? acc
+							: false;
+					}, true),
+			);
+			setData(filteredRows);
+			setLoading(false);
+		}, 100);
+	};
+
 	return (
 		<DataTable
 			title="Movie List"
 			columns={columns}
 			data={data}
+			onFilter={handleFilter}
 			sortServer
 			onSort={handleSort}
 			progressPending={loading}

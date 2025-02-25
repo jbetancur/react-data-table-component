@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import { CellExtended, CellProps } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { equalizeId } from './util';
-import { TableColumn, SortAction, SortOrder } from './types';
+import { TableColumn, SortAction, SortOrder, FilterAction } from './types';
+import { ChangeEvent } from 'react';
 
 interface ColumnStyleProps extends CellProps {
 	$isDragging?: boolean;
@@ -14,7 +15,7 @@ interface ColumnStyleProps extends CellProps {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
+const ColumnStyled = styled(CellExtended) <ColumnStyleProps>`
 	${({ button }) => button && 'text-align: center'};
 	${({ theme, $isDragging }) => $isDragging && theme.headCells.draggingStyle};
 `;
@@ -91,8 +92,10 @@ type TableColProps<T> = {
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
 	sortServer: boolean;
+	filterServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	onSort: (action: SortAction<T>) => void;
+	onFilter: (action: FilterAction<T>) => void;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -108,11 +111,13 @@ function TableCol<T>({
 	sortDirection,
 	sortIcon,
 	sortServer,
+	filterServer,
 	pagination,
 	paginationServer,
 	persistSelectedOnSort,
 	selectableRowsVisibleOnly,
 	onSort,
+	onFilter,
 	onDragStart,
 	onDragOver,
 	onDragEnd,
@@ -130,6 +135,7 @@ function TableCol<T>({
 
 	const [showTooltip, setShowTooltip] = React.useState(false);
 	const columnRef = React.useRef<HTMLDivElement | null>(null);
+	const [pristine, setPristine] = React.useState(true);
 
 	React.useEffect(() => {
 		if (columnRef.current) {
@@ -140,6 +146,22 @@ function TableCol<T>({
 	if (column.omit) {
 		return null;
 	}
+
+	React.useEffect(() => {
+		if (pristine) {
+			setPristine(false);
+			if (column.filterable && column.selector && column.filterValue && column.filterValue !== '') {
+				onFilter({
+					type: 'FILTER_CHANGE',
+					filterServer: filterServer,
+					filterText: column.filterValue,
+					selectedColumn: column,
+					clearSelectedOnSort:
+						(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
+				});
+			}
+		}
+	}, [pristine]);
 
 	const handleSortChange = () => {
 		if (!column.sortable && !column.selector) {
@@ -159,6 +181,20 @@ function TableCol<T>({
 			clearSelectedOnSort:
 				(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
 		});
+	};
+
+	const handleFilterChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+		if (column.filterable && column.selector) {
+			column.filterValue = e.target.value;
+			onFilter({
+				type: 'FILTER_CHANGE',
+				filterServer: filterServer,
+				filterText: e.target.value,
+				selectedColumn: column,
+				clearSelectedOnSort:
+					(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
+			});
+		}
 	};
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -206,6 +242,7 @@ function TableCol<T>({
 			onDragLeave={onDragLeave}
 		>
 			{column.name && (
+				<div>
 				<ColumnSortable
 					data-column-id={column.id}
 					data-sort-id={column.id}
@@ -220,17 +257,46 @@ function TableCol<T>({
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
-					{typeof column.name === 'string' ? (
-						<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
-							{column.name}
-						</ColumnText>
-					) : (
-						column.name
-					)}
+						{typeof column.name === 'string' ? (
+							<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
+								{column.name}
+							</ColumnText>
+						) : (
+							column.name
+						)}
 
-					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
-					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-				</ColumnSortable>
+						{!disableSort && customSortIconLeft && renderCustomSortIcon()}
+						{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
+					</ColumnSortable>
+					{column.filterable && (
+						<div style={{ display: 'block' }}>
+							{column.filterValues && column.filterValues.length > 0 ?
+								<select name={column?.name?.toString()}
+									data-filter-id={column?.name?.toString().toLowerCase()}
+									onChange={handleFilterChange}>
+									value={column.filterValue}
+									<option value=""></option>
+									{column?.filterValues?.map((filterValue, index) => (
+										<option key={index} value={
+											(typeof filterValue === 'object' && 'value' in filterValue ?
+												filterValue.value : filterValue) as string}>
+											{(typeof filterValue === 'object' && 'label' in filterValue ?
+												filterValue.label : filterValue) }
+										</option>
+									))}
+								</select>
+								:
+								<input
+									name={column?.name?.toString()}
+									value={column.filterValue}
+									data-filter-id={column?.name?.toString().toLowerCase()}
+									onChange={handleFilterChange}
+									placeholder="filter"
+								/>
+							}
+						</div>
+					)}
+					</div>
 			)}
 		</ColumnStyled>
 	);

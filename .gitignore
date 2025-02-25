@@ -71,3 +71,5 @@ package-lock.json
 
 # visualizer
 stats.html
+
+.yarn
