@@ -116,6 +116,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
 		className,
+		ariaLabel,
 	} = props;
 
 	const {
@@ -380,7 +381,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				<Wrapper>
 					{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
-					<Table disabled={disabled} className="rdt_Table" role="table">
+					<Table disabled={disabled} className="rdt_Table" role="table" {...(ariaLabel && { 'aria-label': ariaLabel })}>
 						{showTableHead() && (
 							<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
 								<HeadRow className="rdt_TableHeadRow" role="row" $dense={dense}>

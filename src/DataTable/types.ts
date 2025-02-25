@@ -30,6 +30,7 @@ export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
 export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
+	ariaLabel?: string;
 	className?: string;
 	clearSelectedRows?: boolean;
 	columns: TableColumn<T>[];

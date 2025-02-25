@@ -2214,6 +2214,38 @@ describe('DataTable::dense', () => {
 	});
 });
 
+describe('DataTable::ariaLabel', () => {
+	test('should render correctly when ariaLabel', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} ariaLabel="Test Table" />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
+	test('should render correctly when not ariaLabel', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		expect(container.firstChild).toMatchSnapshot();
+	});
+
+	test('should render with aria-label when ariaLabel', () => {
+		const mock = dataMock();
+		const { getByRole } = render(<DataTable data={mock.data} columns={mock.columns} ariaLabel="Test Table" />);
+
+		const table = getByRole('table');
+		expect(table.getAttribute('aria-label')).toBe('Test Table');
+	});
+
+	test('should not render with aria-label when not ariaLabel', () => {
+		const mock = dataMock();
+		const { getByRole } = render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		const table = getByRole('table');
+		expect(table.getAttribute('aria-label')).toBeNull();
+	});
+});
+
 describe('DataTable::Theming', () => {
 	test('should render correctly when a custom style is applied', () => {
 		const mock = dataMock();
