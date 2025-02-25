@@ -164,6 +164,25 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			},
 		},
 	},
+	foot: {
+		style: {
+			color: theme.text.primary,
+			fontSize: '12px',
+			fontWeight: 500,
+		},
+	},
+	footRow: {
+		style: {
+			backgroundColor: theme.background.default,
+			minHeight: '52px',
+			borderTopWidth: '1px',
+			borderTopColor: theme.divider.default,
+			borderTopStyle: 'solid',
+		},
+		denseStyle: {
+			minHeight: '32px',
+		},
+	},
 	pagination: {
 		style: {
 			color: theme.text.secondary,

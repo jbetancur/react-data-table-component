@@ -1,5 +1,14 @@
 import { CSSObject } from 'styled-components';
-import { ConditionalStyles, TableColumn, Format, TableRow, Selector, SortOrder, SortFunction } from './types';
+import {
+	ConditionalStyles,
+	FooterContent,
+	Format,
+	Selector,
+	SortFunction,
+	SortOrder,
+	TableColumn,
+	TableRow,
+} from './types';
 
 export function prop<T, K extends keyof T>(obj: T, key: K): T[K] {
 	return obj[key];
@@ -54,6 +63,14 @@ export function sort<T>(
 
 		return 0;
 	});
+}
+
+export function getFooterProperty<T>(rows: T[], footerContent: FooterContent<T> | undefined | null): React.ReactNode {
+	if (!footerContent) {
+		return null;
+	}
+
+	return footerContent(rows);
 }
 
 export function getProperty<T>(

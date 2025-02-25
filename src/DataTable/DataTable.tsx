@@ -1,37 +1,41 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { tableReducer } from './tableReducer';
-import Table from './Table';
-import Head from './TableHead';
-import HeadRow from './TableHeadRow';
-import Row from './TableRow';
-import Column from './TableCol';
-import ColumnCheckbox from './TableColCheckbox';
-import Header from './TableHeader';
-import Subheader from './TableSubheader';
-import Body from './TableBody';
-import ResponsiveWrapper from './ResponsiveWrapper';
-import ProgressWrapper from './ProgressWrapper';
-import Wrapper from './TableWrapper';
-import ColumnExpander from './TableColExpander';
+import useColumns from '../hooks/useColumns';
+import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
-import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import ProgressWrapper from './ProgressWrapper';
+import ResponsiveWrapper from './ResponsiveWrapper';
+import Table from './Table';
+import Body from './TableBody';
+import Column from './TableCol';
+import ColumnCheckbox from './TableColCheckbox';
+import ColumnExpander from './TableColExpander';
+import Foot from './TableFoot';
+import FootRow from './TableFootRow';
+import TableFooterCell from './TableFooterCell';
+import Head from './TableHead';
+import HeadRow from './TableHeadRow';
+import Header from './TableHeader';
+import Row from './TableRow';
+import Subheader from './TableSubheader';
+import Wrapper from './TableWrapper';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
+import { tableReducer } from './tableReducer';
 import {
 	Action,
 	AllRowsAction,
 	SingleRowAction,
-	TableRow,
 	SortAction,
-	TableProps,
-	TableState,
 	SortOrder,
+	TableProps,
+	TableRow,
+	TableState,
 } from './types';
-import useColumns from '../hooks/useColumns';
+import { getNumberOfPages, isEmpty, isRowSelected, prop, recalculatePage, sort } from './util';
+import { STOP_PROP_TAG } from './constants';
 
 function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const {
@@ -81,6 +85,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		noHeader = defaultProps.noHeader,
 		fixedHeader = defaultProps.fixedHeader,
 		fixedHeaderScrollHeight = defaultProps.fixedHeaderScrollHeight,
+		showFooter = defaultProps.showFooter,
 		pagination = defaultProps.pagination,
 		subHeader = defaultProps.subHeader,
 		subHeaderAlign = defaultProps.subHeaderAlign,
@@ -279,6 +284,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		}
 
 		return false;
+	};
+
+	const showTableFoot = () => {
+		if (!showFooter) {
+			return false;
+		}
+
+		return sortedData.length > 0 && !progressPending;
 	};
 
 	// recalculate the pagination and currentPage if the rows length changes
@@ -489,6 +502,30 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									);
 								})}
 							</Body>
+						)}
+
+						{showTableFoot() && (
+							<Foot className="rdt_TableFoot" role="rowgroup">
+								<FootRow className="rdt_TableFootRow" role="row" $dense={dense}>
+									{selectableRows && <CellBase style={{ flex: '0 0 48px' }} />}
+									{showFooter &&
+										tableColumns.map(column => (
+											<TableFooterCell<T>
+												id={column.id as string}
+												key={column.id}
+												dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
+												column={column}
+												rows={tableRows}
+												isDragging={false}
+												onDragStart={handleDragStart}
+												onDragOver={handleDragOver}
+												onDragEnd={handleDragEnd}
+												onDragEnter={handleDragEnter}
+												onDragLeave={handleDragLeave}
+											/>
+										))}
+								</FootRow>
+							</Foot>
 						)}
 					</Table>
 				</Wrapper>
