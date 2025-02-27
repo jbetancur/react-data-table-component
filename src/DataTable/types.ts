@@ -39,7 +39,7 @@ export type TableProps<T> = {
 	contextComponent?: React.ReactNode;
 	contextMessage?: ContextMessage;
 	customStyles?: TableStyles;
-	data: T[];
+	data: T[] | undefined;
 	defaultSortAsc?: boolean;
 	defaultSortFieldId?: string | number | null | undefined;
 	dense?: boolean;
