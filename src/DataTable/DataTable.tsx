@@ -349,7 +349,12 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
-
+// Add this outside the component (top of file)
+const generateFallbackId = (column: TableColumn<T>): string => {
+  return column.name
+    ? column.name.toLowerCase().replace(/[^a-z0-9]/g, '_')
+    : `col_${Math.random().toString(36).substring(2, 9)}`; // Better than Date.now()
+};
 	return (
 		<ThemeProvider theme={currentTheme}>
 			{showHeader() && (
@@ -405,7 +410,10 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 									{tableColumns.map(column => (
 										<Column
 											key={column.id}
-											column={column}
+										  column={{
+      ...column,
+      id: column.id || generateFallbackId(column),
+    }}
 											selectedColumn={selectedColumn}
 											disabled={progressPending || sortedData.length === 0}
 											pagination={pagination}
