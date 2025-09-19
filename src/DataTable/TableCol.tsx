@@ -177,6 +177,7 @@ function TableCol<T>({
 
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
 	const disableSort = !column.sortable || disabled;
+	const tabIndex = disableSort ? -1 : 0;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
 	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
 	const customSortIconLeft = column.sortable && sortIcon && !column.right;
@@ -210,7 +211,7 @@ function TableCol<T>({
 					data-column-id={column.id}
 					data-sort-id={column.id}
 					role="columnheader"
-					tabIndex={0}
+					tabIndex={tabIndex}
 					className="rdt_TableCol_Sortable"
 					onClick={!disableSort ? handleSortChange : undefined}
 					onKeyPress={!disableSort ? handleKeyPress : undefined}
