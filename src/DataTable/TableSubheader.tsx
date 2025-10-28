@@ -22,7 +22,7 @@ const SubheaderWrapper = styled.header<{
 	width: 100%;
 	justify-content: ${({ align }) => alignMap[align]};
 	flex-wrap: ${({ $wrapContent }) => ($wrapContent ? 'wrap' : 'nowrap')};
-	${({ theme }) => theme.subHeader.style}
+	${({ theme }) => theme.subHeader?.style}
 `;
 
 type SubheaderProps = {

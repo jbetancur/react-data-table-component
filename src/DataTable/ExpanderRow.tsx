@@ -7,7 +7,7 @@ const ExpanderRowStyle = styled.div<{
 }>`
 	width: 100%;
 	box-sizing: border-box;
-	${({ theme }) => theme.expanderRow.style};
+	${({ theme }) => theme.expanderRow?.style};
 	${({ $extendedRowStyle }) => $extendedRowStyle};
 `;
 

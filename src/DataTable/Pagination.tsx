@@ -26,7 +26,7 @@ const PaginationWrapper = styled.nav`
 	padding-right: 8px;
 	padding-left: 8px;
 	width: 100%;
-	${({ theme }) => theme.pagination.style};
+	${({ theme }) => theme.pagination?.style};
 `;
 
 const Button = styled.button<{
@@ -36,7 +36,7 @@ const Button = styled.button<{
 	display: block;
 	user-select: none;
 	border: none;
-	${({ theme }) => theme.pagination.pageButtonsStyle};
+	${({ theme }) => theme.pagination?.pageButtonsStyle};
 	${({ $isRTL }) => $isRTL && 'transform: scale(-1, -1)'};
 `;
 

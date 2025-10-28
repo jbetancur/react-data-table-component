@@ -13,7 +13,7 @@ const highlightCSS = css<{
 	$highlightOnHover?: boolean;
 }>`
 	&:hover {
-		${({ $highlightOnHover, theme }) => $highlightOnHover && theme.rows.highlightOnHoverStyle};
+		${({ $highlightOnHover, theme }) => $highlightOnHover && theme.rows?.highlightOnHoverStyle};
 	}
 `;
 
@@ -38,12 +38,12 @@ const TableRowStyle = styled.div.attrs(props => ({
 	align-content: stretch;
 	width: 100%;
 	box-sizing: border-box;
-	${({ theme }) => theme.rows.style};
-	${({ $dense, theme }) => $dense && theme.rows.denseStyle};
-	${({ $striped, theme }) => $striped && theme.rows.stripedStyle};
+	${({ theme }) => theme.rows?.style};
+	${({ $dense, theme }) => $dense && theme.rows?.denseStyle};
+	${({ $striped, theme }) => $striped && theme.rows?.stripedStyle};
 	${({ $highlightOnHover }) => $highlightOnHover && highlightCSS};
 	${({ $pointerOnHover }) => $pointerOnHover && pointerCSS};
-	${({ $selected, theme }) => $selected && theme.rows.selectedHighlightStyle};
+	${({ $selected, theme }) => $selected && theme.rows?.selectedHighlightStyle};
 	${({ $conditionalStyle }) => $conditionalStyle};
 `;
 
@@ -282,4 +282,64 @@ function Row<T>({
 	);
 }
 
-export default Row;
+// Custom comparison function for React.memo
+// Only re-render if specific props that affect rendering have changed
+function areRowPropsEqual<T>(prevProps: TableRowProps<T>, nextProps: TableRowProps<T>): boolean {
+	// If row data changed (by reference), re-render
+	if (prevProps.row !== nextProps.row) {
+		return false;
+	}
+
+	// If selection state changed, re-render
+	if (prevProps.selected !== nextProps.selected) {
+		return false;
+	}
+
+	// If columns changed (reordering, hiding, etc.), re-render
+	if (prevProps.columns !== nextProps.columns) {
+		return false;
+	}
+
+	// If expand state changed, re-render
+	if (prevProps.defaultExpanded !== nextProps.defaultExpanded) {
+		return false;
+	}
+
+	// If disabled state changed, re-render
+	if (prevProps.defaultExpanderDisabled !== nextProps.defaultExpanderDisabled) {
+		return false;
+	}
+
+	// If dragging state changed, re-render
+	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
+		return false;
+	}
+
+	// If striping changes (happens when filtering/sorting), re-render
+	if (prevProps.striped !== nextProps.striped || prevProps.rowIndex !== nextProps.rowIndex) {
+		return false;
+	}
+
+	// If row count changes (affects "select all"), re-render
+	if (prevProps.rowCount !== nextProps.rowCount) {
+		return false;
+	}
+
+	// If conditional styles changed, re-render
+	if (prevProps.conditionalRowStyles !== nextProps.conditionalRowStyles) {
+		return false;
+	}
+
+	// Event handlers: only check if they changed from noop to real function or vice versa
+	// This avoids re-renders when callbacks are recreated but still do the same thing
+	const prevHasRowClick = prevProps.onRowClicked !== noop;
+	const nextHasRowClick = nextProps.onRowClicked !== noop;
+	if (prevHasRowClick !== nextHasRowClick) {
+		return false;
+	}
+
+	// All other props (styling, etc.) are stable or don't affect this specific row
+	return true;
+}
+
+export default React.memo(Row, areRowPropsEqual) as typeof Row;

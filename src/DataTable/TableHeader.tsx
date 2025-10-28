@@ -14,13 +14,13 @@ const HeaderStyle = styled.div`
 	justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
-	${({ theme }) => theme.header.style}
+	${({ theme }) => theme.header?.style}
 `;
 
 const Title = styled.div`
 	flex: 1 0 auto;
-	color: ${({ theme }) => theme.header.fontColor};
-	font-size: ${({ theme }) => theme.header.fontSize};
+	color: ${({ theme }) => theme.header?.fontColor};
+	font-size: ${({ theme }) => theme.header?.fontSize};
 	font-weight: 400;
 `;
 

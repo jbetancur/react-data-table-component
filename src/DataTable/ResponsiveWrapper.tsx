@@ -31,7 +31,7 @@ const ResponsiveWrapper = styled.div<{
 			-webkit-overflow-scrolling: touch;
 		`};
 
-	${({ theme }) => theme.responsiveWrapper.style};
+	${({ theme }) => theme.responsiveWrapper?.style};
 `;
 
 export default ResponsiveWrapper;

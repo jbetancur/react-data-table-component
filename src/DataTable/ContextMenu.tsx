@@ -9,8 +9,8 @@ const Title = styled.div`
 	align-items: center;
 	flex: 1 0 auto;
 	height: 100%;
-	color: ${({ theme }) => theme.contextMenu.fontColor};
-	font-size: ${({ theme }) => theme.contextMenu.fontSize};
+	color: ${({ theme }) => theme.contextMenu?.fontColor};
+	font-size: ${({ theme }) => theme.contextMenu?.fontSize};
 	font-weight: 400;
 `;
 
@@ -36,8 +36,8 @@ const ContextMenuStyle = styled.div<{
 	justify-content: space-between;
 	display: flex;
 	${({ $rtl }) => $rtl && 'direction: rtl'};
-	${({ theme }) => theme.contextMenu.style};
-	${({ theme, $visible }) => $visible && theme.contextMenu.activeStyle};
+	${({ theme }) => theme.contextMenu?.style};
+	${({ theme, $visible }) => $visible && theme.contextMenu?.activeStyle};
 `;
 
 const generateDefaultContextTitle = (contextMessage: ContextMessage, selectedCount: number, rtl: boolean) => {

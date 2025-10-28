@@ -11,7 +11,7 @@ export const CellBase = styled.div<{
 	align-items: center;
 	box-sizing: border-box;
 	line-height: normal;
-	${({ theme, $headCell }) => theme[$headCell ? 'headCells' : 'cells'].style};
+	${({ theme, $headCell }) => theme[$headCell ? 'headCells' : 'cells']?.style};
 	${({ $noPadding }) => $noPadding && 'padding: 0'};
 `;
 

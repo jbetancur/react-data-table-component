@@ -16,7 +16,7 @@ const TableStyle = styled.div<{
 	height: 100%;
 	max-width: 100%;
 	${({ disabled }) => disabled && disabledCSS};
-	${({ theme }) => theme.table.style};
+	${({ theme }) => theme.table?.style};
 `;
 
 export default TableStyle;

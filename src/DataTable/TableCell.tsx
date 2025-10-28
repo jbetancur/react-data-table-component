@@ -24,7 +24,7 @@ const CellStyle = styled(CellExtended).attrs(props => ({
 	style: props.style,
 }))<CellStyleProps>`
 	${({ $renderAsCell }) => !$renderAsCell && overflowCSS};
-	${({ theme, $isDragging }) => $isDragging && theme.cells.draggingStyle};
+	${({ theme, $isDragging }) => $isDragging && theme.cells?.draggingStyle};
 	${({ $cellStyle }) => $cellStyle};
 `;
 
@@ -91,4 +91,42 @@ function Cell<T>({
 	);
 }
 
-export default React.memo(Cell) as typeof Cell;
+// Custom comparison function for React.memo
+// Prevents re-renders when non-essential props change
+function areCellPropsEqual<T>(prevProps: CellProps<T>, nextProps: CellProps<T>): boolean {
+	// If row data changed (by reference), re-render
+	if (prevProps.row !== nextProps.row) {
+		return false;
+	}
+
+	// If column definition changed (reordering, hiding, style changes), re-render
+	if (prevProps.column !== nextProps.column) {
+		return false;
+	}
+
+	// If dragging state changed, re-render
+	if (prevProps.isDragging !== nextProps.isDragging) {
+		return false;
+	}
+
+	// rowIndex can affect formatting functions
+	if (prevProps.rowIndex !== nextProps.rowIndex) {
+		return false;
+	}
+
+	// dataTag affects event propagation
+	if (prevProps.dataTag !== nextProps.dataTag) {
+		return false;
+	}
+
+	// id is stable per cell, but check for safety
+	if (prevProps.id !== nextProps.id) {
+		return false;
+	}
+
+	// Drag handlers are stable (passed from parent), no need to deep compare
+	// This is the key optimization - ignoring function reference changes
+	return true;
+}
+
+export default React.memo(Cell, areCellPropsEqual) as typeof Cell;

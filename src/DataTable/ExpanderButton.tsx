@@ -9,7 +9,7 @@ const ButtonStyle = styled.button`
 	white-space: nowrap;
 	border: none;
 	background-color: transparent;
-	${({ theme }) => theme.expanderButton.style};
+	${({ theme }) => theme.expanderButton?.style};
 `;
 
 type ExpanderButtonProps<T> = {

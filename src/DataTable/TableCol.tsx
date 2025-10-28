@@ -16,7 +16,7 @@ interface ColumnStyleProps extends CellProps {
 
 const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
 	${({ button }) => button && 'text-align: center'};
-	${({ theme, $isDragging }) => $isDragging && theme.headCells.draggingStyle};
+	${({ theme, $isDragging }) => $isDragging && theme.headCells?.draggingStyle};
 `;
 
 interface ColumnSortableProps {
@@ -237,4 +237,47 @@ function TableCol<T>({
 	);
 }
 
-export default React.memo(TableCol) as typeof TableCol;
+// Custom comparison function for React.memo
+// Columns rarely change, so this prevents unnecessary re-renders during sorting/selection
+function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
+	// If column definition changed (reordering, hiding, etc.), re-render
+	if (prevProps.column !== nextProps.column) {
+		return false;
+	}
+
+	// If this column is the selected sort column, check sort direction
+	const prevIsSelected = equalizeId(prevProps.selectedColumn.id, prevProps.column.id);
+	const nextIsSelected = equalizeId(nextProps.selectedColumn.id, nextProps.column.id);
+
+	if (prevIsSelected !== nextIsSelected) {
+		return false; // Selection state changed
+	}
+
+	if (prevIsSelected && nextIsSelected && prevProps.sortDirection !== nextProps.sortDirection) {
+		return false; // Sort direction changed for this column
+	}
+
+	// If dragging state changed for this column, re-render
+	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
+		const prevIsDragging = equalizeId(prevProps.column.id, prevProps.draggingColumnId);
+		const nextIsDragging = equalizeId(nextProps.column.id, nextProps.draggingColumnId);
+		if (prevIsDragging !== nextIsDragging) {
+			return false;
+		}
+	}
+
+	// If disabled state changed, re-render
+	if (prevProps.disabled !== nextProps.disabled) {
+		return false;
+	}
+
+	// sortIcon can change
+	if (prevProps.sortIcon !== nextProps.sortIcon) {
+		return false;
+	}
+
+	// All other props are stable configuration
+	return true;
+}
+
+export default React.memo(TableCol, areColPropsEqual) as typeof TableCol;

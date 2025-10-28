@@ -166,6 +166,8 @@ export interface TableStyles {
 	};
 	header?: {
 		style: CSSObject;
+		fontColor?: string;
+		fontSize?: string;
 	};
 	subHeader?: {
 		style: CSSObject;
@@ -184,6 +186,8 @@ export interface TableStyles {
 	contextMenu?: {
 		style?: CSSObject;
 		activeStyle?: CSSObject;
+		fontColor?: string;
+		fontSize?: string;
 	};
 	cells?: {
 		style: CSSObject;

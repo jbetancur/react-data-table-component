@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { tableReducer } from './tableReducer';
 import Table from './Table';
 import Head from './TableHead';
 import HeadRow from './TableHeadRow';
@@ -17,21 +16,13 @@ import ColumnExpander from './TableColExpander';
 import { CellBase } from './Cell';
 import NoData from './NoDataWrapper';
 import NativePagination from './Pagination';
-import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { prop, getNumberOfPages, sort, isEmpty, isRowSelected, recalculatePage } from './util';
+import { prop, getNumberOfPages, isEmpty, isRowSelected, recalculatePage } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import {
-	Action,
-	AllRowsAction,
-	SingleRowAction,
-	TableRow,
-	SortAction,
-	TableProps,
-	TableState,
-	SortOrder,
-} from './types';
+import { TableRow, TableProps } from './types';
 import useColumns from '../hooks/useColumns';
+import useTableState from '../hooks/useTableState';
+import useTableData from '../hooks/useTableData';
 
 function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const {
@@ -119,6 +110,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		ariaLabel,
 	} = props;
 
+	// Column management (drag-and-drop, sorting)
 	const {
 		tableColumns,
 		draggingColumnId,
@@ -131,79 +123,70 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		defaultSortColumn,
 	} = useColumns(columns, onColumnOrderChange, defaultSortFieldId, defaultSortAsc);
 
-	const [
-		{
-			rowsPerPage,
-			currentPage,
-			selectedRows,
-			allSelected,
-			selectedCount,
-			selectedColumn,
-			sortDirection,
-			toggleOnSelectedRowsChange,
-		},
-		dispatch,
-	] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, {
-		allSelected: false,
-		selectedCount: 0,
-		selectedRows: [],
-		selectedColumn: defaultSortColumn,
-		toggleOnSelectedRowsChange: false,
-		sortDirection: defaultSortDirection,
-		currentPage: paginationDefaultPage,
-		rowsPerPage: paginationPerPage,
-		selectedRowsFlag: false,
-		contextMessage: defaultProps.contextMessage,
+	// State management (selection, pagination, sorting)
+	const {
+		tableState,
+		handleSort,
+		handleSelectAllRows,
+		handleSelectedRow,
+		handleChangePage: handleChangePageState,
+		handleChangeRowsPerPage: handleChangeRowsPerPageState,
+	} = useTableState({
+		data,
+		keyField,
+		defaultSortColumn,
+		defaultSortDirection,
+		paginationDefaultPage,
+		paginationPerPage,
+		paginationServer,
+		paginationServerOptions,
+		paginationTotalRows,
+		pagination,
+		selectableRowsSingle,
+		selectableRowsVisibleOnly,
+		selectableRowSelected,
+		clearSelectedRows,
+		paginationResetDefaultPage,
+		onSelectedRowsChange,
+		onSort,
+		onChangePage,
+		onChangeRowsPerPage,
 	});
 
+	const {
+		rowsPerPage,
+		currentPage,
+		selectedRows,
+		allSelected,
+		selectedCount,
+		selectedColumn,
+		sortDirection,
+	} = tableState;
+
+	// Data transformation (sorting, pagination)
+	const { sortedData, tableRows } = useTableData({
+		data,
+		columns,
+		selectedColumn,
+		sortDirection,
+		currentPage,
+		rowsPerPage,
+		pagination,
+		paginationServer,
+		sortServer,
+		sortFunction,
+		onSort,
+	});
+
+	// UI state and configuration
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
-
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 
-	const sortedData = React.useMemo(() => {
-		// server-side sorting bypasses internal sorting
-		if (sortServer) {
-			return data;
-		}
-
-		if (selectedColumn?.sortFunction && typeof selectedColumn.sortFunction === 'function') {
-			const sortFn = selectedColumn.sortFunction;
-			const customSortFunction = sortDirection === SortOrder.ASC ? sortFn : (a: T, b: T) => sortFn(a, b) * -1;
-
-			return [...data].sort(customSortFunction);
-		}
-
-		return sort(data, selectedColumn?.selector, sortDirection, sortFunction);
-	}, [sortServer, selectedColumn, sortDirection, data, sortFunction]);
-
-	const tableRows = React.useMemo(() => {
-		if (pagination && !paginationServer) {
-			// when using client-side pagination we can just slice the rows set
-			const lastIndex = currentPage * rowsPerPage;
-			const firstIndex = lastIndex - rowsPerPage;
-
-			return sortedData.slice(firstIndex, lastIndex);
-		}
-
-		return sortedData;
-	}, [currentPage, pagination, paginationServer, rowsPerPage, sortedData]);
-
-	const handleSort = React.useCallback((action: SortAction<T>) => {
-		dispatch(action);
-	}, []);
-
-	const handleSelectAllRows = React.useCallback((action: AllRowsAction<T>) => {
-		dispatch(action);
-	}, []);
-
-	const handleSelectedRow = React.useCallback((action: SingleRowAction<T>) => {
-		dispatch(action);
-	}, []);
-
+	// Stable event handlers
 	const handleRowClicked = React.useCallback(
 		(row: T, e: React.MouseEvent<Element, MouseEvent>) => onRowClicked(row, e),
 		[onRowClicked],
@@ -225,34 +208,16 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	);
 
 	const handleChangePage = React.useCallback(
-		(page: number) =>
-			dispatch({
-				type: 'CHANGE_PAGE',
-				page,
-				paginationServer,
-				visibleOnly: selectableRowsVisibleOnly,
-				persistSelectedOnPageChange,
-			}),
-		[paginationServer, persistSelectedOnPageChange, selectableRowsVisibleOnly],
+		(page: number) => handleChangePageState(page),
+		[handleChangePageState],
 	);
 
 	const handleChangeRowsPerPage = React.useCallback(
-		(newRowsPerPage: number) => {
-			const rowCount = paginationTotalRows || tableRows.length;
-			const updatedPage = getNumberOfPages(rowCount, newRowsPerPage);
-			const recalculatedPage = recalculatePage(currentPage, updatedPage);
-
-			// update the currentPage for client-side pagination
-			// server - side should be handled by onChangeRowsPerPage
-			if (!paginationServer) {
-				handleChangePage(recalculatedPage);
-			}
-
-			dispatch({ type: 'CHANGE_ROWS_PER_PAGE', page: recalculatedPage, rowsPerPage: newRowsPerPage });
-		},
-		[currentPage, handleChangePage, paginationServer, paginationTotalRows, tableRows.length],
+		(newRowsPerPage: number) => handleChangeRowsPerPageState(newRowsPerPage, tableRows.length),
+		[handleChangeRowsPerPageState, tableRows.length],
 	);
 
+	// Helper functions for conditional rendering
 	const showTableHead = () => {
 		if (noTableHead) {
 			return false;
@@ -281,71 +246,13 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		return false;
 	};
 
-	// recalculate the pagination and currentPage if the rows length changes
+	// Recalculate pagination if rows length changes (client-side pagination edge case)
 	if (pagination && !paginationServer && sortedData.length > 0 && tableRows.length === 0) {
 		const updatedPage = getNumberOfPages(sortedData.length, rowsPerPage);
 		const recalculatedPage = recalculatePage(currentPage, updatedPage);
 
 		handleChangePage(recalculatedPage);
 	}
-
-	useDidUpdateEffect(() => {
-		onSelectedRowsChange({ allSelected, selectedCount, selectedRows: selectedRows.slice(0) });
-		// onSelectedRowsChange trigger is controlled by toggleOnSelectedRowsChange state
-	}, [toggleOnSelectedRowsChange]);
-
-	useDidUpdateEffect(() => {
-		onSort(selectedColumn, sortDirection, sortedData.slice(0));
-		// do not update on sortedData
-	}, [selectedColumn, sortDirection]);
-
-	useDidUpdateEffect(() => {
-		onChangePage(currentPage, paginationTotalRows || sortedData.length);
-	}, [currentPage]);
-
-	useDidUpdateEffect(() => {
-		onChangeRowsPerPage(rowsPerPage, currentPage);
-	}, [rowsPerPage]);
-
-	useDidUpdateEffect(() => {
-		handleChangePage(paginationDefaultPage);
-	}, [paginationDefaultPage, paginationResetDefaultPage]);
-
-	useDidUpdateEffect(() => {
-		if (pagination && paginationServer && paginationTotalRows > 0) {
-			const updatedPage = getNumberOfPages(paginationTotalRows, rowsPerPage);
-			const recalculatedPage = recalculatePage(currentPage, updatedPage);
-
-			if (currentPage !== recalculatedPage) {
-				handleChangePage(recalculatedPage);
-			}
-		}
-	}, [paginationTotalRows]);
-
-	React.useEffect(() => {
-		dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: clearSelectedRows });
-	}, [selectableRowsSingle, clearSelectedRows]);
-
-	React.useEffect(() => {
-		if (!selectableRowSelected) {
-			return;
-		}
-
-		const preSelectedRows = sortedData.filter(row => selectableRowSelected(row));
-		// if selectableRowsSingle mode then return the first match
-		const selected = selectableRowsSingle ? preSelectedRows.slice(0, 1) : preSelectedRows;
-
-		dispatch({
-			type: 'SELECT_MULTIPLE_ROWS',
-			keyField,
-			selectedRows: selected,
-			totalRows: sortedData.length,
-			mergeSelections,
-		});
-
-		// We only want to update the selectedRowState if data changes
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data, selectableRowSelected]);
 
 	const visibleRows = selectableRowsVisibleOnly ? tableRows : sortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;

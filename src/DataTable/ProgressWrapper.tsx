@@ -5,7 +5,7 @@ const ProgressWrapper = styled.div`
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-	${props => props.theme.progress.style};
+	${props => props.theme.progress?.style};
 `;
 
 export default ProgressWrapper;

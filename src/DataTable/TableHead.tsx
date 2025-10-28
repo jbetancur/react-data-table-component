@@ -13,7 +13,7 @@ const Head = styled.div<{
 	display: flex;
 	width: 100%;
 	${({ $fixedHeader }) => $fixedHeader && fixedCSS};
-	${({ theme }) => theme.head.style};
+	${({ theme }) => theme.head?.style};
 `;
 
 export default Head;
