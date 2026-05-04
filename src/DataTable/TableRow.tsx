@@ -1,5 +1,6 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
@@ -7,45 +8,6 @@ import ExpanderRow from './ExpanderRow';
 import { prop, equalizeId, getConditionalStyle, isOdd, noop } from './util';
 import { STOP_PROP_TAG } from './constants';
 import { TableRow, SingleRowAction, TableProps } from './types';
-import { CSSObject } from 'styled-components';
-
-const highlightCSS = css<{
-	$highlightOnHover?: boolean;
-}>`
-	&:hover {
-		${({ $highlightOnHover, theme }) => $highlightOnHover && theme.rows?.highlightOnHoverStyle};
-	}
-`;
-
-const pointerCSS = css`
-	&:hover {
-		cursor: pointer;
-	}
-`;
-
-const TableRowStyle = styled.div.attrs(props => ({
-	style: props.style,
-}))<{
-	$dense?: boolean;
-	$highlightOnHover?: boolean;
-	$pointerOnHover?: boolean;
-	$selected?: boolean;
-	$striped?: boolean;
-	$conditionalStyle?: CSSObject;
-}>`
-	display: flex;
-	align-items: stretch;
-	align-content: stretch;
-	width: 100%;
-	box-sizing: border-box;
-	${({ theme }) => theme.rows?.style};
-	${({ $dense, theme }) => $dense && theme.rows?.denseStyle};
-	${({ $striped, theme }) => $striped && theme.rows?.stripedStyle};
-	${({ $highlightOnHover }) => $highlightOnHover && highlightCSS};
-	${({ $pointerOnHover }) => $pointerOnHover && pointerCSS};
-	${({ $selected, theme }) => $selected && theme.rows?.selectedHighlightStyle};
-	${({ $conditionalStyle }) => $conditionalStyle};
-`;
 
 type DProps<T> = Pick<
 	TableProps<T>,
@@ -137,6 +99,7 @@ function Row<T>({
 	onDragEnter,
 	onDragLeave,
 }: TableRowProps<T>): JSX.Element {
+	const customStyles = useStyles();
 	const [expanded, setExpanded] = React.useState(defaultExpanded);
 
 	React.useEffect(() => {
@@ -152,12 +115,9 @@ function Row<T>({
 
 	const handleRowClick = React.useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
-			// use event delegation allow events to propagate only when the element with data-tag STOP_PROP_TAG is present
 			const target = e.target as HTMLDivElement;
-
 			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
 				onRowClicked(row, e);
-
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
 					handleExpanded();
 				}
@@ -169,7 +129,6 @@ function Row<T>({
 	const handleRowDoubleClick = React.useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
 			const target = e.target as HTMLDivElement;
-
 			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
 				onRowDoubleClicked(row, e);
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowDoubleClicked) {
@@ -200,22 +159,35 @@ function Row<T>({
 	const inheritStyles = expandableInheritConditionalStyles ? conditionalStyle : {};
 	const isStriped = striped && isOdd(rowIndex);
 
+	const className = [
+		classNames,
+		'rdt_row',
+		dense && 'rdt_rowDense',
+		isStriped && 'rdt_rowStriped',
+		highlightSelected && 'rdt_rowSelected',
+		highlightOnHover && 'rdt_rowHighlight',
+		!defaultExpanderDisabled && showPointer && 'rdt_rowPointer',
+	].filter(Boolean).join(' ');
+
+	const style: React.CSSProperties = {
+		...customStyles.rows?.style,
+		...(dense && customStyles.rows?.denseStyle),
+		...(isStriped && customStyles.rows?.stripedStyle),
+		...(highlightSelected && customStyles.rows?.selectedHighlightStyle),
+		...(conditionalStyle as React.CSSProperties),
+	};
+
 	return (
 		<>
-			<TableRowStyle
+			<div
 				id={`row-${id}`}
 				role="row"
-				$striped={isStriped}
-				$highlightOnHover={highlightOnHover}
-				$pointerOnHover={!defaultExpanderDisabled && showPointer}
-				$dense={dense}
+				className={className}
+				style={style}
 				onClick={handleRowClick}
 				onDoubleClick={handleRowDoubleClick}
 				onMouseEnter={handleRowMouseEnter}
 				onMouseLeave={handleRowMouseLeave}
-				className={classNames}
-				$selected={highlightSelected}
-				$conditionalStyle={conditionalStyle}
 			>
 				{selectableRows && (
 					<TableCellCheckbox
@@ -252,7 +224,6 @@ function Row<T>({
 						<TableCell
 							id={`cell-${column.id}-${rowKeyField}`}
 							key={`cell-${column.id}-${rowKeyField}`}
-							// apply a tag that Row will use to stop event propagation when TableCell is clicked
 							dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
 							column={column}
 							row={row}
@@ -266,7 +237,7 @@ function Row<T>({
 						/>
 					);
 				})}
-			</TableRowStyle>
+			</div>
 
 			{expandableRows && expanded && (
 				<ExpanderRow
@@ -282,63 +253,17 @@ function Row<T>({
 	);
 }
 
-// Custom comparison function for React.memo
-// Only re-render if specific props that affect rendering have changed
 function areRowPropsEqual<T>(prevProps: TableRowProps<T>, nextProps: TableRowProps<T>): boolean {
-	// If row data changed (by reference), re-render
-	if (prevProps.row !== nextProps.row) {
-		return false;
-	}
-
-	// If selection state changed, re-render
-	if (prevProps.selected !== nextProps.selected) {
-		return false;
-	}
-
-	// If columns changed (reordering, hiding, etc.), re-render
-	if (prevProps.columns !== nextProps.columns) {
-		return false;
-	}
-
-	// If expand state changed, re-render
-	if (prevProps.defaultExpanded !== nextProps.defaultExpanded) {
-		return false;
-	}
-
-	// If disabled state changed, re-render
-	if (prevProps.defaultExpanderDisabled !== nextProps.defaultExpanderDisabled) {
-		return false;
-	}
-
-	// If dragging state changed, re-render
-	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
-		return false;
-	}
-
-	// If striping changes (happens when filtering/sorting), re-render
-	if (prevProps.striped !== nextProps.striped || prevProps.rowIndex !== nextProps.rowIndex) {
-		return false;
-	}
-
-	// If row count changes (affects "select all"), re-render
-	if (prevProps.rowCount !== nextProps.rowCount) {
-		return false;
-	}
-
-	// If conditional styles changed, re-render
-	if (prevProps.conditionalRowStyles !== nextProps.conditionalRowStyles) {
-		return false;
-	}
-
-	// Event handlers: only check if they changed from noop to real function or vice versa
-	// This avoids re-renders when callbacks are recreated but still do the same thing
-	const prevHasRowClick = prevProps.onRowClicked !== noop;
-	const nextHasRowClick = nextProps.onRowClicked !== noop;
-	if (prevHasRowClick !== nextHasRowClick) {
-		return false;
-	}
-
-	// All other props (styling, etc.) are stable or don't affect this specific row
+	if (prevProps.row !== nextProps.row) return false;
+	if (prevProps.selected !== nextProps.selected) return false;
+	if (prevProps.columns !== nextProps.columns) return false;
+	if (prevProps.defaultExpanded !== nextProps.defaultExpanded) return false;
+	if (prevProps.defaultExpanderDisabled !== nextProps.defaultExpanderDisabled) return false;
+	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) return false;
+	if (prevProps.striped !== nextProps.striped || prevProps.rowIndex !== nextProps.rowIndex) return false;
+	if (prevProps.rowCount !== nextProps.rowCount) return false;
+	if (prevProps.conditionalRowStyles !== nextProps.conditionalRowStyles) return false;
+	if ((prevProps.onRowClicked !== noop) !== (nextProps.onRowClicked !== noop)) return false;
 	return true;
 }
 

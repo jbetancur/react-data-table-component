@@ -1,84 +1,10 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
-import { CellExtended, CellProps } from './Cell';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
+import { CellExtended } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import { equalizeId } from './util';
 import { TableColumn, SortAction, SortOrder } from './types';
-
-interface ColumnStyleProps extends CellProps {
-	$isDragging?: boolean;
-	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-}
-
-const ColumnStyled = styled(CellExtended)<ColumnStyleProps>`
-	${({ button }) => button && 'text-align: center'};
-	${({ theme, $isDragging }) => $isDragging && theme.headCells?.draggingStyle};
-`;
-
-interface ColumnSortableProps {
-	disabled: boolean;
-	$sortActive: boolean;
-}
-
-const sortableCSS = css<ColumnSortableProps>`
-	cursor: pointer;
-	span.__rdt_custom_sort_icon__ {
-		i,
-		svg {
-			transform: 'translate3d(0, 0, 0)';
-			${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
-			color: inherit;
-			font-size: 18px;
-			height: 18px;
-			width: 18px;
-			backface-visibility: hidden;
-			transform-style: preserve-3d;
-			transition-duration: 95ms;
-			transition-property: transform;
-		}
-
-		&.asc i,
-		&.asc svg {
-			transform: rotate(180deg);
-		}
-	}
-
-	${({ $sortActive }) =>
-		!$sortActive &&
-		css`
-			&:hover,
-			&:focus {
-				opacity: 0.7;
-
-				span,
-				span.__rdt_custom_sort_icon__ * {
-					opacity: 0.7;
-				}
-			}
-		`};
-`;
-
-const ColumnSortable = styled.div<ColumnSortableProps>`
-	display: inline-flex;
-	align-items: center;
-	justify-content: inherit;
-	height: 100%;
-	width: 100%;
-	outline: none;
-	user-select: none;
-	overflow: hidden;
-	${({ disabled }) => !disabled && sortableCSS};
-`;
-
-const ColumnText = styled.div`
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-`;
 
 type TableColProps<T> = {
 	column: TableColumn<T>;
@@ -119,6 +45,8 @@ function TableCol<T>({
 	onDragEnter,
 	onDragLeave,
 }: TableColProps<T>): JSX.Element | null {
+	const customStyles = useStyles();
+
 	React.useEffect(() => {
 		if (typeof column.selector === 'string') {
 			console.error(
@@ -172,7 +100,16 @@ function TableCol<T>({
 	);
 
 	const renderCustomSortIcon = () => (
-		<span className={[sortDirection, '__rdt_custom_sort_icon__'].join(' ')}>{sortIcon}</span>
+		<span
+			className={[
+				'rdt_sortIcon',
+				sortActive ? 'rdt_sortIconActive' : 'rdt_sortIconInactive',
+				sortDirection === SortOrder.ASC && 'rdt_sortIconAsc',
+				'__rdt_custom_sort_icon__',
+			].filter(Boolean).join(' ')}
+		>
+			{sortIcon}
+		</span>
 	);
 
 	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
@@ -183,8 +120,10 @@ function TableCol<T>({
 	const customSortIconLeft = column.sortable && sortIcon && !column.right;
 	const customSortIconRight = column.sortable && sortIcon && column.right;
 
+	const isDragging = equalizeId(column.id, draggingColumnId);
+
 	return (
-		<ColumnStyled
+		<CellExtended
 			data-column-id={column.id}
 			className="rdt_TableCol"
 			$headCell
@@ -199,7 +138,8 @@ function TableCol<T>({
 			center={column.center}
 			width={column.width}
 			draggable={column.reorder}
-			$isDragging={equalizeId(column.id, draggingColumnId)}
+			headStyle={customStyles.headCells?.style as React.CSSProperties}
+			style={isDragging ? (customStyles.headCells?.draggingStyle as React.CSSProperties) : undefined}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
 			onDragEnd={onDragEnd}
@@ -207,76 +147,66 @@ function TableCol<T>({
 			onDragLeave={onDragLeave}
 		>
 			{column.name && (
-				<ColumnSortable
+				<div
 					data-column-id={column.id}
 					data-sort-id={column.id}
 					role="columnheader"
 					tabIndex={tabIndex}
-					className="rdt_TableCol_Sortable"
+					className={[
+						'rdt_TableCol_Sortable',
+						'rdt_columnSortable',
+						!disableSort && 'rdt_columnSortableEnabled',
+						!disableSort && sortActive && 'rdt_columnSortableActive',
+					].filter(Boolean).join(' ')}
 					onClick={!disableSort ? handleSortChange : undefined}
 					onKeyPress={!disableSort ? handleKeyPress : undefined}
-					$sortActive={!disableSort && sortActive}
-					disabled={disableSort}
+					aria-sort={
+						!disableSort
+							? sortActive
+								? sortDirection === SortOrder.ASC
+									? 'ascending'
+									: 'descending'
+								: 'none'
+							: undefined
+					}
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
 
 					{typeof column.name === 'string' ? (
-						<ColumnText title={showTooltip ? column.name : undefined} ref={columnRef} data-column-id={column.id}>
+						<div
+							title={showTooltip ? column.name : undefined}
+							ref={columnRef}
+							data-column-id={column.id}
+							className="rdt_columnText"
+						>
 							{column.name}
-						</ColumnText>
+						</div>
 					) : (
 						column.name
 					)}
 
 					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
-				</ColumnSortable>
+				</div>
 			)}
-		</ColumnStyled>
+		</CellExtended>
 	);
 }
 
-// Custom comparison function for React.memo
-// Columns rarely change, so this prevents unnecessary re-renders during sorting/selection
 function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
-	// If column definition changed (reordering, hiding, etc.), re-render
-	if (prevProps.column !== nextProps.column) {
-		return false;
-	}
-
-	// If this column is the selected sort column, check sort direction
+	if (prevProps.column !== nextProps.column) return false;
 	const prevIsSelected = equalizeId(prevProps.selectedColumn.id, prevProps.column.id);
 	const nextIsSelected = equalizeId(nextProps.selectedColumn.id, nextProps.column.id);
-
-	if (prevIsSelected !== nextIsSelected) {
-		return false; // Selection state changed
-	}
-
-	if (prevIsSelected && nextIsSelected && prevProps.sortDirection !== nextProps.sortDirection) {
-		return false; // Sort direction changed for this column
-	}
-
-	// If dragging state changed for this column, re-render
+	if (prevIsSelected !== nextIsSelected) return false;
+	if (prevIsSelected && nextIsSelected && prevProps.sortDirection !== nextProps.sortDirection) return false;
 	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
 		const prevIsDragging = equalizeId(prevProps.column.id, prevProps.draggingColumnId);
 		const nextIsDragging = equalizeId(nextProps.column.id, nextProps.draggingColumnId);
-		if (prevIsDragging !== nextIsDragging) {
-			return false;
-		}
+		if (prevIsDragging !== nextIsDragging) return false;
 	}
-
-	// If disabled state changed, re-render
-	if (prevProps.disabled !== nextProps.disabled) {
-		return false;
-	}
-
-	// sortIcon can change
-	if (prevProps.sortIcon !== nextProps.sortIcon) {
-		return false;
-	}
-
-	// All other props are stable configuration
+	if (prevProps.disabled !== nextProps.disabled) return false;
+	if (prevProps.sortIcon !== nextProps.sortIcon) return false;
 	return true;
 }
 

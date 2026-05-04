@@ -1,19 +1,16 @@
-import styled, { css } from 'styled-components';
+import * as React from 'react';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 
-const fixedCSS = css`
-	position: sticky;
-	position: -webkit-sticky; /* Safari */
-	top: 0;
-	z-index: 1;
-`;
+type HeadProps = React.HTMLAttributes<HTMLDivElement> & { $fixedHeader?: boolean };
 
-const Head = styled.div<{
-	$fixedHeader?: boolean;
-}>`
-	display: flex;
-	width: 100%;
-	${({ $fixedHeader }) => $fixedHeader && fixedCSS};
-	${({ theme }) => theme.head?.style};
-`;
-
-export default Head;
+export default function Head({ $fixedHeader, className, style, ...rest }: HeadProps): JSX.Element {
+	const customStyles = useStyles();
+	return (
+		<div
+			className={['rdt_head', $fixedHeader && 'rdt_headFixed', className].filter(Boolean).join(' ')}
+			style={{ ...customStyles.head?.style, ...style }}
+			{...rest}
+		/>
+	);
+}

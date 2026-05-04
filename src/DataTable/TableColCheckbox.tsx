@@ -1,17 +1,8 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import './DataTable.css';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 import { AllRowsAction, RowState } from './types';
-
-const ColumnStyle = styled(CellBase)`
-	flex: 0 0 48px;
-	justify-content: center;
-	align-items: center;
-	user-select: none;
-	white-space: nowrap;
-	font-size: unset;
-`;
 
 interface ColumnCheckboxProps<T> {
 	headCell?: boolean;
@@ -41,7 +32,6 @@ function ColumnCheckbox<T>({
 	const indeterminate = selectedRows.length > 0 && !allSelected;
 	const rows = selectableRowDisabled ? rowData.filter((row: T) => !selectableRowDisabled(row)) : rowData;
 	const isDisabled = rows.length === 0;
-	// The row count should subtract rows that are disabled
 	const rowCount = Math.min(rowData.length, rows.length);
 
 	const handleSelectAll = () => {
@@ -55,7 +45,11 @@ function ColumnCheckbox<T>({
 	};
 
 	return (
-		<ColumnStyle className="rdt_TableCol" $headCell={headCell} $noPadding>
+		<CellBase
+			className={['rdt_TableCol', 'rdt_columnCheckbox'].join(' ')}
+			$headCell={headCell}
+			$noPadding
+		>
 			<Checkbox
 				name="select-all-rows"
 				component={selectableRowsComponent}
@@ -65,7 +59,7 @@ function ColumnCheckbox<T>({
 				indeterminate={indeterminate}
 				disabled={isDisabled}
 			/>
-		</ColumnStyle>
+		</CellBase>
 	);
 }
 

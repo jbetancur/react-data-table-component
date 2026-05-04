@@ -1,15 +1,7 @@
 import * as React from 'react';
-import styled, { CSSObject } from 'styled-components';
-import { ComponentProps, ExpandableRowsComponent } from './types';
-
-const ExpanderRowStyle = styled.div<{
-	$extendedRowStyle: CSSObject;
-}>`
-	width: 100%;
-	box-sizing: border-box;
-	${({ theme }) => theme.expanderRow?.style};
-	${({ $extendedRowStyle }) => $extendedRowStyle};
-`;
+import './DataTable.css';
+import { useStyles } from './StylesContext';
+import { CSSObject, ComponentProps, ExpandableRowsComponent } from './types';
 
 type ExpanderRowProps<T> = {
 	data: T;
@@ -19,21 +11,15 @@ type ExpanderRowProps<T> = {
 	expanderComponentProps: ComponentProps;
 };
 
-function ExpanderRow<T>({
-	data,
-	ExpanderComponent,
-	expanderComponentProps,
-	extendedRowStyle,
-	extendedClassNames,
-}: ExpanderRowProps<T>): JSX.Element {
-	// we need to strip of rdt_TableRow from extendedClassNames
-	const classNamesSplit = extendedClassNames.split(' ').filter(c => c !== 'rdt_TableRow');
-	const classNames = ['rdt_ExpanderRow', ...classNamesSplit].join(' ');
+function ExpanderRow<T>({ data, ExpanderComponent, expanderComponentProps, extendedRowStyle, extendedClassNames }: ExpanderRowProps<T>): JSX.Element {
+	const customStyles = useStyles();
+	const extraClasses = extendedClassNames.split(' ').filter(c => c !== 'rdt_TableRow');
+	const className = ['rdt_ExpanderRow', 'rdt_expanderRow', ...extraClasses].join(' ');
 
 	return (
-		<ExpanderRowStyle className={classNames} $extendedRowStyle={extendedRowStyle as CSSObject}>
+		<div className={className} style={{ ...customStyles.expanderRow?.style, ...(extendedRowStyle as React.CSSProperties) }}>
 			<ExpanderComponent data={data} {...expanderComponentProps} />
-		</ExpanderRowStyle>
+		</div>
 	);
 }
 

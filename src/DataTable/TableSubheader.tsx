@@ -1,29 +1,14 @@
 import * as React from 'react';
-import styled from 'styled-components';
-
-const alignMap = {
-	left: 'flex-start',
-	right: 'flex-end',
-	center: 'center',
-};
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 
 type AlignItems = 'center' | 'left' | 'right';
 
-const SubheaderWrapper = styled.header<{
-	align: AlignItems;
-	$wrapContent: boolean;
-}>`
-	position: relative;
-	display: flex;
-	flex: 1 1 auto;
-	box-sizing: border-box;
-	align-items: center;
-	padding: 4px 16px 4px 24px;
-	width: 100%;
-	justify-content: ${({ align }) => alignMap[align]};
-	flex-wrap: ${({ $wrapContent }) => ($wrapContent ? 'wrap' : 'nowrap')};
-	${({ theme }) => theme.subHeader?.style}
-`;
+const alignClass: Record<AlignItems, string> = {
+	left: 'rdt_subheaderLeft',
+	right: 'rdt_subheaderRight',
+	center: 'rdt_subheaderCenter',
+};
 
 type SubheaderProps = {
 	align?: AlignItems;
@@ -31,8 +16,14 @@ type SubheaderProps = {
 	children?: React.ReactNode;
 };
 
-const Subheader = ({ align = 'right', wrapContent = true, ...rest }: SubheaderProps): JSX.Element => (
-	<SubheaderWrapper align={align} $wrapContent={wrapContent} {...rest} />
-);
-
-export default Subheader;
+export default function Subheader({ align = 'right', wrapContent = true, children }: SubheaderProps): JSX.Element {
+	const customStyles = useStyles();
+	return (
+		<header
+			className={['rdt_subheader', alignClass[align], wrapContent && 'rdt_subheaderWrap'].filter(Boolean).join(' ')}
+			style={customStyles.subHeader?.style}
+		>
+			{children}
+		</header>
+	);
+}

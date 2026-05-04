@@ -1,10 +1,11 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 import Select from './Select';
 import { getNumberOfPages } from './util';
 import useWindowSize from '../hooks/useWindowSize';
 import useRTL from '../hooks/useRTL';
-import { media, SMALL } from './media';
+import { SMALL } from './media';
 import { Direction } from './constants';
 import { PaginationOptions } from './types';
 import { defaultProps } from './defaultProps';
@@ -16,53 +17,6 @@ const defaultComponentOptions = {
 	selectAllRowsItem: false,
 	selectAllRowsItemText: 'All',
 };
-
-const PaginationWrapper = styled.nav`
-	display: flex;
-	flex: 1 1 auto;
-	justify-content: flex-end;
-	align-items: center;
-	box-sizing: border-box;
-	padding-right: 8px;
-	padding-left: 8px;
-	width: 100%;
-	${({ theme }) => theme.pagination?.style};
-`;
-
-const Button = styled.button<{
-	$isRTL: boolean;
-}>`
-	position: relative;
-	display: block;
-	user-select: none;
-	border: none;
-	${({ theme }) => theme.pagination?.pageButtonsStyle};
-	${({ $isRTL }) => $isRTL && 'transform: scale(-1, -1)'};
-`;
-
-const PageList = styled.div`
-	display: flex;
-	align-items: center;
-	border-radius: 4px;
-	white-space: nowrap;
-	${media.sm`
-    width: 100%;
-    justify-content: space-around;
-  `};
-`;
-
-const Span = styled.span`
-	flex-shrink: 1;
-	user-select: none;
-`;
-
-const Range = styled(Span)`
-	margin: 0 24px;
-`;
-
-const RowLabel = styled(Span)`
-	margin: 0 4px;
-`;
 
 interface PaginationProps {
 	rowsPerPage: number;
@@ -96,7 +50,6 @@ function Pagination({
 	const windowSize = useWindowSize();
 	const isRTL = useRTL(direction);
 	const shouldShow = windowSize.width && windowSize.width > SMALL;
-	// const isRTL = detectRTL(direction);
 	const numPages = getNumberOfPages(rowCount, rowsPerPage);
 	const lastIndex = currentPage * rowsPerPage;
 	const firstIndex = lastIndex - rowsPerPage + 1;
@@ -134,73 +87,41 @@ function Pagination({
 		);
 	}
 
+	const customStyles = useStyles();
+
 	const select = (
 		<Select onChange={handleRowsPerPage} defaultValue={rowsPerPage} aria-label={options.rowsPerPageText}>
 			{selectOptions}
 		</Select>
 	);
 
+	const btnClass = (rtl: boolean) => ['rdt_paginationButton', rtl && 'rdt_paginationButtonRTL'].filter(Boolean).join(' ');
+
 	return (
-		<PaginationWrapper className="rdt_Pagination">
+		<nav className={['rdt_pagination', 'rdt_Pagination'].join(' ')} style={customStyles.pagination?.style}>
 			{!options.noRowsPerPage && shouldShow && (
 				<>
-					<RowLabel>{options.rowsPerPageText}</RowLabel>
+					<span className="rdt_paginationRowLabel">{options.rowsPerPageText}</span>
 					{select}
 				</>
 			)}
-			{shouldShow && <Range>{range}</Range>}
-			<PageList>
-				<Button
-					id="pagination-first-page"
-					type="button"
-					aria-label="First Page"
-					aria-disabled={disabledLesser}
-					onClick={handleFirst}
-					disabled={disabledLesser}
-					$isRTL={isRTL}
-				>
+			{shouldShow && <span className="rdt_paginationRange">{range}</span>}
+			<div className="rdt_paginationPageList">
+				<button id="pagination-first-page" type="button" aria-label="First Page" aria-disabled={disabledLesser} onClick={handleFirst} disabled={disabledLesser} className={btnClass(isRTL)} style={customStyles.pagination?.pageButtonsStyle}>
 					{paginationIconFirstPage}
-				</Button>
-
-				<Button
-					id="pagination-previous-page"
-					type="button"
-					aria-label="Previous Page"
-					aria-disabled={disabledLesser}
-					onClick={handlePrevious}
-					disabled={disabledLesser}
-					$isRTL={isRTL}
-				>
+				</button>
+				<button id="pagination-previous-page" type="button" aria-label="Previous Page" aria-disabled={disabledLesser} onClick={handlePrevious} disabled={disabledLesser} className={btnClass(isRTL)} style={customStyles.pagination?.pageButtonsStyle}>
 					{paginationIconPrevious}
-				</Button>
-
+				</button>
 				{!options.noRowsPerPage && !shouldShow && select}
-
-				<Button
-					id="pagination-next-page"
-					type="button"
-					aria-label="Next Page"
-					aria-disabled={disabledGreater}
-					onClick={handleNext}
-					disabled={disabledGreater}
-					$isRTL={isRTL}
-				>
+				<button id="pagination-next-page" type="button" aria-label="Next Page" aria-disabled={disabledGreater} onClick={handleNext} disabled={disabledGreater} className={btnClass(isRTL)} style={customStyles.pagination?.pageButtonsStyle}>
 					{paginationIconNext}
-				</Button>
-
-				<Button
-					id="pagination-last-page"
-					type="button"
-					aria-label="Last Page"
-					aria-disabled={disabledGreater}
-					onClick={handleLast}
-					disabled={disabledGreater}
-					$isRTL={isRTL}
-				>
+				</button>
+				<button id="pagination-last-page" type="button" aria-label="Last Page" aria-disabled={disabledGreater} onClick={handleLast} disabled={disabledGreater} className={btnClass(isRTL)} style={customStyles.pagination?.pageButtonsStyle}>
 					{paginationIconLastPage}
-				</Button>
-			</PageList>
-		</PaginationWrapper>
+				</button>
+			</div>
+		</nav>
 	);
 }
 

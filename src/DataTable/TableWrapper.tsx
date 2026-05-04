@@ -1,9 +1,8 @@
-import styled from 'styled-components';
+import * as React from 'react';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 
-const Wrapper = styled.div`
-	position: relative;
-	width: 100%;
-	${({ theme }) => theme.tableWrapper?.style};
-`;
-
-export default Wrapper;
+export default function Wrapper({ style, ...rest }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
+	const customStyles = useStyles();
+	return <div className="rdt_wrapper" style={{ ...customStyles.tableWrapper?.style, ...style }} {...rest} />;
+}

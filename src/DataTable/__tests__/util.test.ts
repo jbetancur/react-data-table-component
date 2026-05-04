@@ -107,7 +107,7 @@ describe('sort', () => {
 	});
 
 	test('custom sort should be called', () => {
-		const mockSort = jest.fn();
+		const mockSort = vi.fn();
 		const mockSelector = (row: { name: string }) => row.name;
 
 		sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], mockSelector, SortOrder.DESC, mockSort);

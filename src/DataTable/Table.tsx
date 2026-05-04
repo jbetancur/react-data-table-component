@@ -1,22 +1,16 @@
-import styled, { css } from 'styled-components';
+import * as React from 'react';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 
-const disabledCSS = css`
-	pointer-events: none;
-	opacity: 0.4;
-`;
+type TableProps = React.HTMLAttributes<HTMLDivElement> & { disabled?: boolean };
 
-const TableStyle = styled.div<{
-	disabled?: boolean;
-}>`
-	position: relative;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
-	${({ disabled }) => disabled && disabledCSS};
-	${({ theme }) => theme.table?.style};
-`;
-
-export default TableStyle;
+export default function Table({ disabled, className, style, ...rest }: TableProps): JSX.Element {
+	const customStyles = useStyles();
+	return (
+		<div
+			className={['rdt_table', disabled && 'rdt_tableDisabled', className].filter(Boolean).join(' ')}
+			style={{ ...customStyles.table?.style, ...style }}
+			{...rest}
+		/>
+	);
+}

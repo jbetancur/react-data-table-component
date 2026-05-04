@@ -1,17 +1,8 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import './DataTable.css';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 import { RowState, SingleRowAction, ComponentProps } from './types';
-
-const TableCellCheckboxStyle = styled(CellBase)`
-	flex: 0 0 48px;
-	min-width: 48px;
-	justify-content: center;
-	align-items: center;
-	user-select: none;
-	white-space: nowrap;
-`;
 
 type TableCellCheckboxProps<T> = {
 	name: string;
@@ -52,7 +43,11 @@ function TableCellCheckbox<T>({
 	};
 
 	return (
-		<TableCellCheckboxStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} className="rdt_TableCell" $noPadding>
+		<CellBase
+			onClick={(e: React.MouseEvent) => e.stopPropagation()}
+			className={['rdt_TableCell', 'rdt_cellCheckbox'].join(' ')}
+			$noPadding
+		>
 			<Checkbox
 				name={name}
 				component={selectableRowsComponent}
@@ -62,7 +57,7 @@ function TableCellCheckbox<T>({
 				onClick={handleOnRowSelected}
 				disabled={disabled}
 			/>
-		</TableCellCheckboxStyle>
+		</CellBase>
 	);
 }
 

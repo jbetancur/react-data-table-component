@@ -1,147 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render correctly with default props 1`] = `
-.c4 {
-  cursor: pointer;
-  height: 24px;
-  max-width: 100%;
-  user-select: none;
-  padding-left: 8px;
-  padding-right: 24px;
-  box-sizing: content-box;
-  font-size: inherit;
-  color: inherit;
-  border: none;
-  background-color: transparent;
-  appearance: none;
-  direction: ltr;
-  flex-shrink: 0;
-}
-
-.c4::-ms-expand {
-  display: none;
-}
-
-.c4:disabled::-ms-expand {
-  background: #f60;
-}
-
-.c4 option {
-  color: initial;
-}
-
-.c3 {
-  position: relative;
-  flex-shrink: 0;
-  font-size: inherit;
-  color: inherit;
-  margin-top: 1px;
-}
-
-.c3 svg {
-  top: 0;
-  right: 0;
-  color: inherit;
-  position: absolute;
-  fill: currentColor;
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  user-select: none;
-  pointer-events: none;
-}
-
-.c0 {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-  align-items: center;
-  box-sizing: border-box;
-  padding-right: 8px;
-  padding-left: 8px;
-  width: 100%;
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 13px;
-  min-height: 56px;
-  background-color: #FFFFFF;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-}
-
-.c7 {
-  position: relative;
-  display: block;
-  user-select: none;
-  border: none;
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  padding: 8px;
-  margin: px;
-  cursor: pointer;
-  transition: 0.4s;
-  color: rgba(0,0,0,.54);
-  fill: rgba(0,0,0,.54);
-  background-color: transparent;
-}
-
-.c7:disabled {
-  cursor: unset;
-  color: rgba(0, 0, 0, .18);
-  fill: rgba(0, 0, 0, .18);
-}
-
-.c7:hover:not(:disabled) {
-  background-color: rgba(0,0,0,.12);
-}
-
-.c7:focus {
-  outline: none;
-  background-color: rgba(0,0,0,.12);
-}
-
-.c6 {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-
-.c1 {
-  flex-shrink: 1;
-  user-select: none;
-}
-
-.c5 {
-  margin: 0 24px;
-}
-
-.c2 {
-  margin: 0 4px;
-}
-
-@media screen and (max-width: 599px) {
-  .c6 {
-    width: 100%;
-    justify-content: space-around;
-  }
-}
-
 <nav
-  class="c0 rdt_Pagination"
+  class="rdt_pagination rdt_Pagination"
 >
   <span
-    class="c1 c2"
+    class="rdt_paginationRowLabel"
   >
     Rows per page:
   </span>
   <div
-    class="c3"
+    class="rdt_selectWrapper"
   >
     <select
       aria-label="Rows per page:"
-      class="c4"
+      class="rdt_selectControl"
     >
       <option
         selected=""
@@ -186,17 +59,17 @@ exports[`should render correctly with default props 1`] = `
     </svg>
   </div>
   <span
-    class="c1 c5"
+    class="rdt_paginationRange"
   >
     1-10 of 40
   </span>
   <div
-    class="c6"
+    class="rdt_paginationPageList"
   >
     <button
       aria-disabled="true"
       aria-label="First Page"
-      class="c7"
+      class="rdt_paginationButton"
       disabled=""
       id="pagination-first-page"
       type="button"
@@ -221,7 +94,7 @@ exports[`should render correctly with default props 1`] = `
     <button
       aria-disabled="true"
       aria-label="Previous Page"
-      class="c7"
+      class="rdt_paginationButton"
       disabled=""
       id="pagination-previous-page"
       type="button"
@@ -246,7 +119,7 @@ exports[`should render correctly with default props 1`] = `
     <button
       aria-disabled="false"
       aria-label="Next Page"
-      class="c7"
+      class="rdt_paginationButton"
       id="pagination-next-page"
       type="button"
     >
@@ -270,7 +143,7 @@ exports[`should render correctly with default props 1`] = `
     <button
       aria-disabled="false"
       aria-label="Last Page"
-      class="c7"
+      class="rdt_paginationButton"
       id="pagination-last-page"
       type="button"
     >
@@ -295,81 +168,17 @@ exports[`should render correctly with default props 1`] = `
 </nav>
 `;
 
-exports[`when the screensize is small paginationComponentOption noRowsPerPage should be respected 1`] = `
-.c0 {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-  align-items: center;
-  box-sizing: border-box;
-  padding-right: 8px;
-  padding-left: 8px;
-  width: 100%;
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 13px;
-  min-height: 56px;
-  background-color: #FFFFFF;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(0,0,0,.12);
-}
-
-.c2 {
-  position: relative;
-  display: block;
-  user-select: none;
-  border: none;
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  padding: 8px;
-  margin: px;
-  cursor: pointer;
-  transition: 0.4s;
-  color: rgba(0,0,0,.54);
-  fill: rgba(0,0,0,.54);
-  background-color: transparent;
-}
-
-.c2:disabled {
-  cursor: unset;
-  color: rgba(0, 0, 0, .18);
-  fill: rgba(0, 0, 0, .18);
-}
-
-.c2:hover:not(:disabled) {
-  background-color: rgba(0,0,0,.12);
-}
-
-.c2:focus {
-  outline: none;
-  background-color: rgba(0,0,0,.12);
-}
-
-.c1 {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-
-@media screen and (max-width: 599px) {
-  .c1 {
-    width: 100%;
-    justify-content: space-around;
-  }
-}
-
+exports[`when the screensize is small > paginationComponentOption noRowsPerPage should be respected 1`] = `
 <nav
-  class="c0 rdt_Pagination"
+  class="rdt_pagination rdt_Pagination"
 >
   <div
-    class="c1"
+    class="rdt_paginationPageList"
   >
     <button
       aria-disabled="true"
       aria-label="First Page"
-      class="c2"
+      class="rdt_paginationButton"
       disabled=""
       id="pagination-first-page"
       type="button"
@@ -394,7 +203,7 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
     <button
       aria-disabled="true"
       aria-label="Previous Page"
-      class="c2"
+      class="rdt_paginationButton"
       disabled=""
       id="pagination-previous-page"
       type="button"
@@ -419,7 +228,7 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
     <button
       aria-disabled="false"
       aria-label="Next Page"
-      class="c2"
+      class="rdt_paginationButton"
       id="pagination-next-page"
       type="button"
     >
@@ -443,7 +252,7 @@ exports[`when the screensize is small paginationComponentOption noRowsPerPage sh
     <button
       aria-disabled="false"
       aria-label="Last Page"
-      class="c2"
+      class="rdt_paginationButton"
       id="pagination-last-page"
       type="button"
     >
