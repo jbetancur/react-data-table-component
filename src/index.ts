@@ -5,6 +5,7 @@ export * from './DataTable/constants';
 export type {
 	TableProps,
 	TableProps as IDataTableProps, // this is for backwards compat with v6
+	DataTableHandle,
 	TableColumn,
 	TableRow,
 	TableStyles,

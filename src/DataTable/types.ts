@@ -1,5 +1,6 @@
 import { Alignment, Direction, Media } from './constants';
-import { CSSObject } from 'styled-components';
+
+export type CSSObject = React.CSSProperties;
 
 export enum SortOrder {
 	ASC = 'asc',
@@ -28,10 +29,15 @@ export type PaginationComponentProps = {
 };
 export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
+export type DataTableHandle = {
+	clearSelectedRows: () => void;
+};
+
 export type TableProps<T> = {
 	actions?: React.ReactNode | React.ReactNode[];
 	ariaLabel?: string;
 	className?: string;
+	/** @deprecated Use a ref with DataTableHandle instead: ref.current.clearSelectedRows() */
 	clearSelectedRows?: boolean;
 	columns: TableColumn<T>[];
 	conditionalRowStyles?: ConditionalStyles<T>[];
@@ -381,4 +387,5 @@ export type Action<T> =
 	| SortAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
-	| ClearSelectedRowsAction;
+	| ClearSelectedRowsAction
+	| ColumnsAction<T>;

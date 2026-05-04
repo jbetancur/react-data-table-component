@@ -1,5 +1,22 @@
-import { CSSObject } from 'styled-components';
-import { ConditionalStyles, TableColumn, Format, TableRow, Selector, SortOrder, SortFunction } from './types';
+import { CSSObject, ConditionalStyles, TableColumn, Format, TableRow, Selector, SortOrder, SortFunction } from './types';
+
+function isPlainObject(val: unknown): val is Record<string, unknown> {
+	return val !== null && typeof val === 'object' && !Array.isArray(val);
+}
+
+export function mergeDeep<T extends object>(target: T, source: Partial<T>): T {
+	const output = { ...target };
+	for (const key of Object.keys(source) as (keyof T)[]) {
+		const srcVal = source[key];
+		const tgtVal = output[key];
+		if (isPlainObject(srcVal) && isPlainObject(tgtVal)) {
+			output[key] = mergeDeep(tgtVal as object, srcVal as object) as T[keyof T];
+		} else if (srcVal !== undefined) {
+			output[key] = srcVal as T[keyof T];
+		}
+	}
+	return output;
+}
 
 export function prop<T, K extends keyof T>(obj: T, key: K): T[K] {
 	return obj[key];

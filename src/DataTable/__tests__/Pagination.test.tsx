@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import 'jest-styled-components';
+
 import * as React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { renderWithTheme } from '../../internal/test-helpers'; // since child elements require theme
@@ -14,8 +14,8 @@ test('should render correctly with default props', () => {
 			currentPage={1}
 			rowsPerPage={10}
 			rowCount={40}
-			onChangePage={jest.fn()}
-			onChangeRowsPerPage={jest.fn()}
+			onChangePage={vi.fn()}
+			onChangeRowsPerPage={vi.fn()}
 		/>,
 	);
 
@@ -24,14 +24,14 @@ test('should render correctly with default props', () => {
 
 describe('when clicking the First Page button', () => {
 	test('should call onChangePage with correct args when currentPage is > 1', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={4}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -40,14 +40,14 @@ describe('when clicking the First Page button', () => {
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is === 1', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={1}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -58,14 +58,14 @@ describe('when clicking the First Page button', () => {
 
 describe('when clicking the Last Page button', () => {
 	test('should call onChangePage with correct args when currentPage is < the last page', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={1}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -74,14 +74,14 @@ describe('when clicking the Last Page button', () => {
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is the last page', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={4}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -92,14 +92,14 @@ describe('when clicking the Last Page button', () => {
 
 describe('when clicking the Next Page button', () => {
 	test('should call onChangePage with correct args when currentPage is not the last page', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={1}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -108,14 +108,14 @@ describe('when clicking the Next Page button', () => {
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is the last page', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={4}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -126,14 +126,14 @@ describe('when clicking the Next Page button', () => {
 
 describe('when clicking the Previous Page button', () => {
 	test('should call onChangePage with correct args when currentPage is > 1', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={2}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -142,14 +142,14 @@ describe('when clicking the Previous Page button', () => {
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is 1', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={1}
 				rowsPerPage={10}
 				rowCount={40}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -160,14 +160,14 @@ describe('when clicking the Previous Page button', () => {
 
 describe('when there is no paging to be done', () => {
 	test('should NOT call onChangePage with correct with any nav action when there are less rows that the page size', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={1}
 				rowsPerPage={10}
 				rowCount={5}
 				onChangePage={onChangePageMock}
-				onChangeRowsPerPage={jest.fn()}
+				onChangeRowsPerPage={vi.fn()}
 			/>,
 		);
 
@@ -193,9 +193,9 @@ describe('when there is no paging to be done', () => {
 
 describe('when clicking the Previous Page button', () => {
 	test('should call onChangePage with correct args when currentPage is > 1', () => {
-		const onChangeRowsPerPageMock = jest.fn();
+		const onChangeRowsPerPageMock = vi.fn();
 		// TOOO: remove when trailing empty rows is fixed
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={2}
@@ -219,8 +219,8 @@ describe('when the screensize is small', () => {
 				currentPage={1}
 				rowsPerPage={10}
 				rowCount={40}
-				onChangePage={jest.fn()}
-				onChangeRowsPerPage={jest.fn()}
+				onChangePage={vi.fn()}
+				onChangeRowsPerPage={vi.fn()}
 				paginationComponentOptions={{
 					noRowsPerPage: true,
 				}}

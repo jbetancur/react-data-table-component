@@ -1,11 +1,8 @@
-import styled from 'styled-components';
+import * as React from 'react';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 
-const ProgressWrapper = styled.div`
-	position: relative;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	${props => props.theme.progress?.style};
-`;
-
-export default ProgressWrapper;
+export default function ProgressWrapper({ style, ...rest }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
+	const customStyles = useStyles();
+	return <div className="rdt_progress" style={{ ...customStyles.progress?.style, ...style }} {...rest} />;
+}

@@ -1,15 +1,9 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
 import { ExpandableIcon } from './types';
-
-const CellExpanderStyle = styled(CellBase)`
-	white-space: nowrap;
-	font-weight: 400;
-	min-width: 48px;
-	${({ theme }) => theme.expanderCell?.style};
-`;
 
 type CellExpanderProps<T> = {
 	disabled: boolean;
@@ -28,8 +22,15 @@ function CellExpander<T>({
 	onToggled,
 	disabled = false,
 }: CellExpanderProps<T>): JSX.Element {
+	const customStyles = useStyles();
+
 	return (
-		<CellExpanderStyle onClick={(e: React.MouseEvent) => e.stopPropagation()} $noPadding>
+		<CellBase
+			onClick={(e: React.MouseEvent) => e.stopPropagation()}
+			className="rdt_cellExpander"
+			$noPadding
+			style={customStyles.expanderCell?.style as React.CSSProperties}
+		>
 			<ExpanderButton
 				id={id}
 				row={row}
@@ -38,7 +39,7 @@ function CellExpander<T>({
 				disabled={disabled}
 				onToggled={onToggled}
 			/>
-		</CellExpanderStyle>
+		</CellBase>
 	);
 }
 

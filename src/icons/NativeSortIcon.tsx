@@ -1,18 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
 import { SortOrder } from '../DataTable/types';
-
-const Icon = styled.span<{
-	$sortActive: boolean;
-	$sortDirection: SortOrder;
-}>`
-	padding: 2px;
-	color: inherit;
-	flex-grow: 0;
-	flex-shrink: 0;
-	${({ $sortActive }) => ($sortActive ? 'opacity: 1' : 'opacity: 0')};
-	${({ $sortDirection }) => $sortDirection === 'desc' && 'transform: rotate(180deg)'};
-`;
 
 interface NativeSortIconProps {
 	sortActive: boolean;
@@ -20,9 +7,18 @@ interface NativeSortIconProps {
 }
 
 const NativeSortIcon: React.FC<NativeSortIconProps> = ({ sortActive, sortDirection }) => (
-	<Icon $sortActive={sortActive} $sortDirection={sortDirection}>
+	<span
+		style={{
+			padding: '2px',
+			color: 'inherit',
+			flexGrow: 0,
+			flexShrink: 0,
+			opacity: sortActive ? 1 : 0,
+			transform: sortDirection === SortOrder.DESC ? 'rotate(180deg)' : undefined,
+		}}
+	>
 		&#9650;
-	</Icon>
+	</span>
 );
 
 export default NativeSortIcon;

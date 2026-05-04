@@ -164,5 +164,9 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				rowsPerPage,
 			};
 		}
+
+		case 'UPDATE_COLUMNS':
+		default:
+			return state;
 	}
 }

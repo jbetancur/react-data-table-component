@@ -1,14 +1,16 @@
-import styled from 'styled-components';
+import * as React from 'react';
+import './DataTable.css';
+import { useStyles } from './StylesContext';
 
-const HeadRow = styled.div<{
-	$dense?: boolean;
-	disabled?: boolean;
-}>`
-	display: flex;
-	align-items: stretch;
-	width: 100%;
-	${({ theme }) => theme.headRow?.style};
-	${({ $dense, theme }) => $dense && theme.headRow?.denseStyle};
-`;
+type HeadRowProps = React.HTMLAttributes<HTMLDivElement> & { $dense?: boolean };
 
-export default HeadRow;
+export default function HeadRow({ $dense, className, style, ...rest }: HeadRowProps): JSX.Element {
+	const customStyles = useStyles();
+	return (
+		<div
+			className={['rdt_headRow', $dense && 'rdt_headRowDense', className].filter(Boolean).join(' ')}
+			style={{ ...customStyles.headRow?.style, ...($dense && customStyles.headRow?.denseStyle), ...style }}
+			{...rest}
+		/>
+	);
+}

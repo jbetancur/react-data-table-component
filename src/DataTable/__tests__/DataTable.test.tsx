@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import 'jest-styled-components';
+
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import DataTable from '../DataTable';
@@ -50,7 +50,7 @@ const dataMock = (colProps?: any) => {
 };
 
 beforeEach(() => {
-	console.error = jest.fn();
+	console.error = vi.fn();
 });
 
 test('should render and empty table correctly', () => {
@@ -120,7 +120,7 @@ test('should not show the TableHead when noTableHead is true', () => {
 describe('DataTable::onSelectedRowsChange', () => {
 	test('should call onSelectedRowsChange with the correct values when select all rows is selected', () => {
 		const mock = dataMock();
-		const updatedMock = jest.fn();
+		const updatedMock = vi.fn();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
 		);
@@ -136,7 +136,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 
 	test('should call onSelectedRowsChange with the correct values when all rows are selected', () => {
 		const mock = dataMock();
-		const updatedMock = jest.fn();
+		const updatedMock = vi.fn();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
 		);
@@ -153,7 +153,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 
 	test('should call onSelectedRowsChange with the correct values when a row is selected', () => {
 		const mock = dataMock();
-		const updatedMock = jest.fn();
+		const updatedMock = vi.fn();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
 		);
@@ -168,7 +168,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 	});
 
 	test('should call onSelectedRowsChange with the correct values when a row is selected when selectableRowsSingle is true', () => {
-		const onSelectedRowsChange = jest.fn();
+		const onSelectedRowsChange = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
@@ -228,7 +228,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 		const mock = dataMock();
 		mock.data[0].selected = true;
 
-		const onSelectedRowsChange = jest.fn();
+		const onSelectedRowsChange = vi.fn();
 
 		render(
 			<DataTable
@@ -405,7 +405,7 @@ describe('DataTable::columns', () => {
 
 describe('DataTable:RowClicks', () => {
 	test('should not call onRowClicked when ignoreRowClick = true', () => {
-		const onRowClickedMock = jest.fn();
+		const onRowClickedMock = vi.fn();
 		const mock = dataMock({ ignoreRowClick: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onRowClicked={onRowClickedMock} />);
 
@@ -414,7 +414,7 @@ describe('DataTable:RowClicks', () => {
 	});
 
 	test('should not call onRowClicked when button = true', () => {
-		const onRowClickedMock = jest.fn();
+		const onRowClickedMock = vi.fn();
 		const mock = dataMock({ button: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onRowClicked={onRowClickedMock} />);
 
@@ -423,7 +423,7 @@ describe('DataTable:RowClicks', () => {
 	});
 
 	test('should not call onRowDoubleClicked when ignoreRowClick = true', () => {
-		const onRowDoubleClickedMock = jest.fn();
+		const onRowDoubleClickedMock = vi.fn();
 		const mock = dataMock({ ignoreRowClick: true });
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} onRowDoubleClicked={onRowDoubleClickedMock} />,
@@ -434,7 +434,7 @@ describe('DataTable:RowClicks', () => {
 	});
 
 	test('should not call onRowDoubleClicked when button = true', () => {
-		const onRowDoubleClickedMock = jest.fn();
+		const onRowDoubleClickedMock = vi.fn();
 		const mock = dataMock({ button: true });
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} onRowDoubleClicked={onRowDoubleClickedMock} />,
@@ -447,8 +447,8 @@ describe('DataTable:RowClicks', () => {
 
 describe('DataTable:RowMouseEnterAndLeave', () => {
 	test('should call onRowMouseEnter and onRowMouseLeave callbacks when row is entered/left', () => {
-		const onRowMouseEnterMock = jest.fn();
-		const onRowMouseLeaveMock = jest.fn();
+		const onRowMouseEnterMock = vi.fn();
+		const onRowMouseLeaveMock = vi.fn();
 		const mock = dataMock({});
 		const { container } = render(
 			<DataTable
@@ -587,7 +587,7 @@ describe('DataTable::responsive', () => {
 
 describe('DataTable::sorting', () => {
 	test('should not call onSort if the column is not sortable', () => {
-		const onSortMock = jest.fn();
+		const onSortMock = vi.fn();
 		const mock = dataMock({ sortable: false });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
@@ -669,7 +669,7 @@ describe('DataTable::sorting', () => {
 	});
 
 	test('should call onSort with the correct params', () => {
-		const onSortMock = jest.fn();
+		const onSortMock = vi.fn();
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
@@ -679,7 +679,7 @@ describe('DataTable::sorting', () => {
 	});
 
 	test('should call onSort with the correct params if the sort is clicked twice', () => {
-		const onSortMock = jest.fn();
+		const onSortMock = vi.fn();
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
@@ -876,7 +876,7 @@ describe('DataTable::expandableRows', () => {
 	});
 
 	test('should call onRowExpandToggled with the correct values if a row is expanded', () => {
-		const onRowExpandToggledMock = jest.fn();
+		const onRowExpandToggledMock = vi.fn();
 		const mock = dataMock();
 		const { getByTestId } = render(
 			<DataTable data={mock.data} columns={mock.columns} expandableRows onRowExpandToggled={onRowExpandToggledMock} />,
@@ -887,7 +887,7 @@ describe('DataTable::expandableRows', () => {
 	});
 
 	test('should call onRowExpandToggled with the correct values if a row is collapsed', () => {
-		const onRowExpandToggledMock = jest.fn();
+		const onRowExpandToggledMock = vi.fn();
 		const mock = dataMock();
 		const { getByTestId } = render(
 			<DataTable data={mock.data} columns={mock.columns} expandableRows onRowExpandToggled={onRowExpandToggledMock} />,
@@ -899,7 +899,7 @@ describe('DataTable::expandableRows', () => {
 	});
 
 	test('should call onRowExpandToggled if expandOnRowClicked', () => {
-		const onRowExpandToggledMock = jest.fn();
+		const onRowExpandToggledMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
@@ -917,7 +917,7 @@ describe('DataTable::expandableRows', () => {
 	});
 
 	test('should call onRowExpandToggled if expandOnRowDoubleClicked', () => {
-		const onRowExpandToggledMock = jest.fn();
+		const onRowExpandToggledMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
@@ -1209,7 +1209,7 @@ describe('DataTable::selectableRows', () => {
 	});
 
 	test('should call onRowClicked is provided', () => {
-		const rowClickedMock = jest.fn();
+		const rowClickedMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onRowClicked={rowClickedMock} />,
@@ -1225,7 +1225,7 @@ describe('DataTable::selectableRows', () => {
 
 	test('should render correctly when selectableRows, selectableRowsVisibleOnly and pagination', () => {
 		const mock = dataMock({ sortable: true });
-		const onSelectedRowsChange = jest.fn();
+		const onSelectedRowsChange = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1370,7 +1370,7 @@ describe('DataTable::Pagination', () => {
 	test('should recalculate pagination position if there is only 1 item and it is removed from the data', () => {
 		const mock = dataMock();
 		const mockOneDeleted = dataMock().data.slice(0, 1);
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container, rerender } = render(
 			<DataTable
 				data={mock.data}
@@ -1402,8 +1402,8 @@ describe('DataTable::Pagination', () => {
 	test('should change the page position when using paginationServer if the last item is removed from a page', () => {
 		const mock = dataMock();
 		const mockOneDeleted = dataMock().data.slice(0, 1);
-		const onChangePageMock = jest.fn();
-		const onChangeRowsPerPageMock = jest.fn();
+		const onChangePageMock = vi.fn();
+		const onChangeRowsPerPageMock = vi.fn();
 		const { container, rerender } = render(
 			<DataTable
 				data={mock.data}
@@ -1442,7 +1442,7 @@ describe('DataTable::Pagination', () => {
 	test('should not change the page position when using paginationServer if there is only one page', () => {
 		const mock = dataMock();
 		const mockOneDeleted = dataMock().data.slice(0, 2);
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const { container, rerender } = render(
 			<DataTable
 				data={mock.data}
@@ -1473,7 +1473,7 @@ describe('DataTable::Pagination', () => {
 	});
 
 	test('should call onChangePage with the correct values if paged forward', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
@@ -1491,7 +1491,7 @@ describe('DataTable::Pagination', () => {
 	});
 
 	test('should call onChangePage with the correct values if paged backward', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
@@ -1556,7 +1556,7 @@ describe('DataTable::Pagination', () => {
 
 	test('should call onSelectedRowsChange when changing the page if using paginationServer and selectedRows', () => {
 		const mock = dataMock();
-		const onSelectedRowsChange = jest.fn();
+		const onSelectedRowsChange = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1579,7 +1579,7 @@ describe('DataTable::Pagination', () => {
 
 	test('should not call onSelectedRowsChange when changing the page if using paginationServer, selectedRows, and persistSelectedOnPageChange', () => {
 		const mock = dataMock();
-		const onSelectedRowsChange = jest.fn();
+		const onSelectedRowsChange = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1621,8 +1621,8 @@ describe('DataTable::Pagination', () => {
 
 	test('should call onSelectedRowsChange when sorting if using paginationServer and selectedRows', () => {
 		const mock = dataMock({ sortable: true });
-		const onSelectedRowsChange = jest.fn();
-		const onSortMock = jest.fn();
+		const onSelectedRowsChange = vi.fn();
+		const onSortMock = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1647,8 +1647,8 @@ describe('DataTable::Pagination', () => {
 
 	test('should call onSelectedRowsChange the correct amount of times when using paginationServer, selectedRows, and persistSelectedOnSort and all rows checked', () => {
 		const mock = dataMock({ sortable: true });
-		const onSelectedRowsChange = jest.fn();
-		const onSortMock = jest.fn();
+		const onSelectedRowsChange = vi.fn();
+		const onSortMock = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1681,7 +1681,7 @@ describe('DataTable::Pagination', () => {
 		const mock = dataMock();
 		mock.data[0].selected = true;
 
-		const onSelectedRowsChange = jest.fn();
+		const onSelectedRowsChange = vi.fn();
 
 		render(
 			<DataTable
@@ -1719,8 +1719,8 @@ describe('DataTable::Pagination', () => {
 
 	test('should call onSelectedRowsChange the correct amount of times when using paginationServer, selectedRows, and persistSelectedOnSort and all rows un-checked', () => {
 		const mock = dataMock({ sortable: true });
-		const onSelectedRowsChange = jest.fn();
-		const onSortMock = jest.fn();
+		const onSelectedRowsChange = vi.fn();
+		const onSortMock = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1754,8 +1754,8 @@ describe('DataTable::Pagination', () => {
 
 	test('should call onSelectedRowsChange the correct amount of times when using paginationServer, selectedRows, and persistSelectedOnSort and a single row is checked', () => {
 		const mock = dataMock({ sortable: true });
-		const onSelectedRowsChange = jest.fn();
-		const onSortMock = jest.fn();
+		const onSelectedRowsChange = vi.fn();
+		const onSortMock = vi.fn();
 		const { container } = render(
 			<DataTable
 				data={mock.data}
@@ -1819,7 +1819,7 @@ describe('DataTable::Pagination', () => {
 	});
 
 	test('should call onChangePage if paged with an the optional paginationTotalRows prop', () => {
-		const onChangePageMock = jest.fn();
+		const onChangePageMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable
@@ -1838,7 +1838,7 @@ describe('DataTable::Pagination', () => {
 	});
 
 	test('should call onChangeRowsPerPage if paged', () => {
-		const onChangeRowsPerPageMock = jest.fn();
+		const onChangeRowsPerPageMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} pagination onChangeRowsPerPage={onChangeRowsPerPageMock} />,
@@ -1849,7 +1849,7 @@ describe('DataTable::Pagination', () => {
 	});
 
 	test('should call onChangeRowsPerPage if paged when paginationServer is true', () => {
-		const onChangeRowsPerPageMock = jest.fn();
+		const onChangeRowsPerPageMock = vi.fn();
 		const mock = dataMock();
 		const { container } = render(
 			<DataTable

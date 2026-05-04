@@ -1,0 +1,562 @@
+/* ─── Root ─────────────────────────────────────────────────────────────────── */
+.rdt_table {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+.rdt_tableDisabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+/* ─── Wrapper ───────────────────────────────────────────────────────────────── */
+.rdt_wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.rdt_responsiveWrapper {
+	position: relative;
+	width: 100%;
+	border-radius: inherit;
+}
+
+.rdt_responsiveWrapperScroll {
+	overflow-x: auto;
+	overflow-y: hidden;
+	min-height: 0;
+}
+
+.rdt_responsiveWrapperFixed {
+	overflow-x: auto;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	min-height: 0;
+}
+
+/* ─── Head ──────────────────────────────────────────────────────────────────── */
+.rdt_head {
+	display: flex;
+	width: 100%;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.rdt_headFixed {
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.rdt_headRow {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	min-height: 52px;
+	background-color: var(--rdt-color-bg, #fff);
+	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_headRowDense {
+	min-height: 32px;
+}
+
+/* ─── Body / Rows ───────────────────────────────────────────────────────────── */
+.rdt_body {
+	display: flex;
+	flex-direction: column;
+}
+
+.rdt_row {
+	display: flex;
+	align-items: stretch;
+	align-content: stretch;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 13px;
+	font-weight: 400;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+	min-height: 48px;
+}
+
+.rdt_row:not(:last-of-type) {
+	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_rowDense {
+	min-height: 32px;
+}
+
+.rdt_rowStriped {
+	color: var(--rdt-color-striped-text, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-striped, #fafafa);
+}
+
+.rdt_rowSelected {
+	color: var(--rdt-color-selected-text, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-selected, #e3f2fd);
+	border-bottom-color: var(--rdt-color-bg, #fff);
+}
+
+.rdt_rowHighlight:hover {
+	color: var(--rdt-color-highlight-text, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-highlight, #eee);
+	border-bottom-color: var(--rdt-color-bg, #fff);
+	outline: 1px solid var(--rdt-color-bg, #fff);
+	transition-duration: 0.15s;
+	transition-property: background-color;
+}
+
+.rdt_rowPointer:hover {
+	cursor: pointer;
+}
+
+/* ─── Cells ─────────────────────────────────────────────────────────────────── */
+.rdt_cellBase {
+	position: relative;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	line-height: normal;
+	padding-left: 16px;
+	padding-right: 16px;
+	word-break: break-word;
+}
+
+.rdt_cellBaseHead {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.rdt_cellNoPadding {
+	padding: 0;
+}
+
+/* ─── Checkbox / expander cells ─────────────────────────────────────────────── */
+.rdt_cellCheckbox {
+	flex: 0 0 48px;
+	min-width: 48px;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+}
+
+.rdt_cellExpander {
+	white-space: nowrap;
+	font-weight: 400;
+	min-width: 48px;
+}
+
+.rdt_columnCheckbox {
+	flex: 0 0 48px;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+	font-size: unset;
+}
+
+.rdt_columnExpander {
+	white-space: nowrap;
+}
+
+/* ─── Column headers ────────────────────────────────────────────────────────── */
+.rdt_columnSortable {
+	display: inline-flex;
+	align-items: center;
+	justify-content: inherit;
+	height: 100%;
+	width: 100%;
+	outline: none;
+	user-select: none;
+	overflow: hidden;
+}
+
+.rdt_columnSortableEnabled {
+	cursor: pointer;
+}
+
+.rdt_columnSortableActive {}
+
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):hover,
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):focus {
+	opacity: 0.7;
+}
+
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):hover span,
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):focus span {
+	opacity: 0.7;
+}
+
+.rdt_columnText {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* Custom sort icon */
+.rdt_sortIcon i,
+.rdt_sortIcon svg {
+	transition-duration: 95ms;
+	transition-property: transform;
+	color: inherit;
+	font-size: 18px;
+	height: 18px;
+	width: 18px;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+
+.rdt_sortIconInactive i,
+.rdt_sortIconInactive svg {
+	opacity: 0;
+}
+
+.rdt_sortIconActive i,
+.rdt_sortIconActive svg {
+	opacity: 1;
+}
+
+.rdt_sortIconAsc i,
+.rdt_sortIconAsc svg {
+	transform: rotate(180deg);
+}
+
+/* ─── Expander ──────────────────────────────────────────────────────────────── */
+.rdt_expanderRow {
+	width: 100%;
+	box-sizing: border-box;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+.rdt_expanderButton {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+	border: none;
+	background-color: transparent;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	border-radius: 2px;
+	transition: background-color 0.25s;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+}
+
+.rdt_expanderButton svg {
+	margin: auto;
+}
+
+.rdt_expanderButton:hover:not(:disabled) {
+	cursor: pointer;
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_expanderButton:focus {
+	outline: none;
+	background-color: var(--rdt-color-btn-focus, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_expanderButton:disabled {
+	color: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+	fill: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+.rdt_header {
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	flex-wrap: wrap;
+	font-size: 22px;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+	min-height: 56px;
+	padding-left: 16px;
+	padding-right: 8px;
+}
+
+.rdt_headerTitle {
+	flex: 1 0 auto;
+	font-weight: 400;
+}
+
+.rdt_headerActions {
+	flex: 1 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.rdt_headerActions > * {
+	margin-left: 5px;
+}
+
+/* ─── Context menu ──────────────────────────────────────────────────────────── */
+.rdt_contextMenu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: inherit;
+	z-index: 1;
+	align-items: center;
+	justify-content: space-between;
+	display: flex;
+	font-size: 18px;
+	font-weight: 400;
+	padding-left: 16px;
+	padding-right: 8px;
+	background-color: var(--rdt-color-context-bg, #e3f2fd);
+	color: var(--rdt-color-context-text, rgba(0, 0, 0, 0.87));
+	transform: translate3d(0, -100%, 0);
+	transition-duration: 125ms;
+	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	will-change: transform;
+}
+
+.rdt_contextMenuVisible {
+	transform: translate3d(0, 0, 0);
+}
+
+.rdt_contextMenuRTL {
+	direction: rtl;
+}
+
+.rdt_contextTitle {
+	display: flex;
+	align-items: center;
+	flex: 1 0 auto;
+	height: 100%;
+	font-weight: 400;
+}
+
+.rdt_contextActions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+}
+
+/* ─── Subheader ─────────────────────────────────────────────────────────────── */
+.rdt_subheader {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	box-sizing: border-box;
+	align-items: center;
+	padding: 4px 16px 4px 24px;
+	width: 100%;
+	background-color: var(--rdt-color-bg, #fff);
+	min-height: 52px;
+}
+
+.rdt_subheaderLeft {
+	justify-content: flex-start;
+}
+
+.rdt_subheaderRight {
+	justify-content: flex-end;
+}
+
+.rdt_subheaderCenter {
+	justify-content: center;
+}
+
+.rdt_subheaderWrap {
+	flex-wrap: wrap;
+}
+
+/* ─── No data / progress ────────────────────────────────────────────────────── */
+.rdt_noData {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+.rdt_progress {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+/* ─── Pagination ────────────────────────────────────────────────────────────── */
+.rdt_pagination {
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: flex-end;
+	align-items: center;
+	box-sizing: border-box;
+	padding-right: 8px;
+	padding-left: 8px;
+	width: 100%;
+	font-size: 13px;
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	background-color: var(--rdt-color-bg, #fff);
+	min-height: 56px;
+	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_paginationButton {
+	position: relative;
+	display: block;
+	user-select: none;
+	border: none;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	padding: 8px;
+	margin: 0;
+	cursor: pointer;
+	transition: background-color 0.4s;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	background-color: transparent;
+}
+
+.rdt_paginationButton:disabled {
+	cursor: unset;
+	color: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+	fill: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+}
+
+.rdt_paginationButton:hover:not(:disabled) {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_paginationButton:focus {
+	outline: none;
+	background-color: var(--rdt-color-btn-focus, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_paginationButtonRTL {
+	transform: scale(-1, -1);
+}
+
+.rdt_paginationPageList {
+	display: flex;
+	align-items: center;
+	border-radius: 4px;
+	white-space: nowrap;
+}
+
+@media (max-width: 599px) {
+	.rdt_paginationPageList {
+		width: 100%;
+		justify-content: space-around;
+	}
+}
+
+.rdt_paginationSpan {
+	flex-shrink: 1;
+	user-select: none;
+}
+
+.rdt_paginationRange {
+	flex-shrink: 1;
+	user-select: none;
+	margin: 0 24px;
+}
+
+.rdt_paginationRowLabel {
+	flex-shrink: 1;
+	user-select: none;
+	margin: 0 4px;
+}
+
+/* ─── Select ────────────────────────────────────────────────────────────────── */
+.rdt_selectWrapper {
+	position: relative;
+	flex-shrink: 0;
+	font-size: inherit;
+	color: inherit;
+	margin-top: 1px;
+}
+
+.rdt_selectWrapper svg {
+	top: 0;
+	right: 0;
+	color: inherit;
+	position: absolute;
+	fill: currentColor;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	user-select: none;
+	pointer-events: none;
+}
+
+.rdt_selectControl {
+	cursor: pointer;
+	height: 24px;
+	max-width: 100%;
+	user-select: none;
+	padding-left: 8px;
+	padding-right: 24px;
+	box-sizing: content-box;
+	font-size: inherit;
+	color: inherit;
+	border: none;
+	background-color: transparent;
+	appearance: none;
+	direction: ltr;
+	flex-shrink: 0;
+}
+
+.rdt_selectControl::-ms-expand {
+	display: none;
+}
+
+.rdt_selectControl option {
+	color: initial;
+}
+
+/* ─── Responsive column hiding ───────────────────────────────────────────────── */
+@media (max-width: 599px) {
+	.rdt_hideOnSm {
+		display: none;
+	}
+}
+
+@media (max-width: 959px) {
+	.rdt_hideOnMd {
+		display: none;
+	}
+}
+
+@media (max-width: 1279px) {
+	.rdt_hideOnLg {
+		display: none;
+	}
+}

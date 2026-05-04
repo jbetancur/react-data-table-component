@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import 'jest-styled-components';
+
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Checkbox from '../Checkbox';
@@ -47,7 +47,7 @@ test('component <Checkbox indeterminate={false} /> should not toggle indetermina
 });
 
 test('should handle onClick', () => {
-	const mockCallback = jest.fn();
+	const mockCallback = vi.fn();
 	const { container } = render(<Checkbox name="test" onClick={mockCallback} />);
 	const input = container.firstChild as HTMLInputElement;
 

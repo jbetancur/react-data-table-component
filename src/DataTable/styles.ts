@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import { mergeDeep } from './util';
 import { defaultThemes } from './themes';
 import { TableStyles, Theme, Themes } from './types';
 
@@ -93,22 +93,17 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			color: theme.text.primary,
 			backgroundColor: theme.background.default,
 			minHeight: '48px',
-			'&:not(:last-of-type)': {
-				borderBottomStyle: 'solid',
-				borderBottomWidth: '1px',
-				borderBottomColor: theme.divider.default,
-			},
+			borderBottomStyle: 'solid',
+			borderBottomWidth: '1px',
+			borderBottomColor: theme.divider.default,
 		},
 		denseStyle: {
 			minHeight: '32px',
 		},
 		selectedHighlightStyle: {
-			// use nth-of-type(n) to override other nth selectors
-			'&:nth-of-type(n)': {
-				color: theme.selected.text,
-				backgroundColor: theme.selected.default,
-				borderBottomColor: theme.background.default,
-			},
+			color: theme.selected.text,
+			backgroundColor: theme.selected.default,
+			borderBottomColor: theme.background.default,
 		},
 		highlightOnHoverStyle: {
 			color: theme.highlightOnHover.text,
@@ -145,23 +140,6 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			transition: '0.25s',
 			height: '100%',
 			width: '100%',
-			'&:hover:enabled': {
-				cursor: 'pointer',
-			},
-			'&:disabled': {
-				color: theme.button.disabled,
-			},
-			'&:hover:not(:disabled)': {
-				cursor: 'pointer',
-				backgroundColor: theme.button.hover,
-			},
-			'&:focus': {
-				outline: 'none',
-				backgroundColor: theme.button.focus,
-			},
-			svg: {
-				margin: 'auto',
-			},
 		},
 	},
 	pagination: {
@@ -179,24 +157,11 @@ export const defaultStyles = (theme: Theme): TableStyles => ({
 			height: '40px',
 			width: '40px',
 			padding: '8px',
-			margin: 'px',
 			cursor: 'pointer',
 			transition: '0.4s',
 			color: theme.button.default,
 			fill: theme.button.default,
 			backgroundColor: 'transparent',
-			'&:disabled': {
-				cursor: 'unset',
-				color: theme.button.disabled,
-				fill: theme.button.disabled,
-			},
-			'&:hover:not(:disabled)': {
-				backgroundColor: theme.button.hover,
-			},
-			'&:focus': {
-				outline: 'none',
-				backgroundColor: theme.button.focus,
-			},
 		},
 	},
 	noData: {
@@ -226,5 +191,5 @@ export const createStyles = (
 ): TableStyles => {
 	const themeType = defaultThemes[themeName] ? themeName : inherit;
 
-	return merge(defaultStyles(defaultThemes[themeType]), customStyles);
+	return mergeDeep(defaultStyles(defaultThemes[themeType]), customStyles);
 };

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ThemeProvider } from 'styled-components';
 import Table from './Table';
 import Head from './TableHead';
 import HeadRow from './TableHeadRow';
@@ -19,12 +18,15 @@ import NativePagination from './Pagination';
 import { prop, getNumberOfPages, isEmpty, isRowSelected, recalculatePage } from './util';
 import { defaultProps } from './defaultProps';
 import { createStyles } from './styles';
-import { TableRow, TableProps } from './types';
+import { defaultThemes } from './themes';
+import { TableRow, TableProps, DataTableHandle } from './types';
+import { StylesContext } from './StylesContext';
+import { themeToVars } from './themes';
 import useColumns from '../hooks/useColumns';
 import useTableState from '../hooks/useTableState';
 import useTableData from '../hooks/useTableData';
 
-function DataTable<T>(props: TableProps<T>): JSX.Element {
+function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
 		data = defaultProps.data,
 		columns = defaultProps.columns,
@@ -110,6 +112,9 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		ariaLabel,
 	} = props;
 
+	const tableId = React.useId();
+	const [isPending, startTransition] = React.useTransition();
+
 	// Column management (drag-and-drop, sorting)
 	const {
 		tableColumns,
@@ -126,11 +131,12 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	// State management (selection, pagination, sorting)
 	const {
 		tableState,
-		handleSort,
+		handleSort: dispatchSort,
 		handleSelectAllRows,
 		handleSelectedRow,
 		handleChangePage: handleChangePageState,
 		handleChangeRowsPerPage: handleChangeRowsPerPageState,
+		handleClearSelectedRows,
 	} = useTableState({
 		data,
 		keyField,
@@ -152,6 +158,13 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		onChangePage,
 		onChangeRowsPerPage,
 	});
+
+	React.useImperativeHandle(ref, () => ({ clearSelectedRows: handleClearSelectedRows }), [handleClearSelectedRows]);
+
+	const handleSort = React.useCallback(
+		(action: Parameters<typeof dispatchSort>[0]) => startTransition(() => dispatchSort(action)),
+		[dispatchSort],
+	);
 
 	const {
 		rowsPerPage,
@@ -183,8 +196,13 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
-	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
+	const tableStyles = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
+	const cssVars = React.useMemo(
+		() => themeToVars(defaultThemes[defaultThemes[theme] ? theme : 'default']),
+		[theme],
+	);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
+	const isBusy = progressPending || isPending;
 
 	// Stable event handlers
 	const handleRowClicked = React.useCallback(
@@ -258,7 +276,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
 	return (
-		<ThemeProvider theme={currentTheme}>
+		<StylesContext.Provider value={tableStyles}>
+		<div style={cssVars as React.CSSProperties}>
 			{showHeader() && (
 				<Header
 					title={title}
@@ -288,7 +307,14 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 				<Wrapper>
 					{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
-					<Table disabled={disabled} className="rdt_Table" role="table" {...(ariaLabel && { 'aria-label': ariaLabel })}>
+					<Table
+							id={tableId}
+							disabled={disabled}
+							className="rdt_Table"
+							role="table"
+							aria-busy={isBusy}
+							{...(ariaLabel && { 'aria-label': ariaLabel })}
+						>
 						{showTableHead() && (
 							<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
 								<HeadRow className="rdt_TableHeadRow" role="row" $dense={dense}>
@@ -335,11 +361,11 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 							</Head>
 						)}
 
-						{!sortedData.length && !progressPending && <NoData>{noDataComponent}</NoData>}
+						{!sortedData.length && !isBusy && <NoData>{noDataComponent}</NoData>}
 
-						{progressPending && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
+						{isBusy && persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
-						{!progressPending && sortedData.length > 0 && (
+						{!isBusy && sortedData.length > 0 && (
 							<Body className="rdt_TableBody" role="rowgroup">
 								{tableRows.map((row, i) => {
 									const key = prop(row as TableRow, keyField) as string | number;
@@ -419,8 +445,13 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 					/>
 				</div>
 			)}
-		</ThemeProvider>
+		</div>
+		</StylesContext.Provider>
 	);
 }
 
-export default React.memo(DataTable) as typeof DataTable;
+const DataTable = React.forwardRef(DataTableInner) as <T>(
+	props: TableProps<T> & { ref?: React.Ref<DataTableHandle> },
+) => JSX.Element;
+
+export default DataTable;

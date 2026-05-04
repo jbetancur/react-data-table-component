@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import { mergeDeep } from './util';
 import { Theme, Themes } from './types';
 
 type ThemeMapping = {
@@ -81,13 +81,35 @@ export const defaultThemes: ThemeMapping = {
 	},
 };
 
+export function themeToVars(theme: Theme): Record<string, string> {
+	return {
+		'--rdt-color-text-primary': theme.text.primary,
+		'--rdt-color-text-secondary': theme.text.secondary,
+		'--rdt-color-text-disabled': theme.text.disabled,
+		'--rdt-color-bg': theme.background.default,
+		'--rdt-color-context-bg': theme.context.background,
+		'--rdt-color-context-text': theme.context.text,
+		'--rdt-color-divider': theme.divider.default,
+		'--rdt-color-btn': theme.button.default,
+		'--rdt-color-btn-focus': theme.button.focus,
+		'--rdt-color-btn-hover': theme.button.hover,
+		'--rdt-color-btn-disabled': theme.button.disabled,
+		'--rdt-color-selected': theme.selected.default,
+		'--rdt-color-selected-text': theme.selected.text,
+		'--rdt-color-highlight': theme.highlightOnHover.default,
+		'--rdt-color-highlight-text': theme.highlightOnHover.text,
+		'--rdt-color-striped': theme.striped.default,
+		'--rdt-color-striped-text': theme.striped.text,
+	};
+}
+
 export function createTheme<T>(name = 'default', customTheme?: T, inherit: Themes = 'default'): Theme {
 	if (!defaultThemes[name]) {
-		defaultThemes[name] = merge(defaultThemes[inherit], customTheme || {});
+		defaultThemes[name] = mergeDeep(defaultThemes[inherit], customTheme || {});
 	}
 
 	// allow tweaking default or light themes if the theme passed in matches
-	defaultThemes[name] = merge(defaultThemes[name], customTheme || {});
+	defaultThemes[name] = mergeDeep(defaultThemes[name], customTheme || {});
 
 	return defaultThemes[name];
 }
