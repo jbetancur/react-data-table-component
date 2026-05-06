@@ -1,10 +1,10 @@
 import React from 'react';
-import FirstPageIcon from '../icons/FirstPage';
-import LastPageIcon from '../icons/LastPage';
-import LeftIcon from '../icons/Left';
-import RightIcon from '../icons/Right';
-import ExpanderCollapsedIcon from '../icons/ExpanderCollapsedIcon';
-import ExpanderExpandedIcon from '../icons/ExpanderExpandedIcon';
+import FirstPageIcon from './icons/FirstPage';
+import LastPageIcon from './icons/LastPage';
+import LeftIcon from './icons/Left';
+import RightIcon from './icons/Right';
+import ExpanderCollapsedIcon from './icons/ExpanderCollapsedIcon';
+import ExpanderExpandedIcon from './icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
 
@@ -52,11 +52,7 @@ export const defaultProps = {
 	striped: false,
 	highlightOnHover: false,
 	pointerOnHover: false,
-	noContextMenu: false,
-	contextMessage: { singular: 'item', plural: 'items', message: 'selected' },
 	actions: null,
-	contextActions: null,
-	contextComponent: null,
 	defaultSortFieldId: null,
 	defaultSortAsc: true,
 	responsive: true,

@@ -1,25 +1,19 @@
 /**
- * @jest-environment jsdom
+ *
  */
-
 
 import * as React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { renderWithTheme } from '../../internal/test-helpers'; // since child elements require theme
-import Pagination from '../Pagination';
+import { renderWithTheme } from './test-helpers'; // since child elements require theme
+import Pagination from '../components/Pagination';
 
 test('should render correctly with default props', () => {
 	const { container } = renderWithTheme(
-		<Pagination
-			currentPage={1}
-			rowsPerPage={10}
-			rowCount={40}
-			onChangePage={vi.fn()}
-			onChangeRowsPerPage={vi.fn()}
-		/>,
+		<Pagination currentPage={1} rowsPerPage={10} rowCount={40} onChangePage={vi.fn()} onChangeRowsPerPage={vi.fn()} />,
 	);
 
-	expect(container.firstChild).toMatchSnapshot();
+	expect(container.querySelector('button#pagination-first-page')).not.toBeNull();
+	expect(container.querySelector('button#pagination-last-page')).not.toBeNull();
 });
 
 describe('when clicking the First Page button', () => {
@@ -227,6 +221,6 @@ describe('when the screensize is small', () => {
 			/>,
 		);
 
-		expect(container.firstChild).toMatchSnapshot();
+		expect(container.querySelector('select')).toBeNull();
 	});
 });

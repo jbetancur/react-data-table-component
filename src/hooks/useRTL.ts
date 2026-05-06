@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Direction } from '../DataTable/constants';
+import { Direction } from '../constants';
 
 function useRTL(direction: Direction = Direction.AUTO): boolean {
 	const isClient = typeof window === 'object';
