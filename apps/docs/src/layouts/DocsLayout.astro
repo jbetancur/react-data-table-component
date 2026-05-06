@@ -1,0 +1,93 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const nav = [
+  {
+    group: 'Introduction',
+    links: [
+      { label: 'Getting started', href: '/docs/getting-started' },
+      { label: 'Installation', href: '/docs/installation' },
+    ],
+  },
+  {
+    group: 'Core features',
+    links: [
+      { label: 'Columns', href: '/docs/columns' },
+      { label: 'Sorting', href: '/docs/sorting' },
+      { label: 'Pagination', href: '/docs/pagination' },
+      { label: 'Row selection', href: '/docs/selection' },
+      { label: 'Expandable rows', href: '/docs/expandable' },
+    ],
+  },
+  {
+    group: 'Styling',
+    links: [
+      { label: 'Themes', href: '/docs/themes' },
+      { label: 'Custom styles', href: '/docs/custom-styles' },
+      { label: 'Column separators', href: '/docs/column-separators' },
+    ],
+  },
+  {
+    group: 'Advanced',
+    links: [
+      { label: 'Server-side data', href: '/docs/server-side' },
+      { label: 'Column groups', href: '/docs/column-groups' },
+      { label: 'Resizable columns', href: '/docs/resizable' },
+      { label: 'Animations', href: '/docs/animations' },
+    ],
+  },
+  {
+    group: 'Reference',
+    links: [
+      { label: 'API reference', href: '/docs/api' },
+      { label: 'TypeScript', href: '/docs/typescript' },
+      { label: 'Migration guide', href: '/docs/migration' },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<Layout title={title} description={description}>
+  <div class="max-w-7xl mx-auto px-6 flex gap-12 py-10">
+    <!-- Sidebar -->
+    <aside class="hidden lg:block w-56 shrink-0">
+      <nav class="sticky top-24 space-y-6 text-sm">
+        {nav.map(({ group, links }) => (
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">{group}</p>
+            <ul class="space-y-1">
+              {links.map(({ label, href }) => (
+                <li>
+                  <a
+                    href={href}
+                    class={`block px-2 py-1 rounded-md ${
+                      currentPath === href
+                        ? 'bg-brand-50 text-brand-700 font-medium'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <article class="flex-1 min-w-0 max-w-none">
+      <slot />
+    </article>
+  </div>
+</Layout>

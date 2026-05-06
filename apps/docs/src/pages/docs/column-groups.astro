@@ -1,0 +1,68 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Column groups — react-data-table-component">
+  <h1>Column groups</h1>
+
+  <p>
+    Column groups render a spanning header row above the regular column headers —
+    useful for grouping related columns under a shared label.
+  </p>
+
+  <h2>Setup</h2>
+
+  <pre><code>{`import DataTable, { type TableColumn, type ColumnGroup } from 'react-data-table-component';
+
+interface Row {
+  id: number;
+  firstName: string;
+  lastName: string;
+  baseSalary: number;
+  bonus: number;
+}
+
+const columns: TableColumn<Row>[] = [
+  { id: 'first',  name: 'First name', selector: r => r.firstName },
+  { id: 'last',   name: 'Last name',  selector: r => r.lastName  },
+  { id: 'base',   name: 'Base',       selector: r => r.baseSalary, right: true,
+    format: r => \`$\${r.baseSalary.toLocaleString()}\` },
+  { id: 'bonus',  name: 'Bonus',      selector: r => r.bonus,      right: true,
+    format: r => \`$\${r.bonus.toLocaleString()}\`      },
+];
+
+const columnGroups: ColumnGroup[] = [
+  { name: 'Name',         columnIds: ['first', 'last']  },
+  { name: 'Compensation', columnIds: ['base', 'bonus']  },
+];
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      columnGroups={columnGroups}
+    />
+  );
+}`}</code></pre>
+
+  <h2>Rules</h2>
+
+  <ul>
+    <li>Each column that belongs to a group must have a stable <code>id</code>.</li>
+    <li><code>columnIds</code> must match the <code>id</code> values exactly (string or number).</li>
+    <li>Columns not listed in any group span the full group row height with no label.</li>
+    <li>Groups render in the order they appear in the <code>columnGroups</code> array.</li>
+  </ul>
+
+  <h2>Custom group header content</h2>
+
+  <p>The <code>name</code> field accepts any <code>ReactNode</code>, so you can pass JSX:</p>
+
+  <pre><code>{`const columnGroups: ColumnGroup[] = [
+  {
+    name: <span style={{ color: '#0170FE' }}>Compensation</span>,
+    columnIds: ['base', 'bonus'],
+  },
+];`}</code></pre>
+</DocsLayout>

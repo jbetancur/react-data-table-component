@@ -1,0 +1,74 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Installation — react-data-table-component">
+  <h1>Installation</h1>
+
+  <h2>npm</h2>
+  <pre><code>npm install react-data-table-component</code></pre>
+
+  <h2>pnpm</h2>
+  <pre><code>pnpm add react-data-table-component</code></pre>
+
+  <h2>yarn</h2>
+  <pre><code>yarn add react-data-table-component</code></pre>
+
+  <h2>Requirements</h2>
+
+  <table>
+    <thead>
+      <tr><th>Peer dependency</th><th>Version</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>react</code></td><td><code>&gt;=18.0.0</code></td></tr>
+      <tr><td><code>react-dom</code></td><td><code>&gt;=18.0.0</code></td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    React 17 is not supported. React 18 concurrent features (<code>useTransition</code>,
+    <code>useId</code>) are used internally.
+  </p>
+
+  <h2>No CSS import needed</h2>
+
+  <p>
+    Styles are injected automatically when the component first renders. You do not need
+    to import any CSS file. This is true for both ESM and CJS consumers.
+  </p>
+
+  <h2>TypeScript</h2>
+
+  <p>
+    Type declarations are bundled — no <code>@types/</code> package required.
+    All public types are re-exported from the main entry point:
+  </p>
+
+  <pre><code>{`import DataTable, { type TableColumn, type TableProps } from 'react-data-table-component';`}</code></pre>
+
+  <h2>Framework notes</h2>
+
+  <table>
+    <thead>
+      <tr><th>Framework</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Vite / Create React App</td><td>Works out of the box</td></tr>
+      <tr><td>Next.js App Router</td><td>Mark the parent as <code>'use client'</code></td></tr>
+      <tr><td>Next.js Pages Router</td><td>Works out of the box</td></tr>
+      <tr><td>Remix</td><td>Works out of the box</td></tr>
+      <tr><td>Astro</td><td>Use <code>client:load</code> or <code>client:visible</code> directive</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Next.js App Router example</h3>
+
+  <pre><code>{`'use client';
+
+import DataTable from 'react-data-table-component';
+
+export default function MyTable() {
+  return <DataTable columns={columns} data={data} />;
+}`}</code></pre>
+</DocsLayout>

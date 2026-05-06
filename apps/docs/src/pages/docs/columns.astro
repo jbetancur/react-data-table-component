@@ -1,0 +1,128 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Columns — react-data-table-component">
+  <h1>Columns</h1>
+
+  <p>
+    Columns are defined as an array of <code>TableColumn&lt;T&gt;</code> objects.
+    Each column controls its header label, data accessor, sort behaviour, rendering, and layout.
+  </p>
+
+  <h2>Basic column definition</h2>
+
+  <pre><code>{`import { type TableColumn } from 'react-data-table-component';
+
+interface Row {
+  id: number;
+  name: string;
+  salary: number;
+}
+
+const columns: TableColumn<Row>[] = [
+  {
+    name: 'Name',
+    selector: row => row.name,
+    sortable: true,
+  },
+  {
+    name: 'Salary',
+    selector: row => row.salary,
+    format: row => \`$\${row.salary.toLocaleString()}\`,
+    right: true,
+  },
+];`}</code></pre>
+
+  <h2>Column properties</h2>
+
+  <table>
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>name</code></td><td><code>ReactNode</code></td><td>Header label</td></tr>
+      <tr><td><code>selector</code></td><td><code>(row: T) =&gt; Primitive</code></td><td>Data accessor — used for sorting and default display</td></tr>
+      <tr><td><code>cell</code></td><td><code>(row, index, column, id) =&gt; ReactNode</code></td><td>Custom cell renderer — overrides <code>selector</code> display</td></tr>
+      <tr><td><code>format</code></td><td><code>(row, index) =&gt; ReactNode</code></td><td>Format the selector value without replacing the sort key</td></tr>
+      <tr><td><code>sortable</code></td><td><code>boolean</code></td><td>Enable sorting on this column</td></tr>
+      <tr><td><code>sortFunction</code></td><td><code>(a, b) =&gt; number</code></td><td>Custom comparator for this column</td></tr>
+      <tr><td><code>sortField</code></td><td><code>string</code></td><td>Key to pass to <code>onSort</code> for server-side sorting</td></tr>
+      <tr><td><code>filterable</code></td><td><code>boolean</code></td><td>Show a filter input in the column header</td></tr>
+      <tr><td><code>filterFunction</code></td><td><code>(row, value) =&gt; boolean</code></td><td>Custom filter predicate (defaults to case-insensitive substring)</td></tr>
+      <tr><td><code>id</code></td><td><code>string | number</code></td><td>Stable identity — used by <code>defaultSortFieldId</code> and column groups</td></tr>
+      <tr><td><code>width</code></td><td><code>string</code></td><td>Fixed width, e.g. <code>"120px"</code></td></tr>
+      <tr><td><code>minWidth</code></td><td><code>string</code></td><td>Minimum width</td></tr>
+      <tr><td><code>maxWidth</code></td><td><code>string</code></td><td>Maximum width</td></tr>
+      <tr><td><code>grow</code></td><td><code>number</code></td><td>Flex-grow factor (default 1)</td></tr>
+      <tr><td><code>right</code></td><td><code>boolean</code></td><td>Right-align cell content</td></tr>
+      <tr><td><code>center</code></td><td><code>boolean</code></td><td>Center cell content</td></tr>
+      <tr><td><code>wrap</code></td><td><code>boolean</code></td><td>Allow text to wrap</td></tr>
+      <tr><td><code>compact</code></td><td><code>boolean</code></td><td>Remove cell padding</td></tr>
+      <tr><td><code>button</code></td><td><code>boolean</code></td><td>Center content and suppress row click propagation</td></tr>
+      <tr><td><code>allowOverflow</code></td><td><code>boolean</code></td><td>Allow content to overflow the cell (for dropdowns/popovers)</td></tr>
+      <tr><td><code>ignoreRowClick</code></td><td><code>boolean</code></td><td>Prevent cell clicks from triggering <code>onRowClicked</code></td></tr>
+      <tr><td><code>hide</code></td><td><code>number | "sm" | "md" | "lg"</code></td><td>Hide the column below this breakpoint</td></tr>
+      <tr><td><code>omit</code></td><td><code>boolean</code></td><td>Exclude column entirely (useful for toggling visibility)</td></tr>
+      <tr><td><code>reorder</code></td><td><code>boolean</code></td><td>Allow drag-to-reorder for this column</td></tr>
+      <tr><td><code>style</code></td><td><code>CSSProperties</code></td><td>Inline styles applied to every cell in this column</td></tr>
+      <tr><td><code>conditionalCellStyles</code></td><td><code>ConditionalStyles&lt;T&gt;[]</code></td><td>Per-cell conditional styles</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Custom cell renderer</h2>
+
+  <pre><code>{`{
+  name: 'Actions',
+  button: true,
+  cell: row => (
+    <button onClick={() => handleDelete(row.id)}>Delete</button>
+  ),
+}`}</code></pre>
+
+  <h2>Column filtering</h2>
+
+  <p>
+    Add <code>filterable: true</code> to any column to render a filter icon in the header.
+    Clicking the icon opens a text input; rows are filtered client-side by default.
+  </p>
+
+  <pre><code>{`{ name: 'Name', selector: r => r.name, filterable: true }
+
+// Custom filter logic:
+{
+  name: 'Status',
+  selector: r => r.status,
+  filterable: true,
+  filterFunction: (row, value) => row.status.startsWith(value),
+}`}</code></pre>
+
+  <p>For controlled filter state, pass <code>filterValues</code> and <code>onFilterChange</code> to <code>DataTable</code>.</p>
+
+  <h2>Column reordering</h2>
+
+  <p>
+    Mark columns with <code>reorder: true</code> and pass <code>onColumnOrderChange</code> to
+    DataTable to enable drag-to-reorder handles. The callback receives the new column array
+    in order.
+  </p>
+
+  <pre><code>{`const [cols, setCols] = React.useState(columns);
+
+<DataTable
+  columns={cols}
+  data={data}
+  onColumnOrderChange={setCols}
+/>`}</code></pre>
+
+  <h2>Hiding columns</h2>
+
+  <p>Toggle a column's visibility by setting <code>omit</code> dynamically:</p>
+
+  <pre><code>{`const [showSalary, setShowSalary] = React.useState(true);
+
+const columns = [
+  { name: 'Name', selector: r => r.name },
+  { name: 'Salary', selector: r => r.salary, omit: !showSalary },
+];`}</code></pre>
+</DocsLayout>

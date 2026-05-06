@@ -1,0 +1,51 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Resizable columns — react-data-table-component">
+  <h1>Resizable columns</h1>
+
+  <p>
+    Enable drag-to-resize handles on column headers by setting <code>resizable</code>.
+    Users can drag the right edge of any header cell to adjust its width.
+  </p>
+
+  <h2>Basic usage</h2>
+
+  <pre><code>{`<DataTable columns={columns} data={data} resizable />`}</code></pre>
+
+  <p>All columns become resizable by default when <code>resizable</code> is set.</p>
+
+  <h2>How it works</h2>
+
+  <p>
+    Column widths are tracked in component state as pixel values. When the user starts
+    dragging, a <code>mousemove</code> listener computes the delta from the drag start point
+    and sets the new width (minimum 40 px). No layout thrashing occurs — widths are applied
+    as inline styles only on the affected column.
+  </p>
+
+  <h2>Combining with fixed widths</h2>
+
+  <p>
+    A column with an explicit <code>width</code> prop will start at that width and remain
+    resizable from there. A column with <code>minWidth</code> will not shrink below it.
+  </p>
+
+  <pre><code>{`const columns = [
+  { name: 'Name',   selector: r => r.name,   width: '200px', minWidth: '120px' },
+  { name: 'Status', selector: r => r.status, width: '100px' },
+];
+
+<DataTable columns={columns} data={data} resizable />`}</code></pre>
+
+  <h2>Persisting widths</h2>
+
+  <p>
+    Column widths are in-memory only — they reset on remount. To persist them,
+    save to <code>localStorage</code> on resize:
+  </p>
+
+  <pre><code>{`// Not a built-in prop yet — implement via onColumnOrderChange and
+// a wrapper that intercepts resize events if you need persistence.`}</code></pre>
+</DocsLayout>

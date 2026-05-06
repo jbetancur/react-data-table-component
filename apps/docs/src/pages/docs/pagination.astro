@@ -1,0 +1,68 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import PaginationDemo from '../../components/demos/PaginationDemo.tsx';
+---
+
+<DocsLayout title="Pagination — react-data-table-component">
+  <h1>Pagination</h1>
+
+  <p>
+    Add <code>pagination</code> to render a built-in pagination bar below the table.
+    All state is managed internally — no props needed.
+  </p>
+
+  <Demo
+    title="Built-in pagination"
+    description="30 rows, configurable page size."
+    code={`<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationPerPage={10}
+  paginationRowsPerPageOptions={[5, 10, 25, 50]}
+/>`}
+  >
+    <PaginationDemo client:load />
+  </Demo>
+
+  <h2>Server-side pagination</h2>
+  <p>
+    Use <code>paginationServer</code> with <code>paginationTotalRows</code> and
+    <code>onChangePage</code> / <code>onChangeRowsPerPage</code> to handle pagination externally.
+  </p>
+
+  <pre><code>{`const [data, setData] = useState([]);
+const [totalRows, setTotalRows] = useState(0);
+const [perPage, setPerPage] = useState(10);
+
+async function fetchPage(page: number) {
+  const res = await api.getEmployees({ page, perPage });
+  setData(res.rows);
+  setTotalRows(res.total);
+}
+
+useEffect(() => { fetchPage(1); }, []);
+
+<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationServer
+  paginationTotalRows={totalRows}
+  onChangePage={fetchPage}
+  onChangeRowsPerPage={(newPerPage, page) => {
+    setPerPage(newPerPage);
+    fetchPage(page);
+  }}
+/>`}</code></pre>
+
+  <h2>Custom pagination component</h2>
+  <p>Replace the built-in pagination bar entirely:</p>
+  <pre><code>{`<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationComponent={MyCustomPagination}
+/>`}</code></pre>
+</DocsLayout>

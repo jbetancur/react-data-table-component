@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'react-data-table-component',
+  description = 'A fast, feature-rich React data table. Working table in 10 lines.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Nav -->
+    <header class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
+      <nav class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-semibold text-gray-900 hover:text-brand-600">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" class="text-brand-500">
+            <rect x="1" y="1" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="1" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="1" y1="14" x2="21" y2="14" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="8" y1="7" x2="8" y2="21" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>react-data-table-component</span>
+        </a>
+        <div class="flex items-center gap-6 text-sm text-gray-600">
+          <a href="/docs" class="hover:text-gray-900">Docs</a>
+          <a href="/docs/themes" class="hover:text-gray-900">Themes</a>
+          <a href="/docs/api" class="hover:text-gray-900">API</a>
+          <a
+            href="https://github.com/jbetancur/react-data-table-component"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-gray-900"
+          >
+            GitHub
+          </a>
+          <a
+            href="/docs/getting-started"
+            class="bg-brand-600 text-white px-3.5 py-1.5 rounded-md hover:bg-brand-700 font-medium"
+          >
+            Get started →
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-100 py-10 text-center text-sm text-gray-400">
+      <p>
+        MIT licensed ·
+        <a href="https://github.com/jbetancur/react-data-table-component" class="hover:text-gray-600">GitHub</a>
+        · Built with Astro
+      </p>
+    </footer>
+  </body>
+</html>

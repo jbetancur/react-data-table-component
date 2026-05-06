@@ -1,0 +1,122 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Server-side data — react-data-table-component">
+  <h1>Server-side data</h1>
+
+  <p>
+    For large datasets, move sorting and pagination to the server.
+    Set <code>paginationServer</code> (and optionally <code>sortServer</code>)
+    and respond to the change callbacks.
+  </p>
+
+  <h2>Server-side pagination</h2>
+
+  <pre><code>{`import DataTable from 'react-data-table-component';
+import { useState, useEffect } from 'react';
+
+export default function ServerTable() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [totalRows, setTotalRows] = useState(0);
+  const [perPage, setPerPage] = useState(10);
+  const [page, setPage] = useState(1);
+
+  async function fetchData(page: number, perPage: number) {
+    setLoading(true);
+    const res = await fetch(\`/api/users?page=\${page}&limit=\${perPage}\`);
+    const json = await res.json();
+    setData(json.rows);
+    setTotalRows(json.total);
+    setLoading(false);
+  }
+
+  useEffect(() => { fetchData(page, perPage); }, []);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      progressPending={loading}
+      pagination
+      paginationServer
+      paginationTotalRows={totalRows}
+      onChangePage={p => { setPage(p); fetchData(p, perPage); }}
+      onChangeRowsPerPage={(pp, p) => { setPerPage(pp); fetchData(p, pp); }}
+    />
+  );
+}`}</code></pre>
+
+  <h2>Server-side sorting</h2>
+
+  <p>
+    Add <code>sortServer</code> and <code>onSort</code>. DataTable will not re-sort locally —
+    it fires <code>onSort</code> and re-renders with whatever data you put in <code>data</code>.
+  </p>
+
+  <pre><code>{`function handleSort(column, direction) {
+  fetchData({ sortField: column.sortField, sortDir: direction });
+}
+
+<DataTable
+  columns={columns}
+  data={data}
+  sortServer
+  onSort={handleSort}
+/>`}</code></pre>
+
+  <p>
+    Set <code>sortField</code> on each column definition to control what identifier is passed
+    to your <code>onSort</code> callback.
+  </p>
+
+  <h2>Resetting to page 1</h2>
+
+  <p>
+    When the dataset changes (e.g. after a search), reset pagination to page 1 by toggling
+    <code>paginationResetDefaultPage</code>:
+  </p>
+
+  <pre><code>{`const [resetPage, setResetPage] = useState(false);
+
+function handleSearch(q) {
+  setResetPage(prev => !prev);  // toggle to trigger reset
+  fetchData({ query: q });
+}
+
+<DataTable
+  ...
+  paginationResetDefaultPage={resetPage}
+/>`}</code></pre>
+
+  <h2>Persisting selection across pages</h2>
+
+  <p>
+    By default, selecting rows on page 1 and then changing to page 2 resets the selection.
+    Use <code>paginationServerOptions</code> to retain selections:
+  </p>
+
+  <pre><code>{`<DataTable
+  ...
+  paginationServer
+  paginationServerOptions={{
+    persistSelectedOnPageChange: true,
+    persistSelectedOnSort: true,
+  }}
+/>`}</code></pre>
+
+  <h2>Handling large row counts</h2>
+
+  <p>
+    Pass <code>paginationTotalRows</code> so the pagination component knows how many pages exist.
+    This is separate from <code>data.length</code>, which only reflects the current page.
+  </p>
+
+  <pre><code>{`<DataTable
+  data={currentPageRows}          // only the rows for this page
+  paginationTotalRows={50000}     // total in the dataset
+  paginationServer
+  pagination
+/>`}</code></pre>
+</DocsLayout>

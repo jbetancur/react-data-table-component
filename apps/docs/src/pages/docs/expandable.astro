@@ -1,0 +1,81 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import ExpandableDemo from '../../components/demos/ExpandableDemo.tsx';
+---
+
+<DocsLayout title="Expandable rows — react-data-table-component">
+  <h1>Expandable rows</h1>
+
+  <p>
+    Pass <code>expandableRows</code> and an <code>expandableRowsComponent</code> to render a
+    detail panel below each row when the user clicks the expander button.
+  </p>
+
+  <Demo
+    title="Expandable detail panel"
+    description="Click the ▶ button to expand a row."
+    code={`import DataTable from 'react-data-table-component';
+
+const DetailPanel = ({ data: row }) => (
+  <div style={{ padding: '16px 40px', background: '#f9fafb' }}>
+    <strong>{row.name}</strong>
+    <p>{row.bio}</p>
+  </div>
+);
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      expandableRows
+      expandableRowsComponent={DetailPanel}
+      animateRows
+    />
+  );
+}`}
+  >
+    <ExpandableDemo client:load />
+  </Demo>
+
+  <h2>Component props</h2>
+  <p>
+    The <code>expandableRowsComponent</code> receives a single prop: <code>data</code> — the row object.
+  </p>
+  <pre><code>{`interface ExpanderProps<T> {
+  data: T;
+}
+
+function DetailPanel({ data }: ExpanderProps<MyRow>) {
+  return <div>{data.name}</div>;
+}`}</code></pre>
+
+  <h2>Controlling expansion</h2>
+  <pre><code>{`// Open specific rows by default
+<DataTable
+  expandableRows
+  expandableRowsComponent={DetailPanel}
+  expandableRowExpanded={row => row.featured}
+/>
+
+// Disable expansion for specific rows
+<DataTable
+  expandableRows
+  expandableRowsComponent={DetailPanel}
+  expandableRowDisabled={row => row.locked}
+/>
+
+// React to expand/collapse events
+<DataTable
+  expandableRows
+  expandableRowsComponent={DetailPanel}
+  onRowExpandToggled={(expanded, row) => console.log(expanded, row)}
+/>`}</code></pre>
+
+  <h2>Animation</h2>
+  <p>
+    Add <code>animateRows</code> to get a smooth expand-in animation on the detail panel.
+    Automatically disabled when the user has <code>prefers-reduced-motion</code> set.
+  </p>
+</DocsLayout>

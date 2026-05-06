@@ -1,0 +1,67 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Animations — react-data-table-component">
+  <h1>Animations</h1>
+
+  <p>
+    Set <code>animateRows</code> to enable two animations:
+    a staggered entrance for rows on mount, and a transition when rows reorder after a sort.
+  </p>
+
+  <h2>Basic usage</h2>
+
+  <pre><code>{`<DataTable columns={columns} data={data} animateRows />`}</code></pre>
+
+  <h2>What animates</h2>
+
+  <table>
+    <thead>
+      <tr><th>Event</th><th>Animation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Initial mount</td><td>Rows fade and slide up with a staggered delay (0–200 ms)</td></tr>
+      <tr><td>Sort change</td><td>Rows transition smoothly to their new positions</td></tr>
+      <tr><td>Expand toggle</td><td>Expander row fades in/out</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Accessibility — reduced motion</h2>
+
+  <p>
+    All animations respect <code>prefers-reduced-motion</code>. When the user has
+    requested reduced motion in their OS settings, animations are disabled automatically
+    via a CSS media query — no JavaScript check required.
+  </p>
+
+  <pre><code>{`/* DataTable.css — simplified */
+@media (prefers-reduced-motion: reduce) {
+  .rdt_TableRow,
+  .rdt_ExpanderRow {
+    animation: none !important;
+    transition: none !important;
+  }
+}`}</code></pre>
+
+  <h2>Combining with other features</h2>
+
+  <p>
+    <code>animateRows</code> is compatible with pagination, server-side data, selection,
+    and expandable rows. Row animations play whenever the <code>data</code> prop changes,
+    so they also trigger after a server-side page change.
+  </p>
+
+  <h2>Custom animation timing</h2>
+
+  <p>
+    The stagger delay and duration are controlled by CSS custom properties on the root element.
+    Override them per-theme or globally:
+  </p>
+
+  <pre><code>{`/* your app's CSS */
+.rdt_table {
+  --rdt-row-anim-duration: 300ms;
+  --rdt-row-anim-stagger:  20ms;
+}`}</code></pre>
+</DocsLayout>
