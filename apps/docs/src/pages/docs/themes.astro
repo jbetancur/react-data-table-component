@@ -1,0 +1,100 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import ThemesDemo from '../../components/demos/ThemesDemo.tsx';
+import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
+---
+
+<DocsLayout title="Themes — react-data-table-component">
+  <h1>Themes</h1>
+
+  <p>
+    Pass a <code>theme</code> prop to switch between built-in named themes.
+    Create your own with <code>createTheme()</code>.
+  </p>
+
+  <Demo
+    title="Built-in themes"
+    description="11 themes including dark variants and a custom 'ocean' theme created with createTheme()."
+    code={`import DataTable, { createTheme } from 'react-data-table-component';
+
+// Register a custom theme — inherits from 'dark'
+createTheme('ocean', {
+  colors: {
+    text:             { primary: '#e0f2fe', secondary: '#7dd3fc' },
+    background:       { default: '#0c4a6e' },
+    divider:          { default: '#075985' },
+    highlightOnHover: { default: '#075985', text: '#f0f9ff' },
+  },
+}, 'dark');
+
+<DataTable columns={columns} data={data} theme="ocean" />`}
+  >
+    <ThemesDemo client:load />
+  </Demo>
+
+  <h2>Built-in themes</h2>
+  <table>
+    <thead><tr><th>Name</th><th>Style</th></tr></thead>
+    <tbody>
+      <tr><td><code>default</code></td><td>Clean light (same as <code>light</code>)</td></tr>
+      <tr><td><code>dark</code></td><td>Dark gray background</td></tr>
+      <tr><td><code>material</code></td><td>Google Material Design, blue accent</td></tr>
+      <tr><td><code>material-dark</code></td><td>Material dark variant</td></tr>
+      <tr><td><code>quartz</code></td><td>AG Grid Quartz-inspired, crisp blue</td></tr>
+      <tr><td><code>quartz-dark</code></td><td>Quartz dark variant</td></tr>
+      <tr><td><code>alpine</code></td><td>Clean modern, blue #2196F3</td></tr>
+      <tr><td><code>alpine-dark</code></td><td>Alpine dark variant</td></tr>
+      <tr><td><code>midnight</code></td><td>GitHub-style deep dark, blue accent</td></tr>
+      <tr><td><code>solarized</code></td><td>Classic Solarized terminal dark</td></tr>
+    </tbody>
+  </table>
+
+  <h2>createTheme(name, overrides, inherit?)</h2>
+  <p>
+    Registers a named theme globally. Pass a parent theme name as the third argument to
+    inherit its defaults and only override what you need.
+  </p>
+  <pre><code>{`createTheme('brand', {
+  colors: {
+    text:             { primary: '#1a1a2e', secondary: '#4a4a6a' },
+    background:       { default: '#f0f4ff' },
+    divider:          { default: '#c7d2fe' },
+    selected:         { default: '#e0e7ff', text: '#1a1a2e' },
+    highlightOnHover: { default: '#e8edff', text: '#1a1a2e' },
+    button:           { default: '#4f46e5', hover: '#4338ca', disabled: '#c7d2fe' },
+    striped:          { default: '#f5f7ff', text: '#1a1a2e' },
+  },
+}); // inherits from 'default'`}</code></pre>
+
+  <h2>CSS variable override</h2>
+  <p>
+    Themes compile to CSS custom properties. You can override individual variables
+    without calling <code>createTheme()</code>:
+  </p>
+  <pre><code>{`.my-table {
+  --rdt-color-text-primary: #1a1a2e;
+  --rdt-color-bg-default: #f0f4ff;
+}`}</code></pre>
+
+  <h2>Column separators</h2>
+  <p>
+    Header separators are always visible. Use <code>columnSeparator</code> to also show them
+    on body rows.
+  </p>
+
+  <Demo
+    title="Column separators"
+    description="Headers always have separators. Toggle body separators with the prop."
+    code={`// No body separators (default) — headers still show separators
+<DataTable columns={columns} data={data} />
+
+// Subtle body separators (60%-height inset)
+<DataTable columns={columns} data={data} columnSeparator />
+
+// Full-height body separators
+<DataTable columns={columns} data={data} columnSeparator="full" />`}
+  >
+    <ColumnSeparatorsDemo client:load />
+  </Demo>
+</DocsLayout>

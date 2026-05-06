@@ -1,0 +1,108 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Custom styles — react-data-table-component">
+  <h1>Custom styles</h1>
+
+  <p>
+    The <code>customStyles</code> prop accepts a <code>TableStyles</code> object.
+    Each key targets a specific part of the table and accepts a <code>style</code> property
+    with standard <code>React.CSSProperties</code> values.
+  </p>
+
+  <h2>Basic example</h2>
+
+  <pre><code>{`import DataTable, { type TableStyles } from 'react-data-table-component';
+
+const customStyles: TableStyles = {
+  headRow: {
+    style: {
+      backgroundColor: '#f0f4ff',
+      fontWeight: 700,
+    },
+  },
+  rows: {
+    style: {
+      fontSize: '14px',
+    },
+    selectedHighlightStyle: {
+      backgroundColor: '#e0eaff',
+    },
+  },
+  cells: {
+    style: {
+      paddingLeft: '16px',
+      paddingRight: '16px',
+    },
+  },
+};
+
+<DataTable columns={columns} data={data} customStyles={customStyles} />`}</code></pre>
+
+  <h2>Available style targets</h2>
+
+  <table>
+    <thead>
+      <tr><th>Key</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>table</code></td><td>The root <code>&lt;div&gt;</code> wrapping the table</td></tr>
+      <tr><td><code>tableWrapper</code></td><td>Inner wrapper for overflow handling</td></tr>
+      <tr><td><code>responsiveWrapper</code></td><td>Horizontal scroll container</td></tr>
+      <tr><td><code>header</code></td><td>Title bar above the table</td></tr>
+      <tr><td><code>subHeader</code></td><td>Sub-header area (search, actions)</td></tr>
+      <tr><td><code>head</code></td><td>Column header area</td></tr>
+      <tr><td><code>headRow</code></td><td>Column header row</td></tr>
+      <tr><td><code>headCells</code></td><td>Column header cells</td></tr>
+      <tr><td><code>contextMenu</code></td><td>Context menu (shown when rows are selected)</td></tr>
+      <tr><td><code>cells</code></td><td>Body cells</td></tr>
+      <tr><td><code>rows</code></td><td>Body rows (includes <code>selectedHighlightStyle</code>)</td></tr>
+      <tr><td><code>expanderRow</code></td><td>Expanded row container</td></tr>
+      <tr><td><code>expanderCell</code></td><td>Expander toggle cell</td></tr>
+      <tr><td><code>expanderButton</code></td><td>Expand/collapse button icon</td></tr>
+      <tr><td><code>pagination</code></td><td>Pagination bar</td></tr>
+      <tr><td><code>noData</code></td><td>Empty-state container</td></tr>
+      <tr><td><code>progress</code></td><td>Loading state container</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Row-level styles</h2>
+
+  <p>
+    For conditional row styling, use <code>conditionalRowStyles</code> instead of
+    <code>customStyles</code>. It accepts a <code>when</code> predicate and style object:
+  </p>
+
+  <pre><code>{`<DataTable
+  columns={columns}
+  data={data}
+  conditionalRowStyles={[
+    {
+      when: row => row.salary > 100000,
+      style: { backgroundColor: '#fff9e6' },
+    },
+    {
+      when: row => row.active === false,
+      style: { opacity: 0.5 },
+    },
+  ]}
+/>`}</code></pre>
+
+  <h2>CSS custom properties</h2>
+
+  <p>
+    For theming that affects the entire table, prefer CSS custom properties via
+    <code>createTheme</code> or by overriding variables directly. See the{' '}
+    <a href="/docs/themes">Themes</a> page.
+  </p>
+
+  <h2>Migrating from v7</h2>
+
+  <p>
+    In v7, <code>customStyles</code> values accepted <code>CSSObject</code> from styled-components.
+    In v8, they accept <code>React.CSSProperties</code>. The practical difference:
+    pseudo-selectors like <code>&:hover</code> are not valid CSS properties.
+    Use <code>conditionalRowStyles</code> or CSS classes for hover and focus states.
+  </p>
+</DocsLayout>

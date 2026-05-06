@@ -1,0 +1,78 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import SortingDemo from '../../components/demos/SortingDemo.tsx';
+---
+
+<DocsLayout title="Sorting — react-data-table-component">
+  <h1>Sorting</h1>
+
+  <p>
+    Add <code>sortable: true</code> to any column definition to enable client-side sorting.
+    Click a column header to sort; click again to reverse.
+  </p>
+
+  <Demo
+    title="Sortable columns"
+    description="Click a header to sort. Click again to reverse."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Row { id: number; name: string; department: string; salary: number }
+
+const columns: TableColumn<Row>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+];
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      defaultSortFieldId="name"
+    />
+  );
+}`}
+  >
+    <SortingDemo client:load />
+  </Demo>
+
+  <h2>Default sort</h2>
+  <p>
+    Use <code>defaultSortFieldId</code> to set the initial sort column. The value should match
+    the <code>id</code> set on the column definition.
+  </p>
+
+  <pre><code>{`const columns = [
+  { id: 'name', name: 'Name', selector: r => r.name, sortable: true },
+];
+
+<DataTable columns={columns} data={data} defaultSortFieldId="name" defaultSortAsc={false} />`}</code></pre>
+
+  <h2>Server-side sorting</h2>
+  <p>
+    Pass <code>onSort</code> and <code>sortServer</code> to handle sorting externally.
+    The table will not re-sort locally — it calls your handler and re-renders with the data you provide.
+  </p>
+
+  <pre><code>{`<DataTable
+  columns={columns}
+  data={data}
+  sortServer
+  onSort={(column, direction) => {
+    fetchData({ sort: column.id, dir: direction }).then(setData);
+  }}
+/>`}</code></pre>
+
+  <h2>Custom sort function</h2>
+  <p>Override the sort algorithm on a per-column basis:</p>
+
+  <pre><code>{`{
+  name: 'Salary',
+  selector: r => r.salary,
+  sortable: true,
+  sortFunction: (a, b) => a.salary - b.salary,
+}`}</code></pre>
+</DocsLayout>

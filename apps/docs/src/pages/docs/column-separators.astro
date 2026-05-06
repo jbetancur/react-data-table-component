@@ -1,0 +1,60 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
+---
+
+<DocsLayout title="Column separators — react-data-table-component">
+  <h1>Column separators</h1>
+
+  <p>
+    Column header cells always display a subtle vertical separator between them.
+    The <code>columnSeparator</code> prop controls whether separators also appear
+    between body row cells.
+  </p>
+
+  <Demo
+    title="Column separators"
+    description="Toggle between separator modes: none, subtle, and full."
+    code={`import DataTable from 'react-data-table-component';
+
+// No body separators (default)
+<DataTable columns={columns} data={data} />
+
+// Inset separator — 60% height, centred
+<DataTable columns={columns} data={data} columnSeparator />
+
+// Full-height separator using the theme divider color
+<DataTable columns={columns} data={data} columnSeparator="full" />`}
+  >
+    <ColumnSeparatorsDemo client:load />
+  </Demo>
+
+  <h2>Values</h2>
+
+  <table>
+    <thead>
+      <tr><th>Value</th><th>Effect</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>false</code> / omitted</td><td>No separators in body rows (default)</td></tr>
+      <tr><td><code>true</code> / <code>"subtle"</code></td><td>60%-height inset line, centred vertically</td></tr>
+      <tr><td><code>"full"</code></td><td>Full-height line using the theme's divider colour</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Header separators</h2>
+
+  <p>
+    Column header separators are always present and cannot be disabled via this prop.
+    To remove them, override the header cell style via <code>customStyles</code>:
+  </p>
+
+  <pre><code>{`<DataTable
+  customStyles={{
+    headCells: {
+      style: { borderRight: 'none' },
+    },
+  }}
+/>`}</code></pre>
+</DocsLayout>

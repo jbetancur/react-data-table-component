@@ -1,0 +1,92 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Getting started — react-data-table-component">
+  <h1>Getting started</h1>
+
+  <p>
+    <code>react-data-table-component</code> is a batteries-included React table with sorting,
+    pagination, row selection, expandable rows, themes, and animations — all in one package.
+    React 18+ required. No other peer dependencies.
+  </p>
+
+  <h2>Installation</h2>
+
+  <pre><code>npm install react-data-table-component</code></pre>
+
+  <p>That's it. No CSS import required.</p>
+
+  <h2>Minimal example</h2>
+
+  <pre><code>{`import DataTable from 'react-data-table-component';
+
+const columns = [
+  { name: 'Name',       selector: row => row.name,   sortable: true },
+  { name: 'Role',       selector: row => row.role },
+  { name: 'Salary',     selector: row => row.salary, right: true },
+];
+
+const data = [
+  { id: 1, name: 'Aria Chen',   role: 'Engineering Lead', salary: 155000 },
+  { id: 2, name: 'Marcus Webb', role: 'Product Manager',  salary: 132000 },
+];
+
+export default function App() {
+  return <DataTable columns={columns} data={data} pagination />;
+}`}</code></pre>
+
+  <p>That renders a fully functional table with client-side sorting and pagination.</p>
+
+  <h2>Common props at a glance</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>columns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>Column definitions (required)</td></tr>
+      <tr><td><code>data</code></td><td><code>T[]</code></td><td>Row data (required)</td></tr>
+      <tr><td><code>pagination</code></td><td><code>boolean</code></td><td>Enable built-in pagination</td></tr>
+      <tr><td><code>selectableRows</code></td><td><code>boolean</code></td><td>Enable row checkboxes</td></tr>
+      <tr><td><code>expandableRows</code></td><td><code>boolean</code></td><td>Enable expandable row panels</td></tr>
+      <tr><td><code>theme</code></td><td><code>string</code></td><td>Named theme (e.g. <code>"quartz-dark"</code>)</td></tr>
+      <tr><td><code>animateRows</code></td><td><code>boolean</code></td><td>Staggered row entrance + sort animation</td></tr>
+      <tr><td><code>columnSeparator</code></td><td><code>boolean | "full"</code></td><td>Body column separators (headers always shown)</td></tr>
+    </tbody>
+  </table>
+
+  <p>See the full <a href="/docs/api">API reference</a> for all props.</p>
+
+  <h2>TypeScript</h2>
+
+  <p>
+    All props are fully typed. Column types are inferred from your data type — no manual generics needed
+    in most cases. See the <a href="/docs/typescript">TypeScript guide</a> for advanced patterns.
+  </p>
+
+  <pre><code>{`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  salary: number;
+}
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',   selector: row => row.name },
+  { name: 'Salary', selector: row => row.salary },
+];`}</code></pre>
+
+  <h2>Next steps</h2>
+  <ul>
+    <li><a href="/docs/columns">Column definitions</a> — grow, minWidth, cell renderers, conditional styles</li>
+    <li><a href="/docs/themes">Themes</a> — built-in themes and <code>createTheme()</code></li>
+    <li><a href="/docs/selection">Row selection</a> — checkboxes, select-all, imperative <code>clearSelectedRows</code></li>
+    <li><a href="/docs/expandable">Expandable rows</a> — custom detail panels with animations</li>
+  </ul>
+</DocsLayout>

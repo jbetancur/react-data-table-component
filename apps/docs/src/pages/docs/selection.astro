@@ -1,0 +1,74 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
+---
+
+<DocsLayout title="Row selection — react-data-table-component">
+  <h1>Row selection</h1>
+
+  <p>
+    Add <code>selectableRows</code> to enable checkbox-based multi-select.
+    Use the imperative <code>ref</code> API to clear selection programmatically.
+  </p>
+
+  <Demo
+    title="Multi-select with imperative clear"
+    description="Select rows, then clear with the button."
+    code={`import { useRef } from 'react';
+import DataTable, { type DataTableHandle } from 'react-data-table-component';
+
+export default function App() {
+  const ref = useRef<DataTableHandle>(null);
+
+  return (
+    <>
+      <button onClick={() => ref.current?.clearSelectedRows()}>
+        Clear selection
+      </button>
+      <DataTable
+        ref={ref}
+        columns={columns}
+        data={data}
+        selectableRows
+        onSelectedRowsChange={({ selectedRows }) => console.log(selectedRows)}
+      />
+    </>
+  );
+}`}
+  >
+    <SelectionDemo client:load />
+  </Demo>
+
+  <h2>Single select</h2>
+  <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>
+
+  <h2>Disable specific rows</h2>
+  <pre><code>{`<DataTable
+  selectableRows
+  selectableRowDisabled={row => row.locked}
+/>`}</code></pre>
+
+  <h2>Pre-select rows</h2>
+  <pre><code>{`<DataTable
+  selectableRows
+  selectableRowSelected={row => row.status === 'Active'}
+/>`}</code></pre>
+
+  <h2>onSelectedRowsChange</h2>
+  <p>The callback receives <code>{`{ allSelected, selectedCount, selectedRows }`}</code>.</p>
+  <pre><code>{`<DataTable
+  selectableRows
+  onSelectedRowsChange={({ selectedCount, selectedRows }) => {
+    console.log(\`\${selectedCount} rows selected\`, selectedRows);
+  }}
+/>`}</code></pre>
+
+  <h2>Clearing selection (imperative API)</h2>
+  <p>
+    Use a <code>ref</code> to call <code>clearSelectedRows()</code> — the recommended approach
+    that avoids the toggle-boolean bug present in older versions.
+  </p>
+  <pre><code>{`const tableRef = useRef<DataTableHandle>(null);
+tableRef.current?.clearSelectedRows();`}</code></pre>
+</DocsLayout>
