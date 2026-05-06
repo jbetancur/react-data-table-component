@@ -1,5 +1,5 @@
 import React from 'react';
-import { SortOrder } from '../DataTable/types';
+import { SortOrder } from '../types';
 
 interface NativeSortIconProps {
 	sortActive: boolean;

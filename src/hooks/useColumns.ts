@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { decorateColumns, findColumnIndexById, getSortDirection } from '../DataTable/util';
+import { decorateColumns, findColumnIndexById, getSortDirection } from '../util';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { SortOrder, TableColumn } from '../DataTable/types';
+import { SortOrder, TableColumn } from '../types';
 
 type ColumnsHook<T> = {
 	tableColumns: TableColumn<T>[];

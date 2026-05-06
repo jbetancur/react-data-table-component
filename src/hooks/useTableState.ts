@@ -1,16 +1,8 @@
 import * as React from 'react';
-import { tableReducer } from '../DataTable/tableReducer';
-import { getNumberOfPages, recalculatePage } from '../DataTable/util';
+import { tableReducer } from '../tableReducer';
+import { getNumberOfPages, recalculatePage } from '../util';
 import useDidUpdateEffect from './useDidUpdateEffect';
-import {
-	Action,
-	TableState,
-	TableColumn,
-	SortOrder,
-	AllRowsAction,
-	SingleRowAction,
-	SortAction,
-} from '../DataTable/types';
+import { Action, TableState, TableColumn, SortOrder, AllRowsAction, SingleRowAction, SortAction } from '../types';
 
 interface UseTableStateProps<T> {
 	data: T[];
@@ -88,7 +80,6 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,
-		contextMessage: { singular: 'item', plural: 'items', message: '' },
 	});
 
 	const handleClearSelectedRows = React.useCallback(() => {

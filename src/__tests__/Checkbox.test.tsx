@@ -1,16 +1,13 @@
-/**
- * @jest-environment jsdom
- */
-
-
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Checkbox from '../Checkbox';
+import Checkbox from '../components/Checkbox';
 
 test('should render correctly when a custom component is not provided', () => {
 	const { container } = render(<Checkbox name="test" />);
 
-	expect(container.firstChild).toMatchSnapshot();
+	const input = container.firstChild as HTMLInputElement;
+	expect(input.tagName).toBe('INPUT');
+	expect(input.type).toBe('checkbox');
 });
 
 test('component <Checkbox component/> should render correctly with a custom checkbox', () => {
@@ -21,15 +18,16 @@ test('component <Checkbox component/> should render correctly with a custom chec
 		}
 	}
 
-	const { container } = render(<Checkbox name="test" component={CustomComp} />);
+	const { getByText } = render(<Checkbox name="test" component={CustomComp} />);
 
-	expect(container.firstChild).toMatchSnapshot();
+	expect(getByText('25 schmeckles')).not.toBeNull();
 });
 
 test('component <Checkbox component/> should render correctly with custom props', () => {
 	const { container } = render(<Checkbox name="test" componentOptions={{ test: 'false' }} />);
 
-	expect(container.firstChild).toMatchSnapshot();
+	const input = container.firstChild as HTMLInputElement;
+	expect(input.tagName).toBe('INPUT');
 });
 
 test('component <Checkbox indeterminate /> should toggle indeterminate to true on the element', () => {

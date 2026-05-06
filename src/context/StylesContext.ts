@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableStyles } from './types';
+import { TableStyles } from '../types';
 
 export const StylesContext = React.createContext<TableStyles>({});
 
