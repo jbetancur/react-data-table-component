@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { sort } from '../DataTable/util';
-import { TableColumn, SortOrder, SortFunction } from '../DataTable/types';
+import { sort } from '../util';
+import { TableColumn, SortOrder, SortFunction, Selector } from '../types';
 
 interface UseTableDataProps<T> {
 	data: T[];
@@ -53,8 +53,9 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 			return [...data].sort(customSortFunction);
 		}
 
-		// Use default sort utility
-		return sort(data, selectedColumn?.selector, sortDirection, sortFunction);
+		// Use default sort utility — cast selector to Primitive-returning variant required by sort().
+		// Columns with ReactNode selectors should supply a sortFunction instead.
+		return sort(data, selectedColumn?.selector as Selector<T> | undefined, sortDirection, sortFunction);
 	}, [sortServer, selectedColumn, sortDirection, data, sortFunction]);
 
 	// Memoize paginated table rows
