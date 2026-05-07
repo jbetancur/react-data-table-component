@@ -1,5 +1,8 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import AnimationsDemo from '../../components/demos/AnimationsDemo.tsx';
 ---
 
 <DocsLayout title="Animations — react-data-table-component">
@@ -7,12 +10,57 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 
   <p>
     Set <code>animateRows</code> to enable two animations:
-    a staggered entrance for rows on mount, and a transition when rows reorder after a sort.
+    a staggered entrance for rows on mount, and a smooth transition when rows reorder after a sort.
   </p>
 
-  <h2>Basic usage</h2>
+  <Demo
+    title="Row animations"
+    description="Toggle animateRows on/off and use Replay to re-trigger the entrance animation. Click a column header to see the sort-reorder animation."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
 
-  <pre><code>{`<DataTable columns={columns} data={data} animateRows />`}</code></pre>
+interface Employee { id: number; name: string; department: string; salary: number }
+
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000 },
+  { id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000 },
+  { id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000 },
+  { id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000 },
+  { id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000 },
+  { id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000 },
+];
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+];
+
+export default function App() {
+  const [animate, setAnimate] = useState(true);
+  const [key, setKey] = useState(0);
+
+  return (
+    <div>
+      <label>
+        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} />
+        {' '}animateRows
+      </label>
+      <button onClick={() => setKey(k => k + 1)}>Replay entrance animation</button>
+      <DataTable
+        key={key}
+        columns={columns}
+        data={data}
+        animateRows={animate}
+        highlightOnHover
+      />
+    </div>
+  );
+}`}
+  >
+    <AnimationsDemo client:load />
+  </Demo>
 
   <h2>What animates</h2>
 
@@ -35,33 +83,33 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
     via a CSS media query — no JavaScript check required.
   </p>
 
-  <pre><code>{`/* DataTable.css — simplified */
+  <CodeBlock code={`/* DataTable.css — simplified */
 @media (prefers-reduced-motion: reduce) {
   .rdt_TableRow,
   .rdt_ExpanderRow {
     animation: none !important;
     transition: none !important;
   }
-}`}</code></pre>
+}`} lang="css" />
 
   <h2>Combining with other features</h2>
 
   <p>
-    <code>animateRows</code> is compatible with pagination, server-side data, selection,
-    and expandable rows. Row animations play whenever the <code>data</code> prop changes,
-    so they also trigger after a server-side page change.
+    <code>animateRows</code> works with pagination, server-side data, selection, and expandable rows.
+    Row animations fire whenever the <code>data</code> prop changes, so they also trigger after
+    a server-side page change.
   </p>
 
   <h2>Custom animation timing</h2>
 
   <p>
-    The stagger delay and duration are controlled by CSS custom properties on the root element.
+    The stagger delay and duration are controlled by CSS custom properties.
     Override them per-theme or globally:
   </p>
 
-  <pre><code>{`/* your app's CSS */
-.rdt_table {
+  <CodeBlock code={`/* your app's CSS */
+.rdt_Table {
   --rdt-row-anim-duration: 300ms;
   --rdt-row-anim-stagger:  20ms;
-}`}</code></pre>
+}`} lang="css" />
 </DocsLayout>

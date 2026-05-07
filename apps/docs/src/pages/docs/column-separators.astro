@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 ---
 
@@ -50,11 +51,11 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
     To remove them, override the header cell style via <code>customStyles</code>:
   </p>
 
-  <pre><code>{`<DataTable
+  <CodeBlock code={`<DataTable
   customStyles={{
     headCells: {
       style: { borderRight: 'none' },
     },
   }}
-/>`}</code></pre>
+/>`} />
 </DocsLayout>

@@ -3,6 +3,11 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
+	markdown: {
+		shikiConfig: {
+			theme: 'github-dark',
+		},
+	},
 	integrations: [react(), tailwind({ applyBaseStyles: false })],
 	vite: {
 		resolve: {

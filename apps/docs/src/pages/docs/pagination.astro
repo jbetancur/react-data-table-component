@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 import PaginationDemo from '../../components/demos/PaginationDemo.tsx';
 ---
 
@@ -14,14 +15,60 @@ import PaginationDemo from '../../components/demos/PaginationDemo.tsx';
 
   <Demo
     title="Built-in pagination"
-    description="30 rows, configurable page size."
-    code={`<DataTable
-  columns={columns}
-  data={data}
-  pagination
-  paginationPerPage={10}
-  paginationRowsPerPageOptions={[5, 10, 25, 50]}
-/>`}
+    description="30 rows. Use the buttons to set the initial page size, or use the built-in rows-per-page selector."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  department: string;
+  salary: number;
+  status: string;
+}
+
+const data: Employee[] = Array.from({ length: 30 }, (_, i) => ({
+  id: i + 1,
+  name: ['Aria Chen','Marcus Webb','Priya Kapoor','Jordan Ellis','Sam Rivera',
+         'Taylor Brooks','Casey Morgan','Alex Kim','Morgan Lee','Drew Park'][i % 10],
+  department: ['Engineering','Product','Design','Analytics','Sales','HR'][i % 6],
+  salary: 80000 + i * 3700,
+  status: ['Active','Remote','On Leave','Contractor'][i % 4],
+}));
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  { name: 'Status',     selector: r => r.status },
+];
+
+export default function App() {
+  const [perPage, setPerPage] = useState(5);
+
+  return (
+    <div>
+      <div>
+        <span>Rows per page: </span>
+        {[5, 10, 15].map(n => (
+          <button key={n} onClick={() => setPerPage(n)}>{n}</button>
+        ))}
+      </div>
+      {/* key forces a remount so paginationPerPage takes effect */}
+      <DataTable
+        key={perPage}
+        columns={columns}
+        data={data}
+        pagination
+        paginationPerPage={perPage}
+        paginationRowsPerPageOptions={[5, 10, 15, 30]}
+        highlightOnHover
+        striped
+      />
+    </div>
+  );
+}`}
   >
     <PaginationDemo client:load />
   </Demo>
@@ -32,7 +79,7 @@ import PaginationDemo from '../../components/demos/PaginationDemo.tsx';
     <code>onChangePage</code> / <code>onChangeRowsPerPage</code> to handle pagination externally.
   </p>
 
-  <pre><code>{`const [data, setData] = useState([]);
+  <CodeBlock code={`const [data, setData] = useState([]);
 const [totalRows, setTotalRows] = useState(0);
 const [perPage, setPerPage] = useState(10);
 
@@ -55,14 +102,14 @@ useEffect(() => { fetchPage(1); }, []);
     setPerPage(newPerPage);
     fetchPage(page);
   }}
-/>`}</code></pre>
+/>`} />
 
   <h2>Custom pagination component</h2>
   <p>Replace the built-in pagination bar entirely:</p>
-  <pre><code>{`<DataTable
+  <CodeBlock code={`<DataTable
   columns={columns}
   data={data}
   pagination
   paginationComponent={MyCustomPagination}
-/>`}</code></pre>
+/>`} />
 </DocsLayout>

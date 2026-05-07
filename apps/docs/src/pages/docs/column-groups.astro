@@ -1,5 +1,8 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ColumnGroupsDemo from '../../components/demos/ColumnGroupsDemo.tsx';
 ---
 
 <DocsLayout title="Column groups — react-data-table-component">
@@ -10,30 +13,41 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
     useful for grouping related columns under a shared label.
   </p>
 
-  <h2>Setup</h2>
+  <Demo
+    title="Column groups"
+    description="Employee and Compensation groups span their respective columns."
+    code={`import DataTable, { type TableColumn, type ColumnGroup } from 'react-data-table-component';
 
-  <pre><code>{`import DataTable, { type TableColumn, type ColumnGroup } from 'react-data-table-component';
-
-interface Row {
+interface Employee {
   id: number;
   firstName: string;
   lastName: string;
+  department: string;
   baseSalary: number;
   bonus: number;
 }
 
-const columns: TableColumn<Row>[] = [
-  { id: 'first',  name: 'First name', selector: r => r.firstName },
-  { id: 'last',   name: 'Last name',  selector: r => r.lastName  },
-  { id: 'base',   name: 'Base',       selector: r => r.baseSalary, right: true,
+const data: Employee[] = [
+  { id: 1, firstName: 'Aria',   lastName: 'Chen',   department: 'Engineering', baseSalary: 140000, bonus: 15000 },
+  { id: 2, firstName: 'Marcus', lastName: 'Webb',   department: 'Product',     baseSalary: 125000, bonus:  7000 },
+  { id: 3, firstName: 'Priya',  lastName: 'Kapoor', department: 'Design',      baseSalary: 110000, bonus:  8000 },
+  { id: 4, firstName: 'Jordan', lastName: 'Ellis',  department: 'Analytics',   baseSalary: 135000, bonus: 12000 },
+];
+
+// Every column that belongs to a group must have a stable \`id\`
+const columns: TableColumn<Employee>[] = [
+  { id: 'first',  name: 'First name',  selector: r => r.firstName,  sortable: true },
+  { id: 'last',   name: 'Last name',   selector: r => r.lastName,   sortable: true },
+  { id: 'dept',   name: 'Department',  selector: r => r.department, sortable: true },
+  { id: 'base',   name: 'Base salary', selector: r => r.baseSalary, sortable: true, right: true,
     format: r => \`$\${r.baseSalary.toLocaleString()}\` },
-  { id: 'bonus',  name: 'Bonus',      selector: r => r.bonus,      right: true,
-    format: r => \`$\${r.bonus.toLocaleString()}\`      },
+  { id: 'bonus',  name: 'Bonus',       selector: r => r.bonus,      sortable: true, right: true,
+    format: r => \`$\${r.bonus.toLocaleString()}\` },
 ];
 
 const columnGroups: ColumnGroup[] = [
-  { name: 'Name',         columnIds: ['first', 'last']  },
-  { name: 'Compensation', columnIds: ['base', 'bonus']  },
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'] },
+  { name: 'Compensation', columnIds: ['base', 'bonus'] },
 ];
 
 export default function App() {
@@ -42,27 +56,58 @@ export default function App() {
       columns={columns}
       data={data}
       columnGroups={columnGroups}
+      highlightOnHover
+      columnSeparator
     />
   );
-}`}</code></pre>
+}`}
+  >
+    <ColumnGroupsDemo client:load />
+  </Demo>
 
   <h2>Rules</h2>
 
   <ul>
     <li>Each column that belongs to a group must have a stable <code>id</code>.</li>
     <li><code>columnIds</code> must match the <code>id</code> values exactly (string or number).</li>
-    <li>Columns not listed in any group span the full group row height with no label.</li>
+    <li>Columns not listed in any group span the full group-row height with no label.</li>
     <li>Groups render in the order they appear in the <code>columnGroups</code> array.</li>
   </ul>
+
+  <h2>ColumnGroup type</h2>
+
+  <CodeBlock code={`interface ColumnGroup {
+  name: ReactNode;                   // Header label — accepts JSX
+  columnIds: (string | number)[];    // ids of columns that fall under this group
+}`} lang="ts" />
 
   <h2>Custom group header content</h2>
 
   <p>The <code>name</code> field accepts any <code>ReactNode</code>, so you can pass JSX:</p>
 
-  <pre><code>{`const columnGroups: ColumnGroup[] = [
+  <CodeBlock code={`const columnGroups: ColumnGroup[] = [
   {
-    name: <span style={{ color: '#0170FE' }}>Compensation</span>,
+    name: <span style={{ color: '#4f46e5', fontWeight: 700 }}>Compensation</span>,
     columnIds: ['base', 'bonus'],
   },
-];`}</code></pre>
+];`} />
+
+  <h2>Styling group headers</h2>
+
+  <p>
+    Use <code>customStyles</code> to target group header cells:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columnGroups={columnGroups}
+  customStyles={{
+    columnGroupHeader: {
+      style: {
+        backgroundColor: '#f0f4ff',
+        fontWeight: 700,
+        color: '#4f46e5',
+      },
+    },
+  }}
+/>`} />
 </DocsLayout>
