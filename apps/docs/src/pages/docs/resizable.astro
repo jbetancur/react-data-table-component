@@ -1,5 +1,8 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ResizableDemo from '../../components/demos/ResizableDemo.tsx';
 ---
 
 <DocsLayout title="Resizable columns — react-data-table-component">
@@ -10,42 +13,122 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
     Users can drag the right edge of any header cell to adjust its width.
   </p>
 
-  <h2>Basic usage</h2>
+  <Demo
+    title="Resizable columns"
+    description="Drag the right edge of any column header to resize it."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
-  <pre><code>{`<DataTable columns={columns} data={data} resizable />`}</code></pre>
+interface Employee {
+  id: number;
+  name: string;
+  role: string;
+  department: string;
+  salary: number;
+}
 
-  <p>All columns become resizable by default when <code>resizable</code> is set.</p>
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',     role: 'Engineering Lead', department: 'Engineering', salary: 155000 },
+  { id: 2, name: 'Marcus Webb',   role: 'Product Manager',  department: 'Product',     salary: 132000 },
+  { id: 3, name: 'Priya Kapoor',  role: 'Senior Designer',  department: 'Design',      salary: 118000 },
+  { id: 4, name: 'Jordan Ellis',  role: 'Data Scientist',   department: 'Analytics',   salary: 143000 },
+  { id: 5, name: 'Sam Rivera',    role: 'DevOps Engineer',  department: 'Engineering', salary: 128000 },
+];
+
+// width sets the initial width; minWidth prevents shrinking below a threshold
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true, width: '180px', minWidth: '100px' },
+  { name: 'Role',       selector: r => r.role,       sortable: true, minWidth: '120px' },
+  { name: 'Department', selector: r => r.department, sortable: true, width: '140px', minWidth: '80px' },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true, width: '110px',
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+];
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      highlightOnHover
+      columnSeparator
+    />
+  );
+}`}
+  >
+    <ResizableDemo client:load />
+  </Demo>
 
   <h2>How it works</h2>
 
   <p>
     Column widths are tracked in component state as pixel values. When the user starts
-    dragging, a <code>mousemove</code> listener computes the delta from the drag start point
-    and sets the new width (minimum 40 px). No layout thrashing occurs — widths are applied
-    as inline styles only on the affected column.
+    dragging, a <code>pointermove</code> listener computes the delta from the drag start
+    point and sets the new width (minimum 40 px). Widths are applied as inline styles
+    only on the affected column — no full re-render occurs.
   </p>
 
-  <h2>Combining with fixed widths</h2>
+  <h2>Initial and minimum widths</h2>
 
   <p>
-    A column with an explicit <code>width</code> prop will start at that width and remain
+    A column with an explicit <code>width</code> prop starts at that width and remains
     resizable from there. A column with <code>minWidth</code> will not shrink below it.
+    Columns without a fixed <code>width</code> start at their natural flex width.
   </p>
 
-  <pre><code>{`const columns = [
+  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
   { name: 'Name',   selector: r => r.name,   width: '200px', minWidth: '120px' },
   { name: 'Status', selector: r => r.status, width: '100px' },
+  { name: 'Notes',  selector: r => r.notes,  /* grows to fill remaining space */ },
 ];
 
-<DataTable columns={columns} data={data} resizable />`}</code></pre>
+<DataTable columns={columns} data={data} resizable />`} />
 
   <h2>Persisting widths</h2>
 
   <p>
-    Column widths are in-memory only — they reset on remount. To persist them,
-    save to <code>localStorage</code> on resize:
+    Column widths are in-memory only — they reset on remount. To persist across
+    page reloads, read and write to <code>localStorage</code>:
   </p>
 
-  <pre><code>{`// Not a built-in prop yet — implement via onColumnOrderChange and
-// a wrapper that intercepts resize events if you need persistence.`}</code></pre>
+  <CodeBlock code={`import { useState, useEffect } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const STORAGE_KEY = 'my-table-column-widths';
+
+function loadWidths(): Record<string, string> {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}');
+  } catch {
+    return {};
+  }
+}
+
+export default function App() {
+  const [savedWidths] = useState(loadWidths);
+
+  // Apply saved widths as initial \`width\` overrides
+  const columns: TableColumn<Employee>[] = [
+    { id: 'name',   name: 'Name',   selector: r => r.name,
+      width: savedWidths['name'] ?? '180px' },
+    { id: 'salary', name: 'Salary', selector: r => r.salary,
+      width: savedWidths['salary'] ?? '110px', right: true },
+  ];
+
+  function handleColumnOrderChange(cols: TableColumn<Employee>[]) {
+    const widths: Record<string, string> = {};
+    cols.forEach(c => {
+      if (c.id && c.width) widths[String(c.id)] = String(c.width);
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(widths));
+  }
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      onColumnOrderChange={handleColumnOrderChange}
+    />
+  );
+}`} />
 </DocsLayout>

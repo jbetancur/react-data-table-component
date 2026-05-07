@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 import SortingDemo from '../../components/demos/SortingDemo.tsx';
 ---
 
@@ -14,16 +15,33 @@ import SortingDemo from '../../components/demos/SortingDemo.tsx';
 
   <Demo
     title="Sortable columns"
-    description="Click a header to sort. Click again to reverse."
+    description="Click a header to sort. Click again to reverse. Use the buttons to change the initial sort field."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
-interface Row { id: number; name: string; department: string; salary: number }
+interface Employee {
+  id: number;
+  name: string;
+  department: string;
+  salary: number;
+  hired: string;
+}
 
-const columns: TableColumn<Row>[] = [
-  { name: 'Name',       selector: r => r.name,       sortable: true },
-  { name: 'Department', selector: r => r.department, sortable: true },
-  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000, hired: '2019-03-12' },
+  { id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000, hired: '2020-07-01' },
+  { id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000, hired: '2021-01-15' },
+  { id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000, hired: '2018-11-30' },
+  { id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000, hired: '2022-04-22' },
+  { id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000, hired: '2023-02-08' },
+];
+
+// Each sortable column that may be used as the default sort needs a stable \`id\`
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',       selector: r => r.name,       sortable: true },
+  { id: 'dept',   name: 'Department', selector: r => r.department, sortable: true },
+  { id: 'salary', name: 'Salary',     selector: r => r.salary,     sortable: true,
     format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  { id: 'hired',  name: 'Hired',      selector: r => r.hired,      sortable: true },
 ];
 
 export default function App() {
@@ -32,6 +50,8 @@ export default function App() {
       columns={columns}
       data={data}
       defaultSortFieldId="name"
+      defaultSortAsc={true}
+      highlightOnHover
     />
   );
 }`}
@@ -45,11 +65,11 @@ export default function App() {
     the <code>id</code> set on the column definition.
   </p>
 
-  <pre><code>{`const columns = [
+  <CodeBlock code={`const columns = [
   { id: 'name', name: 'Name', selector: r => r.name, sortable: true },
 ];
 
-<DataTable columns={columns} data={data} defaultSortFieldId="name" defaultSortAsc={false} />`}</code></pre>
+<DataTable columns={columns} data={data} defaultSortFieldId="name" defaultSortAsc={false} />`} />
 
   <h2>Server-side sorting</h2>
   <p>
@@ -57,22 +77,22 @@ export default function App() {
     The table will not re-sort locally — it calls your handler and re-renders with the data you provide.
   </p>
 
-  <pre><code>{`<DataTable
+  <CodeBlock code={`<DataTable
   columns={columns}
   data={data}
   sortServer
   onSort={(column, direction) => {
     fetchData({ sort: column.id, dir: direction }).then(setData);
   }}
-/>`}</code></pre>
+/>`} />
 
   <h2>Custom sort function</h2>
   <p>Override the sort algorithm on a per-column basis:</p>
 
-  <pre><code>{`{
+  <CodeBlock code={`{
   name: 'Salary',
   selector: r => r.salary,
   sortable: true,
   sortFunction: (a, b) => a.salary - b.salary,
-}`}</code></pre>
+}`} />
 </DocsLayout>

@@ -1,5 +1,6 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 ---
 
 <DocsLayout title="Columns — react-data-table-component">
@@ -12,7 +13,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 
   <h2>Basic column definition</h2>
 
-  <pre><code>{`import { type TableColumn } from 'react-data-table-component';
+  <CodeBlock code={`import { type TableColumn } from 'react-data-table-component';
 
 interface Row {
   id: number;
@@ -32,7 +33,7 @@ const columns: TableColumn<Row>[] = [
     format: row => \`$\${row.salary.toLocaleString()}\`,
     right: true,
   },
-];`}</code></pre>
+];`} />
 
   <h2>Column properties</h2>
 
@@ -72,13 +73,13 @@ const columns: TableColumn<Row>[] = [
 
   <h2>Custom cell renderer</h2>
 
-  <pre><code>{`{
+  <CodeBlock code={`{
   name: 'Actions',
   button: true,
   cell: row => (
     <button onClick={() => handleDelete(row.id)}>Delete</button>
   ),
-}`}</code></pre>
+}`} />
 
   <h2>Column filtering</h2>
 
@@ -87,7 +88,7 @@ const columns: TableColumn<Row>[] = [
     Clicking the icon opens a text input; rows are filtered client-side by default.
   </p>
 
-  <pre><code>{`{ name: 'Name', selector: r => r.name, filterable: true }
+  <CodeBlock code={`{ name: 'Name', selector: r => r.name, filterable: true }
 
 // Custom filter logic:
 {
@@ -95,7 +96,7 @@ const columns: TableColumn<Row>[] = [
   selector: r => r.status,
   filterable: true,
   filterFunction: (row, value) => row.status.startsWith(value),
-}`}</code></pre>
+}`} />
 
   <p>For controlled filter state, pass <code>filterValues</code> and <code>onFilterChange</code> to <code>DataTable</code>.</p>
 
@@ -107,22 +108,22 @@ const columns: TableColumn<Row>[] = [
     in order.
   </p>
 
-  <pre><code>{`const [cols, setCols] = React.useState(columns);
+  <CodeBlock code={`const [cols, setCols] = React.useState(columns);
 
 <DataTable
   columns={cols}
   data={data}
   onColumnOrderChange={setCols}
-/>`}</code></pre>
+/>`} />
 
   <h2>Hiding columns</h2>
 
   <p>Toggle a column's visibility by setting <code>omit</code> dynamically:</p>
 
-  <pre><code>{`const [showSalary, setShowSalary] = React.useState(true);
+  <CodeBlock code={`const [showSalary, setShowSalary] = React.useState(true);
 
 const columns = [
   { name: 'Name', selector: r => r.name },
   { name: 'Salary', selector: r => r.salary, omit: !showSalary },
-];`}</code></pre>
+];`} />
 </DocsLayout>

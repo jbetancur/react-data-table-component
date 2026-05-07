@@ -1,18 +1,19 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 ---
 
 <DocsLayout title="Installation — react-data-table-component">
   <h1>Installation</h1>
 
   <h2>npm</h2>
-  <pre><code>npm install react-data-table-component</code></pre>
+  <CodeBlock code="npm install react-data-table-component" lang="sh" />
 
   <h2>pnpm</h2>
-  <pre><code>pnpm add react-data-table-component</code></pre>
+  <CodeBlock code="pnpm add react-data-table-component" lang="sh" />
 
   <h2>yarn</h2>
-  <pre><code>yarn add react-data-table-component</code></pre>
+  <CodeBlock code="yarn add react-data-table-component" lang="sh" />
 
   <h2>Requirements</h2>
 
@@ -45,7 +46,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
     All public types are re-exported from the main entry point:
   </p>
 
-  <pre><code>{`import DataTable, { type TableColumn, type TableProps } from 'react-data-table-component';`}</code></pre>
+  <CodeBlock code={`import DataTable, { type TableColumn, type TableProps } from 'react-data-table-component';`} lang="ts" />
 
   <h2>Framework notes</h2>
 
@@ -64,11 +65,11 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 
   <h3>Next.js App Router example</h3>
 
-  <pre><code>{`'use client';
+  <CodeBlock code={`'use client';
 
 import DataTable from 'react-data-table-component';
 
 export default function MyTable() {
   return <DataTable columns={columns} data={data} />;
-}`}</code></pre>
+}`} />
 </DocsLayout>

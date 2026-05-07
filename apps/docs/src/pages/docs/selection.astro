@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
 ---
 
@@ -14,26 +15,57 @@ import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
 
   <Demo
     title="Multi-select with imperative clear"
-    description="Select rows, then clear with the button."
-    code={`import { useRef } from 'react';
-import DataTable, { type DataTableHandle } from 'react-data-table-component';
+    description="Select rows, then clear with the button. Toggle single-select mode with the checkbox."
+    code={`import { useState, useRef } from 'react';
+import DataTable, { type TableColumn, type DataTableHandle } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  role: string;
+  department: string;
+}
+
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',     role: 'Engineering Lead',  department: 'Engineering' },
+  { id: 2, name: 'Marcus Webb',   role: 'Product Manager',   department: 'Product' },
+  { id: 3, name: 'Priya Kapoor',  role: 'Senior Designer',   department: 'Design' },
+  { id: 4, name: 'Jordan Ellis',  role: 'Data Scientist',    department: 'Analytics' },
+  { id: 5, name: 'Sam Rivera',    role: 'DevOps Engineer',   department: 'Engineering' },
+  { id: 6, name: 'Taylor Brooks', role: 'Account Manager',   department: 'Sales' },
+];
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Role',       selector: r => r.role },
+  { name: 'Department', selector: r => r.department, sortable: true },
+];
 
 export default function App() {
+  const [selectedRows, setSelectedRows] = useState<Employee[]>([]);
+  const [single, setSingle] = useState(false);
   const ref = useRef<DataTableHandle>(null);
 
   return (
-    <>
-      <button onClick={() => ref.current?.clearSelectedRows()}>
-        Clear selection
-      </button>
+    <div>
+      <label>
+        <input type="checkbox" checked={single} onChange={e => setSingle(e.target.checked)} />
+        {' '}Single select
+      </label>
+      <button onClick={() => ref.current?.clearSelectedRows()}>Clear selection</button>
+      {selectedRows.length > 0 && (
+        <span>{selectedRows.length} selected: {selectedRows.map(r => r.name).join(', ')}</span>
+      )}
       <DataTable
         ref={ref}
         columns={columns}
         data={data}
         selectableRows
-        onSelectedRowsChange={({ selectedRows }) => console.log(selectedRows)}
+        selectableRowsSingle={single}
+        onSelectedRowsChange={({ selectedRows }) => setSelectedRows(selectedRows)}
+        highlightOnHover
       />
-    </>
+    </div>
   );
 }`}
   >
@@ -44,31 +76,31 @@ export default function App() {
   <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>
 
   <h2>Disable specific rows</h2>
-  <pre><code>{`<DataTable
+  <CodeBlock code={`<DataTable
   selectableRows
   selectableRowDisabled={row => row.locked}
-/>`}</code></pre>
+/>`} />
 
   <h2>Pre-select rows</h2>
-  <pre><code>{`<DataTable
+  <CodeBlock code={`<DataTable
   selectableRows
   selectableRowSelected={row => row.status === 'Active'}
-/>`}</code></pre>
+/>`} />
 
   <h2>onSelectedRowsChange</h2>
   <p>The callback receives <code>{`{ allSelected, selectedCount, selectedRows }`}</code>.</p>
-  <pre><code>{`<DataTable
+  <CodeBlock code={`<DataTable
   selectableRows
   onSelectedRowsChange={({ selectedCount, selectedRows }) => {
     console.log(\`\${selectedCount} rows selected\`, selectedRows);
   }}
-/>`}</code></pre>
+/>`} />
 
   <h2>Clearing selection (imperative API)</h2>
   <p>
     Use a <code>ref</code> to call <code>clearSelectedRows()</code> — the recommended approach
     that avoids the toggle-boolean bug present in older versions.
   </p>
-  <pre><code>{`const tableRef = useRef<DataTableHandle>(null);
-tableRef.current?.clearSelectedRows();`}</code></pre>
+  <CodeBlock code={`const tableRef = useRef<DataTableHandle>(null);
+tableRef.current?.clearSelectedRows();`} />
 </DocsLayout>

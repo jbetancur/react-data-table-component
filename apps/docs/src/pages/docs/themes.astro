@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 import ThemesDemo from '../../components/demos/ThemesDemo.tsx';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 ---
@@ -20,12 +21,10 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
 
 // Register a custom theme — inherits from 'dark'
 createTheme('ocean', {
-  colors: {
-    text:             { primary: '#e0f2fe', secondary: '#7dd3fc' },
-    background:       { default: '#0c4a6e' },
-    divider:          { default: '#075985' },
-    highlightOnHover: { default: '#075985', text: '#f0f9ff' },
-  },
+  text:             { primary: '#e0f2fe', secondary: '#7dd3fc' },
+  background:       { default: '#0c4a6e' },
+  divider:          { default: '#075985' },
+  highlightOnHover: { default: '#075985', text: '#f0f9ff' },
 }, 'dark');
 
 <DataTable columns={columns} data={data} theme="ocean" />`}
@@ -55,7 +54,7 @@ createTheme('ocean', {
     Registers a named theme globally. Pass a parent theme name as the third argument to
     inherit its defaults and only override what you need.
   </p>
-  <pre><code>{`createTheme('brand', {
+  <CodeBlock code={`createTheme('brand', {
   colors: {
     text:             { primary: '#1a1a2e', secondary: '#4a4a6a' },
     background:       { default: '#f0f4ff' },
@@ -65,17 +64,17 @@ createTheme('ocean', {
     button:           { default: '#4f46e5', hover: '#4338ca', disabled: '#c7d2fe' },
     striped:          { default: '#f5f7ff', text: '#1a1a2e' },
   },
-}); // inherits from 'default'`}</code></pre>
+}); // inherits from 'default'`} lang="ts" />
 
   <h2>CSS variable override</h2>
   <p>
     Themes compile to CSS custom properties. You can override individual variables
     without calling <code>createTheme()</code>:
   </p>
-  <pre><code>{`.my-table {
+  <CodeBlock code={`.my-table {
   --rdt-color-text-primary: #1a1a2e;
   --rdt-color-bg-default: #f0f4ff;
-}`}</code></pre>
+}`} lang="css" />
 
   <h2>Column separators</h2>
   <p>

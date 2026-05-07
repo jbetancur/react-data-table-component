@@ -47,6 +47,7 @@
 /* ─── Head ──────────────────────────────────────────────────────────────────── */
 .rdt_head {
 	display: flex;
+	flex-direction: column;
 	width: 100%;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	font-size: 12px;
