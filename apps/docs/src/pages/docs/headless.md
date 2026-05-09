@@ -108,12 +108,8 @@ function MyTable({ data }) {
     onSort: () => {},
   });
 
-  // 4. Optional: per-column filtering
-  const { filterValues, handleFilterChange, filteredData } = useColumnFilter(
-    tableColumns,
-    undefined,  // no controlled filter values
-    undefined,  // no onFilterChange callback
-  );
+  // 4. Optional: per-column filtering (uncontrolled — internal state)
+  const { filteredData } = useColumnFilter(tableColumns);
 
   const rows = filteredData(tableRows);
 
@@ -269,10 +265,12 @@ Pass `tableRows` (not `sortedData`) to `useColumnFilter.filteredData()` and then
 ### `useColumnFilter<T>`
 
 ```ts
+import type { FilterState } from 'react-data-table-component';
+
 function useColumnFilter<T>(
   columns: TableColumn<T>[],
-  controlledFilterValues?: Record<string | number, string>,
-  onFilterChange?: (columnId: string | number, value: string) => void,
+  controlledFilterValues?: Record<string | number, FilterState>,
+  onFilterChange?: (columnId: string | number, filter: FilterState) => void,
 ): UseColumnFilterResult<T>
 ```
 
@@ -282,13 +280,13 @@ Omit both optional arguments to run in **uncontrolled** mode (internal state). P
 
 | Property | Type | Description |
 |---|---|---|
-| `filterValues` | `Record<string \| number, string>` | Current filter string per column ID |
-| `handleFilterChange` | `(columnId, value) => void` | Call from your filter input's `onChange` |
-| `filteredData` | `(data: T[]) => T[]` | Apply active filters to a row array |
+| `filterValues` | `Record<string \| number, FilterState>` | Current filter state per column ID |
+| `handleFilterChange` | `(columnId, filter) => void` | Call this when the user applies a filter |
+| `filteredData` | `(data: T[]) => T[]` | Apply all active filters to a row array |
 
-`filteredData` is a stable memoised function — safe to call in render without re-filtering on every keystroke.
+`filteredData` is a stable memoised function — safe to call in render.
 
-Each column can define a custom `filterFunction: (row: T, filterValue: string) => boolean` to override the default case-insensitive substring match.
+Each column can define `filterFunction: (row: T, filter: FilterState) => boolean` to override the built-in operator logic. See [Filtering](/docs/filtering) for the full `FilterState` type and operator reference.
 
 ---
 

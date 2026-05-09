@@ -106,6 +106,96 @@ import type { IDataTableProps } from 'react-data-table-component';
 import type { TableProps } from 'react-data-table-component';
 ```
 
+#### Filter API replaced with structured `FilterState`
+
+The filter API has been redesigned to support multiple operators, two conditions per column, and explicit Apply semantics. Three types of filter are now built-in: `text`, `number`, and `date`.
+
+**`filterValues` and `onFilterChange` on `<DataTable>`**
+
+The value type changed from `string` to `FilterState`:
+
+```ts
+// Before (v7)
+filterValues?: Record<string | number, string>
+onFilterChange?: (columnId: string | number, value: string) => void
+
+// After (v8)
+import type { FilterState } from 'react-data-table-component';
+
+filterValues?: Record<string | number, FilterState>
+onFilterChange?: (columnId: string | number, filter: FilterState) => void
+```
+
+**`filterFunction` on `TableColumn`**
+
+The second argument changed from `string` to `FilterState` so you have access to both conditions and the AND/OR logic:
+
+```ts
+// Before (v7)
+{
+  filterable: true,
+  filterFunction: (row, value) => row.name.startsWith(value),
+}
+
+// After (v8)
+import type { FilterState } from 'react-data-table-component';
+
+{
+  filterable: true,
+  filterType: 'text',
+  filterFunction: (row, filter) => {
+    const v = filter.condition1.value ?? '';
+    return row.name.toLowerCase().startsWith(v.toLowerCase());
+  },
+}
+```
+
+**New `filterType` column prop**
+
+Set `filterType` on each filterable column to get the appropriate operator set and input widget:
+
+| Value | Operators available |
+| --- | --- |
+| `"text"` (default) | contains, not contains, equals, not equals, begins with, ends with, blank, not blank |
+| `"number"` | equals, not equals, greater than, ≥, less than, ≤, between, blank, not blank |
+| `"date"` | equals, before, after, between, blank, not blank |
+
+```ts
+const columns: TableColumn<Row>[] = [
+  { id: 'name',  name: 'Name',  selector: r => r.name,  filterable: true },
+  { id: 'age',   name: 'Age',   selector: r => r.age,   filterable: true, filterType: 'number' },
+  { id: 'dob',   name: 'DOB',   selector: r => r.dob,   filterable: true, filterType: 'date' },
+];
+```
+
+##### Two conditions and AND/OR logic
+
+The filter panel now lets the user add a second condition and toggle AND/OR between them. The full shape of `FilterState`:
+
+```ts
+type FilterState = {
+  condition1: { operator: FilterOperator; value?: string; value2?: string };
+  condition2?: { operator: FilterOperator; value?: string; value2?: string };
+  logic?: 'AND' | 'OR'; // defaults to 'AND'
+};
+```
+
+##### Filters now apply on explicit click, not on keystroke
+
+Previously a filter was applied live as the user typed. In v8 the filter popup has an **Apply** button — the `onFilterChange` callback (and internal data re-filter) only fires when Apply is clicked. Clear still clears immediately.
+
+##### Utilities exported for headless usage
+
+```ts
+import { emptyFilterState, isFilterActive } from 'react-data-table-component';
+
+// Create a default empty FilterState for a given type
+const state = emptyFilterState('number'); // { condition1: { operator: 'equals' } }
+
+// Check whether a FilterState has an active filter
+isFilterActive(state); // false
+```
+
 #### `column.hide` requires the `Media` enum
 
 The `hide` property on `TableColumn` now requires the `Media` enum rather than raw string literals.
@@ -174,13 +264,13 @@ Note that `ThemeText` requires all three fields (`primary`, `secondary`, and `di
 ### New features in v8 (non-breaking)
 
 | Feature | API |
-|---|---|
+| --- | --- |
 | Row entrance & sort animations | `animateRows` |
 | Column separators | `columnSeparator` |
 | Spanning column group headers | `columnGroups` |
 | Drag-to-resize column handles | `resizable` |
 | Column drag-to-reorder | `reorder` on `TableColumn` + `onColumnOrderChange` |
-| Column filter inputs | `filterable` / `filterFunction` on `TableColumn`, `filterValues` / `onFilterChange` on `DataTable` |
+| Column filter popups (text / number / date) | `filterable` / `filterType` / `filterFunction` on `TableColumn`, `filterValues` / `onFilterChange` on `DataTable` |
 | Programmatic selection clear | `useRef<DataTableHandle>` + `ref.current.clearSelectedRows()` |
 | Headless hooks | `useTableState`, `useColumns`, `useTableData`, `useColumnFilter`. See [Headless hooks](/docs/headless/) |
 | Next.js App Router support | Bundle ships with `"use client"`; import `<DataTable>` directly into a Server Component file |

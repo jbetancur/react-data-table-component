@@ -2,6 +2,41 @@ import { Alignment, Direction, Media } from './constants';
 
 export type CSSObject = React.CSSProperties;
 
+// ── Column filter types ────────────────────────────────────────────────────────
+
+export type FilterType = 'text' | 'number' | 'date';
+
+export type FilterOperator =
+	| 'contains'
+	| 'notContains'
+	| 'equals'
+	| 'notEquals'
+	| 'startsWith'
+	| 'endsWith'
+	| 'blank'
+	| 'notBlank'
+	| 'gt'
+	| 'gte'
+	| 'lt'
+	| 'lte'
+	| 'between'
+	| 'before'
+	| 'after';
+
+export type FilterCondition = {
+	operator: FilterOperator;
+	value?: string;
+	/** Second value — only used when operator is "between". */
+	value2?: string;
+};
+
+export type FilterState = {
+	condition1: FilterCondition;
+	condition2?: FilterCondition;
+	/** How condition1 and condition2 combine. Defaults to "AND". */
+	logic?: 'AND' | 'OR';
+};
+
 export enum SortOrder {
 	ASC = 'asc',
 	DESC = 'desc',
@@ -144,11 +179,11 @@ type BaseTableProps<T> = {
 	columnGroups?: ColumnGroup[];
 	/**
 	 * Controlled filter values per column id. When provided, DataTable uses these values
-	 * and calls onFilterChange when the user edits a filter. Omit to use internal filter state.
+	 * and calls onFilterChange when the user applies a filter. Omit to use internal filter state.
 	 */
-	filterValues?: Record<string | number, string>;
-	/** Called when a column filter input changes */
-	onFilterChange?: (columnId: string | number, value: string) => void;
+	filterValues?: Record<string | number, FilterState>;
+	/** Called when the user clicks Apply in a column filter popup. */
+	onFilterChange?: (columnId: string | number, filter: FilterState) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	persistTableHead?: boolean;
 	pointerOnHover?: boolean;
@@ -186,8 +221,10 @@ export type TableColumnBase = {
 	omit?: boolean;
 	right?: boolean;
 	sortable?: boolean;
-	/** Enable built-in text filter for this column */
+	/** Enable the built-in filter popup for this column. */
 	filterable?: boolean;
+	/** Filter input type. Determines the available operators and input widget. Defaults to "text". */
+	filterType?: FilterType;
 	style?: CSSObject;
 	width?: string;
 	wrap?: boolean;
@@ -206,8 +243,8 @@ export interface TableColumn<T> extends TableColumnBase {
 	 */
 	selector?: (row: T, rowIndex?: number) => Primitive | React.ReactNode;
 	sortFunction?: ColumnSortFunction<T>;
-	/** Custom filter function — defaults to case-insensitive string match on selector value */
-	filterFunction?: (row: T, filterValue: string) => boolean;
+	/** Custom filter function — overrides built-in operator logic. Receives the full FilterState so both conditions are available. */
+	filterFunction?: (row: T, filter: FilterState) => boolean;
 }
 
 /** A column group renders as a spanning header row above the regular header row. */

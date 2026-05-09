@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableColumn, SortAction, SortOrder, AllRowsAction, RowState, ComponentProps } from '../types';
+import { TableColumn, SortAction, SortOrder, AllRowsAction, RowState, ComponentProps, FilterState } from '../types';
 
 export interface HeadContextValue<T> {
 	// Sort state
@@ -24,7 +24,7 @@ export interface HeadContextValue<T> {
 	showSelectAll: boolean;
 	// Column resize / drag
 	draggingColumnId: string | number;
-	filterValues: Record<string | number, string>;
+	filterValues: Record<string | number, FilterState>;
 	columnWidths: Record<string | number, number>;
 	resizable: boolean;
 	// Table state
@@ -35,7 +35,7 @@ export interface HeadContextValue<T> {
 	// Callbacks
 	onSelectAllRows: (action: AllRowsAction<T>) => void;
 	onSort: (action: SortAction<T>) => void;
-	onFilterChange: (columnId: string | number, value: string) => void;
+	onFilterChange: (columnId: string | number, filter: FilterState) => void;
 	onResizeStart?: (columnId: string | number, e: React.MouseEvent) => void;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;

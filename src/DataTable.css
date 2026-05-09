@@ -305,44 +305,154 @@
 	pointer-events: none;
 }
 
-.rdt_filterPopup {
+/* Panel — opens below the filter icon */
+.rdt_filterPanel {
 	position: absolute;
-	top: 100%;
+	top: calc(100% + 4px);
 	left: 0;
-	z-index: 10;
+	z-index: 20;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	gap: 6px;
 	background: var(--rdt-color-bg, #fff);
 	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
+	border-radius: 6px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+	padding: 10px;
+	min-width: 260px;
+}
+
+/* A single condition row: [select] [input] ([and] [input]) [remove] */
+.rdt_filterConditionRow {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.rdt_filterSelect {
+	flex: 0 0 auto;
+	font-size: 12px;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background: var(--rdt-color-bg, #fff);
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
 	border-radius: 4px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
-	padding: 4px 6px;
-	min-width: 140px;
-	margin-top: 2px;
+	padding: 3px 4px;
+	cursor: pointer;
+	max-width: 140px;
+}
+
+.rdt_filterSelect:focus {
+	outline: 2px solid #1976d2;
+	outline-offset: -1px;
 }
 
 .rdt_filterInput {
 	flex: 1;
-	border: none;
-	outline: none;
+	min-width: 0;
 	font-size: 12px;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
-	background: transparent;
-	min-width: 0;
+	background: var(--rdt-color-bg, #fff);
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: 4px;
+	padding: 3px 6px;
 }
 
-.rdt_filterClear {
+.rdt_filterInput:focus {
+	outline: 2px solid #1976d2;
+	outline-offset: -1px;
+}
+
+.rdt_filterBetweenSep {
+	font-size: 11px;
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	white-space: nowrap;
+}
+
+.rdt_filterRemoveBtn {
 	background: none;
 	border: none;
 	cursor: pointer;
 	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
 	font-size: 11px;
-	padding: 0 2px;
+	padding: 2px 4px;
+	border-radius: 3px;
 	line-height: 1;
 }
 
-.rdt_filterClear:hover {
+.rdt_filterRemoveBtn:hover {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
+}
+
+/* AND / OR logic toggle */
+.rdt_filterLogicRow {
+	display: flex;
+	gap: 4px;
+}
+
+.rdt_filterLogicBtn {
+	font-size: 11px;
+	font-weight: 600;
+	padding: 2px 8px;
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: 3px;
+	background: none;
+	cursor: pointer;
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+}
+
+.rdt_filterLogicBtnActive {
+	background-color: #1976d2;
+	border-color: #1976d2;
+	color: #fff;
+}
+
+/* + Add condition */
+.rdt_filterAddCondition {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	color: #1976d2;
+	padding: 0;
+	text-align: left;
+}
+
+.rdt_filterAddCondition:hover {
+	text-decoration: underline;
+}
+
+/* Apply / Clear actions */
+.rdt_filterActions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 6px;
+	padding-top: 4px;
+	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+	margin-top: 2px;
+}
+
+.rdt_filterBtn {
+	font-size: 12px;
+	padding: 4px 12px;
+	border-radius: 4px;
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	background: none;
+	cursor: pointer;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+}
+
+.rdt_filterBtn:hover {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.06));
+}
+
+.rdt_filterBtnPrimary {
+	background-color: #1976d2;
+	border-color: #1976d2;
+	color: #fff;
+}
+
+.rdt_filterBtnPrimary:hover {
+	background-color: #1565c0;
 }
 
 /* ─── Column resize handle ──────────────────────────────────────────────────── */

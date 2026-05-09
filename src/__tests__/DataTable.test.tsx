@@ -2417,16 +2417,16 @@ describe('DataTable::columnFilter', () => {
 		expect(container.querySelector('.rdt_filterIcon')).toBeNull();
 	});
 
-	test('opens filter popup when filter icon is clicked', () => {
+	test('opens filter panel when filter icon is clicked', () => {
 		const mock = dataMock();
 		const columns = [{ ...mock.columns[0], filterable: true }];
 		const { container } = render(<DataTable data={mock.data} columns={columns} />);
 		const btn = container.querySelector('.rdt_filterIcon') as HTMLButtonElement;
 		fireEvent.click(btn);
-		expect(container.querySelector('.rdt_filterPopup')).not.toBeNull();
+		expect(container.querySelector('.rdt_filterPanel')).not.toBeNull();
 	});
 
-	test('filters rows based on typed value (default string match)', () => {
+	test('filters rows after Apply is clicked (default contains match)', () => {
 		const data = [
 			{ id: 1, some: { name: 'Apple' } },
 			{ id: 2, some: { name: 'Banana' } },
@@ -2441,16 +2441,16 @@ describe('DataTable::columnFilter', () => {
 			},
 		];
 		const { container } = render(<DataTable data={data} columns={columns} />);
-		const btn = container.querySelector('.rdt_filterIcon') as HTMLButtonElement;
-		fireEvent.click(btn);
-		const input = container.querySelector('.rdt_filterInput') as HTMLInputElement;
-		fireEvent.change(input, { target: { value: 'ap' } });
-		// Apple and Apricot match "ap"; body rows only
-		const bodyRows = container.querySelectorAll('.rdt_TableBody [role="row"]');
-		expect(bodyRows.length).toBe(2);
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'ap' } });
+		// data not yet filtered — Apply not clicked
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(3);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		// Apple and Apricot match "ap"
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(2);
 	});
 
-	test('respects custom filterFunction', () => {
+	test('respects custom filterFunction (receives FilterState)', () => {
 		const data = [
 			{ id: 1, some: { name: 'Alpha' } },
 			{ id: 2, some: { name: 'Beta' } },
@@ -2461,33 +2461,33 @@ describe('DataTable::columnFilter', () => {
 				id: 'name',
 				selector: (row: (typeof data)[0]) => row.some.name,
 				filterable: true,
-				filterFunction: (row: (typeof data)[0], value: string) => row.id === Number(value),
+				filterFunction: (row: (typeof data)[0], filter: import('../types').FilterState) =>
+					row.id === Number(filter.condition1.value ?? ''),
 			},
 		];
 		const { container } = render(<DataTable data={data} columns={columns} />);
-		const btn = container.querySelector('.rdt_filterIcon') as HTMLButtonElement;
-		fireEvent.click(btn);
-		const input = container.querySelector('.rdt_filterInput') as HTMLInputElement;
-		fireEvent.change(input, { target: { value: '2' } });
-		const bodyRows = container.querySelectorAll('.rdt_TableBody [role="row"]');
-		expect(bodyRows.length).toBe(1);
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: '2' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(1);
 	});
 
-	test('calls onFilterChange prop when filter value changes', () => {
+	test('calls onFilterChange with FilterState when Apply is clicked', () => {
 		const mock = dataMock();
 		const onFilterChange = vi.fn();
 		const columns = [{ ...mock.columns[0], id: 'col1', filterable: true }];
 		const { container } = render(
 			<DataTable data={mock.data} columns={columns} onFilterChange={onFilterChange} filterValues={{}} />,
 		);
-		const btn = container.querySelector('.rdt_filterIcon') as HTMLButtonElement;
-		fireEvent.click(btn);
-		const input = container.querySelector('.rdt_filterInput') as HTMLInputElement;
-		fireEvent.change(input, { target: { value: 'test' } });
-		expect(onFilterChange).toHaveBeenCalledWith('col1', 'test');
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'test' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(onFilterChange).toHaveBeenCalledWith('col1', {
+			condition1: { operator: 'contains', value: 'test' },
+		});
 	});
 
-	test('clears filter when clear button is clicked', () => {
+	test('clears filter when Clear button is clicked', () => {
 		const data = [
 			{ id: 1, some: { name: 'Apple' } },
 			{ id: 2, some: { name: 'Banana' } },
@@ -2501,15 +2501,15 @@ describe('DataTable::columnFilter', () => {
 			},
 		];
 		const { container } = render(<DataTable data={data} columns={columns} />);
-		const btn = container.querySelector('.rdt_filterIcon') as HTMLButtonElement;
-		fireEvent.click(btn);
-		const input = container.querySelector('.rdt_filterInput') as HTMLInputElement;
-		fireEvent.change(input, { target: { value: 'ap' } });
-		// Apple matches "ap", Banana does not → 1 body row
+		// Apply a filter first
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'ap' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
 		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(1);
-		const clearBtn = container.querySelector('.rdt_filterClear') as HTMLButtonElement;
+		// Reopen and clear
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		const clearBtn = container.querySelectorAll('.rdt_filterBtn')[0] as HTMLButtonElement;
 		fireEvent.click(clearBtn);
-		// both rows show again
 		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(2);
 	});
 });

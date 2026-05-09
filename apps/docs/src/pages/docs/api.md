@@ -134,8 +134,8 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 |---|---|---|---|
 | `resizable` | `boolean` | `false` | Show drag handles on column headers for resizing. |
 | `columnGroups` | `ColumnGroup[]` | - | Spanning group headers rendered above the column header row. |
-| `filterValues` | `Record<string \| number, string>` | - | Controlled filter state. Omit to use internal state. |
-| `onFilterChange` | `(columnId, value) => void` | - | Called when a column filter input changes. |
+| `filterValues` | `Record<string \| number, FilterState>` | - | Controlled filter state. Omit to use internal state. See [Filtering](/docs/filtering). |
+| `onFilterChange` | `(columnId, filter: FilterState) => void` | - | Called when the user clicks Apply or Clear in a filter popup. |
 | `onColumnOrderChange` | `(columns) => void` | - | Called after a drag-to-reorder column operation. |
 
 ## ColumnGroup
@@ -185,8 +185,9 @@ const columns: TableColumn<MyRow>[] = [
 | `sortable` | `boolean` | Enable sorting on this column. |
 | `sortFunction` | `(a: T, b: T) => number` | Custom comparator for this column. |
 | `sortField` | `string` | Field key passed to `onSort` for server-side sort identification. |
-| `filterable` | `boolean` | Show a text filter input below the column header. |
-| `filterFunction` | `(row, value) => boolean` | Custom filter predicate. Defaults to a case-insensitive substring match on the selector value. |
+| `filterable` | `boolean` | Show a filter popup for this column. |
+| `filterType` | `"text" \| "number" \| "date"` | Filter operator set and input widget. Defaults to `"text"`. See [Filtering](/docs/filtering). |
+| `filterFunction` | `(row, filter: FilterState) => boolean` | Custom filter predicate. Overrides built-in operator logic. Receives the full `FilterState` including both conditions. |
 | `width` | `string` | Fixed column width, e.g. `"120px"`. |
 | `minWidth` | `string` | Minimum width. |
 | `maxWidth` | `string` | Maximum width. |
@@ -434,5 +435,13 @@ import type {
   PaginationServerOptions,
   SortFunction,
   Selector,
+  // Filter types
+  FilterType,
+  FilterOperator,
+  FilterCondition,
+  FilterState,
 } from 'react-data-table-component';
+
+// Filter utilities
+import { emptyFilterState, isFilterActive } from 'react-data-table-component';
 ```

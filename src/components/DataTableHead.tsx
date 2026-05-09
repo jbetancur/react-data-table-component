@@ -7,6 +7,7 @@ import ColumnExpander from './TableColExpander';
 import { CellBase } from './Cell';
 import { buildGridTemplateColumns, buildGroupHeaderCells, buildGroupCells } from './dataTableHeadHelpers';
 import { TableColumn, ColumnGroup } from '../types';
+import { emptyFilterState } from '../hooks/useColumnFilter';
 import { useHeadContext } from '../context/HeadContext';
 
 interface DataTableHeadProps<T> {
@@ -88,7 +89,7 @@ function DataTableHead<T>({
 		sortDirection,
 		sortIcon,
 		sortServer,
-		filterValue: filterValues[column.id!] ?? '',
+		filterValue: filterValues[column.id!] ?? emptyFilterState(column.filterType),
 		resizedWidth: columnWidths[column.id!],
 		onSort,
 		onFilterChange,
