@@ -1,0 +1,225 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import FilteringDemo from '../../components/demos/FilteringDemo.tsx';
+---
+
+<DocsLayout title="Filtering | react-data-table-component">
+  <h1>Filtering</h1>
+
+  <p>
+    Built-in per-column filter popups with operator selection, two-condition AND/OR logic,
+    and support for text, number, and date column types.
+  </p>
+
+  <Demo
+    title="Column filters — text, number, and date"
+    description="Click the filter icon in any column header. Pick an operator, enter a value, then click Apply. Try salary ≥ 130000, or filter hired Before 2021-01-01."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  department: string;
+  salary: number;
+  hired: string;
+}
+
+const data: Employee[] = [
+  { id: 1,  name: 'Aria Chen',     department: 'Engineering', salary: 155000, hired: '2019-03-12' },
+  { id: 2,  name: 'Marcus Webb',   department: 'Product',     salary: 132000, hired: '2020-07-01' },
+  { id: 3,  name: 'Priya Kapoor',  department: 'Design',      salary: 118000, hired: '2021-01-15' },
+  { id: 4,  name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000, hired: '2018-11-30' },
+  { id: 5,  name: 'Sam Rivera',    department: 'Engineering', salary: 128000, hired: '2022-04-22' },
+  { id: 6,  name: 'Taylor Brooks', department: 'Sales',       salary:  97000, hired: '2023-02-08' },
+  { id: 7,  name: 'Morgan Lee',    department: 'Engineering', salary: 162000, hired: '2017-09-05' },
+  { id: 8,  name: 'Casey Park',    department: 'Design',      salary: 109000, hired: '2022-11-19' },
+  { id: 9,  name: 'Drew Santos',   department: 'Product',     salary: 138000, hired: '2020-03-30' },
+  { id: 10, name: 'Avery Johnson', department: 'Sales',       salary: 104000, hired: '2021-08-14' },
+];
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',       selector: r => r.name,   sortable: true, filterable: true },
+  { id: 'dept',   name: 'Department', selector: r => r.department,              filterable: true },
+  {
+    id: 'salary', name: 'Salary',     selector: r => r.salary,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+    right: true,  sortable: true, filterable: true, filterType: 'number',
+  },
+  { id: 'hired',  name: 'Hired',      selector: r => r.hired,  sortable: true, filterable: true, filterType: 'date' },
+];
+
+export default function App() {
+  return <DataTable columns={columns} data={data} highlightOnHover />;
+}`}
+  >
+    <FilteringDemo client:load />
+  </Demo>
+
+  <h2>Quick start</h2>
+  <p>
+    Add <code>filterable: true</code> and a stable <code>id</code> to any column. A filter
+    icon appears in the column header. Filters across columns combine with AND — a row must
+    pass every active filter to appear.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { id: 'name', name: 'Name', selector: r => r.name, filterable: true },
+];
+
+<DataTable columns={columns} data={data} />`} />
+
+  <h2>Filter types</h2>
+  <p>
+    Set <code>filterType</code> to get the right operator set and input widget. Defaults to <code>"text"</code>.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { id: 'name',  name: 'Name',       selector: r => r.name,  filterable: true },
+  { id: 'score', name: 'Score',      selector: r => r.score, filterable: true, filterType: 'number' },
+  { id: 'dob',   name: 'Birth date', selector: r => r.dob,   filterable: true, filterType: 'date' },
+];`} />
+
+  <table>
+    <thead>
+      <tr>
+        <th><code>filterType</code></th>
+        <th>Default operator</th>
+        <th>Input</th>
+        <th>Operators</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>"text"</code> (default)</td>
+        <td>Contains</td>
+        <td>Text</td>
+        <td>Contains, Does not contain, Equals, Does not equal, Begins with, Ends with, Blank, Not blank</td>
+      </tr>
+      <tr>
+        <td><code>"number"</code></td>
+        <td>Equals</td>
+        <td>Number</td>
+        <td>Equals, Does not equal, Greater than, ≥, Less than, ≤, Between, Blank, Not blank</td>
+      </tr>
+      <tr>
+        <td><code>"date"</code></td>
+        <td>Equals</td>
+        <td>Date</td>
+        <td>Equals, Before, After, Between, Blank, Not blank</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Blank / Not blank</strong> match on empty cells and need no value input.
+    <strong>Between</strong> (number and date) shows two value inputs for inclusive bounds.
+    For <code>"date"</code> columns, <code>selector</code> should return an ISO string (<code>"2024-03-15"</code>) or any value parseable by <code>new Date()</code>.
+  </p>
+
+  <h2>Two conditions per column</h2>
+  <p>
+    Each filter popup has a <strong>+ Add condition</strong> link. Adding a second condition
+    reveals an AND / OR toggle. AND means both conditions must match; OR means either must match.
+  </p>
+
+  <CodeBlock code={`import type { FilterState } from 'react-data-table-component';
+
+// The shape of one column's filter state
+const filter: FilterState = {
+  condition1: { operator: 'startsWith', value: 'J' },
+  condition2: { operator: 'endsWith',   value: 'son' },
+  logic: 'AND',  // 'AND' | 'OR' — defaults to 'AND'
+};`} />
+
+  <h2>Apply / Clear behaviour</h2>
+  <p>
+    Filters apply only when the user clicks <strong>Apply</strong> — typing does not immediately
+    re-filter. This avoids jarring mid-keystroke changes on large datasets.
+    Clicking <strong>Clear</strong> resets the column's filter and applies immediately.
+  </p>
+
+  <h2>Custom filter function</h2>
+  <p>
+    Override built-in operator logic per column with <code>filterFunction</code>. It receives
+    the full <code>FilterState</code> so both conditions are available:
+  </p>
+
+  <CodeBlock code={`import type { TableColumn, FilterState } from 'react-data-table-component';
+
+const columns: TableColumn<Row>[] = [
+  {
+    id: 'tags',
+    name: 'Tags',
+    selector: r => r.tags.join(', '),
+    filterable: true,
+    filterFunction: (row, filter) => {
+      const term = (filter.condition1.value ?? '').toLowerCase();
+      return row.tags.some(tag => tag.toLowerCase().includes(term));
+    },
+  },
+];`} />
+
+  <h2>Controlled mode</h2>
+  <p>
+    Pass <code>filterValues</code> and <code>onFilterChange</code> to own the filter state
+    yourself — useful for persisting it in a URL or resetting it programmatically.
+    <code>onFilterChange</code> fires on every Apply or Clear click.
+  </p>
+
+  <CodeBlock code={`import { useState } from 'react';
+import DataTable, { type FilterState } from 'react-data-table-component';
+
+function App() {
+  const [filterValues, setFilterValues] = useState<Record<string | number, FilterState>>({});
+  const [resetPage, setResetPage] = useState(false);
+
+  function handleFilterChange(columnId: string | number, filter: FilterState) {
+    setFilterValues(prev => ({ ...prev, [columnId]: filter }));
+    setResetPage(v => !v);  // jump back to page 1 after each filter
+  }
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      filterValues={filterValues}
+      onFilterChange={handleFilterChange}
+      pagination
+      paginationResetDefaultPage={resetPage}
+    />
+  );
+}`} />
+
+  <h2>Utility exports</h2>
+
+  <CodeBlock code={`import { emptyFilterState, isFilterActive, type FilterState } from 'react-data-table-component';
+
+// Create a default-empty FilterState for a given type
+emptyFilterState('number');  // { condition1: { operator: 'equals' } }
+emptyFilterState('text');    // { condition1: { operator: 'contains' } }
+
+// Check whether a FilterState is actually filtering anything
+isFilterActive({ condition1: { operator: 'contains' } });           // false — no value
+isFilterActive({ condition1: { operator: 'contains', value: 'a' } }); // true
+isFilterActive({ condition1: { operator: 'blank' } });               // true — no value needed`} />
+
+  <h2>Headless usage</h2>
+  <p>
+    Use <code>useColumnFilter</code> directly when building a custom table with the headless hooks.
+    See <a href="/docs/headless">Headless hooks</a> for the full API.
+  </p>
+
+  <CodeBlock code={`import { useColumnFilter, type FilterState } from 'react-data-table-component';
+
+const { filterValues, handleFilterChange, filteredData } = useColumnFilter(columns);
+
+// Call handleFilterChange when the user applies a filter in your custom UI
+function onApply(columnId: string | number, filter: FilterState) {
+  handleFilterChange(columnId, filter);
+}
+
+// Apply all active filters before rendering rows
+const rows = filteredData(tableRows);`} />
+</DocsLayout>
