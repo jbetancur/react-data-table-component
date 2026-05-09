@@ -5,12 +5,7 @@ import Column from './TableCol';
 import ColumnCheckbox from './TableColCheckbox';
 import ColumnExpander from './TableColExpander';
 import { CellBase } from './Cell';
-import {
-	buildGridTemplateColumns,
-	buildGroupHeaderCells,
-	buildGroupCells,
-	type GroupDragProps,
-} from './dataTableHeadHelpers';
+import { buildGridTemplateColumns, buildGroupHeaderCells, type GroupDragProps } from './dataTableHeadHelpers';
 import { TableColumn, ColumnGroup } from '../types';
 import { emptyFilterState } from '../hooks/useColumnFilter';
 import { useHeadContext } from '../context/HeadContext';
@@ -235,20 +230,9 @@ function DataTableHead<T>({
 		);
 	}
 
-	// ── Standard two-row flex layout (no columnGroups) ──────────────────────
+	// ── Standard flex layout (no columnGroups) ──────────────────────────────
 	return (
 		<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
-			{hasGroups && (
-				<HeadRow className="rdt_TableHeadRow rdt_groupRow" role="row" $dense={dense}>
-					{prefixColCount > 0 && (
-						<div
-							className="rdt_cellBase rdt_cellBaseHead rdt_groupCell rdt_groupCellSpacer"
-							style={{ flex: `0 0 ${prefixColCount * 48}px`, minWidth: `${prefixColCount * 48}px` }}
-						/>
-					)}
-					{buildGroupCells(visibleColumns, columnGroups!, ungroupedIds, groupColSpans)}
-				</HeadRow>
-			)}
 			<HeadRow ref={containerRef} className="rdt_TableHeadRow" role="row" $dense={dense}>
 				{selectableRows && (showSelectAll ? <CellBase style={{ flex: '0 0 48px' }} /> : <ColumnCheckbox />)}
 

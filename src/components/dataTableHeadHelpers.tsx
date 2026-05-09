@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { buildCellStyle } from './Cell';
 import { TableColumn, ColumnGroup } from '../types';
 
 /**
@@ -92,62 +91,6 @@ export function buildGroupHeaderCells<T>(
 						}}
 					>
 						{group.reorder ? <span style={{ pointerEvents: 'none' }}>{group.name}</span> : group.name}
-					</div>,
-				);
-				colIdx += span;
-			} else {
-				colIdx++;
-			}
-		}
-	}
-	return cells;
-}
-
-/**
- * Legacy flex-row helper — used when there are no columnGroups in grid mode.
- */
-export function buildGroupCells<T>(
-	visibleColumns: TableColumn<T>[],
-	columnGroups: ColumnGroup[],
-	ungroupedIds: Set<string>,
-	groupColSpans: Record<string, number>,
-): React.ReactNode[] {
-	const cells: React.ReactNode[] = [];
-	let colIdx = 0;
-
-	while (colIdx < visibleColumns.length) {
-		const col = visibleColumns[colIdx];
-		const colId = String(col.id);
-
-		if (ungroupedIds.has(colId)) {
-			cells.push(
-				<div
-					key={colId}
-					className="rdt_cellBase rdt_cellBaseHead rdt_groupCell rdt_groupCellSpacer"
-					style={buildCellStyle(col)}
-				/>,
-			);
-			colIdx++;
-		} else {
-			const group = columnGroups.find(g => g.columnIds.map(String).includes(colId));
-			if (group) {
-				const span = groupColSpans[String(group.name)] ?? 1;
-				const childCols = visibleColumns.slice(colIdx, colIdx + span);
-				const totalGrow = childCols.reduce((sum, c) => {
-					const s = buildCellStyle(c);
-					return sum + (typeof s.flexGrow === 'number' ? s.flexGrow : 1);
-				}, 0);
-				const groupStyle: React.CSSProperties = childCols.every(c => c.width)
-					? { flex: `0 0 ${childCols.reduce((sum, c) => sum + parseFloat(c.width!), 0)}px`, minWidth: 0 }
-					: { flex: `${totalGrow} 0 0`, minWidth: 0 };
-
-				cells.push(
-					<div
-						key={String(group.name) + colIdx}
-						className="rdt_cellBase rdt_cellBaseHead rdt_groupCell"
-						style={groupStyle}
-					>
-						{group.name}
 					</div>,
 				);
 				colIdx += span;

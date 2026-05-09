@@ -472,11 +472,6 @@ export interface ClearSelectedRowsAction {
 	selectedRowsFlag: boolean;
 }
 
-export interface ColumnsAction<T> {
-	type: 'UPDATE_COLUMNS';
-	cols: TableColumn<T>[];
-}
-
 export type Action<T> =
 	| AllRowsAction<T>
 	| SingleRowAction<T>
@@ -484,5 +479,4 @@ export type Action<T> =
 	| SortAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
-	| ClearSelectedRowsAction
-	| ColumnsAction<T>;
+	| ClearSelectedRowsAction;
