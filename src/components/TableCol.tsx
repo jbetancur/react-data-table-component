@@ -60,15 +60,6 @@ function TableCol<T>({
 }: TableColProps<T>): JSX.Element | null {
 	const customStyles = useStyles();
 
-	React.useEffect(() => {
-		if (typeof column.selector === 'string') {
-			console.error(
-				`Warning: ${column.selector} is a string based column selector which has been deprecated as of v7 and will be removed in v8. Instead, use a selector function e.g. row => row[field]...`,
-			);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
 	const [showTooltip, setShowTooltip] = React.useState(false);
 	const columnRef = React.useRef<HTMLDivElement | null>(null);
 

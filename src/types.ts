@@ -120,10 +120,10 @@ type BaseTableProps<T> = {
 	animateRows?: boolean;
 	/**
 	 * Draw a vertical separator between body row columns.
-	 * Headers always show separators by default.
-	 * - `true` / `"subtle"` — inset 60%-height line
-	 * - `"full"` — full-height line using the theme divider color
-	 * - `false` / omitted — no body separators
+	 * Header cells always show separators by default.
+	 * - `true` / `"subtle"`: inset 60%-height line.
+	 * - `"full"`: full-height line using the theme divider color.
+	 * - `false` / omitted: no body separators.
 	 */
 	columnSeparator?: boolean | 'subtle' | 'full';
 	/** Column group definitions — renders a spanning header row above the column header row */

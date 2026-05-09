@@ -84,7 +84,6 @@ export function sort<T>(
 
 export function getProperty<T>(
 	row: T,
-	// TODO: remove string type in V8
 	selector: Selector<T> | undefined | null,
 	format: Format<T> | undefined | null,
 	rowIndex: number,

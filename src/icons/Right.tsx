@@ -6,11 +6,15 @@ const Right: React.FC = () => (
 		width="24"
 		height="24"
 		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		strokeWidth="1.5"
+		strokeLinecap="round"
+		strokeLinejoin="round"
 		aria-hidden="true"
 		role="presentation"
 	>
-		<path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-		<path d="M0 0h24v24H0z" fill="none" />
+		<path d="M9 18L15 12L9 6" />
 	</svg>
 );
 

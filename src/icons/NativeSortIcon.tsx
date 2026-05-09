@@ -7,18 +7,29 @@ interface NativeSortIconProps {
 }
 
 const NativeSortIcon: React.FC<NativeSortIconProps> = ({ sortActive, sortDirection }) => (
-	<span
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="12"
+		height="12"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		strokeWidth="2"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		aria-hidden="true"
+		role="presentation"
 		style={{
-			padding: '2px',
-			color: 'inherit',
 			flexGrow: 0,
 			flexShrink: 0,
+			marginLeft: '2px',
 			opacity: sortActive ? 1 : 0,
 			transform: sortDirection === SortOrder.DESC ? 'rotate(180deg)' : undefined,
+			transition: 'transform 0.15s ease, opacity 0.15s ease',
 		}}
 	>
-		&#9650;
-	</span>
+		<path d="M12 19V5M6 11L12 5L18 11" />
+	</svg>
 );
 
 export default NativeSortIcon;
