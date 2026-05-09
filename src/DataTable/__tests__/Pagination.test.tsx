@@ -4,7 +4,7 @@
 
 import 'jest-styled-components';
 import * as React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { renderWithTheme } from '../../internal/test-helpers'; // since child elements require theme
 import Pagination from '../Pagination';
 
@@ -228,5 +228,44 @@ describe('when the screensize is small', () => {
 		);
 
 		expect(container.firstChild).toMatchSnapshot();
+	});
+});
+
+describe('Pagination component accessibility labels', () => {
+	test('should render custom aria-labels for navigation buttons', () => {
+		global.innerWidth = 500;
+
+		renderWithTheme(
+			<Pagination
+				currentPage={1}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={jest.fn()}
+				onChangeRowsPerPage={jest.fn()}
+				paginationComponentOptions={{
+					firstPageLabel: 'Primeira página',
+					lastPageLabel: 'Última página',
+					nextPageLabel: 'Próxima página',
+					previousPageLabel: 'Página anterior',
+				}}
+			/>,
+		);
+
+		const firstPageButton = screen.getByRole('button', { name: /Primeira página/i });
+		const lastPageButton = screen.getByRole('button', { name: /Última página/i });
+		const nextPageButton = screen.getByRole('button', { name: /Próxima página/i });
+		const previousPageButton = screen.getByRole('button', { name: /Página anterior/i });
+
+		expect(firstPageButton).not.toBeNull();
+		expect(firstPageButton.getAttribute('aria-label')).toBe('Primeira página');
+
+		expect(lastPageButton).not.toBeNull();
+		expect(lastPageButton.getAttribute('aria-label')).toBe('Última página');
+
+		expect(nextPageButton).not.toBeNull();
+		expect(nextPageButton.getAttribute('aria-label')).toBe('Próxima página');
+
+		expect(previousPageButton).not.toBeNull();
+		expect(previousPageButton.getAttribute('aria-label')).toBe('Página anterior');
 	});
 });

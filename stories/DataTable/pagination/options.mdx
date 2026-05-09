@@ -4,13 +4,17 @@ import { Story, Canvas } from '@storybook/addon-docs';
 
 `paginationComponentOptions`allow you to provide options to the built-in in Pagination component.
 
-| Property              | Type    | Description                                           |
-| --------------------- | ------- | ----------------------------------------------------- |
-| noRowsPerPage         | boolean | hide the rows per page dropdown                       |
-| rowsPerPageText       | string  | change the rows per page text                         |
-| rangeSeparatorText    | string  | change the seperator text e.g. 1 - 10 'of' 100 rows   |
-| selectAllRowsItem     | boolean | show 'All' as an option in the rows per page dropdown |
-| selectAllRowsItemText | string  | change the rows per page text                         |
+| Property              | Type    | Description                                           						|
+| --------------------- | ------- | ----------------------------------------------------------------- |
+| noRowsPerPage         | boolean | hide the rows per page dropdown                       						|
+| rowsPerPageText       | string  | change the rows per page text                         						|
+| rangeSeparatorText    | string  | change the seperator text e.g. 1 - 10 'of' 100 rows   						|
+| selectAllRowsItem     | boolean | show 'All' as an option in the rows per page dropdown 						|
+| selectAllRowsItemText | string  | change the rows per page text                         						|
+| previousPageLabel     | string  | Sets the aria-label for the "previous page" navigation button			|
+| nextPageLabel					| string  | Sets the aria-label for the "next page" navigation button					|
+| firstPageLabel 				| string  | Sets the aria-label for the "first page" navigation button				|
+| lastPageLabel 				| string  | Sets the aria-label for the "last page" navigation button         |
 
 ```js
 const paginationComponentOptions = {
@@ -18,6 +22,10 @@ const paginationComponentOptions = {
 	rangeSeparatorText: 'de',
 	selectAllRowsItem: true,
 	selectAllRowsItemText: 'Todos',
+	previousPageLabel: 'Página anterior',
+	nextPageLabel: 'Página siguiente',
+	firstPageLabel: 'First page',
+	lastPageLabel: 'Dernière page',
 };
 
 function MyComponent() {

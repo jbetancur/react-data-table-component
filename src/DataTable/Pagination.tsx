@@ -15,6 +15,10 @@ const defaultComponentOptions = {
 	noRowsPerPage: false,
 	selectAllRowsItem: false,
 	selectAllRowsItemText: 'All',
+	previousPageLabel: 'Previous Page',
+	nextPageLabel: 'Next Page',
+	firstPageLabel: 'First Page',
+	lastPageLabel: 'Last Page',
 };
 
 const PaginationWrapper = styled.nav`
@@ -153,7 +157,7 @@ function Pagination({
 				<Button
 					id="pagination-first-page"
 					type="button"
-					aria-label="First Page"
+					aria-label={options.firstPageLabel}
 					aria-disabled={disabledLesser}
 					onClick={handleFirst}
 					disabled={disabledLesser}
@@ -165,7 +169,7 @@ function Pagination({
 				<Button
 					id="pagination-previous-page"
 					type="button"
-					aria-label="Previous Page"
+					aria-label={options.previousPageLabel}
 					aria-disabled={disabledLesser}
 					onClick={handlePrevious}
 					disabled={disabledLesser}
@@ -179,7 +183,7 @@ function Pagination({
 				<Button
 					id="pagination-next-page"
 					type="button"
-					aria-label="Next Page"
+					aria-label={options.nextPageLabel}
 					aria-disabled={disabledGreater}
 					onClick={handleNext}
 					disabled={disabledGreater}
@@ -191,7 +195,7 @@ function Pagination({
 				<Button
 					id="pagination-last-page"
 					type="button"
-					aria-label="Last Page"
+					aria-label={options.lastPageLabel}
 					aria-disabled={disabledGreater}
 					onClick={handleLast}
 					disabled={disabledGreater}
