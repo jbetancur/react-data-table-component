@@ -124,6 +124,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const resizeRef = React.useRef<{ columnId: string | number; startX: number; startWidth: number } | null>(null);
 
 	const handleResizeStart = React.useCallback((columnId: string | number, e: React.MouseEvent) => {
+		if (typeof document === 'undefined') return;
 		e.preventDefault();
 		const headerCell = (e.currentTarget as HTMLElement).closest('[data-column-id]') as HTMLElement | null;
 		const startWidth = headerCell?.offsetWidth ?? 100;

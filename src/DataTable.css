@@ -138,8 +138,9 @@
 }
 
 /* Header column separators — always on by default.
-   Inset 60%-height pseudo-element: visual rhythm without a hard grid line. */
-.rdt_cellBaseHead + .rdt_cellBaseHead::before {
+   Inset 60%-height pseudo-element: visual rhythm without a hard grid line.
+   Excluded from group-row cells — those use border-right instead. */
+.rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -368,6 +369,9 @@
 	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
 	border-right: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 	box-sizing: border-box;
+	/* Flex sizing is set inline (flex: span 0 0) to match child column proportions */
+	flex-shrink: 0;
+	flex-basis: 0;
 }
 
 .rdt_groupCell:last-child {

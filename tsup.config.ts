@@ -1,13 +1,28 @@
 import { defineConfig } from 'tsup';
 
-export default defineConfig({
-	entry: ['src/index.ts'],
-	format: ['esm', 'cjs'],
-	dts: true,
-	sourcemap: true,
-	clean: true,
-	external: ['react', 'react-dom'],
-	injectStyle: true,
-	treeshake: true,
-	minify: true,
-});
+export default defineConfig([
+	// Main bundle — CSS is injected at runtime. Regular users need no CSS import.
+	{
+		entry: ['src/index.ts'],
+		format: ['esm', 'cjs'],
+		dts: true,
+		sourcemap: true,
+		clean: true,
+		external: ['react', 'react-dom'],
+		injectStyle: true,
+		treeshake: true,
+		minify: true,
+	},
+	// CSS-only build — emits dist/DataTable.css for SSR consumers (e.g. Next.js App Router)
+	// that need to import the stylesheet explicitly in a layout to avoid FOUC.
+	{
+		entry: { DataTable: 'src/index.ts' },
+		format: ['esm'],
+		external: ['react', 'react-dom'],
+		injectStyle: false,
+		treeshake: true,
+		minify: true,
+		// Only keep the emitted CSS file — the duplicate JS is not published.
+		onSuccess: 'rm -f dist/DataTable.mjs dist/DataTable.mjs.map',
+	},
+]);
