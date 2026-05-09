@@ -1,5 +1,7 @@
 ---
 import Layout from './Layout.astro';
+import Demo from '../components/Demo.astro';
+import HeadlessDemo from '../components/demos/HeadlessDemo.tsx';
 
 interface Props {
   title?: string;
@@ -20,10 +22,13 @@ const nav = [
     group: 'Core features',
     links: [
       { label: 'Columns', href: '/docs/columns' },
+      { label: 'Column groups', href: '/docs/column-groups' },
       { label: 'Sorting', href: '/docs/sorting' },
       { label: 'Pagination', href: '/docs/pagination' },
       { label: 'Row selection', href: '/docs/selection' },
       { label: 'Expandable rows', href: '/docs/expandable' },
+      { label: 'Resizable columns', href: '/docs/resizable' },
+      { label: 'Animations', href: '/docs/animations' },
     ],
   },
   {
@@ -31,6 +36,7 @@ const nav = [
     links: [
       { label: 'Themes', href: '/docs/themes' },
       { label: 'Custom styles', href: '/docs/custom-styles' },
+      { label: 'Icons', href: '/docs/icons' },
       { label: 'Column separators', href: '/docs/column-separators' },
     ],
   },
@@ -38,9 +44,6 @@ const nav = [
     group: 'Advanced',
     links: [
       { label: 'Server-side data', href: '/docs/server-side' },
-      { label: 'Column groups', href: '/docs/column-groups' },
-      { label: 'Resizable columns', href: '/docs/resizable' },
-      { label: 'Animations', href: '/docs/animations' },
       { label: 'Headless hooks', href: '/docs/headless' },
     ],
   },
@@ -89,6 +92,94 @@ const currentPath = Astro.url.pathname;
     <!-- Content -->
     <article class="flex-1 min-w-0 max-w-none">
       <slot />
+      {currentPath.endsWith('/headless') && (
+        <Demo
+          title="Live example — all four hooks"
+          description="A custom-markup table built entirely from useColumns, useTableState, useTableData, and useColumnFilter. No DataTable component. Sort by clicking headers, filter using the inputs, and paginate below."
+          code={`import {
+  useColumns, useTableState, useTableData, useColumnFilter,
+  type TableColumn, SortOrder,
+} from 'react-data-table-component';
+
+const rawColumns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',       selector: r => r.name,       sortable: true },
+  { id: 'dept',   name: 'Department', selector: r => r.department, sortable: true },
+  { id: 'salary', name: 'Salary',     selector: r => r.salary,     sortable: true },
+];
+
+function HeadlessTable({ data }: { data: Employee[] }) {
+  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(
+    rawColumns, () => {}, 'name', true,
+  );
+  const { tableState, handleSort, handleChangePage, handleChangeRowsPerPage } = useTableState({
+    data, keyField: 'id',
+    defaultSortColumn, defaultSortDirection,
+    pagination: true, paginationDefaultPage: 1, paginationPerPage: 5,
+    paginationServer: false, paginationServerOptions: {}, paginationTotalRows: 0,
+    paginationResetDefaultPage: false, selectableRowsSingle: false,
+    selectableRowsVisibleOnly: false, selectableRowSelected: null, clearSelectedRows: false,
+    onSelectedRowsChange: () => {}, onSort: () => {}, onChangePage: () => {}, onChangeRowsPerPage: () => {},
+  });
+  const { selectedColumn, sortDirection, currentPage, rowsPerPage } = tableState;
+  const { sortedData, tableRows } = useTableData({
+    data, columns: tableColumns, selectedColumn, sortDirection,
+    currentPage, rowsPerPage, pagination: true, paginationServer: false,
+    sortServer: false, sortFunction: null, onSort: () => {},
+  });
+  const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
+  const rows = filteredData(tableRows);
+
+  return (
+    <div>
+      {/* Filter inputs — your own markup */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+        {tableColumns.map(col => (
+          <input key={col.id}
+            placeholder={\`Filter \${col.name}…\`}
+            value={filterValues[col.id!] ?? ''}
+            onChange={e => handleFilterChange(col.id!, e.target.value)}
+          />
+        ))}
+      </div>
+      {/* Table — completely custom markup */}
+      <table>
+        <thead>
+          <tr>
+            {tableColumns.map(col => (
+              <th key={col.id}
+                onClick={() => col.sortable && handleSort({
+                  type: 'SORT_CHANGE', sortColumn: col,
+                  sortDirection: selectedColumn?.id === col.id && sortDirection === SortOrder.ASC
+                    ? SortOrder.DESC : SortOrder.ASC,
+                  clearSelectedRows: false,
+                })}
+              >
+                {col.name}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(row => (
+            <tr key={row.id}>
+              {tableColumns.map(col => (
+                <td key={col.id}>{String(col.selector?.(row) ?? '')}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* Pagination — your own controls */}
+      <button onClick={() => handleChangePage(currentPage - 1)} disabled={currentPage <= 1}>‹</button>
+      <span>Page {currentPage}</span>
+      <button onClick={() => handleChangePage(currentPage + 1)}>›</button>
+    </div>
+  );
+}`}
+        >
+          <HeadlessDemo client:load />
+        </Demo>
+      )}
     </article>
   </div>
 </Layout>

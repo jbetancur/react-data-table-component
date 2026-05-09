@@ -1,0 +1,123 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import IconsDemo from '../../components/demos/IconsDemo.tsx';
+---
+
+<DocsLayout title="Icons | react-data-table-component">
+  <h1>Icons</h1>
+
+  <Demo
+    title="Custom icons"
+    description="Switch between Default icons, Custom pagination icons (inline SVG chevrons), Custom expander icons, and Custom sort icon."
+    code={`import DataTable from 'react-data-table-component';
+
+// Any React node works — inline SVG, icon library, emoji, text
+const ChevronLeft  = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"/></svg>;
+const ChevronRight = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>;
+const ChevronDown  = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>;
+const ArrowUp      = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>;
+
+<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationIconPrevious={<ChevronLeft />}
+  paginationIconNext={<ChevronRight />}
+  sortIcon={<ArrowUp />}
+  expandableRows
+  expandableIcon={{
+    collapsed: <ChevronRight />,
+    expanded:  <ChevronDown />,
+  }}
+/>`}
+  >
+    <IconsDemo client:load />
+  </Demo>
+
+
+  <p>
+    The pagination navigation icons and the expandable row toggle icons can be replaced with
+    any React node — an SVG, an icon from your design system, or plain text.
+  </p>
+
+  <h2>Pagination icons</h2>
+
+  <p>
+    Pass <code>paginationIconFirstPage</code>, <code>paginationIconLastPage</code>,
+    <code>paginationIconNext</code>, or <code>paginationIconPrevious</code>.
+    Each accepts a <code>React.ReactNode</code>. All four are optional — override only the ones you need.
+  </p>
+
+  <CodeBlock code={`import DataTable from 'react-data-table-component';
+
+// Using Heroicons (or any icon library)
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+
+<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationIconNext={<ChevronRightIcon style={{ width: 16, height: 16 }} />}
+  paginationIconPrevious={<ChevronLeftIcon style={{ width: 16, height: 16 }} />}
+  paginationIconFirstPage={<span aria-hidden>«</span>}
+  paginationIconLastPage={<span aria-hidden>»</span>}
+/>`} lang="tsx" />
+
+  <h2>Expandable row icons</h2>
+
+  <p>
+    Pass an <code>expandableIcon</code> object with <code>collapsed</code> and
+    <code>expanded</code> keys.
+  </p>
+
+  <CodeBlock code={`import DataTable from 'react-data-table-component';
+import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+
+const expandableIcon = {
+  collapsed: <ChevronRightIcon style={{ width: 16, height: 16 }} />,
+  expanded:  <ChevronDownIcon  style={{ width: 16, height: 16 }} />,
+};
+
+<DataTable
+  columns={columns}
+  data={data}
+  expandableRows
+  expandableIcon={expandableIcon}
+  expandableRowsComponent={({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>}
+/>`} lang="tsx" />
+
+  <h2>Sorting icon</h2>
+
+  <p>
+    The sort indicator on column headers can be replaced via the <code>sortIcon</code> prop on
+    <code>&lt;DataTable&gt;</code>. The icon is rotated 180° automatically when sort direction
+    changes — pass the icon in its "ascending" orientation.
+  </p>
+
+  <CodeBlock code={`import { ArrowUpIcon } from '@heroicons/react/24/outline';
+
+<DataTable
+  columns={columns}
+  data={data}
+  sortIcon={<ArrowUpIcon style={{ width: 14, height: 14 }} />}
+/>`} lang="tsx" />
+
+  <h2>Using the default icon components</h2>
+
+  <p>
+    The built-in icon components are also exported if you want to mix them with your own:
+  </p>
+
+  <CodeBlock code={`import {
+  DEFAULT_PAGINATION_ICONS,
+  DEFAULT_EXPANDABLE_ICON,
+} from 'react-data-table-component';
+
+// Spread the defaults and override only what you need
+<DataTable
+  {...DEFAULT_PAGINATION_ICONS}
+  paginationIconNext={<MyNextIcon />}
+/>`} lang="tsx" />
+</DocsLayout>

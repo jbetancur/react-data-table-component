@@ -57,7 +57,6 @@ export default function App() {
       data={data}
       columnGroups={columnGroups}
       highlightOnHover
-      columnSeparator
     />
   );
 }`}
@@ -77,9 +76,21 @@ export default function App() {
   <h2>ColumnGroup type</h2>
 
   <CodeBlock code={`interface ColumnGroup {
-  name: ReactNode;                   // Header label (accepts JSX)
-  columnIds: (string | number)[];    // ids of columns that fall under this group
+  name: ReactNode;                    // Header label (accepts JSX)
+  columnIds: (string | number)[];     // ids of columns that fall under this group
+  align?: 'left' | 'center' | 'right'; // Label alignment (default: 'center')
 }`} lang="ts" />
+
+  <h2>Label alignment</h2>
+
+  <p>
+    Group labels are centered by default. Pass <code>align</code> to override per group:
+  </p>
+
+  <CodeBlock code={`const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], align: 'left' },
+  { name: 'Compensation', columnIds: ['base', 'bonus'] }, // centered (default)
+];`} />
 
   <h2>Custom group header content</h2>
 
@@ -95,19 +106,21 @@ export default function App() {
   <h2>Styling group headers</h2>
 
   <p>
-    Use <code>customStyles</code> to target group header cells:
+    Group label cells carry the CSS class <code>rdt_groupCell</code>. Target it directly
+    to override colours, font, or spacing without needing <code>customStyles</code>:
   </p>
 
-  <CodeBlock code={`<DataTable
-  columnGroups={columnGroups}
-  customStyles={{
-    columnGroupHeader: {
-      style: {
-        backgroundColor: '#f0f4ff',
-        fontWeight: 700,
-        color: '#4f46e5',
-      },
-    },
-  }}
-/>`} />
+  <CodeBlock code={`.rdt_groupCell {
+  color: #4f46e5;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}`} lang="css" />
+
+  <p>
+    Use CSS custom properties to keep overrides theme-aware:
+  </p>
+
+  <CodeBlock code={`.my-table {
+  --rdt-color-text-secondary: #4f46e5;
+}`} lang="css" />
 </DocsLayout>

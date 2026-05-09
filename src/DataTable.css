@@ -137,15 +137,27 @@
 	word-break: break-word;
 }
 
-/* Header column separators. Always on by default.
+/* Header column separators — subtle (default when headerSeparator is true/omitted).
    Inset 60%-height pseudo-element: visual rhythm without a hard grid line.
    Group-row cells are excluded; those use border-right instead. */
-.rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before {
+.rdt_headSeparator .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before {
 	content: '';
 	position: absolute;
 	left: 0;
 	top: 20%;
 	height: 60%;
+	width: 1px;
+	background: var(--rdt-col-sep-color, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
+	pointer-events: none;
+}
+
+/* Header column separators — full-height variant */
+.rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
 	width: 1px;
 	background: var(--rdt-col-sep-color, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
 	pointer-events: none;
