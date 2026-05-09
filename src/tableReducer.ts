@@ -166,7 +166,13 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 		}
 
 		case 'UPDATE_COLUMNS':
-		default:
 			return state;
+
+		default: {
+			// Exhaustiveness check: TypeScript will error here if a new Action
+			// variant is added to the union without a corresponding case above.
+			const _exhaustive: never = action;
+			return _exhaustive;
+		}
 	}
 }
