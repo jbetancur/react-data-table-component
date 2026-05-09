@@ -6,10 +6,10 @@ const THEMES = [
 	'dark',
 	'material',
 	'material-dark',
-	'quartz',
-	'quartz-dark',
-	'alpine',
-	'alpine-dark',
+	'slate',
+	'slate-dark',
+	'ocean',
+	'ocean-dark',
 	'midnight',
 ] as const;
 type Theme = (typeof THEMES)[number];

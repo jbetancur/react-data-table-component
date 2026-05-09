@@ -112,7 +112,7 @@ Also note that `ThemeText` requires all three fields — `primary`, `secondary`,
 | Column drag-to-reorder | `reorder` on `TableColumn` + `onColumnOrderChange` |
 | Column filter inputs | `filterable` / `filterFunction` on `TableColumn`, `filterValues` / `onFilterChange` on `DataTable` |
 | Improved TypeScript types | `DataTableHandle`, stricter `Selector<T>` |
-| Built-in themes expanded | `quartz`, `quartz-dark`, `alpine`, `alpine-dark`, `midnight`, `solarized` |
+| Built-in themes expanded | `slate`, `slate-dark`, `ocean`, `ocean-dark`, `midnight`, `solarized` |
 
 ## Upgrading to v7
 

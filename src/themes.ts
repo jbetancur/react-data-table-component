@@ -120,54 +120,54 @@ export const defaultThemes: ThemeMapping = {
 		striped: { default: '#1A1A1A', text: '#E3E3E3' },
 	},
 
-	// ── Quartz — polished, rounded, AG Grid-inspired ────────────────────────────
-	quartz: {
-		text: { primary: '#181D1F', secondary: '#5A6872', disabled: '#BDC3C8' },
+	// ── Slate — clean, neutral, professional ───────────────────────────────────
+	slate: {
+		text: { primary: '#1E293B', secondary: '#64748B', disabled: '#CBD5E1' },
 		background: { default: '#FFFFFF' },
-		context: { background: '#0170FE', text: '#FFFFFF' },
-		divider: { default: '#E5E7EA' },
-		button: { default: '#0170FE', focus: 'rgba(1,112,254,0.12)', hover: 'rgba(1,112,254,0.08)', disabled: '#BDC3C8' },
-		selected: { default: '#E8F1FD', text: '#181D1F' },
-		highlightOnHover: { default: '#F7F8FA', text: '#181D1F' },
-		striped: { default: '#FAFBFC', text: '#181D1F' },
+		context: { background: '#3B82F6', text: '#FFFFFF' },
+		divider: { default: '#E2E8F0' },
+		button: { default: '#3B82F6', focus: 'rgba(59,130,246,0.12)', hover: 'rgba(59,130,246,0.08)', disabled: '#CBD5E1' },
+		selected: { default: '#EFF6FF', text: '#1E293B' },
+		highlightOnHover: { default: '#F8FAFC', text: '#1E293B' },
+		striped: { default: '#F1F5F9', text: '#1E293B' },
 	},
 
-	// Quartz Dark
-	'quartz-dark': {
+	// Slate Dark
+	'slate-dark': {
 		colorScheme: 'dark' as const,
-		text: { primary: '#F8F8F8', secondary: '#8C9BAB', disabled: '#4A5568' },
-		background: { default: '#1E2329' },
-		context: { background: '#0170FE', text: '#FFFFFF' },
-		divider: { default: '#2D3748' },
-		button: { default: '#60A5FA', focus: 'rgba(96,165,250,0.12)', hover: 'rgba(96,165,250,0.08)', disabled: '#4A5568' },
-		selected: { default: '#1A3A5C', text: '#F8F8F8' },
-		highlightOnHover: { default: '#252C36', text: '#F8F8F8' },
-		striped: { default: '#232A32', text: '#F8F8F8' },
+		text: { primary: '#E2E8F0', secondary: '#94A3B8', disabled: '#475569' },
+		background: { default: '#1E293B' },
+		context: { background: '#3B82F6', text: '#FFFFFF' },
+		divider: { default: '#334155' },
+		button: { default: '#60A5FA', focus: 'rgba(96,165,250,0.12)', hover: 'rgba(96,165,250,0.08)', disabled: '#475569' },
+		selected: { default: '#1E3A5F', text: '#E2E8F0' },
+		highlightOnHover: { default: '#263348', text: '#E2E8F0' },
+		striped: { default: '#243044', text: '#E2E8F0' },
 	},
 
-	// ── Alpine — clean, modern, spacious ────────────────────────────────────────
-	alpine: {
-		text: { primary: '#181D1F', secondary: '#5A6872', disabled: '#BDC3C8' },
-		background: { default: '#FFFFFF' },
-		context: { background: '#2196F3', text: '#FFFFFF' },
-		divider: { default: '#BDC3C8' },
-		button: { default: '#2196F3', focus: 'rgba(33,150,243,0.12)', hover: 'rgba(33,150,243,0.08)', disabled: '#BDC3C8' },
-		selected: { default: '#DBEAFE', text: '#181D1F' },
-		highlightOnHover: { default: '#EFF7FE', text: '#181D1F' },
-		striped: { default: '#F9FAFB', text: '#181D1F' },
+	// ── Ocean — calm blue-green tones ───────────────────────────────────────────
+	ocean: {
+		text: { primary: '#0F2A3A', secondary: '#4A7A8A', disabled: '#B0C8D4' },
+		background: { default: '#F0F7FA' },
+		context: { background: '#0891B2', text: '#FFFFFF' },
+		divider: { default: '#C8DEE8' },
+		button: { default: '#0891B2', focus: 'rgba(8,145,178,0.12)', hover: 'rgba(8,145,178,0.08)', disabled: '#B0C8D4' },
+		selected: { default: '#CCEEFF', text: '#0F2A3A' },
+		highlightOnHover: { default: '#E0F2F8', text: '#0F2A3A' },
+		striped: { default: '#E8F4F8', text: '#0F2A3A' },
 	},
 
-	// Alpine Dark
-	'alpine-dark': {
+	// Ocean Dark
+	'ocean-dark': {
 		colorScheme: 'dark' as const,
-		text: { primary: '#F8F8F8', secondary: '#8C9BAB', disabled: '#4A5568' },
-		background: { default: '#1E2430' },
-		context: { background: '#2196F3', text: '#FFFFFF' },
-		divider: { default: '#374151' },
-		button: { default: '#38BDF8', focus: 'rgba(56,189,248,0.12)', hover: 'rgba(56,189,248,0.08)', disabled: '#4A5568' },
-		selected: { default: '#1E3A5F', text: '#F8F8F8' },
-		highlightOnHover: { default: '#252F40', text: '#F8F8F8' },
-		striped: { default: '#232D3E', text: '#F8F8F8' },
+		text: { primary: '#CAE8F0', secondary: '#7ABCCC', disabled: '#3A5A66' },
+		background: { default: '#0A1F2E' },
+		context: { background: '#0891B2', text: '#FFFFFF' },
+		divider: { default: '#1A3A4A' },
+		button: { default: '#22D3EE', focus: 'rgba(34,211,238,0.12)', hover: 'rgba(34,211,238,0.08)', disabled: '#3A5A66' },
+		selected: { default: '#0E3A50', text: '#CAE8F0' },
+		highlightOnHover: { default: '#112840', text: '#CAE8F0' },
+		striped: { default: '#0C2338', text: '#CAE8F0' },
 	},
 
 	// ── Midnight — high-contrast dark ───────────────────────────────────────────

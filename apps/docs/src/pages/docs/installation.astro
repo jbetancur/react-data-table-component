@@ -36,8 +36,16 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <p>
     Styles are injected automatically when the component first renders. You do not need
-    to import any CSS file. This is true for both ESM and CJS consumers.
+    to import any CSS file in standard React apps (Vite, CRA, Remix, etc.).
   </p>
+
+  <p>
+    If you are using <strong>Next.js App Router</strong> and need styles available during
+    SSR to avoid a flash of unstyled content, import the stylesheet explicitly in your
+    root <code>layout.tsx</code>:
+  </p>
+
+  <CodeBlock code={`import 'react-data-table-component/css';`} lang="ts" />
 
   <h2>TypeScript</h2>
 
@@ -56,14 +64,28 @@ import CodeBlock from '../../components/CodeBlock.astro';
     </thead>
     <tbody>
       <tr><td>Vite / Create React App</td><td>Works out of the box</td></tr>
-      <tr><td>Next.js App Router</td><td>Mark the parent as <code>'use client'</code></td></tr>
+      <tr><td>Next.js App Router</td><td>Mark the consuming component <code>'use client'</code>. Optionally import <code>react-data-table-component/css</code> in <code>layout.tsx</code> to avoid a flash of unstyled content on first SSR load.</td></tr>
       <tr><td>Next.js Pages Router</td><td>Works out of the box</td></tr>
       <tr><td>Remix</td><td>Works out of the box</td></tr>
       <tr><td>Astro</td><td>Use <code>client:load</code> or <code>client:visible</code> directive</td></tr>
     </tbody>
   </table>
 
-  <h3>Next.js App Router example</h3>
+  <h3>Next.js App Router — layout.tsx</h3>
+
+  <CodeBlock code={`// app/layout.tsx
+// Optional: import once here so styles are included in the SSR HTML.
+import 'react-data-table-component/css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}`} lang="tsx" />
+
+  <h3>Next.js App Router — MyTable.tsx</h3>
 
   <CodeBlock code={`'use client';
 
@@ -71,5 +93,5 @@ import DataTable from 'react-data-table-component';
 
 export default function MyTable() {
   return <DataTable columns={columns} data={data} />;
-}`} />
+}`} lang="tsx" />
 </DocsLayout>

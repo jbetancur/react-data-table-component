@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DataTable, { createTheme, type TableColumn } from 'react-data-table-component';
+import DataTable, { type TableColumn } from 'react-data-table-component';
 
 interface Row {
 	id: number;
@@ -28,33 +28,17 @@ const columns: TableColumn<Row>[] = [
 	},
 ];
 
-// Register a custom theme once
-createTheme(
-	'ocean',
-	{
-		text: { primary: '#e0f2fe', secondary: '#7dd3fc', disabled: 'rgba(224,242,254,.38)' },
-		background: { default: '#0c4a6e' },
-		divider: { default: '#075985' },
-		button: { default: '#38bdf8', hover: '#7dd3fc', disabled: '#075985', focus: 'rgba(255,255,255,.12)' },
-		selected: { default: '#075985', text: '#e0f2fe' },
-		highlightOnHover: { default: '#075985', text: '#f0f9ff' },
-		striped: { default: '#0a3f5e', text: '#e0f2fe' },
-	},
-	'dark',
-);
-
 const THEMES = [
 	{ id: 'default', label: 'Default', dark: false },
 	{ id: 'dark', label: 'Dark', dark: true },
 	{ id: 'material', label: 'Material', dark: false },
 	{ id: 'material-dark', label: 'Material Dark', dark: true },
-	{ id: 'quartz', label: 'Quartz', dark: false },
-	{ id: 'quartz-dark', label: 'Quartz Dark', dark: true },
-	{ id: 'alpine', label: 'Alpine', dark: false },
-	{ id: 'alpine-dark', label: 'Alpine Dark', dark: true },
+	{ id: 'slate', label: 'Slate', dark: false },
+	{ id: 'slate-dark', label: 'Slate Dark', dark: true },
+	{ id: 'ocean', label: 'Ocean', dark: false },
+	{ id: 'ocean-dark', label: 'Ocean Dark', dark: true },
 	{ id: 'midnight', label: 'Midnight', dark: true },
 	{ id: 'solarized', label: 'Solarized', dark: true },
-	{ id: 'ocean', label: 'Ocean (custom)', dark: true },
 ] as const;
 
 export default function ThemesDemo() {
