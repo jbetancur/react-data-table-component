@@ -192,7 +192,7 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		});
 		// We only want to update when data changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data, selectableRowSelected]);
+	}, [data]);
 
 	return {
 		tableState,
