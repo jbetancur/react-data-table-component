@@ -50,6 +50,13 @@ type SelectionProps<T> = {
 	selectableRowsSingle?: boolean;
 };
 
+export interface PaginationIcons {
+	first?: React.ReactNode;
+	last?: React.ReactNode;
+	next?: React.ReactNode;
+	previous?: React.ReactNode;
+}
+
 type PaginationProps = {
 	onChangePage?: PaginationChangePage;
 	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
@@ -57,10 +64,8 @@ type PaginationProps = {
 	paginationComponent?: PaginationComponent;
 	paginationComponentOptions?: PaginationOptions;
 	paginationDefaultPage?: number;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
+	/** Icons used in the pagination controls. Pass a partial object to override individual icons. */
+	paginationIcons?: PaginationIcons;
 	paginationPerPage?: number;
 	paginationResetDefaultPage?: boolean;
 	paginationRowsPerPageOptions?: number[];
@@ -143,9 +148,9 @@ type BaseTableProps<T> = {
 	responsive?: boolean;
 	striped?: boolean;
 	style?: CSSObject;
-	subHeader?: React.ReactNode | React.ReactNode[];
+	/** Content rendered in the sub-header bar. Providing any value shows the bar. */
+	subHeader?: React.ReactNode;
 	subHeaderAlign?: Alignment;
-	subHeaderComponent?: React.ReactNode | React.ReactNode[];
 	subHeaderWrap?: boolean;
 	theme?: ThemeProp;
 	/**

@@ -28,8 +28,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 |---|---|---|---|
 | `title` | `string \| ReactNode` | - | Table title shown in the header bar. |
 | `actions` | `ReactNode \| ReactNode[]` | - | Content rendered on the right side of the header bar. |
-| `subHeader` | `boolean` | `false` | Enable the sub-header row. |
-| `subHeaderComponent` | `ReactNode \| ReactNode[]` | - | Content for the sub-header row. |
+| `subHeader` | `ReactNode` | - | Content for the sub-header bar. Providing any value shows the bar. |
 | `subHeaderAlign` | `Alignment` | `"right"` | Alignment of sub-header content. |
 | `subHeaderWrap` | `boolean` | `true` | Allow sub-header to wrap onto multiple lines. |
 | `noHeader` | `boolean` | `false` | Hide the title/actions header bar entirely. |
@@ -83,10 +82,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `paginationServerOptions` | `PaginationServerOptions` | - | Selection-persistence options for server-side mode. |
 | `paginationComponentOptions` | `PaginationOptions` | - | Localisation and display options for the built-in paginator. |
 | `paginationComponent` | `React.ComponentType` | - | Replace the built-in pagination UI entirely. |
-| `paginationIconFirstPage` | `ReactNode` | - | Custom icon for the "first page" button. |
-| `paginationIconLastPage` | `ReactNode` | - | Custom icon for the "last page" button. |
-| `paginationIconNext` | `ReactNode` | - | Custom icon for the "next page" button. |
-| `paginationIconPrevious` | `ReactNode` | - | Custom icon for the "previous page" button. |
+| `paginationIcons` | `PaginationIcons` | - | Override any or all pagination icons. Pass a partial object: `{ next: <MyIcon /> }`. |
 | `onChangePage` | `(page, totalRows) => void` | - | Called when the active page changes. |
 | `onChangeRowsPerPage` | `(rowsPerPage, page) => void` | - | Called when rows-per-page selection changes. |
 

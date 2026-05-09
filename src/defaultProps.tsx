@@ -7,6 +7,19 @@ import ExpanderCollapsedIcon from './icons/ExpanderCollapsedIcon';
 import ExpanderExpandedIcon from './icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
+import { PaginationIcons, ExpandableIcon } from './types';
+
+export const DEFAULT_PAGINATION_ICONS: Required<PaginationIcons> = {
+	first: <FirstPageIcon />,
+	last: <LastPageIcon />,
+	next: <RightIcon />,
+	previous: <LeftIcon />,
+};
+
+export const DEFAULT_EXPANDABLE_ICON: Required<ExpandableIcon> = {
+	collapsed: <ExpanderCollapsedIcon />,
+	expanded: <ExpanderExpandedIcon />,
+};
 
 export const defaultProps = {
 	columns: [],
@@ -38,10 +51,7 @@ export const defaultProps = {
 			</div>
 		);
 	},
-	expandableIcon: {
-		collapsed: <ExpanderCollapsedIcon />,
-		expanded: <ExpanderExpandedIcon />,
-	},
+	expandableIcon: DEFAULT_EXPANDABLE_ICON,
 	expandableRowsComponentProps: {},
 	progressPending: false,
 	progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
@@ -60,10 +70,9 @@ export const defaultProps = {
 	disabled: false,
 	noTableHead: false,
 	noHeader: false,
-	subHeader: false,
+	subHeader: undefined,
 	subHeaderAlign: Alignment.RIGHT,
 	subHeaderWrap: true,
-	subHeaderComponent: null,
 	fixedHeader: false,
 	fixedHeaderScrollHeight: '100vh',
 	pagination: false,
@@ -79,10 +88,7 @@ export const defaultProps = {
 	paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
 	paginationComponent: null,
 	paginationComponentOptions: {},
-	paginationIconFirstPage: <FirstPageIcon />,
-	paginationIconLastPage: <LastPageIcon />,
-	paginationIconNext: <RightIcon />,
-	paginationIconPrevious: <LeftIcon />,
+	paginationIcons: DEFAULT_PAGINATION_ICONS,
 	dense: false,
 	conditionalRowStyles: [],
 	theme: 'default' as const,

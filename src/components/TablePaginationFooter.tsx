@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PaginationComponent, PaginationOptions } from '../types';
+import { PaginationComponent, PaginationIcons, PaginationOptions } from '../types';
 import { Direction } from '../constants';
 
 interface TablePaginationFooterProps {
@@ -11,10 +11,7 @@ interface TablePaginationFooterProps {
 	rowsPerPage: number;
 	direction: Direction;
 	paginationRowsPerPageOptions: number[];
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
+	paginationIcons?: PaginationIcons;
 	paginationComponentOptions: PaginationOptions;
 }
 
@@ -27,10 +24,7 @@ function TablePaginationFooter({
 	rowsPerPage,
 	direction,
 	paginationRowsPerPageOptions,
-	paginationIconLastPage,
-	paginationIconFirstPage,
-	paginationIconNext,
-	paginationIconPrevious,
+	paginationIcons,
 	paginationComponentOptions,
 }: TablePaginationFooterProps): JSX.Element {
 	return (
@@ -43,10 +37,7 @@ function TablePaginationFooter({
 				rowsPerPage={rowsPerPage}
 				direction={direction}
 				paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-				paginationIconLastPage={paginationIconLastPage}
-				paginationIconFirstPage={paginationIconFirstPage}
-				paginationIconNext={paginationIconNext}
-				paginationIconPrevious={paginationIconPrevious}
+				paginationIcons={paginationIcons}
 				paginationComponentOptions={paginationComponentOptions}
 			/>
 		</div>

@@ -6,8 +6,8 @@ import { getNumberOfPages } from '../util';
 import useWindowSize from '../hooks/useWindowSize';
 import useRTL from '../hooks/useRTL';
 import { Direction } from '../constants';
-import { PaginationOptions, PaginationChangePage } from '../types';
-import { defaultProps } from '../defaultProps';
+import { PaginationIcons, PaginationOptions, PaginationChangePage } from '../types';
+import { defaultProps, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 
 const defaultComponentOptions = {
 	rowsPerPageText: 'Rows per page:',
@@ -23,10 +23,7 @@ interface PaginationProps {
 	currentPage: number;
 	direction?: Direction;
 	paginationRowsPerPageOptions?: number[];
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
+	paginationIcons?: PaginationIcons;
 	paginationComponentOptions?: PaginationOptions;
 	onChangePage: PaginationChangePage;
 	onChangeRowsPerPage: (numRows: number, currentPage: number) => void;
@@ -38,10 +35,7 @@ function Pagination({
 	currentPage,
 	direction = defaultProps.direction,
 	paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
-	paginationIconLastPage = defaultProps.paginationIconLastPage,
-	paginationIconFirstPage = defaultProps.paginationIconFirstPage,
-	paginationIconNext = defaultProps.paginationIconNext,
-	paginationIconPrevious = defaultProps.paginationIconPrevious,
+	paginationIcons = DEFAULT_PAGINATION_ICONS,
 	paginationComponentOptions = defaultProps.paginationComponentOptions,
 	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 	onChangePage = defaultProps.onChangePage,
@@ -59,6 +53,8 @@ function Pagination({
 		currentPage === numPages
 			? `${firstIndex}-${rowCount} ${options.rangeSeparatorText} ${rowCount}`
 			: `${firstIndex}-${lastIndex} ${options.rangeSeparatorText} ${rowCount}`;
+
+	const icons = { ...DEFAULT_PAGINATION_ICONS, ...paginationIcons };
 
 	const handlePrevious = React.useCallback(
 		() => onChangePage(currentPage - 1, rowCount),
@@ -123,7 +119,7 @@ function Pagination({
 					className={btnClass(isRTL)}
 					style={customStyles.pagination?.pageButtonsStyle}
 				>
-					{paginationIconFirstPage}
+					{icons.first}
 				</button>
 				<button
 					id="pagination-previous-page"
@@ -135,7 +131,7 @@ function Pagination({
 					className={btnClass(isRTL)}
 					style={customStyles.pagination?.pageButtonsStyle}
 				>
-					{paginationIconPrevious}
+					{icons.previous}
 				</button>
 				{!options.noRowsPerPage && !shouldShow && select}
 				<button
@@ -148,7 +144,7 @@ function Pagination({
 					className={btnClass(isRTL)}
 					style={customStyles.pagination?.pageButtonsStyle}
 				>
-					{paginationIconNext}
+					{icons.next}
 				</button>
 				<button
 					id="pagination-last-page"
@@ -160,7 +156,7 @@ function Pagination({
 					className={btnClass(isRTL)}
 					style={customStyles.pagination?.pageButtonsStyle}
 				>
-					{paginationIconLastPage}
+					{icons.last}
 				</button>
 			</div>
 		</nav>

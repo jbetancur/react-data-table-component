@@ -1,6 +1,7 @@
 import DataTable from './components/DataTable';
 
 export { defaultThemes, createTheme } from './themes';
+export { DEFAULT_PAGINATION_ICONS, DEFAULT_EXPANDABLE_ICON } from './defaultProps';
 export * from './constants';
 
 // Headless hooks — compose these yourself if you want to bring your own markup/styles
@@ -11,7 +12,6 @@ export { default as useColumnFilter } from './hooks/useColumnFilter';
 
 export type {
 	TableProps,
-	TableProps as IDataTableProps, // this is for backwards compat with v6
 	DataTableHandle,
 	TableColumn,
 	ColumnGroup,
@@ -23,6 +23,7 @@ export type {
 	ConditionalStyles,
 	ExpanderComponentProps,
 	PaginationComponentProps,
+	PaginationIcons,
 	PaginationOptions,
 	PaginationServerOptions,
 	SortOrder,

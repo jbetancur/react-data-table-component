@@ -59,6 +59,53 @@ For most apps (Vite, CRA, Remix, Next.js Pages Router, Pages directory in App Ro
 { selector: row => row.user.name }
 ```
 
+#### `paginationIcon*` props replaced by `paginationIcons`
+
+The four individual pagination icon props are replaced by a single `paginationIcons` object, consistent with how `expandableIcon` already works. Pass a partial object to override only the icons you need.
+
+```tsx
+// Before (v7)
+<DataTable
+  paginationIconFirstPage={<MyFirst />}
+  paginationIconLastPage={<MyLast />}
+  paginationIconNext={<MyNext />}
+  paginationIconPrevious={<MyPrev />}
+/>
+
+// After (v8)
+import { DEFAULT_PAGINATION_ICONS } from 'react-data-table-component';
+
+// Override all
+<DataTable paginationIcons={{ first: <MyFirst />, last: <MyLast />, next: <MyNext />, previous: <MyPrev /> }} />
+
+// Override one, keep the rest
+<DataTable paginationIcons={{ ...DEFAULT_PAGINATION_ICONS, next: <MyNext /> }} />
+```
+
+#### `subHeader` + `subHeaderComponent` merged into `subHeader`
+
+Previously you needed two props to show the sub-header bar: `subHeader` (boolean toggle) and `subHeaderComponent` (the content). In v8 `subHeader` is the content itself. Providing any value shows the bar.
+
+```tsx
+// Before (v7)
+<DataTable subHeader subHeaderComponent={<SearchBar />} />
+
+// After (v8)
+<DataTable subHeader={<SearchBar />} />
+```
+
+#### `IDataTableProps` removed
+
+The `IDataTableProps` type alias (deprecated in v7) is no longer exported. Use `TableProps<T>` directly.
+
+```ts
+// Before (v6/v7)
+import type { IDataTableProps } from 'react-data-table-component';
+
+// After (v8)
+import type { TableProps } from 'react-data-table-component';
+```
+
 #### `column.hide` requires the `Media` enum
 
 The `hide` property on `TableColumn` now requires the `Media` enum rather than raw string literals.
@@ -145,7 +192,7 @@ Note that `ThemeText` requires all three fields (`primary`, `secondary`, and `di
 
 ### `IDataTableProps` renamed → `TableProps`
 
-The primary props type was renamed to `TableProps<T>`. `IDataTableProps` is still exported as a type alias for backwards compatibility (and continues to work in v8) but will be removed in a future major version.
+The primary props type was renamed to `TableProps<T>`. Update any imports — the `IDataTableProps` alias is fully removed in v8.
 
 ```ts
 // Before
@@ -160,8 +207,8 @@ import type { TableProps } from 'react-data-table-component';
 v7 introduced proper generics on `TableColumn<T>`. Untyped column arrays will now produce TypeScript errors if `selector` or `cell` reference unknown row fields.
 
 ```ts
-// Before (v6, no generic)
-const columns: IDataTableColumn[] = [ ... ];
+// Before (v6, untyped)
+const columns = [ ... ];
 
 // After (v7+)
 interface Row { id: number; name: string; }
