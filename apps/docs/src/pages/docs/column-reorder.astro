@@ -1,0 +1,122 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import DraggableColumnsDemo from '../../components/demos/DraggableColumnsDemo.tsx';
+---
+
+<DocsLayout title="Column reordering | react-data-table-component">
+  <h1>Column reordering</h1>
+
+  <p>
+    Set <code>reorder: true</code> on any column definition to make that header draggable.
+    Users drag a header cell left or right to swap it with the column it's dropped on.
+    The <code>onColumnOrderChange</code> callback fires after every swap with the updated
+    column array.
+  </p>
+
+  <Demo
+    title="Drag to reorder columns"
+    description="Grab any column header and drag it to a new position. The current order is shown below the table."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  role: string;
+  department: string;
+  salary: number;
+}
+
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',    role: 'Engineering Lead', department: 'Engineering', salary: 155000 },
+  { id: 2, name: 'Marcus Webb',  role: 'Product Manager',  department: 'Product',     salary: 132000 },
+  { id: 3, name: 'Priya Kapoor', role: 'Senior Designer',  department: 'Design',      salary: 118000 },
+  { id: 4, name: 'Jordan Ellis', role: 'Data Scientist',   department: 'Analytics',   salary: 143000 },
+  { id: 5, name: 'Sam Rivera',   role: 'DevOps Engineer',  department: 'Engineering', salary: 128000 },
+];
+
+const initialColumns: TableColumn<Employee>[] = [
+  { id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true, reorder: true },
+  { id: 'role',       name: 'Role',       selector: r => r.role,       reorder: true },
+  { id: 'department', name: 'Department', selector: r => r.department, sortable: true, reorder: true },
+  { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true, reorder: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+];
+
+export default function App() {
+  const [columns, setColumns] = useState(initialColumns);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      onColumnOrderChange={setColumns}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <DraggableColumnsDemo client:load />
+  </Demo>
+
+  <h2>Enabling reorder per column</h2>
+
+  <p>
+    <code>reorder</code> is a per-column flag, not a table-level prop. Columns without it
+    are fixed in place. This lets you pin identity columns (e.g. a row number or name)
+    while keeping the rest draggable.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',   selector: r => r.name,   /* no reorder — pinned */ },
+  { id: 'role',   name: 'Role',   selector: r => r.role,   reorder: true },
+  { id: 'dept',   name: 'Dept',   selector: r => r.dept,   reorder: true },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, reorder: true },
+];`} />
+
+  <h2>Persisting column order</h2>
+
+  <p>
+    Column order is in-memory only and resets on remount. Persist it via
+    <code>localStorage</code> by saving the ordered column IDs and restoring them on init:
+  </p>
+
+  <CodeBlock code={`const STORAGE_KEY = 'my-table-col-order';
+
+function applyOrder(cols: TableColumn<Employee>[], order: string[]) {
+  if (!order.length) return cols;
+  return [...cols].sort((a, b) => order.indexOf(String(a.id)) - order.indexOf(String(b.id)));
+}
+
+function loadOrder(): string[] {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]'); }
+  catch { return []; }
+}
+
+export default function App() {
+  const [columns, setColumns] = useState(() => applyOrder(initialColumns, loadOrder()));
+
+  function handleOrderChange(next: TableColumn<Employee>[]) {
+    setColumns(next);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next.map(c => String(c.id))));
+  }
+
+  return (
+    <DataTable columns={columns} data={data} onColumnOrderChange={handleOrderChange} />
+  );
+}`} />
+
+  <h2>Column groups</h2>
+
+  <div class="not-prose my-4 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+    <p class="font-semibold mb-1">⚠ <code>reorder</code> and <code>columnGroups</code> are incompatible</p>
+    <p>
+      Column groups are defined by static <code>columnIds</code> arrays. Dragging a column
+      out from under a group header does not update those arrays, so the spanning header
+      will cover the wrong columns. Do not use <code>reorder: true</code> on columns that
+      are part of a <code>columnGroups</code> configuration.
+    </p>
+  </div>
+</DocsLayout>

@@ -13,6 +13,21 @@ import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
     Use the imperative <code>ref</code> API to clear selection programmatically.
   </p>
 
+  <div class="not-prose my-6 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+    <p class="font-semibold mb-1">⚠ <code>keyField</code> is required for reliable selection</p>
+    <p>
+      The table uses <code>keyField</code> to uniquely identify each row — tracking checked state across
+      sorts, page changes, and re-renders. It defaults to <code>"id"</code>. If your rows use a
+      different unique field, set it explicitly:
+    </p>
+    <pre class="mt-3 rounded bg-amber-100 px-4 py-3 font-mono text-xs overflow-x-auto">{`<DataTable selectableRows keyField="deviceId" columns={columns} data={data} />`}</pre>
+    <p class="mt-3">
+      If <code>keyField</code> resolves to <code>undefined</code> on any row, selection state will
+      be unreliable and the table will log a console warning. TypeScript also catches explicit
+      mismatches at compile time since <code>keyField</code> is typed as <code>keyof T</code>.
+    </p>
+  </div>
+
   <Demo
     title="Multi-select with imperative clear"
     description="Select rows, then clear with the button. Toggle single-select mode or disable 'On Leave' rows with the checkboxes."
@@ -67,6 +82,7 @@ export default function App() {
         ref={ref}
         columns={columns}
         data={data}
+        keyField="id"
         selectableRows
         selectableRowsSingle={single}
         selectableRowDisabled={disableOnLeave ? (r => r.status === 'On Leave') : undefined}
@@ -79,27 +95,6 @@ export default function App() {
   >
     <SelectionDemo client:load />
   </Demo>
-
-  <h2>Row identity (<code>keyField</code>)</h2>
-
-  <p>
-    Selection requires a stable unique identifier on each row so the table can track which rows
-    are checked across page changes, sorting, and re-renders. By default it uses the <code>id</code>
-    field. If your rows use a different field, set <code>keyField</code>:
-  </p>
-
-  <CodeBlock code={`<DataTable
-  selectableRows
-  keyField="deviceIdentifier"
-  columns={columns}
-  data={devices}
-/>`} />
-
-  <p>
-    If <code>keyField</code> resolves to <code>undefined</code> on your data, the table logs a
-    console warning and selection state will be unreliable. TypeScript will also catch explicit
-    mismatches at compile time since <code>keyField</code> is typed as <code>keyof T</code>.
-  </p>
 
   <h2>Single select</h2>
   <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>

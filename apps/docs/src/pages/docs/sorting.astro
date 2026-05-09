@@ -9,90 +9,250 @@ import SortingDemo from '../../components/demos/SortingDemo.tsx';
   <h1>Sorting</h1>
 
   <p>
-    Add <code>sortable: true</code> to any column definition to enable client-side sorting.
-    Click a column header to sort; click again to reverse.
+    Add <code>sortable: true</code> to any column to enable client-side sorting on that column.
+    Click a header to sort; click again to reverse direction.
+    Columns without <code>sortable</code> are not interactive and are excluded from the tab order.
   </p>
 
   <Demo
-    title="Sortable columns"
-    description="Click a header to sort. Click again to reverse. Use the buttons to change the initial sort field."
-    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+    title="Sorting playground"
+    description="Toggle the default sort column, direction, a custom icon, and per-column sort functions. The onSort readout shows the callback firing on every sort change."
+    code={`import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
 
-interface Employee {
-  id: number;
-  name: string;
-  department: string;
-  salary: number;
-  hired: string;
-}
-
-const data: Employee[] = [
-  { id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000, hired: '2019-03-12' },
-  { id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000, hired: '2020-07-01' },
-  { id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000, hired: '2021-01-15' },
-  { id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000, hired: '2018-11-30' },
-  { id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000, hired: '2022-04-22' },
-  { id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000, hired: '2023-02-08' },
-];
-
-// Each sortable column that may be used as the default sort needs a stable \`id\`
 const columns: TableColumn<Employee>[] = [
   { id: 'name',   name: 'Name',       selector: r => r.name,       sortable: true },
   { id: 'dept',   name: 'Department', selector: r => r.department, sortable: true },
   { id: 'salary', name: 'Salary',     selector: r => r.salary,     sortable: true,
     format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
   { id: 'hired',  name: 'Hired',      selector: r => r.hired,      sortable: true },
+  { id: 'id',     name: 'ID',         selector: r => r.id }, // not sortable
 ];
 
-export default function App() {
-  return (
-    <DataTable
-      columns={columns}
-      data={data}
-      defaultSortFieldId="name"
-      defaultSortAsc={true}
-      highlightOnHover
-    />
-  );
-}`}
+<DataTable
+  columns={columns}
+  data={data}
+  defaultSortFieldId="name"
+  defaultSortAsc={true}
+  onSort={(column, direction) => console.log(column.id, direction)}
+  highlightOnHover
+/>`}
   >
     <SortingDemo client:load />
   </Demo>
 
   <h2>Default sort</h2>
   <p>
-    Use <code>defaultSortFieldId</code> to set the initial sort column. The value should match
-    the <code>id</code> set on the column definition.
+    <code>defaultSortFieldId</code> sets which column is sorted on first render.
+    Its value must match the <code>id</code> on the column definition.
+    <code>defaultSortAsc</code> controls the initial direction — it defaults to <code>true</code> (ascending).
   </p>
 
-  <CodeBlock code={`const columns = [
-  { id: 'name', name: 'Name', selector: r => r.name, sortable: true },
-];
-
-<DataTable columns={columns} data={data} defaultSortFieldId="name" defaultSortAsc={false} />`} />
-
-  <h2>Server-side sorting</h2>
-  <p>
-    Pass <code>onSort</code> and <code>sortServer</code> to handle sorting externally.
-    The table will not re-sort locally. It calls your handler and re-renders with the data you provide.
-  </p>
-
-  <CodeBlock code={`<DataTable
+  <CodeBlock code={`// Sort by salary descending on load
+<DataTable
   columns={columns}
   data={data}
-  sortServer
-  onSort={(column, direction) => {
-    fetchData({ sort: column.id, dir: direction }).then(setData);
+  defaultSortFieldId="salary"
+  defaultSortAsc={false}
+/>`} />
+
+  <h2>Listening to sort events</h2>
+  <p>
+    <code>onSort</code> fires on every sort change — whether triggered by clicking a header or by
+    a <code>defaultSortFieldId</code> change. It receives the sorted column, the new direction, and
+    the fully sorted row array.
+  </p>
+
+  <CodeBlock code={`import { SortOrder } from 'react-data-table-component';
+
+<DataTable
+  columns={columns}
+  data={data}
+  onSort={(column, direction, sortedRows) => {
+    console.log('sorted by', column.id, direction);
+    // sortedRows is the full sorted array after the sort is applied
   }}
 />`} />
 
-  <h2>Custom sort function</h2>
-  <p>Override the sort algorithm on a per-column basis:</p>
+  <h2>Custom sort function — per column</h2>
+  <p>
+    Override the sort comparator for a specific column with <code>column.sortFunction</code>.
+    It receives two row objects and returns a number, just like <code>Array.prototype.sort</code>.
+    Use this for locale-aware strings, currency values, or any non-default ordering.
+  </p>
 
-  <CodeBlock code={`{
-  name: 'Salary',
-  selector: r => r.salary,
-  sortable: true,
-  sortFunction: (a, b) => a.salary - b.salary,
+  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
+  {
+    id: 'name',
+    name: 'Name',
+    selector: r => r.name,
+    sortable: true,
+    sortFunction: (a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
+  },
+  {
+    id: 'salary',
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    sortFunction: (a, b) => a.salary - b.salary,
+  },
+];`} />
+
+  <h2>Custom sort function — table level</h2>
+  <p>
+    The table-level <code>sortFunction</code> prop replaces the entire sort algorithm for every
+    column. It receives the full row array, the selector function for the active column, and the
+    sort direction. Return the sorted array. This is less common than per-column <code>sortFunction</code>
+    but useful when you need a single unified sort strategy across all columns.
+  </p>
+
+  <CodeBlock code={`import { SortOrder, type SortFunction } from 'react-data-table-component';
+
+const customSort: SortFunction<Employee> = (rows, selector, direction) => {
+  return [...rows].sort((a, b) => {
+    const aVal = selector(a);
+    const bVal = selector(b);
+    if (aVal === bVal) return 0;
+    const cmp = aVal > bVal ? 1 : -1;
+    return direction === SortOrder.ASC ? cmp : -cmp;
+  });
+};
+
+<DataTable columns={columns} data={data} sortFunction={customSort} />`} />
+
+  <h2>Custom sort icon</h2>
+  <p>
+    Pass any React node to <code>sortIcon</code> to replace the default chevron.
+    The icon is rendered inside a <code>span</code> that receives <code>rdt_sortIconActive</code> /
+    <code>rdt_sortIconInactive</code> and <code>rdt_sortIconAsc</code> class names — use these to
+    style direction and active state with CSS.
+  </p>
+
+  <CodeBlock code={`// A simple triangle that flips via CSS
+const SortIcon = () => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+    <path d="M5 1l4 8H1z" />
+  </svg>
+);
+
+// Flip the icon for descending with CSS:
+// .rdt_sortIcon:not(.rdt_sortIconAsc) svg { transform: rotate(180deg); }
+
+<DataTable columns={columns} data={data} sortIcon={<SortIcon />} />`} />
+
+  <h2>Server-side sorting</h2>
+  <p>
+    Set <code>sortServer</code> to stop the table from sorting rows locally.
+    The table still updates its visual sort indicator and calls <code>onSort</code> — your handler
+    is responsible for fetching or reordering data and passing the new array back via <code>data</code>.
+  </p>
+  <p>
+    When a column maps to a different backend field name, set <code>sortField</code> on the column.
+    The value is passed to <code>onSort</code> via the column object so you can use it directly in
+    your query.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
+  {
+    id: 'name',
+    name: 'Name',
+    selector: r => r.name,
+    sortable: true,
+    sortField: 'full_name', // backend field name differs from display id
+  },
+  {
+    id: 'salary',
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    sortField: 'annual_salary',
+  },
+];
+
+function App() {
+  const [data, setData] = useState<Employee[]>([]);
+
+  async function handleSort(column: TableColumn<Employee>, direction: SortOrder) {
+    const field = column.sortField ?? column.id;
+    const rows = await fetchEmployees({ sort: field, dir: direction });
+    setData(rows);
+  }
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      sortServer
+      onSort={handleSort}
+    />
+  );
 }`} />
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>defaultSortFieldId</code></td>
+        <td><code>string | number</code></td>
+        <td>—</td>
+        <td>Column <code>id</code> to sort by on first render.</td>
+      </tr>
+      <tr>
+        <td><code>defaultSortAsc</code></td>
+        <td><code>boolean</code></td>
+        <td><code>true</code></td>
+        <td>Initial sort direction. <code>false</code> = descending.</td>
+      </tr>
+      <tr>
+        <td><code>onSort</code></td>
+        <td><code>(column, direction, sortedRows) =&gt; void</code></td>
+        <td>—</td>
+        <td>Called on every sort change with the active column, direction, and sorted rows.</td>
+      </tr>
+      <tr>
+        <td><code>sortServer</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Disable client-side sorting. Use with <code>onSort</code> to sort remotely.</td>
+      </tr>
+      <tr>
+        <td><code>sortFunction</code></td>
+        <td><code>SortFunction&lt;T&gt;</code></td>
+        <td>—</td>
+        <td>Table-level sort algorithm. Replaces the default sort for all columns.</td>
+      </tr>
+      <tr>
+        <td><code>sortIcon</code></td>
+        <td><code>ReactNode</code></td>
+        <td>—</td>
+        <td>Custom icon rendered inside sortable column headers.</td>
+      </tr>
+      <tr>
+        <td><code>column.sortable</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Enable sorting on this column.</td>
+      </tr>
+      <tr>
+        <td><code>column.sortFunction</code></td>
+        <td><code>(a, b) =&gt; number</code></td>
+        <td>—</td>
+        <td>Per-column sort comparator. Takes priority over the table-level <code>sortFunction</code>.</td>
+      </tr>
+      <tr>
+        <td><code>column.sortField</code></td>
+        <td><code>string</code></td>
+        <td>—</td>
+        <td>Backend field name passed to <code>onSort</code> when it differs from <code>column.id</code>.</td>
+      </tr>
+    </tbody>
+  </table>
 </DocsLayout>

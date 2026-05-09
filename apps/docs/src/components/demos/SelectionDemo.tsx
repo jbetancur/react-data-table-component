@@ -67,6 +67,7 @@ export default function SelectionDemo() {
 				ref={ref}
 				columns={columns}
 				data={data}
+				keyField="id"
 				selectableRows
 				selectableRowsSingle={single}
 				selectableRowDisabled={disableOnLeave ? (r => r.status === 'On Leave') : undefined}
