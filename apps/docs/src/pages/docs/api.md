@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/DocsLayout.astro'
-title: 'API reference — react-data-table-component'
+title: 'API reference | react-data-table-component'
 ---
 
 # API reference
@@ -15,8 +15,8 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `data` | `T[]` | — | **Required.** Array of row objects. |
-| `columns` | `TableColumn<T>[]` | — | **Required.** Column definitions. |
+| `data` | `T[]` | - | **Required.** Array of row objects. |
+| `columns` | `TableColumn<T>[]` | - | **Required.** Column definitions. |
 | `keyField` | `string` | `"id"` | Property on each row used as a stable React key. |
 | `progressPending` | `boolean` | `false` | Show a loading indicator instead of rows. |
 | `progressComponent` | `ReactNode` | built-in spinner | Custom loading indicator. |
@@ -26,10 +26,10 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `title` | `string \| ReactNode` | — | Table title shown in the header bar. |
-| `actions` | `ReactNode \| ReactNode[]` | — | Content rendered on the right side of the header bar. |
+| `title` | `string \| ReactNode` | - | Table title shown in the header bar. |
+| `actions` | `ReactNode \| ReactNode[]` | - | Content rendered on the right side of the header bar. |
 | `subHeader` | `boolean` | `false` | Enable the sub-header row. |
-| `subHeaderComponent` | `ReactNode \| ReactNode[]` | — | Content for the sub-header row. |
+| `subHeaderComponent` | `ReactNode \| ReactNode[]` | - | Content for the sub-header row. |
 | `subHeaderAlign` | `Alignment` | `"right"` | Alignment of sub-header content. |
 | `subHeaderWrap` | `boolean` | `true` | Allow sub-header to wrap onto multiple lines. |
 | `noHeader` | `boolean` | `false` | Hide the title/actions header bar entirely. |
@@ -40,9 +40,9 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `fixedHeader` | `boolean` | `false` | Stick the column header at the top when scrolling. |
 | `fixedHeaderScrollHeight` | `string` | `"100vh"` | Max height of the scrollable body when `fixedHeader` is on. |
 | `direction` | `Direction` | `"ltr"` | Text direction (`ltr`, `rtl`, `auto`). |
-| `className` | `string` | — | Extra CSS class on the root element. |
-| `style` | `CSSProperties` | — | Inline styles on the root element. |
-| `ariaLabel` | `string` | — | Value for the table's `aria-label`. |
+| `className` | `string` | - | Extra CSS class on the root element. |
+| `style` | `CSSProperties` | - | Inline styles on the root element. |
+| `ariaLabel` | `string` | - | Value for the table's `aria-label`. |
 | `disabled` | `boolean` | `false` | Disable all interactive controls. |
 
 ### Theming & styling
@@ -50,24 +50,24 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `theme` | `string` | `"default"` | Named theme registered with `createTheme()`. |
-| `customStyles` | `TableStyles` | — | Fine-grained style overrides. See [TableStyles](#tablestyles). |
-| `conditionalRowStyles` | `ConditionalStyles<T>[]` | — | Apply styles or class names to rows when a predicate matches. |
+| `customStyles` | `TableStyles` | - | Fine-grained style overrides. See [TableStyles](#tablestyles). |
+| `conditionalRowStyles` | `ConditionalStyles<T>[]` | - | Apply styles or class names to rows when a predicate matches. |
 | `striped` | `boolean` | `false` | Alternate row background colors. |
 | `highlightOnHover` | `boolean` | `false` | Highlight rows on mouse-over. |
 | `pointerOnHover` | `boolean` | `false` | Show a pointer cursor on row hover. |
-| `columnSeparator` | `boolean \| "subtle" \| "full"` | — | Vertical lines between body columns. `true`/`"subtle"` = inset line, `"full"` = full-height. |
+| `columnSeparator` | `boolean \| "subtle" \| "full"` | - | Vertical lines between body columns. Headers always show separators. `true`/`"subtle"` = inset line, `"full"` = full-height. |
 | `animateRows` | `boolean` | `false` | Staggered entrance and sort animations. Respects `prefers-reduced-motion`. |
 
 ### Sorting
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `defaultSortFieldId` | `string \| number` | — | Column `id` to sort by on initial render. |
+| `defaultSortFieldId` | `string \| number` | - | Column `id` to sort by on initial render. |
 | `defaultSortAsc` | `boolean` | `true` | Initial sort direction. |
 | `sortServer` | `boolean` | `false` | Disable client-side sorting; fire `onSort` and let the server sort. |
-| `sortFunction` | `SortFunction<T> \| null` | — | Global custom sort function applied to all sortable columns. |
+| `sortFunction` | `SortFunction<T> \| null` | - | Global custom sort function applied to all sortable columns. |
 | `sortIcon` | `ReactNode` | built-in chevron | Custom sort direction indicator. |
-| `onSort` | `(column, direction, sortedRows) => void` | — | Called whenever the sort column or direction changes. |
+| `onSort` | `(column, direction, sortedRows) => void` | - | Called whenever the sort column or direction changes. |
 
 ### Pagination
 
@@ -78,17 +78,17 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `paginationRowsPerPageOptions` | `number[]` | `[10,15,20,25,30]` | Options in the rows-per-page dropdown. |
 | `paginationDefaultPage` | `number` | `1` | Initial active page. |
 | `paginationResetDefaultPage` | `boolean` | `false` | Toggle to reset to page 1 (e.g. after a filter change). |
-| `paginationTotalRows` | `number` | — | Total row count for server-side pagination. |
+| `paginationTotalRows` | `number` | - | Total row count for server-side pagination. |
 | `paginationServer` | `boolean` | `false` | Delegate page changes to `onChangePage` / `onChangeRowsPerPage`. |
-| `paginationServerOptions` | `PaginationServerOptions` | — | Selection-persistence options for server-side mode. |
-| `paginationComponentOptions` | `PaginationOptions` | — | Localisation and display options for the built-in paginator. |
-| `paginationComponent` | `React.ComponentType` | — | Replace the built-in pagination UI entirely. |
-| `paginationIconFirstPage` | `ReactNode` | — | Custom icon for the "first page" button. |
-| `paginationIconLastPage` | `ReactNode` | — | Custom icon for the "last page" button. |
-| `paginationIconNext` | `ReactNode` | — | Custom icon for the "next page" button. |
-| `paginationIconPrevious` | `ReactNode` | — | Custom icon for the "previous page" button. |
-| `onChangePage` | `(page, totalRows) => void` | — | Called when the active page changes. |
-| `onChangeRowsPerPage` | `(rowsPerPage, page) => void` | — | Called when rows-per-page selection changes. |
+| `paginationServerOptions` | `PaginationServerOptions` | - | Selection-persistence options for server-side mode. |
+| `paginationComponentOptions` | `PaginationOptions` | - | Localisation and display options for the built-in paginator. |
+| `paginationComponent` | `React.ComponentType` | - | Replace the built-in pagination UI entirely. |
+| `paginationIconFirstPage` | `ReactNode` | - | Custom icon for the "first page" button. |
+| `paginationIconLastPage` | `ReactNode` | - | Custom icon for the "last page" button. |
+| `paginationIconNext` | `ReactNode` | - | Custom icon for the "next page" button. |
+| `paginationIconPrevious` | `ReactNode` | - | Custom icon for the "previous page" button. |
+| `onChangePage` | `(page, totalRows) => void` | - | Called when the active page changes. |
+| `onChangeRowsPerPage` | `(rowsPerPage, page) => void` | - | Called when rows-per-page selection changes. |
 
 ### Row selection
 
@@ -99,28 +99,28 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `selectableRowsNoSelectAll` | `boolean` | `false` | Hide the "select all" checkbox in the header. |
 | `selectableRowsVisibleOnly` | `boolean` | `false` | "Select all" only selects rows on the current page. |
 | `selectableRowsHighlight` | `boolean` | `false` | Highlight selected rows using the theme's selected color. |
-| `selectableRowDisabled` | `(row: T) => boolean` | — | Disable selection for a specific row. |
-| `selectableRowSelected` | `(row: T) => boolean` | — | Pre-select rows that satisfy the predicate. |
+| `selectableRowDisabled` | `(row: T) => boolean` | - | Disable selection for a specific row. |
+| `selectableRowSelected` | `(row: T) => boolean` | - | Pre-select rows that satisfy the predicate. |
 | `selectableRowsComponent` | `"input" \| ReactNode` | built-in checkbox | Custom checkbox component. |
-| `selectableRowsComponentProps` | `object` | — | Extra props forwarded to the custom checkbox component. |
-| `onSelectedRowsChange` | `(state) => void` | — | Called whenever selection changes. Receives `{ allSelected, selectedCount, selectedRows }`. |
-| `clearSelectedRows` | `boolean` | — | **Deprecated.** Toggle to clear selection. Use `ref.current.clearSelectedRows()` instead. |
+| `selectableRowsComponentProps` | `object` | - | Extra props forwarded to the custom checkbox component. |
+| `onSelectedRowsChange` | `(state) => void` | - | Called whenever selection changes. Receives `{ allSelected, selectedCount, selectedRows }`. |
+| `clearSelectedRows` | `boolean` | - | **Deprecated.** Toggle to clear selection. Use `ref.current.clearSelectedRows()` instead. |
 
 ### Expandable rows
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `expandableRows` | `boolean` | `false` | Enable the expandable row feature. |
-| `expandableRowsComponent` | `React.ComponentType` | — | Component rendered in the expanded panel. Receives `{ data: T }`. |
-| `expandableRowsComponentProps` | `object` | — | Extra props merged into `expandableRowsComponent`. |
-| `expandableRowExpanded` | `(row: T) => boolean` | — | Control which rows start expanded. |
-| `expandableRowDisabled` | `(row: T) => boolean` | — | Prevent specific rows from being expanded. |
+| `expandableRowsComponent` | `React.ComponentType` | - | Component rendered in the expanded panel. Receives `{ data: T }`. |
+| `expandableRowsComponentProps` | `object` | - | Extra props merged into `expandableRowsComponent`. |
+| `expandableRowExpanded` | `(row: T) => boolean` | - | Control which rows start expanded. |
+| `expandableRowDisabled` | `(row: T) => boolean` | - | Prevent specific rows from being expanded. |
 | `expandableRowsHideExpander` | `boolean` | `false` | Hide the expander chevron column (use with `expandOnRowClicked`). |
 | `expandOnRowClicked` | `boolean` | `false` | Toggle expansion by clicking anywhere on the row. |
 | `expandOnRowDoubleClicked` | `boolean` | `false` | Toggle expansion by double-clicking anywhere on the row. |
 | `expandableInheritConditionalStyles` | `boolean` | `false` | Apply the parent row's conditional styles to the expanded panel. |
 | `expandableIcon` | `{ collapsed, expanded }` | built-in chevron | Custom expand/collapse icons. |
-| `onRowExpandToggled` | `(expanded, row) => void` | — | Called when a row is expanded or collapsed. |
+| `onRowExpandToggled` | `(expanded, row) => void` | - | Called when a row is expanded or collapsed. |
 
 ### Row events
 
@@ -136,10 +136,10 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `resizable` | `boolean` | `false` | Show drag handles on column headers for resizing. |
-| `columnGroups` | `ColumnGroup[]` | — | Spanning group headers rendered above the column header row. |
-| `filterValues` | `Record<string \| number, string>` | — | Controlled filter state. Omit to use internal state. |
-| `onFilterChange` | `(columnId, value) => void` | — | Called when a column filter input changes. |
-| `onColumnOrderChange` | `(columns) => void` | — | Called after a drag-to-reorder column operation. |
+| `columnGroups` | `ColumnGroup[]` | - | Spanning group headers rendered above the column header row. |
+| `filterValues` | `Record<string \| number, string>` | - | Controlled filter state. Omit to use internal state. |
+| `onFilterChange` | `(columnId, value) => void` | - | Called when a column filter input changes. |
+| `onColumnOrderChange` | `(columns) => void` | - | Called after a drag-to-reorder column operation. |
 
 ## TableColumn\<T\>
 
@@ -162,7 +162,7 @@ const columns: TableColumn<MyRow>[] = [
 | `id` | `string \| number` | Stable identity used by `defaultSortFieldId`, `columnGroups`, and `filterValues`. |
 | `name` | `ReactNode` | Column header label. |
 | `selector` | `(row, index?) => Primitive \| ReactNode` | Data accessor. For sortable columns return a `Primitive` (`string \| number \| boolean`). |
-| `cell` | `(row, index, column, id) => ReactNode` | Custom cell renderer — overrides the `selector` display value. |
+| `cell` | `(row, index, column, id) => ReactNode` | Custom cell renderer. Overrides the `selector` display value. |
 | `format` | `(row, index) => ReactNode` | Format the selector value for display without changing the sort key. |
 | `sortable` | `boolean` | Enable sorting on this column. |
 | `sortFunction` | `(a: T, b: T) => number` | Custom comparator for this column. |
@@ -246,22 +246,22 @@ const customStyles: TableStyles = {
 
 | Key | Extra fields | Description |
 |---|---|---|
-| `table` | — | The outermost table element. |
-| `tableWrapper` | — | Wrapper `<div>` around the table. |
-| `responsiveWrapper` | — | Horizontal-scroll wrapper (only present when `responsive`). |
+| `table` | - | The outermost table element. |
+| `tableWrapper` | - | Wrapper `<div>` around the table. |
+| `responsiveWrapper` | - | Horizontal-scroll wrapper (only present when `responsive`). |
 | `header` | `fontColor`, `fontSize` | Title / actions bar at the top. |
-| `subHeader` | — | Sub-header bar. |
-| `head` | — | The `<thead>` element. |
+| `subHeader` | - | Sub-header bar. |
+| `head` | - | The `<thead>` element. |
 | `headRow` | `denseStyle` | Column header row. |
 | `headCells` | `draggingStyle` | Individual header cells. |
 | `cells` | `draggingStyle` | Body cells. |
 | `rows` | `selectedHighlightStyle`, `denseStyle`, `highlightOnHoverStyle`, `stripedStyle` | Body rows. |
-| `expanderRow` | — | The expanded content row. |
-| `expanderCell` | — | Cell containing the expand/collapse button. |
-| `expanderButton` | — | The expand/collapse button itself. |
+| `expanderRow` | - | The expanded content row. |
+| `expanderCell` | - | Cell containing the expand/collapse button. |
+| `expanderButton` | - | The expand/collapse button itself. |
 | `pagination` | `pageButtonsStyle` | Pagination bar and page buttons. |
-| `noData` | — | Empty-state container. |
-| `progress` | — | Loading indicator container. |
+| `noData` | - | Empty-state container. |
+| `progress` | - | Loading indicator container. |
 
 ## ConditionalStyles\<T\>
 
@@ -287,7 +287,7 @@ const conditionalRowStyles = [
 
 | Field | Type | Description |
 |---|---|---|
-| `when` | `(row: T) => boolean` | **Required.** Predicate — styles apply when this returns `true`. |
+| `when` | `(row: T) => boolean` | **Required.** Predicate that applies styles when this returns `true`. |
 | `style` | `CSSProperties \| ((row: T) => CSSProperties)` | Inline styles to apply. |
 | `classNames` | `string[]` | CSS class names to add. |
 
@@ -299,7 +299,7 @@ Registers a custom named theme globally. Call this outside your component tree (
 import { createTheme } from 'react-data-table-component';
 
 createTheme(
-  'brand',       // name — pass to the theme prop
+  'brand',       // name (pass to the theme prop)
   {
     text:             { primary: '#1a1a2e', secondary: '#4a4a6a', disabled: 'rgba(26,26,46,.38)' },
     background:       { default: '#f0f4ff' },
@@ -331,7 +331,7 @@ The `Theme` interface token keys:
 | `selected` | `default`, `text` |
 | `highlightOnHover` | `default`, `text` |
 | `striped` | `default`, `text` |
-| `colorScheme` | `"light" \| "dark"` — sets native form control rendering |
+| `colorScheme` | `"light" \| "dark"`. Sets native form control rendering. |
 
 ## Pagination types
 

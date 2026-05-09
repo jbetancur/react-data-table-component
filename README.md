@@ -4,21 +4,36 @@
 
 [![GitHub release](https://img.shields.io/github/release/jbetancur/react-data-table-component.svg)](https://GitHub.com/jbetancur/react-data-table-component/releases/)
 
-Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries out there, some required heavy customization, were missing out of the box features such as built in sorting and pagination, or required understanding the atomic structure of html tables.
+**A simple but flexible React data table — a working table in 10 lines.** Sorting, selection, pagination, expandable rows, and theming come built-in as opt-in props. No atomic HTML table knowledge required.
 
-If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone, then this is not the React table library you are looking for 👋
+This library lives in the middle ground between "render everything yourself" headless toolkits and full "configure-the-grid" frameworks. It's for the cases where the table is a _means_, not the product — admin panels, dashboards, internal tools, MVPs. If you need an Excel clone or a 100k-row analytics grid, there are already some great table
+libraries out there.
+
+## Quick start
+
+```tsx
+import DataTable from 'react-data-table-component';
+
+const columns = [
+  { name: 'Title', selector: row => row.title, sortable: true },
+  { name: 'Year', selector: row => row.year, sortable: true },
+  { name: 'Director', selector: row => row.director },
+];
+
+export default function Movies() {
+  return <DataTable columns={columns} data={data} pagination />;
+}
+```
 
 # Key Features
 
-- Declarative configuration
-- Built-in and configurable:
-  - Sorting
-  - Selectable Rows
-  - Expandable Rows
-  - Pagination
-- Themeable/Customizable
-- Accessibility
-- Responsive (via x-scroll/flex)
+- Sorting, row selection, expandable rows, and pagination — all opt-in props
+- Themeable via CSS variables; deeply customizable via `customStyles`
+- Accessible (`role`, `aria-sort`, `aria-selected`, keyboard navigation)
+- Responsive (x-scroll / flex)
+- TypeScript types bundled
+- SSR-safe; ships `"use client"` for Next.js App Router (import directly into a Server Component file)
+- Headless hooks exported for full markup/style control when you outgrow the defaults
 
 # Documentation Website
 

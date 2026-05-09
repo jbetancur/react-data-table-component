@@ -111,7 +111,6 @@ export default function CustomStylesDemo() {
 				conditionalRowStyles={mode === 'conditional' ? conditionalRowStyles : undefined}
 				customStyles={mode === 'custom' ? customStyles : undefined}
 				highlightOnHover
-				columnSeparator
 			/>
 		</div>
 	);

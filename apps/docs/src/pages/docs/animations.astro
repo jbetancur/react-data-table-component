@@ -5,7 +5,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import AnimationsDemo from '../../components/demos/AnimationsDemo.tsx';
 ---
 
-<DocsLayout title="Animations — react-data-table-component">
+<DocsLayout title="Animations | react-data-table-component">
   <h1>Animations</h1>
 
   <p>
@@ -75,15 +75,15 @@ export default function App() {
     </tbody>
   </table>
 
-  <h2>Accessibility — reduced motion</h2>
+  <h2>Accessibility: reduced motion</h2>
 
   <p>
     All animations respect <code>prefers-reduced-motion</code>. When the user has
     requested reduced motion in their OS settings, animations are disabled automatically
-    via a CSS media query — no JavaScript check required.
+    via a CSS media query. No JavaScript check required.
   </p>
 
-  <CodeBlock code={`/* DataTable.css — simplified */
+  <CodeBlock code={`/* DataTable.css (simplified) */
 @media (prefers-reduced-motion: reduce) {
   .rdt_TableRow,
   .rdt_ExpanderRow {

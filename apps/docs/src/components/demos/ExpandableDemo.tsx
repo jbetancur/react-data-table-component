@@ -74,7 +74,6 @@ export default function ExpandableDemo() {
 				expandableRows
 				expandableRowsComponent={ExpandedRow}
 				highlightOnHover
-				columnSeparator
 				animateRows={animate}
 			/>
 		</div>

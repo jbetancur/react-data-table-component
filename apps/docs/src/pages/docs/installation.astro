@@ -3,7 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 ---
 
-<DocsLayout title="Installation — react-data-table-component">
+<DocsLayout title="Installation | react-data-table-component">
   <h1>Installation</h1>
 
   <h2>npm</h2>
@@ -50,7 +50,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <h2>TypeScript</h2>
 
   <p>
-    Type declarations are bundled — no <code>@types/</code> package required.
+    Type declarations are bundled. No <code>@types/</code> package required.
     All public types are re-exported from the main entry point:
   </p>
 
@@ -64,17 +64,21 @@ import CodeBlock from '../../components/CodeBlock.astro';
     </thead>
     <tbody>
       <tr><td>Vite / Create React App</td><td>Works out of the box</td></tr>
-      <tr><td>Next.js App Router</td><td>Mark the consuming component <code>'use client'</code>. Optionally import <code>react-data-table-component/css</code> in <code>layout.tsx</code> to avoid a flash of unstyled content on first SSR load.</td></tr>
+      <tr><td>Next.js App Router</td><td>Import <code>&lt;DataTable&gt;</code> directly from any file. The bundle ships with <code>"use client"</code>. Optionally import <code>react-data-table-component/css</code> in <code>layout.tsx</code> to avoid a flash of unstyled content on first SSR load.</td></tr>
       <tr><td>Next.js Pages Router</td><td>Works out of the box</td></tr>
       <tr><td>Remix</td><td>Works out of the box</td></tr>
       <tr><td>Astro</td><td>Use <code>client:load</code> or <code>client:visible</code> directive</td></tr>
     </tbody>
   </table>
 
-  <h3>Next.js App Router — layout.tsx</h3>
+  <h3>Next.js App Router: layout.tsx (optional)</h3>
+
+  <p>
+    Optional: import the stylesheet once in your root layout so styles are present in the
+    initial SSR HTML.
+  </p>
 
   <CodeBlock code={`// app/layout.tsx
-// Optional: import once here so styles are included in the SSR HTML.
 import 'react-data-table-component/css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -85,13 +89,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }`} lang="tsx" />
 
-  <h3>Next.js App Router — MyTable.tsx</h3>
+  <h3>Next.js App Router: using the table</h3>
 
-  <CodeBlock code={`'use client';
+  <p>
+    The bundle declares its own <code>"use client"</code> boundary, so you can import
+    <code>&lt;DataTable&gt;</code> directly from a Server Component file. No wrapper needed.
+  </p>
 
+  <CodeBlock code={`// app/users/page.tsx (Server Component, no directive needed).
 import DataTable from 'react-data-table-component';
+import { getUsers } from '@/lib/db';
 
-export default function MyTable() {
-  return <DataTable columns={columns} data={data} />;
+export default async function UsersPage() {
+  const users = await getUsers();
+  return <DataTable columns={columns} data={users} />;
 }`} lang="tsx" />
 </DocsLayout>

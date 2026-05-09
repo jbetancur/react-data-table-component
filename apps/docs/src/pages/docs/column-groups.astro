@@ -5,12 +5,12 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import ColumnGroupsDemo from '../../components/demos/ColumnGroupsDemo.tsx';
 ---
 
-<DocsLayout title="Column groups — react-data-table-component">
+<DocsLayout title="Column groups | react-data-table-component">
   <h1>Column groups</h1>
 
   <p>
-    Column groups render a spanning header row above the regular column headers —
-    useful for grouping related columns under a shared label.
+    Column groups render a spanning header row above the regular column headers.
+    Useful for grouping related columns under a shared label.
   </p>
 
   <Demo
@@ -77,7 +77,7 @@ export default function App() {
   <h2>ColumnGroup type</h2>
 
   <CodeBlock code={`interface ColumnGroup {
-  name: ReactNode;                   // Header label — accepts JSX
+  name: ReactNode;                   // Header label (accepts JSX)
   columnIds: (string | number)[];    // ids of columns that fall under this group
 }`} lang="ts" />
 

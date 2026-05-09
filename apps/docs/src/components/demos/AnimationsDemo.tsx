@@ -56,7 +56,6 @@ export default function AnimationsDemo() {
 				data={BASE_DATA}
 				animateRows={animate}
 				highlightOnHover
-				columnSeparator
 			/>
 		</div>
 	);

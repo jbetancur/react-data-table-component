@@ -5,7 +5,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
 ---
 
-<DocsLayout title="Row selection — react-data-table-component">
+<DocsLayout title="Row selection | react-data-table-component">
   <h1>Row selection</h1>
 
   <p>
@@ -98,7 +98,7 @@ export default function App() {
 
   <h2>Clearing selection (imperative API)</h2>
   <p>
-    Use a <code>ref</code> to call <code>clearSelectedRows()</code> — the recommended approach
+    Use a <code>ref</code> to call <code>clearSelectedRows()</code>. This is the recommended approach
     that avoids the toggle-boolean bug present in older versions.
   </p>
   <CodeBlock code={`const tableRef = useRef<DataTableHandle>(null);

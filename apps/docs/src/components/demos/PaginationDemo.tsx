@@ -87,7 +87,6 @@ export default function PaginationDemo() {
 				paginationRowsPerPageOptions={[5, 10, 15, 30]}
 				highlightOnHover
 				striped
-				columnSeparator
 			/>
 		</div>
 	);

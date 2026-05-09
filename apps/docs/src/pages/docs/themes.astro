@@ -6,7 +6,7 @@ import ThemesDemo from '../../components/demos/ThemesDemo.tsx';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 ---
 
-<DocsLayout title="Themes — react-data-table-component">
+<DocsLayout title="Themes | react-data-table-component">
   <h1>Themes</h1>
 
   <p>
@@ -19,7 +19,7 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
     description="11 themes including dark variants and a custom 'ocean' theme created with createTheme()."
     code={`import DataTable, { createTheme } from 'react-data-table-component';
 
-// Register a custom theme — inherits from 'dark'
+// Register a custom theme (inherits from 'dark')
 createTheme('ocean', {
   text:             { primary: '#e0f2fe', secondary: '#7dd3fc' },
   background:       { default: '#0c4a6e' },
@@ -85,7 +85,7 @@ createTheme('ocean', {
   <Demo
     title="Column separators"
     description="Headers always have separators. Toggle body separators with the prop."
-    code={`// No body separators (default) — headers still show separators
+    code={`// No body separators (default). Headers still show separators
 <DataTable columns={columns} data={data} />
 
 // Subtle body separators (60%-height inset)
