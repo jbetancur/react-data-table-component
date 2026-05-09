@@ -151,7 +151,6 @@ export default function LiveDemo() {
 					selectableRows={selectable}
 					onSelectedRowsChange={handleSelectedChange}
 					animateRows={animateRows}
-					columnSeparator
 					pagination
 					paginationPerPage={5}
 					paginationRowsPerPageOptions={[5, 8]}

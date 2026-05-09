@@ -5,7 +5,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import CustomStylesDemo from '../../components/demos/CustomStylesDemo.tsx';
 ---
 
-<DocsLayout title="Custom styles — react-data-table-component">
+<DocsLayout title="Custom styles | react-data-table-component">
   <h1>Custom styles</h1>
 
   <p>
@@ -53,7 +53,7 @@ const columns: TableColumn<Employee>[] = [
   },
 ];
 
-// Conditional row styles — applied per-row based on a predicate
+// Conditional row styles (applied per-row based on a predicate)
 const conditionalRowStyles: ConditionalStyles<Employee>[] = [
   {
     when: row => row.salary > 140000,
@@ -65,7 +65,7 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
   },
 ];
 
-// customStyles — override the look of specific table parts
+// customStyles: override the look of specific table parts
 const customStyles: TableStyles = {
   headRow: {
     style: { backgroundColor: '#f0f4ff', fontWeight: 700 },
@@ -93,7 +93,7 @@ export default function App() {
     <CustomStylesDemo client:load />
   </Demo>
 
-  <h2>customStyles — targeting table parts</h2>
+  <h2>customStyles: targeting table parts</h2>
 
   <p>
     The <code>customStyles</code> prop accepts a <code>TableStyles</code> object.
@@ -160,7 +160,7 @@ const customStyles: TableStyles = {
 
   <p>
     Use <code>conditionalRowStyles</code> to apply styles to individual rows based on a predicate.
-    Multiple entries can match the same row — they are applied in array order.
+    Multiple entries can match the same row. They are applied in array order.
   </p>
 
   <CodeBlock code={`import { type ConditionalStyles } from 'react-data-table-component';

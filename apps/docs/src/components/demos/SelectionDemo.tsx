@@ -56,7 +56,6 @@ export default function SelectionDemo() {
 				selectableRowsSingle={single}
 				onSelectedRowsChange={({ selectedRows }) => setSelectedRows(selectedRows)}
 				highlightOnHover
-				columnSeparator
 			/>
 		</div>
 	);

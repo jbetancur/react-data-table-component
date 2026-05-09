@@ -63,7 +63,7 @@ export default function ThemesDemo() {
 				))}
 			</div>
 			<div className={current?.dark ? 'bg-gray-900 rounded-xl overflow-hidden' : ''}>
-				<DataTable columns={columns} data={data} theme={theme} striped highlightOnHover columnSeparator />
+				<DataTable columns={columns} data={data} theme={theme} striped highlightOnHover />
 			</div>
 		</div>
 	);

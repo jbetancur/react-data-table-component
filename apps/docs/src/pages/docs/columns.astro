@@ -3,7 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 ---
 
-<DocsLayout title="Columns — react-data-table-component">
+<DocsLayout title="Columns | react-data-table-component">
   <h1>Columns</h1>
 
   <p>
@@ -43,15 +43,15 @@ const columns: TableColumn<Row>[] = [
     </thead>
     <tbody>
       <tr><td><code>name</code></td><td><code>ReactNode</code></td><td>Header label</td></tr>
-      <tr><td><code>selector</code></td><td><code>(row: T) =&gt; Primitive</code></td><td>Data accessor — used for sorting and default display</td></tr>
-      <tr><td><code>cell</code></td><td><code>(row, index, column, id) =&gt; ReactNode</code></td><td>Custom cell renderer — overrides <code>selector</code> display</td></tr>
+      <tr><td><code>selector</code></td><td><code>(row: T) =&gt; Primitive</code></td><td>Data accessor used for sorting and default display</td></tr>
+      <tr><td><code>cell</code></td><td><code>(row, index, column, id) =&gt; ReactNode</code></td><td>Custom cell renderer. Overrides <code>selector</code> display</td></tr>
       <tr><td><code>format</code></td><td><code>(row, index) =&gt; ReactNode</code></td><td>Format the selector value without replacing the sort key</td></tr>
       <tr><td><code>sortable</code></td><td><code>boolean</code></td><td>Enable sorting on this column</td></tr>
       <tr><td><code>sortFunction</code></td><td><code>(a, b) =&gt; number</code></td><td>Custom comparator for this column</td></tr>
       <tr><td><code>sortField</code></td><td><code>string</code></td><td>Key to pass to <code>onSort</code> for server-side sorting</td></tr>
       <tr><td><code>filterable</code></td><td><code>boolean</code></td><td>Show a filter input in the column header</td></tr>
       <tr><td><code>filterFunction</code></td><td><code>(row, value) =&gt; boolean</code></td><td>Custom filter predicate (defaults to case-insensitive substring)</td></tr>
-      <tr><td><code>id</code></td><td><code>string | number</code></td><td>Stable identity — used by <code>defaultSortFieldId</code> and column groups</td></tr>
+      <tr><td><code>id</code></td><td><code>string | number</code></td><td>Stable identity used by <code>defaultSortFieldId</code> and column groups</td></tr>
       <tr><td><code>width</code></td><td><code>string</code></td><td>Fixed width, e.g. <code>"120px"</code></td></tr>
       <tr><td><code>minWidth</code></td><td><code>string</code></td><td>Minimum width</td></tr>
       <tr><td><code>maxWidth</code></td><td><code>string</code></td><td>Maximum width</td></tr>

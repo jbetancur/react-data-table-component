@@ -59,7 +59,6 @@ export default function SortingDemo() {
 				data={data}
 				defaultSortFieldId={defaultSort}
 				highlightOnHover
-				columnSeparator
 			/>
 		</div>
 	);

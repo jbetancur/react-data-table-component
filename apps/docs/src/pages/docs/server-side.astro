@@ -3,7 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 ---
 
-<DocsLayout title="Server-side data — react-data-table-component">
+<DocsLayout title="Server-side data | react-data-table-component">
   <h1>Server-side data</h1>
 
   <p>
@@ -52,8 +52,8 @@ export default function ServerTable() {
   <h2>Server-side sorting</h2>
 
   <p>
-    Add <code>sortServer</code> and <code>onSort</code>. DataTable will not re-sort locally —
-    it fires <code>onSort</code> and re-renders with whatever data you put in <code>data</code>.
+    Add <code>sortServer</code> and <code>onSort</code>. DataTable will not re-sort locally.
+    It fires <code>onSort</code> and re-renders with whatever data you put in <code>data</code>.
   </p>
 
   <CodeBlock code={`function handleSort(column, direction) {

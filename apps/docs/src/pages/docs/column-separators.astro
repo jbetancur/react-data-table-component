@@ -5,13 +5,13 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 ---
 
-<DocsLayout title="Column separators — react-data-table-component">
+<DocsLayout title="Column separators | react-data-table-component">
   <h1>Column separators</h1>
 
   <p>
-    Column header cells always display a subtle vertical separator between them.
-    The <code>columnSeparator</code> prop controls whether separators also appear
-    between body row cells.
+    Column header cells always show a subtle vertical separator between them. The
+    <code>columnSeparator</code> prop controls whether separators also appear between
+    body row cells.
   </p>
 
   <Demo
@@ -19,10 +19,10 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
     description="Toggle between separator modes: none, subtle, and full."
     code={`import DataTable from 'react-data-table-component';
 
-// No body separators (default)
+// No body separators (default). Headers still show separators.
 <DataTable columns={columns} data={data} />
 
-// Inset separator — 60% height, centred
+// Inset separator (60% height, centred)
 <DataTable columns={columns} data={data} columnSeparator />
 
 // Full-height separator using the theme divider color

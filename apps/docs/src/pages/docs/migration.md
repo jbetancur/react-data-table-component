@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/DocsLayout.astro'
-title: 'Migration guide — react-data-table-component'
+title: 'Migration guide | react-data-table-component'
 ---
 
 # Migration guide
@@ -9,7 +9,9 @@ This page covers breaking changes and upgrade steps for each major version of `r
 
 ## Upgrading to v8
 
-### React 18 required
+### Breaking changes
+
+#### React 18 required
 
 v8 requires React 18 or later. If you are on React 17, upgrade React first:
 
@@ -17,21 +19,72 @@ v8 requires React 18 or later. If you are on React 17, upgrade React first:
 npm install react@18 react-dom@18
 ```
 
-### No CSS import needed
+#### `styled-components` is no longer a peer dependency
 
-Previous versions required importing a CSS file. In v8 all styles are injected automatically — remove any explicit CSS import from your entry point.
+v7 and earlier styled the table via [styled-components](https://styled-components.com/). v8 replaces that with plain CSS injected at runtime, so:
 
-```tsx
-// Remove this — no longer needed in v8
-import 'react-data-table-component/dist/react-data-table-component.css';
+- You can remove `styled-components` from your `package.json` if it was only there for this library.
+- Themes are now driven by CSS variables. No `ThemeProvider` wrapping is required.
+- Bundle size drops, SSR / React Server Components compatibility improves, and there's no CSS-in-JS runtime cost on every render.
+
+```jsonc
+// package.json (remove if you only had it for react-data-table-component
+{
+  "dependencies": {
+-   "styled-components": "^5.x"
+  }
+}
 ```
 
-### clearSelectedRows prop deprecated → use a ref
+For most apps (Vite, CRA, Remix, Next.js Pages Router, Pages directory in App Router) styles "just work". The component injects them when it first renders. No CSS import needed.
 
-The boolean `clearSelectedRows` toggle prop is deprecated. Use a `ref` and call `ref.current.clearSelectedRows()` instead.
+> **Next.js App Router users:** an explicit CSS import is _optionally_ available to avoid a flash of unstyled content during SSR. See the [installation page](/docs/installation/) for the `react-data-table-component/css` import pattern.
+
+#### Why the move away from styled-components
+
+- **Bundle size**: dropping the `styled-components` runtime saves ~12 KB gzipped from consumer bundles.
+- **SSR & React Server Components**: runtime-injected CSS plays cleanly with the App Router; styled-components needed extra setup (`ServerStyleSheet`) to avoid hydration mismatches.
+- **No theme provider plumbing**: CSS variables work everywhere a `<DataTable>` is rendered, with no provider wrapping required.
+- **Peer-dependency surface**: one less version constraint to coordinate with the host app.
+
+#### Selector must be a function: strings no longer accepted
+
+`column.selector` is now strictly typed as `(row: T, rowIndex?: number) => Primitive | React.ReactNode`. String selectors were deprecated in v7 and emitted a runtime warning; in v8 the warning is removed. JS-only callers passing a string will hit a "selector is not a function" runtime error.
+
+```ts
+// Before (v6, string accessor)
+{ selector: 'user.name' }
+
+// After (v7+)
+{ selector: row => row.user.name }
+```
+
+#### `column.hide` requires the `Media` enum
+
+The `hide` property on `TableColumn` now requires the `Media` enum rather than raw string literals.
+
+```ts
+import { Media } from 'react-data-table-component';
+
+// Before (v7)
+{ hide: 'sm' }
+{ hide: 'md' }
+{ hide: 'lg' }
+
+// After (v8)
+{ hide: Media.SM }
+{ hide: Media.MD }
+{ hide: Media.LG }
+```
+
+### Deprecations
+
+#### `clearSelectedRows` prop → use a ref
+
+The boolean `clearSelectedRows` toggle prop is deprecated (still works in v8). Use a `ref` and call `ref.current.clearSelectedRows()` instead.
 
 ```tsx
-// Before (v7 — still works but deprecated in v8)
+// Before (v7, still works but deprecated in v8)
 const [resetRows, setResetRows] = useState(false);
 
 <DataTable
@@ -50,39 +103,9 @@ const ref = useRef<DataTableHandle>(null);
 <DataTable ref={ref} onSelectedRowsChange={handleChange} ... />
 ```
 
-### IDataTableProps renamed to TableProps
+### Behavioural fix: `createTheme` shape
 
-The primary props type is now `TableProps<T>`. `IDataTableProps` is kept as an alias for backwards compatibility but will be removed in a future major version.
-
-```ts
-// Before
-import type { IDataTableProps } from 'react-data-table-component';
-
-// After
-import type { TableProps } from 'react-data-table-component';
-```
-
-### column.hide requires the Media enum, not string literals
-
-The `hide` property on `TableColumn` now requires the `Media` enum rather than raw string literals.
-
-```ts
-import { Media } from 'react-data-table-component';
-
-// Before (v7)
-{ hide: 'sm' }
-{ hide: 'md' }
-{ hide: 'lg' }
-
-// After (v8)
-{ hide: Media.SM }
-{ hide: Media.MD }
-{ hide: Media.LG }
-```
-
-### createTheme — no colors wrapper
-
-In some older examples the theme tokens were wrapped in a `colors` object. That wrapper does not exist. Pass tokens at the top level.
+If you were following old examples that wrapped theme tokens in a `colors` object, that wrapper was never a real API. Pass tokens at the top level:
 
 ```ts
 // Before (incorrect pattern from old docs)
@@ -99,11 +122,11 @@ createTheme('brand', {
 });
 ```
 
-Also note that `ThemeText` requires all three fields — `primary`, `secondary`, and `disabled` — when overriding the `text` token.
+Note that `ThemeText` requires all three fields (`primary`, `secondary`, and `disabled`) when overriding the `text` token.
 
 ### New features in v8 (non-breaking)
 
-| Feature | Prop(s) |
+| Feature | API |
 |---|---|
 | Row entrance & sort animations | `animateRows` |
 | Column separators | `columnSeparator` |
@@ -111,17 +134,33 @@ Also note that `ThemeText` requires all three fields — `primary`, `secondary`,
 | Drag-to-resize column handles | `resizable` |
 | Column drag-to-reorder | `reorder` on `TableColumn` + `onColumnOrderChange` |
 | Column filter inputs | `filterable` / `filterFunction` on `TableColumn`, `filterValues` / `onFilterChange` on `DataTable` |
-| Improved TypeScript types | `DataTableHandle`, stricter `Selector<T>` |
-| Built-in themes expanded | `slate`, `slate-dark`, `ocean`, `ocean-dark`, `midnight`, `solarized` |
+| Programmatic selection clear | `useRef<DataTableHandle>` + `ref.current.clearSelectedRows()` |
+| Headless hooks | `useTableState`, `useColumns`, `useTableData`, `useColumnFilter`. See [Headless hooks](/docs/headless/) |
+| Next.js App Router support | Bundle ships with `"use client"`; import `<DataTable>` directly into a Server Component file |
+| Optional CSS entry point | `import 'react-data-table-component/css'` for SSR / App Router consumers to avoid FOUC |
+| Improved TypeScript types | `DataTableHandle` ref type, stricter `Selector<T>` |
+| Built-in themes expanded | `slate`, `ocean`, `midnight`, `solarized` (in addition to `default`, `light`, `dark`, `material`) |
 
 ## Upgrading to v7
+
+### `IDataTableProps` renamed → `TableProps`
+
+The primary props type was renamed to `TableProps<T>`. `IDataTableProps` is still exported as a type alias for backwards compatibility (and continues to work in v8) but will be removed in a future major version.
+
+```ts
+// Before
+import type { IDataTableProps } from 'react-data-table-component';
+
+// After
+import type { TableProps } from 'react-data-table-component';
+```
 
 ### TypeScript generics on TableColumn
 
 v7 introduced proper generics on `TableColumn<T>`. Untyped column arrays will now produce TypeScript errors if `selector` or `cell` reference unknown row fields.
 
 ```ts
-// Before (v6 — no generic)
+// Before (v6, no generic)
 const columns: IDataTableColumn[] = [ ... ];
 
 // After (v7+)

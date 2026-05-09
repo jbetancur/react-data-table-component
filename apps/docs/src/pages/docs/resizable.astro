@@ -5,7 +5,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import ResizableDemo from '../../components/demos/ResizableDemo.tsx';
 ---
 
-<DocsLayout title="Resizable columns — react-data-table-component">
+<DocsLayout title="Resizable columns | react-data-table-component">
   <h1>Resizable columns</h1>
 
   <p>
@@ -64,7 +64,7 @@ export default function App() {
     Column widths are tracked in component state as pixel values. When the user starts
     dragging, a <code>pointermove</code> listener computes the delta from the drag start
     point and sets the new width (minimum 40 px). Widths are applied as inline styles
-    only on the affected column — no full re-render occurs.
+    only on the affected column. No full re-render occurs.
   </p>
 
   <h2>Initial and minimum widths</h2>
@@ -86,7 +86,7 @@ export default function App() {
   <h2>Persisting widths</h2>
 
   <p>
-    Column widths are in-memory only — they reset on remount. To persist across
+    Column widths are in-memory only. They reset on remount. To persist across
     page reloads, read and write to <code>localStorage</code>:
   </p>
 
