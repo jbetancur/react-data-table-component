@@ -65,16 +65,15 @@ export default function App() {
     <code>onRowClicked</code>.
   </p>
 
-  <blockquote>
-    <strong>Middle-click (scroll-click):</strong> React's <code>onClick</code> does not fire for
-    middle button. If you need true middle-click-to-new-tab, render the navigable cell content
-    inside an <code>&lt;a&gt;</code> tag with <code>href</code> set — the browser then handles all
-    click variants natively.
-  </blockquote>
+  <p>
+    Use <code>onRowMiddleClicked</code> to handle middle-click (scroll-click). Combined with
+    <code>onRowClicked</code>, you get full NavLink behaviour: left-click navigates in the same tab,
+    middle-click or Ctrl/⌘+click opens in a new tab.
+  </p>
 
   <Demo
-    title="Row navigation with Ctrl/⌘+click"
-    description="Left-click navigates in the same tab. Ctrl/⌘+click opens in a new tab. The Email column is an independent link that ignores the row click."
+    title="Row navigation — left, middle, and Ctrl/⌘ click"
+    description="Left-click navigates in the same tab. Middle-click or Ctrl/⌘+click opens in a new tab. The Email column is an independent link."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom'; // or your router
 
@@ -103,12 +102,14 @@ export default function App() {
       pointerOnHover
       highlightOnHover
       onRowClicked={(row, e) => {
-        const url = \`/employees/\${row.id}\`;
         if (e.ctrlKey || e.metaKey) {
-          window.open(url, '_blank');
+          window.open(\`/employees/\${row.id}\`, '_blank');
         } else {
-          navigate(url);
+          navigate(\`/employees/\${row.id}\`);
         }
+      }}
+      onRowMiddleClicked={(row) => {
+        window.open(\`/employees/\${row.id}\`, '_blank');
       }}
     />
   );

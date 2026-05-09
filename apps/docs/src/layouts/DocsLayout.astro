@@ -91,6 +91,15 @@ const currentPath = Astro.url.pathname;
             }
           });
         </script>
+        <a
+          href="https://github.com/sponsors/jbetancur"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-pink-500 transition-colors"
+        >
+          <span>♥</span> Sponsor this project
+        </a>
+
         {nav.map(({ group, links }) => (
           <div>
             <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">{group}</p>

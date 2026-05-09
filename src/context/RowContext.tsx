@@ -33,6 +33,7 @@ export interface RowContextValue<T> {
 	expandableInheritConditionalStyles: boolean;
 	onRowClicked: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked: (row: T, e: React.MouseEvent) => void;
+	onRowMiddleClicked: (row: T, e: React.MouseEvent) => void;
 	onRowMouseEnter: (row: T, e: React.MouseEvent) => void;
 	onRowMouseLeave: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled: (expanded: boolean, row: T) => void;
