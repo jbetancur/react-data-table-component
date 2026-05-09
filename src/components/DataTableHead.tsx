@@ -17,7 +17,92 @@ interface DataTableHeadProps<T> {
 }
 
 // ---------------------------------------------------------------------------
-// Helper — builds the ordered list of group-row cells. Pure function, no hooks.
+// Grid mode helpers — used when columnGroups are present.
+// ---------------------------------------------------------------------------
+
+/**
+ * Builds the CSS grid-template-columns string from the visible column definitions.
+ * Prefix columns (checkbox/expander) are always 48px.
+ * columnWidths contains user-resized overrides and takes precedence.
+ */
+function buildGridTemplateColumns<T>(
+	visibleColumns: TableColumn<T>[],
+	prefixColCount: number,
+	columnWidths: Record<string | number, number>,
+): string {
+	const tracks: string[] = [];
+	for (let i = 0; i < prefixColCount; i++) tracks.push('48px');
+	for (const col of visibleColumns) {
+		const resized = col.id != null ? columnWidths[col.id] : undefined;
+		if (resized != null) {
+			tracks.push(`${resized}px`);
+		} else if (col.width) {
+			tracks.push(col.width);
+		} else if (col.grow === 0 || col.button) {
+			tracks.push(`minmax(${col.minWidth ?? '48px'}, max-content)`);
+		} else {
+			tracks.push(`minmax(${col.minWidth ?? '100px'}, ${col.grow ?? 1}fr)`);
+		}
+	}
+	return tracks.join(' ');
+}
+
+/**
+ * Builds the group label cells for row 1 of the CSS grid.
+ * Rendered AFTER column header cells in the DOM so that the CSS + sibling
+ * selector for column separators (rdt_cellBaseHead + rdt_cellBaseHead) is
+ * not broken by group cells appearing between column cells in DOM order.
+ * Visual placement is controlled entirely by gridColumn / gridRow.
+ */
+function buildGroupHeaderCells<T>(
+	visibleColumns: TableColumn<T>[],
+	columnGroups: ColumnGroup[],
+	ungroupedIds: Set<string>,
+	groupColSpans: Record<string, number>,
+	prefixColCount: number,
+): React.ReactNode[] {
+	const cells: React.ReactNode[] = [];
+	let colIdx = 0;
+
+	while (colIdx < visibleColumns.length) {
+		const col = visibleColumns[colIdx];
+		const colId = String(col.id);
+
+		if (ungroupedIds.has(colId)) {
+			// Ungrouped column header spans both rows — no group label cell needed.
+			colIdx++;
+		} else {
+			const group = columnGroups.find(g => g.columnIds.map(String).includes(colId));
+			if (group) {
+				const span = groupColSpans[String(group.name)] ?? 1;
+				const gridColStart = prefixColCount + colIdx + 1;
+				const gridColEnd = gridColStart + span;
+				cells.push(
+					<div
+						key={String(group.name) + colIdx}
+						className="rdt_groupCell"
+						style={{
+							gridColumn: `${gridColStart} / ${gridColEnd}`,
+							gridRow: '1',
+							...(group.align && group.align !== 'center'
+								? { justifyContent: group.align === 'right' ? 'flex-end' : 'flex-start' }
+								: undefined),
+						}}
+					>
+						{group.name}
+					</div>,
+				);
+				colIdx += span;
+			} else {
+				colIdx++;
+			}
+		}
+	}
+	return cells;
+}
+
+// ---------------------------------------------------------------------------
+// Legacy flex-row helper — used when there are no columnGroups.
 // ---------------------------------------------------------------------------
 function buildGroupCells<T>(
 	visibleColumns: TableColumn<T>[],
@@ -46,14 +131,10 @@ function buildGroupCells<T>(
 			if (group) {
 				const span = groupColSpans[String(group.name)] ?? 1;
 				const childCols = visibleColumns.slice(colIdx, colIdx + span);
-
-				// Sum flex-grow across child columns so the group header aligns exactly.
 				const totalGrow = childCols.reduce((sum, c) => {
 					const s = buildCellStyle(c);
 					return sum + (typeof s.flexGrow === 'number' ? s.flexGrow : 1);
 				}, 0);
-
-				// For fully fixed-width groups, sum the pixel values instead.
 				const groupStyle: React.CSSProperties = childCols.every(c => c.width)
 					? { flex: `0 0 ${childCols.reduce((sum, c) => sum + parseFloat(c.width!), 0)}px`, minWidth: 0 }
 					: { flex: `${totalGrow} 0 0`, minWidth: 0 };
@@ -73,11 +154,8 @@ function buildGroupCells<T>(
 			}
 		}
 	}
-
 	return cells;
 }
-
-// ---------------------------------------------------------------------------
 
 function DataTableHead<T>({
 	columns,
@@ -138,6 +216,99 @@ function DataTableHead<T>({
 
 	const prefixColCount = (selectableRows ? 1 : 0) + (expandableRows && !expandableRowsHideExpander ? 1 : 0);
 
+	// ── Shared column props ──────────────────────────────────────────────────
+	const colProps = (column: TableColumn<T>) => ({
+		column,
+		selectedColumn,
+		disabled: progressPending || sortedData.length === 0,
+		pagination,
+		paginationServer,
+		persistSelectedOnSort,
+		selectableRowsVisibleOnly,
+		sortDirection,
+		sortIcon,
+		sortServer,
+		filterValue: filterValues[column.id!] ?? '',
+		resizedWidth: columnWidths[column.id!],
+		onSort,
+		onFilterChange,
+		onResizeStart: resizable ? onResizeStart : undefined,
+		onDragStart,
+		onDragOver,
+		onDragEnd,
+		onDragEnter,
+		onDragLeave,
+		draggingColumnId,
+	});
+
+	// ── CSS Grid layout (when columnGroups are present) ──────────────────────
+	if (hasGroups) {
+		const gridTemplateColumns = buildGridTemplateColumns(visibleColumns, prefixColCount, columnWidths);
+
+		// Expander column index (1-based grid column)
+		let expanderGridCol = 0;
+		if (selectableRows) expanderGridCol = 2;
+		else if (expandableRows && !expandableRowsHideExpander) expanderGridCol = 1;
+
+		return (
+			<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
+				<div
+					className={['rdt_headGrid', dense && 'rdt_headGridDense'].filter(Boolean).join(' ')}
+					role="presentation"
+					style={{ gridTemplateColumns }}
+				>
+					{/* ── Prefix cells — span both grid rows ── */}
+					{selectableRows && (
+						<div style={{ gridColumn: '1', gridRow: '1 / span 2', display: 'flex', alignItems: 'stretch' }}>
+							{showSelectAll ? <CellBase style={{ flex: '0 0 48px', width: '100%' }} /> : <ColumnCheckbox />}
+						</div>
+					)}
+					{expandableRows && !expandableRowsHideExpander && (
+						<div
+							style={{
+								gridColumn: String(expanderGridCol),
+								gridRow: '1 / span 2',
+								display: 'flex',
+								alignItems: 'stretch',
+							}}
+						>
+							<ColumnExpander />
+						</div>
+					)}
+
+					{/*
+					 * ── Column header cells ──
+					 * Rendered BEFORE group label cells in the DOM so that the CSS adjacent-
+					 * sibling selector (.rdt_cellBaseHead + .rdt_cellBaseHead::before) is not
+					 * broken by group cells appearing between column cells in DOM order.
+					 * Visual placement is controlled entirely by gridColumn / gridRow.
+					 */}
+					{visibleColumns.map((column, visIdx) => {
+						const gridCol = prefixColCount + visIdx + 1;
+						const isUngrouped = ungroupedIds.has(String(column.id));
+						// In grid mode the track width controls layout — resizedWidth inline styles
+						// would conflict with grid-template-columns, so we strip it here.
+						const { resizedWidth: _skip, ...rest } = colProps(column);
+						return (
+							<Column
+								key={column.id}
+								{...rest}
+								gridStyle={{
+									gridColumn: String(gridCol),
+									gridRow: isUngrouped ? '1 / span 2' : '2',
+								}}
+							/>
+						);
+					})}
+
+					{/* ── Group label cells (row 1) — rendered last in DOM ── */}
+					{buildGroupHeaderCells(visibleColumns, columnGroups!, ungroupedIds, groupColSpans, prefixColCount)}
+				</div>
+			</Head>
+		);
+	}
+
+	// ── Standard two-row flex layout (no columnGroups) ──────────────────────
 	return (
 		<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
 			{hasGroups && (
@@ -157,30 +328,7 @@ function DataTableHead<T>({
 				{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
 
 				{columns.map(column => (
-					<Column
-						key={column.id}
-						column={column}
-						selectedColumn={selectedColumn}
-						disabled={progressPending || sortedData.length === 0}
-						pagination={pagination}
-						paginationServer={paginationServer}
-						persistSelectedOnSort={persistSelectedOnSort}
-						selectableRowsVisibleOnly={selectableRowsVisibleOnly}
-						sortDirection={sortDirection}
-						sortIcon={sortIcon}
-						sortServer={sortServer}
-						filterValue={filterValues[column.id!] ?? ''}
-						resizedWidth={columnWidths[column.id!]}
-						onSort={onSort}
-						onFilterChange={onFilterChange}
-						onResizeStart={resizable ? onResizeStart : undefined}
-						onDragStart={onDragStart}
-						onDragOver={onDragOver}
-						onDragEnd={onDragEnd}
-						onDragEnter={onDragEnter}
-						onDragLeave={onDragLeave}
-						draggingColumnId={draggingColumnId}
-					/>
+					<Column key={column.id} {...colProps(column)} />
 				))}
 			</HeadRow>
 		</Head>

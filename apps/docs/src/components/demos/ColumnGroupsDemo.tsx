@@ -46,5 +46,5 @@ const columnGroups: ColumnGroup[] = [
 ];
 
 export default function ColumnGroupsDemo() {
-	return <DataTable columns={columns} data={data} columnGroups={columnGroups} highlightOnHover columnSeparator />;
+	return <DataTable columns={columns} data={data} columnGroups={columnGroups} highlightOnHover />;
 }

@@ -202,6 +202,8 @@ export interface ColumnGroup {
 	name: string | React.ReactNode;
 	/** The column ids that fall under this group */
 	columnIds: (string | number)[];
+	/** Horizontal alignment of the group label. Defaults to 'center'. */
+	align?: 'left' | 'center' | 'right';
 }
 
 export interface ConditionalStyles<T> {

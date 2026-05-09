@@ -351,35 +351,73 @@
 	background-color: var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
 }
 
-/* ─── Column group header row ───────────────────────────────────────────────── */
-.rdt_groupRow {
+/* ─── Column group header — CSS Grid layout ─────────────────────────────────
+ *
+ * When columnGroups are present, DataTableHead renders a single CSS grid
+ * container (rdt_headGrid) instead of two stacked flex rows.
+ *
+ * Grid rows:  row 1 = group labels (compact)
+ *             row 2 = column header cells
+ *
+ * Ungrouped column headers get grid-row: 1 / span 2 — they physically
+ * occupy both rows and look taller, making it immediately clear they
+ * belong to no group. Named group labels sit above the columns they cover.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+.rdt_headGrid {
+	display: grid;
+	grid-template-rows: 52px 52px;
+	width: 100%;
+	background-color: var(--rdt-color-bg, #fff);
 	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+	/* Full-width 1px divider between the group label row (row 1) and the column
+	   header row (row 2). Drawn as a background-image gradient so it spans
+	   the full container width even where ungrouped columns span both rows. */
+	background-image: linear-gradient(
+		to bottom,
+		transparent 51px,
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 51px,
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 52px,
+		transparent 52px
+	);
+	/* grid-template-columns is set inline from the column definitions */
+}
+
+.rdt_headGridDense {
+	grid-template-rows: 32px 32px;
+	background-image: linear-gradient(
+		to bottom,
+		transparent 31px,
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 31px,
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 32px,
+		transparent 32px
+	);
 }
 
 .rdt_groupCell {
-	display: inline-flex;
+	position: relative;
+	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 0 16px;
 	font-size: 11px;
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.04em;
-	padding: 0 8px;
-	min-height: 28px;
+	letter-spacing: 0.05em;
 	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
-	border-right: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 	box-sizing: border-box;
-	/* Flex sizing is set inline (flex: span 0 0) to match child column proportions */
-	flex-shrink: 0;
-	flex-basis: 0;
 }
 
-.rdt_groupCell:last-child {
-	border-right: none;
-}
-
-.rdt_groupCellSpacer {
-	background: transparent;
+/* Group label separators — same inset style as column header separators */
+.rdt_groupCell + .rdt_groupCell::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 20%;
+	height: 60%;
+	width: 1px;
+	background: var(--rdt-col-sep-color, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
+	pointer-events: none;
 }
 
 
