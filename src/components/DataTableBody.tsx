@@ -2,7 +2,7 @@ import * as React from 'react';
 import Body from './TableBody';
 import Row from './TableRow';
 import NoData from './NoDataWrapper';
-import { prop, isEmpty, isRowSelected } from '../util';
+import { prop, isEmpty } from '../util';
 import { TableRow, RowState } from '../types';
 import { useRowContext } from '../context/RowContext';
 
@@ -57,6 +57,11 @@ function DataTableBody<T>({
 	const { expandableRows } = useRowContext<T>();
 	const hasData = sortedData.length > 0;
 
+	const selectedIdSet = React.useMemo(
+		() => new Set(selectedRows.map(r => prop(r as TableRow, keyField) as string | number)),
+		[selectedRows, keyField],
+	);
+
 	return (
 		<>
 			{/* Empty + not loading */}
@@ -78,7 +83,7 @@ function DataTableBody<T>({
 						{tableRows.map((row, i) => {
 							const key = prop(row as TableRow, keyField) as string | number;
 							const id = isEmpty(key) ? i : key;
-							const selected = isRowSelected(row, selectedRows, keyField);
+							const selected = isEmpty(key) ? selectedRows.includes(row) : selectedIdSet.has(key);
 							const defaultExpanded = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
 							const defaultExpanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
 
