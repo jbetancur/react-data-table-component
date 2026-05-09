@@ -117,6 +117,7 @@ type BaseTableProps<T> = {
 	noTableHead?: boolean;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
+	onRowMiddleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
 	/** Enable drag-to-resize handles on column headers */

@@ -49,6 +49,7 @@ function Row<T>({
 		keyField,
 		onRowClicked,
 		onRowDoubleClicked,
+		onRowMiddleClicked,
 		onRowMouseEnter,
 		onRowMouseLeave,
 		onRowExpandToggled,
@@ -114,6 +115,16 @@ function Row<T>({
 		[defaultExpanderDisabled, expandOnRowDoubleClicked, expandableRows, handleExpanded, onRowDoubleClicked, row],
 	);
 
+	const handleRowAuxClick = React.useCallback(
+		(e: React.MouseEvent<HTMLDivElement>) => {
+			const target = e.target as HTMLDivElement;
+			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
+				onRowMiddleClicked(row, e);
+			}
+		},
+		[onRowMiddleClicked, row],
+	);
+
 	const handleRowMouseEnter = React.useCallback(
 		(e: React.MouseEvent<Element, MouseEvent>) => onRowMouseEnter(row, e),
 		[onRowMouseEnter, row],
@@ -166,6 +177,7 @@ function Row<T>({
 				onClick={handleRowClick}
 				onKeyDown={handleKeyDown}
 				onDoubleClick={handleRowDoubleClick}
+				onAuxClick={handleRowAuxClick}
 				onMouseEnter={handleRowMouseEnter}
 				onMouseLeave={handleRowMouseLeave}
 			>

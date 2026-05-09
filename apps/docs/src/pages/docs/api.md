@@ -122,8 +122,9 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 
 | Prop | Type | Description |
 |---|---|---|
-| `onRowClicked` | `(row, event) => void` | Called when a row is clicked. |
+| `onRowClicked` | `(row, event) => void` | Called when a row is left-clicked. |
 | `onRowDoubleClicked` | `(row, event) => void` | Called when a row is double-clicked. |
+| `onRowMiddleClicked` | `(row, event) => void` | Called when a row is middle-clicked (scroll-click). Use with `onRowClicked` to implement open-in-new-tab behaviour. |
 | `onRowMouseEnter` | `(row, event) => void` | Called when the pointer enters a row. |
 | `onRowMouseLeave` | `(row, event) => void` | Called when the pointer leaves a row. |
 
