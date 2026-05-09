@@ -24,6 +24,7 @@ export interface HeadContextValue<T> {
 	showSelectAll: boolean;
 	// Column resize / drag
 	draggingColumnId: string | number;
+	draggingGroupKey: string;
 	filterValues: Record<string | number, FilterState>;
 	columnWidths: Record<string | number, number>;
 	resizable: boolean;
@@ -42,6 +43,10 @@ export interface HeadContextValue<T> {
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

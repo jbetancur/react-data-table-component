@@ -100,6 +100,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
+		onColumnGroupOrderChange,
 		columnGroups,
 		filterValues: controlledFilterValues,
 		onFilterChange: onFilterChangeProp,
@@ -138,15 +139,28 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 	const {
 		tableColumns,
+		tableGroups,
 		draggingColumnId,
+		draggingGroupKey,
 		handleDragStart,
 		handleDragEnter,
 		handleDragOver,
 		handleDragLeave,
 		handleDragEnd,
+		handleGroupDragStart,
+		handleGroupDragEnter,
+		handleGroupDragOver,
+		handleGroupDragEnd,
 		defaultSortDirection,
 		defaultSortColumn,
-	} = useColumns(columns, onColumnOrderChange, defaultSortFieldId, defaultSortAsc);
+	} = useColumns(
+		columns,
+		onColumnOrderChange,
+		onColumnGroupOrderChange,
+		columnGroups,
+		defaultSortFieldId,
+		defaultSortAsc,
+	);
 
 	const {
 		tableState,
@@ -280,6 +294,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		fixedHeader,
 		dense,
 		draggingColumnId,
+		draggingGroupKey,
 		filterValues,
 		columnWidths,
 		resizable,
@@ -303,6 +318,10 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onDragEnd: handleDragEnd,
 		onDragEnter: handleDragEnter,
 		onDragLeave: handleDragLeave,
+		onGroupDragStart: handleGroupDragStart,
+		onGroupDragEnter: handleGroupDragEnter,
+		onGroupDragOver: handleGroupDragOver,
+		onGroupDragEnd: handleGroupDragEnd,
 	});
 
 	const sepClass =
@@ -345,7 +364,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 									{showTableHead && (
 										<DataTableHead
 											columns={tableColumns}
-											columnGroups={columnGroups}
+											columnGroups={tableGroups.length ? tableGroups : columnGroups}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
 											expandableRowsHideExpander={expandableRowsHideExpander}

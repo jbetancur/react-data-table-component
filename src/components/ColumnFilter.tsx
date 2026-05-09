@@ -128,8 +128,10 @@ export default function ColumnFilter({
 	onFilterChange,
 }: ColumnFilterProps): JSX.Element {
 	const [open, setOpen] = React.useState(false);
+	const [panelPos, setPanelPos] = React.useState<{ top: number; left: number } | null>(null);
 	const [pending, setPending] = React.useState<FilterState>(() => filterValue ?? emptyFilterState(filterType));
 	const containerRef = React.useRef<HTMLDivElement>(null);
+	const buttonRef = React.useRef<HTMLButtonElement>(null);
 
 	// Sync pending state when the applied filter changes externally (e.g. controlled mode reset)
 	const prevApplied = React.useRef(filterValue);
@@ -149,7 +151,12 @@ export default function ColumnFilter({
 		firstFocusable?.focus();
 
 		function handleClick(e: MouseEvent) {
-			if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+			if (
+				containerRef.current &&
+				!containerRef.current.contains(e.target as Node) &&
+				panelRef.current &&
+				!panelRef.current.contains(e.target as Node)
+			) {
 				setOpen(false);
 			}
 		}
@@ -206,12 +213,22 @@ export default function ColumnFilter({
 	return (
 		<div ref={containerRef} className="rdt_filterContainer">
 			<button
+				ref={buttonRef}
 				type="button"
 				className={['rdt_filterIcon', isActive && 'rdt_filterIconActive'].filter(Boolean).join(' ')}
 				aria-label={isActive ? 'Filter active' : 'Filter column'}
 				aria-pressed={open}
 				onClick={e => {
 					e.stopPropagation();
+					if (!open && buttonRef.current) {
+						const rect = buttonRef.current.getBoundingClientRect();
+						const panelMinWidth = 260;
+						const fitsRight = rect.left + panelMinWidth <= window.innerWidth - 8;
+						setPanelPos({
+							top: rect.bottom + 4,
+							left: fitsRight ? rect.left : rect.right - panelMinWidth,
+						});
+					}
 					setOpen(v => !v);
 				}}
 			>
@@ -221,8 +238,14 @@ export default function ColumnFilter({
 				{isActive && <span className="rdt_filterDot" />}
 			</button>
 
-			{open && (
-				<div ref={panelRef} className="rdt_filterPanel" role="dialog" aria-label="Column filter">
+			{open && panelPos && (
+				<div
+					ref={panelRef}
+					className="rdt_filterPanel"
+					role="dialog"
+					aria-label="Column filter"
+					style={{ position: 'fixed', top: panelPos.top, left: panelPos.left }}
+				>
 					<ConditionRow condition={pending.condition1} filterType={filterType} onChange={handleCondition1Change} />
 
 					{pending.condition2 ? (

@@ -29,6 +29,14 @@ export function buildGridTemplateColumns<T>(
 	return tracks.join(' ');
 }
 
+export interface GroupDragProps {
+	draggingGroupKey: string;
+	onGroupDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+}
+
 /**
  * Builds the group label cells for row 1 of the CSS grid.
  * Rendered AFTER column header cells in the DOM so that the CSS + sibling
@@ -42,6 +50,7 @@ export function buildGroupHeaderCells<T>(
 	ungroupedIds: Set<string>,
 	groupColSpans: Record<string, number>,
 	prefixColCount: number,
+	groupDragProps?: GroupDragProps,
 ): React.ReactNode[] {
 	const cells: React.ReactNode[] = [];
 	let colIdx = 0;
@@ -59,19 +68,30 @@ export function buildGroupHeaderCells<T>(
 				const span = groupColSpans[String(group.name)] ?? 1;
 				const gridColStart = prefixColCount + colIdx + 1;
 				const gridColEnd = gridColStart + span;
+				const groupKey = String(group.columnIds[0]);
+				const isDragging = groupDragProps?.draggingGroupKey === groupKey;
 				cells.push(
 					<div
-						key={String(group.name) + colIdx}
-						className="rdt_groupCell"
+						key={groupKey}
+						className={['rdt_groupCell', group.reorder && 'rdt_groupCellReorder', isDragging && 'rdt_groupCellDragging']
+							.filter(Boolean)
+							.join(' ')}
+						draggable={group.reorder || undefined}
+						data-group-key={group.reorder ? groupKey : undefined}
+						onDragStart={group.reorder ? groupDragProps?.onGroupDragStart : undefined}
+						onDragEnter={group.reorder ? groupDragProps?.onGroupDragEnter : undefined}
+						onDragOver={group.reorder ? groupDragProps?.onGroupDragOver : undefined}
+						onDragEnd={group.reorder ? groupDragProps?.onGroupDragEnd : undefined}
 						style={{
 							gridColumn: `${gridColStart} / ${gridColEnd}`,
 							gridRow: '1',
+							...(isDragging ? { opacity: 0.5 } : undefined),
 							...(group.align && group.align !== 'center'
 								? { justifyContent: group.align === 'right' ? 'flex-end' : 'flex-start' }
 								: undefined),
 						}}
 					>
-						{group.name}
+						{group.reorder ? <span style={{ pointerEvents: 'none' }}>{group.name}</span> : group.name}
 					</div>,
 				);
 				colIdx += span;

@@ -128,6 +128,24 @@ function TableCol<T>({
 
 	const isDragging = equalizeId(column.id, draggingColumnId);
 
+	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+		if (column.reorder && typeof column.name === 'string') {
+			e.dataTransfer.effectAllowed = 'move';
+			const el = e.currentTarget as HTMLDivElement;
+			const rect = el.getBoundingClientRect();
+			const ghost = document.createElement('div');
+			ghost.className = 'rdt_dragGhost';
+			// Grip icon + column name
+			ghost.innerHTML = `<span class="rdt_dragGhostIcon" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><circle cx="5" cy="3.5" r="1.2"/><circle cx="11" cy="3.5" r="1.2"/><circle cx="5" cy="8" r="1.2"/><circle cx="11" cy="8" r="1.2"/><circle cx="5" cy="12.5" r="1.2"/><circle cx="11" cy="12.5" r="1.2"/></svg></span><span class="rdt_dragGhostLabel">${column.name}</span>`;
+			ghost.style.width = `${rect.width}px`;
+			ghost.style.height = `${rect.height}px`;
+			document.body.appendChild(ghost);
+			e.dataTransfer.setDragImage(ghost, e.clientX - rect.left, e.clientY - rect.top);
+			setTimeout(() => document.body.removeChild(ghost), 0);
+		}
+		onDragStart(e);
+	};
+
 	// Width: resized > column.width > auto from flex
 	const widthStyle =
 		resizedWidth != null
@@ -157,7 +175,7 @@ function TableCol<T>({
 				position: 'relative',
 				...gridStyle,
 			}}
-			onDragStart={onDragStart}
+			onDragStart={handleDragStart}
 			onDragOver={onDragOver}
 			onDragEnd={onDragEnd}
 			onDragEnter={onDragEnter}

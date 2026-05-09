@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DraggableColumnsDemo from '../../components/demos/DraggableColumnsDemo.tsx';
+import DraggableGroupsDemo from '../../components/demos/DraggableGroupsDemo.tsx';
 ---
 
 <DocsLayout title="Column reordering | react-data-table-component">
@@ -108,15 +109,74 @@ export default function App() {
   );
 }`} />
 
-  <h2>Column groups</h2>
+  <h2>Reordering column groups</h2>
 
-  <div class="not-prose my-4 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
-    <p class="font-semibold mb-1">⚠ <code>reorder</code> and <code>columnGroups</code> are incompatible</p>
-    <p>
-      Column groups are defined by static <code>columnIds</code> arrays. Dragging a column
-      out from under a group header does not update those arrays, so the spanning header
-      will cover the wrong columns. Do not use <code>reorder: true</code> on columns that
-      are part of a <code>columnGroups</code> configuration.
-    </p>
-  </div>
+  <p>
+    When using <code>columnGroups</code>, set <code>reorder: true</code> on each group
+    instead of on individual columns. Dragging a group header moves all of its member
+    columns as a single block, keeping spans intact. Use <code>onColumnGroupOrderChange</code>
+    to receive both the new group order and the matching column array.
+  </p>
+
+  <Demo
+    title="Drag to reorder groups"
+    description="Grab a group header (Employee or Compensation) and drag it to swap the two groups."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn, type ColumnGroup } from 'react-data-table-component';
+
+const columns: TableColumn<Row>[] = [
+  { id: 'first', name: 'First name',  selector: r => r.firstName,  sortable: true },
+  { id: 'last',  name: 'Last name',   selector: r => r.lastName,   sortable: true },
+  { id: 'dept',  name: 'Department',  selector: r => r.department, sortable: true },
+  { id: 'base',  name: 'Base salary', selector: r => r.baseSalary, sortable: true, right: true,
+    format: r => \`$\${r.baseSalary.toLocaleString()}\` },
+  { id: 'bonus', name: 'Bonus',       selector: r => r.bonus,      sortable: true, right: true,
+    format: r => \`$\${r.bonus.toLocaleString()}\` },
+];
+
+const initialGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], reorder: true },
+  { name: 'Compensation', columnIds: ['base', 'bonus'],         reorder: true },
+];
+
+export default function App() {
+  const [cols, setCols]     = useState(columns);
+  const [groups, setGroups] = useState(initialGroups);
+
+  return (
+    <DataTable
+      columns={cols}
+      data={data}
+      columnGroups={groups}
+      onColumnOrderChange={setCols}
+      onColumnGroupOrderChange={(nextGroups, nextCols) => {
+        setGroups(nextGroups);
+        setCols(nextCols);
+      }}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <DraggableGroupsDemo client:load />
+  </Demo>
+
+  <p>
+    You can combine both — set <code>reorder: true</code> on columns AND on groups.
+    Column drag is automatically restricted to within the same group, so spans stay correct.
+    Group drag moves the entire block. This mirrors the AG Grid reorder experience.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
+  { id: 'first', name: 'First name',  selector: r => r.firstName,  sortable: true, reorder: true },
+  { id: 'last',  name: 'Last name',   selector: r => r.lastName,   sortable: true, reorder: true },
+  { id: 'dept',  name: 'Department',  selector: r => r.department, sortable: true, reorder: true },
+  { id: 'base',  name: 'Base salary', selector: r => r.baseSalary, sortable: true, reorder: true },
+  { id: 'bonus', name: 'Bonus',       selector: r => r.bonus,      sortable: true, reorder: true },
+];
+
+const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], reorder: true },
+  { name: 'Compensation', columnIds: ['base', 'bonus'],         reorder: true },
+];`} />
 </DocsLayout>

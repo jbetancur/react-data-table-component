@@ -5,7 +5,12 @@ import Column from './TableCol';
 import ColumnCheckbox from './TableColCheckbox';
 import ColumnExpander from './TableColExpander';
 import { CellBase } from './Cell';
-import { buildGridTemplateColumns, buildGroupHeaderCells, buildGroupCells } from './dataTableHeadHelpers';
+import {
+	buildGridTemplateColumns,
+	buildGroupHeaderCells,
+	buildGroupCells,
+	type GroupDragProps,
+} from './dataTableHeadHelpers';
 import { TableColumn, ColumnGroup } from '../types';
 import { emptyFilterState } from '../hooks/useColumnFilter';
 import { useHeadContext } from '../context/HeadContext';
@@ -40,6 +45,7 @@ function DataTableHead<T>({
 		fixedHeader,
 		dense,
 		draggingColumnId,
+		draggingGroupKey,
 		filterValues,
 		columnWidths,
 		resizable,
@@ -51,10 +57,62 @@ function DataTableHead<T>({
 		onDragEnd,
 		onDragEnter,
 		onDragLeave,
+		onGroupDragStart,
+		onGroupDragEnter,
+		onGroupDragOver,
+		onGroupDragEnd,
 	} = useHeadContext<T>();
+
+	const groupDragProps: GroupDragProps = {
+		draggingGroupKey,
+		onGroupDragStart,
+		onGroupDragEnter,
+		onGroupDragOver,
+		onGroupDragEnd,
+	};
 
 	const visibleColumns = columns.filter(c => !c.omit);
 	const hasGroups = columnGroups && columnGroups.length > 0;
+
+	// ── FLIP animation for column/group reorder ──────────────────────────────
+	const containerRef = React.useRef<HTMLDivElement>(null);
+	const savedPositions = React.useRef<Map<string, number>>(new Map());
+	const columnOrder = React.useMemo(() => visibleColumns.map(c => c.id).join(','), [visibleColumns]);
+	const groupOrder = React.useMemo(() => (columnGroups ?? []).map(g => g.columnIds[0]).join(','), [columnGroups]);
+
+	React.useLayoutEffect(() => {
+		const container = containerRef.current;
+		if (!container) return;
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		const tryFlip = (el: HTMLElement, key: string) => {
+			const newLeft = el.getBoundingClientRect().left;
+			const prevLeft = savedPositions.current.get(key);
+			savedPositions.current.set(key, newLeft);
+			if (reducedMotion || prevLeft == null || Math.abs(prevLeft - newLeft) < 1) return;
+
+			const delta = prevLeft - newLeft;
+			el.style.transform = `translateX(${delta}px)`;
+			el.style.transition = 'none';
+			el.getBoundingClientRect(); // force reflow
+			el.style.transition = 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)';
+			el.style.transform = '';
+			const onEnd = () => {
+				el.style.transform = '';
+				el.style.transition = '';
+				el.removeEventListener('transitionend', onEnd);
+			};
+			el.addEventListener('transitionend', onEnd);
+		};
+
+		container.querySelectorAll<HTMLElement>('[data-column-id]').forEach(el => {
+			tryFlip(el, `col:${el.dataset.columnId}`);
+		});
+		container.querySelectorAll<HTMLElement>('[data-group-key]').forEach(el => {
+			tryFlip(el, `grp:${el.dataset.groupKey}`);
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [columnOrder, groupOrder]);
 
 	// Count of non-omitted columns each group spans
 	const groupColSpans = React.useMemo(() => {
@@ -114,6 +172,7 @@ function DataTableHead<T>({
 		return (
 			<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
 				<div
+					ref={containerRef}
 					className={['rdt_headGrid', dense && 'rdt_headGridDense'].filter(Boolean).join(' ')}
 					role="presentation"
 					style={{ gridTemplateColumns }}
@@ -163,7 +222,14 @@ function DataTableHead<T>({
 					})}
 
 					{/* ── Group label cells (row 1) — rendered last in DOM ── */}
-					{buildGroupHeaderCells(visibleColumns, columnGroups!, ungroupedIds, groupColSpans, prefixColCount)}
+					{buildGroupHeaderCells(
+						visibleColumns,
+						columnGroups!,
+						ungroupedIds,
+						groupColSpans,
+						prefixColCount,
+						groupDragProps,
+					)}
 				</div>
 			</Head>
 		);
@@ -183,7 +249,7 @@ function DataTableHead<T>({
 					{buildGroupCells(visibleColumns, columnGroups!, ungroupedIds, groupColSpans)}
 				</HeadRow>
 			)}
-			<HeadRow className="rdt_TableHeadRow" role="row" $dense={dense}>
+			<HeadRow ref={containerRef} className="rdt_TableHeadRow" role="row" $dense={dense}>
 				{selectableRows && (showSelectAll ? <CellBase style={{ flex: '0 0 48px' }} /> : <ColumnCheckbox />)}
 
 				{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
