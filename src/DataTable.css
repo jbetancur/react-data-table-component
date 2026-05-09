@@ -137,9 +137,9 @@
 	word-break: break-word;
 }
 
-/* Header column separators — always on by default.
+/* Header column separators. Always on by default.
    Inset 60%-height pseudo-element: visual rhythm without a hard grid line.
-   Excluded from group-row cells — those use border-right instead. */
+   Group-row cells are excluded; those use border-right instead. */
 .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before {
 	content: '';
 	position: absolute;
@@ -151,8 +151,7 @@
 	pointer-events: none;
 }
 
-/* Body column separators — opt-in via prop.
-   Subtle: same inset 60%-height as headers. */
+/* Body column separators. Subtle inset 60%-height variant. */
 .rdt_colSeparator .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before {
 	content: '';
 	position: absolute;
@@ -677,7 +676,8 @@
 	right: 0;
 	color: inherit;
 	position: absolute;
-	fill: currentColor;
+	fill: none;
+	stroke: currentColor;
 	width: 24px;
 	height: 24px;
 	display: inline-block;
