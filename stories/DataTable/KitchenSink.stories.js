@@ -1,8 +1,8 @@
 import React from 'react';
-import Icon1 from '@material-ui/icons/ReplyAll';
-import Icon2 from '@material-ui/icons/Markunread';
-import Icon3 from '@material-ui/icons/CloudDownload';
-import TextField from '@material-ui/core/TextField';
+import Icon1 from '@mui/icons-material/ReplyAll';
+import Icon2 from '@mui/icons-material/Markunread';
+import Icon3 from '@mui/icons-material/CloudDownload';
+import TextField from '@mui/material/TextField';
 import data from '../constants/sampleMovieData';
 import DataTable, { Alignment, Direction } from '../../src/index';
 

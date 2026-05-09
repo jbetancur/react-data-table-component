@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@material-ui/icons/Apps';
+import Icon from '@mui/icons-material/Apps';
 import DataTable from '../../src/index';
 import CustomMaterialMenu from '../shared/CustomMaterialMenu';
 

@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import visualizer from 'rollup-plugin-visualizer';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 
 export const plugins = [
 	resolve({
@@ -13,7 +13,7 @@ export const plugins = [
 		include: 'node_modules/**',
 	}),
 	visualizer(),
-	typescript(),
+	typescript({ tsconfig: './tsconfig.json' }),
 ];
 
 export default {
