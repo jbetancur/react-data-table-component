@@ -305,12 +305,9 @@
 	pointer-events: none;
 }
 
-/* Panel — opens below the filter icon */
+/* Panel — position is set inline (fixed, coords from getBoundingClientRect) */
 .rdt_filterPanel {
-	position: absolute;
-	top: calc(100% + 4px);
-	left: 0;
-	z-index: 20;
+	z-index: 9999;
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
@@ -455,6 +452,81 @@
 	background-color: #1565c0;
 }
 
+/* Drag ghost — custom image shown while dragging a reorderable column */
+.rdt_dragGhost {
+	position: fixed;
+	top: -9999px;
+	left: -9999px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 16px;
+	box-sizing: border-box;
+	background: var(--rdt-color-bg, #fff);
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+	pointer-events: none;
+	opacity: 0.96;
+}
+
+.rdt_dragGhostIcon {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	opacity: 0.45;
+}
+
+.rdt_dragGhostLabel {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Draggable column headers — reorder: true */
+.rdt_TableCol[draggable='true'] {
+	cursor: grab;
+	user-select: none;
+}
+
+.rdt_TableCol[draggable='true']:active {
+	cursor: grabbing;
+}
+
+/* ─── Column / group drag-drop indicator ────────────────────────────────────── */
+.rdt_dropIndicator {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background: var(--rdt-color-drop-line, #22c55e);
+	pointer-events: none;
+	z-index: 20;
+}
+
+.rdt_dropIndicator::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 8px;
+	height: 8px;
+	background: var(--rdt-color-drop-line, #22c55e);
+	border-radius: 50%;
+}
+
+.rdt_dropIndicatorLeft {
+	left: 0;
+}
+
+.rdt_dropIndicatorRight {
+	right: 0;
+}
+
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
 .rdt_resizeHandle {
 	position: absolute;
@@ -530,6 +602,15 @@
 }
 
 /* Group label separators — same inset style as column header separators */
+.rdt_groupCellReorder {
+	cursor: grab;
+	user-select: none;
+}
+
+.rdt_groupCellDragging {
+	cursor: grabbing;
+}
+
 .rdt_groupCell + .rdt_groupCell::before {
 	content: '';
 	position: absolute;
@@ -973,4 +1054,6 @@
 		animation: none !important;
 		transition: none !important;
 	}
+
+	/* Column reorder FLIP animations are skipped via JS matchMedia check */
 }

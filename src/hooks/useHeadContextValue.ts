@@ -23,6 +23,7 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 			options.fixedHeader,
 			options.dense,
 			options.draggingColumnId,
+			options.draggingGroupKey,
 			options.filterValues,
 			options.columnWidths,
 			options.resizable,
@@ -46,6 +47,10 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 			options.onDragEnd,
 			options.onDragEnter,
 			options.onDragLeave,
+			options.onGroupDragStart,
+			options.onGroupDragEnter,
+			options.onGroupDragOver,
+			options.onGroupDragEnd,
 		],
 	);
 }

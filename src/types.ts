@@ -185,6 +185,8 @@ type BaseTableProps<T> = {
 	/** Called when the user clicks Apply in a column filter popup. */
 	onFilterChange?: (columnId: string | number, filter: FilterState) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
+	/** Called after a group drag reorder with the new group order and matching column order. */
+	onColumnGroupOrderChange?: (nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void;
 	persistTableHead?: boolean;
 	pointerOnHover?: boolean;
 	progressComponent?: React.ReactNode;
@@ -255,6 +257,8 @@ export interface ColumnGroup {
 	columnIds: (string | number)[];
 	/** Horizontal alignment of the group label. Defaults to 'center'. */
 	align?: 'left' | 'center' | 'right';
+	/** Enable drag-to-reorder for this group. Dragging moves all member columns as a block. */
+	reorder?: boolean;
 }
 
 export interface ConditionalStyles<T> {
