@@ -18,7 +18,7 @@ export interface HeadContextValue<T> {
 	allSelected: boolean;
 	selectedRows: T[];
 	visibleRows: T[];
-	selectableRowsComponent: 'input' | React.ReactNode;
+	selectableRowsComponent: 'input' | React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>>;
 	selectableRowsComponentProps: ComponentProps;
 	selectableRowDisabled: RowState<T>;
 	showSelectAll: boolean;

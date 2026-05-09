@@ -9,24 +9,39 @@ title: 'Accessibility | react-data-table-component'
 
 ---
 
+## Labelling the table
+
+Always provide `ariaLabel` so screen readers can identify the table. Without it, assistive technology announces a generic "table" with no context.
+
+```tsx
+<DataTable
+  ariaLabel="Employee directory"
+  columns={columns}
+  data={data}
+/>
+```
+
+---
+
 ## Table structure
 
-The outer table uses semantic `role="table"` with child `role="rowgroup"` and `role="row"` elements, giving screen readers a navigable grid structure.
+The table is built from `div` elements with explicit ARIA roles, giving screen readers a full grid structure.
 
 | Element | Role / attribute |
 | --- | --- |
-| Table wrapper | `role="table"` |
+| Table wrapper | `role="table"`, `aria-label` (from `ariaLabel` prop), `aria-busy` during load |
 | Header section | `role="rowgroup"` |
 | Body section | `role="rowgroup"` |
 | Header row | `role="row"` |
-| Data row | `role="row"` |
+| Data row | `role="row"`, `aria-selected` (when `selectableRows` is enabled) |
 | Data cell | `role="cell"` |
+| Column header | `role="columnheader"` |
 
 ---
 
 ## Sorting
 
-Sortable column headers expose `aria-sort` so screen readers announce the current sort direction.
+Sortable column headers expose `aria-sort` so screen readers announce the current direction.
 
 | State | `aria-sort` value |
 | --- | --- |
@@ -35,13 +50,24 @@ Sortable column headers expose `aria-sort` so screen readers announce the curren
 | Sorted Z → A / high → low | `"descending"` |
 | Column not sortable | attribute omitted |
 
-**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** to toggle the sort direction. Non-sortable headers are removed from the tab order (`tabIndex={-1}`).
+**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** to toggle the sort direction. Non-sortable headers are removed from the tab order.
+
+---
+
+## Row selection
+
+When `selectableRows` is enabled:
+
+- Each data row carries `aria-selected={true|false}` so screen readers announce selection state.
+- The select-all checkbox in the header has `aria-label="Select all rows"`.
+- Per-row checkboxes have `aria-label="Select row {id}"` where `{id}` is the row's key field value.
+- The indeterminate state (some-but-not-all rows selected) is set via the native `indeterminate` DOM property, which screen readers announce correctly.
 
 ---
 
 ## Column filters
 
-Each filterable column header contains a filter toggle button. The popup that opens is a `role="dialog"`.
+Each filterable column header contains a filter toggle button. The popup is a `role="dialog"`.
 
 ### Filter toggle button
 
@@ -57,50 +83,70 @@ Each filterable column header contains a filter toggle button. The popup that op
 | `role` | `"dialog"` |
 | `aria-label` | `"Column filter"` |
 
+Focus moves automatically to the first focusable element (the operator `<select>`) when the panel opens.
+
 **Keyboard interactions inside the panel:**
 
 | Key | Action |
 | --- | --- |
-| **Escape** | Close the panel and return focus to the filter toggle button |
+| **Escape** | Close the panel |
 | **Tab / Shift+Tab** | Move between operator select, value inputs, and action buttons |
 
-Focus moves automatically to the first focusable element (the operator `<select>`) when the panel opens.
+### Controls inside the panel
 
-### Inputs and controls
-
-| Control | `aria-label` |
+| Control | `aria-label` / attribute |
 | --- | --- |
-| Operator `<select>` | `"Filter operator"` |
-| Primary value `<input>` | `"Filter value"` |
-| Secondary value `<input>` (Between) | `"Filter second value"` |
+| Operator `<select>` | `aria-label="Filter operator"` |
+| Primary value `<input>` | `aria-label="Filter value"` |
+| Secondary value `<input>` (Between) | `aria-label="Filter second value"` |
 | AND toggle button | `aria-pressed` reflects active state |
 | OR toggle button | `aria-pressed` reflects active state |
-| Add condition button | `"Add a second filter condition"` |
-| Remove condition button | `"Remove condition"` |
-
----
-
-## Row selection
-
-Selectable rows render a checkbox per row. The select-all checkbox in the header checks or unchecks the visible page. Screen readers announce individual row checkboxes via the row's content.
+| Add condition button | `aria-label="Add a second filter condition"` |
+| Remove condition button | `aria-label="Remove condition"` |
 
 ---
 
 ## Expandable rows
 
-The expand toggle is a button. Its `aria-label` describes the expand/collapse action. Expanded content is rendered inline beneath the row and is announced naturally as part of the document flow.
+The expand toggle is a `<button>` with `aria-label="Expand Row"` or `"Collapse Row"`. Expanded content renders inline beneath the row and is read naturally by screen readers.
+
+**Keyboard**: press **Enter** or **Space** on the expander button to toggle. If `expandOnRowClicked` is set, pressing **Enter** on the row itself also toggles.
+
+---
+
+## Pagination
+
+The pagination controls are wrapped in a `<nav aria-label="Table pagination">`, distinguishing them from other landmarks on the page.
+
+| Button | `aria-label` |
+| --- | --- |
+| First page | `"First Page"` |
+| Previous page | `"Previous Page"` |
+| Next page | `"Next Page"` |
+| Last page | `"Last Page"` |
+
+Disabled buttons have both `disabled` and `aria-disabled="true"`. The rows-per-page `<select>` uses the `rowsPerPageText` option value as its `aria-label`.
+
+---
+
+## Loading and empty states
+
+- While data is loading, the table wrapper carries `aria-busy="true"`. Skeleton rows are `aria-hidden="true"` so they are not read aloud.
+- When a re-fetch overlays existing rows, the overlay is `aria-hidden="true"` and `aria-busy` on the table communicates the busy state.
+- When there is no data to display, the empty-state container has `role="status"` so screen readers announce the "no records" message when it appears.
 
 ---
 
 ## Resize handles
 
-Column resize handles are `aria-hidden="true"` — they are drag-only affordances with no keyboard equivalent, so they are hidden from the accessibility tree.
+Column resize handles are `aria-hidden="true"` — they are drag-only affordances with no keyboard equivalent.
 
 ---
 
 ## Tips for consumers
 
-- **Always provide `id` on filterable columns.** The filter state is keyed by `column.id`; omitting it silently disables filtering and breaks `aria-label` associations.
-- **Use descriptive `name` values.** Column `name` is the visible label announced by screen readers for sortable headers and filter dialogs.
-- **Avoid icon-only column names without labels.** If `column.name` is a React node (e.g. an icon), ensure it includes an accessible label (`aria-label` or `<span className="sr-only">`).
+- **Always provide `ariaLabel`.** Without it, screen readers announce a generic "table" with no context.
+- **Always set `id` on filterable columns.** The filter state is keyed by `column.id`; omitting it silently disables filtering.
+- **Use descriptive `name` values.** Column `name` is the visible label announced for sortable headers and filter dialogs.
+- **Avoid icon-only column names without labels.** If `column.name` is a React node (e.g. an icon), wrap it with an accessible label (`aria-label` or a visually-hidden `<span>`).
 - **Test with a keyboard.** Tab through the header row, sort with Enter, open a filter panel with Enter or Space, navigate inputs with Tab, and close with Escape.

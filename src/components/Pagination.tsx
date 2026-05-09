@@ -100,7 +100,11 @@ function Pagination({
 		['rdt_paginationButton', rtl && 'rdt_paginationButtonRTL'].filter(Boolean).join(' ');
 
 	return (
-		<nav className={['rdt_pagination', 'rdt_Pagination'].join(' ')} style={customStyles.pagination?.style}>
+		<nav
+			className={['rdt_pagination', 'rdt_Pagination'].join(' ')}
+			aria-label="Table pagination"
+			style={customStyles.pagination?.style}
+		>
 			{!options.noRowsPerPage && shouldShow && (
 				<>
 					<span className="rdt_paginationRowLabel">{options.rowsPerPageText}</span>
