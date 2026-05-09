@@ -590,6 +590,47 @@
 	background-color: var(--rdt-color-bg, #fff);
 }
 
+/* ─── Loading states ────────────────────────────────────────────────────────── */
+
+/* Skeleton shimmer pulse */
+@keyframes rdt_shimmer {
+	0%   { background-position: -400px 0; }
+	100% { background-position: 400px 0; }
+}
+
+@keyframes rdt_spin {
+	to { transform: rotate(360deg); }
+}
+
+.rdt_skeletonPulse {
+	background: linear-gradient(
+		90deg,
+		var(--rdt-color-divider, rgba(0,0,0,0.08)) 25%,
+		rgba(255,255,255,0.5) 50%,
+		var(--rdt-color-divider, rgba(0,0,0,0.08)) 75%
+	);
+	background-size: 800px 100%;
+	animation: rdt_shimmer 1.4s ease-in-out infinite;
+}
+
+/* Dim body rows while re-fetching */
+.rdt_bodyBusy {
+	opacity: 0.4;
+	pointer-events: none;
+	user-select: none;
+	transition: opacity 0.15s ease;
+}
+
+/* Semi-transparent overlay with spinner centered over the dimmed rows */
+.rdt_bodyOverlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
 /* ─── Pagination ────────────────────────────────────────────────────────────── */
 .rdt_pagination {
 	display: flex;

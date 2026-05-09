@@ -15,7 +15,7 @@ import ExpandableDemo from '../../components/demos/ExpandableDemo.tsx';
 
   <Demo
     title="Expandable detail panel"
-    description="Click the ▶ button to expand a row. Toggle the checkbox to see the expand animation."
+    description="Click the ▶ button to expand a row. Toggle 'Animate expand' or disable 'Restricted' rows with the checkboxes."
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
@@ -26,28 +26,29 @@ interface Employee {
   department: string;
   salary: number;
   bio: string;
+  locked: boolean;
 }
 
 const data: Employee[] = [
   {
     id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering',
-    salary: 155000,
-    bio: 'Aria leads the platform team, focusing on reliability and developer experience. She joined in 2019 after 4 years at a fintech startup.',
+    salary: 155000, locked: false,
+    bio: 'Aria leads the platform team, focusing on reliability and developer experience.',
   },
   {
     id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product',
-    salary: 132000,
-    bio: 'Marcus drives roadmap strategy across three product lines. Previously at a Series B SaaS company as a senior PM.',
+    salary: 132000, locked: true,
+    bio: 'Marcus drives roadmap strategy across three product lines.',
   },
   {
     id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design',
-    salary: 118000,
-    bio: 'Priya leads the design system and owns the mobile experience. She holds an MFA in interaction design.',
+    salary: 118000, locked: false,
+    bio: 'Priya leads the design system and owns the mobile experience.',
   },
   {
     id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics',
-    salary: 143000,
-    bio: 'Jordan builds ML pipelines for churn prediction and revenue forecasting. PhD in applied mathematics.',
+    salary: 143000, locked: true,
+    bio: 'Jordan builds ML pipelines for churn prediction and revenue forecasting.',
   },
 ];
 
@@ -68,6 +69,7 @@ const ExpandedRow = ({ data: row }: { data: Employee }) => (
 
 export default function App() {
   const [animate, setAnimate] = useState(true);
+  const [disableLocked, setDisableLocked] = useState(false);
 
   return (
     <div>
@@ -75,11 +77,16 @@ export default function App() {
         <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} />
         {' '}Animate expand
       </label>
+      <label>
+        <input type="checkbox" checked={disableLocked} onChange={e => setDisableLocked(e.target.checked)} />
+        {' '}Disable "Restricted" rows
+      </label>
       <DataTable
         columns={columns}
         data={data}
         expandableRows
         expandableRowsComponent={ExpandedRow}
+        expandableRowDisabled={disableLocked ? (r => r.locked) : undefined}
         animateRows={animate}
         highlightOnHover
       />
@@ -144,6 +151,12 @@ export default function App() {
 />`} />
 
   <h2>Controlling which rows are expanded</h2>
+  <p>
+    Use <code>expandableRowExpanded</code> to pre-expand rows on mount. Use
+    <code>expandableRowDisabled</code> to prevent specific rows from being expandable — their
+    expander icon is hidden and clicks are ignored. Toggle "Disable Restricted rows" in the
+    demo above to see this in action.
+  </p>
   <CodeBlock code={`// Pre-expand specific rows on mount
 <DataTable
   expandableRows
