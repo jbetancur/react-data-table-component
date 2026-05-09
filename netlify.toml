@@ -1,12 +1,16 @@
 [build]
-  publish = "storybook-static"
-  command = "npm run lint && npm test && npm run build && npm run build-storybook"
-  install = "npm install --legacy-peer-deps"
+  publish = "apps/docs/dist"
+  command = "npm run build && npm run build --prefix apps/docs"
+
 [build.environment]
-  NODE_VERSION = "24.15.0"
-  DOTENV_DISPLAY_WARNING = "none"
-  STORYBOOK_EXAMPLE_APP ="true"
-  NETLIFY_USE_YARN = "false"
+  NODE_VERSION = "24.0.0"
+
+# Redirect bare /docs to the getting-started page
+[[redirects]]
+  from = "/docs"
+  to = "/docs/getting-started"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
