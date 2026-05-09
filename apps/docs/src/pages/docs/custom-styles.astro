@@ -143,8 +143,6 @@ const customStyles: TableStyles = {
       <tr><td><code>head</code></td><td>Column header area</td></tr>
       <tr><td><code>headRow</code></td><td>Column header row</td></tr>
       <tr><td><code>headCells</code></td><td>Column header cells</td></tr>
-      <tr><td><code>columnGroupHeader</code></td><td>Column group header row cells</td></tr>
-      <tr><td><code>contextMenu</code></td><td>Context menu (shown when rows are selected)</td></tr>
       <tr><td><code>cells</code></td><td>Body cells</td></tr>
       <tr><td><code>rows</code></td><td>Body rows (includes <code>selectedHighlightStyle</code>)</td></tr>
       <tr><td><code>expanderRow</code></td><td>Expanded row container</td></tr>
@@ -193,6 +191,10 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
     For theming that affects the entire table, prefer CSS custom properties via
     <code>createTheme()</code> or by overriding variables directly. See the{' '}
     <a href="/docs/themes">Themes</a> page.
+  </p>
+
+  <p>
+    To replace pagination or expander icons, see the <a href="/docs/icons">Icons</a> page.
   </p>
 
   <h2>Migrating from v7</h2>

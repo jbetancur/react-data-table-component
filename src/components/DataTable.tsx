@@ -106,6 +106,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		resizable = false,
 		animateRows = false,
 		columnSeparator,
+		headerSeparator,
 		className,
 		ariaLabel,
 	} = props;
@@ -291,12 +292,17 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 	const sepClass =
 		columnSeparator === 'full' ? 'rdt_colSeparatorFull' : columnSeparator ? 'rdt_colSeparator' : undefined;
+	const headSepClass =
+		headerSeparator === false ? undefined : headerSeparator === 'full' ? 'rdt_headSeparatorFull' : 'rdt_headSeparator'; // default: true / 'subtle' / omitted all render the subtle separator
 
 	return (
 		<StylesContext.Provider value={tableStyles}>
 			<HeadContext.Provider value={headContextValue}>
 				<RowContext.Provider value={rowContextValue}>
-					<div style={cssVars as React.CSSProperties} className={sepClass}>
+					<div
+						style={cssVars as React.CSSProperties}
+						className={[sepClass, headSepClass].filter(Boolean).join(' ') || undefined}
+					>
 						{showHeader && <Header title={title} actions={actions} />}
 
 						{subHeader && (

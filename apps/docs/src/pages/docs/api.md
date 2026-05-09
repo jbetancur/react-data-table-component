@@ -137,6 +137,27 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `onFilterChange` | `(columnId, value) => void` | - | Called when a column filter input changes. |
 | `onColumnOrderChange` | `(columns) => void` | - | Called after a drag-to-reorder column operation. |
 
+## ColumnGroup
+
+Defines a spanning group header above one or more columns. Pass an array to the `columnGroups` prop.
+
+```ts
+import { type ColumnGroup } from 'react-data-table-component';
+
+const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'] },
+  { name: 'Compensation', columnIds: ['base', 'bonus'], align: 'left' },
+];
+```
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `name` | `ReactNode` | — | **Required.** Group header label. Accepts JSX. |
+| `columnIds` | `(string \| number)[]` | — | **Required.** Ids of columns under this group. Must match each column's `id` exactly. |
+| `align` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal alignment of the group label. |
+
+Columns not listed in any group span the full group-row height with no label.
+
 ## TableColumn\<T\>
 
 ```ts

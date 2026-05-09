@@ -55,26 +55,51 @@ createTheme('ocean', {
     inherit its defaults and only override what you need.
   </p>
   <CodeBlock code={`createTheme('brand', {
-  colors: {
-    text:             { primary: '#1a1a2e', secondary: '#4a4a6a' },
-    background:       { default: '#f0f4ff' },
-    divider:          { default: '#c7d2fe' },
-    selected:         { default: '#e0e7ff', text: '#1a1a2e' },
-    highlightOnHover: { default: '#e8edff', text: '#1a1a2e' },
-    button:           { default: '#4f46e5', hover: '#4338ca', disabled: '#c7d2fe' },
-    striped:          { default: '#f5f7ff', text: '#1a1a2e' },
-  },
+  text:             { primary: '#1a1a2e', secondary: '#4a4a6a' },
+  background:       { default: '#f0f4ff' },
+  divider:          { default: '#c7d2fe' },
+  selected:         { default: '#e0e7ff', text: '#1a1a2e' },
+  highlightOnHover: { default: '#e8edff', text: '#1a1a2e' },
+  button:           { default: '#4f46e5', hover: '#4338ca', disabled: '#c7d2fe' },
+  striped:          { default: '#f5f7ff', text: '#1a1a2e' },
 }); // inherits from 'default'`} lang="ts" />
 
   <h2>CSS variable override</h2>
   <p>
-    Themes compile to CSS custom properties. You can override individual variables
-    without calling <code>createTheme()</code>:
+    Themes compile to CSS custom properties on <code>.rdt_table</code>. You can override
+    any variable without calling <code>createTheme()</code> — scope to a wrapper class
+    to avoid leaking to other tables on the page.
   </p>
   <CodeBlock code={`.my-table {
-  --rdt-color-text-primary: #1a1a2e;
-  --rdt-color-bg-default: #f0f4ff;
+  --rdt-color-text-primary:   #1a1a2e;
+  --rdt-color-bg:             #f0f4ff;
+  --rdt-color-divider:        #c7d2fe;
+  --rdt-color-highlight:      #e0e7ff;
+  --rdt-color-selected:       #ede9fe;
 }`} lang="css" />
+
+  <h3>All CSS variables</h3>
+  <table>
+    <thead><tr><th>Variable</th><th>Default (light)</th><th>What it controls</th></tr></thead>
+    <tbody>
+      <tr><td><code>--rdt-color-text-primary</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Primary text — rows, header cells</td></tr>
+      <tr><td><code>--rdt-color-text-secondary</code></td><td><code>rgba(0,0,0,.54)</code></td><td>Muted text — group labels, pagination label</td></tr>
+      <tr><td><code>--rdt-color-bg</code></td><td><code>#fff</code></td><td>Table, row, and header background</td></tr>
+      <tr><td><code>--rdt-color-divider</code></td><td><code>rgba(0,0,0,.12)</code></td><td>Row borders and header border</td></tr>
+      <tr><td><code>--rdt-color-scheme</code></td><td><code>light</code></td><td>CSS <code>color-scheme</code> — controls native checkbox/select rendering</td></tr>
+      <tr><td><code>--rdt-color-striped</code></td><td><code>#fafafa</code></td><td>Striped row background</td></tr>
+      <tr><td><code>--rdt-color-striped-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Striped row text</td></tr>
+      <tr><td><code>--rdt-color-selected</code></td><td><code>#e3f2fd</code></td><td>Selected row background</td></tr>
+      <tr><td><code>--rdt-color-selected-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Selected row text</td></tr>
+      <tr><td><code>--rdt-color-highlight</code></td><td><code>#eee</code></td><td>Hover highlight background</td></tr>
+      <tr><td><code>--rdt-color-highlight-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Hover highlight text</td></tr>
+      <tr><td><code>--rdt-color-btn</code></td><td><code>rgba(0,0,0,.54)</code></td><td>Sort icons, expander chevron, pagination button icons</td></tr>
+      <tr><td><code>--rdt-color-btn-hover</code></td><td><code>rgba(0,0,0,.08)</code></td><td>Pagination button hover background</td></tr>
+      <tr><td><code>--rdt-color-btn-focus</code></td><td><code>rgba(0,0,0,.12)</code></td><td>Pagination button focus background</td></tr>
+      <tr><td><code>--rdt-color-btn-disabled</code></td><td><code>rgba(0,0,0,.18)</code></td><td>Pagination button disabled icon color</td></tr>
+      <tr><td><code>--rdt-col-sep-color</code></td><td>falls back to <code>--rdt-color-divider</code></td><td>Column separator line color only — overrides divider for separators without affecting borders</td></tr>
+    </tbody>
+  </table>
 
   <h2>Column separators</h2>
   <p>

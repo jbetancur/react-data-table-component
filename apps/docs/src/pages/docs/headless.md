@@ -146,6 +146,152 @@ function MyTable({ data }) {
 
 ---
 
+## API reference
+
+### `useColumns<T>`
+
+```ts
+function useColumns<T>(
+  columns: TableColumn<T>[],
+  onColumnOrderChange: (nextOrder: TableColumn<T>[]) => void,
+  defaultSortFieldId: string | number | null | undefined,
+  defaultSortAsc: boolean,
+): ColumnsHook<T>
+```
+
+**Returns:**
+
+| Property | Type | Description |
+|---|---|---|
+| `tableColumns` | `TableColumn<T>[]` | Decorated columns in current drag order |
+| `draggingColumnId` | `string` | ID of the column being dragged, or `''` |
+| `defaultSortColumn` | `TableColumn<T>` | The column matching `defaultSortFieldId` |
+| `defaultSortDirection` | `SortOrder` | `'asc'` or `'desc'` from `defaultSortAsc` |
+| `handleDragStart` | `DragEventHandler` | Attach to `onDragStart` on the header cell |
+| `handleDragEnter` | `DragEventHandler` | Attach to `onDragEnter` on the header cell |
+| `handleDragOver` | `DragEventHandler` | Attach to `onDragOver` on the header cell |
+| `handleDragLeave` | `DragEventHandler` | Attach to `onDragLeave` on the header cell |
+| `handleDragEnd` | `DragEventHandler` | Attach to `onDragEnd` on the header cell |
+
+All five drag handlers must be attached for reordering to work correctly.
+
+---
+
+### `useTableState<T>`
+
+```ts
+function useTableState<T>(props: UseTableStateProps<T>): UseTableStateReturn<T>
+```
+
+**Props:**
+
+| Prop | Type | Description |
+|---|---|---|
+| `data` | `T[]` | Full dataset (used for selection total counts) |
+| `keyField` | `string` | Unique row identifier field |
+| `defaultSortColumn` | `TableColumn<T>` | Column active on first render |
+| `defaultSortDirection` | `SortOrder` | `'asc'` \| `'desc'` |
+| `pagination` | `boolean` | Enable pagination state |
+| `paginationDefaultPage` | `number` | Starting page (1-based) |
+| `paginationPerPage` | `number` | Rows per page |
+| `paginationServer` | `boolean` | Skip internal page math |
+| `paginationServerOptions` | `PaginationServerOptions` | `persistSelectedOnPageChange`, `persistSelectedOnSort` |
+| `paginationTotalRows` | `number` | Total server rows (server mode only) |
+| `paginationResetDefaultPage` | `boolean` | Toggle this value to reset to page 1 |
+| `selectableRowsSingle` | `boolean` | Allow only one selected row |
+| `selectableRowsVisibleOnly` | `boolean` | "Select all" acts on current page only |
+| `selectableRowSelected` | `(row: T) => boolean \| null` | Pre-select matching rows |
+| `clearSelectedRows` | `boolean` | Toggle to clear selection |
+| `onSelectedRowsChange` | `(state) => void` | Fires on any selection change |
+| `onSort` | `(col, dir, rows) => void` | Fires after sort state changes |
+| `onChangePage` | `(page, total) => void` | Fires after page changes |
+| `onChangeRowsPerPage` | `(perPage, page) => void` | Fires after rows-per-page changes |
+
+**Returns:**
+
+| Property | Type | Description |
+|---|---|---|
+| `tableState` | `TableState<T>` | Full state snapshot (see below) |
+| `handleSort` | `(action: SortAction<T>) => void` | Dispatch a sort change |
+| `handleSelectAllRows` | `(action: AllRowsAction<T>) => void` | Dispatch select/deselect all |
+| `handleSelectedRow` | `(action: SingleRowAction<T>) => void` | Dispatch a single row toggle |
+| `handleChangePage` | `(page: number) => void` | Dispatch a page change |
+| `handleChangeRowsPerPage` | `(perPage, rowCount) => void` | Dispatch a per-page change |
+| `handleClearSelectedRows` | `() => void` | Programmatically clear all selections |
+
+**`TableState<T>` shape:**
+
+| Field | Type |
+|---|---|
+| `currentPage` | `number` |
+| `rowsPerPage` | `number` |
+| `selectedColumn` | `TableColumn<T>` |
+| `sortDirection` | `SortOrder` |
+| `selectedRows` | `T[]` |
+| `selectedCount` | `number` |
+| `allSelected` | `boolean` |
+
+---
+
+### `useTableData<T>`
+
+```ts
+function useTableData<T>(props: UseTableDataProps<T>): UseTableDataReturn<T>
+```
+
+**Props:**
+
+| Prop | Type | Description |
+|---|---|---|
+| `data` | `T[]` | Source rows (pass full array for client-side; current-page array for server-side) |
+| `columns` | `TableColumn<T>[]` | From `useColumns` |
+| `selectedColumn` | `TableColumn<T>` | From `tableState.selectedColumn` |
+| `sortDirection` | `SortOrder` | From `tableState.sortDirection` |
+| `currentPage` | `number` | From `tableState.currentPage` |
+| `rowsPerPage` | `number` | From `tableState.rowsPerPage` |
+| `pagination` | `boolean` | Enable page slicing |
+| `paginationServer` | `boolean` | Skip page slicing (server already paginated) |
+| `sortServer` | `boolean` | Skip sorting (server already sorted) |
+| `sortFunction` | `SortFunction<T> \| null` | Global custom sort comparator |
+| `onSort` | `(col, dir, rows) => void` | Called after sort; receives sorted rows |
+
+**Returns:**
+
+| Property | Type | Description |
+|---|---|---|
+| `sortedData` | `T[]` | All rows after sorting (full dataset, pre-slice) |
+| `tableRows` | `T[]` | Rows for the current page after sort + slice |
+
+Pass `tableRows` (not `sortedData`) to `useColumnFilter.filteredData()` and then to your render.
+
+---
+
+### `useColumnFilter<T>`
+
+```ts
+function useColumnFilter<T>(
+  columns: TableColumn<T>[],
+  controlledFilterValues?: Record<string | number, string>,
+  onFilterChange?: (columnId: string | number, value: string) => void,
+): UseColumnFilterResult<T>
+```
+
+Omit both optional arguments to run in **uncontrolled** mode (internal state). Pass both to run in **controlled** mode (you own the state).
+
+**Returns:**
+
+| Property | Type | Description |
+|---|---|---|
+| `filterValues` | `Record<string \| number, string>` | Current filter string per column ID |
+| `handleFilterChange` | `(columnId, value) => void` | Call from your filter input's `onChange` |
+| `filteredData` | `(data: T[]) => T[]` | Apply active filters to a row array |
+
+`filteredData` is a stable memoised function — safe to call in render without re-filtering on every keystroke.
+
+Each column can define a custom `filterFunction: (row: T, filterValue: string) => boolean` to override the default case-insensitive substring match.
+
+---
+
 ## How `useTableState` and `useTableData` relate
 
 `useTableState` owns the sort/page/selection **state**. `useTableData` takes that state as inputs and returns the **derived rows** to render. They are intentionally separate so you can skip `useTableData` entirely if you're handling sorting and pagination server-side.
@@ -177,3 +323,11 @@ When you use the hooks directly, you own:
 ## Staying on the styled `<DataTable />`
 
 None of these exports affect the default `<DataTable />`. It continues to work identically. The hooks are an additive unlocked door, not a replacement.
+
+---
+
+## Live demo
+
+The table below is built entirely from the four hooks — no `<DataTable />` component.
+It has sortable headers, per-column filter inputs, manual pagination controls, and striped rows,
+all in custom markup with no injected CSS.

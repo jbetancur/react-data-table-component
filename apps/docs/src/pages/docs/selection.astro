@@ -103,4 +103,38 @@ export default function App() {
   </p>
   <CodeBlock code={`const tableRef = useRef<DataTableHandle>(null);
 tableRef.current?.clearSelectedRows();`} />
+
+  <h2>Highlight selected rows</h2>
+  <p>
+    Add <code>selectableRowsHighlight</code> to apply the theme's selected-row background
+    to checked rows, giving an obvious visual confirmation of selection state.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows selectableRowsHighlight />`} />
+
+  <h2>Hide "select all" checkbox</h2>
+  <p>
+    Pass <code>selectableRowsNoSelectAll</code> to remove the header checkbox entirely.
+    Useful when you want per-row selection without a bulk-select affordance.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows selectableRowsNoSelectAll />`} />
+
+  <h2>Select only visible rows</h2>
+  <p>
+    When pagination is enabled, <code>selectableRowsVisibleOnly</code> makes the "select all"
+    checkbox operate only on the current page rather than the full dataset.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows pagination selectableRowsVisibleOnly />`} />
+
+  <h2>Custom checkbox component</h2>
+  <p>
+    Replace the built-in checkbox with your own component via <code>selectableRowsComponent</code>.
+    Extra props can be forwarded through <code>selectableRowsComponentProps</code>.
+  </p>
+  <CodeBlock code={`import Checkbox from '@mui/material/Checkbox';
+
+<DataTable
+  selectableRows
+  selectableRowsComponent={Checkbox}
+  selectableRowsComponentProps={{ color: 'primary' }}
+/>`} />
 </DocsLayout>
