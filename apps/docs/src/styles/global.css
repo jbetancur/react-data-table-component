@@ -47,4 +47,4 @@ article p  { @apply text-gray-600 dark:text-gray-400 leading-relaxed mb-3; }
 article ul { @apply list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-400 mb-4; }
 article ol { @apply list-decimal pl-5 space-y-1 text-gray-600 dark:text-gray-400 mb-4; }
 article li { @apply leading-relaxed; }
-article a  { @apply text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline; }
+article a  { @apply text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-200 hover:underline; }

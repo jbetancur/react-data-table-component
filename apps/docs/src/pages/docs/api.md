@@ -405,6 +405,53 @@ import { Media, Direction, Alignment, SortOrder } from 'react-data-table-compone
 | `Alignment` | `LEFT = "left"`, `RIGHT = "right"`, `CENTER = "center"` | Alignment for `subHeaderAlign`. |
 | `SortOrder` | `ASC = "asc"`, `DESC = "desc"` | Sort direction passed to `onSort` and `sortFunction`. |
 
+## useColumnVisibility
+
+Headless hook for managing column show/hide state outside of `DataTable`. Pairs with the `omit` column prop.
+
+```tsx
+import { useColumnVisibility, type TableColumn } from 'react-data-table-component';
+
+const rawColumns: TableColumn<Row>[] = [
+  { id: 'name', name: 'Name', selector: r => r.name },
+  { id: 'dept', name: 'Department', selector: r => r.dept },
+];
+
+function App() {
+  const { columns, visibility, toggle, setAll } = useColumnVisibility(rawColumns);
+
+  return (
+    <>
+      {visibility.map(({ id, name, visible }) => (
+        <label key={id}>
+          <input type="checkbox" checked={visible} onChange={() => toggle(id)} />
+          {name}
+        </label>
+      ))}
+      <button onClick={() => setAll(true)}>Show all</button>
+      <DataTable columns={columns} data={data} />
+    </>
+  );
+}
+```
+
+### UseColumnVisibilityResult
+
+| Field | Type | Description |
+|---|---|---|
+| `columns` | `TableColumn<T>[]` | Columns with `omit` set according to current visibility — pass directly to `DataTable`. |
+| `visibility` | `ColumnVisibilityEntry[]` | Current visibility state for every column. |
+| `toggle` | `(id: string \| number) => void` | Toggle the visibility of a single column by id. |
+| `setAll` | `(visible: boolean) => void` | Show or hide all columns at once. |
+
+### ColumnVisibilityEntry
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string \| number` | Column id. |
+| `name` | `ReactNode` | Column name (mirrors the `name` field from the column definition). |
+| `visible` | `boolean` | Whether the column is currently visible. |
+
 ## Package exports
 
 ```ts
