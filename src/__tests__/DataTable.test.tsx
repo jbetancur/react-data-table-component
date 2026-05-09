@@ -1946,9 +1946,7 @@ describe('DataTable::Pagination', () => {
 describe('DataTable::subHeader', () => {
 	test('should render correctly when a subheader is enabled', () => {
 		const mock = dataMock();
-		const { container } = render(
-			<DataTable data={mock.data} columns={mock.columns} subHeader subHeaderComponent={<div />} />,
-		);
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} subHeader={<div />} />);
 
 		expect(container.querySelector('.rdt_subheader')).not.toBeNull();
 	});
@@ -1956,13 +1954,7 @@ describe('DataTable::subHeader', () => {
 	test('should render when subHeaderWrap is false', () => {
 		const mock = dataMock();
 		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				subHeader
-				subHeaderComponent={<div />}
-				subHeaderWrap={false}
-			/>,
+			<DataTable data={mock.data} columns={mock.columns} subHeader={<div />} subHeaderWrap={false} />,
 		);
 
 		expect(container.querySelector('.rdt_subheader')).not.toBeNull();
@@ -1971,13 +1963,7 @@ describe('DataTable::subHeader', () => {
 	test('should render correctly with left align', () => {
 		const mock = dataMock();
 		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				subHeader
-				subHeaderComponent={<div />}
-				subHeaderAlign={Alignment.LEFT}
-			/>,
+			<DataTable data={mock.data} columns={mock.columns} subHeader={<div />} subHeaderAlign={Alignment.LEFT} />,
 		);
 
 		expect(container.querySelector('.rdt_subheaderLeft')).not.toBeNull();
@@ -1986,13 +1972,7 @@ describe('DataTable::subHeader', () => {
 	test('should render correctly with center align', () => {
 		const mock = dataMock();
 		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				subHeader
-				subHeaderComponent={<div />}
-				subHeaderAlign={Alignment.CENTER}
-			/>,
+			<DataTable data={mock.data} columns={mock.columns} subHeader={<div />} subHeaderAlign={Alignment.CENTER} />,
 		);
 
 		expect(container.querySelector('.rdt_subheaderCenter')).not.toBeNull();
@@ -2001,13 +1981,7 @@ describe('DataTable::subHeader', () => {
 	test('should render correctly with right align', () => {
 		const mock = dataMock();
 		const { container } = render(
-			<DataTable
-				data={mock.data}
-				columns={mock.columns}
-				subHeader
-				subHeaderComponent={<div />}
-				subHeaderAlign={Alignment.RIGHT}
-			/>,
+			<DataTable data={mock.data} columns={mock.columns} subHeader={<div />} subHeaderAlign={Alignment.RIGHT} />,
 		);
 
 		expect(container.querySelector('.rdt_subheaderRight')).not.toBeNull();

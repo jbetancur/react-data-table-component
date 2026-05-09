@@ -57,10 +57,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		paginationResetDefaultPage = defaultProps.paginationResetDefaultPage,
 		paginationPerPage = defaultProps.paginationPerPage,
 		paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
-		paginationIconLastPage = defaultProps.paginationIconLastPage,
-		paginationIconFirstPage = defaultProps.paginationIconFirstPage,
-		paginationIconNext = defaultProps.paginationIconNext,
-		paginationIconPrevious = defaultProps.paginationIconPrevious,
+		paginationIcons = defaultProps.paginationIcons,
 		paginationComponent = defaultProps.paginationComponent,
 		paginationComponentOptions = defaultProps.paginationComponentOptions,
 		responsive = defaultProps.responsive,
@@ -77,7 +74,6 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		subHeader = defaultProps.subHeader,
 		subHeaderAlign = defaultProps.subHeaderAlign,
 		subHeaderWrap = defaultProps.subHeaderWrap,
-		subHeaderComponent = defaultProps.subHeaderComponent,
 
 		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
@@ -305,7 +301,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 						{subHeader && (
 							<Subheader align={subHeaderAlign} wrapContent={subHeaderWrap}>
-								{subHeaderComponent}
+								{subHeader}
 							</Subheader>
 						)}
 
@@ -363,10 +359,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 								rowsPerPage={rowsPerPage}
 								direction={direction}
 								paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-								paginationIconLastPage={paginationIconLastPage}
-								paginationIconFirstPage={paginationIconFirstPage}
-								paginationIconNext={paginationIconNext}
-								paginationIconPrevious={paginationIconPrevious}
+								paginationIcons={paginationIcons}
 								paginationComponentOptions={paginationComponentOptions}
 							/>
 						)}
