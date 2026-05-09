@@ -1,0 +1,164 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import { RowClickDemo, RowLinkDemo, ActionCellDemo } from '../../components/demos/RowInteractionsDemo.tsx';
+---
+
+<DocsLayout title="Row interactions | react-data-table-component">
+  <h1>Row interactions</h1>
+
+  <p>
+    Use <code>onRowClicked</code> to respond when a user clicks a row. The handler receives the
+    row data and the original <code>React.MouseEvent</code>, so you can inspect modifier keys,
+    navigate programmatically, or open a detail panel.
+  </p>
+
+  <Demo
+    title="Row click — detail panel"
+    description="Click any row to display its details below the table."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number; name: string; department: string; role: string; email: string;
+}
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Role',       selector: r => r.role },
+];
+
+export default function App() {
+  const [selected, setSelected] = useState<Employee | null>(null);
+
+  return (
+    <div>
+      <DataTable
+        columns={columns}
+        data={data}
+        pointerOnHover
+        highlightOnHover
+        onRowClicked={row => setSelected(row)}
+      />
+      {selected && (
+        <div>{selected.name} — {selected.role}, {selected.department}</div>
+      )}
+    </div>
+  );
+}`}
+  >
+    <RowClickDemo client:load />
+  </Demo>
+
+  <h2>Rows as navigation links</h2>
+
+  <p>
+    When rows represent records you navigate to, pass a URL to your router inside
+    <code>onRowClicked</code>. Check <code>e.ctrlKey</code> or <code>e.metaKey</code> to open in a
+    new tab on Ctrl/⌘+click.
+  </p>
+
+  <p>
+    For cells that should behave as independent links (email, external URL), set
+    <code>ignoreRowClick: true</code> on the column so clicks there don't also fire
+    <code>onRowClicked</code>.
+  </p>
+
+  <blockquote>
+    <strong>Middle-click (scroll-click):</strong> React's <code>onClick</code> does not fire for
+    middle button. If you need true middle-click-to-new-tab, render the navigable cell content
+    inside an <code>&lt;a&gt;</code> tag with <code>href</code> set — the browser then handles all
+    click variants natively.
+  </blockquote>
+
+  <Demo
+    title="Row navigation with Ctrl/⌘+click"
+    description="Left-click navigates in the same tab. Ctrl/⌘+click opens in a new tab. The Email column is an independent link that ignores the row click."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+import { useNavigate } from 'react-router-dom'; // or your router
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name },
+  { name: 'Department', selector: r => r.department },
+  { name: 'Role',       selector: r => r.role },
+  {
+    name: 'Email',
+    ignoreRowClick: true,
+    cell: row => (
+      <a href={\`mailto:\${row.email}\`} onClick={e => e.stopPropagation()}>
+        {row.email}
+      </a>
+    ),
+  },
+];
+
+export default function App() {
+  const navigate = useNavigate();
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pointerOnHover
+      highlightOnHover
+      onRowClicked={(row, e) => {
+        const url = \`/employees/\${row.id}\`;
+        if (e.ctrlKey || e.metaKey) {
+          window.open(url, '_blank');
+        } else {
+          navigate(url);
+        }
+      }}
+    />
+  );
+}`}
+  >
+    <RowLinkDemo client:load />
+  </Demo>
+
+  <h2>Action buttons in cells</h2>
+
+  <p>
+    Use <code>button: true</code> on a column to add action controls that fire independently of
+    row clicks. The <code>button</code> prop centers the cell content and suppresses
+    <code>onRowClicked</code> for that column automatically — no need to call
+    <code>e.stopPropagation()</code> manually.
+  </p>
+
+  <Demo
+    title="Per-row action buttons"
+    description="Edit and Delete buttons fire their own handlers. Clicking elsewhere on the row still fires onRowClicked."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Role',       selector: r => r.role },
+  {
+    name: 'Actions',
+    button: true,
+    cell: row => (
+      <div style={{ display: 'flex', gap: 6 }}>
+        <button onClick={() => handleEdit(row)}>Edit</button>
+        <button onClick={() => handleDelete(row)}>Delete</button>
+      </div>
+    ),
+  },
+];
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pointerOnHover
+      highlightOnHover
+      onRowClicked={row => console.log('row clicked', row.id)}
+    />
+  );
+}`}
+  >
+    <ActionCellDemo client:load />
+  </Demo>
+</DocsLayout>

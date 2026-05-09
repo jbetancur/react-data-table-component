@@ -42,7 +42,7 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 				...(isDragging ? (customStyles.cells?.draggingStyle as React.CSSProperties) : undefined),
 				...(conditionalStyle as React.CSSProperties),
 			}}
-			onDragStart={onDragStart}
+			onDragStart={column.reorder ? onDragStart : (e: React.DragEvent) => e.preventDefault()}
 			onDragOver={onDragOver}
 			onDragEnd={onDragEnd}
 			onDragEnter={onDragEnter}

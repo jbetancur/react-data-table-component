@@ -46,6 +46,7 @@ function TableCellCheckbox<T>({
 		<CellBase
 			onClick={(e: React.MouseEvent) => e.stopPropagation()}
 			className={['rdt_TableCell', 'rdt_cellCheckbox'].join(' ')}
+			role="cell"
 			$noPadding
 		>
 			<Checkbox
