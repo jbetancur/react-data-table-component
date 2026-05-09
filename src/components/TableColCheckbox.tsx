@@ -33,7 +33,7 @@ function ColumnCheckbox<T>(): JSX.Element {
 	};
 
 	return (
-		<CellBase className={['rdt_TableCol', 'rdt_columnCheckbox'].join(' ')} $headCell $noPadding>
+		<CellBase className={['rdt_TableCol', 'rdt_columnCheckbox'].join(' ')} role="columnheader" $headCell $noPadding>
 			<Checkbox
 				name="select-all-rows"
 				component={selectableRowsComponent}
