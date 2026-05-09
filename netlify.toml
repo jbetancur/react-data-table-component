@@ -1,11 +1,12 @@
- [build]
+[build]
   publish = "storybook-static"
   command = "npm run lint && npm test && npm run build && npm run build-storybook"
-
+  install = "npm install --legacy-peer-deps"
 [build.environment]
-  NODE_VERSION = "24.0.0"
+  NODE_VERSION = "24.15.0"
   DOTENV_DISPLAY_WARNING = "none"
   STORYBOOK_EXAMPLE_APP ="true"
+  NETLIFY_USE_YARN = "false"
 [[headers]]
   for = "/*"
   [headers.values]

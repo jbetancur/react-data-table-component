@@ -1677,10 +1677,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -1871,10 +1867,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div
@@ -2069,10 +2061,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -2263,10 +2251,6 @@ exports[`DataTable::Pagination should have the correct amount of rows when pagin
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div
@@ -2489,10 +2473,6 @@ exports[`DataTable::Pagination should navigate to page 1 if the table is sorted 
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -2689,10 +2669,6 @@ exports[`DataTable::Pagination should recalculate pagination position if there i
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -2883,10 +2859,6 @@ exports[`DataTable::Pagination should render correctly if pagination is enabled 
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div
@@ -3100,10 +3072,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -3313,10 +3281,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div
@@ -3530,10 +3494,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -3745,10 +3705,6 @@ exports[`DataTable::Pagination should render correctly when a paginationComponen
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -3958,10 +3914,6 @@ exports[`DataTable::Pagination should render correctly when paginationResetDefau
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div
@@ -10598,10 +10550,6 @@ exports[`DataTable::direction should render correctly when direction is auto 1`]
   display: table;
 }
 
-@media screen and (max-width: 599px) {
-
-}
-
 <div
   class="c0"
 >
@@ -10811,10 +10759,6 @@ exports[`DataTable::direction should render correctly when direction is ltr 1`] 
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div
@@ -11027,10 +10971,6 @@ exports[`DataTable::direction should render correctly when direction is rtl 1`] 
   position: relative;
   width: 100%;
   display: table;
-}
-
-@media screen and (max-width: 599px) {
-
 }
 
 <div

@@ -31,11 +31,7 @@ interface UseTableStateProps<T> {
 	selectableRowSelected: ((row: T) => boolean) | null;
 	clearSelectedRows: boolean;
 	paginationResetDefaultPage: boolean;
-	onSelectedRowsChange: (state: {
-		allSelected: boolean;
-		selectedCount: number;
-		selectedRows: T[];
-	}) => void;
+	onSelectedRowsChange: (state: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	onChangePage: (page: number, totalRows: number) => void;
 	onChangeRowsPerPage: (currentRowsPerPage: number, currentPage: number) => void;

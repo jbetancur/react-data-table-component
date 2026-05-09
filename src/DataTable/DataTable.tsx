@@ -153,15 +153,8 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		onChangeRowsPerPage,
 	});
 
-	const {
-		rowsPerPage,
-		currentPage,
-		selectedRows,
-		allSelected,
-		selectedCount,
-		selectedColumn,
-		sortDirection,
-	} = tableState;
+	const { rowsPerPage, currentPage, selectedRows, allSelected, selectedCount, selectedColumn, sortDirection } =
+		tableState;
 
 	// Data transformation (sorting, pagination)
 	const { sortedData, tableRows } = useTableData({
@@ -207,10 +200,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 		[onRowMouseLeave],
 	);
 
-	const handleChangePage = React.useCallback(
-		(page: number) => handleChangePageState(page),
-		[handleChangePageState],
-	);
+	const handleChangePage = React.useCallback((page: number) => handleChangePageState(page), [handleChangePageState]);
 
 	const handleChangeRowsPerPage = React.useCallback(
 		(newRowsPerPage: number) => handleChangeRowsPerPageState(newRowsPerPage, tableRows.length),

@@ -81,10 +81,7 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 
 	React.useEffect(() => {
 		// Only call onSort if column or direction actually changed
-		if (
-			prevSortRef.current.selectedColumn !== selectedColumn ||
-			prevSortRef.current.sortDirection !== sortDirection
-		) {
+		if (prevSortRef.current.selectedColumn !== selectedColumn || prevSortRef.current.sortDirection !== sortDirection) {
 			prevSortRef.current = { selectedColumn, sortDirection };
 			sortCallbackRef.current(selectedColumn, sortDirection, sortedData.slice(0));
 		}
