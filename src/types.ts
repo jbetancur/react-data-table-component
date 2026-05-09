@@ -33,21 +33,43 @@ export type DataTableHandle = {
 	clearSelectedRows: () => void;
 };
 
-export type TableProps<T> = {
-	actions?: React.ReactNode | React.ReactNode[];
-	ariaLabel?: string;
-	className?: string;
+// ── Feature-group prop types ──────────────────────────────────────────────────
+
+type SelectionProps<T> = {
 	/** @deprecated Use a ref with DataTableHandle instead: ref.current.clearSelectedRows() */
 	clearSelectedRows?: boolean;
-	columns: TableColumn<T>[];
-	conditionalRowStyles?: ConditionalStyles<T>[];
-	customStyles?: TableStyles;
-	data: T[];
-	defaultSortAsc?: boolean;
-	defaultSortFieldId?: string | number | null | undefined;
-	dense?: boolean;
-	direction?: Direction;
-	disabled?: boolean;
+	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
+	selectableRowDisabled?: RowState<T>;
+	selectableRows?: boolean;
+	selectableRowsComponent?: 'input' | React.ReactNode;
+	selectableRowsComponentProps?: ComponentProps;
+	selectableRowSelected?: RowState<T>;
+	selectableRowsHighlight?: boolean;
+	selectableRowsNoSelectAll?: boolean;
+	selectableRowsVisibleOnly?: boolean;
+	selectableRowsSingle?: boolean;
+};
+
+type PaginationProps = {
+	onChangePage?: PaginationChangePage;
+	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
+	pagination?: boolean;
+	paginationComponent?: PaginationComponent;
+	paginationComponentOptions?: PaginationOptions;
+	paginationDefaultPage?: number;
+	paginationIconFirstPage?: React.ReactNode;
+	paginationIconLastPage?: React.ReactNode;
+	paginationIconNext?: React.ReactNode;
+	paginationIconPrevious?: React.ReactNode;
+	paginationPerPage?: number;
+	paginationResetDefaultPage?: boolean;
+	paginationRowsPerPageOptions?: number[];
+	paginationServer?: boolean;
+	paginationServerOptions?: PaginationServerOptions;
+	paginationTotalRows?: number;
+};
+
+type ExpandableProps<T> = {
 	expandableIcon?: ExpandableIcon;
 	expandableInheritConditionalStyles?: boolean;
 	expandableRowDisabled?: RowState<T>;
@@ -58,6 +80,29 @@ export type TableProps<T> = {
 	expandableRowsHideExpander?: boolean;
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
+	onRowExpandToggled?: ExpandRowToggled<T>;
+};
+
+type SortProps<T> = {
+	defaultSortAsc?: boolean;
+	defaultSortFieldId?: string | number | null | undefined;
+	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
+	sortFunction?: SortFunction<T> | null;
+	sortIcon?: React.ReactNode;
+	sortServer?: boolean;
+};
+
+type BaseTableProps<T> = {
+	actions?: React.ReactNode | React.ReactNode[];
+	ariaLabel?: string;
+	className?: string;
+	columns: TableColumn<T>[];
+	conditionalRowStyles?: ConditionalStyles<T>[];
+	customStyles?: TableStyles;
+	data: T[];
+	dense?: boolean;
+	direction?: Direction;
+	disabled?: boolean;
 	fixedHeader?: boolean;
 	fixedHeaderScrollHeight?: string;
 	highlightOnHover?: boolean;
@@ -65,15 +110,10 @@ export type TableProps<T> = {
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;
-	onChangePage?: PaginationChangePage;
-	onChangeRowsPerPage?: PaginationChangeRowsPerPage;
 	onRowClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowDoubleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
-	onRowExpandToggled?: ExpandRowToggled<T>;
-	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	/** Enable drag-to-resize handles on column headers */
 	resizable?: boolean;
 	/** Animate rows on mount and expander rows on expand (respects prefers-reduced-motion) */
@@ -96,37 +136,11 @@ export type TableProps<T> = {
 	/** Called when a column filter input changes */
 	onFilterChange?: (columnId: string | number, value: string) => void;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
-	pagination?: boolean;
-	paginationComponent?: PaginationComponent;
-	paginationComponentOptions?: PaginationOptions;
-	paginationDefaultPage?: number;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
-	paginationPerPage?: number;
-	paginationResetDefaultPage?: boolean;
-	paginationRowsPerPageOptions?: number[];
-	paginationServer?: boolean;
-	paginationServerOptions?: PaginationServerOptions;
-	paginationTotalRows?: number;
 	persistTableHead?: boolean;
 	pointerOnHover?: boolean;
 	progressComponent?: React.ReactNode;
 	progressPending?: boolean;
 	responsive?: boolean;
-	selectableRowDisabled?: RowState<T>;
-	selectableRows?: boolean;
-	selectableRowsComponent?: 'input' | React.ReactNode;
-	selectableRowsComponentProps?: ComponentProps;
-	selectableRowSelected?: RowState<T>;
-	selectableRowsHighlight?: boolean;
-	selectableRowsNoSelectAll?: boolean;
-	selectableRowsVisibleOnly?: boolean;
-	selectableRowsSingle?: boolean;
-	sortFunction?: SortFunction<T> | null;
-	sortIcon?: React.ReactNode;
-	sortServer?: boolean;
 	striped?: boolean;
 	style?: CSSObject;
 	subHeader?: React.ReactNode | React.ReactNode[];
@@ -139,6 +153,8 @@ export type TableProps<T> = {
 	 *  */
 	title?: string | React.ReactNode;
 };
+
+export type TableProps<T> = BaseTableProps<T> & SelectionProps<T> & PaginationProps & ExpandableProps<T> & SortProps<T>;
 
 export type TableColumnBase = {
 	allowOverflow?: boolean;
