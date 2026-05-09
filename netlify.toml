@@ -1,11 +1,16 @@
 [build]
-  publish = "storybook-static"
-  command = "yarn lint && yarn test && yarn build && yarn build-storybook"
+  publish = "apps/docs/dist"
+  command = "npm run build && npm run build --prefix apps/docs"
+
 [build.environment]
-  NODE_VERSION = "20.11.0"
-  YARN_VERSION = "4.0.2"
-  DOTENV_DISPLAY_WARNING = "none"
-  STORYBOOK_EXAMPLE_APP ="true"
+  NODE_VERSION = "24.0.0"
+
+# Redirect bare /docs to the getting-started page
+[[redirects]]
+  from = "/docs"
+  to = "/docs/getting-started"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

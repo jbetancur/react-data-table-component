@@ -66,6 +66,30 @@ const currentPath = Astro.url.pathname;
     <!-- Sidebar -->
     <aside class="hidden lg:block w-56 shrink-0">
       <nav class="sticky top-24 space-y-6 text-sm">
+        <!-- Version switcher -->
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-gray-400">Version</span>
+          <div class="relative flex-1">
+            <select
+              id="version-switcher"
+              class="w-full appearance-none text-xs font-medium border border-gray-200 rounded-md px-2 py-1 pr-6 bg-white text-gray-700 cursor-pointer hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
+            >
+              <option value="v8" selected>v8 (current)</option>
+              <option value="v7">v7 (legacy)</option>
+            </select>
+            <span class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs">▾</span>
+          </div>
+        </div>
+        <script>
+          document.getElementById('version-switcher')?.addEventListener('change', (e) => {
+            const val = (e.target as HTMLSelectElement).value;
+            if (val === 'v7') {
+              window.open('https://v7.reactdatatable.com', '_blank');
+              // Reset back to v8 since we're staying on this site
+              (e.target as HTMLSelectElement).value = 'v8';
+            }
+          });
+        </script>
         {nav.map(({ group, links }) => (
           <div>
             <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">{group}</p>
