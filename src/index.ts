@@ -31,6 +31,12 @@ export type {
 	SortOrder,
 	SortFunction,
 	Selector,
+	FilterType,
+	FilterOperator,
+	FilterCondition,
+	FilterState,
 } from './types';
+
+export { emptyFilterState, isFilterActive } from './hooks/useColumnFilter';
 
 export default DataTable;

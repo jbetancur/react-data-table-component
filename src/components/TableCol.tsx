@@ -5,7 +5,7 @@ import { CellExtended } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import ColumnFilter from './ColumnFilter';
 import { equalizeId } from '../util';
-import { TableColumn, SortAction, SortOrder } from '../types';
+import { TableColumn, SortAction, SortOrder, FilterState } from '../types';
 
 type TableColProps<T> = {
 	column: TableColumn<T>;
@@ -19,9 +19,9 @@ type TableColProps<T> = {
 	sortDirection: SortOrder;
 	sortServer: boolean;
 	selectableRowsVisibleOnly: boolean;
-	filterValue: string;
+	filterValue: FilterState;
 	onSort: (action: SortAction<T>) => void;
-	onFilterChange: (columnId: string | number, value: string) => void;
+	onFilterChange: (columnId: string | number, filter: FilterState) => void;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -210,7 +210,7 @@ function TableCol<T>({
 				</div>
 			)}
 			{column.filterable && column.id != null && (
-				<ColumnFilter columnId={column.id} filterValue={filterValue} onFilterChange={onFilterChange} />
+				<ColumnFilter columnId={column.id} filterValue={filterValue} filterType={column.filterType} onFilterChange={onFilterChange} />
 			)}
 			{onResizeStart && column.id != null && (
 				<div className="rdt_resizeHandle" onMouseDown={e => onResizeStart(column.id!, e)} aria-hidden="true" />
