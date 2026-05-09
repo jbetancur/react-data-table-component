@@ -88,8 +88,8 @@ const currentPath = Astro.url.pathname;
 <Layout title={title} description={description}>
   <div class="max-w-7xl mx-auto px-6 flex gap-12 py-10">
     <!-- Sidebar -->
-    <aside class="hidden lg:block w-56 shrink-0">
-      <nav class="sticky top-24 space-y-6 text-sm">
+    <aside class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto">
+      <nav class="space-y-6 text-sm pb-10">
         <!-- Version switcher -->
         <div class="flex items-center gap-2">
           <span class="text-xs text-gray-400">Version</span>
