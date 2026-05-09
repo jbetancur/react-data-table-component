@@ -37,23 +37,23 @@ export default function Movies() {
 
 # Documentation Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/26e0d16d-a986-46b1-9097-1a76c10d7cad/deploy-status)](https://app.netlify.com/sites/react-data-table-component/deploys)
-
 The documentation contains information about installation, usage and contributions.
 
-https://react-data-table-component.netlify.app
+[reactdatatable.com](https://reactdatatable.com)
 
 # Supporting React Data Table Component
 
-If you would like to support the project financially, visit
-[our campaign on OpenCollective](https://opencollective.com/react-data-table-component). Your contributions help accelerate the development of React Data Table Component!
+This library is maintained by one person. If your team ships products with it, consider sponsoring — it funds bug fixes, new features, and keeping pace with the React ecosystem.
 
-<a href="https://opencollective.com/react-data-table-component" target="_blank">
-	<img src="https://opencollective.com/react-data-table-component/contribute/button@2x.png?color=blue" width="250px" />
-</a>
+[![Sponsor on GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github)](https://github.com/sponsors/jbetancur)
+[![Sponsor on OpenCollective](https://img.shields.io/badge/Sponsor-OpenCollective-blue?logo=opencollective)](https://opencollective.com/react-data-table-component)
+
+> **Teams using this in production:** priority support plans are available starting at $200/month — 48hr response SLA, direct access, and help with major version upgrades. [Get in touch](mailto:1385932+jbetancur@users.noreply.github.com)
+
+## Sponsors
+
+_Become a [Gold Sponsor](https://github.com/sponsors/jbetancur) and your logo goes here._
 
 # Contributors
 
-<a href="https://github.com/jbetancur/react-data-table-component/graphs/contributors">
-	<img src="https://opencollective.com/react-data-table-component/contributors.svg?width=890" />
-</a>
+[![Contributors](https://contrib.rocks/image?repo=jbetancur/react-data-table-component)](https://github.com/jbetancur/react-data-table-component/graphs/contributors)
