@@ -171,6 +171,7 @@ function Row<T>({
 			<div
 				id={`row-${id}`}
 				role="row"
+				aria-selected={selectableRows ? selected : undefined}
 				tabIndex={!defaultExpanderDisabled && showPointer ? 0 : -1}
 				className={className}
 				style={style}
@@ -183,7 +184,7 @@ function Row<T>({
 			>
 				{selectableRows && (
 					<TableCellCheckbox
-						name={`select-row-${rowKeyField}`}
+						name={`Select row ${rowKeyField}`}
 						keyField={keyField}
 						row={row}
 						rowCount={rowCount}

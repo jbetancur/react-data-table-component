@@ -76,7 +76,7 @@ type SelectionProps<T> = {
 	onSelectedRowsChange?: (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	selectableRowDisabled?: RowState<T>;
 	selectableRows?: boolean;
-	selectableRowsComponent?: 'input' | React.ReactNode;
+	selectableRowsComponent?: 'input' | React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>>;
 	selectableRowsComponentProps?: ComponentProps;
 	selectableRowSelected?: RowState<T>;
 	selectableRowsHighlight?: boolean;

@@ -18,7 +18,7 @@ export interface RowContextValue<T> {
 	pointerOnHover: boolean;
 	conditionalRowStyles: ConditionalStyles<T>[];
 	selectableRows: boolean;
-	selectableRowsComponent: 'input' | React.ReactNode;
+	selectableRowsComponent: 'input' | React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>>;
 	selectableRowsComponentProps: ComponentProps;
 	selectableRowsHighlight: boolean;
 	selectableRowsSingle: boolean;

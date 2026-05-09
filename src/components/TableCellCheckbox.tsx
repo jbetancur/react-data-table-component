@@ -10,7 +10,7 @@ type TableCellCheckboxProps<T> = {
 	row: T;
 	rowCount: number;
 	selected: boolean;
-	selectableRowsComponent: 'input' | React.ReactNode;
+	selectableRowsComponent: 'input' | React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>>;
 	selectableRowsComponentProps: ComponentProps;
 	selectableRowsSingle: boolean;
 	selectableRowDisabled: RowState<T>;
