@@ -9,6 +9,8 @@ export { default as useTableState } from './hooks/useTableState';
 export { default as useColumns } from './hooks/useColumns';
 export { default as useTableData } from './hooks/useTableData';
 export { default as useColumnFilter } from './hooks/useColumnFilter';
+export { default as useColumnVisibility } from './hooks/useColumnVisibility';
+export type { UseColumnVisibilityResult, ColumnVisibilityEntry } from './hooks/useColumnVisibility';
 
 export type {
 	TableProps,
