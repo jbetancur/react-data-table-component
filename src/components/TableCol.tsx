@@ -257,6 +257,12 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 	if (prevProps.resizedWidth !== nextProps.resizedWidth) return false;
 	if (prevProps.disabled !== nextProps.disabled) return false;
 	if (prevProps.sortIcon !== nextProps.sortIcon) return false;
+	const pg = prevProps.gridStyle;
+	const ng = nextProps.gridStyle;
+	if (pg !== ng) {
+		if (!pg || !ng) return false;
+		if (pg.gridColumn !== ng.gridColumn || pg.gridRow !== ng.gridRow) return false;
+	}
 	return true;
 }
 

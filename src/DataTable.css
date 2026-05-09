@@ -187,10 +187,6 @@
 	pointer-events: none;
 }
 
-.rdt_cellBaseHead {
-	padding-left: 16px;
-	padding-right: 16px;
-}
 
 .rdt_cellNoPadding {
 	padding: 0;
@@ -241,7 +237,6 @@
 	cursor: pointer;
 }
 
-.rdt_columnSortableActive {}
 
 .rdt_columnSortableEnabled:not(.rdt_columnSortableActive):hover,
 .rdt_columnSortableEnabled:not(.rdt_columnSortableActive):focus {
@@ -496,36 +491,6 @@
 	cursor: grabbing;
 }
 
-/* ─── Column / group drag-drop indicator ────────────────────────────────────── */
-.rdt_dropIndicator {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 2px;
-	background: var(--rdt-color-drop-line, #22c55e);
-	pointer-events: none;
-	z-index: 20;
-}
-
-.rdt_dropIndicator::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 8px;
-	height: 8px;
-	background: var(--rdt-color-drop-line, #22c55e);
-	border-radius: 50%;
-}
-
-.rdt_dropIndicatorLeft {
-	left: 0;
-}
-
-.rdt_dropIndicatorRight {
-	right: 0;
-}
 
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
 .rdt_resizeHandle {
