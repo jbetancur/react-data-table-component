@@ -1,9 +1,9 @@
-[build]
+ [build]
   publish = "storybook-static"
-  command = "yarn lint && yarn test && yarn build && yarn build-storybook"
+  command = "npm run lint && npm test && npm run build && npm run build-storybook"
+
 [build.environment]
-  NODE_VERSION = "20.11.0"
-  YARN_VERSION = "4.0.2"
+  NODE_VERSION = "24.0.0"
   DOTENV_DISPLAY_WARNING = "none"
   STORYBOOK_EXAMPLE_APP ="true"
 [[headers]]
