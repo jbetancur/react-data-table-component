@@ -1,7 +1,7 @@
  [build]
   publish = "storybook-static"
   command = "npm run lint && npm test && npm run build && npm run build-storybook"
-
+  npm_install_command = "npm install"
 [build.environment]
   NODE_VERSION = "24.0.0"
   DOTENV_DISPLAY_WARNING = "none"
