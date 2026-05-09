@@ -135,7 +135,7 @@ function Row<T>({
 		[onRowMouseLeave, row],
 	);
 
-	const rowKeyField = prop(row as TableRow, keyField);
+	const rowKeyField = prop(row as TableRow, keyField) ?? rowIndex;
 	const { conditionalStyle, classNames } = React.useMemo(
 		() => getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']),
 		[row, conditionalRowStyles],

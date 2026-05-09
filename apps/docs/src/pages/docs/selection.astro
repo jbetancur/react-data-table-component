@@ -80,6 +80,27 @@ export default function App() {
     <SelectionDemo client:load />
   </Demo>
 
+  <h2>Row identity (<code>keyField</code>)</h2>
+
+  <p>
+    Selection requires a stable unique identifier on each row so the table can track which rows
+    are checked across page changes, sorting, and re-renders. By default it uses the <code>id</code>
+    field. If your rows use a different field, set <code>keyField</code>:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  selectableRows
+  keyField="deviceIdentifier"
+  columns={columns}
+  data={devices}
+/>`} />
+
+  <p>
+    If <code>keyField</code> resolves to <code>undefined</code> on your data, the table logs a
+    console warning and selection state will be unreliable. TypeScript will also catch explicit
+    mismatches at compile time since <code>keyField</code> is typed as <code>keyof T</code>.
+  </p>
+
   <h2>Single select</h2>
   <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>
 
