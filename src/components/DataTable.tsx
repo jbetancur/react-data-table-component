@@ -111,6 +111,20 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		ariaLabel,
 	} = props;
 
+	React.useEffect(() => {
+		if (selectableRows && data.length > 0) {
+			const sample = data[0] as Record<string, unknown>;
+			if (sample[keyField] === undefined) {
+				console.warn(
+					`DataTable: keyField "${keyField}" returned undefined for your data. ` +
+						`Row selection requires a stable unique identifier — set the keyField prop ` +
+						`to the unique identifier field in your row data.`,
+				);
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const tableId = React.useId();
 	const [, startTransition] = React.useTransition();
 	const { filterValues, handleFilterChange, filteredData } = useColumnFilter(

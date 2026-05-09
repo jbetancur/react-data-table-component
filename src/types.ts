@@ -111,7 +111,7 @@ type BaseTableProps<T> = {
 	fixedHeader?: boolean;
 	fixedHeaderScrollHeight?: string;
 	highlightOnHover?: boolean;
-	keyField?: string;
+	keyField?: keyof T & string;
 	noDataComponent?: React.ReactNode;
 	noHeader?: boolean;
 	noTableHead?: boolean;

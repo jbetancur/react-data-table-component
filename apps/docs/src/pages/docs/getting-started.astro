@@ -63,6 +63,29 @@ export default function App() {
 
   <p>See the full <a href="/docs/api">API reference</a> for all props.</p>
 
+  <h2>Row identity and <code>keyField</code></h2>
+
+  <p>
+    Each row needs a stable unique identifier so the table can track selection state, expansion
+    state, and React keys. By default it looks for an <code>id</code> field on each row object.
+  </p>
+  <p>
+    If your data uses a different field name, set <code>keyField</code>:
+  </p>
+
+  <CodeBlock code={`// Your rows use deviceIdentifier instead of id
+<DataTable
+  keyField="deviceIdentifier"
+  columns={columns}
+  data={devices}
+/>`} />
+
+  <p>
+    For display-only tables (no row selection) this doesn't affect rendering — the table falls back
+    to row index. It only matters when <code>selectableRows</code> is enabled, where a missing
+    <code>keyField</code> will cause selection to break across page changes and sorting.
+  </p>
+
   <h2>TypeScript</h2>
 
   <p>
