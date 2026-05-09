@@ -21,6 +21,7 @@ import useColumns from '../hooks/useColumns';
 import useTableState from '../hooks/useTableState';
 import useTableData from '../hooks/useTableData';
 import useColumnFilter from '../hooks/useColumnFilter';
+import useColumnResize from '../hooks/useColumnResize';
 
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
@@ -120,30 +121,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	);
 
 	// ── Column resize state ────────────────────────────────────────────────────
-	const [columnWidths, setColumnWidths] = React.useState<Record<string | number, number>>({});
-	const resizeRef = React.useRef<{ columnId: string | number; startX: number; startWidth: number } | null>(null);
-
-	const handleResizeStart = React.useCallback((columnId: string | number, e: React.MouseEvent) => {
-		if (typeof document === 'undefined') return;
-		e.preventDefault();
-		const headerCell = (e.currentTarget as HTMLElement).closest('[data-column-id]') as HTMLElement | null;
-		const startWidth = headerCell?.offsetWidth ?? 100;
-		resizeRef.current = { columnId, startX: e.clientX, startWidth };
-
-		function onMouseMove(mv: MouseEvent) {
-			if (!resizeRef.current) return;
-			const delta = mv.clientX - resizeRef.current.startX;
-			const newWidth = Math.max(40, resizeRef.current.startWidth + delta);
-			setColumnWidths(prev => ({ ...prev, [resizeRef.current!.columnId]: newWidth }));
-		}
-		function onMouseUp() {
-			resizeRef.current = null;
-			document.removeEventListener('mousemove', onMouseMove);
-			document.removeEventListener('mouseup', onMouseUp);
-		}
-		document.addEventListener('mousemove', onMouseMove);
-		document.addEventListener('mouseup', onMouseUp);
-	}, []);
+	const { columnWidths, handleResizeStart } = useColumnResize();
 
 	const {
 		tableColumns,
