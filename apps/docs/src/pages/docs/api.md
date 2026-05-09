@@ -54,7 +54,8 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `striped` | `boolean` | `false` | Alternate row background colors. |
 | `highlightOnHover` | `boolean` | `false` | Highlight rows on mouse-over. |
 | `pointerOnHover` | `boolean` | `false` | Show a pointer cursor on row hover. |
-| `columnSeparator` | `boolean \| "subtle" \| "full"` | - | Vertical lines between body columns. Headers always show separators. `true`/`"subtle"` = inset line, `"full"` = full-height. |
+| `columnSeparator` | `boolean \| "subtle" \| "full"` | - | Vertical lines between body columns. `true`/`"subtle"` = inset 60%-height line, `"full"` = full-height line. |
+| `headerSeparator` | `boolean \| "subtle" \| "full"` | `true` | Vertical lines between header cells. `true`/`"subtle"` = inset line (default), `"full"` = full-height, `false` = none. |
 | `animateRows` | `boolean` | `false` | Staggered entrance and sort animations. Respects `prefers-reduced-motion`. |
 
 ### Sorting
@@ -136,7 +137,8 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `columnGroups` | `ColumnGroup[]` | - | Spanning group headers rendered above the column header row. |
 | `filterValues` | `Record<string \| number, FilterState>` | - | Controlled filter state. Omit to use internal state. See [Filtering](/docs/filtering). |
 | `onFilterChange` | `(columnId, filter: FilterState) => void` | - | Called when the user clicks Apply or Clear in a filter popup. |
-| `onColumnOrderChange` | `(columns) => void` | - | Called after a drag-to-reorder column operation. |
+| `onColumnOrderChange` | `(columns: TableColumn<T>[]) => void` | - | Called after a drag-to-reorder column operation with the new column order. |
+| `onColumnGroupOrderChange` | `(groups: ColumnGroup[], columns: TableColumn<T>[]) => void` | - | Called after a group drag-reorder with the new group order and the matching updated column order. |
 
 ## ColumnGroup
 
@@ -156,6 +158,7 @@ const columnGroups: ColumnGroup[] = [
 | `name` | `ReactNode` | — | **Required.** Group header label. Accepts JSX. |
 | `columnIds` | `(string \| number)[]` | — | **Required.** Ids of columns under this group. Must match each column's `id` exactly. |
 | `align` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal alignment of the group label. |
+| `reorder` | `boolean` | — | Allow drag-to-reorder for this group. Dragging moves all member columns as a block. Fires `onColumnGroupOrderChange`. |
 
 Columns not listed in any group span the full group-row height with no label.
 
@@ -416,6 +419,18 @@ import {
   Direction,
   Alignment,
   SortOrder,
+  // Default icon sets (useful when building custom pagination/expander UIs)
+  DEFAULT_PAGINATION_ICONS,
+  DEFAULT_EXPANDABLE_ICON,
+  // Headless hooks
+  useTableState,
+  useColumns,
+  useTableData,
+  useColumnFilter,
+  useColumnVisibility,
+  // Filter utilities
+  emptyFilterState,
+  isFilterActive,
 } from 'react-data-table-component';
 
 // TypeScript types
@@ -433,15 +448,16 @@ import type {
   PaginationComponentProps,
   PaginationOptions,
   PaginationServerOptions,
+  PaginationIcons,
   SortFunction,
   Selector,
+  // Column visibility hook types
+  UseColumnVisibilityResult,
+  ColumnVisibilityEntry,
   // Filter types
   FilterType,
   FilterOperator,
   FilterCondition,
   FilterState,
 } from 'react-data-table-component';
-
-// Filter utilities
-import { emptyFilterState, isFilterActive } from 'react-data-table-component';
 ```
