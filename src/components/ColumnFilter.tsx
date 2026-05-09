@@ -140,15 +140,29 @@ export default function ColumnFilter({
 		}
 	}, [filterValue, filterType]);
 
+	const panelRef = React.useRef<HTMLDivElement>(null);
+
 	React.useEffect(() => {
 		if (!open) return;
+
+		const firstFocusable = panelRef.current?.querySelector<HTMLElement>('select, input, button');
+		firstFocusable?.focus();
+
 		function handleClick(e: MouseEvent) {
 			if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
 				setOpen(false);
 			}
 		}
+		function handleKeyDown(e: KeyboardEvent) {
+			if (e.key === 'Escape') setOpen(false);
+		}
+
 		document.addEventListener('mousedown', handleClick);
-		return () => document.removeEventListener('mousedown', handleClick);
+		document.addEventListener('keydown', handleKeyDown);
+		return () => {
+			document.removeEventListener('mousedown', handleClick);
+			document.removeEventListener('keydown', handleKeyDown);
+		};
 	}, [open]);
 
 	const isActive = isFilterActive(filterValue);
@@ -208,7 +222,7 @@ export default function ColumnFilter({
 			</button>
 
 			{open && (
-				<div className="rdt_filterPanel" role="dialog" aria-label="Column filter">
+				<div ref={panelRef} className="rdt_filterPanel" role="dialog" aria-label="Column filter">
 					<ConditionRow condition={pending.condition1} filterType={filterType} onChange={handleCondition1Change} />
 
 					{pending.condition2 ? (
@@ -219,6 +233,7 @@ export default function ColumnFilter({
 									className={['rdt_filterLogicBtn', pending.logic !== 'OR' && 'rdt_filterLogicBtnActive']
 										.filter(Boolean)
 										.join(' ')}
+									aria-pressed={pending.logic !== 'OR'}
 									onClick={() => handleLogicChange('AND')}
 								>
 									AND
@@ -228,6 +243,7 @@ export default function ColumnFilter({
 									className={['rdt_filterLogicBtn', pending.logic === 'OR' && 'rdt_filterLogicBtnActive']
 										.filter(Boolean)
 										.join(' ')}
+									aria-pressed={pending.logic === 'OR'}
 									onClick={() => handleLogicChange('OR')}
 								>
 									OR
@@ -241,7 +257,12 @@ export default function ColumnFilter({
 							/>
 						</>
 					) : (
-						<button type="button" className="rdt_filterAddCondition" onClick={handleAddCondition}>
+						<button
+							type="button"
+							className="rdt_filterAddCondition"
+							aria-label="Add a second filter condition"
+							onClick={handleAddCondition}
+						>
 							+ Add condition
 						</button>
 					)}

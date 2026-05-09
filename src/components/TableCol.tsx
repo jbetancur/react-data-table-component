@@ -93,7 +93,7 @@ function TableCol<T>({
 		});
 	};
 
-	const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		if (event.key === 'Enter') {
 			handleSortChange();
 		}
@@ -178,7 +178,7 @@ function TableCol<T>({
 						.filter(Boolean)
 						.join(' ')}
 					onClick={!disableSort ? handleSortChange : undefined}
-					onKeyPress={!disableSort ? handleKeyPress : undefined}
+					onKeyDown={!disableSort ? handleKeyDown : undefined}
 					aria-sort={
 						!disableSort
 							? sortActive
@@ -210,7 +210,12 @@ function TableCol<T>({
 				</div>
 			)}
 			{column.filterable && column.id != null && (
-				<ColumnFilter columnId={column.id} filterValue={filterValue} filterType={column.filterType} onFilterChange={onFilterChange} />
+				<ColumnFilter
+					columnId={column.id}
+					filterValue={filterValue}
+					filterType={column.filterType}
+					onFilterChange={onFilterChange}
+				/>
 			)}
 			{onResizeStart && column.id != null && (
 				<div className="rdt_resizeHandle" onMouseDown={e => onResizeStart(column.id!, e)} aria-hidden="true" />
