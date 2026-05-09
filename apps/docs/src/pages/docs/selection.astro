@@ -15,7 +15,7 @@ import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
 
   <Demo
     title="Multi-select with imperative clear"
-    description="Select rows, then clear with the button. Toggle single-select mode with the checkbox."
+    description="Select rows, then clear with the button. Toggle single-select mode or disable 'On Leave' rows with the checkboxes."
     code={`import { useState, useRef } from 'react';
 import DataTable, { type TableColumn, type DataTableHandle } from 'react-data-table-component';
 
@@ -24,26 +24,29 @@ interface Employee {
   name: string;
   role: string;
   department: string;
+  status: 'Active' | 'On Leave';
 }
 
 const data: Employee[] = [
-  { id: 1, name: 'Aria Chen',     role: 'Engineering Lead',  department: 'Engineering' },
-  { id: 2, name: 'Marcus Webb',   role: 'Product Manager',   department: 'Product' },
-  { id: 3, name: 'Priya Kapoor',  role: 'Senior Designer',   department: 'Design' },
-  { id: 4, name: 'Jordan Ellis',  role: 'Data Scientist',    department: 'Analytics' },
-  { id: 5, name: 'Sam Rivera',    role: 'DevOps Engineer',   department: 'Engineering' },
-  { id: 6, name: 'Taylor Brooks', role: 'Account Manager',   department: 'Sales' },
+  { id: 1, name: 'Aria Chen',     role: 'Engineering Lead',  department: 'Engineering', status: 'Active' },
+  { id: 2, name: 'Marcus Webb',   role: 'Product Manager',   department: 'Product',     status: 'Active' },
+  { id: 3, name: 'Priya Kapoor',  role: 'Senior Designer',   department: 'Design',      status: 'On Leave' },
+  { id: 4, name: 'Jordan Ellis',  role: 'Data Scientist',    department: 'Analytics',   status: 'Active' },
+  { id: 5, name: 'Sam Rivera',    role: 'DevOps Engineer',   department: 'Engineering', status: 'On Leave' },
+  { id: 6, name: 'Taylor Brooks', role: 'Account Manager',   department: 'Sales',       status: 'Active' },
 ];
 
 const columns: TableColumn<Employee>[] = [
   { name: 'Name',       selector: r => r.name,       sortable: true },
   { name: 'Role',       selector: r => r.role },
   { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Status',     selector: r => r.status },
 ];
 
 export default function App() {
   const [selectedRows, setSelectedRows] = useState<Employee[]>([]);
   const [single, setSingle] = useState(false);
+  const [disableOnLeave, setDisableOnLeave] = useState(false);
   const ref = useRef<DataTableHandle>(null);
 
   return (
@@ -51,6 +54,10 @@ export default function App() {
       <label>
         <input type="checkbox" checked={single} onChange={e => setSingle(e.target.checked)} />
         {' '}Single select
+      </label>
+      <label>
+        <input type="checkbox" checked={disableOnLeave} onChange={e => setDisableOnLeave(e.target.checked)} />
+        {' '}Disable "On Leave" rows
       </label>
       <button onClick={() => ref.current?.clearSelectedRows()}>Clear selection</button>
       {selectedRows.length > 0 && (
@@ -62,6 +69,7 @@ export default function App() {
         data={data}
         selectableRows
         selectableRowsSingle={single}
+        selectableRowDisabled={disableOnLeave ? (r => r.status === 'On Leave') : undefined}
         onSelectedRowsChange={({ selectedRows }) => setSelectedRows(selectedRows)}
         highlightOnHover
       />
@@ -76,9 +84,15 @@ export default function App() {
   <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>
 
   <h2>Disable specific rows</h2>
-  <CodeBlock code={`<DataTable
+  <p>
+    Pass a predicate to <code>selectableRowDisabled</code> to prevent specific rows from being
+    checked. Disabled rows render with a greyed-out checkbox that cannot be interacted with.
+    Toggle "Disable 'On Leave' rows" in the demo above to see this in action.
+  </p>
+  <CodeBlock code={`// Prevent rows matching a condition from being selected
+<DataTable
   selectableRows
-  selectableRowDisabled={row => row.locked}
+  selectableRowDisabled={row => row.status === 'On Leave'}
 />`} />
 
   <h2>Pre-select rows</h2>

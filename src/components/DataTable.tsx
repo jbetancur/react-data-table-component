@@ -3,7 +3,6 @@ import Table from './Table';
 import Header from './TableHeader';
 import Subheader from './TableSubheader';
 import ResponsiveWrapper from './ResponsiveWrapper';
-import ProgressWrapper from './ProgressWrapper';
 import Wrapper from './TableWrapper';
 import NativePagination from './Pagination';
 import DataTableHead from './DataTableHead';
@@ -206,7 +205,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		[handleChangeRowsPerPageState, filteredTableRows.length],
 	);
 
-	const showTableHead = !noTableHead && (persistTableHead || (filteredSortedData.length > 0 && !progressPending));
+	const showTableHead = !noTableHead && (persistTableHead || progressPending || filteredSortedData.length > 0);
 	const showHeader = !noHeader && !!(title || actions);
 
 	if (pagination && !paginationServer && filteredSortedData.length > 0 && filteredTableRows.length === 0) {
@@ -319,8 +318,6 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 							{...wrapperProps}
 						>
 							<Wrapper>
-								{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
-
 								<Table
 									id={tableId}
 									disabled={disabled}
@@ -345,9 +342,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 										selectedRows={selectedRows}
 										keyField={keyField}
 										isBusy={isBusy}
+										columnCount={tableColumns.length}
 										noDataComponent={noDataComponent}
 										progressComponent={progressComponent}
-										persistTableHead={persistTableHead}
 										expandableRowExpanded={expandableRowExpanded}
 										expandableRowDisabled={expandableRowDisabled}
 									/>

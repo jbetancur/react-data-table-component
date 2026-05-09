@@ -54,7 +54,14 @@ export const defaultProps = {
 	expandableIcon: DEFAULT_EXPANDABLE_ICON,
 	expandableRowsComponentProps: {},
 	progressPending: false,
-	progressComponent: <div style={{ fontSize: '24px', fontWeight: 700, padding: '24px' }}>Loading...</div>,
+	progressComponent: (
+		<div style={{
+			width: 28, height: 28, borderRadius: '50%',
+			border: '3px solid var(--rdt-color-divider, rgba(0,0,0,0.12))',
+			borderTopColor: 'var(--rdt-color-text-primary, rgba(0,0,0,0.87))',
+			animation: 'rdt_spin 0.7s linear infinite',
+		}} />
+	),
 	persistTableHead: false,
 	sortIcon: null,
 	sortFunction: null,

@@ -18,7 +18,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `data` | `T[]` | - | **Required.** Array of row objects. |
 | `columns` | `TableColumn<T>[]` | - | **Required.** Column definitions. |
 | `keyField` | `string` | `"id"` | Property on each row used as a stable React key. |
-| `progressPending` | `boolean` | `false` | Show a loading indicator instead of rows. |
+| `progressPending` | `boolean` | `false` | Show a loading state. On initial load (no data yet) renders shimmer skeleton rows. On re-fetch (data already loaded) dims the existing rows and overlays a centered spinner. The column header always stays visible. |
 | `progressComponent` | `ReactNode` | built-in spinner | Custom loading indicator. |
 | `noDataComponent` | `ReactNode` | built-in message | Rendered when `data` is empty. |
 
@@ -33,7 +33,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `subHeaderWrap` | `boolean` | `true` | Allow sub-header to wrap onto multiple lines. |
 | `noHeader` | `boolean` | `false` | Hide the title/actions header bar entirely. |
 | `noTableHead` | `boolean` | `false` | Hide the column header row. |
-| `persistTableHead` | `boolean` | `false` | Show the column header even when `progressPending` or data is empty. |
+| `persistTableHead` | `boolean` | `false` | Show the column header even when data is empty. The header always stays visible during `progressPending` regardless of this prop. |
 | `dense` | `boolean` | `false` | Reduce row height for a compact look. |
 | `responsive` | `boolean` | `true` | Wrap the table in a horizontally scrollable container. |
 | `fixedHeader` | `boolean` | `false` | Stick the column header at the top when scrolling. |
