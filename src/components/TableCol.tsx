@@ -30,6 +30,8 @@ type TableColProps<T> = {
 	/** Width override from column resize — takes precedence over column.width */
 	resizedWidth?: number;
 	onResizeStart?: (columnId: string | number, e: React.MouseEvent) => void;
+	/** CSS grid placement styles — injected by DataTableHead when rendering in grouped-header grid mode */
+	gridStyle?: React.CSSProperties;
 };
 
 function TableCol<T>({
@@ -54,6 +56,7 @@ function TableCol<T>({
 	onDragLeave,
 	resizedWidth,
 	onResizeStart,
+	gridStyle,
 }: TableColProps<T>): JSX.Element | null {
 	const customStyles = useStyles();
 
@@ -161,6 +164,7 @@ function TableCol<T>({
 				...(isDragging ? (customStyles.headCells?.draggingStyle as React.CSSProperties) : undefined),
 				...widthStyle,
 				position: 'relative',
+				...gridStyle,
 			}}
 			onDragStart={onDragStart}
 			onDragOver={onDragOver}
