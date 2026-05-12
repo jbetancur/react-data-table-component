@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import DataTable, { type TableColumn, type DataTableHandle } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
+import { type TableColumn, type DataTableHandle } from 'react-data-table-component';
 
 interface Row {
 	id: number;

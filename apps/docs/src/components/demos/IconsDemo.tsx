@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import DataTable, { type TableColumn } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
+import { type TableColumn } from 'react-data-table-component';
 
 // Inline SVG icon primitives — no external dependency
 const ChevronLeft = () => (

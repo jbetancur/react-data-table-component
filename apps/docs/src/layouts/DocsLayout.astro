@@ -16,12 +16,14 @@ const nav = [
     links: [
       { label: 'Getting started', href: '/docs/getting-started' },
       { label: 'Installation', href: '/docs/installation' },
+      { label: "What's new in v8", href: '/docs/whats-new' },
     ],
   },
   {
     group: 'Columns',
     links: [
       { label: 'Overview', href: '/docs/columns' },
+      { label: 'Cell rendering', href: '/docs/cells' },
       { label: 'Column groups', href: '/docs/column-groups' },
       { label: 'Column visibility', href: '/docs/column-visibility' },
       { label: 'Column reordering', href: '/docs/column-reorder' },
@@ -35,6 +37,7 @@ const nav = [
     links: [
       { label: 'Row interactions', href: '/docs/row-interactions' },
       { label: 'Expandable rows', href: '/docs/expandable' },
+      { label: 'Conditional styles', href: '/docs/conditional-styles' },
       { label: 'Pagination', href: '/docs/pagination' },
       { label: 'Loading state', href: '/docs/loading' },
     ],
@@ -62,7 +65,6 @@ const nav = [
     links: [
       { label: 'Themes', href: '/docs/themes' },
       { label: 'Custom styles', href: '/docs/custom-styles' },
-      { label: 'Icons', href: '/docs/icons' },
     ],
   },
   {
@@ -96,7 +98,7 @@ const currentPath = Astro.url.pathname;
           <div class="relative flex-1">
             <select
               id="version-switcher"
-              class="w-full appearance-none text-xs font-medium border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1 pr-6 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 cursor-pointer hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              class="w-full appearance-none text-xs font-medium border border-gray-200 rounded-md px-2 py-1 pr-6 bg-white text-gray-700 cursor-pointer hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
             >
               <option value="v8" selected>v8 (current)</option>
               <option value="v7">v7 (legacy)</option>
@@ -133,8 +135,8 @@ const currentPath = Astro.url.pathname;
                     href={href}
                     class={`block px-2 py-1 rounded-md ${
                       currentPath === href
-                        ? 'bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 font-medium'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800'
+                        ? 'bg-brand-50 text-brand-700 font-medium'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
                     {label}

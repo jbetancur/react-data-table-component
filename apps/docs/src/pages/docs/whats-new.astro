@@ -1,0 +1,171 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="What's new in v8 | react-data-table-component">
+  <h1>What's new in v8</h1>
+
+  <p>
+    v8 is a full rewrite built around a new headless hook architecture. Every major feature is now
+    composable and usable independently of <code>&lt;DataTable&gt;</code>. Here's what changed.
+  </p>
+
+  <h2>Column filtering</h2>
+
+  <p>
+    A new built-in filter popup per column. Set <code>filterable: true</code> on any column to add a
+    filter icon to its header. The filter type (<code>"text"</code>, <code>"number"</code>, <code>"date"</code>)
+    controls the available operators and input widget.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { name: 'Name',   selector: r => r.name,   filterable: true, filterType: 'text' },
+  { name: 'Salary', selector: r => r.salary, filterable: true, filterType: 'number' },
+  { name: 'Hired',  selector: r => r.hired,  filterable: true, filterType: 'date' },
+];`} />
+
+  <p>
+    Filters use a structured <code>FilterState</code> with two independent conditions joined by
+    <code>AND</code> or <code>OR</code>. Supply a custom <code>filterFunction</code> on a column
+    to override the built-in operator logic.
+    → <a href="/docs/filtering">Column filtering docs</a>
+  </p>
+
+  <h2>Column groups</h2>
+
+  <p>
+    Span a label across multiple adjacent columns using the new <code>columnGroups</code> prop.
+    Groups render as a second header row above the regular column headers.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columnGroups={[
+    { name: 'Personal',    columnIds: ['first', 'last'] },
+    { name: 'Employment',  columnIds: ['role', 'dept', 'salary'] },
+  ]}
+  columns={columns}
+  data={data}
+/>`} />
+
+  <p>→ <a href="/docs/column-groups">Column groups docs</a></p>
+
+  <h2>Drag-to-reorder columns and groups</h2>
+
+  <p>
+    Users can drag column headers to reorder them. Set <code>reorder: true</code> on each column
+    that should be draggable. Column groups can be dragged as a unit too — set <code>reorder: true</code>
+    on the group and the entire block moves together.
+  </p>
+
+  <CodeBlock code={`const columns = [
+  { id: 'name', name: 'Name', reorder: true, selector: r => r.name },
+  { id: 'dept', name: 'Dept', reorder: true, selector: r => r.dept },
+];
+
+<DataTable
+  columns={columns}
+  onColumnOrderChange={cols => setColumns(cols)}
+  data={data}
+/>`} />
+
+  <p>→ <a href="/docs/column-reorder">Column reordering docs</a></p>
+
+  <h2>Column visibility hook</h2>
+
+  <p>
+    <code>useColumnVisibility</code> is a new headless hook for managing a show/hide column picker.
+    It returns a columns array with <code>omit</code> pre-set — pass it directly to <code>&lt;DataTable&gt;</code>.
+  </p>
+
+  <CodeBlock code={`const { columns, visibility, toggle, setAll } = useColumnVisibility(rawColumns);`} />
+
+  <p>→ <a href="/docs/column-visibility">Column visibility docs</a></p>
+
+  <h2>Improved loading state</h2>
+
+  <p>
+    <code>progressPending</code> now distinguishes between initial load and re-fetch:
+  </p>
+
+  <ul>
+    <li><strong>Initial load</strong> (no data yet) — renders shimmer skeleton rows that match your column layout.</li>
+    <li><strong>Re-fetch</strong> (data already showing) — dims existing rows and overlays a centered spinner, preserving table structure.</li>
+  </ul>
+
+  <p>The column header always stays visible in both states. → <a href="/docs/loading">Loading state docs</a></p>
+
+  <h2>Row animations</h2>
+
+  <p>
+    Set <code>animateRows</code> to stagger row entrances and animate sort transitions.
+    Automatically suppressed when the user has <code>prefers-reduced-motion</code> enabled.
+  </p>
+
+  <CodeBlock code={`<DataTable animateRows columns={columns} data={data} />`} />
+
+  <p>→ <a href="/docs/animations">Animations docs</a></p>
+
+  <h2>Column separators</h2>
+
+  <p>
+    Two new props control vertical lines between columns independently for body rows and headers.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columnSeparator="subtle"   // body: inset 60%-height line
+  headerSeparator="full"     // header: full-height line
+  columns={columns}
+  data={data}
+/>`} />
+
+  <p>→ <a href="/docs/column-separators">Column separators docs</a></p>
+
+  <h2>Headless hooks</h2>
+
+  <p>
+    All internal logic is now exposed as composable hooks. Use them to build fully custom table
+    markup while keeping the library's sort, pagination, and filter engines.
+  </p>
+
+  <table>
+    <thead><tr><th>Hook</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>useColumns</code></td><td>Resolve column definitions and defaults</td></tr>
+      <tr><td><code>useTableState</code></td><td>Manage sort, page, and selection state</td></tr>
+      <tr><td><code>useTableData</code></td><td>Sort, paginate, and slice rows</td></tr>
+      <tr><td><code>useColumnFilter</code></td><td>Per-column filter values and predicate application</td></tr>
+      <tr><td><code>useColumnVisibility</code></td><td>Show/hide column state</td></tr>
+    </tbody>
+  </table>
+
+  <p>→ <a href="/docs/headless">Headless hooks docs</a></p>
+
+  <h2>Imperative ref API</h2>
+
+  <p>
+    Attach a <code>ref</code> to <code>&lt;DataTable&gt;</code> to call imperative methods.
+    The <code>clearSelectedRows</code> prop is now deprecated in favour of this API.
+  </p>
+
+  <CodeBlock code={`const ref = useRef<DataTableHandle>(null);
+ref.current?.clearSelectedRows();
+
+<DataTable ref={ref} selectableRows columns={columns} data={data} />`} />
+
+  <h2>New row events</h2>
+
+  <p>
+    <code>onRowMiddleClicked</code> fires on scroll-click — use it with <code>onRowClicked</code>
+    to implement open-in-new-tab behavior.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  onRowClicked={row => navigate(\`/users/\${row.id}\`)}
+  onRowMiddleClicked={row => window.open(\`/users/\${row.id}\`, '_blank')}
+  columns={columns}
+  data={data}
+/>`} />
+
+  <p>→ <a href="/docs/migration">Migration guide</a></p>
+</DocsLayout>

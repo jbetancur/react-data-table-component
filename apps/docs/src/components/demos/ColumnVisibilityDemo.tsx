@@ -1,5 +1,6 @@
 import React from 'react';
-import DataTable, { type TableColumn, useColumnVisibility } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
+import { type TableColumn, useColumnVisibility } from 'react-data-table-component';
 
 interface Employee {
 	id: number;

@@ -1,0 +1,154 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ConditionalStylesDemo from '../../components/demos/ConditionalStylesDemo.tsx';
+---
+
+<DocsLayout title="Conditional styles | react-data-table-component">
+  <h1>Conditional styles</h1>
+
+  <p>
+    Apply styles or CSS class names to rows and cells based on row data — no custom
+    <code>cell</code> renderer required.
+  </p>
+
+  <h2>conditionalRowStyles</h2>
+
+  <p>
+    Pass an array of <code>ConditionalStyles&lt;T&gt;</code> objects to the <code>conditionalRowStyles</code> prop.
+    Each entry runs its <code>when</code> predicate against every row; when it returns <code>true</code>
+    the <code>style</code> or <code>classNames</code> are applied to that row.
+  </p>
+
+  <CodeBlock code={`import DataTable, { type ConditionalStyles } from 'react-data-table-component';
+
+const conditionalRowStyles: ConditionalStyles<Deal>[] = [
+  {
+    when: row => row.stage === 'Closed Won',
+    style: { backgroundColor: '#f0fdf4', borderLeft: '3px solid #16a34a' },
+  },
+  {
+    when: row => row.stage === 'Closed Lost',
+    style: { backgroundColor: '#fef2f2', opacity: 0.75 },
+  },
+];
+
+<DataTable conditionalRowStyles={conditionalRowStyles} columns={columns} data={data} />`} />
+
+  <h3>Style as a function</h3>
+
+  <p>
+    When the style values themselves depend on the row, pass a function instead of a plain object.
+  </p>
+
+  <CodeBlock code={`{
+  when: row => row.salary > 100000,
+  style: row => ({
+    fontWeight: row.salary > 200000 ? 700 : 400,
+    color: row.salary > 200000 ? '#15803d' : 'inherit',
+  }),
+}`} />
+
+  <h3>CSS class names</h3>
+
+  <p>
+    Use <code>classNames</code> to apply Tailwind utilities or your own CSS classes instead of inline styles.
+  </p>
+
+  <CodeBlock code={`{
+  when: row => row.flagged,
+  classNames: ['bg-red-50', 'border-l-4', 'border-red-500'],
+}`} />
+
+  <h2>conditionalCellStyles</h2>
+
+  <p>
+    The same <code>ConditionalStyles&lt;T&gt;</code> shape applies at the cell level via the
+    <code>conditionalCellStyles</code> prop on individual column definitions. This lets you
+    highlight specific cells without changing the full row.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Deal>[] = [
+  {
+    name: 'Value',
+    selector: r => r.value,
+    format: r => fmt(r.value),
+    right: true,
+    conditionalCellStyles: [
+      { when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
+      { when: r => r.value < 20000,   style: { color: '#9ca3af' } },
+    ],
+  },
+  {
+    name: 'Days open',
+    selector: r => r.daysOpen,
+    right: true,
+    conditionalCellStyles: [
+      { when: r => r.daysOpen > 90, style: { color: '#dc2626', fontWeight: 700 } },
+      { when: r => r.daysOpen > 60, style: { color: '#d97706' } },
+    ],
+  },
+];`} />
+
+  <h2>Interaction with other row styles</h2>
+
+  <p>
+    Conditional row styles are applied after the base row style, so they override the default
+    background. The hover highlight from <code>highlightOnHover</code> will override a conditional
+    background on hover — which is usually the desired behavior. If you need the conditional color
+    to persist on hover, set it via <code>rows.highlightOnHoverStyle</code> in <code>customStyles</code>.
+  </p>
+
+  <p>
+    To carry a parent row's conditional styles into its expanded panel, set
+    <code>expandableInheritConditionalStyles</code>.
+  </p>
+
+  <Demo
+    title="Conditional row and cell styles — sales pipeline"
+    description="Won deals get a green left border; lost deals are dimmed. Value cells are bold-green for large deals, gray for small. Days Open cells turn amber then red as they age."
+    code={`import DataTable, { type ConditionalStyles, type TableColumn } from 'react-data-table-component';
+
+const conditionalRowStyles: ConditionalStyles<Deal>[] = [
+  {
+    when: r => r.stage === 'Closed Won',
+    style: { backgroundColor: '#f0fdf4', borderLeft: '3px solid #16a34a' },
+  },
+  {
+    when: r => r.stage === 'Closed Lost',
+    style: { backgroundColor: '#fef2f2', opacity: 0.75 },
+  },
+];
+
+const columns: TableColumn<Deal>[] = [
+  { name: 'Company', selector: r => r.company, sortable: true, grow: 2 },
+  { name: 'Rep',     selector: r => r.rep,     sortable: true },
+  {
+    name: 'Value',
+    selector: r => r.value,
+    format: r => fmt(r.value),
+    sortable: true,
+    right: true,
+    conditionalCellStyles: [
+      { when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
+      { when: r => r.value < 20000,   style: { color: '#9ca3af' } },
+    ],
+  },
+  {
+    name: 'Days open',
+    selector: r => r.daysOpen,
+    sortable: true,
+    right: true,
+    conditionalCellStyles: [
+      { when: r => r.daysOpen > 90, style: { color: '#dc2626', fontWeight: 700 } },
+      { when: r => r.daysOpen > 60, style: { color: '#d97706' } },
+    ],
+  },
+];
+
+<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} highlightOnHover />`}
+  >
+    <ConditionalStylesDemo client:load />
+  </Demo>
+</DocsLayout>

@@ -3,17 +3,6 @@ import { handleFunctionProps, noop } from '../util';
 
 const defaultComponentName = 'input';
 
-const calculateBaseStyle = (disabled: boolean): React.CSSProperties => ({
-	fontSize: '18px',
-	appearance: 'auto',
-	WebkitAppearance: 'checkbox',
-	...(!disabled && { cursor: 'pointer' }),
-	padding: 0,
-	marginTop: '1px',
-	verticalAlign: 'middle',
-	position: 'relative',
-});
-
 interface CheckboxProps {
 	name: string;
 	component?: React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>> | string;
@@ -40,33 +29,54 @@ function Checkbox({
 		}
 	};
 
-	// Cast for JSX rendering: TagName may be a string ('input') or a component;
-	// both are valid JSX element types at runtime.
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const TagName = component as React.ElementType<any>;
-	const baseStyle =
-		component !== defaultComponentName
-			? (componentOptions.style as React.CSSProperties | undefined)
-			: calculateBaseStyle(disabled);
 	const resolvedComponentOptions = React.useMemo(
 		() => handleFunctionProps(componentOptions, indeterminate),
 		[componentOptions, indeterminate],
 	);
 
+	// Use case 2: custom component via selectableRowsComponent prop
+	if (component !== defaultComponentName) {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const TagName = component as React.ElementType<any>;
+		return (
+			<TagName
+				type="checkbox"
+				ref={setCheckboxRef}
+				style={componentOptions.style as React.CSSProperties | undefined}
+				onClick={disabled ? noop : onClick}
+				name={name}
+				aria-label={name}
+				checked={checked}
+				disabled={disabled}
+				{...resolvedComponentOptions}
+				onChange={noop}
+			/>
+		);
+	}
+
+	// Use case 1: pure CSS checkbox — state classes drive ::before / ::after visuals
+	const cls = [
+		'rdt_Checkbox',
+		checked && 'rdt_checked',
+		indeterminate && 'rdt_indeterminate',
+		disabled && 'rdt_disabled',
+	]
+		.filter(Boolean)
+		.join(' ');
+
 	return (
-		<TagName
-			// allow this component to fully control these options
-			type="checkbox"
-			ref={setCheckboxRef}
-			style={baseStyle}
-			onClick={disabled ? noop : onClick}
-			name={name}
-			aria-label={name}
-			checked={checked}
-			disabled={disabled}
-			{...resolvedComponentOptions}
-			onChange={noop} // prevent uncontrolled checkbox warnings -  we don't need onChange
-		/>
+		<span className={cls}>
+			<input
+				type="checkbox"
+				ref={setCheckboxRef}
+				onClick={disabled ? noop : onClick}
+				name={name}
+				aria-label={name}
+				checked={checked}
+				disabled={disabled}
+				onChange={noop}
+			/>
+		</span>
 	);
 }
 

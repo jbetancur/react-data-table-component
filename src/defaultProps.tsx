@@ -103,6 +103,7 @@ export const defaultProps = {
 	dense: false,
 	conditionalRowStyles: [],
 	theme: 'default' as const,
+	colorMode: 'light' as const,
 	customStyles: {},
 	direction: Direction.AUTO,
 	onChangePage: noop,
