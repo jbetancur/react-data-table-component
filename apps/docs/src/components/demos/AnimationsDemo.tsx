@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import DataTable, { type TableColumn } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
+import { type TableColumn } from 'react-data-table-component';
 
 interface Row {
 	id: number;
@@ -50,13 +51,7 @@ export default function AnimationsDemo() {
 					{animate ? 'Animations on — sort to see reorder animation' : 'Animations off'}
 				</span>
 			</div>
-			<DataTable
-				key={mountKey}
-				columns={columns}
-				data={BASE_DATA}
-				animateRows={animate}
-				highlightOnHover
-			/>
+			<DataTable key={mountKey} columns={columns} data={BASE_DATA} animateRows={animate} highlightOnHover />
 		</div>
 	);
 }

@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply antialiased text-gray-900 bg-white dark:bg-gray-900 dark:text-gray-100;
+    @apply antialiased text-gray-900 bg-white;
   }
 }
 
@@ -14,7 +14,7 @@
 
 /* Fenced / preformatted blocks */
 article pre {
-  @apply bg-gray-950 dark:bg-gray-950 rounded-xl px-5 py-4 overflow-x-auto my-5 text-sm leading-relaxed;
+  @apply bg-gray-950 rounded-xl px-5 py-4 overflow-x-auto my-5 text-sm leading-relaxed;
   border: 1px solid rgba(255,255,255,0.06);
 }
 article pre code {
@@ -24,7 +24,7 @@ article pre code {
 
 /* Inline code */
 article code:not(pre code) {
-  @apply font-mono text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-blue-950/60 rounded px-1.5 py-0.5;
+  @apply font-mono text-brand-700 bg-brand-50 rounded px-1.5 py-0.5;
   font-size: 0.82em;
 }
 
@@ -33,18 +33,18 @@ article table {
   @apply w-full border-collapse text-sm my-5;
 }
 article th {
-  @apply text-left px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 font-semibold text-gray-700 dark:text-gray-300;
+  @apply text-left px-3 py-2 bg-gray-50 border border-gray-200 font-semibold text-gray-700;
 }
 article td {
-  @apply px-3 py-2 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400;
+  @apply px-3 py-2 border border-gray-200 text-gray-600;
 }
 
 /* Headings */
-article h1 { @apply text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3; }
-article h2 { @apply text-lg font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-3 pt-4 border-t border-gray-100 dark:border-gray-800; }
-article h3 { @apply text-base font-semibold text-gray-800 dark:text-gray-200 mt-5 mb-2; }
-article p  { @apply text-gray-600 dark:text-gray-400 leading-relaxed mb-3; }
-article ul { @apply list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-400 mb-4; }
-article ol { @apply list-decimal pl-5 space-y-1 text-gray-600 dark:text-gray-400 mb-4; }
+article h1 { @apply text-2xl font-bold text-gray-900 mb-3; }
+article h2 { @apply text-lg font-semibold text-gray-900 mt-8 mb-3 pt-4 border-t border-gray-100; }
+article h3 { @apply text-base font-semibold text-gray-800 mt-5 mb-2; }
+article p  { @apply text-gray-600 leading-relaxed mb-3; }
+article ul { @apply list-disc pl-5 space-y-1 text-gray-600 mb-4; }
+article ol { @apply list-decimal pl-5 space-y-1 text-gray-600 mb-4; }
 article li { @apply leading-relaxed; }
-article a  { @apply text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-200 hover:underline; }
+article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }

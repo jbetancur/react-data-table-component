@@ -9,9 +9,12 @@
 	max-width: 100%;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	background-color: var(--rdt-color-bg, #fff);
+	font-family: var(--rdt-font-family, inherit);
 	/* Ensures native form controls (checkboxes) match the table theme
 	   regardless of the host app's color-scheme declaration. */
 	color-scheme: var(--rdt-color-scheme, light);
+	/* Sort icon scales with the theme's icon size */
+	--rdt-sort-icon-size: calc(var(--rdt-icon-size, 18px) * 0.8);
 }
 
 .rdt_tableDisabled {
@@ -50,7 +53,7 @@
 	flex-direction: column;
 	width: 100%;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
-	font-size: 12px;
+	font-size: var(--rdt-font-size-header, 12px);
 	font-weight: 500;
 }
 
@@ -65,8 +68,8 @@
 	display: flex;
 	align-items: stretch;
 	width: 100%;
-	min-height: 52px;
-	background-color: var(--rdt-color-bg, #fff);
+	min-height: var(--rdt-header-height, 52px);
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
 	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 }
 
@@ -86,11 +89,11 @@
 	align-content: stretch;
 	width: 100%;
 	box-sizing: border-box;
-	font-size: 13px;
+	font-size: var(--rdt-font-size, 13px);
 	font-weight: 400;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	background-color: var(--rdt-color-bg, #fff);
-	min-height: 48px;
+	min-height: var(--rdt-row-height, 48px);
 }
 
 .rdt_row:not(:last-of-type) {
@@ -132,8 +135,8 @@
 	align-items: center;
 	box-sizing: border-box;
 	line-height: normal;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: var(--rdt-cell-padding-x, 16px);
+	padding-right: var(--rdt-cell-padding-x, 16px);
 	word-break: break-word;
 }
 
@@ -192,6 +195,72 @@
 	padding: 0;
 }
 
+/* ─── Checkbox (CSS-only, ag-grid pattern) ───────────────────────────────────
+ * State classes on the wrapper drive ::before (box) and ::after (icon).
+ * --rdt-checkbox-size and --rdt-checkbox-radius are set per theme.
+ * The hidden <input> underneath handles a11y and keyboard interaction.
+ * ─────────────────────────────────────────────────────────────────────────── */
+.rdt_Checkbox {
+	position: relative;
+	display: inline-flex;
+	flex-shrink: 0;
+	width: var(--rdt-checkbox-size, 18px);
+	height: var(--rdt-checkbox-size, 18px);
+	cursor: pointer;
+}
+
+.rdt_Checkbox.rdt_disabled {
+	cursor: default;
+	opacity: 0.38;
+}
+
+.rdt_Checkbox > input[type='checkbox'] {
+	position: absolute;
+	opacity: 0;
+	inset: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	cursor: inherit;
+	z-index: 1;
+}
+
+.rdt_Checkbox::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	box-sizing: border-box;
+	border-radius: var(--rdt-checkbox-radius, 2px);
+	border: 2px solid currentColor;
+	opacity: 0.54;
+	background: transparent;
+	transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.rdt_Checkbox.rdt_checked::before,
+.rdt_Checkbox.rdt_indeterminate::before {
+	background: var(--rdt-color-primary, #1976d2);
+	border-color: var(--rdt-color-primary, #1976d2);
+	opacity: 1;
+}
+
+.rdt_Checkbox::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+}
+
+.rdt_Checkbox.rdt_checked::after {
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8' fill='none'><polyline points='1 4 3.5 7 9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+.rdt_Checkbox.rdt_indeterminate::after {
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='2' viewBox='0 0 10 2'><rect width='10' height='2' rx='1' fill='white'/></svg>");
+}
+
 /* ─── Checkbox / expander cells ─────────────────────────────────────────────── */
 .rdt_cellCheckbox {
 	flex: 0 0 48px;
@@ -219,6 +288,7 @@
 
 .rdt_columnExpander {
 	white-space: nowrap;
+	min-width: 48px;
 }
 
 /* ─── Column headers ────────────────────────────────────────────────────────── */
@@ -296,7 +366,7 @@
 	width: 5px;
 	height: 5px;
 	border-radius: 50%;
-	background-color: #1976d2;
+	background-color: var(--rdt-color-primary, #1976d2);
 	pointer-events: none;
 }
 
@@ -308,7 +378,7 @@
 	gap: 6px;
 	background: var(--rdt-color-bg, #fff);
 	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
-	border-radius: 6px;
+	border-radius: var(--rdt-border-radius, 6px);
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
 	padding: 10px;
 	min-width: 260px;
@@ -327,14 +397,14 @@
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	background: var(--rdt-color-bg, #fff);
 	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
-	border-radius: 4px;
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.6);
 	padding: 3px 4px;
 	cursor: pointer;
 	max-width: 140px;
 }
 
 .rdt_filterSelect:focus {
-	outline: 2px solid #1976d2;
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
 	outline-offset: -1px;
 }
 
@@ -345,12 +415,12 @@
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	background: var(--rdt-color-bg, #fff);
 	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
-	border-radius: 4px;
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.6);
 	padding: 3px 6px;
 }
 
 .rdt_filterInput:focus {
-	outline: 2px solid #1976d2;
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
 	outline-offset: -1px;
 }
 
@@ -393,8 +463,8 @@
 }
 
 .rdt_filterLogicBtnActive {
-	background-color: #1976d2;
-	border-color: #1976d2;
+	background-color: var(--rdt-color-primary, #1976d2);
+	border-color: var(--rdt-color-primary, #1976d2);
 	color: #fff;
 }
 
@@ -404,7 +474,7 @@
 	border: none;
 	cursor: pointer;
 	font-size: 12px;
-	color: #1976d2;
+	color: var(--rdt-color-primary, #1976d2);
 	padding: 0;
 	text-align: left;
 }
@@ -438,13 +508,13 @@
 }
 
 .rdt_filterBtnPrimary {
-	background-color: #1976d2;
-	border-color: #1976d2;
+	background-color: var(--rdt-color-primary, #1976d2);
+	border-color: var(--rdt-color-primary, #1976d2);
 	color: #fff;
 }
 
 .rdt_filterBtnPrimary:hover {
-	background-color: #1565c0;
+	background-color: color-mix(in srgb, var(--rdt-color-primary, #1976d2) 85%, black);
 }
 
 /* Drag ghost — custom image shown while dragging a reorderable column */
@@ -455,12 +525,13 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	padding: 0 16px;
+	padding: 0 var(--rdt-cell-padding-x, 16px);
 	box-sizing: border-box;
 	background: var(--rdt-color-bg, #fff);
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
-	font-size: 12px;
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.5);
+	font-size: var(--rdt-font-size-header, 12px);
 	font-weight: 500;
 	white-space: nowrap;
 	overflow: hidden;
@@ -524,19 +595,19 @@
 
 .rdt_headGrid {
 	display: grid;
-	grid-template-rows: 52px 52px;
+	grid-template-rows: var(--rdt-header-height, 52px) var(--rdt-header-height, 52px);
 	width: 100%;
-	background-color: var(--rdt-color-bg, #fff);
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
 	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 	/* Full-width 1px divider between the group label row (row 1) and the column
 	   header row (row 2). Drawn as a background-image gradient so it spans
 	   the full container width even where ungrouped columns span both rows. */
 	background-image: linear-gradient(
 		to bottom,
-		transparent 51px,
-		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 51px,
-		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 52px,
-		transparent 52px
+		transparent calc(var(--rdt-header-height, 52px) - 1px),
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) calc(var(--rdt-header-height, 52px) - 1px),
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) var(--rdt-header-height, 52px),
+		transparent var(--rdt-header-height, 52px)
 	);
 	/* grid-template-columns is set inline from the column definitions */
 }
@@ -557,7 +628,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 16px;
+	padding: 0 var(--rdt-cell-padding-x, 16px);
 	font-size: 11px;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -632,8 +703,8 @@
 	background-color: transparent;
 	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
 	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
-	border-radius: 2px;
-	transition: background-color 0.25s;
+	border-radius: var(--rdt-border-radius, 4px);
+	transition: background-color 0.15s;
 	height: 100%;
 	width: 100%;
 	padding: 0;
@@ -641,6 +712,9 @@
 
 .rdt_expanderButton svg {
 	margin: auto;
+	width: var(--rdt-icon-size, 18px);
+	height: var(--rdt-icon-size, 18px);
+	flex-shrink: 0;
 }
 
 .rdt_expanderButton:hover:not(:disabled) {
@@ -671,7 +745,7 @@
 	flex-wrap: wrap;
 	font-size: 22px;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
-	background-color: var(--rdt-color-bg, #fff);
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
 	min-height: 56px;
 	padding-left: 16px;
 	padding-right: 8px;
@@ -702,7 +776,7 @@
 	align-items: center;
 	padding: 4px 16px 4px 24px;
 	width: 100%;
-	background-color: var(--rdt-color-bg, #fff);
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
 	min-height: 52px;
 }
 
@@ -794,31 +868,40 @@
 	justify-content: flex-end;
 	align-items: center;
 	box-sizing: border-box;
-	padding-right: 8px;
-	padding-left: 8px;
+	padding-right: var(--rdt-cell-padding-x, 8px);
+	padding-left: var(--rdt-cell-padding-x, 8px);
 	width: 100%;
-	font-size: 13px;
+	font-size: var(--rdt-font-size, 13px);
+	font-family: var(--rdt-font-family, inherit);
 	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
 	background-color: var(--rdt-color-bg, #fff);
-	min-height: 56px;
+	min-height: var(--rdt-row-height, 52px);
 	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 }
 
 .rdt_paginationButton {
 	position: relative;
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	user-select: none;
 	border: none;
-	border-radius: 50%;
-	height: 40px;
-	width: 40px;
-	padding: 8px;
+	border-radius: calc(var(--rdt-border-radius, 4px) * 100);
+	height: calc(var(--rdt-icon-size, 18px) + 16px);
+	width: calc(var(--rdt-icon-size, 18px) + 16px);
+	padding: 0;
 	margin: 0;
 	cursor: pointer;
-	transition: background-color 0.4s;
+	transition: background-color 0.15s;
 	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
 	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
 	background-color: transparent;
+}
+
+.rdt_paginationButton svg {
+	width: var(--rdt-icon-size, 18px);
+	height: var(--rdt-icon-size, 18px);
+	flex-shrink: 0;
 }
 
 .rdt_paginationButton:disabled {
@@ -843,7 +926,7 @@
 .rdt_paginationPageList {
 	display: flex;
 	align-items: center;
-	border-radius: 4px;
+	border-radius: var(--rdt-border-radius, 4px);
 	white-space: nowrap;
 }
 
@@ -874,21 +957,35 @@
 /* ─── Select ────────────────────────────────────────────────────────────────── */
 .rdt_selectWrapper {
 	position: relative;
+	display: inline-flex;
+	align-items: center;
 	flex-shrink: 0;
 	font-size: inherit;
-	color: inherit;
-	margin-top: 1px;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: var(--rdt-border-radius, 4px);
+	background-color: var(--rdt-color-bg, #fff);
+	height: 28px;
+	margin-left: 8px;
+	transition: border-color 0.15s;
+}
+
+.rdt_selectWrapper:focus-within {
+	border-color: var(--rdt-color-primary, #1976d2);
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -1px;
 }
 
 .rdt_selectWrapper svg {
-	top: 0;
-	right: 0;
-	color: inherit;
+	top: 50%;
+	right: 2px;
+	transform: translateY(-50%);
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
 	position: absolute;
 	fill: none;
 	stroke: currentColor;
-	width: 24px;
-	height: 24px;
+	width: 18px;
+	height: 18px;
 	display: inline-block;
 	user-select: none;
 	pointer-events: none;
@@ -896,19 +993,21 @@
 
 .rdt_selectControl {
 	cursor: pointer;
-	height: 24px;
+	height: 100%;
 	max-width: 100%;
 	user-select: none;
 	padding-left: 8px;
-	padding-right: 24px;
-	box-sizing: content-box;
+	padding-right: 22px;
+	box-sizing: border-box;
 	font-size: inherit;
+	font-family: inherit;
 	color: inherit;
 	border: none;
 	background-color: transparent;
 	appearance: none;
 	direction: ltr;
 	flex-shrink: 0;
+	outline: none;
 }
 
 .rdt_selectControl::-ms-expand {
@@ -917,6 +1016,7 @@
 
 .rdt_selectControl option {
 	color: initial;
+	background-color: var(--rdt-color-bg, #fff);
 }
 
 /* ─── Responsive column hiding ───────────────────────────────────────────────── */

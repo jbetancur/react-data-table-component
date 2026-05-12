@@ -9,9 +9,9 @@ import DataTableHead from './DataTableHead';
 import DataTableBody from './DataTableBody';
 import TablePaginationFooter from './TablePaginationFooter';
 import { getNumberOfPages, recalculatePage } from '../util';
-import { defaultProps } from '../defaultProps';
+import { defaultProps, DEFAULT_EXPANDABLE_ICON, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 import { createStyles } from '../styles';
-import { resolveTheme } from '../themes';
+import { resolveTheme, resolveThemeObject } from '../themes';
 import { TableProps, DataTableHandle } from '../types';
 import { StylesContext } from '../context/StylesContext';
 import { RowContext } from '../context/RowContext';
@@ -23,6 +23,7 @@ import useColumnFilter from '../hooks/useColumnFilter';
 import useColumnResize from '../hooks/useColumnResize';
 import useRowContextValue from '../hooks/useRowContextValue';
 import useHeadContextValue from '../hooks/useHeadContextValue';
+import { useColorMode } from '../hooks/useColorMode';
 
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
@@ -42,11 +43,10 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		selectableRowsVisibleOnly = defaultProps.selectableRowsVisibleOnly,
 		selectableRowSelected = defaultProps.selectableRowSelected,
 		selectableRowDisabled = defaultProps.selectableRowDisabled,
-		selectableRowsComponent = defaultProps.selectableRowsComponent,
-		selectableRowsComponentProps = defaultProps.selectableRowsComponentProps,
+		selectableRowsComponent: selectableRowsComponentProp,
+		selectableRowsComponentProps: selectableRowsComponentPropsProp,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
 		onSelectedRowsChange = defaultProps.onSelectedRowsChange,
-		expandableIcon = defaultProps.expandableIcon,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 		onChangePage = defaultProps.onChangePage,
 		paginationServer = defaultProps.paginationServer,
@@ -56,7 +56,6 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		paginationResetDefaultPage = defaultProps.paginationResetDefaultPage,
 		paginationPerPage = defaultProps.paginationPerPage,
 		paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
-		paginationIcons = defaultProps.paginationIcons,
 		paginationComponent = defaultProps.paginationComponent,
 		paginationComponentOptions = defaultProps.paginationComponentOptions,
 		responsive = defaultProps.responsive,
@@ -73,14 +72,12 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		subHeader = defaultProps.subHeader,
 		subHeaderAlign = defaultProps.subHeaderAlign,
 		subHeaderWrap = defaultProps.subHeaderWrap,
-
 		expandableRows = defaultProps.expandableRows,
 		onRowClicked = defaultProps.onRowClicked,
 		onRowDoubleClicked = defaultProps.onRowDoubleClicked,
 		onRowMiddleClicked = defaultProps.onRowMiddleClicked,
 		onRowMouseEnter = defaultProps.onRowMouseEnter,
 		onRowMouseLeave = defaultProps.onRowMouseLeave,
-		sortIcon = defaultProps.sortIcon,
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
@@ -94,9 +91,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		expandableInheritConditionalStyles = defaultProps.expandableInheritConditionalStyles,
 		defaultSortFieldId = defaultProps.defaultSortFieldId,
 		defaultSortAsc = defaultProps.defaultSortAsc,
-		clearSelectedRows = defaultProps.clearSelectedRows,
 		conditionalRowStyles = defaultProps.conditionalRowStyles,
 		theme = defaultProps.theme,
+		colorMode = defaultProps.colorMode,
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
 		onColumnOrderChange = defaultProps.onColumnOrderChange,
@@ -111,6 +108,23 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		className,
 		ariaLabel,
 	} = props;
+
+	// Intentionally reading @deprecated props for backward compat; cast prevents TS hint 6385 here
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const {
+		sortIcon: sortIconProp,
+		expandableIcon: expandableIconProp,
+		paginationIcons: paginationIconsProp,
+		clearSelectedRows = defaultProps.clearSelectedRows,
+	} = props;
+
+	// ── Icon resolution: theme.icons → prop override ─────────────────────────
+	const themeObj = React.useMemo(() => resolveThemeObject(theme), [theme]);
+	const sortIcon = sortIconProp ?? themeObj.icons?.sort ?? null;
+	const expandableIcon = { ...DEFAULT_EXPANDABLE_ICON, ...themeObj.icons?.expandable, ...expandableIconProp };
+	const paginationIcons = { ...DEFAULT_PAGINATION_ICONS, ...themeObj.icons?.pagination, ...paginationIconsProp };
+	const selectableRowsComponent = selectableRowsComponentProp ?? defaultProps.selectableRowsComponent;
+	const selectableRowsComponentProps = selectableRowsComponentPropsProp ?? defaultProps.selectableRowsComponentProps;
 
 	React.useEffect(() => {
 		if (selectableRows && data.length > 0) {
@@ -224,7 +238,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
 	const tableStyles = React.useMemo(() => createStyles(customStyles), [customStyles]);
-	const cssVars = React.useMemo(() => resolveTheme(theme), [theme]);
+	const resolvedMode = useColorMode(colorMode);
+	const cssVars = React.useMemo(() => resolveTheme(theme, resolvedMode), [theme, resolvedMode]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);
 	const isBusy = progressPending;
 
@@ -324,10 +339,17 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onGroupDragEnd: handleGroupDragEnd,
 	});
 
+	// Prop wins; if not explicitly passed, fall back to what the theme declares, then built-in defaults.
+	const effectiveColumnSep = columnSeparator !== undefined ? columnSeparator : (themeObj.columnSeparator ?? false);
+	const effectiveHeaderSep = headerSeparator !== undefined ? headerSeparator : (themeObj.headerSeparator ?? true);
 	const sepClass =
-		columnSeparator === 'full' ? 'rdt_colSeparatorFull' : columnSeparator ? 'rdt_colSeparator' : undefined;
+		effectiveColumnSep === 'full' ? 'rdt_colSeparatorFull' : effectiveColumnSep ? 'rdt_colSeparator' : undefined;
 	const headSepClass =
-		headerSeparator === false ? undefined : headerSeparator === 'full' ? 'rdt_headSeparatorFull' : 'rdt_headSeparator'; // default: true / 'subtle' / omitted all render the subtle separator
+		effectiveHeaderSep === false
+			? undefined
+			: effectiveHeaderSep === 'full'
+				? 'rdt_headSeparatorFull'
+				: 'rdt_headSeparator';
 
 	return (
 		<StylesContext.Provider value={tableStyles}>

@@ -99,7 +99,9 @@ type PaginationProps = {
 	paginationComponent?: PaginationComponent;
 	paginationComponentOptions?: PaginationOptions;
 	paginationDefaultPage?: number;
-	/** Icons used in the pagination controls. Pass a partial object to override individual icons. */
+	/**
+	 * @deprecated Pass via the theme instead: `createTheme('t', { icons: { pagination: { next: <Icon /> } } })`
+	 */
 	paginationIcons?: PaginationIcons;
 	paginationPerPage?: number;
 	paginationResetDefaultPage?: boolean;
@@ -110,6 +112,9 @@ type PaginationProps = {
 };
 
 type ExpandableProps<T> = {
+	/**
+	 * @deprecated Pass via the theme instead: `createTheme('t', { icons: { expandable: { collapsed: <Icon /> } } })`
+	 */
 	expandableIcon?: ExpandableIcon;
 	expandableInheritConditionalStyles?: boolean;
 	expandableRowDisabled?: RowState<T>;
@@ -128,6 +133,9 @@ type SortProps<T> = {
 	defaultSortFieldId?: string | number | null | undefined;
 	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	sortFunction?: SortFunction<T> | null;
+	/**
+	 * @deprecated Pass via the theme instead: `createTheme('t', { icons: { sort: <Icon /> } })`
+	 */
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
 };
@@ -199,6 +207,8 @@ type BaseTableProps<T> = {
 	subHeaderAlign?: Alignment;
 	subHeaderWrap?: boolean;
 	theme?: ThemeProp;
+	/** 'light' | 'dark' | 'system'. When 'system', the table auto-detects from prefers-color-scheme and the html.dark class. Default: 'light'. */
+	colorMode?: ColorMode;
 	/**
 	 *  Shows and displays a header with a title
 	 *  */
@@ -346,6 +356,15 @@ export interface ExpandableIcon {
 	expanded: React.ReactNode;
 }
 
+export interface ThemeIcons {
+	/** Replaces the built-in CSS-arrow sort indicator on sortable columns. */
+	sort?: React.ReactNode;
+	/** Replaces the built-in expand/collapse chevrons on expandable rows. */
+	expandable?: Partial<ExpandableIcon>;
+	/** Replaces individual built-in pagination navigation icons. */
+	pagination?: Partial<PaginationIcons>;
+}
+
 export type TableState<T> = {
 	allSelected: boolean;
 	selectedCount: number;
@@ -371,6 +390,8 @@ type ThemeText = {
 
 type ThemeBackground = {
 	default: string;
+	/** Optional separate background for column header rows. Falls back to `default`. */
+	header?: string;
 };
 
 type ThemeContext = {
@@ -404,10 +425,52 @@ type ThemeStriped = {
 	text: string;
 };
 
+type ThemeSpacing = {
+	/** Height of body rows. Maps to --rdt-row-height. */
+	rowHeight?: string;
+	/** Height of the header row. Maps to --rdt-header-height. */
+	headerHeight?: string;
+	/** Horizontal cell padding. Maps to --rdt-cell-padding-x. */
+	cellPaddingX?: string;
+	/** Size of pagination nav icons. Maps to --rdt-icon-size. */
+	iconSize?: string;
+};
+
+type ThemeTypography = {
+	/** Body cell font size. Maps to --rdt-font-size. */
+	fontSize?: string;
+	/** Header cell font size. Maps to --rdt-font-size-header. */
+	fontSizeHeader?: string;
+	/** Font family for the whole table. Maps to --rdt-font-family. */
+	fontFamily?: string;
+};
+
+type ThemeShape = {
+	/** Border radius used for interactive elements (filter panel, resize handle, etc.). Maps to --rdt-border-radius. */
+	borderRadius?: string;
+};
+
 export type Themes = string;
 export type ThemeProp = string | Partial<Theme> | Record<string, string>;
 
+/** Which color palette the table uses. 'system' auto-detects from prefers-color-scheme and html.dark. */
+export type ColorMode = 'light' | 'dark' | 'system';
+
+/** Color-only overrides applied when the resolved color mode is dark. */
+export type DarkModeColors = {
+	primary?: string;
+	text?: Partial<ThemeText>;
+	background?: Partial<ThemeBackground>;
+	context?: Partial<ThemeContext>;
+	divider?: Partial<ThemeDivider>;
+	button?: Partial<ThemeButton>;
+	selected?: Partial<ThemeSelected>;
+	highlightOnHover?: Partial<ThemeHighlightOnHover>;
+	striped?: Partial<ThemeStriped>;
+};
+
 export interface Theme {
+	primary?: string;
 	text: ThemeText;
 	background: ThemeBackground;
 	context: ThemeContext;
@@ -416,8 +479,32 @@ export interface Theme {
 	selected: ThemeSelected;
 	highlightOnHover: ThemeHighlightOnHover;
 	striped: ThemeStriped;
-	/** Determines CSS color-scheme so native form controls (checkboxes) render correctly. Defaults to 'light'. */
+	/** Sets CSS color-scheme so native form controls render correctly in the active mode. */
 	colorScheme?: 'light' | 'dark';
+	/** Dark-mode color overrides. Used automatically when colorMode resolves to 'dark'. */
+	darkMode?: DarkModeColors;
+	/** Controls row/header height and cell padding. */
+	spacing?: ThemeSpacing;
+	/** Controls font size and family. */
+	typography?: ThemeTypography;
+	/** Controls border radius on interactive elements. */
+	shape?: ThemeShape;
+	/** Icon overrides — replaces built-in sort, expand, and pagination icons. */
+	icons?: ThemeIcons;
+	/** Checkbox appearance — controls the CSS variables for the built-in CSS checkbox. */
+	checkbox?: { size?: string; borderRadius?: string };
+	/**
+	 * Default header column separator behaviour for this theme.
+	 * The `headerSeparator` prop overrides this when explicitly passed.
+	 * Omitting both falls back to `'subtle'`.
+	 */
+	headerSeparator?: boolean | 'subtle' | 'full';
+	/**
+	 * Default body column separator behaviour for this theme.
+	 * The `columnSeparator` prop overrides this when explicitly passed.
+	 * Omitting both falls back to `false` (no separator).
+	 */
+	columnSeparator?: boolean | 'subtle' | 'full';
 }
 
 // Reducer Actions
