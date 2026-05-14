@@ -383,6 +383,9 @@ export type TableState<T> = {
 	 however, when using selectableRowsSingle
 	*/
 	toggleOnSelectedRowsChange: boolean;
+	/** True when currentPage was reset to 1 as a side-effect of SORT_CHANGE.
+	 * Used to suppress the onChangePage callback so only onSort fires. */
+	sortTriggeredPageReset: boolean;
 };
 
 // Theming

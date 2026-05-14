@@ -124,6 +124,7 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				selectedColumn,
 				sortDirection,
 				currentPage: 1,
+				sortTriggeredPageReset: true,
 				// when using server-side paging reset selected row counts when sorting
 				...(clearSelectedOnSort && {
 					allSelected: false,
@@ -142,6 +143,7 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			return {
 				...state,
 				currentPage: page,
+				sortTriggeredPageReset: false,
 				...(mergeSelections && {
 					allSelected: false,
 				}),
@@ -162,6 +164,7 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 				...state,
 				currentPage: page,
 				rowsPerPage,
+				sortTriggeredPageReset: false,
 			};
 		}
 
