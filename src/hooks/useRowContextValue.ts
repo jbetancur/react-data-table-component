@@ -45,6 +45,7 @@ export default function useRowContextValue<T>(options: RowContextValue<T>): RowC
 			options.onDragEnter,
 			options.onDragLeave,
 			options.columnWidths,
+			options.pinnedOffsets,
 			options.animateRows,
 		],
 	);

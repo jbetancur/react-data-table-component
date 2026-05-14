@@ -1,0 +1,116 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
+---
+
+<DocsLayout title="Column pinning | react-data-table-component">
+  <h1>Column pinning</h1>
+
+  <p>
+    Set <code>pinned: 'left'</code> or <code>pinned: 'right'</code> on any column to keep it
+    visible while the user scrolls horizontally through a wide table. Pinned columns use
+    <code>position: sticky</code> and maintain a shadow that visually separates them from the
+    scrolling content.
+  </p>
+
+  <Demo
+    title="Column pinning"
+    description="Name is pinned to the left, Status is pinned to the right. Scroll the table horizontally to see them stay in place."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Row>[] = [
+  { id: 'name',   name: 'Name',       selector: r => r.name,       width: '160px', pinned: 'left'  },
+  { id: 'role',   name: 'Role',       selector: r => r.role,       width: '180px' },
+  { id: 'dept',   name: 'Department', selector: r => r.department, width: '150px' },
+  { id: 'loc',    name: 'Location',   selector: r => r.location,   width: '150px' },
+  { id: 'salary', name: 'Salary',     selector: r => r.salary,     width: '120px', right: true },
+  { id: 'status', name: 'Status',     selector: r => r.status,     width: '110px', pinned: 'right' },
+];
+
+<DataTable columns={columns} data={data} highlightOnHover />`}
+  >
+    <ColumnPinningDemo client:load />
+  </Demo>
+
+  <h2>How it works</h2>
+  <p>
+    Each column is assigned a unique <code>id</code>. At render time the table measures the widths
+    of all pinned columns and computes a <code>left</code> or <code>right</code> CSS offset for
+    each one so they stack correctly when multiple columns are pinned on the same side. Both the
+    header cell and each body cell receive <code>position: sticky</code> with those offsets.
+  </p>
+  <p>
+    A subtle directional shadow is drawn on the innermost pinned column on each side
+    (<code>rdt_pinLeftLast</code> / <code>rdt_pinRightFirst</code>) to indicate the boundary
+    between sticky and scrolling content.
+  </p>
+
+  <h2>Pinning multiple columns</h2>
+  <p>
+    You can pin more than one column per side. The offsets are calculated automatically — you
+    only need to set <code>pinned</code> on each column.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { id: 'select', name: '',      width: '48px',  pinned: 'left' },
+  { id: 'name',   name: 'Name',  width: '160px', pinned: 'left' },
+  // ... scrolling columns ...
+  { id: 'status', name: 'Status', width: '100px', pinned: 'right' },
+  { id: 'action', name: '',       width: '60px',  pinned: 'right' },
+];`} />
+
+  <h2>With resizable columns</h2>
+  <p>
+    Pinned columns are fully compatible with <code>resizable</code>. When you resize a pinned
+    column, the offsets for columns pinned further from the edge are updated automatically.
+  </p>
+
+  <CodeBlock code={`<DataTable columns={columns} data={data} resizable />`} />
+
+  <h2>With fixed header</h2>
+  <p>
+    Column pinning and <code>fixedHeader</code> work together. Pinned header cells use
+    <code>z-index: 2</code> (vs <code>z-index: 1</code> for body cells) so they stay above
+    scrolling body content at the intersection of both axes.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={data}
+  fixedHeader
+  fixedHeaderScrollHeight="400px"
+/>`} />
+
+  <h2>Requirements</h2>
+  <ul>
+    <li>Each pinned column <strong>must</strong> have an explicit <code>id</code> — the offset map is keyed by column id.</li>
+    <li>Pinned columns should have a fixed <code>width</code> so their size is predictable. Columns without a width will still pin but may produce inexact offsets if the layout shifts.</li>
+    <li>The table's responsive wrapper must be allowed to scroll horizontally (the default). Avoid setting <code>overflow: hidden</code> on a parent container.</li>
+  </ul>
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Column prop</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pinned</code></td>
+        <td><code>'left' | 'right'</code></td>
+        <td>—</td>
+        <td>
+          Pin the column to the left or right edge of the table. Requires an explicit column
+          <code>id</code>.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocsLayout>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { decorateColumns, findColumnIndexById, getSortDirection } from '../util';
+import { decorateColumns, findColumnIndexById, getSortDirection, normalizePins } from '../util';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { SortOrder } from '../types';
 import type { TableColumn, ColumnGroup } from '../types';
@@ -23,7 +23,11 @@ type ColumnsHook<T> = {
 };
 
 /** Swaps two group blocks within the columns array, preserving ungrouped column positions. */
-function swapGroupBlocks<T>(columns: TableColumn<T>[], srcIds: Set<string>, tgtIds: Set<string>): TableColumn<T>[] {
+export function swapGroupBlocks<T>(
+	columns: TableColumn<T>[],
+	srcIds: Set<string>,
+	tgtIds: Set<string>,
+): TableColumn<T>[] {
 	const result: TableColumn<T>[] = [];
 	const srcCols = columns.filter(c => srcIds.has(String(c.id)));
 	const tgtCols = columns.filter(c => tgtIds.has(String(c.id)));
@@ -108,9 +112,29 @@ function useColumns<T>(
 
 			const srcIdx = findColumnIndexById(tableColumns, sourceColumnId.current);
 			const tgtIdx = findColumnIndexById(tableColumns, id);
-			const reorderedCols = [...tableColumns];
-			reorderedCols[srcIdx] = tableColumns[tgtIdx];
-			reorderedCols[tgtIdx] = tableColumns[srcIdx];
+			const moved = [...tableColumns];
+			const [col] = moved.splice(srcIdx, 1);
+			moved.splice(tgtIdx, 0, col);
+
+			// Determine pin zone boundaries
+			const leftCount = moved.filter(c => c.pinned === 'left').length;
+			const rightCount = moved.filter(c => c.pinned === 'right').length;
+			const total = moved.length;
+
+			// Build pinZoneMap for new order
+			const pinZoneMap: Record<number, 'left' | 'right' | undefined> = {};
+			for (let i = 0; i < moved.length; i++) {
+				if (i < leftCount) pinZoneMap[i] = 'left';
+				else if (i >= total - rightCount) pinZoneMap[i] = 'right';
+				else pinZoneMap[i] = undefined;
+			}
+
+			// If dropped into left or right zone, force pin state
+			if (tgtIdx < leftCount) pinZoneMap[tgtIdx] = 'left';
+			else if (tgtIdx >= total - rightCount) pinZoneMap[tgtIdx] = 'right';
+			else pinZoneMap[tgtIdx] = undefined;
+
+			const reorderedCols = normalizePins(moved, pinZoneMap);
 			setTableColumns(reorderedCols);
 			onColumnOrderChange(reorderedCols);
 		},

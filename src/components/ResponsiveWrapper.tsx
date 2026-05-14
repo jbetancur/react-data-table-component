@@ -6,16 +6,13 @@ type ResponsiveWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
 	$responsive: boolean;
 	$fixedHeader?: boolean;
 	$fixedHeaderScrollHeight?: string;
+	$hiddenScrollbar?: boolean;
 };
 
-export default function ResponsiveWrapper({
-	$responsive,
-	$fixedHeader,
-	$fixedHeaderScrollHeight = '100vh',
-	className,
-	style,
-	...rest
-}: ResponsiveWrapperProps): JSX.Element {
+const ResponsiveWrapper = React.forwardRef<HTMLDivElement, ResponsiveWrapperProps>(function ResponsiveWrapper(
+	{ $responsive, $fixedHeader, $fixedHeaderScrollHeight = '100vh', $hiddenScrollbar, className, style, ...rest },
+	ref,
+) {
 	const customStyles = useStyles();
 	const scrollClass = $responsive
 		? $fixedHeader
@@ -24,7 +21,15 @@ export default function ResponsiveWrapper({
 		: undefined;
 	return (
 		<div
-			className={['rdt_responsiveWrapper', scrollClass, className].filter(Boolean).join(' ')}
+			ref={ref}
+			className={[
+				'rdt_responsiveWrapper',
+				scrollClass,
+				$hiddenScrollbar && 'rdt_responsiveWrapperHideScrollbar',
+				className,
+			]
+				.filter(Boolean)
+				.join(' ')}
 			style={{
 				...($fixedHeader && { maxHeight: $fixedHeaderScrollHeight }),
 				...customStyles.responsiveWrapper?.style,
@@ -33,4 +38,6 @@ export default function ResponsiveWrapper({
 			{...rest}
 		/>
 	);
-}
+});
+
+export default ResponsiveWrapper;

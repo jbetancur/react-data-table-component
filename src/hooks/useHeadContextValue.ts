@@ -26,6 +26,7 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 			options.draggingGroupKey,
 			options.filterValues,
 			options.columnWidths,
+			options.pinnedOffsets,
 			options.resizable,
 			options.keyField,
 			options.mergeSelections,

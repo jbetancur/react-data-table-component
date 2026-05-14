@@ -136,6 +136,15 @@ function Row<T>({
 	);
 
 	const rowKeyField = prop(row as TableRow, keyField) ?? rowIndex;
+
+	// ID of the first (leftmost) right-pinned column — a spacer is injected just
+	// before it so the non-pinned columns fill the available space between the pins.
+	const firstRightPinnedId = React.useMemo(() => {
+		for (const col of columns) {
+			if (!col.omit && col.pinned === 'right') return col.id;
+		}
+		return null;
+	}, [columns]);
 	const { conditionalStyle, classNames } = React.useMemo(
 		() => getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']),
 		[row, conditionalRowStyles],
@@ -214,15 +223,19 @@ function Row<T>({
 					}
 
 					return (
-						<TableCell
-							id={`cell-${column.id}-${rowKeyField}`}
-							key={`cell-${column.id}-${rowKeyField}`}
-							dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
-							column={column}
-							row={row}
-							rowIndex={rowIndex}
-							isDragging={equalizeId(draggingColumnId, column.id)}
-						/>
+						<React.Fragment key={`cell-${column.id}-${rowKeyField}`}>
+							{firstRightPinnedId != null && column.id === firstRightPinnedId && (
+								<div aria-hidden="true" style={{ flex: '0.001 0 0', minWidth: 0 }} />
+							)}
+							<TableCell
+								id={`cell-${column.id}-${rowKeyField}`}
+								dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}
+								column={column}
+								row={row}
+								rowIndex={rowIndex}
+								isDragging={equalizeId(draggingColumnId, column.id)}
+							/>
+						</React.Fragment>
 					);
 				})}
 			</div>

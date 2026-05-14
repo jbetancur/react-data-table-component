@@ -244,7 +244,13 @@ export type TableColumnBase = {
 	style?: CSSObject;
 	width?: string;
 	wrap?: boolean;
+	/** Freeze this column to the left or right edge on horizontal scroll. */
+	pinned?: 'left' | 'right';
+	/** Allow clicking the cell to edit its value inline. Calls onCellEdit on commit. */
+	editable?: boolean;
 };
+
+export type CellEditCallback<T> = (row: T, value: string, column: TableColumn<T>) => void;
 
 export interface TableColumn<T> extends TableColumnBase {
 	name?: string | number | React.ReactNode;
@@ -261,6 +267,8 @@ export interface TableColumn<T> extends TableColumnBase {
 	sortFunction?: ColumnSortFunction<T>;
 	/** Custom filter function — overrides built-in operator logic. Receives the full FilterState so both conditions are available. */
 	filterFunction?: (row: T, filter: FilterState) => boolean;
+	/** Called when the user commits an inline edit (blur or Enter). Only fires when editable: true. */
+	onCellEdit?: CellEditCallback<T>;
 }
 
 /** A column group renders as a spanning header row above the regular header row. */
