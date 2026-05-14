@@ -1,0 +1,114 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import RTLDemo from '../../components/demos/RTLDemo.tsx';
+---
+
+<DocsLayout title="RTL support | react-data-table-component">
+  <h1>RTL support</h1>
+
+  <p>
+    Pass the <code>direction</code> prop to control text direction. The table sets a <code>dir</code>
+    attribute on its wrapper and flips pagination navigation arrows automatically.
+  </p>
+
+  <Demo
+    title="Direction — LTR / RTL / AUTO"
+    description="Toggle between LTR, RTL, and AUTO. In RTL mode the pagination arrows reverse and column text aligns right-to-left."
+    code={`import DataTable, { Direction } from 'react-data-table-component';
+
+<DataTable
+  columns={columns}
+  data={data}
+  direction={Direction.RTL}
+  pagination
+/>`}
+  >
+    <RTLDemo client:load />
+  </Demo>
+
+  <h2>Direction values</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Value</th>
+        <th>Behaviour</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>Direction.LTR</code> / <code>"ltr"</code></td>
+        <td>Forces left-to-right regardless of the page's <code>dir</code> attribute.</td>
+      </tr>
+      <tr>
+        <td><code>Direction.RTL</code> / <code>"rtl"</code></td>
+        <td>Forces right-to-left. Pagination arrows flip; <code>dir="rtl"</code> is set on the wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>Direction.AUTO</code> / <code>"auto"</code> (default)</td>
+        <td>Reads <code>dir</code> from the <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code> element at mount time and follows it.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Quick start</h2>
+
+  <CodeBlock code={`import DataTable, { Direction } from 'react-data-table-component';
+
+// Explicit RTL
+<DataTable columns={columns} data={data} direction={Direction.RTL} />
+
+// Or pass the string directly
+<DataTable columns={columns} data={data} direction="rtl" />`} />
+
+  <h2>AUTO mode</h2>
+  <p>
+    With <code>Direction.AUTO</code>, the hook checks <code>document.documentElement.dir</code> and
+    <code>document.body.dir</code> once on mount. If either is <code>"rtl"</code> the table renders
+    in RTL; otherwise it renders LTR. This is useful when the surrounding app already sets a global
+    direction and you want the table to follow it without explicitly wiring the prop.
+  </p>
+
+  <CodeBlock code={`// Set direction on your HTML element (e.g. for Arabic/Hebrew)
+// <html dir="rtl">
+
+// Then let the table pick it up automatically
+<DataTable columns={columns} data={data} direction={Direction.AUTO} />`} />
+
+  <h2>What flips in RTL</h2>
+  <ul>
+    <li>The wrapper receives <code>dir="rtl"</code>, which shifts inline content and flexbox row direction for you.</li>
+    <li>Pagination first/prev/next/last buttons have their icons reversed via <code>.rdt_paginationButtonRTL</code>.</li>
+    <li>Column <code>right: true</code> alignment continues to work as expected — align numbers relative to the reading direction of the cell content, not the page.</li>
+  </ul>
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>direction</code></td>
+        <td><code>Direction</code></td>
+        <td><code>Direction.AUTO</code></td>
+        <td>Text direction for the table. <code>ltr</code>, <code>rtl</code>, or <code>auto</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <CodeBlock code={`import { Direction } from 'react-data-table-component';
+
+// Direction enum values
+Direction.LTR  // "ltr"
+Direction.RTL  // "rtl"
+Direction.AUTO // "auto"`} />
+</DocsLayout>

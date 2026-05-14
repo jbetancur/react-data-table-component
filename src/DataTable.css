@@ -47,6 +47,38 @@
 	min-height: 0;
 }
 
+.rdt_responsiveWrapperHideScrollbar {
+	scrollbar-width: none;
+}
+.rdt_responsiveWrapperHideScrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+/* ─── Pinned custom scrollbar ───────────────────────────────────────────────── */
+.rdt_pinnedScrollbarTrack {
+	position: relative;
+	height: 8px;
+	background: var(--rdt-color-bg, #fff);
+	cursor: pointer;
+	user-select: none;
+}
+
+.rdt_pinnedScrollbarThumb {
+	position: absolute;
+	top: 1px;
+	left: 0;
+	height: 6px;
+	border-radius: 3px;
+	background: var(--rdt-color-scrollbar-thumb, rgba(0, 0, 0, 0.25));
+	cursor: grab;
+	transition: background 0.15s;
+}
+
+.rdt_pinnedScrollbarThumb:hover,
+.rdt_pinnedScrollbarThumb:active {
+	background: var(--rdt-color-scrollbar-thumb-hover, rgba(0, 0, 0, 0.45));
+}
+
 /* ─── Head ──────────────────────────────────────────────────────────────────── */
 .rdt_head {
 	display: flex;
@@ -562,6 +594,30 @@
 	cursor: grabbing;
 }
 
+
+/* ─── Column pinning ────────────────────────────────────────────────────────── */
+
+/*
+ * Pinned cells must always show a solid background to prevent scrolling content
+ * bleeding through behind them. We use `inherit` so they pick up whatever the
+ * *row* has set — hover, stripe, selected, etc. — automatically.
+ * The row itself already has `background-color: var(--rdt-color-bg)` as baseline,
+ * so sticky cells are never transparent.
+ */
+.rdt_pinLeft,
+.rdt_pinRight {
+	background-color: inherit;
+}
+
+.rdt_pinLeftLast {
+	box-shadow: 2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
+	clip-path: inset(0 -8px 0 0);
+}
+
+.rdt_pinRightFirst {
+	box-shadow: -2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
+	clip-path: inset(0 0 0 -8px);
+}
 
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
 .rdt_resizeHandle {

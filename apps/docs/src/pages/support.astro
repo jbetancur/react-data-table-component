@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const OC_BASE = 'https://opencollective.com/react-data-table-component';
+---
+
+<Layout
+  title="Support — react-data-table-component"
+  description="Priority support plans and sponsorship options for react-data-table-component."
+>
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-12 text-center">
+    <h1 class="text-4xl font-bold tracking-tight text-gray-900">Support &amp; Sponsorship</h1>
+    <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
+      This library is maintained by one person. Your support funds bug fixes, new features, and keeps
+      pace with the React ecosystem.
+    </p>
+  </section>
+
+  <!-- Team Support -->
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <div class="border-2 border-brand-500 rounded-2xl p-8 shadow-sm relative">
+      <div class="absolute -top-3.5 left-8">
+        <span class="bg-brand-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+          Best for teams
+        </span>
+      </div>
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold text-gray-900">Team Support</h2>
+          <p class="mt-2 text-gray-500">
+            For companies shipping products with this library. Get a direct line to the maintainer.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-gray-700">
+            {[
+              'Private email + Discord channel with the maintainer',
+              '48-hour response SLA on bug reports',
+              'Version upgrade assistance',
+              'Architecture &amp; integration Q&A',
+              'Your logo on the home page and README',
+              'Priority issue triage',
+            ].map((item) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="mt-0.5 shrink-0 text-brand-500" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span set:html={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="sm:text-right shrink-0">
+          <div class="text-4xl font-bold text-gray-900">$199</div>
+          <div class="text-sm text-gray-400">per month</div>
+          <a
+            href={`${OC_BASE}/donate?amount=199&interval=month`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-block bg-brand-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-brand-700 shadow-sm text-sm"
+          >
+            Subscribe via Open Collective →
+          </a>
+          <p class="mt-2 text-xs text-gray-400">Cancel any time · Invoice provided</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsor tiers -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-10">Sponsorship Tiers</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          {
+            name: 'Supporter',
+            price: '$5',
+            period: '/mo',
+            perks: ['Name in README backers list'],
+            amount: 5,
+          },
+          {
+            name: 'Backer',
+            price: '$25',
+            period: '/mo',
+            perks: ['Name + link in README'],
+            amount: 25,
+          },
+          {
+            name: 'Bronze',
+            price: '$100',
+            period: '/mo',
+            perks: ['Small logo on docs site', 'Name + link in README'],
+            amount: 100,
+          },
+          {
+            name: 'Silver',
+            price: '$250',
+            period: '/mo',
+            perks: ['Medium logo on home page', 'Logo on docs site', 'Name + link in README'],
+            amount: 250,
+          },
+        ].map(({ name, price, period, perks, amount }) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-5 flex flex-col">
+            <div class="font-semibold text-gray-900">{name}</div>
+            <div class="mt-1 text-2xl font-bold text-gray-900">
+              {price}<span class="text-sm font-normal text-gray-400">{period}</span>
+            </div>
+            <ul class="mt-3 flex-1 space-y-1.5 text-xs text-gray-500">
+              {perks.map((p) => (
+                <li class="flex items-start gap-1.5">
+                  <svg class="mt-0.5 shrink-0 text-brand-500" width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`${OC_BASE}/donate?amount=${amount}&interval=month`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 block text-center border border-brand-200 text-brand-700 text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-50 transition-colors"
+            >
+              Sponsor →
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- One-time -->
+      <div class="mt-8 bg-white border border-gray-200 rounded-xl p-6 text-center">
+        <h3 class="font-semibold text-gray-900 mb-1">One-time donation</h3>
+        <p class="text-sm text-gray-500 mb-4">No commitment. Every bit helps.</p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          {[10, 25, 50, 100, 500].map((amount) => (
+            <a
+              href={`${OC_BASE}/donate?amount=${amount}&interval=oneTime`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-lg hover:border-brand-300 hover:text-brand-700 transition-colors"
+            >
+              ${amount}
+            </a>
+          ))}
+        </div>
+        <p class="mt-3 text-xs text-gray-400">Handled by Open Collective · Receipt provided</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-2xl mx-auto px-6 py-16">
+    <h2 class="text-xl font-bold text-gray-900 mb-8 text-center">Common questions</h2>
+    <dl class="space-y-6">
+      {[
+        {
+          q: 'Does the library stay free?',
+          a: 'Yes — always. The core library is MIT licensed. Sponsorship funds maintenance; it doesn\'t change what\'s free.',
+        },
+        {
+          q: 'What counts as a 48-hour SLA?',
+          a: 'An initial response and triage on bug reports filed through your private channel, on business days (Mon–Fri, US Eastern).',
+        },
+        {
+          q: 'How does logo placement work?',
+          a: 'Email me after subscribing at the Bronze tier or above and I\'ll add your logo within one business day.',
+        },
+        {
+          q: 'Can I pay via invoice?',
+          a: 'Yes — Open Collective provides receipts and invoices automatically. For custom invoicing arrangements, email me directly.',
+        },
+      ].map(({ q, a }) => (
+        <div>
+          <dt class="font-semibold text-gray-900 text-sm">{q}</dt>
+          <dd class="mt-1 text-sm text-gray-500">{a}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm text-gray-500 mb-3">Questions about Team Support or custom arrangements?</p>
+      <a
+        href="mailto:johnnyazee@gmail.com"
+        class="text-sm text-brand-600 hover:text-brand-700 font-medium"
+      >
+        Email me directly →
+      </a>
+    </div>
+  </section>
+</Layout>

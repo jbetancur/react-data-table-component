@@ -235,3 +235,142 @@ export function findColumnIndexById<T>(columns: TableColumn<T>[], id: string | u
 export function equalizeId(a: string | number | undefined, b: string | number | undefined): boolean {
 	return a == b;
 }
+
+export type PinnedOffsets = {
+	left: Record<string | number, number>;
+	right: Record<string | number, number>;
+};
+
+export const EMPTY_PINNED_OFFSETS: PinnedOffsets = { left: {}, right: {} };
+
+function resolveColumnWidth<T>(col: TableColumn<T>, columnWidths: Record<string | number, number>): number {
+	if (col.id != null && columnWidths[col.id] != null) return columnWidths[col.id];
+	const raw = col.width ?? col.minWidth ?? '100px';
+	const n = parseFloat(raw);
+	return isNaN(n) ? 100 : n;
+}
+
+export function getPinnedOffsets<T>(
+	columns: TableColumn<T>[],
+	columnWidths: Record<string | number, number>,
+	selectableRows: boolean,
+	expandableRows: boolean,
+	expandableRowsHideExpander: boolean,
+): PinnedOffsets {
+	const visible = columns.filter(c => !c.omit);
+	const hasPinned = visible.some(c => c.pinned);
+	if (!hasPinned) return EMPTY_PINNED_OFFSETS;
+
+	const SYSTEM_COL_WIDTH = 48;
+	let baseLeft = 0;
+	if (selectableRows) baseLeft += SYSTEM_COL_WIDTH;
+	if (expandableRows && !expandableRowsHideExpander) baseLeft += SYSTEM_COL_WIDTH;
+
+	const left: Record<string | number, number> = {};
+	let leftAcc = baseLeft;
+	for (const col of visible.filter(c => c.pinned === 'left')) {
+		if (col.id != null) left[col.id] = leftAcc;
+		leftAcc += resolveColumnWidth(col, columnWidths);
+	}
+
+	const right: Record<string | number, number> = {};
+	let rightAcc = 0;
+	for (const col of [...visible.filter(c => c.pinned === 'right')].reverse()) {
+		if (col.id != null) right[col.id] = rightAcc;
+		rightAcc += resolveColumnWidth(col, columnWidths);
+	}
+
+	return { left, right };
+}
+
+export function getPinnedTotalWidths<T>(
+	columns: TableColumn<T>[],
+	columnWidths: Record<string | number, number>,
+	selectableRows: boolean,
+	expandableRows: boolean,
+	expandableRowsHideExpander: boolean,
+): { left: number; right: number } {
+	const visible = columns.filter(c => !c.omit);
+	const hasPinned = visible.some(c => c.pinned);
+	if (!hasPinned) return { left: 0, right: 0 };
+
+	const SYSTEM_COL_WIDTH = 48;
+	let left = 0;
+	if (selectableRows) left += SYSTEM_COL_WIDTH;
+	if (expandableRows && !expandableRowsHideExpander) left += SYSTEM_COL_WIDTH;
+	for (const col of visible.filter(c => c.pinned === 'left')) {
+		left += resolveColumnWidth(col, columnWidths);
+	}
+
+	let right = 0;
+	for (const col of visible.filter(c => c.pinned === 'right')) {
+		right += resolveColumnWidth(col, columnWidths);
+	}
+
+	return { left, right };
+}
+
+/**
+ * After a column reorder, reassigns `pinned` based purely on position:
+ * - The first N columns (where N = original left-pin count) become `pinned: 'left'`
+ * - The last M columns (where M = original right-pin count) become `pinned: 'right'`
+ * - Everything between them has `pinned` removed
+ *
+ * This enforces that pinned columns always form contiguous edges, and that
+ * dragging a column into a pinned zone pins it while dragging one out unpins it.
+ */
+/**
+ * Assigns pin state based on position and explicit pin zones.
+ *
+ * - All columns at the start with pinned: 'left' remain pinned left.
+ * - All columns at the end with pinned: 'right' remain pinned right.
+ * - Columns in the middle are unpinned.
+ *
+ * Optionally, you can pass a pinZoneMap (index -> 'left' | 'right' | undefined) to force pin state by drop.
+ */
+export function normalizePins<T>(
+	cols: TableColumn<T>[],
+	pinZoneMap?: Record<number, 'left' | 'right' | undefined>,
+): TableColumn<T>[] {
+	// If a pinZoneMap is provided, use it to assign pin state
+	if (pinZoneMap) {
+		return cols.map((col, i) => {
+			const zone = pinZoneMap[i];
+			if (zone) return { ...col, pinned: zone };
+			const { pinned: _removed, ...rest } = col;
+			return rest as TableColumn<T>;
+		});
+	}
+
+	// If nothing is pinned, return the original array (preserve reference)
+	const leftCount = cols.filter(c => c.pinned === 'left').length;
+	const rightCount = cols.filter(c => c.pinned === 'right').length;
+	if (leftCount === 0 && rightCount === 0) {
+		return cols;
+	}
+
+	return cols.map((col, i) => {
+		if (i < leftCount) return { ...col, pinned: 'left' };
+		if (rightCount > 0 && i >= cols.length - rightCount) return { ...col, pinned: 'right' };
+		const { pinned: _removed, ...rest } = col;
+		return rest as TableColumn<T>;
+	});
+}
+
+/**
+ * Determines the pin zone for a given drop index based on boundaries.
+ * leftCount: number of left-pinned columns
+ * rightCount: number of right-pinned columns
+ * total: total columns
+ * Returns: 'left' | 'right' | undefined
+ */
+export function getPinZoneForIndex(
+	index: number,
+	leftCount: number,
+	rightCount: number,
+	total: number,
+): 'left' | 'right' | undefined {
+	if (index < leftCount) return 'left';
+	if (index >= total - rightCount) return 'right';
+	return undefined;
+}

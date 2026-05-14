@@ -8,6 +8,7 @@ import type {
 	SingleRowAction,
 	ComponentProps,
 } from '../types';
+import type { PinnedOffsets } from '../util';
 
 export interface RowContextValue<T> {
 	keyField: string;
@@ -45,6 +46,8 @@ export interface RowContextValue<T> {
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
 	/** Resized column widths (px) keyed by column.id */
 	columnWidths: Record<string | number, number>;
+	/** Sticky offsets for pinned columns */
+	pinnedOffsets: PinnedOffsets;
 	/** Whether to animate rows on mount */
 	animateRows: boolean;
 }

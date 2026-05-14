@@ -9,6 +9,9 @@ import {
 	handleFunctionProps,
 	getConditionalStyle,
 	isRowSelected,
+	normalizePins,
+	getPinnedOffsets,
+	getPinnedTotalWidths,
 } from '../util';
 import { ConditionalStyles, SortOrder } from '../types';
 
@@ -308,6 +311,128 @@ describe('getConditionalStyle', () => {
 		const { classNames } = getConditionalStyle({ name: 'luke' }, rowStyleExpression, ['anakin']);
 
 		expect(classNames).toEqual('anakin leia');
+	});
+});
+
+describe('normalizePins', () => {
+	const c = (id: number, pinned?: 'left' | 'right') =>
+		({ id, name: String(id), pinned }) as { id: number; name: string; pinned?: 'left' | 'right' };
+
+	test('returns cols unchanged when nothing is pinned', () => {
+		const cols = [c(1), c(2), c(3)];
+		expect(normalizePins(cols)).toEqual(cols);
+	});
+
+	test('keeps left-pinned columns pinned after reorder preserving count', () => {
+		// [L, A, B] — 1 left pin — reorder to [A, L, B]; normalizePins should keep first 1 as left
+		const cols = [c(2), c(1, 'left'), c(3)];
+		const result = normalizePins(cols);
+		expect(result[0].pinned).toBe('left');
+		expect(result[1].pinned).toBeUndefined();
+		expect(result[2].pinned).toBeUndefined();
+	});
+
+	test('keeps right-pinned columns pinned after reorder preserving count', () => {
+		const cols = [c(1), c(3), c(2, 'right')];
+		const result = normalizePins(cols);
+		expect(result[2].pinned).toBe('right');
+		expect(result[0].pinned).toBeUndefined();
+	});
+
+	test('reassigns pin when a non-pinned column is moved into the left-pin zone', () => {
+		// Originally 1 left pin; after move, position 0 is now an ex-unpinned column
+		const cols = [c(2), c(1, 'left'), c(3)]; // 1 left, 0 right
+		const result = normalizePins(cols);
+		expect(result[0].pinned).toBe('left'); // col2 now becomes left-pinned
+		expect(result[1].pinned).toBeUndefined();
+	});
+
+	test('unpins a column moved out of the left-pin zone', () => {
+		// 1 left pin (id=1) moved to last position → should become unpinned
+		const cols = [c(2), c(3), c(1, 'left')]; // 1 left pin but now at end
+		const result = normalizePins(cols);
+		expect(result[0].pinned).toBe('left');
+		expect(result[1].pinned).toBeUndefined();
+		expect(result[2].pinned).toBeUndefined();
+	});
+
+	test('handles both left and right pins simultaneously', () => {
+		const cols = [c(1, 'left'), c(2), c(3), c(4, 'right')];
+		const result = normalizePins(cols);
+		expect(result[0].pinned).toBe('left');
+		expect(result[1].pinned).toBeUndefined();
+		expect(result[2].pinned).toBeUndefined();
+		expect(result[3].pinned).toBe('right');
+	});
+});
+
+describe('getPinnedOffsets', () => {
+	const col = (id: string | number, pinned?: 'left' | 'right', width = '100px') =>
+		({ id, name: String(id), pinned, width }) as Parameters<typeof getPinnedOffsets>[0][number];
+
+	test('returns empty offsets when no columns are pinned', () => {
+		const result = getPinnedOffsets([col('a'), col('b')], {}, false, false, false);
+		expect(result.left).toEqual({});
+		expect(result.right).toEqual({});
+	});
+
+	test('computes left offsets for left-pinned columns', () => {
+		const cols = [col('a', 'left', '100px'), col('b', 'left', '150px'), col('c')];
+		const result = getPinnedOffsets(cols, {}, false, false, false);
+		expect(result.left['a']).toBe(0);
+		expect(result.left['b']).toBe(100);
+	});
+
+	test('accounts for selectable rows prefix width', () => {
+		const cols = [col('a', 'left', '100px')];
+		const result = getPinnedOffsets(cols, {}, true, false, false);
+		expect(result.left['a']).toBe(48);
+	});
+
+	test('computes right offsets for right-pinned columns', () => {
+		const cols = [col('a'), col('b', 'right', '120px'), col('c', 'right', '80px')];
+		const result = getPinnedOffsets(cols, {}, false, false, false);
+		// rightmost (c) gets offset 0, next (b) gets 80
+		expect(result.right['c']).toBe(0);
+		expect(result.right['b']).toBe(80);
+	});
+
+	test('uses columnWidths override when available', () => {
+		const cols = [col('a', 'left', '100px'), col('b', 'left', '100px')];
+		const result = getPinnedOffsets(cols, { a: 200 }, false, false, false);
+		expect(result.left['a']).toBe(0);
+		expect(result.left['b']).toBe(200);
+	});
+
+	test('omits omitted columns from offset calculation', () => {
+		const cols = [{ ...col('a', 'left', '100px'), omit: true }, col('b', 'left', '100px')];
+		const result = getPinnedOffsets(cols, {}, false, false, false);
+		expect(result.left['a']).toBeUndefined();
+		expect(result.left['b']).toBe(0);
+	});
+});
+
+describe('getPinnedTotalWidths', () => {
+	const col = (id: string | number, pinned?: 'left' | 'right', width = '100px') =>
+		({ id, name: String(id), pinned, width }) as Parameters<typeof getPinnedTotalWidths>[0][number];
+
+	test('returns zeros when nothing is pinned', () => {
+		const result = getPinnedTotalWidths([col('a'), col('b')], {}, false, false, false);
+		expect(result).toEqual({ left: 0, right: 0 });
+	});
+
+	test('sums left-pinned widths including prefix columns', () => {
+		const cols = [col('a', 'left', '100px'), col('b', 'left', '150px'), col('c')];
+		const result = getPinnedTotalWidths(cols, {}, true, false, false);
+		// 48 (selectable) + 100 + 150 = 298
+		expect(result.left).toBe(298);
+		expect(result.right).toBe(0);
+	});
+
+	test('sums right-pinned widths', () => {
+		const cols = [col('a'), col('b', 'right', '120px'), col('c', 'right', '80px')];
+		const result = getPinnedTotalWidths(cols, {}, false, false, false);
+		expect(result.right).toBe(200);
 	});
 });
 

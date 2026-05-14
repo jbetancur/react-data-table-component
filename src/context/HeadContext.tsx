@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SortOrder } from '../types';
 import type { TableColumn, SortAction, AllRowsAction, RowState, ComponentProps, FilterState } from '../types';
+import type { PinnedOffsets } from '../util';
 
 export interface HeadContextValue<T> {
 	// Sort state
@@ -28,6 +29,7 @@ export interface HeadContextValue<T> {
 	draggingGroupKey: string;
 	filterValues: Record<string | number, FilterState>;
 	columnWidths: Record<string | number, number>;
+	pinnedOffsets: PinnedOffsets;
 	resizable: boolean;
 	// Table state
 	progressPending: boolean;

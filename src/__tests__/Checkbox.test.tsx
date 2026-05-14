@@ -2,16 +2,16 @@ import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Checkbox from '../components/Checkbox';
 
-test('should render correctly when a custom component is not provided', () => {
+test('should render an input[type=checkbox] when no custom component is provided', () => {
 	const { container } = render(<Checkbox name="test" />);
+	const input = container.querySelector('input') as HTMLInputElement;
 
-	const input = container.firstChild as HTMLInputElement;
-	expect(input.tagName).toBe('INPUT');
+	expect(input).not.toBeNull();
 	expect(input.type).toBe('checkbox');
+	expect(input.name).toBe('test');
 });
 
-test('component <Checkbox component/> should render correctly with a custom checkbox', () => {
-	// eslint-disable-next-line react/prefer-stateless-function
+test('should render a custom checkbox component when provided', () => {
 	class CustomComp extends React.Component {
 		render() {
 			return <div>25 schmeckles</div>;
@@ -23,33 +23,43 @@ test('component <Checkbox component/> should render correctly with a custom chec
 	expect(getByText('25 schmeckles')).not.toBeNull();
 });
 
-test('component <Checkbox component/> should render correctly with custom props', () => {
+test('should still render an input when componentOptions is provided without a component', () => {
 	const { container } = render(<Checkbox name="test" componentOptions={{ test: 'false' }} />);
+	const input = container.querySelector('input') as HTMLInputElement;
 
-	const input = container.firstChild as HTMLInputElement;
 	expect(input.tagName).toBe('INPUT');
 });
 
-test('component <Checkbox indeterminate /> should toggle indeterminate to true on the element', () => {
+test('should set indeterminate on the underlying input when indeterminate=true', () => {
 	const { container } = render(<Checkbox name="test" indeterminate />);
-	const input = container.firstChild as HTMLInputElement;
+	const input = container.querySelector('input') as HTMLInputElement;
 
 	expect(input.indeterminate).toBe(true);
 });
 
-test('component <Checkbox indeterminate={false} /> should not toggle indeterminate if there is no change', () => {
+test('should leave indeterminate=false on the underlying input when indeterminate is not set', () => {
 	const { container } = render(<Checkbox name="test" indeterminate={false} />);
-	const input = container.firstChild as HTMLInputElement;
+	const input = container.querySelector('input') as HTMLInputElement;
 
 	expect(input.indeterminate).toBe(false);
 });
 
-test('should handle onClick', () => {
-	const mockCallback = vi.fn();
-	const { container } = render(<Checkbox name="test" onClick={mockCallback} />);
-	const input = container.firstChild as HTMLInputElement;
+test('should call onClick when the underlying input is clicked', () => {
+	const onClick = vi.fn();
+	const { container } = render(<Checkbox name="test" onClick={onClick} />);
+	const input = container.querySelector('input') as HTMLInputElement;
 
 	fireEvent.click(input);
 
-	expect(mockCallback).toBeCalled();
+	expect(onClick).toBeCalled();
+});
+
+test('should not call onClick when disabled', () => {
+	const onClick = vi.fn();
+	const { container } = render(<Checkbox name="test" disabled onClick={onClick} />);
+	const input = container.querySelector('input') as HTMLInputElement;
+
+	fireEvent.click(input);
+
+	expect(onClick).not.toBeCalled();
 });

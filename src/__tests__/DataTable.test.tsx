@@ -120,7 +120,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select all rows"]') as HTMLInputElement);
 
 		expect(updatedMock).toBeCalledWith({
 			allSelected: true,
@@ -136,8 +136,8 @@ describe('DataTable::onSelectedRowsChange', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-row-2"]') as HTMLInputElement);
-		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 2"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 1"]') as HTMLInputElement);
 
 		expect(updatedMock).toBeCalledWith({
 			allSelected: true,
@@ -153,7 +153,7 @@ describe('DataTable::onSelectedRowsChange', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows onSelectedRowsChange={updatedMock} />,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 1"]') as HTMLInputElement);
 
 		expect(updatedMock).toBeCalledWith({
 			allSelected: false,
@@ -175,8 +175,8 @@ describe('DataTable::onSelectedRowsChange', () => {
 			/>,
 		);
 
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck1);
 
@@ -479,36 +479,44 @@ describe('DataTable:RowMouseEnterAndLeave', () => {
 });
 
 describe('DataTable::progress/nodata', () => {
-	test('should render correctly when progressPending is true', () => {
+	test('should overlay the body with the progress component when progressPending is true and data is present', () => {
 		const mock = dataMock();
-		const { container, getByText } = render(<DataTable data={mock.data} columns={mock.columns} progressPending />);
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} progressPending />);
 
-		expect(getByText('Loading...')).toBeDefined();
-		expect(container.querySelector('.rdt_TableHead')).toBeNull();
+		expect(container.querySelector('.rdt_bodyOverlay')).not.toBeNull();
+		// When there is data, the table (and header) stay mounted; the spinner overlays the body.
+		expect(container.querySelector('.rdt_TableHead')).not.toBeNull();
 	});
 
-	test('should only show Loading if progressPending prop changes', () => {
+	test('should overlay the body when progressPending toggles to true', () => {
 		const mock = dataMock();
-		const { getByText, rerender, container } = render(
+		const { rerender, container } = render(
 			<DataTable data={mock.data} columns={mock.columns} progressPending={false} />,
 		);
 
 		rerender(<DataTable data={mock.data} columns={mock.columns} progressPending />);
 
-		expect(getByText('Loading...')).toBeDefined();
-		expect(container.querySelector('.rdt_TableHead')).toBeNull();
+		expect(container.querySelector('.rdt_bodyOverlay')).not.toBeNull();
+		expect(container.querySelector('.rdt_TableHead')).not.toBeNull();
+	});
+
+	test('should render skeleton rows when progressPending is true and there is no data', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={[]} columns={mock.columns} progressPending />);
+
+		expect(container.querySelector('.rdt_skeletonPulse')).not.toBeNull();
 	});
 
 	describe('when persistTableHead', () => {
-		test('should only Loading and TableHead if progressPending prop changes', () => {
+		test('should render the progress component and keep TableHead when progressPending toggles to true', () => {
 			const mock = dataMock();
-			const { getByText, rerender, container } = render(
+			const { rerender, container } = render(
 				<DataTable data={mock.data} columns={mock.columns} progressPending={false} persistTableHead />,
 			);
 
 			rerender(<DataTable data={mock.data} columns={mock.columns} progressPending persistTableHead />);
 
-			expect(getByText('Loading...')).toBeDefined();
+			expect(container.querySelector('.rdt_bodyOverlay')).not.toBeNull();
 			expect(container.querySelector('.rdt_TableHead')).not.toBeNull();
 		});
 
@@ -528,15 +536,15 @@ describe('DataTable::progress/nodata', () => {
 	});
 
 	describe('when noTableHead', () => {
-		test('should only Loading if progressPending prop changes', () => {
+		test('should render the progress component without TableHead when progressPending toggles to true', () => {
 			const mock = dataMock();
-			const { getByText, rerender, container } = render(
+			const { rerender, container } = render(
 				<DataTable data={mock.data} columns={mock.columns} progressPending={false} persistTableHead noTableHead />,
 			);
 
 			rerender(<DataTable data={mock.data} columns={mock.columns} progressPending persistTableHead noTableHead />);
 
-			expect(getByText('Loading...')).toBeDefined();
+			expect(container.querySelector('.rdt_bodyOverlay')).not.toBeNull();
 			expect(container.querySelector('.rdt_TableHead')).toBeNull();
 		});
 	});
@@ -671,7 +679,7 @@ describe('DataTable::sorting', () => {
 		// select the column to sort
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 		// press enter
-		fireEvent.keyPress(container.querySelector('div[data-sort-id="1"]') as HTMLElement, { keyCode: 13 });
+		fireEvent.keyDown(container.querySelector('div[data-sort-id="1"]') as HTMLElement, { key: 'Enter' });
 
 		const rows = container.querySelectorAll('.rdt_row');
 		expect(rows[0].id).toBe('row-2'); // asc then enter = desc, Zuchinni first
@@ -958,7 +966,7 @@ describe('DataTable::selectableRows', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
 
-		expect(container.querySelector('input[name="select-all-rows"]')).not.toBeNull();
+		expect(container.querySelector('input[name="Select all rows"]')).not.toBeNull();
 		expect(container.querySelectorAll('input[type="checkbox"]')).toHaveLength(3); // header + 2 rows
 	});
 
@@ -968,7 +976,7 @@ describe('DataTable::selectableRows', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsHighlight />,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 1"]') as HTMLInputElement);
 
 		expect(container.querySelector('.rdt_rowSelected')).not.toBeNull();
 	});
@@ -979,8 +987,8 @@ describe('DataTable::selectableRows', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsSingle />,
 		);
 
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck1);
 		fireEvent.click(rowCheck2);
@@ -995,7 +1003,7 @@ describe('DataTable::selectableRows', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsSingle />,
 		);
 
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck);
 		expect(rowCheck.checked).toBe(true);
@@ -1008,8 +1016,8 @@ describe('DataTable::selectableRows', () => {
 	test('should clear all rows selectableRowsSingle is changed', () => {
 		const mock = dataMock();
 		const { container, rerender } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck1);
 		fireEvent.click(rowCheck2);
@@ -1026,13 +1034,13 @@ describe('DataTable::selectableRows', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowsNoSelectAll />,
 		);
 
-		expect(container.querySelector('input[name="select-all-rows"]')).toBe(null);
+		expect(container.querySelector('input[name="Select all rows"]')).toBe(null);
 	});
 
 	test('select-all-rows should be true is all rows are selected', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const allCheck = container.querySelector('input[name=select-all-rows]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 
@@ -1042,7 +1050,7 @@ describe('DataTable::selectableRows', () => {
 	test('select-all-rows should be false and not when all rows is de-selected', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const allCheck = container.querySelector('input[name=select-all-rows]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 		fireEvent.click(allCheck);
@@ -1053,8 +1061,8 @@ describe('DataTable::selectableRows', () => {
 	test('should render correctly when selectableRows is true and a single row is checked', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck);
 
@@ -1065,9 +1073,9 @@ describe('DataTable::selectableRows', () => {
 	test('select-all-rows should not be indeterminate when all rows are selected', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck1);
 		fireEvent.click(rowCheck2);
@@ -1091,8 +1099,8 @@ describe('DataTable::selectableRows', () => {
 			/>,
 		);
 
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
 
 		expect(rowCheck1.checked).toBe(true);
 		expect(rowCheck2.checked).toBe(false);
@@ -1101,8 +1109,8 @@ describe('DataTable::selectableRows', () => {
 	test('select-all-rows should be indeterminate when a single row is selected', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck);
 
@@ -1115,8 +1123,8 @@ describe('DataTable::selectableRows', () => {
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowSelected={row => row.selected} />,
 		);
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck);
 
@@ -1126,7 +1134,7 @@ describe('DataTable::selectableRows', () => {
 	test('should render correctly when selectableRows is true and a single row is un-checked', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck);
 		fireEvent.click(rowCheck);
@@ -1142,9 +1150,9 @@ describe('DataTable::selectableRows', () => {
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowDisabled={row => row.disabled} />,
 		);
 
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 
@@ -1159,7 +1167,7 @@ describe('DataTable::selectableRows', () => {
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowDisabled={row => row.disabled} />,
 		);
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck1);
 		fireEvent.click(rowCheck1);
@@ -1175,9 +1183,9 @@ describe('DataTable::selectableRows', () => {
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowDisabled={row => row.disabled} />,
 		);
-		const rowCheck1 = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const rowCheck2 = container.querySelector('input[name="select-row-2"]') as HTMLInputElement;
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const rowCheck1 = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const rowCheck2 = container.querySelector('input[name="Select row 2"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 
@@ -1193,8 +1201,8 @@ describe('DataTable::selectableRows', () => {
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowSelected={row => row.selected} />,
 		);
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		expect(rowCheck.checked).toBe(true);
 		expect(allCheck.indeterminate).toBe(true);
@@ -1208,7 +1216,7 @@ describe('DataTable::selectableRows', () => {
 		const { container } = render(
 			<DataTable data={mock.data} columns={mock.columns} selectableRows selectableRowSelected={row => row.selected} />,
 		);
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		expect(allCheck.checked).toBe(true);
 		expect(allCheck.indeterminate).toBe(false);
@@ -1217,7 +1225,7 @@ describe('DataTable::selectableRows', () => {
 	test('should render correctly when clearSelectedRows is toggled', () => {
 		const mock = dataMock();
 		const { container, rerender } = render(<DataTable data={mock.data} columns={mock.columns} selectableRows />);
-		const rowCheck = container.querySelector('input[name="select-row-1"]') as HTMLInputElement;
+		const rowCheck = container.querySelector('input[name="Select row 1"]') as HTMLInputElement;
 
 		fireEvent.click(rowCheck);
 
@@ -1257,7 +1265,7 @@ describe('DataTable::selectableRows', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select all rows"]') as HTMLInputElement);
 
 		// not ideal for testing but we can use the onSelectedRowsChange handler
 		// to check that we only have 1 items selected (on page1) out of a total of 2
@@ -1516,7 +1524,7 @@ describe('DataTable::Pagination', () => {
 				selectableRows
 			/>,
 		);
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 		expect(allCheck.checked).toBe(true);
@@ -1538,7 +1546,7 @@ describe('DataTable::Pagination', () => {
 				selectableRows
 			/>,
 		);
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 		expect(allCheck.checked).toBe(true);
@@ -1563,7 +1571,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select all rows"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
 		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
@@ -1587,7 +1595,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 1"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
 		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
@@ -1609,7 +1617,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		expect(container.querySelector('input[name="select-all-rows"]')).toBe(null);
+		expect(container.querySelector('input[name="Select all rows"]')).toBe(null);
 	});
 
 	test('should call onSelectedRowsChange when sorting if using paginationServer and selectedRows', () => {
@@ -1630,7 +1638,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select all rows"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLButtonElement);
@@ -1657,7 +1665,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-all-rows"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select all rows"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
@@ -1729,7 +1737,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 		// uncheck select all
@@ -1764,7 +1772,7 @@ describe('DataTable::Pagination', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 1"]') as HTMLInputElement);
 		expect(onSelectedRowsChange).toBeCalledTimes(1);
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
@@ -1802,7 +1810,7 @@ describe('DataTable::Pagination', () => {
 				selectableRows
 			/>,
 		);
-		const allCheck = container.querySelector('input[name="select-all-rows"]') as HTMLInputElement;
+		const allCheck = container.querySelector('input[name="Select all rows"]') as HTMLInputElement;
 
 		fireEvent.click(allCheck);
 		expect(allCheck.checked).toBe(true);
@@ -2045,7 +2053,7 @@ describe('DataTable::Header', () => {
 			/>,
 		);
 
-		fireEvent.click(container.querySelector('input[name="select-row-1"]') as HTMLInputElement);
+		fireEvent.click(container.querySelector('input[name="Select row 1"]') as HTMLInputElement);
 
 		expect(onSelectedRowsChange).toHaveBeenCalledWith(expect.objectContaining({ selectedCount: 1 }));
 	});
@@ -2392,7 +2400,7 @@ describe('DataTable::direction', () => {
 		expect(container.querySelector('.rdt_responsiveWrapper')?.getAttribute('dir')).toBe('rtl');
 	});
 
-	test('should render correctly when direction is rtl', () => {
+	test('should render correctly when direction is ltr', () => {
 		const mock = dataMock();
 
 		const { container } = render(
@@ -2546,18 +2554,18 @@ describe('DataTable::columnResize', () => {
 });
 
 describe('DataTable::columnGroups', () => {
-	test('renders a group header row when columnGroups is provided', () => {
+	test('renders a group header cell when columnGroups is provided', () => {
 		const mock = dataMock();
 		// decorateColumns assigns id=1 to first column without explicit id
 		const columnGroups = [{ name: 'Details', columnIds: [1] }];
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} columnGroups={columnGroups} />);
-		expect(container.querySelector('.rdt_groupRow')).not.toBeNull();
+		expect(container.querySelector('.rdt_groupCell')).not.toBeNull();
 	});
 
-	test('does not render a group header row without columnGroups', () => {
+	test('does not render a group header cell without columnGroups', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
-		expect(container.querySelector('.rdt_groupRow')).toBeNull();
+		expect(container.querySelector('.rdt_groupCell')).toBeNull();
 	});
 
 	test('renders group cell text', () => {

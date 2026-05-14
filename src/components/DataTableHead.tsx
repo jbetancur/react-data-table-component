@@ -43,6 +43,7 @@ function DataTableHead<T>({
 		draggingGroupKey,
 		filterValues,
 		columnWidths,
+		pinnedOffsets,
 		resizable,
 		onSort,
 		onFilterChange,
@@ -158,6 +159,7 @@ function DataTableHead<T>({
 		onSort,
 		onFilterChange,
 		onResizeStart: resizable ? onResizeStart : undefined,
+		pinnedOffsets,
 		onDragStart,
 		onDragOver,
 		onDragEnd,
@@ -165,6 +167,14 @@ function DataTableHead<T>({
 		onDragLeave,
 		draggingColumnId,
 	});
+
+	// First right-pinned column id — spacer is injected before it in flex layout
+	const firstRightPinnedId = React.useMemo(() => {
+		for (const col of columns) {
+			if (!col.omit && col.pinned === 'right') return col.id;
+		}
+		return null;
+	}, [columns]);
 
 	// ── CSS Grid layout (when columnGroups are present) ──────────────────────
 	if (hasGroups) {
@@ -250,7 +260,12 @@ function DataTableHead<T>({
 				{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
 
 				{columns.map(column => (
-					<Column key={column.id} {...colProps(column)} />
+					<React.Fragment key={column.id}>
+						{firstRightPinnedId != null && column.id === firstRightPinnedId && (
+							<div aria-hidden="true" style={{ flex: '0.001 0 0', minWidth: 0 }} />
+						)}
+						<Column {...colProps(column)} />
+					</React.Fragment>
 				))}
 			</HeadRow>
 		</Head>

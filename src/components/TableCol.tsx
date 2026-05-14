@@ -5,6 +5,7 @@ import { CellExtended } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import ColumnFilter from './ColumnFilter';
 import { equalizeId } from '../util';
+import type { PinnedOffsets } from '../util';
 import { SortOrder } from '../types';
 import type { TableColumn, SortAction, FilterState } from '../types';
 
@@ -31,6 +32,7 @@ type TableColProps<T> = {
 	/** Width override from column resize — takes precedence over column.width */
 	resizedWidth?: number;
 	onResizeStart?: (columnId: string | number, e: React.MouseEvent) => void;
+	pinnedOffsets?: PinnedOffsets;
 	/** CSS grid placement styles — injected by DataTableHead when rendering in grouped-header grid mode */
 	gridStyle?: React.CSSProperties;
 };
@@ -57,6 +59,7 @@ function TableCol<T>({
 	onDragLeave,
 	resizedWidth,
 	onResizeStart,
+	pinnedOffsets,
 	gridStyle,
 }: TableColProps<T>): JSX.Element | null {
 	const customStyles = useStyles();
@@ -129,6 +132,28 @@ function TableCol<T>({
 
 	const isDragging = equalizeId(column.id, draggingColumnId);
 
+	// ── Column pinning ─────────────────────────────────────────────────────────
+	const pinnedLeft = column.pinned === 'left' && column.id != null && pinnedOffsets?.left[column.id] != null;
+	const pinnedRight = column.pinned === 'right' && column.id != null && pinnedOffsets?.right[column.id] != null;
+	const maxLeftOffset = pinnedLeft ? Math.max(...Object.values(pinnedOffsets!.left)) : -1;
+	const maxRightOffset = pinnedRight ? Math.max(...Object.values(pinnedOffsets!.right)) : -1;
+	const isLastLeftPin = pinnedLeft && column.id != null && pinnedOffsets!.left[column.id] === maxLeftOffset;
+	const isFirstRightPin = pinnedRight && column.id != null && pinnedOffsets!.right[column.id] === maxRightOffset;
+	const pinnedStyle: React.CSSProperties =
+		pinnedLeft && column.id != null
+			? { position: 'sticky', left: pinnedOffsets!.left[column.id], zIndex: 2 }
+			: pinnedRight && column.id != null
+				? { position: 'sticky', right: pinnedOffsets!.right[column.id], zIndex: 2 }
+				: {};
+	const pinnedClass = [
+		pinnedLeft && 'rdt_pinLeft',
+		isLastLeftPin && 'rdt_pinLeftLast',
+		pinnedRight && 'rdt_pinRight',
+		isFirstRightPin && 'rdt_pinRightFirst',
+	]
+		.filter(Boolean)
+		.join(' ');
+
 	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
 		if (column.reorder && typeof column.name === 'string') {
 			e.dataTransfer.effectAllowed = 'move';
@@ -156,7 +181,7 @@ function TableCol<T>({
 	return (
 		<CellExtended
 			data-column-id={column.id}
-			className="rdt_TableCol"
+			className={['rdt_TableCol', pinnedClass].filter(Boolean).join(' ')}
 			$headCell
 			allowOverflow={column.allowOverflow}
 			button={column.button}
@@ -173,7 +198,8 @@ function TableCol<T>({
 			style={{
 				...(isDragging ? (customStyles.headCells?.draggingStyle as React.CSSProperties) : undefined),
 				...widthStyle,
-				position: 'relative',
+				...pinnedStyle,
+				...(pinnedStyle.position !== 'sticky' && { position: 'relative' }),
 				...gridStyle,
 			}}
 			onDragStart={handleDragStart}
@@ -258,6 +284,13 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 	if (prevProps.resizedWidth !== nextProps.resizedWidth) return false;
 	if (prevProps.disabled !== nextProps.disabled) return false;
 	if (prevProps.sortIcon !== nextProps.sortIcon) return false;
+	if (prevProps.pinnedOffsets !== nextProps.pinnedOffsets) {
+		const prevLeft = prevProps.pinnedOffsets?.left[prevProps.column.id!];
+		const nextLeft = nextProps.pinnedOffsets?.left[nextProps.column.id!];
+		const prevRight = prevProps.pinnedOffsets?.right[prevProps.column.id!];
+		const nextRight = nextProps.pinnedOffsets?.right[nextProps.column.id!];
+		if (prevLeft !== nextLeft || prevRight !== nextRight) return false;
+	}
 	const pg = prevProps.gridStyle;
 	const ng = nextProps.gridStyle;
 	if (pg !== ng) {

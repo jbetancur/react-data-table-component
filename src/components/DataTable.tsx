@@ -8,7 +8,8 @@ import NativePagination from './Pagination';
 import DataTableHead from './DataTableHead';
 import DataTableBody from './DataTableBody';
 import TablePaginationFooter from './TablePaginationFooter';
-import { getNumberOfPages, recalculatePage } from '../util';
+import { getNumberOfPages, recalculatePage, getPinnedOffsets, getPinnedTotalWidths } from '../util';
+import PinnedScrollbar from './PinnedScrollbar';
 import { defaultProps, DEFAULT_EXPANDABLE_ICON, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 import { createStyles } from '../styles';
 import { resolveTheme, resolveThemeObject } from '../themes';
@@ -176,6 +177,34 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		defaultSortAsc,
 	);
 
+	// Pinning is incompatible with CSS-grid group headers — strip it when groups are active
+	const hasGroups = tableGroups.length > 0 || (columnGroups != null && columnGroups.length > 0);
+	const effectiveColumns = React.useMemo(
+		() =>
+			hasGroups
+				? tableColumns.map(c => {
+						if (!c.pinned) return c;
+						const { pinned: _p, ...rest } = c;
+						return rest as typeof c;
+					})
+				: tableColumns,
+		[hasGroups, tableColumns],
+	);
+
+	const pinnedOffsets = React.useMemo(
+		() => getPinnedOffsets(effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander),
+		[effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander],
+	);
+
+	const pinnedTotalWidths = React.useMemo(
+		() =>
+			getPinnedTotalWidths(effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander),
+		[effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander],
+	);
+
+	const hasPinnedColumns = pinnedTotalWidths.left > 0 || pinnedTotalWidths.right > 0;
+	const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
+
 	const {
 		tableState,
 		handleSort: dispatchSort,
@@ -261,7 +290,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 	const rowContextValue = useRowContextValue<T>({
 		keyField,
-		columns: tableColumns,
+		columns: effectiveColumns,
 		dense,
 		striped,
 		highlightOnHover,
@@ -294,6 +323,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onDragEnter: handleDragEnter,
 		onDragLeave: handleDragLeave,
 		columnWidths,
+		pinnedOffsets,
 		animateRows,
 	});
 
@@ -312,6 +342,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		draggingGroupKey,
 		filterValues,
 		columnWidths,
+		pinnedOffsets,
 		resizable,
 		keyField,
 		mergeSelections,
@@ -368,9 +399,11 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 						)}
 
 						<ResponsiveWrapper
+							ref={scrollWrapperRef}
 							$responsive={responsive}
 							$fixedHeader={fixedHeader}
 							$fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+							$hiddenScrollbar={hasPinnedColumns}
 							className={className}
 							{...wrapperProps}
 						>
@@ -385,7 +418,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 								>
 									{showTableHead && (
 										<DataTableHead
-											columns={tableColumns}
+											columns={effectiveColumns}
 											columnGroups={tableGroups.length ? tableGroups : columnGroups}
 											selectableRows={selectableRows}
 											expandableRows={expandableRows}
@@ -408,6 +441,14 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 								</Table>
 							</Wrapper>
 						</ResponsiveWrapper>
+
+						{hasPinnedColumns && responsive && (
+							<PinnedScrollbar
+								scrollRef={scrollWrapperRef}
+								leftInset={pinnedTotalWidths.left}
+								rightInset={pinnedTotalWidths.right}
+							/>
+						)}
 
 						{enabledPagination && (
 							<TablePaginationFooter
