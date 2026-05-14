@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import DataTable from '../ThemedDataTable';
 import { type TableColumn, SortOrder } from 'react-data-table-component';
 
@@ -10,8 +10,7 @@ interface Employee {
 	status: string;
 }
 
-// 200-row dataset simulating a server DB
-const DB: Employee[] = Array.from({ length: 200 }, (_, i) => ({
+const DB: Employee[] = Array.from({ length: 150 }, (_, i) => ({
 	id: i + 1,
 	name: [
 		'Aria Chen',
@@ -35,41 +34,24 @@ const DB: Employee[] = Array.from({ length: 200 }, (_, i) => ({
 	status: ['Active', 'Remote', 'On Leave', 'Contractor'][i % 4],
 }));
 
-/** Simulate a server: filter, sort, and paginate the dataset with a delay. */
-async function fakeServerFetch(params: {
+async function fakeFetch(params: {
 	page: number;
 	perPage: number;
 	sortField: string;
 	sortDir: SortOrder;
-	search: string;
 }): Promise<{ rows: Employee[]; total: number }> {
-	await new Promise(r => setTimeout(r, 350)); // simulate network latency
+	await new Promise(r => setTimeout(r, 300));
 
-	let rows = [...DB];
-
-	// Filter
-	if (params.search) {
-		const q = params.search.toLowerCase();
-		rows = rows.filter(
-			r =>
-				r.name.toLowerCase().includes(q) ||
-				r.department.toLowerCase().includes(q) ||
-				r.status.toLowerCase().includes(q),
-		);
-	}
-
-	// Sort
-	rows.sort((a, b) => {
+	const sorted = [...DB].sort((a, b) => {
 		const av = a[params.sortField as keyof Employee] as string | number;
 		const bv = b[params.sortField as keyof Employee] as string | number;
-		if (av < bv) return params.sortDir === 'asc' ? -1 : 1;
-		if (av > bv) return params.sortDir === 'asc' ? 1 : -1;
+		if (av < bv) return params.sortDir === SortOrder.ASC ? -1 : 1;
+		if (av > bv) return params.sortDir === SortOrder.ASC ? 1 : -1;
 		return 0;
 	});
 
-	const total = rows.length;
 	const start = (params.page - 1) * params.perPage;
-	return { rows: rows.slice(start, start + params.perPage), total };
+	return { rows: sorted.slice(start, start + params.perPage), total: DB.length };
 }
 
 const columns: TableColumn<Employee>[] = [
@@ -87,22 +69,20 @@ const columns: TableColumn<Employee>[] = [
 	{ id: 'status', name: 'Status', selector: r => r.status, sortable: true, sortField: 'status' },
 ];
 
-export default function ServerSideDemo() {
+export default function ServerSideSortPaginationDemo() {
 	const [data, setData] = useState<Employee[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [totalRows, setTotal] = useState(0);
-	const [perPage, setPerPage] = useState(10);
 	const [page, setPage] = useState(1);
+	const [perPage, setPerPage] = useState(10);
 	const [sortField, setSortField] = useState('name');
 	const [sortDir, setSortDir] = useState<SortOrder>(SortOrder.ASC);
-	const [search, setSearch] = useState('');
 	const [resetPage, setResetPage] = useState(false);
-	const searchDebounce = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const fetchData = useCallback(
-		async (params: { page: number; perPage: number; sortField: string; sortDir: SortOrder; search: string }) => {
+	const load = useCallback(
+		async (params: { page: number; perPage: number; sortField: string; sortDir: SortOrder }) => {
 			setLoading(true);
-			const result = await fakeServerFetch(params);
+			const result = await fakeFetch(params);
 			setData(result.rows);
 			setTotal(result.total);
 			setLoading(false);
@@ -111,53 +91,34 @@ export default function ServerSideDemo() {
 	);
 
 	useEffect(() => {
-		fetchData({ page, perPage, sortField, sortDir, search });
+		load({ page, perPage, sortField, sortDir });
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	function handlePageChange(p: number) {
 		setPage(p);
-		fetchData({ page: p, perPage, sortField, sortDir, search });
+		load({ page: p, perPage, sortField, sortDir });
 	}
 
 	function handlePerPageChange(pp: number, p: number) {
 		setPerPage(pp);
-		fetchData({ page: p, perPage: pp, sortField, sortDir, search });
+		setPage(p);
+		load({ page: p, perPage: pp, sortField, sortDir });
 	}
 
 	function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
-		const field = col.sortField ?? 'name';
+		const field = col.sortField ?? String(col.id);
 		setSortField(field);
 		setSortDir(dir);
 		setPage(1);
-		fetchData({ page: 1, perPage, sortField: field, sortDir: dir, search });
-	}
-
-	function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
-		const q = e.target.value;
-		setSearch(q);
-		if (searchDebounce.current) clearTimeout(searchDebounce.current);
-		searchDebounce.current = setTimeout(() => {
-			setResetPage(prev => !prev);
-			fetchData({ page: 1, perPage, sortField, sortDir, search: q });
-		}, 400);
+		setResetPage(prev => !prev);
+		load({ page: 1, perPage, sortField: field, sortDir: dir });
 	}
 
 	return (
-		<div>
-			<input
-				type="search"
-				placeholder="Search name, department, status…"
-				value={search}
-				onChange={handleSearch}
-				style={{
-					marginBottom: 12,
-					padding: '6px 10px',
-					border: '1px solid #e5e7eb',
-					borderRadius: 6,
-					fontSize: 13,
-					width: 260,
-				}}
-			/>
+		<div className="space-y-2">
+			<div className="text-xs text-gray-500 font-mono bg-gray-50 border border-gray-100 rounded px-3 py-2">
+				{`sort: "${sortField}" ${sortDir} · page: ${page} · perPage: ${perPage} · total: ${totalRows}`}
+			</div>
 			<DataTable
 				columns={columns}
 				data={data}
@@ -171,6 +132,7 @@ export default function ServerSideDemo() {
 				sortServer
 				onSort={handleSort}
 				highlightOnHover
+				striped
 			/>
 		</div>
 	);

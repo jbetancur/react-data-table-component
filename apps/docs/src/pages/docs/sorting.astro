@@ -3,6 +3,8 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import SortingDemo from '../../components/demos/SortingDemo.tsx';
+import ServerSideSortingDemo from '../../components/demos/ServerSideSortingDemo.tsx';
+import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
 ---
 
 <DocsLayout title="Sorting | react-data-table-component">
@@ -142,50 +144,120 @@ const SortIcon = () => (
   <h2>Server-side sorting</h2>
   <p>
     Set <code>sortServer</code> to stop the table from sorting rows locally.
-    The table still updates its visual sort indicator and calls <code>onSort</code> — your handler
-    is responsible for fetching or reordering data and passing the new array back via <code>data</code>.
+    The table still updates its visual sort indicator and fires <code>onSort</code> — your handler
+    is responsible for fetching or reordering data and passing the updated array back via
+    <code>data</code>.
   </p>
   <p>
     When a column maps to a different backend field name, set <code>sortField</code> on the column.
-    The value is passed to <code>onSort</code> via the column object so you can use it directly in
-    your query.
+    The value is passed to <code>onSort</code> via the column object so you can forward it directly
+    to your query.
   </p>
 
-  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
-  {
-    id: 'name',
-    name: 'Name',
-    selector: r => r.name,
-    sortable: true,
-    sortField: 'full_name', // backend field name differs from display id
-  },
-  {
-    id: 'salary',
-    name: 'Salary',
-    selector: r => r.salary,
-    sortable: true,
-    sortField: 'annual_salary',
-  },
+  <Demo
+    title="Server-side sorting"
+    description="Click any column header to trigger a fake server fetch (250 ms latency). The table shows a loading indicator while the sorted data arrives."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true, sortField: 'name' },
+  { id: 'department', name: 'Department', selector: r => r.department, sortable: true, sortField: 'department' },
+  { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true, sortField: 'salary',
+    right: true, format: r => \`$\${r.salary.toLocaleString()}\` },
+  { id: 'hired',      name: 'Hired',      selector: r => r.hired,      sortable: true, sortField: 'hired' },
 ];
 
-function App() {
-  const [data, setData] = useState<Employee[]>([]);
+export default function App() {
+  const [data, setData]     = useState<Employee[]>(initialData);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSort(column: TableColumn<Employee>, direction: SortOrder) {
-    const field = column.sortField ?? column.id;
-    const rows = await fetchEmployees({ sort: field, dir: direction });
-    setData(rows);
+  async function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
+    const field = col.sortField ?? String(col.id);
+    setLoading(true);
+    const sorted = await fetch(\`/api/employees?sort=\${field}&dir=\${dir}\`).then(r => r.json());
+    setData(sorted);
+    setLoading(false);
   }
 
   return (
     <DataTable
       columns={columns}
       data={data}
+      progressPending={loading}
       sortServer
       onSort={handleSort}
+      highlightOnHover
     />
   );
-}`} />
+}`}
+  >
+    <ServerSideSortingDemo client:load />
+  </Demo>
+
+  <h2>Combined: server-side sorting and pagination</h2>
+  <p>
+    When using both <code>sortServer</code> and <code>paginationServer</code>, the three callbacks
+    are mutually exclusive — only one fires per interaction.
+    Sorting resets the page to 1 automatically and <code>onChangePage</code> is suppressed, so
+    <code>onSort</code> is your only fetch point for a new sort. Always fetch from page 1 there
+    and update your local page state to 1 to stay in sync.
+    See the <a href="/docs/pagination">pagination docs</a> for the complete callback contract.
+  </p>
+
+  <Demo
+    title="Server-side sort + pagination"
+    description="150-row simulated dataset. Sort any column, then page through the results. Sorting resets to page 1 automatically."
+    code={`import { useState, useEffect, useCallback } from 'react';
+import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
+
+export default function App() {
+  const [data, setData]           = useState<Employee[]>([]);
+  const [loading, setLoading]     = useState(true);
+  const [totalRows, setTotal]     = useState(0);
+  const [page, setPage]           = useState(1);
+  const [perPage, setPerPage]     = useState(10);
+  const [sortField, setSortField] = useState('name');
+  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
+  const [resetPage, setResetPage] = useState(false);
+
+  const load = useCallback(async (params) => {
+    setLoading(true);
+    const result = await fetchFromServer(params);
+    setData(result.rows);
+    setTotal(result.total);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load({ page, perPage, sortField, sortDir }); }, []);
+
+  function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
+    const field = col.sortField ?? String(col.id);
+    setSortField(field); setSortDir(dir);
+    setPage(1); setResetPage(prev => !prev); // reset pagination to page 1 on sort
+    load({ page: 1, perPage, sortField: field, sortDir: dir });
+  }
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      progressPending={loading}
+      sortServer
+      onSort={handleSort}
+      pagination
+      paginationServer
+      paginationTotalRows={totalRows}
+      paginationResetDefaultPage={resetPage}
+      onChangePage={p => { setPage(p); load({ page: p, perPage, sortField, sortDir }); }}
+      onChangeRowsPerPage={(pp, p) => { setPerPage(pp); load({ page: p, perPage: pp, sortField, sortDir }); }}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <ServerSideSortPaginationDemo client:load />
+  </Demo>
 
   <h2>Prop reference</h2>
 

@@ -1,0 +1,115 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import FixedHeaderDemo from '../../components/demos/FixedHeaderDemo.tsx';
+---
+
+<DocsLayout title="Fixed header | react-data-table-component">
+  <h1>Fixed header</h1>
+
+  <p>
+    Set <code>fixedHeader</code> to keep the column headers visible while the user scrolls through
+    a long dataset. The table body becomes independently scrollable within a container whose height
+    is controlled by <code>fixedHeaderScrollHeight</code>.
+  </p>
+
+  <Demo
+    title="Fixed header"
+    description="40 rows in a scrollable container. Toggle fixed header on/off and change the scroll height with the controls above the table."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { name: '#',          selector: r => r.id,         width: '60px' },
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+    right: true, format: r => \`$\${r.salary.toLocaleString()}\` },
+  { name: 'Status',     selector: r => r.status },
+];
+
+<DataTable
+  columns={columns}
+  data={data}           // large dataset
+  fixedHeader
+  fixedHeaderScrollHeight="300px"
+  highlightOnHover
+/>`}
+  >
+    <FixedHeaderDemo client:load />
+  </Demo>
+
+  <h2>How it works</h2>
+  <p>
+    When <code>fixedHeader</code> is enabled, the responsive wrapper gains
+    <code>overflow-y: auto</code> and the <code>max-height</code> you set via
+    <code>fixedHeaderScrollHeight</code>. The column header row gets
+    <code>position: sticky; top: 0</code> so it remains in view as the body scrolls within that
+    container.
+  </p>
+  <p>
+    Because the scroll container is the responsive wrapper, horizontal scrolling for wide tables
+    continues to work normally — both axes scroll together, but the header sticks on the vertical axis.
+  </p>
+
+  <h2>With pagination</h2>
+  <p>
+    Fixed header and pagination work together without any extra configuration. The scroll height
+    only constrains the table body rows — the pagination bar sits below the responsive wrapper
+    and is always fully visible.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={data}
+  fixedHeader
+  fixedHeaderScrollHeight="400px"
+  pagination
+  paginationPerPage={20}
+/>`} />
+
+  <h2>With selection</h2>
+  <p>
+    The checkbox column header scrolls with all other headers and stays fixed. The select-all
+    checkbox remains accessible at the top of the scrollable area.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={data}
+  fixedHeader
+  fixedHeaderScrollHeight="350px"
+  selectableRows
+/>`} />
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>fixedHeader</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Stick column headers to the top of the scroll container.</td>
+      </tr>
+      <tr>
+        <td><code>fixedHeaderScrollHeight</code></td>
+        <td><code>string</code></td>
+        <td><code>"100vh"</code></td>
+        <td>
+          Any valid CSS length (<code>px</code>, <code>vh</code>, <code>%</code>, etc.).
+          Sets the <code>max-height</code> of the scrollable body region.
+          Only applies when <code>fixedHeader</code> is <code>true</code>.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocsLayout>

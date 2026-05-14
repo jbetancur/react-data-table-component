@@ -110,9 +110,12 @@ function DataTableHead<T>({
 			tryFlip(el, `grp:${el.dataset.groupKey}`);
 		});
 
+		const positions = savedPositions.current;
+		const mounted = isMounted;
+
 		return () => {
-			isMounted.current = false;
-			savedPositions.current.clear();
+			mounted.current = false;
+			positions.clear();
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [columnOrder, groupOrder]);

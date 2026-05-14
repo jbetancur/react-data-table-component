@@ -81,6 +81,7 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,
+		sortTriggeredPageReset: false,
 	});
 
 	const handleClearSelectedRows = React.useCallback(() => {
@@ -143,9 +144,13 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 	const sortCallbackRef = React.useRef(onSort);
 	sortCallbackRef.current = onSort;
 
-	// Effect: Notify parent of page changes
+	// Effect: Notify parent of page changes.
+	// Guard: when currentPage was reset by SORT_CHANGE, onSort is the authoritative
+	// callback — suppress onChangePage so the consumer doesn't double-fetch.
 	useDidUpdateEffect(() => {
-		onChangePage(tableState.currentPage, paginationTotalRows || data.length);
+		if (!tableState.sortTriggeredPageReset) {
+			onChangePage(tableState.currentPage, paginationTotalRows || data.length);
+		}
 	}, [tableState.currentPage]);
 
 	// Effect: Notify parent of rows per page changes
