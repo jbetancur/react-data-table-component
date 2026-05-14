@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import DataTable, { Media } from 'react-data-table-component';
 
-const THEMES = ['default', 'material', 'rounded', 'catppuccin', 'aggrid'] as const;
+const THEMES = ['default', 'material', 'rounded', 'catppuccin', 'adgrid-quartz'] as const;
 type Theme = (typeof THEMES)[number];
 
 const data = [

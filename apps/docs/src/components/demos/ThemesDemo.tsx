@@ -37,7 +37,7 @@ const columns: TableColumn<Row>[] = [
 	},
 ];
 
-const THEMES = ['default', 'material', 'rounded', 'aggrid', 'catppuccin'] as const;
+const THEMES = ['default', 'material', 'rounded', 'adgrid-quartz', 'catppuccin'] as const;
 type ThemeName = (typeof THEMES)[number];
 
 const COLOR_MODES: { id: ColorMode; label: string }[] = [
