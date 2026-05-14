@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { decorateColumns, findColumnIndexById, getSortDirection } from '../util';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
-import { SortOrder, TableColumn, ColumnGroup } from '../types';
+import { SortOrder } from '../types';
+import type { TableColumn, ColumnGroup } from '../types';
 
 type ColumnsHook<T> = {
 	tableColumns: TableColumn<T>[];

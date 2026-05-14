@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
-import { ExpandableIcon } from '../types';
+import type { ExpandableIcon } from '../types';
 
 type ExpanderButtonProps<T> = {
 	disabled?: boolean;

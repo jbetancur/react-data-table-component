@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {
+import type {
 	TableColumn,
 	ConditionalStyles,
 	ExpandableIcon,

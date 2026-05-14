@@ -2,7 +2,8 @@ import * as React from 'react';
 import { tableReducer } from '../tableReducer';
 import { getNumberOfPages, recalculatePage } from '../util';
 import useDidUpdateEffect from './useDidUpdateEffect';
-import { Action, TableState, TableColumn, SortOrder, AllRowsAction, SingleRowAction, SortAction } from '../types';
+import { SortOrder } from '../types';
+import type { Action, TableState, TableColumn, AllRowsAction, SingleRowAction, SortAction } from '../types';
 
 interface UseTableStateProps<T> {
 	data: T[];

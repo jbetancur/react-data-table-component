@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PaginationComponent, PaginationIcons, PaginationOptions } from '../types';
+import type { PaginationComponent, PaginationIcons, PaginationOptions } from '../types';
 import { Direction } from '../constants';
 
 interface TablePaginationFooterProps {

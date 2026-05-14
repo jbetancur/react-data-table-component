@@ -1,5 +1,5 @@
 import { mergeDeep } from './util';
-import { TableStyles } from './types';
+import type { TableStyles } from './types';
 
 /**
  * Merges user-supplied customStyles with an empty base.

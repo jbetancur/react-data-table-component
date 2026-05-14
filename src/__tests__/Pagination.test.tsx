@@ -207,7 +207,7 @@ describe('when clicking the Previous Page button', () => {
 
 describe('when the screensize is small', () => {
 	test('paginationComponentOption noRowsPerPage should be respected', () => {
-		global.innerWidth = 500;
+		globalThis.innerWidth = 500;
 		const { container } = renderWithTheme(
 			<Pagination
 				currentPage={1}

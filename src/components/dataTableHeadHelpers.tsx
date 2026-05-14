@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableColumn, ColumnGroup } from '../types';
+import type { TableColumn, ColumnGroup } from '../types';
 
 /**
  * Builds the CSS grid-template-columns string from the visible column definitions.

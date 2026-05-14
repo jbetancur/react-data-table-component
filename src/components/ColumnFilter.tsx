@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../DataTable.css';
-import { FilterState, FilterCondition, FilterOperator, FilterType } from '../types';
+import type { FilterState, FilterCondition, FilterOperator, FilterType } from '../types';
 import { emptyFilterState, isFilterActive } from '../hooks/useColumnFilter';
 
 type OperatorOption = { value: FilterOperator; label: string; noInput?: boolean; twoInputs?: boolean };

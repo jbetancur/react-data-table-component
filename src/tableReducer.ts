@@ -1,5 +1,5 @@
 import { insertItem, isRowSelected, removeItem } from './util';
-import { Action, TableState } from './types';
+import type { Action, TableState } from './types';
 
 export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableState<T> {
 	const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;

@@ -12,6 +12,8 @@ export { default as useColumnFilter } from './hooks/useColumnFilter';
 export { default as useColumnVisibility } from './hooks/useColumnVisibility';
 export type { UseColumnVisibilityResult, ColumnVisibilityEntry } from './hooks/useColumnVisibility';
 
+export { SortOrder } from './types';
+
 export type {
 	TableProps,
 	DataTableHandle,
@@ -30,7 +32,6 @@ export type {
 	ThemeIcons,
 	PaginationOptions,
 	PaginationServerOptions,
-	SortOrder,
 	SortFunction,
 	Selector,
 	FilterType,
