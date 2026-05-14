@@ -10,7 +10,7 @@ import { defaultTheme } from './base';
 // Dark base color: #182230
 //   bg:       color-mix(#fff, #182230 97%)         → #1f2936
 //   header:   color-mix(#fff, #182230 93%)         → #28313e
-export const aggridTheme: Theme = {
+export const adgridQuartzTheme: Theme = {
 	...defaultTheme,
 	primary: '#2196f3',
 	text: {
