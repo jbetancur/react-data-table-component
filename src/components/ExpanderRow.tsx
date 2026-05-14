@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
-import { CSSObject, ComponentProps, ExpandableRowsComponent } from '../types';
+import type { CSSObject, ComponentProps, ExpandableRowsComponent } from '../types';
 
 type ExpanderRowProps<T> = {
 	data: T;

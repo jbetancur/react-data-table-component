@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HeadContextValue } from '../context/HeadContext';
+import type { HeadContextValue } from '../context/HeadContext';
 
 /**
  * Memoizes the HeadContext value passed to descendants.

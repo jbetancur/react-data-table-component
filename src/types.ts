@@ -61,6 +61,10 @@ export type PaginationComponentProps = {
 	currentPage: number;
 	onChangePage: PaginationChangePage;
 	onChangeRowsPerPage: PaginationChangeRowsPerPage;
+	direction?: Direction;
+	paginationRowsPerPageOptions?: number[];
+	paginationIcons?: PaginationIcons;
+	paginationComponentOptions?: PaginationOptions;
 };
 export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 

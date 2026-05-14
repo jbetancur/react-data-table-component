@@ -3,7 +3,7 @@ import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
-import { ExpandableIcon } from '../types';
+import type { ExpandableIcon } from '../types';
 
 type CellExpanderProps<T> = {
 	disabled: boolean;

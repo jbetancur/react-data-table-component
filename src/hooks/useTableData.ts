@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { sort } from '../util';
-import { TableColumn, SortOrder, SortFunction, Selector } from '../types';
+import { SortOrder } from '../types';
+import type { TableColumn, SortFunction, Selector } from '../types';
 
 interface UseTableDataProps<T> {
 	data: T[];

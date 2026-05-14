@@ -5,7 +5,8 @@ import { CellExtended } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import ColumnFilter from './ColumnFilter';
 import { equalizeId } from '../util';
-import { TableColumn, SortAction, SortOrder, FilterState } from '../types';
+import { SortOrder } from '../types';
+import type { TableColumn, SortAction, FilterState } from '../types';
 
 type TableColProps<T> = {
 	column: TableColumn<T>;

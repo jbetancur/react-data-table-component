@@ -3,7 +3,7 @@ import { useStyles } from '../context/StylesContext';
 import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
 import { getProperty, getConditionalStyle } from '../util';
-import { TableColumn } from '../types';
+import type { TableColumn } from '../types';
 
 interface CellProps<T> {
 	id: string;

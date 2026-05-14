@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../DataTable.css';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
-import { RowState, SingleRowAction, ComponentProps } from '../types';
+import type { RowState, SingleRowAction, ComponentProps } from '../types';
 
 type TableCellCheckboxProps<T> = {
 	name: string;

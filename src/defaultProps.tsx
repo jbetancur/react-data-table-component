@@ -7,7 +7,7 @@ import ExpanderCollapsedIcon from './icons/ExpanderCollapsedIcon';
 import ExpanderExpandedIcon from './icons/ExpanderExpandedIcon';
 import { noop } from './util';
 import { Alignment, Direction } from './constants';
-import { PaginationIcons, ExpandableIcon } from './types';
+import type { PaginationIcons, ExpandableIcon } from './types';
 
 export const DEFAULT_PAGINATION_ICONS: Required<PaginationIcons> = {
 	first: <FirstPageIcon />,

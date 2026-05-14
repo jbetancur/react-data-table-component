@@ -1,17 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import DataTable, { Media } from 'react-data-table-component';
 
-const THEMES = [
-	'default',
-	'dark',
-	'material',
-	'material-dark',
-	'slate',
-	'slate-dark',
-	'ocean',
-	'ocean-dark',
-	'midnight',
-] as const;
+const THEMES = ['default', 'material', 'rounded', 'catppuccin', 'aggrid'] as const;
 type Theme = (typeof THEMES)[number];
 
 const data = [
@@ -77,8 +67,8 @@ const columns = [
 
 export default function LiveDemo() {
 	const [theme, setTheme] = useState<Theme>('default');
-	const [selectable, setSelectable] = useState(false);
-	const [striped, setStriped] = useState(true);
+	const [selectable, setSelectable] = useState(true);
+	const [striped, setStriped] = useState(false);
 	const [animateRows, setAnimateRows] = useState(true);
 	const [selectedCount, setSelectedCount] = useState(0);
 
@@ -86,76 +76,73 @@ export default function LiveDemo() {
 		setSelectedCount(selectedCount);
 	}, []);
 
-	const isDark = theme.includes('dark') || theme === 'midnight';
+	const btnClass = (active: boolean) =>
+		`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
+			active
+				? 'bg-brand-600 text-white border-brand-600'
+				: 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+		}`;
 
 	return (
 		<div className="rounded-xl border border-gray-200 overflow-hidden shadow-sm">
 			{/* Toolbar */}
-			<div className="flex flex-wrap items-center gap-4 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
-				<div className="flex items-center gap-2">
-					<label htmlFor="live-demo-theme" className="text-gray-500 font-medium">
-						Theme
-					</label>
-					<select
-						id="live-demo-theme"
-						value={theme}
-						onChange={e => setTheme(e.target.value as Theme)}
-						className="border border-gray-200 rounded-md px-2 py-1 text-gray-700 bg-white text-xs focus:outline-none focus:ring-2 focus:ring-brand-400"
-					>
-						{THEMES.map(t => (
-							<option key={t} value={t}>
-								{t}
-							</option>
-						))}
-					</select>
+			<div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
+				<div className="flex items-center gap-2 flex-wrap">
+					<span className="text-gray-500 font-medium shrink-0">Theme</span>
+					{THEMES.map(t => (
+						<button key={t} onClick={() => setTheme(t)} className={btnClass(theme === t)}>
+							{t.charAt(0).toUpperCase() + t.slice(1)}
+						</button>
+					))}
 				</div>
 
-				<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-					<input
-						type="checkbox"
-						checked={selectable}
-						onChange={e => setSelectable(e.target.checked)}
-						className="rounded"
-					/>
-					Selectable
-				</label>
+				<div className="flex items-center gap-3 ml-auto">
+					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
+						<input
+							type="checkbox"
+							checked={selectable}
+							onChange={e => setSelectable(e.target.checked)}
+							className="rounded"
+						/>
+						Selectable
+					</label>
 
-				<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-					<input type="checkbox" checked={striped} onChange={e => setStriped(e.target.checked)} className="rounded" />
-					Striped
-				</label>
+					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
+						<input type="checkbox" checked={striped} onChange={e => setStriped(e.target.checked)} className="rounded" />
+						Striped
+					</label>
 
-				<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-					<input
-						type="checkbox"
-						checked={animateRows}
-						onChange={e => setAnimateRows(e.target.checked)}
-						className="rounded"
-					/>
-					Animate rows
-				</label>
+					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
+						<input
+							type="checkbox"
+							checked={animateRows}
+							onChange={e => setAnimateRows(e.target.checked)}
+							className="rounded"
+						/>
+						Animate
+					</label>
 
-				{selectable && selectedCount > 0 && (
-					<span className="ml-auto text-brand-600 font-medium">{selectedCount} selected</span>
-				)}
+					{selectable && selectedCount > 0 && (
+						<span className="text-brand-600 font-medium">{selectedCount} selected</span>
+					)}
+				</div>
 			</div>
 
 			{/* Table */}
-			<div className={isDark ? 'bg-gray-900' : 'bg-white'}>
-				<DataTable
-					columns={columns}
-					data={data}
-					theme={theme}
-					striped={striped}
-					highlightOnHover
-					selectableRows={selectable}
-					onSelectedRowsChange={handleSelectedChange}
-					animateRows={animateRows}
-					pagination
-					paginationPerPage={5}
-					paginationRowsPerPageOptions={[5, 8]}
-				/>
-			</div>
+			<DataTable
+				columns={columns}
+				data={data}
+				theme={theme}
+				colorMode="light"
+				striped={striped}
+				highlightOnHover
+				selectableRows={selectable}
+				onSelectedRowsChange={handleSelectedChange}
+				animateRows={animateRows}
+				pagination
+				paginationPerPage={5}
+				paginationRowsPerPageOptions={[5, 8]}
+			/>
 		</div>
 	);
 }

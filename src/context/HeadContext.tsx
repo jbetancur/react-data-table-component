@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TableColumn, SortAction, SortOrder, AllRowsAction, RowState, ComponentProps, FilterState } from '../types';
+import { SortOrder } from '../types';
+import type { TableColumn, SortAction, AllRowsAction, RowState, ComponentProps, FilterState } from '../types';
 
 export interface HeadContextValue<T> {
 	// Sort state

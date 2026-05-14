@@ -12,7 +12,7 @@ import { getNumberOfPages, recalculatePage } from '../util';
 import { defaultProps, DEFAULT_EXPANDABLE_ICON, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 import { createStyles } from '../styles';
 import { resolveTheme, resolveThemeObject } from '../themes';
-import { TableProps, DataTableHandle } from '../types';
+import type { TableProps, DataTableHandle } from '../types';
 import { StylesContext } from '../context/StylesContext';
 import { RowContext } from '../context/RowContext';
 import { HeadContext } from '../context/HeadContext';

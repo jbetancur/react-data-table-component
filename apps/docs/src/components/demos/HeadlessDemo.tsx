@@ -1,5 +1,5 @@
 import React from 'react';
-import { useColumns, useTableState, useTableData, useColumnFilter, type TableColumn } from 'react-data-table-component';
+import { useColumns, useTableState, useTableData, useColumnFilter, type TableColumn, type FilterState } from 'react-data-table-component';
 
 interface Employee {
 	id: number;
@@ -39,6 +39,8 @@ export default function HeadlessDemo() {
 	const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns<Employee>(
 		rawColumns,
 		() => {}, // onColumnOrderChange
+		undefined, // onColumnGroupOrderChange
+		undefined, // columnGroups
 		'name', // defaultSortFieldId
 		true, // defaultSortAsc
 	);
@@ -108,8 +110,8 @@ export default function HeadlessDemo() {
 					<input
 						key={col.id}
 						placeholder={`Filter ${col.name}…`}
-						value={filterValues[col.id!] ?? ''}
-						onChange={e => handleFilterChange(col.id!, e.target.value)}
+						value={(filterValues[col.id!] as FilterState | undefined)?.condition1?.value ?? ''}
+						onChange={e => handleFilterChange(col.id!, { condition1: { operator: 'contains', value: e.target.value } })}
 						style={{
 							flex: 1,
 							padding: '4px 8px',

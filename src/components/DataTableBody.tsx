@@ -3,7 +3,7 @@ import Body from './TableBody';
 import Row from './TableRow';
 import NoData from './NoDataWrapper';
 import { prop, isEmpty } from '../util';
-import { TableRow, RowState } from '../types';
+import type { TableRow, RowState } from '../types';
 import { useRowContext } from '../context/RowContext';
 
 const SKELETON_ROW_COUNT = 5;

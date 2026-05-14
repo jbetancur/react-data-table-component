@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableColumn, FilterState, FilterCondition, FilterOperator, FilterType } from '../types';
+import type { TableColumn, FilterState, FilterCondition, FilterOperator, FilterType } from '../types';
 
 export interface UseColumnFilterResult<T> {
 	filterValues: Record<string | number, FilterState>;

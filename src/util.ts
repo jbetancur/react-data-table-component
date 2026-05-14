@@ -1,13 +1,5 @@
-import {
-	CSSObject,
-	ConditionalStyles,
-	TableColumn,
-	Format,
-	TableRow,
-	Selector,
-	SortOrder,
-	SortFunction,
-} from './types';
+import { SortOrder } from './types';
+import type { CSSObject, ConditionalStyles, TableColumn, Format, TableRow, Selector, SortFunction } from './types';
 
 function isPlainObject(val: unknown): val is Record<string, unknown> {
 	return val !== null && typeof val === 'object' && !Array.isArray(val);
@@ -84,7 +76,7 @@ export function sort<T>(
 
 export function getProperty<T>(
 	row: T,
-	selector: Selector<T> | undefined | null,
+	selector: ((row: T, rowIndex?: number) => React.ReactNode) | undefined | null,
 	format: Format<T> | undefined | null,
 	rowIndex: number,
 ): React.ReactNode {

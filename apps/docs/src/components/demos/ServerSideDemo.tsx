@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import DataTable from '../ThemedDataTable';
-import { type TableColumn, type SortOrder } from 'react-data-table-component';
+import { type TableColumn, SortOrder } from 'react-data-table-component';
 
 interface Employee {
 	id: number;
@@ -14,12 +14,24 @@ interface Employee {
 const DB: Employee[] = Array.from({ length: 200 }, (_, i) => ({
 	id: i + 1,
 	name: [
-		'Aria Chen', 'Marcus Webb', 'Priya Kapoor', 'Jordan Ellis', 'Sam Rivera',
-		'Taylor Brooks', 'Casey Morgan', 'Alex Kim', 'Morgan Lee', 'Drew Park',
-		'Riley Nguyen', 'Jamie Okafor', 'Quinn Zhang', 'Avery Patel', 'Blake Russo',
+		'Aria Chen',
+		'Marcus Webb',
+		'Priya Kapoor',
+		'Jordan Ellis',
+		'Sam Rivera',
+		'Taylor Brooks',
+		'Casey Morgan',
+		'Alex Kim',
+		'Morgan Lee',
+		'Drew Park',
+		'Riley Nguyen',
+		'Jamie Okafor',
+		'Quinn Zhang',
+		'Avery Patel',
+		'Blake Russo',
 	][i % 15],
 	department: ['Engineering', 'Product', 'Design', 'Analytics', 'Sales', 'HR'][i % 6],
-	salary: 75000 + (i * 1237) % 90000,
+	salary: 75000 + ((i * 1237) % 90000),
 	status: ['Active', 'Remote', 'On Leave', 'Contractor'][i % 4],
 }));
 
@@ -61,37 +73,42 @@ async function fakeServerFetch(params: {
 }
 
 const columns: TableColumn<Employee>[] = [
-	{ id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true, sortField: 'name' },
+	{ id: 'name', name: 'Name', selector: r => r.name, sortable: true, sortField: 'name' },
 	{ id: 'department', name: 'Department', selector: r => r.department, sortable: true, sortField: 'department' },
 	{
-		id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true, sortField: 'salary',
-		right: true, format: r => `$${r.salary.toLocaleString()}`,
+		id: 'salary',
+		name: 'Salary',
+		selector: r => r.salary,
+		sortable: true,
+		sortField: 'salary',
+		right: true,
+		format: r => `$${r.salary.toLocaleString()}`,
 	},
 	{ id: 'status', name: 'Status', selector: r => r.status, sortable: true, sortField: 'status' },
 ];
 
 export default function ServerSideDemo() {
-	const [data, setData]           = useState<Employee[]>([]);
-	const [loading, setLoading]     = useState(true);
-	const [totalRows, setTotal]     = useState(0);
-	const [perPage, setPerPage]     = useState(10);
-	const [page, setPage]           = useState(1);
+	const [data, setData] = useState<Employee[]>([]);
+	const [loading, setLoading] = useState(true);
+	const [totalRows, setTotal] = useState(0);
+	const [perPage, setPerPage] = useState(10);
+	const [page, setPage] = useState(1);
 	const [sortField, setSortField] = useState('name');
-	const [sortDir, setSortDir]     = useState<SortOrder>('asc');
-	const [search, setSearch]       = useState('');
+	const [sortDir, setSortDir] = useState<SortOrder>(SortOrder.ASC);
+	const [search, setSearch] = useState('');
 	const [resetPage, setResetPage] = useState(false);
 	const searchDebounce = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const fetchData = useCallback(async (params: {
-		page: number; perPage: number; sortField: string;
-		sortDir: SortOrder; search: string;
-	}) => {
-		setLoading(true);
-		const result = await fakeServerFetch(params);
-		setData(result.rows);
-		setTotal(result.total);
-		setLoading(false);
-	}, []);
+	const fetchData = useCallback(
+		async (params: { page: number; perPage: number; sortField: string; sortDir: SortOrder; search: string }) => {
+			setLoading(true);
+			const result = await fakeServerFetch(params);
+			setData(result.rows);
+			setTotal(result.total);
+			setLoading(false);
+		},
+		[],
+	);
 
 	useEffect(() => {
 		fetchData({ page, perPage, sortField, sortDir, search });

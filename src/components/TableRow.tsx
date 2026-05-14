@@ -8,7 +8,7 @@ import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import { prop, equalizeId, getConditionalStyle, isOdd } from '../util';
 import { STOP_PROP_TAG } from '../constants';
-import { TableRow } from '../types';
+import type { TableRow } from '../types';
 
 interface TableRowProps<T> {
 	'data-row-id': string | number;

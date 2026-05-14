@@ -6,7 +6,7 @@ import { getNumberOfPages } from '../util';
 import useWindowSize from '../hooks/useWindowSize';
 import useRTL from '../hooks/useRTL';
 import { Direction } from '../constants';
-import { PaginationIcons, PaginationOptions, PaginationChangePage } from '../types';
+import type { PaginationIcons, PaginationOptions, PaginationChangePage } from '../types';
 import { defaultProps, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 
 const defaultComponentOptions = {

@@ -6,7 +6,7 @@ import ColumnCheckbox from './TableColCheckbox';
 import ColumnExpander from './TableColExpander';
 import { CellBase } from './Cell';
 import { buildGridTemplateColumns, buildGroupHeaderCells, type GroupDragProps } from './dataTableHeadHelpers';
-import { TableColumn, ColumnGroup } from '../types';
+import type { TableColumn, ColumnGroup } from '../types';
 import { emptyFilterState } from '../hooks/useColumnFilter';
 import { useHeadContext } from '../context/HeadContext';
 
@@ -72,6 +72,7 @@ function DataTableHead<T>({
 	// ── FLIP animation for column/group reorder ──────────────────────────────
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const savedPositions = React.useRef<Map<string, number>>(new Map());
+	const isMounted = React.useRef(false);
 	const columnOrder = React.useMemo(() => visibleColumns.map(c => c.id).join(','), [visibleColumns]);
 	const groupOrder = React.useMemo(() => (columnGroups ?? []).map(g => g.columnIds[0]).join(','), [columnGroups]);
 
@@ -79,12 +80,14 @@ function DataTableHead<T>({
 		const container = containerRef.current;
 		if (!container) return;
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const animate = isMounted.current;
+		isMounted.current = true;
 
 		const tryFlip = (el: HTMLElement, key: string) => {
 			const newLeft = el.getBoundingClientRect().left;
 			const prevLeft = savedPositions.current.get(key);
 			savedPositions.current.set(key, newLeft);
-			if (reducedMotion || prevLeft == null || Math.abs(prevLeft - newLeft) < 1) return;
+			if (!animate || reducedMotion || prevLeft == null || Math.abs(prevLeft - newLeft) < 1) return;
 
 			const delta = prevLeft - newLeft;
 			el.style.transform = `translateX(${delta}px)`;
@@ -106,6 +109,11 @@ function DataTableHead<T>({
 		container.querySelectorAll<HTMLElement>('[data-group-key]').forEach(el => {
 			tryFlip(el, `grp:${el.dataset.groupKey}`);
 		});
+
+		return () => {
+			isMounted.current = false;
+			savedPositions.current.clear();
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [columnOrder, groupOrder]);
 

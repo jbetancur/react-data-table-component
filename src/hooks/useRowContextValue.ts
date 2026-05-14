@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RowContextValue } from '../context/RowContext';
+import type { RowContextValue } from '../context/RowContext';
 
 /**
  * Memoizes the RowContext value passed to descendants.

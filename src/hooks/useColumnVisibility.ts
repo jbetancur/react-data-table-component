@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableColumn } from '../types';
+import type { TableColumn } from '../types';
 
 export interface ColumnVisibilityEntry<T> {
 	column: TableColumn<T>;

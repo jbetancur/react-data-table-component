@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../DataTable.css';
-import { TableColumnBase } from '../types';
+import type { TableColumnBase } from '../types';
 
 export type CellProps = Pick<
 	TableColumnBase,
