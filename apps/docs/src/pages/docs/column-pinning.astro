@@ -11,69 +11,117 @@ import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
   <p>
     Set <code>pinned: 'left'</code> or <code>pinned: 'right'</code> on any column to keep it
     visible while the user scrolls horizontally through a wide table. Pinned columns use
-    <code>position: sticky</code> and maintain a shadow that visually separates them from the
-    scrolling content.
+    <code>position: sticky</code> and render a subtle directional shadow on the band edge to
+    indicate the boundary between sticky and scrolling content.
   </p>
 
   <Demo
     title="Column pinning"
-    description="Name is pinned to the left, Status is pinned to the right. Scroll the table horizontally to see them stay in place."
+    description="Name is pinned to the left, Status is pinned to the right. Scroll the table horizontally — both stay in place. Resize any column and the pin offsets update automatically."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Row>[] = [
-  { id: 'name',   name: 'Name',       selector: r => r.name,       width: '160px', pinned: 'left'  },
-  { id: 'role',   name: 'Role',       selector: r => r.role,       width: '180px' },
-  { id: 'dept',   name: 'Department', selector: r => r.department, width: '150px' },
-  { id: 'loc',    name: 'Location',   selector: r => r.location,   width: '150px' },
-  { id: 'salary', name: 'Salary',     selector: r => r.salary,     width: '120px', right: true },
-  { id: 'status', name: 'Status',     selector: r => r.status,     width: '110px', pinned: 'right' },
+  { id: 'name',   name: 'Name',       selector: r => r.name,       width: '180px', pinned: 'left'  },
+  { id: 'role',   name: 'Role',       selector: r => r.role,       width: '220px' },
+  { id: 'dept',   name: 'Department', selector: r => r.department, width: '180px' },
+  { id: 'loc',    name: 'Location',   selector: r => r.location,   width: '200px' },
+  { id: 'salary', name: 'Salary',     selector: r => r.salary,     width: '140px', right: true },
+  { id: 'status', name: 'Status',     selector: r => r.status,     width: '120px', pinned: 'right' },
 ];
 
-<DataTable columns={columns} data={data} highlightOnHover />`}
+<DataTable columns={columns} data={data} resizable highlightOnHover />`}
   >
     <ColumnPinningDemo client:load />
   </Demo>
 
   <h2>How it works</h2>
   <p>
-    Each column is assigned a unique <code>id</code>. At render time the table measures the widths
-    of all pinned columns and computes a <code>left</code> or <code>right</code> CSS offset for
-    each one so they stack correctly when multiple columns are pinned on the same side. Both the
-    header cell and each body cell receive <code>position: sticky</code> with those offsets.
+    The table measures the widths of all pinned columns and computes cumulative
+    <code>left</code> or <code>right</code> CSS offsets so pinned columns stack correctly when
+    more than one is pinned on the same side. Header and body cells both receive
+    <code>position: sticky</code> with those offsets.
   </p>
   <p>
-    A subtle directional shadow is drawn on the innermost pinned column on each side
-    (<code>rdt_pinLeftLast</code> / <code>rdt_pinRightFirst</code>) to indicate the boundary
-    between sticky and scrolling content.
+    When <code>responsive</code> is enabled and at least one column is pinned, the table also
+    renders a custom horizontal scrollbar below the body that excludes the pinned regions — so
+    the scroll thumb only spans the scrollable middle section. The browser's native horizontal
+    scrollbar is hidden in this mode.
+  </p>
+
+  <h2>The ordering rule</h2>
+  <p>
+    Pinned columns must form a contiguous band on each side. Internally the table enforces this
+    via <code>normalizePins</code>:
+  </p>
+  <ul>
+    <li>The first <em>N</em> columns become the left-pinned band, where <em>N</em> is the count of <code>pinned: 'left'</code> columns.</li>
+    <li>The last <em>M</em> columns become the right-pinned band.</li>
+    <li>Anything in the middle has <code>pinned</code> stripped.</li>
+  </ul>
+  <p>
+    This matters most when <code>reorder: true</code> is enabled. Dragging a column into the
+    pinned band pins it; dragging it out unpins it. You don't need to think about pin state
+    when reordering — the band membership follows position.
   </p>
 
   <h2>Pinning multiple columns</h2>
   <p>
-    You can pin more than one column per side. The offsets are calculated automatically — you
-    only need to set <code>pinned</code> on each column.
+    Pin as many columns as you like on each side. Offsets cascade automatically:
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Row>[] = [
-  { id: 'select', name: '',      width: '48px',  pinned: 'left' },
-  { id: 'name',   name: 'Name',  width: '160px', pinned: 'left' },
+  { id: 'id',     name: 'ID',     width: '80px',  pinned: 'left'  },
+  { id: 'name',   name: 'Name',   width: '180px', pinned: 'left'  },
   // ... scrolling columns ...
-  { id: 'status', name: 'Status', width: '100px', pinned: 'right' },
-  { id: 'action', name: '',       width: '60px',  pinned: 'right' },
+  { id: 'status', name: 'Status', width: '120px', pinned: 'right' },
+  { id: 'action', name: '',       width: '64px',  pinned: 'right' },
 ];`} />
+
+  <p>
+    <strong>ID</strong> sticks at <code>left: 0</code> and <strong>Name</strong> sticks at
+    <code>left: 80px</code> (the width of ID). On the right side it's mirrored:
+    <strong>Action</strong> sticks at <code>right: 0</code> and <strong>Status</strong> at
+    <code>right: 64px</code>.
+  </p>
+
+  <h2>With selectable rows or expandable rows</h2>
+  <p>
+    The checkbox and expander columns are always pinned to the left edge — they don't need
+    <code>pinned</code> set. When you also pin a regular column to the left, its offset
+    accounts for the checkbox/expander width automatically.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}            // Name has pinned: 'left'
+  data={data}
+  selectableRows               // checkbox column pins at 0
+  expandableRows               // expander column pins after the checkbox
+/>
+// → Name sticks at left: 96px (48px checkbox + 48px expander)`} />
+
+  <p>
+    The system column width defaults to <code>48px</code> and is controlled by the
+    <code>--rdt-system-col-width</code> CSS variable. Override it in your stylesheet if you
+    customize the checkbox/expander cell width — pinning offsets will stay aligned because they
+    read the same variable.
+  </p>
+
+  <CodeBlock code={`/* In your global CSS */
+.rdt_table { --rdt-system-col-width: 56px; }`} lang="css" />
 
   <h2>With resizable columns</h2>
   <p>
-    Pinned columns are fully compatible with <code>resizable</code>. When you resize a pinned
-    column, the offsets for columns pinned further from the edge are updated automatically.
+    Pinned columns are fully compatible with <code>resizable</code>. Resizing a pinned column
+    triggers a re-render with new offsets so columns pinned further from the edge shift to match.
   </p>
 
   <CodeBlock code={`<DataTable columns={columns} data={data} resizable />`} />
 
   <h2>With fixed header</h2>
   <p>
-    Column pinning and <code>fixedHeader</code> work together. Pinned header cells use
-    <code>z-index: 2</code> (vs <code>z-index: 1</code> for body cells) so they stay above
-    scrolling body content at the intersection of both axes.
+    Pinning and <code>fixedHeader</code> compose. Pinned header cells use <code>z-index: 2</code>
+    versus <code>z-index: 1</code> for body cells so the intersection (top-left / top-right
+    corner) stays above scrolling body content.
   </p>
 
   <CodeBlock code={`<DataTable
@@ -83,33 +131,76 @@ const columns: TableColumn<Row>[] = [
   fixedHeaderScrollHeight="400px"
 />`} />
 
+  <h2>Not supported with column groups</h2>
+  <p>
+    When you pass <code>columnGroups</code>, the header switches to a CSS grid layout that is
+    incompatible with sticky positioning. The table will silently strip <code>pinned</code>
+    from your columns and log a one-time <code>console.warn</code> in development.
+  </p>
+  <p>
+    Pick one or the other for any given table. If you need both grouped headers and a frozen
+    column, consider splitting the table or letting the first column be a wider summary cell.
+  </p>
+
+  <h2>Customizing the pin shadow</h2>
+  <p>
+    The directional shadow is drawn on the inner edge of each pin band — class
+    <code>rdt_pinLeftLast</code> on the rightmost left-pinned column and
+    <code>rdt_pinRightFirst</code> on the leftmost right-pinned column. Override the color via
+    the <code>--rdt-color-pin-shadow</code> CSS variable:
+  </p>
+
+  <CodeBlock code={`.rdt_table {
+  --rdt-color-pin-shadow: rgba(0, 0, 0, 0.2); /* darker shadow */
+}`} lang="css" />
+
+  <h2>When not to pin</h2>
+  <ul>
+    <li><strong>Narrow viewports.</strong> Pinning two columns from each side on a 320px-wide phone leaves almost no scrollable space. Consider <code>hide: 'sm'</code> on the same columns instead.</li>
+    <li><strong>Variable-width content.</strong> Pin columns with predictable widths. A pinned column without a fixed <code>width</code> still works but may shift content during initial render.</li>
+    <li><strong>Single-screen tables.</strong> If your table fits on screen without horizontal scrolling, pinning adds visual noise (the shadow) for no benefit.</li>
+  </ul>
+
   <h2>Requirements</h2>
   <ul>
     <li>Each pinned column <strong>must</strong> have an explicit <code>id</code> — the offset map is keyed by column id.</li>
-    <li>Pinned columns should have a fixed <code>width</code> so their size is predictable. Columns without a width will still pin but may produce inexact offsets if the layout shifts.</li>
-    <li>The table's responsive wrapper must be allowed to scroll horizontally (the default). Avoid setting <code>overflow: hidden</code> on a parent container.</li>
+    <li>Pinned columns should have a fixed <code>width</code> for predictable offsets. Columns without a width default to <code>100px</code> for offset math.</li>
+    <li>The table's scroll container must be allowed to scroll horizontally. Don't set <code>overflow: hidden</code> on a parent.</li>
+    <li>Not compatible with <code>columnGroups</code> — see above.</li>
   </ul>
 
   <h2>Prop reference</h2>
 
   <table>
     <thead>
-      <tr>
-        <th>Column prop</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
-      </tr>
+      <tr><th>Column prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
     </thead>
     <tbody>
       <tr>
         <td><code>pinned</code></td>
         <td><code>'left' | 'right'</code></td>
         <td>—</td>
-        <td>
-          Pin the column to the left or right edge of the table. Requires an explicit column
-          <code>id</code>.
-        </td>
+        <td>Pin the column to the left or right edge. Requires an explicit <code>id</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>CSS custom properties</h2>
+
+  <table>
+    <thead>
+      <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--rdt-system-col-width</code></td>
+        <td><code>48px</code></td>
+        <td>Width of the checkbox and expander columns. Pinning offsets read this so themes that customize the system column width stay aligned.</td>
+      </tr>
+      <tr>
+        <td><code>--rdt-color-pin-shadow</code></td>
+        <td><code>rgba(0, 0, 0, 0.12)</code></td>
+        <td>Color of the directional shadow on the inner edge of each pin band.</td>
       </tr>
     </tbody>
   </table>
