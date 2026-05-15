@@ -11,58 +11,81 @@ import CodeBlock from '../../components/CodeBlock.astro';
     project and adjust.
   </p>
 
-  <h2>Persist column widths to localStorage</h2>
+  <h2>Persist column widths</h2>
 
   <p>
-    The library tracks widths in memory only. To survive page reloads, mirror the resize state
-    into <code>localStorage</code> by listening at the DOM level. The
-    <code>rdt_TableCol</code> elements carry <code>data-column-id</code> and update their
-    <code>width</code> inline style on every resize.
+    Pass <code>onColumnResize</code> to receive the settled width after every drag, and
+    <code>initialColumnWidths</code> to hydrate those widths on mount. The callback receives
+    the resized column's id, its new width in px, and the full widths map — so you can write
+    to localStorage, a database, or anywhere else.
   </p>
 
-  <CodeBlock code={`import { useEffect, useState, useRef } from 'react';
+  <h3>localStorage</h3>
+
+  <CodeBlock code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const STORAGE_KEY = 'employees-table-widths';
 
-function loadWidths(): Record<string, string> {
+function loadWidths(): Record<string, number> {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}'); }
   catch { return {}; }
 }
 
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',   selector: r => r.name   },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true },
+];
+
 export default function App() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const [saved] = useState(loadWidths);
-
-  // Save widths after the user stops resizing
-  useEffect(() => {
-    const el = wrapperRef.current;
-    if (!el) return;
-    let timer: ReturnType<typeof setTimeout>;
-    const observer = new MutationObserver(() => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const widths: Record<string, string> = {};
-        el.querySelectorAll<HTMLElement>('.rdt_TableCol').forEach(col => {
-          const id = col.dataset.columnId;
-          if (id && col.style.width) widths[id] = col.style.width;
-        });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(widths));
-      }, 200);
-    });
-    observer.observe(el, { attributes: true, attributeFilter: ['style'], subtree: true });
-    return () => observer.disconnect();
-  }, []);
-
-  const columns: TableColumn<Employee>[] = [
-    { id: 'name',   name: 'Name',   selector: r => r.name,   width: saved['name']   ?? '180px' },
-    { id: 'salary', name: 'Salary', selector: r => r.salary, width: saved['salary'] ?? '120px', right: true },
-  ];
+  const [initialWidths] = useState(loadWidths);
 
   return (
-    <div ref={wrapperRef}>
-      <DataTable columns={columns} data={data} resizable />
-    </div>
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={(_id, _w, all) =>
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(all))
+      }
+    />
+  );
+}`} />
+
+  <h3>Database / back-end</h3>
+
+  <p>
+    Swap the callback body to call your API instead. Wrap with a debounce if you want to
+    batch rapid resizes into a single request.
+  </p>
+
+  <CodeBlock code={`import { useCallback, useEffect, useState } from 'react';
+import DataTable from 'react-data-table-component';
+import { debounce } from 'lodash-es';
+
+export default function App({ userId }: { userId: string }) {
+  const [initialWidths, setInitialWidths] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    api.getColumnPrefs(userId).then(setInitialWidths);
+  }, [userId]);
+
+  const handleResize = useCallback(
+    debounce((_id: string | number, _w: number, all: Record<string | number, number>) => {
+      api.saveColumnPrefs(userId, all);
+    }, 500),
+    [userId],
+  );
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={handleResize}
+    />
   );
 }`} />
 
