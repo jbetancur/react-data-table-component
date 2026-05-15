@@ -607,6 +607,98 @@
 	cursor: grabbing;
 }
 
+/* ─── Inline cell editing ──────────────────────────────────────────────────── */
+
+/*
+ * Editable cells get a soft "I'm interactive" affordance:
+ *   - text cursor on hover
+ *   - a subtle dashed underline that shows the cell is clickable to edit
+ *   - a tinted hover background
+ *
+ * Active editing replaces the cell padding so the input/select can fill the
+ * whole cell footprint without visual seams between the text and the cell edge.
+ */
+.rdt_cellEditable {
+	cursor: text;
+	transition: background-color 0.15s;
+}
+
+.rdt_cellEditable:hover {
+	background-color: var(--rdt-color-cell-edit-hover, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 6%, transparent));
+}
+
+.rdt_cellEditable:hover > div[data-tag] {
+	border-bottom: 1px dashed var(--rdt-color-cell-edit-hover-border, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 40%, transparent));
+	margin-bottom: -1px; /* keep the row baseline aligned despite the new border */
+}
+
+.rdt_cellEditing {
+	background-color: var(--rdt-color-cell-edit-bg, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 8%, var(--rdt-color-bg, #fff)));
+	box-shadow: inset 0 0 0 2px var(--rdt-color-primary, #1976d2);
+	z-index: 3; /* float above neighbor borders during edit */
+	/* stretch so the input/select can fill the full cell height */
+	align-items: stretch;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/* The editor bleeds out to the left/right cell edges via negative margin so
+   the cell keeps its horizontal padding (and thus its original width — no
+   jitter). It stretches vertically because the cell uses align-items:stretch. */
+.rdt_editInput,
+.rdt_editSelect {
+	display: block;
+	box-sizing: border-box;
+	width: calc(100% + 2 * var(--rdt-cell-padding-x, 16px));
+	min-height: var(--rdt-row-height, 48px);
+	align-self: stretch;
+	margin: 0 calc(-1 * var(--rdt-cell-padding-x, 16px));
+	padding: 0 var(--rdt-cell-padding-x, 16px);
+	font: inherit;
+	color: inherit;
+	background: transparent;
+	border: none;
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.rdt_editInput::placeholder {
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	opacity: 0.7;
+}
+
+/*
+ * Native select arrow — rendered as a ::after pseudo-element on the editing
+ * cell so we can use currentColor (inherits the theme's text colour) via
+ * mask-image. The select element itself can't host ::after.
+ */
+.rdt_cellEditing:has(.rdt_editSelect)::after {
+	content: '';
+	position: absolute;
+	right: var(--rdt-cell-padding-x, 16px);
+	top: 50%;
+	transform: translateY(-50%);
+	width: 12px;
+	height: 8px;
+	pointer-events: none;
+	background-color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='white' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>");
+	mask-size: 100% 100%;
+	-webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='white' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>");
+	-webkit-mask-size: 100% 100%;
+}
+
+.rdt_editSelect {
+	padding-right: calc(var(--rdt-cell-padding-x, 16px) + 24px);
+}
+
+/* Dense rows shrink the editor height to match */
+.rdt_rowDense .rdt_editInput,
+.rdt_rowDense .rdt_editSelect {
+	min-height: 32px;
+}
+
 
 /* ─── Column pinning ────────────────────────────────────────────────────────── */
 

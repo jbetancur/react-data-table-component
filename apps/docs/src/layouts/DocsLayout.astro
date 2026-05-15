@@ -24,7 +24,6 @@ const nav = [
     links: [
       { label: 'Overview', href: '/docs/columns' },
       { label: 'Cell rendering', href: '/docs/cells' },
-      { label: 'Inline editing', href: '/docs/inline-editing' },
       { label: 'Column groups', href: '/docs/column-groups' },
       { label: 'Column visibility', href: '/docs/column-visibility' },
       { label: 'Column reordering', href: '/docs/column-reorder' },
@@ -33,6 +32,12 @@ const nav = [
       { label: 'Column separators', href: '/docs/column-separators' },
       { label: 'Column filtering', href: '/docs/filtering' },
       { label: 'Sorting', href: '/docs/sorting' },
+    ],
+  },
+  {
+    group: 'Editing',
+    links: [
+      { label: 'Inline editing', href: '/docs/inline-editing' },
     ],
   },
   {
@@ -115,7 +120,7 @@ const currentPath = Astro.url.pathname;
           });
         </script>
         <a
-          href="https://github.com/sponsors/jbetancur"
+          href="https://opencollective.com/react-data-table-component/donate"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-pink-500 transition-colors"

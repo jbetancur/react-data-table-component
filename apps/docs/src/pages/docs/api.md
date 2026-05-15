@@ -216,6 +216,53 @@ const columns: TableColumn<MyRow>[] = [
 | `style` | `CSSProperties` | Inline styles applied to every cell in this column. |
 | `conditionalCellStyles` | `ConditionalStyles<T>[]` | Per-cell conditional styles. |
 
+### Inline editing
+
+| Prop | Type | Description |
+|---|---|---|
+| `editable` | `boolean` | Shorthand for `editor: { type: 'text' }`. Ignored when `editor` is also set. |
+| `editor` | `CellEditor` | Editor configuration. See [CellEditor](#celleditor) below. Takes precedence over `editable`. |
+| `onCellEdit` | `CellEditCallback<T>` | Called when the user commits an edit. Receives `(row: T, value: string, column: TableColumn<T>)`. The `value` is always a string — parse it to the target type in your handler. |
+
+See [Inline editing](/docs/inline-editing) for examples, CSS variables, and styling guidance.
+
+## CellEditor
+
+```ts
+import { type CellEditor } from 'react-data-table-component';
+
+type CellEditor =
+  | { type: 'text'; placeholder?: string }
+  | {
+      type: 'select';
+      options: Array<{ value: string; label: React.ReactNode }>;
+      placeholder?: string;
+    };
+```
+
+| Variant | Field | Type | Description |
+| --- | --- | --- | --- |
+| Both | `type` | `"text" \| "select"` | Editor widget to render. |
+| Both | `placeholder` | `string` | Placeholder text. For `select`, shown as a disabled hidden option when the current value is empty. |
+| `select` | `options` | `{ value: string; label: ReactNode }[]` | Dropdown options. The `value` is what gets committed; `label` is displayed (must be string or number inside native `<option>`). |
+
+### Inline editing CSS classes
+
+| Class | Applied to | Purpose |
+|---|---|---|
+| `rdt_cellEditable` | Cell container | Added on every cell that has an editor defined (idle state). |
+| `rdt_cellEditing` | Cell container | Added while the editor is open. Removes padding and paints the focus ring. |
+| `rdt_editInput` | `<input>` | Text editor control inside an editing cell. |
+| `rdt_editSelect` | `<select>` | Dropdown editor control inside an editing cell. |
+
+### Inline editing CSS variables
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `--rdt-color-cell-edit-bg` | 8% primary on bg | Background of the cell while editing. |
+| `--rdt-color-cell-edit-hover` | 6% primary | Background of an editable cell on hover. |
+| `--rdt-color-cell-edit-hover-border` | 40% primary | Dashed underline colour on editable cell hover. |
+
 ## DataTableHandle (ref)
 
 Attach a ref to `DataTable` to imperatively control it.

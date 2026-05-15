@@ -9,22 +9,28 @@ import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
   <h1>Inline editing</h1>
 
   <p>
-    Set <code>editable: true</code> on any column to allow users to click into a cell, edit its
-    value, and commit by pressing <kbd>Enter</kbd> or blurring the input. <kbd>Esc</kbd>
-    discards the change. The library does not own the data — you handle the update in
-    <code>onCellEdit</code>.
+    Click an editable cell to swap its content for an inline editor. Commit with <kbd>Enter</kbd>
+    or by clicking away; <kbd>Esc</kbd> discards the change. The library doesn't own your data
+    — you handle the update in <code>onCellEdit</code>.
+  </p>
+
+  <p>
+    Two editor types are built in — a text input (<code>editable: true</code> as shorthand) and
+    a dropdown (<code>editor: &#123; type: 'select', options &#125;</code>). The cell itself
+    becomes the editor: full-bleed input, primary-color focus ring, no nested borders.
   </p>
 
   <Demo
-    title="Editable cells"
-    description="Click a cell to edit. Press Enter to commit, Esc to cancel."
+    title="Editable cells — text + dropdown"
+    description="Name and Salary use text inputs. Department and Status use dropdowns. Click any cell to edit."
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
 interface Employee {
   id: number;
   name: string;
-  role: string;
+  department: 'Engineering' | 'Product' | 'Design';
+  status: 'Active' | 'On Leave' | 'Terminated';
   salary: number;
 }
 
@@ -43,8 +49,35 @@ export default function App() {
   };
 
   const columns: TableColumn<Employee>[] = [
-    { id: 'name',   name: 'Name',   selector: r => r.name,   editable: true, onCellEdit: handleCellEdit },
-    { id: 'role',   name: 'Role',   selector: r => r.role,   editable: true, onCellEdit: handleCellEdit },
+    // Text editor — editable: true is shorthand for { editor: { type: 'text' } }
+    { id: 'name', name: 'Name', selector: r => r.name,
+      editable: true, onCellEdit: handleCellEdit },
+
+    // Dropdown editor
+    { id: 'department', name: 'Department', selector: r => r.department,
+      editor: {
+        type: 'select',
+        options: [
+          { value: 'Engineering', label: 'Engineering' },
+          { value: 'Product',     label: 'Product' },
+          { value: 'Design',      label: 'Design' },
+        ],
+      },
+      onCellEdit: handleCellEdit },
+
+    // Custom cell renderer + dropdown editor compose freely
+    { id: 'status', name: 'Status', selector: r => r.status,
+      cell: row => <StatusBadge status={row.status} />,
+      editor: {
+        type: 'select',
+        options: [
+          { value: 'Active',     label: 'Active' },
+          { value: 'On Leave',   label: 'On Leave' },
+          { value: 'Terminated', label: 'Terminated' },
+        ],
+      },
+      onCellEdit: handleCellEdit },
+
     { id: 'salary', name: 'Salary', selector: r => r.salary,
       format: r => \`$\${r.salary.toLocaleString()}\`,
       right: true, editable: true, onCellEdit: handleCellEdit },
@@ -58,14 +91,96 @@ export default function App() {
 
   <h2>How it works</h2>
   <ol>
-    <li>Click an editable cell — the cell content is replaced by an <code>&lt;input&gt;</code> seeded with the current selector value (stringified).</li>
+    <li>Click an editable cell — the cell content is replaced by the editor, seeded with the current selector value (stringified).</li>
     <li>Press <kbd>Enter</kbd> or click outside — <code>onCellEdit(row, value, column)</code> fires.</li>
-    <li>Press <kbd>Esc</kbd> — the input closes without firing the callback.</li>
+    <li>Press <kbd>Esc</kbd> — the editor closes without firing the callback.</li>
   </ol>
   <p>
     The callback always receives <code>value</code> as a <strong>string</strong>. Cast or parse
     it to the type you actually store (number, boolean, date, etc.) in your update handler.
   </p>
+
+  <h2>Editor types</h2>
+
+  <h3>Text input</h3>
+  <p>
+    The default. <code>editable: true</code> is shorthand for
+    <code>editor: &#123; type: 'text' &#125;</code>:
+  </p>
+
+  <CodeBlock code={`// Shorthand
+{ id: 'name', name: 'Name', selector: r => r.name,
+  editable: true, onCellEdit }
+
+// Equivalent explicit form — supports placeholder
+{ id: 'name', name: 'Name', selector: r => r.name,
+  editor: { type: 'text', placeholder: 'Enter a name…' },
+  onCellEdit }`} />
+
+  <h3>Dropdown (select)</h3>
+  <p>
+    Provide a list of <code>&#123; value, label &#125;</code> options. The select commits the
+    selected value immediately on change <em>and</em> on blur, so users don't need to press
+    <kbd>Enter</kbd>:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'status', name: 'Status', selector: r => r.status,
+  editor: {
+    type: 'select',
+    options: [
+      { value: 'active',  label: 'Active' },
+      { value: 'on_leave', label: 'On Leave' },
+      { value: 'terminated', label: 'Terminated' },
+    ],
+    placeholder: 'Choose status…', // optional, shown when value is empty
+  },
+  onCellEdit,
+}`} />
+
+  <p>
+    <code>value</code> is the string the callback receives. <code>label</code> is what the user
+    sees in the dropdown — it can be any string or number (rich React content isn't supported
+    inside <code>&lt;option&gt;</code> elements).
+  </p>
+
+  <h2>The cell becomes the editor</h2>
+
+  <p>
+    When editing starts, the cell drops its padding, paints a soft tinted background, and shows
+    a 2 px primary-color focus ring around its full footprint. The text input or select fills
+    the entire cell — no floating boxes, no nested borders. Both editing and idle hover states
+    use CSS custom properties so they automatically follow your theme.
+  </p>
+
+  <h3>Customizable variables</h3>
+
+  <table>
+    <thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>--rdt-color-cell-edit-bg</code></td>
+        <td>8% primary on bg</td>
+        <td>Background of the cell while editing.</td>
+      </tr>
+      <tr>
+        <td><code>--rdt-color-cell-edit-hover</code></td>
+        <td>6% primary</td>
+        <td>Background of an editable cell on hover.</td>
+      </tr>
+      <tr>
+        <td><code>--rdt-color-cell-edit-hover-border</code></td>
+        <td>40% primary</td>
+        <td>Color of the dashed underline that hints "this cell is editable" on hover.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <CodeBlock code={`.rdt_table {
+  --rdt-color-cell-edit-bg: #fff7ed;        /* warm amber */
+  --rdt-color-cell-edit-hover: #fffbeb;
+  --rdt-color-cell-edit-hover-border: #f59e0b;
+}`} lang="css" />
 
   <h2>Updating row data</h2>
   <p>
@@ -136,47 +251,76 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Combining with custom cell renderers</h2>
   <p>
-    <code>editable</code> only takes effect for cells that use the default text rendering
-    (no <code>cell</code> prop). If you supply a custom <code>cell</code> renderer, your
-    component owns interaction — render your own input, select, etc., and call your update
-    logic directly.
+    A column can have both a custom <code>cell</code> renderer <strong>and</strong> an
+    <code>editor</code>. The cell renderer is used for display; clicking the cell switches to
+    the inline editor. This is the pattern shown in the demo above — Status renders as a
+    coloured badge but edits as a dropdown.
   </p>
 
-  <CodeBlock code={`// Built-in inline editor (text input only)
-{ id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit }
-
-// Custom editor — full control
-{
-  id: 'status', name: 'Status',
-  cell: row => (
-    <select value={row.status} onChange={e => updateStatus(row.id, e.target.value)}>
-      <option>Active</option>
-      <option>On Leave</option>
-    </select>
-  ),
+  <CodeBlock code={`{
+  id: 'status', name: 'Status', selector: r => r.status,
+  cell: row => <StatusBadge status={row.status} />,
+  editor: {
+    type: 'select',
+    options: [
+      { value: 'Active',     label: 'Active' },
+      { value: 'On Leave',   label: 'On Leave' },
+      { value: 'Terminated', label: 'Terminated' },
+    ],
+  },
+  onCellEdit,
 }`} />
+
+  <p>
+    If you want a fully custom editor (date picker, autocomplete, multi-select), skip
+    <code>editor</code> and let your <code>cell</code> renderer own both display and editing.
+    Toggle an "editing" state inside your component:
+  </p>
+
+  <CodeBlock code={`function StatusEditableCell({ row, onChange }) {
+  const [editing, setEditing] = useState(false);
+  if (!editing) return (
+    <span onClick={() => setEditing(true)}>{row.status}</span>
+  );
+  return (
+    <CustomDatePicker
+      value={row.status}
+      onChange={v => { onChange(v); setEditing(false); }}
+      onBlur={() => setEditing(false)}
+      autoFocus
+    />
+  );
+}
+
+{ id: 'status', cell: row => <StatusEditableCell row={row} onChange={v => update(row.id, v)} /> }`} />
 
   <h2>Styling the input</h2>
   <p>
-    The editor input has class <code>rdt_editInput</code>. Override its styles via your
-    own CSS or the <code>customStyles</code> prop. The input inherits the cell font and color
-    by default.
+    Editor controls have class <code>rdt_editInput</code> (text) and <code>rdt_editSelect</code>
+    (dropdown). Both inherit font and color from the cell and stretch to fill its full
+    footprint. The cell itself uses <code>rdt_cellEditable</code> (idle hover state) and
+    <code>rdt_cellEditing</code> (active edit state). Override any of them in your stylesheet:
   </p>
 
-  <CodeBlock code={`.rdt_editInput {
-  border: 1px solid var(--rdt-color-primary, #1976d2);
-  border-radius: 4px;
-  padding: 2px 6px;
-  outline: none;
-  width: 100%;
+  <CodeBlock code={`/* Make the input bigger and chunkier */
+.rdt_editInput,
+.rdt_editSelect {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Use a thicker focus ring */
+.rdt_cellEditing {
+  box-shadow: inset 0 0 0 3px var(--rdt-color-primary);
 }`} lang="css" />
 
   <h2>Limitations</h2>
   <ul>
-    <li>The built-in editor is a plain text input. For multi-line text, dropdowns, date pickers, or rich validation, render your own <code>cell</code>.</li>
+    <li>Built-in editors are text and select only. For multi-line text, date pickers, autocompletes, or rich validation, render your own <code>cell</code> (see above).</li>
     <li>The <code>value</code> passed to <code>onCellEdit</code> is always a string. Parse it yourself.</li>
+    <li>Dropdown <code>label</code>s must be strings or numbers — they render inside native <code>&lt;option&gt;</code> elements which can't contain arbitrary React content.</li>
     <li>There is no built-in "dirty" indicator or undo stack. Track that in your application state if you need it.</li>
-    <li>Editing does not trigger row selection or row click handlers — clicks inside the input are stopped from propagating.</li>
+    <li>Editing does not trigger row selection or row click handlers — clicks inside the editor are stopped from propagating.</li>
   </ul>
 
   <h2>Prop reference</h2>
@@ -189,13 +333,28 @@ const columns: TableColumn<Employee>[] = [
       <tr>
         <td><code>editable</code></td>
         <td><code>boolean</code></td>
-        <td>Allow clicking the cell to open an inline text input.</td>
+        <td>Shorthand for a text editor. Equivalent to <code>editor: &#123; type: 'text' &#125;</code>. Ignored when <code>editor</code> is set.</td>
+      </tr>
+      <tr>
+        <td><code>editor</code></td>
+        <td><code>CellEditor</code></td>
+        <td>Editor configuration. Either <code>&#123; type: 'text', placeholder? &#125;</code> or <code>&#123; type: 'select', options, placeholder? &#125;</code>.</td>
       </tr>
       <tr>
         <td><code>onCellEdit</code></td>
         <td><code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code></td>
-        <td>Called when the user commits an edit (<kbd>Enter</kbd> or blur). Receives the original row, the new string value, and the column definition.</td>
+        <td>Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.</td>
       </tr>
     </tbody>
   </table>
+
+  <h3>CellEditor</h3>
+
+  <CodeBlock code={`type CellEditor =
+  | { type: 'text'; placeholder?: string }
+  | {
+      type: 'select';
+      options: Array<{ value: string; label: React.ReactNode }>;
+      placeholder?: string;
+    };`} />
 </DocsLayout>
