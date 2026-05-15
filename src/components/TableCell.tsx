@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useStyles } from '../context/StylesContext';
 import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
-import { getProperty, getConditionalStyle } from '../util';
+import { getProperty, getConditionalStyle, getPinnedCellMeta } from '../util';
 import type { TableColumn } from '../types';
 
 interface CellProps<T> {
@@ -48,30 +48,9 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 	};
 
 	// ── Column pinning ─────────────────────────────────────────────────────────
-	const pinnedLeft = column.pinned === 'left' && column.id != null && pinnedOffsets.left[column.id] != null;
-	const pinnedRight = column.pinned === 'right' && column.id != null && pinnedOffsets.right[column.id] != null;
-
-	// Largest left offset  = rightmost left-pinned column (shadow on its right)
-	// Largest right offset = leftmost right-pinned column (shadow on its left + spacer before it)
-	const maxLeftOffset = pinnedLeft ? Math.max(...Object.values(pinnedOffsets.left)) : -1;
-	const maxRightOffset = pinnedRight ? Math.max(...Object.values(pinnedOffsets.right)) : -1;
-	const isLastLeftPin = pinnedLeft && column.id != null && pinnedOffsets.left[column.id] === maxLeftOffset;
-	const isFirstRightPin = pinnedRight && column.id != null && pinnedOffsets.right[column.id] === maxRightOffset;
-
-	const pinnedStyle: React.CSSProperties = pinnedLeft
-		? { position: 'sticky', left: pinnedOffsets.left[column.id!], zIndex: 1 }
-		: pinnedRight
-			? { position: 'sticky', right: pinnedOffsets.right[column.id!], zIndex: 1 }
-			: {};
-
-	const pinnedClass = [
-		pinnedLeft && 'rdt_pinLeft',
-		isLastLeftPin && 'rdt_pinLeftLast',
-		pinnedRight && 'rdt_pinRight',
-		isFirstRightPin && 'rdt_pinRightFirst',
-	]
-		.filter(Boolean)
-		.join(' ');
+	const pinMeta = getPinnedCellMeta(column, pinnedOffsets);
+	const pinnedStyle: React.CSSProperties = pinMeta.style.position === 'sticky' ? { ...pinMeta.style, zIndex: 1 } : {};
+	const pinnedClass = pinMeta.className;
 
 	return (
 		<CellExtended

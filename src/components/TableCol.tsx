@@ -4,7 +4,7 @@ import { useStyles } from '../context/StylesContext';
 import { CellExtended } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
 import ColumnFilter from './ColumnFilter';
-import { equalizeId } from '../util';
+import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
 import { SortOrder } from '../types';
 import type { TableColumn, SortAction, FilterState } from '../types';
@@ -133,26 +133,9 @@ function TableCol<T>({
 	const isDragging = equalizeId(column.id, draggingColumnId);
 
 	// ── Column pinning ─────────────────────────────────────────────────────────
-	const pinnedLeft = column.pinned === 'left' && column.id != null && pinnedOffsets?.left[column.id] != null;
-	const pinnedRight = column.pinned === 'right' && column.id != null && pinnedOffsets?.right[column.id] != null;
-	const maxLeftOffset = pinnedLeft ? Math.max(...Object.values(pinnedOffsets!.left)) : -1;
-	const maxRightOffset = pinnedRight ? Math.max(...Object.values(pinnedOffsets!.right)) : -1;
-	const isLastLeftPin = pinnedLeft && column.id != null && pinnedOffsets!.left[column.id] === maxLeftOffset;
-	const isFirstRightPin = pinnedRight && column.id != null && pinnedOffsets!.right[column.id] === maxRightOffset;
-	const pinnedStyle: React.CSSProperties =
-		pinnedLeft && column.id != null
-			? { position: 'sticky', left: pinnedOffsets!.left[column.id], zIndex: 2 }
-			: pinnedRight && column.id != null
-				? { position: 'sticky', right: pinnedOffsets!.right[column.id], zIndex: 2 }
-				: {};
-	const pinnedClass = [
-		pinnedLeft && 'rdt_pinLeft',
-		isLastLeftPin && 'rdt_pinLeftLast',
-		pinnedRight && 'rdt_pinRight',
-		isFirstRightPin && 'rdt_pinRightFirst',
-	]
-		.filter(Boolean)
-		.join(' ');
+	const pinMeta = getPinnedCellMeta(column, pinnedOffsets);
+	const pinnedStyle: React.CSSProperties = pinMeta.style.position === 'sticky' ? { ...pinMeta.style, zIndex: 2 } : {};
+	const pinnedClass = pinMeta.className;
 
 	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
 		if (column.reorder && typeof column.name === 'string') {
@@ -285,11 +268,23 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 	if (prevProps.disabled !== nextProps.disabled) return false;
 	if (prevProps.sortIcon !== nextProps.sortIcon) return false;
 	if (prevProps.pinnedOffsets !== nextProps.pinnedOffsets) {
-		const prevLeft = prevProps.pinnedOffsets?.left[prevProps.column.id!];
-		const nextLeft = nextProps.pinnedOffsets?.left[nextProps.column.id!];
-		const prevRight = prevProps.pinnedOffsets?.right[prevProps.column.id!];
-		const nextRight = nextProps.pinnedOffsets?.right[nextProps.column.id!];
+		// Re-render when:
+		// 1. This column's own offset changed (resize, reorder).
+		// 2. The set of pinned columns changed — which can flip isLastLeftPin /
+		//    isFirstRightPin for this column even when its own offset is stable
+		//    (e.g. a new column was pinned past it, or the prior edge-pin was unpinned).
+		const id = nextProps.column.id;
+		const prevLeft = prevProps.pinnedOffsets?.left[id!];
+		const nextLeft = nextProps.pinnedOffsets?.left[id!];
+		const prevRight = prevProps.pinnedOffsets?.right[id!];
+		const nextRight = nextProps.pinnedOffsets?.right[id!];
 		if (prevLeft !== nextLeft || prevRight !== nextRight) return false;
+
+		const prevLeftKeys = prevProps.pinnedOffsets ? Object.keys(prevProps.pinnedOffsets.left).length : 0;
+		const nextLeftKeys = nextProps.pinnedOffsets ? Object.keys(nextProps.pinnedOffsets.left).length : 0;
+		const prevRightKeys = prevProps.pinnedOffsets ? Object.keys(prevProps.pinnedOffsets.right).length : 0;
+		const nextRightKeys = nextProps.pinnedOffsets ? Object.keys(nextProps.pinnedOffsets.right).length : 0;
+		if (prevLeftKeys !== nextLeftKeys || prevRightKeys !== nextRightKeys) return false;
 	}
 	const pg = prevProps.gridStyle;
 	const ng = nextProps.gridStyle;

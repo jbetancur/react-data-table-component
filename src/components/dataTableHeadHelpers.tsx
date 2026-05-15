@@ -3,7 +3,8 @@ import type { TableColumn, ColumnGroup } from '../types';
 
 /**
  * Builds the CSS grid-template-columns string from the visible column definitions.
- * Prefix columns (checkbox/expander) are always 48px.
+ * Prefix columns (checkbox/expander) use the --rdt-system-col-width var so
+ * themes can override the system column width without code changes.
  * columnWidths contains user-resized overrides and takes precedence.
  */
 export function buildGridTemplateColumns<T>(
@@ -12,7 +13,7 @@ export function buildGridTemplateColumns<T>(
 	columnWidths: Record<string | number, number>,
 ): string {
 	const tracks: string[] = [];
-	for (let i = 0; i < prefixColCount; i++) tracks.push('48px');
+	for (let i = 0; i < prefixColCount; i++) tracks.push('var(--rdt-system-col-width, 48px)');
 	for (const col of visibleColumns) {
 		const resized = col.id != null ? columnWidths[col.id] : undefined;
 		if (resized != null) {

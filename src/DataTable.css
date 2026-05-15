@@ -38,6 +38,8 @@
 	overflow-x: auto;
 	overflow-y: hidden;
 	min-height: 0;
+	overscroll-behavior-x: contain;
+	touch-action: pan-x pan-y;
 }
 
 .rdt_responsiveWrapperFixed {
@@ -45,6 +47,8 @@
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	min-height: 0;
+	overscroll-behavior-x: contain;
+	touch-action: pan-x pan-y;
 }
 
 .rdt_responsiveWrapperHideScrollbar {
@@ -128,7 +132,13 @@
 	min-height: var(--rdt-row-height, 48px);
 }
 
-.rdt_row:not(:last-of-type) {
+/*
+ * Row separators are drawn on each cell rather than on the row container.
+ * This keeps the divider line visible on sticky (pinned) cells even when
+ * the table scrolls horizontally — the border travels with the cell, not
+ * with the scrolling content.
+ */
+.rdt_row:not(:last-of-type) .rdt_cellBase {
 	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 }
 
@@ -144,13 +154,11 @@
 .rdt_rowSelected {
 	color: var(--rdt-color-selected-text, rgba(0, 0, 0, 0.87));
 	background-color: var(--rdt-color-selected, #e3f2fd);
-	border-bottom-color: var(--rdt-color-bg, #fff);
 }
 
 .rdt_rowHighlight:hover {
 	color: var(--rdt-color-highlight-text, rgba(0, 0, 0, 0.87));
 	background-color: var(--rdt-color-highlight, #eee);
-	border-bottom-color: var(--rdt-color-bg, #fff);
 	outline: 1px solid var(--rdt-color-bg, #fff);
 	transition-duration: 0.15s;
 	transition-property: background-color;
@@ -294,9 +302,14 @@
 }
 
 /* ─── Checkbox / expander cells ─────────────────────────────────────────────── */
+/*
+ * --rdt-system-col-width controls the width of the checkbox + expander
+ * columns. Pinned-column sticky offsets read this same variable so themes
+ * that override the system column width keep pinning aligned.
+ */
 .rdt_cellCheckbox {
-	flex: 0 0 48px;
-	min-width: 48px;
+	flex: 0 0 var(--rdt-system-col-width, 48px);
+	min-width: var(--rdt-system-col-width, 48px);
 	justify-content: center;
 	align-items: center;
 	user-select: none;
@@ -306,11 +319,11 @@
 .rdt_cellExpander {
 	white-space: nowrap;
 	font-weight: 400;
-	min-width: 48px;
+	min-width: var(--rdt-system-col-width, 48px);
 }
 
 .rdt_columnCheckbox {
-	flex: 0 0 48px;
+	flex: 0 0 var(--rdt-system-col-width, 48px);
 	justify-content: center;
 	align-items: center;
 	user-select: none;
@@ -320,7 +333,7 @@
 
 .rdt_columnExpander {
 	white-space: nowrap;
-	min-width: 48px;
+	min-width: var(--rdt-system-col-width, 48px);
 }
 
 /* ─── Column headers ────────────────────────────────────────────────────────── */

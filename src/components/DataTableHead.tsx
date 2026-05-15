@@ -4,6 +4,7 @@ import HeadRow from './TableHeadRow';
 import Column from './TableCol';
 import ColumnCheckbox from './TableColCheckbox';
 import ColumnExpander from './TableColExpander';
+import RightPinSpacer from './RightPinSpacer';
 import { CellBase } from './Cell';
 import { buildGridTemplateColumns, buildGroupHeaderCells, type GroupDragProps } from './dataTableHeadHelpers';
 import type { TableColumn, ColumnGroup } from '../types';
@@ -196,7 +197,11 @@ function DataTableHead<T>({
 					{/* ── Prefix cells — span both grid rows ── */}
 					{selectableRows && (
 						<div style={{ gridColumn: '1', gridRow: '1 / span 2', display: 'flex', alignItems: 'stretch' }}>
-							{showSelectAll ? <CellBase style={{ flex: '0 0 48px', width: '100%' }} /> : <ColumnCheckbox />}
+							{showSelectAll ? (
+								<CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)', width: '100%' }} />
+							) : (
+								<ColumnCheckbox />
+							)}
 						</div>
 					)}
 					{expandableRows && !expandableRowsHideExpander && (
@@ -255,15 +260,14 @@ function DataTableHead<T>({
 	return (
 		<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
 			<HeadRow ref={containerRef} className="rdt_TableHeadRow" role="row" $dense={dense}>
-				{selectableRows && (showSelectAll ? <CellBase style={{ flex: '0 0 48px' }} /> : <ColumnCheckbox />)}
+				{selectableRows &&
+					(showSelectAll ? <CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)' }} /> : <ColumnCheckbox />)}
 
 				{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
 
 				{columns.map(column => (
 					<React.Fragment key={column.id}>
-						{firstRightPinnedId != null && column.id === firstRightPinnedId && (
-							<div aria-hidden="true" style={{ flex: '0.001 0 0', minWidth: 0 }} />
-						)}
+						{firstRightPinnedId != null && column.id === firstRightPinnedId && <RightPinSpacer />}
 						<Column {...colProps(column)} />
 					</React.Fragment>
 				))}
