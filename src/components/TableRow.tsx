@@ -6,6 +6,7 @@ import TableCell from './TableCell';
 import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
+import RightPinSpacer from './RightPinSpacer';
 import { prop, equalizeId, getConditionalStyle, isOdd } from '../util';
 import { STOP_PROP_TAG } from '../constants';
 import type { TableRow } from '../types';
@@ -224,9 +225,7 @@ function Row<T>({
 
 					return (
 						<React.Fragment key={`cell-${column.id}-${rowKeyField}`}>
-							{firstRightPinnedId != null && column.id === firstRightPinnedId && (
-								<div aria-hidden="true" style={{ flex: '0.001 0 0', minWidth: 0 }} />
-							)}
+							{firstRightPinnedId != null && column.id === firstRightPinnedId && <RightPinSpacer />}
 							<TableCell
 								id={`cell-${column.id}-${rowKeyField}`}
 								dataTag={column.ignoreRowClick || column.button ? null : STOP_PROP_TAG}

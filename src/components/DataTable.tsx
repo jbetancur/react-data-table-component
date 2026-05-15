@@ -179,17 +179,25 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 	// Pinning is incompatible with CSS-grid group headers — strip it when groups are active
 	const hasGroups = tableGroups.length > 0 || (columnGroups != null && columnGroups.length > 0);
-	const effectiveColumns = React.useMemo(
-		() =>
-			hasGroups
-				? tableColumns.map(c => {
-						if (!c.pinned) return c;
-						const { pinned: _p, ...rest } = c;
-						return rest as typeof c;
-					})
-				: tableColumns,
-		[hasGroups, tableColumns],
-	);
+	const hasStrippedPinsRef = React.useRef(false);
+	const effectiveColumns = React.useMemo(() => {
+		if (!hasGroups) return tableColumns;
+		const stripped = tableColumns.map(c => {
+			if (!c.pinned) return c;
+			const { pinned: _p, ...rest } = c;
+			return rest as typeof c;
+		});
+		const hadPins = tableColumns.some(c => c.pinned);
+		if (hadPins && !hasStrippedPinsRef.current) {
+			hasStrippedPinsRef.current = true;
+			console.warn(
+				'DataTable: column pinning is not supported alongside columnGroups. ' +
+					'`pinned` has been stripped from affected columns. ' +
+					'Remove `columnGroups` or remove `pinned` from your column definitions to use pinning.',
+			);
+		}
+		return stripped;
+	}, [hasGroups, tableColumns]);
 
 	const pinnedOffsets = React.useMemo(
 		() => getPinnedOffsets(effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander),

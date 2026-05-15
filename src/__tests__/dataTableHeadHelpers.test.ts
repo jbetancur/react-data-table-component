@@ -4,9 +4,9 @@ import type { TableColumn } from '../types';
 type Row = { id: number };
 
 describe('buildGridTemplateColumns', () => {
-	test('prefixColCount adds 48px tracks at the start', () => {
+	test('prefixColCount adds system-col-width tracks at the start', () => {
 		const result = buildGridTemplateColumns([], 2, {});
-		expect(result).toBe('48px 48px');
+		expect(result).toBe('var(--rdt-system-col-width, 48px) var(--rdt-system-col-width, 48px)');
 	});
 
 	test('uses a resized width override when present', () => {
@@ -55,7 +55,9 @@ describe('buildGridTemplateColumns', () => {
 			{ id: 2, name: 'B', selector: r => r.id, width: '80px' },
 			{ id: 3, name: 'C', selector: r => r.id, grow: 0 },
 		];
-		expect(buildGridTemplateColumns(cols, 1, { 1: 150 })).toBe('48px 150px 80px minmax(48px, max-content)');
+		expect(buildGridTemplateColumns(cols, 1, { 1: 150 })).toBe(
+			'var(--rdt-system-col-width, 48px) 150px 80px minmax(48px, max-content)',
+		);
 	});
 });
 

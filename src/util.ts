@@ -1,4 +1,5 @@
 import { SortOrder } from './types';
+import { SYSTEM_COL_WIDTH } from './constants';
 import type { CSSObject, ConditionalStyles, TableColumn, Format, TableRow, Selector, SortFunction } from './types';
 
 function isPlainObject(val: unknown): val is Record<string, unknown> {
@@ -250,6 +251,21 @@ function resolveColumnWidth<T>(col: TableColumn<T>, columnWidths: Record<string 
 	return isNaN(n) ? 100 : n;
 }
 
+/**
+ * Resolves the system-column width (checkbox/expander cells) from the
+ * `--rdt-system-col-width` CSS variable when available, falling back to the
+ * default. Reading the var lets themes that customize the checkbox cell width
+ * keep pinned columns aligned without code changes to this library.
+ */
+function resolveSystemColWidth(): number {
+	if (typeof window === 'undefined' || typeof document === 'undefined') return SYSTEM_COL_WIDTH;
+	const root = document.querySelector('.rdt_table') ?? document.documentElement;
+	const raw = getComputedStyle(root).getPropertyValue('--rdt-system-col-width').trim();
+	if (!raw) return SYSTEM_COL_WIDTH;
+	const n = parseFloat(raw);
+	return isNaN(n) ? SYSTEM_COL_WIDTH : n;
+}
+
 export function getPinnedOffsets<T>(
 	columns: TableColumn<T>[],
 	columnWidths: Record<string | number, number>,
@@ -261,10 +277,10 @@ export function getPinnedOffsets<T>(
 	const hasPinned = visible.some(c => c.pinned);
 	if (!hasPinned) return EMPTY_PINNED_OFFSETS;
 
-	const SYSTEM_COL_WIDTH = 48;
+	const systemWidth = resolveSystemColWidth();
 	let baseLeft = 0;
-	if (selectableRows) baseLeft += SYSTEM_COL_WIDTH;
-	if (expandableRows && !expandableRowsHideExpander) baseLeft += SYSTEM_COL_WIDTH;
+	if (selectableRows) baseLeft += systemWidth;
+	if (expandableRows && !expandableRowsHideExpander) baseLeft += systemWidth;
 
 	const left: Record<string | number, number> = {};
 	let leftAcc = baseLeft;
@@ -294,10 +310,10 @@ export function getPinnedTotalWidths<T>(
 	const hasPinned = visible.some(c => c.pinned);
 	if (!hasPinned) return { left: 0, right: 0 };
 
-	const SYSTEM_COL_WIDTH = 48;
+	const systemWidth = resolveSystemColWidth();
 	let left = 0;
-	if (selectableRows) left += SYSTEM_COL_WIDTH;
-	if (expandableRows && !expandableRowsHideExpander) left += SYSTEM_COL_WIDTH;
+	if (selectableRows) left += systemWidth;
+	if (expandableRows && !expandableRowsHideExpander) left += systemWidth;
 	for (const col of visible.filter(c => c.pinned === 'left')) {
 		left += resolveColumnWidth(col, columnWidths);
 	}
@@ -308,6 +324,53 @@ export function getPinnedTotalWidths<T>(
 	}
 
 	return { left, right };
+}
+
+/**
+ * Per-cell pin metadata derived from a column and the current PinnedOffsets.
+ * Centralizes the "is pinned / is edge of pin band / sticky inline style /
+ * class names" calculation so TableCol and TableCell stay in sync.
+ */
+export type PinnedCellMeta = {
+	pinnedLeft: boolean;
+	pinnedRight: boolean;
+	isLastLeftPin: boolean;
+	isFirstRightPin: boolean;
+	style: React.CSSProperties;
+	className: string;
+};
+
+export function getPinnedCellMeta<T>(column: TableColumn<T>, pinnedOffsets: PinnedOffsets | undefined): PinnedCellMeta {
+	const offsets = pinnedOffsets ?? EMPTY_PINNED_OFFSETS;
+	const id = column.id;
+	const pinnedLeft = column.pinned === 'left' && id != null && offsets.left[id] != null;
+	const pinnedRight = column.pinned === 'right' && id != null && offsets.right[id] != null;
+
+	// Largest left offset  = rightmost left-pinned column (shadow on its right edge)
+	// Largest right offset = leftmost right-pinned column (shadow on its left edge)
+	const leftValues = pinnedLeft ? Object.values(offsets.left) : [];
+	const rightValues = pinnedRight ? Object.values(offsets.right) : [];
+	const maxLeft = leftValues.length ? Math.max(...leftValues) : -1;
+	const maxRight = rightValues.length ? Math.max(...rightValues) : -1;
+	const isLastLeftPin = pinnedLeft && id != null && offsets.left[id] === maxLeft;
+	const isFirstRightPin = pinnedRight && id != null && offsets.right[id] === maxRight;
+
+	const style: React.CSSProperties = pinnedLeft
+		? { position: 'sticky', left: offsets.left[id!] }
+		: pinnedRight
+			? { position: 'sticky', right: offsets.right[id!] }
+			: {};
+
+	const className = [
+		pinnedLeft && 'rdt_pinLeft',
+		isLastLeftPin && 'rdt_pinLeftLast',
+		pinnedRight && 'rdt_pinRight',
+		isFirstRightPin && 'rdt_pinRightFirst',
+	]
+		.filter(Boolean)
+		.join(' ');
+
+	return { pinnedLeft, pinnedRight, isLastLeftPin, isFirstRightPin, style, className };
 }
 
 /**

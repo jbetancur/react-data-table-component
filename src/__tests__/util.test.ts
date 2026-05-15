@@ -12,6 +12,7 @@ import {
 	normalizePins,
 	getPinnedOffsets,
 	getPinnedTotalWidths,
+	getPinnedCellMeta,
 } from '../util';
 import { ConditionalStyles, SortOrder } from '../types';
 
@@ -433,6 +434,59 @@ describe('getPinnedTotalWidths', () => {
 		const cols = [col('a'), col('b', 'right', '120px'), col('c', 'right', '80px')];
 		const result = getPinnedTotalWidths(cols, {}, false, false, false);
 		expect(result.right).toBe(200);
+	});
+});
+
+describe('getPinnedCellMeta', () => {
+	type R = { id: number };
+	const offsets = { left: { a: 0, b: 100 }, right: { y: 80, z: 0 } };
+	const col = (id: string | undefined, pinned?: 'left' | 'right'): Parameters<typeof getPinnedCellMeta<R>>[0] =>
+		({ id, name: String(id), selector: r => r.id, pinned }) as Parameters<typeof getPinnedCellMeta<R>>[0];
+
+	test('returns no pin state for an unpinned column', () => {
+		const result = getPinnedCellMeta(col('c'), offsets);
+		expect(result.pinnedLeft).toBe(false);
+		expect(result.pinnedRight).toBe(false);
+		expect(result.style).toEqual({});
+		expect(result.className).toBe('');
+	});
+
+	test('flags the rightmost left-pinned column as isLastLeftPin', () => {
+		const result = getPinnedCellMeta(col('b', 'left'), offsets);
+		expect(result.pinnedLeft).toBe(true);
+		expect(result.isLastLeftPin).toBe(true);
+		expect(result.style).toEqual({ position: 'sticky', left: 100 });
+		expect(result.className).toContain('rdt_pinLeft');
+		expect(result.className).toContain('rdt_pinLeftLast');
+	});
+
+	test('does not flag inner left-pinned columns as isLastLeftPin', () => {
+		const result = getPinnedCellMeta(col('a', 'left'), offsets);
+		expect(result.isLastLeftPin).toBe(false);
+		expect(result.className).toContain('rdt_pinLeft');
+		expect(result.className).not.toContain('rdt_pinLeftLast');
+	});
+
+	test('flags the leftmost right-pinned column as isFirstRightPin', () => {
+		const result = getPinnedCellMeta(col('y', 'right'), offsets);
+		expect(result.pinnedRight).toBe(true);
+		expect(result.isFirstRightPin).toBe(true);
+		expect(result.style).toEqual({ position: 'sticky', right: 80 });
+		expect(result.className).toContain('rdt_pinRight');
+		expect(result.className).toContain('rdt_pinRightFirst');
+	});
+
+	test('returns empty meta when pinnedOffsets is undefined', () => {
+		const result = getPinnedCellMeta(col('a', 'left'), undefined);
+		expect(result.pinnedLeft).toBe(false);
+		expect(result.style).toEqual({});
+		expect(result.className).toBe('');
+	});
+
+	test('returns empty meta when column id is missing', () => {
+		const result = getPinnedCellMeta(col(undefined, 'left'), offsets);
+		expect(result.pinnedLeft).toBe(false);
+		expect(result.className).toBe('');
 	});
 });
 
