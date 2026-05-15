@@ -43,12 +43,33 @@ The documentation contains information about installation, usage and contributio
 
 # Supporting React Data Table Component
 
-This library is maintained by one person. If your team ships products with it, consider sponsoring — it funds bug fixes, new features, and keeping pace with the React ecosystem.
+React Data Table Component is maintained by one person and downloaded ~200k times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
+
+## Sponsor the project
+
+Sponsoring puts your company logo in front of ~200k developers a week — on the README, the docs site, and in every release. It's the right move if your team depends on this library and you want it to keep improving.
+
+| Tier | Price/month | Perk |
+| --- | --- | --- |
+| ☕ Supporter | $10 | Your name in the README supporters list |
+| 🥉 Bronze | $100 | Small logo in README + docs site footer |
+| 🥈 Silver | $500 | Larger logo in README + docs site sidebar |
+| 🥇 Gold | $1,500 | Top logo placement in README + hero spot on reactdatatable.com. Limited to 3. |
 
 [![Sponsor on GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github)](https://github.com/sponsors/jbetancur)
 [![Sponsor on OpenCollective](https://img.shields.io/badge/Sponsor-OpenCollective-blue?logo=opencollective)](https://opencollective.com/react-data-table-component)
 
-> **Teams using this in production:** priority support plans are available starting at $200/month — 48hr response SLA, direct access, and help with major version upgrades. [Get in touch](mailto:1385932+jbetancur@users.noreply.github.com)
+## Priority support for teams
+
+Need a guaranteed response SLA, help with a major version upgrade, or a direct line when something breaks in production? Priority support is a separate paid engagement — not a sponsorship tier.
+
+| Plan | Price/month | What you get |
+| --- | --- | --- |
+| Standard | $500 | 48hr response SLA on reported issues, private email channel |
+| Priority | $2,000 | 24hr SLA, monthly call, bug fixes prioritized for your use case |
+| Consulting | $250/hr | One-off: integrations, performance debugging, custom features |
+
+[Get in touch](mailto:johnnyazee@gmail.com) to discuss your team's needs.
 
 ## Sponsors
 
