@@ -1,0 +1,224 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="TypeScript | react-data-table-component">
+  <h1>TypeScript</h1>
+
+  <p>
+    Every public API is fully typed. In most cases you don't need to import any types at all —
+    column shapes and event handlers infer from the row type you pass to <code>DataTable</code>.
+    This page covers the patterns where explicit typing is useful.
+  </p>
+
+  <h2>Typed columns</h2>
+
+  <p>
+    Annotate your column array with <code>TableColumn&lt;T&gt;</code> so that
+    <code>selector</code>, <code>cell</code>, <code>format</code>, and <code>conditionalCellStyles</code>
+    all receive the correct row type:
+  </p>
+
+  <CodeBlock code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  salary: number;
+  status: 'Active' | 'On Leave' | 'Terminated';
+}
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',   selector: row => row.name },          // row: Employee
+  { name: 'Salary', selector: row => row.salary,
+    format: (row, idx) => \`$\${row.salary.toLocaleString()}\` },
+  { name: 'Status', selector: row => row.status,         // typed as the union, not string
+    conditionalCellStyles: [
+      { when: r => r.status === 'Terminated', style: { color: 'red' } },
+    ],
+  },
+];`} />
+
+  <p>
+    If you ever see <code>any</code> appearing in your editor, double-check that the columns
+    array has an explicit <code>TableColumn&lt;Employee&gt;[]</code> annotation — TypeScript
+    cannot infer the row type from <code>data</code> alone when columns are declared separately.
+  </p>
+
+  <h2>Imperative ref</h2>
+
+  <p>
+    The <code>ref</code> attached to <code>DataTable</code> uses <code>DataTableHandle</code>:
+  </p>
+
+  <CodeBlock code={`import { useRef } from 'react';
+import DataTable, { type DataTableHandle } from 'react-data-table-component';
+
+export default function App() {
+  const tableRef = useRef<DataTableHandle>(null);
+
+  return (
+    <>
+      <button onClick={() => tableRef.current?.clearSelectedRows()}>
+        Clear selection
+      </button>
+      <DataTable ref={tableRef} selectableRows columns={columns} data={data} />
+    </>
+  );
+}`} />
+
+  <h2>Sort callback</h2>
+
+  <p>
+    <code>onSort</code> receives a typed <code>SortOrder</code> enum value. Import it as a
+    value (not a type) since you'll compare against it:
+  </p>
+
+  <CodeBlock code={`import DataTable, { SortOrder, type TableColumn } from 'react-data-table-component';
+
+function handleSort(column: TableColumn<Employee>, direction: SortOrder) {
+  if (direction === SortOrder.ASC) {
+    // ...
+  }
+}
+
+<DataTable columns={columns} data={data} sortServer onSort={handleSort} />`} />
+
+  <h2>Conditional row styles</h2>
+
+  <CodeBlock code={`import { type ConditionalStyles } from 'react-data-table-component';
+
+const conditionalRowStyles: ConditionalStyles<Employee>[] = [
+  { when: row => row.salary > 150000, style: { backgroundColor: '#fefce8' } },
+  { when: row => row.status === 'Terminated', style: { opacity: 0.5 } },
+];
+
+<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} />`} />
+
+  <h2>Custom expander component</h2>
+
+  <CodeBlock code={`import { type ExpanderComponentProps } from 'react-data-table-component';
+
+function EmployeeDetail({ data: row }: ExpanderComponentProps<Employee>) {
+  return (
+    <div style={{ padding: 12 }}>
+      <strong>{row.name}</strong> — ID {row.id}
+    </div>
+  );
+}
+
+<DataTable expandableRows expandableRowsComponent={EmployeeDetail} columns={columns} data={data} />`} />
+
+  <h2>Filter values</h2>
+
+  <p>
+    For controlled column filtering, <code>filterValues</code> is keyed by column id with
+    <code>FilterState</code> values:
+  </p>
+
+  <CodeBlock code={`import { useState } from 'react';
+import DataTable, { type FilterState, type FilterCondition } from 'react-data-table-component';
+
+const [filters, setFilters] = useState<Record<string, FilterState>>({});
+
+<DataTable
+  columns={columns}
+  data={data}
+  filterValues={filters}
+  onFilterChange={(columnId, next) => setFilters(prev => ({ ...prev, [columnId]: next }))}
+/>`} />
+
+  <h2>Headless hooks</h2>
+
+  <p>
+    Each hook re-exports the types it accepts and returns. Most users won't need to import them
+    — destructured returns are fully typed. If you wrap a hook in another, import the option
+    types:
+  </p>
+
+  <CodeBlock code={`import { useTableState, useColumns, useColumnVisibility } from 'react-data-table-component';
+import type { UseColumnVisibilityResult } from 'react-data-table-component';`} />
+
+  <h2>Generics on the default export</h2>
+
+  <p>
+    <code>DataTable</code> is generic. When you pass <code>columns: TableColumn&lt;Employee&gt;[]</code>
+    the row type is inferred. To be explicit:
+  </p>
+
+  <CodeBlock code={`<DataTable<Employee>
+  columns={columns}
+  data={data}
+  onRowClicked={(row, e) => {
+    // row is typed as Employee
+  }}
+/>`} />
+
+  <h2>Common type-related issues</h2>
+
+  <h3>Cell renderer return type errors</h3>
+  <p>
+    <code>cell</code> and <code>selector</code> return <code>ReactNode</code>. Returning a raw
+    object will fail. Stringify or wrap in JSX:
+  </p>
+
+  <CodeBlock code={`// ❌ Type error — object is not ReactNode
+{ name: 'Tags', selector: row => row.tags }   // row.tags: Tag[]
+
+// ✅ Either format or render
+{ name: 'Tags', selector: row => row.tags.join(', ') }
+{ name: 'Tags', cell:     row => <TagList tags={row.tags} /> }`} />
+
+  <h3>Column id type</h3>
+  <p>
+    <code>id</code> is <code>string | number</code>. If you key offsets or filter values off
+    column ids in your own code, cast at the boundary:
+  </p>
+
+  <CodeBlock code={`const handleCellEdit = (row: Employee, value: string, column: TableColumn<Employee>) => {
+  const field = column.id as keyof Employee; // narrow string | number → known field
+  setData(prev => prev.map(r => r.id === row.id ? { ...r, [field]: value } : r));
+};`} />
+
+  <h2>Imported types — full list</h2>
+
+  <CodeBlock code={`import type {
+  // Core
+  TableProps,
+  TableColumn,
+  TableRow,
+  DataTableHandle,
+
+  // Behaviors
+  ConditionalStyles,
+  Selector,
+  SortFunction,
+  ColumnGroup,
+
+  // Filtering
+  FilterType,
+  FilterOperator,
+  FilterCondition,
+  FilterState,
+
+  // Theming
+  TableStyles,
+  Theme,
+  ThemeProp,
+  Themes,
+  ColorMode,
+  ThemeIcons,
+
+  // Pagination
+  PaginationComponentProps,
+  PaginationIcons,
+  PaginationOptions,
+  PaginationServerOptions,
+
+  // Expanding
+  ExpanderComponentProps,
+} from 'react-data-table-component';
+
+import { SortOrder } from 'react-data-table-component'; // value import, not type`} />
+</DocsLayout>

@@ -1,0 +1,229 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="Performance | react-data-table-component">
+  <h1>Performance</h1>
+
+  <p>
+    The table is heavily memoized — cell and column components only re-render when their own
+    props change. Most performance problems we see come from <strong>identity churn</strong>
+    in props passed to <code>DataTable</code>, not from the library itself. This page covers
+    the patterns that matter.
+  </p>
+
+  <h2>Row count guidance</h2>
+
+  <p>
+    The table does not virtualize rows. Every row in <code>data</code> renders to the DOM. As
+    a rough guide:
+  </p>
+
+  <table>
+    <thead><tr><th>Row count</th><th>Behavior</th></tr></thead>
+    <tbody>
+      <tr><td>&lt; 500</td><td>No performance considerations. Render as-is.</td></tr>
+      <tr><td>500 – 5,000</td><td>Enable <code>pagination</code> with a reasonable <code>paginationPerPage</code> (25–100). Sort and filter stay fast.</td></tr>
+      <tr><td>5,000 – 50,000</td><td>Use <code>paginationServer</code> and <code>sortServer</code>. Don't pass the full dataset to the table — slice on the server and send only the visible page.</td></tr>
+      <tr><td>&gt; 50,000</td><td>Always server-side. Consider whether a table is the right UI at all — at this scale, search or visualization tools are usually a better fit.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>The biggest footgun: new references every render</h2>
+
+  <p>
+    <code>DataTable</code> uses <code>React.memo</code> on its row and cell components.
+    Memoization is broken by reference equality, not value equality. These patterns silently
+    re-render every row on every parent render:
+  </p>
+
+  <CodeBlock code={`// ❌ New array literal every render → all rows re-render
+function App({ items }) {
+  return <DataTable
+    columns={[
+      { name: 'Name', selector: r => r.name },   // new function every render
+    ]}
+    data={items}
+  />;
+}
+
+// ❌ Inline conditional row styles → new array → all rows re-render
+<DataTable
+  conditionalRowStyles={[
+    { when: r => r.flagged, style: { color: 'red' } },
+  ]}
+  /* ... */
+/>`} />
+
+  <p>Fix: hoist or memoize the references.</p>
+
+  <CodeBlock code={`// ✅ Stable column array
+const columns: TableColumn<Item>[] = [
+  { name: 'Name', selector: r => r.name },
+];
+
+function App({ items }) {
+  return <DataTable columns={columns} data={items} />;
+}
+
+// ✅ Or memoize when it depends on state
+const columns = useMemo<TableColumn<Item>[]>(
+  () => [
+    { name: 'Name', selector: r => r.name },
+    { name: 'Salary', selector: r => r.salary, omit: !showSalary },
+  ],
+  [showSalary],
+);`} />
+
+  <h2>Stabilize event handlers</h2>
+
+  <p>
+    Pass <code>useCallback</code>-wrapped handlers for any callback prop you read from inside
+    a row (<code>onRowClicked</code>, <code>onSelectedRowsChange</code>, etc.). Without it,
+    every render changes the handler identity and the row context updates downstream.
+  </p>
+
+  <CodeBlock code={`const handleRowClicked = useCallback((row: Employee) => {
+  navigate(\`/employees/\${row.id}\`);
+}, [navigate]);
+
+<DataTable columns={columns} data={data} onRowClicked={handleRowClicked} />`} />
+
+  <h2>Stabilize the data array</h2>
+
+  <p>
+    A new <code>data</code> array re-runs sort, pagination slicing, and filter predicates.
+    If your data comes from a server, store the response in state and only replace it on real
+    updates — don't recreate it during render.
+  </p>
+
+  <CodeBlock code={`// ❌ data is a new array every render
+function App() {
+  const items = useStore(s => s.items.map(transform));  // new array
+  return <DataTable data={items} columns={columns} />;
+}
+
+// ✅ Compute once, memoize
+function App() {
+  const rawItems = useStore(s => s.items);
+  const items = useMemo(() => rawItems.map(transform), [rawItems]);
+  return <DataTable data={items} columns={columns} />;
+}`} />
+
+  <h2>Sorting is O(n log n) in the table</h2>
+
+  <p>
+    Client-side sort runs on the full <code>data</code> array on every sort change. For
+    larger datasets, push sort to the server with <code>sortServer</code> — the table will
+    skip its internal sort and call <code>onSort(column, direction)</code> instead.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={pageOfData}
+  sortServer
+  onSort={(column, direction) => refetch({ sortBy: column.id, sortDir: direction })}
+/>`} />
+
+  <h2>Server-side pagination</h2>
+
+  <p>
+    When pagination is server-driven, pass only the current page's rows in <code>data</code>
+    and the total row count in <code>paginationTotalRows</code>. The table treats
+    <code>data</code> as "this page" and lets the pagination footer drive page changes:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={currentPageRows}            // just the rows for this page
+  paginationServer
+  paginationTotalRows={total}       // total across all pages
+  onChangePage={setPage}
+  onChangeRowsPerPage={setPerPage}
+  pagination
+/>`} />
+
+  <h2>Column filtering</h2>
+
+  <p>
+    Built-in filters run client-side on every keystroke. For large datasets, switch to
+    controlled filters and debounce server calls:
+  </p>
+
+  <CodeBlock code={`import { useState, useEffect } from 'react';
+
+const [filters, setFilters] = useState({});
+const [debounced, setDebounced] = useState(filters);
+
+useEffect(() => {
+  const t = setTimeout(() => setDebounced(filters), 250);
+  return () => clearTimeout(t);
+}, [filters]);
+
+useEffect(() => {
+  refetch({ filters: debounced });
+}, [debounced]);
+
+<DataTable
+  columns={columns}
+  data={data}
+  filterValues={filters}
+  onFilterChange={(columnId, next) =>
+    setFilters(prev => ({ ...prev, [columnId]: next }))
+  }
+/>`} />
+
+  <h2>Cell renderers</h2>
+
+  <p>
+    A custom <code>cell</code> renderer runs once per cell on every row re-render. Keep them
+    cheap — and don't allocate inside them. Compute style objects outside the renderer if
+    possible:
+  </p>
+
+  <CodeBlock code={`// ❌ New style object every cell
+{ cell: row => <span style={{ padding: 8, color: row.flagged ? 'red' : 'black' }}>{row.name}</span> }
+
+// ✅ Static + conditional override
+const baseStyle = { padding: 8 };
+{ cell: row => <span style={row.flagged ? { ...baseStyle, color: 'red' } : baseStyle}>{row.name}</span> }`} />
+
+  <h2>Avoid expensive selectors</h2>
+
+  <p>
+    <code>selector</code> runs once per cell on render <em>and</em> once per row on every sort
+    or filter. Keep them O(1):
+  </p>
+
+  <CodeBlock code={`// ❌ Walks an array every call
+{ selector: r => r.tags.find(t => t.primary)?.name ?? '' }
+
+// ✅ Compute upstream, store on the row
+const enriched = useMemo(
+  () => rows.map(r => ({ ...r, primaryTag: r.tags.find(t => t.primary)?.name ?? '' })),
+  [rows],
+);
+{ selector: r => r.primaryTag }`} />
+
+  <h2>Animations</h2>
+
+  <p>
+    <code>animateRows</code> staggers row entrance and animates sort transitions. On very
+    long pages (hundreds of rows) the cumulative animation cost can be visible. The animation
+    is automatically disabled when the user has <code>prefers-reduced-motion</code> enabled.
+  </p>
+
+  <h2>Profiler checklist</h2>
+
+  <p>If the table feels slow, open React DevTools → Profiler and check:</p>
+
+  <ol>
+    <li>Are individual row components re-rendering on parent-state changes that shouldn't affect them?
+        → Some prop is changing identity. Check <code>columns</code>, <code>conditionalRowStyles</code>, callbacks.</li>
+    <li>Is the body re-rendering on every keystroke in a controlled input outside the table?
+        → Lift the keystroke state higher or memoize the table.</li>
+    <li>Is sorting slow on click? → Move to <code>sortServer</code>.</li>
+    <li>Is pagination slow on page change? → You're probably recomputing <code>data</code> every render. Memoize it.</li>
+  </ol>
+</DocsLayout>

@@ -1,0 +1,188 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="Anatomy | react-data-table-component">
+  <h1>Anatomy</h1>
+
+  <p>
+    The library is built on a small set of headless hooks that compose into the
+    <code>DataTable</code> component. Understanding the data flow makes it easier to debug,
+    customize, or replace pieces of the table with your own markup.
+  </p>
+
+  <h2>The pipeline</h2>
+
+  <pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:14px;font-size:12px;line-height:1.55;overflow-x:auto;color:#334155">
+{`            ┌────────────────┐
+            │  Your data[]   │
+            └───────┬────────┘
+                    │
+   ┌────────────────┼──────────────────────────────────────────┐
+   │                ▼                                          │
+   │  ┌─────────────────────┐    ┌──────────────────────┐      │
+   │  │ useColumns          │    │ useColumnFilter      │      │
+   │  │  • decorates ids    │    │  • per-column state  │      │
+   │  │  • resolves sort    │    │  • filter predicate  │      │
+   │  │    defaults         │    └──────────┬───────────┘      │
+   │  │  • reorder/pin      │               │                  │
+   │  └─────────┬───────────┘               │                  │
+   │            │                           │                  │
+   │            ▼                           │                  │
+   │  ┌─────────────────────┐               │                  │
+   │  │ useTableState       │               │                  │
+   │  │  • currentPage      │               │                  │
+   │  │  • rowsPerPage      │               │                  │
+   │  │  • sortDirection    │               │                  │
+   │  │  • selectedRows     │               │                  │
+   │  └─────────┬───────────┘               │                  │
+   │            │                           │                  │
+   │            ▼                           │                  │
+   │  ┌─────────────────────┐               │                  │
+   │  │ useTableData        │ ◀─────────────┘                  │
+   │  │  • sorts            │                                  │
+   │  │  • paginates        │                                  │
+   │  │  • slices           │                                  │
+   │  └─────────┬───────────┘                                  │
+   │            │                                              │
+   │            ▼                                              │
+   │  ┌─────────────────────┐                                  │
+   │  │ useColumnVisibility │ (optional)                       │
+   │  └─────────┬───────────┘                                  │
+   └────────────┼──────────────────────────────────────────────┘
+                ▼
+        ┌───────────────┐
+        │  Rendered     │
+        │  table rows   │
+        └───────────────┘`}
+  </pre>
+
+  <h2>Component tree</h2>
+
+  <p>
+    <code>DataTable</code> renders the following structure. Each piece has a stable CSS class
+    so you can target it from your stylesheet:
+  </p>
+
+  <CodeBlock code={`<div class="rdt_wrapper">                                  // root wrapper
+  <Header />                                                // optional title + actions
+  <Subheader />                                             // optional sub-bar (filters, search)
+
+  <div class="rdt_responsiveWrapper rdt_responsiveWrapperFixed">  // scroll container
+    <div class="rdt_table">                                 // ARIA role="table"
+      <div class="rdt_TableHead">
+        <div class="rdt_TableHeadRow">
+          <div class="rdt_TableCol" data-column-id="...">   // one per column
+            <span class="rdt_columnSortable" />             // sort handle + label
+            <div class="rdt_resizeHandle" />                // when resizable
+          </div>
+        </div>
+      </div>
+
+      <div class="rdt_TableBody">
+        <div class="rdt_row" id="row-...">                  // one per data row
+          <div class="rdt_TableCell" data-column-id="...">  // one per column
+            <div data-tag="allowRowEvents">{ cell content }</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PinnedScrollbar />                                       // bottom scrollbar when pinned
+  <Pagination />                                            // when pagination enabled
+</div>`} lang="html" />
+
+  <h2>The hooks</h2>
+
+  <h3><code>useColumns</code></h3>
+  <p>
+    Decorates each column with an <code>id</code> if missing, resolves
+    <code>defaultSortFieldId</code> / <code>defaultSortAsc</code> into a concrete
+    <code>defaultSortColumn</code> and direction, and manages drag-to-reorder state for both
+    columns and column groups. Output: <code>tableColumns</code>, drag handlers,
+    <code>defaultSortColumn</code>.
+  </p>
+
+  <h3><code>useTableState</code></h3>
+  <p>
+    Owns <strong>view state</strong>: which page is shown, how many rows per page, which
+    column and direction the table is sorted by, which rows are selected. Pure state — does
+    not touch data.
+  </p>
+
+  <h3><code>useTableData</code></h3>
+  <p>
+    Takes <code>data</code>, <code>columns</code>, and the state from
+    <code>useTableState</code> and produces the rows actually shown.
+    Sorts client-side (or skips if <code>sortServer</code> is set), then slices for pagination
+    (or skips if <code>paginationServer</code> is set). Returns <code>sortedData</code> and
+    <code>tableRows</code>.
+  </p>
+
+  <h3><code>useColumnFilter</code></h3>
+  <p>
+    Per-column filter state. Returns <code>filterValues</code>, <code>handleFilterChange</code>,
+    and a <code>filteredData(rows)</code> helper that applies all active filters to a row
+    array. Can be controlled by passing <code>filterValues</code> and
+    <code>onFilterChange</code> to <code>DataTable</code>.
+  </p>
+
+  <h3><code>useColumnVisibility</code></h3>
+  <p>
+    Show/hide state for a column picker. Returns the columns array with <code>omit</code>
+    applied — pass it straight to <code>DataTable</code>.
+  </p>
+
+  <h2>Why a pipeline?</h2>
+
+  <p>
+    Each hook can be used independently. If you want fully custom markup but still want the
+    library's sort + pagination + filter engines, skip <code>DataTable</code> entirely:
+  </p>
+
+  <CodeBlock code={`import { useColumns, useTableState, useTableData, useColumnFilter } from 'react-data-table-component';
+
+function MyCustomTable({ data, rawColumns }) {
+  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(rawColumns);
+  const { tableState, handleSort, handleChangePage } = useTableState({
+    data, keyField: 'id', defaultSortColumn, defaultSortDirection,
+    pagination: true, paginationPerPage: 10,
+    /* ... */
+  });
+  const { tableRows } = useTableData({
+    data, columns: tableColumns,
+    selectedColumn: tableState.selectedColumn,
+    sortDirection: tableState.sortDirection,
+    currentPage: tableState.currentPage,
+    rowsPerPage: tableState.rowsPerPage,
+    pagination: true, paginationServer: false, sortServer: false,
+    sortFunction: null, onSort: () => {},
+  });
+
+  return <table>{/* your own markup */}</table>;
+}`} />
+
+  <p>
+    See the <a href="/docs/headless">headless hooks</a> page for a complete working example.
+  </p>
+
+  <h2>State ownership</h2>
+
+  <table>
+    <thead>
+      <tr><th>State</th><th>Owned by</th><th>Controlled prop</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Current page</td><td>useTableState</td><td><code>paginationDefaultPage</code> + <code>onChangePage</code></td></tr>
+      <tr><td>Rows per page</td><td>useTableState</td><td><code>paginationPerPage</code> + <code>onChangeRowsPerPage</code></td></tr>
+      <tr><td>Selected rows</td><td>useTableState</td><td><code>selectableRowSelected</code> + <code>onSelectedRowsChange</code></td></tr>
+      <tr><td>Sort column + direction</td><td>useTableState</td><td><code>defaultSortFieldId</code> + <code>onSort</code></td></tr>
+      <tr><td>Column filters</td><td>useColumnFilter</td><td><code>filterValues</code> + <code>onFilterChange</code></td></tr>
+      <tr><td>Column widths</td><td>useColumnResize</td><td>None — DOM-only (see <a href="/docs/recipes">recipes</a>)</td></tr>
+      <tr><td>Column order</td><td>useColumns</td><td><code>onColumnOrderChange</code></td></tr>
+      <tr><td>Expanded rows</td><td>local to each row component</td><td><code>expandableRowExpanded</code> + <code>onRowExpandToggled</code></td></tr>
+    </tbody>
+  </table>
+</DocsLayout>

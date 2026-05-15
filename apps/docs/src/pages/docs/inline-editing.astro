@@ -1,0 +1,201 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
+---
+
+<DocsLayout title="Inline editing | react-data-table-component">
+  <h1>Inline editing</h1>
+
+  <p>
+    Set <code>editable: true</code> on any column to allow users to click into a cell, edit its
+    value, and commit by pressing <kbd>Enter</kbd> or blurring the input. <kbd>Esc</kbd>
+    discards the change. The library does not own the data — you handle the update in
+    <code>onCellEdit</code>.
+  </p>
+
+  <Demo
+    title="Editable cells"
+    description="Click a cell to edit. Press Enter to commit, Esc to cancel."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  role: string;
+  salary: number;
+}
+
+export default function App() {
+  const [data, setData] = useState<Employee[]>(initialData);
+
+  const handleCellEdit = (row: Employee, value: string, column: TableColumn<Employee>) => {
+    const field = column.id as keyof Employee;
+    setData(prev =>
+      prev.map(r =>
+        r.id === row.id
+          ? { ...r, [field]: field === 'salary' ? Number(value) || r.salary : value }
+          : r,
+      ),
+    );
+  };
+
+  const columns: TableColumn<Employee>[] = [
+    { id: 'name',   name: 'Name',   selector: r => r.name,   editable: true, onCellEdit: handleCellEdit },
+    { id: 'role',   name: 'Role',   selector: r => r.role,   editable: true, onCellEdit: handleCellEdit },
+    { id: 'salary', name: 'Salary', selector: r => r.salary,
+      format: r => \`$\${r.salary.toLocaleString()}\`,
+      right: true, editable: true, onCellEdit: handleCellEdit },
+  ];
+
+  return <DataTable columns={columns} data={data} />;
+}`}
+  >
+    <InlineEditingDemo client:load />
+  </Demo>
+
+  <h2>How it works</h2>
+  <ol>
+    <li>Click an editable cell — the cell content is replaced by an <code>&lt;input&gt;</code> seeded with the current selector value (stringified).</li>
+    <li>Press <kbd>Enter</kbd> or click outside — <code>onCellEdit(row, value, column)</code> fires.</li>
+    <li>Press <kbd>Esc</kbd> — the input closes without firing the callback.</li>
+  </ol>
+  <p>
+    The callback always receives <code>value</code> as a <strong>string</strong>. Cast or parse
+    it to the type you actually store (number, boolean, date, etc.) in your update handler.
+  </p>
+
+  <h2>Updating row data</h2>
+  <p>
+    The table is fully controlled — committing an edit does not mutate your data. You're
+    responsible for producing a new array with the change applied. The most common pattern is
+    React state plus an immutable update:
+  </p>
+
+  <CodeBlock code={`const handleCellEdit = (row, value, column) => {
+  setData(prev =>
+    prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: value } : r))
+  );
+};`} />
+
+  <p>
+    For server-backed data, fire your mutation here and either optimistically update the
+    local state or wait for the server response:
+  </p>
+
+  <CodeBlock code={`const handleCellEdit = async (row, value, column) => {
+  // Optimistic update
+  setData(prev =>
+    prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: value } : r))
+  );
+
+  try {
+    await api.updateEmployee(row.id, { [column.id as string]: value });
+  } catch (err) {
+    // Roll back on failure
+    setData(prev =>
+      prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: row[column.id as keyof typeof row] } : r))
+    );
+    console.error('Save failed:', err);
+  }
+};`} />
+
+  <h2>Validation</h2>
+  <p>
+    Reject invalid input by checking inside <code>onCellEdit</code> and skipping the update.
+    The cell input doesn't expose a "reject and re-open" hook, so the simplest pattern is to
+    no-op and rely on the user re-clicking the cell.
+  </p>
+
+  <CodeBlock code={`const handleCellEdit = (row, value, column) => {
+  if (column.id === 'salary') {
+    const n = Number(value);
+    if (isNaN(n) || n < 0) return; // ignore invalid input
+    setData(prev => prev.map(r => r.id === row.id ? { ...r, salary: n } : r));
+    return;
+  }
+  setData(prev => prev.map(r => r.id === row.id ? { ...r, [column.id]: value } : r));
+};`} />
+
+  <h2>Restricting which columns are editable</h2>
+  <p>
+    Only set <code>editable: true</code> on the columns you want users to be able to change.
+    Columns without it remain read-only. You can also conditionally toggle the flag based on
+    user permissions:
+  </p>
+
+  <CodeBlock code={`const canEdit = user.role === 'admin';
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',   selector: r => r.name },               // never editable
+  { id: 'salary', name: 'Salary', selector: r => r.salary,
+    editable: canEdit, onCellEdit: handleCellEdit },                     // editable only for admins
+];`} />
+
+  <h2>Combining with custom cell renderers</h2>
+  <p>
+    <code>editable</code> only takes effect for cells that use the default text rendering
+    (no <code>cell</code> prop). If you supply a custom <code>cell</code> renderer, your
+    component owns interaction — render your own input, select, etc., and call your update
+    logic directly.
+  </p>
+
+  <CodeBlock code={`// Built-in inline editor (text input only)
+{ id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit }
+
+// Custom editor — full control
+{
+  id: 'status', name: 'Status',
+  cell: row => (
+    <select value={row.status} onChange={e => updateStatus(row.id, e.target.value)}>
+      <option>Active</option>
+      <option>On Leave</option>
+    </select>
+  ),
+}`} />
+
+  <h2>Styling the input</h2>
+  <p>
+    The editor input has class <code>rdt_editInput</code>. Override its styles via your
+    own CSS or the <code>customStyles</code> prop. The input inherits the cell font and color
+    by default.
+  </p>
+
+  <CodeBlock code={`.rdt_editInput {
+  border: 1px solid var(--rdt-color-primary, #1976d2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  outline: none;
+  width: 100%;
+}`} lang="css" />
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>The built-in editor is a plain text input. For multi-line text, dropdowns, date pickers, or rich validation, render your own <code>cell</code>.</li>
+    <li>The <code>value</code> passed to <code>onCellEdit</code> is always a string. Parse it yourself.</li>
+    <li>There is no built-in "dirty" indicator or undo stack. Track that in your application state if you need it.</li>
+    <li>Editing does not trigger row selection or row click handlers — clicks inside the input are stopped from propagating.</li>
+  </ul>
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr><th>Column prop</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>editable</code></td>
+        <td><code>boolean</code></td>
+        <td>Allow clicking the cell to open an inline text input.</td>
+      </tr>
+      <tr>
+        <td><code>onCellEdit</code></td>
+        <td><code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code></td>
+        <td>Called when the user commits an edit (<kbd>Enter</kbd> or blur). Receives the original row, the new string value, and the column definition.</td>
+      </tr>
+    </tbody>
+  </table>
+</DocsLayout>
