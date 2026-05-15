@@ -633,12 +633,18 @@
 }
 
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
+/*
+ * The handle straddles the cell boundary so its hit area is centered on the
+ * separator line rather than offset to one side. width/2 = 3px → right: -3px
+ * centers a 6px-wide handle on the column edge, matching the position of
+ * .rdt_headSeparator/.rdt_colSeparator pseudo-elements drawn at the boundary.
+ */
 .rdt_resizeHandle {
 	position: absolute;
-	right: 0;
+	right: -3px;
 	top: 0;
 	height: 100%;
-	width: 5px;
+	width: 6px;
 	cursor: col-resize;
 	user-select: none;
 	z-index: 2;
@@ -646,7 +652,20 @@
 
 .rdt_resizeHandle:hover,
 .rdt_resizeHandle:active {
-	background-color: var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
+	/*
+	 * Show the indicator as a 2px center line so the visual treatment matches
+	 * the separator's location exactly. Using a background-image gradient
+	 * keeps the 6px hit area for the cursor.
+	 */
+	background-image: linear-gradient(
+		to right,
+		transparent 0,
+		transparent 2px,
+		var(--rdt-color-primary, #1976d2) 2px,
+		var(--rdt-color-primary, #1976d2) 4px,
+		transparent 4px,
+		transparent 6px
+	);
 }
 
 /* ─── Column group header — CSS Grid layout ─────────────────────────────────
