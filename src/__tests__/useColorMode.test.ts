@@ -24,7 +24,7 @@ describe('useColorMode:explicit mode', () => {
 
 	test('updates when mode prop changes from "light" to "dark"', () => {
 		const { result, rerender } = renderHook(({ m }: { m: 'light' | 'dark' | 'system' }) => useColorMode(m), {
-			initialProps: { m: 'light' as const },
+			initialProps: { m: 'light' } as { m: 'light' | 'dark' | 'system' },
 		});
 
 		expect(result.current).toBe('light');
