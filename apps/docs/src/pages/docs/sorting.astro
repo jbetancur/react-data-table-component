@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import SortingDemo from '../../components/demos/SortingDemo.tsx';
+import PrioritySortDemo from '../../components/demos/PrioritySortDemo.tsx';
 import ServerSideSortingDemo from '../../components/demos/ServerSideSortingDemo.tsx';
 import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
 ---
@@ -120,6 +121,69 @@ const customSort: SortFunction<Employee> = (rows, selector, direction) => {
 };
 
 <DataTable columns={columns} data={data} sortFunction={customSort} />`} />
+
+  <h2>Priority ordering — sort certain rows first</h2>
+  <p>
+    Sometimes you want specific rows to float to the top regardless of what column is sorted.
+    There are two distinct patterns: sorting a column by a <em>custom value order</em> (e.g. status
+    priority), and anchoring specific rows by identity regardless of sort. The latter is covered
+    in depth on the <a href="/docs/row-pinning">Row pinning</a> page.
+  </p>
+
+  <Demo
+    title="Priority sort patterns"
+    description="Two modes: sort a Status column by custom priority order (Active → On Leave → Terminated), and break ties within the same primary value using a secondary salary sort."
+    code={`import DataTable, { SortOrder, type TableColumn, type SortFunction } from 'react-data-table-component';
+
+// ── Pattern 1: custom value ordering ───────────────────────────────────────
+// Sort "Active → On Leave → Terminated" instead of alphabetically.
+const STATUS_ORDER = { Active: 0, 'On Leave': 1, Terminated: 2 };
+
+const columns: TableColumn<Employee>[] = [
+  {
+    id: 'status',
+    name: 'Status',
+    selector: r => STATUS_ORDER[r.status],   // numeric selector drives the sort key
+    cell: r => <StatusBadge status={r.status} />,
+    sortable: true,
+    sortFunction: (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status],
+  },
+];
+
+// ── Pattern 2: secondary sort (break ties) ──────────────────────────────────
+// When two rows have the same primary value, sort by salary descending as a
+// tiebreaker. Wire this as the table-level sortFunction.
+const withSecondarySalary: SortFunction<Employee> = (rows, selector, direction) =>
+  [...rows].sort((a, b) => {
+    const av = selector(a), bv = selector(b);
+    const primary = av === bv ? 0 : (av > bv ? 1 : -1) * (direction === SortOrder.ASC ? 1 : -1);
+    return primary !== 0 ? primary : b.salary - a.salary;   // salary desc as tiebreaker
+  });`}
+  >
+    <PrioritySortDemo client:load />
+  </Demo>
+
+  <h3>Sorting null / empty values last</h3>
+  <p>
+    By default, empty strings and <code>null</code> sort ahead of real values alphabetically.
+    Push them to the bottom with a guard in your comparator:
+  </p>
+
+  <CodeBlock code={`const nullsLastSort: SortFunction<Employee> = (rows, selector, direction) =>
+  [...rows].sort((a, b) => {
+    const av = selector(a);
+    const bv = selector(b);
+    // Empty / null → always sink to bottom regardless of direction
+    const aEmpty = av === null || av === undefined || av === '';
+    const bEmpty = bv === null || bv === undefined || bv === '';
+    if (aEmpty && bEmpty) return 0;
+    if (aEmpty) return 1;
+    if (bEmpty) return -1;
+    const cmp = av > bv ? 1 : -1;
+    return direction === SortOrder.ASC ? cmp : -cmp;
+  });
+
+<DataTable columns={columns} data={data} sortFunction={nullsLastSort} />`} />
 
   <h2>Custom sort icon</h2>
   <p>
