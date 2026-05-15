@@ -246,9 +246,22 @@ export type TableColumnBase = {
 	wrap?: boolean;
 	/** Freeze this column to the left or right edge on horizontal scroll. */
 	pinned?: 'left' | 'right';
-	/** Allow clicking the cell to edit its value inline. Calls onCellEdit on commit. */
+	/** Allow clicking the cell to edit its value inline. Calls onCellEdit on commit.
+	 *  Shorthand for `editor: { type: 'text' }`. Ignored when `editor` is set. */
 	editable?: boolean;
+	/** Configures the inline editor used when the cell is clicked. */
+	editor?: CellEditor;
 };
+
+/** Options for inline cell editors. */
+export type CellEditor =
+	| { type: 'text'; placeholder?: string }
+	| {
+			type: 'select';
+			options: Array<{ value: string; label: React.ReactNode }>;
+			/** Optional placeholder shown when current value is empty/unknown. */
+			placeholder?: string;
+	  };
 
 export type CellEditCallback<T> = (row: T, value: string, column: TableColumn<T>) => void;
 

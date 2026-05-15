@@ -3,7 +3,7 @@ import { useStyles } from '../context/StylesContext';
 import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
 import { getProperty, getConditionalStyle, getPinnedCellMeta } from '../util';
-import type { TableColumn } from '../types';
+import type { TableColumn, CellEditor } from '../types';
 
 interface CellProps<T> {
 	id: string;
@@ -22,29 +22,38 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 	const { conditionalStyle, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
 
 	// ── Inline editing ─────────────────────────────────────────────────────────
+	// Resolve the editor descriptor: explicit `editor` wins; otherwise `editable: true`
+	// is shorthand for a text editor.
+	const editor: CellEditor | undefined = column.editor ?? (column.editable ? { type: 'text' } : undefined);
 	const [editing, setEditing] = React.useState(false);
 	const [editValue, setEditValue] = React.useState('');
-	const inputRef = React.useRef<HTMLInputElement>(null);
+	const inputRef = React.useRef<HTMLInputElement | HTMLSelectElement>(null);
 
 	const startEdit = React.useCallback(() => {
-		if (!column.editable) return;
+		if (!editor) return;
 		const current = column.selector ? String(column.selector(row, rowIndex) ?? '') : '';
 		setEditValue(current);
 		setEditing(true);
-	}, [column, row, rowIndex]);
+	}, [editor, column, row, rowIndex]);
 
 	React.useEffect(() => {
 		if (editing) inputRef.current?.focus();
 	}, [editing]);
 
-	const commitEdit = React.useCallback(() => {
-		setEditing(false);
-		column.onCellEdit?.(row, editValue, column);
-	}, [column, row, editValue]);
+	const commitEdit = React.useCallback(
+		(value?: string) => {
+			const v = value ?? editValue;
+			setEditing(false);
+			column.onCellEdit?.(row, v, column);
+		},
+		[column, row, editValue],
+	);
 
-	const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+	const cancelEdit = React.useCallback(() => setEditing(false), []);
+
+	const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement>) => {
 		if (e.key === 'Enter') commitEdit();
-		if (e.key === 'Escape') setEditing(false);
+		if (e.key === 'Escape') cancelEdit();
 	};
 
 	// ── Column pinning ─────────────────────────────────────────────────────────
@@ -52,12 +61,15 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 	const pinnedStyle: React.CSSProperties = pinMeta.style.position === 'sticky' ? { ...pinMeta.style, zIndex: 1 } : {};
 	const pinnedClass = pinMeta.className;
 
+	const editableClass = editor && !editing ? 'rdt_cellEditable' : '';
+	const editingClass = editing ? 'rdt_cellEditing' : '';
+
 	return (
 		<CellExtended
 			id={id}
 			data-column-id={column.id}
 			role="cell"
-			className={[classNames, pinnedClass].filter(Boolean).join(' ')}
+			className={[classNames, pinnedClass, editableClass, editingClass].filter(Boolean).join(' ')}
 			data-tag={dataTag}
 			button={column.button}
 			center={column.center}
@@ -80,19 +92,46 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 			onDragEnd={onDragEnd}
 			onDragEnter={onDragEnter}
 			onDragLeave={onDragLeave}
-			onClick={column.editable && !editing ? startEdit : undefined}
+			onClick={editor && !editing ? startEdit : undefined}
 		>
-			{editing ? (
+			{editing && editor?.type === 'text' && (
 				<input
-					ref={inputRef}
+					ref={inputRef as React.RefObject<HTMLInputElement>}
 					className="rdt_editInput"
 					value={editValue}
+					placeholder={editor.placeholder}
 					onChange={e => setEditValue(e.target.value)}
-					onBlur={commitEdit}
+					onBlur={() => commitEdit()}
 					onKeyDown={handleInputKeyDown}
 					onClick={e => e.stopPropagation()}
 				/>
-			) : (
+			)}
+			{editing && editor?.type === 'select' && (
+				<select
+					ref={inputRef as React.RefObject<HTMLSelectElement>}
+					className="rdt_editSelect"
+					value={editValue}
+					onChange={e => {
+						setEditValue(e.target.value);
+						commitEdit(e.target.value);
+					}}
+					onBlur={() => commitEdit()}
+					onKeyDown={handleInputKeyDown}
+					onClick={e => e.stopPropagation()}
+				>
+					{editor.placeholder !== undefined && (
+						<option value="" disabled hidden>
+							{editor.placeholder}
+						</option>
+					)}
+					{editor.options.map(opt => (
+						<option key={opt.value} value={opt.value}>
+							{typeof opt.label === 'string' || typeof opt.label === 'number' ? opt.label : opt.value}
+						</option>
+					))}
+				</select>
+			)}
+			{!editing && (
 				<>
 					{!column.cell && (
 						<div

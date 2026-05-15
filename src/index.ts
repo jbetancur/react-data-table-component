@@ -38,6 +38,8 @@ export type {
 	FilterOperator,
 	FilterCondition,
 	FilterState,
+	CellEditor,
+	CellEditCallback,
 } from './types';
 
 export { emptyFilterState, isFilterActive } from './hooks/useColumnFilter';

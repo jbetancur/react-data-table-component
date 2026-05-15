@@ -2,21 +2,30 @@ import React from 'react';
 import DataTable from '../ThemedDataTable';
 import { type TableColumn } from 'react-data-table-component';
 
+type Status = 'Active' | 'On Leave' | 'Terminated';
+type Department = 'Engineering' | 'Product' | 'Design' | 'Analytics';
+
 interface Employee {
 	id: number;
 	name: string;
-	role: string;
-	department: string;
+	department: Department;
+	status: Status;
 	salary: number;
 }
 
 const initialData: Employee[] = [
-	{ id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering', salary: 155000 },
-	{ id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product', salary: 132000 },
-	{ id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design', salary: 118000 },
-	{ id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics', salary: 143000 },
-	{ id: 5, name: 'Sam Rivera', role: 'DevOps Engineer', department: 'Engineering', salary: 128000 },
+	{ id: 1, name: 'Aria Chen', department: 'Engineering', status: 'Active', salary: 155000 },
+	{ id: 2, name: 'Marcus Webb', department: 'Product', status: 'Active', salary: 132000 },
+	{ id: 3, name: 'Priya Kapoor', department: 'Design', status: 'On Leave', salary: 118000 },
+	{ id: 4, name: 'Jordan Ellis', department: 'Analytics', status: 'Active', salary: 143000 },
+	{ id: 5, name: 'Sam Rivera', department: 'Engineering', status: 'Terminated', salary: 128000 },
 ];
+
+const statusColors: Record<Status, string> = {
+	Active: 'background:#dcfce7;color:#15803d',
+	'On Leave': 'background:#fef9c3;color:#854d0e',
+	Terminated: 'background:#fee2e2;color:#991b1b',
+};
 
 export default function InlineEditingDemo() {
 	const [data, setData] = React.useState<Employee[]>(initialData);
@@ -31,14 +40,55 @@ export default function InlineEditingDemo() {
 	};
 
 	const columns: TableColumn<Employee>[] = [
-		{ id: 'name', name: 'Name', selector: r => r.name, sortable: true, editable: true, onCellEdit: handleCellEdit },
-		{ id: 'role', name: 'Role', selector: r => r.role, sortable: true, editable: true, onCellEdit: handleCellEdit },
+		{
+			id: 'name',
+			name: 'Name',
+			selector: r => r.name,
+			sortable: true,
+			editable: true,
+			onCellEdit: handleCellEdit,
+		},
 		{
 			id: 'department',
 			name: 'Department',
 			selector: r => r.department,
 			sortable: true,
-			editable: true,
+			editor: {
+				type: 'select',
+				options: [
+					{ value: 'Engineering', label: 'Engineering' },
+					{ value: 'Product', label: 'Product' },
+					{ value: 'Design', label: 'Design' },
+					{ value: 'Analytics', label: 'Analytics' },
+				],
+			},
+			onCellEdit: handleCellEdit,
+		},
+		{
+			id: 'status',
+			name: 'Status',
+			selector: r => r.status,
+			cell: row => (
+				<span
+					style={{
+						...Object.fromEntries(statusColors[row.status].split(';').map(p => p.split(':') as [string, string])),
+						padding: '2px 10px',
+						borderRadius: 999,
+						fontSize: 12,
+						fontWeight: 600,
+					}}
+				>
+					{row.status}
+				</span>
+			),
+			editor: {
+				type: 'select',
+				options: [
+					{ value: 'Active', label: 'Active' },
+					{ value: 'On Leave', label: 'On Leave' },
+					{ value: 'Terminated', label: 'Terminated' },
+				],
+			},
 			onCellEdit: handleCellEdit,
 		},
 		{
@@ -56,7 +106,9 @@ export default function InlineEditingDemo() {
 	return (
 		<div className="space-y-2">
 			<p className="text-xs text-gray-400">
-				Click any cell to edit. Press <kbd>Enter</kbd> to commit, <kbd>Esc</kbd> to cancel.
+				Click any cell to edit. <strong>Name</strong> and <strong>Salary</strong> are text inputs;{' '}
+				<strong>Department</strong> and <strong>Status</strong> are dropdowns. <kbd>Enter</kbd> commits, <kbd>Esc</kbd>{' '}
+				cancels.
 			</p>
 			<DataTable columns={columns} data={data} highlightOnHover />
 			{lastEdit && <div className="text-xs text-emerald-600 font-mono">{lastEdit}</div>}
