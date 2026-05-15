@@ -13,7 +13,7 @@ Complete alphabetical reference for every prop, type, and export in `react-data-
 > - [Selection](/docs/selection) · [Expandable rows](/docs/expandable)
 > - [Resizable](/docs/resizable) · [Pinning](/docs/column-pinning) · [Groups](/docs/column-groups)
 > - [Themes](/docs/themes) · [Custom styles](/docs/custom-styles) · [Performance](/docs/performance)
-> - [TypeScript](/docs/typescript) · [Headless hooks](/docs/headless) · [Anatomy](/docs/anatomy)
+> - [TypeScript](/docs/typescript) · [Headless hooks](/docs/headless)
 
 ## DataTable props
 
