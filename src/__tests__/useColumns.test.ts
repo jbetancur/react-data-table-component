@@ -109,7 +109,7 @@ describe('useColumns:tableGroups', () => {
 		const fixedCols = [col1, col2]; // stable reference — avoid triggering columns effect on every render
 		const { result, rerender } = renderHook(
 			(props: { groups?: ColumnGroup[] }) => useColumns<Row>(fixedCols, noop, undefined, props.groups, null, true),
-			{ initialProps: { groups: undefined } },
+			{ initialProps: { groups: undefined } as { groups?: ColumnGroup[] } },
 		);
 
 		expect(result.current.tableGroups).toEqual([]);
