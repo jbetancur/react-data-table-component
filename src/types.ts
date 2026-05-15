@@ -169,6 +169,17 @@ type BaseTableProps<T> = {
 	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
 	/** Enable drag-to-resize handles on column headers */
 	resizable?: boolean;
+	/**
+	 * Seed column widths (px) by column id — useful for hydrating persisted widths on mount.
+	 * Keyed by the same id you set on each TableColumn.
+	 */
+	initialColumnWidths?: Record<string | number, number>;
+	/**
+	 * Called after the user finishes resizing a column (on mouseup).
+	 * Receives the id and final width (px) of the resized column, plus the full widths map
+	 * so you can persist to localStorage, a database, or anywhere else.
+	 */
+	onColumnResize?: (columnId: string | number, width: number, allWidths: Record<string | number, number>) => void;
 	/** Animate rows on mount and expander rows on expand (respects prefers-reduced-motion) */
 	animateRows?: boolean;
 	/**

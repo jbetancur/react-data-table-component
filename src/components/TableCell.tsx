@@ -24,7 +24,10 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 	// ── Inline editing ─────────────────────────────────────────────────────────
 	// Resolve the editor descriptor: explicit `editor` wins; otherwise `editable: true`
 	// is shorthand for a text editor.
-	const editor: CellEditor | undefined = column.editor ?? (column.editable ? { type: 'text' } : undefined);
+	const editor: CellEditor | undefined = React.useMemo(
+		() => column.editor ?? (column.editable ? { type: 'text' } : undefined),
+		[column.editor, column.editable],
+	);
 	const [editing, setEditing] = React.useState(false);
 	const [editValue, setEditValue] = React.useState('');
 	const inputRef = React.useRef<HTMLInputElement | HTMLSelectElement>(null);

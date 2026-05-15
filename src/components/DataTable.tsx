@@ -103,6 +103,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		filterValues: controlledFilterValues,
 		onFilterChange: onFilterChangeProp,
 		resizable = false,
+		initialColumnWidths,
+		onColumnResize,
 		animateRows = false,
 		columnSeparator,
 		headerSeparator,
@@ -150,7 +152,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	);
 
 	// ── Column resize state ────────────────────────────────────────────────────
-	const { columnWidths, handleResizeStart } = useColumnResize();
+	const { columnWidths, handleResizeStart } = useColumnResize({ initialColumnWidths, onColumnResize });
 
 	const {
 		tableColumns,
