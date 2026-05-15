@@ -1,0 +1,204 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import RowPinningDemo from '../../components/demos/RowPinningDemo.tsx';
+---
+
+<DocsLayout title="Row pinning | react-data-table-component">
+  <h1>Row pinning</h1>
+
+  <p>
+    Row pinning keeps specific rows anchored at the top of the table regardless of the active
+    sort column or direction. Common uses: a "totals" row, a currently selected record, a
+    high-priority item, or the signed-in user's own row.
+  </p>
+
+  <blockquote>
+    <strong>Coming in a future release:</strong> native <code>pinnedRows</code> / <code>pinnedRowIds</code> props
+    are on the roadmap. The patterns below are the recommended workaround until then — they compose
+    cleanly with all existing features and are easy to swap out for the native API when it lands.
+  </blockquote>
+
+  <Demo
+    title="Pin rows to top"
+    description="Click the pin icon on any row to anchor it. Pinned rows stay at position 1+ while the rest sort normally. Sort any column to see it in action."
+    code={`import { useState, useMemo } from 'react';
+import DataTable, { SortOrder, type TableColumn, type SortFunction } from 'react-data-table-component';
+
+export default function App() {
+  const [pinnedIds, setPinnedIds] = useState<Set<number>>(new Set());
+
+  const togglePin = (id: number) =>
+    setPinnedIds(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
+  // The table-level sortFunction receives the full unsorted row array.
+  // Split into pinned + rest, sort only rest, then concatenate.
+  const sortFunction: SortFunction<Employee> = useMemo(
+    () => (rows, selector, direction) => {
+      const pinned = rows.filter(r => pinnedIds.has(r.id));
+      const rest   = rows.filter(r => !pinnedIds.has(r.id));
+      const sorted = [...rest].sort((a, b) => {
+        const av = selector(a), bv = selector(b);
+        if (av === bv) return 0;
+        const cmp = av > bv ? 1 : -1;
+        return direction === SortOrder.ASC ? cmp : -cmp;
+      });
+      return [...pinned, ...sorted];
+    },
+    [pinnedIds],
+  );
+
+  const columns: TableColumn<Employee>[] = [
+    {
+      id: 'name',
+      name: 'Name',
+      selector: r => r.name,
+      sortable: true,
+      cell: r => (
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button onClick={e => { e.stopPropagation(); togglePin(r.id); }}>
+            {pinnedIds.has(r.id) ? '📌' : '○'}
+          </button>
+          {r.name}
+        </div>
+      ),
+    },
+    { id: 'department', name: 'Department', selector: r => r.department, sortable: true },
+    { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true,
+      format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  ];
+
+  return <DataTable columns={columns} data={data} sortFunction={sortFunction} />;
+}`}
+  >
+    <RowPinningDemo client:load />
+  </Demo>
+
+  <h2>How it works</h2>
+  <p>
+    The table-level <code>sortFunction</code> prop replaces the built-in sort algorithm entirely.
+    It receives the complete row array, the selector function for whichever column is currently
+    active, and the sort direction. Return the rows in the order you want them displayed.
+  </p>
+  <p>
+    Because <code>sortFunction</code> is called on every sort change, the pinned set just needs to
+    live in React state — update the set and the rows re-order instantly without remounting the table.
+  </p>
+
+  <h2>Static pinned rows (hardcoded)</h2>
+  <p>
+    If the pinned rows are fixed (e.g. always show the "Totals" row first), define the set outside
+    the component so it's stable and doesn't need <code>useMemo</code>:
+  </p>
+
+  <CodeBlock code={`const PINNED_IDS = new Set([42]);   // row with id 42 always floats to the top
+
+const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
+  const pinned = rows.filter(r => PINNED_IDS.has(r.id));
+  const rest   = rows.filter(r => !PINNED_IDS.has(r.id));
+  const sorted = [...rest].sort((a, b) => {
+    const av = selector(a), bv = selector(b);
+    if (av === bv) return 0;
+    const cmp = av > bv ? 1 : -1;
+    return direction === SortOrder.ASC ? cmp : -cmp;
+  });
+  return [...pinned, ...sorted];
+};
+
+<DataTable columns={columns} data={data} sortFunction={sortFunction} />`} />
+
+  <h2>Pinning by a condition (not an ID)</h2>
+  <p>
+    You can pin based on any row property — not just an ID. For example, always show active
+    employees before terminated ones, or float rows flagged as urgent:
+  </p>
+
+  <CodeBlock code={`// Always show 'Active' employees before others, then sort normally within each group
+const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
+  const pinned = rows.filter(r => r.status === 'Active');
+  const rest   = rows.filter(r => r.status !== 'Active');
+
+  const sort = (arr: Employee[]) =>
+    [...arr].sort((a, b) => {
+      const av = selector(a), bv = selector(b);
+      if (av === bv) return 0;
+      const cmp = av > bv ? 1 : -1;
+      return direction === SortOrder.ASC ? cmp : -cmp;
+    });
+
+  return [...sort(pinned), ...sort(rest)];
+};`} />
+
+  <h2>Multiple pinned groups</h2>
+  <p>
+    Extend the pattern to produce any number of fixed groups. Each segment is sorted independently
+    before being concatenated:
+  </p>
+
+  <CodeBlock code={`// Layout: [critical rows] → [normal rows, sorted] → [archived rows]
+const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
+  const critical = rows.filter(r => r.priority === 'critical');
+  const archived = rows.filter(r => r.archived);
+  const normal   = rows.filter(r => r.priority !== 'critical' && !r.archived);
+
+  const sort = (arr: Employee[]) =>
+    [...arr].sort((a, b) => {
+      const av = selector(a), bv = selector(b);
+      if (av === bv) return 0;
+      const cmp = av > bv ? 1 : -1;
+      return direction === SortOrder.ASC ? cmp : -cmp;
+    });
+
+  return [...sort(critical), ...sort(normal), ...sort(archived)];
+};`} />
+
+  <h2>Combining with server-side sorting</h2>
+  <p>
+    With <code>sortServer</code>, the table doesn't sort locally at all — your <code>onSort</code> handler
+    is responsible for returning the correct order. Apply pinning after the server response arrives,
+    before setting state:
+  </p>
+
+  <CodeBlock code={`async function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
+  const sorted = await api.getEmployees({ sort: col.sortField, dir });
+
+  // Re-apply pin order on top of server result
+  const pinned = sorted.filter(r => pinnedIds.has(r.id));
+  const rest   = sorted.filter(r => !pinnedIds.has(r.id));
+  setData([...pinned, ...rest]);
+}`} />
+
+  <h2>Visual treatment</h2>
+  <p>
+    Pinned rows don't receive any special styling by default — add your own via
+    <code>conditionalRowStyles</code> to make them visually distinct:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={data}
+  sortFunction={sortFunction}
+  conditionalRowStyles={[
+    {
+      when: row => pinnedIds.has(row.id),
+      style: {
+        borderLeft: '3px solid #7c3aed',
+        backgroundColor: '#faf5ff',
+        fontWeight: 500,
+      },
+    },
+  ]}
+/>`} />
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>This is a <strong>sort-layer workaround</strong> — rows are reordered by the sort function, not truly fixed in the DOM. If you use <code>sortServer</code>, you must apply pin order yourself after the fetch (see above).</li>
+    <li>Pinned rows participate in pagination. If a pinned row is on page 2, it won't appear on page 1 — pin logic only affects order within the current data array. For cross-page pinning, pre-sort your data array before passing it to <code>data</code>.</li>
+    <li>Native <code>pinnedRows</code> support (sticky DOM positioning, cross-page pinning, built-in styling) is planned for a future release.</li>
+  </ul>
+</DocsLayout>
