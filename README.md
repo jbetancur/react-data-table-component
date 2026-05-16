@@ -62,7 +62,7 @@ Sponsoring puts your company logo in front of ~200k developers a week — on the
 
 ## Need help?
 
-For complex integrations, performance issues, or major version upgrades, [get in touch](mailto:johnnyazee@gmail.com) to discuss one-off consulting.
+For complex integrations, performance issues, or major version upgrades, [get in touch](mailto:1385932+jbetancur@users.noreply.github.com) to discuss one-off consulting.
 
 ## Sponsors
 
