@@ -1,0 +1,170 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
+---
+
+<DocsLayout title="Row selection | react-data-table-component">
+  <h1>Row selection</h1>
+
+  <p>
+    Add <code>selectableRows</code> to enable checkbox-based multi-select.
+    Use the imperative <code>ref</code> API to clear selection programmatically.
+  </p>
+
+  <div class="not-prose my-6 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+    <p class="font-semibold mb-1">⚠ <code>keyField</code> is required for reliable selection</p>
+    <p>
+      The table uses <code>keyField</code> to uniquely identify each row — tracking checked state across
+      sorts, page changes, and re-renders. It defaults to <code>"id"</code>. If your rows use a
+      different unique field, set it explicitly:
+    </p>
+    <pre class="mt-3 rounded bg-amber-100 px-4 py-3 font-mono text-xs overflow-x-auto">{`<DataTable selectableRows keyField="deviceId" columns={columns} data={data} />`}</pre>
+    <p class="mt-3">
+      If <code>keyField</code> resolves to <code>undefined</code> on any row, selection state will
+      be unreliable and the table will log a console warning. TypeScript also catches explicit
+      mismatches at compile time since <code>keyField</code> is typed as <code>keyof T</code>.
+    </p>
+  </div>
+
+  <Demo
+    title="Multi-select with imperative clear"
+    description="Select rows, then clear with the button. Toggle single-select mode or disable 'On Leave' rows with the checkboxes."
+    code={`import { useState, useRef } from 'react';
+import DataTable, { type TableColumn, type DataTableHandle } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  role: string;
+  department: string;
+  status: 'Active' | 'On Leave';
+}
+
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',     role: 'Engineering Lead',  department: 'Engineering', status: 'Active' },
+  { id: 2, name: 'Marcus Webb',   role: 'Product Manager',   department: 'Product',     status: 'Active' },
+  { id: 3, name: 'Priya Kapoor',  role: 'Senior Designer',   department: 'Design',      status: 'On Leave' },
+  { id: 4, name: 'Jordan Ellis',  role: 'Data Scientist',    department: 'Analytics',   status: 'Active' },
+  { id: 5, name: 'Sam Rivera',    role: 'DevOps Engineer',   department: 'Engineering', status: 'On Leave' },
+  { id: 6, name: 'Taylor Brooks', role: 'Account Manager',   department: 'Sales',       status: 'Active' },
+];
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Role',       selector: r => r.role },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Status',     selector: r => r.status },
+];
+
+export default function App() {
+  const [selectedRows, setSelectedRows] = useState<Employee[]>([]);
+  const [single, setSingle] = useState(false);
+  const [disableOnLeave, setDisableOnLeave] = useState(false);
+  const ref = useRef<DataTableHandle>(null);
+
+  return (
+    <div>
+      <label>
+        <input type="checkbox" checked={single} onChange={e => setSingle(e.target.checked)} />
+        {' '}Single select
+      </label>
+      <label>
+        <input type="checkbox" checked={disableOnLeave} onChange={e => setDisableOnLeave(e.target.checked)} />
+        {' '}Disable "On Leave" rows
+      </label>
+      <button onClick={() => ref.current?.clearSelectedRows()}>Clear selection</button>
+      {selectedRows.length > 0 && (
+        <span>{selectedRows.length} selected: {selectedRows.map(r => r.name).join(', ')}</span>
+      )}
+      <DataTable
+        ref={ref}
+        columns={columns}
+        data={data}
+        keyField="id"
+        selectableRows
+        selectableRowsSingle={single}
+        selectableRowDisabled={disableOnLeave ? (r => r.status === 'On Leave') : undefined}
+        onSelectedRowsChange={({ selectedRows }) => setSelectedRows(selectedRows)}
+        highlightOnHover
+      />
+    </div>
+  );
+}`}
+  >
+    <SelectionDemo client:load />
+  </Demo>
+
+  <h2>Single select</h2>
+  <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>
+
+  <h2>Disable specific rows</h2>
+  <p>
+    Pass a predicate to <code>selectableRowDisabled</code> to prevent specific rows from being
+    checked. Disabled rows render with a greyed-out checkbox that cannot be interacted with.
+    Toggle "Disable 'On Leave' rows" in the demo above to see this in action.
+  </p>
+  <CodeBlock code={`// Prevent rows matching a condition from being selected
+<DataTable
+  selectableRows
+  selectableRowDisabled={row => row.status === 'On Leave'}
+/>`} />
+
+  <h2>Pre-select rows</h2>
+  <CodeBlock code={`<DataTable
+  selectableRows
+  selectableRowSelected={row => row.status === 'Active'}
+/>`} />
+
+  <h2>onSelectedRowsChange</h2>
+  <p>The callback receives <code>{`{ allSelected, selectedCount, selectedRows }`}</code>.</p>
+  <CodeBlock code={`<DataTable
+  selectableRows
+  onSelectedRowsChange={({ selectedCount, selectedRows }) => {
+    console.log(\`\${selectedCount} rows selected\`, selectedRows);
+  }}
+/>`} />
+
+  <h2>Clearing selection (imperative API)</h2>
+  <p>
+    Use a <code>ref</code> to call <code>clearSelectedRows()</code>. This is the recommended approach
+    that avoids the toggle-boolean bug present in older versions.
+  </p>
+  <CodeBlock code={`const tableRef = useRef<DataTableHandle>(null);
+tableRef.current?.clearSelectedRows();`} />
+
+  <h2>Highlight selected rows</h2>
+  <p>
+    Add <code>selectableRowsHighlight</code> to apply the theme's selected-row background
+    to checked rows, giving an obvious visual confirmation of selection state.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows selectableRowsHighlight />`} />
+
+  <h2>Hide "select all" checkbox</h2>
+  <p>
+    Pass <code>selectableRowsNoSelectAll</code> to remove the header checkbox entirely.
+    Useful when you want per-row selection without a bulk-select affordance.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows selectableRowsNoSelectAll />`} />
+
+  <h2>Select only visible rows</h2>
+  <p>
+    When pagination is enabled, <code>selectableRowsVisibleOnly</code> makes the "select all"
+    checkbox operate only on the current page rather than the full dataset.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows pagination selectableRowsVisibleOnly />`} />
+
+  <h2>Custom checkbox component</h2>
+  <p>
+    Replace the built-in checkbox with your own component via <code>selectableRowsComponent</code>.
+    Extra props can be forwarded through <code>selectableRowsComponentProps</code>.
+  </p>
+  <CodeBlock code={`import Checkbox from '@mui/material/Checkbox';
+
+<DataTable
+  selectableRows
+  selectableRowsComponent={Checkbox}
+  selectableRowsComponentProps={{ color: 'primary' }}
+/>`} />
+</DocsLayout>

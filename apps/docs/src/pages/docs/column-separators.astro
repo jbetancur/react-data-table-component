@@ -1,0 +1,59 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
+---
+
+<DocsLayout title="Column separators | react-data-table-component">
+  <h1>Column separators</h1>
+
+  <p>
+    Two props control vertical separators between columns: <code>columnSeparator</code> for body
+    row cells and <code>headerSeparator</code> for column header cells. Both accept the same values.
+  </p>
+
+  <Demo
+    title="Column separators"
+    description="Toggle separator modes independently for headers and body rows."
+    code={`import DataTable from 'react-data-table-component';
+
+// Default: header separators on (subtle), no body separators
+<DataTable columns={columns} data={data} />
+
+// Body separators — subtle inset (60% height, centred)
+<DataTable columns={columns} data={data} columnSeparator />
+
+// Body separators — full-height
+<DataTable columns={columns} data={data} columnSeparator="full" />
+
+// No header separators
+<DataTable columns={columns} data={data} headerSeparator={false} />
+
+// Full-height header separators + subtle body separators
+<DataTable columns={columns} data={data} headerSeparator="full" columnSeparator />`}
+  >
+    <ColumnSeparatorsDemo client:load />
+  </Demo>
+
+  <h2>Values</h2>
+
+  <p>Both props accept the same set of values:</p>
+
+  <table>
+    <thead>
+      <tr><th>Value</th><th>Effect</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>false</code></td><td>No separators</td></tr>
+      <tr><td><code>true</code> / <code>"subtle"</code></td><td>60%-height inset line, centred vertically</td></tr>
+      <tr><td><code>"full"</code></td><td>Full-height line using the theme's divider colour</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Defaults</h2>
+
+  <ul>
+    <li><code>headerSeparator</code> — defaults to <code>true</code> (subtle inset line)</li>
+    <li><code>columnSeparator</code> — defaults to <code>false</code> (no body separators)</li>
+  </ul>
+</DocsLayout>

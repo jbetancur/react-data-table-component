@@ -1,0 +1,115 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import AnimationsDemo from '../../components/demos/AnimationsDemo.tsx';
+---
+
+<DocsLayout title="Animations | react-data-table-component">
+  <h1>Animations</h1>
+
+  <p>
+    Set <code>animateRows</code> to enable two animations:
+    a staggered entrance for rows on mount, and a smooth transition when rows reorder after a sort.
+  </p>
+
+  <Demo
+    title="Row animations"
+    description="Toggle animateRows on/off and use Replay to re-trigger the entrance animation. Click a column header to see the sort-reorder animation."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee { id: number; name: string; department: string; salary: number }
+
+const data: Employee[] = [
+  { id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000 },
+  { id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000 },
+  { id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000 },
+  { id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000 },
+  { id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000 },
+  { id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000 },
+];
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+];
+
+export default function App() {
+  const [animate, setAnimate] = useState(true);
+  const [key, setKey] = useState(0);
+
+  return (
+    <div>
+      <label>
+        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} />
+        {' '}animateRows
+      </label>
+      <button onClick={() => setKey(k => k + 1)}>Replay entrance animation</button>
+      <DataTable
+        key={key}
+        columns={columns}
+        data={data}
+        animateRows={animate}
+        highlightOnHover
+      />
+    </div>
+  );
+}`}
+  >
+    <AnimationsDemo client:load />
+  </Demo>
+
+  <h2>What animates</h2>
+
+  <table>
+    <thead>
+      <tr><th>Event</th><th>Animation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Initial mount</td><td>Rows fade and slide up with a staggered delay (0–200 ms)</td></tr>
+      <tr><td>Sort change</td><td>Rows transition smoothly to their new positions</td></tr>
+      <tr><td>Expand toggle</td><td>Expander row fades in/out</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Accessibility: reduced motion</h2>
+
+  <p>
+    All animations respect <code>prefers-reduced-motion</code>. When the user has
+    requested reduced motion in their OS settings, animations are disabled automatically
+    via a CSS media query. No JavaScript check required.
+  </p>
+
+  <CodeBlock code={`/* DataTable.css (simplified) */
+@media (prefers-reduced-motion: reduce) {
+  .rdt_TableRow,
+  .rdt_ExpanderRow {
+    animation: none !important;
+    transition: none !important;
+  }
+}`} lang="css" />
+
+  <h2>Combining with other features</h2>
+
+  <p>
+    <code>animateRows</code> works with pagination, server-side data, selection, and expandable rows.
+    Row animations fire whenever the <code>data</code> prop changes, so they also trigger after
+    a server-side page change.
+  </p>
+
+  <h2>Custom animation timing</h2>
+
+  <p>
+    The stagger delay and duration are controlled by CSS custom properties.
+    Override them per-theme or globally:
+  </p>
+
+  <CodeBlock code={`/* your app's CSS */
+.rdt_Table {
+  --rdt-row-anim-duration: 300ms;
+  --rdt-row-anim-stagger:  20ms;
+}`} lang="css" />
+</DocsLayout>

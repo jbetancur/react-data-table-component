@@ -1,0 +1,589 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import PaginationDemo from '../../components/demos/PaginationDemo.tsx';
+import ServerSidePaginationDemo from '../../components/demos/ServerSidePaginationDemo.tsx';
+import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
+import ServerSideDemo from '../../components/demos/ServerSideDemo.tsx';
+---
+
+<DocsLayout title="Pagination | react-data-table-component">
+  <h1>Pagination</h1>
+
+  <p>
+    Add <code>pagination</code> to render a built-in pagination bar below the table.
+    All state is managed internally — no extra props needed for basic usage.
+  </p>
+
+  <Demo
+    title="Built-in pagination"
+    description="30 rows. Use the buttons above to change the initial rows-per-page, or use the built-in selector inside the table."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const data = Array.from({ length: 30 }, (_, i) => ({
+  id: i + 1,
+  name: ['Aria Chen','Marcus Webb','Priya Kapoor','Jordan Ellis','Sam Rivera',
+         'Taylor Brooks','Casey Morgan','Alex Kim','Morgan Lee','Drew Park'][i % 10],
+  department: ['Engineering','Product','Design','Analytics','Sales','HR'][i % 6],
+  salary: 80000 + i * 3700,
+  status: ['Active','Remote','On Leave','Contractor'][i % 4],
+}));
+
+const columns: TableColumn<typeof data[0]>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department, sortable: true },
+  { name: 'Salary',     selector: r => r.salary,     sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  { name: 'Status',     selector: r => r.status },
+];
+
+export default function App() {
+  const [perPage, setPerPage] = useState(5);
+  return (
+    <div>
+      <div>
+        {[5, 10, 15].map(n => (
+          <button key={n} onClick={() => setPerPage(n)}>{n}</button>
+        ))}
+      </div>
+      {/* key remounts the table so paginationPerPage takes effect */}
+      <DataTable
+        key={perPage}
+        columns={columns}
+        data={data}
+        pagination
+        paginationPerPage={perPage}
+        paginationRowsPerPageOptions={[5, 10, 15, 30]}
+        highlightOnHover
+        striped
+      />
+    </div>
+  );
+}`}
+  >
+    <PaginationDemo client:load />
+  </Demo>
+
+  <h2>Server-side pagination</h2>
+  <p>
+    When your dataset is too large to load at once, delegate pagination to the server.
+    Set <code>paginationServer</code> and provide <code>paginationTotalRows</code> so the
+    pagination bar knows how many pages exist. Respond to <code>onChangePage</code> and
+    <code>onChangeRowsPerPage</code> to fetch each page.
+  </p>
+
+  <Demo
+    title="Server-side pagination"
+    description="100-row simulated dataset with 300 ms fake network latency. Change pages or the rows-per-page selector to trigger a new fetch."
+    code={`import { useState, useEffect, useCallback } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee { id: number; name: string; department: string; salary: number; status: string; }
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name },
+  { name: 'Department', selector: r => r.department },
+  { name: 'Salary',     selector: r => r.salary, right: true,
+    format: r => \`$\${r.salary.toLocaleString()}\` },
+  { name: 'Status',     selector: r => r.status },
+];
+
+export default function App() {
+  const [data, setData]       = useState<Employee[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [totalRows, setTotal] = useState(0);
+  const [perPage, setPerPage] = useState(10);
+
+  const load = useCallback(async (page: number, pp: number) => {
+    setLoading(true);
+    const res = await fetch(\`/api/employees?page=\${page}&limit=\${pp}\`);
+    const result = await res.json();
+    setData(result.rows);
+    setTotal(result.total);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load(1, perPage); }, []);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      progressPending={loading}
+      pagination
+      paginationServer
+      paginationTotalRows={totalRows}
+      onChangePage={page => load(page, perPage)}
+      onChangeRowsPerPage={(pp, page) => { setPerPage(pp); load(page, pp); }}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <ServerSidePaginationDemo client:load />
+  </Demo>
+
+  <h2>Callback contract</h2>
+  <p>
+    When using server-side mode, the three callbacks are <strong>mutually exclusive</strong> —
+    only one fires per user interaction, never two at once:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User action</th>
+        <th>Callback that fires</th>
+        <th>What you should do</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Click a sortable column header</td>
+        <td><code>onSort(column, direction, rows)</code></td>
+        <td>Fetch <strong>page 1</strong> with the new sort. Update your local sort state and reset your local page to&nbsp;1.</td>
+      </tr>
+      <tr>
+        <td>Click a page number / prev / next</td>
+        <td><code>onChangePage(page, totalRows)</code></td>
+        <td>Fetch the requested page with current sort params.</td>
+      </tr>
+      <tr>
+        <td>Change the rows-per-page selector</td>
+        <td><code>onChangeRowsPerPage(newPerPage, currentPage)</code></td>
+        <td>Fetch the recalculated page at the new page size with current sort params.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Sorting always resets to page 1.</strong> When the user sorts while on page 3, the
+    pagination bar jumps back to page 1 automatically and <code>onChangePage</code> is
+    <em>not</em> called. <code>onSort</code> is the sole callback, and it is your responsibility
+    to fetch from page 1 and keep your own page state in sync:
+  </p>
+
+  <CodeBlock code={`function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
+  const field = col.sortField ?? String(col.id);
+  setSortField(field);
+  setSortDir(dir);
+  setPage(1);   // keep local state in sync with the UI reset
+  fetchData({ page: 1, perPage, sortField: field, sortDir: dir });
+}`} />
+
+  <h2>Combined: server-side sorting and pagination</h2>
+  <p>
+    Wire all three handlers together. Because sorting resets to page 1 and suppresses
+    <code>onChangePage</code>, you only need one fetch per user action.
+  </p>
+
+  <Demo
+    title="Server-side sort + pagination"
+    description="150-row simulated dataset. Sort any column, then page through the results — each action triggers exactly one fetch (300 ms latency)."
+    code={`import { useState, useEffect, useCallback } from 'react';
+import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
+
+export default function App() {
+  const [data, setData]           = useState<Employee[]>([]);
+  const [loading, setLoading]     = useState(true);
+  const [totalRows, setTotal]     = useState(0);
+  const [page, setPage]           = useState(1);
+  const [perPage, setPerPage]     = useState(10);
+  const [sortField, setSortField] = useState('name');
+  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
+  const [resetPage, setResetPage] = useState(false);
+
+  const load = useCallback(async (params) => {
+    setLoading(true);
+    const result = await fetchFromServer(params);
+    setData(result.rows); setTotal(result.total);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load({ page, perPage, sortField, sortDir }); }, []);
+
+  function handlePageChange(p: number) {
+    setPage(p);
+    load({ page: p, perPage, sortField, sortDir });
+  }
+
+  function handlePerPageChange(pp: number, p: number) {
+    setPerPage(pp);
+    load({ page: p, perPage: pp, sortField, sortDir });
+  }
+
+  function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
+    const field = col.sortField ?? String(col.id);
+    setSortField(field); setSortDir(dir);
+    setPage(1); setResetPage(prev => !prev);
+    load({ page: 1, perPage, sortField: field, sortDir: dir });
+  }
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      progressPending={loading}
+      pagination
+      paginationServer
+      paginationTotalRows={totalRows}
+      paginationResetDefaultPage={resetPage}
+      onChangePage={handlePageChange}
+      onChangeRowsPerPage={handlePerPageChange}
+      sortServer
+      onSort={handleSort}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <ServerSideSortPaginationDemo client:load />
+  </Demo>
+
+  <h2>Full example: search, sort, and pagination</h2>
+  <p>
+    A realistic pattern with an external search input. Searching is an external state change —
+    it doesn't go through any of the table's callbacks, so toggle
+    <code>paginationResetDefaultPage</code> yourself to reset the bar to page 1.
+  </p>
+
+  <Demo
+    title="Search + sort + pagination"
+    description="200-row simulated dataset with 350 ms fake network latency. Search, sort, and page — each action triggers exactly one fetch."
+    code={`import { useState, useEffect, useCallback } from 'react';
+import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
+
+export default function App() {
+  const [data, setData]           = useState<Employee[]>([]);
+  const [loading, setLoading]     = useState(false);
+  const [totalRows, setTotal]     = useState(0);
+  const [page, setPage]           = useState(1);
+  const [perPage, setPerPage]     = useState(10);
+  const [sortField, setSortField] = useState('name');
+  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
+  const [search, setSearch]       = useState('');
+  const [resetPage, setResetPage] = useState(false);
+
+  const load = useCallback(async (params) => {
+    setLoading(true);
+    const qs = new URLSearchParams(params);
+    const res = await fetch(\`/api/employees?\${qs}\`);
+    const json = await res.json();
+    setData(json.rows); setTotal(json.total);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    load({ page, perPage, sort: sortField, dir: sortDir, q: search });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function handlePageChange(p: number) {
+    setPage(p);
+    load({ page: p, perPage, sort: sortField, dir: sortDir, q: search });
+  }
+
+  function handlePerPageChange(pp: number, p: number) {
+    setPerPage(pp);
+    load({ page: p, perPage: pp, sort: sortField, dir: sortDir, q: search });
+  }
+
+  function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
+    const field = col.sortField ?? 'name';
+    setSortField(field); setSortDir(dir);
+    setPage(1);
+    load({ page: 1, perPage, sort: field, dir, q: search });
+  }
+
+  function handleSearch(q: string) {
+    setSearch(q);
+    setPage(1);
+    setResetPage(prev => !prev);
+    load({ page: 1, perPage, sort: sortField, dir: sortDir, q });
+  }
+
+  return (
+    <div>
+      <input
+        type="search"
+        placeholder="Search…"
+        value={search}
+        onChange={e => handleSearch(e.target.value)}
+      />
+      <DataTable
+        columns={columns}
+        data={data}
+        progressPending={loading}
+        pagination
+        paginationServer
+        paginationTotalRows={totalRows}
+        paginationResetDefaultPage={resetPage}
+        onChangePage={handlePageChange}
+        onChangeRowsPerPage={handlePerPageChange}
+        sortServer
+        onSort={handleSort}
+        highlightOnHover
+      />
+    </div>
+  );
+}`}
+  >
+    <ServerSideDemo client:load />
+  </Demo>
+
+  <h2>With React Query</h2>
+  <p>
+    Let <a href="https://tanstack.com/query" target="_blank" rel="noopener">TanStack Query</a>
+    own the fetch — update state in the callbacks and the query key change triggers a refetch
+    automatically. <code>placeholderData: keepPreviousData</code> prevents an empty flash
+    between page transitions.
+  </p>
+
+  <CodeBlock code={`import { useState } from 'react';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
+
+export default function App() {
+  const [page, setPage]           = useState(1);
+  const [perPage, setPerPage]     = useState(10);
+  const [sortField, setSortField] = useState('name');
+  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['employees', page, perPage, sortField, sortDir],
+    queryFn: () =>
+      fetch(\`/api/employees?page=\${page}&limit=\${perPage}&sort=\${sortField}&dir=\${sortDir}\`)
+        .then(r => r.json()),
+    placeholderData: keepPreviousData,
+  });
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data?.rows ?? []}
+      progressPending={isLoading}
+      pagination
+      paginationServer
+      paginationTotalRows={data?.total ?? 0}
+      onChangePage={setPage}
+      onChangeRowsPerPage={(pp) => { setPerPage(pp); setPage(1); }}
+      sortServer
+      onSort={(col, dir) => {
+        setSortField(col.sortField ?? String(col.id));
+        setSortDir(dir);
+        setPage(1);
+      }}
+    />
+  );
+}`} lang="tsx" />
+
+  <h2>With SWR</h2>
+
+  <CodeBlock code={`import { useState } from 'react';
+import useSWR from 'swr';
+import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
+
+const fetcher = (url: string) => fetch(url).then(r => r.json());
+
+export default function App() {
+  const [page, setPage]       = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [sort, setSort]       = useState({ field: 'name', dir: SortOrder.ASC });
+
+  const url = \`/api/employees?page=\${page}&limit=\${perPage}&sort=\${sort.field}&dir=\${sort.dir}\`;
+  const { data, isLoading } = useSWR(url, fetcher);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data?.rows ?? []}
+      progressPending={isLoading}
+      pagination
+      paginationServer
+      paginationTotalRows={data?.total ?? 0}
+      onChangePage={setPage}
+      onChangeRowsPerPage={(pp) => { setPerPage(pp); setPage(1); }}
+      sortServer
+      onSort={(col, dir) => {
+        setSort({ field: col.sortField ?? String(col.id), dir });
+        setPage(1);
+      }}
+    />
+  );
+}`} lang="tsx" />
+
+  <h2>Resetting to page 1</h2>
+  <p>
+    For external state changes (search, filter) that aren't triggered by a table callback,
+    toggle <code>paginationResetDefaultPage</code> to reset the bar to page 1. Any change to
+    this boolean — regardless of direction — triggers the reset.
+  </p>
+
+  <CodeBlock code={`const [resetPage, setResetPage] = useState(false);
+
+function handleSearch(q: string) {
+  setSearch(q);
+  setPage(1);
+  setResetPage(prev => !prev);
+  fetchData({ page: 1, perPage, sortField, sortDir, q });
+}`} />
+
+  <h2>Persisting selection across pages</h2>
+  <p>
+    By default, navigating between pages clears selected rows.
+    Use <code>paginationServerOptions</code> to retain selections across page changes and sorts:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  pagination
+  paginationServer
+  paginationServerOptions={{
+    persistSelectedOnPageChange: true,
+    persistSelectedOnSort: true,
+  }}
+/>`} />
+
+  <h2>Custom pagination component</h2>
+  <p>
+    Replace the built-in pagination bar entirely by passing a component to
+    <code>paginationComponent</code>. It receives <code>rowsPerPage</code>,
+    <code>rowCount</code>, <code>currentPage</code>, <code>onChangePage</code>, and
+    <code>onChangeRowsPerPage</code> as props.
+  </p>
+
+  <CodeBlock code={`import { type PaginationComponentProps } from 'react-data-table-component';
+
+function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: PaginationComponentProps) {
+  const pages = Math.ceil(rowCount / rowsPerPage);
+  return (
+    <div>
+      <button disabled={currentPage === 1} onClick={() => onChangePage(currentPage - 1, rowCount)}>
+        ‹ Prev
+      </button>
+      <span>Page {currentPage} of {pages}</span>
+      <button disabled={currentPage === pages} onClick={() => onChangePage(currentPage + 1, rowCount)}>
+        Next ›
+      </button>
+    </div>
+  );
+}
+
+<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationComponent={MyPagination}
+/>`} />
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pagination</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Enable the built-in pagination bar.</td>
+      </tr>
+      <tr>
+        <td><code>paginationPerPage</code></td>
+        <td><code>number</code></td>
+        <td><code>10</code></td>
+        <td>Initial number of rows per page.</td>
+      </tr>
+      <tr>
+        <td><code>paginationDefaultPage</code></td>
+        <td><code>number</code></td>
+        <td><code>1</code></td>
+        <td>Initial page number.</td>
+      </tr>
+      <tr>
+        <td><code>paginationRowsPerPageOptions</code></td>
+        <td><code>number[]</code></td>
+        <td><code>[10, 25, 50, 100]</code></td>
+        <td>Options shown in the rows-per-page dropdown.</td>
+      </tr>
+      <tr>
+        <td><code>paginationServer</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Delegate pagination to the server. Use with <code>paginationTotalRows</code> and the change callbacks.</td>
+      </tr>
+      <tr>
+        <td><code>paginationTotalRows</code></td>
+        <td><code>number</code></td>
+        <td><code>0</code></td>
+        <td>Total row count across all pages (server-side only). Used to calculate total pages.</td>
+      </tr>
+      <tr>
+        <td><code>paginationResetDefaultPage</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Toggle this value to reset the pagination bar to page 1 (e.g. after a search).</td>
+      </tr>
+      <tr>
+        <td><code>paginationServerOptions</code></td>
+        <td><code>&#123; persistSelectedOnPageChange?, persistSelectedOnSort? &#125;</code></td>
+        <td>—</td>
+        <td>Server-side selection persistence options.</td>
+      </tr>
+      <tr>
+        <td><code>paginationComponent</code></td>
+        <td><code>ComponentType&lt;PaginationComponentProps&gt;</code></td>
+        <td>—</td>
+        <td>Replaces the built-in pagination bar with a custom component.</td>
+      </tr>
+      <tr>
+        <td><code>paginationComponentOptions</code></td>
+        <td><code>PaginationOptions</code></td>
+        <td>—</td>
+        <td>Options forwarded to the default pagination component (label customisation, etc.).</td>
+      </tr>
+      <tr>
+        <td><code>paginationIconFirstPage</code></td>
+        <td><code>ReactNode</code></td>
+        <td>—</td>
+        <td>Icon for the "first page" button.</td>
+      </tr>
+      <tr>
+        <td><code>paginationIconLastPage</code></td>
+        <td><code>ReactNode</code></td>
+        <td>—</td>
+        <td>Icon for the "last page" button.</td>
+      </tr>
+      <tr>
+        <td><code>paginationIconNext</code></td>
+        <td><code>ReactNode</code></td>
+        <td>—</td>
+        <td>Icon for the "next page" button.</td>
+      </tr>
+      <tr>
+        <td><code>paginationIconPrevious</code></td>
+        <td><code>ReactNode</code></td>
+        <td>—</td>
+        <td>Icon for the "previous page" button.</td>
+      </tr>
+      <tr>
+        <td><code>onChangePage</code></td>
+        <td><code>(page: number, totalRows: number) =&gt; void</code></td>
+        <td>—</td>
+        <td>Called when the user navigates to a different page.</td>
+      </tr>
+      <tr>
+        <td><code>onChangeRowsPerPage</code></td>
+        <td><code>(currentRowsPerPage: number, currentPage: number) =&gt; void</code></td>
+        <td>—</td>
+        <td>Called when the user changes the rows-per-page selection.</td>
+      </tr>
+    </tbody>
+  </table>
+</DocsLayout>

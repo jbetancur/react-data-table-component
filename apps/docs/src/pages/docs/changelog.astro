@@ -1,0 +1,84 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="Changelog | react-data-table-component">
+  <h1>Changelog</h1>
+
+  <p>
+    A summary of notable changes per release. For the full commit history, see the
+    <a href="https://github.com/jbetancur/react-data-table-component/commits/master" target="_blank" rel="noreferrer">repository on GitHub</a>.
+  </p>
+
+  <h2>v8 (current)</h2>
+
+  <p>
+    v8 is a full rewrite around a headless hook architecture. Every major feature is
+    composable and usable independently of <code>&lt;DataTable&gt;</code>. See
+    <a href="/docs/whats-new">what's new in v8</a> for narrative coverage and the
+    <a href="/docs/migration">migration guide</a> for breaking changes from v7.
+  </p>
+
+  <h3>Headline features</h3>
+  <ul>
+    <li>Column pinning (<code>pinned: 'left' | 'right'</code>) with cascading sticky offsets, custom pinned scrollbar, and full compatibility with resize/reorder/fixed-header.</li>
+    <li>Inline cell editing (<code>editable</code> + <code>onCellEdit</code>).</li>
+    <li>Per-column filtering with structured operators (<code>filterable</code>, <code>filterType</code>, controlled <code>filterValues</code>).</li>
+    <li>Column groups (<code>columnGroups</code>) — span labels across adjacent columns. Drag-to-reorder entire groups as a unit.</li>
+    <li>Drag-to-reorder columns and column groups (<code>reorder: true</code>, <code>onColumnOrderChange</code>).</li>
+    <li>Column visibility hook (<code>useColumnVisibility</code>) for show/hide pickers.</li>
+    <li>Resizable columns (<code>resizable</code>) — handle straddles the column boundary, 6 px hit area, 40 px hard floor.</li>
+    <li>Column separators — <code>columnSeparator</code> and <code>headerSeparator</code> with <code>"subtle"</code> / <code>"full"</code> variants.</li>
+    <li>Row animations (<code>animateRows</code>) — staggered entrance + sort transitions, respects <code>prefers-reduced-motion</code>.</li>
+    <li>Improved loading state — skeleton on first load, dimmed overlay + spinner on refetch.</li>
+    <li>Imperative ref API — <code>ref.current?.clearSelectedRows()</code>. The <code>clearSelectedRows</code> prop is deprecated.</li>
+    <li>New row events — <code>onRowMiddleClicked</code>, <code>onRowMouseEnter</code>, <code>onRowMouseLeave</code>.</li>
+    <li>Dark mode support via <code>colorMode</code> ("light", "dark", "auto").</li>
+    <li>Headless hooks exported: <code>useColumns</code>, <code>useTableState</code>, <code>useTableData</code>, <code>useColumnFilter</code>, <code>useColumnVisibility</code>.</li>
+    <li>New theme: <code>crisp</code>. Refactored theme system around CSS variables (<code>createTheme</code>).</li>
+  </ul>
+
+  <h3>Architecture changes</h3>
+  <ul>
+    <li>Replaced styled-components with CSS variables and a single stylesheet. No more runtime CSS-in-JS — smaller bundle, faster first render.</li>
+    <li>All visual defaults live in <code>DataTable.css</code> as <code>--rdt-*</code> custom properties.</li>
+    <li>Row separators are drawn at the cell level (<code>.rdt_cellBase</code>) instead of the row container — fixes a long-standing issue where the separator scrolled with content past pinned columns.</li>
+    <li>Pinned cell metadata centralized in <code>getPinnedCellMeta</code> so the header (<code>TableCol</code>) and body (<code>TableCell</code>) compute pin styles from a single source.</li>
+    <li>System column width (checkbox/expander) is now controlled by <code>--rdt-system-col-width</code> — themes can override it and pinning offsets stay aligned.</li>
+  </ul>
+
+  <h3>Quality of life</h3>
+  <ul>
+    <li>Horizontal overscroll bounce is contained to the table — no more whole-page rubber-band at scroll edges.</li>
+    <li>Resize handle visual indicator is a 2 px center line that aligns with the separator instead of a translucent block offset to one side.</li>
+    <li>Pinning silently strips when used with <code>columnGroups</code> and warns once in dev — no more confusing layout glitches.</li>
+    <li>426 tests in CI, including pin-meta edge cases and grid template column rendering.</li>
+  </ul>
+
+  <h3>Breaking changes from v7</h3>
+  <ul>
+    <li>v8 ships its own CSS — no <code>import 'react-data-table-component/dist/index.css'</code> required, and your existing styled-components overrides will not apply. Use the new theme system or <code>customStyles</code>.</li>
+    <li><code>clearSelectedRows</code> prop deprecated in favor of <code>ref.current.clearSelectedRows()</code>.</li>
+    <li>Several renamed props and removed legacy options — see <a href="/docs/migration">migration guide</a>.</li>
+  </ul>
+
+  <h2>v7 (legacy)</h2>
+
+  <p>
+    v7 is no longer actively developed. Docs remain at
+    <a href="https://v7.reactdatatable.com" target="_blank" rel="noreferrer">v7.reactdatatable.com</a>.
+    The major v7 milestones, for context:
+  </p>
+
+  <ul>
+    <li>Built on styled-components.</li>
+    <li>Class-component themes.</li>
+    <li>No column pinning, no column groups, no inline editing, no column filtering API.</li>
+  </ul>
+
+  <p>
+    If you're upgrading, the <a href="/docs/migration">migration guide</a> covers the
+    breaking changes and rename mappings.
+  </p>
+</DocsLayout>

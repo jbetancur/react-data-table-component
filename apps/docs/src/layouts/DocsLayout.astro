@@ -1,0 +1,280 @@
+---
+import Layout from './Layout.astro';
+import Demo from '../components/Demo.astro';
+import HeadlessDemo from '../components/demos/HeadlessDemo.tsx';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const nav = [
+  {
+    group: 'Introduction',
+    links: [
+      { label: 'Getting started', href: '/docs/getting-started' },
+      { label: 'Installation', href: '/docs/installation' },
+      { label: "What's new in v8", href: '/docs/whats-new' },
+    ],
+  },
+  {
+    group: 'Columns',
+    links: [
+      { label: 'Overview', href: '/docs/columns' },
+      { label: 'Cell rendering', href: '/docs/cells' },
+      { label: 'Column groups', href: '/docs/column-groups' },
+      { label: 'Column visibility', href: '/docs/column-visibility' },
+      { label: 'Column reordering', href: '/docs/column-reorder' },
+      { label: 'Resizable columns', href: '/docs/resizable' },
+      { label: 'Column pinning', href: '/docs/column-pinning' },
+      { label: 'Column separators', href: '/docs/column-separators' },
+      { label: 'Column filtering', href: '/docs/filtering' },
+      { label: 'Sorting', href: '/docs/sorting' },
+    ],
+  },
+  {
+    group: 'Editing',
+    links: [
+      { label: 'Inline editing', href: '/docs/inline-editing' },
+    ],
+  },
+  {
+    group: 'Rows',
+    links: [
+      { label: 'Row interactions', href: '/docs/row-interactions' },
+      { label: 'Row selection', href: '/docs/selection' },
+      { label: 'Row pinning', href: '/docs/row-pinning' },
+      { label: 'Expandable rows', href: '/docs/expandable' },
+      { label: 'Conditional styles', href: '/docs/conditional-styles' },
+      { label: 'Fixed header', href: '/docs/fixed-header' },
+      { label: 'Pagination', href: '/docs/pagination' },
+      { label: 'Loading state', href: '/docs/loading' },
+    ],
+  },
+  {
+    group: 'Interactivity',
+    links: [
+      { label: 'Animations', href: '/docs/animations' },
+    ],
+  },
+  {
+    group: 'Styling',
+    links: [
+      { label: 'Themes', href: '/docs/themes' },
+      { label: 'Custom styles', href: '/docs/custom-styles' },
+    ],
+  },
+  {
+    group: 'Advanced',
+    links: [
+      { label: 'Headless hooks', href: '/docs/headless' },
+      { label: 'TypeScript', href: '/docs/typescript' },
+      { label: 'Performance', href: '/docs/performance' },
+      { label: 'Recipes', href: '/docs/recipes' },
+      { label: 'Accessibility', href: '/docs/accessibility' },
+      { label: 'RTL support', href: '/docs/rtl' },
+    ],
+  },
+  {
+    group: 'Reference',
+    links: [
+      { label: 'API reference', href: '/docs/api' },
+      { label: 'Migration guide', href: '/docs/migration' },
+      { label: 'Changelog', href: '/docs/changelog' },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname;
+
+// Flatten nav to a single ordered list for prev/next
+const allLinks = nav.flatMap(({ links }) => links);
+const currentIndex = allLinks.findIndex(({ href }) => currentPath === href);
+const prevLink = currentIndex > 0 ? allLinks[currentIndex - 1] : null;
+const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1] : null;
+---
+
+<Layout title={title} description={description}>
+  <div class="max-w-7xl mx-auto px-6 flex gap-12 py-10">
+    <!-- Sidebar -->
+    <aside id="docs-sidebar" class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto">
+      <nav class="space-y-6 text-sm pb-10">
+        <!-- Version switcher -->
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-medium text-gray-700 bg-brand-50 text-brand-700 border border-brand-100 px-2 py-0.5 rounded-full">v8 (current)</span>
+          <a
+            href="https://v7.reactdatatable.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+          >v7 docs ↗</a>
+        </div>
+        <a
+          href="https://github.com/sponsors/jbetancur"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-pink-500 transition-colors"
+        >
+          <span>♥</span> Sponsor this project
+        </a>
+
+        {nav.map(({ group, links }) => (
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">{group}</p>
+            <ul class="space-y-1">
+              {links.map(({ label, href }) => (
+                <li>
+                  <a
+                    href={href}
+                    class={`block px-2 py-1 rounded-md ${
+                      currentPath === href
+                        ? 'bg-brand-50 text-brand-700 font-medium'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <article class="flex-1 min-w-0 max-w-none">
+      <slot />
+      {currentPath.endsWith('/headless') && (
+        <Demo
+          title="Live example — all four hooks"
+          description="A custom-markup table built entirely from useColumns, useTableState, useTableData, and useColumnFilter. No DataTable component. Sort by clicking headers, filter using the inputs, and paginate below."
+          code={`import {
+  useColumns, useTableState, useTableData, useColumnFilter,
+  type TableColumn, SortOrder,
+} from 'react-data-table-component';
+
+const rawColumns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',       selector: r => r.name,       sortable: true },
+  { id: 'dept',   name: 'Department', selector: r => r.department, sortable: true },
+  { id: 'salary', name: 'Salary',     selector: r => r.salary,     sortable: true },
+];
+
+function HeadlessTable({ data }: { data: Employee[] }) {
+  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(
+    rawColumns, () => {}, 'name', true,
+  );
+  const { tableState, handleSort, handleChangePage, handleChangeRowsPerPage } = useTableState({
+    data, keyField: 'id',
+    defaultSortColumn, defaultSortDirection,
+    pagination: true, paginationDefaultPage: 1, paginationPerPage: 5,
+    paginationServer: false, paginationServerOptions: {}, paginationTotalRows: 0,
+    paginationResetDefaultPage: false, selectableRowsSingle: false,
+    selectableRowsVisibleOnly: false, selectableRowSelected: null, clearSelectedRows: false,
+    onSelectedRowsChange: () => {}, onSort: () => {}, onChangePage: () => {}, onChangeRowsPerPage: () => {},
+  });
+  const { selectedColumn, sortDirection, currentPage, rowsPerPage } = tableState;
+  const { sortedData, tableRows } = useTableData({
+    data, columns: tableColumns, selectedColumn, sortDirection,
+    currentPage, rowsPerPage, pagination: true, paginationServer: false,
+    sortServer: false, sortFunction: null, onSort: () => {},
+  });
+  const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
+  const rows = filteredData(tableRows);
+
+  return (
+    <div>
+      {/* Filter inputs — your own markup */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+        {tableColumns.map(col => (
+          <input key={col.id}
+            placeholder={\`Filter \${col.name}…\`}
+            value={filterValues[col.id!] ?? ''}
+            onChange={e => handleFilterChange(col.id!, e.target.value)}
+          />
+        ))}
+      </div>
+      {/* Table — completely custom markup */}
+      <table>
+        <thead>
+          <tr>
+            {tableColumns.map(col => (
+              <th key={col.id}
+                onClick={() => col.sortable && handleSort({
+                  type: 'SORT_CHANGE', sortColumn: col,
+                  sortDirection: selectedColumn?.id === col.id && sortDirection === SortOrder.ASC
+                    ? SortOrder.DESC : SortOrder.ASC,
+                  clearSelectedRows: false,
+                })}
+              >
+                {col.name}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(row => (
+            <tr key={row.id}>
+              {tableColumns.map(col => (
+                <td key={col.id}>{String(col.selector?.(row) ?? '')}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* Pagination — your own controls */}
+      <button onClick={() => handleChangePage(currentPage - 1)} disabled={currentPage <= 1}>‹</button>
+      <span>Page {currentPage}</span>
+      <button onClick={() => handleChangePage(currentPage + 1)}>›</button>
+    </div>
+  );
+}`}
+        >
+          <HeadlessDemo client:load />
+        </Demo>
+      )}
+
+      <!-- Prev / Next navigation -->
+      {(prevLink || nextLink) && (
+        <nav class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between gap-4 text-sm">
+          {prevLink ? (
+            <a href={prevLink.href} class="group flex items-center gap-2 text-gray-500 hover:text-brand-600 transition-colors">
+              <span class="text-lg leading-none">←</span>
+              <span>
+                <span class="block text-xs text-gray-400 group-hover:text-brand-400">Previous</span>
+                <span class="font-medium">{prevLink.label}</span>
+              </span>
+            </a>
+          ) : <span />}
+          {nextLink ? (
+            <a href={nextLink.href} class="group flex items-center gap-2 text-right text-gray-500 hover:text-brand-600 transition-colors ml-auto">
+              <span>
+                <span class="block text-xs text-gray-400 group-hover:text-brand-400">Next</span>
+                <span class="font-medium">{nextLink.label}</span>
+              </span>
+              <span class="text-lg leading-none">→</span>
+            </a>
+          ) : <span />}
+        </nav>
+      )}
+    </article>
+  </div>
+</Layout>
+
+<script>
+  const SIDEBAR_SCROLL_KEY = 'docs-sidebar-scroll';
+  const sidebar = document.getElementById('docs-sidebar');
+
+  // Restore scroll position before the browser paints to avoid flicker
+  if (sidebar) {
+    const saved = sessionStorage.getItem(SIDEBAR_SCROLL_KEY);
+    if (saved !== null) sidebar.scrollTop = parseInt(saved, 10);
+  }
+
+  // Save scroll position on every navigation away from this page
+  window.addEventListener('beforeunload', () => {
+    if (sidebar) sessionStorage.setItem(SIDEBAR_SCROLL_KEY, String(sidebar.scrollTop));
+  });
+</script>

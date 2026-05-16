@@ -1,0 +1,262 @@
+---
+import { Code } from 'astro:components';
+import Layout from '../layouts/Layout.astro';
+import LiveDemo from '../components/LiveDemo.tsx';
+---
+
+<Layout title="react-data-table-component — Working table in 10 lines">
+	<!-- Hero -->
+	<section class="max-w-7xl mx-auto px-6 pt-20 pb-16 text-center">
+		<div class="flex items-center justify-center gap-3 mb-6 flex-wrap">
+			<div
+				class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 text-xs font-medium px-3 py-1 rounded-full border border-brand-100"
+			>
+				v8.0 · No peer deps · React 18+
+			</div>
+			<a
+				href="/docs/whats-new"
+				class="inline-flex items-center gap-1 text-xs font-medium text-brand-600 hover:text-brand-700 hover:underline"
+			>
+				What's new in v8 →
+			</a>
+		</div>
+
+		<h1 class="text-5xl font-bold tracking-tight text-gray-900 max-w-3xl mx-auto leading-tight">
+			A data table that just<br />
+			<span class="text-brand-600">works out of the box</span>
+		</h1>
+
+		<p class="mt-5 text-lg text-gray-500 max-w-xl mx-auto">
+			Sorting, pagination, row selection, theming, expandable rows — all included. No boilerplate. No styling work. No
+			$999 license.
+		</p>
+
+		<div class="mt-8 flex items-center justify-center gap-4">
+			<a
+				href="/docs/getting-started"
+				class="bg-brand-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-brand-700 shadow-sm"
+			>
+				Get started →
+			</a>
+			<a
+				href="https://github.com/jbetancur/react-data-table-component"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-gray-600 px-5 py-2.5 rounded-lg font-medium hover:text-gray-900 border border-gray-200 hover:border-gray-300"
+			>
+				GitHub
+			</a>
+		</div>
+
+		<!-- Install snippet -->
+		<div class="mt-8 inline-block bg-gray-950 text-gray-100 rounded-lg px-5 py-3 font-mono text-sm">
+			<span class="text-gray-500">$</span> npm install react-data-table-component
+		</div>
+	</section>
+
+	<!-- Live demo -->
+	<section class="max-w-5xl mx-auto px-6 pb-20">
+		<div class="text-center mb-6">
+			<h2 class="text-xl font-semibold text-gray-700">Try it live — switch themes, toggle features</h2>
+		</div>
+		<LiveDemo client:load />
+	</section>
+
+	<!-- 10-line code sample -->
+	<section class="bg-gray-950 py-20">
+		<div class="max-w-3xl mx-auto px-6">
+			<div class="text-center mb-8">
+				<h2 class="text-2xl font-bold text-white">Working table in 10 lines</h2>
+				<p class="text-gray-400 mt-2 text-sm">No imports, no config, no CSS file. Just data and columns.</p>
+			</div>
+			<Code
+				code={`import DataTable from 'react-data-table-component';
+
+const columns = [
+  { name: 'Name',   selector: row => row.name,   sortable: true },
+  { name: 'Role',   selector: row => row.role },
+  { name: 'Salary', selector: row => row.salary, right: true },
+];
+
+export default function App() {
+  return <DataTable columns={columns} data={data} pagination />;
+}`}
+				lang="tsx"
+				theme="github-dark"
+				class="rounded-xl text-sm leading-relaxed overflow-x-auto"
+			/>
+		</div>
+	</section>
+
+	<!-- Feature grid -->
+	<section class="max-w-7xl mx-auto px-6 py-20">
+		<h2 class="text-2xl font-bold text-center text-gray-900 mb-12">Everything included, nothing to configure</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+			{
+				[
+					{
+						icon: '⟨/⟩',
+						title: 'Fully typed',
+						desc: 'Generic column types inferred from your data. All props exported for easy import.',
+					},
+					{
+						icon: '🎨',
+						title: '5 built-in themes',
+						desc: 'Default, Material, Rounded, Catppuccin, AG Grid — all with full dark mode. Bring your own via createTheme().',
+					},
+					{
+						icon: '↕',
+						title: 'Sort & paginate',
+						desc: 'Client-side and server-side sorting. Configurable pagination or custom pagination components.',
+					},
+					{
+						icon: '☑',
+						title: 'Row selection',
+						desc: 'Multi-select with checkboxes. Select all, per-page, persistent across pages. Controlled via ref.',
+					},
+					{
+						icon: '▶',
+						title: 'Expandable rows',
+						desc: 'Render any component inside an expandable detail panel. Animate open/close with a single prop.',
+					},
+					{
+						icon: '⚡',
+						title: 'Animate rows',
+						desc: 'Staggered row entrance and sort-pulse animations. Respects prefers-reduced-motion.',
+					},
+					{
+						icon: '⊞',
+						title: 'Column groups',
+						desc: 'Span headers across multiple columns. Useful for financial and analytical tables.',
+					},
+					{
+						icon: '↔',
+						title: 'Resizable columns',
+						desc: 'Drag column edges to resize. Widths preserved in state, serializable for persistence.',
+					},
+					{
+						icon: '○',
+						title: 'Zero peer deps',
+						desc: 'styled-components removed in v8. CSS custom properties handle all theming at zero runtime cost.',
+					},
+				].map(({ icon, title, desc }) => (
+					<div class="border border-gray-100 rounded-xl p-5 hover:border-brand-200 hover:shadow-sm transition-all">
+						<div class="text-2xl mb-3">{icon}</div>
+						<h3 class="font-semibold text-gray-900 mb-1">{title}</h3>
+						<p class="text-sm text-gray-500">{desc}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<!-- Comparison table -->
+	<section class="bg-gray-50 py-20">
+		<div class="max-w-4xl mx-auto px-6">
+			<h2 class="text-2xl font-bold text-center text-gray-900 mb-10">How it compares</h2>
+			<div class="overflow-x-auto">
+				<table
+					class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200"
+				>
+					<thead>
+						<tr class="bg-gray-50 border-b border-gray-200">
+							<th class="text-left px-4 py-3 text-gray-600 font-medium"></th>
+							<th class="text-center px-4 py-3 text-gray-600 font-medium">TanStack Table</th>
+							<th class="text-center px-4 py-3 text-gray-600 font-medium">AG Grid Community</th>
+							<th class="text-center px-4 py-3 text-brand-700 font-semibold bg-brand-50">This library</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							[
+								['Setup effort', 'High (headless)', 'Medium', 'Low'],
+								['Styling required', 'Yes', 'No', 'No'],
+								['Built-in pagination', 'DIY', '✓', '✓'],
+								['Built-in sorting', 'DIY', '✓', '✓'],
+								['Row selection', 'DIY', '✓', '✓'],
+								['Expandable rows', 'DIY', '✗', '✓'],
+								['Zero peer deps', '✓', '✗', '✓'],
+								['Price', 'Free', 'Free', 'Free'],
+							].map(([feature, tanstack, ag, rdt], i) => (
+								<tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+									<td class="px-4 py-2.5 text-gray-700 font-medium">{feature}</td>
+									<td class="px-4 py-2.5 text-center text-gray-500">{tanstack}</td>
+									<td class="px-4 py-2.5 text-center text-gray-500">{ag}</td>
+									<td class="px-4 py-2.5 text-center text-brand-700 font-medium bg-brand-50/30">{rdt}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sponsors -->
+	<section class="max-w-4xl mx-auto px-6 py-20 text-center">
+		<h2 class="text-xl font-semibold text-gray-900 mb-2">Sponsors</h2>
+		<p class="text-sm text-gray-500 mb-8">
+			This library is maintained by one person. If your team ships products with it, consider sponsoring — it funds bug
+			fixes and keeps pace with the React ecosystem.
+		</p>
+
+		<!-- Sponsor logo slots — replace with real logos as sponsors sign on -->
+		<div class="flex flex-wrap items-center justify-center gap-6 mb-8 min-h-[64px]">
+			<a
+				href="https://github.com/sponsors/jbetancur"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="flex items-center justify-center w-40 h-16 border-2 border-dashed border-gray-200 rounded-xl text-xs text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
+			>
+				Your logo here
+			</a>
+			<a
+				href="https://github.com/sponsors/jbetancur"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="flex items-center justify-center w-40 h-16 border-2 border-dashed border-gray-200 rounded-xl text-xs text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
+			>
+				Your logo here
+			</a>
+			<a
+				href="https://github.com/sponsors/jbetancur"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="flex items-center justify-center w-40 h-16 border-2 border-dashed border-gray-200 rounded-xl text-xs text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
+			>
+				Your logo here
+			</a>
+		</div>
+
+		<div class="flex items-center justify-center gap-4">
+			<a
+				href="https://github.com/sponsors/jbetancur"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="bg-brand-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-brand-700 shadow-sm text-sm"
+			>
+				Become a sponsor
+			</a>
+			<a
+				href="/support"
+				class="text-sm text-gray-500 hover:text-gray-700 border border-gray-200 px-5 py-2 rounded-lg hover:border-gray-300"
+			>
+				View sponsorship tiers →
+			</a>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-gray-50 py-20">
+		<div class="max-w-3xl mx-auto px-6 text-center">
+			<h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to ship?</h2>
+			<p class="text-gray-500 mb-8">One install. No config. Working table in 10 lines.</p>
+			<a
+				href="/docs/getting-started"
+				class="bg-brand-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-700 shadow-sm text-lg"
+			>
+				Read the docs →
+			</a>
+		</div>
+	</section>
+</Layout>

@@ -4,41 +4,76 @@
 
 [![GitHub release](https://img.shields.io/github/release/jbetancur/react-data-table-component.svg)](https://GitHub.com/jbetancur/react-data-table-component/releases/)
 
-Creating yet another React table library came out of necessity while developing a web application for a growing startup. I discovered that while there are some great table libraries out there, some required heavy customization, were missing out of the box features such as built in sorting and pagination, or required understanding the atomic structure of html tables.
+**A simple but flexible React data table — a working table in 10 lines.** Sorting, selection, pagination, expandable rows, and theming come built-in as opt-in props. No atomic HTML table knowledge required.
 
-If you want to achieve balance with the force and want a simple but flexible table library give React Data Table Component a chance. If you require an Excel clone, then this is not the React table library you are looking for 👋
+This library lives in the middle ground between "render everything yourself" headless toolkits and full "configure-the-grid" frameworks. It's for the cases where the table is a _means_, not the product — admin panels, dashboards, internal tools, MVPs. If you need an Excel clone or a 100k-row analytics grid, there are already some great table
+libraries out there.
+
+## Quick start
+
+```tsx
+import DataTable from 'react-data-table-component';
+
+const columns = [
+  { name: 'Title', selector: row => row.title, sortable: true },
+  { name: 'Year', selector: row => row.year, sortable: true },
+  { name: 'Director', selector: row => row.director },
+];
+
+export default function Movies() {
+  return <DataTable columns={columns} data={data} pagination />;
+}
+```
 
 # Key Features
 
-- Declarative configuration
-- Built-in and configurable:
-  - Sorting
-  - Selectable Rows
-  - Expandable Rows
-  - Pagination
-- Themeable/Customizable
-- Accessibility
-- Responsive (via x-scroll/flex)
+- Sorting, row selection, expandable rows, and pagination — all opt-in props
+- Themeable via CSS variables; deeply customizable via `customStyles`
+- Accessible (`role`, `aria-sort`, `aria-selected`, keyboard navigation)
+- Responsive (x-scroll / flex)
+- TypeScript types bundled
+- SSR-safe; ships `"use client"` for Next.js App Router (import directly into a Server Component file)
+- Headless hooks exported for full markup/style control when you outgrow the defaults
 
 # Documentation Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/26e0d16d-a986-46b1-9097-1a76c10d7cad/deploy-status)](https://app.netlify.com/sites/react-data-table-component/deploys)
-
 The documentation contains information about installation, usage and contributions.
 
-https://react-data-table-component.netlify.app
+[reactdatatable.com](https://reactdatatable.com)
 
 # Supporting React Data Table Component
 
-If you would like to support the project financially, visit
-[our campaign on OpenCollective](https://opencollective.com/react-data-table-component). Your contributions help accelerate the development of React Data Table Component!
+React Data Table Component is maintained by one person and downloaded ~200k times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
 
-<a href="https://opencollective.com/react-data-table-component" target="_blank">
-	<img src="https://opencollective.com/react-data-table-component/contribute/button@2x.png?color=blue" width="250px" />
-</a>
+## Sponsor the project
+
+Sponsoring puts your company logo in front of ~200k developers a week — on the README, the docs site, and in every release. It's the right move if your team depends on this library and you want it to keep improving.
+
+| Tier | Price/month | Perk |
+| --- | --- | --- |
+| ☕ Supporter | $5 | Your name in the README supporters list |
+| 🎗 Backer | $20 | Name + link in README |
+| 🥉 Bronze | $100 | Small logo in README + docs site footer |
+| 🥈 Silver | $200 | Medium logo in README + docs site sidebar |
+| 🥇 Gold | $500 | Large logo in README + hero spot on reactdatatable.com. Limited to 3. |
+
+[![Sponsor on GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github)](https://github.com/sponsors/jbetancur)
+[![Sponsor on OpenCollective](https://img.shields.io/badge/Sponsor-OpenCollective-blue?logo=opencollective)](https://opencollective.com/react-data-table-component)
+
+## Need help?
+
+For complex integrations, performance issues, or major version upgrades, [get in touch](mailto:johnnyazee@gmail.com) to discuss one-off consulting.
+
+## Sponsors
+
+_Become a [Gold Sponsor](https://github.com/sponsors/jbetancur) and your logo goes here._
+
+## Backers
+
+Thank you to our recurring backers:
+
+- Rich Tillman
 
 # Contributors
 
-<a href="https://github.com/jbetancur/react-data-table-component/graphs/contributors">
-	<img src="https://opencollective.com/react-data-table-component/contributors.svg?width=890" />
-</a>
+[![Contributors](https://contrib.rocks/image?repo=jbetancur/react-data-table-component)](https://github.com/jbetancur/react-data-table-component/graphs/contributors)

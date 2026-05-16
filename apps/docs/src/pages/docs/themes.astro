@@ -1,0 +1,466 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ThemesDemo from '../../components/demos/ThemesDemo.tsx';
+import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
+---
+
+<DocsLayout title="Themes & Color Mode | react-data-table-component">
+  <h1>Themes &amp; Color Mode</h1>
+
+  <p>
+    The table ships with a set of built-in structural themes and a flexible theming system built
+    on CSS custom properties. Pick a named theme with the <code>theme</code> prop, brand any
+    theme with <code>createTheme()</code>, and let <code>colorMode</code> handle light/dark
+    automatically.
+  </p>
+
+  <Demo
+    title="Built-in themes"
+    description="Select a theme and color mode. Structural themes define density, spacing, and shape — colorMode controls light/dark."
+    code={`import DataTable from 'react-data-table-component';
+
+<DataTable columns={columns} data={data} />
+<DataTable columns={columns} data={data} theme="material" />
+<DataTable columns={columns} data={data} theme="crisp" colorMode="dark" />
+<DataTable columns={columns} data={data} theme="catppuccin" colorMode="system" />`}
+  >
+    <ThemesDemo client:load />
+  </Demo>
+
+  <h2>Structural themes</h2>
+  <p>
+    Structural themes define <strong>density, spacing, typography, and shape</strong>. They ship
+    with a neutral palette that adapts to light and dark mode via <code>colorMode</code>. Brand
+    them with <code>createTheme()</code> to add your own accent color:
+  </p>
+
+  <CodeBlock code={`// Apply Material Design layout with your own brand color
+createTheme('material-violet', { primary: '#6200EE' }, 'material');
+
+<DataTable columns={columns} data={data} theme="material-violet" />`} lang="tsx" />
+
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Density</th><th>Shape</th><th>Separator defaults</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>default</code></td>
+        <td>48 px rows, 16 px padding</td>
+        <td>4 px radius</td>
+        <td>Header separator on, no column separators</td>
+      </tr>
+      <tr>
+        <td><code>material</code></td>
+        <td>52 px rows, 16 px padding</td>
+        <td>4 px radius</td>
+        <td>No header or column separators (Material uses row dividers only)</td>
+      </tr>
+      <tr>
+        <td><code>rounded</code></td>
+        <td>48 px rows, 18 px padding</td>
+        <td>8 px radius, circular checkboxes</td>
+        <td>Subtle header separator</td>
+      </tr>
+      <tr>
+        <td><code>catppuccin</code></td>
+        <td>48 px rows, 16 px padding</td>
+        <td>6 px radius</td>
+        <td>Subtle header separator — Catppuccin Latte (light) / Mocha (dark)</td>
+      </tr>
+      <tr>
+        <td><code>crisp</code></td>
+        <td>42 px rows, 16 px padding</td>
+        <td>4 px radius</td>
+        <td>Subtle header separator (AG Grid Quartz)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    All themes include a <code>darkMode</code> block and respond correctly to
+    <code>colorMode="system"</code> or <code>colorMode="dark"</code>.
+  </p>
+
+
+  <h2>colorMode</h2>
+  <p>
+    The <code>colorMode</code> prop controls whether the table applies the active theme's
+    <code>darkMode</code> overrides.
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>Value</th><th>Behavior</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>"light"</code></td>
+        <td>Always render in light mode regardless of OS preference or page class.</td>
+      </tr>
+      <tr>
+        <td><code>"dark"</code></td>
+        <td>Always render in dark mode, applying the theme's <code>darkMode</code> overrides.</td>
+      </tr>
+      <tr>
+        <td><code>"system"</code> (default)</td>
+        <td>
+          Follow the page automatically. The table checks, in order:
+          <ol>
+            <li><code>localStorage.getItem('theme')</code> — your app's stored preference</li>
+            <li>The <code>html.dark</code> class — set by most dark-mode toggle libraries</li>
+            <li><code>prefers-color-scheme: dark</code> — the OS preference</li>
+          </ol>
+          It reacts in real time to all three using a <code>MutationObserver</code> and a
+          <code>storage</code> event listener, so the table updates when the user toggles the
+          page theme without needing a re-render from outside.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <CodeBlock code={`// Always dark — ignores OS preference
+<DataTable columns={columns} data={data} theme="material" colorMode="dark" />
+
+// Follow OS / page toggle (default, explicit)
+<DataTable columns={columns} data={data} theme="crisp" colorMode="system" />
+
+// Force light even when the page is in dark mode
+<DataTable columns={columns} data={data} theme="rounded" colorMode="light" />`} lang="tsx" />
+
+  <h2>createTheme()</h2>
+  <p>
+    <code>createTheme()</code> accepts two call signatures:
+  </p>
+
+  <CodeBlock code={`import { createTheme } from 'react-data-table-component';
+
+// 1. Named — register globally, reference by string in the theme prop
+createTheme('my-brand', { primary: '#6200EE' }, 'material');
+
+// 2. Inline — compose and pass the object directly to the theme prop
+const inlineTheme = createTheme({ primary: '#e91e63' }, 'crisp');
+<DataTable theme={inlineTheme} columns={columns} data={data} />`} lang="ts" />
+
+  <h3>Theme shape</h3>
+  <p>
+    All keys are optional — unspecified fields inherit from the base theme. For
+    <code>darkMode</code>, supply only the fields that differ from light mode; they are merged on
+    top of the light values at render time.
+  </p>
+
+  <CodeBlock code={`import { createTheme } from 'react-data-table-component';
+
+createTheme('violet', {
+  primary: '#6200EE',
+  text: {
+    primary: '#1a1a2e',
+    secondary: '#4a4a6a',
+    disabled: '#9e9e9e',
+  },
+  background: {
+    default: '#f5f0ff',
+    header: '#ede7f6',   // distinct header background
+  },
+  divider:          { default: '#d1c4e9' },
+  selected:         { default: '#ede7f6', text: '#1a1a2e' },
+  highlightOnHover: { default: '#ede7f6', text: '#1a1a2e' },
+  striped:          { default: '#f3eeff', text: '#1a1a2e' },
+  button: {
+    default: '#6200EE',
+    focus:    'rgba(98,0,238,0.12)',
+    hover:    'rgba(98,0,238,0.08)',
+    disabled: '#d1c4e9',
+  },
+  context: { background: '#6200EE', text: '#ffffff' },
+  // Dark-mode overrides — only what changes
+  darkMode: {
+    primary: '#BB86FC',
+    text:       { primary: '#e0e0e0', secondary: '#b0b0b0' },
+    background: { default: '#1a0533', header: '#240844' },
+    divider:    { default: '#3d1f6e' },
+    selected:   { default: '#2d1060', text: '#e0e0e0' },
+    highlightOnHover: { default: '#2d1060', text: '#e0e0e0' },
+    striped:    { default: '#1e0a40', text: '#e0e0e0' },
+  },
+  // Structural
+  spacing:    { rowHeight: '48px', headerHeight: '56px', cellPaddingX: '16px' },
+  typography: { fontSize: '14px', fontSizeHeader: '12px' },
+  shape:      { borderRadius: '8px' },
+});`} lang="ts" />
+
+  <h2>Icons</h2>
+  <p>
+    Sort chevron, row expander, and pagination arrows can all be replaced. There are two ways:
+    bake them into a theme so every table using it gets them automatically, or pass them as
+    per-table props for a one-off override. Props win when both are set.
+  </p>
+
+  <h3>Override via props</h3>
+  <p>
+    Pass icons directly on a single table. Only the icons you supply are replaced — the rest
+    fall back to the theme or built-in defaults.
+  </p>
+
+  <CodeBlock code={`import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+
+// Sort icon — replaces the chevron shown in sortable column headers
+<DataTable
+  sortIcon={<ChevronUp size={14} />}
+  columns={columns}
+  data={data}
+/>
+
+// Expander icons — collapsed / expanded state
+<DataTable
+  expandableRows
+  expandableIcon={{
+    collapsed: <ChevronDown size={16} />,
+    expanded:  <ChevronUp  size={16} />,
+  }}
+  columns={columns}
+  data={data}
+/>
+
+// Pagination icons — any subset; omitted keys fall back to defaults
+<DataTable
+  pagination
+  paginationIcons={{
+    previous: <ChevronLeft  size={16} />,
+    next:     <ChevronRight size={16} />,
+    first:    <ChevronsLeft  size={16} />,
+    last:     <ChevronsRight size={16} />,
+  }}
+  columns={columns}
+  data={data}
+/>`} lang="tsx" />
+
+  <h3>Override via theme</h3>
+  <p>
+    Declare icons inside a theme so every table using it shares the same iconography without
+    repeating props. Per-table props override the theme when explicitly passed.
+  </p>
+
+  <CodeBlock code={`import { createTheme } from 'react-data-table-component';
+import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+
+createTheme('icon-theme', {
+  icons: {
+    sort: <ChevronUp size={14} />,
+    expandable: {
+      collapsed: <ChevronDown size={16} />,
+      // expanded: omitted — falls back to the built-in default
+    },
+    pagination: {
+      next:     <ChevronRight size={16} />,
+      previous: <ChevronLeft size={16} />,
+      // first/last: omitted — fall back to defaults
+    },
+  },
+});
+
+<DataTable columns={columns} data={data} theme="icon-theme" />`} lang="tsx" />
+
+  <h2>Custom checkbox component</h2>
+  <p>
+    Replace the built-in checkbox with your own component via <code>selectableRowsComponent</code>.
+    Extra props can be forwarded through <code>selectableRowsComponentProps</code>.
+    The component receives standard <code>HTMLInputElement</code> props and a <code>ref</code> —
+    the table sets <code>el.indeterminate</code> directly on the ref to handle the partial-selection state.
+  </p>
+
+  <CodeBlock code={`import Checkbox from '@mui/material/Checkbox';
+
+<DataTable
+  selectableRows
+  selectableRowsComponent={Checkbox}
+  selectableRowsComponentProps={{ color: 'primary' }}
+/>`} lang="tsx" />
+
+  <p>
+    If you build your own checkbox, use <code>React.forwardRef</code> and forward the ref to the
+    underlying <code>&lt;input&gt;</code> element so the table can set <code>indeterminate</code>
+    natively:
+  </p>
+
+  <CodeBlock code={`import React from 'react';
+
+const MyCheckbox = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => (
+  <input
+    {...props}
+    ref={ref}
+    style={{ accentColor: 'teal', width: 18, height: 18 }}
+  />
+));
+MyCheckbox.displayName = 'MyCheckbox';
+
+<DataTable
+  selectableRows
+  selectableRowsComponent={MyCheckbox}
+/>`} lang="tsx" />
+
+  <h2>Header &amp; column separators in themes</h2>
+  <p>
+    The <code>headerSeparator</code> and <code>columnSeparator</code> props can be baked into a
+    theme so every table using it shares the same separator style. The per-table prop always
+    takes precedence when explicitly passed.
+  </p>
+
+  <CodeBlock code={`createTheme('grid', {
+  primary: '#1976d2',
+  headerSeparator: 'full',   // bold line below header row
+  columnSeparator: 'full',   // full-height lines between columns
+}, 'default');
+
+// Override for one specific table
+<DataTable theme="grid" columnSeparator={false} />`} lang="tsx" />
+
+  <Demo
+    title="Column separators"
+    description="Toggle between no separators, subtle inset lines, and full-height lines."
+    code={`// No body separators (default)
+<DataTable columns={columns} data={data} />
+
+// Subtle body separators (60%-height inset)
+<DataTable columns={columns} data={data} columnSeparator />
+
+// Full-height body separators
+<DataTable columns={columns} data={data} columnSeparator="full" />
+
+// Remove the default header separator
+<DataTable columns={columns} data={data} headerSeparator={false} />`}
+  >
+    <ColumnSeparatorsDemo client:load />
+  </Demo>
+
+  <h2>CSS variable override</h2>
+  <p>
+    Every theme compiles to CSS custom properties scoped to the table's wrapper element.
+    Override any variable with a wrapper class — no <code>createTheme()</code> needed for
+    small tweaks.
+  </p>
+
+  <CodeBlock code={`.my-table {
+  --rdt-color-text-primary:   #1a1a2e;
+  --rdt-color-bg:             #f0f4ff;
+  --rdt-color-header-bg:      #e8edff;  /* separate header background */
+  --rdt-color-divider:        #c7d2fe;
+  --rdt-color-highlight:      #e0e7ff;
+  --rdt-color-selected:       #ede9fe;
+  --rdt-border-radius:        8px;
+  --rdt-font-size:            13px;
+}`} lang="css" />
+
+  <h3>CSS variable reference</h3>
+  <table>
+    <thead>
+      <tr><th>Variable</th><th>Default</th><th>What it controls</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>--rdt-color-scheme</code></td><td><code>light</code></td><td>CSS <code>color-scheme</code> — affects native checkbox, select, and scrollbar rendering</td></tr>
+      <tr><td><code>--rdt-color-primary</code></td><td><code>#1976d2</code></td><td>Checkbox accent, active sort icon, selection ring</td></tr>
+      <tr><td><code>--rdt-color-text-primary</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Primary text in rows and header cells</td></tr>
+      <tr><td><code>--rdt-color-text-secondary</code></td><td><code>rgba(0,0,0,.54)</code></td><td>Muted text — group labels, pagination count</td></tr>
+      <tr><td><code>--rdt-color-text-disabled</code></td><td><code>rgba(0,0,0,.38)</code></td><td>Disabled row text</td></tr>
+      <tr><td><code>--rdt-color-bg</code></td><td><code>#fff</code></td><td>Table and row background</td></tr>
+      <tr><td><code>--rdt-color-header-bg</code></td><td>falls back to <code>--rdt-color-bg</code></td><td>Header row background — set only when the theme or CSS provides it</td></tr>
+      <tr><td><code>--rdt-color-divider</code></td><td><code>rgba(0,0,0,.12)</code></td><td>Row borders and separator lines</td></tr>
+      <tr><td><code>--rdt-color-context-bg</code></td><td><code>#e3f2fd</code></td><td>Selected-rows context bar background</td></tr>
+      <tr><td><code>--rdt-color-context-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Selected-rows context bar text</td></tr>
+      <tr><td><code>--rdt-color-selected</code></td><td><code>#e3f2fd</code></td><td>Selected row background</td></tr>
+      <tr><td><code>--rdt-color-selected-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Selected row text</td></tr>
+      <tr><td><code>--rdt-color-highlight</code></td><td><code>#eee</code></td><td>Hover highlight background</td></tr>
+      <tr><td><code>--rdt-color-highlight-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Hover highlight text</td></tr>
+      <tr><td><code>--rdt-color-striped</code></td><td><code>#fafafa</code></td><td>Striped (even) row background</td></tr>
+      <tr><td><code>--rdt-color-striped-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Striped row text</td></tr>
+      <tr><td><code>--rdt-color-btn</code></td><td><code>rgba(0,0,0,.54)</code></td><td>Sort icon, expander chevron, pagination button icons</td></tr>
+      <tr><td><code>--rdt-color-btn-hover</code></td><td><code>rgba(0,0,0,.08)</code></td><td>Pagination button hover background</td></tr>
+      <tr><td><code>--rdt-color-btn-focus</code></td><td><code>rgba(0,0,0,.12)</code></td><td>Pagination button focus ring</td></tr>
+      <tr><td><code>--rdt-color-btn-disabled</code></td><td><code>rgba(0,0,0,.18)</code></td><td>Disabled pagination button icon</td></tr>
+      <tr><td><code>--rdt-row-height</code></td><td><code>52px</code></td><td>Body row min-height</td></tr>
+      <tr><td><code>--rdt-header-height</code></td><td><code>56px</code></td><td>Header row min-height</td></tr>
+      <tr><td><code>--rdt-cell-padding-x</code></td><td><code>16px</code></td><td>Horizontal padding inside every cell</td></tr>
+      <tr><td><code>--rdt-font-size</code></td><td><code>13px</code></td><td>Body cell font size</td></tr>
+      <tr><td><code>--rdt-font-size-header</code></td><td><code>12px</code></td><td>Header cell font size</td></tr>
+      <tr><td><code>--rdt-font-family</code></td><td>inherits</td><td>Font family for all table text</td></tr>
+      <tr><td><code>--rdt-border-radius</code></td><td><code>4px</code></td><td>Pill radius on selection badges and other rounded elements</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>theme</code></td>
+        <td><code>string | Theme | Record&lt;string, string&gt;</code></td>
+        <td><code>"default"</code></td>
+        <td>
+          Named built-in theme, a <code>Theme</code> object from <code>createTheme(overrides, inherit)</code>,
+          or a raw CSS variable map (<code>&#123; '--rdt-color-bg': '#000', ... &#125;</code>).
+        </td>
+      </tr>
+      <tr>
+        <td><code>colorMode</code></td>
+        <td><code>"light" | "dark" | "system"</code></td>
+        <td><code>"system"</code></td>
+        <td>
+          Controls when the theme's <code>darkMode</code> overrides are applied.
+          <code>"system"</code> follows <code>localStorage</code>, the <code>html.dark</code> class, then <code>prefers-color-scheme</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>selectableRowsComponent</code></td>
+        <td><code>React.ComponentType&lt;InputHTMLAttributes&gt; | "input"</code></td>
+        <td><code>"input"</code></td>
+        <td>
+          Custom checkbox component. Must accept standard input props and forward its ref to an
+          <code>&lt;input&gt;</code> element so the table can set <code>indeterminate</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>selectableRowsComponentProps</code></td>
+        <td><code>Record&lt;string, unknown&gt;</code></td>
+        <td>—</td>
+        <td>Extra props forwarded to every instance of the custom checkbox component.</td>
+      </tr>
+      <tr>
+        <td><code>headerSeparator</code></td>
+        <td><code>boolean | "full"</code></td>
+        <td>theme default or <code>true</code></td>
+        <td>
+          Line below the header row. <code>true</code> = subtle inset line.
+          <code>"full"</code> = full-height divider. <code>false</code> = none.
+          Overrides the theme's <code>headerSeparator</code> setting.
+        </td>
+      </tr>
+      <tr>
+        <td><code>columnSeparator</code></td>
+        <td><code>boolean | "full"</code></td>
+        <td>theme default or <code>false</code></td>
+        <td>
+          Vertical lines between body row cells. <code>true</code> = subtle inset.
+          <code>"full"</code> = full-height. <code>false</code> = none.
+          Overrides the theme's <code>columnSeparator</code> setting.
+        </td>
+      </tr>
+      <tr>
+        <td><code>customStyles</code></td>
+        <td><code>TableStyles</code></td>
+        <td>—</td>
+        <td>
+          Fine-grained style overrides per slot (rows, cells, header, pagination, etc.).
+          Applied on top of the active theme. See the <a href="/docs/custom-styles">Custom Styles</a> page.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocsLayout>

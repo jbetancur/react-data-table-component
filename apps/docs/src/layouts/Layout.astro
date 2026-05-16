@@ -1,0 +1,229 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'react-data-table-component',
+  description = 'A fast, feature-rich React data table. Working table in 10 lines.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL('/og-image.png', Astro.url).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/og-image.png', Astro.url).href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <!-- Nav -->
+    <header class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
+      <nav class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-semibold text-gray-900 hover:text-brand-600">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" class="text-brand-500">
+            <rect x="1" y="1" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="1" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="1" y1="14" x2="21" y2="14" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="8" y1="7" x2="8" y2="21" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span class="hidden sm:inline">react-data-table-component</span>
+          <span class="sm:hidden">rdtc</span>
+        </a>
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-5 text-sm text-gray-600">
+          <a href="/docs" class={`hover:text-gray-900 ${Astro.url.pathname.startsWith('/docs') ? 'text-gray-900 font-medium' : ''}`}>Docs</a>
+          <a href="/docs/themes" class={`hover:text-gray-900 ${Astro.url.pathname === '/docs/themes' ? 'text-gray-900 font-medium' : ''}`}>Themes</a>
+          <a href="/docs/api" class={`hover:text-gray-900 ${Astro.url.pathname === '/docs/api' ? 'text-gray-900 font-medium' : ''}`}>API</a>
+          <a href="/support" class={`hover:text-gray-900 ${Astro.url.pathname === '/support' ? 'text-gray-900 font-medium' : ''}`}>Support</a>
+          <a
+            href="https://github.com/jbetancur/react-data-table-component"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-gray-900"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://github.com/sponsors/jbetancur"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1 hover:text-pink-500 transition-colors"
+            aria-label="Sponsor this project"
+          >
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" class="text-pink-500">
+              <path d="M8 13.7c-.3 0-.6-.1-.8-.3L1.6 7.8C.6 6.8.1 5.5.1 4.1.1 1.8 2 0 4.3 0c1.2 0 2.3.5 3.1 1.3L8 1.9l.6-.6C9.4.5 10.5 0 11.7 0 14 0 15.9 1.8 15.9 4.1c0 1.4-.5 2.7-1.5 3.7l-5.6 5.6c-.2.2-.5.3-.8.3z"/>
+            </svg>
+            Sponsor
+          </a>
+          <button
+            id="search-btn"
+            aria-label="Search docs"
+            class="flex items-center gap-2 text-gray-500 hover:text-gray-900 border border-gray-200 rounded-md px-3 py-1.5 text-xs hover:border-gray-300 transition-colors"
+          >
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="6.5" cy="6.5" r="5"/>
+              <line x1="10.5" y1="10.5" x2="14" y2="14"/>
+            </svg>
+            <span>Search</span>
+            <kbd class="hidden lg:inline-flex items-center gap-0.5 font-mono text-[10px] text-gray-400 bg-gray-100 rounded px-1 py-0.5">⌘K</kbd>
+          </button>
+          <a
+            href="/docs/getting-started"
+            class="bg-brand-600 text-white px-3.5 py-1.5 rounded-md hover:bg-brand-700 font-medium"
+          >
+            Get started →
+          </a>
+        </div>
+        <!-- Mobile hamburger -->
+        <button
+          id="mobile-menu-btn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="md:hidden flex items-center justify-center w-9 h-9 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+        >
+          <svg id="icon-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+            <line x1="3" y1="5" x2="17" y2="5"/>
+            <line x1="3" y1="10" x2="17" y2="10"/>
+            <line x1="3" y1="15" x2="17" y2="15"/>
+          </svg>
+          <svg id="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" class="hidden">
+            <line x1="4" y1="4" x2="16" y2="16"/>
+            <line x1="16" y1="4" x2="4" y2="16"/>
+          </svg>
+        </button>
+      </nav>
+      <!-- Mobile menu panel -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md px-6 py-4 space-y-1 text-sm"
+      >
+        <button id="mobile-search-btn" class="flex items-center gap-2 w-full px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900 text-left">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+          Search docs
+        </button>
+        <a href="/docs" class="block px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900">Docs</a>
+        <a href="/docs/themes" class="block px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900">Themes</a>
+        <a href="/docs/api" class="block px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900">API</a>
+        <a href="/support" class="block px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900">Support</a>
+        <a href="https://github.com/jbetancur/react-data-table-component" target="_blank" rel="noopener noreferrer" class="block px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900">GitHub ↗</a>
+        <a href="https://github.com/sponsors/jbetancur" target="_blank" rel="noopener noreferrer" class="block px-2 py-2 rounded-md text-pink-500 hover:bg-pink-50">♥ Sponsor</a>
+        <div class="pt-2">
+          <a href="/docs/getting-started" class="block w-full text-center bg-brand-600 text-white px-4 py-2 rounded-md hover:bg-brand-700 font-medium">Get started →</a>
+        </div>
+      </div>
+    </header>
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      btn?.addEventListener('click', () => {
+        const isOpen = !menu?.classList.contains('hidden');
+        menu?.classList.toggle('hidden', isOpen);
+        iconOpen?.classList.toggle('hidden', !isOpen);
+        iconClose?.classList.toggle('hidden', isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    </script>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-100 py-10 text-center text-sm text-gray-400">
+      <p>
+        Apache 2.0 licensed ·
+        <a href="https://github.com/jbetancur/react-data-table-component" class="hover:text-gray-600">GitHub</a>
+        · Built with Astro
+      </p>
+    </footer>
+
+    <!-- Search modal -->
+    <div
+      id="search-modal"
+      class="fixed inset-0 z-[100] hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search docs"
+    >
+      <!-- Backdrop -->
+      <div id="search-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+      <!-- Panel -->
+      <div class="relative max-w-xl mx-auto mt-20 px-4">
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
+          <div id="pagefind-ui-root"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Pagefind search modal
+      let pagefindLoaded = false;
+
+      async function openSearch() {
+        const modal = document.getElementById('search-modal');
+        modal?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        if (!pagefindLoaded) {
+          pagefindLoaded = true;
+          // Constructed at runtime so Vite does not try to resolve these at build/dev time.
+          // The files only exist after `astro build && pagefind --site dist`.
+          const origin = location.origin;
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = `${origin}/pagefind/pagefind-ui.css`;
+          document.head.appendChild(link);
+          // @ts-ignore
+          const { PagefindUI } = await import(/* @vite-ignore */ `${origin}/pagefind/pagefind-ui.js`).catch(() => ({ PagefindUI: null }));
+          if (PagefindUI) {
+            new PagefindUI({ element: '#pagefind-ui-root', showSubResults: true });
+          } else {
+            document.getElementById('pagefind-ui-root')!.innerHTML =
+              '<p style="padding:1rem;color:#666;font-size:.875rem">Search index not built yet. Run <code>npm run build</code> first.</p>';
+          }
+        }
+
+        // Auto-focus the search input after render
+        setTimeout(() => {
+          const input = document.querySelector<HTMLInputElement>('#pagefind-ui-root input');
+          input?.focus();
+        }, 50);
+      }
+
+      function closeSearch() {
+        document.getElementById('search-modal')?.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('search-btn')?.addEventListener('click', openSearch);
+      document.getElementById('mobile-search-btn')?.addEventListener('click', openSearch);
+      document.getElementById('search-backdrop')?.addEventListener('click', closeSearch);
+
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          openSearch();
+        }
+        if (e.key === 'Escape') closeSearch();
+      });
+    </script>
+  </body>
+</html>

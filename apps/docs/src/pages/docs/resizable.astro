@@ -1,0 +1,187 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ResizableDemo from '../../components/demos/ResizableDemo.tsx';
+---
+
+<DocsLayout title="Resizable columns | react-data-table-component">
+  <h1>Resizable columns</h1>
+
+  <p>
+    Enable drag-to-resize handles on column headers by setting <code>resizable</code>.
+    Users drag the right edge of any header cell to adjust its width. Resize is fully
+    compatible with sorting, pagination, filtering, pinning, and column reordering.
+  </p>
+
+  <Demo
+    title="Resizable columns"
+    description="Drag the right edge of any column header to resize it."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       width: '180px', minWidth: '100px' },
+  { name: 'Role',       selector: r => r.role,       minWidth: '120px' },
+  { name: 'Department', selector: r => r.department, width: '140px', minWidth: '80px' },
+  { name: 'Salary',     selector: r => r.salary,     width: '110px', right: true,
+    format: r => \`$\${r.salary.toLocaleString()}\` },
+];
+
+<DataTable columns={columns} data={data} resizable highlightOnHover />`}
+  >
+    <ResizableDemo client:load />
+  </Demo>
+
+  <h2>How it works</h2>
+
+  <p>
+    The resize handle sits straddling the right edge of each header cell — a 6 px hit area
+    centered on the column boundary so it aligns with the column separator. On
+    <code>mousedown</code>, a global <code>mousemove</code> listener tracks the delta and
+    writes the new width to component state; the affected column receives an inline
+    <code>width</code> style. Only the resized column re-renders.
+  </p>
+
+  <h2>Initial and minimum widths</h2>
+
+  <p>
+    <code>width</code> sets the starting width; <code>minWidth</code> clamps how small a
+    user can drag the column. Columns without a fixed <code>width</code> start at their
+    natural flex width and remain resizable.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Employee>[] = [
+  { name: 'Name',   selector: r => r.name,   width: '200px', minWidth: '120px' },
+  { name: 'Status', selector: r => r.status, width: '100px' },
+  { name: 'Notes',  selector: r => r.notes,  /* grows to fill remaining space */ },
+];
+
+<DataTable columns={columns} data={data} resizable />`} />
+
+  <p>The hard floor is <strong>40 px</strong> — the table won't allow narrower than that regardless of <code>minWidth</code>.</p>
+
+  <h2>Visual indicator</h2>
+
+  <p>
+    The handle is invisible until hover. On hover or active drag, a 2 px center line
+    appears in your primary color (<code>--rdt-color-primary</code>). The line sits exactly
+    on the column boundary so it visually replaces the separator while resizing.
+  </p>
+
+  <h2>Persisting widths</h2>
+
+  <p>
+    Column widths live in component state only — they reset on remount. The table doesn't
+    expose a single "widths changed" callback because the resize handler doesn't propagate
+    to props. The reliable way to persist is to observe the DOM:
+  </p>
+
+  <CodeBlock code={`import { useEffect, useRef, useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const STORAGE_KEY = 'employees-table-widths';
+
+function loadWidths(): Record<string, string> {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}'); }
+  catch { return {}; }
+}
+
+export default function App() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [saved] = useState(loadWidths);
+
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const observer = new MutationObserver(() => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const widths: Record<string, string> = {};
+        el.querySelectorAll<HTMLElement>('.rdt_TableCol').forEach(col => {
+          const id = col.dataset.columnId;
+          if (id && col.style.width) widths[id] = col.style.width;
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(widths));
+      }, 200);
+    });
+    observer.observe(el, { attributes: true, attributeFilter: ['style'], subtree: true });
+    return () => observer.disconnect();
+  }, []);
+
+  const columns: TableColumn<Employee>[] = [
+    { id: 'name',   name: 'Name',   selector: r => r.name,
+      width: saved['name']   ?? '180px' },
+    { id: 'salary', name: 'Salary', selector: r => r.salary, right: true,
+      width: saved['salary'] ?? '110px' },
+  ];
+
+  return (
+    <div ref={wrapperRef}>
+      <DataTable columns={columns} data={data} resizable />
+    </div>
+  );
+}`} />
+
+  <p>
+    See <a href="/docs/recipes">recipes</a> for the same pattern with debouncing.
+  </p>
+
+  <h2>With column pinning</h2>
+
+  <p>
+    Resize works on pinned columns. When a pinned column's width changes, the sticky offsets
+    for columns pinned further from the edge update automatically — the pin band shifts to
+    stay aligned.
+  </p>
+
+  <h2>Resetting widths</h2>
+
+  <p>
+    Force a remount of the table to clear all resize state. The simplest approach is a
+    React <code>key</code> bump:
+  </p>
+
+  <CodeBlock code={`const [resetKey, setResetKey] = useState(0);
+
+<button onClick={() => {
+  localStorage.removeItem(STORAGE_KEY);
+  setResetKey(k => k + 1);
+}}>Reset column widths</button>
+
+<DataTable key={resetKey} columns={columns} data={data} resizable />`} />
+
+  <h2>Accessibility</h2>
+
+  <p>
+    The resize handle is mouse-only. Keyboard users cannot drag-resize. If keyboard-accessible
+    resizing matters for your audience, provide a settings UI (a popover with width inputs per
+    column) as an alternative.
+  </p>
+
+  <h2>Prop reference</h2>
+
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>resizable</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Show resize handles on column header right edges.</td>
+      </tr>
+      <tr>
+        <td><code>column.width</code></td>
+        <td><code>string</code></td>
+        <td>—</td>
+        <td>Initial width (e.g. <code>"180px"</code>).</td>
+      </tr>
+      <tr>
+        <td><code>column.minWidth</code></td>
+        <td><code>string</code></td>
+        <td><code>"100px"</code></td>
+        <td>Minimum width the user can resize to. Hard floor of 40 px applies regardless.</td>
+      </tr>
+    </tbody>
+  </table>
+</DocsLayout>

@@ -1,0 +1,149 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ColumnGroupsDemo from '../../components/demos/ColumnGroupsDemo.tsx';
+---
+
+<DocsLayout title="Column groups | react-data-table-component">
+  <h1>Column groups</h1>
+
+  <p>
+    Column groups render a spanning header row above the regular column headers.
+    Useful for grouping related columns under a shared label.
+  </p>
+
+  <Demo
+    title="Column groups"
+    description="Employee and Compensation groups span their respective columns."
+    code={`import DataTable, { type TableColumn, type ColumnGroup } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  firstName: string;
+  lastName: string;
+  department: string;
+  baseSalary: number;
+  bonus: number;
+}
+
+const data: Employee[] = [
+  { id: 1, firstName: 'Aria',   lastName: 'Chen',   department: 'Engineering', baseSalary: 140000, bonus: 15000 },
+  { id: 2, firstName: 'Marcus', lastName: 'Webb',   department: 'Product',     baseSalary: 125000, bonus:  7000 },
+  { id: 3, firstName: 'Priya',  lastName: 'Kapoor', department: 'Design',      baseSalary: 110000, bonus:  8000 },
+  { id: 4, firstName: 'Jordan', lastName: 'Ellis',  department: 'Analytics',   baseSalary: 135000, bonus: 12000 },
+];
+
+// Every column that belongs to a group must have a stable \`id\`
+const columns: TableColumn<Employee>[] = [
+  { id: 'first',  name: 'First name',  selector: r => r.firstName,  sortable: true },
+  { id: 'last',   name: 'Last name',   selector: r => r.lastName,   sortable: true },
+  { id: 'dept',   name: 'Department',  selector: r => r.department, sortable: true },
+  { id: 'base',   name: 'Base salary', selector: r => r.baseSalary, sortable: true, right: true,
+    format: r => \`$\${r.baseSalary.toLocaleString()}\` },
+  { id: 'bonus',  name: 'Bonus',       selector: r => r.bonus,      sortable: true, right: true,
+    format: r => \`$\${r.bonus.toLocaleString()}\` },
+];
+
+const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'] },
+  { name: 'Compensation', columnIds: ['base', 'bonus'] },
+];
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      columnGroups={columnGroups}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <ColumnGroupsDemo client:load />
+  </Demo>
+
+  <h2>Drag to reorder groups</h2>
+
+  <p>
+    Add <code>reorder: true</code> to each group to make its header draggable.
+    Dragging moves the entire group (all member columns) as a block.
+    See the <a href="/docs/column-reorder#reordering-column-groups">Column reordering</a> page for a full example.
+  </p>
+
+  <CodeBlock code={`const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], reorder: true },
+  { name: 'Compensation', columnIds: ['base', 'bonus'],         reorder: true },
+];
+
+<DataTable
+  columns={columns}
+  data={data}
+  columnGroups={columnGroups}
+  onColumnGroupOrderChange={(nextGroups, nextCols) => {
+    setGroups(nextGroups);
+    setCols(nextCols);
+  }}
+/>`} />
+
+  <h2>Rules</h2>
+
+  <ul>
+    <li>Each column that belongs to a group must have a stable <code>id</code>.</li>
+    <li><code>columnIds</code> must match the <code>id</code> values exactly (string or number).</li>
+    <li>Columns not listed in any group span the full group-row height with no label.</li>
+    <li>Groups render in the order they appear in the <code>columnGroups</code> array.</li>
+  </ul>
+
+  <h2>ColumnGroup type</h2>
+
+  <CodeBlock code={`interface ColumnGroup {
+  name: ReactNode;                    // Header label (accepts JSX)
+  columnIds: (string | number)[];     // ids of columns that fall under this group
+  align?: 'left' | 'center' | 'right'; // Label alignment (default: 'center')
+}`} lang="ts" />
+
+  <h2>Label alignment</h2>
+
+  <p>
+    Group labels are centered by default. Pass <code>align</code> to override per group:
+  </p>
+
+  <CodeBlock code={`const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], align: 'left' },
+  { name: 'Compensation', columnIds: ['base', 'bonus'] }, // centered (default)
+];`} />
+
+  <h2>Custom group header content</h2>
+
+  <p>The <code>name</code> field accepts any <code>ReactNode</code>, so you can pass JSX:</p>
+
+  <CodeBlock code={`const columnGroups: ColumnGroup[] = [
+  {
+    name: <span style={{ color: '#4f46e5', fontWeight: 700 }}>Compensation</span>,
+    columnIds: ['base', 'bonus'],
+  },
+];`} />
+
+  <h2>Styling group headers</h2>
+
+  <p>
+    Group label cells carry the CSS class <code>rdt_groupCell</code>. Target it directly
+    to override colours, font, or spacing without needing <code>customStyles</code>:
+  </p>
+
+  <CodeBlock code={`.rdt_groupCell {
+  color: #4f46e5;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}`} lang="css" />
+
+  <p>
+    Use CSS custom properties to keep overrides theme-aware:
+  </p>
+
+  <CodeBlock code={`.my-table {
+  --rdt-color-text-secondary: #4f46e5;
+}`} lang="css" />
+</DocsLayout>

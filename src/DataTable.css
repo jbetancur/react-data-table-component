@@ -1,0 +1,1286 @@
+/* ─── Root ─────────────────────────────────────────────────────────────────── */
+.rdt_table {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+	font-family: var(--rdt-font-family, inherit);
+	/* Ensures native form controls (checkboxes) match the table theme
+	   regardless of the host app's color-scheme declaration. */
+	color-scheme: var(--rdt-color-scheme, light);
+	/* Sort icon scales with the theme's icon size */
+	--rdt-sort-icon-size: calc(var(--rdt-icon-size, 18px) * 0.8);
+}
+
+.rdt_tableDisabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+/* ─── Wrapper ───────────────────────────────────────────────────────────────── */
+.rdt_wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.rdt_responsiveWrapper {
+	position: relative;
+	width: 100%;
+	border-radius: inherit;
+}
+
+.rdt_responsiveWrapperScroll {
+	overflow-x: auto;
+	overflow-y: hidden;
+	min-height: 0;
+	overscroll-behavior-x: contain;
+	touch-action: pan-x pan-y;
+}
+
+.rdt_responsiveWrapperFixed {
+	overflow-x: auto;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	min-height: 0;
+	overscroll-behavior-x: contain;
+	touch-action: pan-x pan-y;
+}
+
+.rdt_responsiveWrapperHideScrollbar {
+	scrollbar-width: none;
+}
+.rdt_responsiveWrapperHideScrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+/* ─── Pinned custom scrollbar ───────────────────────────────────────────────── */
+.rdt_pinnedScrollbarTrack {
+	position: relative;
+	height: 8px;
+	background: var(--rdt-color-bg, #fff);
+	cursor: pointer;
+	user-select: none;
+}
+
+.rdt_pinnedScrollbarThumb {
+	position: absolute;
+	top: 1px;
+	left: 0;
+	height: 6px;
+	border-radius: 3px;
+	background: var(--rdt-color-scrollbar-thumb, rgba(0, 0, 0, 0.25));
+	cursor: grab;
+	transition: background 0.15s;
+}
+
+.rdt_pinnedScrollbarThumb:hover,
+.rdt_pinnedScrollbarThumb:active {
+	background: var(--rdt-color-scrollbar-thumb-hover, rgba(0, 0, 0, 0.45));
+}
+
+/* ─── Head ──────────────────────────────────────────────────────────────────── */
+.rdt_head {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	font-size: var(--rdt-font-size-header, 12px);
+	font-weight: 500;
+}
+
+.rdt_headFixed {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.rdt_headRow {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	min-height: var(--rdt-header-height, 52px);
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
+	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_headRowDense {
+	min-height: 32px;
+}
+
+/* ─── Body / Rows ───────────────────────────────────────────────────────────── */
+.rdt_body {
+	display: flex;
+	flex-direction: column;
+}
+
+.rdt_row {
+	display: flex;
+	align-items: stretch;
+	align-content: stretch;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: var(--rdt-font-size, 13px);
+	font-weight: 400;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+	min-height: var(--rdt-row-height, 48px);
+}
+
+/*
+ * Row separators are drawn on each cell rather than on the row container.
+ * This keeps the divider line visible on sticky (pinned) cells even when
+ * the table scrolls horizontally — the border travels with the cell, not
+ * with the scrolling content.
+ */
+.rdt_row:not(:last-of-type) .rdt_cellBase {
+	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_rowDense {
+	min-height: 32px;
+}
+
+.rdt_rowStriped {
+	color: var(--rdt-color-striped-text, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-striped, #fafafa);
+}
+
+.rdt_rowSelected {
+	color: var(--rdt-color-selected-text, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-selected, #e3f2fd);
+}
+
+.rdt_rowHighlight:hover {
+	color: var(--rdt-color-highlight-text, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-highlight, #eee);
+	outline: 1px solid var(--rdt-color-bg, #fff);
+	transition-duration: 0.15s;
+	transition-property: background-color;
+}
+
+.rdt_rowPointer:hover {
+	cursor: pointer;
+}
+
+/* ─── Cells ─────────────────────────────────────────────────────────────────── */
+.rdt_cellBase {
+	position: relative;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	line-height: normal;
+	padding-left: var(--rdt-cell-padding-x, 16px);
+	padding-right: var(--rdt-cell-padding-x, 16px);
+	word-break: break-word;
+}
+
+/* Column separators — shared base */
+.rdt_headSeparator .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before,
+.rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before,
+.rdt_colSeparator .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before,
+.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: var(--_sep-top, 20%);
+	height: var(--_sep-h, 60%);
+	width: 1px;
+	background: var(--rdt-col-sep-color, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
+	pointer-events: none;
+}
+
+/* Full-height variants override the inset defaults */
+.rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before,
+.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before {
+	--_sep-top: 0;
+	--_sep-h: 100%;
+}
+
+
+.rdt_cellNoPadding {
+	padding: 0;
+}
+
+/* ─── Checkbox (CSS-only, ag-grid pattern) ───────────────────────────────────
+ * State classes on the wrapper drive ::before (box) and ::after (icon).
+ * --rdt-checkbox-size and --rdt-checkbox-radius are set per theme.
+ * The hidden <input> underneath handles a11y and keyboard interaction.
+ * ─────────────────────────────────────────────────────────────────────────── */
+.rdt_Checkbox {
+	position: relative;
+	display: inline-flex;
+	flex-shrink: 0;
+	width: var(--rdt-checkbox-size, 18px);
+	height: var(--rdt-checkbox-size, 18px);
+	cursor: pointer;
+}
+
+.rdt_Checkbox.rdt_disabled {
+	cursor: default;
+	opacity: 0.38;
+}
+
+.rdt_Checkbox > input[type='checkbox'] {
+	position: absolute;
+	opacity: 0;
+	inset: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	cursor: inherit;
+	z-index: 1;
+}
+
+.rdt_Checkbox::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	box-sizing: border-box;
+	border-radius: var(--rdt-checkbox-radius, 2px);
+	border: 2px solid currentColor;
+	opacity: 0.54;
+	background: transparent;
+	transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.rdt_Checkbox.rdt_checked::before,
+.rdt_Checkbox.rdt_indeterminate::before {
+	background: var(--rdt-color-primary, #1976d2);
+	border-color: var(--rdt-color-primary, #1976d2);
+	opacity: 1;
+}
+
+.rdt_Checkbox::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+}
+
+.rdt_Checkbox.rdt_checked::after {
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8' fill='none'><polyline points='1 4 3.5 7 9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+.rdt_Checkbox.rdt_indeterminate::after {
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='2' viewBox='0 0 10 2'><rect width='10' height='2' rx='1' fill='white'/></svg>");
+}
+
+/* ─── Checkbox / expander cells ─────────────────────────────────────────────── */
+/*
+ * --rdt-system-col-width controls the width of the checkbox + expander
+ * columns. Pinned-column sticky offsets read this same variable so themes
+ * that override the system column width keep pinning aligned.
+ */
+.rdt_cellCheckbox {
+	flex: 0 0 var(--rdt-system-col-width, 48px);
+	min-width: var(--rdt-system-col-width, 48px);
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+}
+
+.rdt_cellExpander {
+	white-space: nowrap;
+	font-weight: 400;
+	min-width: var(--rdt-system-col-width, 48px);
+}
+
+.rdt_columnCheckbox {
+	flex: 0 0 var(--rdt-system-col-width, 48px);
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+	font-size: unset;
+}
+
+.rdt_columnExpander {
+	white-space: nowrap;
+	min-width: var(--rdt-system-col-width, 48px);
+}
+
+/* ─── Column headers ────────────────────────────────────────────────────────── */
+.rdt_columnSortable {
+	display: inline-flex;
+	align-items: center;
+	justify-content: inherit;
+	height: 100%;
+	width: 100%;
+	outline: none;
+	user-select: none;
+	overflow: hidden;
+}
+
+.rdt_columnSortableEnabled {
+	cursor: pointer;
+}
+
+
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):hover,
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):focus {
+	opacity: 0.7;
+}
+
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):hover span,
+.rdt_columnSortableEnabled:not(.rdt_columnSortableActive):focus span {
+	opacity: 0.7;
+}
+
+.rdt_columnText {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* ─── Column filter ─────────────────────────────────────────────────────────── */
+.rdt_filterContainer {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	margin-left: 4px;
+	flex-shrink: 0;
+}
+
+.rdt_filterIcon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	border-radius: 50%;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.rdt_filterIcon:hover,
+.rdt_filterIcon:focus {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
+	outline: none;
+}
+
+.rdt_filterIconActive {
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+}
+
+.rdt_filterDot {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: var(--rdt-color-primary, #1976d2);
+	pointer-events: none;
+}
+
+/* Panel — position is set inline (fixed, coords from getBoundingClientRect) */
+.rdt_filterPanel {
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	background: var(--rdt-color-bg, #fff);
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
+	border-radius: var(--rdt-border-radius, 6px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+	padding: 10px;
+	min-width: 260px;
+}
+
+/* A single condition row: [select] [input] ([and] [input]) [remove] */
+.rdt_filterConditionRow {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.rdt_filterSelect {
+	flex: 0 0 auto;
+	font-size: 12px;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background: var(--rdt-color-bg, #fff);
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.6);
+	padding: 3px 4px;
+	cursor: pointer;
+	max-width: 140px;
+}
+
+.rdt_filterSelect:focus {
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -1px;
+}
+
+.rdt_filterInput {
+	flex: 1;
+	min-width: 0;
+	font-size: 12px;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background: var(--rdt-color-bg, #fff);
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.6);
+	padding: 3px 6px;
+}
+
+.rdt_filterInput:focus {
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -1px;
+}
+
+.rdt_filterBetweenSep {
+	font-size: 11px;
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	white-space: nowrap;
+}
+
+.rdt_filterRemoveBtn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	font-size: 11px;
+	padding: 2px 4px;
+	border-radius: 3px;
+	line-height: 1;
+}
+
+.rdt_filterRemoveBtn:hover {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
+}
+
+/* AND / OR logic toggle */
+.rdt_filterLogicRow {
+	display: flex;
+	gap: 4px;
+}
+
+.rdt_filterLogicBtn {
+	font-size: 11px;
+	font-weight: 600;
+	padding: 2px 8px;
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: 3px;
+	background: none;
+	cursor: pointer;
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+}
+
+.rdt_filterLogicBtnActive {
+	background-color: var(--rdt-color-primary, #1976d2);
+	border-color: var(--rdt-color-primary, #1976d2);
+	color: #fff;
+}
+
+/* + Add condition */
+.rdt_filterAddCondition {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	color: var(--rdt-color-primary, #1976d2);
+	padding: 0;
+	text-align: left;
+}
+
+.rdt_filterAddCondition:hover {
+	text-decoration: underline;
+}
+
+/* Apply / Clear actions */
+.rdt_filterActions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 6px;
+	padding-top: 4px;
+	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+	margin-top: 2px;
+}
+
+.rdt_filterBtn {
+	font-size: 12px;
+	padding: 4px 12px;
+	border-radius: 4px;
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	background: none;
+	cursor: pointer;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+}
+
+.rdt_filterBtn:hover {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.06));
+}
+
+.rdt_filterBtnPrimary {
+	background-color: var(--rdt-color-primary, #1976d2);
+	border-color: var(--rdt-color-primary, #1976d2);
+	color: #fff;
+}
+
+.rdt_filterBtnPrimary:hover {
+	background-color: #1565c0; /* fallback for browsers without color-mix */
+}
+@supports (background-color: color-mix(in srgb, red 1%, black)) {
+	.rdt_filterBtnPrimary:hover {
+		background-color: color-mix(in srgb, var(--rdt-color-primary, #1976d2) 85%, black);
+	}
+}
+
+/* Drag ghost — custom image shown while dragging a reorderable column */
+.rdt_dragGhost {
+	position: fixed;
+	top: -9999px;
+	left: -9999px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 var(--rdt-cell-padding-x, 16px);
+	box-sizing: border-box;
+	background: var(--rdt-color-bg, #fff);
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.5);
+	font-size: var(--rdt-font-size-header, 12px);
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+	pointer-events: none;
+	opacity: 0.96;
+}
+
+.rdt_dragGhostIcon {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	opacity: 0.45;
+}
+
+.rdt_dragGhostLabel {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Draggable column headers — reorder: true */
+.rdt_TableCol[draggable='true'] {
+	cursor: grab;
+	user-select: none;
+}
+
+.rdt_TableCol[draggable='true']:active {
+	cursor: grabbing;
+}
+
+/* ─── Inline cell editing ──────────────────────────────────────────────────── */
+
+/*
+ * Editable cells get a soft "I'm interactive" affordance:
+ *   - text cursor on hover
+ *   - a subtle dashed underline that shows the cell is clickable to edit
+ *   - a tinted hover background
+ *
+ * Active editing replaces the cell padding so the input/select can fill the
+ * whole cell footprint without visual seams between the text and the cell edge.
+ */
+.rdt_cellEditable {
+	cursor: text;
+	transition: background-color 0.15s;
+}
+
+.rdt_cellEditable:hover {
+	background-color: var(--rdt-color-cell-edit-hover, rgba(25, 118, 210, 0.06)); /* fallback for browsers without color-mix */
+}
+@supports (background-color: color-mix(in srgb, red 1%, transparent)) {
+	.rdt_cellEditable:hover {
+		background-color: var(--rdt-color-cell-edit-hover, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 6%, transparent));
+	}
+}
+
+.rdt_cellEditable:hover > div[data-tag] {
+	border-bottom: 1px dashed var(--rdt-color-cell-edit-hover-border, rgba(25, 118, 210, 0.4)); /* fallback for browsers without color-mix */
+	margin-bottom: -1px; /* keep the row baseline aligned despite the new border */
+}
+@supports (border-color: color-mix(in srgb, red 1%, transparent)) {
+	.rdt_cellEditable:hover > div[data-tag] {
+		border-bottom-color: var(--rdt-color-cell-edit-hover-border, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 40%, transparent));
+	}
+}
+
+.rdt_cellEditing {
+	background-color: var(--rdt-color-cell-edit-bg, rgba(25, 118, 210, 0.08)); /* fallback for browsers without color-mix */
+	box-shadow: inset 0 0 0 2px var(--rdt-color-primary, #1976d2);
+	z-index: 3; /* float above neighbor borders during edit */
+	/* stretch so the input/select can fill the full cell height */
+	align-items: stretch;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+@supports (background-color: color-mix(in srgb, red 1%, white)) {
+	.rdt_cellEditing {
+		background-color: var(--rdt-color-cell-edit-bg, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 8%, var(--rdt-color-bg, #fff)));
+	}
+}
+
+/* The editor bleeds out to the left/right cell edges via negative margin so
+   the cell keeps its horizontal padding (and thus its original width — no
+   jitter). It stretches vertically because the cell uses align-items:stretch. */
+.rdt_editInput,
+.rdt_editSelect {
+	display: block;
+	box-sizing: border-box;
+	width: calc(100% + 2 * var(--rdt-cell-padding-x, 16px));
+	min-height: var(--rdt-row-height, 48px);
+	align-self: stretch;
+	margin: 0 calc(-1 * var(--rdt-cell-padding-x, 16px));
+	padding: 0 var(--rdt-cell-padding-x, 16px);
+	font: inherit;
+	color: inherit;
+	background: transparent;
+	border: none;
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.rdt_editInput::placeholder {
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	opacity: 0.7;
+}
+
+/*
+ * Native select arrow — rendered as a ::after pseudo-element on the editing
+ * cell so we can use currentColor (inherits the theme's text colour) via
+ * mask-image. The select element itself can't host ::after.
+ */
+.rdt_cellEditing:has(.rdt_editSelect)::after {
+	content: '';
+	position: absolute;
+	right: var(--rdt-cell-padding-x, 16px);
+	top: 50%;
+	transform: translateY(-50%);
+	width: 12px;
+	height: 8px;
+	pointer-events: none;
+	background-color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='white' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>");
+	mask-size: 100% 100%;
+	-webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='white' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>");
+	-webkit-mask-size: 100% 100%;
+}
+
+.rdt_editSelect {
+	padding-right: calc(var(--rdt-cell-padding-x, 16px) + 24px);
+}
+
+/* Dense rows shrink the editor height to match */
+.rdt_rowDense .rdt_editInput,
+.rdt_rowDense .rdt_editSelect {
+	min-height: 32px;
+}
+
+
+/* ─── Column pinning ────────────────────────────────────────────────────────── */
+
+/*
+ * Pinned cells must always show a solid background to prevent scrolling content
+ * bleeding through behind them. We use `inherit` so they pick up whatever the
+ * *row* has set — hover, stripe, selected, etc. — automatically.
+ * The row itself already has `background-color: var(--rdt-color-bg)` as baseline,
+ * so sticky cells are never transparent.
+ */
+.rdt_pinLeft,
+.rdt_pinRight {
+	background-color: inherit;
+}
+
+.rdt_pinLeftLast {
+	box-shadow: 2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
+	clip-path: inset(0 -8px 0 0);
+}
+
+.rdt_pinRightFirst {
+	box-shadow: -2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
+	clip-path: inset(0 0 0 -8px);
+}
+
+/* ─── Column resize handle ──────────────────────────────────────────────────── */
+/*
+ * The handle straddles the cell boundary so its hit area is centered on the
+ * separator line rather than offset to one side. width/2 = 3px → right: -3px
+ * centers a 6px-wide handle on the column edge, matching the position of
+ * .rdt_headSeparator/.rdt_colSeparator pseudo-elements drawn at the boundary.
+ */
+.rdt_resizeHandle {
+	position: absolute;
+	right: -3px;
+	top: 0;
+	height: 100%;
+	width: 6px;
+	cursor: col-resize;
+	user-select: none;
+	z-index: 2;
+}
+
+/* Reveal only when hovering the handle itself or actively dragging */
+.rdt_resizeHandle:hover,
+.rdt_resizeHandle:active {
+	background-image: linear-gradient(
+		to right,
+		transparent 0,
+		transparent 2px,
+		var(--rdt-color-primary, #1976d2) 2px,
+		var(--rdt-color-primary, #1976d2) 4px,
+		transparent 4px,
+		transparent 6px
+	);
+}
+
+/* ─── Column group header — CSS Grid layout ─────────────────────────────────
+ *
+ * When columnGroups are present, DataTableHead renders a single CSS grid
+ * container (rdt_headGrid) instead of two stacked flex rows.
+ *
+ * Grid rows:  row 1 = group labels (compact)
+ *             row 2 = column header cells
+ *
+ * Ungrouped column headers get grid-row: 1 / span 2 — they physically
+ * occupy both rows and look taller, making it immediately clear they
+ * belong to no group. Named group labels sit above the columns they cover.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+.rdt_headGrid {
+	display: grid;
+	grid-template-rows: var(--rdt-header-height, 52px) var(--rdt-header-height, 52px);
+	width: 100%;
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
+	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+	/* Full-width 1px divider between the group label row (row 1) and the column
+	   header row (row 2). Drawn as a background-image gradient so it spans
+	   the full container width even where ungrouped columns span both rows. */
+	background-image: linear-gradient(
+		to bottom,
+		transparent calc(var(--rdt-header-height, 52px) - 1px),
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) calc(var(--rdt-header-height, 52px) - 1px),
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) var(--rdt-header-height, 52px),
+		transparent var(--rdt-header-height, 52px)
+	);
+	/* grid-template-columns is set inline from the column definitions */
+}
+
+.rdt_headGridDense {
+	grid-template-rows: 32px 32px;
+	background-image: linear-gradient(
+		to bottom,
+		transparent 31px,
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 31px,
+		var(--rdt-color-divider, rgba(0, 0, 0, 0.12)) 32px,
+		transparent 32px
+	);
+}
+
+.rdt_groupCell {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 var(--rdt-cell-padding-x, 16px);
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	box-sizing: border-box;
+}
+
+/* Group label separators — same inset style as column header separators */
+.rdt_groupCellReorder {
+	cursor: grab;
+	user-select: none;
+}
+
+.rdt_groupCellDragging {
+	cursor: grabbing;
+}
+
+.rdt_groupCell + .rdt_groupCell::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 20%;
+	height: 60%;
+	width: 1px;
+	background: var(--rdt-col-sep-color, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
+	pointer-events: none;
+}
+
+
+.rdt_sortIcon i,
+.rdt_sortIcon svg {
+	transition-duration: 95ms;
+	transition-property: transform;
+	color: inherit;
+	font-size: 18px;
+	height: 18px;
+	width: 18px;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+
+.rdt_sortIconInactive i,
+.rdt_sortIconInactive svg {
+	opacity: 0;
+}
+
+.rdt_sortIconActive i,
+.rdt_sortIconActive svg {
+	opacity: 1;
+}
+
+.rdt_sortIconAsc i,
+.rdt_sortIconAsc svg {
+	transform: rotate(180deg);
+}
+
+/* ─── Expander ──────────────────────────────────────────────────────────────── */
+.rdt_expanderRow {
+	width: 100%;
+	box-sizing: border-box;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+.rdt_expanderButton {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+	border: none;
+	background-color: transparent;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	border-radius: var(--rdt-border-radius, 4px);
+	transition: background-color 0.15s;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+}
+
+.rdt_expanderButton svg {
+	margin: auto;
+	width: var(--rdt-icon-size, 18px);
+	height: var(--rdt-icon-size, 18px);
+	flex-shrink: 0;
+}
+
+.rdt_expanderButton:hover:not(:disabled) {
+	cursor: pointer;
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_expanderButton:focus {
+	outline: none;
+	background-color: var(--rdt-color-btn-focus, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_expanderButton:disabled {
+	color: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+	fill: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+.rdt_header {
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	flex-wrap: wrap;
+	font-size: 22px;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
+	min-height: 56px;
+	padding-left: 16px;
+	padding-right: 8px;
+}
+
+.rdt_headerTitle {
+	flex: 1 0 auto;
+	font-weight: 400;
+}
+
+.rdt_headerActions {
+	flex: 1 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.rdt_headerActions > * {
+	margin-left: 5px;
+}
+
+/* ─── Subheader ─────────────────────────────────────────────────────────────── */
+.rdt_subheader {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	box-sizing: border-box;
+	align-items: center;
+	padding: 4px 16px 4px 24px;
+	width: 100%;
+	background-color: var(--rdt-color-header-bg, var(--rdt-color-bg, #fff));
+	min-height: 52px;
+}
+
+.rdt_subheaderLeft {
+	justify-content: flex-start;
+}
+
+.rdt_subheaderRight {
+	justify-content: flex-end;
+}
+
+.rdt_subheaderCenter {
+	justify-content: center;
+}
+
+.rdt_subheaderWrap {
+	flex-wrap: wrap;
+}
+
+/* ─── No data / progress ────────────────────────────────────────────────────── */
+.rdt_noData {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+.rdt_progress {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+/* ─── Loading states ────────────────────────────────────────────────────────── */
+
+/* Skeleton shimmer pulse */
+@keyframes rdt_shimmer {
+	0%   { background-position: -400px 0; }
+	100% { background-position: 400px 0; }
+}
+
+@keyframes rdt_spin {
+	to { transform: rotate(360deg); }
+}
+
+.rdt_skeletonPulse {
+	background: linear-gradient(
+		90deg,
+		var(--rdt-color-divider, rgba(0,0,0,0.08)) 25%,
+		rgba(255,255,255,0.5) 50%,
+		var(--rdt-color-divider, rgba(0,0,0,0.08)) 75%
+	);
+	background-size: 800px 100%;
+	animation: rdt_shimmer 1.4s ease-in-out infinite;
+}
+
+/* Dim body rows while re-fetching */
+.rdt_bodyBusy {
+	opacity: 0.4;
+	pointer-events: none;
+	user-select: none;
+	transition: opacity 0.15s ease;
+}
+
+/* Semi-transparent overlay with spinner centered over the dimmed rows */
+.rdt_bodyOverlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+/* ─── Pagination ────────────────────────────────────────────────────────────── */
+.rdt_pagination {
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: flex-end;
+	align-items: center;
+	box-sizing: border-box;
+	padding-right: var(--rdt-cell-padding-x, 8px);
+	padding-left: var(--rdt-cell-padding-x, 8px);
+	width: 100%;
+	font-size: var(--rdt-font-size, 13px);
+	font-family: var(--rdt-font-family, inherit);
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	background-color: var(--rdt-color-bg, #fff);
+	min-height: var(--rdt-row-height, 52px);
+	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_paginationButton {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+	border: none;
+	border-radius: calc(var(--rdt-border-radius, 4px) * 100);
+	height: calc(var(--rdt-icon-size, 18px) + 16px);
+	width: calc(var(--rdt-icon-size, 18px) + 16px);
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	transition: background-color 0.15s;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	background-color: transparent;
+}
+
+.rdt_paginationButton svg {
+	width: var(--rdt-icon-size, 18px);
+	height: var(--rdt-icon-size, 18px);
+	flex-shrink: 0;
+}
+
+.rdt_paginationButton:disabled {
+	cursor: unset;
+	color: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+	fill: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.18));
+}
+
+.rdt_paginationButton:hover:not(:disabled) {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_paginationButton:focus {
+	outline: none;
+	background-color: var(--rdt-color-btn-focus, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_paginationButtonRTL {
+	transform: scale(-1, -1);
+}
+
+.rdt_paginationPageList {
+	display: flex;
+	align-items: center;
+	border-radius: var(--rdt-border-radius, 4px);
+	white-space: nowrap;
+}
+
+@media (max-width: 599px) {
+	.rdt_paginationPageList {
+		width: 100%;
+		justify-content: space-around;
+	}
+}
+
+.rdt_paginationSpan {
+	flex-shrink: 1;
+	user-select: none;
+}
+
+.rdt_paginationRange {
+	flex-shrink: 1;
+	user-select: none;
+	margin: 0 24px;
+}
+
+.rdt_paginationRowLabel {
+	flex-shrink: 1;
+	user-select: none;
+	margin: 0 4px;
+}
+
+/* ─── Select ────────────────────────────────────────────────────────────────── */
+.rdt_selectWrapper {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	flex-shrink: 0;
+	font-size: inherit;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.24));
+	border-radius: var(--rdt-border-radius, 4px);
+	background-color: var(--rdt-color-bg, #fff);
+	height: 28px;
+	margin-left: 8px;
+	transition: border-color 0.15s;
+}
+
+.rdt_selectWrapper:focus-within {
+	border-color: var(--rdt-color-primary, #1976d2);
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -1px;
+}
+
+.rdt_selectWrapper svg {
+	top: 50%;
+	right: 2px;
+	transform: translateY(-50%);
+	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
+	position: absolute;
+	fill: none;
+	stroke: currentColor;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	user-select: none;
+	pointer-events: none;
+}
+
+.rdt_selectControl {
+	cursor: pointer;
+	height: 100%;
+	max-width: 100%;
+	user-select: none;
+	padding-left: 8px;
+	padding-right: 22px;
+	box-sizing: border-box;
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+	border: none;
+	background-color: transparent;
+	appearance: none;
+	direction: ltr;
+	flex-shrink: 0;
+	outline: none;
+}
+
+.rdt_selectControl::-ms-expand {
+	display: none;
+}
+
+.rdt_selectControl option {
+	color: initial;
+	background-color: var(--rdt-color-bg, #fff);
+}
+
+/* ─── Responsive column hiding ───────────────────────────────────────────────── */
+@media (max-width: 599px) {
+	.rdt_hideOnSm {
+		display: none;
+	}
+}
+
+@media (max-width: 959px) {
+	.rdt_hideOnMd {
+		display: none;
+	}
+}
+
+@media (max-width: 1279px) {
+	.rdt_hideOnLg {
+		display: none;
+	}
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+
+/* Row entrance — rows fade + slide in when the table first renders */
+@keyframes rdt_rowEnter {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/*
+ * Row entrance stagger is driven by --rdt-row-index set inline per-row.
+ * The row component clamps the index so the cascade never exceeds the cap
+ * regardless of dataset size, and only sets the class for newly-seen rows
+ * (sort/filter/pagination do not re-trigger entrance).
+ */
+.rdt_animatedRow {
+	animation: rdt_rowEnter 0.18s ease both;
+	animation-delay: calc(var(--rdt-row-index, 0) * 16ms);
+}
+
+/* Expander row — slide open from top with a clip + fade */
+@keyframes rdt_expandIn {
+	from {
+		opacity: 0;
+		max-height: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		/* JS sets --rdt-expander-height on the row when content height is known;
+		   falls back to a large value so the animation still works without JS. */
+		max-height: var(--rdt-expander-height, 4000px);
+		transform: translateY(0);
+	}
+}
+
+@keyframes rdt_expandOut {
+	from {
+		opacity: 1;
+		max-height: var(--rdt-expander-height, 4000px);
+	}
+	to {
+		opacity: 0;
+		max-height: 0;
+	}
+}
+
+.rdt_expanderRowAnimated {
+	animation: rdt_expandIn 0.25s cubic-bezier(0.2, 0, 0, 1) both;
+	overflow: hidden;
+}
+
+/* Sort indicator pulse — briefly highlights the sorted column */
+@keyframes rdt_sortPulse {
+	0%   { background-color: transparent; }
+	30%  { background-color: var(--rdt-color-selected, #e3f2fd); }
+	100% { background-color: transparent; }
+}
+
+.rdt_sortActive {
+	animation: rdt_sortPulse 0.4s ease both;
+}
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+	.rdt_animatedRow,
+	.rdt_expanderRowAnimated,
+	.rdt_sortActive {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	/* Column reorder FLIP animations are skipped via JS matchMedia check */
+}

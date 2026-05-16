@@ -1,0 +1,84 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import LoadingDemo from '../../components/demos/LoadingDemo';
+---
+
+<DocsLayout title="Loading state | react-data-table-component">
+  <h1>Loading state</h1>
+
+  <p>
+    Set <code>progressPending</code> to <code>true</code> while your data is in-flight.
+    The table adapts its loading UI based on whether rows are already visible:
+  </p>
+
+  <ul>
+    <li><strong>Initial load</strong> (no data yet) — shimmer skeleton rows fill the body so the layout doesn't collapse.</li>
+    <li><strong>Re-fetch</strong> (rows already shown) — existing rows stay in place, dim to 40% opacity, and a spinner overlays the centre. The header and pagination never disappear.</li>
+  </ul>
+
+  <Demo
+    title="Loading state"
+    description="Click either button to see the two loading modes."
+    code={`import { useState, useEffect } from 'react';
+import DataTable from 'react-data-table-component';
+
+export default function UsersTable() {
+  const [data, setData]       = useState([]);
+  const [loading, setLoading] = useState(true); // true on first render → skeleton immediately
+
+  useEffect(() => {
+    fetch('/api/users')
+      .then(r => r.json())
+      .then(json => { setData(json.rows); setLoading(false); });
+  }, []);
+
+  function refresh() {
+    setLoading(true);                   // has existing rows → overlay mode
+    fetch('/api/users')
+      .then(r => r.json())
+      .then(json => { setData(json.rows); setLoading(false); });
+  }
+
+  return <DataTable columns={columns} data={data} progressPending={loading} />;
+}`}
+  >
+    <LoadingDemo client:load />
+  </Demo>
+
+  <h2>Custom spinner or message</h2>
+
+  <p>
+    The default <code>progressComponent</code> is a CSS spinner circle. Pass any React node to replace it —
+    it will be centred in the overlay during re-fetches, or shown instead of skeletons on initial load.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  progressPending={loading}
+  progressComponent={<MyBrandSpinner size={40} />}
+/>`} lang="tsx" />
+
+  <h2>Empty state</h2>
+
+  <p>
+    When <code>progressPending</code> is <code>false</code> and <code>data</code> is empty,
+    the <code>noDataComponent</code> is shown instead.
+  </p>
+
+  <CodeBlock code={`<DataTable
+  data={[]}
+  progressPending={false}
+  noDataComponent={<p>No results match your search.</p>}
+/>`} lang="tsx" />
+
+  <h2>Header visibility</h2>
+
+  <p>
+    The column header always stays visible during <code>progressPending</code>.
+    Use <code>persistTableHead</code> to also keep it visible when <code>data</code> is empty and not loading.
+  </p>
+
+  <CodeBlock code={`// Keep header visible when data is empty (e.g. after a filter returns nothing)
+<DataTable persistTableHead data={[]} columns={columns} />`} lang="tsx" />
+</DocsLayout>

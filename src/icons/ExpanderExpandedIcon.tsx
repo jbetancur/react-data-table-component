@@ -1,9 +1,20 @@
 import React from 'react';
 
 const ExpanderExpandedIcon: React.FC = () => (
-	<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-		<path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
-		<path d="M0-.75h24v24H0z" fill="none" />
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		strokeWidth="1.5"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		aria-hidden="true"
+		role="presentation"
+	>
+		<path d="M18 9L12 15L6 9" />
 	</svg>
 );
 

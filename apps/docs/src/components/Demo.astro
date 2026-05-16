@@ -1,0 +1,88 @@
+---
+/**
+ * Demo.astro — wraps a live React island with a toggleable "View code" panel.
+ *
+ * Usage:
+ *   <Demo code={`import DataTable from '...'`} title="Basic example">
+ *     <MyDemoIsland client:load />
+ *   </Demo>
+ *
+ * The <Code> component uses Astro's built-in Shiki highlighter — zero config.
+ */
+import { Code } from 'astro:components';
+
+interface Props {
+  title?: string;
+  description?: string;
+  code: string;
+  lang?: string;
+}
+
+const { title, description, code, lang = 'tsx' } = Astro.props;
+const id = `demo-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="my-8 not-prose rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+  {(title || description) && (
+    <div class="px-4 pt-4 pb-2">
+      {title && <p class="font-semibold text-gray-800 text-sm">{title}</p>}
+      {description && <p class="text-xs text-gray-400 mt-0.5">{description}</p>}
+    </div>
+  )}
+
+  <!-- Live demo -->
+  <div class="p-4 bg-white">
+    <slot />
+  </div>
+
+  <!-- Code toggle -->
+  <div class="border-t border-gray-100">
+    <button
+      type="button"
+      data-target={id}
+      class="code-toggle w-full flex items-center justify-between px-4 py-2 text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition-colors group"
+    >
+      <span class="font-mono flex items-center gap-1.5">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3,5 6.5,2 10,5" />
+          <polyline points="3,8 6.5,11 10,8" />
+        </svg>
+        <span class="toggle-label">View code</span>
+      </span>
+      <svg class="toggle-chevron w-3.5 h-3.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="2,4 6,8 10,4" />
+      </svg>
+    </button>
+    <div id={id} class="hidden">
+      <Code code={code} lang={lang} theme="github-dark" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .toggle-chevron {
+    transition: transform 0.2s ease;
+  }
+  .code-toggle[data-open] .toggle-chevron {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.code-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target!);
+      if (!target) return;
+      const isOpen = btn.hasAttribute('data-open');
+      if (isOpen) {
+        btn.removeAttribute('data-open');
+        target.classList.add('hidden');
+        btn.querySelector('.toggle-label')!.textContent = 'View code';
+      } else {
+        btn.setAttribute('data-open', '');
+        target.classList.remove('hidden');
+        btn.querySelector('.toggle-label')!.textContent = 'Hide code';
+      }
+    });
+  });
+</script>

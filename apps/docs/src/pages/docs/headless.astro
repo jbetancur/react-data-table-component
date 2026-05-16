@@ -1,0 +1,522 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+
+const pipelineDiagram = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#f0f4ff", "primaryTextColor": "#1e293b", "primaryBorderColor": "#6366f1", "lineColor": "#6366f1", "secondaryColor": "#f8fafc", "tertiaryColor": "#f1f5f9"}, "layout": {"algorithm": "elk"}}}%%
+flowchart TD
+  A(["Your data[]"])
+
+  subgraph pipeline ["Hook pipeline"]
+    direction TB
+    B["useColumns
+    ─────────────────
+    • decorates column ids
+    • resolves defaultSortFieldId
+    • manages drag-to-reorder"]
+
+    C["useTableState
+    ─────────────────
+    • currentPage
+    • rowsPerPage
+    • sortDirection
+    • selectedRows"]
+
+    D["useTableData
+    ─────────────────
+    • sorts client-side
+    • paginates + slices
+    • (skipped in server mode)"]
+
+    E["useColumnFilter (optional)
+    ─────────────────
+    • per-column filter state
+    • filteredData() helper"]
+  end
+
+  F(["Rendered rows"])
+
+  A --> B
+  A --> C
+  B --> C
+  C --> D
+  D --> E
+  E --> F`;
+
+const componentTreeDiagram = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#f0f4ff", "primaryTextColor": "#1e293b", "primaryBorderColor": "#6366f1", "lineColor": "#6366f1", "secondaryColor": "#f8fafc"}, "layout": "elk"}}%%
+graph TD
+    W["div.rdt_wrapper (root)"]
+    H["Header (optional title + actions)"]
+    S["Subheader (optional: filters, search)"]
+    SC["div.rdt_responsiveWrapper (scroll container)"]
+    T["div.rdt_table  aria role=table"]
+    TH["div.rdt_TableHead"]
+    THR["div.rdt_TableHeadRow"]
+    TC["div.rdt_TableCol  ×N columns
+    data-column-id=..."]
+    RH["span.rdt_columnSortable (sort handle + label)
+    + div.rdt_resizeHandle (when resizable)"]
+    TB["div.rdt_TableBody"]
+    TR["div.rdt_row  ×N rows
+    id=row-..."]
+    TD["div.rdt_TableCell  ×N columns
+    data-column-id=..."]
+    CEL["div[data-tag=allowRowEvents]
+    cell content"]
+    PS["PinnedScrollbar (when row pinning enabled)"]
+    PG["Pagination (when pagination enabled)"]
+
+    W --> H
+    W --> S
+    W --> SC
+    SC --> T
+    T --> TH
+    T --> TB
+    TH --> THR
+    THR --> TC
+    TC --> RH
+    TB --> TR
+    TR --> TD
+    TD --> CEL
+    W --> PS
+    W --> PG`;
+---
+
+<DocsLayout title="Headless hooks | react-data-table-component" description="Use the logic layer of react-data-table-component without its default markup or styles.">
+
+  <h1>Headless hooks</h1>
+
+  <p>
+    <code>react-data-table-component</code> ships four hooks that power <code>&lt;DataTable /&gt;</code> internally.
+    You can import them directly and compose them yourself when you need full control over markup and styles,
+    without giving up sorting, pagination, selection, filtering, and column-drag logic.
+  </p>
+  <p>
+    This is the middle ground between using the styled <code>&lt;DataTable /&gt;</code> as-is and rebuilding
+    everything from scratch with a fully headless library.
+  </p>
+
+  <hr />
+
+  <h2>When to use this</h2>
+
+  <ul>
+    <li>You have a design system and can't override the default styles far enough</li>
+    <li>You're building inside a heavily customised UI (e.g. a design system component library)</li>
+    <li>You want the table logic but need to render it inside something other than a standard <code>&lt;table&gt;</code> or flex layout</li>
+    <li>You want to compose only some hooks (e.g. sorting + pagination) and handle the rest yourself</li>
+  </ul>
+
+  <p>If the default <code>&lt;DataTable /&gt;</code> with <code>customStyles</code> covers your needs, use that. It is less work.</p>
+
+  <hr />
+
+  <h2>The data pipeline</h2>
+
+  <p>
+    Each hook owns one layer of the pipeline. Data flows top-to-bottom; state flows back up via callbacks.
+    Understanding this makes it straightforward to drop any layer and replace it with your own logic.
+  </p>
+
+  <div class="mermaid-diagram">
+    <pre class="mermaid" set:html={pipelineDiagram} />
+  </div>
+
+  <h2>Component tree</h2>
+
+  <p>
+    When you use <code>&lt;DataTable /&gt;</code>, it renders the following structure. Each node has a stable CSS
+    class so you can target it from your stylesheet. When you use the hooks directly, you own this tree entirely.
+  </p>
+
+  <div class="mermaid-diagram">
+    <pre class="mermaid" set:html={componentTreeDiagram} />
+  </div>
+
+  <hr />
+
+  <h2>The four hooks</h2>
+
+  <table>
+    <thead>
+      <tr><th>Hook</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>useColumns</code></td><td>Manages column order and drag-to-reorder</td></tr>
+      <tr><td><code>useTableState</code></td><td>Sort, pagination, and row-selection state + dispatchers</td></tr>
+      <tr><td><code>useTableData</code></td><td>Sorts and paginates the raw data into renderable rows</td></tr>
+      <tr><td><code>useColumnFilter</code></td><td>Per-column filter values and client-side filter logic</td></tr>
+    </tbody>
+  </table>
+
+  <p>All four are pure: no JSX, no CSS, no hard dependency on the rendered component tree.</p>
+
+  <hr />
+
+  <h2>Basic example</h2>
+
+  <CodeBlock lang="tsx" code={`import {
+  useColumns,
+  useTableState,
+  useTableData,
+  useColumnFilter,
+} from 'react-data-table-component';
+
+const columns = [
+  { id: 1, name: 'Name',  selector: (row) => row.name,  sortable: true },
+  { id: 2, name: 'Email', selector: (row) => row.email },
+  { id: 3, name: 'Role',  selector: (row) => row.role },
+];
+
+function MyTable({ data }) {
+  // 1. Column order + drag state
+  const { tableColumns, handleDragStart, handleDragEnd } = useColumns(
+    columns,
+    () => {},   // onColumnOrderChange
+    null,       // defaultSortFieldId
+    true,       // defaultSortAsc
+  );
+
+  // 2. Sort / page / selection state
+  const {
+    tableState,
+    handleSort,
+    handleChangePage,
+    handleChangeRowsPerPage,
+    handleSelectedRow,
+    handleSelectAllRows,
+  } = useTableState({
+    data,
+    keyField: 'id',
+    defaultSortColumn: tableColumns[0],
+    defaultSortDirection: 'asc',
+    paginationDefaultPage: 1,
+    paginationPerPage: 10,
+    paginationServer: false,
+    paginationServerOptions: {},
+    paginationTotalRows: 0,
+    pagination: true,
+    selectableRowsSingle: false,
+    selectableRowsVisibleOnly: false,
+    selectableRowSelected: null,
+    clearSelectedRows: false,
+    paginationResetDefaultPage: false,
+    onSelectedRowsChange: () => {},
+    onSort: () => {},
+    onChangePage: () => {},
+    onChangeRowsPerPage: () => {},
+  });
+
+  const { selectedColumn, sortDirection, currentPage, rowsPerPage } = tableState;
+
+  // 3. Sorted + paginated rows
+  const { sortedData, tableRows } = useTableData({
+    data,
+    columns: tableColumns,
+    selectedColumn,
+    sortDirection,
+    currentPage,
+    rowsPerPage,
+    pagination: true,
+    paginationServer: false,
+    sortServer: false,
+    sortFunction: null,
+    onSort: () => {},
+  });
+
+  // 4. Optional: per-column filtering (uncontrolled — internal state)
+  const { filteredData } = useColumnFilter(tableColumns);
+
+  const rows = filteredData(tableRows);
+
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            {tableColumns.map(col => (
+              <th key={col.id} onClick={() => handleSort({ type: 'SORT_CHANGE', sortColumn: col, clearSelectedRows: false })}>
+                {col.name}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i}>
+              {tableColumns.map(col => (
+                <td key={col.id}>{col.selector?.(row, i)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}`} />
+
+  <hr />
+
+  <h2>Hook signatures</h2>
+
+  <h3><code>useColumns&lt;T&gt;</code></h3>
+
+  <CodeBlock lang="ts" code={`function useColumns<T>(
+  columns: TableColumn<T>[],
+  onColumnOrderChange: (nextOrder: TableColumn<T>[]) => void,
+  defaultSortFieldId: string | number | null | undefined,
+  defaultSortAsc: boolean,
+): ColumnsHook<T>`} />
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>tableColumns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>Decorated columns in current drag order</td></tr>
+      <tr><td><code>draggingColumnId</code></td><td><code>string</code></td><td>ID of the column being dragged, or <code>''</code></td></tr>
+      <tr><td><code>defaultSortColumn</code></td><td><code>TableColumn&lt;T&gt;</code></td><td>The column matching <code>defaultSortFieldId</code></td></tr>
+      <tr><td><code>defaultSortDirection</code></td><td><code>SortOrder</code></td><td><code>'asc'</code> or <code>'desc'</code> from <code>defaultSortAsc</code></td></tr>
+      <tr><td><code>handleDragStart</code></td><td><code>DragEventHandler</code></td><td>Attach to <code>onDragStart</code> on the header cell</td></tr>
+      <tr><td><code>handleDragEnter</code></td><td><code>DragEventHandler</code></td><td>Attach to <code>onDragEnter</code> on the header cell</td></tr>
+      <tr><td><code>handleDragOver</code></td><td><code>DragEventHandler</code></td><td>Attach to <code>onDragOver</code> on the header cell</td></tr>
+      <tr><td><code>handleDragLeave</code></td><td><code>DragEventHandler</code></td><td>Attach to <code>onDragLeave</code> on the header cell</td></tr>
+      <tr><td><code>handleDragEnd</code></td><td><code>DragEventHandler</code></td><td>Attach to <code>onDragEnd</code> on the header cell</td></tr>
+    </tbody>
+  </table>
+
+  <p>All five drag handlers must be attached for reordering to work correctly.</p>
+
+  <hr />
+
+  <h3><code>useTableState&lt;T&gt;</code></h3>
+
+  <CodeBlock lang="ts" code={`function useTableState<T>(props: UseTableStateProps<T>): UseTableStateReturn<T>`} />
+
+  <p><strong>Props:</strong></p>
+
+  <table>
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>data</code></td><td><code>T[]</code></td><td>Full dataset (used for selection total counts)</td></tr>
+      <tr><td><code>keyField</code></td><td><code>string</code></td><td>Unique row identifier field</td></tr>
+      <tr><td><code>defaultSortColumn</code></td><td><code>TableColumn&lt;T&gt;</code></td><td>Column active on first render</td></tr>
+      <tr><td><code>defaultSortDirection</code></td><td><code>SortOrder</code></td><td><code>'asc'</code> | <code>'desc'</code></td></tr>
+      <tr><td><code>pagination</code></td><td><code>boolean</code></td><td>Enable pagination state</td></tr>
+      <tr><td><code>paginationDefaultPage</code></td><td><code>number</code></td><td>Starting page (1-based)</td></tr>
+      <tr><td><code>paginationPerPage</code></td><td><code>number</code></td><td>Rows per page</td></tr>
+      <tr><td><code>paginationServer</code></td><td><code>boolean</code></td><td>Skip internal page math</td></tr>
+      <tr><td><code>paginationServerOptions</code></td><td><code>PaginationServerOptions</code></td><td><code>persistSelectedOnPageChange</code>, <code>persistSelectedOnSort</code></td></tr>
+      <tr><td><code>paginationTotalRows</code></td><td><code>number</code></td><td>Total server rows (server mode only)</td></tr>
+      <tr><td><code>paginationResetDefaultPage</code></td><td><code>boolean</code></td><td>Toggle to reset to page 1</td></tr>
+      <tr><td><code>selectableRowsSingle</code></td><td><code>boolean</code></td><td>Allow only one selected row</td></tr>
+      <tr><td><code>selectableRowsVisibleOnly</code></td><td><code>boolean</code></td><td>"Select all" acts on current page only</td></tr>
+      <tr><td><code>selectableRowSelected</code></td><td><code>(row: T) =&gt; boolean | null</code></td><td>Pre-select matching rows</td></tr>
+      <tr><td><code>clearSelectedRows</code></td><td><code>boolean</code></td><td>Toggle to clear selection</td></tr>
+      <tr><td><code>onSelectedRowsChange</code></td><td><code>(state) =&gt; void</code></td><td>Fires on any selection change</td></tr>
+      <tr><td><code>onSort</code></td><td><code>(col, dir, rows) =&gt; void</code></td><td>Fires after sort state changes</td></tr>
+      <tr><td><code>onChangePage</code></td><td><code>(page, total) =&gt; void</code></td><td>Fires after page changes</td></tr>
+      <tr><td><code>onChangeRowsPerPage</code></td><td><code>(perPage, page) =&gt; void</code></td><td>Fires after rows-per-page changes</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>tableState</code></td><td><code>TableState&lt;T&gt;</code></td><td>Full state snapshot (see below)</td></tr>
+      <tr><td><code>handleSort</code></td><td><code>(action: SortAction&lt;T&gt;) =&gt; void</code></td><td>Dispatch a sort change</td></tr>
+      <tr><td><code>handleSelectAllRows</code></td><td><code>(action: AllRowsAction&lt;T&gt;) =&gt; void</code></td><td>Dispatch select/deselect all</td></tr>
+      <tr><td><code>handleSelectedRow</code></td><td><code>(action: SingleRowAction&lt;T&gt;) =&gt; void</code></td><td>Dispatch a single row toggle</td></tr>
+      <tr><td><code>handleChangePage</code></td><td><code>(page: number) =&gt; void</code></td><td>Dispatch a page change</td></tr>
+      <tr><td><code>handleChangeRowsPerPage</code></td><td><code>(perPage, rowCount) =&gt; void</code></td><td>Dispatch a per-page change</td></tr>
+      <tr><td><code>handleClearSelectedRows</code></td><td><code>() =&gt; void</code></td><td>Programmatically clear all selections</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong><code>TableState&lt;T&gt;</code> shape:</strong></p>
+
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>currentPage</code></td><td><code>number</code></td></tr>
+      <tr><td><code>rowsPerPage</code></td><td><code>number</code></td></tr>
+      <tr><td><code>selectedColumn</code></td><td><code>TableColumn&lt;T&gt;</code></td></tr>
+      <tr><td><code>sortDirection</code></td><td><code>SortOrder</code></td></tr>
+      <tr><td><code>selectedRows</code></td><td><code>T[]</code></td></tr>
+      <tr><td><code>selectedCount</code></td><td><code>number</code></td></tr>
+      <tr><td><code>allSelected</code></td><td><code>boolean</code></td></tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h3><code>useTableData&lt;T&gt;</code></h3>
+
+  <CodeBlock lang="ts" code={`function useTableData<T>(props: UseTableDataProps<T>): UseTableDataReturn<T>`} />
+
+  <table>
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>data</code></td><td><code>T[]</code></td><td>Source rows (full array for client-side; current-page array for server-side)</td></tr>
+      <tr><td><code>columns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>From <code>useColumns</code></td></tr>
+      <tr><td><code>selectedColumn</code></td><td><code>TableColumn&lt;T&gt;</code></td><td>From <code>tableState.selectedColumn</code></td></tr>
+      <tr><td><code>sortDirection</code></td><td><code>SortOrder</code></td><td>From <code>tableState.sortDirection</code></td></tr>
+      <tr><td><code>currentPage</code></td><td><code>number</code></td><td>From <code>tableState.currentPage</code></td></tr>
+      <tr><td><code>rowsPerPage</code></td><td><code>number</code></td><td>From <code>tableState.rowsPerPage</code></td></tr>
+      <tr><td><code>pagination</code></td><td><code>boolean</code></td><td>Enable page slicing</td></tr>
+      <tr><td><code>paginationServer</code></td><td><code>boolean</code></td><td>Skip page slicing (server already paginated)</td></tr>
+      <tr><td><code>sortServer</code></td><td><code>boolean</code></td><td>Skip sorting (server already sorted)</td></tr>
+      <tr><td><code>sortFunction</code></td><td><code>SortFunction&lt;T&gt; | null</code></td><td>Global custom sort comparator</td></tr>
+      <tr><td><code>onSort</code></td><td><code>(col, dir, rows) =&gt; void</code></td><td>Called after sort; receives sorted rows</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>sortedData</code></td><td><code>T[]</code></td><td>All rows after sorting (full dataset, pre-slice)</td></tr>
+      <tr><td><code>tableRows</code></td><td><code>T[]</code></td><td>Rows for the current page after sort + slice</td></tr>
+    </tbody>
+  </table>
+
+  <p>Pass <code>tableRows</code> (not <code>sortedData</code>) to <code>useColumnFilter.filteredData()</code> and then to your render.</p>
+
+  <hr />
+
+  <h3><code>useColumnFilter&lt;T&gt;</code></h3>
+
+  <CodeBlock lang="ts" code={`import type { FilterState } from 'react-data-table-component';
+
+function useColumnFilter<T>(
+  columns: TableColumn<T>[],
+  controlledFilterValues?: Record<string | number, FilterState>,
+  onFilterChange?: (columnId: string | number, filter: FilterState) => void,
+): UseColumnFilterResult<T>`} />
+
+  <p>
+    Omit both optional arguments to run in <strong>uncontrolled</strong> mode (internal state).
+    Pass both to run in <strong>controlled</strong> mode (you own the state).
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>filterValues</code></td><td><code>Record&lt;string | number, FilterState&gt;</code></td><td>Current filter state per column ID</td></tr>
+      <tr><td><code>handleFilterChange</code></td><td><code>(columnId, filter) =&gt; void</code></td><td>Call this when the user applies a filter</td></tr>
+      <tr><td><code>filteredData</code></td><td><code>(data: T[]) =&gt; T[]</code></td><td>Apply all active filters to a row array</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    <code>filteredData</code> is a stable memoised function — safe to call in render.
+    Each column can define <code>filterFunction: (row: T, filter: FilterState) =&gt; boolean</code> to
+    override the built-in operator logic. See <a href="/docs/filtering">Filtering</a> for the full
+    <code>FilterState</code> type and operator reference.
+  </p>
+
+  <hr />
+
+  <h2>How <code>useTableState</code> and <code>useTableData</code> relate</h2>
+
+  <p>
+    <code>useTableState</code> owns the sort/page/selection <strong>state</strong>.
+    <code>useTableData</code> takes that state as inputs and returns the <strong>derived rows</strong> to render.
+    They are intentionally separate so you can skip <code>useTableData</code> entirely if you're handling
+    sorting and pagination server-side.
+  </p>
+
+  <CodeBlock lang="ts" code={`// Server-side: you manage the rows, just use useTableState for UI state
+const { tableState, handleSort, handleChangePage } = useTableState({ ..., paginationServer: true });
+
+// When tableState changes, fire your own API call. No useTableData needed.
+useEffect(() => {
+  fetchPage(tableState.currentPage, tableState.rowsPerPage, tableState.sortDirection);
+}, [tableState.currentPage, tableState.rowsPerPage, tableState.sortDirection]);`} />
+
+  <hr />
+
+  <h2>State ownership</h2>
+
+  <table>
+    <thead>
+      <tr><th>State</th><th>Owned by</th><th>Controlled prop</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Current page</td><td><code>useTableState</code></td><td><code>paginationDefaultPage</code> + <code>onChangePage</code></td></tr>
+      <tr><td>Rows per page</td><td><code>useTableState</code></td><td><code>paginationPerPage</code> + <code>onChangeRowsPerPage</code></td></tr>
+      <tr><td>Selected rows</td><td><code>useTableState</code></td><td><code>selectableRowSelected</code> + <code>onSelectedRowsChange</code></td></tr>
+      <tr><td>Sort column + direction</td><td><code>useTableState</code></td><td><code>defaultSortFieldId</code> + <code>onSort</code></td></tr>
+      <tr><td>Column filters</td><td><code>useColumnFilter</code></td><td><code>filterValues</code> + <code>onFilterChange</code></td></tr>
+      <tr><td>Column widths</td><td><code>useColumnResize</code></td><td>None — DOM-only (see <a href="/docs/recipes">recipes</a>)</td></tr>
+      <tr><td>Column order</td><td><code>useColumns</code></td><td><code>onColumnOrderChange</code></td></tr>
+      <tr><td>Expanded rows</td><td>local to each row component</td><td><code>expandableRowExpanded</code> + <code>onRowExpandToggled</code></td></tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>What you're responsible for</h2>
+
+  <p>When you use the hooks directly, you own:</p>
+
+  <ul>
+    <li><strong>Markup</strong>: <code>&lt;table&gt;</code>, <code>&lt;div&gt;</code>, whatever fits your design system</li>
+    <li><strong>Styles</strong>: no CSS is injected; you apply your own classes</li>
+    <li><strong>Accessibility</strong>: <code>role</code>, <code>aria-sort</code>, <code>aria-selected</code>, screen-reader labels</li>
+    <li><strong>Pagination UI</strong>: the hooks give you <code>currentPage</code>, <code>rowsPerPage</code>, and <code>handleChangePage</code>; you render the controls</li>
+    <li><strong>Selection UI</strong>: <code>tableState.selectedRows</code>, <code>handleSelectedRow</code>, <code>handleSelectAllRows</code> give you the data; you render checkboxes</li>
+  </ul>
+
+  <hr />
+
+  <h2>Staying on the styled <code>&lt;DataTable /&gt;</code></h2>
+
+  <p>
+    None of these exports affect the default <code>&lt;DataTable /&gt;</code>. It continues to work identically.
+    The hooks are an additive unlocked door, not a replacement.
+  </p>
+
+  <hr />
+
+  <h2>Live demo</h2>
+
+  <p>
+    The table below is built entirely from the four hooks — no <code>&lt;DataTable /&gt;</code> component.
+    It has sortable headers, per-column filter inputs, manual pagination controls, and striped rows,
+    all in custom markup with no injected CSS.
+  </p>
+
+</DocsLayout>
+
+<script is:inline>
+  // Lazily load Mermaid and render diagrams after the page is ready.
+  // Using the CDN build with ELK support bundled is the simplest approach for an Astro static site.
+  (function () {
+    const diagrams = document.querySelectorAll('pre.mermaid');
+    if (!diagrams.length) return;
+
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.textContent = `
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      import elkLayouts from 'https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.5/dist/mermaid-layout-elk.esm.min.mjs';
+      mermaid.registerLayoutLoaders(elkLayouts);
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'loose' });
+      await mermaid.run({ querySelector: 'pre.mermaid' });
+    `;
+    document.head.appendChild(script);
+  })();
+</script>

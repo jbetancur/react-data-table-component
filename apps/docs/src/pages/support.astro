@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const GH_SPONSORS = 'https://github.com/sponsors/jbetancur';
+const OC_BASE = 'https://opencollective.com/react-data-table-component';
+---
+
+<Layout
+  title="Support — react-data-table-component"
+  description="Priority support plans and sponsorship options for react-data-table-component."
+>
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-12 text-center">
+    <h1 class="text-4xl font-bold tracking-tight text-gray-900">Support &amp; Sponsorship</h1>
+    <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
+      This library is maintained by one person. Your support funds bug fixes, new features, and keeps
+      pace with the React ecosystem.
+    </p>
+  </section>
+
+  <!-- Sponsor tiers -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-10">Sponsorship Tiers</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        {[
+          {
+            name: '☕ Supporter',
+            price: '$5',
+            period: '/mo',
+            perks: ['Name in README supporters list'],
+            amount: 5,
+          },
+          {
+            name: '🎗 Backer',
+            price: '$20',
+            period: '/mo',
+            perks: ['Name + link in README'],
+            amount: 20,
+          },
+          {
+            name: '🥉 Bronze',
+            price: '$100',
+            period: '/mo',
+            perks: ['Small logo on docs site footer', 'Name + link in README'],
+            amount: 100,
+          },
+          {
+            name: '🥈 Silver',
+            price: '$200',
+            period: '/mo',
+            perks: ['Medium logo on docs site sidebar', 'Logo + link in README'],
+            amount: 200,
+          },
+          {
+            name: '🥇 Gold',
+            price: '$500',
+            period: '/mo',
+            perks: ['Large logo — hero spot on reactdatatable.com', 'Top placement in README', 'Limited to 3 sponsors'],
+            amount: 500,
+          },
+        ].map(({ name, price, period, perks }) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-5 flex flex-col">
+            <div class="font-semibold text-gray-900">{name}</div>
+            <div class="mt-1 text-2xl font-bold text-gray-900">
+              {price}<span class="text-sm font-normal text-gray-400">{period}</span>
+            </div>
+            <ul class="mt-3 flex-1 space-y-1.5 text-xs text-gray-500">
+              {perks.map((p) => (
+                <li class="flex items-start gap-1.5">
+                  <svg class="mt-0.5 shrink-0 text-brand-500" width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={GH_SPONSORS}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 block text-center border border-brand-200 text-brand-700 text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-50 transition-colors"
+            >
+              Sponsor on GitHub →
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- One-time -->
+      <div class="mt-8 bg-white border border-gray-200 rounded-xl p-6 text-center">
+        <h3 class="font-semibold text-gray-900 mb-1">One-time donation</h3>
+        <p class="text-sm text-gray-500 mb-4">No commitment. Every bit helps.</p>
+        <a
+          href={GH_SPONSORS}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-brand-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-brand-700 transition-colors"
+        >
+          Sponsor on GitHub →
+        </a>
+        <p class="mt-3 text-xs text-gray-400">
+          Prefer invoicing? <a href={`${OC_BASE}/donate`} target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">Open Collective</a> provides receipts automatically.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo placement -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-bold text-gray-900 text-center mb-3">Where your logo appears</h2>
+    <p class="text-sm text-gray-500 text-center mb-10">Bronze tier and above. Logos link to your site and stay up as long as you sponsor.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="border border-gray-200 rounded-xl p-6">
+        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Bronze · $100/mo</div>
+        <h3 class="font-semibold text-gray-900 mb-1">Docs site footer</h3>
+        <p class="text-xs text-gray-500 mb-4">Small logo in the footer of every page on reactdatatable.com — seen by every developer reading the docs.</p>
+        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono">
+          <div class="border-t border-gray-200 pt-2 mt-2 flex items-center gap-2">
+            <div class="w-8 h-4 bg-gray-200 rounded" />
+            <span>Apache 2.0 licensed · GitHub · Built with Astro</span>
+          </div>
+          <div class="flex items-center gap-2 mt-1 text-[10px]">
+            <div class="w-8 h-4 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-brand-400">logo</div>
+            <span class="text-gray-300">← your logo here</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-gray-200 rounded-xl p-6">
+        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Silver · $200/mo</div>
+        <h3 class="font-semibold text-gray-900 mb-1">Docs site sidebar</h3>
+        <p class="text-xs text-gray-500 mb-4">Medium logo in the sidebar of every docs page — visible to developers actively reading the documentation.</p>
+        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono">
+          <div class="flex gap-2">
+            <div class="w-16 border-r border-gray-200 pr-2 space-y-1">
+              <div class="w-full h-2 bg-gray-200 rounded" />
+              <div class="w-full h-2 bg-gray-200 rounded" />
+              <div class="w-12 h-6 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-[9px] text-brand-400 mt-2">logo</div>
+            </div>
+            <div class="flex-1 space-y-1">
+              <div class="w-full h-2 bg-gray-200 rounded" />
+              <div class="w-3/4 h-2 bg-gray-200 rounded" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-2 border-brand-200 rounded-xl p-6 relative">
+        <div class="absolute -top-3 left-4 bg-brand-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">Most visible</div>
+        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Gold · $500/mo</div>
+        <h3 class="font-semibold text-gray-900 mb-1">Homepage hero</h3>
+        <p class="text-xs text-gray-500 mb-4">Large logo in the sponsors section of the homepage — the highest-traffic page, seen by every new visitor. Limited to 3.</p>
+        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono">
+          <div class="text-center space-y-1">
+            <div class="text-[10px] text-gray-300">Sponsors</div>
+            <div class="flex items-center justify-center gap-2">
+              <div class="w-16 h-8 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-[9px] text-brand-400">your logo</div>
+              <div class="w-10 h-6 bg-gray-200 rounded" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-gray-400 mt-6">
+      All tiers also include your name and link in the GitHub README — seen by developers browsing the repo.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-2xl mx-auto px-6 py-16">
+    <h2 class="text-xl font-bold text-gray-900 mb-8 text-center">Common questions</h2>
+    <dl class="space-y-6">
+      {[
+        {
+          q: 'Does the library stay free?',
+          a: 'Yes — always. The core library is Apache 2.0 licensed. Sponsorship funds maintenance; it doesn\'t change what\'s free.',
+        },
+        {
+          q: 'Can I get help with a complex integration?',
+          a: 'Yes — email me directly to discuss one-off consulting. I\'m available for integrations, performance issues, and major version upgrades.',
+        },
+        {
+          q: 'How does logo placement work?',
+          a: 'Email me after subscribing at the Bronze tier or above and I\'ll add your logo within one business day.',
+        },
+        {
+          q: 'Can I pay via invoice?',
+          a: 'Yes — Open Collective provides receipts and invoices automatically. For custom invoicing arrangements, email me directly.',
+        },
+      ].map(({ q, a }) => (
+        <div>
+          <dt class="font-semibold text-gray-900 text-sm">{q}</dt>
+          <dd class="mt-1 text-sm text-gray-500">{a}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm text-gray-500 mb-3">Questions about sponsorship or consulting?</p>
+      <a
+        href="mailto:johnnyazee@gmail.com"
+        class="text-sm text-brand-600 hover:text-brand-700 font-medium"
+      >
+        Email me directly →
+      </a>
+    </div>
+  </section>
+</Layout>

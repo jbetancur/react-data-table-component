@@ -6,11 +6,16 @@ const LastPage: React.FC = () => (
 		width="24"
 		height="24"
 		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		strokeWidth="1.5"
+		strokeLinecap="round"
+		strokeLinejoin="round"
 		aria-hidden="true"
 		role="presentation"
 	>
-		<path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z" />
-		<path fill="none" d="M0 0h24v24H0V0z" />
+		<path d="M19 6V18" />
+		<path d="M9 18L15 12L9 6" />
 	</svg>
 );
 

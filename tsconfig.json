@@ -12,19 +12,18 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"sourceMap": true,
-		"baseUrl": "src",
 		"jsx": "react",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"outDir": "dist",
 		"target": "es6",
 		"module": "esnext",
 		"lib": [
-			"es6",
-			"es7",
+			"es2017",
 			"dom"
 		],
-		"declaration": true
+		"declaration": true,
+		"types": ["vitest/globals"],
+		"ignoreDeprecations": "6.0"
 	},
 	"include": [
 		"src/**/*"
@@ -32,7 +31,6 @@
 	"exclude": [
 		"node_modules",
 		"dist",
-		"src/**/__tests__",
-		"src/**/internal"
+		"apps"
 	]
 }

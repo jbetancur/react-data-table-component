@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { tableReducer } from '../DataTable/tableReducer';
-import { getNumberOfPages, recalculatePage } from '../DataTable/util';
+import { tableReducer } from '../tableReducer';
+import { getNumberOfPages, recalculatePage } from '../util';
 import useDidUpdateEffect from './useDidUpdateEffect';
-import {
-	Action,
-	TableState,
-	TableColumn,
-	SortOrder,
-	AllRowsAction,
-	SingleRowAction,
-	SortAction,
-} from '../DataTable/types';
+import { SortOrder } from '../types';
+import type { Action, TableState, TableColumn, AllRowsAction, SingleRowAction, SortAction } from '../types';
 
 interface UseTableStateProps<T> {
 	data: T[];
@@ -46,6 +39,7 @@ interface UseTableStateReturn<T> {
 	handleSelectedRow: (action: SingleRowAction<T>) => void;
 	handleChangePage: (page: number) => void;
 	handleChangeRowsPerPage: (newRowsPerPage: number, tableRowsLength: number) => void;
+	handleClearSelectedRows: () => void;
 }
 
 /**
@@ -87,8 +81,12 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,
-		contextMessage: { singular: 'item', plural: 'items', message: '' },
+		sortTriggeredPageReset: false,
 	});
+
+	const handleClearSelectedRows = React.useCallback(() => {
+		dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: false });
+	}, []);
 
 	const handleSort = React.useCallback((action: SortAction<T>) => {
 		dispatch(action);
@@ -146,9 +144,13 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 	const sortCallbackRef = React.useRef(onSort);
 	sortCallbackRef.current = onSort;
 
-	// Effect: Notify parent of page changes
+	// Effect: Notify parent of page changes.
+	// Guard: when currentPage was reset by SORT_CHANGE, onSort is the authoritative
+	// callback — suppress onChangePage so the consumer doesn't double-fetch.
 	useDidUpdateEffect(() => {
-		onChangePage(tableState.currentPage, paginationTotalRows || data.length);
+		if (!tableState.sortTriggeredPageReset) {
+			onChangePage(tableState.currentPage, paginationTotalRows || data.length);
+		}
 	}, [tableState.currentPage]);
 
 	// Effect: Notify parent of rows per page changes
@@ -196,7 +198,7 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		});
 		// We only want to update when data changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data, selectableRowSelected]);
+	}, [data]);
 
 	return {
 		tableState,
@@ -205,5 +207,6 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		handleSelectedRow,
 		handleChangePage,
 		handleChangeRowsPerPage,
+		handleClearSelectedRows,
 	};
 }

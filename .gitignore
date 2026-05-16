@@ -59,7 +59,7 @@ typings/
 
 # dist
 dist/*
-
+apps/docs/dist/*
 # Storybook
 storybook-static
 

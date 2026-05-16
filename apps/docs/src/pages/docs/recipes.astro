@@ -1,0 +1,327 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="Recipes | react-data-table-component">
+  <h1>Recipes</h1>
+
+  <p>
+    Working patterns for common product needs. Each recipe is self-contained — copy into your
+    project and adjust.
+  </p>
+
+  <h2>Persist column widths</h2>
+
+  <p>
+    Pass <code>onColumnResize</code> to receive the settled width after every drag, and
+    <code>initialColumnWidths</code> to hydrate those widths on mount. The callback receives
+    the resized column's id, its new width in px, and the full widths map — so you can write
+    to localStorage, a database, or anywhere else.
+  </p>
+
+  <h3>localStorage</h3>
+
+  <CodeBlock code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const STORAGE_KEY = 'employees-table-widths';
+
+function loadWidths(): Record<string, number> {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}'); }
+  catch { return {}; }
+}
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',   selector: r => r.name   },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true },
+];
+
+export default function App() {
+  const [initialWidths] = useState(loadWidths);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={(_id, _w, all) =>
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(all))
+      }
+    />
+  );
+}`} />
+
+  <h3>Database / back-end</h3>
+
+  <p>
+    Swap the callback body to call your API instead. Wrap with a debounce if you want to
+    batch rapid resizes into a single request.
+  </p>
+
+  <CodeBlock code={`import { useCallback, useEffect, useState } from 'react';
+import DataTable from 'react-data-table-component';
+import { debounce } from 'lodash-es';
+
+export default function App({ userId }: { userId: string }) {
+  const [initialWidths, setInitialWidths] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    api.getColumnPrefs(userId).then(setInitialWidths);
+  }, [userId]);
+
+  const handleResize = useCallback(
+    debounce((_id: string | number, _w: number, all: Record<string | number, number>) => {
+      api.saveColumnPrefs(userId, all);
+    }, 500),
+    [userId],
+  );
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={handleResize}
+    />
+  );
+}`} />
+
+  <h2>Server-side sort, page, and filter</h2>
+
+  <p>
+    Enable <code>sortServer</code>, <code>paginationServer</code>, and pass controlled
+    <code>filterValues</code>. Refetch from a single effect that depends on every state knob:
+  </p>
+
+  <CodeBlock code={`import { useEffect, useState } from 'react';
+import DataTable, { type FilterState, SortOrder, type TableColumn } from 'react-data-table-component';
+
+export default function App() {
+  const [rows, setRows]       = useState<Employee[]>([]);
+  const [total, setTotal]     = useState(0);
+  const [page, setPage]       = useState(1);
+  const [perPage, setPerPage] = useState(20);
+  const [sort, setSort]       = useState<{ id?: string; dir: SortOrder }>({ dir: SortOrder.ASC });
+  const [filters, setFilters] = useState<Record<string, FilterState>>({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    fetchEmployees({ page, perPage, sort, filters }).then(res => {
+      if (cancelled) return;
+      setRows(res.rows);
+      setTotal(res.total);
+      setLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, [page, perPage, sort, filters]);
+
+  const columns: TableColumn<Employee>[] = [
+    { id: 'name',   name: 'Name',   selector: r => r.name,   sortable: true, filterable: true },
+    { id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true, filterable: true,
+      filterType: 'number', right: true },
+  ];
+
+  return (
+    <DataTable
+      columns={columns}
+      data={rows}
+      progressPending={loading}
+
+      pagination
+      paginationServer
+      paginationTotalRows={total}
+      onChangePage={setPage}
+      onChangeRowsPerPage={setPerPage}
+
+      sortServer
+      onSort={(col, dir) => setSort({ id: col.id as string, dir })}
+
+      filterValues={filters}
+      onFilterChange={(columnId, next) =>
+        setFilters(prev => ({ ...prev, [columnId]: next }))
+      }
+    />
+  );
+}`} />
+
+  <h2>Bulk-action toolbar</h2>
+
+  <p>
+    Render a toolbar above the table that appears when one or more rows are selected. Use the
+    imperative ref to clear the selection after the action completes.
+  </p>
+
+  <CodeBlock code={`import { useRef, useState } from 'react';
+import DataTable, { type DataTableHandle } from 'react-data-table-component';
+
+export default function App() {
+  const ref = useRef<DataTableHandle>(null);
+  const [selected, setSelected] = useState<Employee[]>([]);
+
+  async function handleArchive() {
+    await api.archive(selected.map(r => r.id));
+    ref.current?.clearSelectedRows();
+  }
+
+  return (
+    <>
+      {selected.length > 0 && (
+        <div className="toolbar">
+          <span>{selected.length} selected</span>
+          <button onClick={handleArchive}>Archive</button>
+          <button onClick={() => ref.current?.clearSelectedRows()}>Cancel</button>
+        </div>
+      )}
+
+      <DataTable
+        ref={ref}
+        columns={columns}
+        data={data}
+        selectableRows
+        onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
+      />
+    </>
+  );
+}`} />
+
+  <h2>Master/detail with a nested table</h2>
+
+  <p>
+    Render a second <code>DataTable</code> inside <code>expandableRowsComponent</code>:
+  </p>
+
+  <CodeBlock code={`import DataTable, { type ExpanderComponentProps, type TableColumn } from 'react-data-table-component';
+
+interface Order { id: string; total: number; items: OrderItem[]; }
+interface OrderItem { sku: string; qty: number; price: number; }
+
+const itemColumns: TableColumn<OrderItem>[] = [
+  { name: 'SKU',   selector: i => i.sku },
+  { name: 'Qty',   selector: i => i.qty,   center: true, width: '80px' },
+  { name: 'Price', selector: i => i.price, right: true,  width: '110px',
+    format: i => \`$\${i.price.toFixed(2)}\` },
+];
+
+function OrderDetail({ data }: ExpanderComponentProps<Order>) {
+  return (
+    <div style={{ padding: 12, background: '#f9fafb' }}>
+      <DataTable columns={itemColumns} data={data.items} dense />
+    </div>
+  );
+}
+
+<DataTable
+  columns={orderColumns}
+  data={orders}
+  expandableRows
+  expandableRowsComponent={OrderDetail}
+/>`} />
+
+  <h2>Sticky footer with totals</h2>
+
+  <p>
+    There's no built-in footer slot. The simplest pattern is to render a totals row outside
+    the table that aligns to the same column layout:
+  </p>
+
+  <CodeBlock code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const totals = data.reduce(
+  (acc, r) => ({ salary: acc.salary + r.salary, headcount: acc.headcount + 1 }),
+  { salary: 0, headcount: 0 },
+);
+
+<>
+  <DataTable columns={columns} data={data} />
+  <div style={{
+    display: 'flex',
+    padding: '8px 16px',
+    background: '#f3f4f6',
+    fontWeight: 600,
+    borderTop: '1px solid #e5e7eb',
+  }}>
+    <span style={{ flex: 1 }}>{totals.headcount} employees</span>
+    <span>Total: \${totals.salary.toLocaleString()}</span>
+  </div>
+</>`} />
+
+  <h2>Excel-style editable grid</h2>
+
+  <p>
+    Combine <code>editable: true</code>, <code>onCellEdit</code>, and an immer-style
+    reducer for a spreadsheet feel. See the <a href="/docs/inline-editing">inline editing
+    docs</a> for the full pattern.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { id: 'name',     name: 'Name',     selector: r => r.name,     editable: true, onCellEdit },
+  { id: 'quantity', name: 'Quantity', selector: r => r.quantity, editable: true, onCellEdit,
+    right: true, width: '110px' },
+  { id: 'price',    name: 'Price',    selector: r => r.price,    editable: true, onCellEdit,
+    right: true, width: '110px',
+    format: r => \`$\${r.price.toFixed(2)}\` },
+  { id: 'total',    name: 'Total',    selector: r => r.quantity * r.price,
+    right: true, width: '110px',
+    format: r => \`$\${(r.quantity * r.price).toFixed(2)}\` },
+];`} />
+
+  <h2>Row grouping (manual)</h2>
+
+  <p>
+    The library doesn't include row grouping, but you can fake it by pre-grouping your data
+    and using <code>conditionalRowStyles</code> to highlight group headers:
+  </p>
+
+  <CodeBlock code={`type Row = Employee | { __group: string };
+
+const grouped: Row[] = [
+  { __group: 'Engineering' },
+  ...employees.filter(e => e.dept === 'Engineering'),
+  { __group: 'Product' },
+  ...employees.filter(e => e.dept === 'Product'),
+];
+
+<DataTable
+  data={grouped}
+  columns={[
+    { name: 'Name',
+      cell: row => '__group' in row
+        ? <strong>{row.__group}</strong>
+        : row.name,
+    },
+    // ... other columns ...
+  ]}
+  conditionalRowStyles={[
+    { when: row => '__group' in row,
+      style: { background: '#f3f4f6', fontWeight: 600 } },
+  ]}
+/>`} />
+
+  <h2>CSV export</h2>
+
+  <p>
+    No built-in exporter — for typical sizes, a 20-line client-side function is fine:
+  </p>
+
+  <CodeBlock code={`function exportCsv<T>(rows: T[], columns: TableColumn<T>[], filename = 'export.csv') {
+  const header = columns.map(c => JSON.stringify(c.name)).join(',');
+  const lines = rows.map(row =>
+    columns
+      .map(c => JSON.stringify(c.selector ? String(c.selector(row)) : ''))
+      .join(','),
+  );
+  const csv = [header, ...lines].join('\\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+<button onClick={() => exportCsv(data, columns, 'employees.csv')}>Export</button>`} />
+</DocsLayout>

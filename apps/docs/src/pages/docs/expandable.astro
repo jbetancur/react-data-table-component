@@ -1,0 +1,255 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import ExpandableDemo from '../../components/demos/ExpandableDemo.tsx';
+---
+
+<DocsLayout title="Expandable rows | react-data-table-component">
+  <h1>Expandable rows</h1>
+
+  <p>
+    Pass <code>expandableRows</code> and an <code>expandableRowsComponent</code> to render a
+    detail panel below each row when the user clicks the expander button.
+  </p>
+
+  <Demo
+    title="Expandable detail panel"
+    description="Click the ▶ button to expand a row. Toggle 'Animate expand' or disable 'Restricted' rows with the checkboxes."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  role: string;
+  department: string;
+  salary: number;
+  bio: string;
+  locked: boolean;
+}
+
+const data: Employee[] = [
+  {
+    id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering',
+    salary: 155000, locked: false,
+    bio: 'Aria leads the platform team, focusing on reliability and developer experience.',
+  },
+  {
+    id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product',
+    salary: 132000, locked: true,
+    bio: 'Marcus drives roadmap strategy across three product lines.',
+  },
+  {
+    id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design',
+    salary: 118000, locked: false,
+    bio: 'Priya leads the design system and owns the mobile experience.',
+  },
+  {
+    id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics',
+    salary: 143000, locked: true,
+    bio: 'Jordan builds ML pipelines for churn prediction and revenue forecasting.',
+  },
+];
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Role',       selector: r => r.role },
+  { name: 'Department', selector: r => r.department },
+  { name: 'Salary',     selector: r => r.salary, format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+];
+
+// The expandable component receives the row as the \`data\` prop
+const ExpandedRow = ({ data: row }: { data: Employee }) => (
+  <div style={{ padding: '16px 40px', background: '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+    <p style={{ fontWeight: 600, marginBottom: 4 }}>{row.name}</p>
+    <p style={{ color: '#6b7280', margin: 0 }}>{row.bio}</p>
+  </div>
+);
+
+export default function App() {
+  const [animate, setAnimate] = useState(true);
+  const [disableLocked, setDisableLocked] = useState(false);
+
+  return (
+    <div>
+      <label>
+        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} />
+        {' '}Animate expand
+      </label>
+      <label>
+        <input type="checkbox" checked={disableLocked} onChange={e => setDisableLocked(e.target.checked)} />
+        {' '}Disable "Restricted" rows
+      </label>
+      <DataTable
+        columns={columns}
+        data={data}
+        expandableRows
+        expandableRowsComponent={ExpandedRow}
+        expandableRowDisabled={disableLocked ? (r => r.locked) : undefined}
+        animateRows={animate}
+        highlightOnHover
+      />
+    </div>
+  );
+}`}
+  >
+    <ExpandableDemo client:load />
+  </Demo>
+
+  <h2>The expander component</h2>
+  <p>
+    The component you pass to <code>expandableRowsComponent</code> receives one prop,
+    <code>data</code>, which is the full row object. Type it with the built-in
+    <code>ExpanderComponentProps</code> helper:
+  </p>
+  <CodeBlock code={`import DataTable, { type TableColumn, type ExpanderComponentProps } from 'react-data-table-component';
+
+interface Employee {
+  id: number;
+  name: string;
+  bio: string;
+}
+
+// Receives { data: Employee }
+const ExpandedRow = ({ data: row }: ExpanderComponentProps<Employee>) => (
+  <div style={{ padding: '16px 40px', background: '#f9fafb' }}>
+    <strong>{row.name}</strong>
+    <p>{row.bio}</p>
+  </div>
+);
+
+export default function App() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      expandableRows
+      expandableRowsComponent={ExpandedRow}
+    />
+  );
+}`} />
+
+  <h2>Passing extra props to the expander</h2>
+  <p>
+    Use <code>expandableRowsComponentProps</code> to inject additional static props into every
+    expander instance. These are merged with the <code>data</code> prop.
+  </p>
+  <CodeBlock code={`const DetailPanel = ({ data: row, onDelete }: { data: Employee; onDelete: (id: number) => void }) => (
+  <div style={{ padding: '16px 40px' }}>
+    <p>{row.bio}</p>
+    <button onClick={() => onDelete(row.id)}>Delete</button>
+  </div>
+);
+
+<DataTable
+  columns={columns}
+  data={data}
+  expandableRows
+  expandableRowsComponent={DetailPanel}
+  expandableRowsComponentProps={{ onDelete: handleDelete }}
+/>`} />
+
+  <h2>Controlling which rows are expanded</h2>
+  <p>
+    Use <code>expandableRowExpanded</code> to pre-expand rows on mount. Use
+    <code>expandableRowDisabled</code> to prevent specific rows from being expandable — their
+    expander icon is hidden and clicks are ignored. Toggle "Disable Restricted rows" in the
+    demo above to see this in action.
+  </p>
+  <CodeBlock code={`// Pre-expand specific rows on mount
+<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandableRowExpanded={row => row.featured === true}
+/>
+
+// Prevent certain rows from being expanded
+<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandableRowDisabled={row => row.locked === true}
+/>`} />
+
+  <h2>Expand on row click</h2>
+  <p>
+    Instead of requiring the user to click the expander icon, you can expand/collapse on a
+    full row click or double-click.
+  </p>
+  <CodeBlock code={`// Single click anywhere on the row expands it
+<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandOnRowClicked
+/>
+
+// Double-click to expand
+<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandOnRowDoubleClicked
+/>
+
+// Hide the expander icon entirely (click-to-expand still works)
+<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandOnRowClicked
+  expandableRowsHideExpander
+/>`} />
+
+  <h2>Reacting to expand / collapse</h2>
+  <CodeBlock code={`<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  onRowExpandToggled={(expanded: boolean, row: Employee) => {
+    console.log(expanded ? 'opened' : 'closed', row.name);
+  }}
+/>`} />
+
+  <h2>Custom expander icons</h2>
+  <p>
+    Override the default collapse/expand icons with any React node via the <code>expandableIcon</code> prop:
+  </p>
+  <CodeBlock code={`<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandableIcon={{
+    collapsed: <span>&#9654;</span>,
+    expanded:  <span>&#9660;</span>,
+  }}
+/>`} />
+
+  <h2>Animation</h2>
+  <p>
+    Add <code>animateRows</code> to get a smooth expand-in animation on the detail panel.
+    The animation is automatically disabled when the user's OS has
+    <code>prefers-reduced-motion</code> set.
+  </p>
+  <CodeBlock code={`<DataTable
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  animateRows
+/>`} />
+
+  <h2>All expandable props</h2>
+  <table>
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>expandableRows</code></td><td><code>boolean</code></td><td>Enable expandable rows</td></tr>
+      <tr><td><code>expandableRowsComponent</code></td><td><code>ComponentType&lt;&#123; data: T &#125;&gt;</code></td><td>Component rendered inside each expanded row</td></tr>
+      <tr><td><code>expandableRowsComponentProps</code></td><td><code>Record&lt;string, unknown&gt;</code></td><td>Extra props injected into every expander instance</td></tr>
+      <tr><td><code>expandableRowExpanded</code></td><td><code>(row: T) =&gt; boolean</code></td><td>Pre-expand rows matching this predicate</td></tr>
+      <tr><td><code>expandableRowDisabled</code></td><td><code>(row: T) =&gt; boolean</code></td><td>Prevent rows matching this predicate from being expanded</td></tr>
+      <tr><td><code>expandOnRowClicked</code></td><td><code>boolean</code></td><td>Expand/collapse on row click</td></tr>
+      <tr><td><code>expandOnRowDoubleClicked</code></td><td><code>boolean</code></td><td>Expand/collapse on row double-click</td></tr>
+      <tr><td><code>expandableRowsHideExpander</code></td><td><code>boolean</code></td><td>Hide the expander icon column</td></tr>
+      <tr><td><code>expandableIcon</code></td><td><code>&#123; collapsed: ReactNode; expanded: ReactNode &#125;</code></td><td>Custom expand/collapse icons</td></tr>
+      <tr><td><code>expandableInheritConditionalStyles</code></td><td><code>boolean</code></td><td>Apply the parent row's <code>conditionalRowStyles</code> to the expander row</td></tr>
+      <tr><td><code>onRowExpandToggled</code></td><td><code>(expanded: boolean, row: T) =&gt; void</code></td><td>Fired when a row is expanded or collapsed</td></tr>
+      <tr><td><code>animateRows</code></td><td><code>boolean</code></td><td>Animate expand/collapse (respects <code>prefers-reduced-motion</code>)</td></tr>
+    </tbody>
+  </table>
+</DocsLayout>
