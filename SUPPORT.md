@@ -13,10 +13,6 @@ Open a [GitHub issue](https://github.com/jbetancur/react-data-table-component/is
 
 Usage questions ("how do I...") are not answered through GitHub issues. Check the [docs](https://reactdatatable.com) and [existing issues](https://github.com/jbetancur/react-data-table-component/issues?q=is%3Aissue) first — most questions are already covered.
 
-## Consulting
-
-Need help with a complex integration, performance issue, or major version upgrade? Email [1385932+jbetancur@users.noreply.github.com](mailto:1385932+jbetancur@users.noreply.github.com).
-
 ## Sponsorship
 
 If your team ships products with this library, consider [sponsoring](https://reactdatatable.com/support) — it funds ongoing maintenance.
