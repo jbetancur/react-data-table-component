@@ -5,7 +5,7 @@ title: 'Migration guide | react-data-table-component'
 
 # Migration guide
 
-This page covers breaking changes and upgrade steps for each major version of `react-data-table-component`.
+Breaking changes and upgrade steps for each major version of `react-data-table-component`.
 
 ## Upgrading to v8
 
@@ -21,7 +21,7 @@ npm install react@18 react-dom@18
 
 #### `styled-components` is no longer a peer dependency
 
-v7 and earlier styled the table via [styled-components](https://styled-components.com/). v8 replaces that with plain CSS injected at runtime, so:
+v7 and earlier used [styled-components](https://styled-components.com/). v8 replaces that with plain CSS injected at runtime, so:
 
 - You can remove `styled-components` from your `package.json` if it was only there for this library.
 - Themes are now driven by CSS variables. No `ThemeProvider` wrapping is required.
@@ -42,14 +42,14 @@ For most apps (Vite, CRA, Remix, Next.js Pages Router, Pages directory in App Ro
 
 #### Why the move away from styled-components
 
-- **Bundle size**: dropping the `styled-components` runtime saves ~12 KB gzipped from consumer bundles.
-- **SSR & React Server Components**: runtime-injected CSS plays cleanly with the App Router; styled-components needed extra setup (`ServerStyleSheet`) to avoid hydration mismatches.
-- **No theme provider plumbing**: CSS variables work everywhere a `<DataTable>` is rendered, with no provider wrapping required.
-- **Peer-dependency surface**: one less version constraint to coordinate with the host app.
+- **Bundle size**: dropping `styled-components` saves ~12 KB gzipped.
+- **SSR & React Server Components**: runtime-injected CSS works with the App Router; styled-components needed extra setup (`ServerStyleSheet`) to avoid hydration mismatches.
+- **No provider**: CSS variables work wherever `<DataTable>` renders, no `ThemeProvider` wrapping.
+- **Fewer peer deps**: one less version constraint to coordinate with the host app.
 
 #### Selector must be a function: strings no longer accepted
 
-`column.selector` is now strictly typed as `(row: T, rowIndex?: number) => Primitive | React.ReactNode`. String selectors were deprecated in v7 and emitted a runtime warning; in v8 the warning is removed. JS-only callers passing a string will hit a "selector is not a function" runtime error.
+`column.selector` is now strictly `(row: T, rowIndex?: number) => Primitive | React.ReactNode`. String selectors were deprecated in v7 with a runtime warning; v8 drops the warning. Passing a string will throw "selector is not a function" at runtime.
 
 ```ts
 // Before (v6, string accessor)
@@ -61,7 +61,7 @@ For most apps (Vite, CRA, Remix, Next.js Pages Router, Pages directory in App Ro
 
 #### `paginationIcon*` props replaced by `paginationIcons`
 
-The four individual pagination icon props are replaced by a single `paginationIcons` object, consistent with how `expandableIcon` already works. Pass a partial object to override only the icons you need.
+The four individual pagination icon props are replaced by a single `paginationIcons` object, matching how `expandableIcon` works. Pass a partial object to override only the icons you need.
 
 ```tsx
 // Before (v7)
@@ -84,7 +84,7 @@ import { DEFAULT_PAGINATION_ICONS } from 'react-data-table-component';
 
 #### `subHeader` + `subHeaderComponent` merged into `subHeader`
 
-Previously you needed two props to show the sub-header bar: `subHeader` (boolean toggle) and `subHeaderComponent` (the content). In v8 `subHeader` is the content itself. Providing any value shows the bar.
+Previously two props were needed: `subHeader` (boolean toggle) and `subHeaderComponent` (the content). In v8 `subHeader` is the content itself. Providing any value shows the bar.
 
 ```tsx
 // Before (v7)
@@ -108,7 +108,7 @@ import type { TableProps } from 'react-data-table-component';
 
 #### Filter API replaced with structured `FilterState`
 
-The filter API has been redesigned to support multiple operators, two conditions per column, and explicit Apply semantics. Three types of filter are now built-in: `text`, `number`, and `date`.
+The filter API now supports multiple operators, two conditions per column, and explicit Apply semantics. Three filter types are built-in: `text`, `number`, and `date`.
 
 **`filterValues` and `onFilterChange` on `<DataTable>`**
 
@@ -180,9 +180,9 @@ type FilterState = {
 };
 ```
 
-##### Filters now apply on explicit click, not on keystroke
+##### Filters apply on explicit click, not on keystroke
 
-Previously a filter was applied live as the user typed. In v8 the filter popup has an **Apply** button — the `onFilterChange` callback (and internal data re-filter) only fires when Apply is clicked. Clear still clears immediately.
+Previously filters applied live as the user typed. In v8 the filter popup has an **Apply** button. `onFilterChange` (and internal re-filter) only fires when Apply is clicked. Clear still clears immediately.
 
 ##### Utilities exported for headless usage
 
@@ -198,7 +198,7 @@ isFilterActive(state); // false
 
 #### `column.hide` requires the `Media` enum
 
-The `hide` property on `TableColumn` now requires the `Media` enum rather than raw string literals.
+`TableColumn.hide` now requires the `Media` enum. Raw string literals are no longer accepted.
 
 ```ts
 import { Media } from 'react-data-table-component';
@@ -282,7 +282,7 @@ Note that `ThemeText` requires all three fields (`primary`, `secondary`, and `di
 
 ### `IDataTableProps` renamed → `TableProps`
 
-The primary props type was renamed to `TableProps<T>`. Update any imports — the `IDataTableProps` alias is fully removed in v8.
+The primary props type was renamed to `TableProps<T>`. Update any imports. The `IDataTableProps` alias is fully removed in v8.
 
 ```ts
 // Before

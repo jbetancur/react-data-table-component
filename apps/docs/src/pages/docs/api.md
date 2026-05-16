@@ -5,9 +5,9 @@ title: 'API reference | react-data-table-component'
 
 # API reference
 
-Complete alphabetical reference for every prop, type, and export in `react-data-table-component` v8.
+Complete reference for every prop, type, and export in `react-data-table-component` v8.
 
-> **Looking for explanation, examples, or recipes?** This page is the flat reference for "what does prop X do?". Each feature has its own page with examples and tradeoffs — start there if you're learning the library:
+> **Looking for examples or recipes?** This page is the flat reference for "what does prop X do?". Each feature has its own page with examples. Start there if you're new:
 > - [Columns](/docs/columns) · [Cell rendering](/docs/cells) · [Inline editing](/docs/inline-editing)
 > - [Sorting](/docs/sorting) · [Pagination](/docs/pagination) · [Filtering](/docs/filtering)
 > - [Selection](/docs/selection) · [Expandable rows](/docs/expandable)
@@ -163,10 +163,10 @@ const columnGroups: ColumnGroup[] = [
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| `name` | `ReactNode` | — | **Required.** Group header label. Accepts JSX. |
-| `columnIds` | `(string \| number)[]` | — | **Required.** Ids of columns under this group. Must match each column's `id` exactly. |
+| `name` | `ReactNode` | - | **Required.** Group header label. Accepts JSX. |
+| `columnIds` | `(string \| number)[]` | - | **Required.** Ids of columns under this group. Must match each column's `id` exactly. |
 | `align` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal alignment of the group label. |
-| `reorder` | `boolean` | — | Allow drag-to-reorder for this group. Dragging moves all member columns as a block. Fires `onColumnGroupOrderChange`. |
+| `reorder` | `boolean` | - | Allow drag-to-reorder for this group. Dragging moves all member columns as a block. Fires `onColumnGroupOrderChange`. |
 
 Columns not listed in any group span the full group-row height with no label.
 
@@ -222,7 +222,7 @@ const columns: TableColumn<MyRow>[] = [
 |---|---|---|
 | `editable` | `boolean` | Shorthand for `editor: { type: 'text' }`. Ignored when `editor` is also set. |
 | `editor` | `CellEditor` | Editor configuration. See [CellEditor](#celleditor) below. Takes precedence over `editable`. |
-| `onCellEdit` | `CellEditCallback<T>` | Called when the user commits an edit. Receives `(row: T, value: string, column: TableColumn<T>)`. The `value` is always a string — parse it to the target type in your handler. |
+| `onCellEdit` | `CellEditCallback<T>` | Called when the user commits an edit. Receives `(row: T, value: string, column: TableColumn<T>)`. The `value` is always a string; parse it to the target type in your handler. |
 
 See [Inline editing](/docs/inline-editing) for examples, CSS variables, and styling guidance.
 
@@ -291,7 +291,7 @@ function App() {
 
 ## TableStyles
 
-Pass to `customStyles` to override styles for any part of the table. Each key accepts a `style` object (`React.CSSProperties`) and optional extra properties.
+Pass to `customStyles` to override styles for any part of `DataTable`. Each key accepts a `style` object (`React.CSSProperties`) and optional extra properties.
 
 ```tsx
 import DataTable, { type TableStyles } from 'react-data-table-component';
@@ -370,7 +370,7 @@ const conditionalRowStyles = [
 
 ## createTheme()
 
-Registers a custom named theme globally. Call this outside your component tree (at module level) so it runs once.
+Registers a custom named theme. Call this outside your component tree so it runs once.
 
 ```ts
 import { createTheme } from 'react-data-table-component';
@@ -462,7 +462,7 @@ import { Media, Direction, Alignment, SortOrder } from 'react-data-table-compone
 
 ## useColumnVisibility
 
-Headless hook for managing column show/hide state outside of `DataTable`. Pairs with the `omit` column prop.
+Hook for managing column show/hide state outside of `DataTable`. Pairs with the `omit` column prop.
 
 ```tsx
 import { useColumnVisibility, type TableColumn } from 'react-data-table-component';
@@ -494,7 +494,7 @@ function App() {
 
 | Field | Type | Description |
 |---|---|---|
-| `columns` | `TableColumn<T>[]` | Columns with `omit` set according to current visibility — pass directly to `DataTable`. |
+| `columns` | `TableColumn<T>[]` | Columns with `omit` set according to current visibility. Pass directly to `DataTable`. |
 | `visibility` | `ColumnVisibilityEntry[]` | Current visibility state for every column. |
 | `toggle` | `(id: string \| number) => void` | Toggle the visibility of a single column by id. |
 | `setAll` | `(visible: boolean) => void` | Show or hide all columns at once. |

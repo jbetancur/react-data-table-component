@@ -11,13 +11,13 @@ import ColumnVisibilityDemo from '../../components/demos/ColumnVisibilityDemo.ts
   <p>
     Use the <code>useColumnVisibility</code> hook to let users show and hide columns at runtime.
     The hook manages visibility state and returns a modified column array you pass directly to
-    <code>DataTable</code>. You bring your own toggle UI — a dropdown, a sidebar, a modal —
+    <code>DataTable</code>. You bring your own toggle UI (a dropdown, a sidebar, a modal)
     and place it wherever fits your layout.
   </p>
 
   <Demo
     title="Column toggle menu"
-    description='Click "Columns ▾" to show and hide individual columns. The hook manages the omit state — you own the UI.'
+    description='Click "Columns ▾" to show and hide individual columns. The hook manages the omit state. You own the UI.'
     code={`import DataTable, { useColumnVisibility, type TableColumn } from 'react-data-table-component';
 
 const initialColumns: TableColumn<Employee>[] = [

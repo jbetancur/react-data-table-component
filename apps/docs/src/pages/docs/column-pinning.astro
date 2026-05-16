@@ -17,7 +17,7 @@ import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
 
   <Demo
     title="Column pinning"
-    description="Name is pinned to the left, Status is pinned to the right. Scroll the table horizontally — both stay in place. Resize any column and the pin offsets update automatically."
+    description="Name is pinned to the left, Status is pinned to the right. Scroll the table horizontally. Both stay in place. Resize any column and the pin offsets update automatically."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Row>[] = [
@@ -179,7 +179,7 @@ const columns: TableColumn<Row>[] = [
       <tr>
         <td><code>pinned</code></td>
         <td><code>'left' | 'right'</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Pin the column to the left or right edge. Requires an explicit <code>id</code>.</td>
       </tr>
     </tbody>

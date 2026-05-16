@@ -14,7 +14,7 @@ import { RowClickDemo, RowLinkDemo, ActionCellDemo } from '../../components/demo
   </p>
 
   <Demo
-    title="Row click — detail panel"
+    title="Row click: detail panel"
     description="Click any row to display its details below the table."
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
@@ -72,7 +72,7 @@ export default function App() {
   </p>
 
   <Demo
-    title="Row navigation — left, middle, and Ctrl/⌘ click"
+    title="Row navigation: left, middle, and Ctrl/⌘ click"
     description="Left-click navigates in the same tab. Middle-click or Ctrl/⌘+click opens in a new tab. The Email column is an independent link."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom'; // or your router
@@ -123,7 +123,7 @@ export default function App() {
   <p>
     Use <code>button: true</code> on a column to add action controls that fire independently of
     row clicks. The <code>button</code> prop centers the cell content and suppresses
-    <code>onRowClicked</code> for that column automatically — no need to call
+    <code>onRowClicked</code> for that column automatically. No need to call
     <code>e.stopPropagation()</code> manually.
   </p>
 

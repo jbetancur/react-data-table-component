@@ -81,7 +81,7 @@ export default function App() {
 
   <h2>How it works</h2>
   <p>
-    The table-level <code>sortFunction</code> prop replaces the built-in sort algorithm entirely.
+    The DataTable-level <code>sortFunction</code> prop replaces the built-in sort algorithm entirely.
     It receives the complete row array, the selector function for whichever column is currently
     active, and the sort direction. Return the rows in the order you want them displayed.
   </p>
@@ -159,7 +159,7 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
 
   <h2>Combining with server-side sorting</h2>
   <p>
-    With <code>sortServer</code>, the table doesn't sort locally at all — your <code>onSort</code> handler
+    With <code>sortServer</code>, DataTable doesn't sort locally. Your <code>onSort</code> handler
     is responsible for returning the correct order. Apply pinning after the server response arrives,
     before setting state:
   </p>

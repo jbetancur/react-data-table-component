@@ -7,7 +7,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <h1>Recipes</h1>
 
   <p>
-    Working patterns for common product needs. Each recipe is self-contained — copy into your
+    Working patterns for common product needs. Each recipe is self-contained. Copy into your
     project and adjust.
   </p>
 
@@ -16,7 +16,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <p>
     Pass <code>onColumnResize</code> to receive the settled width after every drag, and
     <code>initialColumnWidths</code> to hydrate those widths on mount. The callback receives
-    the resized column's id, its new width in px, and the full widths map — so you can write
+    the resized column's id, its new width in px, and the full widths map. Write it
     to localStorage, a database, or anywhere else.
   </p>
 
@@ -305,7 +305,7 @@ const grouped: Row[] = [
   <h2>CSV export</h2>
 
   <p>
-    No built-in exporter — for typical sizes, a 20-line client-side function is fine:
+    No built-in exporter. For typical sizes, a 20-line client-side function is fine:
   </p>
 
   <CodeBlock code={`function exportCsv<T>(rows: T[], columns: TableColumn<T>[], filename = 'export.csv') {

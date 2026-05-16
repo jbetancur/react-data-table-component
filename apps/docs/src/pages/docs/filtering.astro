@@ -60,7 +60,7 @@ export default function App() {
   <h2>Quick start</h2>
   <p>
     Add <code>filterable: true</code> and a stable <code>id</code> to any column. A filter
-    icon appears in the column header. Filters across columns combine with AND — a row must
+    icon appears in the column header. Filters across columns combine with AND. A row must
     pass every active filter to appear.
   </p>
 
@@ -135,7 +135,7 @@ const filter: FilterState = {
 
   <h2>Apply / Clear behaviour</h2>
   <p>
-    Filters apply only when the user clicks <strong>Apply</strong> — typing does not immediately
+    Filters apply only when the user clicks <strong>Apply</strong>. Typing does not immediately
     re-filter. This avoids jarring mid-keystroke changes on large datasets.
     Clicking <strong>Clear</strong> resets the column's filter and applies immediately.
   </p>
@@ -164,7 +164,7 @@ const columns: TableColumn<Row>[] = [
   <h2>Controlled mode</h2>
   <p>
     Pass <code>filterValues</code> and <code>onFilterChange</code> to own the filter state
-    yourself — useful for persisting it in a URL or resetting it programmatically.
+    yourself. Useful for persisting it in a URL or resetting it programmatically.
     <code>onFilterChange</code> fires on every Apply or Clear click.
   </p>
 

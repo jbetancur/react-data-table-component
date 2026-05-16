@@ -54,7 +54,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <p>
     Users can drag column headers to reorder them. Set <code>reorder: true</code> on each column
-    that should be draggable. Column groups can be dragged as a unit too — set <code>reorder: true</code>
+    that should be draggable. Column groups can be dragged as a unit too. Set <code>reorder: true</code>
     on the group and the entire block moves together.
   </p>
 
@@ -75,7 +75,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <p>
     <code>useColumnVisibility</code> is a new headless hook for managing a show/hide column picker.
-    It returns a columns array with <code>omit</code> pre-set — pass it directly to <code>&lt;DataTable&gt;</code>.
+    It returns a columns array with <code>omit</code> pre-set. Pass it directly to <code>&lt;DataTable&gt;</code>.
   </p>
 
   <CodeBlock code={`const { columns, visibility, toggle, setAll } = useColumnVisibility(rawColumns);`} />
@@ -89,8 +89,8 @@ import CodeBlock from '../../components/CodeBlock.astro';
   </p>
 
   <ul>
-    <li><strong>Initial load</strong> (no data yet) — renders shimmer skeleton rows that match your column layout.</li>
-    <li><strong>Re-fetch</strong> (data already showing) — dims existing rows and overlays a centered spinner, preserving table structure.</li>
+    <li><strong>Initial load</strong> (no data yet): renders shimmer skeleton rows that match your column layout.</li>
+    <li><strong>Re-fetch</strong> (data already showing): dims existing rows and overlays a centered spinner, preserving table structure.</li>
   </ul>
 
   <p>The column header always stays visible in both states. → <a href="/docs/loading">Loading state docs</a></p>
@@ -156,7 +156,7 @@ ref.current?.clearSelectedRows();
   <h2>New row events</h2>
 
   <p>
-    <code>onRowMiddleClicked</code> fires on scroll-click — use it with <code>onRowClicked</code>
+    <code>onRowMiddleClicked</code> fires on scroll-click. Use it with <code>onRowClicked</code>
     to implement open-in-new-tab behavior.
   </p>
 

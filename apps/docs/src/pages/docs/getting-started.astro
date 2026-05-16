@@ -66,7 +66,7 @@ export default function App() {
   <h2>Row identity and <code>keyField</code></h2>
 
   <p>
-    Each row needs a stable unique identifier so the table can track selection state, expansion
+    Each row needs a stable unique identifier so DataTable can track selection state, expansion
     state, and React keys. By default it looks for an <code>id</code> field on each row object.
   </p>
   <p>
@@ -81,7 +81,7 @@ export default function App() {
 />`} />
 
   <p>
-    For display-only tables (no row selection) this doesn't affect rendering — the table falls back
+    For display-only tables (no row selection) this doesn't affect rendering. DataTable falls back
     to row index. It only matters when <code>selectableRows</code> is enabled, where a missing
     <code>keyField</code> will cause selection to break across page changes and sorting.
   </p>
