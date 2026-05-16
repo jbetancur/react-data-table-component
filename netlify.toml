@@ -1,6 +1,6 @@
 [build]
   publish = "apps/docs/dist"
-  command = "npm run build && npm run build --prefix apps/docs"
+  command = "npm run build && npm install --prefix apps/docs && npm run build --prefix apps/docs"
 
 [build.environment]
   NODE_VERSION = "24.0.0"
