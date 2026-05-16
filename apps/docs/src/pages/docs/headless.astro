@@ -1,6 +1,84 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+
+const pipelineDiagram = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#f0f4ff", "primaryTextColor": "#1e293b", "primaryBorderColor": "#6366f1", "lineColor": "#6366f1", "secondaryColor": "#f8fafc", "tertiaryColor": "#f1f5f9"}, "layout": {"algorithm": "elk"}}}%%
+flowchart TD
+  A(["Your data[]"])
+
+  subgraph pipeline ["Hook pipeline"]
+    direction TB
+    B["useColumns
+    ─────────────────
+    • decorates column ids
+    • resolves defaultSortFieldId
+    • manages drag-to-reorder"]
+
+    C["useTableState
+    ─────────────────
+    • currentPage
+    • rowsPerPage
+    • sortDirection
+    • selectedRows"]
+
+    D["useTableData
+    ─────────────────
+    • sorts client-side
+    • paginates + slices
+    • (skipped in server mode)"]
+
+    E["useColumnFilter (optional)
+    ─────────────────
+    • per-column filter state
+    • filteredData() helper"]
+  end
+
+  F(["Rendered rows"])
+
+  A --> B
+  A --> C
+  B --> C
+  C --> D
+  D --> E
+  E --> F`;
+
+const componentTreeDiagram = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#f0f4ff", "primaryTextColor": "#1e293b", "primaryBorderColor": "#6366f1", "lineColor": "#6366f1", "secondaryColor": "#f8fafc"}, "layout": "elk"}}%%
+graph TD
+    W["div.rdt_wrapper (root)"]
+    H["Header (optional title + actions)"]
+    S["Subheader (optional: filters, search)"]
+    SC["div.rdt_responsiveWrapper (scroll container)"]
+    T["div.rdt_table  aria role=table"]
+    TH["div.rdt_TableHead"]
+    THR["div.rdt_TableHeadRow"]
+    TC["div.rdt_TableCol  ×N columns
+    data-column-id=..."]
+    RH["span.rdt_columnSortable (sort handle + label)
+    + div.rdt_resizeHandle (when resizable)"]
+    TB["div.rdt_TableBody"]
+    TR["div.rdt_row  ×N rows
+    id=row-..."]
+    TD["div.rdt_TableCell  ×N columns
+    data-column-id=..."]
+    CEL["div[data-tag=allowRowEvents]
+    cell content"]
+    PS["PinnedScrollbar (when row pinning enabled)"]
+    PG["Pagination (when pagination enabled)"]
+
+    W --> H
+    W --> S
+    W --> SC
+    SC --> T
+    T --> TH
+    T --> TB
+    TH --> THR
+    THR --> TC
+    TC --> RH
+    TB --> TR
+    TR --> TD
+    TD --> CEL
+    W --> PS
+    W --> PG`;
 ---
 
 <DocsLayout title="Headless hooks | react-data-table-component" description="Use the logic layer of react-data-table-component without its default markup or styles.">
@@ -40,47 +118,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
   </p>
 
   <div class="mermaid-diagram">
-    <pre class="mermaid">
-%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#f0f4ff", "primaryTextColor": "#1e293b", "primaryBorderColor": "#6366f1", "lineColor": "#6366f1", "secondaryColor": "#f8fafc", "tertiaryColor": "#f1f5f9"}, "layout": "elk"}}%%
-flowchart TD
-    A(["Your data[]"])
-
-    subgraph pipeline ["Hook pipeline"]
-      direction TB
-      B["useColumns
-      ─────────────────
-      • decorates column ids
-      • resolves defaultSortFieldId
-      • manages drag-to-reorder"]
-
-      C["useTableState
-      ─────────────────
-      • currentPage
-      • rowsPerPage
-      • sortDirection
-      • selectedRows"]
-
-      D["useTableData
-      ─────────────────
-      • sorts client-side
-      • paginates + slices
-      • (skipped in server mode)"]
-
-      E["useColumnFilter (optional)
-      ─────────────────
-      • per-column filter state
-      • filteredData() helper"]
-    end
-
-    F(["Rendered rows"])
-
-    A --> B
-    A --> C
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    </pre>
+    <pre class="mermaid" set:html={pipelineDiagram} />
   </div>
 
   <h2>Component tree</h2>
@@ -91,45 +129,7 @@ flowchart TD
   </p>
 
   <div class="mermaid-diagram">
-    <pre class="mermaid">
-%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#f0f4ff", "primaryTextColor": "#1e293b", "primaryBorderColor": "#6366f1", "lineColor": "#6366f1", "secondaryColor": "#f8fafc"}, "layout": "elk"}}%%
-graph TD
-    W["div.rdt_wrapper (root)"]
-    H["Header (optional title + actions)"]
-    S["Subheader (optional: filters, search)"]
-    SC["div.rdt_responsiveWrapper (scroll container)"]
-    T["div.rdt_table  aria role=table"]
-    TH["div.rdt_TableHead"]
-    THR["div.rdt_TableHeadRow"]
-    TC["div.rdt_TableCol  ×N columns
-    data-column-id=..."]
-    RH["span.rdt_columnSortable (sort handle + label)
-    + div.rdt_resizeHandle (when resizable)"]
-    TB["div.rdt_TableBody"]
-    TR["div.rdt_row  ×N rows
-    id=row-..."]
-    TD["div.rdt_TableCell  ×N columns
-    data-column-id=..."]
-    CEL["div[data-tag=allowRowEvents]
-    cell content"]
-    PS["PinnedScrollbar (when row pinning enabled)"]
-    PG["Pagination (when pagination enabled)"]
-
-    W --> H
-    W --> S
-    W --> SC
-    SC --> T
-    T --> TH
-    T --> TB
-    TH --> THR
-    THR --> TC
-    TC --> RH
-    TB --> TR
-    TR --> TD
-    TD --> CEL
-    W --> PS
-    W --> PG
-    </pre>
+    <pre class="mermaid" set:html={componentTreeDiagram} />
   </div>
 
   <hr />
