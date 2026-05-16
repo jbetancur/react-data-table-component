@@ -15,7 +15,7 @@ Usage questions ("how do I...") are not answered through GitHub issues. Check th
 
 ## Consulting
 
-Need help with a complex integration, performance issue, or major version upgrade? Email [johnnyazee@gmail.com](mailto:johnnyazee@gmail.com).
+Need help with a complex integration, performance issue, or major version upgrade? Email [1385932+jbetancur@users.noreply.github.com](mailto:1385932+jbetancur@users.noreply.github.com).
 
 ## Sponsorship
 
