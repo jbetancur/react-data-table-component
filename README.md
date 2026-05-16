@@ -68,6 +68,12 @@ For complex integrations, performance issues, or major version upgrades, [get in
 
 _Become a [Gold Sponsor](https://github.com/sponsors/jbetancur) and your logo goes here._
 
+## Backers
+
+Thank you to our recurring backers:
+
+- Rich Tillman
+
 # Contributors
 
 [![Contributors](https://contrib.rocks/image?repo=jbetancur/react-data-table-component)](https://github.com/jbetancur/react-data-table-component/graphs/contributors)
