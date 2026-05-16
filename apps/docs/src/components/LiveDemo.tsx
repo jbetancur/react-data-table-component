@@ -1,15 +1,24 @@
 import React, { useState, useCallback } from 'react';
 import DataTable, { Media } from 'react-data-table-component';
 
-const THEMES = ['default', 'material', 'rounded', 'catppuccin', 'adgrid-quartz'] as const;
+const THEMES = ['default', 'material', 'rounded', 'catppuccin', 'crisp'] as const;
 type Theme = (typeof THEMES)[number];
 
-const data = [
+type Row = {
+	id: number;
+	name: string;
+	role: string;
+	department: string;
+	salary: number;
+	status: string;
+};
+
+const data: Row[] = [
 	{ id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering', salary: 155000, status: 'Active' },
-	{ id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product', salary: 132000, status: 'Active' },
+	{ id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product', salary: 132000, status: 'On Leave' },
 	{ id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design', salary: 118000, status: 'Remote' },
 	{ id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics', salary: 143000, status: 'Active' },
-	{ id: 5, name: 'Sam Rivera', role: 'DevOps Engineer', department: 'Engineering', salary: 128000, status: 'Active' },
+	{ id: 5, name: 'Sam Rivera', role: 'DevOps Engineer', department: 'Engineering', salary: 128000, status: 'Remote' },
 	{ id: 6, name: 'Taylor Brooks', role: 'Account Manager', department: 'Sales', salary: 97000, status: 'On Leave' },
 	{
 		id: 7,
@@ -30,34 +39,50 @@ const statusColor: Record<string, string> = {
 
 const columns = [
 	{
+		id: 'name',
 		name: 'Name',
-		selector: (row: (typeof data)[0]) => row.name,
+		selector: (row: Row) => row.name,
 		sortable: true,
+		filterable: true,
+		reorder: true,
 		grow: 1.4,
 	},
 	{
+		id: 'role',
 		name: 'Role',
-		selector: (row: (typeof data)[0]) => row.role,
+		selector: (row: Row) => row.role,
 		sortable: true,
+		filterable: true,
+		reorder: true,
 		hide: Media.SM,
 	},
 	{
+		id: 'department',
 		name: 'Department',
-		selector: (row: (typeof data)[0]) => row.department,
+		selector: (row: Row) => row.department,
 		sortable: true,
+		filterable: true,
+		reorder: true,
 		hide: Media.MD,
 	},
 	{
+		id: 'salary',
 		name: 'Salary',
-		selector: (row: (typeof data)[0]) => row.salary,
+		selector: (row: Row) => row.salary,
 		sortable: true,
-		format: (row: (typeof data)[0]) => `$${row.salary.toLocaleString()}`,
+		filterable: true,
+		filterType: 'number' as const,
+		reorder: true,
+		format: (row: Row) => `$${row.salary.toLocaleString()}`,
 		right: true,
 	},
 	{
+		id: 'status',
 		name: 'Status',
-		selector: (row: (typeof data)[0]) => row.status,
-		cell: (row: (typeof data)[0]) => (
+		selector: (row: Row) => row.status,
+		filterable: true,
+		reorder: true,
+		cell: (row: Row) => (
 			<span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusColor[row.status] ?? ''}`}>
 				{row.status}
 			</span>
@@ -96,7 +121,7 @@ export default function LiveDemo() {
 					))}
 				</div>
 
-				<div className="flex items-center gap-3 ml-auto">
+				<div className="flex items-center gap-3 ml-auto flex-wrap">
 					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
 						<input
 							type="checkbox"
@@ -139,6 +164,7 @@ export default function LiveDemo() {
 				selectableRows={selectable}
 				onSelectedRowsChange={handleSelectedChange}
 				animateRows={animateRows}
+				resizable
 				pagination
 				paginationPerPage={5}
 				paginationRowsPerPageOptions={[5, 8]}

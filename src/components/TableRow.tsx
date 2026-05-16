@@ -17,6 +17,8 @@ interface TableRowProps<T> {
 	defaultExpanderDisabled: boolean;
 	draggingColumnId?: string | number;
 	id: string | number;
+	isNew: boolean;
+	newRowIndex: number;
 	row: T;
 	rowCount: number;
 	rowIndex: number;
@@ -28,6 +30,8 @@ function Row<T>({
 	defaultExpanderDisabled = false,
 	draggingColumnId,
 	id,
+	isNew,
+	newRowIndex,
 	row,
 	rowCount,
 	rowIndex,
@@ -155,6 +159,7 @@ function Row<T>({
 	const isStriped = striped && isOdd(rowIndex);
 
 	const { animateRows } = useRowContext<T>();
+	const shouldAnimate = animateRows && isNew;
 	const className = [
 		classNames,
 		'rdt_row',
@@ -163,7 +168,7 @@ function Row<T>({
 		highlightSelected && 'rdt_rowSelected',
 		highlightOnHover && 'rdt_rowHighlight',
 		!defaultExpanderDisabled && showPointer && 'rdt_rowPointer',
-		animateRows && 'rdt_animatedRow',
+		shouldAnimate && 'rdt_animatedRow',
 	]
 		.filter(Boolean)
 		.join(' ');
@@ -174,6 +179,9 @@ function Row<T>({
 		...(isStriped && customStyles.rows?.stripedStyle),
 		...(highlightSelected && customStyles.rows?.selectedHighlightStyle),
 		...(conditionalStyle as React.CSSProperties),
+		// Stagger delay: only set when animating; clamped in the parent so the
+		// cascade caps regardless of dataset size.
+		...(shouldAnimate ? ({ '--rdt-row-index': newRowIndex } as React.CSSProperties) : null),
 	};
 
 	return (
@@ -261,6 +269,8 @@ function areRowPropsEqual<T>(prevProps: TableRowProps<T>, nextProps: TableRowPro
 	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) return false;
 	if (prevProps.rowCount !== nextProps.rowCount) return false;
 	if (prevProps.rowIndex !== nextProps.rowIndex) return false;
+	if (prevProps.isNew !== nextProps.isNew) return false;
+	if (prevProps.newRowIndex !== nextProps.newRowIndex) return false;
 	return true;
 }
 

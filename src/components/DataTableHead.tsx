@@ -1,4 +1,5 @@
 import * as React from 'react';
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import Head from './TableHead';
 import HeadRow from './TableHeadRow';
 import Column from './TableCol';
@@ -78,7 +79,7 @@ function DataTableHead<T>({
 	const columnOrder = React.useMemo(() => visibleColumns.map(c => c.id).join(','), [visibleColumns]);
 	const groupOrder = React.useMemo(() => (columnGroups ?? []).map(g => g.columnIds[0]).join(','), [columnGroups]);
 
-	React.useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		const container = containerRef.current;
 		if (!container) return;
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

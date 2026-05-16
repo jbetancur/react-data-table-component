@@ -5,7 +5,7 @@ import { defaultColorTheme } from './default';
 import { materialTheme } from './material';
 import { roundedTheme } from './rounded';
 import { catppuccinTheme } from './catppuccin';
-import { adgridQuartzTheme } from './adgrid-quartz';
+import { crispTheme } from './crisp';
 
 type ThemeMapping = {
 	[propertyName: string]: Theme;
@@ -17,7 +17,7 @@ export const defaultThemes: ThemeMapping = {
 	material: materialTheme,
 	rounded: roundedTheme,
 	catppuccin: catppuccinTheme,
-	'adgrid-quartz': adgridQuartzTheme,
+	crisp: crispTheme,
 };
 
 export function themeToVars(theme: Theme): Record<string, string> {

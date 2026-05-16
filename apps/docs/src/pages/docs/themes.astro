@@ -23,7 +23,7 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
 
 <DataTable columns={columns} data={data} />
 <DataTable columns={columns} data={data} theme="material" />
-<DataTable columns={columns} data={data} theme="aggrid" colorMode="dark" />
+<DataTable columns={columns} data={data} theme="crisp" colorMode="dark" />
 <DataTable columns={columns} data={data} theme="catppuccin" colorMode="system" />`}
   >
     <ThemesDemo client:load />
@@ -71,7 +71,7 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
         <td>Subtle header separator — Catppuccin Latte (light) / Mocha (dark)</td>
       </tr>
       <tr>
-        <td><code>aggrid</code></td>
+        <td><code>crisp</code></td>
         <td>42 px rows, 16 px padding</td>
         <td>4 px radius</td>
         <td>Subtle header separator (AG Grid Quartz)</td>
@@ -125,7 +125,7 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
 <DataTable columns={columns} data={data} theme="material" colorMode="dark" />
 
 // Follow OS / page toggle (default, explicit)
-<DataTable columns={columns} data={data} theme="aggrid" colorMode="system" />
+<DataTable columns={columns} data={data} theme="crisp" colorMode="system" />
 
 // Force light even when the page is in dark mode
 <DataTable columns={columns} data={data} theme="rounded" colorMode="light" />`} lang="tsx" />
@@ -141,7 +141,7 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
 createTheme('my-brand', { primary: '#6200EE' }, 'material');
 
 // 2. Inline — compose and pass the object directly to the theme prop
-const inlineTheme = createTheme({ primary: '#e91e63' }, 'aggrid');
+const inlineTheme = createTheme({ primary: '#e91e63' }, 'crisp');
 <DataTable theme={inlineTheme} columns={columns} data={data} />`} lang="ts" />
 
   <h3>Theme shape</h3>

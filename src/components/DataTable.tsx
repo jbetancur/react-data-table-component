@@ -247,8 +247,22 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 	React.useImperativeHandle(ref, () => ({ clearSelectedRows: handleClearSelectedRows }), [handleClearSelectedRows]);
 
+	// Snapshot row Y-positions synchronously before dispatching sort, so
+	// DataTableBody can FLIP rows from their old positions to the new ones.
+	const bodyRef = React.useRef<HTMLDivElement>(null);
+	const prevRowTopsRef = React.useRef<Map<string | number, number>>(new Map());
+
 	const handleSort = React.useCallback(
-		(action: Parameters<typeof dispatchSort>[0]) => startTransition(() => dispatchSort(action)),
+		(action: Parameters<typeof dispatchSort>[0]) => {
+			if (bodyRef.current) {
+				const snapshot = new Map<string | number, number>();
+				bodyRef.current.querySelectorAll<HTMLElement>('[id^="row-"]').forEach(el => {
+					snapshot.set(el.id.slice(4), el.getBoundingClientRect().top);
+				});
+				prevRowTopsRef.current = snapshot;
+			}
+			startTransition(() => dispatchSort(action));
+		},
 		[dispatchSort],
 	);
 
@@ -447,6 +461,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 										progressComponent={progressComponent}
 										expandableRowExpanded={expandableRowExpanded}
 										expandableRowDisabled={expandableRowDisabled}
+										bodyRef={bodyRef}
+										prevRowTopsRef={prevRowTopsRef}
 									/>
 								</Table>
 							</Wrapper>

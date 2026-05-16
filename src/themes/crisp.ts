@@ -1,16 +1,7 @@
 import { type Theme } from '../types';
 import { defaultTheme } from './base';
 
-// Faithful port of AG Grid's ag-theme-quartz (current default)
-// Colors are computed from the source SCSS color-mix() formulas:
-//   border:   color-mix(transparent, #181d1f 15%)  → rgba(24,29,31,0.15)
-//   header:   color-mix(#fff, #181d1f 2%)          → #fafafa
-//   hover:    color-mix(transparent, #2196f3 12%)  → rgba(33,150,243,0.12)
-//   selected: color-mix(transparent, #2196f3  8%)  → rgba(33,150,243,0.08)
-// Dark base color: #182230
-//   bg:       color-mix(#fff, #182230 97%)         → #1f2936
-//   header:   color-mix(#fff, #182230 93%)         → #28313e
-export const adgridQuartzTheme: Theme = {
+export const crispTheme: Theme = {
 	...defaultTheme,
 	primary: '#2196f3',
 	text: {
