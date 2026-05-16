@@ -47,7 +47,7 @@ const columns: TableColumn<Employee>[] = [
   <p>
     <code>defaultSortFieldId</code> sets which column is sorted on first render.
     Its value must match the <code>id</code> on the column definition.
-    <code>defaultSortAsc</code> controls the initial direction — it defaults to <code>true</code> (ascending).
+    <code>defaultSortAsc</code> controls the initial direction; it defaults to <code>true</code> (ascending).
   </p>
 
   <CodeBlock code={`// Sort by salary descending on load
@@ -60,7 +60,7 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Listening to sort events</h2>
   <p>
-    <code>onSort</code> fires on every sort change — whether triggered by clicking a header or by
+    <code>onSort</code> fires on every sort change, whether triggered by clicking a header or by
     a <code>defaultSortFieldId</code> change. It receives the sorted column, the new direction, and
     the fully sorted row array.
   </p>
@@ -76,7 +76,7 @@ const columns: TableColumn<Employee>[] = [
   }}
 />`} />
 
-  <h2>Custom sort function — per column</h2>
+  <h2>Custom sort function: per column</h2>
   <p>
     Override the sort comparator for a specific column with <code>column.sortFunction</code>.
     It receives two row objects and returns a number, just like <code>Array.prototype.sort</code>.
@@ -100,7 +100,7 @@ const columns: TableColumn<Employee>[] = [
   },
 ];`} />
 
-  <h2>Custom sort function — table level</h2>
+  <h2>Custom sort function: table level</h2>
   <p>
     The table-level <code>sortFunction</code> prop replaces the entire sort algorithm for every
     column. It receives the full row array, the selector function for the active column, and the
@@ -122,7 +122,7 @@ const customSort: SortFunction<Employee> = (rows, selector, direction) => {
 
 <DataTable columns={columns} data={data} sortFunction={customSort} />`} />
 
-  <h2>Priority ordering — sort certain rows first</h2>
+  <h2>Priority ordering: sort certain rows first</h2>
   <p>
     Sometimes you want specific rows to float to the top regardless of what column is sorted.
     There are two distinct patterns: sorting a column by a <em>custom value order</em> (e.g. status
@@ -189,7 +189,7 @@ const withSecondarySalary: SortFunction<Employee> = (rows, selector, direction) 
   <p>
     Pass any React node to <code>sortIcon</code> to replace the default chevron.
     The icon is rendered inside a <code>span</code> that receives <code>rdt_sortIconActive</code> /
-    <code>rdt_sortIconInactive</code> and <code>rdt_sortIconAsc</code> class names — use these to
+    <code>rdt_sortIconInactive</code> and <code>rdt_sortIconAsc</code> class names. Use these to
     style direction and active state with CSS.
   </p>
 
@@ -208,7 +208,7 @@ const SortIcon = () => (
   <h2>Server-side sorting</h2>
   <p>
     Set <code>sortServer</code> to stop the table from sorting rows locally.
-    The table still updates its visual sort indicator and fires <code>onSort</code> — your handler
+    DataTable still updates its visual sort indicator and fires <code>onSort</code>. Your handler
     is responsible for fetching or reordering data and passing the updated array back via
     <code>data</code>.
   </p>
@@ -262,7 +262,7 @@ export default function App() {
   <h2>Combined: server-side sorting and pagination</h2>
   <p>
     When using both <code>sortServer</code> and <code>paginationServer</code>, the three callbacks
-    are mutually exclusive — only one fires per interaction.
+    are mutually exclusive. Only one fires per interaction.
     Sorting resets the page to 1 automatically and <code>onChangePage</code> is suppressed, so
     <code>onSort</code> is your only fetch point for a new sort. Always fetch from page 1 there
     and update your local page state to 1 to stay in sync.
@@ -338,7 +338,7 @@ export default function App() {
       <tr>
         <td><code>defaultSortFieldId</code></td>
         <td><code>string | number</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Column <code>id</code> to sort by on first render.</td>
       </tr>
       <tr>
@@ -350,7 +350,7 @@ export default function App() {
       <tr>
         <td><code>onSort</code></td>
         <td><code>(column, direction, sortedRows) =&gt; void</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Called on every sort change with the active column, direction, and sorted rows.</td>
       </tr>
       <tr>
@@ -362,13 +362,13 @@ export default function App() {
       <tr>
         <td><code>sortFunction</code></td>
         <td><code>SortFunction&lt;T&gt;</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Table-level sort algorithm. Replaces the default sort for all columns.</td>
       </tr>
       <tr>
         <td><code>sortIcon</code></td>
         <td><code>ReactNode</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Custom icon rendered inside sortable column headers.</td>
       </tr>
       <tr>
@@ -380,13 +380,13 @@ export default function App() {
       <tr>
         <td><code>column.sortFunction</code></td>
         <td><code>(a, b) =&gt; number</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Per-column sort comparator. Takes priority over the table-level <code>sortFunction</code>.</td>
       </tr>
       <tr>
         <td><code>column.sortField</code></td>
         <td><code>string</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Backend field name passed to <code>onSort</code> when it differs from <code>column.id</code>.</td>
       </tr>
     </tbody>

@@ -13,7 +13,7 @@ import ServerSideDemo from '../../components/demos/ServerSideDemo.tsx';
 
   <p>
     Add <code>pagination</code> to render a built-in pagination bar below the table.
-    All state is managed internally — no extra props needed for basic usage.
+    All state is managed internally. No extra props needed for basic usage.
   </p>
 
   <Demo
@@ -127,8 +127,8 @@ export default function App() {
 
   <h2>Callback contract</h2>
   <p>
-    When using server-side mode, the three callbacks are <strong>mutually exclusive</strong> —
-    only one fires per user interaction, never two at once:
+    When using server-side mode, the three callbacks are <strong>mutually exclusive</strong>.
+    Only one fires per user interaction, never two at once:
   </p>
 
   <table>
@@ -244,14 +244,14 @@ export default function App() {
 
   <h2>Full example: search, sort, and pagination</h2>
   <p>
-    A realistic pattern with an external search input. Searching is an external state change —
-    it doesn't go through any of the table's callbacks, so toggle
+    A realistic pattern with an external search input. Searching is an external state change.
+    It doesn't go through any of DataTable's callbacks, so toggle
     <code>paginationResetDefaultPage</code> yourself to reset the bar to page 1.
   </p>
 
   <Demo
     title="Search + sort + pagination"
-    description="200-row simulated dataset with 350 ms fake network latency. Search, sort, and page — each action triggers exactly one fetch."
+    description="200-row simulated dataset with 350 ms fake network latency. Search, sort, and page. Each action triggers exactly one fetch."
     code={`import { useState, useEffect, useCallback } from 'react';
 import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
 
@@ -335,7 +335,7 @@ export default function App() {
   <h2>With React Query</h2>
   <p>
     Let <a href="https://tanstack.com/query" target="_blank" rel="noopener">TanStack Query</a>
-    own the fetch — update state in the callbacks and the query key change triggers a refetch
+    own the fetch. Update state in the callbacks and the query key change triggers a refetch
     automatically. <code>placeholderData: keepPreviousData</code> prevents an empty flash
     between page transitions.
   </p>
@@ -417,7 +417,7 @@ export default function App() {
   <p>
     For external state changes (search, filter) that aren't triggered by a table callback,
     toggle <code>paginationResetDefaultPage</code> to reset the bar to page 1. Any change to
-    this boolean — regardless of direction — triggers the reset.
+    this boolean (regardless of direction) triggers the reset.
   </p>
 
   <CodeBlock code={`const [resetPage, setResetPage] = useState(false);
@@ -533,55 +533,55 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
       <tr>
         <td><code>paginationServerOptions</code></td>
         <td><code>&#123; persistSelectedOnPageChange?, persistSelectedOnSort? &#125;</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Server-side selection persistence options.</td>
       </tr>
       <tr>
         <td><code>paginationComponent</code></td>
         <td><code>ComponentType&lt;PaginationComponentProps&gt;</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Replaces the built-in pagination bar with a custom component.</td>
       </tr>
       <tr>
         <td><code>paginationComponentOptions</code></td>
         <td><code>PaginationOptions</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Options forwarded to the default pagination component (label customisation, etc.).</td>
       </tr>
       <tr>
         <td><code>paginationIconFirstPage</code></td>
         <td><code>ReactNode</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Icon for the "first page" button.</td>
       </tr>
       <tr>
         <td><code>paginationIconLastPage</code></td>
         <td><code>ReactNode</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Icon for the "last page" button.</td>
       </tr>
       <tr>
         <td><code>paginationIconNext</code></td>
         <td><code>ReactNode</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Icon for the "next page" button.</td>
       </tr>
       <tr>
         <td><code>paginationIconPrevious</code></td>
         <td><code>ReactNode</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Icon for the "previous page" button.</td>
       </tr>
       <tr>
         <td><code>onChangePage</code></td>
         <td><code>(page: number, totalRows: number) =&gt; void</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Called when the user navigates to a different page.</td>
       </tr>
       <tr>
         <td><code>onChangeRowsPerPage</code></td>
         <td><code>(currentRowsPerPage: number, currentPage: number) =&gt; void</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Called when the user changes the rows-per-page selection.</td>
       </tr>
     </tbody>

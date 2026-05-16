@@ -35,7 +35,7 @@ const columns: TableColumn<Employee>[] = [
   <h2>How it works</h2>
 
   <p>
-    The resize handle sits straddling the right edge of each header cell — a 6 px hit area
+    The resize handle sits straddling the right edge of each header cell, a 6 px hit area
     centered on the column boundary so it aligns with the column separator. On
     <code>mousedown</code>, a global <code>mousemove</code> listener tracks the delta and
     writes the new width to component state; the affected column receives an inline
@@ -58,7 +58,7 @@ const columns: TableColumn<Employee>[] = [
 
 <DataTable columns={columns} data={data} resizable />`} />
 
-  <p>The hard floor is <strong>40 px</strong> — the table won't allow narrower than that regardless of <code>minWidth</code>.</p>
+  <p>The hard floor is <strong>40 px</strong>. DataTable won't allow narrower than that regardless of <code>minWidth</code>.</p>
 
   <h2>Visual indicator</h2>
 
@@ -71,7 +71,7 @@ const columns: TableColumn<Employee>[] = [
   <h2>Persisting widths</h2>
 
   <p>
-    Column widths live in component state only — they reset on remount. The table doesn't
+    Column widths live in component state only. They reset on remount. DataTable doesn't
     expose a single "widths changed" callback because the resize handler doesn't propagate
     to props. The reliable way to persist is to observe the DOM:
   </p>
@@ -131,14 +131,14 @@ export default function App() {
 
   <p>
     Resize works on pinned columns. When a pinned column's width changes, the sticky offsets
-    for columns pinned further from the edge update automatically — the pin band shifts to
+    for columns pinned further from the edge update automatically. The pin band shifts to
     stay aligned.
   </p>
 
   <h2>Resetting widths</h2>
 
   <p>
-    Force a remount of the table to clear all resize state. The simplest approach is a
+    Force a remount of DataTable to clear all resize state. The simplest approach is a
     React <code>key</code> bump:
   </p>
 
@@ -173,7 +173,7 @@ export default function App() {
       <tr>
         <td><code>column.width</code></td>
         <td><code>string</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Initial width (e.g. <code>"180px"</code>).</td>
       </tr>
       <tr>

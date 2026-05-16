@@ -4,10 +4,9 @@
 
 [![GitHub release](https://img.shields.io/github/release/jbetancur/react-data-table-component.svg)](https://GitHub.com/jbetancur/react-data-table-component/releases/)
 
-**A simple but flexible React data table — a working table in 10 lines.** Sorting, selection, pagination, expandable rows, and theming come built-in as opt-in props. No atomic HTML table knowledge required.
+**A simple but flexible React data table. Working table in 10 lines.** Sorting, selection, pagination, expandable rows, and theming are opt-in props. No atomic HTML table knowledge required.
 
-This library lives in the middle ground between "render everything yourself" headless toolkits and full "configure-the-grid" frameworks. It's for the cases where the table is a _means_, not the product — admin panels, dashboards, internal tools, MVPs. If you need an Excel clone or a 100k-row analytics grid, there are already some great table
-libraries out there.
+`react-data-table-component` sits between "render everything yourself" headless toolkits and full "configure-the-grid" frameworks. It's for cases where the table is a means, not the product: admin panels, dashboards, internal tools, MVPs. If you need an Excel clone or a 100k-row analytics grid, there are better-suited libraries for that.
 
 ## Quick start
 
@@ -27,7 +26,7 @@ export default function Movies() {
 
 # Key Features
 
-- Sorting, row selection, expandable rows, and pagination — all opt-in props
+- Sorting, row selection, expandable rows, and pagination (all opt-in props)
 - Themeable via CSS variables; deeply customizable via `customStyles`
 - Accessible (`role`, `aria-sort`, `aria-selected`, keyboard navigation)
 - Responsive (x-scroll / flex)
@@ -47,7 +46,7 @@ React Data Table Component is maintained by one person and downloaded ~200k time
 
 ## Sponsor the project
 
-Sponsoring puts your company logo in front of ~200k developers a week — on the README, the docs site, and in every release. It's the right move if your team depends on this library and you want it to keep improving.
+Sponsoring puts your company logo in front of ~200k developers a week: in the README, the docs site, and every release. It's the right move if your team depends on this library and you want it to keep improving.
 
 | Tier | Price/month | Perk |
 | --- | --- | --- |
@@ -62,7 +61,7 @@ Sponsoring puts your company logo in front of ~200k developers a week — on the
 
 ## Need help?
 
-For complex integrations, performance issues, or major version upgrades, [get in touch](mailto:1385932+jbetancur@users.noreply.github.com) to discuss one-off consulting.
+Open a [GitHub issue](https://github.com/jbetancur/react-data-table-component/issues). Priority support is available for teams that [sponsor the project](https://github.com/sponsors/jbetancur).
 
 ## Sponsors
 

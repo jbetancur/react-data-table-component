@@ -10,7 +10,7 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
   <h1>Themes &amp; Color Mode</h1>
 
   <p>
-    The table ships with a set of built-in structural themes and a flexible theming system built
+    react-data-table-component ships with a set of built-in structural themes and a flexible theming system built
     on CSS custom properties. Pick a named theme with the <code>theme</code> prop, brand any
     theme with <code>createTheme()</code>, and let <code>colorMode</code> handle light/dark
     automatically.
@@ -18,7 +18,7 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
 
   <Demo
     title="Built-in themes"
-    description="Select a theme and color mode. Structural themes define density, spacing, and shape — colorMode controls light/dark."
+    description="Select a theme and color mode. Structural themes define density, spacing, and shape. colorMode controls light/dark."
     code={`import DataTable from 'react-data-table-component';
 
 <DataTable columns={columns} data={data} />
@@ -68,7 +68,7 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
         <td><code>catppuccin</code></td>
         <td>48 px rows, 16 px padding</td>
         <td>6 px radius</td>
-        <td>Subtle header separator — Catppuccin Latte (light) / Mocha (dark)</td>
+        <td>Subtle header separator, Catppuccin Latte (light) / Mocha (dark)</td>
       </tr>
       <tr>
         <td><code>crisp</code></td>
@@ -87,7 +87,7 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
 
   <h2>colorMode</h2>
   <p>
-    The <code>colorMode</code> prop controls whether the table applies the active theme's
+    The <code>colorMode</code> prop controls whether DataTable applies the active theme's
     <code>darkMode</code> overrides.
   </p>
 
@@ -107,14 +107,14 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
       <tr>
         <td><code>"system"</code> (default)</td>
         <td>
-          Follow the page automatically. The table checks, in order:
+          Follow the page automatically. DataTable checks, in order:
           <ol>
-            <li><code>localStorage.getItem('theme')</code> — your app's stored preference</li>
-            <li>The <code>html.dark</code> class — set by most dark-mode toggle libraries</li>
-            <li><code>prefers-color-scheme: dark</code> — the OS preference</li>
+            <li><code>localStorage.getItem('theme')</code>: your app's stored preference</li>
+            <li>The <code>html.dark</code> class: set by most dark-mode toggle libraries</li>
+            <li><code>prefers-color-scheme: dark</code>: the OS preference</li>
           </ol>
           It reacts in real time to all three using a <code>MutationObserver</code> and a
-          <code>storage</code> event listener, so the table updates when the user toggles the
+          <code>storage</code> event listener, so DataTable updates when the user toggles the
           page theme without needing a re-render from outside.
         </td>
       </tr>
@@ -146,7 +146,7 @@ const inlineTheme = createTheme({ primary: '#e91e63' }, 'crisp');
 
   <h3>Theme shape</h3>
   <p>
-    All keys are optional — unspecified fields inherit from the base theme. For
+    All keys are optional. Unspecified fields inherit from the base theme. For
     <code>darkMode</code>, supply only the fields that differ from light mode; they are merged on
     top of the light values at render time.
   </p>
@@ -200,7 +200,7 @@ createTheme('violet', {
 
   <h3>Override via props</h3>
   <p>
-    Pass icons directly on a single table. Only the icons you supply are replaced — the rest
+    Pass icons directly on a single table. Only the icons you supply are replaced. The rest
     fall back to the theme or built-in defaults.
   </p>
 
@@ -267,8 +267,8 @@ createTheme('icon-theme', {
   <p>
     Replace the built-in checkbox with your own component via <code>selectableRowsComponent</code>.
     Extra props can be forwarded through <code>selectableRowsComponentProps</code>.
-    The component receives standard <code>HTMLInputElement</code> props and a <code>ref</code> —
-    the table sets <code>el.indeterminate</code> directly on the ref to handle the partial-selection state.
+    The component receives standard <code>HTMLInputElement</code> props and a <code>ref</code>.
+    DataTable sets <code>el.indeterminate</code> directly on the ref to handle the partial-selection state.
   </p>
 
   <CodeBlock code={`import Checkbox from '@mui/material/Checkbox';
@@ -281,7 +281,7 @@ createTheme('icon-theme', {
 
   <p>
     If you build your own checkbox, use <code>React.forwardRef</code> and forward the ref to the
-    underlying <code>&lt;input&gt;</code> element so the table can set <code>indeterminate</code>
+    underlying <code>&lt;input&gt;</code> element so DataTable can set <code>indeterminate</code>
     natively:
   </p>
 
@@ -340,8 +340,8 @@ MyCheckbox.displayName = 'MyCheckbox';
 
   <h2>CSS variable override</h2>
   <p>
-    Every theme compiles to CSS custom properties scoped to the table's wrapper element.
-    Override any variable with a wrapper class — no <code>createTheme()</code> needed for
+    Every theme compiles to CSS custom properties scoped to DataTable's wrapper element.
+    Override any variable with a wrapper class. No <code>createTheme()</code> needed for
     small tweaks.
   </p>
 
@@ -362,13 +362,13 @@ MyCheckbox.displayName = 'MyCheckbox';
       <tr><th>Variable</th><th>Default</th><th>What it controls</th></tr>
     </thead>
     <tbody>
-      <tr><td><code>--rdt-color-scheme</code></td><td><code>light</code></td><td>CSS <code>color-scheme</code> — affects native checkbox, select, and scrollbar rendering</td></tr>
+      <tr><td><code>--rdt-color-scheme</code></td><td><code>light</code></td><td>CSS <code>color-scheme</code>: affects native checkbox, select, and scrollbar rendering</td></tr>
       <tr><td><code>--rdt-color-primary</code></td><td><code>#1976d2</code></td><td>Checkbox accent, active sort icon, selection ring</td></tr>
       <tr><td><code>--rdt-color-text-primary</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Primary text in rows and header cells</td></tr>
-      <tr><td><code>--rdt-color-text-secondary</code></td><td><code>rgba(0,0,0,.54)</code></td><td>Muted text — group labels, pagination count</td></tr>
+      <tr><td><code>--rdt-color-text-secondary</code></td><td><code>rgba(0,0,0,.54)</code></td><td>Muted text: group labels, pagination count</td></tr>
       <tr><td><code>--rdt-color-text-disabled</code></td><td><code>rgba(0,0,0,.38)</code></td><td>Disabled row text</td></tr>
       <tr><td><code>--rdt-color-bg</code></td><td><code>#fff</code></td><td>Table and row background</td></tr>
-      <tr><td><code>--rdt-color-header-bg</code></td><td>falls back to <code>--rdt-color-bg</code></td><td>Header row background — set only when the theme or CSS provides it</td></tr>
+      <tr><td><code>--rdt-color-header-bg</code></td><td>falls back to <code>--rdt-color-bg</code></td><td>Header row background: set only when the theme or CSS provides it</td></tr>
       <tr><td><code>--rdt-color-divider</code></td><td><code>rgba(0,0,0,.12)</code></td><td>Row borders and separator lines</td></tr>
       <tr><td><code>--rdt-color-context-bg</code></td><td><code>#e3f2fd</code></td><td>Selected-rows context bar background</td></tr>
       <tr><td><code>--rdt-color-context-text</code></td><td><code>rgba(0,0,0,.87)</code></td><td>Selected-rows context bar text</td></tr>
@@ -423,13 +423,13 @@ MyCheckbox.displayName = 'MyCheckbox';
         <td><code>"input"</code></td>
         <td>
           Custom checkbox component. Must accept standard input props and forward its ref to an
-          <code>&lt;input&gt;</code> element so the table can set <code>indeterminate</code>.
+          <code>&lt;input&gt;</code> element so DataTable can set <code>indeterminate</code>.
         </td>
       </tr>
       <tr>
         <td><code>selectableRowsComponentProps</code></td>
         <td><code>Record&lt;string, unknown&gt;</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>Extra props forwarded to every instance of the custom checkbox component.</td>
       </tr>
       <tr>
@@ -455,7 +455,7 @@ MyCheckbox.displayName = 'MyCheckbox';
       <tr>
         <td><code>customStyles</code></td>
         <td><code>TableStyles</code></td>
-        <td>—</td>
+        <td>-</td>
         <td>
           Fine-grained style overrides per slot (rows, cells, header, pagination, etc.).
           Applied on top of the active theme. See the <a href="/docs/custom-styles">Custom Styles</a> page.

@@ -3,15 +3,16 @@ layout: '../../layouts/DocsLayout.astro'
 title: 'Accessibility | react-data-table-component'
 ---
 
+
 # Accessibility
 
-`react-data-table-component` is built with keyboard and screen-reader users in mind. This page documents the ARIA semantics, keyboard interactions, and known considerations for each interactive region.
+`react-data-table-component` documents the ARIA semantics, keyboard interactions, and known considerations for each interactive region.
 
 ---
 
 ## Labelling the table
 
-Always provide `ariaLabel` so screen readers can identify the table. Without it, assistive technology announces a generic "table" with no context.
+Always provide `ariaLabel` so screen readers can identify `DataTable`. Without it, assistive technology announces a generic "table" with no context.
 
 ```tsx
 <DataTable
@@ -25,7 +26,7 @@ Always provide `ariaLabel` so screen readers can identify the table. Without it,
 
 ## Table structure
 
-The table is built from `div` elements with explicit ARIA roles, giving screen readers a full grid structure.
+`react-data-table-component` renders `div` elements with explicit ARIA roles, giving screen readers a full grid structure.
 
 | Element | Role / attribute |
 | --- | --- |
@@ -132,20 +133,20 @@ Disabled buttons have both `disabled` and `aria-disabled="true"`. The rows-per-p
 ## Loading and empty states
 
 - While data is loading, the table wrapper carries `aria-busy="true"`. Skeleton rows are `aria-hidden="true"` so they are not read aloud.
-- When a re-fetch overlays existing rows, the overlay is `aria-hidden="true"` and `aria-busy` on the table communicates the busy state.
-- When there is no data to display, the empty-state container has `role="status"` so screen readers announce the "no records" message when it appears.
+- When a re-fetch overlays existing rows, the overlay is `aria-hidden="true"` and `aria-busy` on the wrapper communicates the busy state.
+- When there is no data, the empty-state container has `role="status"` so screen readers announce the "no records" message when it appears.
 
 ---
 
 ## Resize handles
 
-Column resize handles are `aria-hidden="true"` — they are drag-only affordances with no keyboard equivalent.
+Column resize handles are `aria-hidden="true"`. They are drag-only with no keyboard equivalent.
 
 ---
 
 ## Tips for consumers
 
-- **Always provide `ariaLabel`.** Without it, screen readers announce a generic "table" with no context.
+- **Always provide `ariaLabel`.** Without it, screen readers announce a generic "table".
 - **Always set `id` on filterable columns.** The filter state is keyed by `column.id`; omitting it silently disables filtering.
 - **Use descriptive `name` values.** Column `name` is the visible label announced for sortable headers and filter dialogs.
 - **Avoid icon-only column names without labels.** If `column.name` is a React node (e.g. an icon), wrap it with an accessible label (`aria-label` or a visually-hidden `<span>`).

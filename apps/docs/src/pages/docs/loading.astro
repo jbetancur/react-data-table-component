@@ -10,12 +10,12 @@ import LoadingDemo from '../../components/demos/LoadingDemo';
 
   <p>
     Set <code>progressPending</code> to <code>true</code> while your data is in-flight.
-    The table adapts its loading UI based on whether rows are already visible:
+    DataTable adapts its loading UI based on whether rows are already visible:
   </p>
 
   <ul>
-    <li><strong>Initial load</strong> (no data yet) — shimmer skeleton rows fill the body so the layout doesn't collapse.</li>
-    <li><strong>Re-fetch</strong> (rows already shown) — existing rows stay in place, dim to 40% opacity, and a spinner overlays the centre. The header and pagination never disappear.</li>
+    <li><strong>Initial load</strong> (no data yet): shimmer skeleton rows fill the body so the layout doesn't collapse.</li>
+    <li><strong>Re-fetch</strong> (rows already shown): existing rows stay in place, dim to 40% opacity, and a spinner overlays the centre. The header and pagination never disappear.</li>
   </ul>
 
   <Demo
@@ -50,8 +50,8 @@ export default function UsersTable() {
   <h2>Custom spinner or message</h2>
 
   <p>
-    The default <code>progressComponent</code> is a CSS spinner circle. Pass any React node to replace it —
-    it will be centred in the overlay during re-fetches, or shown instead of skeletons on initial load.
+    The default <code>progressComponent</code> is a CSS spinner circle. Pass any React node to replace it.
+    It will be centred in the overlay during re-fetches, or shown instead of skeletons on initial load.
   </p>
 
   <CodeBlock code={`<DataTable

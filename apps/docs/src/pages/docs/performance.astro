@@ -7,7 +7,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <h1>Performance</h1>
 
   <p>
-    The table is heavily memoized — cell and column components only re-render when their own
+    react-data-table-component is heavily memoized. Cell and column components only re-render when their own
     props change. Most performance problems we see come from <strong>identity churn</strong>
     in props passed to <code>DataTable</code>, not from the library itself. This page covers
     the patterns that matter.
@@ -25,8 +25,8 @@ import CodeBlock from '../../components/CodeBlock.astro';
     <tbody>
       <tr><td>&lt; 500</td><td>No performance considerations. Render as-is.</td></tr>
       <tr><td>500 – 5,000</td><td>Enable <code>pagination</code> with a reasonable <code>paginationPerPage</code> (25–100). Sort and filter stay fast.</td></tr>
-      <tr><td>5,000 – 50,000</td><td>Use <code>paginationServer</code> and <code>sortServer</code>. Don't pass the full dataset to the table — slice on the server and send only the visible page.</td></tr>
-      <tr><td>&gt; 50,000</td><td>Always server-side. Consider whether a table is the right UI at all — at this scale, search or visualization tools are usually a better fit.</td></tr>
+      <tr><td>5,000 – 50,000</td><td>Use <code>paginationServer</code> and <code>sortServer</code>. Don't pass the full dataset to DataTable. Slice on the server and send only the visible page.</td></tr>
+      <tr><td>&gt; 50,000</td><td>Always server-side. Consider whether a table is the right UI at this scale. Search or visualization tools are usually a better fit.</td></tr>
     </tbody>
   </table>
 
@@ -95,7 +95,7 @@ const columns = useMemo<TableColumn<Item>[]>(
   <p>
     A new <code>data</code> array re-runs sort, pagination slicing, and filter predicates.
     If your data comes from a server, store the response in state and only replace it on real
-    updates — don't recreate it during render.
+    updates. Don't recreate it during render.
   </p>
 
   <CodeBlock code={`// ❌ data is a new array every render
@@ -115,7 +115,7 @@ function App() {
 
   <p>
     Client-side sort runs on the full <code>data</code> array on every sort change. For
-    larger datasets, push sort to the server with <code>sortServer</code> — the table will
+    larger datasets, push sort to the server with <code>sortServer</code>. DataTable will
     skip its internal sort and call <code>onSort(column, direction)</code> instead.
   </p>
 
@@ -178,7 +178,7 @@ useEffect(() => {
 
   <p>
     A custom <code>cell</code> renderer runs once per cell on every row re-render. Keep them
-    cheap — and don't allocate inside them. Compute style objects outside the renderer if
+    cheap. Don't allocate inside them. Compute style objects outside the renderer if
     possible:
   </p>
 

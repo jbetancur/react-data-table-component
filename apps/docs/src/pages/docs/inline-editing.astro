@@ -11,11 +11,11 @@ import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
   <p>
     Click an editable cell to swap its content for an inline editor. Commit with <kbd>Enter</kbd>
     or by clicking away; <kbd>Esc</kbd> discards the change. The library doesn't own your data
-    — you handle the update in <code>onCellEdit</code>.
+. You handle the update in <code>onCellEdit</code>.
   </p>
 
   <p>
-    Two editor types are built in — a text input (<code>editable: true</code> as shorthand) and
+    Two editor types are built in: a text input (<code>editable: true</code> as shorthand) and
     a dropdown (<code>editor: &#123; type: 'select', options &#125;</code>). The cell itself
     becomes the editor: full-bleed input, primary-color focus ring, no nested borders.
   </p>
@@ -91,9 +91,9 @@ export default function App() {
 
   <h2>How it works</h2>
   <ol>
-    <li>Click an editable cell — the cell content is replaced by the editor, seeded with the current selector value (stringified).</li>
-    <li>Press <kbd>Enter</kbd> or click outside — <code>onCellEdit(row, value, column)</code> fires.</li>
-    <li>Press <kbd>Esc</kbd> — the editor closes without firing the callback.</li>
+    <li>Click an editable cell. The cell content is replaced by the editor, seeded with the current selector value (stringified).</li>
+    <li>Press <kbd>Enter</kbd> or click outside. <code>onCellEdit(row, value, column)</code> fires.</li>
+    <li>Press <kbd>Esc</kbd>. The editor closes without firing the callback.</li>
   </ol>
   <p>
     The callback always receives <code>value</code> as a <strong>string</strong>. Cast or parse
@@ -140,7 +140,7 @@ export default function App() {
 
   <p>
     <code>value</code> is the string the callback receives. <code>label</code> is what the user
-    sees in the dropdown — it can be any string or number (rich React content isn't supported
+    sees in the dropdown. It can be any string or number (rich React content isn't supported
     inside <code>&lt;option&gt;</code> elements).
   </p>
 
@@ -149,7 +149,7 @@ export default function App() {
   <p>
     When editing starts, the cell drops its padding, paints a soft tinted background, and shows
     a 2 px primary-color focus ring around its full footprint. The text input or select fills
-    the entire cell — no floating boxes, no nested borders. Both editing and idle hover states
+    the entire cell. No floating boxes, no nested borders. Both editing and idle hover states
     use CSS custom properties so they automatically follow your theme.
   </p>
 
@@ -184,7 +184,7 @@ export default function App() {
 
   <h2>Updating row data</h2>
   <p>
-    The table is fully controlled — committing an edit does not mutate your data. You're
+    DataTable is fully controlled. Committing an edit does not mutate your data. You're
     responsible for producing a new array with the change applied. The most common pattern is
     React state plus an immutable update:
   </p>
@@ -253,7 +253,7 @@ const columns: TableColumn<Employee>[] = [
   <p>
     A column can have both a custom <code>cell</code> renderer <strong>and</strong> an
     <code>editor</code>. The cell renderer is used for display; clicking the cell switches to
-    the inline editor. This is the pattern shown in the demo above — Status renders as a
+    the inline editor. This is the pattern shown in the demo above. Status renders as a
     coloured badge but edits as a dropdown.
   </p>
 
@@ -318,9 +318,9 @@ const columns: TableColumn<Employee>[] = [
   <ul>
     <li>Built-in editors are text and select only. For multi-line text, date pickers, autocompletes, or rich validation, render your own <code>cell</code> (see above).</li>
     <li>The <code>value</code> passed to <code>onCellEdit</code> is always a string. Parse it yourself.</li>
-    <li>Dropdown <code>label</code>s must be strings or numbers — they render inside native <code>&lt;option&gt;</code> elements which can't contain arbitrary React content.</li>
+    <li>Dropdown <code>label</code>s must be strings or numbers. They render inside native <code>&lt;option&gt;</code> elements which can't contain arbitrary React content.</li>
     <li>There is no built-in "dirty" indicator or undo stack. Track that in your application state if you need it.</li>
-    <li>Editing does not trigger row selection or row click handlers — clicks inside the editor are stopped from propagating.</li>
+    <li>Editing does not trigger row selection or row click handlers. Clicks inside the editor are stopped from propagating.</li>
   </ul>
 
   <h2>Prop reference</h2>
