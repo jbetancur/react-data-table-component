@@ -14,9 +14,14 @@
 /* ── Prose code blocks (inside DocsLayout article) ─────────────────────────── */
 
 /* Fenced / preformatted blocks */
-article pre {
+article pre:not(.mermaid) {
   @apply bg-gray-950 rounded-xl px-5 py-4 overflow-x-auto my-5 text-sm leading-relaxed;
   border: 1px solid rgba(255,255,255,0.06);
+}
+
+article pre.mermaid {
+  @apply bg-transparent p-0 my-5;
+  border: none;
 }
 article pre code {
   @apply font-mono text-gray-200 bg-transparent p-0;
