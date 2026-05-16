@@ -88,37 +88,29 @@ const nav = [
 ];
 
 const currentPath = Astro.url.pathname;
+
+// Flatten nav to a single ordered list for prev/next
+const allLinks = nav.flatMap(({ links }) => links);
+const currentIndex = allLinks.findIndex(({ href }) => currentPath === href);
+const prevLink = currentIndex > 0 ? allLinks[currentIndex - 1] : null;
+const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1] : null;
 ---
 
 <Layout title={title} description={description}>
   <div class="max-w-7xl mx-auto px-6 flex gap-12 py-10">
     <!-- Sidebar -->
-    <aside class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto">
+    <aside id="docs-sidebar" class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto">
       <nav class="space-y-6 text-sm pb-10">
         <!-- Version switcher -->
-        <div class="flex items-center gap-2">
-          <span class="text-xs text-gray-400">Version</span>
-          <div class="relative flex-1">
-            <select
-              id="version-switcher"
-              class="w-full appearance-none text-xs font-medium border border-gray-200 rounded-md px-2 py-1 pr-6 bg-white text-gray-700 cursor-pointer hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
-            >
-              <option value="v8" selected>v8 (current)</option>
-              <option value="v7">v7 (legacy)</option>
-            </select>
-            <span class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs">▾</span>
-          </div>
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-medium text-gray-700 bg-brand-50 text-brand-700 border border-brand-100 px-2 py-0.5 rounded-full">v8 (current)</span>
+          <a
+            href="https://v7.reactdatatable.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+          >v7 docs ↗</a>
         </div>
-        <script>
-          document.getElementById('version-switcher')?.addEventListener('change', (e) => {
-            const val = (e.target as HTMLSelectElement).value;
-            if (val === 'v7') {
-              window.open('https://v7.reactdatatable.com', '_blank');
-              // Reset back to v8 since we're staying on this site
-              (e.target as HTMLSelectElement).value = 'v8';
-            }
-          });
-        </script>
         <a
           href="https://github.com/sponsors/jbetancur"
           target="_blank"
@@ -243,6 +235,46 @@ function HeadlessTable({ data }: { data: Employee[] }) {
           <HeadlessDemo client:load />
         </Demo>
       )}
+
+      <!-- Prev / Next navigation -->
+      {(prevLink || nextLink) && (
+        <nav class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between gap-4 text-sm">
+          {prevLink ? (
+            <a href={prevLink.href} class="group flex items-center gap-2 text-gray-500 hover:text-brand-600 transition-colors">
+              <span class="text-lg leading-none">←</span>
+              <span>
+                <span class="block text-xs text-gray-400 group-hover:text-brand-400">Previous</span>
+                <span class="font-medium">{prevLink.label}</span>
+              </span>
+            </a>
+          ) : <span />}
+          {nextLink ? (
+            <a href={nextLink.href} class="group flex items-center gap-2 text-right text-gray-500 hover:text-brand-600 transition-colors ml-auto">
+              <span>
+                <span class="block text-xs text-gray-400 group-hover:text-brand-400">Next</span>
+                <span class="font-medium">{nextLink.label}</span>
+              </span>
+              <span class="text-lg leading-none">→</span>
+            </a>
+          ) : <span />}
+        </nav>
+      )}
     </article>
   </div>
 </Layout>
+
+<script>
+  const SIDEBAR_SCROLL_KEY = 'docs-sidebar-scroll';
+  const sidebar = document.getElementById('docs-sidebar');
+
+  // Restore scroll position before the browser paints to avoid flicker
+  if (sidebar) {
+    const saved = sessionStorage.getItem(SIDEBAR_SCROLL_KEY);
+    if (saved !== null) sidebar.scrollTop = parseInt(saved, 10);
+  }
+
+  // Save scroll position on every navigation away from this page
+  window.addEventListener('beforeunload', () => {
+    if (sidebar) sessionStorage.setItem(SIDEBAR_SCROLL_KEY, String(sidebar.scrollTop));
+  });
+</script>

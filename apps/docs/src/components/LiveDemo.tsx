@@ -111,7 +111,7 @@ export default function LiveDemo() {
 	return (
 		<div className="rounded-xl border border-gray-200 overflow-hidden shadow-sm">
 			{/* Toolbar */}
-			<div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
+			<div className="flex flex-col sm:flex-row sm:items-center gap-2 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
 				<div className="flex items-center gap-2 flex-wrap">
 					<span className="text-gray-500 font-medium shrink-0">Theme</span>
 					{THEMES.map(t => (
@@ -121,7 +121,7 @@ export default function LiveDemo() {
 					))}
 				</div>
 
-				<div className="flex items-center gap-3 ml-auto flex-wrap">
+				<div className="flex items-center gap-3 sm:ml-auto flex-wrap">
 					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
 						<input
 							type="checkbox"
@@ -148,7 +148,7 @@ export default function LiveDemo() {
 					</label>
 
 					{selectable && selectedCount > 0 && (
-						<span className="text-brand-600 font-medium">{selectedCount} selected</span>
+						<span className="text-brand-600 font-medium shrink-0">{selectedCount} selected</span>
 					)}
 				</div>
 			</div>

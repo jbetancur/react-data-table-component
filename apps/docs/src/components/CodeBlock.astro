@@ -9,6 +9,40 @@ interface Props {
 const { code, lang = 'tsx' } = Astro.props;
 ---
 
-<div class="not-prose my-6 rounded-xl overflow-hidden text-sm leading-relaxed">
+<div class="not-prose my-6 rounded-xl overflow-hidden text-sm leading-relaxed relative group">
   <Code code={code} lang={lang} theme="github-dark" />
+  <button
+    class="copy-btn absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white opacity-0 group-hover:opacity-100 transition-all"
+    aria-label="Copy code"
+    data-code={code}
+  >
+    <svg class="icon-copy" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="9" height="9" rx="1.5"/>
+      <path d="M3 11H2.5A1.5 1.5 0 0 1 1 9.5v-7A1.5 1.5 0 0 1 2.5 1h7A1.5 1.5 0 0 1 11 2.5V3"/>
+    </svg>
+    <svg class="icon-check hidden" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="2 8 6 12 14 4"/>
+    </svg>
+    <span class="label">Copy</span>
+  </button>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const code = btn.dataset.code ?? '';
+      await navigator.clipboard.writeText(code);
+      const iconCopy = btn.querySelector<SVGElement>('.icon-copy');
+      const iconCheck = btn.querySelector<SVGElement>('.icon-check');
+      const label = btn.querySelector<HTMLSpanElement>('.label');
+      iconCopy?.classList.add('hidden');
+      iconCheck?.classList.remove('hidden');
+      if (label) label.textContent = 'Copied!';
+      setTimeout(() => {
+        iconCopy?.classList.remove('hidden');
+        iconCheck?.classList.add('hidden');
+        if (label) label.textContent = 'Copy';
+      }, 2000);
+    });
+  });
+</script>
