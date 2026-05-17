@@ -1,1 +1,8 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Documentation & Recipes
+    url: https://reactdatatable.com
+    about: Check the docs and recipes — most questions are already answered here.
+  - name: GitHub Discussions
+    url: https://github.com/jbetancur/react-data-table-component/discussions
+    about: Ask usage questions, share ideas, or get help from the community.
