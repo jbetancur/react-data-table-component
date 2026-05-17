@@ -1087,6 +1087,39 @@
 	pointer-events: none;
 }
 
+/* ─── Footer ─────────────────────────────────────────────────────────────────
+ * Lives inside .rdt_table so it shares the same flex layout as body rows —
+ * column widths align automatically with the rest of the table.
+ * The row gets a top border to visually separate the totals from the data.
+ */
+.rdt_footer {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--rdt-color-footer-bg, var(--rdt-color-header-bg, var(--rdt-color-bg, #fff)));
+}
+
+.rdt_footerRow {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	box-sizing: border-box;
+	min-height: var(--rdt-row-height, 48px);
+	font-size: var(--rdt-font-size, 13px);
+	font-weight: 600;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+.rdt_footerCell {
+	background-color: inherit;
+}
+
+.rdt_footerSystemCell {
+	flex: 0 0 var(--rdt-system-col-width, 40px);
+	min-width: 0;
+	max-width: var(--rdt-system-col-width, 40px);
+}
+
 /* ─── Pagination ────────────────────────────────────────────────────────────── */
 .rdt_pagination {
 	display: flex;

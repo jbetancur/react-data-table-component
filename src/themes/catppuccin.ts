@@ -12,7 +12,7 @@ export const catppuccinTheme: Theme = {
 		secondary: '#5c5f77', // latte: subtext1
 		disabled: '#9ca0b0', // latte: overlay0
 	},
-	background: { default: '#eff1f5', header: '#e6e9ef' }, // base / mantle
+	background: { default: '#eff1f5', header: '#e6e9ef', footer: '#e6e9ef' }, // base / mantle
 	divider: { default: '#bcc0cc' }, // surface1
 	highlightOnHover: { default: '#ccd0da', text: '#4c4f69' }, // surface0
 	striped: { default: '#e6e9ef', text: '#4c4f69' }, // mantle
@@ -36,7 +36,7 @@ export const catppuccinTheme: Theme = {
 			secondary: '#bac2de', // mocha: subtext1
 			disabled: '#6c7086', // mocha: overlay0
 		},
-		background: { default: '#1e1e2e', header: '#181825' }, // base / mantle
+		background: { default: '#1e1e2e', header: '#181825', footer: '#181825' }, // base / mantle
 		divider: { default: '#45475a' }, // surface1
 		highlightOnHover: { default: '#313244', text: '#cdd6f4' }, // surface0
 		striped: { default: '#181825', text: '#cdd6f4' }, // mantle

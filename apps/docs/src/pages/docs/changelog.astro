@@ -21,6 +21,28 @@ import CodeBlock from '../../components/CodeBlock.astro';
       <code>onChangePage</code> to keep them in sync.
       → <a href="/docs/api#pagination">API reference</a>
     </li>
+    <li>
+      Built-in <strong>footer row</strong> for totals, averages, and other summary cells.
+      Declare per-column with the new <code>footer</code> field
+      (<code>ReactNode</code> or <code>(rows) =&gt; ReactNode</code>) or replace the whole
+      row with the <code>footerComponent</code> prop. Footer cells respect column widths,
+      alignment, and pinning automatically.
+      → <a href="/docs/footer">Footer docs</a>
+    </li>
+    <li>
+      <strong>Pagination button aria-labels</strong> — "First Page", "Previous Page", "Next Page",
+      and "Last Page" are now configurable via <code>paginationComponentOptions</code>, enabling
+      proper i18n for screen readers.
+    </li>
+  </ul>
+
+  <h3>Bug fixes</h3>
+  <ul>
+    <li>
+      Fixed column reordering bypassing <code>reorder=&#123;false&#125;</code> when a cell's text
+      was selected via double-click and then dragged. The cell now correctly gates all drag
+      handlers on <code>column.reorder</code>.
+    </li>
   </ul>
 
   <h2>8.1.0</h2>
@@ -46,7 +68,8 @@ import CodeBlock from '../../components/CodeBlock.astro';
     </li>
     <li>
       New headless export hook <code>useTableExport</code>: build CSV/JSON, trigger a
-      download, or copy to clipboard.
+      download, or copy to clipboard. Import directly from the package:
+      <code>import &#123; useTableExport &#125; from 'react-data-table-component'</code>.
       → <a href="/docs/export">Export</a>
     </li>
   </ul>

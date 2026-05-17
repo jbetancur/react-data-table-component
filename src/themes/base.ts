@@ -7,6 +7,7 @@ export const defaultTheme = {
 	},
 	background: {
 		default: '#FFFFFF',
+		footer: '#FAFAFA',
 	},
 	context: {
 		background: '#e3f2fd',
@@ -38,7 +39,7 @@ export const defaultTheme = {
 export const defaultDarkMode = {
 	primary: '#90CAF9',
 	text: { primary: '#FFFFFF', secondary: 'rgba(255,255,255,0.7)', disabled: 'rgba(0,0,0,.12)' },
-	background: { default: '#424242' },
+	background: { default: '#424242', footer: '#373737' },
 	context: { background: '#E91E63', text: '#FFFFFF' },
 	divider: { default: 'rgba(81,81,81,1)' },
 	button: {

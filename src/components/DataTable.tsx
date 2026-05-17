@@ -8,6 +8,7 @@ import NativePagination from './Pagination';
 import DataTableHead from './DataTableHead';
 import DataTableBody from './DataTableBody';
 import TablePaginationFooter from './TablePaginationFooter';
+import TableFooter from './TableFooter';
 import { getNumberOfPages, recalculatePage, getPinnedOffsets, getPinnedTotalWidths } from '../util';
 import PinnedScrollbar from './PinnedScrollbar';
 import { defaultProps, DEFAULT_EXPANDABLE_ICON, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
@@ -112,6 +113,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		animateRows = false,
 		columnSeparator,
 		headerSeparator,
+		footerComponent,
+		showFooter,
 		className,
 		ariaLabel,
 	} = props;
@@ -319,6 +322,16 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const showTableHead = !noTableHead && (persistTableHead || progressPending || filteredSortedData.length > 0);
 	const showHeader = !noHeader && !!(title || actions);
 
+	// Footer renders when explicitly enabled, when a footerComponent is provided,
+	// or when at least one visible column declares a `footer`. `showFooter={false}`
+	// suppresses the row entirely (overrides both column footers and footerComponent).
+	const hasColumnFooter = React.useMemo(
+		() => effectiveColumns.some(c => !c.omit && c.footer !== undefined),
+		[effectiveColumns],
+	);
+	const showFooterRow =
+		showFooter !== false && !progressPending && (showFooter === true || !!footerComponent || hasColumnFooter);
+
 	if (pagination && !paginationServer && filteredSortedData.length > 0 && filteredTableRows.length === 0) {
 		handleChangePage(recalculatePage(currentPage, getNumberOfPages(filteredSortedData.length, rowsPerPage)));
 	}
@@ -491,6 +504,17 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 										bodyRef={bodyRef}
 										prevRowTopsRef={prevRowTopsRef}
 									/>
+
+									{showFooterRow && (
+										<TableFooter
+											columns={effectiveColumns}
+											rows={filteredSortedData}
+											selectableRows={selectableRows}
+											expandableRows={expandableRows}
+											expandableRowsHideExpander={expandableRowsHideExpander}
+											footerComponent={footerComponent}
+										/>
+									)}
 								</Table>
 							</Wrapper>
 						</ResponsiveWrapper>

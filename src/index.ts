@@ -44,6 +44,9 @@ export type {
 	CellEditCallback,
 	CellValidateResult,
 	CustomCellEditorContext,
+	ColumnFooter,
+	FooterComponent,
+	FooterComponentProps,
 } from './types';
 
 export { emptyFilterState, isFilterActive } from './hooks/useColumnFilter';

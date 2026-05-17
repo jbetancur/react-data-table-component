@@ -16,7 +16,7 @@ export const materialTheme: Theme = {
 		secondary: 'rgba(0,0,0,0.6)',
 		disabled: 'rgba(0,0,0,0.38)',
 	},
-	background: { default: '#ffffff' },
+	background: { default: '#ffffff', footer: '#fafafa' },
 	divider: { default: '#e0e0e0' },
 	highlightOnHover: { default: 'rgba(0,0,0,0.04)', text: 'rgba(0,0,0,0.87)' },
 	striped: { default: 'rgba(0,0,0,0.02)', text: 'rgba(0,0,0,0.87)' },
@@ -41,7 +41,7 @@ export const materialTheme: Theme = {
 	darkMode: {
 		primary: '#90caf9',
 		text: { primary: '#ffffff', secondary: 'rgba(255,255,255,0.7)', disabled: 'rgba(255,255,255,0.5)' },
-		background: { default: '#121212' },
+		background: { default: '#121212', footer: '#1a1a1a' },
 		divider: { default: 'rgba(255,255,255,0.12)' },
 		highlightOnHover: { default: 'rgba(255,255,255,0.08)', text: '#ffffff' },
 		striped: { default: 'rgba(255,255,255,0.04)', text: '#ffffff' },

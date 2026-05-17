@@ -102,6 +102,14 @@ export default function App() {
     <SelectionDemo client:load />
   </Demo>
 
+  <h2>Custom selection toolbar</h2>
+  <p>
+    v8 removed the built-in <code>contextMessage</code> and <code>contextActions</code> props.
+    Use <code>onSelectedRowsChange</code> to drive your own toolbar rendered outside the table —
+    you get full control over layout, copy, and actions. See the
+    <a href="/docs/recipes#bulk-action-toolbar">bulk-action toolbar recipe</a> for a complete example.
+  </p>
+
   <h2>Range selection (Shift-click)</h2>
   <p>
     Click one row's checkbox, then Shift-click another to toggle every row in between to match

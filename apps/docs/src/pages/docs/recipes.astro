@@ -149,15 +149,29 @@ export default function App() {
   );
 }`} />
 
-  <h2>Bulk-action toolbar</h2>
+  <h2 id="bulk-action-toolbar">Bulk-action toolbar</h2>
 
   <p>
-    Render a toolbar above the table that appears when one or more rows are selected. Use the
-    imperative ref to clear the selection after the action completes.
+    v8 removed the built-in <code>contextMessage</code> and <code>contextActions</code> props.
+    The recommended replacement is a toolbar rendered outside the table, driven by
+    <code>onSelectedRowsChange</code>. This gives you full control over layout, styling,
+    and what actions appear.
+  </p>
+
+  <p>
+    Show the toolbar only when rows are selected, display a count and names, and use the
+    imperative <code>ref</code> to clear selection after the action completes.
   </p>
 
   <CodeBlock code={`import { useRef, useState } from 'react';
-import DataTable, { type DataTableHandle } from 'react-data-table-component';
+import DataTable, { type DataTableHandle, type TableColumn } from 'react-data-table-component';
+
+interface Employee { id: number; name: string; department: string; }
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name },
+  { name: 'Department', selector: r => r.department },
+];
 
 export default function App() {
   const ref = useRef<DataTableHandle>(null);
@@ -168,13 +182,25 @@ export default function App() {
     ref.current?.clearSelectedRows();
   }
 
+  async function handleExport() {
+    await api.export(selected.map(r => r.id));
+    ref.current?.clearSelectedRows();
+  }
+
   return (
-    <>
+    <div>
+      {/* Toolbar — only visible when rows are selected */}
       {selected.length > 0 && (
-        <div className="toolbar">
-          <span>{selected.length} selected</span>
-          <button onClick={handleArchive}>Archive</button>
-          <button onClick={() => ref.current?.clearSelectedRows()}>Cancel</button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 12px',
+          background: '#eff6ff', borderRadius: 6, marginBottom: 8 }}>
+          <span style={{ fontWeight: 500 }}>
+            {selected.length} selected: {selected.map(r => r.name).join(', ')}
+          </span>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+            <button onClick={handleExport}>Export</button>
+            <button onClick={handleArchive}>Archive</button>
+            <button onClick={() => ref.current?.clearSelectedRows()}>Cancel</button>
+          </div>
         </div>
       )}
 
@@ -182,10 +208,11 @@ export default function App() {
         ref={ref}
         columns={columns}
         data={data}
+        keyField="id"
         selectableRows
         onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
       />
-    </>
+    </div>
   );
 }`} />
 
@@ -225,8 +252,9 @@ function OrderDetail({ data }: ExpanderComponentProps<Order>) {
   <h2>Sticky footer with totals</h2>
 
   <p>
-    There's no built-in footer slot. The simplest pattern is to render a totals row outside
-    the table that aligns to the same column layout:
+    Use the built-in <a href="/docs/footer">footer</a> — add a <code>footer</code> field on any
+    column and the table renders an aligned totals row automatically. If you'd rather render
+    your own summary outside the table, the pattern below still works:
   </p>
 
   <CodeBlock code={`import DataTable, { type TableColumn } from 'react-data-table-component';

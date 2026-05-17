@@ -2631,3 +2631,99 @@ describe('DataTable::columnGroups', () => {
 		expect(getByText('Personal Info')).not.toBeNull();
 	});
 });
+
+describe('DataTable::footer', () => {
+	test('does not render a footer row by default', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
+
+		expect(container.querySelector('.rdt_footer')).toBeNull();
+	});
+
+	test('renders a footer row when a column declares a static footer', () => {
+		const columns = [{ id: 'name', name: 'Name', selector: (r: { name: string }) => r.name, footer: 'Total' }];
+		const data = [
+			{ id: 1, name: 'Apple' },
+			{ id: 2, name: 'Banana' },
+		];
+		const { container, getByText } = render(<DataTable data={data} columns={columns} />);
+
+		expect(container.querySelector('.rdt_footer')).not.toBeNull();
+		expect(container.querySelector('.rdt_footerRow')).not.toBeNull();
+		expect(getByText('Total')).not.toBeNull();
+	});
+
+	test('invokes a column footer function with filtered+sorted rows', () => {
+		const footerFn = vi.fn((rows: { value: number }[]) => `Sum: ${rows.reduce((s, r) => s + r.value, 0)}`);
+		const columns = [{ id: 'value', name: 'Value', selector: (r: { value: number }) => r.value, footer: footerFn }];
+		const data = [
+			{ id: 1, value: 10 },
+			{ id: 2, value: 25 },
+			{ id: 3, value: 7 },
+		];
+		const { getByText } = render(<DataTable data={data} columns={columns} />);
+
+		expect(footerFn).toHaveBeenCalledWith(data);
+		expect(getByText('Sum: 42')).not.toBeNull();
+	});
+
+	test('renders a footerCell per visible column (omit excluded)', () => {
+		const columns = [
+			{ id: 'a', name: 'A', selector: (r: { a: string }) => r.a, footer: 'A-foot' },
+			{ id: 'b', name: 'B', selector: (r: { b: string }) => r.b, footer: 'B-foot', omit: true },
+			{ id: 'c', name: 'C', selector: (r: { c: string }) => r.c, footer: 'C-foot' },
+		];
+		const data = [{ id: 1, a: 'a1', b: 'b1', c: 'c1' }];
+		const { container } = render(<DataTable data={data} columns={columns} />);
+
+		const footerCells = container.querySelectorAll('.rdt_footerCell');
+		expect(footerCells.length).toBe(2);
+	});
+
+	test('renders a custom footerComponent and passes rows + columns', () => {
+		const FooterComp = vi.fn(({ rows }: { rows: { id: number }[] }) => (
+			<div data-testid="custom-footer">Rows: {rows.length}</div>
+		));
+		const mock = dataMock();
+		const { getByTestId } = render(<DataTable data={mock.data} columns={mock.columns} footerComponent={FooterComp} />);
+
+		expect(getByTestId('custom-footer').textContent).toBe('Rows: 2');
+		expect(FooterComp).toHaveBeenCalled();
+		const call = FooterComp.mock.calls[0][0] as { rows: unknown[]; columns: unknown[] };
+		expect(call.rows.length).toBe(2);
+		expect(call.columns.length).toBe(1);
+	});
+
+	test('footerComponent takes precedence over column footers', () => {
+		const FooterComp = () => <div className="custom-footer-marker">Custom</div>;
+		const columns = [{ id: 'name', name: 'Name', selector: (r: { name: string }) => r.name, footer: 'Column-Footer' }];
+		const data = [{ id: 1, name: 'Apple' }];
+		const { container, queryByText } = render(<DataTable data={data} columns={columns} footerComponent={FooterComp} />);
+
+		expect(container.querySelector('.custom-footer-marker')).not.toBeNull();
+		expect(queryByText('Column-Footer')).toBeNull();
+	});
+
+	test('showFooter=false suppresses the footer even when columns declare a footer', () => {
+		const columns = [{ id: 'name', name: 'Name', selector: (r: { name: string }) => r.name, footer: 'Total' }];
+		const data = [{ id: 1, name: 'Apple' }];
+		const { container } = render(<DataTable data={data} columns={columns} showFooter={false} />);
+
+		expect(container.querySelector('.rdt_footer')).toBeNull();
+	});
+
+	test('showFooter=true renders the footer row even with no column footers', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} showFooter />);
+
+		expect(container.querySelector('.rdt_footer')).not.toBeNull();
+	});
+
+	test('does not render the footer while progressPending is true', () => {
+		const columns = [{ id: 'name', name: 'Name', selector: (r: { name: string }) => r.name, footer: 'Total' }];
+		const data = [{ id: 1, name: 'Apple' }];
+		const { container } = render(<DataTable data={data} columns={columns} progressPending />);
+
+		expect(container.querySelector('.rdt_footer')).toBeNull();
+	});
+});
