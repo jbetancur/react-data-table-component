@@ -135,7 +135,6 @@ export default function PinnedScrollbar({
 	if (!visible) return null;
 
 	return (
-		// eslint-disable-next-line jsx-a11y/click-events-have-key-events -- track click is mouse-only; keyboard users scroll via the thumb
 		<div
 			className="rdt_pinnedScrollbarTrack"
 			ref={trackRef}

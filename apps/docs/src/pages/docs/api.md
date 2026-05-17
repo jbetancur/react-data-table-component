@@ -8,6 +8,7 @@ title: 'API reference | react-data-table-component'
 Complete reference for every prop, type, and export in `react-data-table-component` v8.
 
 > **Looking for examples or recipes?** This page is the flat reference for "what does prop X do?". Each feature has its own page with examples. Start there if you're new:
+>
 > - [Columns](/docs/columns) · [Cell rendering](/docs/cells) · [Inline editing](/docs/inline-editing)
 > - [Sorting](/docs/sorting) · [Pagination](/docs/pagination) · [Filtering](/docs/filtering)
 > - [Selection](/docs/selection) · [Expandable rows](/docs/expandable)

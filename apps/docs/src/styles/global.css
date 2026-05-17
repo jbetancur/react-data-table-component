@@ -28,6 +28,20 @@ article pre code {
   font-size: 0.82rem;
 }
 
+/* Reset dark pre styles inside .not-prose callout blocks */
+article .not-prose pre {
+  background: unset !important;
+  border: none !important;
+  margin: unset !important;
+  padding: unset !important;
+  border-radius: unset !important;
+}
+article .not-prose pre code {
+  background: unset !important;
+  color: unset !important;
+  font-size: unset !important;
+}
+
 /* Inline code */
 article code:not(pre code) {
   @apply font-mono text-brand-700 bg-brand-50 rounded px-1.5 py-0.5;
@@ -54,3 +68,126 @@ article ul { @apply list-disc pl-5 space-y-1 text-gray-600 mb-4; }
 article ol { @apply list-decimal pl-5 space-y-1 text-gray-600 mb-4; }
 article li { @apply leading-relaxed; }
 article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
+
+/* ── Pagefind search UI ────────────────────────────────────────────────────── */
+#pagefind-ui-root {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: #2563eb;
+  --pagefind-ui-text: #111827;
+  --pagefind-ui-background: #ffffff;
+  --pagefind-ui-border: #e5e7eb;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-tag: #eff6ff;
+  --pagefind-ui-font: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  padding: 0;
+}
+
+/* Search form wrapper */
+#pagefind-ui-root .pagefind-ui {
+  font-family: var(--pagefind-ui-font) !important;
+  padding: 0 !important;
+}
+
+/* Input — restore padding Tailwind preflight strips, left clears the magnifier icon */
+#pagefind-ui-root .pagefind-ui__search-input {
+  padding: 0 calc(70px * var(--pagefind-ui-scale)) 0 calc(54px * var(--pagefind-ui-scale)) !important;
+  background: #fff !important;
+  color: #111827 !important;
+  font-family: var(--pagefind-ui-font) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  box-sizing: border-box !important;
+  border-radius: 8px 8px 0 0 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+#pagefind-ui-root .pagefind-ui__search-input:focus {
+  outline: none !important;
+  border-color: #2563eb !important;
+  box-shadow: none !important;
+}
+
+/* Clear button */
+#pagefind-ui-root .pagefind-ui__search-clear {
+  background: #fff !important;
+  color: #6b7280 !important;
+  font-size: 0.75rem !important;
+}
+
+/* Results area */
+#pagefind-ui-root .pagefind-ui__drawer {
+  padding: 0 1.25rem 1.25rem !important;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+#pagefind-ui-root .pagefind-ui__results-area {
+  margin-top: 0 !important;
+}
+
+#pagefind-ui-root .pagefind-ui__message {
+  font-size: 0.8rem !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+  height: auto !important;
+  padding: 0.75rem 0 0.5rem !important;
+}
+
+/* Individual result */
+#pagefind-ui-root .pagefind-ui__result {
+  padding: 0.75rem 0 !important;
+  border-top: 1px solid #f3f4f6 !important;
+  gap: 0 !important;
+}
+
+#pagefind-ui-root .pagefind-ui__result:last-of-type {
+  border-bottom: none !important;
+}
+
+#pagefind-ui-root .pagefind-ui__result-title {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  margin: 0 0 0.2rem !important;
+}
+
+#pagefind-ui-root .pagefind-ui__result-link {
+  color: #2563eb !important;
+  text-decoration: none !important;
+}
+
+#pagefind-ui-root .pagefind-ui__result-link:hover {
+  text-decoration: underline !important;
+}
+
+#pagefind-ui-root .pagefind-ui__result-excerpt {
+  font-size: 0.8rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  min-width: unset !important;
+}
+
+#pagefind-ui-root mark {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border-radius: 2px !important;
+  padding: 0 2px !important;
+}
+
+/* Load more button */
+#pagefind-ui-root .pagefind-ui__button {
+  font-size: 0.8rem !important;
+  height: auto !important;
+  padding: 0.5rem 1rem !important;
+  margin-top: 0.75rem !important;
+  color: #2563eb !important;
+  border-color: #bfdbfe !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+}
+
+#pagefind-ui-root .pagefind-ui__button:hover {
+  background: #eff6ff !important;
+  border-color: #2563eb !important;
+}

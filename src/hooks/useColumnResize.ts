@@ -1,4 +1,5 @@
 import * as React from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 type ResizeRef = { columnId: string | number; startX: number; startWidth: number };
 
@@ -11,7 +12,9 @@ export default function useColumnResize({ initialColumnWidths, onColumnResize }:
 	const [columnWidths, setColumnWidths] = React.useState<Record<string | number, number>>(initialColumnWidths ?? {});
 	const resizeRef = React.useRef<ResizeRef | null>(null);
 	const onColumnResizeRef = React.useRef(onColumnResize);
-	onColumnResizeRef.current = onColumnResize;
+	useIsomorphicLayoutEffect(() => {
+		onColumnResizeRef.current = onColumnResize;
+	});
 
 	const handleResizeStart = React.useCallback((columnId: string | number, e: React.MouseEvent) => {
 		if (typeof document === 'undefined') return;

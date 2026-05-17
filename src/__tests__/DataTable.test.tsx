@@ -327,7 +327,6 @@ describe('DataTable::columns', () => {
 	});
 
 	test('should render correctly when column.cell is set to a component', () => {
-		// eslint-disable-next-line react/display-name
 		const mock = dataMock({ cell: (row: { some: { name: string } }) => <div>{row.some.name}</div> });
 		const { getByText } = render(<DataTable data={mock.data} columns={mock.columns} />);
 
@@ -2025,7 +2024,6 @@ describe('DataTable::Header', () => {
 				data={mock.data}
 				columns={mock.columns}
 				title="whoa!"
-				// eslint-disable-next-line react/jsx-one-expression-per-line
 				actions={
 					<>
 						<div>some action</div>, <div>some action 2</div>

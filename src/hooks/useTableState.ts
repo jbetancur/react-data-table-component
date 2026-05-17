@@ -63,7 +63,6 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		clearSelectedRows,
 		paginationResetDefaultPage,
 		onSelectedRowsChange,
-		onSort,
 		onChangePage,
 		onChangeRowsPerPage,
 	} = props;
@@ -138,11 +137,6 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 			selectedRows: tableState.selectedRows.slice(0),
 		});
 	}, [tableState.toggleOnSelectedRowsChange]);
-
-	// Effect: Notify parent of sort changes
-	// Note: We pass sortedRows from parent to avoid circular dependency
-	const sortCallbackRef = React.useRef(onSort);
-	sortCallbackRef.current = onSort;
 
 	// Effect: Notify parent of page changes.
 	// Guard: when currentPage was reset by SORT_CHANGE, onSort is the authoritative

@@ -120,7 +120,6 @@ function DataTableHead<T>({
 			mounted.current = false;
 			positions.clear();
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [columnOrder, groupOrder]);
 
 	// Count of non-omitted columns each group spans

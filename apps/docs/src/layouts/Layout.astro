@@ -166,8 +166,8 @@ const {
       <!-- Backdrop -->
       <div id="search-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
       <!-- Panel -->
-      <div class="relative max-w-xl mx-auto mt-20 px-4">
-        <div class="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
+      <div class="relative max-w-3xl mx-auto mt-16 px-4">
+        <div class="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
           <div id="pagefind-ui-root"></div>
         </div>
       </div>
@@ -184,15 +184,23 @@ const {
 
         if (!pagefindLoaded) {
           pagefindLoaded = true;
-          // Constructed at runtime so Vite does not try to resolve these at build/dev time.
+          // pagefind-ui.js is an IIFE that sets window.PagefindUI — not an ES module.
+          // Use script/link tag injection so Vite never touches these URLs.
           // The files only exist after `astro build && pagefind --site dist`.
-          const origin = location.origin;
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = `${origin}/pagefind/pagefind-ui.css`;
-          document.head.appendChild(link);
+          const base = '/pagefind/';
+          await new Promise<void>((resolve) => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `${base}pagefind-ui.css`;
+            document.head.appendChild(link);
+            const script = document.createElement('script');
+            script.src = `${base}pagefind-ui.js`;
+            script.onload = () => resolve();
+            script.onerror = () => resolve();
+            document.head.appendChild(script);
+          });
           // @ts-ignore
-          const { PagefindUI } = await import(/* @vite-ignore */ `${origin}/pagefind/pagefind-ui.js`).catch(() => ({ PagefindUI: null }));
+          const PagefindUI = window.PagefindUI;
           if (PagefindUI) {
             new PagefindUI({ element: '#pagefind-ui-root', showSubResults: true });
           } else {
