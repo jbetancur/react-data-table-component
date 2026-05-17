@@ -10,12 +10,13 @@
  * The <Code> component uses Astro's built-in Shiki highlighter — zero config.
  */
 import { Code } from 'astro:components';
+import type { ComponentProps } from 'astro/types';
 
 interface Props {
   title?: string;
   description?: string;
   code: string;
-  lang?: string;
+  lang?: ComponentProps<typeof Code>['lang'];
 }
 
 const { title, description, code, lang = 'tsx' } = Astro.props;
@@ -53,8 +54,8 @@ const id = `demo-${Math.random().toString(36).slice(2, 8)}`;
         <polyline points="2,4 6,8 10,4" />
       </svg>
     </button>
-    <div id={id} class="hidden">
-      <Code code={code} lang={lang} theme="github-dark" />
+    <div id={id} class="hidden demo-code-panel">
+      <Code code={code} lang={lang} theme="catppuccin-macchiato" defaultColor={false} />
     </div>
   </div>
 </div>
@@ -65,6 +66,13 @@ const id = `demo-${Math.random().toString(36).slice(2, 8)}`;
   }
   .code-toggle[data-open] .toggle-chevron {
     transform: rotate(180deg);
+  }
+
+  /* Strip the global article pre styles so the code panel sits flush in the card */
+  .demo-code-panel :global(pre) {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
   }
 </style>
 

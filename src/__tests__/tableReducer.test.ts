@@ -212,6 +212,64 @@ describe('tableReducer:SELECT_MULTIPLE_ROWS', () => {
 	});
 });
 
+describe('tableReducer:SELECT_RANGE', () => {
+	test('selects every row in the range when select=true', () => {
+		const next = tableReducer(baseState(), {
+			type: 'SELECT_RANGE',
+			keyField: 'id',
+			rangeRows: [r1, r2, r3],
+			rowCount: 3,
+			select: true,
+		});
+
+		expect(next.selectedRows).toEqual([r1, r2, r3]);
+		expect(next.selectedCount).toBe(3);
+		expect(next.allSelected).toBe(true);
+	});
+
+	test('merges range with existing selection without duplicates', () => {
+		const next = tableReducer(baseState({ selectedRows: [r1], selectedCount: 1 }), {
+			type: 'SELECT_RANGE',
+			keyField: 'id',
+			rangeRows: [r1, r2],
+			rowCount: 3,
+			select: true,
+		});
+
+		expect(next.selectedRows).toEqual([r1, r2]);
+		expect(next.selectedCount).toBe(2);
+		expect(next.allSelected).toBe(false);
+	});
+
+	test('deselects every row in the range when select=false', () => {
+		const next = tableReducer(baseState({ selectedRows: [r1, r2, r3], selectedCount: 3, allSelected: true }), {
+			type: 'SELECT_RANGE',
+			keyField: 'id',
+			rangeRows: [r2, r3],
+			rowCount: 3,
+			select: false,
+		});
+
+		expect(next.selectedRows).toEqual([r1]);
+		expect(next.selectedCount).toBe(1);
+		expect(next.allSelected).toBe(false);
+	});
+
+	test('skips disabled rows', () => {
+		const next = tableReducer(baseState(), {
+			type: 'SELECT_RANGE',
+			keyField: 'id',
+			rangeRows: [r1, r2, r3],
+			rowCount: 3,
+			select: true,
+			disabledRows: [r2],
+		});
+
+		expect(next.selectedRows).toEqual([r1, r3]);
+		expect(next.allSelected).toBe(false);
+	});
+});
+
 describe('tableReducer:CLEAR_SELECTED_ROWS', () => {
 	test('wipes selection state and stores the supplied flag', () => {
 		const next = tableReducer(

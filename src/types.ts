@@ -87,6 +87,20 @@ type SelectionProps<T> = {
 	selectableRowsNoSelectAll?: boolean;
 	selectableRowsVisibleOnly?: boolean;
 	selectableRowsSingle?: boolean;
+	/**
+	 * Controlled selection. When provided, DataTable uses this array as the source of truth
+	 * for which rows are selected and calls `onSelectedRowsChange` whenever the user toggles a row,
+	 * a range, or the select-all checkbox. Omit to use internal selection state (default).
+	 *
+	 * Rows are matched by `keyField`, so each row in `selectedRows` must contain its key.
+	 */
+	selectedRows?: T[];
+	/**
+	 * Enable Shift-click range selection on the row checkbox. When the user clicks one row's
+	 * checkbox, then Shift-clicks another, every row in between is toggled to match the anchor.
+	 * Ignored when `selectableRowsSingle` is true. Defaults to `true`.
+	 */
+	selectableRowsRange?: boolean;
 };
 
 export interface PaginationIcons {
@@ -264,15 +278,47 @@ export type TableColumnBase = {
 	editor?: CellEditor;
 };
 
+/** Context passed to a custom editor's render function. */
+export interface CustomCellEditorContext<T = unknown> {
+	/** The current row being edited. */
+	row: T;
+	/** Current editor value (string). Custom editors stay in sync via `setValue`. */
+	value: string;
+	/** Update the in-flight editor value without committing. */
+	setValue: (next: string) => void;
+	/** Commit the edit. If a value is passed it is used; otherwise the current value is committed. */
+	commit: (value?: string) => void;
+	/** Close the editor without firing onCellEdit. */
+	cancel: () => void;
+	/** The column definition. */
+	column: TableColumn<T>;
+}
+
 /** Options for inline cell editors. */
-export type CellEditor =
+export type CellEditor<T = unknown> =
 	| { type: 'text'; placeholder?: string }
+	| { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
+	| { type: 'date'; min?: string; max?: string }
+	| { type: 'checkbox' }
 	| {
 			type: 'select';
 			options: Array<{ value: string; label: React.ReactNode }>;
 			/** Optional placeholder shown when current value is empty/unknown. */
 			placeholder?: string;
+	  }
+	| {
+			type: 'custom';
+			/** Render your own editor element. Use `ctx.commit()` / `ctx.cancel()` to finish. */
+			render: (ctx: CustomCellEditorContext<T>) => React.ReactNode;
 	  };
+
+/**
+ * Validate result returned from a column's `validate` function.
+ * - `true`: accept the edit.
+ * - `false`: reject silently.
+ * - `string`: reject and surface the message as an inline validation error.
+ */
+export type CellValidateResult = true | false | string;
 
 export type CellEditCallback<T> = (row: T, value: string, column: TableColumn<T>) => void;
 
@@ -293,6 +339,11 @@ export interface TableColumn<T> extends TableColumnBase {
 	filterFunction?: (row: T, filter: FilterState) => boolean;
 	/** Called when the user commits an inline edit (blur or Enter). Only fires when editable: true. */
 	onCellEdit?: CellEditCallback<T>;
+	/**
+	 * Validate an inline-edit value before `onCellEdit` fires.
+	 * Return `true` to accept, `false` to reject silently, or a string error to display.
+	 */
+	validate?: (value: string, row: T, column: TableColumn<T>) => CellValidateResult;
 }
 
 /** A column group renders as a spanning header row above the regular header row. */
@@ -564,6 +615,19 @@ export interface SingleRowAction<T> {
 	singleSelect: boolean;
 }
 
+export interface RangeRowAction<T> {
+	type: 'SELECT_RANGE';
+	keyField: string;
+	/** Rows in the range (inclusive of both endpoints), in visible order. */
+	rangeRows: T[];
+	/** Total row count for `allSelected` calculation. */
+	rowCount: number;
+	/** Target state for all rows in the range — derived from the anchor row's selected state. */
+	select: boolean;
+	/** Rows that cannot be toggled (returned by selectableRowDisabled). */
+	disabledRows?: T[];
+}
+
 export interface MultiRowAction<T> {
 	type: 'SELECT_MULTIPLE_ROWS';
 	keyField: string;
@@ -601,6 +665,7 @@ export interface ClearSelectedRowsAction {
 export type Action<T> =
 	| AllRowsAction<T>
 	| SingleRowAction<T>
+	| RangeRowAction<T>
 	| MultiRowAction<T>
 	| SortAction<T>
 	| PaginationPageAction

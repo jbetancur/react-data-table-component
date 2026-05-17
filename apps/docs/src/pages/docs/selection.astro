@@ -9,8 +9,14 @@ import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
   <h1>Row selection</h1>
 
   <p>
-    Add <code>selectableRows</code> to enable checkbox-based multi-select.
-    Use the imperative <code>ref</code> API to clear selection programmatically.
+    Add <code>selectableRows</code> to enable checkbox-based multi-select. Shift-click extends
+    the selection across a contiguous range. Pass <code>selectedRows</code> to drive
+    selection from outside, or use the imperative <code>ref</code> API to clear it.
+  </p>
+
+  <p class="callout">
+    <strong>New in 8.1.0</strong> — Shift-click range selection (on by default) and a
+    controlled <code>selectedRows</code> prop.
   </p>
 
   <div class="not-prose my-6 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
@@ -96,8 +102,51 @@ export default function App() {
     <SelectionDemo client:load />
   </Demo>
 
+  <h2>Range selection (Shift-click)</h2>
+  <p>
+    Click one row's checkbox, then Shift-click another to toggle every row in between to match
+    the anchor's intended state. The anchor row is the most recent single toggle. Range
+    selection is enabled by default; opt out with <code>selectableRowsRange=&#123;false&#125;</code>.
+  </p>
+  <p>
+    The behaviour respects <code>selectableRowDisabled</code> — disabled rows in the range are
+    skipped, not toggled. It also stays within the current page when pagination is enabled.
+  </p>
+  <CodeBlock code={`// Default: range selection on
+<DataTable selectableRows />
+
+// Disable range selection
+<DataTable selectableRows selectableRowsRange={false} />`} />
+
+  <h2>Controlled selection</h2>
+  <p>
+    Pass <code>selectedRows</code> to drive selection from your own state. The table will
+    render those rows as checked and call <code>onSelectedRowsChange</code> when the user
+    toggles. Match rows by <code>keyField</code>, so the entries you pass in must include the
+    key field.
+  </p>
+  <CodeBlock code={`function App() {
+  const [selected, setSelected] = useState<Employee[]>([]);
+
+  return (
+    <DataTable
+      keyField="id"
+      columns={columns}
+      data={data}
+      selectableRows
+      selectedRows={selected}
+      onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
+    />
+  );
+}`} />
+  <p>
+    Controlled selection is useful when selection lives in URL state, a Redux/Zustand store,
+    or needs to survive remounts. Omit <code>selectedRows</code> to fall back to the table's
+    internal state.
+  </p>
+
   <h2>Single select</h2>
-  <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time.</p>
+  <p>Pass <code>selectableRowsSingle</code> to restrict to one row at a time. Shift-click range selection is automatically disabled in single-select mode.</p>
 
   <h2>Disable specific rows</h2>
   <p>

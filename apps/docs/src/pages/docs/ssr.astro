@@ -1,0 +1,163 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="SSR | react-data-table-component">
+  <h1>Server-Side Rendering</h1>
+
+  <p>
+    <code>react-data-table-component</code> is a client-only component — it reads the DOM for
+    measurements, uses <code>useLayoutEffect</code> internally, and relies on browser APIs for
+    features like column resizing and shift-click selection. It renders nothing meaningful on the
+    server and hydrates fully in the browser.
+  </p>
+
+  <h2>How it behaves during SSR</h2>
+
+  <p>
+    During server rendering the component outputs an empty shell. On hydration the full table
+    appears. This means:
+  </p>
+
+  <ul>
+    <li>No layout shift caused by row measurements — the table is absent until hydrated</li>
+    <li>No <code>useLayoutEffect</code> warning when rendered server-side</li>
+    <li>Styles may not be present in the initial HTML unless you import the CSS explicitly (see below)</li>
+  </ul>
+
+  <h2>Next.js App Router</h2>
+
+  <p>
+    The package ships with a <code>"use client"</code> directive so you can import
+    <code>&lt;DataTable&gt;</code> directly from any Server Component file without wrapping it.
+  </p>
+
+  <CodeBlock code={`// app/users/page.tsx — Server Component, no directive needed
+import DataTable from 'react-data-table-component';
+import { getUsers } from '@/lib/db';
+
+const columns = [
+  { name: 'Name',  selector: (r: User) => r.name },
+  { name: 'Email', selector: (r: User) => r.email },
+];
+
+export default async function UsersPage() {
+  const users = await getUsers();
+  return <DataTable columns={columns} data={users} />;
+}`} />
+
+  <p>
+    To avoid a flash of unstyled content on first load, import the stylesheet once in your root layout:
+  </p>
+
+  <CodeBlock code={`// app/layout.tsx
+import 'react-data-table-component/css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}`} />
+
+  <h2>Next.js Pages Router</h2>
+
+  <p>
+    Works out of the box. If you need server-fetched data, pass it via <code>getServerSideProps</code>
+    or <code>getStaticProps</code> as usual:
+  </p>
+
+  <CodeBlock code={`// pages/users.tsx
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+interface User { id: number; name: string; email: string; }
+
+const columns: TableColumn<User>[] = [
+  { name: 'Name',  selector: r => r.name },
+  { name: 'Email', selector: r => r.email },
+];
+
+export default function UsersPage({ users }: { users: User[] }) {
+  return <DataTable columns={columns} data={users} />;
+}
+
+export async function getServerSideProps() {
+  const users = await fetchUsers();
+  return { props: { users } };
+}`} />
+
+  <h2>Remix</h2>
+
+  <p>
+    Remix renders React on the server by default. <code>&lt;DataTable&gt;</code> hydrates cleanly
+    with no extra configuration needed:
+  </p>
+
+  <CodeBlock code={`// app/routes/users.tsx
+import DataTable, { type TableColumn } from 'react-data-table-component';
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+interface User { id: number; name: string; email: string; }
+
+const columns: TableColumn<User>[] = [
+  { name: 'Name',  selector: r => r.name },
+  { name: 'Email', selector: r => r.email },
+];
+
+export async function loader() {
+  return json({ users: await fetchUsers() });
+}
+
+export default function UsersPage() {
+  const { users } = useLoaderData<typeof loader>();
+  return <DataTable columns={columns} data={users} />;
+}`} />
+
+  <h2>Astro</h2>
+
+  <p>
+    In Astro you must add a client directive so the component hydrates in the browser.
+    Use <code>client:load</code> for tables that are immediately visible, or
+    <code>client:visible</code> to defer hydration until the table scrolls into view.
+  </p>
+
+  <CodeBlock code={`---
+// src/pages/users.astro
+import DataTable from 'react-data-table-component';
+const users = await fetchUsers();
+---
+
+<!-- Hydrates immediately -->
+<DataTable client:load columns={columns} data={users} />
+
+<!-- Defers hydration until visible — good for below-the-fold tables -->
+<DataTable client:visible columns={columns} data={users} />`} lang="astro" />
+
+  <h2>Dynamic import (escape hatch)</h2>
+
+  <p>
+    If your framework does not support per-component directives and you need to suppress the SSR
+    render entirely, load the component dynamically with SSR disabled:
+  </p>
+
+  <CodeBlock code={`// Next.js
+import dynamic from 'next/dynamic';
+
+const DataTable = dynamic(() => import('react-data-table-component'), { ssr: false });`} />
+
+  <CodeBlock code={`// Remix / Vite — lazy + Suspense
+import { lazy, Suspense } from 'react';
+
+const DataTable = lazy(() => import('react-data-table-component'));
+
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <DataTable columns={columns} data={data} />
+    </Suspense>
+  );
+}`} />
+</DocsLayout>

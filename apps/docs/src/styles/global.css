@@ -28,15 +28,15 @@ article pre code {
   font-size: 0.82rem;
 }
 
-/* Reset dark pre styles inside .not-prose callout blocks */
-article .not-prose pre {
+/* Reset dark pre styles inside .not-prose callout blocks (but not Shiki code blocks) */
+article .not-prose pre:not(.astro-code) {
   background: unset !important;
   border: none !important;
   margin: unset !important;
   padding: unset !important;
   border-radius: unset !important;
 }
-article .not-prose pre code {
+article .not-prose pre:not(.astro-code) code {
   background: unset !important;
   color: unset !important;
   font-size: unset !important;

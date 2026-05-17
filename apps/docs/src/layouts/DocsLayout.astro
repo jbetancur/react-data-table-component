@@ -57,6 +57,8 @@ const nav = [
     group: 'Interactivity',
     links: [
       { label: 'Animations', href: '/docs/animations' },
+      { label: 'Accessibility', href: '/docs/accessibility' },
+      { label: 'RTL Support', href: '/docs/rtl' },
     ],
   },
   {
@@ -67,14 +69,19 @@ const nav = [
     ],
   },
   {
+    group: 'Import / Export',
+    links: [
+      { label: 'Export (CSV / JSON)', href: '/docs/export' },
+    ],
+  },
+  {
     group: 'Advanced',
     links: [
       { label: 'Headless Hooks', href: '/docs/headless' },
       { label: 'TypeScript', href: '/docs/typescript' },
+      { label: 'SSR', href: '/docs/ssr' },
       { label: 'Performance', href: '/docs/performance' },
       { label: 'Recipes', href: '/docs/recipes' },
-      { label: 'Accessibility', href: '/docs/accessibility' },
-      { label: 'RTL Support', href: '/docs/rtl' },
     ],
   },
   {
@@ -102,14 +109,17 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
     <aside id="docs-sidebar" class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto">
       <nav class="space-y-6 text-sm pb-10">
         <!-- Version switcher -->
-        <div class="flex items-center justify-between gap-2">
-          <span class="text-xs font-medium text-gray-700 bg-brand-50 text-brand-700 border border-brand-100 px-2 py-0.5 rounded-full">v8 (current)</span>
-          <a
-            href="https://v7.reactdatatable.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-xs text-gray-400 hover:text-gray-600 transition-colors"
-          >v7 docs ↗</a>
+        <div class="flex items-center gap-2">
+          <label for="rdt-version-switcher" class="sr-only">Documentation version</label>
+          <select
+            id="rdt-version-switcher"
+            class="text-xs font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full px-2 py-0.5 pr-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-200 appearance-none bg-no-repeat bg-right"
+            style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 12%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22%231d4ed8%22 stroke-width=%221.5%22><path d=%22M3 4.5l3 3 3-3%22/></svg>'); background-position: right 6px center;"
+            onchange="if (this.value && this.value !== 'current') { window.location.href = this.value; }"
+          >
+            <option value="current">v8 (current)</option>
+            <option value="https://v7.reactdatatable.com">v7</option>
+          </select>
         </div>
         <a
           href="https://github.com/sponsors/jbetancur"

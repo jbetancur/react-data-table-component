@@ -690,6 +690,65 @@
 	min-height: 32px;
 }
 
+/* ─── Editor: checkbox ─────────────────────────────────────────────────────── */
+.rdt_editCheckboxWrap {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	user-select: none;
+}
+
+.rdt_editCheckbox {
+	appearance: auto;
+	cursor: pointer;
+	margin: 0;
+	width: 16px;
+	height: 16px;
+}
+
+.rdt_editCheckboxWrap:focus-visible {
+	outline: 2px solid var(--rdt-color-primary);
+	outline-offset: -2px;
+	border-radius: var(--rdt-border-radius, 4px);
+}
+
+/* ─── Editor: custom ───────────────────────────────────────────────────────── */
+.rdt_editCustomWrap {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	padding: 0 var(--rdt-cell-padding-x, 16px);
+}
+
+/* ─── Editor: validation error ─────────────────────────────────────────────── */
+.rdt_cellEditError {
+	box-shadow: inset 0 0 0 2px var(--rdt-color-cell-edit-error, #dc2626);
+}
+
+.rdt_editErrorTip {
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	margin-bottom: 2px;
+	padding: 2px 6px;
+	font-size: 11px;
+	line-height: 1.4;
+	color: #fff;
+	background: var(--rdt-color-cell-edit-error, #dc2626);
+	border-radius: var(--rdt-border-radius, 4px);
+	white-space: nowrap;
+	pointer-events: none;
+	z-index: 5;
+}
+
+.rdt_TableCell.rdt_cellEditError {
+	position: relative;
+}
+
 
 /* ─── Column pinning ────────────────────────────────────────────────────────── */
 
@@ -1230,36 +1289,29 @@
 	animation-delay: calc(var(--rdt-row-index, 0) * 16ms);
 }
 
-/* Expander row — slide open from top with a clip + fade */
+/* Expander row — grid-row trick gives a true height animation without JS measurement */
+.rdt_expanderRowAnimated {
+	display: grid;
+	animation: rdt_expandIn 0.22s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.rdt_expanderRowClosing {
+	animation: rdt_expandOut 0.22s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
 @keyframes rdt_expandIn {
-	from {
-		opacity: 0;
-		max-height: 0;
-		transform: translateY(-8px);
-	}
-	to {
-		opacity: 1;
-		/* JS sets --rdt-expander-height on the row when content height is known;
-		   falls back to a large value so the animation still works without JS. */
-		max-height: var(--rdt-expander-height, 4000px);
-		transform: translateY(0);
-	}
+	from { grid-template-rows: 0fr; opacity: 0; }
+	to   { grid-template-rows: 1fr; opacity: 1; }
 }
 
 @keyframes rdt_expandOut {
-	from {
-		opacity: 1;
-		max-height: var(--rdt-expander-height, 4000px);
-	}
-	to {
-		opacity: 0;
-		max-height: 0;
-	}
+	from { grid-template-rows: 1fr; opacity: 1; }
+	to   { grid-template-rows: 0fr; opacity: 0; }
 }
 
-.rdt_expanderRowAnimated {
-	animation: rdt_expandIn 0.25s cubic-bezier(0.2, 0, 0, 1) both;
+.rdt_expanderRowAnimated > .rdt_expanderRow {
 	overflow: hidden;
+	min-height: 0;
 }
 
 /* Sort indicator pulse — briefly highlights the sorted column */
@@ -1276,10 +1328,15 @@
 /* Respect user's motion preference */
 @media (prefers-reduced-motion: reduce) {
 	.rdt_animatedRow,
-	.rdt_expanderRowAnimated,
 	.rdt_sortActive {
 		animation: none !important;
 		transition: none !important;
+	}
+	.rdt_expanderRowAnimated,
+	.rdt_expanderRowClosing {
+		animation: none !important;
+		grid-template-rows: 1fr !important;
+		opacity: 1 !important;
 	}
 
 	/* Column reorder FLIP animations are skipped via JS matchMedia check */

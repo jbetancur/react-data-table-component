@@ -1,0 +1,206 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="Export (CSV / JSON) | react-data-table-component">
+  <h1>Export (CSV / JSON)</h1>
+
+  <p>
+    <code>useTableExport</code> is a headless hook that turns your columns and rows into CSV
+    or JSON. It can also trigger a browser download or copy to the clipboard. It does not
+    touch your DataTable; you pass it the same data the table is rendering — or a filtered /
+    sorted slice if you only want to export the "current view".
+  </p>
+
+  <p class="callout">
+    <strong>New in 8.1.0</strong> — <code>useTableExport</code> ships as part of the library's
+    headless surface alongside <code>useTableState</code>, <code>useTableData</code>, and friends.
+  </p>
+
+  <h2>Basic usage</h2>
+
+  <CodeBlock code={`import DataTable, { useTableExport, type TableColumn } from 'react-data-table-component';
+
+type Employee = { id: number; name: string; salary: number };
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'id',     name: 'ID',     selector: r => r.id },
+  { id: 'name',   name: 'Name',   selector: r => r.name },
+  { id: 'salary', name: 'Salary', selector: r => r.salary,
+    format: r => \`$\${r.salary.toLocaleString()}\` },
+];
+
+function EmployeesTable({ data }: { data: Employee[] }) {
+  const { download, copy } = useTableExport({ columns, rows: data });
+
+  return (
+    <>
+      <div className="flex gap-2">
+        <button onClick={() => download('employees.csv')}>Download CSV</button>
+        <button onClick={() => download('employees.json', 'json')}>Download JSON</button>
+        <button onClick={() => copy('csv')}>Copy CSV</button>
+      </div>
+      <DataTable columns={columns} data={data} />
+    </>
+  );
+}`} />
+
+  <h2>What gets exported</h2>
+
+  <ul>
+    <li><strong>Columns:</strong> all columns are included <em>except</em> those with <code>omit: true</code>. Pass <code>columnOrder</code> to restrict and reorder.</li>
+    <li><strong>Rows:</strong> exactly what you pass in. To export the current filtered/sorted view, see the recipe below.</li>
+    <li><strong>Values:</strong> by default the raw <code>selector</code> output is stringified. Pass <code>valueSource: 'format'</code> to prefer <code>column.format</code> instead.</li>
+    <li><strong>Headers:</strong> derived from <code>column.name</code> when it's a string or number; otherwise the column <code>id</code>. Override per-column with <code>headerOverrides</code>.</li>
+  </ul>
+
+  <h2>Exporting the current view</h2>
+
+  <p>
+    DataTable owns sort and pagination state internally, but you can lift them out by using
+    the headless hooks directly — or just keep a copy of the filtered/sorted rows via the
+    callbacks. The simplest pattern for "what the user is looking at right now" is to drive
+    DataTable from the same hooks that feed <code>useTableExport</code>:
+  </p>
+
+  <CodeBlock code={`import DataTable, {
+  useTableState,
+  useTableData,
+  useColumnFilter,
+  useTableExport,
+} from 'react-data-table-component';
+
+function App() {
+  // 1. Filters
+  const { filterValues, handleFilterChange, filteredData } = useColumnFilter(columns);
+
+  // 2. Sort + pagination state
+  const { tableState, handleSort, /* ... */ } = useTableState({ /* ... */ });
+
+  // 3. Apply sort + pagination
+  const { sortedData, tableRows } = useTableData({
+    data: filteredData(rawData),
+    columns,
+    selectedColumn: tableState.selectedColumn,
+    sortDirection: tableState.sortDirection,
+    currentPage: tableState.currentPage,
+    rowsPerPage: tableState.rowsPerPage,
+    pagination: true,
+  });
+
+  // 4. Export the filtered + sorted full result (not just the current page).
+  //    Swap \`sortedData\` for \`tableRows\` to export just the current page.
+  const { download } = useTableExport({ columns, rows: sortedData });
+
+  return (
+    <>
+      <button onClick={() => download('view.csv')}>Export filtered view</button>
+      <DataTable columns={columns} data={rawData} pagination />
+    </>
+  );
+}`} />
+
+  <p>
+    For server-side data, just pass whatever rows the server returned for your current
+    filters — <code>useTableExport</code> doesn't care where the rows came from.
+  </p>
+
+  <h2>Customizing column output</h2>
+
+  <h3>Reorder and restrict columns</h3>
+
+  <CodeBlock code={`useTableExport({
+  columns,
+  rows: data,
+  columnOrder: ['name', 'salary', 'id'],  // export these three, in this order
+});`} />
+
+  <h3>Override header labels</h3>
+  <p>
+    Useful when <code>column.name</code> is a React node (e.g. an icon + text), or when the
+    export needs a different label than the UI shows:
+  </p>
+
+  <CodeBlock code={`useTableExport({
+  columns,
+  rows: data,
+  headerOverrides: {
+    name: 'Full Name',
+    salary: 'Annual Salary (USD)',
+  },
+});`} />
+
+  <h3>Export formatted values</h3>
+  <p>
+    By default, exports use raw selector values so a CSV "salary" column contains
+    <code>80000</code> rather than <code>$80,000</code>. To export what the user sees, opt
+    into <code>valueSource: 'format'</code>:
+  </p>
+
+  <CodeBlock code={`useTableExport({ columns, rows: data, valueSource: 'format' });`} />
+
+  <h2>Clipboard support</h2>
+
+  <p>
+    <code>copy()</code> uses the <code>navigator.clipboard</code> API and returns a Promise
+    that resolves once the write completes. It throws if the API is not available (older
+    browsers, insecure contexts).
+  </p>
+
+  <CodeBlock code={`async function handleCopy() {
+  try {
+    await copy('csv'); // or 'json'
+    toast.success('Copied to clipboard');
+  } catch (err) {
+    toast.error('Clipboard not available');
+  }
+}`} />
+
+  <h2>SSR safety</h2>
+
+  <p>
+    Both <code>download</code> and <code>copy</code> guard against <code>document</code> /
+    <code>navigator</code> being undefined, so calling them during server rendering is a
+    no-op rather than a crash. The hook itself does no browser-only work at render time.
+  </p>
+
+  <h2>CSV escaping</h2>
+
+  <p>
+    Values containing commas, quotes, or newlines are wrapped in double quotes and any
+    interior quotes are doubled — the standard RFC 4180 rule. Booleans and numbers are
+    coerced with <code>String()</code>. <code>null</code> and <code>undefined</code> become
+    empty cells. Anything more complex (objects, React nodes) is run through
+    <code>JSON.stringify</code> as a safety net.
+  </p>
+
+  <h2>API</h2>
+
+  <table>
+    <thead>
+      <tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>columns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>required</td><td>Same columns array you pass to DataTable. Columns with <code>omit: true</code> are skipped.</td></tr>
+      <tr><td><code>rows</code></td><td><code>T[]</code></td><td>required</td><td>Rows to export.</td></tr>
+      <tr><td><code>valueSource</code></td><td><code>'selector' | 'format'</code></td><td><code>'selector'</code></td><td>Use raw selector values or run <code>column.format</code> first.</td></tr>
+      <tr><td><code>headerOverrides</code></td><td><code>Record&lt;string|number, string&gt;</code></td><td>—</td><td>Replace header label per column id.</td></tr>
+      <tr><td><code>columnOrder</code></td><td><code>(string|number)[]</code></td><td>—</td><td>Restrict and reorder columns by id.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Returns</h3>
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>toCSV</code></td><td><code>() =&gt; string</code></td><td>Build a CSV string (no download).</td></tr>
+      <tr><td><code>toJSON</code></td><td><code>() =&gt; string</code></td><td>Build a pretty-printed JSON array string.</td></tr>
+      <tr><td><code>download</code></td><td><code>(filename, format?) =&gt; void</code></td><td>Trigger a browser download. <code>format</code> defaults to <code>'csv'</code>.</td></tr>
+      <tr><td><code>copy</code></td><td><code>(format?) =&gt; Promise&lt;void&gt;</code></td><td>Copy to clipboard. Rejects when the clipboard API is unavailable.</td></tr>
+    </tbody>
+  </table>
+</DocsLayout>

@@ -77,6 +77,29 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			};
 		}
 
+		case 'SELECT_RANGE': {
+			const { keyField, rangeRows, rowCount, select, disabledRows } = action;
+			const disabledSet = disabledRows && disabledRows.length > 0 ? new Set(disabledRows) : null;
+			const eligible = disabledSet ? rangeRows.filter(r => !disabledSet.has(r)) : rangeRows;
+
+			let next: T[];
+			if (select) {
+				// Add any rows in the range that aren't already selected
+				next = [...state.selectedRows, ...eligible.filter(row => !isRowSelected(row, state.selectedRows, keyField))];
+			} else {
+				// Remove any rows in the range
+				next = state.selectedRows.filter(row => !isRowSelected(row, eligible, keyField));
+			}
+
+			return {
+				...state,
+				selectedRows: next,
+				selectedCount: next.length,
+				allSelected: next.length === rowCount && rowCount > 0,
+				toggleOnSelectedRowsChange,
+			};
+		}
+
 		case 'SELECT_MULTIPLE_ROWS': {
 			const { keyField, selectedRows, totalRows, mergeSelections } = action;
 

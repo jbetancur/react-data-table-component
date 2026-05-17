@@ -9,6 +9,8 @@ type ExpanderRowProps<T> = {
 	extendedRowStyle: CSSObject;
 	extendedClassNames: string;
 	expanderComponentProps: ComponentProps;
+	animate: boolean;
+	closing: boolean;
 };
 
 function ExpanderRow<T>({
@@ -17,17 +19,26 @@ function ExpanderRow<T>({
 	expanderComponentProps,
 	extendedRowStyle,
 	extendedClassNames,
+	animate,
+	closing,
 }: ExpanderRowProps<T>): JSX.Element {
 	const customStyles = useStyles();
 	const extraClasses = extendedClassNames.split(' ').filter(c => c !== 'rdt_TableRow');
-	const className = ['rdt_ExpanderRow', 'rdt_expanderRow', 'rdt_expanderRowAnimated', ...extraClasses].join(' ');
+	const className = ['rdt_ExpanderRow', 'rdt_expanderRow', ...extraClasses].join(' ');
+	const wrapperClassName = animate
+		? closing
+			? 'rdt_expanderRowAnimated rdt_expanderRowClosing'
+			: 'rdt_expanderRowAnimated'
+		: undefined;
 
 	return (
-		<div
-			className={className}
-			style={{ ...customStyles.expanderRow?.style, ...(extendedRowStyle as React.CSSProperties) }}
-		>
-			<ExpanderComponent data={data} {...expanderComponentProps} />
+		<div className={wrapperClassName}>
+			<div
+				className={className}
+				style={{ ...customStyles.expanderRow?.style, ...(extendedRowStyle as React.CSSProperties) }}
+			>
+				<ExpanderComponent data={data} {...expanderComponentProps} />
+			</div>
 		</div>
 	);
 }

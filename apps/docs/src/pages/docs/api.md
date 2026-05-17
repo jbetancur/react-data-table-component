@@ -105,8 +105,10 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `selectableRowsNoSelectAll` | `boolean` | `false` | Hide the "select all" checkbox in the header. |
 | `selectableRowsVisibleOnly` | `boolean` | `false` | "Select all" only selects rows on the current page. |
 | `selectableRowsHighlight` | `boolean` | `false` | Highlight selected rows using the theme's selected color. |
+| `selectableRowsRange` | `boolean` | `true` | Enable Shift-click range selection. Disabled automatically in single-select mode. |
 | `selectableRowDisabled` | `(row: T) => boolean` | - | Disable selection for a specific row. |
 | `selectableRowSelected` | `(row: T) => boolean` | - | Pre-select rows that satisfy the predicate. |
+| `selectedRows` | `T[]` | - | Controlled selection. When supplied, drives selection state from the outside; matched against `keyField`. |
 | `selectableRowsComponent` | `"input" \| ReactNode` | built-in checkbox | Custom checkbox component. |
 | `selectableRowsComponentProps` | `object` | - | Extra props forwarded to the custom checkbox component. |
 | `onSelectedRowsChange` | `(state) => void` | - | Called whenever selection changes. Receives `{ allSelected, selectedCount, selectedRows }`. |
@@ -223,6 +225,7 @@ const columns: TableColumn<MyRow>[] = [
 |---|---|---|
 | `editable` | `boolean` | Shorthand for `editor: { type: 'text' }`. Ignored when `editor` is also set. |
 | `editor` | `CellEditor` | Editor configuration. See [CellEditor](#celleditor) below. Takes precedence over `editable`. |
+| `validate` | `(value, row, column) => true \| false \| string` | Gate the edit before `onCellEdit` fires. Return `true` to accept, `false` to reject silently, or a string error to keep the editor open with an inline tooltip. |
 | `onCellEdit` | `CellEditCallback<T>` | Called when the user commits an edit. Receives `(row: T, value: string, column: TableColumn<T>)`. The `value` is always a string; parse it to the target type in your handler. |
 
 See [Inline editing](/docs/inline-editing) for examples, CSS variables, and styling guidance.
@@ -232,20 +235,39 @@ See [Inline editing](/docs/inline-editing) for examples, CSS variables, and styl
 ```ts
 import { type CellEditor } from 'react-data-table-component';
 
-type CellEditor =
+type CellEditor<T = unknown> =
   | { type: 'text'; placeholder?: string }
+  | { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
+  | { type: 'date'; min?: string; max?: string }
+  | { type: 'checkbox' }
   | {
       type: 'select';
       options: Array<{ value: string; label: React.ReactNode }>;
       placeholder?: string;
+    }
+  | {
+      type: 'custom';
+      render: (ctx: CustomCellEditorContext<T>) => React.ReactNode;
     };
+
+interface CustomCellEditorContext<T> {
+  row: T;
+  value: string;
+  setValue: (next: string) => void;
+  commit: (value?: string) => void;
+  cancel: () => void;
+  column: TableColumn<T>;
+}
 ```
 
 | Variant | Field | Type | Description |
 | --- | --- | --- | --- |
-| Both | `type` | `"text" \| "select"` | Editor widget to render. |
-| Both | `placeholder` | `string` | Placeholder text. For `select`, shown as a disabled hidden option when the current value is empty. |
+| All | `type` | `"text" \| "number" \| "date" \| "checkbox" \| "select" \| "custom"` | Editor widget to render. |
+| `text` / `number` / `select` | `placeholder` | `string` | Placeholder text. For `select`, shown as a disabled hidden option when the current value is empty. |
+| `number` | `min` / `max` / `step` | `number` | Forwarded to the native `<input type="number">`. |
+| `date` | `min` / `max` | `string` | Forwarded to the native `<input type="date">` as ISO dates. |
 | `select` | `options` | `{ value: string; label: ReactNode }[]` | Dropdown options. The `value` is what gets committed; `label` is displayed (must be string or number inside native `<option>`). |
+| `custom` | `render` | `(ctx) => ReactNode` | Render any editor. Call `ctx.commit(value)` to save, `ctx.cancel()` to discard. |
 
 ### Inline editing CSS classes
 
@@ -508,6 +530,50 @@ function App() {
 | `name` | `ReactNode` | Column name (mirrors the `name` field from the column definition). |
 | `visible` | `boolean` | Whether the column is currently visible. |
 
+## useTableExport
+
+Hook for generating CSV / JSON from your columns and rows, with download + clipboard helpers. See [Export (CSV / JSON)](/docs/export) for the full guide.
+
+```tsx
+import { useTableExport, type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Row>[] = [
+  { id: 'id', name: 'ID', selector: r => r.id },
+  { id: 'name', name: 'Name', selector: r => r.name },
+];
+
+function App({ rows }: { rows: Row[] }) {
+  const { download, copy, toCSV, toJSON } = useTableExport({ columns, rows });
+
+  return (
+    <>
+      <button onClick={() => download('rows.csv')}>CSV</button>
+      <button onClick={() => download('rows.json', 'json')}>JSON</button>
+      <button onClick={() => copy()}>Copy CSV</button>
+    </>
+  );
+}
+```
+
+### UseTableExportOptions
+
+| Field | Type | Default | Description |
+| --- | --- | --- | --- |
+| `columns` | `TableColumn<T>[]` | required | Same array you pass to DataTable. `omit: true` columns are skipped. |
+| `rows` | `T[]` | required | Rows to export. |
+| `valueSource` | `'selector' \| 'format'` | `'selector'` | `'selector'` exports raw values; `'format'` runs `column.format` first. |
+| `headerOverrides` | `Record<string \| number, string>` | – | Replace header label per column id. |
+| `columnOrder` | `(string \| number)[]` | – | Restrict and reorder columns by id. |
+
+### UseTableExportResult
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `toCSV` | `() => string` | Build a CSV string. |
+| `toJSON` | `() => string` | Build a pretty-printed JSON string. |
+| `download` | `(filename: string, format?: 'csv' \| 'json') => void` | Trigger a browser download. SSR-safe (no-op when `document` is undefined). |
+| `copy` | `(format?: 'csv' \| 'json') => Promise<void>` | Copy to clipboard via `navigator.clipboard`. Rejects when unavailable. |
+
 ## Package exports
 
 ```ts
@@ -531,6 +597,7 @@ import {
   useTableData,
   useColumnFilter,
   useColumnVisibility,
+  useTableExport,
   // Filter utilities
   emptyFilterState,
   isFilterActive,
