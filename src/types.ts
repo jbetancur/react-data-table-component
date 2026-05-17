@@ -122,6 +122,7 @@ type PaginationProps = {
 	 */
 	paginationIcons?: PaginationIcons;
 	paginationPerPage?: number;
+	paginationPage?: number;
 	paginationResetDefaultPage?: boolean;
 	paginationRowsPerPageOptions?: number[];
 	paginationServer?: boolean;

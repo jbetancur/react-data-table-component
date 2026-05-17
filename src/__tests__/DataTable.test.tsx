@@ -1921,6 +1921,63 @@ describe('DataTable::Pagination', () => {
 		expect(getByText('Todos')).not.toBeNull();
 	});
 
+	test('should navigate to the specified page when paginationPage changes', () => {
+		const mock = dataMock();
+		const { container, rerender } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPerPage={1}
+				paginationRowsPerPageOptions={[1, 2]}
+				pagination
+				paginationPage={1}
+			/>,
+		);
+
+		rerender(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPerPage={1}
+				paginationRowsPerPageOptions={[1, 2]}
+				pagination
+				paginationPage={2}
+			/>,
+		);
+
+		expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
+	});
+
+	test('should call onChangePage when paginationPage changes', () => {
+		const mock = dataMock();
+		const onChangePage = vi.fn();
+		const { rerender } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPerPage={1}
+				paginationRowsPerPageOptions={[1, 2]}
+				pagination
+				paginationPage={1}
+				onChangePage={onChangePage}
+			/>,
+		);
+
+		rerender(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				paginationPerPage={1}
+				paginationRowsPerPageOptions={[1, 2]}
+				pagination
+				paginationPage={2}
+				onChangePage={onChangePage}
+			/>,
+		);
+
+		expect(onChangePage).toHaveBeenCalledWith(2, mock.data.length);
+	});
+
 	test('should render correctly when paginationResetDefaultPage is toggled', () => {
 		const mock = dataMock();
 		const { container, rerender } = render(
