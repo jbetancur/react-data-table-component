@@ -19,18 +19,12 @@ function detectDark(): boolean {
  * changes without a page reload.
  */
 export function useColorMode(mode: ColorMode = 'light'): 'light' | 'dark' {
-	const [resolved, setResolved] = useState<'light' | 'dark'>(() => {
-		if (mode !== 'system') return mode;
-		return detectDark() ? 'dark' : 'light';
-	});
+	const [systemResolved, setSystemResolved] = useState<'light' | 'dark'>(() => (detectDark() ? 'dark' : 'light'));
 
 	useEffect(() => {
-		if (mode !== 'system') {
-			setResolved(mode);
-			return;
-		}
+		if (mode !== 'system') return;
 
-		const update = () => setResolved(detectDark() ? 'dark' : 'light');
+		const update = () => setSystemResolved(detectDark() ? 'dark' : 'light');
 		update();
 
 		const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -48,5 +42,5 @@ export function useColorMode(mode: ColorMode = 'light'): 'light' | 'dark' {
 		};
 	}, [mode]);
 
-	return resolved;
+	return mode === 'system' ? systemResolved : mode;
 }

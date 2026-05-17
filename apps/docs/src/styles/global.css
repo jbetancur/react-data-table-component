@@ -28,6 +28,20 @@ article pre code {
   font-size: 0.82rem;
 }
 
+/* Reset dark pre styles inside .not-prose callout blocks */
+article .not-prose pre {
+  background: unset !important;
+  border: none !important;
+  margin: unset !important;
+  padding: unset !important;
+  border-radius: unset !important;
+}
+article .not-prose pre code {
+  background: unset !important;
+  color: unset !important;
+  font-size: unset !important;
+}
+
 /* Inline code */
 article code:not(pre code) {
   @apply font-mono text-brand-700 bg-brand-50 rounded px-1.5 py-0.5;

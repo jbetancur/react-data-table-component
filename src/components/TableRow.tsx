@@ -69,14 +69,17 @@ function Row<T>({
 		striped,
 	} = useRowContext<T>();
 
-	const [expanded, setExpanded] = React.useState(defaultExpanded);
+	const [expanded, dispatch] = React.useReducer(
+		(_: boolean, action: boolean | 'toggle') => (action === 'toggle' ? !_ : action),
+		defaultExpanded,
+	);
 
 	React.useEffect(() => {
-		setExpanded(defaultExpanded);
+		dispatch(defaultExpanded);
 	}, [defaultExpanded]);
 
 	const handleExpanded = React.useCallback(() => {
-		setExpanded(!expanded);
+		dispatch('toggle');
 		onRowExpandToggled(!expanded, row);
 	}, [expanded, onRowExpandToggled, row]);
 

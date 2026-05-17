@@ -24,7 +24,6 @@ function Checkbox({
 }: CheckboxProps): JSX.Element {
 	const setCheckboxRef = (checkbox: HTMLInputElement) => {
 		if (checkbox) {
-			// eslint-disable-next-line no-param-reassign
 			checkbox.indeterminate = indeterminate;
 		}
 	};
