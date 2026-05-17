@@ -1,0 +1,227 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import FooterBasicDemo from '../../components/demos/FooterBasicDemo.tsx';
+import FooterCustomDemo from '../../components/demos/FooterCustomDemo.tsx';
+---
+
+<DocsLayout title="Footer | react-data-table-component">
+  <h1>Footer</h1>
+
+  <p>
+    A footer row renders below the body and above the pagination controls. Use it for totals,
+    averages, counts, or any other summary that should always be visible alongside the data.
+  </p>
+
+  <p>
+    There are two ways to declare a footer:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Column-level <code>footer</code></strong> — the 80% case. Add a <code>footer</code> field
+      to any <code>TableColumn</code>. The footer row appears automatically when at least one
+      visible column has one.
+    </li>
+    <li>
+      <strong><code>footerComponent</code> prop</strong> — escape hatch. Replace the entire footer
+      row with a custom component when you need multi-row summaries, custom layouts, or aggregates
+      that span columns.
+    </li>
+  </ul>
+
+  <h2>Column-level footers</h2>
+
+  <p>
+    Pass <code>footer</code> as either a static <code>ReactNode</code> or a function that receives
+    the filtered+sorted rows and returns a node. Use the function form to compute aggregates —
+    it sees exactly the rows the user sees in the body, so totals update automatically when you
+    sort or filter.
+  </p>
+
+  <Demo
+    title="Column footers — totals that track filtering"
+    description="Use the department filter to narrow the rows. The count and salary/bonus totals in the footer update to match what's on screen."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Row>[] = [
+  {
+    id: 'name',
+    name: 'Name',
+    selector: r => r.name,
+    sortable: true,
+    // static label in the footer
+    footer: rows => \`\${rows.length} employees\`,
+  },
+  {
+    id: 'department',
+    name: 'Department',
+    selector: r => r.department,
+    sortable: true,
+  },
+  {
+    id: 'salary',
+    name: 'Salary',
+    selector: r => r.salary,
+    right: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+    // aggregate function — receives the current visible rows
+    footer: rows => \`$\${rows.reduce((s, r) => s + r.salary, 0).toLocaleString()}\`,
+  },
+  {
+    id: 'bonus',
+    name: 'Bonus',
+    selector: r => r.bonus,
+    right: true,
+    format: r => \`$\${r.bonus.toLocaleString()}\`,
+    footer: rows => \`$\${rows.reduce((s, r) => s + r.bonus, 0).toLocaleString()}\`,
+  },
+];
+
+<DataTable columns={columns} data={data} highlightOnHover dense />`}
+  >
+    <FooterBasicDemo client:load />
+  </Demo>
+
+  <p>
+    Each footer cell inherits its column's <code>right</code>, <code>center</code>,
+    <code>width</code>, <code>minWidth</code>, and <code>maxWidth</code> — so totals line up
+    under their column automatically, including after a resize or sort.
+  </p>
+
+  <blockquote>
+    <strong>Server-side pagination:</strong> the <code>rows</code> argument to a footer function
+    contains only the rows currently in the table (the current page). If you need true cross-page
+    totals, use <code>footerComponent</code> and supply server-computed aggregates yourself.
+  </blockquote>
+
+  <h2>Custom footer component</h2>
+
+  <p>
+    Pass <code>footerComponent</code> to replace the footer row entirely. The component receives
+    <code>{`{ rows, columns }`}</code> and can render whatever it likes — multi-stat summaries,
+    action buttons, contextual copy, anything.
+  </p>
+
+  <Demo
+    title="Custom footer component — multi-stat summary bar"
+    description="The footer bar computes headcount, total salary, average salary, bonus total, and total compensation from the visible rows. Filter by department to see every stat update."
+    code={`import DataTable, { type FooterComponentProps } from 'react-data-table-component';
+
+function SummaryFooter({ rows }: FooterComponentProps<Row>) {
+  const totalSalary = rows.reduce((s, r) => s + r.salary, 0);
+  const totalBonus  = rows.reduce((s, r) => s + r.bonus, 0);
+  const avgSalary   = rows.length ? Math.round(totalSalary / rows.length) : 0;
+
+  return (
+    <div style={{
+      display: 'flex', flexWrap: 'wrap', gap: '16px 32px',
+      padding: '10px 16px', borderTop: '1px solid #e5e7eb',
+      backgroundColor: '#f8fafc', fontSize: 13,
+    }}>
+      <span><strong>{rows.length}</strong> employees</span>
+      <span>Salary total: <strong>\${totalSalary.toLocaleString()}</strong></span>
+      <span>Salary avg: <strong>\${avgSalary.toLocaleString()}</strong></span>
+      <span>Bonus total: <strong>\${totalBonus.toLocaleString()}</strong></span>
+      <span>Total comp: <strong>\${(totalSalary + totalBonus).toLocaleString()}</strong></span>
+    </div>
+  );
+}
+
+<DataTable columns={columns} data={data} footerComponent={SummaryFooter} highlightOnHover dense />`}
+  >
+    <FooterCustomDemo client:load />
+  </Demo>
+
+  <p>
+    When <code>footerComponent</code> is set it takes precedence over any column-level
+    <code>footer</code> fields.
+  </p>
+
+  <h2>Controlling footer visibility</h2>
+
+  <p>
+    The <code>showFooter</code> prop overrides auto-detection:
+  </p>
+
+  <ul>
+    <li><code>showFooter</code> — force the footer row on even if no column defines a <code>footer</code>.</li>
+    <li><code>showFooter={`{false}`}</code> — suppress the footer entirely, overriding column footers and <code>footerComponent</code>. Useful for toggling the summary on and off.</li>
+    <li>Omitted (default) — auto: render when any visible column has <code>footer</code> or <code>footerComponent</code> is provided.</li>
+  </ul>
+
+  <p>
+    The footer is also automatically hidden during <code>progressPending</code>.
+  </p>
+
+  <h2>Styling</h2>
+
+  <p>
+    Use <code>customStyles</code> to override footer appearance:
+  </p>
+
+  <CodeBlock code={`const customStyles = {
+  footer: {
+    style: {
+      backgroundColor: '#f8fafc',
+      borderTop: '2px solid #94a3b8',
+    },
+  },
+  footerCells: {
+    style: {
+      fontWeight: 700,
+      color: '#0f172a',
+    },
+  },
+};
+
+<DataTable columns={columns} data={data} customStyles={customStyles} />`} />
+
+  <p>
+    All built-in themes (including their dark modes) set a <code>background.footer</code> value
+    that gives the footer a distinct surface color matching the header. When building a custom
+    theme with <code>createTheme</code>, set <code>background.footer</code> to control it:
+  </p>
+
+  <CodeBlock code={`createTheme('my-theme', {
+  background: {
+    default: '#1a1a2e',
+    header:  '#16213e',
+    footer:  '#16213e',   // footer matches header
+  },
+}, 'default');`} />
+
+  <p>
+    The CSS variable <code>--rdt-color-footer-bg</code> is emitted automatically when
+    <code>background.footer</code> is set. You can also set it directly in a raw CSS-variable
+    theme object. It falls back to <code>--rdt-color-header-bg</code>, then
+    <code>--rdt-color-bg</code>.
+  </p>
+
+  <h2>Pinned columns</h2>
+
+  <p>
+    Footer cells in pinned columns stick to the table edge exactly like their body cells — no
+    extra config required. Pinning offsets are computed from the same source as the rest of the
+    table, so they stay aligned after resizing.
+  </p>
+
+  <h2>Tips</h2>
+
+  <ul>
+    <li>
+      Match the footer's display format to the column's <code>format</code> function. If salaries
+      render as <code>$45,000</code>, format the total the same way.
+    </li>
+    <li>
+      Use a static label (<code>footer: 'Total'</code>) on the leftmost column and aggregate
+      functions on numeric columns.
+    </li>
+    <li>
+      For multi-row footers, group subtotals, or any layout that doesn't map 1:1 to columns,
+      reach for <code>footerComponent</code> — it renders inside a <code>role="rowgroup"</code>
+      container for accessibility and has no constraints on its internal structure.
+    </li>
+  </ul>
+</DocsLayout>

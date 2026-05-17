@@ -57,8 +57,10 @@ export default function SelectionDemo() {
 				>
 					Clear selection
 				</button>
+			</div>
+			<div className="text-sm min-h-[1.25rem]">
 				{selectedRows.length > 0 && (
-					<span className="text-brand-600 font-medium ml-auto">
+					<span className="text-brand-600 font-medium">
 						{selectedRows.length} selected: {selectedRows.map(r => r.name).join(', ')}
 					</span>
 				)}

@@ -10,7 +10,7 @@ export const roundedTheme: Theme = {
 		secondary: '#64748b',
 		disabled: '#cbd5e1',
 	},
-	background: { default: '#ffffff', header: '#f8fafc' },
+	background: { default: '#ffffff', header: '#f8fafc', footer: '#f8fafc' },
 	divider: { default: '#e2e8f0' },
 	highlightOnHover: { default: '#f1f5f9', text: '#0f172a' },
 	striped: { default: '#f8fafc', text: '#0f172a' },
@@ -30,7 +30,7 @@ export const roundedTheme: Theme = {
 	darkMode: {
 		primary: '#818cf8',
 		text: { primary: '#f1f5f9', secondary: '#94a3b8', disabled: '#334155' },
-		background: { default: '#0f172a', header: '#1e293b' },
+		background: { default: '#0f172a', header: '#1e293b', footer: '#1e293b' },
 		divider: { default: '#1e293b' },
 		highlightOnHover: { default: '#1e293b', text: '#f1f5f9' },
 		striped: { default: '#162032', text: '#f1f5f9' },

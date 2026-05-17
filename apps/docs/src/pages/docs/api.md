@@ -97,6 +97,15 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `onChangePage` | `(page, totalRows) => void` | - | Called when the active page changes. |
 | `onChangeRowsPerPage` | `(rowsPerPage, page) => void` | - | Called when rows-per-page selection changes. |
 
+### Footer
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `footerComponent` | `ComponentType<FooterComponentProps<T>>` | - | Replace the footer row with a custom component. Receives `{ rows, columns }`. Takes precedence over column-level `footer` fields. |
+| `showFooter` | `boolean` | - | Force the footer row on or off. By default the footer renders when `footerComponent` is set or any visible column declares a `footer`. Set to `false` to suppress, `true` to render an empty footer row. |
+
+Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `footer` field. See [Footer](/docs/footer) for the full walkthrough.
+
 ### Row selection
 
 | Prop | Type | Default | Description |
@@ -219,6 +228,7 @@ const columns: TableColumn<MyRow>[] = [
 | `reorder` | `boolean` | Allow drag-to-reorder for this column (requires `reorder` on at least two columns). |
 | `style` | `CSSProperties` | Inline styles applied to every cell in this column. |
 | `conditionalCellStyles` | `ConditionalStyles<T>[]` | Per-cell conditional styles. |
+| `footer` | `ReactNode \| (rows: T[]) => ReactNode` | Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a `footer`, a footer row renders below the body. See [Footer](/docs/footer). |
 
 ### Inline editing
 
@@ -361,6 +371,8 @@ const customStyles: TableStyles = {
 | `expanderCell` | - | Cell containing the expand/collapse button. |
 | `expanderButton` | - | The expand/collapse button itself. |
 | `pagination` | `pageButtonsStyle` | Pagination bar and page buttons. |
+| `footer` | - | The footer row container. |
+| `footerCells` | - | Individual footer cells. |
 | `noData` | - | Empty-state container. |
 | `progress` | - | Loading indicator container. |
 

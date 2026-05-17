@@ -30,6 +30,7 @@ export function themeToVars(theme: Theme): Record<string, string> {
 		'--rdt-color-bg': theme.background.default,
 		'--rdt-color-context-bg': theme.context.background,
 		...(theme.background.header ? { '--rdt-color-header-bg': theme.background.header } : {}),
+		...(theme.background.footer ? { '--rdt-color-footer-bg': theme.background.footer } : {}),
 		'--rdt-color-context-text': theme.context.text,
 		'--rdt-color-divider': theme.divider.default,
 		'--rdt-color-btn': theme.button.default,

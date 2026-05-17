@@ -68,6 +68,22 @@ export type PaginationComponentProps = {
 };
 export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
+/** Renders a column's footer cell. Either a static node, or a function that
+ *  receives the filtered+sorted rows for the current view and returns a node
+ *  (typically an aggregate such as a sum or average). */
+export type ColumnFooter<T> = React.ReactNode | ((rows: T[]) => React.ReactNode);
+
+/** Props passed to a custom `footerComponent`. */
+export type FooterComponentProps<T> = {
+	/** Filtered + sorted rows in the current view. With server-side pagination
+	 *  this is whatever data the parent passed in — page-bound, not the full dataset. */
+	rows: T[];
+	/** The column definitions in their current visible order. */
+	columns: TableColumn<T>[];
+};
+
+export type FooterComponent<T> = React.ComponentType<FooterComponentProps<T>>;
+
 export type DataTableHandle = {
 	clearSelectedRows: () => void;
 };
@@ -243,6 +259,18 @@ type BaseTableProps<T> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	/**
+	 * Replace the built-in footer row with a custom component. Receives `rows`
+	 * (filtered + sorted) and `columns`. When omitted, the footer row is built
+	 * from each column's `footer` field.
+	 */
+	footerComponent?: FooterComponent<T>;
+	/**
+	 * Force the footer row to render. By default the footer renders only when
+	 * `footerComponent` is set or at least one visible column defines a `footer`.
+	 * Set to `false` to suppress the footer entirely.
+	 */
+	showFooter?: boolean;
 };
 
 export type TableProps<T> = BaseTableProps<T> & SelectionProps<T> & PaginationProps & ExpandableProps<T> & SortProps<T>;
@@ -345,6 +373,12 @@ export interface TableColumn<T> extends TableColumnBase {
 	 * Return `true` to accept, `false` to reject silently, or a string error to display.
 	 */
 	validate?: (value: string, row: T, column: TableColumn<T>) => CellValidateResult;
+	/**
+	 * Footer cell for this column. Pass a `ReactNode` for a static value, or a function
+	 * `(rows) => ReactNode` to compute an aggregate from the filtered+sorted rows.
+	 * When any visible column defines a `footer`, a footer row renders below the body.
+	 */
+	footer?: ColumnFooter<T>;
 }
 
 /** A column group renders as a spanning header row above the regular header row. */
@@ -418,6 +452,12 @@ export interface TableStyles {
 		style?: CSSObject;
 		pageButtonsStyle?: CSSObject;
 	};
+	footer?: {
+		style?: CSSObject;
+	};
+	footerCells?: {
+		style?: CSSObject;
+	};
 	noData?: {
 		style: CSSObject;
 	};
@@ -483,6 +523,8 @@ type ThemeBackground = {
 	default: string;
 	/** Optional separate background for column header rows. Falls back to `default`. */
 	header?: string;
+	/** Optional separate background for the footer row. Falls back to `header`, then `default`. */
+	footer?: string;
 };
 
 type ThemeContext = {

@@ -122,11 +122,12 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 				...(conditionalStyle as React.CSSProperties),
 				...pinnedStyle,
 			}}
-			onDragStart={column.reorder ? onDragStart : (e: React.DragEvent) => e.preventDefault()}
-			onDragOver={onDragOver}
-			onDragEnd={onDragEnd}
-			onDragEnter={onDragEnter}
-			onDragLeave={onDragLeave}
+			draggable={column.reorder || undefined}
+			onDragStart={column.reorder ? onDragStart : undefined}
+			onDragOver={column.reorder ? onDragOver : undefined}
+			onDragEnd={column.reorder ? onDragEnd : undefined}
+			onDragEnter={column.reorder ? onDragEnter : undefined}
+			onDragLeave={column.reorder ? onDragLeave : undefined}
 			onClick={editor && !editing && editor.type !== 'checkbox' ? startEdit : undefined}
 		>
 			{editing && editor?.type === 'text' && (

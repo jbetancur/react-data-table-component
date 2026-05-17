@@ -1,6 +1,8 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import ExportDemo from '../../components/demos/ExportDemo.tsx';
 ---
 
 <DocsLayout title="Export (CSV / JSON) | react-data-table-component">
@@ -17,6 +19,46 @@ import CodeBlock from '../../components/CodeBlock.astro';
     <strong>New in 8.1.0</strong> — <code>useTableExport</code> ships as part of the library's
     headless surface alongside <code>useTableState</code>, <code>useTableData</code>, and friends.
   </p>
+
+  <Demo
+    title="Download and copy"
+    description="Export the table as CSV or JSON, or copy to clipboard."
+    code={`import { useState } from 'react';
+import DataTable, { useTableExport, type TableColumn } from 'react-data-table-component';
+
+interface Employee { id: number; name: string; department: string; salary: number; }
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',       name: 'Name',       selector: r => r.name },
+  { id: 'department', name: 'Department', selector: r => r.department },
+  { id: 'salary',     name: 'Salary',     selector: r => r.salary, right: true,
+    format: r => \`$\${r.salary.toLocaleString()}\` },
+];
+
+export default function App() {
+  const [copied, setCopied] = useState(false);
+  const { download, copy } = useTableExport({ columns, rows: data, valueSource: 'format' });
+
+  async function handleCopy(format: 'csv' | 'json') {
+    await copy(format);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+        <button onClick={() => download('employees.csv')}>Download CSV</button>
+        <button onClick={() => download('employees.json', 'json')}>Download JSON</button>
+        <button onClick={() => handleCopy('csv')}>{copied ? 'Copied!' : 'Copy CSV'}</button>
+      </div>
+      <DataTable columns={columns} data={data} />
+    </div>
+  );
+}`}
+  >
+    <ExportDemo client:load />
+  </Demo>
 
   <h2>Basic usage</h2>
 
