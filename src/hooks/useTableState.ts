@@ -31,6 +31,7 @@ interface UseTableStateProps<T> {
 	selectableRowsVisibleOnly: boolean;
 	selectableRowSelected: ((row: T) => boolean) | null;
 	clearSelectedRows: boolean;
+	paginationPage?: number;
 	paginationResetDefaultPage: boolean;
 	/** Controlled selection. When provided, internal selection state is overridden. */
 	controlledSelectedRows?: T[];
@@ -72,6 +73,7 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		selectableRowsVisibleOnly,
 		selectableRowSelected,
 		clearSelectedRows,
+		paginationPage,
 		paginationResetDefaultPage,
 		controlledSelectedRows,
 		onSelectedRowsChange,
@@ -172,6 +174,13 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 	useDidUpdateEffect(() => {
 		handleChangePage(paginationDefaultPage);
 	}, [paginationDefaultPage, paginationResetDefaultPage]);
+
+	// Effect: Handle controlled page prop
+	useDidUpdateEffect(() => {
+		if (paginationPage !== undefined) {
+			handleChangePage(paginationPage);
+		}
+	}, [paginationPage]);
 
 	// Effect: Recalculate page when total rows change (server pagination)
 	useDidUpdateEffect(() => {

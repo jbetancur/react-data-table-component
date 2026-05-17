@@ -86,7 +86,8 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `paginationPerPage` | `number` | `10` | Rows shown per page. |
 | `paginationRowsPerPageOptions` | `number[]` | `[10,15,20,25,30]` | Options in the rows-per-page dropdown. |
 | `paginationDefaultPage` | `number` | `1` | Initial active page. |
-| `paginationResetDefaultPage` | `boolean` | `false` | Toggle to reset to page 1 (e.g. after a filter change). |
+| `paginationPage` | `number` | - | Controlled active page. When provided, the table navigates to this page whenever the value changes. Use together with `onChangePage` to keep them in sync. |
+| `paginationResetDefaultPage` | `boolean` | `false` | Toggle to reset to page 1 (e.g. after a filter change). Prefer `paginationPage` for new code. |
 | `paginationTotalRows` | `number` | - | Total row count for server-side pagination. |
 | `paginationServer` | `boolean` | `false` | Delegate page changes to `onChangePage` / `onChangeRowsPerPage`. |
 | `paginationServerOptions` | `PaginationServerOptions` | - | Selection-persistence options for server-side mode. |
