@@ -145,10 +145,11 @@ graph TD
       <tr><td><code>useTableState</code></td><td>Sort, pagination, and row-selection state + dispatchers</td></tr>
       <tr><td><code>useTableData</code></td><td>Sorts and paginates the raw data into renderable rows</td></tr>
       <tr><td><code>useColumnFilter</code></td><td>Per-column filter values and client-side filter logic</td></tr>
+      <tr><td><code>useTableExport</code></td><td>Generates CSV / JSON from columns and rows, with download + clipboard helpers</td></tr>
     </tbody>
   </table>
 
-  <p>All four are pure: no JSX, no CSS, no hard dependency on the rendered component tree.</p>
+  <p>All five are pure: no JSX, no CSS, no hard dependency on the rendered component tree.</p>
 
   <hr />
 
@@ -479,6 +480,84 @@ useEffect(() => {
     <li><strong>Pagination UI</strong>: the hooks give you <code>currentPage</code>, <code>rowsPerPage</code>, and <code>handleChangePage</code>; you render the controls</li>
     <li><strong>Selection UI</strong>: <code>tableState.selectedRows</code>, <code>handleSelectedRow</code>, <code>handleSelectAllRows</code> give you the data; you render checkboxes</li>
   </ul>
+
+  <hr />
+
+  <h2><code>useTableExport</code></h2>
+
+  <p>
+    Generates CSV or JSON from any set of columns and rows. Pair it with
+    <code>useTableData</code> and <code>useColumnFilter</code> to export exactly what the
+    user sees — sorted, filtered, and paginated — rather than the raw dataset.
+  </p>
+
+  <CodeBlock lang="ts" code={`function useTableExport<T>(options: UseTableExportOptions<T>): UseTableExportResult`} />
+
+  <h3>Options</h3>
+
+  <table>
+    <thead>
+      <tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>columns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>required</td><td>Columns to include. Columns with <code>omit: true</code> are skipped automatically.</td></tr>
+      <tr><td><code>rows</code></td><td><code>T[]</code></td><td>required</td><td>Rows to export. Pass the filtered/sorted slice for "current view" semantics.</td></tr>
+      <tr><td><code>valueSource</code></td><td><code>'selector' | 'format'</code></td><td><code>'selector'</code></td><td><code>'selector'</code> exports raw values; <code>'format'</code> runs <code>column.format</code> first.</td></tr>
+      <tr><td><code>headerOverrides</code></td><td><code>Record&lt;string | number, string&gt;</code></td><td>—</td><td>Override the header label for columns whose <code>name</code> is a React node.</td></tr>
+      <tr><td><code>columnOrder</code></td><td><code>(string | number)[]</code></td><td>—</td><td>Restrict and reorder exported columns by id. Omit to include all visible columns.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Return value</h3>
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>toCSV</code></td><td><code>() =&gt; string</code></td><td>Returns a CSV string.</td></tr>
+      <tr><td><code>toJSON</code></td><td><code>() =&gt; string</code></td><td>Returns a pretty-printed JSON string.</td></tr>
+      <tr><td><code>download</code></td><td><code>(filename: string, format?: 'csv' | 'json') =&gt; void</code></td><td>Triggers a browser file download. No-op on the server.</td></tr>
+      <tr><td><code>copy</code></td><td><code>(format?: 'csv' | 'json') =&gt; Promise&lt;void&gt;</code></td><td>Copies to clipboard via the Clipboard API.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Example — export the current filtered view</h3>
+
+  <CodeBlock lang="tsx" code={`import {
+  useColumns, useTableState, useTableData, useColumnFilter, useTableExport,
+  type TableColumn,
+} from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',       selector: r => r.name },
+  { id: 'dept',   name: 'Department', selector: r => r.department },
+  { id: 'salary', name: 'Salary',     selector: r => r.salary },
+];
+
+function MyTable({ data }: { data: Employee[] }) {
+  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(columns, () => {});
+  const { tableState, handleChangePage } = useTableState({ data, keyField: 'id', /* … */ });
+  const { tableRows } = useTableData({ data, columns: tableColumns, /* … */ });
+  const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
+  const rows = filteredData(tableRows);
+
+  const { download, copy } = useTableExport({ columns: tableColumns, rows });
+
+  return (
+    <div>
+      <button onClick={() => download('employees.csv')}>Download CSV</button>
+      <button onClick={() => download('employees.json', 'json')}>Download JSON</button>
+      <button onClick={() => copy()}>Copy to clipboard</button>
+      {/* … your table markup … */}
+    </div>
+  );
+}`} />
+
+  <p>
+    See the <a href="/docs/export">Export (CSV / JSON)</a> page for a full worked example including
+    integration with the <code>&lt;DataTable /&gt;</code> component's <code>onExport</code> callback.
+  </p>
 
   <hr />
 

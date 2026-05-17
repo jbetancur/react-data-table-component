@@ -3,7 +3,9 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-	markdown: {},
+	markdown: {
+		shikiConfig: { theme: 'catppuccin-macchiato' },
+	},
 	integrations: [react(), tailwind({ applyBaseStyles: false })],
 	vite: {
 		resolve: {

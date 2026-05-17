@@ -24,6 +24,7 @@ import useColumnFilter from '../hooks/useColumnFilter';
 import useColumnResize from '../hooks/useColumnResize';
 import useRowContextValue from '../hooks/useRowContextValue';
 import useHeadContextValue from '../hooks/useHeadContextValue';
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import { useColorMode } from '../hooks/useColorMode';
 
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
@@ -42,10 +43,12 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		selectableRowsHighlight = defaultProps.selectableRowsHighlight,
 		selectableRowsNoSelectAll = defaultProps.selectableRowsNoSelectAll,
 		selectableRowsVisibleOnly = defaultProps.selectableRowsVisibleOnly,
+		selectableRowsRange = true,
 		selectableRowSelected = defaultProps.selectableRowSelected,
 		selectableRowDisabled = defaultProps.selectableRowDisabled,
 		selectableRowsComponent: selectableRowsComponentProp,
 		selectableRowsComponentProps: selectableRowsComponentPropsProp,
+		selectedRows: controlledSelectedRows,
 		onRowExpandToggled = defaultProps.onRowExpandToggled,
 		onSelectedRowsChange = defaultProps.onSelectedRowsChange,
 		onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
@@ -221,6 +224,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		handleSort: dispatchSort,
 		handleSelectAllRows,
 		handleSelectedRow,
+		handleSelectedRange,
 		handleChangePage: handleChangePageState,
 		handleChangeRowsPerPage: handleChangeRowsPerPageState,
 		handleClearSelectedRows,
@@ -240,11 +244,18 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		selectableRowSelected,
 		clearSelectedRows,
 		paginationResetDefaultPage,
+		controlledSelectedRows,
 		onSelectedRowsChange,
 		onSort,
 		onChangePage,
 		onChangeRowsPerPage,
 	});
+
+	// Refs for Shift-click range selection: visibleRowsRef holds the current visible-rows
+	// snapshot so the row-checkbox can compute a contiguous slice without prop-drilling;
+	// lastSelectedKeyRef is the anchor row (set on the most recent single toggle).
+	const visibleRowsRef = React.useRef<T[]>([]);
+	const lastSelectedKeyRef = React.useRef<string | number | null>(null);
 
 	React.useImperativeHandle(ref, () => ({ clearSelectedRows: handleClearSelectedRows }), [handleClearSelectedRows]);
 
@@ -313,6 +324,15 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const visibleRows = selectableRowsVisibleOnly ? filteredTableRows : filteredSortedData;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsSingle || selectableRowsNoSelectAll;
 
+	// Keep the ref pointed at the current visible page rows so Shift-click selection
+	// computes the slice against what's actually on screen, not the full dataset.
+	// We mutate in a layout effect so the ref is up-to-date before any click handler
+	// (which runs after commit) reads from it. Falls back to useEffect on the server
+	// to avoid the SSR mismatch warning.
+	useIsomorphicLayoutEffect(() => {
+		visibleRowsRef.current = filteredTableRows;
+	}, [filteredTableRows]);
+
 	const rowContextValue = useRowContextValue<T>({
 		keyField,
 		columns: effectiveColumns,
@@ -342,6 +362,10 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onRowMouseLeave,
 		onRowExpandToggled,
 		onSelectedRow: handleSelectedRow,
+		onSelectedRange: handleSelectedRange,
+		visibleRowsRef,
+		lastSelectedKeyRef,
+		selectableRowsRange,
 		onDragStart: handleDragStart,
 		onDragOver: handleDragOver,
 		onDragEnd: handleDragEnd,

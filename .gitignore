@@ -60,6 +60,9 @@ typings/
 # dist
 dist/*
 apps/docs/dist/*
+
+# Astro build cache
+apps/docs/.astro/
 # Storybook
 storybook-static
 

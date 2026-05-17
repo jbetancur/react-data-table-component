@@ -11,6 +11,8 @@ export { default as useTableData } from './hooks/useTableData';
 export { default as useColumnFilter } from './hooks/useColumnFilter';
 export { default as useColumnVisibility } from './hooks/useColumnVisibility';
 export type { UseColumnVisibilityResult, ColumnVisibilityEntry } from './hooks/useColumnVisibility';
+export { default as useTableExport } from './hooks/useTableExport';
+export type { UseTableExportOptions, UseTableExportResult, ExportFormat } from './hooks/useTableExport';
 
 export { SortOrder } from './types';
 
@@ -40,6 +42,8 @@ export type {
 	FilterState,
 	CellEditor,
 	CellEditCallback,
+	CellValidateResult,
+	CustomCellEditorContext,
 } from './types';
 
 export { emptyFilterState, isFilterActive } from './hooks/useColumnFilter';

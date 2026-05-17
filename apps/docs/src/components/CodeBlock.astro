@@ -1,16 +1,17 @@
 ---
 import { Code } from 'astro:components';
+import type { ComponentProps } from 'astro/types';
 
 interface Props {
   code: string;
-  lang?: string;
+  lang?: ComponentProps<typeof Code>['lang'];
 }
 
 const { code, lang = 'tsx' } = Astro.props;
 ---
 
 <div class="not-prose my-6 rounded-xl overflow-hidden text-sm leading-relaxed relative group">
-  <Code code={code} lang={lang} theme="github-dark" />
+  <Code code={code} lang={lang} theme="catppuccin-macchiato" defaultColor={false} />
   <button
     class="copy-btn absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white opacity-0 group-hover:opacity-100 transition-all"
     aria-label="Copy code"

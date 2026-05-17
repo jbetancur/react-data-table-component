@@ -3,7 +3,15 @@ import { tableReducer } from '../tableReducer';
 import { getNumberOfPages, recalculatePage } from '../util';
 import useDidUpdateEffect from './useDidUpdateEffect';
 import { SortOrder } from '../types';
-import type { Action, TableState, TableColumn, AllRowsAction, SingleRowAction, SortAction } from '../types';
+import type {
+	Action,
+	TableState,
+	TableColumn,
+	AllRowsAction,
+	SingleRowAction,
+	RangeRowAction,
+	SortAction,
+} from '../types';
 
 interface UseTableStateProps<T> {
 	data: T[];
@@ -24,6 +32,8 @@ interface UseTableStateProps<T> {
 	selectableRowSelected: ((row: T) => boolean) | null;
 	clearSelectedRows: boolean;
 	paginationResetDefaultPage: boolean;
+	/** Controlled selection. When provided, internal selection state is overridden. */
+	controlledSelectedRows?: T[];
 	onSelectedRowsChange: (state: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
 	onSort: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
 	onChangePage: (page: number, totalRows: number) => void;
@@ -37,6 +47,7 @@ interface UseTableStateReturn<T> {
 	handleSort: (action: SortAction<T>) => void;
 	handleSelectAllRows: (action: AllRowsAction<T>) => void;
 	handleSelectedRow: (action: SingleRowAction<T>) => void;
+	handleSelectedRange: (action: RangeRowAction<T>) => void;
 	handleChangePage: (page: number) => void;
 	handleChangeRowsPerPage: (newRowsPerPage: number, tableRowsLength: number) => void;
 	handleClearSelectedRows: () => void;
@@ -62,6 +73,7 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		selectableRowSelected,
 		clearSelectedRows,
 		paginationResetDefaultPage,
+		controlledSelectedRows,
 		onSelectedRowsChange,
 		onChangePage,
 		onChangeRowsPerPage,
@@ -96,6 +108,10 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 	}, []);
 
 	const handleSelectedRow = React.useCallback((action: SingleRowAction<T>) => {
+		dispatch(action);
+	}, []);
+
+	const handleSelectedRange = React.useCallback((action: RangeRowAction<T>) => {
 		dispatch(action);
 	}, []);
 
@@ -194,11 +210,25 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);
 
+	// Controlled-selection override: if the parent passes selectedRows, that wins over
+	// internal state. We still keep dispatching reducer actions so onSelectedRowsChange
+	// fires with the user-intended new selection — the parent is then expected to
+	// reflect that back via the controlled prop.
+	const effectiveTableState: TableState<T> = controlledSelectedRows
+		? {
+				...tableState,
+				selectedRows: controlledSelectedRows,
+				selectedCount: controlledSelectedRows.length,
+				allSelected: controlledSelectedRows.length > 0 && controlledSelectedRows.length === (data?.length ?? 0),
+			}
+		: tableState;
+
 	return {
-		tableState,
+		tableState: effectiveTableState,
 		handleSort,
 		handleSelectAllRows,
 		handleSelectedRow,
+		handleSelectedRange,
 		handleChangePage,
 		handleChangeRowsPerPage,
 		handleClearSelectedRows,

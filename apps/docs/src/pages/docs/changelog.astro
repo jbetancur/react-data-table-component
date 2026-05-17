@@ -11,7 +11,57 @@ import CodeBlock from '../../components/CodeBlock.astro';
     <a href="https://github.com/jbetancur/react-data-table-component/commits/master" target="_blank" rel="noreferrer">repository on GitHub</a>.
   </p>
 
-  <h2>v8 (current)</h2>
+  <h2>8.1.0 (current)</h2>
+
+  <p>
+    Additive feature release. No breaking changes. See
+    <a href="/docs/whats-new">what's new</a> for narrative coverage.
+  </p>
+
+  <h3>New features</h3>
+  <ul>
+    <li>
+      Inline editing now supports <code>number</code>, <code>date</code>, <code>checkbox</code>,
+      and <code>custom</code> editor types. New column-level <code>validate</code> hook gates
+      the edit before <code>onCellEdit</code> fires.
+      → <a href="/docs/inline-editing">Inline editing</a>
+    </li>
+    <li>
+      Shift-click range selection on row checkboxes. Enabled by default — opt out with
+      <code>selectableRowsRange=&#123;false&#125;</code>. New <code>selectedRows</code> prop
+      drives controlled selection.
+      → <a href="/docs/selection">Row selection</a>
+    </li>
+    <li>
+      New headless export hook <code>useTableExport</code>: build CSV/JSON, trigger a
+      download, or copy to clipboard.
+      → <a href="/docs/export">Export</a>
+    </li>
+  </ul>
+
+  <h3>Bug fixes &amp; polish</h3>
+  <ul>
+    <li>
+      Expandable row open/close animation now works correctly. Switched from a
+      <code>max-height</code> tween (which appeared instant at realistic content heights) to
+      the CSS grid <code>grid-template-rows: 0fr → 1fr</code> trick, giving a true
+      height transition. Close animation added — the row stays mounted while animating
+      out, then unmounts. Both directions respect <code>animateRows</code> and
+      <code>prefers-reduced-motion</code>.
+    </li>
+    <li>
+      Fixed <code>useLayoutEffect</code> SSR warning in Next.js App Router and Astro SSR
+      modes. The effect now falls back to <code>useEffect</code> on the server.
+      → <a href="/docs/ssr">SSR</a>
+    </li>
+    <li>
+      Inline editing: added CSS for <code>checkbox</code> and <code>custom</code> editor
+      types, and validation error tooltip styles (<code>.rdt_cellEditError</code>,
+      <code>.rdt_editErrorTip</code>).
+    </li>
+  </ul>
+
+  <h2>v8</h2>
 
   <p>
     v8 is a full rewrite around a headless hook architecture. Every major feature is

@@ -6,6 +6,7 @@ import type {
 	ExpandableRowsComponent,
 	RowState,
 	SingleRowAction,
+	RangeRowAction,
 	ComponentProps,
 } from '../types';
 import type { PinnedOffsets } from '../util';
@@ -39,6 +40,14 @@ export interface RowContextValue<T> {
 	onRowMouseLeave: (row: T, e: React.MouseEvent) => void;
 	onRowExpandToggled: (expanded: boolean, row: T) => void;
 	onSelectedRow: (action: SingleRowAction<T>) => void;
+	/** Dispatch a range selection (Shift-click). */
+	onSelectedRange: (action: RangeRowAction<T>) => void;
+	/** Ref to the rows currently visible in order — used to compute range slices. */
+	visibleRowsRef: React.MutableRefObject<T[]>;
+	/** Ref to the last single-toggled key, the anchor for Shift-click ranges. */
+	lastSelectedKeyRef: React.MutableRefObject<string | number | null>;
+	/** Whether Shift-click range selection is enabled. */
+	selectableRowsRange: boolean;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;

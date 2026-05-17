@@ -11,6 +11,76 @@ import CodeBlock from '../../components/CodeBlock.astro';
     composable and usable independently of <code>&lt;DataTable&gt;</code>. Here's what changed.
   </p>
 
+  <h2>8.1.0 — additive feature release</h2>
+
+  <p>
+    8.1.0 builds on the v8 foundation with three additive features. Nothing is breaking; existing
+    code keeps working.
+  </p>
+
+  <h3>Expanded inline editors + validation</h3>
+
+  <p>
+    The <code>editor</code> column option now supports <code>number</code>, <code>date</code>,
+    <code>checkbox</code>, and <code>custom</code> on top of the original <code>text</code> and
+    <code>select</code>. A new column-level <code>validate</code> function gates the edit before
+    <code>onCellEdit</code> fires — return <code>true</code> to accept, <code>false</code> to
+    reject silently, or a string error to keep the editor open with an inline tooltip.
+  </p>
+
+  <CodeBlock code={`{
+  id: 'salary', name: 'Salary', selector: r => r.salary,
+  editor: { type: 'number', min: 0, step: 1000 },
+  validate: value => {
+    const n = Number(value);
+    if (Number.isNaN(n) || n < 0) return 'Must be a positive number';
+    return true;
+  },
+  onCellEdit,
+}`} />
+
+  <p>→ <a href="/docs/inline-editing">Inline editing docs</a></p>
+
+  <h3>Range selection + controlled selectedRows</h3>
+
+  <p>
+    Selection got two upgrades. Click a row's checkbox, then Shift-click another to toggle every
+    row in between — the same gesture native file pickers and spreadsheets use. Opt out with
+    <code>selectableRowsRange=&#123;false&#125;</code>. The new <code>selectedRows</code> prop
+    accepts an array to drive selection from outside the table, mirroring the controlled
+    <code>filterValues</code> pattern.
+  </p>
+
+  <CodeBlock code={`function App() {
+  const [selected, setSelected] = useState<Row[]>([]);
+  return (
+    <DataTable
+      selectableRows
+      selectedRows={selected}
+      onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
+      columns={columns}
+      data={data}
+    />
+  );
+}`} />
+
+  <p>→ <a href="/docs/selection">Row selection docs</a></p>
+
+  <h3>CSV / JSON export hook</h3>
+
+  <p>
+    A new <code>useTableExport</code> headless hook produces CSV or JSON for any subset of rows
+    you pass it, plus helpers to trigger a browser download or copy to the clipboard. Pair it
+    with <code>useTableData</code> + <code>useColumnFilter</code> to export the current filtered
+    view; pair it with raw data to dump everything.
+  </p>
+
+  <CodeBlock code={`const { download, copy, toCSV } = useTableExport({ columns, rows: filtered });
+
+<button onClick={() => download('view.csv')}>Export CSV</button>`} />
+
+  <p>→ <a href="/docs/export">Export docs</a></p>
+
   <h2>Column filtering</h2>
 
   <p>

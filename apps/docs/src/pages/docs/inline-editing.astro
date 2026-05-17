@@ -15,9 +15,16 @@ import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
   </p>
 
   <p>
-    Two editor types are built in: a text input (<code>editable: true</code> as shorthand) and
-    a dropdown (<code>editor: &#123; type: 'select', options &#125;</code>). The cell itself
-    becomes the editor: full-bleed input, primary-color focus ring, no nested borders.
+    Six editor types are built in: <code>text</code>, <code>number</code>, <code>date</code>,
+    <code>checkbox</code>, <code>select</code>, and <code>custom</code>. The cell itself becomes
+    the editor: full-bleed input, primary-color focus ring, no nested borders. Add a
+    <code>validate</code> function on any column to reject invalid input or surface an inline
+    error message.
+  </p>
+
+  <p class="callout">
+    <strong>New in 8.1.0</strong> — number, date, checkbox, and custom editors plus the
+    <code>validate</code> hook. The <code>text</code> and <code>select</code> editors are unchanged.
   </p>
 
   <Demo
@@ -102,6 +109,12 @@ export default function App() {
 
   <h2>Editor types</h2>
 
+  <p>
+    Pick the right editor for the value type. Every editor calls <code>onCellEdit(row, value, column)</code>
+    with the new value as a <strong>string</strong> — you parse it into a number, boolean, or
+    date in your update handler.
+  </p>
+
   <h3>Text input</h3>
   <p>
     The default. <code>editable: true</code> is shorthand for
@@ -116,6 +129,44 @@ export default function App() {
 { id: 'name', name: 'Name', selector: r => r.name,
   editor: { type: 'text', placeholder: 'Enter a name…' },
   onCellEdit }`} />
+
+  <h3>Number input</h3>
+  <p>
+    A native <code>type="number"</code> field with optional <code>min</code>, <code>max</code>,
+    and <code>step</code>:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'salary', name: 'Salary', selector: r => r.salary,
+  editor: { type: 'number', min: 0, step: 1000 },
+  onCellEdit, // value arrives as a string — Number(value) it on commit
+}`} />
+
+  <h3>Date picker</h3>
+  <p>
+    A native <code>type="date"</code> field. Values arrive in ISO <code>YYYY-MM-DD</code> form:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'joined', name: 'Joined', selector: r => r.joined,
+  editor: { type: 'date', min: '2020-01-01' },
+  onCellEdit,
+}`} />
+
+  <h3>Checkbox</h3>
+  <p>
+    A toggle that commits immediately on click. The selector should return a boolean (or a
+    string <code>'true'</code> / <code>'false'</code>). The callback receives the
+    <em>new</em> string value:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'active', name: 'Active', selector: r => r.active,
+  editor: { type: 'checkbox' },
+  onCellEdit: (row, value) => {
+    setData(prev => prev.map(r => r.id === row.id ? { ...r, active: value === 'true' } : r));
+  },
+}`} />
 
   <h3>Dropdown (select)</h3>
   <p>
@@ -142,6 +193,37 @@ export default function App() {
     <code>value</code> is the string the callback receives. <code>label</code> is what the user
     sees in the dropdown. It can be any string or number (rich React content isn't supported
     inside <code>&lt;option&gt;</code> elements).
+  </p>
+
+  <h3>Custom editor</h3>
+  <p>
+    Render any editor you want and call <code>ctx.commit(value)</code> when ready or
+    <code>ctx.cancel()</code> to discard. The context also exposes <code>value</code> /
+    <code>setValue</code> so you can wire up controlled inputs:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'role', name: 'Role', selector: r => r.role,
+  editor: {
+    type: 'custom',
+    render: ({ value, setValue, commit, cancel, row }) => (
+      <Autocomplete
+        autoFocus
+        value={value}
+        onChange={setValue}
+        onSelect={v => commit(v)}
+        onBlur={() => commit()}
+        onEscape={cancel}
+      />
+    ),
+  },
+  onCellEdit,
+}`} />
+
+  <p>
+    The <code>ctx.row</code> field gives you the row data for context-aware editors
+    (dependent dropdowns, etc.). The cell wrapper still owns padding and the focus ring —
+    your custom editor only needs to render the input.
   </p>
 
   <h2>The cell becomes the editor</h2>
@@ -219,20 +301,33 @@ export default function App() {
 
   <h2>Validation</h2>
   <p>
-    Reject invalid input by checking inside <code>onCellEdit</code> and skipping the update.
-    The cell input doesn't expose a "reject and re-open" hook, so the simplest pattern is to
-    no-op and rely on the user re-clicking the cell.
+    Add a <code>validate</code> function to any column to gate the edit before
+    <code>onCellEdit</code> fires. Return:
   </p>
+  <ul>
+    <li><code>true</code> — accept the value, commit the edit.</li>
+    <li><code>false</code> — reject silently, close the editor without firing the callback.</li>
+    <li>A <code>string</code> — keep the editor open, paint an error ring, and show the message as an inline tooltip.</li>
+  </ul>
 
-  <CodeBlock code={`const handleCellEdit = (row, value, column) => {
-  if (column.id === 'salary') {
+  <CodeBlock code={`{
+  id: 'salary', name: 'Salary', selector: r => r.salary,
+  editor: { type: 'number', min: 0 },
+  validate: (value) => {
     const n = Number(value);
-    if (isNaN(n) || n < 0) return; // ignore invalid input
-    setData(prev => prev.map(r => r.id === row.id ? { ...r, salary: n } : r));
-    return;
-  }
-  setData(prev => prev.map(r => r.id === row.id ? { ...r, [column.id]: value } : r));
-};`} />
+    if (Number.isNaN(n)) return 'Must be a number';
+    if (n < 0) return 'Cannot be negative';
+    if (n > 1_000_000) return false; // silently reject
+    return true;
+  },
+  onCellEdit,
+}`} />
+
+  <p>
+    The error state uses CSS variables you can theme:
+    <code>--rdt-color-cell-edit-error</code> drives both the error ring and the tooltip
+    background.
+  </p>
 
   <h2>Restricting which columns are editable</h2>
   <p>
@@ -316,8 +411,8 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Limitations</h2>
   <ul>
-    <li>Built-in editors are text and select only. For multi-line text, date pickers, autocompletes, or rich validation, render your own <code>cell</code> (see above).</li>
-    <li>The <code>value</code> passed to <code>onCellEdit</code> is always a string. Parse it yourself.</li>
+    <li>Built-in editors cover text, number, date, checkbox, and select. For autocomplete, multi-line text, rich pickers, etc. use the <code>custom</code> editor.</li>
+    <li>The <code>value</code> passed to <code>onCellEdit</code> and <code>validate</code> is always a string. Parse it yourself.</li>
     <li>Dropdown <code>label</code>s must be strings or numbers. They render inside native <code>&lt;option&gt;</code> elements which can't contain arbitrary React content.</li>
     <li>There is no built-in "dirty" indicator or undo stack. Track that in your application state if you need it.</li>
     <li>Editing does not trigger row selection or row click handlers. Clicks inside the editor are stopped from propagating.</li>
@@ -338,7 +433,12 @@ const columns: TableColumn<Employee>[] = [
       <tr>
         <td><code>editor</code></td>
         <td><code>CellEditor</code></td>
-        <td>Editor configuration. Either <code>&#123; type: 'text', placeholder? &#125;</code> or <code>&#123; type: 'select', options, placeholder? &#125;</code>.</td>
+        <td>Editor configuration. See <code>CellEditor</code> below for the full union.</td>
+      </tr>
+      <tr>
+        <td><code>validate</code></td>
+        <td><code>(value, row, column) =&gt; true | false | string</code></td>
+        <td>Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.</td>
       </tr>
       <tr>
         <td><code>onCellEdit</code></td>
@@ -350,11 +450,27 @@ const columns: TableColumn<Employee>[] = [
 
   <h3>CellEditor</h3>
 
-  <CodeBlock code={`type CellEditor =
+  <CodeBlock code={`type CellEditor<T = unknown> =
   | { type: 'text'; placeholder?: string }
+  | { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
+  | { type: 'date'; min?: string; max?: string }
+  | { type: 'checkbox' }
   | {
       type: 'select';
       options: Array<{ value: string; label: React.ReactNode }>;
       placeholder?: string;
-    };`} />
+    }
+  | {
+      type: 'custom';
+      render: (ctx: CustomCellEditorContext<T>) => React.ReactNode;
+    };
+
+interface CustomCellEditorContext<T> {
+  row: T;
+  value: string;
+  setValue: (next: string) => void;
+  commit: (value?: string) => void;
+  cancel: () => void;
+  column: TableColumn<T>;
+}`} />
 </DocsLayout>

@@ -59,6 +59,10 @@ function Row<T>({
 		onRowMouseLeave,
 		onRowExpandToggled,
 		onSelectedRow,
+		onSelectedRange,
+		visibleRowsRef,
+		lastSelectedKeyRef,
+		selectableRowsRange,
 		pointerOnHover,
 		selectableRowDisabled,
 		selectableRows,
@@ -69,19 +73,62 @@ function Row<T>({
 		striped,
 	} = useRowContext<T>();
 
-	const [expanded, dispatch] = React.useReducer(
-		(_: boolean, action: boolean | 'toggle') => (action === 'toggle' ? !_ : action),
-		defaultExpanded,
+	type ExpanderState = { expanded: boolean; mounted: boolean; closing: boolean };
+	type ExpanderAction = { type: 'open' } | { type: 'close' } | { type: 'unmount' } | { type: 'sync'; value: boolean };
+
+	const [expanderState, expanderDispatch] = React.useReducer(
+		(state: ExpanderState, action: ExpanderAction): ExpanderState => {
+			switch (action.type) {
+				case 'open':
+					return { expanded: true, mounted: true, closing: false };
+				case 'close':
+					return { ...state, expanded: false, closing: true };
+				case 'unmount':
+					return { expanded: false, mounted: false, closing: false };
+				case 'sync':
+					return { expanded: action.value, mounted: action.value, closing: false };
+				default:
+					return state;
+			}
+		},
+		{ expanded: defaultExpanded, mounted: defaultExpanded, closing: false },
 	);
 
+	const expanded = expanderState.expanded;
+	const expanderMounted = expanderState.mounted;
+	const isClosing = expanderState.closing;
+
 	React.useEffect(() => {
-		dispatch(defaultExpanded);
+		expanderDispatch({ type: 'sync', value: defaultExpanded });
 	}, [defaultExpanded]);
 
+	const { animateRows } = useRowContext<T>();
+
+	const EXPAND_DURATION = 220;
+	const closeTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	const openExpander = React.useCallback(() => {
+		if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+		expanderDispatch({ type: 'open' });
+	}, []);
+
+	const closeExpander = React.useCallback(() => {
+		if (animateRows) {
+			expanderDispatch({ type: 'close' });
+			closeTimerRef.current = setTimeout(() => {
+				expanderDispatch({ type: 'unmount' });
+			}, EXPAND_DURATION);
+		} else {
+			expanderDispatch({ type: 'unmount' });
+		}
+	}, [animateRows]);
+
 	const handleExpanded = React.useCallback(() => {
-		dispatch('toggle');
-		onRowExpandToggled(!expanded, row);
-	}, [expanded, onRowExpandToggled, row]);
+		const next = !expanded;
+		onRowExpandToggled(next, row);
+		if (next) openExpander();
+		else closeExpander();
+	}, [expanded, onRowExpandToggled, row, openExpander, closeExpander]);
 
 	const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
 
@@ -161,8 +208,8 @@ function Row<T>({
 	const inheritStyles = expandableInheritConditionalStyles ? conditionalStyle : {};
 	const isStriped = striped && isOdd(rowIndex);
 
-	const { animateRows } = useRowContext<T>();
 	const shouldAnimate = animateRows && isNew;
+
 	const className = [
 		classNames,
 		'rdt_row',
@@ -215,6 +262,10 @@ function Row<T>({
 						selectableRowDisabled={selectableRowDisabled}
 						selectableRowsSingle={selectableRowsSingle}
 						onSelectedRow={onSelectedRow}
+						onSelectedRange={onSelectedRange}
+						visibleRowsRef={visibleRowsRef}
+						lastSelectedKeyRef={lastSelectedKeyRef}
+						selectableRowsRange={selectableRowsRange}
 					/>
 				)}
 
@@ -250,7 +301,7 @@ function Row<T>({
 				})}
 			</div>
 
-			{expandableRows && expanded && expandableRowsComponent && (
+			{expandableRows && expanderMounted && expandableRowsComponent && (
 				<ExpanderRow
 					key={`expander-${rowKeyField}`}
 					data={row}
@@ -258,6 +309,8 @@ function Row<T>({
 					extendedClassNames={classNames}
 					ExpanderComponent={expandableRowsComponent}
 					expanderComponentProps={expandableRowsComponentProps ?? {}}
+					animate={animateRows}
+					closing={isClosing}
 				/>
 			)}
 		</>
