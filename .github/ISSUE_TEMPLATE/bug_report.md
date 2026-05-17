@@ -1,45 +1,49 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[DESCRIPTION]"
-labels: ''
+title: "[BUG]: "
+labels: 'bug'
 assignees: ''
 
 ---
 
-## Issue Check list
-- [ ] Agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
-- [ ] Read the README
-- [ ] You are using React 16.8.0+
-- [ ] You installed `styled-components`
-- [ ] Include relevant code or preferably a [code sandbox](https://codesandbox.io/embed/react-data-table-sandbox-ccyuu
-)
+## Checklist
+
+- [ ] I agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
+- [ ] I searched [existing issues](https://github.com/jbetancur/react-data-table-component/issues?q=is%3Aissue) and this is not a duplicate
+- [ ] I read the [documentation](https://reactdatatable.com)
+- [ ] I am using React 18+
+- [ ] I can reproduce this with a minimal example (sandbox link below)
 
 ## Describe the bug
+
 A clear and concise description of what the bug is.
 
 ## To Reproduce
+
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+
+1.
+2.
+3.
 
 ## Expected behavior
-A clear and concise description of what you expected to happen.
 
-## Code Sandbox, Screenshots, or Relevant Code
-Please include a codesandbox to help **expedite** troublshooting.
+What you expected to happen.
 
-https://codesandbox.io/embed/react-data-table-sandbox-ccyuu
+## Actual behavior
 
-Otherwise, add screenshots and/or complete sample code to help explain your problem.
+What actually happens.
 
-## Versions (please complete the following information)
- - React (RDT requires 16.8.0+)
- - Styled Components
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari, firefox]
+## Minimal reproduction
 
-## Additional context
-Add any other context about the problem here.
+**A minimal reproduction is required — issues without one may be closed.**
+
+<!-- Provide a public GitHub repo, CodeSandbox, StackBlitz, or a self-contained code snippet that reproduces the issue. -->
+
+## Versions
+
+- react-data-table-component:
+- React:
+- Browser:
+- OS:
