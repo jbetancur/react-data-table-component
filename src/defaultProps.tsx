@@ -96,6 +96,7 @@ export const defaultProps = {
 	paginationResetDefaultPage: false,
 	paginationTotalRows: 0,
 	paginationPerPage: 10,
+	paginationPosition: 'bottom' as const,
 	paginationRowsPerPageOptions: [10, 15, 20, 25, 30],
 	paginationComponent: null,
 	paginationComponentOptions: {},

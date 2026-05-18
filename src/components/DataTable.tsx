@@ -61,6 +61,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		paginationPage,
 		paginationResetDefaultPage = defaultProps.paginationResetDefaultPage,
 		paginationPerPage = defaultProps.paginationPerPage,
+		paginationPosition = defaultProps.paginationPosition,
 		paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
 		paginationComponent = defaultProps.paginationComponent,
 		paginationComponentOptions = defaultProps.paginationComponentOptions,
@@ -84,6 +85,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onRowMiddleClicked = defaultProps.onRowMiddleClicked,
 		onRowMouseEnter = defaultProps.onRowMouseEnter,
 		onRowMouseLeave = defaultProps.onRowMouseLeave,
+		onScroll,
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
@@ -462,6 +464,22 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 							</Subheader>
 						)}
 
+						{enabledPagination && (paginationPosition === 'top' || paginationPosition === 'both') && (
+							<TablePaginationFooter
+								Pagination={Pagination}
+								onChangePage={handleChangePage}
+								onChangeRowsPerPage={handleChangeRowsPerPage}
+								rowCount={paginationTotalRows || filteredSortedData.length}
+								currentPage={currentPage}
+								rowsPerPage={rowsPerPage}
+								direction={direction}
+								paginationRowsPerPageOptions={paginationRowsPerPageOptions}
+								paginationIcons={paginationIcons}
+								paginationComponentOptions={paginationComponentOptions}
+								position="top"
+							/>
+						)}
+
 						<ResponsiveWrapper
 							ref={scrollWrapperRef}
 							$responsive={responsive}
@@ -469,6 +487,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 							$fixedHeaderScrollHeight={fixedHeaderScrollHeight}
 							$hiddenScrollbar={hasPinnedColumns}
 							className={className}
+							onScroll={onScroll}
 							{...wrapperProps}
 						>
 							<Wrapper>
@@ -527,7 +546,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 							/>
 						)}
 
-						{enabledPagination && (
+						{enabledPagination && (paginationPosition === 'bottom' || paginationPosition === 'both') && (
 							<TablePaginationFooter
 								Pagination={Pagination}
 								onChangePage={handleChangePage}

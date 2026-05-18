@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import PaginationDemo from '../../components/demos/PaginationDemo.tsx';
+import PaginationPositionDemo from '../../components/demos/PaginationPositionDemo.tsx';
 import ServerSidePaginationDemo from '../../components/demos/ServerSidePaginationDemo.tsx';
 import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
 import ServerSideDemo from '../../components/demos/ServerSideDemo.tsx';
@@ -64,6 +65,25 @@ export default function App() {
 }`}
   >
     <PaginationDemo client:load />
+  </Demo>
+
+  <h2>Pagination position</h2>
+  <p>
+    By default the pagination bar renders below the table. Use <code>paginationPosition</code> to
+    move it above the table (<code>"top"</code>) or show it in both places (<code>"both"</code>).
+  </p>
+
+  <Demo
+    title="Pagination position"
+    description="Toggle between top, bottom, and both to see the pagination bar reposition."
+    code={`<DataTable
+  columns={columns}
+  data={data}
+  pagination
+  paginationPosition="top"   // "top" | "bottom" | "both"
+/>`}
+  >
+    <PaginationPositionDemo client:load />
   </Demo>
 
   <h2>Server-side pagination</h2>
@@ -511,6 +531,12 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
         <td><code>number[]</code></td>
         <td><code>[10, 25, 50, 100]</code></td>
         <td>Options shown in the rows-per-page dropdown.</td>
+      </tr>
+      <tr>
+        <td><code>paginationPosition</code></td>
+        <td><code>'top' | 'bottom' | 'both'</code></td>
+        <td><code>'bottom'</code></td>
+        <td>Where the pagination bar renders relative to the table. <code>'both'</code> renders it above and below simultaneously.</td>
       </tr>
       <tr>
         <td><code>paginationServer</code></td>
