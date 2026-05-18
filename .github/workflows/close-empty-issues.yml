@@ -1,0 +1,45 @@
+name: Close empty issues
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body ?? '';
+
+            // Strip HTML comments (template instructions), whitespace, and checkboxes
+            const stripped = body
+              .replace(/<!--[\s\S]*?-->/g, '')
+              .replace(/- \[[ x]\]/g, '')
+              .trim();
+
+            // Close if body is missing or under 50 meaningful characters
+            if (stripped.length >= 50) return;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: [
+                "Thanks for opening an issue. It looks like the description is empty or incomplete.",
+                "",
+                "Please fill out the issue template with enough detail to reproduce or understand the problem — a description, steps to reproduce, and your version. Issues without this information are difficult to act on and may be closed.",
+                "",
+                "Feel free to reopen once you've added more detail.",
+              ].join('\n'),
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed',
+            });
