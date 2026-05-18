@@ -475,6 +475,26 @@ describe('DataTable:RowMouseEnterAndLeave', () => {
 		fireEvent.mouseLeave(container.querySelector('div[id="cell-1-1"]') as HTMLElement);
 		expect(onRowMouseLeaveMock).toHaveBeenCalled();
 	});
+
+	test('should call onScroll when the responsive wrapper is scrolled', () => {
+		const onScrollMock = vi.fn();
+		const mock = dataMock({});
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onScroll={onScrollMock} />);
+
+		fireEvent.scroll(container.querySelector('.rdt_responsiveWrapper') as HTMLElement);
+		expect(onScrollMock).toHaveBeenCalledTimes(1);
+	});
+
+	test('should call onScroll when fixedHeader is enabled', () => {
+		const onScrollMock = vi.fn();
+		const mock = dataMock({});
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} fixedHeader onScroll={onScrollMock} />,
+		);
+
+		fireEvent.scroll(container.querySelector('.rdt_responsiveWrapperFixed') as HTMLElement);
+		expect(onScrollMock).toHaveBeenCalledTimes(1);
+	});
 });
 
 describe('DataTable::progress/nodata', () => {
@@ -2004,6 +2024,95 @@ describe('DataTable::Pagination', () => {
 		);
 
 		expect(container.querySelector('div[id="row-1"]')).not.toBeNull();
+	});
+	describe('paginationPosition', () => {
+		test('should render pagination below the table by default', () => {
+			const mock = dataMock();
+			const { container } = render(<DataTable data={mock.data} columns={mock.columns} pagination />);
+
+			const wrapper = container.firstElementChild as HTMLElement;
+			const children = Array.from(wrapper.children);
+			const tableIdx = children.findIndex(el => el.classList.contains('rdt_TableResponsive') || el.tagName === 'DIV');
+			const paginationEl = container.querySelector('nav');
+			const paginationParent = paginationEl?.parentElement;
+			const paginationParentIdx = children.indexOf(paginationParent as Element);
+
+			expect(paginationParentIdx).toBeGreaterThan(tableIdx);
+		});
+
+		test('should render pagination above the table when paginationPosition="top"', () => {
+			const mock = dataMock();
+			const { container } = render(
+				<DataTable data={mock.data} columns={mock.columns} pagination paginationPosition="top" />,
+			);
+
+			const wrapper = container.firstElementChild as HTMLElement;
+			const children = Array.from(wrapper.children);
+			const responsiveWrapper = container.querySelector('.rdt_responsiveWrapper');
+			const responsiveIdx = children.indexOf(responsiveWrapper as Element);
+			const navEls = container.querySelectorAll('nav');
+
+			expect(navEls).toHaveLength(1);
+			const paginationParentIdx = children.indexOf(navEls[0].parentElement as Element);
+			expect(paginationParentIdx).toBeGreaterThanOrEqual(0);
+			expect(paginationParentIdx).toBeLessThan(responsiveIdx);
+		});
+
+		test('should render pagination above and below the table when paginationPosition="both"', () => {
+			const mock = dataMock();
+			const { container } = render(
+				<DataTable data={mock.data} columns={mock.columns} pagination paginationPosition="both" />,
+			);
+
+			const navEls = container.querySelectorAll('nav');
+			expect(navEls).toHaveLength(2);
+		});
+
+		test('should not render pagination when paginationPosition="top" and pagination is disabled', () => {
+			const mock = dataMock();
+			const { container } = render(<DataTable data={mock.data} columns={mock.columns} paginationPosition="top" />);
+
+			expect(container.querySelector('nav')).toBeNull();
+		});
+
+		test('should navigate correctly when using paginationPosition="top"', () => {
+			const mock = dataMock();
+			const { container } = render(
+				<DataTable
+					data={mock.data}
+					columns={mock.columns}
+					pagination
+					paginationPosition="top"
+					paginationPerPage={1}
+					paginationRowsPerPageOptions={[1, 2]}
+				/>,
+			);
+
+			fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
+
+			expect(container.querySelector('div[id="row-1"]')).toBeNull();
+			expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
+		});
+
+		test('both pagination bars stay in sync when paginationPosition="both"', () => {
+			const mock = dataMock();
+			const { container } = render(
+				<DataTable
+					data={mock.data}
+					columns={mock.columns}
+					pagination
+					paginationPosition="both"
+					paginationPerPage={1}
+					paginationRowsPerPageOptions={[1, 2]}
+				/>,
+			);
+
+			const nextButtons = container.querySelectorAll('button#pagination-next-page');
+			fireEvent.click(nextButtons[0] as HTMLButtonElement);
+
+			expect(container.querySelector('div[id="row-1"]')).toBeNull();
+			expect(container.querySelector('div[id="row-2"]')).not.toBeNull();
+		});
 	});
 });
 

@@ -1135,7 +1135,6 @@
 	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
 	background-color: var(--rdt-color-bg, #fff);
 	min-height: var(--rdt-row-height, 52px);
-	border-top: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 }
 
 .rdt_paginationButton {

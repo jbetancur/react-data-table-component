@@ -13,6 +13,7 @@ interface TablePaginationFooterProps {
 	paginationRowsPerPageOptions: number[];
 	paginationIcons?: PaginationIcons;
 	paginationComponentOptions: PaginationOptions;
+	position?: 'top' | 'bottom' | 'both';
 }
 
 function TablePaginationFooter({
@@ -26,9 +27,13 @@ function TablePaginationFooter({
 	paginationRowsPerPageOptions,
 	paginationIcons,
 	paginationComponentOptions,
+	position,
 }: TablePaginationFooterProps): JSX.Element {
+	const border = '1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12))';
+	const wrapperStyle = position === 'top' ? { borderBottom: border } : { borderTop: border };
+
 	return (
-		<div>
+		<div style={wrapperStyle}>
 			<Pagination
 				onChangePage={onChangePage}
 				onChangeRowsPerPage={onChangeRowsPerPage}

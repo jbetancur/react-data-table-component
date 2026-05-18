@@ -139,6 +139,7 @@ type PaginationProps = {
 	paginationIcons?: PaginationIcons;
 	paginationPerPage?: number;
 	paginationPage?: number;
+	paginationPosition?: 'top' | 'bottom' | 'both';
 	paginationResetDefaultPage?: boolean;
 	paginationRowsPerPageOptions?: number[];
 	paginationServer?: boolean;
@@ -198,6 +199,8 @@ type BaseTableProps<T> = {
 	onRowMiddleClicked?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseEnter?: (row: T, e: React.MouseEvent) => void;
 	onRowMouseLeave?: (row: T, e: React.MouseEvent) => void;
+	/** Called when the user scrolls the table body. Works with both `fixedHeader` enabled and disabled. */
+	onScroll?: (e: React.UIEvent<HTMLDivElement>) => void;
 	/** Enable drag-to-resize handles on column headers */
 	resizable?: boolean;
 	/**

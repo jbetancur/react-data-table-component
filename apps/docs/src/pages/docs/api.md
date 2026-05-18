@@ -84,6 +84,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 |---|---|---|---|
 | `pagination` | `boolean` | `false` | Enable built-in pagination controls. |
 | `paginationPerPage` | `number` | `10` | Rows shown per page. |
+| `paginationPosition` | `'top' \| 'bottom' \| 'both'` | `'bottom'` | Where the pagination bar renders. `'both'` shows it above and below the table simultaneously. |
 | `paginationRowsPerPageOptions` | `number[]` | `[10,15,20,25,30]` | Options in the rows-per-page dropdown. |
 | `paginationDefaultPage` | `number` | `1` | Initial active page. |
 | `paginationPage` | `number` | - | Controlled active page. When provided, the table navigates to this page whenever the value changes. Use together with `onChangePage` to keep them in sync. |
@@ -149,6 +150,7 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `onRowMiddleClicked` | `(row, event) => void` | Called when a row is middle-clicked (scroll-click). Use with `onRowClicked` to implement open-in-new-tab behaviour. |
 | `onRowMouseEnter` | `(row, event) => void` | Called when the pointer enters a row. |
 | `onRowMouseLeave` | `(row, event) => void` | Called when the pointer leaves a row. |
+| `onScroll` | `(event) => void` | Called when the user scrolls the table body. Works with both `fixedHeader` enabled and disabled. |
 
 ### Column features
 
