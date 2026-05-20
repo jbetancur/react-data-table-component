@@ -1,0 +1,52 @@
+import type { Localization } from '../types';
+
+const ptBR: Localization = {
+	pagination: {
+		navigationAriaLabel: 'Paginação da tabela',
+		firstPageAriaLabel: 'Primeira página',
+		previousPageAriaLabel: 'Página anterior',
+		nextPageAriaLabel: 'Próxima página',
+		lastPageAriaLabel: 'Última página',
+	},
+	filter: {
+		filterColumnAriaLabel: 'Filtrar coluna',
+		filterActiveAriaLabel: 'Filtro ativo',
+		filterPanelAriaLabel: 'Painel de filtro',
+		operatorAriaLabel: 'Operador de filtro',
+		valuePlaceholder: 'Valor',
+		valueAriaLabel: 'Valor do filtro',
+		value2Placeholder: 'Valor',
+		value2AriaLabel: 'Segundo valor do filtro',
+		betweenSeparatorText: 'e',
+		removeConditionAriaLabel: 'Remover condição',
+		addConditionAriaLabel: 'Adicionar segunda condição',
+		addConditionLabel: '+ Adicionar condição',
+		clearLabel: 'Limpar',
+		applyLabel: 'Aplicar',
+		andLabel: 'E',
+		orLabel: 'OU',
+		operators: {
+			contains: 'Contém',
+			notContains: 'Não contém',
+			equals: 'Igual a',
+			notEquals: 'Diferente de',
+			startsWith: 'Começa com',
+			endsWith: 'Termina com',
+			blank: 'Vazio',
+			notBlank: 'Não vazio',
+			gt: 'Maior que',
+			gte: 'Maior ou igual a',
+			lt: 'Menor que',
+			lte: 'Menor ou igual a',
+			between: 'Entre',
+			before: 'Antes de',
+			after: 'Depois de',
+		},
+	},
+	expandable: {
+		expandRowAriaLabel: 'Expandir linha',
+		collapseRowAriaLabel: 'Recolher linha',
+	},
+};
+
+export default ptBR;

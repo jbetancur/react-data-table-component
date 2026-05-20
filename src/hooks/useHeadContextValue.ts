@@ -52,6 +52,7 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 			options.onGroupDragEnter,
 			options.onGroupDragOver,
 			options.onGroupDragEnd,
+			options.localization,
 		],
 	);
 }

@@ -1,0 +1,52 @@
+import type { Localization } from '../types';
+
+const he: Localization = {
+	pagination: {
+		navigationAriaLabel: 'ניווט בין דפי הטבלה',
+		firstPageAriaLabel: 'עמוד ראשון',
+		previousPageAriaLabel: 'עמוד קודם',
+		nextPageAriaLabel: 'עמוד הבא',
+		lastPageAriaLabel: 'עמוד אחרון',
+	},
+	filter: {
+		filterColumnAriaLabel: 'סינון עמודה',
+		filterActiveAriaLabel: 'סינון פעיל',
+		filterPanelAriaLabel: 'לוח סינון',
+		operatorAriaLabel: 'אופרטור סינון',
+		valuePlaceholder: 'ערך',
+		valueAriaLabel: 'ערך סינון',
+		value2Placeholder: 'ערך',
+		value2AriaLabel: 'ערך סינון שני',
+		betweenSeparatorText: 'ו',
+		removeConditionAriaLabel: 'הסר תנאי',
+		addConditionAriaLabel: 'הוסף תנאי שני',
+		addConditionLabel: '+ הוסף תנאי',
+		clearLabel: 'נקה',
+		applyLabel: 'החל',
+		andLabel: 'וגם',
+		orLabel: 'או',
+		operators: {
+			contains: 'מכיל',
+			notContains: 'אינו מכיל',
+			equals: 'שווה ל',
+			notEquals: 'אינו שווה ל',
+			startsWith: 'מתחיל ב',
+			endsWith: 'מסתיים ב',
+			blank: 'ריק',
+			notBlank: 'אינו ריק',
+			gt: 'גדול מ',
+			gte: 'גדול מ או שווה ל',
+			lt: 'קטן מ',
+			lte: 'קטן מ או שווה ל',
+			between: 'בין',
+			before: 'לפני',
+			after: 'אחרי',
+		},
+	},
+	expandable: {
+		expandRowAriaLabel: 'הרחב שורה',
+		collapseRowAriaLabel: 'כווץ שורה',
+	},
+};
+
+export default he;

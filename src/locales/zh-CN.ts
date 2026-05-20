@@ -1,0 +1,52 @@
+import type { Localization } from '../types';
+
+const zhCN: Localization = {
+	pagination: {
+		navigationAriaLabel: '表格分页',
+		firstPageAriaLabel: '第一页',
+		previousPageAriaLabel: '上一页',
+		nextPageAriaLabel: '下一页',
+		lastPageAriaLabel: '最后一页',
+	},
+	filter: {
+		filterColumnAriaLabel: '筛选列',
+		filterActiveAriaLabel: '筛选已激活',
+		filterPanelAriaLabel: '筛选面板',
+		operatorAriaLabel: '筛选运算符',
+		valuePlaceholder: '值',
+		valueAriaLabel: '筛选值',
+		value2Placeholder: '值',
+		value2AriaLabel: '第二筛选值',
+		betweenSeparatorText: '和',
+		removeConditionAriaLabel: '删除条件',
+		addConditionAriaLabel: '添加第二个条件',
+		addConditionLabel: '+ 添加条件',
+		clearLabel: '清除',
+		applyLabel: '应用',
+		andLabel: '且',
+		orLabel: '或',
+		operators: {
+			contains: '包含',
+			notContains: '不包含',
+			equals: '等于',
+			notEquals: '不等于',
+			startsWith: '开头为',
+			endsWith: '结尾为',
+			blank: '为空',
+			notBlank: '不为空',
+			gt: '大于',
+			gte: '大于或等于',
+			lt: '小于',
+			lte: '小于或等于',
+			between: '介于',
+			before: '早于',
+			after: '晚于',
+		},
+	},
+	expandable: {
+		expandRowAriaLabel: '展开行',
+		collapseRowAriaLabel: '收起行',
+	},
+};
+
+export default zhCN;

@@ -572,7 +572,7 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
         <td><code>paginationComponentOptions</code></td>
         <td><code>PaginationOptions</code></td>
         <td>-</td>
-        <td>Options forwarded to the default pagination component (label customisation, etc.).</td>
+        <td>Options forwarded to the default pagination component. Covers visible text (<code>rowsPerPageText</code>, <code>rangeSeparatorText</code>, <code>selectAllRowsItemText</code>). Navigation aria-labels are set via the <code>localization</code> prop.</td>
       </tr>
       <tr>
         <td><code>paginationIconFirstPage</code></td>
@@ -612,4 +612,48 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
       </tr>
     </tbody>
   </table>
+
+  <h2>Localization</h2>
+  <p>
+    All navigation aria-labels on the built-in pagination bar are controlled via the
+    <code>localization</code> prop. Use a pre-built locale or supply your own — every key is
+    optional and falls back to the English default. Visible text such as
+    <code>rowsPerPageText</code> and <code>rangeSeparatorText</code> is still set via
+    <code>paginationComponentOptions</code>.
+  </p>
+
+  <CodeBlock code={`// Drop-in locale
+import DataTable from 'react-data-table-component';
+import { fr } from 'react-data-table-component/locales';
+
+<DataTable columns={columns} data={data} pagination localization={fr} />`} />
+
+  <CodeBlock code={`// Partial override — spread a locale and replace only what you need
+import { fr } from 'react-data-table-component/locales';
+import type { Localization } from 'react-data-table-component';
+
+const myLocale: Localization = {
+  ...fr,
+  pagination: {
+    ...fr.pagination,
+    nextPageAriaLabel: 'Suivant',
+  },
+};
+
+<DataTable columns={columns} data={data} pagination localization={myLocale} />`} />
+
+  <CodeBlock code={`// Built from scratch — every key is optional
+import type { Localization } from 'react-data-table-component';
+
+const custom: Localization = {
+  pagination: {
+    navigationAriaLabel:   'Table navigation',
+    firstPageAriaLabel:    'First',
+    previousPageAriaLabel: 'Prev',
+    nextPageAriaLabel:     'Next',
+    lastPageAriaLabel:     'Last',
+  },
+};
+
+<DataTable columns={columns} data={data} pagination localization={custom} />`} />
 </DocsLayout>

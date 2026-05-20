@@ -1,0 +1,176 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout title="Localization | react-data-table-component">
+  <h1>Localization</h1>
+
+  <p>
+    Pass a <code>localization</code> object to <code>DataTable</code> to override every
+    string and aria-label rendered by the table — filter panel, pagination navigation, and
+    expand/collapse buttons. All keys are optional and fall back to English defaults.
+  </p>
+
+  <h2>Quick start</h2>
+  <p>
+    Import one of the pre-built locales from the <code>/locales</code> subpath and pass it as
+    <code>localization</code>. That's all you need for a fully translated table.
+  </p>
+
+  <CodeBlock code={`import DataTable from 'react-data-table-component';
+import { fr } from 'react-data-table-component/locales';
+
+<DataTable columns={columns} data={data} localization={fr} />`} />
+
+  <h2>Built-in locales</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Export</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>en</code></td><td>English (default)</td></tr>
+      <tr><td><code>fr</code></td><td>French</td></tr>
+      <tr><td><code>es</code></td><td>Spanish</td></tr>
+      <tr><td><code>de</code></td><td>German</td></tr>
+      <tr><td><code>ptBR</code></td><td>Brazilian Portuguese</td></tr>
+      <tr><td><code>ar</code></td><td>Arabic (Modern Standard)</td></tr>
+      <tr><td><code>he</code></td><td>Hebrew</td></tr>
+      <tr><td><code>arEG</code></td><td>Arabic (Egyptian)</td></tr>
+      <tr><td><code>arLV</code></td><td>Arabic (Levantine)</td></tr>
+      <tr><td><code>zhCN</code></td><td>Chinese (Simplified)</td></tr>
+      <tr><td><code>zhTW</code></td><td>Chinese (Traditional)</td></tr>
+      <tr><td><code>ja</code></td><td>Japanese</td></tr>
+      <tr><td><code>ko</code></td><td>Korean</td></tr>
+      <tr><td><code>uk</code></td><td>Ukrainian</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    Each locale is a standalone module. Only the locale you import enters your bundle — the
+    rest are tree-shaken away.
+  </p>
+
+  <h2>Partial override</h2>
+  <p>
+    Spread an existing locale and replace only the keys you need.
+  </p>
+
+  <CodeBlock code={`import { fr } from 'react-data-table-component/locales';
+import type { Localization } from 'react-data-table-component';
+
+const myLocale: Localization = {
+  ...fr,
+  filter: {
+    ...fr.filter,
+    applyLabel: 'Valider',
+    clearLabel: 'Effacer',
+  },
+};
+
+<DataTable columns={columns} data={data} localization={myLocale} />`} />
+
+  <h2>Custom locale from scratch</h2>
+  <p>
+    Build a locale object from the <code>Localization</code> type. Every key is optional —
+    any omitted key falls back to the English default.
+  </p>
+
+  <CodeBlock code={`import type { Localization } from 'react-data-table-component';
+
+const custom: Localization = {
+  pagination: {
+    navigationAriaLabel:   'Paginación de la tabla',
+    firstPageAriaLabel:    'Primera página',
+    previousPageAriaLabel: 'Página anterior',
+    nextPageAriaLabel:     'Página siguiente',
+    lastPageAriaLabel:     'Última página',
+  },
+  filter: {
+    applyLabel: 'Aplicar',
+    clearLabel: 'Limpiar',
+    addConditionLabel: '+ Añadir condición',
+    andLabel: 'Y',
+    orLabel: 'O',
+    operators: {
+      contains: 'Contiene',
+      equals:   'Igual a',
+      blank:    'Vacío',
+    },
+  },
+  expandable: {
+    expandRowAriaLabel:   'Expandir fila',
+    collapseRowAriaLabel: 'Contraer fila',
+  },
+};
+
+<DataTable columns={columns} data={data} localization={custom} />`} />
+
+  <h2>The Localization type</h2>
+  <p>
+    All three sub-objects are optional. Each key within them is also optional.
+  </p>
+
+  <CodeBlock code={`interface Localization {
+  pagination?: {
+    navigationAriaLabel?:   string;  // default: 'Table pagination'
+    firstPageAriaLabel?:    string;  // default: 'First Page'
+    previousPageAriaLabel?: string;  // default: 'Previous Page'
+    nextPageAriaLabel?:     string;  // default: 'Next Page'
+    lastPageAriaLabel?:     string;  // default: 'Last Page'
+  };
+
+  filter?: {
+    filterColumnAriaLabel?:    string;  // default: 'Filter column'
+    filterActiveAriaLabel?:    string;  // default: 'Filter active'
+    filterPanelAriaLabel?:     string;  // default: 'Filter panel'
+    operatorAriaLabel?:        string;  // default: 'Filter operator'
+    valuePlaceholder?:         string;  // default: 'Value'
+    valueAriaLabel?:           string;  // default: 'Filter value'
+    value2Placeholder?:        string;  // default: 'Value'
+    value2AriaLabel?:          string;  // default: 'Second filter value'
+    betweenSeparatorText?:     string;  // default: 'and'
+    removeConditionAriaLabel?: string;  // default: 'Remove condition'
+    addConditionAriaLabel?:    string;  // default: 'Add second condition'
+    addConditionLabel?:        string;  // default: '+ Add condition'
+    clearLabel?:               string;  // default: 'Clear'
+    applyLabel?:               string;  // default: 'Apply'
+    andLabel?:                 string;  // default: 'AND'
+    orLabel?:                  string;  // default: 'OR'
+    operators?: {
+      contains?:    string;  // default: 'Contains'
+      notContains?: string;  // default: 'Does not contain'
+      equals?:      string;  // default: 'Equals'
+      notEquals?:   string;  // default: 'Does not equal'
+      startsWith?:  string;  // default: 'Begins with'
+      endsWith?:    string;  // default: 'Ends with'
+      blank?:       string;  // default: 'Blank'
+      notBlank?:    string;  // default: 'Not blank'
+      gt?:          string;  // default: 'Greater than'
+      gte?:         string;  // default: '≥'
+      lt?:          string;  // default: 'Less than'
+      lte?:         string;  // default: '≤'
+      between?:     string;  // default: 'Between'
+      before?:      string;  // default: 'Before'
+      after?:       string;  // default: 'After'
+    };
+  };
+
+  expandable?: {
+    expandRowAriaLabel?:   string;  // default: 'Expand Row'
+    collapseRowAriaLabel?: string;  // default: 'Collapse Row'
+  };
+}`} />
+
+  <h2>Scope</h2>
+  <p>
+    <code>localization</code> covers strings rendered by the table's built-in UI. Visible text
+    in the pagination bar (<code>rowsPerPageText</code>, <code>rangeSeparatorText</code>,
+    <code>selectAllRowsItemText</code>) is still controlled by
+    <code>paginationComponentOptions</code>, since those affect layout as well as text.
+  </p>
+</DocsLayout>

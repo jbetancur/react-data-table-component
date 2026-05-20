@@ -250,6 +250,43 @@ export default function App() {
       <tr><td><code>expandableInheritConditionalStyles</code></td><td><code>boolean</code></td><td>Apply the parent row's <code>conditionalRowStyles</code> to the expander row</td></tr>
       <tr><td><code>onRowExpandToggled</code></td><td><code>(expanded: boolean, row: T) =&gt; void</code></td><td>Fired when a row is expanded or collapsed</td></tr>
       <tr><td><code>animateRows</code></td><td><code>boolean</code></td><td>Animate expand/collapse (respects <code>prefers-reduced-motion</code>)</td></tr>
+      <tr><td><code>localization</code></td><td><code>Localization</code></td><td>Localizable aria-labels for the expand/collapse button — see Localization below.</td></tr>
     </tbody>
   </table>
+
+  <h2>Localization</h2>
+  <p>
+    Override the aria-labels on the expand/collapse button via the <code>localization</code> prop.
+    Use a pre-built locale or supply your own — every key is optional.
+  </p>
+
+  <CodeBlock code={`// Drop-in locale
+import DataTable from 'react-data-table-component';
+import { fr } from 'react-data-table-component/locales';
+
+<DataTable
+  columns={columns}
+  data={data}
+  expandableRows
+  expandableRowsComponent={MyExpander}
+  localization={fr}
+/>`} />
+
+  <CodeBlock code={`// Custom aria-labels only
+import type { Localization } from 'react-data-table-component';
+
+const custom: Localization = {
+  expandable: {
+    expandRowAriaLabel:   'Ouvrir la ligne',
+    collapseRowAriaLabel: 'Fermer la ligne',
+  },
+};
+
+<DataTable
+  columns={columns}
+  data={data}
+  expandableRows
+  expandableRowsComponent={MyExpander}
+  localization={custom}
+/>`} />
 </DocsLayout>

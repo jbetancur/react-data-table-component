@@ -1,0 +1,52 @@
+import type { Localization } from '../types';
+
+const zhTW: Localization = {
+	pagination: {
+		navigationAriaLabel: '表格分頁',
+		firstPageAriaLabel: '第一頁',
+		previousPageAriaLabel: '上一頁',
+		nextPageAriaLabel: '下一頁',
+		lastPageAriaLabel: '最後一頁',
+	},
+	filter: {
+		filterColumnAriaLabel: '篩選欄位',
+		filterActiveAriaLabel: '篩選已啟用',
+		filterPanelAriaLabel: '篩選面板',
+		operatorAriaLabel: '篩選運算子',
+		valuePlaceholder: '值',
+		valueAriaLabel: '篩選值',
+		value2Placeholder: '值',
+		value2AriaLabel: '第二篩選值',
+		betweenSeparatorText: '和',
+		removeConditionAriaLabel: '移除條件',
+		addConditionAriaLabel: '新增第二個條件',
+		addConditionLabel: '+ 新增條件',
+		clearLabel: '清除',
+		applyLabel: '套用',
+		andLabel: '且',
+		orLabel: '或',
+		operators: {
+			contains: '包含',
+			notContains: '不包含',
+			equals: '等於',
+			notEquals: '不等於',
+			startsWith: '開頭為',
+			endsWith: '結尾為',
+			blank: '為空',
+			notBlank: '不為空',
+			gt: '大於',
+			gte: '大於或等於',
+			lt: '小於',
+			lte: '小於或等於',
+			between: '介於',
+			before: '早於',
+			after: '晚於',
+		},
+	},
+	expandable: {
+		expandRowAriaLabel: '展開列',
+		collapseRowAriaLabel: '收合列',
+	},
+};
+
+export default zhTW;

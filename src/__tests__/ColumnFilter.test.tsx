@@ -244,3 +244,126 @@ describe('ColumnFilter:date filter type', () => {
 		expect(input.type).toBe('date');
 	});
 });
+
+describe('ColumnFilter:localization (options prop)', () => {
+	const options = {
+		filterColumnAriaLabel: 'test-filter-col',
+		filterActiveAriaLabel: 'test-filter-active',
+		filterPanelAriaLabel: 'test-filter-panel',
+		operatorAriaLabel: 'test-operator',
+		valuePlaceholder: 'test-placeholder',
+		valueAriaLabel: 'test-value',
+		value2AriaLabel: 'test-value2',
+		value2Placeholder: 'test-placeholder2',
+		betweenSeparatorText: 'test-sep',
+		removeConditionAriaLabel: 'test-remove',
+		addConditionAriaLabel: 'test-add',
+		addConditionLabel: 'test-add-label',
+		clearLabel: 'test-clear',
+		applyLabel: 'test-apply',
+		andLabel: 'test-and',
+		orLabel: 'test-or',
+		operators: { contains: 'test-contains', equals: 'test-equals' },
+	};
+
+	test('filter icon button uses custom aria-label', () => {
+		const { container } = setup({ options });
+		const btn = container.querySelector('button') as HTMLButtonElement;
+		expect(btn.getAttribute('aria-label')).toBe('test-filter-col');
+	});
+
+	test('active filter uses custom active aria-label', () => {
+		const { container } = setup({
+			options,
+			filterValue: { condition1: { operator: 'contains', value: 'x' } },
+		});
+		const btn = container.querySelector('button') as HTMLButtonElement;
+		expect(btn.getAttribute('aria-label')).toBe('test-filter-active');
+	});
+
+	function openPanelByClass(container: HTMLElement) {
+		const btn = container.querySelector('button.rdt_filterIcon') as HTMLElement;
+		fireEvent.click(btn);
+	}
+
+	test('panel uses custom aria-label', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		expect(container.querySelector('[role="dialog"]')?.getAttribute('aria-label')).toBe('test-filter-panel');
+	});
+
+	test('operator select uses custom aria-label', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		expect(container.querySelector('select')?.getAttribute('aria-label')).toBe('test-operator');
+	});
+
+	test('value input uses custom placeholder and aria-label', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		const input = container.querySelector('input') as HTMLInputElement;
+		expect(input.getAttribute('aria-label')).toBe('test-value');
+		expect(input.placeholder).toBe('test-placeholder');
+	});
+
+	test('custom operator labels appear in select; untranslated keys fall back to default', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		const select = container.querySelector('select') as HTMLSelectElement;
+		const optionTexts = Array.from(select.options).map(o => o.text);
+		expect(optionTexts).toContain('test-contains');
+		expect(optionTexts).toContain('test-equals');
+		expect(optionTexts).toContain('Does not contain'); // untranslated key falls back to English default
+	});
+
+	test('Apply and Clear buttons use custom labels', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		const btns = Array.from(container.querySelectorAll('.rdt_filterActions button')).map(b => b.textContent);
+		expect(btns).toContain('test-clear');
+		expect(btns).toContain('test-apply');
+	});
+
+	test('add-condition button uses custom label and aria-label', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		const addBtn = container.querySelector('.rdt_filterAddCondition') as HTMLButtonElement;
+		expect(addBtn.textContent).toBe('test-add-label');
+		expect(addBtn.getAttribute('aria-label')).toBe('test-add');
+	});
+
+	test('AND / OR buttons use custom labels', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		fireEvent.click(container.querySelector('.rdt_filterAddCondition') as HTMLElement);
+		const logicBtns = Array.from(container.querySelectorAll('.rdt_filterLogicBtn')).map(b => b.textContent);
+		expect(logicBtns).toContain('test-and');
+		expect(logicBtns).toContain('test-or');
+	});
+
+	test('remove-condition button uses custom aria-label', () => {
+		const { container } = setup({ options });
+		openPanelByClass(container);
+		fireEvent.click(container.querySelector('.rdt_filterAddCondition') as HTMLElement);
+		const removeBtn = container.querySelector('.rdt_filterRemoveBtn') as HTMLButtonElement;
+		expect(removeBtn.getAttribute('aria-label')).toBe('test-remove');
+	});
+
+	test('between separator uses custom text', () => {
+		const { container } = setup({ options, filterType: 'number', filterValue: emptyFilterState('number') });
+		openPanelByClass(container);
+		const select = container.querySelector('select') as HTMLSelectElement;
+		fireEvent.change(select, { target: { value: 'between' } });
+		expect(container.querySelector('.rdt_filterBetweenSep')?.textContent).toBe('test-sep');
+	});
+
+	test('second value input uses custom aria-label and placeholder', () => {
+		const { container } = setup({ options, filterType: 'number', filterValue: emptyFilterState('number') });
+		openPanelByClass(container);
+		const select = container.querySelector('select') as HTMLSelectElement;
+		fireEvent.change(select, { target: { value: 'between' } });
+		const input2 = container.querySelector('input[aria-label="test-value2"]') as HTMLInputElement;
+		expect(input2).not.toBeNull();
+		expect(input2.placeholder).toBe('test-placeholder2');
+	});
+});

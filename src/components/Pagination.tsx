@@ -6,7 +6,7 @@ import { getNumberOfPages } from '../util';
 import useWindowSize from '../hooks/useWindowSize';
 import useRTL from '../hooks/useRTL';
 import { Direction } from '../constants';
-import type { PaginationIcons, PaginationOptions, PaginationChangePage } from '../types';
+import type { PaginationIcons, PaginationOptions, PaginationChangePage, Localization } from '../types';
 import { defaultProps, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 
 const defaultComponentOptions = {
@@ -25,6 +25,7 @@ interface PaginationProps {
 	paginationRowsPerPageOptions?: number[];
 	paginationIcons?: PaginationIcons;
 	paginationComponentOptions?: PaginationOptions;
+	localization?: Localization['pagination'];
 	onChangePage: PaginationChangePage;
 	onChangeRowsPerPage: (numRows: number, currentPage: number) => void;
 }
@@ -37,6 +38,7 @@ function Pagination({
 	paginationRowsPerPageOptions = defaultProps.paginationRowsPerPageOptions,
 	paginationIcons = DEFAULT_PAGINATION_ICONS,
 	paginationComponentOptions = defaultProps.paginationComponentOptions,
+	localization,
 	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 	onChangePage = defaultProps.onChangePage,
 }: PaginationProps): JSX.Element {
@@ -102,7 +104,7 @@ function Pagination({
 	return (
 		<nav
 			className={['rdt_pagination', 'rdt_Pagination'].join(' ')}
-			aria-label="Table pagination"
+			aria-label={localization?.navigationAriaLabel ?? 'Table pagination'}
 			style={customStyles.pagination?.style}
 		>
 			{!options.noRowsPerPage && shouldShow && (
@@ -116,7 +118,7 @@ function Pagination({
 				<button
 					id="pagination-first-page"
 					type="button"
-					aria-label="First Page"
+					aria-label={localization?.firstPageAriaLabel ?? 'First Page'}
 					aria-disabled={disabledLesser}
 					onClick={handleFirst}
 					disabled={disabledLesser}
@@ -128,7 +130,7 @@ function Pagination({
 				<button
 					id="pagination-previous-page"
 					type="button"
-					aria-label="Previous Page"
+					aria-label={localization?.previousPageAriaLabel ?? 'Previous Page'}
 					aria-disabled={disabledLesser}
 					onClick={handlePrevious}
 					disabled={disabledLesser}
@@ -141,7 +143,7 @@ function Pagination({
 				<button
 					id="pagination-next-page"
 					type="button"
-					aria-label="Next Page"
+					aria-label={localization?.nextPageAriaLabel ?? 'Next Page'}
 					aria-disabled={disabledGreater}
 					onClick={handleNext}
 					disabled={disabledGreater}
@@ -153,7 +155,7 @@ function Pagination({
 				<button
 					id="pagination-last-page"
 					type="button"
-					aria-label="Last Page"
+					aria-label={localization?.lastPageAriaLabel ?? 'Last Page'}
 					aria-disabled={disabledGreater}
 					onClick={handleLast}
 					disabled={disabledGreater}

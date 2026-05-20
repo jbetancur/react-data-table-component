@@ -109,6 +109,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		columnGroups,
 		filterValues: controlledFilterValues,
 		onFilterChange: onFilterChangeProp,
+		localization = {},
 		resizable = false,
 		initialColumnWidths,
 		onColumnResize,
@@ -370,6 +371,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		selectableRowDisabled,
 		expandableRows,
 		expandableIcon,
+		localization: localization.expandable ?? {},
 		expandableRowsComponent,
 		expandableRowsComponentProps,
 		expandableRowsHideExpander,
@@ -411,6 +413,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		draggingColumnId,
 		draggingGroupKey,
 		filterValues,
+		localization: localization.filter ?? {},
 		columnWidths,
 		pinnedOffsets,
 		resizable,
@@ -480,6 +483,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 								paginationRowsPerPageOptions={paginationRowsPerPageOptions}
 								paginationIcons={paginationIcons}
 								paginationComponentOptions={paginationComponentOptions}
+								localization={localization.pagination}
 								position="top"
 							/>
 						)}
@@ -562,6 +566,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 								paginationRowsPerPageOptions={paginationRowsPerPageOptions}
 								paginationIcons={paginationIcons}
 								paginationComponentOptions={paginationComponentOptions}
+								localization={localization.pagination}
 							/>
 						)}
 					</div>

@@ -84,6 +84,36 @@ import RTLDemo from '../../components/demos/RTLDemo.tsx';
     <li>Column <code>right: true</code> alignment continues to work as expected. Align numbers relative to the reading direction of the cell content, not the page.</li>
   </ul>
 
+  <h2>Pairing with localization</h2>
+  <p>
+    <code>direction</code> controls layout; <code>localization</code> controls strings. For a
+    fully translated RTL table, use both together. The library keeps them separate on purpose —
+    you may want French strings without changing layout direction, or an Arabic locale on a
+    mixed-direction page where you manage <code>dir</code> yourself.
+  </p>
+
+  <CodeBlock code={`import DataTable, { Direction } from 'react-data-table-component';
+import { ar } from 'react-data-table-component/locales';
+
+<DataTable
+  columns={columns}
+  data={data}
+  direction={Direction.RTL}
+  localization={ar}
+/>`} />
+
+  <p>
+    If your app already sets <code>&lt;html dir="rtl"&gt;</code>, use <code>Direction.AUTO</code>
+    so the table follows the page without an explicit prop:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={data}
+  direction={Direction.AUTO}
+  localization={ar}
+/>`} />
+
   <h2>Prop reference</h2>
 
   <table>

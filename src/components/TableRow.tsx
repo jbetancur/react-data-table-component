@@ -43,6 +43,7 @@ function Row<T>({
 		conditionalRowStyles,
 		dense,
 		expandableIcon,
+		localization,
 		expandableRows,
 		expandableRowsComponent,
 		expandableRowsComponentProps,
@@ -273,6 +274,7 @@ function Row<T>({
 					<TableCellExpander
 						id={rowKeyField as string}
 						expandableIcon={expandableIcon}
+						expandableRowsOptions={localization}
 						expanded={expanded}
 						row={row}
 						onToggled={handleExpanded}
