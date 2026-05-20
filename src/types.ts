@@ -526,7 +526,7 @@ type ThemeBackground = {
 	default: string;
 	/** Optional separate background for column header rows. Falls back to `default`. */
 	header?: string;
-	/** Optional separate background for the footer row. Falls back to `header`, then `default`. */
+	/** Optional separate background for the footer row. Falls back to `default`. */
 	footer?: string;
 };
 

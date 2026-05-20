@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import FixedHeaderDemo from '../../components/demos/FixedHeaderDemo.tsx';
+import OnScrollDemo from '../../components/demos/OnScrollDemo.tsx';
 ---
 
 <DocsLayout title="Fixed header | react-data-table-component">
@@ -82,6 +83,29 @@ const columns: TableColumn<Employee>[] = [
   selectableRows
 />`} />
 
+  <h2>Tracking scroll position with <code>onScroll</code></h2>
+  <p>
+    The <code>onScroll</code> prop fires on every scroll event inside the table body. It receives a
+    standard <code>React.UIEvent&lt;HTMLDivElement&gt;</code> so you can read <code>scrollTop</code>,
+    <code>scrollLeft</code>, or any other scroll geometry from <code>event.target</code>.
+  </p>
+
+  <Demo
+    title="onScroll"
+    description="Scroll the table body — the current scrollTop value updates in real time."
+    code={`const [scrollTop, setScrollTop] = useState(0);
+
+<DataTable
+  columns={columns}
+  data={data}
+  fixedHeader
+  fixedHeaderScrollHeight="300px"
+  onScroll={e => setScrollTop(Math.round((e.target as HTMLDivElement).scrollTop))}
+/>`}
+  >
+    <OnScrollDemo client:load />
+  </Demo>
+
   <h2>Prop reference</h2>
 
   <table>
@@ -109,6 +133,12 @@ const columns: TableColumn<Employee>[] = [
           Sets the <code>max-height</code> of the scrollable body region.
           Only applies when <code>fixedHeader</code> is <code>true</code>.
         </td>
+      </tr>
+      <tr>
+        <td><code>onScroll</code></td>
+        <td><code>(event: React.UIEvent&lt;HTMLDivElement&gt;) =&gt; void</code></td>
+        <td>-</td>
+        <td>Called when the user scrolls the table body. Works with both <code>fixedHeader</code> enabled and disabled.</td>
       </tr>
     </tbody>
   </table>

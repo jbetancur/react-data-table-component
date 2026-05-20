@@ -47,6 +47,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `responsive` | `boolean` | `true` | Wrap the table in a horizontally scrollable container. |
 | `fixedHeader` | `boolean` | `false` | Stick the column header at the top when scrolling. |
 | `fixedHeaderScrollHeight` | `string` | `"100vh"` | Max height of the scrollable body when `fixedHeader` is on. |
+| `onScroll` | `(event) => void` | - | Called when the user scrolls the table body. Works with both `fixedHeader` enabled and disabled. |
 | `direction` | `Direction` | `"ltr"` | Text direction (`ltr`, `rtl`, `auto`). |
 | `className` | `string` | - | Extra CSS class on the root element. |
 | `style` | `CSSProperties` | - | Inline styles on the root element. |
@@ -150,7 +151,6 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `onRowMiddleClicked` | `(row, event) => void` | Called when a row is middle-clicked (scroll-click). Use with `onRowClicked` to implement open-in-new-tab behaviour. |
 | `onRowMouseEnter` | `(row, event) => void` | Called when the pointer enters a row. |
 | `onRowMouseLeave` | `(row, event) => void` | Called when the pointer leaves a row. |
-| `onScroll` | `(event) => void` | Called when the user scrolls the table body. Works with both `fixedHeader` enabled and disabled. |
 
 ### Column features
 
