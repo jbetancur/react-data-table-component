@@ -39,6 +39,22 @@ import CodeBlock from '../../components/CodeBlock.astro';
       and "Last Page" are now configurable via <code>paginationComponentOptions</code>, enabling
       proper i18n for screen readers.
     </li>
+    <li>
+      <code>ref.clearSort()</code> — new <code>DataTableHandle</code> method to programmatically
+      reset sort back to its default state (<code>defaultSortFieldId</code> / <code>defaultSortAsc</code>),
+      or unsorted if no defaults are set.
+      → <a href="/docs/sorting#resetting-sort-programmatically">Sorting docs</a>
+    </li>
+    <li>
+      <strong>Sortable column indicator</strong> — sortable columns now show a faint sort icon at
+      reduced opacity so users can discover which columns are sortable before clicking. The inactive
+      opacity is themable via the <code>--rdt-sort-icon-inactive-opacity</code> CSS custom property
+      (default <code>0.3</code>).
+    </li>
+    <li>
+      <code>onScroll</code> — new prop that fires whenever the table's scroll wrapper scrolls.
+      Receives the native <code>React.UIEvent&lt;HTMLDivElement&gt;</code>.
+    </li>
   </ul>
 
   <h3>Bug fixes</h3>

@@ -6,6 +6,7 @@ import SortingDemo from '../../components/demos/SortingDemo.tsx';
 import PrioritySortDemo from '../../components/demos/PrioritySortDemo.tsx';
 import ServerSideSortingDemo from '../../components/demos/ServerSideSortingDemo.tsx';
 import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
+import SortResetDemo from '../../components/demos/SortResetDemo.tsx';
 ---
 
 <DocsLayout title="Sorting | react-data-table-component">
@@ -323,12 +324,46 @@ export default function App() {
     <ServerSideSortPaginationDemo client:load />
   </Demo>
 
+  <h2>Resetting sort programmatically</h2>
+  <p>
+    Attach a ref to <code>DataTable</code> and call <code>ref.current.clearSort()</code> to reset
+    the sort back to its default state (<code>defaultSortFieldId</code> / <code>defaultSortAsc</code>,
+    or unsorted if no defaults are set). Useful when the user switches a view mode that makes the
+    current sort invalid.
+  </p>
+
+  <Demo
+    title="Reset sort via ref"
+    description="Sort any column, then click Reset sort to return to the default (Name ascending)."
+    code={`import { useRef } from 'react';
+import DataTable, { type DataTableHandle } from 'react-data-table-component';
+
+function App() {
+  const ref = useRef<DataTableHandle>(null);
+
+  return (
+    <>
+      <button onClick={() => ref.current?.clearSort()}>Reset sort</button>
+      <DataTable
+        ref={ref}
+        columns={columns}
+        data={data}
+        defaultSortFieldId="name"
+        defaultSortAsc={true}
+      />
+    </>
+  );
+}`}
+  >
+    <SortResetDemo client:load />
+  </Demo>
+
   <h2>Prop reference</h2>
 
   <table>
     <thead>
       <tr>
-        <th>Prop</th>
+        <th>Prop / method</th>
         <th>Type</th>
         <th>Default</th>
         <th>Description</th>
@@ -388,6 +423,12 @@ export default function App() {
         <td><code>string</code></td>
         <td>-</td>
         <td>Backend field name passed to <code>onSort</code> when it differs from <code>column.id</code>.</td>
+      </tr>
+      <tr>
+        <td><code>ref.clearSort()</code></td>
+        <td><code>DataTableHandle</code></td>
+        <td>-</td>
+        <td>Imperatively reset sort to the default (<code>defaultSortFieldId</code> / <code>defaultSortAsc</code>), or unsorted if no defaults are set. See <a href="/docs/api#datatablehandle-ref">DataTableHandle</a>.</td>
       </tr>
     </tbody>
   </table>

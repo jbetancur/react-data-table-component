@@ -284,6 +284,35 @@ describe('tableReducer:CLEAR_SELECTED_ROWS', () => {
 	});
 });
 
+describe('tableReducer:CLEAR_SORT', () => {
+	const defaultColumn: TableColumn<Row> = { id: 99, name: 'default', selector: r => r.name };
+
+	test('resets selectedColumn and sortDirection to the supplied defaults', () => {
+		const sortedState = baseState({ selectedColumn: column, sortDirection: SortOrder.DESC });
+		const next = tableReducer(sortedState, {
+			type: 'CLEAR_SORT',
+			defaultSortColumn: defaultColumn,
+			defaultSortDirection: SortOrder.ASC,
+		});
+
+		expect(next.selectedColumn).toBe(defaultColumn);
+		expect(next.sortDirection).toBe(SortOrder.ASC);
+	});
+
+	test('preserves all other state fields', () => {
+		const state = baseState({ currentPage: 3, rowsPerPage: 25, selectedRows: [r1] });
+		const next = tableReducer(state, {
+			type: 'CLEAR_SORT',
+			defaultSortColumn: column,
+			defaultSortDirection: SortOrder.ASC,
+		});
+
+		expect(next.currentPage).toBe(3);
+		expect(next.rowsPerPage).toBe(25);
+		expect(next.selectedRows).toEqual([r1]);
+	});
+});
+
 describe('tableReducer:SORT_CHANGE', () => {
 	test('updates sort column / direction and resets to page 1', () => {
 		const next = tableReducer(baseState({ currentPage: 4 }), {

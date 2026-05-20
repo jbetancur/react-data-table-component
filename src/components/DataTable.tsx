@@ -234,6 +234,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		handleChangePage: handleChangePageState,
 		handleChangeRowsPerPage: handleChangeRowsPerPageState,
 		handleClearSelectedRows,
+		handleClearSort,
 	} = useTableState({
 		data,
 		keyField,
@@ -264,7 +265,10 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const visibleRowsRef = React.useRef<T[]>([]);
 	const lastSelectedKeyRef = React.useRef<string | number | null>(null);
 
-	React.useImperativeHandle(ref, () => ({ clearSelectedRows: handleClearSelectedRows }), [handleClearSelectedRows]);
+	React.useImperativeHandle(ref, () => ({ clearSelectedRows: handleClearSelectedRows, clearSort: handleClearSort }), [
+		handleClearSelectedRows,
+		handleClearSort,
+	]);
 
 	// Snapshot row Y-positions synchronously before dispatching sort, so
 	// DataTableBody can FLIP rows from their old positions to the new ones.
