@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import DataTable from '../components/DataTable';
 import { Direction, STOP_PROP_TAG } from '../constants';
 import { Alignment } from '../index';
-import { ConditionalStyles, SortOrder } from '../types';
+import { ConditionalStyles, SortOrder, DataTableHandle } from '../types';
 
 interface Data {
 	id: number;
@@ -771,6 +771,24 @@ describe('DataTable::sorting', () => {
 		// Row order still unchanged with sortServer
 		const rows = container.querySelectorAll('.rdt_row');
 		expect(rows[0].id).toBe('row-1');
+	});
+
+	test('ref.clearSort resets row order back to defaultSortFieldId asc', () => {
+		const columns = [{ id: 'name', name: 'Test', selector: (row: Data) => row.some.name, sortable: true }];
+		const ref = React.createRef<DataTableHandle>();
+		const { container } = render(
+			<DataTable ref={ref} data={dataMock().data} columns={columns} defaultSortFieldId="name" defaultSortAsc />,
+		);
+
+		// column already active asc; one click flips to desc — Zuchinni (row-2) first
+		fireEvent.click(container.querySelector('div[data-sort-id="name"]') as HTMLElement);
+		expect(container.querySelectorAll('.rdt_row')[0].id).toBe('row-2');
+
+		// reset — back to defaultSortAsc=true so Apple (row-1) first
+		act(() => {
+			ref.current?.clearSort();
+		});
+		expect(container.querySelectorAll('.rdt_row')[0].id).toBe('row-1');
 	});
 });
 

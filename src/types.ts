@@ -86,6 +86,7 @@ export type FooterComponent<T> = React.ComponentType<FooterComponentProps<T>>;
 
 export type DataTableHandle = {
 	clearSelectedRows: () => void;
+	clearSort: () => void;
 };
 
 // ── Feature-group prop types ──────────────────────────────────────────────────
@@ -708,6 +709,12 @@ export interface ClearSelectedRowsAction {
 	selectedRowsFlag: boolean;
 }
 
+export interface ClearSortAction<T> {
+	type: 'CLEAR_SORT';
+	defaultSortColumn: TableColumn<T>;
+	defaultSortDirection: SortOrder;
+}
+
 export type Action<T> =
 	| AllRowsAction<T>
 	| SingleRowAction<T>
@@ -716,4 +723,5 @@ export type Action<T> =
 	| SortAction<T>
 	| PaginationPageAction
 	| PaginationRowsPerPageAction
-	| ClearSelectedRowsAction;
+	| ClearSelectedRowsAction
+	| ClearSortAction<T>;

@@ -78,6 +78,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `sortFunction` | `SortFunction<T> \| null` | - | Global custom sort function applied to all sortable columns. |
 | `sortIcon` | `ReactNode` | built-in chevron | Custom sort direction indicator. |
 | `onSort` | `(column, direction, sortedRows) => void` | - | Called whenever the sort column or direction changes. |
+| `ref.clearSort()` | `DataTableHandle` | - | Imperatively reset sort to the default state. See [DataTableHandle](#datatablehandle-ref). |
 
 ### Pagination
 
@@ -125,6 +126,7 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `selectableRowsComponentProps` | `object` | - | Extra props forwarded to the custom checkbox component. |
 | `onSelectedRowsChange` | `(state) => void` | - | Called whenever selection changes. Receives `{ allSelected, selectedCount, selectedRows }`. |
 | `clearSelectedRows` | `boolean` | - | **Deprecated.** Toggle to clear selection. Use `ref.current.clearSelectedRows()` instead. |
+| `ref.clearSelectedRows()` | `DataTableHandle` | - | Imperatively deselect all selected rows. See [DataTableHandle](#datatablehandle-ref). |
 
 ### Expandable rows
 
@@ -312,9 +314,8 @@ function App() {
 
   return (
     <>
-      <button onClick={() => ref.current?.clearSelectedRows()}>
-        Clear selection
-      </button>
+      <button onClick={() => ref.current?.clearSelectedRows()}>Clear selection</button>
+      <button onClick={() => ref.current?.clearSort()}>Reset sort</button>
       <DataTable ref={ref} columns={columns} data={data} selectableRows />
     </>
   );
@@ -324,6 +325,7 @@ function App() {
 | Method | Description |
 |---|---|
 | `clearSelectedRows()` | Deselect all currently selected rows. |
+| `clearSort()` | Reset sort to the default (`defaultSortFieldId` / `defaultSortAsc`), or unsorted if no defaults are set. |
 
 ## TableStyles
 

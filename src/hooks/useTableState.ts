@@ -52,6 +52,7 @@ interface UseTableStateReturn<T> {
 	handleChangePage: (page: number) => void;
 	handleChangeRowsPerPage: (newRowsPerPage: number, tableRowsLength: number) => void;
 	handleClearSelectedRows: () => void;
+	handleClearSort: () => void;
 }
 
 /**
@@ -100,6 +101,10 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 	const handleClearSelectedRows = React.useCallback(() => {
 		dispatch({ type: 'CLEAR_SELECTED_ROWS', selectedRowsFlag: false });
 	}, []);
+
+	const handleClearSort = React.useCallback(() => {
+		dispatch({ type: 'CLEAR_SORT', defaultSortColumn, defaultSortDirection });
+	}, [defaultSortColumn, defaultSortDirection]);
 
 	const handleSort = React.useCallback((action: SortAction<T>) => {
 		dispatch(action);
@@ -241,5 +246,6 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		handleChangePage,
 		handleChangeRowsPerPage,
 		handleClearSelectedRows,
+		handleClearSort,
 	};
 }

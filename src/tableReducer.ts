@@ -139,6 +139,16 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 			};
 		}
 
+		case 'CLEAR_SORT': {
+			const { defaultSortColumn, defaultSortDirection } = action;
+
+			return {
+				...state,
+				selectedColumn: defaultSortColumn,
+				sortDirection: defaultSortDirection,
+			};
+		}
+
 		case 'SORT_CHANGE': {
 			const { sortDirection, selectedColumn, clearSelectedOnSort } = action;
 
