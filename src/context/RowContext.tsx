@@ -4,6 +4,7 @@ import type {
 	ConditionalStyles,
 	ExpandableIcon,
 	ExpandableRowsComponent,
+	Localization,
 	RowState,
 	SingleRowAction,
 	RangeRowAction,
@@ -27,6 +28,7 @@ export interface RowContextValue<T> {
 	selectableRowDisabled: RowState<T>;
 	expandableRows: boolean;
 	expandableIcon: ExpandableIcon;
+	localization: NonNullable<Localization['expandable']>;
 	expandableRowsComponent: ExpandableRowsComponent<T> | undefined;
 	expandableRowsComponentProps: ComponentProps | undefined;
 	expandableRowsHideExpander: boolean;

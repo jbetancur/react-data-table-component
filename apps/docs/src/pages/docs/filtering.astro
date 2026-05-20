@@ -205,6 +205,46 @@ isFilterActive({ condition1: { operator: 'contains' } });           // false —
 isFilterActive({ condition1: { operator: 'contains', value: 'a' } }); // true
 isFilterActive({ condition1: { operator: 'blank' } });               // true — no value needed`} />
 
+  <h2>Localization</h2>
+  <p>
+    Use the <code>localization</code> prop to swap every string in the table UI.
+    Import a pre-built locale or build your own — all keys are optional and fall
+    back to English defaults.
+  </p>
+
+  <CodeBlock code={`// Drop-in locale
+import DataTable from 'react-data-table-component';
+import { fr } from 'react-data-table-component/locales';
+
+<DataTable columns={columns} data={data} localization={fr} />`} />
+
+  <CodeBlock code={`// Custom / partial override — spread a locale and replace only what you need
+import { fr } from 'react-data-table-component/locales';
+import type { Localization } from 'react-data-table-component';
+
+const myLocale: Localization = {
+  ...fr,
+  filter: {
+    ...fr.filter,
+    applyLabel: 'Valider',   // override one key
+  },
+};
+
+<DataTable columns={columns} data={data} localization={myLocale} />`} />
+
+  <CodeBlock code={`// Built from scratch — every key is optional
+import type { Localization } from 'react-data-table-component';
+
+const custom: Localization = {
+  filter: {
+    clearLabel: 'Reset',
+    applyLabel: 'Go',
+    operators: { contains: 'has', equals: 'is' },
+  },
+};
+
+<DataTable columns={columns} data={data} localization={custom} />`} />
+
   <h2>Headless usage</h2>
   <p>
     Use <code>useColumnFilter</code> directly when building a custom table with the headless hooks.

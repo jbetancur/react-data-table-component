@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PaginationComponent, PaginationIcons, PaginationOptions } from '../types';
+import type { PaginationComponent, PaginationIcons, PaginationOptions, Localization } from '../types';
 import { Direction } from '../constants';
 
 interface TablePaginationFooterProps {
@@ -13,6 +13,7 @@ interface TablePaginationFooterProps {
 	paginationRowsPerPageOptions: number[];
 	paginationIcons?: PaginationIcons;
 	paginationComponentOptions: PaginationOptions;
+	localization?: Localization['pagination'];
 	position?: 'top' | 'bottom' | 'both';
 }
 
@@ -27,6 +28,7 @@ function TablePaginationFooter({
 	paginationRowsPerPageOptions,
 	paginationIcons,
 	paginationComponentOptions,
+	localization,
 	position,
 }: TablePaginationFooterProps): JSX.Element {
 	const border = '1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12))';
@@ -44,6 +46,7 @@ function TablePaginationFooter({
 				paginationRowsPerPageOptions={paginationRowsPerPageOptions}
 				paginationIcons={paginationIcons}
 				paginationComponentOptions={paginationComponentOptions}
+				localization={localization}
 			/>
 		</div>
 	);

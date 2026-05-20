@@ -3,12 +3,15 @@ import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
-import type { ExpandableIcon } from '../types';
+import type { ExpandableIcon, Localization } from '../types';
+
+type ExpandableRowsOptions = NonNullable<Localization['expandable']>;
 
 type CellExpanderProps<T> = {
 	disabled: boolean;
 	expanded: boolean;
 	expandableIcon: ExpandableIcon;
+	expandableRowsOptions?: ExpandableRowsOptions;
 	id: string | number;
 	row: T;
 	onToggled: (row: T) => void;
@@ -18,6 +21,7 @@ function CellExpander<T>({
 	row,
 	expanded = false,
 	expandableIcon,
+	expandableRowsOptions,
 	id,
 	onToggled,
 	disabled = false,
@@ -36,6 +40,7 @@ function CellExpander<T>({
 				row={row}
 				expanded={expanded}
 				expandableIcon={expandableIcon}
+				expandableRowsOptions={expandableRowsOptions}
 				disabled={disabled}
 				onToggled={onToggled}
 			/>

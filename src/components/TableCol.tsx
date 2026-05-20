@@ -7,7 +7,9 @@ import ColumnFilter from './ColumnFilter';
 import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
 import { SortOrder } from '../types';
-import type { TableColumn, SortAction, FilterState } from '../types';
+import type { TableColumn, SortAction, FilterState, Localization } from '../types';
+
+type FilterLocalization = NonNullable<Localization['filter']>;
 
 type TableColProps<T> = {
 	column: TableColumn<T>;
@@ -22,6 +24,7 @@ type TableColProps<T> = {
 	sortServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	filterValue: FilterState;
+	filterLocalization: FilterLocalization;
 	onSort: (action: SortAction<T>) => void;
 	onFilterChange: (columnId: string | number, filter: FilterState) => void;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -50,6 +53,7 @@ function TableCol<T>({
 	persistSelectedOnSort,
 	selectableRowsVisibleOnly,
 	filterValue,
+	filterLocalization,
 	onSort,
 	onFilterChange,
 	onDragStart,
@@ -242,6 +246,7 @@ function TableCol<T>({
 					columnId={column.id}
 					filterValue={filterValue}
 					filterType={column.filterType}
+					options={filterLocalization}
 					onFilterChange={onFilterChange}
 				/>
 			)}
@@ -264,6 +269,7 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 		if (prevIsDragging !== nextIsDragging) return false;
 	}
 	if (prevProps.filterValue !== nextProps.filterValue) return false;
+	if (prevProps.filterLocalization !== nextProps.filterLocalization) return false;
 	if (prevProps.resizedWidth !== nextProps.resizedWidth) return false;
 	if (prevProps.disabled !== nextProps.disabled) return false;
 	if (prevProps.sortIcon !== nextProps.sortIcon) return false;

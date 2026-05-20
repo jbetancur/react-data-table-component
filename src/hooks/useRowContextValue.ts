@@ -51,6 +51,7 @@ export default function useRowContextValue<T>(options: RowContextValue<T>): RowC
 			options.columnWidths,
 			options.pinnedOffsets,
 			options.animateRows,
+			options.localization,
 		],
 	);
 }

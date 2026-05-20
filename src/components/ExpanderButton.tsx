@@ -1,12 +1,15 @@
 import * as React from 'react';
 import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
-import type { ExpandableIcon } from '../types';
+import type { ExpandableIcon, Localization } from '../types';
+
+type ExpandableRowsOptions = NonNullable<Localization['expandable']>;
 
 type ExpanderButtonProps<T> = {
 	disabled?: boolean;
 	expanded?: boolean;
 	expandableIcon: ExpandableIcon;
+	expandableRowsOptions?: ExpandableRowsOptions;
 	id: string | number;
 	row: T;
 	onToggled?: (row: T) => void;
@@ -16,6 +19,7 @@ function ExpanderButton<T>({
 	disabled = false,
 	expanded = false,
 	expandableIcon,
+	expandableRowsOptions,
 	id,
 	row,
 	onToggled,
@@ -32,7 +36,11 @@ function ExpanderButton<T>({
 			onClick={handleToggle}
 			data-testid={`expander-button-${id}`}
 			disabled={disabled}
-			aria-label={expanded ? 'Collapse Row' : 'Expand Row'}
+			aria-label={
+				expanded
+					? (expandableRowsOptions?.collapseRowAriaLabel ?? 'Collapse Row')
+					: (expandableRowsOptions?.expandRowAriaLabel ?? 'Expand Row')
+			}
 			type="button"
 		>
 			{icon}

@@ -204,6 +204,86 @@ describe('when changing rows per page', () => {
 	});
 });
 
+describe('Pagination:localization', () => {
+	const localization = {
+		navigationAriaLabel: 'test-nav',
+		firstPageAriaLabel: 'test-first',
+		previousPageAriaLabel: 'test-prev',
+		nextPageAriaLabel: 'test-next',
+		lastPageAriaLabel: 'test-last',
+	};
+
+	test('navigation nav uses custom navigationAriaLabel', () => {
+		const { container } = renderWithTheme(
+			<Pagination
+				currentPage={1}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={vi.fn()}
+				onChangeRowsPerPage={vi.fn()}
+				localization={localization}
+			/>,
+		);
+		expect(container.querySelector('nav')?.getAttribute('aria-label')).toBe('test-nav');
+	});
+
+	test('first-page button uses custom firstPageAriaLabel', () => {
+		const { container } = renderWithTheme(
+			<Pagination
+				currentPage={2}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={vi.fn()}
+				onChangeRowsPerPage={vi.fn()}
+				localization={localization}
+			/>,
+		);
+		expect(container.querySelector('#pagination-first-page')?.getAttribute('aria-label')).toBe('test-first');
+	});
+
+	test('previous-page button uses custom previousPageAriaLabel', () => {
+		const { container } = renderWithTheme(
+			<Pagination
+				currentPage={2}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={vi.fn()}
+				onChangeRowsPerPage={vi.fn()}
+				localization={localization}
+			/>,
+		);
+		expect(container.querySelector('#pagination-previous-page')?.getAttribute('aria-label')).toBe('test-prev');
+	});
+
+	test('next-page button uses custom nextPageAriaLabel', () => {
+		const { container } = renderWithTheme(
+			<Pagination
+				currentPage={1}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={vi.fn()}
+				onChangeRowsPerPage={vi.fn()}
+				localization={localization}
+			/>,
+		);
+		expect(container.querySelector('#pagination-next-page')?.getAttribute('aria-label')).toBe('test-next');
+	});
+
+	test('last-page button uses custom lastPageAriaLabel', () => {
+		const { container } = renderWithTheme(
+			<Pagination
+				currentPage={1}
+				rowsPerPage={10}
+				rowCount={40}
+				onChangePage={vi.fn()}
+				onChangeRowsPerPage={vi.fn()}
+				localization={localization}
+			/>,
+		);
+		expect(container.querySelector('#pagination-last-page')?.getAttribute('aria-label')).toBe('test-last');
+	});
+});
+
 describe('when the screensize is small', () => {
 	test('paginationComponentOption noRowsPerPage should be respected', () => {
 		globalThis.innerWidth = 500;

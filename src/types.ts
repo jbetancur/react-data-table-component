@@ -1,3 +1,4 @@
+import type React from 'react';
 import { Alignment, Direction, Media } from './constants';
 
 export type CSSObject = React.CSSProperties;
@@ -65,6 +66,7 @@ export type PaginationComponentProps = {
 	paginationRowsPerPageOptions?: number[];
 	paginationIcons?: PaginationIcons;
 	paginationComponentOptions?: PaginationOptions;
+	localization?: Localization['pagination'];
 };
 export type PaginationComponent = React.ComponentType<PaginationComponentProps>;
 
@@ -242,6 +244,8 @@ type BaseTableProps<T> = {
 	filterValues?: Record<string | number, FilterState>;
 	/** Called when the user clicks Apply in a column filter popup. */
 	onFilterChange?: (columnId: string | number, filter: FilterState) => void;
+	/** Override every user-visible string in DataTable. Pass a pre-built locale or build your own. */
+	localization?: Localization;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	/** Called after a group drag reorder with the new group order and matching column order. */
 	onColumnGroupOrderChange?: (nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void;
@@ -476,6 +480,80 @@ export interface PaginationOptions {
 	rangeSeparatorText?: string;
 	selectAllRowsItem?: boolean;
 	selectAllRowsItemText?: string;
+}
+
+/** All user-visible strings rendered by DataTable, grouped by feature area. */
+export interface Localization {
+	pagination?: {
+		/** aria-label for the pagination nav element. Default: "Table pagination" */
+		navigationAriaLabel?: string;
+		/** aria-label for the First Page button. Default: "First Page" */
+		firstPageAriaLabel?: string;
+		/** aria-label for the Previous Page button. Default: "Previous Page" */
+		previousPageAriaLabel?: string;
+		/** aria-label for the Next Page button. Default: "Next Page" */
+		nextPageAriaLabel?: string;
+		/** aria-label for the Last Page button. Default: "Last Page" */
+		lastPageAriaLabel?: string;
+	};
+	filter?: {
+		/** aria-label for the filter icon button when no filter is active. Default: "Filter column" */
+		filterColumnAriaLabel?: string;
+		/** aria-label for the filter icon button when a filter is active. Default: "Filter active" */
+		filterActiveAriaLabel?: string;
+		/** aria-label for the filter panel dialog. Default: "Column filter" */
+		filterPanelAriaLabel?: string;
+		/** aria-label for the operator select element. Default: "Filter operator" */
+		operatorAriaLabel?: string;
+		/** Placeholder for the first value input. Default: "Value" */
+		valuePlaceholder?: string;
+		/** aria-label for the first value input. Default: "Filter value" */
+		valueAriaLabel?: string;
+		/** Placeholder for the second value input. Default: "Value" */
+		value2Placeholder?: string;
+		/** aria-label for the second value input (between operator). Default: "Filter second value" */
+		value2AriaLabel?: string;
+		/** Separator text between the two inputs for the "between" operator. Default: "and" */
+		betweenSeparatorText?: string;
+		/** aria-label for the remove-condition button. Default: "Remove condition" */
+		removeConditionAriaLabel?: string;
+		/** aria-label for the add-condition button. Default: "Add a second filter condition" */
+		addConditionAriaLabel?: string;
+		/** Label for the add-condition button. Default: "+ Add condition" */
+		addConditionLabel?: string;
+		/** Label for the Clear button. Default: "Clear" */
+		clearLabel?: string;
+		/** Label for the Apply button. Default: "Apply" */
+		applyLabel?: string;
+		/** Label for the AND logic button. Default: "AND" */
+		andLabel?: string;
+		/** Label for the OR logic button. Default: "OR" */
+		orLabel?: string;
+		/** Labels for filter operators. */
+		operators?: {
+			contains?: string;
+			notContains?: string;
+			equals?: string;
+			notEquals?: string;
+			startsWith?: string;
+			endsWith?: string;
+			blank?: string;
+			notBlank?: string;
+			gt?: string;
+			gte?: string;
+			lt?: string;
+			lte?: string;
+			between?: string;
+			before?: string;
+			after?: string;
+		};
+	};
+	expandable?: {
+		/** aria-label for the expand button. Default: "Expand Row" */
+		expandRowAriaLabel?: string;
+		/** aria-label for the collapse button. Default: "Collapse Row" */
+		collapseRowAriaLabel?: string;
+	};
 }
 
 export interface PaginationServerOptions {

@@ -34,6 +34,7 @@ export type {
 	ThemeIcons,
 	PaginationOptions,
 	PaginationServerOptions,
+	Localization,
 	SortFunction,
 	Selector,
 	FilterType,

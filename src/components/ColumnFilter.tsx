@@ -1,11 +1,13 @@
 import * as React from 'react';
 import '../DataTable.css';
-import type { FilterState, FilterCondition, FilterOperator, FilterType } from '../types';
+import type { FilterState, FilterCondition, FilterOperator, FilterType, Localization } from '../types';
+
+type ColumnFilterOptions = NonNullable<Localization['filter']>;
 import { emptyFilterState, isFilterActive } from '../hooks/useColumnFilter';
 
 type OperatorOption = { value: FilterOperator; label: string; noInput?: boolean; twoInputs?: boolean };
 
-const TEXT_OPERATORS: OperatorOption[] = [
+const DEFAULT_TEXT_OPERATORS: OperatorOption[] = [
 	{ value: 'contains', label: 'Contains' },
 	{ value: 'notContains', label: 'Does not contain' },
 	{ value: 'equals', label: 'Equals' },
@@ -16,7 +18,7 @@ const TEXT_OPERATORS: OperatorOption[] = [
 	{ value: 'notBlank', label: 'Not blank', noInput: true },
 ];
 
-const NUMBER_OPERATORS: OperatorOption[] = [
+const DEFAULT_NUMBER_OPERATORS: OperatorOption[] = [
 	{ value: 'equals', label: 'Equals' },
 	{ value: 'notEquals', label: 'Does not equal' },
 	{ value: 'gt', label: 'Greater than' },
@@ -28,7 +30,7 @@ const NUMBER_OPERATORS: OperatorOption[] = [
 	{ value: 'notBlank', label: 'Not blank', noInput: true },
 ];
 
-const DATE_OPERATORS: OperatorOption[] = [
+const DEFAULT_DATE_OPERATORS: OperatorOption[] = [
 	{ value: 'equals', label: 'Equals' },
 	{ value: 'before', label: 'Before' },
 	{ value: 'after', label: 'After' },
@@ -37,10 +39,15 @@ const DATE_OPERATORS: OperatorOption[] = [
 	{ value: 'notBlank', label: 'Not blank', noInput: true },
 ];
 
-function operatorsFor(filterType: FilterType): OperatorOption[] {
-	if (filterType === 'number') return NUMBER_OPERATORS;
-	if (filterType === 'date') return DATE_OPERATORS;
-	return TEXT_OPERATORS;
+function operatorsFor(filterType: FilterType, overrides?: ColumnFilterOptions['operators']): OperatorOption[] {
+	const base =
+		filterType === 'number'
+			? DEFAULT_NUMBER_OPERATORS
+			: filterType === 'date'
+				? DEFAULT_DATE_OPERATORS
+				: DEFAULT_TEXT_OPERATORS;
+	if (!overrides) return base;
+	return base.map(op => (overrides[op.value] ? { ...op, label: overrides[op.value]! } : op));
 }
 
 function defaultOperator(filterType: FilterType): FilterOperator {
@@ -54,12 +61,13 @@ function emptyCondition(filterType: FilterType): FilterCondition {
 type ConditionRowProps = {
 	condition: FilterCondition;
 	filterType: FilterType;
+	options: ColumnFilterOptions;
 	onChange: (next: FilterCondition) => void;
 	onRemove?: () => void;
 };
 
-function ConditionRow({ condition, filterType, onChange, onRemove }: ConditionRowProps): JSX.Element {
-	const operators = operatorsFor(filterType);
+function ConditionRow({ condition, filterType, options, onChange, onRemove }: ConditionRowProps): JSX.Element {
+	const operators = operatorsFor(filterType, options.operators);
 	const selected = operators.find(o => o.value === condition.operator) ?? operators[0];
 	const inputType = filterType === 'number' ? 'number' : filterType === 'date' ? 'date' : 'text';
 
@@ -69,7 +77,7 @@ function ConditionRow({ condition, filterType, onChange, onRemove }: ConditionRo
 				className="rdt_filterSelect"
 				value={condition.operator}
 				onChange={e => onChange({ operator: e.target.value as FilterOperator })}
-				aria-label="Filter operator"
+				aria-label={options.operatorAriaLabel ?? 'Filter operator'}
 			>
 				{operators.map(op => (
 					<option key={op.value} value={op.value}>
@@ -83,30 +91,35 @@ function ConditionRow({ condition, filterType, onChange, onRemove }: ConditionRo
 					className="rdt_filterInput"
 					type={inputType}
 					value={condition.value ?? ''}
-					placeholder="Value"
+					placeholder={options.valuePlaceholder ?? 'Value'}
 					onChange={e => onChange({ ...condition, value: e.target.value })}
 					onKeyDown={e => e.stopPropagation()}
-					aria-label="Filter value"
+					aria-label={options.valueAriaLabel ?? 'Filter value'}
 				/>
 			)}
 
 			{selected.twoInputs && (
 				<>
-					<span className="rdt_filterBetweenSep">and</span>
+					<span className="rdt_filterBetweenSep">{options.betweenSeparatorText ?? 'and'}</span>
 					<input
 						className="rdt_filterInput"
 						type={inputType}
 						value={condition.value2 ?? ''}
-						placeholder="Value"
+						placeholder={options.value2Placeholder ?? 'Value'}
 						onChange={e => onChange({ ...condition, value2: e.target.value })}
 						onKeyDown={e => e.stopPropagation()}
-						aria-label="Filter second value"
+						aria-label={options.value2AriaLabel ?? 'Filter second value'}
 					/>
 				</>
 			)}
 
 			{onRemove && (
-				<button type="button" className="rdt_filterRemoveBtn" onClick={onRemove} aria-label="Remove condition">
+				<button
+					type="button"
+					className="rdt_filterRemoveBtn"
+					onClick={onRemove}
+					aria-label={options.removeConditionAriaLabel ?? 'Remove condition'}
+				>
 					✕
 				</button>
 			)}
@@ -118,6 +131,7 @@ type ColumnFilterProps = {
 	columnId: string | number;
 	filterValue: FilterState;
 	filterType?: FilterType;
+	options?: ColumnFilterOptions;
 	onFilterChange: (columnId: string | number, filter: FilterState) => void;
 };
 
@@ -125,6 +139,7 @@ export default function ColumnFilter({
 	columnId,
 	filterValue,
 	filterType = 'text',
+	options = {},
 	onFilterChange,
 }: ColumnFilterProps): JSX.Element {
 	const [open, setOpen] = React.useState(false);
@@ -216,7 +231,11 @@ export default function ColumnFilter({
 				ref={buttonRef}
 				type="button"
 				className={['rdt_filterIcon', isActive && 'rdt_filterIconActive'].filter(Boolean).join(' ')}
-				aria-label={isActive ? 'Filter active' : 'Filter column'}
+				aria-label={
+					isActive
+						? (options.filterActiveAriaLabel ?? 'Filter active')
+						: (options.filterColumnAriaLabel ?? 'Filter column')
+				}
 				aria-pressed={open}
 				onClick={e => {
 					e.stopPropagation();
@@ -243,10 +262,15 @@ export default function ColumnFilter({
 					ref={panelRef}
 					className="rdt_filterPanel"
 					role="dialog"
-					aria-label="Column filter"
+					aria-label={options.filterPanelAriaLabel ?? 'Column filter'}
 					style={{ position: 'fixed', top: panelPos.top, left: panelPos.left }}
 				>
-					<ConditionRow condition={pending.condition1} filterType={filterType} onChange={handleCondition1Change} />
+					<ConditionRow
+						condition={pending.condition1}
+						filterType={filterType}
+						options={options}
+						onChange={handleCondition1Change}
+					/>
 
 					{pending.condition2 ? (
 						<>
@@ -259,7 +283,7 @@ export default function ColumnFilter({
 									aria-pressed={pending.logic !== 'OR'}
 									onClick={() => handleLogicChange('AND')}
 								>
-									AND
+									{options.andLabel ?? 'AND'}
 								</button>
 								<button
 									type="button"
@@ -269,12 +293,13 @@ export default function ColumnFilter({
 									aria-pressed={pending.logic === 'OR'}
 									onClick={() => handleLogicChange('OR')}
 								>
-									OR
+									{options.orLabel ?? 'OR'}
 								</button>
 							</div>
 							<ConditionRow
 								condition={pending.condition2}
 								filterType={filterType}
+								options={options}
 								onChange={handleCondition2Change}
 								onRemove={handleRemoveCondition2}
 							/>
@@ -283,19 +308,19 @@ export default function ColumnFilter({
 						<button
 							type="button"
 							className="rdt_filterAddCondition"
-							aria-label="Add a second filter condition"
+							aria-label={options.addConditionAriaLabel ?? 'Add a second filter condition'}
 							onClick={handleAddCondition}
 						>
-							+ Add condition
+							{options.addConditionLabel ?? '+ Add condition'}
 						</button>
 					)}
 
 					<div className="rdt_filterActions">
 						<button type="button" className="rdt_filterBtn" onClick={handleClear}>
-							Clear
+							{options.clearLabel ?? 'Clear'}
 						</button>
 						<button type="button" className="rdt_filterBtn rdt_filterBtnPrimary" onClick={handleApply}>
-							Apply
+							{options.applyLabel ?? 'Apply'}
 						</button>
 					</div>
 				</div>

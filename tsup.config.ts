@@ -16,6 +16,16 @@ export default defineConfig([
 		minify: true,
 		onSuccess: 'node scripts/use-client-banner.mjs',
 	},
+	// Locales bundle — pure data, no React, no CSS.
+	{
+		entry: { 'locales/index': 'src/locales/index.ts' },
+		format: ['esm', 'cjs'],
+		dts: true,
+		sourcemap: true,
+		external: ['react', 'react-dom'],
+		treeshake: true,
+		minify: true,
+	},
 	// CSS-only build — emits dist/DataTable.css for SSR consumers (e.g. Next.js App Router)
 	// that need to import the stylesheet explicitly in a layout to avoid FOUC.
 	{
