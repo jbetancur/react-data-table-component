@@ -13,7 +13,33 @@ on:
           - major
 
 jobs:
+  lint-typecheck-test-build:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
   release:
+    needs: lint-typecheck-test-build
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -31,9 +57,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
@@ -50,12 +73,12 @@ jobs:
         run: npm run build
 
       - name: Publish to npm
-        run: npm publish --provenance --access public --ignore-scripts --verbose
+        run: npm publish --provenance --access public --ignore-scripts
 
       - name: Commit and tag
         run: |
           git add package.json
-          git commit -m "chore: release v${{ steps.version.outputs.value }}"
+          git commit -m "chore: release v${{ steps.version.outputs.value }} [skip ci]"
           git tag "v${{ steps.version.outputs.value }}"
           git push origin HEAD:master --follow-tags
 
