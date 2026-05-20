@@ -40,6 +40,7 @@
 	min-height: 0;
 	overscroll-behavior-x: contain;
 	touch-action: pan-x pan-y;
+	-webkit-overflow-scrolling: touch;
 }
 
 .rdt_responsiveWrapperFixed {
@@ -398,6 +399,8 @@
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
 	padding: 10px;
 	min-width: 260px;
+	max-width: calc(100vw - 24px);
+	box-sizing: border-box;
 }
 
 /* A single condition row: [select] [input] ([and] [input]) [remove] */
@@ -975,6 +978,19 @@
 	min-height: 56px;
 	padding-left: 16px;
 	padding-right: 8px;
+	gap: 4px;
+}
+
+@media (max-width: 599px) {
+	.rdt_header {
+		font-size: 18px;
+		padding-left: 12px;
+		padding-right: 6px;
+	}
+
+	.rdt_headerActions {
+		flex: 0 0 auto;
+	}
 }
 
 .rdt_headerTitle {
@@ -1193,6 +1209,17 @@
 		width: 100%;
 		justify-content: space-around;
 	}
+
+	.rdt_paginationRange,
+	.rdt_paginationRowLabel {
+		display: none;
+	}
+
+	.rdt_pagination {
+		justify-content: center;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
 }
 
 .rdt_paginationSpan {
@@ -1275,6 +1302,23 @@
 .rdt_selectControl option {
 	color: initial;
 	background-color: var(--rdt-color-bg, #fff);
+}
+
+/* ─── Mobile touch targets ───────────────────────────────────────────────────── */
+@media (max-width: 599px) {
+	.rdt_row {
+		min-height: max(var(--rdt-row-height, 48px), 48px);
+	}
+
+	.rdt_cellBase {
+		padding-left: var(--rdt-cell-padding-x-mobile, 12px);
+		padding-right: var(--rdt-cell-padding-x-mobile, 12px);
+	}
+
+	.rdt_paginationButton {
+		height: 44px;
+		width: 44px;
+	}
 }
 
 /* ─── Responsive column hiding ───────────────────────────────────────────────── */

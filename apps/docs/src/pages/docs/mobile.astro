@@ -1,0 +1,107 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import MobileDemo from '../../components/demos/MobileDemo.tsx';
+---
+
+<DocsLayout title="Mobile | react-data-table-component">
+  <h1>Mobile</h1>
+
+  <p>
+    A data table is fundamentally a desktop pattern — comparing values across rows requires seeing
+    multiple columns at once. On small screens the table stays a table, but several defaults are
+    tuned to make that experience as comfortable as possible.
+  </p>
+
+  <Demo
+    title="Mobile layout preview"
+    description="Toggle between 375px, 430px, and full width to see how the table adapts. Switch modes to try selection and pagination at each size."
+    code={`import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Department', selector: r => r.department,              hide: 'sm' },
+  { name: 'Salary',     selector: r => r.salary,     right: true, hide: 'sm',
+    format: r => \`$\${r.salary.toLocaleString()}\` },
+  { name: 'Status',     selector: r => r.status,     center: true,
+    cell: r => <StatusBadge status={r.status} /> },
+];
+
+<DataTable columns={columns} data={data} striped highlightOnHover />`}
+  >
+    <MobileDemo client:only="react" />
+  </Demo>
+
+  <h2>How it works</h2>
+
+  <p>
+    The table wraps in a horizontally-scrollable container with momentum scrolling and
+    scroll-chaining prevention. On touch devices users can swipe left/right to reveal hidden columns
+    without disrupting the page's vertical scroll.
+  </p>
+
+  <h2>Hiding columns on small screens</h2>
+
+  <p>
+    Use the <code>hide</code> property on a column to remove it below a breakpoint.
+    The column header and all its cells disappear — the remaining columns fill the available width.
+  </p>
+
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { name: 'Name',   selector: r => r.name },           // always visible
+  { name: 'Email',  selector: r => r.email,  hide: 'sm' }, // hidden below 600px
+  { name: 'Salary', selector: r => r.salary, hide: 'md' }, // hidden below 960px
+  { name: 'Joined', selector: r => r.joined, hide: 'lg' }, // hidden below 1280px
+];`} />
+
+  <p>
+    You can also pass a numeric pixel value to hide at a custom breakpoint:
+  </p>
+
+  <CodeBlock code={`{ name: 'Notes', selector: r => r.notes, hide: 480 }`} />
+
+  <h2>Pagination on small screens</h2>
+
+  <p>
+    Below 600px the rows-per-page label and the current-range text (<em>1–5 of 30</em>) are hidden
+    automatically, giving the pagination controls more breathing room. The rows-per-page select and
+    nav buttons remain.
+  </p>
+
+  <h2>Touch targets</h2>
+
+  <p>
+    Row height enforces a minimum of 48px on small screens so tap targets meet accessibility
+    guidelines. Pagination buttons expand to 44×44px. Cell padding tightens slightly
+    (<code>--rdt-cell-padding-x-mobile</code>, default 12px) to reclaim horizontal space.
+  </p>
+
+  <h2>CSS custom properties</h2>
+
+  <p>You can override the mobile padding via CSS variables on the table container:</p>
+
+  <CodeBlock lang="css" code={`:root {
+  --rdt-cell-padding-x-mobile: 8px; /* tighter cells on very small screens */
+}`} />
+
+  <h2>Recommendations for app developers</h2>
+
+  <p>
+    For apps where the primary use case on mobile is looking up a single record rather than
+    comparing rows, consider rendering a completely different component below your breakpoint —
+    a simple list or card feed — and only mounting <code>DataTable</code> on wider viewports:
+  </p>
+
+  <CodeBlock code={`import { useWindowSize } from 'react-data-table-component';
+
+function MyPage() {
+  const { width } = useWindowSize();
+
+  if (width !== undefined && width < 600) {
+    return <MobileList data={data} />;
+  }
+
+  return <DataTable columns={columns} data={data} />;
+}`} />
+</DocsLayout>
