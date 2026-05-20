@@ -1095,7 +1095,7 @@
 .rdt_footer {
 	display: flex;
 	flex-direction: column;
-	background-color: var(--rdt-color-footer-bg, var(--rdt-color-header-bg, var(--rdt-color-bg, #fff)));
+	background-color: var(--rdt-color-footer-bg, var(--rdt-color-bg, #fff));
 }
 
 .rdt_footerRow {
