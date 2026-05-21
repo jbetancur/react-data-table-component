@@ -109,7 +109,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		columnGroups,
 		filterValues: controlledFilterValues,
 		onFilterChange: onFilterChangeProp,
-		localization = {},
+		localization: localizationProp = {},
+		columnFilterOptions,
+		expandableRowsOptions,
 		resizable = false,
 		initialColumnWidths,
 		onColumnResize,
@@ -121,6 +123,12 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		className,
 		ariaLabel,
 	} = props;
+
+	const localization = {
+		...localizationProp,
+		filter: { ...columnFilterOptions, ...localizationProp.filter },
+		expandable: { ...expandableRowsOptions, ...localizationProp.expandable },
+	};
 
 	// Intentionally reading @deprecated props for backward compat; cast prevents TS hint 6385 here
 	const {
