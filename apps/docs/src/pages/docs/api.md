@@ -165,6 +165,14 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `onColumnOrderChange` | `(columns: TableColumn<T>[]) => void` | - | Called after a drag-to-reorder column operation with the new column order. |
 | `onColumnGroupOrderChange` | `(groups: ColumnGroup[], columns: TableColumn<T>[]) => void` | - | Called after a group drag-reorder with the new group order and the matching updated column order. |
 
+### Localization
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `localization` | `Localization` | - | Override every user-visible string and aria-label in the table. Pass a pre-built locale or build your own. See [Localization](/docs/localization). |
+| ~~`columnFilterOptions`~~ | `ColumnFilterOptions` | - | **Deprecated.** Use `localization={{ filter: { ... } }}` instead. Will be removed in v9. |
+| ~~`expandableRowsOptions`~~ | `ExpandableRowsOptions` | - | **Deprecated.** Use `localization={{ expandable: { ... } }}` instead. Will be removed in v9. |
+
 ## ColumnGroup
 
 Defines a spanning group header above one or more columns. Pass an array to the `columnGroups` prop.

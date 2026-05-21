@@ -35,6 +35,10 @@ export type {
 	PaginationOptions,
 	PaginationServerOptions,
 	Localization,
+	/** @deprecated Use `Localization['filter']` instead. Will be removed in v9. */
+	ColumnFilterOptions,
+	/** @deprecated Use `Localization['expandable']` instead. Will be removed in v9. */
+	ExpandableRowsOptions,
 	SortFunction,
 	Selector,
 	FilterType,

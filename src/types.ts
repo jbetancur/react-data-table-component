@@ -165,6 +165,10 @@ type ExpandableProps<T> = {
 	expandOnRowClicked?: boolean;
 	expandOnRowDoubleClicked?: boolean;
 	onRowExpandToggled?: ExpandRowToggled<T>;
+	/**
+	 * @deprecated Use the `localization` prop instead: `localization={{ expandable: { ... } }}`. Will be removed in v9.
+	 */
+	expandableRowsOptions?: ExpandableRowsOptions;
 };
 
 type SortProps<T> = {
@@ -246,6 +250,10 @@ type BaseTableProps<T> = {
 	onFilterChange?: (columnId: string | number, filter: FilterState) => void;
 	/** Override every user-visible string in DataTable. Pass a pre-built locale or build your own. */
 	localization?: Localization;
+	/**
+	 * @deprecated Use the `localization` prop instead: `localization={{ filter: { ... } }}`. Will be removed in v9.
+	 */
+	columnFilterOptions?: ColumnFilterOptions;
 	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
 	/** Called after a group drag reorder with the new group order and matching column order. */
 	onColumnGroupOrderChange?: (nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void;
@@ -481,6 +489,16 @@ export interface PaginationOptions {
 	selectAllRowsItem?: boolean;
 	selectAllRowsItemText?: string;
 }
+
+/**
+ * @deprecated Use `Localization['filter']` instead. Will be removed in v9.
+ */
+export type ColumnFilterOptions = NonNullable<Localization['filter']>;
+
+/**
+ * @deprecated Use `Localization['expandable']` instead. Will be removed in v9.
+ */
+export type ExpandableRowsOptions = NonNullable<Localization['expandable']>;
 
 /** All user-visible strings rendered by DataTable, grouped by feature area. */
 export interface Localization {

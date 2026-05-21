@@ -11,6 +11,56 @@ import CodeBlock from '../../components/CodeBlock.astro';
     <a href="https://github.com/jbetancur/react-data-table-component/commits/master" target="_blank" rel="noreferrer">repository on GitHub</a>.
   </p>
 
+  <h2>8.3.0</h2>
+
+  <h3>New features</h3>
+  <ul>
+    <li>
+      <strong>Localization</strong> — new <code>localization</code> prop on <code>DataTable</code>
+      replaces the three separate option props (<code>columnFilterOptions</code>,
+      <code>expandableRowsOptions</code>, and pagination aria-label fields on
+      <code>paginationComponentOptions</code>). Pass a single object to translate every string and
+      aria-label in the table — filter panel, pagination navigation, and expand/collapse buttons.
+      → <a href="/docs/localization">Localization docs</a>
+    </li>
+    <li>
+      <strong>Built-in locales</strong> — import pre-built translations from the
+      <code>react-data-table-component/locales</code> subpath. Ships with:
+      English (<code>en</code>), French (<code>fr</code>), Spanish (<code>es</code>),
+      German (<code>de</code>), Brazilian Portuguese (<code>ptBR</code>),
+      Arabic — Modern Standard (<code>ar</code>), Egyptian (<code>arEG</code>), Levantine (<code>arLV</code>),
+      Hebrew (<code>he</code>),
+      Chinese Simplified (<code>zhCN</code>), Chinese Traditional (<code>zhTW</code>),
+      Japanese (<code>ja</code>), Korean (<code>ko</code>), Ukrainian (<code>uk</code>).
+      Each locale is individually tree-shakeable.
+    </li>
+    <li>
+      New utility exports: <code>emptyFilterState(type)</code> and <code>isFilterActive(filter)</code>.
+      → <a href="/docs/filtering#utility-exports">Filtering docs</a>
+    </li>
+  </ul>
+
+  <h3>Deprecations</h3>
+  <p>The following will continue to work in 8.x but will be removed in v9. TypeScript will show a deprecation hint.</p>
+  <ul>
+    <li>
+      <code>columnFilterOptions</code> prop — use <code>localization</code> with a <code>filter</code> key instead.
+    </li>
+    <li>
+      <code>expandableRowsOptions</code> prop — use <code>localization</code> with an <code>expandable</code> key instead.
+    </li>
+    <li>
+      Pagination aria-label fields on <code>paginationComponentOptions</code>
+      (<code>navigationAriaLabel</code>, <code>firstPageAriaLabel</code>, <code>previousPageAriaLabel</code>,
+      <code>nextPageAriaLabel</code>, <code>lastPageAriaLabel</code>) —
+      use <code>localization</code> with a <code>pagination</code> key instead.
+    </li>
+    <li>
+      <code>ColumnFilterOptions</code> and <code>ExpandableRowsOptions</code> types —
+      use <code>Localization['filter']</code> and <code>Localization['expandable']</code> instead.
+    </li>
+  </ul>
+
   <h2>8.2.0</h2>
 
   <h3>New features</h3>
