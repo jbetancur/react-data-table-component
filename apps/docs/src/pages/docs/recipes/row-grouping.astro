@@ -1,0 +1,90 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import InlineRowActionsDemo from '../../../components/demos/InlineRowActionsDemo.tsx';
+---
+
+<DocsLayout title="Inline row actions | Recipes | react-data-table-component" description="Add a per-row actions dropdown with edit, duplicate, and delete — including confirmation modals and optimistic state updates.">
+  <h1>Inline row actions</h1>
+
+  <p>
+    A per-row <strong>⋮ menu</strong> with edit, duplicate, and delete. Destructive actions
+    show a confirmation modal before committing. State is updated optimistically — no network
+    call needed to see the result.
+  </p>
+
+  <div class="not-prose my-8">
+    <InlineRowActionsDemo client:load />
+  </div>
+
+  <h2>The actions column</h2>
+
+  <p>
+    Use <code>button: true</code> on the column so clicks don't bubble to
+    <code>onRowClicked</code>, and keep the width tight so it doesn't crowd other columns:
+  </p>
+
+  <CodeBlock code={`{
+  name: '',
+  button: true,
+  width: '48px',
+  cell: row => <RowMenu row={row} onEdit={openEdit} onDelete={openDelete} />,
+}`} />
+
+  <h2>Closing the dropdown on outside click</h2>
+
+  <p>
+    Track open state per-row inside the menu component and close on a document
+    <code>mousedown</code> that falls outside the ref:
+  </p>
+
+  <CodeBlock code={`function RowMenu({ row, onEdit, onDelete }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handle = e => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handle);
+    return () => document.removeEventListener('mousedown', handle);
+  }, [open]);
+
+  return (
+    <div ref={ref}>
+      <button onClick={e => { e.stopPropagation(); setOpen(o => !o); }}>⋮</button>
+      {open && (
+        <div className="dropdown">
+          <button onClick={() => { setOpen(false); onEdit(row); }}>Edit</button>
+          <button onClick={() => { setOpen(false); onDelete(row); }}>Delete</button>
+        </div>
+      )}
+    </div>
+  );
+}`} />
+
+  <h2>Confirmation before delete</h2>
+
+  <p>
+    Keep a <code>modal</code> state at the table level. The menu sets it; the modal reads it
+    and calls the commit function on confirm:
+  </p>
+
+  <CodeBlock code={`type Modal = { type: 'none' } | { type: 'delete'; row: Employee };
+
+const [modal, setModal] = useState<Modal>({ type: 'none' });
+
+function commitDelete(row: Employee) {
+  setData(prev => prev.filter(r => r.id !== row.id));
+  setModal({ type: 'none' });
+}
+
+{modal.type === 'delete' && (
+  <ConfirmDialog
+    message={\`Delete \${modal.row.name}?\`}
+    onConfirm={() => commitDelete(modal.row)}
+    onCancel={() => setModal({ type: 'none' })}
+  />
+)}`} />
+</DocsLayout>

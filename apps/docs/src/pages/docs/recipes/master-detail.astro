@@ -1,0 +1,80 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import DashboardDrilldownDemo from '../../../components/demos/DashboardDrilldownDemo.tsx';
+---
+
+<DocsLayout title="Dashboard with drill-down | Recipes | react-data-table-component" description="Combine expandable rows, conditional row styles, and custom cell renderers to build a department dashboard with per-row drill-down into team members.">
+  <h1>Dashboard with drill-down</h1>
+
+  <p>
+    A department overview table that combines <strong>expandable rows</strong>,
+    <strong>conditional row styles</strong> for health status, and custom <code>cell</code>
+    renderers for inline progress bars. Expand any row to drill into individual team member
+    utilization.
+  </p>
+
+  <div class="not-prose my-8">
+    <DashboardDrilldownDemo client:load />
+  </div>
+
+  <h2>Conditional row styles</h2>
+
+  <p>
+    Tint rows based on a derived health field so problems are visible at a glance — no extra
+    column needed:
+  </p>
+
+  <CodeBlock code={`const conditionalRowStyles: ConditionalStyles<Department>[] = [
+  { when: r => r.health === 'critical', style: { backgroundColor: '#fff7f7' } },
+  { when: r => r.health === 'at-risk',  style: { backgroundColor: '#fffdf0' } },
+];`} />
+
+  <h2>Nested table in the expander</h2>
+
+  <p>
+    Render a second <code>DataTable</code> inside <code>expandableRowsComponent</code>.
+    The parent row arrives as <code>data</code>:
+  </p>
+
+  <CodeBlock code={`function DepartmentDetail({ data: dept }: ExpanderComponentProps<Department>) {
+  return (
+    <div style={{ padding: '12px 32px', background: '#f9fafb' }}>
+      <DataTable columns={memberColumns} data={dept.members} dense noHeader />
+    </div>
+  );
+}
+
+<DataTable
+  columns={columns}
+  data={departments}
+  expandableRows
+  expandableRowsComponent={DepartmentDetail}
+  conditionalRowStyles={conditionalRowStyles}
+/>`} />
+
+  <h2>Inline progress bars in cells</h2>
+
+  <p>
+    Use a <code>cell</code> renderer for columns that need richer content than a plain value.
+    The renderer receives the full row, so you can derive bar width and color from the data:
+  </p>
+
+  <CodeBlock code={`{
+  name: 'Budget spend',
+  cell: r => {
+    const pct = Math.round((r.spent / r.budget) * 100);
+    const color = pct >= 95 ? '#ef4444' : pct >= 80 ? '#f59e0b' : '#6366f1';
+    return (
+      <div style={{ width: '100%' }}>
+        <div style={{ fontSize: 11, color: '#6b7280', marginBottom: 3 }}>
+          \${r.spent.toLocaleString()} / \${r.budget.toLocaleString()}
+        </div>
+        <div style={{ height: 4, background: '#f3f4f6', borderRadius: 2, overflow: 'hidden' }}>
+          <div style={{ width: \`\${pct}%\`, background: color, height: '100%' }} />
+        </div>
+      </div>
+    );
+  },
+}`} />
+</DocsLayout>

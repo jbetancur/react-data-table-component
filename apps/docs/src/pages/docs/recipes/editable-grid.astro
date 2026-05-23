@@ -1,0 +1,99 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import UrlSyncDemo from '../../../components/demos/UrlSyncDemo.tsx';
+---
+
+<DocsLayout title="URL-synced table state | Recipes | react-data-table-component" description="Sync sort, filters, and pagination to the URL query string so table state survives a page reload, is shareable as a link, and works with the browser back button.">
+  <h1>URL-synced table state</h1>
+
+  <p>
+    Sync sort column, sort direction, active filters, current page, and rows-per-page to the URL
+    query string using <code>history.replaceState</code>. Table state survives a reload, links
+    are shareable, and the browser back button restores exactly where the user was.
+  </p>
+
+  <p>
+    Try sorting a column, typing in a filter, or changing the page — watch the URL update live.
+    Copy the URL and open it in a new tab.
+  </p>
+
+  <div class="not-prose my-8">
+    <UrlSyncDemo client:load />
+  </div>
+
+  <h2>Reading initial state from the URL</h2>
+
+  <p>
+    Parse <code>URLSearchParams</code> once on mount and use the result to seed all state.
+    Wrap it in <code>useMemo</code> so it only runs once even in strict mode:
+  </p>
+
+  <CodeBlock code={`function readParams() {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    sortId:  p.get('sort') ?? '',
+    sortDir: p.get('dir') === 'desc' ? SortOrder.DESC : SortOrder.ASC,
+    page:    parseInt(p.get('page') ?? '1', 10),
+    perPage: parseInt(p.get('per') ?? '5', 10),
+    // filters stored as f_<columnId>=<value>
+    filters: Object.fromEntries(
+      [...p.entries()]
+        .filter(([k]) => k.startsWith('f_'))
+        .map(([k, v]) => [k.slice(2), v]),
+    ),
+  };
+}
+
+const init = useMemo(() => readParams(), []);
+const [sortId,  setSortId]  = useState(init.sortId);
+const [sortDir, setSortDir] = useState(init.sortDir);
+const [page,    setPage]    = useState(init.page);
+const [filters, setFilters] = useState(/* map init.filters to FilterState */);`} />
+
+  <h2>Writing state back to the URL</h2>
+
+  <p>
+    A <code>useEffect</code> that depends on all state writes to the URL on every change.
+    Use <code>replaceState</code> (not <code>pushState</code>) so navigating within the table
+    doesn't pollute the browser history:
+  </p>
+
+  <CodeBlock code={`useEffect(() => {
+  const p = new URLSearchParams();
+  if (sortId) { p.set('sort', sortId); p.set('dir', sortDir === SortOrder.DESC ? 'desc' : 'asc'); }
+  if (page > 1)    p.set('page', String(page));
+  if (perPage !== DEFAULT_PER_PAGE) p.set('per', String(perPage));
+  Object.entries(filterStrings).forEach(([k, v]) => { if (v) p.set(\`f_\${k}\`, v); });
+
+  const qs = p.toString();
+  history.replaceState(null, '', qs ? \`?\${qs}\` : window.location.pathname);
+}, [sortId, sortDir, page, perPage, filterStrings]);`} />
+
+  <h2>Wiring to DataTable</h2>
+
+  <p>
+    Pass the state as controlled props. Use <code>sortServer</code> to prevent the table from
+    re-sorting internally — the URL is the source of truth, so the component controls sort:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  columns={columns}
+  data={data}
+  sortServer
+  defaultSortFieldId={sortId || undefined}
+  defaultSortAsc={sortDir === SortOrder.ASC}
+  onSort={(col, dir) => { setSortId(col.id as string); setSortDir(dir); setPage(1); }}
+  filterValues={filters}
+  onFilterChange={(columnId, next) => { setFilters(prev => ({ ...prev, [columnId]: next })); setPage(1); }}
+  pagination
+  paginationDefaultPage={page}
+  paginationPerPage={perPage}
+  onChangePage={p => setPage(p)}
+  onChangeRowsPerPage={(pp, p) => { setPerPage(pp); setPage(p); }}
+/>`} />
+
+  <p>
+    Reset page to 1 whenever sort or filters change so you don't land on a now-empty page.
+  </p>
+</DocsLayout>

@@ -84,7 +84,18 @@ const nav = [
       { label: 'TypeScript', href: '/docs/typescript' },
       { label: 'SSR', href: '/docs/ssr' },
       { label: 'Performance', href: '/docs/performance' },
-      { label: 'Recipes', href: '/docs/recipes' },
+    ],
+  },
+  {
+    group: 'Recipes',
+    links: [
+      { label: 'Approval workflow', href: '/docs/recipes/bulk-action-toolbar' },
+      { label: 'Server-side sort & filter', href: '/docs/recipes/server-side' },
+      { label: 'URL-synced table state', href: '/docs/recipes/editable-grid' },
+      { label: 'Dashboard drill-down', href: '/docs/recipes/master-detail' },
+      { label: 'Audit log viewer', href: '/docs/recipes/sticky-footer' },
+      { label: 'Persist column widths', href: '/docs/recipes/persist-column-widths' },
+      { label: 'Inline row actions', href: '/docs/recipes/row-grouping' },
     ],
   },
   {
@@ -109,7 +120,7 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
 <Layout title={title} description={description}>
   <div class="max-w-7xl mx-auto px-6 flex gap-12 py-10">
     <!-- Sidebar -->
-    <aside id="docs-sidebar" class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto">
+    <aside id="docs-sidebar" class="hidden lg:block w-56 shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto" style="visibility: hidden;">
       <nav class="space-y-6 text-sm pb-10">
         <!-- Version switcher -->
         <div class="flex items-center gap-2">
@@ -128,9 +139,13 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
           href="https://github.com/sponsors/jbetancur"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-pink-500 transition-colors"
+          class="block rounded-lg border border-pink-100 bg-pink-50 px-3 py-2.5 hover:border-pink-200 hover:bg-pink-100 transition-colors"
         >
-          <span>♥</span> Sponsor this project
+          <div class="flex items-center gap-1.5 text-xs font-semibold text-pink-600">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 13.7c-.3 0-.6-.1-.8-.3L1.6 7.8C.6 6.8.1 5.5.1 4.1.1 1.8 2 0 4.3 0c1.2 0 2.3.5 3.1 1.3L8 1.9l.6-.6C9.4.5 10.5 0 11.7 0 14 0 15.9 1.8 15.9 4.1c0 1.4-.5 2.7-1.5 3.7l-5.6 5.6c-.2.2-.5.3-.8.3z"/></svg>
+            Sponsor this project
+          </div>
+          <p class="mt-1 text-[11px] text-pink-400 leading-snug">215k downloads/week · actively maintained since 2018</p>
         </a>
 
         {nav.map(({ group, links }) => (
@@ -276,18 +291,18 @@ function HeadlessTable({ data }: { data: Employee[] }) {
   </div>
 </Layout>
 
-<script>
-  const SIDEBAR_SCROLL_KEY = 'docs-sidebar-scroll';
-  const sidebar = document.getElementById('docs-sidebar');
+<script is:inline>
+  (function() {
+    var el = document.getElementById('docs-sidebar');
+    if (!el) return;
+    var saved = sessionStorage.getItem('docs-sidebar-scroll');
+    if (saved !== null) el.scrollTop = parseInt(saved, 10);
+    el.style.visibility = '';
 
-  // Restore scroll position before the browser paints to avoid flicker
-  if (sidebar) {
-    const saved = sessionStorage.getItem(SIDEBAR_SCROLL_KEY);
-    if (saved !== null) sidebar.scrollTop = parseInt(saved, 10);
-  }
-
-  // Save scroll position on every navigation away from this page
-  window.addEventListener('beforeunload', () => {
-    if (sidebar) sessionStorage.setItem(SIDEBAR_SCROLL_KEY, String(sidebar.scrollTop));
-  });
+    el.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        sessionStorage.setItem('docs-sidebar-scroll', String(el.scrollTop));
+      });
+    });
+  })();
 </script>

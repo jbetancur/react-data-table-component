@@ -1,0 +1,77 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import ApprovalWorkflowDemo from '../../../components/demos/ApprovalWorkflowDemo.tsx';
+---
+
+<DocsLayout title="Multi-step approval workflow | Recipes | react-data-table-component" description="Build an approval queue with bulk actions that adapt to the selected rows' status — approved and rejected rows are excluded automatically.">
+  <h1>Multi-step approval workflow</h1>
+
+  <p>
+    Select rows from an approval queue and act on them in bulk. The toolbar buttons change based
+    on which rows are selected — already-resolved requests (approved or rejected) are
+    automatically excluded from the action, so reviewers can't accidentally re-process them.
+  </p>
+
+  <div class="not-prose my-8">
+    <ApprovalWorkflowDemo client:load />
+  </div>
+
+  <h2>Disabling already-resolved rows</h2>
+
+  <p>
+    Pass <code>selectableRowDisabled</code> to prevent selecting rows that can't be acted on.
+    The toolbar still shows how many are excluded so nothing is silently skipped:
+  </p>
+
+  <CodeBlock code={`const ACTIONABLE: Status[] = ['pending', 'needs-info'];
+
+<DataTable
+  selectableRows
+  selectableRowDisabled={r => !ACTIONABLE.includes(r.status)}
+  onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
+/>`} />
+
+  <h2>Context-aware bulk toolbar</h2>
+
+  <p>
+    Filter the selection down to actionable rows before rendering buttons, and include a count
+    so reviewers know when some rows were skipped:
+  </p>
+
+  <CodeBlock code={`const actionable = selected.filter(r => ACTIONABLE.includes(r.status));
+
+{selected.length > 0 && (
+  <div>
+    <span>{selected.length} selected</span>
+    {actionable.length < selected.length && (
+      <span>({selected.length - actionable.length} already resolved, excluded)</span>
+    )}
+    {actionable.length > 0 && (
+      <>
+        <button onClick={() => applyStatus(actionable.map(r => r.id), 'approved')}>
+          Approve ({actionable.length})
+        </button>
+        <button onClick={() => applyStatus(actionable.map(r => r.id), 'rejected')}>
+          Reject
+        </button>
+      </>
+    )}
+  </div>
+)}`} />
+
+  <h2>Clearing selection after an action</h2>
+
+  <p>
+    Use the imperative <code>ref</code> to clear the checkboxes after each bulk action commits:
+  </p>
+
+  <CodeBlock code={`const ref = useRef<DataTableHandle>(null);
+
+function applyStatus(ids: number[], next: Status) {
+  setData(prev => prev.map(r => ids.includes(r.id) ? { ...r, status: next } : r));
+  ref.current?.clearSelectedRows();
+}
+
+<DataTable ref={ref} ... />`} />
+</DocsLayout>

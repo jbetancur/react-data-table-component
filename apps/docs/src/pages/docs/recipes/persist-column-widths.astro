@@ -1,0 +1,89 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import PersistColumnWidthsDemo from '../../../components/demos/PersistColumnWidthsDemo.tsx';
+---
+
+<DocsLayout title="Persist column widths | Recipes | react-data-table-component" description="Save and restore resizable column widths using localStorage or a back-end API in react-data-table-component.">
+  <h1>Persist column widths</h1>
+
+  <p>
+    Pass <code>onColumnResize</code> to receive the settled width after every drag, and
+    <code>initialColumnWidths</code> to hydrate those widths on mount. The callback receives
+    the resized column's id, its new width in px, and the full widths map. Write it
+    to localStorage, a database, or anywhere else.
+  </p>
+
+  <div class="not-prose my-8">
+    <PersistColumnWidthsDemo client:load />
+  </div>
+
+  <h2>localStorage</h2>
+
+  <CodeBlock code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+const STORAGE_KEY = 'employees-table-widths';
+
+function loadWidths(): Record<string, number> {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}'); }
+  catch { return {}; }
+}
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',   name: 'Name',   selector: r => r.name   },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true },
+];
+
+export default function App() {
+  const [initialWidths] = useState(loadWidths);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={(_id, _w, all) =>
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(all))
+      }
+    />
+  );
+}`} />
+
+  <h2>Database / back-end</h2>
+
+  <p>
+    Swap the callback body to call your API instead. Wrap with a debounce if you want to
+    batch rapid resizes into a single request.
+  </p>
+
+  <CodeBlock code={`import { useCallback, useEffect, useState } from 'react';
+import DataTable from 'react-data-table-component';
+import { debounce } from 'lodash-es';
+
+export default function App({ userId }: { userId: string }) {
+  const [initialWidths, setInitialWidths] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    api.getColumnPrefs(userId).then(setInitialWidths);
+  }, [userId]);
+
+  const handleResize = useCallback(
+    debounce((_id: string | number, _w: number, all: Record<string | number, number>) => {
+      api.saveColumnPrefs(userId, all);
+    }, 500),
+    [userId],
+  );
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={handleResize}
+    />
+  );
+}`} />
+</DocsLayout>

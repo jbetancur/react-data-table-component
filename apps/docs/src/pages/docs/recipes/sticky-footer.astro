@@ -1,0 +1,62 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import AuditLogDemo from '../../../components/demos/AuditLogDemo.tsx';
+---
+
+<DocsLayout title="Audit log viewer | Recipes | react-data-table-component" description="Build a filterable audit log viewer with severity-based row highlighting, a fixed scrollable header, and a live search input.">
+  <h1>Audit log viewer</h1>
+
+  <p>
+    A filterable security log table with severity badges, row-level background tinting for
+    critical entries, a fixed header so column names stay visible while scrolling, and a live
+    search that filters across multiple fields at once.
+  </p>
+
+  <div class="not-prose my-8">
+    <AuditLogDemo client:load />
+  </div>
+
+  <h2>Fixed header with capped scroll height</h2>
+
+  <p>
+    Set <code>fixedHeader</code> and <code>fixedHeaderScrollHeight</code> so the table body
+    scrolls independently while the column headers stay pinned:
+  </p>
+
+  <CodeBlock code={`<DataTable
+  fixedHeader
+  fixedHeaderScrollHeight="340px"
+  columns={columns}
+  data={logs}
+/>`} />
+
+  <h2>Severity row tinting</h2>
+
+  <p>
+    Use <code>conditionalRowStyles</code> to give critical and error rows a distinct background
+    without adding a visual column:
+  </p>
+
+  <CodeBlock code={`const conditionalRowStyles: ConditionalStyles<LogEntry>[] = [
+  { when: r => r.severity === 'critical', style: { backgroundColor: '#fef2f2' } },
+  { when: r => r.severity === 'error',    style: { backgroundColor: '#fff7f7' } },
+];`} />
+
+  <h2>Multi-field live search</h2>
+
+  <p>
+    Filter client-side across several fields by combining a search string with a severity
+    toggle — no extra library needed:
+  </p>
+
+  <CodeBlock code={`const filtered = logs.filter(r => {
+  if (severity !== 'all' && r.severity !== severity) return false;
+  if (search) {
+    const q = search.toLowerCase();
+    return r.user.includes(q) || r.action.includes(q)
+      || r.resource.includes(q) || r.ip.includes(q);
+  }
+  return true;
+});`} />
+</DocsLayout>

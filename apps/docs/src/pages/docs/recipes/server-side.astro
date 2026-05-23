@@ -1,0 +1,72 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import ServerSideRecipeDemo from '../../../components/demos/ServerSideRecipeDemo.tsx';
+---
+
+<DocsLayout title="Server-side sort, page & filter | Recipes | react-data-table-component" description="Wire react-data-table-component to a server API for sorting, pagination, and filtering with a single useEffect pattern.">
+  <h1>Server-side sort, page &amp; filter</h1>
+
+  <p>
+    Enable <code>sortServer</code>, <code>paginationServer</code>, and pass controlled
+    <code>filterValues</code>. Refetch from a single effect that depends on every state knob.
+    The demo below simulates a 400ms API delay — filter by name or department to see it in action.
+  </p>
+
+  <div class="not-prose my-8">
+    <ServerSideRecipeDemo client:load />
+  </div>
+
+  <CodeBlock code={`import { useEffect, useState } from 'react';
+import DataTable, { type FilterState, SortOrder, type TableColumn } from 'react-data-table-component';
+
+export default function App() {
+  const [rows, setRows]       = useState<Employee[]>([]);
+  const [total, setTotal]     = useState(0);
+  const [page, setPage]       = useState(1);
+  const [perPage, setPerPage] = useState(20);
+  const [sort, setSort]       = useState<{ id?: string; dir: SortOrder }>({ dir: SortOrder.ASC });
+  const [filters, setFilters] = useState<Record<string, FilterState>>({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    fetchEmployees({ page, perPage, sort, filters }).then(res => {
+      if (cancelled) return;
+      setRows(res.rows);
+      setTotal(res.total);
+      setLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, [page, perPage, sort, filters]);
+
+  const columns: TableColumn<Employee>[] = [
+    { id: 'name',   name: 'Name',   selector: r => r.name,   sortable: true, filterable: true },
+    { id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true, filterable: true,
+      filterType: 'number', right: true },
+  ];
+
+  return (
+    <DataTable
+      columns={columns}
+      data={rows}
+      progressPending={loading}
+
+      pagination
+      paginationServer
+      paginationTotalRows={total}
+      onChangePage={setPage}
+      onChangeRowsPerPage={setPerPage}
+
+      sortServer
+      onSort={(col, dir) => setSort({ id: col.id as string, dir })}
+
+      filterValues={filters}
+      onFilterChange={(columnId, next) =>
+        setFilters(prev => ({ ...prev, [columnId]: next }))
+      }
+    />
+  );
+}`} />
+</DocsLayout>

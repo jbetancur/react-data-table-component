@@ -90,9 +90,21 @@ const columns = [
 	},
 ];
 
+function ExpandedRow({ data }: { data: Row }) {
+	return (
+		<div className="px-6 py-4 bg-gray-50 border-t border-gray-100 text-sm text-gray-600 grid grid-cols-2 gap-x-8 gap-y-1.5">
+			<div><span className="font-medium text-gray-700">Department:</span> {data.department}</div>
+			<div><span className="font-medium text-gray-700">Status:</span> {data.status}</div>
+			<div><span className="font-medium text-gray-700">Salary:</span> ${data.salary.toLocaleString()}</div>
+			<div><span className="font-medium text-gray-700">Role:</span> {data.role}</div>
+		</div>
+	);
+}
+
 export default function LiveDemo() {
 	const [theme, setTheme] = useState<Theme>('default');
 	const [selectable, setSelectable] = useState(true);
+	const [expandable, setExpandable] = useState(false);
 	const [striped, setStriped] = useState(false);
 	const [animateRows, setAnimateRows] = useState(true);
 	const [selectedCount, setSelectedCount] = useState(0);
@@ -108,10 +120,16 @@ export default function LiveDemo() {
 				: 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
 		}`;
 
+	const toggleClass = (active: boolean) =>
+		`relative inline-flex h-4 w-7 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors ${
+			active ? 'bg-brand-600' : 'bg-gray-200'
+		}`;
+
 	return (
 		<div className="rounded-xl border border-gray-200 overflow-hidden shadow-sm">
 			{/* Toolbar */}
-			<div className="flex flex-col sm:flex-row sm:items-center gap-2 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
+			<div className="flex flex-col gap-3 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
+				{/* Theme row */}
 				<div className="flex items-center gap-2 flex-wrap">
 					<span className="text-gray-500 font-medium shrink-0">Theme</span>
 					{THEMES.map(t => (
@@ -121,34 +139,29 @@ export default function LiveDemo() {
 					))}
 				</div>
 
-				<div className="flex items-center gap-3 sm:ml-auto flex-wrap">
-					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-						<input
-							type="checkbox"
-							checked={selectable}
-							onChange={e => setSelectable(e.target.checked)}
-							className="rounded"
-						/>
-						Selectable
-					</label>
-
-					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-						<input type="checkbox" checked={striped} onChange={e => setStriped(e.target.checked)} className="rounded" />
-						Striped
-					</label>
-
-					<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-						<input
-							type="checkbox"
-							checked={animateRows}
-							onChange={e => setAnimateRows(e.target.checked)}
-							className="rounded"
-						/>
-						Animate
-					</label>
+				{/* Toggles row */}
+				<div className="flex items-center gap-4 flex-wrap">
+					{([
+						['Selectable', selectable, setSelectable],
+						['Expandable', expandable, setExpandable],
+						['Striped', striped, setStriped],
+						['Animate', animateRows, setAnimateRows],
+					] as [string, boolean, (v: boolean) => void][]).map(([label, value, setter]) => (
+						<label key={label} className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
+							<button
+								role="switch"
+								aria-checked={value}
+								onClick={() => setter(!value)}
+								className={toggleClass(value)}
+							>
+								<span className={`pointer-events-none block h-3 w-3 rounded-full bg-white shadow transition-transform ${value ? 'translate-x-3' : 'translate-x-0'}`} />
+							</button>
+							{label}
+						</label>
+					))}
 
 					{selectable && selectedCount > 0 && (
-						<span className="text-brand-600 font-medium shrink-0">{selectedCount} selected</span>
+						<span className="text-brand-600 font-medium shrink-0 ml-auto">{selectedCount} selected</span>
 					)}
 				</div>
 			</div>
@@ -163,6 +176,8 @@ export default function LiveDemo() {
 				highlightOnHover
 				selectableRows={selectable}
 				onSelectedRowsChange={handleSelectedChange}
+				expandableRows={expandable}
+				expandableRowsComponent={ExpandedRow}
 				animateRows={animateRows}
 				resizable
 				pagination
