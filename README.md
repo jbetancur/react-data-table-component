@@ -42,11 +42,11 @@ The documentation contains information about installation, usage and contributio
 
 # Supporting React Data Table Component
 
-React Data Table Component is maintained by one person and downloaded ~200k times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
+React Data Table Component has been actively maintained since 2018 and is downloaded ~215k times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
 
 ## Sponsor the project
 
-Sponsoring puts your company logo in front of ~200k developers a week: in the README, the docs site, and every release. It's the right move if your team depends on this library and you want it to keep improving.
+Sponsoring puts your company logo in front of ~215k developers a week: in the README, the docs site, and every release. It's the right move if your team depends on this library and you want it to keep improving.
 
 | Tier | Price/month | Perk |
 | --- | --- | --- |

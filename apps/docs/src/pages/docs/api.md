@@ -1,6 +1,7 @@
 ---
 layout: '../../layouts/DocsLayout.astro'
 title: 'API reference | react-data-table-component'
+description: 'Complete prop, type, and export reference for react-data-table-component v8.'
 ---
 
 # API reference

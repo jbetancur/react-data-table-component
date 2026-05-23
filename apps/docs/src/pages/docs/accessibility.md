@@ -1,6 +1,7 @@
 ---
 layout: '../../layouts/DocsLayout.astro'
 title: 'Accessibility | react-data-table-component'
+description: 'ARIA roles, keyboard navigation, and screen reader support in react-data-table-component.'
 ---
 
 

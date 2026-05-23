@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://reactdatatable.com/sitemap-index.xml

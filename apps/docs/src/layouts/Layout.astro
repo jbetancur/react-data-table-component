@@ -28,6 +28,7 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL('/og-image.png', Astro.url).href} />
+    <link rel="canonical" href={Astro.url.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
@@ -151,7 +152,6 @@ const {
       <p>
         Apache 2.0 licensed ·
         <a href="https://github.com/jbetancur/react-data-table-component" class="hover:text-gray-600">GitHub</a>
-        · Built with Astro
       </p>
     </footer>
 

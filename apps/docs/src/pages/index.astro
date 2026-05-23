@@ -2,9 +2,29 @@
 import { Code } from 'astro:components';
 import Layout from '../layouts/Layout.astro';
 import LiveDemo from '../components/LiveDemo.tsx';
+
+const [npmRes, ghRes] = await Promise.allSettled([
+  fetch('https://api.npmjs.org/downloads/point/last-week/react-data-table-component'),
+  fetch('https://api.github.com/repos/jbetancur/react-data-table-component'),
+]);
+
+const weeklyDownloads: number =
+  npmRes.status === 'fulfilled' && npmRes.value.ok
+    ? (await npmRes.value.json()).downloads
+    : 215000;
+
+const stars: number =
+  ghRes.status === 'fulfilled' && ghRes.value.ok
+    ? (await ghRes.value.json()).stargazers_count
+    : 2000;
+
+function fmt(n: number): string {
+  if (n >= 1000) return `${Math.floor(n / 1000)}k+`;
+  return String(n);
+}
 ---
 
-<Layout title="react-data-table-component: Working table in 10 lines">
+<Layout title="react-data-table-component: Working table in 10 lines" description="A fast, accessible React data table with sorting, pagination, row selection, expandable rows, and theming. Zero peer dependencies. Working table in 10 lines.">
 	<!-- Hero -->
 	<section class="max-w-7xl mx-auto px-6 pt-20 pb-16 text-center">
 		<div class="flex items-center justify-center gap-3 mb-6 flex-wrap">
@@ -49,16 +69,57 @@ import LiveDemo from '../components/LiveDemo.tsx';
 		</div>
 
 		<!-- Install snippet -->
-		<div class="mt-8 inline-block bg-gray-950 text-gray-100 rounded-lg px-5 py-3 font-mono text-sm">
-			<span class="text-gray-500">$</span> npm install react-data-table-component
+		<div class="mt-8 inline-flex items-center gap-4 bg-gray-950 text-gray-100 rounded-lg px-5 py-3 font-mono text-sm group relative">
+			<span><span class="text-gray-500">$</span> npm install react-data-table-component</span>
+			<button
+				id="install-copy-btn"
+				aria-label="Copy install command"
+				class="flex items-center gap-1 text-xs text-gray-400 hover:text-white transition-colors"
+			>
+				<svg id="install-icon-copy" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+					<rect x="4" y="4" width="9" height="9" rx="1.5"/>
+					<path d="M3 11H2.5A1.5 1.5 0 0 1 1 9.5v-7A1.5 1.5 0 0 1 2.5 1h7A1.5 1.5 0 0 1 11 2.5V3"/>
+				</svg>
+				<svg id="install-icon-check" class="hidden" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="2 8 6 12 14 4"/>
+				</svg>
+			</button>
+		</div>
+		<script>
+			document.getElementById('install-copy-btn')?.addEventListener('click', async () => {
+				await navigator.clipboard.writeText('npm install react-data-table-component');
+				document.getElementById('install-icon-copy')?.classList.add('hidden');
+				document.getElementById('install-icon-check')?.classList.remove('hidden');
+				setTimeout(() => {
+					document.getElementById('install-icon-copy')?.classList.remove('hidden');
+					document.getElementById('install-icon-check')?.classList.add('hidden');
+				}, 2000);
+			});
+		</script>
+
+		<!-- Social proof stats -->
+		<div class="mt-10 flex items-center justify-center gap-8 flex-wrap text-center">
+			<div>
+				<div class="text-2xl font-bold text-gray-900">{fmt(weeklyDownloads)}</div>
+				<div class="text-xs text-gray-400 mt-0.5">weekly downloads</div>
+			</div>
+			<div class="w-px h-8 bg-gray-200 hidden sm:block"></div>
+			<div>
+				<a href="https://github.com/jbetancur/react-data-table-component" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
+					<div class="text-2xl font-bold text-gray-900">{fmt(stars)}</div>
+					<div class="text-xs text-gray-400 mt-0.5">GitHub stars</div>
+				</a>
+			</div>
+			<div class="w-px h-8 bg-gray-200 hidden sm:block"></div>
+			<div>
+				<div class="text-2xl font-bold text-gray-900">2018</div>
+				<div class="text-xs text-gray-400 mt-0.5">actively maintained since</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Live demo -->
 	<section class="max-w-5xl mx-auto px-6 pb-20">
-		<div class="text-center mb-6">
-			<h2 class="text-xl font-semibold text-gray-700">Try it live: switch themes, toggle features</h2>
-		</div>
 		<LiveDemo client:load />
 	</section>
 
@@ -84,7 +145,7 @@ export default function App() {
 				lang="tsx"
 				theme="catppuccin-macchiato"
 				defaultColor={false}
-				class="rounded-xl text-sm leading-relaxed overflow-x-auto"
+				class="rounded-xl text-sm leading-relaxed overflow-x-auto p-6"
 			/>
 		</div>
 	</section>
@@ -121,9 +182,9 @@ export default function App() {
 						desc: 'Render any component inside an expandable detail panel. Animate open/close with a single prop.',
 					},
 					{
-						icon: '⚡',
-						title: 'Animate rows',
-						desc: 'Staggered row entrance and sort-pulse animations. Respects prefers-reduced-motion.',
+						icon: '⌕',
+						title: 'Column filtering',
+						desc: 'Per-column filter inputs for text, number, and select. Client-side or hook into your own server search.',
 					},
 					{
 						icon: '⊞',
@@ -136,9 +197,9 @@ export default function App() {
 						desc: 'Drag column edges to resize. Widths preserved in state, serializable for persistence.',
 					},
 					{
-						icon: '○',
-						title: 'Zero peer deps',
-						desc: 'styled-components removed in v8. CSS custom properties handle all theming at zero runtime cost.',
+						icon: '▲',
+						title: 'SSR & Next.js ready',
+						desc: 'Works in Next.js App Router, Remix, and Astro. No useLayoutEffect warnings. Ships "use client" automatically.',
 					},
 				].map(({ icon, title, desc }) => (
 					<div class="border border-gray-100 rounded-xl p-5 hover:border-brand-200 hover:shadow-sm transition-all">
@@ -197,7 +258,7 @@ export default function App() {
 	<section class="max-w-4xl mx-auto px-6 py-20 text-center">
 		<h2 class="text-xl font-semibold text-gray-900 mb-2">Sponsors</h2>
 		<p class="text-sm text-gray-500 mb-8">
-			This library is maintained by one person. If your team ships products with it, consider sponsoring. It funds bug
+			Actively maintained since 2018. If your team ships products with it, consider sponsoring — it funds bug
 			fixes and keeps pace with the React ecosystem.
 		</p>
 

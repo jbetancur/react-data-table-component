@@ -1,6 +1,7 @@
 ---
 layout: '../../layouts/DocsLayout.astro'
 title: 'Migration guide | react-data-table-component'
+description: 'Step-by-step upgrade instructions and breaking changes for each major version of react-data-table-component.'
 ---
 
 # Migration guide
