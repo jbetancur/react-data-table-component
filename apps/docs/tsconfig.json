@@ -5,7 +5,8 @@
     "jsxImportSource": "react",
     "paths": {
       "react-data-table-component": ["../../src/index.ts"],
-      "react-data-table-component/locales": ["../../src/locales/index.ts"]
+      "react-data-table-component/locales": ["../../src/locales/index.ts"],
+      "~changelog": ["../../CHANGELOG.md"]
     }
   }
 }

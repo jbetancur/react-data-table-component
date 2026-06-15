@@ -3,6 +3,7 @@ import { SortOrder } from '../types';
 import type {
 	TableColumn,
 	SortAction,
+	SortColumn,
 	AllRowsAction,
 	RowState,
 	ComponentProps,
@@ -15,6 +16,9 @@ export interface HeadContextValue<T> {
 	// Sort state
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
+	sortColumns: SortColumn<T>[];
+	sortMulti: boolean;
+	defaultSortDirection: SortOrder;
 	sortIcon?: React.ReactNode;
 	sortServer: boolean;
 	// Pagination config (affects sort-reset behaviour)

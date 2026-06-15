@@ -14,6 +14,9 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 		[
 			options.selectedColumn,
 			options.sortDirection,
+			options.sortColumns,
+			options.sortMulti,
+			options.defaultSortDirection,
 			options.sortIcon,
 			options.sortServer,
 			options.pagination,

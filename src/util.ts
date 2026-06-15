@@ -75,6 +75,52 @@ export function sort<T>(
 	});
 }
 
+/**
+ * Stable multi-column sort. Compares rows by each sort column in priority order,
+ * falling back to the next column when the current one ties. Honors each column's
+ * `sortFunction` when provided, otherwise compares its `selector` value.
+ */
+export function multiSort<T>(rows: T[], sortColumns: { column: TableColumn<T>; sortDirection: SortOrder }[]): T[] {
+	if (sortColumns.length === 0) {
+		return rows;
+	}
+
+	return rows
+		.map((row, index) => ({ row, index }))
+		.sort((a, b) => {
+			for (const { column, sortDirection } of sortColumns) {
+				const flip = sortDirection === SortOrder.ASC ? 1 : -1;
+
+				if (column.sortFunction && typeof column.sortFunction === 'function') {
+					const result = column.sortFunction(a.row, b.row);
+					if (result !== 0) {
+						return result * flip;
+					}
+					continue;
+				}
+
+				const selector = column.selector as Selector<T> | undefined;
+				if (!selector) {
+					continue;
+				}
+
+				const aValue = selector(a.row);
+				const bValue = selector(b.row);
+
+				if (aValue < bValue) {
+					return -1 * flip;
+				}
+				if (aValue > bValue) {
+					return 1 * flip;
+				}
+			}
+
+			// Stable tiebreaker: preserve the original order.
+			return a.index - b.index;
+		})
+		.map(({ row }) => row);
+}
+
 export function getProperty<T>(
 	row: T,
 	selector: ((row: T, rowIndex?: number) => React.ReactNode) | undefined | null,

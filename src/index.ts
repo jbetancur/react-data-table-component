@@ -40,6 +40,7 @@ export type {
 	/** @deprecated Use `Localization['expandable']` instead. Will be removed in v9. */
 	ExpandableRowsOptions,
 	SortFunction,
+	SortColumn,
 	Selector,
 	FilterType,
 	FilterOperator,

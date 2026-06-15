@@ -1,6 +1,7 @@
 import {
 	isEmpty,
 	sort,
+	multiSort,
 	getProperty,
 	insertItem,
 	removeItem,
@@ -121,6 +122,54 @@ describe('sort', () => {
 			mockSelector,
 			SortOrder.DESC,
 		);
+	});
+});
+
+describe('multiSort', () => {
+	type Person = { dept: string; name: string; age: number };
+	const people: Person[] = [
+		{ dept: 'eng', name: 'Bob', age: 40 },
+		{ dept: 'eng', name: 'Alice', age: 30 },
+		{ dept: 'sales', name: 'Carol', age: 25 },
+		{ dept: 'eng', name: 'Alice', age: 22 },
+	];
+
+	test('returns rows unchanged when there are no sort columns', () => {
+		expect(multiSort(people, [])).toBe(people);
+	});
+
+	test('sorts by the primary column, then breaks ties with the secondary column', () => {
+		const sorted = multiSort(people, [
+			{ column: { id: 1, selector: r => r.dept }, sortDirection: SortOrder.ASC },
+			{ column: { id: 2, selector: r => r.name }, sortDirection: SortOrder.ASC },
+		]);
+
+		expect(sorted.map(p => `${p.dept}:${p.name}`)).toEqual(['eng:Alice', 'eng:Alice', 'eng:Bob', 'sales:Carol']);
+	});
+
+	test('honors per-column direction independently', () => {
+		const sorted = multiSort(people, [
+			{ column: { id: 1, selector: r => r.dept }, sortDirection: SortOrder.ASC },
+			{ column: { id: 2, selector: r => r.age }, sortDirection: SortOrder.DESC },
+		]);
+
+		expect(sorted.map(p => `${p.dept}:${p.age}`)).toEqual(['eng:40', 'eng:30', 'eng:22', 'sales:25']);
+	});
+
+	test('is stable — equal rows keep their original relative order', () => {
+		const sorted = multiSort(people, [{ column: { id: 1, selector: r => r.dept }, sortDirection: SortOrder.ASC }]);
+		const engNames = sorted.filter(p => p.dept === 'eng').map(p => `${p.name}:${p.age}`);
+
+		expect(engNames).toEqual(['Bob:40', 'Alice:30', 'Alice:22']);
+	});
+
+	test('uses a column sortFunction when provided, flipping its result for desc', () => {
+		const byAge = { id: 1, selector: (r: Person) => r.name, sortFunction: (a: Person, b: Person) => a.age - b.age };
+		const asc = multiSort(people, [{ column: byAge, sortDirection: SortOrder.ASC }]);
+		const desc = multiSort(people, [{ column: byAge, sortDirection: SortOrder.DESC }]);
+
+		expect(asc.map(p => p.age)).toEqual([22, 25, 30, 40]);
+		expect(desc.map(p => p.age)).toEqual([40, 30, 25, 22]);
 	});
 });
 

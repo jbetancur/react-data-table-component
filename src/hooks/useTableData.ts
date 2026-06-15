@@ -1,20 +1,26 @@
 import * as React from 'react';
-import { sort } from '../util';
+import { sort, multiSort } from '../util';
 import { SortOrder } from '../types';
-import type { TableColumn, SortFunction, Selector } from '../types';
+import type { TableColumn, SortColumn, SortFunction, Selector } from '../types';
 
 interface UseTableDataProps<T> {
 	data: T[];
 	columns: TableColumn<T>[];
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
+	sortColumns: SortColumn<T>[];
 	currentPage: number;
 	rowsPerPage: number;
 	pagination: boolean;
 	paginationServer: boolean;
 	sortServer: boolean;
 	sortFunction: SortFunction<T> | null;
-	onSort: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
+	onSort: (
+		selectedColumn: TableColumn<T>,
+		sortDirection: SortOrder,
+		sortedRows: T[],
+		sortColumns: SortColumn<T>[],
+	) => void;
 }
 
 interface UseTableDataReturn<T> {
@@ -30,6 +36,7 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 		data,
 		selectedColumn,
 		sortDirection,
+		sortColumns,
 		currentPage,
 		rowsPerPage,
 		pagination,
@@ -46,6 +53,11 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 			return data;
 		}
 
+		// Multi-column sort: stable comparison across all sort columns in priority order.
+		if (sortColumns.length > 1) {
+			return multiSort(data, sortColumns);
+		}
+
 		// Use column-specific sort function if available
 		if (selectedColumn?.sortFunction && typeof selectedColumn.sortFunction === 'function') {
 			const sortFn = selectedColumn.sortFunction;
@@ -57,7 +69,7 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 		// Use default sort utility — cast selector to Primitive-returning variant required by sort().
 		// Columns with ReactNode selectors should supply a sortFunction instead.
 		return sort(data, selectedColumn?.selector as Selector<T> | undefined, sortDirection, sortFunction);
-	}, [sortServer, selectedColumn, sortDirection, data, sortFunction]);
+	}, [sortServer, selectedColumn, sortDirection, sortColumns, data, sortFunction]);
 
 	// Memoize paginated table rows
 	const tableRows = React.useMemo(() => {
@@ -75,19 +87,23 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 
 	// Notify parent when sort changes (but not on sortedData changes to avoid loops)
 	const sortCallbackRef = React.useRef(onSort);
-	const prevSortRef = React.useRef({ selectedColumn, sortDirection });
+	const prevSortRef = React.useRef({ selectedColumn, sortDirection, sortColumns });
 
 	React.useEffect(() => {
 		sortCallbackRef.current = onSort;
 	}, [onSort]);
 
 	React.useEffect(() => {
-		// Only call onSort if column or direction actually changed
-		if (prevSortRef.current.selectedColumn !== selectedColumn || prevSortRef.current.sortDirection !== sortDirection) {
-			prevSortRef.current = { selectedColumn, sortDirection };
-			sortCallbackRef.current(selectedColumn, sortDirection, sortedData.slice(0));
+		// Only call onSort if column, direction, or the multi-column config actually changed
+		if (
+			prevSortRef.current.selectedColumn !== selectedColumn ||
+			prevSortRef.current.sortDirection !== sortDirection ||
+			prevSortRef.current.sortColumns !== sortColumns
+		) {
+			prevSortRef.current = { selectedColumn, sortDirection, sortColumns };
+			sortCallbackRef.current(selectedColumn, sortDirection, sortedData.slice(0), sortColumns);
 		}
-	}, [selectedColumn, sortDirection, sortedData]);
+	}, [selectedColumn, sortDirection, sortColumns, sortedData]);
 
 	return {
 		sortedData,

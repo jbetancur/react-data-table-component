@@ -89,6 +89,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
+		sortMulti = defaultProps.sortMulti,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
 		expandableRowsComponentProps = defaultProps.expandableRowsComponentProps,
 		expandableRowDisabled = defaultProps.expandableRowDisabled,
@@ -298,13 +299,15 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		[dispatchSort],
 	);
 
-	const { rowsPerPage, currentPage, selectedRows, allSelected, selectedColumn, sortDirection } = tableState;
+	const { rowsPerPage, currentPage, selectedRows, allSelected, selectedColumn, sortDirection, sortColumns } =
+		tableState;
 
 	const { sortedData, tableRows } = useTableData({
 		data,
 		columns,
 		selectedColumn,
 		sortDirection,
+		sortColumns,
 		currentPage,
 		rowsPerPage,
 		pagination,
@@ -410,6 +413,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const headContextValue = useHeadContextValue<T>({
 		selectedColumn,
 		sortDirection,
+		sortColumns,
+		sortMulti,
+		defaultSortDirection,
 		sortIcon,
 		sortServer,
 		pagination,

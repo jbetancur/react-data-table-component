@@ -28,8 +28,10 @@ function DataTableHead<T>({
 	expandableRowsHideExpander,
 }: DataTableHeadProps<T>): JSX.Element {
 	const {
-		selectedColumn,
 		sortDirection,
+		sortColumns,
+		sortMulti,
+		defaultSortDirection,
 		sortIcon,
 		sortServer,
 		pagination,
@@ -147,13 +149,15 @@ function DataTableHead<T>({
 	// ── Shared column props ──────────────────────────────────────────────────
 	const colProps = (column: TableColumn<T>) => ({
 		column,
-		selectedColumn,
 		disabled: progressPending || sortedData.length === 0,
 		pagination,
 		paginationServer,
 		persistSelectedOnSort,
 		selectableRowsVisibleOnly,
 		sortDirection,
+		sortColumns,
+		sortMulti,
+		defaultSortDirection,
 		sortIcon,
 		sortServer,
 		filterValue: filterValues[column.id!] ?? emptyFilterState(column.filterType),
