@@ -67,10 +67,21 @@ jobs:
 
       - name: Get new version
         id: version
-        run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "value=$VERSION" >> $GITHUB_OUTPUT
+          echo "Bumped to $VERSION"
 
       - name: Build
         run: npm run build
+
+      - name: Check version not already published
+        run: |
+          VERSION="${{ steps.version.outputs.value }}"
+          if npm view react-data-table-component@$VERSION version 2>/dev/null; then
+            echo "Error: v$VERSION is already published to npm"
+            exit 1
+          fi
 
       - name: Publish to npm
         run: npm publish --provenance --access public --ignore-scripts
