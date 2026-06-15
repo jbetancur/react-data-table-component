@@ -70,6 +70,7 @@ export const defaultProps = {
 	sortIcon: null,
 	sortFunction: null,
 	sortServer: false,
+	sortMulti: false,
 	striped: false,
 	highlightOnHover: false,
 	pointerOnHover: false,

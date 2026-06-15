@@ -711,7 +711,10 @@ describe('DataTable::sorting', () => {
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
 
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC, mock.data.slice(0).sort());
+		const sortedColumn = { id: 1, ...mock.columns[0] };
+		expect(onSortMock).toBeCalledWith(sortedColumn, SortOrder.ASC, mock.data.slice(0).sort(), [
+			{ column: sortedColumn, sortDirection: SortOrder.ASC },
+		]);
 	});
 
 	test('should call onSort with the correct params if the sort is clicked twice', () => {
@@ -719,11 +722,64 @@ describe('DataTable::sorting', () => {
 		const mock = dataMock({ sortable: true });
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
 
-		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.ASC, mock.data.slice(0).sort());
+		const sortedColumn = { id: 1, ...mock.columns[0] };
 
 		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
-		expect(onSortMock).toBeCalledWith({ id: 1, ...mock.columns[0] }, SortOrder.DESC, mock.data.slice(0).reverse());
+		expect(onSortMock).toBeCalledWith(sortedColumn, SortOrder.ASC, mock.data.slice(0).sort(), [
+			{ column: sortedColumn, sortDirection: SortOrder.ASC },
+		]);
+
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
+		expect(onSortMock).toBeCalledWith(sortedColumn, SortOrder.DESC, mock.data.slice(0).reverse(), [
+			{ column: sortedColumn, sortDirection: SortOrder.DESC },
+		]);
+	});
+
+	test('a third plain click removes sorting and restores the original row order', () => {
+		const onSortMock = vi.fn();
+		const mock = dataMock({ sortable: true });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} onSort={onSortMock} />);
+
+		const target = () => container.querySelector('div[data-sort-id="1"]') as HTMLElement;
+
+		fireEvent.click(target()); // asc
+		fireEvent.click(target()); // desc
+		fireEvent.click(target()); // removed
+
+		const lastCall = onSortMock.mock.calls[onSortMock.mock.calls.length - 1];
+		expect(lastCall[0]).toEqual({});
+		expect(lastCall[3]).toEqual([]);
+		expect(target().getAttribute('aria-sort')).toBe('none');
+	});
+
+	test('Ctrl+click adds a second sort column when sortMulti is enabled', () => {
+		const onSortMock = vi.fn();
+		const mock = dataMock({ sortable: true });
+		const columns = [mock.columns[0], { ...mock.columns[0], id: 2, name: 'Second', sortable: true }];
+		const { container } = render(<DataTable data={mock.data} columns={columns} sortMulti onSort={onSortMock} />);
+
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="2"]') as HTMLElement, { ctrlKey: true });
+
+		const lastCall = onSortMock.mock.calls[onSortMock.mock.calls.length - 1];
+		const sortColumns = lastCall[3];
+		expect(sortColumns).toHaveLength(2);
+		expect(sortColumns[0].column.id).toBe(1);
+		expect(sortColumns[1].column.id).toBe(2);
+	});
+
+	test('Ctrl+click is ignored (treated as a replace) when sortMulti is disabled', () => {
+		const onSortMock = vi.fn();
+		const mock = dataMock({ sortable: true });
+		const columns = [mock.columns[0], { ...mock.columns[0], id: 2, name: 'Second', sortable: true }];
+		const { container } = render(<DataTable data={mock.data} columns={columns} onSort={onSortMock} />);
+
+		fireEvent.click(container.querySelector('div[data-sort-id="1"]') as HTMLElement);
+		fireEvent.click(container.querySelector('div[data-sort-id="2"]') as HTMLElement, { ctrlKey: true });
+
+		const lastCall = onSortMock.mock.calls[onSortMock.mock.calls.length - 1];
+		expect(lastCall[3]).toHaveLength(1);
+		expect(lastCall[3][0].column.id).toBe(2);
 	});
 
 	test('should render correctly with a custom sortIcon', () => {

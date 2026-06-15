@@ -11,6 +11,7 @@ import type {
 	SingleRowAction,
 	RangeRowAction,
 	SortAction,
+	SortColumn,
 } from '../types';
 
 interface UseTableStateProps<T> {
@@ -36,7 +37,12 @@ interface UseTableStateProps<T> {
 	/** Controlled selection. When provided, internal selection state is overridden. */
 	controlledSelectedRows?: T[];
 	onSelectedRowsChange: (state: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
+	onSort: (
+		selectedColumn: TableColumn<T>,
+		sortDirection: SortOrder,
+		sortedRows: T[],
+		sortColumns: SortColumn<T>[],
+	) => void;
 	onChangePage: (page: number, totalRows: number) => void;
 	onChangeRowsPerPage: (currentRowsPerPage: number, currentPage: number) => void;
 }
@@ -85,6 +91,8 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
 	const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
 
+	const hasDefaultSort = defaultSortColumn.id != null || !!defaultSortColumn.selector;
+
 	const [tableState, dispatch] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, {
 		allSelected: false,
 		selectedCount: 0,
@@ -92,6 +100,7 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 		selectedColumn: defaultSortColumn,
 		toggleOnSelectedRowsChange: false,
 		sortDirection: defaultSortDirection,
+		sortColumns: hasDefaultSort ? [{ column: defaultSortColumn, sortDirection: defaultSortDirection }] : [],
 		currentPage: paginationDefaultPage,
 		rowsPerPage: paginationPerPage,
 		selectedRowsFlag: false,

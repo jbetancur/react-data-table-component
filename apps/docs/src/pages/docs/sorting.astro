@@ -7,6 +7,7 @@ import PrioritySortDemo from '../../components/demos/PrioritySortDemo.tsx';
 import ServerSideSortingDemo from '../../components/demos/ServerSideSortingDemo.tsx';
 import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
 import SortResetDemo from '../../components/demos/SortResetDemo.tsx';
+import MultiSortDemo from '../../components/demos/MultiSortDemo.tsx';
 ---
 
 <DocsLayout title="Sorting | react-data-table-component">
@@ -14,8 +15,14 @@ import SortResetDemo from '../../components/demos/SortResetDemo.tsx';
 
   <p>
     Add <code>sortable: true</code> to any column to enable client-side sorting on that column.
-    Click a header to sort; click again to reverse direction.
+    Clicking a header cycles through three states: ascending → descending → unsorted. A third click
+    removes the sort without resetting any other table state.
     Columns without <code>sortable</code> are not interactive and are excluded from the tab order.
+  </p>
+  <p>
+    Enable <code>sortMulti</code> to let users sort by several columns at once — hold
+    <kbd>Ctrl</kbd> (or <kbd>⌘</kbd> on macOS) while clicking additional headers. See
+    <a href="#multi-column-sorting">Multi-column sorting</a> below.
   </p>
 
   <Demo
@@ -44,6 +51,73 @@ const columns: TableColumn<Employee>[] = [
     <SortingDemo client:load />
   </Demo>
 
+  <h2 id="removable-sorting">Removable sorting</h2>
+  <p>
+    Sorting is removable by default. Clicking a sortable header walks through three states so the
+    user can clear a sort directly from the header instead of resetting the whole table:
+  </p>
+  <ol>
+    <li>First click — sort ascending (or the direction set by <code>defaultSortAsc</code>).</li>
+    <li>Second click — sort descending.</li>
+    <li>Third click — remove the sort.</li>
+  </ol>
+  <p>
+    When the sort is removed, <code>onSort</code> fires with an empty column (<code>{`{}`}</code>),
+    the default direction, and an empty <code>sortColumns</code> array. The table returns to its
+    original (unsorted) row order. This is also the signal a server-side handler should use to drop
+    its <code>ORDER BY</code> clause — see <a href="#server-side-sorting">Server-side sorting</a>.
+  </p>
+
+  <h2 id="multi-column-sorting">Multi-column sorting</h2>
+  <p>
+    Set <code>sortMulti</code> to let the user sort by more than one column. A plain click still
+    replaces the entire sort. Holding <kbd>Ctrl</kbd> (<kbd>⌘</kbd> on macOS) while clicking a header
+    <em>adds</em> that column to the existing sort instead. Sort priority follows the order columns
+    are added, and a small numbered badge appears on each participating header.
+  </p>
+  <p>
+    Each column still cycles ascending → descending → off independently. Ctrl-clicking a column
+    already in the sort flips its direction, then removes it on the next Ctrl-click. Removing the
+    primary column promotes the next one to primary.
+  </p>
+
+  <Demo
+    title="Multi-column sorting"
+    description="Click a header to sort. Ctrl-click (⌘-click on macOS) a second header to add it. The readout shows the live sortColumns array in priority order."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn, type SortColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Employee>[] = [
+  { id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true },
+  { id: 'department', name: 'Department', selector: r => r.department, sortable: true },
+  { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true, right: true },
+  { id: 'hired',      name: 'Hired',      selector: r => r.hired,      sortable: true },
+];
+
+export default function App() {
+  const [sortColumns, setSortColumns] = useState<SortColumn<Employee>[]>([]);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      sortMulti
+      // onSort's 4th argument is the full sort config in priority order
+      onSort={(column, direction, sortedRows, sortColumns) => setSortColumns(sortColumns)}
+      highlightOnHover
+    />
+  );
+}`}
+  >
+    <MultiSortDemo client:load />
+  </Demo>
+
+  <p>
+    Multi-column sorting is stable: when every active sort column ties, rows keep their original
+    relative order. Each column honors its own <code>sortFunction</code> when one is set; otherwise
+    its <code>selector</code> value is compared.
+  </p>
+
   <h2>Default sort</h2>
   <p>
     <code>defaultSortFieldId</code> sets which column is sorted on first render.
@@ -62,18 +136,30 @@ const columns: TableColumn<Employee>[] = [
   <h2>Listening to sort events</h2>
   <p>
     <code>onSort</code> fires on every sort change, whether triggered by clicking a header or by
-    a <code>defaultSortFieldId</code> change. It receives the sorted column, the new direction, and
-    the fully sorted row array.
+    a <code>defaultSortFieldId</code> change. It receives four arguments: the primary sorted column,
+    its direction, the fully sorted row array, and <code>sortColumns</code> — the complete sort
+    configuration in priority order.
+  </p>
+  <p>
+    For single-column sorting the first two arguments are all you need. The fourth argument is what
+    you read when <code>sortMulti</code> is enabled, and it is also how you detect a cleared sort
+    (the array is empty and the primary column is <code>{`{}`}</code>).
   </p>
 
-  <CodeBlock code={`import { SortOrder } from 'react-data-table-component';
+  <CodeBlock code={`import { SortOrder, type SortColumn } from 'react-data-table-component';
 
 <DataTable
   columns={columns}
   data={data}
-  onSort={(column, direction, sortedRows) => {
-    console.log('sorted by', column.id, direction);
-    // sortedRows is the full sorted array after the sort is applied
+  onSort={(column, direction, sortedRows, sortColumns) => {
+    if (sortColumns.length === 0) {
+      console.log('sort cleared');
+      return;
+    }
+    console.log('primary sort:', column.id, direction);
+    // sortedRows is the full sorted array after the sort is applied.
+    // sortColumns holds every active sort column in priority order:
+    //   [{ column, sortDirection }, ...]
   }}
 />`} />
 
@@ -206,7 +292,7 @@ const SortIcon = () => (
 
 <DataTable columns={columns} data={data} sortIcon={<SortIcon />} />`} />
 
-  <h2>Server-side sorting</h2>
+  <h2 id="server-side-sorting">Server-side sorting</h2>
   <p>
     Set <code>sortServer</code> to stop the table from sorting rows locally.
     DataTable still updates its visual sort indicator and fires <code>onSort</code>. Your handler
@@ -218,6 +304,40 @@ const SortIcon = () => (
     The value is passed to <code>onSort</code> via the column object so you can forward it directly
     to your query.
   </p>
+  <p>
+    The removable and multi-column behaviors apply to server-side sorting too — the table sends the
+    intent, your handler turns it into a query. Two cases to handle:
+  </p>
+  <ul>
+    <li>
+      <strong>Cleared sort:</strong> the three-state cycle means a header can now resolve to
+      <em>no sort</em>. When that happens <code>onSort</code> fires with an empty
+      <code>sortColumns</code> array and an empty primary column — drop your <code>ORDER BY</code> and
+      fetch the default order.
+    </li>
+    <li>
+      <strong>Multi-column sort:</strong> with <code>sortMulti</code> enabled, read the fourth
+      <code>sortColumns</code> argument and build an ordered list of sort keys rather than relying on
+      the single primary column.
+    </li>
+  </ul>
+
+  <CodeBlock code={`function handleSort(column, direction, sortedRows, sortColumns) {
+  // Cleared sort → fetch default order
+  if (sortColumns.length === 0) {
+    return load({ orderBy: [] });
+  }
+
+  // Build an ordered list of { field, dir } from the full sort config
+  const orderBy = sortColumns.map(s => ({
+    field: s.column.sortField ?? String(s.column.id),
+    dir: s.sortDirection,
+  }));
+
+  load({ orderBy }); // e.g. ORDER BY department ASC, salary DESC
+}
+
+<DataTable columns={columns} data={data} sortServer sortMulti onSort={handleSort} />`} />
 
   <Demo
     title="Server-side sorting"
@@ -384,9 +504,15 @@ function App() {
       </tr>
       <tr>
         <td><code>onSort</code></td>
-        <td><code>(column, direction, sortedRows) =&gt; void</code></td>
+        <td><code>(column, direction, sortedRows, sortColumns) =&gt; void</code></td>
         <td>-</td>
-        <td>Called on every sort change with the active column, direction, and sorted rows.</td>
+        <td>Called on every sort change with the primary column, its direction, the sorted rows, and the full <code>sortColumns</code> config in priority order. An empty <code>sortColumns</code> array means the sort was cleared.</td>
+      </tr>
+      <tr>
+        <td><code>sortMulti</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Enable multi-column sorting. Ctrl/⌘-click a header to add it to the existing sort.</td>
       </tr>
       <tr>
         <td><code>sortServer</code></td>

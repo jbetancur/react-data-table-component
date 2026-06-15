@@ -7,7 +7,7 @@ import ColumnFilter from './ColumnFilter';
 import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
 import { SortOrder } from '../types';
-import type { TableColumn, SortAction, FilterState, Localization } from '../types';
+import type { TableColumn, SortAction, SortColumn, FilterState, Localization } from '../types';
 
 type FilterLocalization = NonNullable<Localization['filter']>;
 
@@ -19,8 +19,10 @@ type TableColProps<T> = {
 	pagination: boolean;
 	paginationServer: boolean;
 	persistSelectedOnSort: boolean;
-	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
+	sortColumns: SortColumn<T>[];
+	sortMulti: boolean;
+	defaultSortDirection: SortOrder;
 	sortServer: boolean;
 	selectableRowsVisibleOnly: boolean;
 	filterValue: FilterState;
@@ -44,8 +46,10 @@ function TableCol<T>({
 	column,
 	disabled,
 	draggingColumnId,
-	selectedColumn = {},
 	sortDirection,
+	sortColumns,
+	sortMulti,
+	defaultSortDirection,
 	sortIcon,
 	sortServer,
 	pagination,
@@ -81,34 +85,37 @@ function TableCol<T>({
 		return null;
 	}
 
-	const handleSortChange = () => {
+	const handleSortChange = (additive: boolean) => {
 		if (!column.sortable && !column.selector) {
 			return;
 		}
 
-		let direction = sortDirection;
-
-		if (equalizeId(selectedColumn.id, column.id)) {
-			direction = sortDirection === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC;
-		}
-
 		onSort({
 			type: 'SORT_CHANGE',
-			sortDirection: direction,
 			selectedColumn: column,
+			additive: sortMulti && additive,
+			defaultSortDirection,
 			clearSelectedOnSort:
 				(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
 		});
 	};
 
+	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		handleSortChange(event.ctrlKey || event.metaKey);
+	};
+
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		if (event.key === 'Enter') {
-			handleSortChange();
+			handleSortChange(event.ctrlKey || event.metaKey);
 		}
 	};
 
+	const sortIndex = sortColumns.findIndex(s => equalizeId(s.column.id, column.id));
+	const sortEntry = sortIndex === -1 ? undefined : sortColumns[sortIndex];
+	const columnSortDirection = sortEntry ? sortEntry.sortDirection : sortDirection;
+
 	const renderNativeSortIcon = (sortActive: boolean) => (
-		<NativeSortIcon sortActive={sortActive} sortDirection={sortDirection} />
+		<NativeSortIcon sortActive={sortActive} sortDirection={columnSortDirection} />
 	);
 
 	const renderCustomSortIcon = () => (
@@ -116,7 +123,7 @@ function TableCol<T>({
 			className={[
 				'rdt_sortIcon',
 				sortActive ? 'rdt_sortIconActive' : 'rdt_sortIconInactive',
-				sortDirection === SortOrder.ASC && 'rdt_sortIconAsc',
+				columnSortDirection === SortOrder.ASC && 'rdt_sortIconAsc',
 				'__rdt_custom_sort_icon__',
 			]
 				.filter(Boolean)
@@ -126,7 +133,14 @@ function TableCol<T>({
 		</span>
 	);
 
-	const sortActive = !!(column.sortable && equalizeId(selectedColumn.id, column.id));
+	const renderSortPriority = () =>
+		sortMulti && sortColumns.length > 1 && sortIndex !== -1 ? (
+			<span className="rdt_sortPriority" aria-hidden="true">
+				{sortIndex + 1}
+			</span>
+		) : null;
+
+	const sortActive = !!(column.sortable && sortIndex !== -1);
 	const disableSort = !column.sortable || disabled;
 	const tabIndex = disableSort ? -1 : 0;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
@@ -209,12 +223,12 @@ function TableCol<T>({
 					]
 						.filter(Boolean)
 						.join(' ')}
-					onClick={!disableSort ? handleSortChange : undefined}
+					onClick={!disableSort ? handleClick : undefined}
 					onKeyDown={!disableSort ? handleKeyDown : undefined}
 					aria-sort={
 						!disableSort
 							? sortActive
-								? sortDirection === SortOrder.ASC
+								? columnSortDirection === SortOrder.ASC
 									? 'ascending'
 									: 'descending'
 								: 'none'
@@ -223,6 +237,7 @@ function TableCol<T>({
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
+					{!disableSort && column.right && renderSortPriority()}
 
 					{typeof column.name === 'string' ? (
 						<div
@@ -237,6 +252,7 @@ function TableCol<T>({
 						column.name
 					)}
 
+					{!disableSort && !column.right && renderSortPriority()}
 					{!disableSort && customSortIconLeft && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconLeft && renderNativeSortIcon(sortActive)}
 				</div>
@@ -259,10 +275,21 @@ function TableCol<T>({
 
 function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
 	if (prevProps.column !== nextProps.column) return false;
-	const prevIsSelected = equalizeId(prevProps.selectedColumn.id, prevProps.column.id);
-	const nextIsSelected = equalizeId(nextProps.selectedColumn.id, nextProps.column.id);
-	if (prevIsSelected !== nextIsSelected) return false;
-	if (prevIsSelected && nextIsSelected && prevProps.sortDirection !== nextProps.sortDirection) return false;
+	if (prevProps.sortMulti !== nextProps.sortMulti) return false;
+	// Compare this column's slice of the sort config (position + direction). A change to
+	// either flips its active state, arrow direction, or multi-sort priority badge.
+	const prevIdx = prevProps.sortColumns.findIndex(s => equalizeId(s.column.id, prevProps.column.id));
+	const nextIdx = nextProps.sortColumns.findIndex(s => equalizeId(s.column.id, nextProps.column.id));
+	if (prevIdx !== nextIdx) return false;
+	if (prevIdx !== -1 && prevProps.sortColumns[prevIdx].sortDirection !== nextProps.sortColumns[nextIdx].sortDirection)
+		return false;
+	// The priority badge shows only when more than one column is sorted; a flip across that
+	// threshold changes whether the badge renders even when this column's index is unchanged.
+	if (prevProps.sortMulti && prevProps.sortColumns.length !== nextProps.sortColumns.length) {
+		const prevMulti = prevProps.sortColumns.length > 1;
+		const nextMulti = nextProps.sortColumns.length > 1;
+		if (prevMulti !== nextMulti) return false;
+	}
 	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
 		const prevIsDragging = equalizeId(prevProps.column.id, prevProps.draggingColumnId);
 		const nextIsDragging = equalizeId(nextProps.column.id, nextProps.draggingColumnId);

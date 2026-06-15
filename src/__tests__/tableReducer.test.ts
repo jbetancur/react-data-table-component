@@ -12,6 +12,7 @@ const baseState = (overrides: Partial<TableState<Row>> = {}): TableState<Row> =>
 	selectedRows: [],
 	selectedColumn: column,
 	sortDirection: SortOrder.ASC,
+	sortColumns: [{ column, sortDirection: SortOrder.ASC }],
 	currentPage: 1,
 	rowsPerPage: 10,
 	selectedRowsFlag: false,
@@ -297,6 +298,18 @@ describe('tableReducer:CLEAR_SORT', () => {
 
 		expect(next.selectedColumn).toBe(defaultColumn);
 		expect(next.sortDirection).toBe(SortOrder.ASC);
+		expect(next.sortColumns).toEqual([{ column: defaultColumn, sortDirection: SortOrder.ASC }]);
+	});
+
+	test('clears sortColumns to empty when the default column has no id or selector', () => {
+		const next = tableReducer(baseState(), {
+			type: 'CLEAR_SORT',
+			defaultSortColumn: {},
+			defaultSortDirection: SortOrder.ASC,
+		});
+
+		expect(next.sortColumns).toEqual([]);
+		expect(next.selectedColumn).toEqual({});
 	});
 
 	test('preserves all other state fields', () => {
@@ -314,25 +327,153 @@ describe('tableReducer:CLEAR_SORT', () => {
 });
 
 describe('tableReducer:SORT_CHANGE', () => {
-	test('updates sort column / direction and resets to page 1', () => {
-		const next = tableReducer(baseState({ currentPage: 4 }), {
+	const colB: TableColumn<Row> = { id: 2, name: 'idCol', selector: r => r.id };
+	const empty = (): TableState<Row> => baseState({ selectedColumn: {}, sortColumns: [] });
+
+	test('first click on an unsorted column sorts it ascending and resets to page 1', () => {
+		const next = tableReducer(empty(), {
 			type: 'SORT_CHANGE',
-			sortDirection: SortOrder.DESC,
 			selectedColumn: column,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
 			clearSelectedOnSort: false,
 		});
 
 		expect(next.selectedColumn).toBe(column);
-		expect(next.sortDirection).toBe(SortOrder.DESC);
+		expect(next.sortDirection).toBe(SortOrder.ASC);
+		expect(next.sortColumns).toEqual([{ column, sortDirection: SortOrder.ASC }]);
 		expect(next.currentPage).toBe(1);
 		expect(next.sortTriggeredPageReset).toBe(true);
+	});
+
+	test('second click on the sorted column flips to descending', () => {
+		const next = tableReducer(baseState(), {
+			type: 'SORT_CHANGE',
+			selectedColumn: column,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+
+		expect(next.sortDirection).toBe(SortOrder.DESC);
+		expect(next.sortColumns).toEqual([{ column, sortDirection: SortOrder.DESC }]);
+	});
+
+	test('third click on the sorted column removes the sort', () => {
+		const desc = baseState({ sortDirection: SortOrder.DESC, sortColumns: [{ column, sortDirection: SortOrder.DESC }] });
+		const next = tableReducer(desc, {
+			type: 'SORT_CHANGE',
+			selectedColumn: column,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+
+		expect(next.sortColumns).toEqual([]);
+		expect(next.selectedColumn).toEqual({});
+		expect(next.sortDirection).toBe(SortOrder.ASC);
+	});
+
+	test('plain click on a different column replaces the existing sort', () => {
+		const next = tableReducer(baseState(), {
+			type: 'SORT_CHANGE',
+			selectedColumn: colB,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+
+		expect(next.sortColumns).toEqual([{ column: colB, sortDirection: SortOrder.ASC }]);
+		expect(next.selectedColumn).toBe(colB);
+	});
+
+	test('respects defaultSortDirection=desc as the first direction', () => {
+		const next = tableReducer(empty(), {
+			type: 'SORT_CHANGE',
+			selectedColumn: column,
+			additive: false,
+			defaultSortDirection: SortOrder.DESC,
+			clearSelectedOnSort: false,
+		});
+
+		expect(next.sortDirection).toBe(SortOrder.DESC);
+		expect(next.sortColumns).toEqual([{ column, sortDirection: SortOrder.DESC }]);
+	});
+
+	test('additive click appends a new column, preserving priority order', () => {
+		const next = tableReducer(baseState(), {
+			type: 'SORT_CHANGE',
+			selectedColumn: colB,
+			additive: true,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+
+		expect(next.sortColumns).toEqual([
+			{ column, sortDirection: SortOrder.ASC },
+			{ column: colB, sortDirection: SortOrder.ASC },
+		]);
+		// Primary remains the first column.
+		expect(next.selectedColumn).toBe(column);
+	});
+
+	test('additive click cycles an already-sorted secondary column asc -> desc -> removed', () => {
+		const twoCols = baseState({
+			sortColumns: [
+				{ column, sortDirection: SortOrder.ASC },
+				{ column: colB, sortDirection: SortOrder.ASC },
+			],
+		});
+
+		const flipped = tableReducer(twoCols, {
+			type: 'SORT_CHANGE',
+			selectedColumn: colB,
+			additive: true,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+		expect(flipped.sortColumns).toEqual([
+			{ column, sortDirection: SortOrder.ASC },
+			{ column: colB, sortDirection: SortOrder.DESC },
+		]);
+
+		const removed = tableReducer(flipped, {
+			type: 'SORT_CHANGE',
+			selectedColumn: colB,
+			additive: true,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+		expect(removed.sortColumns).toEqual([{ column, sortDirection: SortOrder.ASC }]);
+	});
+
+	test('removing the primary in a multi-sort promotes the next column to primary', () => {
+		const twoCols = baseState({
+			sortColumns: [
+				{ column, sortDirection: SortOrder.DESC },
+				{ column: colB, sortDirection: SortOrder.ASC },
+			],
+		});
+
+		const next = tableReducer(twoCols, {
+			type: 'SORT_CHANGE',
+			selectedColumn: column,
+			additive: true,
+			defaultSortDirection: SortOrder.ASC,
+			clearSelectedOnSort: false,
+		});
+
+		expect(next.sortColumns).toEqual([{ column: colB, sortDirection: SortOrder.ASC }]);
+		expect(next.selectedColumn).toBe(colB);
+		expect(next.sortDirection).toBe(SortOrder.ASC);
 	});
 
 	test('clears the selection when clearSelectedOnSort=true', () => {
 		const next = tableReducer(baseState({ selectedRows: [r1], selectedCount: 1, allSelected: true }), {
 			type: 'SORT_CHANGE',
-			sortDirection: SortOrder.DESC,
 			selectedColumn: column,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
 			clearSelectedOnSort: true,
 		});
 
@@ -344,8 +485,9 @@ describe('tableReducer:SORT_CHANGE', () => {
 	test('keeps the selection when clearSelectedOnSort=false', () => {
 		const next = tableReducer(baseState({ selectedRows: [r1], selectedCount: 1, allSelected: true }), {
 			type: 'SORT_CHANGE',
-			sortDirection: SortOrder.DESC,
 			selectedColumn: column,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
 			clearSelectedOnSort: false,
 		});
 

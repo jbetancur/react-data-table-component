@@ -43,6 +43,12 @@ export enum SortOrder {
 	DESC = 'desc',
 }
 
+/** A single column participating in a (possibly multi-column) sort, in priority order. */
+export type SortColumn<T> = {
+	column: TableColumn<T>;
+	sortDirection: SortOrder;
+};
+
 export type Primitive = string | number | boolean;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
@@ -174,13 +180,24 @@ type ExpandableProps<T> = {
 type SortProps<T> = {
 	defaultSortAsc?: boolean;
 	defaultSortFieldId?: string | number | null | undefined;
-	onSort?: (selectedColumn: TableColumn<T>, sortDirection: SortOrder, sortedRows: T[]) => void;
+	onSort?: (
+		selectedColumn: TableColumn<T>,
+		sortDirection: SortOrder,
+		sortedRows: T[],
+		sortColumns: SortColumn<T>[],
+	) => void;
 	sortFunction?: SortFunction<T> | null;
 	/**
 	 * @deprecated Pass via the theme instead: `createTheme('t', { icons: { sort: <Icon /> } })`
 	 */
 	sortIcon?: React.ReactNode;
 	sortServer?: boolean;
+	/**
+	 * Enable multi-column sorting. Hold Ctrl (or ⌘ on macOS) while clicking a column
+	 * header to add it to the existing sort instead of replacing it. Sort priority follows
+	 * the order columns are added. Defaults to `false`.
+	 */
+	sortMulti?: boolean;
 };
 
 type BaseTableProps<T> = {
@@ -599,6 +616,9 @@ export type TableState<T> = {
 	selectedRows: T[];
 	selectedColumn: TableColumn<T>;
 	sortDirection: SortOrder;
+	/** Full sort configuration in priority order. The primary entry mirrors
+	 *  `selectedColumn`/`sortDirection`. Empty when nothing is sorted. */
+	sortColumns: SortColumn<T>[];
 	currentPage: number;
 	rowsPerPage: number;
 	selectedRowsFlag: boolean;
@@ -781,9 +801,12 @@ export interface MultiRowAction<T> {
 
 export interface SortAction<T> {
 	type: 'SORT_CHANGE';
-	sortDirection: SortOrder;
 	selectedColumn: TableColumn<T>;
 	clearSelectedOnSort: boolean;
+	/** When true, add/update this column in the existing sort instead of replacing it. */
+	additive: boolean;
+	/** Direction a freshly clicked column sorts in first (from `defaultSortAsc`). */
+	defaultSortDirection: SortOrder;
 }
 
 export interface PaginationPageAction {

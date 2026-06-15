@@ -76,9 +76,10 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `defaultSortFieldId` | `string \| number` | - | Column `id` to sort by on initial render. |
 | `defaultSortAsc` | `boolean` | `true` | Initial sort direction. |
 | `sortServer` | `boolean` | `false` | Disable client-side sorting; fire `onSort` and let the server sort. |
+| `sortMulti` | `boolean` | `false` | Enable multi-column sorting via Ctrl/⌘-click. Clicking still cycles asc → desc → off per column. |
 | `sortFunction` | `SortFunction<T> \| null` | - | Global custom sort function applied to all sortable columns. |
 | `sortIcon` | `ReactNode` | built-in chevron | Custom sort direction indicator. |
-| `onSort` | `(column, direction, sortedRows) => void` | - | Called whenever the sort column or direction changes. |
+| `onSort` | `(column, direction, sortedRows, sortColumns) => void` | - | Called whenever the sort changes. `sortColumns` is the full sort config in priority order; an empty array means the sort was cleared. |
 | `ref.clearSort()` | `DataTableHandle` | - | Imperatively reset sort to the default state. See [DataTableHandle](#datatablehandle-ref). |
 
 ### Pagination

@@ -1,5 +1,6 @@
-import { insertItem, isRowSelected, removeItem } from './util';
-import type { Action, TableState } from './types';
+import { insertItem, isRowSelected, removeItem, equalizeId } from './util';
+import { SortOrder } from './types';
+import type { Action, TableState, SortColumn } from './types';
 
 export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableState<T> {
 	const toggleOnSelectedRowsChange = !state.toggleOnSelectedRowsChange;
@@ -141,21 +142,62 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 
 		case 'CLEAR_SORT': {
 			const { defaultSortColumn, defaultSortDirection } = action;
+			const hasDefault = defaultSortColumn.id != null || !!defaultSortColumn.selector;
 
 			return {
 				...state,
 				selectedColumn: defaultSortColumn,
 				sortDirection: defaultSortDirection,
+				sortColumns: hasDefault ? [{ column: defaultSortColumn, sortDirection: defaultSortDirection }] : [],
 			};
 		}
 
 		case 'SORT_CHANGE': {
-			const { sortDirection, selectedColumn, clearSelectedOnSort } = action;
+			const { selectedColumn, clearSelectedOnSort, additive, defaultSortDirection } = action;
+			const firstDirection = defaultSortDirection;
+			const secondDirection = firstDirection === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC;
+
+			const existingIndex = state.sortColumns.findIndex(s => equalizeId(s.column.id, selectedColumn.id));
+
+			let nextSortColumns: SortColumn<T>[];
+
+			if (additive) {
+				// Ctrl/⌘+click: add or cycle the clicked column within the existing sort.
+				if (existingIndex === -1) {
+					nextSortColumns = [...state.sortColumns, { column: selectedColumn, sortDirection: firstDirection }];
+				} else {
+					const current = state.sortColumns[existingIndex];
+					if (current.sortDirection === firstDirection) {
+						nextSortColumns = state.sortColumns.map((s, i) =>
+							i === existingIndex ? { column: selectedColumn, sortDirection: secondDirection } : s,
+						);
+					} else {
+						// Second click on a column already in the second direction removes it from the sort.
+						nextSortColumns = state.sortColumns.filter((_, i) => i !== existingIndex);
+					}
+				}
+			} else {
+				// Plain click: cycle the clicked column through asc → desc → none, replacing any other sort.
+				const isOnlyColumn = state.sortColumns.length === 1 && existingIndex === 0;
+
+				if (isOnlyColumn) {
+					const current = state.sortColumns[0];
+					nextSortColumns =
+						current.sortDirection === firstDirection
+							? [{ column: selectedColumn, sortDirection: secondDirection }]
+							: [];
+				} else {
+					nextSortColumns = [{ column: selectedColumn, sortDirection: firstDirection }];
+				}
+			}
+
+			const primary = nextSortColumns[0];
 
 			return {
 				...state,
-				selectedColumn,
-				sortDirection,
+				selectedColumn: primary ? primary.column : {},
+				sortDirection: primary ? primary.sortDirection : defaultSortDirection,
+				sortColumns: nextSortColumns,
 				currentPage: 1,
 				sortTriggeredPageReset: true,
 				// when using server-side paging reset selected row counts when sorting
