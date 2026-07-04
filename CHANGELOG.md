@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.4.1
+
+### Bug fixes
+
+- Fixed a crash (`Cannot read properties of null (reading 'columnId')`) that tore down the table at the end of nearly every column resize drag under React 18. ([#1326](https://github.com/jbetancur/react-data-table-component/pull/1326))
+
+---
+
 ## 8.4.0
 
 ### New features
