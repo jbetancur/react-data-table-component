@@ -1,0 +1,85 @@
+name: Bug report
+description: Create a report to help us improve
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
+          required: true
+        - label: I searched [existing issues](https://github.com/jbetancur/react-data-table-component/issues?q=is%3Aissue) and this is not a duplicate
+          required: true
+        - label: I read the [documentation](https://reactdatatable.com)
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happens.
+    validations:
+      required: true
+
+  - type: input
+    id: minimal-repro
+    attributes:
+      label: Minimal reproduction
+      description: A public GitHub repo, StackBlitz, or a self-contained code snippet that reproduces the issue. **Required — issues without one may be closed.**
+      placeholder: https://stackblitz.com/edit/...
+    validations:
+      required: true
+
+  - type: input
+    id: rdt-version
+    attributes:
+      label: react-data-table-component version
+      placeholder: e.g. 8.4.1
+    validations:
+      required: true
+
+  - type: input
+    id: react-version
+    attributes:
+      label: React version
+      placeholder: e.g. 18.3.1
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser & OS
+      placeholder: e.g. Chrome 126 on macOS 15
+    validations:
+      required: true

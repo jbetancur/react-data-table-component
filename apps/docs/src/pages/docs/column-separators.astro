@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
+import DocsTable from '../../components/DocsTable.astro';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 ---
 
@@ -39,16 +40,14 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
 
   <p>Both props accept the same set of values:</p>
 
-  <table>
-    <thead>
-      <tr><th>Value</th><th>Effect</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>false</code></td><td>No separators</td></tr>
-      <tr><td><code>true</code> / <code>"subtle"</code></td><td>60%-height inset line, centred vertically</td></tr>
-      <tr><td><code>"full"</code></td><td>Full-height line using the theme's divider colour</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Value', 'Effect']}
+    rows={[
+      ['<code>false</code>', 'No separators'],
+      ['<code>true</code> / <code>"subtle"</code>', '60%-height inset line, centred vertically'],
+      ['<code>"full"</code>', "Full-height line using the theme's divider colour"],
+    ]}
+  />
 
   <h2>Defaults</h2>
 

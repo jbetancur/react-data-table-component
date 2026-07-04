@@ -68,7 +68,7 @@ export default function HeadlessDemo() {
 		onChangeRowsPerPage: () => {},
 	});
 
-	const { selectedColumn, sortDirection, currentPage, rowsPerPage } = tableState;
+	const { selectedColumn, sortDirection, sortColumns, currentPage, rowsPerPage } = tableState;
 
 	// 3. Sorted + paginated rows
 	const { sortedData, tableRows } = useTableData<Employee>({
@@ -76,6 +76,7 @@ export default function HeadlessDemo() {
 		columns: tableColumns,
 		selectedColumn,
 		sortDirection,
+		sortColumns,
 		currentPage,
 		rowsPerPage,
 		pagination: true,

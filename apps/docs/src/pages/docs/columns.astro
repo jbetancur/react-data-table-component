@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 import ColumnsDemo from '../../components/demos/ColumnsDemo.tsx';
 ---
 
@@ -111,39 +112,37 @@ const columns: TableColumn<Row>[] = [
 
   <h2>Column properties</h2>
 
-  <table>
-    <thead>
-      <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>name</code></td><td><code>ReactNode</code></td><td>Header label</td></tr>
-      <tr><td><code>selector</code></td><td><code>(row: T) =&gt; Primitive</code></td><td>Data accessor used for sorting and default display</td></tr>
-      <tr><td><code>cell</code></td><td><code>(row, index, column, id) =&gt; ReactNode</code></td><td>Custom cell renderer. Overrides <code>selector</code> display</td></tr>
-      <tr><td><code>format</code></td><td><code>(row, index) =&gt; ReactNode</code></td><td>Format the selector value without replacing the sort key</td></tr>
-      <tr><td><code>sortable</code></td><td><code>boolean</code></td><td>Enable sorting on this column</td></tr>
-      <tr><td><code>sortFunction</code></td><td><code>(a, b) =&gt; number</code></td><td>Custom comparator for this column</td></tr>
-      <tr><td><code>sortField</code></td><td><code>string</code></td><td>Key to pass to <code>onSort</code> for server-side sorting</td></tr>
-      <tr><td><code>filterable</code></td><td><code>boolean</code></td><td>Show a filter input in the column header</td></tr>
-      <tr><td><code>filterFunction</code></td><td><code>(row, value) =&gt; boolean</code></td><td>Custom filter predicate (defaults to case-insensitive substring)</td></tr>
-      <tr><td><code>id</code></td><td><code>string | number</code></td><td>Stable identity used by <code>defaultSortFieldId</code> and column groups</td></tr>
-      <tr><td><code>width</code></td><td><code>string</code></td><td>Fixed width, e.g. <code>"120px"</code></td></tr>
-      <tr><td><code>minWidth</code></td><td><code>string</code></td><td>Minimum width</td></tr>
-      <tr><td><code>maxWidth</code></td><td><code>string</code></td><td>Maximum width</td></tr>
-      <tr><td><code>grow</code></td><td><code>number</code></td><td>Flex-grow factor (default 1)</td></tr>
-      <tr><td><code>right</code></td><td><code>boolean</code></td><td>Right-align cell content</td></tr>
-      <tr><td><code>center</code></td><td><code>boolean</code></td><td>Center cell content</td></tr>
-      <tr><td><code>wrap</code></td><td><code>boolean</code></td><td>Allow text to wrap</td></tr>
-      <tr><td><code>compact</code></td><td><code>boolean</code></td><td>Remove cell padding</td></tr>
-      <tr><td><code>button</code></td><td><code>boolean</code></td><td>Center content and suppress row click propagation</td></tr>
-      <tr><td><code>allowOverflow</code></td><td><code>boolean</code></td><td>Allow content to overflow the cell (for dropdowns/popovers)</td></tr>
-      <tr><td><code>ignoreRowClick</code></td><td><code>boolean</code></td><td>Prevent cell clicks from triggering <code>onRowClicked</code></td></tr>
-      <tr><td><code>hide</code></td><td><code>number | "sm" | "md" | "lg"</code></td><td>Hide the column below this breakpoint</td></tr>
-      <tr><td><code>omit</code></td><td><code>boolean</code></td><td>Exclude column entirely (useful for toggling visibility)</td></tr>
-      <tr><td><code>reorder</code></td><td><code>boolean</code></td><td>Allow drag-to-reorder for this column</td></tr>
-      <tr><td><code>style</code></td><td><code>CSSProperties</code></td><td>Inline styles applied to every cell in this column</td></tr>
-      <tr><td><code>conditionalCellStyles</code></td><td><code>ConditionalStyles&lt;T&gt;[]</code></td><td>Per-cell conditional styles</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Description']}
+    rows={[
+      ['<code>name</code>', '<code>ReactNode</code>', 'Header label'],
+      ['<code>selector</code>', '<code>(row: T) =&gt; Primitive</code>', 'Data accessor used for sorting and default display'],
+      ['<code>cell</code>', '<code>(row, index, column, id) =&gt; ReactNode</code>', 'Custom cell renderer. Overrides <code>selector</code> display'],
+      ['<code>format</code>', '<code>(row, index) =&gt; ReactNode</code>', 'Format the selector value without replacing the sort key'],
+      ['<code>sortable</code>', '<code>boolean</code>', 'Enable sorting on this column'],
+      ['<code>sortFunction</code>', '<code>(a, b) =&gt; number</code>', 'Custom comparator for this column'],
+      ['<code>sortField</code>', '<code>string</code>', 'Key to pass to <code>onSort</code> for server-side sorting'],
+      ['<code>filterable</code>', '<code>boolean</code>', 'Show a filter input in the column header'],
+      ['<code>filterFunction</code>', '<code>(row, value) =&gt; boolean</code>', 'Custom filter predicate (defaults to case-insensitive substring)'],
+      ['<code>id</code>', '<code>string | number</code>', 'Stable identity used by <code>defaultSortFieldId</code> and column groups'],
+      ['<code>width</code>', '<code>string</code>', 'Fixed width, e.g. <code>"120px"</code>'],
+      ['<code>minWidth</code>', '<code>string</code>', 'Minimum width'],
+      ['<code>maxWidth</code>', '<code>string</code>', 'Maximum width'],
+      ['<code>grow</code>', '<code>number</code>', 'Flex-grow factor (default 1)'],
+      ['<code>right</code>', '<code>boolean</code>', 'Right-align cell content'],
+      ['<code>center</code>', '<code>boolean</code>', 'Center cell content'],
+      ['<code>wrap</code>', '<code>boolean</code>', 'Allow text to wrap'],
+      ['<code>compact</code>', '<code>boolean</code>', 'Remove this column\'s cell padding. Independent of the table-level <code>dense</code> prop, which shrinks row height instead.'],
+      ['<code>button</code>', '<code>boolean</code>', 'Center content and suppress row click propagation'],
+      ['<code>allowOverflow</code>', '<code>boolean</code>', 'Allow content to overflow the cell (for dropdowns/popovers)'],
+      ['<code>ignoreRowClick</code>', '<code>boolean</code>', 'Prevent cell clicks from triggering <code>onRowClicked</code>'],
+      ['<code>hide</code>', '<code>number | "sm" | "md" | "lg"</code>', 'Hide the column below this breakpoint'],
+      ['<code>omit</code>', '<code>boolean</code>', 'Exclude column entirely (useful for toggling visibility)'],
+      ['<code>reorder</code>', '<code>boolean</code>', 'Allow drag-to-reorder for this column'],
+      ['<code>style</code>', '<code>CSSProperties</code>', 'Inline styles applied to every cell in this column'],
+      ['<code>conditionalCellStyles</code>', '<code>ConditionalStyles&lt;T&gt;[]</code>', 'Per-cell conditional styles'],
+    ]}
+  />
 
   <h2>Custom cell renderer</h2>
 

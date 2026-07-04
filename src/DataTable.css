@@ -324,7 +324,6 @@
 	cursor: pointer;
 }
 
-
 .rdt_columnSortableEnabled:not(.rdt_columnSortableActive):hover,
 .rdt_columnSortableEnabled:not(.rdt_columnSortableActive):focus {
 	opacity: 0.7;
@@ -943,6 +942,8 @@
 .rdt_expanderButton {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	margin: auto;
 	user-select: none;
 	white-space: nowrap;
 	border: none;
@@ -951,9 +952,7 @@
 	fill: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
 	border-radius: var(--rdt-border-radius, 4px);
 	transition: background-color 0.15s;
-	height: 100%;
-	width: 100%;
-	padding: 0;
+	padding: 4px;
 }
 
 .rdt_expanderButton svg {

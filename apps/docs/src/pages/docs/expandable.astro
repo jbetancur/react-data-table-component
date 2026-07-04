@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ExpandableDemo from '../../components/demos/ExpandableDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Expandable rows | react-data-table-component">
@@ -233,26 +234,24 @@ export default function App() {
 />`} />
 
   <h2>All expandable props</h2>
-  <table>
-    <thead>
-      <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>expandableRows</code></td><td><code>boolean</code></td><td>Enable expandable rows</td></tr>
-      <tr><td><code>expandableRowsComponent</code></td><td><code>ComponentType&lt;&#123; data: T &#125;&gt;</code></td><td>Component rendered inside each expanded row</td></tr>
-      <tr><td><code>expandableRowsComponentProps</code></td><td><code>Record&lt;string, unknown&gt;</code></td><td>Extra props injected into every expander instance</td></tr>
-      <tr><td><code>expandableRowExpanded</code></td><td><code>(row: T) =&gt; boolean</code></td><td>Pre-expand rows matching this predicate</td></tr>
-      <tr><td><code>expandableRowDisabled</code></td><td><code>(row: T) =&gt; boolean</code></td><td>Prevent rows matching this predicate from being expanded</td></tr>
-      <tr><td><code>expandOnRowClicked</code></td><td><code>boolean</code></td><td>Expand/collapse on row click</td></tr>
-      <tr><td><code>expandOnRowDoubleClicked</code></td><td><code>boolean</code></td><td>Expand/collapse on row double-click</td></tr>
-      <tr><td><code>expandableRowsHideExpander</code></td><td><code>boolean</code></td><td>Hide the expander icon column</td></tr>
-      <tr><td><code>expandableIcon</code></td><td><code>&#123; collapsed: ReactNode; expanded: ReactNode &#125;</code></td><td>Custom expand/collapse icons</td></tr>
-      <tr><td><code>expandableInheritConditionalStyles</code></td><td><code>boolean</code></td><td>Apply the parent row's <code>conditionalRowStyles</code> to the expander row</td></tr>
-      <tr><td><code>onRowExpandToggled</code></td><td><code>(expanded: boolean, row: T) =&gt; void</code></td><td>Fired when a row is expanded or collapsed</td></tr>
-      <tr><td><code>animateRows</code></td><td><code>boolean</code></td><td>Animate expand/collapse (respects <code>prefers-reduced-motion</code>)</td></tr>
-      <tr><td><code>localization</code></td><td><code>Localization</code></td><td>Localizable aria-labels for the expand/collapse button — see Localization below.</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Description']}
+    rows={[
+      ['<code>expandableRows</code>', '<code>boolean</code>', 'Enable expandable rows'],
+      ['<code>expandableRowsComponent</code>', '<code>ComponentType&lt;&#123; data: T &#125;&gt;</code>', 'Component rendered inside each expanded row'],
+      ['<code>expandableRowsComponentProps</code>', '<code>Record&lt;string, unknown&gt;</code>', 'Extra props injected into every expander instance'],
+      ['<code>expandableRowExpanded</code>', '<code>(row: T) =&gt; boolean</code>', 'Pre-expand rows matching this predicate'],
+      ['<code>expandableRowDisabled</code>', '<code>(row: T) =&gt; boolean</code>', 'Prevent rows matching this predicate from being expanded'],
+      ['<code>expandOnRowClicked</code>', '<code>boolean</code>', 'Expand/collapse on row click'],
+      ['<code>expandOnRowDoubleClicked</code>', '<code>boolean</code>', 'Expand/collapse on row double-click'],
+      ['<code>expandableRowsHideExpander</code>', '<code>boolean</code>', 'Hide the expander icon column'],
+      ['<code>expandableIcon</code>', '<code>&#123; collapsed: ReactNode; expanded: ReactNode &#125;</code>', 'Custom expand/collapse icons'],
+      ['<code>expandableInheritConditionalStyles</code>', '<code>boolean</code>', "Apply the parent row's <code>conditionalRowStyles</code> to the expander row"],
+      ['<code>onRowExpandToggled</code>', '<code>(expanded: boolean, row: T) =&gt; void</code>', 'Fired when a row is expanded or collapsed'],
+      ['<code>animateRows</code>', '<code>boolean</code>', 'Animate expand/collapse (respects <code>prefers-reduced-motion</code>)'],
+      ['<code>localization</code>', '<code>Localization</code>', 'Localizable aria-labels for the expand/collapse button — see Localization below.'],
+    ]}
+  />
 
   <h2>Localization</h2>
   <p>

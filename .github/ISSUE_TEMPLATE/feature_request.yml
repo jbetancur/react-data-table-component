@@ -1,0 +1,52 @@
+name: Feature request
+description: Suggest an idea for this project
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I agree to the [Code of Conduct](https://github.com/jbetancur/react-data-table-component/blob/master/CODE-OF-CONDUCT.md)
+          required: true
+        - label: I searched [existing issues](https://github.com/jbetancur/react-data-table-component/issues?q=is%3Aissue) and this has not been requested before
+          required: true
+        - label: I read the [documentation](https://reactdatatable.com) and this feature does not already exist
+          required: true
+        - label: I considered whether this could be solved with a documentation example or recipe instead
+          required: true
+        - label: I considered the maintenance burden and value for all library users
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your feature request related to a problem?
+      description: A clear and concise description of what the problem is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like
+      description: A clear and concise description of what you want to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative solutions or workarounds you've considered.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Screenshots, examples, or any other context about the feature request.
+    validations:
+      required: false

@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
 ---
 
@@ -171,37 +172,20 @@ const columns: TableColumn<Row>[] = [
 
   <h2>Prop reference</h2>
 
-  <table>
-    <thead>
-      <tr><th>Column prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>pinned</code></td>
-        <td><code>'left' | 'right'</code></td>
-        <td>-</td>
-        <td>Pin the column to the left or right edge. Requires an explicit <code>id</code>.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Column prop', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>pinned</code>', "<code>'left' | 'right'</code>", '-', 'Pin the column to the left or right edge. Requires an explicit <code>id</code>.'],
+    ]}
+  />
 
   <h2>CSS custom properties</h2>
 
-  <table>
-    <thead>
-      <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>--rdt-system-col-width</code></td>
-        <td><code>48px</code></td>
-        <td>Width of the checkbox and expander columns. Pinning offsets read this so themes that customize the system column width stay aligned.</td>
-      </tr>
-      <tr>
-        <td><code>--rdt-color-pin-shadow</code></td>
-        <td><code>rgba(0, 0, 0, 0.12)</code></td>
-        <td>Color of the directional shadow on the inner edge of each pin band.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Variable', 'Default', 'Description']}
+    rows={[
+      ['<code>--rdt-system-col-width</code>', '<code>48px</code>', 'Width of the checkbox and expander columns. Pinning offsets read this so themes that customize the system column width stay aligned.'],
+      ['<code>--rdt-color-pin-shadow</code>', '<code>rgba(0, 0, 0, 0.12)</code>', 'Color of the directional shadow on the inner edge of each pin band.'],
+    ]}
+  />
 </DocsLayout>

@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Getting started | react-data-table-component" description="Install react-data-table-component and build a sortable, paginated data table in React with 10 lines of code.">
@@ -41,25 +42,19 @@ export default function App() {
 
   <h2>Common props at a glance</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prop</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><code>columns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>Column definitions (required)</td></tr>
-      <tr><td><code>data</code></td><td><code>T[]</code></td><td>Row data (required)</td></tr>
-      <tr><td><code>pagination</code></td><td><code>boolean</code></td><td>Enable built-in pagination</td></tr>
-      <tr><td><code>selectableRows</code></td><td><code>boolean</code></td><td>Enable row checkboxes</td></tr>
-      <tr><td><code>expandableRows</code></td><td><code>boolean</code></td><td>Enable expandable row panels</td></tr>
-      <tr><td><code>theme</code></td><td><code>string</code></td><td>Named theme (e.g. <code>"material"</code>, <code>"catppuccin"</code>, <code>"crisp"</code>)</td></tr>
-      <tr><td><code>animateRows</code></td><td><code>boolean</code></td><td>Staggered row entrance + sort animation</td></tr>
-      <tr><td><code>columnSeparator</code></td><td><code>boolean | "full"</code></td><td>Body column separators (headers always shown)</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Description']}
+    rows={[
+      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'Column definitions (required)'],
+      ['<code>data</code>', '<code>T[]</code>', 'Row data (required)'],
+      ['<code>pagination</code>', '<code>boolean</code>', 'Enable built-in pagination'],
+      ['<code>selectableRows</code>', '<code>boolean</code>', 'Enable row checkboxes'],
+      ['<code>expandableRows</code>', '<code>boolean</code>', 'Enable expandable row panels'],
+      ['<code>theme</code>', '<code>string</code>', 'Named theme (e.g. <code>"material"</code>, <code>"catppuccin"</code>, <code>"crisp"</code>)'],
+      ['<code>animateRows</code>', '<code>boolean</code>', 'Staggered row entrance + sort animation'],
+      ['<code>columnSeparator</code>', '<code>boolean | "full"</code>', 'Body column separators (headers always shown)'],
+    ]}
+  />
 
   <p>See the full <a href="/docs/api">API reference</a> for all props.</p>
 

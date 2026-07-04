@@ -62,6 +62,7 @@ export default function ColumnsDemo() {
 	const [showDept, setShowDept] = useState(true);
 	const [showSalary, setShowSalary] = useState(true);
 	const [filterable, setFilterable] = useState(false);
+	const [dense, setDense] = useState(false);
 
 	const columns: TableColumn<Employee>[] = [
 		{
@@ -126,8 +127,12 @@ export default function ColumnsDemo() {
 				<button className={`${btnBase} ${filterable ? btnOn : btnOff}`} onClick={() => setFilterable(p => !p)}>
 					filterable
 				</button>
+				<span className="text-gray-300 mx-1">|</span>
+				<button className={`${btnBase} ${dense ? btnOn : btnOff}`} onClick={() => setDense(p => !p)}>
+					dense
+				</button>
 			</div>
-			<DataTable columns={columns} data={data} defaultSortFieldId="name" highlightOnHover dense />
+			<DataTable columns={columns} data={data} defaultSortFieldId="name" highlightOnHover dense={dense} />
 		</div>
 	);
 }

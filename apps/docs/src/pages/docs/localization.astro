@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Localization | react-data-table-component" description="Translate pagination labels, filter placeholders, and expandable row text in react-data-table-component using built-in locale strings or custom overrides.">
@@ -25,30 +26,25 @@ import { fr } from 'react-data-table-component/locales';
 
   <h2>Built-in locales</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Export</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><code>en</code></td><td>English (default)</td></tr>
-      <tr><td><code>fr</code></td><td>French</td></tr>
-      <tr><td><code>es</code></td><td>Spanish</td></tr>
-      <tr><td><code>de</code></td><td>German</td></tr>
-      <tr><td><code>ptBR</code></td><td>Brazilian Portuguese</td></tr>
-      <tr><td><code>ar</code></td><td>Arabic (Modern Standard)</td></tr>
-      <tr><td><code>he</code></td><td>Hebrew</td></tr>
-      <tr><td><code>arEG</code></td><td>Arabic (Egyptian)</td></tr>
-      <tr><td><code>arLV</code></td><td>Arabic (Levantine)</td></tr>
-      <tr><td><code>zhCN</code></td><td>Chinese (Simplified)</td></tr>
-      <tr><td><code>zhTW</code></td><td>Chinese (Traditional)</td></tr>
-      <tr><td><code>ja</code></td><td>Japanese</td></tr>
-      <tr><td><code>ko</code></td><td>Korean</td></tr>
-      <tr><td><code>uk</code></td><td>Ukrainian</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Export', 'Language']}
+    rows={[
+      ['<code>en</code>', 'English (default)'],
+      ['<code>fr</code>', 'French'],
+      ['<code>es</code>', 'Spanish'],
+      ['<code>de</code>', 'German'],
+      ['<code>ptBR</code>', 'Brazilian Portuguese'],
+      ['<code>ar</code>', 'Arabic (Modern Standard)'],
+      ['<code>he</code>', 'Hebrew'],
+      ['<code>arEG</code>', 'Arabic (Egyptian)'],
+      ['<code>arLV</code>', 'Arabic (Levantine)'],
+      ['<code>zhCN</code>', 'Chinese (Simplified)'],
+      ['<code>zhTW</code>', 'Chinese (Traditional)'],
+      ['<code>ja</code>', 'Japanese'],
+      ['<code>ko</code>', 'Korean'],
+      ['<code>uk</code>', 'Ukrainian'],
+    ]}
+  />
 
   <p>
     Each locale is a standalone module. Only the locale you import enters your bundle — the

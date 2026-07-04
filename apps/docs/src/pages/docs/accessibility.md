@@ -52,7 +52,7 @@ Sortable column headers expose `aria-sort` so screen readers announce the curren
 | Sorted Z → A / high → low | `"descending"` |
 | Column not sortable | attribute omitted |
 
-**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** to toggle the sort direction. Non-sortable headers are removed from the tab order.
+**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** to toggle the sort direction. Non-sortable headers are removed from the tab order. Keyboard focus is indicated with a visible `:focus-visible` outline in the theme's primary color.
 
 ---
 

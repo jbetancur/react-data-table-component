@@ -8,6 +8,7 @@ import ColumnExpander from './TableColExpander';
 import RightPinSpacer from './RightPinSpacer';
 import { CellBase } from './Cell';
 import { buildGridTemplateColumns, buildGroupHeaderCells, type GroupDragProps } from './dataTableHeadHelpers';
+import { flipElement, getFirstRightPinnedId } from '../util';
 import type { TableColumn, ColumnGroup } from '../types';
 import { emptyFilterState } from '../hooks/useColumnFilter';
 import { useHeadContext } from '../context/HeadContext';
@@ -95,18 +96,7 @@ function DataTableHead<T>({
 			savedPositions.current.set(key, newLeft);
 			if (!animate || reducedMotion || prevLeft == null || Math.abs(prevLeft - newLeft) < 1) return;
 
-			const delta = prevLeft - newLeft;
-			el.style.transform = `translateX(${delta}px)`;
-			el.style.transition = 'none';
-			el.getBoundingClientRect(); // force reflow
-			el.style.transition = 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)';
-			el.style.transform = '';
-			const onEnd = () => {
-				el.style.transform = '';
-				el.style.transition = '';
-				el.removeEventListener('transitionend', onEnd);
-			};
-			el.addEventListener('transitionend', onEnd);
+			flipElement(el, prevLeft - newLeft, 'X', 0.2);
 		};
 
 		container.querySelectorAll<HTMLElement>('[data-column-id]').forEach(el => {
@@ -175,13 +165,7 @@ function DataTableHead<T>({
 		draggingColumnId,
 	});
 
-	// First right-pinned column id — spacer is injected before it in flex layout
-	const firstRightPinnedId = React.useMemo(() => {
-		for (const col of columns) {
-			if (!col.omit && col.pinned === 'right') return col.id;
-		}
-		return null;
-	}, [columns]);
+	const firstRightPinnedId = React.useMemo(() => getFirstRightPinnedId(columns), [columns]);
 
 	// ── CSS Grid layout (when columnGroups are present) ──────────────────────
 	if (hasGroups) {

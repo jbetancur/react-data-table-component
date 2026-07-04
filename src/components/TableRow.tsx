@@ -7,9 +7,13 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import RightPinSpacer from './RightPinSpacer';
-import { prop, equalizeId, getConditionalStyle, isOdd } from '../util';
+import { prop, equalizeId, getConditionalStyle, getFirstRightPinnedId, isEven } from '../util';
 import { STOP_PROP_TAG } from '../constants';
 import type { TableRow } from '../types';
+
+function isRowTarget(e: React.MouseEvent<HTMLDivElement>): boolean {
+	return (e.target as HTMLDivElement).getAttribute('data-tag') === STOP_PROP_TAG;
+}
 
 interface TableRowProps<T> {
 	'data-row-id': string | number;
@@ -135,8 +139,7 @@ function Row<T>({
 
 	const handleRowClick = React.useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
-			const target = e.target as HTMLDivElement;
-			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
+			if (isRowTarget(e)) {
 				onRowClicked(row, e);
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
 					handleExpanded();
@@ -160,8 +163,7 @@ function Row<T>({
 
 	const handleRowDoubleClick = React.useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
-			const target = e.target as HTMLDivElement;
-			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
+			if (isRowTarget(e)) {
 				onRowDoubleClicked(row, e);
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowDoubleClicked) {
 					handleExpanded();
@@ -173,8 +175,7 @@ function Row<T>({
 
 	const handleRowAuxClick = React.useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
-			const target = e.target as HTMLDivElement;
-			if (target.getAttribute('data-tag') === STOP_PROP_TAG) {
+			if (isRowTarget(e)) {
 				onRowMiddleClicked(row, e);
 			}
 		},
@@ -193,21 +194,14 @@ function Row<T>({
 
 	const rowKeyField = prop(row as TableRow, keyField) ?? rowIndex;
 
-	// ID of the first (leftmost) right-pinned column — a spacer is injected just
-	// before it so the non-pinned columns fill the available space between the pins.
-	const firstRightPinnedId = React.useMemo(() => {
-		for (const col of columns) {
-			if (!col.omit && col.pinned === 'right') return col.id;
-		}
-		return null;
-	}, [columns]);
+	const firstRightPinnedId = React.useMemo(() => getFirstRightPinnedId(columns), [columns]);
 	const { conditionalStyle, classNames } = React.useMemo(
 		() => getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']),
 		[row, conditionalRowStyles],
 	);
 	const highlightSelected = selectableRowsHighlight && selected;
 	const inheritStyles = expandableInheritConditionalStyles ? conditionalStyle : {};
-	const isStriped = striped && isOdd(rowIndex);
+	const isStriped = striped && isEven(rowIndex);
 
 	const shouldAnimate = animateRows && isNew;
 

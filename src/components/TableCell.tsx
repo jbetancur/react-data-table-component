@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useStyles } from '../context/StylesContext';
 import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
-import { getProperty, getConditionalStyle, getPinnedCellMeta } from '../util';
+import { getProperty, getConditionalStyle, getPinnedCellMeta, getCellWidthProps } from '../util';
 import type { TableColumn, CellEditor } from '../types';
 
 interface CellProps<T> {
@@ -84,9 +84,7 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 	};
 
 	// ── Column pinning ─────────────────────────────────────────────────────────
-	const pinMeta = getPinnedCellMeta(column, pinnedOffsets);
-	const pinnedStyle: React.CSSProperties = pinMeta.style.position === 'sticky' ? { ...pinMeta.style, zIndex: 1 } : {};
-	const pinnedClass = pinMeta.className;
+	const pinMeta = getPinnedCellMeta(column, pinnedOffsets, 1);
 
 	const editableClass = editor && !editing ? 'rdt_cellEditable' : '';
 	const editingClass = editing ? 'rdt_cellEditing' : '';
@@ -104,23 +102,20 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 			id={id}
 			data-column-id={column.id}
 			role="cell"
-			className={[classNames, pinnedClass, editableClass, editingClass, errorClass].filter(Boolean).join(' ')}
+			className={[classNames, pinMeta.className, editableClass, editingClass, errorClass].filter(Boolean).join(' ')}
 			data-tag={dataTag}
 			button={column.button}
 			center={column.center}
 			compact={column.compact}
-			grow={resizedWidth != null ? 0 : column.grow}
 			hide={column.hide}
-			maxWidth={resizedWidth != null ? `${resizedWidth}px` : column.maxWidth}
-			minWidth={resizedWidth != null ? `${resizedWidth}px` : column.minWidth}
 			right={column.right}
-			width={resizedWidth != null ? `${resizedWidth}px` : column.width}
+			{...getCellWidthProps(column, resizedWidth)}
 			cellStyle={customStyles.cells?.style as React.CSSProperties}
 			style={{
 				...(column.style as React.CSSProperties),
 				...(isDragging ? (customStyles.cells?.draggingStyle as React.CSSProperties) : undefined),
 				...(conditionalStyle as React.CSSProperties),
-				...pinnedStyle,
+				...pinMeta.style,
 			}}
 			draggable={column.reorder || undefined}
 			onDragStart={column.reorder ? onDragStart : undefined}
@@ -130,44 +125,16 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 			onDragLeave={column.reorder ? onDragLeave : undefined}
 			onClick={editor && !editing && editor.type !== 'checkbox' ? startEdit : undefined}
 		>
-			{editing && editor?.type === 'text' && (
+			{editing && (editor?.type === 'text' || editor?.type === 'number' || editor?.type === 'date') && (
 				<input
 					ref={inputRef as React.RefObject<HTMLInputElement>}
+					type={editor.type === 'text' ? undefined : editor.type}
 					className="rdt_editInput"
 					value={editValue}
-					placeholder={editor.placeholder}
-					aria-invalid={!!editError}
-					onChange={e => setEditValue(e.target.value)}
-					onBlur={() => commitEdit()}
-					onKeyDown={handleInputKeyDown}
-					onClick={e => e.stopPropagation()}
-				/>
-			)}
-			{editing && editor?.type === 'number' && (
-				<input
-					ref={inputRef as React.RefObject<HTMLInputElement>}
-					type="number"
-					className="rdt_editInput"
-					value={editValue}
-					placeholder={editor.placeholder}
-					min={editor.min}
-					max={editor.max}
-					step={editor.step}
-					aria-invalid={!!editError}
-					onChange={e => setEditValue(e.target.value)}
-					onBlur={() => commitEdit()}
-					onKeyDown={handleInputKeyDown}
-					onClick={e => e.stopPropagation()}
-				/>
-			)}
-			{editing && editor?.type === 'date' && (
-				<input
-					ref={inputRef as React.RefObject<HTMLInputElement>}
-					type="date"
-					className="rdt_editInput"
-					value={editValue}
-					min={editor.min}
-					max={editor.max}
+					placeholder={editor.type === 'date' ? undefined : editor.placeholder}
+					min={editor.type === 'text' ? undefined : editor.min}
+					max={editor.type === 'text' ? undefined : editor.max}
+					step={editor.type === 'number' ? editor.step : undefined}
 					aria-invalid={!!editError}
 					onChange={e => setEditValue(e.target.value)}
 					onBlur={() => commitEdit()}
@@ -263,14 +230,4 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 	);
 }
 
-function areCellPropsEqual<T>(prevProps: CellProps<T>, nextProps: CellProps<T>): boolean {
-	if (prevProps.row !== nextProps.row) return false;
-	if (prevProps.column !== nextProps.column) return false;
-	if (prevProps.isDragging !== nextProps.isDragging) return false;
-	if (prevProps.rowIndex !== nextProps.rowIndex) return false;
-	if (prevProps.dataTag !== nextProps.dataTag) return false;
-	if (prevProps.id !== nextProps.id) return false;
-	return true;
-}
-
-export default React.memo(Cell, areCellPropsEqual) as typeof Cell;
+export default React.memo(Cell) as typeof Cell;

@@ -32,6 +32,20 @@ export function isEmpty(field: string | number | undefined = ''): boolean {
 	return !field || field.length === 0;
 }
 
+function compareBySelector<T>(a: T, b: T, selector: Selector<T>, direction: SortOrder): number {
+	const flip = direction === SortOrder.ASC ? 1 : -1;
+	const aValue = selector(a);
+	const bValue = selector(b);
+
+	if (aValue < bValue) {
+		return -1 * flip;
+	}
+	if (aValue > bValue) {
+		return 1 * flip;
+	}
+	return 0;
+}
+
 export function sort<T>(
 	rows: T[],
 	selector: Selector<T> | null | undefined,
@@ -47,32 +61,7 @@ export function sort<T>(
 		return sortFn(rows.slice(0), selector, direction);
 	}
 
-	return rows.slice(0).sort((a: T, b: T) => {
-		const aValue = selector(a);
-		const bValue = selector(b);
-
-		if (direction === 'asc') {
-			if (aValue < bValue) {
-				return -1;
-			}
-
-			if (aValue > bValue) {
-				return 1;
-			}
-		}
-
-		if (direction === 'desc') {
-			if (aValue > bValue) {
-				return -1;
-			}
-
-			if (aValue < bValue) {
-				return 1;
-			}
-		}
-
-		return 0;
-	});
+	return rows.slice(0).sort((a, b) => compareBySelector(a, b, selector, direction));
 }
 
 /**
@@ -104,14 +93,9 @@ export function multiSort<T>(rows: T[], sortColumns: { column: TableColumn<T>; s
 					continue;
 				}
 
-				const aValue = selector(a.row);
-				const bValue = selector(b.row);
-
-				if (aValue < bValue) {
-					return -1 * flip;
-				}
-				if (aValue > bValue) {
-					return 1 * flip;
+				const result = compareBySelector(a.row, b.row, selector, sortDirection);
+				if (result !== 0) {
+					return result;
 				}
 			}
 
@@ -192,20 +176,15 @@ export function handleFunctionProps(
 	object: { [key: string]: unknown },
 	...args: unknown[]
 ): { [key: string]: unknown } {
-	let newObject;
+	let resolved: { [key: string]: unknown } | undefined;
 
-	Object.keys(object)
-		.map(o => object[o])
-		.forEach((value, index) => {
-			const oldObject = object;
+	for (const [key, value] of Object.entries(object)) {
+		if (typeof value === 'function') {
+			resolved = { ...(resolved ?? object), [key]: value(...args) };
+		}
+	}
 
-			if (typeof value === 'function') {
-				newObject = { ...oldObject, [Object.keys(object)[index]]: value(...args) };
-				// delete oldObject[value];
-			}
-		});
-
-	return newObject || object;
+	return resolved ?? object;
 }
 
 export function getNumberOfPages(rowCount: number, rowsPerPage: number): number {
@@ -265,7 +244,7 @@ export function isRowSelected<T>(row: T, selectedRows: T[] = [], keyField = 'id'
 	return selectedRows.some(r => r === row);
 }
 
-export function isOdd(num: number): boolean {
+export function isEven(num: number): boolean {
 	return num % 2 === 0;
 }
 
@@ -386,7 +365,11 @@ export type PinnedCellMeta = {
 	className: string;
 };
 
-export function getPinnedCellMeta<T>(column: TableColumn<T>, pinnedOffsets: PinnedOffsets | undefined): PinnedCellMeta {
+export function getPinnedCellMeta<T>(
+	column: TableColumn<T>,
+	pinnedOffsets: PinnedOffsets | undefined,
+	zIndex?: number,
+): PinnedCellMeta {
 	const offsets = pinnedOffsets ?? EMPTY_PINNED_OFFSETS;
 	const id = column.id;
 	const pinnedLeft = column.pinned === 'left' && id != null && offsets.left[id] != null;
@@ -402,9 +385,9 @@ export function getPinnedCellMeta<T>(column: TableColumn<T>, pinnedOffsets: Pinn
 	const isFirstRightPin = pinnedRight && id != null && offsets.right[id] === maxRight;
 
 	const style: React.CSSProperties = pinnedLeft
-		? { position: 'sticky', left: offsets.left[id!] }
+		? { position: 'sticky', left: offsets.left[id!], ...(zIndex != null && { zIndex }) }
 		: pinnedRight
-			? { position: 'sticky', right: offsets.right[id!] }
+			? { position: 'sticky', right: offsets.right[id!], ...(zIndex != null && { zIndex }) }
 			: {};
 
 	const className = [
@@ -417,6 +400,46 @@ export function getPinnedCellMeta<T>(column: TableColumn<T>, pinnedOffsets: Pinn
 		.join(' ');
 
 	return { pinnedLeft, pinnedRight, isLastLeftPin, isFirstRightPin, style, className };
+}
+
+/** ID of the first (leftmost) non-omitted right-pinned column — a spacer is
+ * injected just before it so non-pinned cells fill the space up to the pins. */
+export function getFirstRightPinnedId<T>(columns: TableColumn<T>[]): string | number | null {
+	for (const col of columns) {
+		if (!col.omit && col.pinned === 'right') return col.id ?? null;
+	}
+	return null;
+}
+
+/** Width cell props for body/footer cells: a resize override locks the cell to
+ * the resized width and disables flex-grow; otherwise the column's own values apply. */
+export function getCellWidthProps<T>(
+	column: TableColumn<T>,
+	resizedWidth: number | undefined,
+): { grow: number | undefined; width: string | undefined; minWidth: string | undefined; maxWidth: string | undefined } {
+	const px = resizedWidth != null ? `${resizedWidth}px` : undefined;
+	return {
+		grow: px != null ? 0 : column.grow,
+		width: px ?? column.width,
+		minWidth: px ?? column.minWidth,
+		maxWidth: px ?? column.maxWidth,
+	};
+}
+
+/** FLIP: element has already moved to its new layout position; start it offset
+ * by `delta` (its old position) and transition back to rest. */
+export function flipElement(el: HTMLElement, delta: number, axis: 'X' | 'Y', duration: number): void {
+	el.style.transform = `translate${axis}(${delta}px)`;
+	el.style.transition = 'none';
+	el.getBoundingClientRect(); // force reflow so the offset applies before transitioning
+	el.style.transition = `transform ${duration}s cubic-bezier(0.2, 0, 0, 1)`;
+	el.style.transform = '';
+	const onEnd = () => {
+		el.style.transform = '';
+		el.style.transition = '';
+		el.removeEventListener('transitionend', onEnd);
+	};
+	el.addEventListener('transitionend', onEnd);
 }
 
 /**

@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import FixedHeaderDemo from '../../components/demos/FixedHeaderDemo.tsx';
 import OnScrollDemo from '../../components/demos/OnScrollDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Fixed header | react-data-table-component">
@@ -108,38 +109,12 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Prop reference</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prop</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>fixedHeader</code></td>
-        <td><code>boolean</code></td>
-        <td><code>false</code></td>
-        <td>Stick column headers to the top of the scroll container.</td>
-      </tr>
-      <tr>
-        <td><code>fixedHeaderScrollHeight</code></td>
-        <td><code>string</code></td>
-        <td><code>"100vh"</code></td>
-        <td>
-          Any valid CSS length (<code>px</code>, <code>vh</code>, <code>%</code>, etc.).
-          Sets the <code>max-height</code> of the scrollable body region.
-          Only applies when <code>fixedHeader</code> is <code>true</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><code>onScroll</code></td>
-        <td><code>(event: React.UIEvent&lt;HTMLDivElement&gt;) =&gt; void</code></td>
-        <td>-</td>
-        <td>Called when the user scrolls the table body. Works with both <code>fixedHeader</code> enabled and disabled.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>fixedHeader</code>', '<code>boolean</code>', '<code>false</code>', 'Stick column headers to the top of the scroll container.'],
+      ['<code>fixedHeaderScrollHeight</code>', '<code>string</code>', '<code>"100vh"</code>', 'Any valid CSS length (<code>px</code>, <code>vh</code>, <code>%</code>, etc.).\n          Sets the <code>max-height</code> of the scrollable body region.\n          Only applies when <code>fixedHeader</code> is <code>true</code>.'],
+      ['<code>onScroll</code>', '<code>(event: React.UIEvent&lt;HTMLDivElement&gt;) =&gt; void</code>', '-', 'Called when the user scrolls the table body. Works with both <code>fixedHeader</code> enabled and disabled.'],
+    ]}
+  />
 </DocsLayout>

@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 import AnimationsDemo from '../../components/demos/AnimationsDemo.tsx';
 ---
 
@@ -64,16 +65,14 @@ export default function App() {
 
   <h2>What animates</h2>
 
-  <table>
-    <thead>
-      <tr><th>Event</th><th>Animation</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Initial mount</td><td>Rows fade and slide up with a staggered delay (0–200 ms)</td></tr>
-      <tr><td>Sort change</td><td>Rows transition smoothly to their new positions</td></tr>
-      <tr><td>Expand toggle</td><td>Expander row fades in/out</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Event', 'Animation']}
+    rows={[
+      ['Initial mount', 'Rows fade and slide up with a staggered delay (0–200 ms)'],
+      ['Sort change', 'Rows transition smoothly to their new positions'],
+      ['Expand toggle', 'Expander row fades in/out'],
+    ]}
+  />
 
   <h2>Accessibility: reduced motion</h2>
 
