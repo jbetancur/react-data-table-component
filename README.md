@@ -52,9 +52,9 @@ Sponsoring puts your company logo in front of ~215k developers a week: in the RE
 | --- | --- | --- |
 | ☕ Supporter | $5 | Your name in the README supporters list |
 | 🎗 Backer | $20 | Name + link in README |
-| 🥉 Bronze | $100 | Small logo in README + docs site footer |
-| 🥈 Silver | $200 | Medium logo in README + docs site sidebar |
-| 🥇 Gold | $500 | Large logo in README + hero spot on reactdatatable.com. Limited to 3. |
+| 🥉 Bronze | $100 | Priority issue triage + small logo in README + docs site footer |
+| 🥈 Silver | $200 | Priority issue triage + medium logo in README + docs site sidebar |
+| 🥇 Gold | $500 | Priority issue triage + large logo in README + hero spot on reactdatatable.com. Limited to 3. |
 
 [![Sponsor on GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github)](https://github.com/sponsors/jbetancur)
 [![Sponsor on OpenCollective](https://img.shields.io/badge/Sponsor-OpenCollective-blue?logo=opencollective)](https://opencollective.com/react-data-table-component)
