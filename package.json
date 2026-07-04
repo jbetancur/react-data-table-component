@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component",
-  "version": "8.4.0",
+  "version": "8.4.1",
   "description": "A fast, feature-rich React data table. Working table in 10 lines.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
