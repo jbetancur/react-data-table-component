@@ -25,9 +25,10 @@ export default function useColumnResize({ initialColumnWidths, onColumnResize }:
 
 		function onMouseMove(mv: MouseEvent) {
 			if (!resizeRef.current) return;
+			const { columnId } = resizeRef.current;
 			const delta = mv.clientX - resizeRef.current.startX;
 			const newWidth = Math.max(40, resizeRef.current.startWidth + delta);
-			setColumnWidths(prev => ({ ...prev, [resizeRef.current!.columnId]: newWidth }));
+			setColumnWidths(prev => ({ ...prev, [columnId]: newWidth }));
 		}
 
 		function onMouseUp() {
