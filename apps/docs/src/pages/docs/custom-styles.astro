@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import CustomStylesDemo from '../../components/demos/CustomStylesDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Custom styles | react-data-table-component">
@@ -130,29 +131,27 @@ const customStyles: TableStyles = {
 
   <h2>Available style targets</h2>
 
-  <table>
-    <thead>
-      <tr><th>Key</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>table</code></td><td>The root <code>&lt;div&gt;</code> wrapping the table</td></tr>
-      <tr><td><code>tableWrapper</code></td><td>Inner wrapper for overflow handling</td></tr>
-      <tr><td><code>responsiveWrapper</code></td><td>Horizontal scroll container</td></tr>
-      <tr><td><code>header</code></td><td>Title bar above the table</td></tr>
-      <tr><td><code>subHeader</code></td><td>Sub-header area (search, actions)</td></tr>
-      <tr><td><code>head</code></td><td>Column header area</td></tr>
-      <tr><td><code>headRow</code></td><td>Column header row</td></tr>
-      <tr><td><code>headCells</code></td><td>Column header cells</td></tr>
-      <tr><td><code>cells</code></td><td>Body cells</td></tr>
-      <tr><td><code>rows</code></td><td>Body rows (includes <code>selectedHighlightStyle</code>)</td></tr>
-      <tr><td><code>expanderRow</code></td><td>Expanded row container</td></tr>
-      <tr><td><code>expanderCell</code></td><td>Expander toggle cell</td></tr>
-      <tr><td><code>expanderButton</code></td><td>Expand/collapse button icon</td></tr>
-      <tr><td><code>pagination</code></td><td>Pagination bar</td></tr>
-      <tr><td><code>noData</code></td><td>Empty-state container</td></tr>
-      <tr><td><code>progress</code></td><td>Loading state container</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Key', 'Description']}
+    rows={[
+      ['<code>table</code>', 'The root <code>&lt;div&gt;</code> wrapping the table'],
+      ['<code>tableWrapper</code>', 'Inner wrapper for overflow handling'],
+      ['<code>responsiveWrapper</code>', 'Horizontal scroll container'],
+      ['<code>header</code>', 'Title bar above the table'],
+      ['<code>subHeader</code>', 'Sub-header area (search, actions)'],
+      ['<code>head</code>', 'Column header area'],
+      ['<code>headRow</code>', 'Column header row'],
+      ['<code>headCells</code>', 'Column header cells'],
+      ['<code>cells</code>', 'Body cells'],
+      ['<code>rows</code>', 'Body rows (includes <code>selectedHighlightStyle</code>)'],
+      ['<code>expanderRow</code>', 'Expanded row container'],
+      ['<code>expanderCell</code>', 'Expander toggle cell'],
+      ['<code>expanderButton</code>', 'Expand/collapse button icon'],
+      ['<code>pagination</code>', 'Pagination bar'],
+      ['<code>noData</code>', 'Empty-state container'],
+      ['<code>progress</code>', 'Loading state container'],
+    ]}
+  />
 
   <h2>Conditional row styles</h2>
 

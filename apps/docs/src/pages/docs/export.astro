@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ExportDemo from '../../components/demos/ExportDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Export (CSV / JSON) | react-data-table-component">
@@ -219,30 +220,26 @@ function App() {
 
   <h2>API</h2>
 
-  <table>
-    <thead>
-      <tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>columns</code></td><td><code>TableColumn&lt;T&gt;[]</code></td><td>required</td><td>Same columns array you pass to DataTable. Columns with <code>omit: true</code> are skipped.</td></tr>
-      <tr><td><code>rows</code></td><td><code>T[]</code></td><td>required</td><td>Rows to export.</td></tr>
-      <tr><td><code>valueSource</code></td><td><code>'selector' | 'format'</code></td><td><code>'selector'</code></td><td>Use raw selector values or run <code>column.format</code> first.</td></tr>
-      <tr><td><code>headerOverrides</code></td><td><code>Record&lt;string|number, string&gt;</code></td><td>—</td><td>Replace header label per column id.</td></tr>
-      <tr><td><code>columnOrder</code></td><td><code>(string|number)[]</code></td><td>—</td><td>Restrict and reorder columns by id.</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Option', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'required', 'Same columns array you pass to DataTable. Columns with <code>omit: true</code> are skipped.'],
+      ['<code>rows</code>', '<code>T[]</code>', 'required', 'Rows to export.'],
+      ['<code>valueSource</code>', "<code>'selector' | 'format'</code>", "<code>'selector'</code>", 'Use raw selector values or run <code>column.format</code> first.'],
+      ['<code>headerOverrides</code>', '<code>Record&lt;string|number, string&gt;</code>', '—', 'Replace header label per column id.'],
+      ['<code>columnOrder</code>', '<code>(string|number)[]</code>', '—', 'Restrict and reorder columns by id.'],
+    ]}
+  />
 
   <h3>Returns</h3>
 
-  <table>
-    <thead>
-      <tr><th>Property</th><th>Type</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>toCSV</code></td><td><code>() =&gt; string</code></td><td>Build a CSV string (no download).</td></tr>
-      <tr><td><code>toJSON</code></td><td><code>() =&gt; string</code></td><td>Build a pretty-printed JSON array string.</td></tr>
-      <tr><td><code>download</code></td><td><code>(filename, format?) =&gt; void</code></td><td>Trigger a browser download. <code>format</code> defaults to <code>'csv'</code>.</td></tr>
-      <tr><td><code>copy</code></td><td><code>(format?) =&gt; Promise&lt;void&gt;</code></td><td>Copy to clipboard. Rejects when the clipboard API is unavailable.</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Property', 'Type', 'Description']}
+    rows={[
+      ['<code>toCSV</code>', '<code>() =&gt; string</code>', 'Build a CSV string (no download).'],
+      ['<code>toJSON</code>', '<code>() =&gt; string</code>', 'Build a pretty-printed JSON array string.'],
+      ['<code>download</code>', '<code>(filename, format?) =&gt; void</code>', "Trigger a browser download. <code>format</code> defaults to <code>'csv'</code>."],
+      ['<code>copy</code>', '<code>(format?) =&gt; Promise&lt;void&gt;</code>', 'Copy to clipboard. Rejects when the clipboard API is unavailable.'],
+    ]}
+  />
 </DocsLayout>

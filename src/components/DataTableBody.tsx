@@ -2,7 +2,7 @@ import * as React from 'react';
 import Body from './TableBody';
 import Row from './TableRow';
 import NoData from './NoDataWrapper';
-import { prop, isEmpty } from '../util';
+import { prop, isEmpty, flipElement } from '../util';
 import type { TableRow, RowState } from '../types';
 import { useRowContext } from '../context/RowContext';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
@@ -128,18 +128,7 @@ function DataTableBody<T>({
 
 			if (reducedMotion || Math.abs(prevTop - newTop) < 1) return;
 
-			const delta = prevTop - newTop;
-			el.style.transform = `translateY(${delta}px)`;
-			el.style.transition = 'none';
-			el.getBoundingClientRect(); // force reflow
-			el.style.transition = 'transform 0.22s cubic-bezier(0.2, 0, 0, 1)';
-			el.style.transform = '';
-			const onEnd = () => {
-				el.style.transform = '';
-				el.style.transition = '';
-				el.removeEventListener('transitionend', onEnd);
-			};
-			el.addEventListener('transitionend', onEnd);
+			flipElement(el, prevTop - newTop, 'Y', 0.22);
 		});
 
 		// Clear snapshot so page navigation can't reuse stale sort positions

@@ -457,6 +457,20 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onGroupDragEnd: handleGroupDragEnd,
 	});
 
+	const paginationFooterProps = {
+		Pagination,
+		onChangePage: handleChangePage,
+		onChangeRowsPerPage: handleChangeRowsPerPage,
+		rowCount: paginationTotalRows || filteredSortedData.length,
+		currentPage,
+		rowsPerPage,
+		direction,
+		paginationRowsPerPageOptions,
+		paginationIcons,
+		paginationComponentOptions,
+		localization: localization.pagination,
+	};
+
 	// Prop wins; if not explicitly passed, fall back to what the theme declares, then built-in defaults.
 	const effectiveColumnSep = columnSeparator !== undefined ? columnSeparator : (themeObj.columnSeparator ?? false);
 	const effectiveHeaderSep = headerSeparator !== undefined ? headerSeparator : (themeObj.headerSeparator ?? true);
@@ -486,20 +500,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 						)}
 
 						{enabledPagination && (paginationPosition === 'top' || paginationPosition === 'both') && (
-							<TablePaginationFooter
-								Pagination={Pagination}
-								onChangePage={handleChangePage}
-								onChangeRowsPerPage={handleChangeRowsPerPage}
-								rowCount={paginationTotalRows || filteredSortedData.length}
-								currentPage={currentPage}
-								rowsPerPage={rowsPerPage}
-								direction={direction}
-								paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-								paginationIcons={paginationIcons}
-								paginationComponentOptions={paginationComponentOptions}
-								localization={localization.pagination}
-								position="top"
-							/>
+							<TablePaginationFooter {...paginationFooterProps} position="top" />
 						)}
 
 						<ResponsiveWrapper
@@ -569,19 +570,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 						)}
 
 						{enabledPagination && (paginationPosition === 'bottom' || paginationPosition === 'both') && (
-							<TablePaginationFooter
-								Pagination={Pagination}
-								onChangePage={handleChangePage}
-								onChangeRowsPerPage={handleChangeRowsPerPage}
-								rowCount={paginationTotalRows || filteredSortedData.length}
-								currentPage={currentPage}
-								rowsPerPage={rowsPerPage}
-								direction={direction}
-								paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-								paginationIcons={paginationIcons}
-								paginationComponentOptions={paginationComponentOptions}
-								localization={localization.pagination}
-							/>
+							<TablePaginationFooter {...paginationFooterProps} />
 						)}
 					</div>
 				</RowContext.Provider>

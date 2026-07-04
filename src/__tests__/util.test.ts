@@ -14,6 +14,11 @@ import {
 	getPinnedOffsets,
 	getPinnedTotalWidths,
 	getPinnedCellMeta,
+	getFirstRightPinnedId,
+	getCellWidthProps,
+	flipElement,
+	isEven,
+	getPinZoneForIndex,
 } from '../util';
 import { ConditionalStyles, SortOrder } from '../types';
 
@@ -170,6 +175,28 @@ describe('multiSort', () => {
 
 		expect(asc.map(p => p.age)).toEqual([22, 25, 30, 40]);
 		expect(desc.map(p => p.age)).toEqual([40, 30, 25, 22]);
+	});
+
+	test('falls through to the next sort column when a sortFunction ties', () => {
+		const tiedByDept = { id: 1, selector: (r: Person) => r.dept, sortFunction: () => 0 };
+		const byName = { id: 2, selector: (r: Person) => r.name };
+		const sorted = multiSort(people, [
+			{ column: tiedByDept, sortDirection: SortOrder.ASC },
+			{ column: byName, sortDirection: SortOrder.ASC },
+		]);
+
+		expect(sorted.map(p => p.name)).toEqual(['Alice', 'Alice', 'Bob', 'Carol']);
+	});
+
+	test('falls through to the next sort column when a column has no selector', () => {
+		const noSelector = { id: 1 };
+		const byName = { id: 2, selector: (r: Person) => r.name };
+		const sorted = multiSort(people, [
+			{ column: noSelector, sortDirection: SortOrder.ASC },
+			{ column: byName, sortDirection: SortOrder.ASC },
+		]);
+
+		expect(sorted.map(p => p.name)).toEqual(['Alice', 'Alice', 'Bob', 'Carol']);
 	});
 });
 
@@ -362,6 +389,24 @@ describe('getConditionalStyle', () => {
 
 		expect(classNames).toEqual('anakin leia');
 	});
+
+	test('should throw if "when" is missing from the conditional style object', () => {
+		const rowStyleExpression = [{ style: { backgroundColor: 'green' } }] as ConditionalStyles<DataRow>[];
+
+		expect(() => getConditionalStyle({ name: 'luke' }, rowStyleExpression)).toThrow(
+			'"when" must be defined in the conditional style object and must be function',
+		);
+	});
+
+	test('should throw if "when" is not a function', () => {
+		const rowStyleExpression = [
+			{ when: true, style: { backgroundColor: 'green' } },
+		] as unknown as ConditionalStyles<DataRow>[];
+
+		expect(() => getConditionalStyle({ name: 'luke' }, rowStyleExpression)).toThrow(
+			'"when" must be defined in the conditional style object and must be function',
+		);
+	});
 });
 
 describe('normalizePins', () => {
@@ -459,6 +504,28 @@ describe('getPinnedOffsets', () => {
 		const result = getPinnedOffsets(cols, {}, false, false, false);
 		expect(result.left['a']).toBeUndefined();
 		expect(result.left['b']).toBe(0);
+	});
+
+	test('uses the --rdt-system-col-width CSS variable when set', () => {
+		document.documentElement.style.setProperty('--rdt-system-col-width', '64px');
+		try {
+			const cols = [col('a', 'left', '100px')];
+			const result = getPinnedOffsets(cols, {}, true, false, false);
+			expect(result.left['a']).toBe(64);
+		} finally {
+			document.documentElement.style.removeProperty('--rdt-system-col-width');
+		}
+	});
+
+	test('falls back to the default system column width when the CSS variable is not a number', () => {
+		document.documentElement.style.setProperty('--rdt-system-col-width', 'not-a-number');
+		try {
+			const cols = [col('a', 'left', '100px')];
+			const result = getPinnedOffsets(cols, {}, true, false, false);
+			expect(result.left['a']).toBe(48);
+		} finally {
+			document.documentElement.style.removeProperty('--rdt-system-col-width');
+		}
 	});
 });
 
@@ -565,5 +632,147 @@ describe('isRowSelected', () => {
 		];
 
 		expect(isRowSelected(currentRow, selectedRows, 'id')).toBe(false);
+	});
+});
+
+describe('handleFunctionProps with multiple function props', () => {
+	test('should resolve every function prop, not just the last one', () => {
+		const result = handleFunctionProps(
+			{
+				first: (flag: boolean) => (flag ? 'a' : 'x'),
+				second: (flag: boolean) => (flag ? 'b' : 'y'),
+				plain: 'untouched',
+			},
+			true,
+		);
+
+		expect(result).toEqual({ first: 'a', second: 'b', plain: 'untouched' });
+	});
+});
+
+describe('getFirstRightPinnedId', () => {
+	type R = { id: number };
+	const col = (id: string | number | undefined, pinned?: 'left' | 'right', omit = false) =>
+		({ id, name: String(id), selector: (r: R) => r.id, pinned, omit }) as Parameters<
+			typeof getFirstRightPinnedId<R>
+		>[0][number];
+
+	test('returns null when no column is right-pinned', () => {
+		expect(getFirstRightPinnedId([col('a'), col('b', 'left')])).toBe(null);
+	});
+
+	test('returns the first right-pinned column id', () => {
+		expect(getFirstRightPinnedId([col('a'), col('b', 'right'), col('c', 'right')])).toBe('b');
+	});
+
+	test('skips omitted columns', () => {
+		expect(getFirstRightPinnedId([col('a'), col('b', 'right', true), col('c', 'right')])).toBe('c');
+	});
+
+	test('returns null when the first right-pinned column has no id', () => {
+		expect(getFirstRightPinnedId([col(undefined, 'right')])).toBe(null);
+	});
+});
+
+describe('getCellWidthProps', () => {
+	type R = { id: number };
+	const column = {
+		id: 'a',
+		name: 'a',
+		selector: (r: R) => r.id,
+		grow: 2,
+		width: '150px',
+		minWidth: '100px',
+		maxWidth: '300px',
+	};
+
+	test('passes through column width props when there is no resized width', () => {
+		expect(getCellWidthProps(column, undefined)).toEqual({
+			grow: 2,
+			width: '150px',
+			minWidth: '100px',
+			maxWidth: '300px',
+		});
+	});
+
+	test('locks all width props to the resized width and zeroes grow', () => {
+		expect(getCellWidthProps(column, 200)).toEqual({
+			grow: 0,
+			width: '200px',
+			minWidth: '200px',
+			maxWidth: '200px',
+		});
+	});
+});
+
+describe('getPinnedCellMeta with zIndex', () => {
+	type R = { id: number };
+	const offsets = { left: { a: 0 }, right: {} };
+	const col = (pinned?: 'left' | 'right') =>
+		({ id: 'a', name: 'a', selector: (r: R) => r.id, pinned }) as Parameters<typeof getPinnedCellMeta<R>>[0];
+
+	test('includes zIndex in the sticky style when provided', () => {
+		const result = getPinnedCellMeta(col('left'), offsets, 2);
+		expect(result.style).toEqual({ position: 'sticky', left: 0, zIndex: 2 });
+	});
+
+	test('omits zIndex for unpinned columns', () => {
+		const result = getPinnedCellMeta(col(), offsets, 2);
+		expect(result.style).toEqual({});
+	});
+});
+
+describe('flipElement', () => {
+	test('sets a transition back to rest and cleans up on transitionend', () => {
+		const el = document.createElement('div');
+		document.body.appendChild(el);
+
+		flipElement(el, 40, 'Y', 0.22);
+
+		expect(el.style.transform).toBe('');
+		expect(el.style.transition).toBe('transform 0.22s cubic-bezier(0.2, 0, 0, 1)');
+
+		el.dispatchEvent(new Event('transitionend'));
+		expect(el.style.transition).toBe('');
+		expect(el.style.transform).toBe('');
+
+		document.body.removeChild(el);
+	});
+
+	test('animates on the requested axis', () => {
+		const el = document.createElement('div');
+		const setSpy = vi.spyOn(el.style, 'transform', 'set');
+
+		flipElement(el, -25, 'X', 0.2);
+
+		expect(setSpy).toHaveBeenCalledWith('translateX(-25px)');
+		setSpy.mockRestore();
+	});
+});
+
+describe('isEven', () => {
+	test('returns true for even numbers including zero', () => {
+		expect(isEven(0)).toBe(true);
+		expect(isEven(2)).toBe(true);
+	});
+
+	test('returns false for odd numbers', () => {
+		expect(isEven(1)).toBe(false);
+		expect(isEven(3)).toBe(false);
+	});
+});
+
+describe('getPinZoneForIndex', () => {
+	test('returns "left" when the index is within the left-pinned count', () => {
+		expect(getPinZoneForIndex(0, 2, 1, 5)).toBe('left');
+		expect(getPinZoneForIndex(1, 2, 1, 5)).toBe('left');
+	});
+
+	test('returns "right" when the index is within the right-pinned count', () => {
+		expect(getPinZoneForIndex(4, 2, 1, 5)).toBe('right');
+	});
+
+	test('returns undefined when the index is not pinned', () => {
+		expect(getPinZoneForIndex(2, 2, 1, 5)).toBeUndefined();
 	});
 });

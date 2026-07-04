@@ -4,7 +4,7 @@ import { useStyles } from '../context/StylesContext';
 import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
 import RightPinSpacer from './RightPinSpacer';
-import { getPinnedCellMeta } from '../util';
+import { getPinnedCellMeta, getFirstRightPinnedId, getCellWidthProps } from '../util';
 import type { ColumnFooter, FooterComponent, TableColumn } from '../types';
 
 interface TableFooterProps<T> {
@@ -33,14 +33,7 @@ function TableFooter<T>({
 	const customStyles = useStyles();
 	const { columnWidths, pinnedOffsets } = useRowContext<T>();
 
-	// First (leftmost) right-pinned column id — a spacer is injected before it so
-	// non-pinned footer cells fill the gap to the right pins, matching TableRow.
-	const firstRightPinnedId = React.useMemo(() => {
-		for (const col of columns) {
-			if (!col.omit && col.pinned === 'right') return col.id;
-		}
-		return null;
-	}, [columns]);
+	const firstRightPinnedId = React.useMemo(() => getFirstRightPinnedId(columns), [columns]);
 
 	const style: React.CSSProperties = {
 		...(customStyles.footer?.style as React.CSSProperties | undefined),
@@ -65,9 +58,7 @@ function TableFooter<T>({
 				{columns.map(column => {
 					if (column.omit) return null;
 					const resizedWidth = column.id != null ? columnWidths[column.id] : undefined;
-					const pinMeta = getPinnedCellMeta(column, pinnedOffsets);
-					const pinnedStyle: React.CSSProperties =
-						pinMeta.style.position === 'sticky' ? { ...pinMeta.style, zIndex: 1 } : {};
+					const pinMeta = getPinnedCellMeta(column, pinnedOffsets, 1);
 
 					return (
 						<React.Fragment key={`footer-${column.id}`}>
@@ -79,14 +70,11 @@ function TableFooter<T>({
 								button={column.button}
 								center={column.center}
 								compact={column.compact}
-								grow={resizedWidth != null ? 0 : column.grow}
 								hide={column.hide}
-								maxWidth={resizedWidth != null ? `${resizedWidth}px` : column.maxWidth}
-								minWidth={resizedWidth != null ? `${resizedWidth}px` : column.minWidth}
 								right={column.right}
-								width={resizedWidth != null ? `${resizedWidth}px` : column.width}
+								{...getCellWidthProps(column, resizedWidth)}
 								cellStyle={customStyles.footerCells?.style as React.CSSProperties | undefined}
-								style={{ ...(column.style as React.CSSProperties), ...pinnedStyle }}
+								style={{ ...(column.style as React.CSSProperties), ...pinMeta.style }}
 							>
 								{resolveFooter(column.footer, rows)}
 							</CellExtended>

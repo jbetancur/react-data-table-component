@@ -7,6 +7,7 @@ import PaginationPositionDemo from '../../components/demos/PaginationPositionDem
 import ServerSidePaginationDemo from '../../components/demos/ServerSidePaginationDemo.tsx';
 import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
 import ServerSideDemo from '../../components/demos/ServerSideDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Pagination | react-data-table-component">
@@ -151,32 +152,14 @@ export default function App() {
     Only one fires per user interaction, never two at once:
   </p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>User action</th>
-        <th>Callback that fires</th>
-        <th>What you should do</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Click a sortable column header</td>
-        <td><code>onSort(column, direction, rows)</code></td>
-        <td>Fetch <strong>page 1</strong> with the new sort. Update your local sort state and reset your local page to&nbsp;1.</td>
-      </tr>
-      <tr>
-        <td>Click a page number / prev / next</td>
-        <td><code>onChangePage(page, totalRows)</code></td>
-        <td>Fetch the requested page with current sort params.</td>
-      </tr>
-      <tr>
-        <td>Change the rows-per-page selector</td>
-        <td><code>onChangeRowsPerPage(newPerPage, currentPage)</code></td>
-        <td>Fetch the recalculated page at the new page size with current sort params.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['User action', 'Callback that fires', 'What you should do']}
+    rows={[
+      ['Click a sortable column header', '<code>onSort(column, direction, rows)</code>', 'Fetch <strong>page 1</strong> with the new sort. Update your local sort state and reset your local page to&nbsp;1.'],
+      ['Click a page number / prev / next', '<code>onChangePage(page, totalRows)</code>', 'Fetch the requested page with current sort params.'],
+      ['Change the rows-per-page selector', '<code>onChangeRowsPerPage(newPerPage, currentPage)</code>', 'Fetch the recalculated page at the new page size with current sort params.'],
+    ]}
+  />
 
   <p>
     <strong>Sorting always resets to page 1.</strong> When the user sorts while on page 3, the
@@ -498,120 +481,28 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
 
   <h2>Prop reference</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prop</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>pagination</code></td>
-        <td><code>boolean</code></td>
-        <td><code>false</code></td>
-        <td>Enable the built-in pagination bar.</td>
-      </tr>
-      <tr>
-        <td><code>paginationPerPage</code></td>
-        <td><code>number</code></td>
-        <td><code>10</code></td>
-        <td>Initial number of rows per page.</td>
-      </tr>
-      <tr>
-        <td><code>paginationDefaultPage</code></td>
-        <td><code>number</code></td>
-        <td><code>1</code></td>
-        <td>Initial page number.</td>
-      </tr>
-      <tr>
-        <td><code>paginationRowsPerPageOptions</code></td>
-        <td><code>number[]</code></td>
-        <td><code>[10, 25, 50, 100]</code></td>
-        <td>Options shown in the rows-per-page dropdown.</td>
-      </tr>
-      <tr>
-        <td><code>paginationPosition</code></td>
-        <td><code>'top' | 'bottom' | 'both'</code></td>
-        <td><code>'bottom'</code></td>
-        <td>Where the pagination bar renders relative to the table. <code>'both'</code> renders it above and below simultaneously.</td>
-      </tr>
-      <tr>
-        <td><code>paginationServer</code></td>
-        <td><code>boolean</code></td>
-        <td><code>false</code></td>
-        <td>Delegate pagination to the server. Use with <code>paginationTotalRows</code> and the change callbacks.</td>
-      </tr>
-      <tr>
-        <td><code>paginationTotalRows</code></td>
-        <td><code>number</code></td>
-        <td><code>0</code></td>
-        <td>Total row count across all pages (server-side only). Used to calculate total pages.</td>
-      </tr>
-      <tr>
-        <td><code>paginationResetDefaultPage</code></td>
-        <td><code>boolean</code></td>
-        <td><code>false</code></td>
-        <td>Toggle this value to reset the pagination bar to page 1 (e.g. after a search).</td>
-      </tr>
-      <tr>
-        <td><code>paginationServerOptions</code></td>
-        <td><code>&#123; persistSelectedOnPageChange?, persistSelectedOnSort? &#125;</code></td>
-        <td>-</td>
-        <td>Server-side selection persistence options.</td>
-      </tr>
-      <tr>
-        <td><code>paginationComponent</code></td>
-        <td><code>ComponentType&lt;PaginationComponentProps&gt;</code></td>
-        <td>-</td>
-        <td>Replaces the built-in pagination bar with a custom component.</td>
-      </tr>
-      <tr>
-        <td><code>paginationComponentOptions</code></td>
-        <td><code>PaginationOptions</code></td>
-        <td>-</td>
-        <td>Options forwarded to the default pagination component. Covers visible text (<code>rowsPerPageText</code>, <code>rangeSeparatorText</code>, <code>selectAllRowsItemText</code>). Navigation aria-labels are set via the <code>localization</code> prop.</td>
-      </tr>
-      <tr>
-        <td><code>paginationIconFirstPage</code></td>
-        <td><code>ReactNode</code></td>
-        <td>-</td>
-        <td>Icon for the "first page" button.</td>
-      </tr>
-      <tr>
-        <td><code>paginationIconLastPage</code></td>
-        <td><code>ReactNode</code></td>
-        <td>-</td>
-        <td>Icon for the "last page" button.</td>
-      </tr>
-      <tr>
-        <td><code>paginationIconNext</code></td>
-        <td><code>ReactNode</code></td>
-        <td>-</td>
-        <td>Icon for the "next page" button.</td>
-      </tr>
-      <tr>
-        <td><code>paginationIconPrevious</code></td>
-        <td><code>ReactNode</code></td>
-        <td>-</td>
-        <td>Icon for the "previous page" button.</td>
-      </tr>
-      <tr>
-        <td><code>onChangePage</code></td>
-        <td><code>(page: number, totalRows: number) =&gt; void</code></td>
-        <td>-</td>
-        <td>Called when the user navigates to a different page.</td>
-      </tr>
-      <tr>
-        <td><code>onChangeRowsPerPage</code></td>
-        <td><code>(currentRowsPerPage: number, currentPage: number) =&gt; void</code></td>
-        <td>-</td>
-        <td>Called when the user changes the rows-per-page selection.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>pagination</code>', '<code>boolean</code>', '<code>false</code>', 'Enable the built-in pagination bar.'],
+      ['<code>paginationPerPage</code>', '<code>number</code>', '<code>10</code>', 'Initial number of rows per page.'],
+      ['<code>paginationDefaultPage</code>', '<code>number</code>', '<code>1</code>', 'Initial page number.'],
+      ['<code>paginationRowsPerPageOptions</code>', '<code>number[]</code>', '<code>[10, 25, 50, 100]</code>', 'Options shown in the rows-per-page dropdown.'],
+      ['<code>paginationPosition</code>', "<code>'top' | 'bottom' | 'both'</code>", "<code>'bottom'</code>", "Where the pagination bar renders relative to the table. <code>'both'</code> renders it above and below simultaneously."],
+      ['<code>paginationServer</code>', '<code>boolean</code>', '<code>false</code>', 'Delegate pagination to the server. Use with <code>paginationTotalRows</code> and the change callbacks.'],
+      ['<code>paginationTotalRows</code>', '<code>number</code>', '<code>0</code>', 'Total row count across all pages (server-side only). Used to calculate total pages.'],
+      ['<code>paginationResetDefaultPage</code>', '<code>boolean</code>', '<code>false</code>', 'Toggle this value to reset the pagination bar to page 1 (e.g. after a search).'],
+      ['<code>paginationServerOptions</code>', '<code>&#123; persistSelectedOnPageChange?, persistSelectedOnSort? &#125;</code>', '-', 'Server-side selection persistence options.'],
+      ['<code>paginationComponent</code>', '<code>ComponentType&lt;PaginationComponentProps&gt;</code>', '-', 'Replaces the built-in pagination bar with a custom component.'],
+      ['<code>paginationComponentOptions</code>', '<code>PaginationOptions</code>', '-', 'Options forwarded to the default pagination component. Covers visible text (<code>rowsPerPageText</code>, <code>rangeSeparatorText</code>, <code>selectAllRowsItemText</code>). Navigation aria-labels are set via the <code>localization</code> prop.'],
+      ['<code>paginationIconFirstPage</code>', '<code>ReactNode</code>', '-', 'Icon for the "first page" button.'],
+      ['<code>paginationIconLastPage</code>', '<code>ReactNode</code>', '-', 'Icon for the "last page" button.'],
+      ['<code>paginationIconNext</code>', '<code>ReactNode</code>', '-', 'Icon for the "next page" button.'],
+      ['<code>paginationIconPrevious</code>', '<code>ReactNode</code>', '-', 'Icon for the "previous page" button.'],
+      ['<code>onChangePage</code>', '<code>(page: number, totalRows: number) =&gt; void</code>', '-', 'Called when the user navigates to a different page.'],
+      ['<code>onChangeRowsPerPage</code>', '<code>(currentRowsPerPage: number, currentPage: number) =&gt; void</code>', '-', 'Called when the user changes the rows-per-page selection.'],
+    ]}
+  />
 
   <h2>Localization</h2>
   <p>

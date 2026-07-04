@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 import CellsDemo from '../../components/demos/CellsDemo.tsx';
 ---
 
@@ -15,31 +16,14 @@ import CellsDemo from '../../components/demos/CellsDemo.tsx';
 
   <h2>selector, format, and cell</h2>
 
-  <table>
-    <thead>
-      <tr><th>Prop</th><th>Returns</th><th>Affects sort?</th><th>Use for</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>selector</code></td>
-        <td><code>Primitive | ReactNode</code></td>
-        <td>Yes</td>
-        <td>Simple data access. Source of truth for sorting.</td>
-      </tr>
-      <tr>
-        <td><code>format</code></td>
-        <td><code>ReactNode</code></td>
-        <td>No</td>
-        <td>Formatting (currency, dates) without breaking sort order.</td>
-      </tr>
-      <tr>
-        <td><code>cell</code></td>
-        <td><code>ReactNode</code></td>
-        <td>No</td>
-        <td>Full custom renderers: badges, avatars, action buttons.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Returns', 'Affects sort?', 'Use for']}
+    rows={[
+      ['<code>selector</code>', '<code>Primitive | ReactNode</code>', 'Yes', 'Simple data access. Source of truth for sorting.'],
+      ['<code>format</code>', '<code>ReactNode</code>', 'No', 'Formatting (currency, dates) without breaking sort order.'],
+      ['<code>cell</code>', '<code>ReactNode</code>', 'No', 'Full custom renderers: badges, avatars, action buttons.'],
+    ]}
+  />
 
   <p>
     When <code>cell</code> is provided it takes priority over <code>selector</code> and <code>format</code>
@@ -80,19 +64,19 @@ import CellsDemo from '../../components/demos/CellsDemo.tsx';
 
   <h2>Alignment and sizing</h2>
 
-  <table>
-    <thead><tr><th>Prop</th><th>Effect</th></tr></thead>
-    <tbody>
-      <tr><td><code>right</code></td><td>Right-align cell content.</td></tr>
-      <tr><td><code>center</code></td><td>Center cell content.</td></tr>
-      <tr><td><code>width</code></td><td>Fixed column width, e.g. <code>"120px"</code>. Overrides flex sizing.</td></tr>
-      <tr><td><code>minWidth</code></td><td>Minimum width before shrinking.</td></tr>
-      <tr><td><code>maxWidth</code></td><td>Maximum width before growing stops.</td></tr>
-      <tr><td><code>grow</code></td><td>Flex-grow factor. Default <code>1</code>. Set to <code>0</code> to prevent growing.</td></tr>
-      <tr><td><code>wrap</code></td><td>Allow text to wrap inside the cell.</td></tr>
-      <tr><td><code>compact</code></td><td>Remove cell padding for dense layouts.</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Effect']}
+    rows={[
+      ['<code>right</code>', 'Right-align cell content.'],
+      ['<code>center</code>', 'Center cell content.'],
+      ['<code>width</code>', 'Fixed column width, e.g. <code>"120px"</code>. Overrides flex sizing.'],
+      ['<code>minWidth</code>', 'Minimum width before shrinking.'],
+      ['<code>maxWidth</code>', 'Maximum width before growing stops.'],
+      ['<code>grow</code>', 'Flex-grow factor. Default <code>1</code>. Set to <code>0</code> to prevent growing.'],
+      ['<code>wrap</code>', 'Allow text to wrap inside the cell.'],
+      ['<code>compact</code>', 'Remove this column\'s cell padding. Independent of the table-level <code>dense</code> prop, which shrinks row height instead.'],
+    ]}
+  />
 
   <h2>Overflow and portals</h2>
 

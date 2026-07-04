@@ -454,6 +454,18 @@ describe('DataTable:RowClicks', () => {
 		fireEvent.click(container.querySelector('div[id="cell-1-1"]') as HTMLElement);
 		expect(onRowDoubleClickedMock).not.toBeCalled();
 	});
+
+	test('should call onRowMiddleClicked when a row is aux-clicked', () => {
+		const onRowMiddleClickedMock = vi.fn();
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} onRowMiddleClicked={onRowMiddleClickedMock} />,
+		);
+
+		const cell = container.querySelector('div[id="cell-1-1"]') as HTMLElement;
+		fireEvent(cell, new MouseEvent('auxclick', { bubbles: true, cancelable: true }));
+		expect(onRowMiddleClickedMock).toHaveBeenCalled();
+	});
 });
 
 describe('DataTable:RowMouseEnterAndLeave', () => {
@@ -1051,6 +1063,24 @@ describe('DataTable::expandableRows', () => {
 		fireEvent.doubleClick(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`) as HTMLElement);
 
 		expect(onRowExpandToggledMock).toBeCalled();
+	});
+
+	test('should expand a row when Enter is pressed on the row and expandOnRowClicked is true', () => {
+		const onRowExpandToggledMock = vi.fn();
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				expandableRows
+				expandOnRowClicked
+				onRowExpandToggled={onRowExpandToggledMock}
+			/>,
+		);
+
+		fireEvent.keyDown(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`) as HTMLElement, { key: 'Enter' });
+
+		expect(onRowExpandToggledMock).toHaveBeenCalled();
 	});
 });
 

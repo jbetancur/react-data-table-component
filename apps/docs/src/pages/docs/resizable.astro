@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ResizableDemo from '../../components/demos/ResizableDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Resizable columns | react-data-table-component">
@@ -161,27 +162,12 @@ export default function App() {
 
   <h2>Prop reference</h2>
 
-  <table>
-    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><code>resizable</code></td>
-        <td><code>boolean</code></td>
-        <td><code>false</code></td>
-        <td>Show resize handles on column header right edges.</td>
-      </tr>
-      <tr>
-        <td><code>column.width</code></td>
-        <td><code>string</code></td>
-        <td>-</td>
-        <td>Initial width (e.g. <code>"180px"</code>).</td>
-      </tr>
-      <tr>
-        <td><code>column.minWidth</code></td>
-        <td><code>string</code></td>
-        <td><code>"100px"</code></td>
-        <td>Minimum width the user can resize to. Hard floor of 40 px applies regardless.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>resizable</code>', '<code>boolean</code>', '<code>false</code>', 'Show resize handles on column header right edges.'],
+      ['<code>column.width</code>', '<code>string</code>', '-', 'Initial width (e.g. <code>"180px"</code>).'],
+      ['<code>column.minWidth</code>', '<code>string</code>', '<code>"100px"</code>', 'Minimum width the user can resize to. Hard floor of 40 px applies regardless.'],
+    ]}
+  />
 </DocsLayout>

@@ -125,7 +125,7 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `selectableRowSelected` | `(row: T) => boolean` | - | Pre-select rows that satisfy the predicate. |
 | `selectedRows` | `T[]` | - | Controlled selection. When supplied, drives selection state from the outside; matched against `keyField`. |
 | `selectableRowsComponent` | `"input" \| ReactNode` | built-in checkbox | Custom checkbox component. |
-| `selectableRowsComponentProps` | `object` | - | Extra props forwarded to the custom checkbox component. |
+| `selectableRowsComponentProps` | `object` | - | Extra props forwarded to the custom checkbox component. Function values are called with the checkbox's indeterminate state and their return value is passed instead. |
 | `onSelectedRowsChange` | `(state) => void` | - | Called whenever selection changes. Receives `{ allSelected, selectedCount, selectedRows }`. |
 | `clearSelectedRows` | `boolean` | - | **Deprecated.** Toggle to clear selection. Use `ref.current.clearSelectedRows()` instead. |
 | `ref.clearSelectedRows()` | `DataTableHandle` | - | Imperatively deselect all selected rows. See [DataTableHandle](#datatablehandle-ref). |

@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Inline editing | react-data-table-component">
@@ -237,26 +238,14 @@ export default function App() {
 
   <h3>Customizable variables</h3>
 
-  <table>
-    <thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><code>--rdt-color-cell-edit-bg</code></td>
-        <td>8% primary on bg</td>
-        <td>Background of the cell while editing.</td>
-      </tr>
-      <tr>
-        <td><code>--rdt-color-cell-edit-hover</code></td>
-        <td>6% primary</td>
-        <td>Background of an editable cell on hover.</td>
-      </tr>
-      <tr>
-        <td><code>--rdt-color-cell-edit-hover-border</code></td>
-        <td>40% primary</td>
-        <td>Color of the dashed underline that hints "this cell is editable" on hover.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Variable', 'Default', 'Purpose']}
+    rows={[
+      ['<code>--rdt-color-cell-edit-bg</code>', '8% primary on bg', 'Background of the cell while editing.'],
+      ['<code>--rdt-color-cell-edit-hover</code>', '6% primary', 'Background of an editable cell on hover.'],
+      ['<code>--rdt-color-cell-edit-hover-border</code>', '40% primary', 'Color of the dashed underline that hints "this cell is editable" on hover.'],
+    ]}
+  />
 
   <CodeBlock code={`.rdt_table {
   --rdt-color-cell-edit-bg: #fff7ed;        /* warm amber */
@@ -420,33 +409,15 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Prop reference</h2>
 
-  <table>
-    <thead>
-      <tr><th>Column prop</th><th>Type</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>editable</code></td>
-        <td><code>boolean</code></td>
-        <td>Shorthand for a text editor. Equivalent to <code>editor: &#123; type: 'text' &#125;</code>. Ignored when <code>editor</code> is set.</td>
-      </tr>
-      <tr>
-        <td><code>editor</code></td>
-        <td><code>CellEditor</code></td>
-        <td>Editor configuration. See <code>CellEditor</code> below for the full union.</td>
-      </tr>
-      <tr>
-        <td><code>validate</code></td>
-        <td><code>(value, row, column) =&gt; true | false | string</code></td>
-        <td>Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.</td>
-      </tr>
-      <tr>
-        <td><code>onCellEdit</code></td>
-        <td><code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code></td>
-        <td>Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Column prop', 'Type', 'Description']}
+    rows={[
+      ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for a text editor. Equivalent to <code>editor: &#123; type: \'text\' &#125;</code>. Ignored when <code>editor</code> is set.'],
+      ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <code>CellEditor</code> below for the full union.'],
+      ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.'],
+      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
+    ]}
+  />
 
   <h3>CellEditor</h3>
 

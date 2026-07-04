@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Performance | react-data-table-component" description="Tips for rendering large datasets in react-data-table-component: memoization, virtualization, and server-side data patterns.">
@@ -20,15 +21,15 @@ import CodeBlock from '../../components/CodeBlock.astro';
     a rough guide:
   </p>
 
-  <table>
-    <thead><tr><th>Row count</th><th>Behavior</th></tr></thead>
-    <tbody>
-      <tr><td>&lt; 500</td><td>No performance considerations. Render as-is.</td></tr>
-      <tr><td>500 – 5,000</td><td>Enable <code>pagination</code> with a reasonable <code>paginationPerPage</code> (25–100). Sort and filter stay fast.</td></tr>
-      <tr><td>5,000 – 50,000</td><td>Use <code>paginationServer</code> and <code>sortServer</code>. Don't pass the full dataset to DataTable. Slice on the server and send only the visible page.</td></tr>
-      <tr><td>&gt; 50,000</td><td>Always server-side. Consider whether a table is the right UI at this scale. Search or visualization tools are usually a better fit.</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Row count', 'Behavior']}
+    rows={[
+      ['&lt; 500', 'No performance considerations. Render as-is.'],
+      ['500 – 5,000', 'Enable <code>pagination</code> with a reasonable <code>paginationPerPage</code> (25–100). Sort and filter stay fast.'],
+      ['5,000 – 50,000', 'Use <code>paginationServer</code> and <code>sortServer</code>. Don\'t pass the full dataset to DataTable. Slice on the server and send only the visible page.'],
+      ['&gt; 50,000', 'Always server-side. Consider whether a table is the right UI at this scale. Search or visualization tools are usually a better fit.'],
+    ]}
+  />
 
   <h2>The biggest footgun: new references every render</h2>
 

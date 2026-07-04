@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Installation | react-data-table-component" description="Install react-data-table-component via npm or yarn. Works with React 18+, Next.js App Router, Vite, and Remix.">
@@ -14,15 +15,13 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <h2>Requirements</h2>
 
-  <table>
-    <thead>
-      <tr><th>Peer dependency</th><th>Version</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>react</code></td><td><code>&gt;=18.0.0</code></td></tr>
-      <tr><td><code>react-dom</code></td><td><code>&gt;=18.0.0</code></td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Peer dependency', 'Version']}
+    rows={[
+      ['<code>react</code>', '<code>&gt;=18.0.0</code>'],
+      ['<code>react-dom</code>', '<code>&gt;=18.0.0</code>'],
+    ]}
+  />
 
   <p>
     React 17 is not supported. React 18 concurrent features (<code>useTransition</code>,
@@ -55,18 +54,16 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <h2>Framework notes</h2>
 
-  <table>
-    <thead>
-      <tr><th>Framework</th><th>Notes</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Vite / Create React App</td><td>Works out of the box</td></tr>
-      <tr><td>Next.js App Router</td><td>Import <code>&lt;DataTable&gt;</code> directly from any file. The bundle ships with <code>"use client"</code>. Optionally import <code>react-data-table-component/css</code> in <code>layout.tsx</code> to avoid a flash of unstyled content on first SSR load.</td></tr>
-      <tr><td>Next.js Pages Router</td><td>Works out of the box</td></tr>
-      <tr><td>Remix</td><td>Works out of the box</td></tr>
-      <tr><td>Astro</td><td>Use <code>client:load</code> or <code>client:visible</code> directive</td></tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Framework', 'Notes']}
+    rows={[
+      ['Vite / Create React App', 'Works out of the box'],
+      ['Next.js App Router', 'Import <code>&lt;DataTable&gt;</code> directly from any file. The bundle ships with <code>"use client"</code>. Optionally import <code>react-data-table-component/css</code> in <code>layout.tsx</code> to avoid a flash of unstyled content on first SSR load.'],
+      ['Next.js Pages Router', 'Works out of the box'],
+      ['Remix', 'Works out of the box'],
+      ['Astro', 'Use <code>client:load</code> or <code>client:visible</code> directive'],
+    ]}
+  />
 
   <h3>Next.js App Router: layout.tsx (optional)</h3>
 

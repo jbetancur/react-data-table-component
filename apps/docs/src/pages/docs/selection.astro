@@ -224,4 +224,17 @@ tableRef.current?.clearSelectedRows();`} />
   selectableRowsComponent={Checkbox}
   selectableRowsComponentProps={{ color: 'primary' }}
 />`} />
+  <p>
+    A prop value can also be a function — it is called with the checkbox's indeterminate state
+    (<code>true</code> for the header checkbox when only some rows are selected) and its return
+    value is passed to the component instead. Useful for components that express the
+    indeterminate state through a different prop:
+  </p>
+  <CodeBlock code={`<DataTable
+  selectableRows
+  selectableRowsComponent={Checkbox}
+  selectableRowsComponentProps={{
+    indeterminate: (isIndeterminate: boolean) => isIndeterminate,
+  }}
+/>`} />
 </DocsLayout>

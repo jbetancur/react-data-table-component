@@ -2,6 +2,18 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.4.2
+
+### Behavior changes
+
+- The expandable-row toggle button's hover/focus highlight is now sized to the icon instead of filling the entire cell.
+
+### Bug fixes
+
+- Fixed `selectableRowsComponentProps` resolving only the last entry when multiple function-valued props were passed — all function props now resolve correctly. → [Row selection](/docs/selection)
+
+---
+
 ## 8.4.1
 
 ### Bug fixes

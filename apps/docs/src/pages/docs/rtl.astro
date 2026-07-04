@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import RTLDemo from '../../components/demos/RTLDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="RTL support | react-data-table-component">
@@ -30,28 +31,14 @@ import RTLDemo from '../../components/demos/RTLDemo.tsx';
 
   <h2>Direction values</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Value</th>
-        <th>Behaviour</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>Direction.LTR</code> / <code>"ltr"</code></td>
-        <td>Forces left-to-right regardless of the page's <code>dir</code> attribute.</td>
-      </tr>
-      <tr>
-        <td><code>Direction.RTL</code> / <code>"rtl"</code></td>
-        <td>Forces right-to-left. Pagination arrows flip; <code>dir="rtl"</code> is set on the wrapper.</td>
-      </tr>
-      <tr>
-        <td><code>Direction.AUTO</code> / <code>"auto"</code> (default)</td>
-        <td>Reads <code>dir</code> from the <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code> element at mount time and follows it.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Value', 'Behaviour']}
+    rows={[
+      ['<code>Direction.LTR</code> / <code>"ltr"</code>', 'Forces left-to-right regardless of the page\'s <code>dir</code> attribute.'],
+      ['<code>Direction.RTL</code> / <code>"rtl"</code>', 'Forces right-to-left. Pagination arrows flip; <code>dir="rtl"</code> is set on the wrapper.'],
+      ['<code>Direction.AUTO</code> / <code>"auto"</code> (default)', 'Reads <code>dir</code> from the <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code> element at mount time and follows it.'],
+    ]}
+  />
 
   <h2>Quick start</h2>
 
@@ -116,24 +103,12 @@ import { ar } from 'react-data-table-component/locales';
 
   <h2>Prop reference</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prop</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>direction</code></td>
-        <td><code>Direction</code></td>
-        <td><code>Direction.AUTO</code></td>
-        <td>Text direction for the table. <code>ltr</code>, <code>rtl</code>, or <code>auto</code>.</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['Prop', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>direction</code>', '<code>Direction</code>', '<code>Direction.AUTO</code>', 'Text direction for the table. <code>ltr</code>, <code>rtl</code>, or <code>auto</code>.'],
+    ]}
+  />
 
   <CodeBlock code={`import { Direction } from 'react-data-table-component';
 

@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import FilteringDemo from '../../components/demos/FilteringDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
 ---
 
 <DocsLayout title="Filtering | react-data-table-component">
@@ -81,36 +82,14 @@ export default function App() {
   { id: 'dob',   name: 'Birth date', selector: r => r.dob,   filterable: true, filterType: 'date' },
 ];`} />
 
-  <table>
-    <thead>
-      <tr>
-        <th><code>filterType</code></th>
-        <th>Default operator</th>
-        <th>Input</th>
-        <th>Operators</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>"text"</code> (default)</td>
-        <td>Contains</td>
-        <td>Text</td>
-        <td>Contains, Does not contain, Equals, Does not equal, Begins with, Ends with, Blank, Not blank</td>
-      </tr>
-      <tr>
-        <td><code>"number"</code></td>
-        <td>Equals</td>
-        <td>Number</td>
-        <td>Equals, Does not equal, Greater than, ≥, Less than, ≤, Between, Blank, Not blank</td>
-      </tr>
-      <tr>
-        <td><code>"date"</code></td>
-        <td>Equals</td>
-        <td>Date</td>
-        <td>Equals, Before, After, Between, Blank, Not blank</td>
-      </tr>
-    </tbody>
-  </table>
+  <DocsTable
+    headers={['<code>filterType</code>', 'Default operator', 'Input', 'Operators']}
+    rows={[
+      ['<code>"text"</code> (default)', 'Contains', 'Text', 'Contains, Does not contain, Equals, Does not equal, Begins with, Ends with, Blank, Not blank'],
+      ['<code>"number"</code>', 'Equals', 'Number', 'Equals, Does not equal, Greater than, ≥, Less than, ≤, Between, Blank, Not blank'],
+      ['<code>"date"</code>', 'Equals', 'Date', 'Equals, Before, After, Between, Blank, Not blank'],
+    ]}
+  />
 
   <p>
     <strong>Blank / Not blank</strong> match on empty cells and need no value input.

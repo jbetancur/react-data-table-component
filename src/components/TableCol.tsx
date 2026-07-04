@@ -151,9 +151,7 @@ function TableCol<T>({
 	const isDragging = equalizeId(column.id, draggingColumnId);
 
 	// ── Column pinning ─────────────────────────────────────────────────────────
-	const pinMeta = getPinnedCellMeta(column, pinnedOffsets);
-	const pinnedStyle: React.CSSProperties = pinMeta.style.position === 'sticky' ? { ...pinMeta.style, zIndex: 2 } : {};
-	const pinnedClass = pinMeta.className;
+	const pinMeta = getPinnedCellMeta(column, pinnedOffsets, 2);
 
 	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
 		if (column.reorder && typeof column.name === 'string') {
@@ -182,7 +180,7 @@ function TableCol<T>({
 	return (
 		<CellExtended
 			data-column-id={column.id}
-			className={['rdt_TableCol', pinnedClass].filter(Boolean).join(' ')}
+			className={['rdt_TableCol', pinMeta.className].filter(Boolean).join(' ')}
 			$headCell
 			allowOverflow={column.allowOverflow}
 			button={column.button}
@@ -199,8 +197,8 @@ function TableCol<T>({
 			style={{
 				...(isDragging ? (customStyles.headCells?.draggingStyle as React.CSSProperties) : undefined),
 				...widthStyle,
-				...pinnedStyle,
-				...(pinnedStyle.position !== 'sticky' && { position: 'relative' }),
+				...pinMeta.style,
+				...(pinMeta.style.position !== 'sticky' && { position: 'relative' }),
 				...gridStyle,
 			}}
 			onDragStart={handleDragStart}
