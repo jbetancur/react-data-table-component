@@ -3,6 +3,14 @@ import Layout from '../layouts/Layout.astro';
 
 const GH_SPONSORS = 'https://github.com/sponsors/jbetancur';
 const OC_BASE = 'https://opencollective.com/react-data-table-component';
+// TODO: replace with the exact referral URL from Tidelift's "Promote the Tidelift Subscription" marketing task.
+const TIDELIFT_URL =
+  'https://tidelift.com/subscription/pkg/npm-react-data-table-component?utm_source=npm-react-data-table-component&utm_medium=referral&utm_campaign=docs';
+
+// Backer tier ($20/mo) and above. Add sponsors here as they sign on.
+const backers: { name: string; url?: string }[] = [
+  { name: 'Rich Tillman', url: 'https://opencollective.com/rich-tillman' },
+];
 ---
 
 <Layout
@@ -21,7 +29,11 @@ const OC_BASE = 'https://opencollective.com/react-data-table-component';
   <!-- Sponsor tiers -->
   <section class="bg-gray-50 py-16">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-gray-900 text-center mb-10">Sponsorship Tiers</h2>
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-3">Sponsorship Tiers</h2>
+      <p class="text-sm text-gray-500 text-center max-w-xl mx-auto mb-10">
+        Bronze and above is a support plan first, visibility second: your issues jump the queue of a
+        library your product already depends on.
+      </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {[
@@ -30,37 +42,37 @@ const OC_BASE = 'https://opencollective.com/react-data-table-component';
             price: '$5',
             period: '/mo',
             perks: ['Name in README supporters list'],
-            amount: 5,
+            ocSlug: 'backer-14044',
           },
           {
             name: '🎗 Backer',
             price: '$20',
             period: '/mo',
-            perks: ['Name + link in README'],
-            amount: 20,
+            perks: ['Name + link in README', 'Listed in the Backers section on this site'],
+            ocSlug: 'sponsor-14045',
           },
           {
             name: '🥉 Bronze',
             price: '$100',
             period: '/mo',
-            perks: ['Small logo on docs site footer', 'Name + link in README'],
-            amount: 100,
+            perks: ['Priority issue triage', 'Small logo on docs site footer', 'Small logo + link in README'],
+            ocSlug: 'bronze-103592',
           },
           {
             name: '🥈 Silver',
             price: '$200',
             period: '/mo',
-            perks: ['Medium logo on docs site sidebar', 'Logo + link in README'],
-            amount: 200,
+            perks: ['Priority issue triage', 'Medium logo on docs site sidebar', 'Logo + link in README'],
+            ocSlug: 'silver-103593',
           },
           {
             name: '🥇 Gold',
             price: '$500',
             period: '/mo',
-            perks: ['Large logo: hero spot on reactdatatable.com', 'Top placement in README', 'Limited to 3 sponsors'],
-            amount: 500,
+            perks: ['Priority issue triage', 'Direct line to the maintainer', 'Large logo: hero spot on reactdatatable.com', 'Top placement in README', 'Limited to 3 sponsors'],
+            ocSlug: 'gold-103594',
           },
-        ].map(({ name, price, period, perks }) => (
+        ].map(({ name, price, period, perks, ocSlug }) => (
           <div class="bg-white border border-gray-200 rounded-xl p-5 flex flex-col">
             <div class="font-semibold text-gray-900">{name}</div>
             <div class="mt-1 text-2xl font-bold text-gray-900">
@@ -76,14 +88,24 @@ const OC_BASE = 'https://opencollective.com/react-data-table-component';
                 </li>
               ))}
             </ul>
-            <a
-              href={GH_SPONSORS}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-4 block text-center border border-brand-200 text-brand-700 text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-50 transition-colors"
-            >
-              Sponsor on GitHub →
-            </a>
+            <div class="mt-4 space-y-2">
+              <a
+                href={GH_SPONSORS}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-center bg-brand-600 text-white text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-700 transition-colors"
+              >
+                Sponsor on GitHub →
+              </a>
+              <a
+                href={`${OC_BASE}/contribute/${ocSlug}/checkout`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-center border border-brand-200 text-brand-700 text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-50 transition-colors"
+              >
+                Open Collective →
+              </a>
+            </div>
           </div>
         ))}
       </div>
@@ -92,18 +114,73 @@ const OC_BASE = 'https://opencollective.com/react-data-table-component';
       <div class="mt-8 bg-white border border-gray-200 rounded-xl p-6 text-center">
         <h3 class="font-semibold text-gray-900 mb-1">One-time donation</h3>
         <p class="text-sm text-gray-500 mb-4">No commitment. Every bit helps.</p>
-        <a
-          href={GH_SPONSORS}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-brand-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-brand-700 transition-colors"
-        >
-          Sponsor on GitHub →
-        </a>
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <a
+            href={`${GH_SPONSORS}?frequency=one-time`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block bg-brand-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-brand-700 transition-colors"
+          >
+            Sponsor on GitHub →
+          </a>
+          <a
+            href={`${OC_BASE}/contribute/one-time-thanks-103595/checkout`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block border border-brand-200 text-brand-700 text-sm font-medium px-5 py-2 rounded-lg hover:bg-brand-50 transition-colors"
+          >
+            Open Collective →
+          </a>
+        </div>
         <p class="mt-3 text-xs text-gray-400">
-          Prefer invoicing? <a href={`${OC_BASE}/donate`} target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">Open Collective</a> provides receipts automatically.
+          Open Collective provides receipts and invoices automatically.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- Backers -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-bold text-gray-900 text-center mb-2">Backers</h2>
+    <p class="text-sm text-gray-500 text-center mb-8">
+      Thank you to everyone sponsoring at the Backer tier and above.
+    </p>
+    {backers.length > 0 ? (
+      <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+        {backers.map(({ name, url }) => (
+          <li>
+            {url ? (
+              <a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium">{name}</a>
+            ) : (
+              <span class="text-gray-700 font-medium">{name}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="text-center text-sm text-gray-400">
+        <a href="/support" class="text-brand-600 hover:text-brand-700 font-medium">Be the first backer →</a>
+      </p>
+    )}
+  </section>
+
+  <!-- Enterprise support (Tidelift) -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="bg-gray-900 rounded-2xl px-8 py-10 text-center">
+      <h2 class="text-2xl font-bold text-white mb-3">Enterprise support</h2>
+      <p class="text-sm text-gray-300 max-w-2xl mx-auto mb-6">
+        Need commercial support, security guarantees, and maintenance covered by an agreement? react-data-table-component
+        is available as part of the Tidelift Subscription, so your team gets enterprise-grade assurances while the
+        maintainer gets paid to keep it healthy.
+      </p>
+      <a
+        href={TIDELIFT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-white text-gray-900 text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-100 transition-colors"
+      >
+        Learn about Tidelift →
+      </a>
     </div>
   </section>
 
@@ -199,14 +276,53 @@ const OC_BASE = 'https://opencollective.com/react-data-table-component';
       ))}
     </dl>
 
-    <div class="mt-12 text-center">
+    <div class="mt-12 text-center" data-contact data-user="sponsors" data-domain="reactdatatable.com">
       <p class="text-sm text-gray-500 mb-3">Questions about sponsorship or consulting?</p>
-      <a
-        href="mailto:1385932+jbetancur@users.noreply.github.com"
-        class="text-sm text-brand-600 hover:text-brand-700 font-medium"
-      >
-        Email me directly →
-      </a>
+      <div class="inline-flex items-center gap-2">
+        <a
+          data-contact-link
+          href="#"
+          class="text-sm text-brand-600 hover:text-brand-700 font-medium"
+        >
+          Email me directly →
+        </a>
+        <button
+          data-contact-copy
+          type="button"
+          aria-label="Copy email address"
+          class="hidden items-center gap-1 text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-md px-2 py-1 transition-colors"
+        >
+          <svg data-copy-icon width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="9" height="9" rx="1.5"/>
+            <path d="M3 11H2.5A1.5 1.5 0 0 1 1 9.5v-7A1.5 1.5 0 0 1 2.5 1h7A1.5 1.5 0 0 1 11 2.5V3"/>
+          </svg>
+          <span data-copy-label>Copy</span>
+        </button>
+      </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll<HTMLElement>('[data-contact]').forEach((root) => {
+      const addr = `${root.dataset.user}@${root.dataset.domain}`;
+      const link = root.querySelector<HTMLAnchorElement>('[data-contact-link]');
+      const copy = root.querySelector<HTMLButtonElement>('[data-contact-copy]');
+      const label = root.querySelector<HTMLElement>('[data-copy-label]');
+
+      if (link) link.href = `mailto:${addr}`;
+
+      if (copy && label && navigator.clipboard) {
+        copy.classList.remove('hidden');
+        copy.classList.add('inline-flex');
+        copy.addEventListener('click', async () => {
+          await navigator.clipboard.writeText(addr);
+          const original = label.textContent;
+          label.textContent = 'Copied!';
+          setTimeout(() => {
+            label.textContent = original;
+          }, 2000);
+        });
+      }
+    });
+  </script>
 </Layout>
