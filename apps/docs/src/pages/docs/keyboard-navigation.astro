@@ -1,0 +1,170 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import KeyboardArrowNavDemo from '../../components/demos/KeyboardArrowNavDemo.tsx';
+import KeyboardSortDemo from '../../components/demos/KeyboardSortDemo.tsx';
+import KeyboardEditDemo from '../../components/demos/KeyboardEditDemo.tsx';
+import KeyboardNavigationDemo from '../../components/demos/KeyboardNavigationDemo.tsx';
+import DocsTable from '../../components/DocsTable.astro';
+---
+
+<DocsLayout title="Keyboard navigation | react-data-table-component">
+  <h1>Keyboard navigation</h1>
+
+  <p>
+    Pass <code>cellNavigation</code> to navigate the whole table with the keyboard, spreadsheet-style.
+    The table renders with the WAI-ARIA grid pattern: <code>role="grid"</code>, a single Tab stop, and
+    a roving tabindex, so the table adds exactly one stop to the page's Tab order and all movement
+    inside it happens with the keys below. Navigation covers every cell, including the header row,
+    selection checkboxes, and expander buttons, so sorting, selecting, and expanding all work without
+    a mouse. It's independent of <a href="/docs/inline-editing">inline editing</a> and works on
+    read-only tables too.
+  </p>
+
+  <CodeBlock code={`<DataTable columns={columns} data={data} cellNavigation />`} />
+
+  <h2>All shortcuts</h2>
+
+  <DocsTable
+    headers={['Key', 'Action']}
+    rows={[
+      ['<kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd>', 'Move between cells. <kbd>↑</kbd> from the first body row moves into the header row. Clamped at the edges, no wraparound.'],
+      ['<kbd>Home</kbd> / <kbd>End</kbd>', 'Jump to the first / last cell in the current row.'],
+      ['<kbd>Ctrl</kbd>+<kbd>Home</kbd> / <kbd>Ctrl</kbd>+<kbd>End</kbd>', 'Jump to the first / last cell of the grid.'],
+      ['<kbd>Enter</kbd> or <kbd>F2</kbd>', "Open the focused cell's editor, if it has one (<code>editable</code>/<code>editor</code> — see <a href=\"/docs/inline-editing\">Inline editing</a>)."],
+      ['<kbd>Escape</kbd>', 'Cancel an open editor and return focus to the cell so navigation can continue.'],
+      ['<kbd>Enter</kbd> or <kbd>Space</kbd> on a header', 'Sort by that column (sortable columns only).'],
+      ['<kbd>Space</kbd> on a checkbox / <kbd>Enter</kbd> on an expander', 'Toggle row selection / expand or collapse the row.'],
+    ]}
+  />
+
+  <p>
+    Arrow keys only navigate when the focused cell is not being edited. While an editor is open,
+    arrow keys behave normally (moving the text cursor, changing a native
+    <code>&lt;select&gt;</code>, etc.).
+  </p>
+
+  <h2>Movement: arrows, Home/End, Ctrl+Home/Ctrl+End</h2>
+
+  <p>
+    The base behavior works on any table, editable or not. Arrow keys move one cell at a time and
+    clamp at the edges — there's no wraparound from the last column back to the first. <kbd>Home</kbd>
+    and <kbd>End</kbd> jump to the first / last cell in the current row; add <kbd>Ctrl</kbd>
+    (<kbd>⌘</kbd> on macOS) to jump to the first / last cell of the whole grid instead.
+  </p>
+
+  <Demo
+    title="Arrow movement"
+    description="Click a cell, then move with the keyboard only. No editing, sorting, selection, or expansion — just movement."
+    code={`<DataTable columns={columns} data={data} cellNavigation />`}
+  >
+    <KeyboardArrowNavDemo client:load />
+  </Demo>
+
+  <h2>Sorting from the keyboard</h2>
+
+  <p>
+    Arrow <kbd>↑</kbd> out of the first body row to reach the header. On a sortable column,
+    <kbd>Enter</kbd> or <kbd>Space</kbd> cycles the sort exactly like a click would — ascending,
+    then descending, then back to unsorted. See <a href="/docs/sorting">Sorting</a> for the full
+    behavior, including multi-column sort.
+  </p>
+
+  <Demo
+    title="Sort with Enter / Space"
+    description="Arrow up to a header, then press Enter or Space to sort. Arrow down returns to the body."
+    code={`const columns: TableColumn<Employee>[] = [
+  { id: 'name', name: 'Name', selector: r => r.name, sortable: true },
+  { id: 'department', name: 'Department', selector: r => r.department, sortable: true },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true, right: true },
+];
+
+<DataTable columns={columns} data={data} cellNavigation />`}
+  >
+    <KeyboardSortDemo client:load />
+  </Demo>
+
+  <h2>Editing from the keyboard</h2>
+
+  <p>
+    <kbd>Enter</kbd> or <kbd>F2</kbd> opens the focused cell's editor if the column has one
+    (<code>editable</code> or <code>editor</code>). <kbd>Enter</kbd> inside the editor commits;
+    <kbd>Escape</kbd> cancels. Either way, focus lands back on the cell wrapper so arrow-key
+    navigation continues without an extra click. See <a href="/docs/inline-editing">Inline editing</a>
+    for the full set of editor types.
+  </p>
+
+  <Demo
+    title="Edit with Enter / F2, cancel with Escape"
+    description="Arrow to Name or Salary, press Enter or F2 to edit, Enter to commit or Escape to cancel."
+    code={`const columns: TableColumn<Employee>[] = [
+  { id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit: handleCellEdit },
+  { id: 'department', name: 'Department', selector: r => r.department }, // no editor
+  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true,
+    editable: true, onCellEdit: handleCellEdit },
+];
+
+<DataTable columns={columns} data={data} cellNavigation />`}
+  >
+    <KeyboardEditDemo client:load />
+  </Demo>
+
+  <h2>Selection and expansion from the keyboard</h2>
+
+  <p>
+    Selection checkboxes and expander buttons sit in the nav grid like any other cell. Arrow onto
+    a row's checkbox and press <kbd>Space</kbd> to select it — arrow up far enough and you reach the
+    header's select-all checkbox, which works the same way. Arrow onto an expander button and press
+    <kbd>Enter</kbd> to expand or collapse that row.
+  </p>
+
+  <Demo
+    title="Select and expand without a mouse"
+    description="Everything together: arrows, Home/End, sorting, editing, row selection, and row expansion, all from the keyboard."
+    code={`<DataTable
+  columns={columns}
+  data={data}
+  cellNavigation
+  selectableRows
+  expandableRows
+  expandableRowsComponent={RowDetail}
+/>`}
+  >
+    <KeyboardNavigationDemo client:load />
+  </Demo>
+
+  <h2>The grid pattern</h2>
+
+  <p>
+    Without <code>cellNavigation</code>, the table renders <code>role="table"</code> with plain
+    <code>role="cell"</code> cells — the right shape for a screen reader's native table-reading
+    commands, since nothing in the table is meant to hold focus. Turning on <code>cellNavigation</code>
+    switches every region to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/">WAI-ARIA grid
+    pattern</a>: <code>role="grid"</code>, <code>role="gridcell"</code> for body cells, and a single
+    roving <code>tabIndex={'{0}'}</code> that follows the last-focused cell. This is why it's an opt-in
+    prop rather than always-on — it's the right choice for tables you expect people to operate, not a
+    strict upgrade over the default.
+  </p>
+
+  <p>
+    See <a href="/docs/accessibility">Accessibility</a> for the full ARIA role reference, including how
+    roles differ with and without <code>cellNavigation</code>.
+  </p>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>Clamps at row/column edges rather than wrapping.</li>
+    <li>Doesn't cross page boundaries — arrowing past the last row does not auto-paginate.</li>
+    <li>Key bindings are fixed. There's no prop to remap them.</li>
+  </ul>
+
+  <h2>Prop reference</h2>
+
+  <DocsTable
+    headers={['Table prop', 'Type', 'Description']}
+    rows={[
+      ['<code>cellNavigation</code>', '<code>boolean</code>', "Enable spreadsheet-style keyboard navigation (WAI-ARIA grid pattern: <code>role='grid'</code>, single Tab stop, roving tabindex). Defaults to <code>false</code>."],
+    ]}
+  />
+</DocsLayout>

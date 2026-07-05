@@ -4,6 +4,7 @@ import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 import { prop, isEmpty } from '../util';
 import type { RowState, SingleRowAction, RangeRowAction, ComponentProps, TableRow } from '../types';
+import type { NavCellProps } from '../context/RowContext';
 
 type TableCellCheckboxProps<T> = {
 	name: string;
@@ -20,6 +21,7 @@ type TableCellCheckboxProps<T> = {
 	visibleRowsRef: React.MutableRefObject<T[]>;
 	lastSelectedKeyRef: React.MutableRefObject<string | number | null>;
 	selectableRowsRange: boolean;
+	nav?: NavCellProps;
 };
 
 function TableCellCheckbox<T>({
@@ -37,6 +39,7 @@ function TableCellCheckbox<T>({
 	visibleRowsRef,
 	lastSelectedKeyRef,
 	selectableRowsRange,
+	nav,
 }: TableCellCheckboxProps<T>): JSX.Element {
 	const disabled = !!(selectableRowDisabled && selectableRowDisabled(row));
 	const rowKey = prop(row as TableRow, keyField) as string | number | undefined;
@@ -94,8 +97,12 @@ function TableCellCheckbox<T>({
 		<CellBase
 			onClick={(e: React.MouseEvent) => e.stopPropagation()}
 			className={['rdt_TableCell', 'rdt_cellCheckbox'].join(' ')}
-			role="cell"
+			role={nav ? 'gridcell' : 'cell'}
 			$noPadding
+			tabIndex={nav ? -1 : undefined}
+			data-nav-row={nav?.row}
+			data-nav-col={nav?.col}
+			data-nav-widget={nav ? 'true' : undefined}
 		>
 			<Checkbox
 				name={name}
@@ -105,6 +112,7 @@ function TableCellCheckbox<T>({
 				aria-checked={selected}
 				onClick={handleOnRowSelected}
 				disabled={disabled}
+				tabIndex={nav ? (nav.active ? 0 : -1) : undefined}
 			/>
 		</CellBase>
 	);

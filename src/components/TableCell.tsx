@@ -11,13 +11,23 @@ interface CellProps<T> {
 	column: TableColumn<T>;
 	row: T;
 	rowIndex: number;
+	navCol: number;
 	isDragging: boolean;
 }
 
-function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T>): JSX.Element {
+function Cell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }: CellProps<T>): JSX.Element {
 	const customStyles = useStyles();
-	const { onDragStart, onDragOver, onDragEnd, onDragEnter, onDragLeave, columnWidths, pinnedOffsets } =
-		useRowContext<T>();
+	const {
+		onDragStart,
+		onDragOver,
+		onDragEnd,
+		onDragEnter,
+		onDragLeave,
+		columnWidths,
+		pinnedOffsets,
+		cellNavigation,
+		activeCell,
+	} = useRowContext<T>();
 	const resizedWidth = column.id != null ? columnWidths[column.id] : undefined;
 	const { conditionalStyle, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
 
@@ -83,13 +93,6 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 		if (e.key === 'Escape') cancelEdit();
 	};
 
-	// ── Column pinning ─────────────────────────────────────────────────────────
-	const pinMeta = getPinnedCellMeta(column, pinnedOffsets, 1);
-
-	const editableClass = editor && !editing ? 'rdt_cellEditable' : '';
-	const editingClass = editing ? 'rdt_cellEditing' : '';
-	const errorClass = editError ? 'rdt_cellEditError' : '';
-
 	// Checkbox editor commits instantly on click — no extra state.
 	const handleCheckboxCommit = (e: React.MouseEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>) => {
 		e.stopPropagation();
@@ -97,11 +100,58 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 		commitEdit(current ? 'false' : 'true');
 	};
 
+	// ── Cell navigation ────────────────────────────────────────────────────────
+	// Roving tabindex: exactly one cell in the grid is a Tab stop. Arrow-key movement
+	// and focus placement are handled centrally on the table element (see
+	// handleNavKeyDown in DataTable); this cell only renders its coordinates, its
+	// tabindex, and the editing keys.
+	const isActive = cellNavigation && activeCell != null && activeCell.row === rowIndex && activeCell.col === navCol;
+
+	// Return focus to the cell wrapper when editing ends (Enter/Escape/blur unmounts the
+	// input, which would otherwise drop focus to <body> and out of the grid entirely).
+	// `id` (the cell's DOM id, `column.id` + row keyField) is not unique across tables,
+	// so this holds a ref to the cell's own node rather than looking it up by id.
+	// The wasEditing guard stops re-renders that merely make this cell the clamped
+	// active cell (sort, filter, page change) from stealing focus from elsewhere.
+	const cellRef = React.useRef<HTMLDivElement>(null);
+	const wasEditingRef = React.useRef(false);
+	React.useEffect(() => {
+		if (cellNavigation && isActive && wasEditingRef.current && !editing) {
+			const el = cellRef.current;
+			if (el && (document.activeElement === document.body || el.contains(document.activeElement))) el.focus();
+		}
+		wasEditingRef.current = editing;
+	}, [cellNavigation, isActive, editing]);
+
+	const handleCellKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		// While editing, keys belong to the editor input.
+		if (editing) return;
+
+		if ((e.key === 'Enter' || e.key === 'F2') && editor && editor.type !== 'checkbox') {
+			e.preventDefault();
+			startEdit();
+			return;
+		}
+
+		if (e.key === ' ' && editor?.type === 'checkbox') {
+			e.preventDefault();
+			handleCheckboxCommit(e as unknown as React.MouseEvent<HTMLDivElement>);
+		}
+	};
+
+	// ── Column pinning ─────────────────────────────────────────────────────────
+	const pinMeta = getPinnedCellMeta(column, pinnedOffsets, 1);
+
+	const editableClass = editor && !editing ? 'rdt_cellEditable' : '';
+	const editingClass = editing ? 'rdt_cellEditing' : '';
+	const errorClass = editError ? 'rdt_cellEditError' : '';
+
 	return (
 		<CellExtended
+			ref={cellRef}
 			id={id}
 			data-column-id={column.id}
-			role="cell"
+			role={cellNavigation ? 'gridcell' : 'cell'}
 			className={[classNames, pinMeta.className, editableClass, editingClass, errorClass].filter(Boolean).join(' ')}
 			data-tag={dataTag}
 			button={column.button}
@@ -123,6 +173,10 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 			onDragEnd={column.reorder ? onDragEnd : undefined}
 			onDragEnter={column.reorder ? onDragEnter : undefined}
 			onDragLeave={column.reorder ? onDragLeave : undefined}
+			tabIndex={cellNavigation ? (isActive ? 0 : -1) : undefined}
+			data-nav-row={cellNavigation ? rowIndex : undefined}
+			data-nav-col={cellNavigation ? navCol : undefined}
+			onKeyDown={cellNavigation ? handleCellKeyDown : undefined}
 			onClick={editor && !editing && editor.type !== 'checkbox' ? startEdit : undefined}
 		>
 			{editing && (editor?.type === 'text' || editor?.type === 'number' || editor?.type === 'date') && (
@@ -159,6 +213,7 @@ function Cell<T>({ id, column, row, rowIndex, dataTag, isDragging }: CellProps<T
 						className="rdt_editCheckbox"
 						aria-checked={seedValue() === 'true'}
 						checked={seedValue() === 'true'}
+						tabIndex={cellNavigation ? -1 : undefined}
 						onChange={handleCheckboxCommit}
 						onClick={e => e.stopPropagation()}
 					/>

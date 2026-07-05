@@ -9,7 +9,7 @@ import ExpanderRow from './ExpanderRow';
 import RightPinSpacer from './RightPinSpacer';
 import { prop, equalizeId, getConditionalStyle, getFirstRightPinnedId, isEven } from '../util';
 import { STOP_PROP_TAG } from '../constants';
-import type { TableRow } from '../types';
+import type { TableRow, TableColumn } from '../types';
 
 function isRowTarget(e: React.MouseEvent<HTMLDivElement>): boolean {
 	return (e.target as HTMLDivElement).getAttribute('data-tag') === STOP_PROP_TAG;
@@ -76,6 +76,8 @@ function Row<T>({
 		selectableRowsHighlight,
 		selectableRowsSingle,
 		striped,
+		cellNavigation,
+		activeCell,
 	} = useRowContext<T>();
 
 	type ExpanderState = { expanded: boolean; mounted: boolean; closing: boolean };
@@ -151,6 +153,9 @@ function Row<T>({
 
 	const handleKeyDown = React.useCallback(
 		(e: React.KeyboardEvent<HTMLDivElement>) => {
+			// Only act on keys pressed while the row itself is focused — with cellNavigation
+			// (or an open editor) key events bubble up from focused descendants.
+			if (e.target !== e.currentTarget) return;
 			if (e.key === 'Enter') {
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
 					handleExpanded();
@@ -194,6 +199,17 @@ function Row<T>({
 
 	const rowKeyField = prop(row as TableRow, keyField) ?? rowIndex;
 
+	// Cell navigation: selection/expander cells occupy the first nav columns, then each
+	// non-omitted data column gets the next index.
+	const navPrefixCount = (selectableRows ? 1 : 0) + (expandableRows && !expandableRowsHideExpander ? 1 : 0);
+	const columnIndexMap = React.useMemo(() => {
+		const map = new Map<TableColumn<T>, number>();
+		let i = 0;
+		for (const c of columns) if (!c.omit) map.set(c, i++);
+		return map;
+	}, [columns]);
+	const navRowActive = cellNavigation && activeCell?.row === rowIndex;
+
 	const firstRightPinnedId = React.useMemo(() => getFirstRightPinnedId(columns), [columns]);
 	const { conditionalStyle, classNames } = React.useMemo(
 		() => getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']),
@@ -235,7 +251,7 @@ function Row<T>({
 				id={`row-${id}`}
 				role="row"
 				aria-selected={selectableRows ? selected : undefined}
-				tabIndex={!defaultExpanderDisabled && showPointer ? 0 : -1}
+				tabIndex={cellNavigation ? -1 : !defaultExpanderDisabled && showPointer ? 0 : -1}
 				className={className}
 				style={style}
 				onClick={handleRowClick}
@@ -261,6 +277,7 @@ function Row<T>({
 						visibleRowsRef={visibleRowsRef}
 						lastSelectedKeyRef={lastSelectedKeyRef}
 						selectableRowsRange={selectableRowsRange}
+						nav={cellNavigation ? { row: rowIndex, col: 0, active: navRowActive && activeCell?.col === 0 } : undefined}
 					/>
 				)}
 
@@ -273,6 +290,15 @@ function Row<T>({
 						row={row}
 						onToggled={handleExpanded}
 						disabled={defaultExpanderDisabled}
+						nav={
+							cellNavigation
+								? {
+										row: rowIndex,
+										col: selectableRows ? 1 : 0,
+										active: navRowActive && activeCell?.col === (selectableRows ? 1 : 0),
+									}
+								: undefined
+						}
 					/>
 				)}
 
@@ -290,6 +316,7 @@ function Row<T>({
 								column={column}
 								row={row}
 								rowIndex={rowIndex}
+								navCol={navPrefixCount + (columnIndexMap.get(column) ?? 0)}
 								isDragging={equalizeId(draggingColumnId, column.id)}
 							/>
 						</React.Fragment>

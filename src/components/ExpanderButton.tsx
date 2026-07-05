@@ -13,6 +13,7 @@ type ExpanderButtonProps<T> = {
 	id: string | number;
 	row: T;
 	onToggled?: (row: T) => void;
+	tabIndex?: number;
 };
 
 function ExpanderButton<T>({
@@ -23,6 +24,7 @@ function ExpanderButton<T>({
 	id,
 	row,
 	onToggled,
+	tabIndex,
 }: ExpanderButtonProps<T>): JSX.Element {
 	const customStyles = useStyles();
 	const icon = expanded ? expandableIcon.expanded : expandableIcon.collapsed;
@@ -36,6 +38,7 @@ function ExpanderButton<T>({
 			onClick={handleToggle}
 			data-testid={`expander-button-${id}`}
 			disabled={disabled}
+			tabIndex={tabIndex}
 			aria-label={
 				expanded
 					? (expandableRowsOptions?.collapseRowAriaLabel ?? 'Collapse Row')

@@ -27,17 +27,19 @@ Always provide `ariaLabel` so screen readers can identify `DataTable`. Without i
 
 ## Table structure
 
-`react-data-table-component` renders `div` elements with explicit ARIA roles, giving screen readers a full grid structure.
+`react-data-table-component` renders `div` elements with explicit ARIA roles, giving screen readers a full table structure.
 
 | Element | Role / attribute |
 | --- | --- |
-| Table wrapper | `role="table"`, `aria-label` (from `ariaLabel` prop), `aria-busy` during load |
+| Table wrapper | `role="table"` (or `role="grid"` with `cellNavigation` — see below), `aria-label` (from `ariaLabel` prop), `aria-busy` during load |
 | Header section | `role="rowgroup"` |
 | Body section | `role="rowgroup"` |
 | Header row | `role="row"` |
 | Data row | `role="row"`, `aria-selected` (when `selectableRows` is enabled) |
-| Data cell | `role="cell"` |
+| Data cell | `role="cell"` (or `role="gridcell"` with `cellNavigation`) |
 | Column header | `role="columnheader"` |
+
+By default this is a **static table**: nothing but sortable headers is focusable, which is the right shape for a screen reader's native table-reading commands. Passing `cellNavigation` turns it into an interactive **grid** (WAI-ARIA grid pattern) instead — every cell becomes focusable via a single roving tab stop, and arrow keys move between them. See [Keyboard navigation](/docs/keyboard-navigation) for the full key reference and the reasoning for making this opt-in rather than the default.
 
 ---
 
@@ -52,7 +54,7 @@ Sortable column headers expose `aria-sort` so screen readers announce the curren
 | Sorted Z → A / high → low | `"descending"` |
 | Column not sortable | attribute omitted |
 
-**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** to toggle the sort direction. Non-sortable headers are removed from the tab order. Keyboard focus is indicated with a visible `:focus-visible` outline in the theme's primary color.
+**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** or **Space** to toggle the sort direction. Non-sortable headers are removed from the tab order. Keyboard focus is indicated with a visible `:focus-visible` outline in the theme's primary color. With `cellNavigation` enabled, header cells instead participate in the grid's roving tabindex — see [Keyboard navigation](/docs/keyboard-navigation).
 
 ---
 
@@ -64,6 +66,7 @@ When `selectableRows` is enabled:
 - The select-all checkbox in the header has `aria-label="Select all rows"`.
 - Per-row checkboxes have `aria-label="Select row {id}"` where `{id}` is the row's key field value.
 - The indeterminate state (some-but-not-all rows selected) is set via the native `indeterminate` DOM property, which screen readers announce correctly.
+- With `cellNavigation` enabled, checkboxes are reachable by arrowing to their column and are toggled with **Space**. See [Keyboard navigation](/docs/keyboard-navigation).
 
 ---
 
@@ -112,7 +115,7 @@ Focus moves automatically to the first focusable element (the operator `<select>
 
 The expand toggle is a `<button>` with `aria-label="Expand Row"` or `"Collapse Row"`. Expanded content renders inline beneath the row and is read naturally by screen readers.
 
-**Keyboard**: press **Enter** or **Space** on the expander button to toggle. If `expandOnRowClicked` is set, pressing **Enter** on the row itself also toggles.
+**Keyboard**: press **Enter** or **Space** on the expander button to toggle. If `expandOnRowClicked` is set, pressing **Enter** on the row itself also toggles. With `cellNavigation` enabled, the expander button is reachable by arrowing to its column. See [Keyboard navigation](/docs/keyboard-navigation).
 
 ---
 

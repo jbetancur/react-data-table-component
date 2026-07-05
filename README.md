@@ -2,7 +2,7 @@
 
 # React Data Table Component
 
-[![GitHub release](https://img.shields.io/github/release/jbetancur/react-data-table-component.svg)](https://GitHub.com/jbetancur/react-data-table-component/releases/)
+[![GitHub release](https://img.shields.io/github/release/jbetancur/react-data-table-component.svg)](https://GitHub.com/jbetancur/react-data-table-component/releases/) [![npm downloads](https://img.shields.io/npm/dm/react-data-table-component.svg)](https://www.npmjs.com/package/react-data-table-component) [![GitHub stars](https://img.shields.io/github/stars/jbetancur/react-data-table-component.svg)](https://github.com/jbetancur/react-data-table-component/stargazers) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/jbetancur/react-data-table-component.svg)](https://github.com/jbetancur/react-data-table-component/commits/master) [![Dependents](https://img.shields.io/librariesio/dependent-repos/npm/react-data-table-component.svg)](https://github.com/jbetancur/react-data-table-component/network/dependents)
 
 **A simple but flexible React data table. Working table in 10 lines.** Sorting, selection, pagination, expandable rows, and theming are opt-in props. No atomic HTML table knowledge required.
 

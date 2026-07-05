@@ -11,6 +11,7 @@ import type {
 	Localization,
 } from '../types';
 import type { PinnedOffsets } from '../util';
+import type { ActiveCell } from './RowContext';
 
 export interface HeadContextValue<T> {
 	// Sort state
@@ -44,6 +45,9 @@ export interface HeadContextValue<T> {
 	columnWidths: Record<string | number, number>;
 	pinnedOffsets: PinnedOffsets;
 	resizable: boolean;
+	// Cell navigation (row -1 of the nav grid is the header row)
+	cellNavigation: boolean;
+	activeCell: ActiveCell | null;
 	// Table state
 	progressPending: boolean;
 	sortedData: T[];

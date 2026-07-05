@@ -14,6 +14,8 @@ function ColumnCheckbox<T>(): JSX.Element {
 		selectableRowDisabled,
 		keyField,
 		mergeSelections,
+		cellNavigation,
+		activeCell,
 		onSelectAllRows,
 	} = useHeadContext<T>();
 
@@ -32,8 +34,19 @@ function ColumnCheckbox<T>(): JSX.Element {
 		});
 	};
 
+	const navActive = cellNavigation && activeCell?.row === -1 && activeCell?.col === 0;
+
 	return (
-		<CellBase className={['rdt_TableCol', 'rdt_columnCheckbox'].join(' ')} role="columnheader" $headCell $noPadding>
+		<CellBase
+			className={['rdt_TableCol', 'rdt_columnCheckbox'].join(' ')}
+			role="columnheader"
+			$headCell
+			$noPadding
+			tabIndex={cellNavigation ? -1 : undefined}
+			data-nav-row={cellNavigation ? -1 : undefined}
+			data-nav-col={cellNavigation ? 0 : undefined}
+			data-nav-widget={cellNavigation ? 'true' : undefined}
+		>
 			<Checkbox
 				name="Select all rows"
 				component={selectableRowsComponent}
@@ -42,6 +55,7 @@ function ColumnCheckbox<T>(): JSX.Element {
 				checked={allSelected}
 				indeterminate={indeterminate}
 				disabled={isDisabled}
+				tabIndex={cellNavigation ? (navActive ? 0 : -1) : undefined}
 			/>
 		</CellBase>
 	);

@@ -238,6 +238,16 @@ type BaseTableProps<T> = {
 	 * so you can persist to localStorage, a database, or anywhere else.
 	 */
 	onColumnResize?: (columnId: string | number, width: number, allWidths: Record<string | number, number>) => void;
+	/**
+	 * Enable spreadsheet-style keyboard navigation between cells. The table renders as a
+	 * WAI-ARIA grid (`role="grid"`, single Tab stop, roving tabindex): arrow keys move
+	 * between cells — including selection checkboxes, expander buttons, and the header
+	 * row — Home/End jump to the row edges, and Ctrl+Home/Ctrl+End jump to the grid
+	 * corners. Enter or F2 opens the focused cell's editor if it has one
+	 * (`editable`/`editor`) and Escape cancels it; Enter or Space on a header sorts the
+	 * column. Navigation is clamped to the current page. Defaults to `false`.
+	 */
+	cellNavigation?: boolean;
 	/** Animate rows on mount and expander rows on expand (respects prefers-reduced-motion) */
 	animateRows?: boolean;
 	/**

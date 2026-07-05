@@ -751,6 +751,17 @@
 	position: relative;
 }
 
+/* ─── Cell navigation: focus outline ───────────────────────────────────────── */
+/* Focus ring for keyboard cell navigation (`cellNavigation`). :focus-within also
+   covers cells whose real focus target is an inner widget (row checkbox, expander
+   button) or an open inline editor. Uses outline rather than box-shadow so it
+   doesn't fight with `.rdt_cellEditing`'s inset box-shadow while editing. */
+.rdt_table[role='grid'] [data-nav-row]:focus-within {
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -2px;
+	z-index: 2;
+}
+
 
 /* ─── Column pinning ────────────────────────────────────────────────────────── */
 

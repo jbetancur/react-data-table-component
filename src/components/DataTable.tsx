@@ -27,6 +27,7 @@ import useRowContextValue from '../hooks/useRowContextValue';
 import useHeadContextValue from '../hooks/useHeadContextValue';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import { useColorMode } from '../hooks/useColorMode';
+import useCellNavigation from '../hooks/useCellNavigation';
 
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
@@ -117,6 +118,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		initialColumnWidths,
 		onColumnResize,
 		animateRows = false,
+		cellNavigation = false,
 		columnSeparator,
 		headerSeparator,
 		footerComponent,
@@ -340,6 +342,21 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const showTableHead = !noTableHead && (persistTableHead || progressPending || filteredSortedData.length > 0);
 	const showHeader = !noHeader && !!(title || actions);
 
+	// ── Cell navigation ────────────────────────────────────────────────────────
+	const {
+		activeCell: effectiveActiveCell,
+		handleNavFocus,
+		handleNavKeyDown,
+	} = useCellNavigation({
+		cellNavigation,
+		selectableRows,
+		expandableRows,
+		expandableRowsHideExpander,
+		effectiveColumns,
+		filteredTableRowCount: filteredTableRows.length,
+		showTableHead,
+	});
+
 	// Footer renders when explicitly enabled, when a footerComponent is provided,
 	// or when at least one visible column declares a `footer`. `showFooter={false}`
 	// suppresses the row entirely (overrides both column footers and footerComponent).
@@ -408,6 +425,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		columnWidths,
 		pinnedOffsets,
 		animateRows,
+		cellNavigation,
+		activeCell: effectiveActiveCell,
 	});
 
 	const headContextValue = useHeadContextValue<T>({
@@ -440,6 +459,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		selectableRowsComponentProps,
 		selectableRowDisabled,
 		showSelectAll,
+		cellNavigation,
+		activeCell: effectiveActiveCell,
 		progressPending,
 		sortedData: filteredSortedData,
 		onSelectAllRows: handleSelectAllRows,
@@ -518,8 +539,10 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 									id={tableId}
 									disabled={disabled}
 									className="rdt_Table"
-									role="table"
+									role={cellNavigation ? 'grid' : 'table'}
 									aria-busy={isBusy}
+									onKeyDown={cellNavigation ? handleNavKeyDown : undefined}
+									onFocus={cellNavigation ? handleNavFocus : undefined}
 									{...(ariaLabel && { 'aria-label': ariaLabel })}
 								>
 									{showTableHead && (

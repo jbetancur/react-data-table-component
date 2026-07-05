@@ -61,6 +61,26 @@ export interface RowContextValue<T> {
 	pinnedOffsets: PinnedOffsets;
 	/** Whether to animate rows on mount */
 	animateRows: boolean;
+	/** Enable spreadsheet-style keyboard navigation between cells. */
+	cellNavigation: boolean;
+	/**
+	 * The roving-tabindex target when `cellNavigation` is on, clamped by DataTable to the
+	 * current page and column set so exactly one cell is always a Tab stop. Row `-1` is
+	 * the header row; columns count selection/expander cells before data columns.
+	 */
+	activeCell: ActiveCell | null;
+}
+
+export interface ActiveCell {
+	row: number;
+	col: number;
+}
+
+/** Position + Tab-stop state a row passes to its selection/expander cells. */
+export interface NavCellProps {
+	row: number;
+	col: number;
+	active: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
