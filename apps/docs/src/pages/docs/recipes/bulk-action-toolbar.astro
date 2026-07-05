@@ -1,7 +1,9 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
 import ApprovalWorkflowDemo from '../../../components/demos/ApprovalWorkflowDemo.tsx';
+import approvalWorkflowSource from '../../../components/demos/ApprovalWorkflowDemo.tsx?raw';
 ---
 
 <DocsLayout title="Multi-step approval workflow | Recipes | react-data-table-component" description="Build an approval queue with bulk actions that adapt to the selected rows' status — approved and rejected rows are excluded automatically.">
@@ -13,9 +15,17 @@ import ApprovalWorkflowDemo from '../../../components/demos/ApprovalWorkflowDemo
     automatically excluded from the action, so reviewers can't accidentally re-process them.
   </p>
 
-  <div class="not-prose my-8">
+  <Demo
+    title="Approval queue with bulk actions"
+    description="Select a few rows — the toolbar appears with actions filtered to what's actually actionable."
+    code={approvalWorkflowSource}
+  >
     <ApprovalWorkflowDemo client:load />
-  </div>
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
 
   <h2>Disabling already-resolved rows</h2>
 

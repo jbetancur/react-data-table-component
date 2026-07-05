@@ -18,6 +18,7 @@ const nav = [
       { label: 'Installation', href: '/docs/installation' },
       { label: 'Comparisons', href: '/docs/comparisons' },
       { label: 'Changelog', href: '/docs/changelog' },
+      { label: 'llms.txt', href: '/llms.txt' },
     ],
   },
   {
@@ -97,6 +98,10 @@ const nav = [
       { label: 'Audit log viewer', href: '/docs/recipes/sticky-footer' },
       { label: 'Persist column widths', href: '/docs/recipes/persist-column-widths' },
       { label: 'Inline row actions', href: '/docs/recipes/row-grouping' },
+      { label: 'Live-updating grid', href: '/docs/recipes/live-updates' },
+      { label: 'Editable inventory grid', href: '/docs/recipes/inventory-editor' },
+      { label: 'Grouped rows with aggregates', href: '/docs/recipes/row-groups' },
+      { label: 'CSV import', href: '/docs/recipes/csv-import' },
     ],
   },
   {
@@ -110,8 +115,8 @@ const nav = [
 
 const currentPath = Astro.url.pathname;
 
-// Flatten nav to a single ordered list for prev/next
-const allLinks = nav.flatMap(({ links }) => links);
+// Flatten nav to a single ordered list for prev/next (excludes non-page links like llms.txt)
+const allLinks = nav.flatMap(({ links }) => links).filter(({ href }) => href.startsWith('/docs/'));
 const currentIndex = allLinks.findIndex(({ href }) => currentPath === href);
 const prevLink = currentIndex > 0 ? allLinks[currentIndex - 1] : null;
 const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1] : null;

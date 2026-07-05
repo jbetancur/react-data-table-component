@@ -1,0 +1,88 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
+import EditableGridDemo from '../../../components/demos/EditableGridDemo.tsx';
+import editableGridSource from '../../../components/demos/EditableGridDemo.tsx?raw';
+---
+
+<DocsLayout title="Editable inventory grid | Recipes | react-data-table-component" description="Build a spreadsheet-style editable line-item grid with per-cell validation, a derived total column, and a running grand total — using only editable columns.">
+  <h1>Editable inventory grid</h1>
+
+  <p>
+    A line-item grid you edit directly, like a lightweight spreadsheet: product name and quantity
+    are editable inline, a <strong>total</strong> column is derived automatically, and a footer
+    bar keeps a running grand total. No form modal, no separate edit view.
+  </p>
+
+  <Demo
+    title="Editable inventory grid"
+    description="Edit product, quantity, or price directly in the cells. Total and grand total update automatically."
+    code={editableGridSource}
+  >
+    <EditableGridDemo client:load />
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
+
+  <h2>Editable columns with a shared handler</h2>
+
+  <p>
+    Set <code>editable</code> per column and point every editable column at the same
+    <code>onCellEdit</code> handler. Branch on the column's <code>id</code> to validate and
+    coerce the incoming value:
+  </p>
+
+  <CodeBlock code={`function handleCellEdit(row: LineItem, value: string, column: TableColumn<LineItem>) {
+  const field = column.id as keyof LineItem;
+  setData(prev => prev.map(r => {
+    if (r.id !== row.id) return r;
+    if (field === 'quantity') return { ...r, quantity: Math.max(0, parseInt(value) || 0) };
+    if (field === 'price')    return { ...r, price: Math.max(0, parseFloat(value) || 0) };
+    return { ...r, [field]: value };
+  }));
+}
+
+const columns: TableColumn<LineItem>[] = [
+  { id: 'product',  name: 'Product', selector: r => r.product, editable: true, onCellEdit: handleCellEdit },
+  { id: 'quantity', name: 'Qty',     selector: r => r.quantity, editable: true, editor: { type: 'number' }, onCellEdit: handleCellEdit, right: true },
+  { id: 'price',    name: 'Unit price', selector: r => r.price, editable: true, editor: { type: 'number' }, onCellEdit: handleCellEdit,
+    format: r => \`$\${r.price.toFixed(2)}\`, right: true },
+];`} />
+
+  <h2>A derived column that isn't editable</h2>
+
+  <p>
+    The <strong>total</strong> column has no <code>editable</code> flag — it's computed straight
+    from the row on every render, so it never drifts out of sync with quantity or price:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'total',
+  name: 'Total',
+  selector: r => r.quantity * r.price,
+  format: r => \`$\${(r.quantity * r.price).toFixed(2)}\`,
+  right: true,
+}`} />
+
+  <h2>Running grand total</h2>
+
+  <p>
+    Reduce over <code>data</code> on every render and show it in a footer bar below the table —
+    it updates automatically as cells are edited, with no extra event wiring:
+  </p>
+
+  <CodeBlock code={`const grandTotal = data.reduce((sum, r) => sum + r.quantity * r.price, 0);
+
+<div>
+  <DataTable columns={columns} data={data} />
+  <div className="total-bar">Grand total: \${grandTotal.toFixed(2)}</div>
+</div>`} />
+
+  <p>
+    Prefer it inside the table itself? Pass a <code>footer</code> to a column instead — see
+    <a href="/docs/footer">Footer</a> for the built-in summary row.
+  </p>
+</DocsLayout>

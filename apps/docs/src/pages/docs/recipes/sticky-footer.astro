@@ -1,7 +1,9 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
 import AuditLogDemo from '../../../components/demos/AuditLogDemo.tsx';
+import auditLogSource from '../../../components/demos/AuditLogDemo.tsx?raw';
 ---
 
 <DocsLayout title="Audit log viewer | Recipes | react-data-table-component" description="Build a filterable audit log viewer with severity-based row highlighting, a fixed scrollable header, and a live search input.">
@@ -13,9 +15,17 @@ import AuditLogDemo from '../../../components/demos/AuditLogDemo.tsx';
     search that filters across multiple fields at once.
   </p>
 
-  <div class="not-prose my-8">
+  <Demo
+    title="Audit log viewer"
+    description="Search across user, action, resource, and IP, or filter by severity. The header stays fixed while the body scrolls."
+    code={auditLogSource}
+  >
     <AuditLogDemo client:load />
-  </div>
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
 
   <h2>Fixed header with capped scroll height</h2>
 

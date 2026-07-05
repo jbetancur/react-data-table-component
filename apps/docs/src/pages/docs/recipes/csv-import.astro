@@ -1,0 +1,69 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
+import CsvImportDemo from '../../../components/demos/CsvImportDemo.tsx';
+import csvImportSource from '../../../components/demos/CsvImportDemo.tsx?raw';
+---
+
+<DocsLayout title="CSV import | Recipes | react-data-table-component" description="Load a user-uploaded CSV file into the table with FileReader and a small parser — no import feature to configure, data is just the data prop.">
+  <h1>CSV import</h1>
+
+  <p>
+    Since <code>data</code> is just an array, importing is not a table feature to configure —
+    it's reading a file, parsing it, and calling <code>setData</code>. Upload a file below, or
+    load the sample:
+  </p>
+
+  <Demo
+    title="CSV import"
+    description="Upload a .csv file, or load the sample data to see it parsed into the table."
+    code={csvImportSource}
+  >
+    <CsvImportDemo client:load />
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
+
+  <h2>Read the file</h2>
+
+  <p>
+    Use <code>FileReader</code> to read the uploaded file as text:
+  </p>
+
+  <CodeBlock code={`function handleFile(file: File) {
+  const reader = new FileReader();
+  reader.onload = () => setData(parseCsv(String(reader.result)));
+  reader.readAsText(file);
+}
+
+<input type="file" accept=".csv,text/csv" onChange={e => e.target.files?.[0] && handleFile(e.target.files[0])} />`} />
+
+  <h2>Parse rows into your row type</h2>
+
+  <p>
+    A minimal parser is a few lines — split on newlines, split each line on commas, and zip
+    against the header row. It doesn't handle quoted commas; reach for a library like
+    <code>papaparse</code> if your CSVs need that:
+  </p>
+
+  <CodeBlock code={`function parseCsv(text: string): Contact[] {
+  const [headerLine, ...lines] = text.trim().split('\\n');
+  const headers = headerLine.split(',').map(h => h.trim());
+
+  return lines.filter(Boolean).map(line => {
+    const cells = line.split(',').map(c => c.trim());
+    return Object.fromEntries(headers.map((h, i) => [h, cells[i] ?? ''])) as unknown as Contact;
+  });
+}`} />
+
+  <h2>Pass it straight to data</h2>
+
+  <p>No import prop, no adapter — the parsed array is the table's data:</p>
+
+  <CodeBlock code={`const [data, setData] = useState<Contact[]>([]);
+
+<DataTable columns={columns} data={data} />`} />
+</DocsLayout>
