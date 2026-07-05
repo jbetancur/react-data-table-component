@@ -1,0 +1,85 @@
+# react-data-table-component
+
+> A fast, accessible React data table component with sorting, pagination, row selection, expandable rows, column filtering, and theming built in. Zero runtime dependencies, Apache-2.0 licensed, free with no paid tier. A working table takes about 10 lines of code.
+
+Install: `npm install react-data-table-component`
+
+Minimal usage:
+
+```tsx
+import DataTable from 'react-data-table-component';
+
+const columns = [
+  { name: 'Name', selector: row => row.name, sortable: true },
+  { name: 'Role', selector: row => row.role },
+];
+
+<DataTable columns={columns} data={data} pagination />
+```
+
+## Getting started
+
+- [Getting Started](https://reactdatatable.com/docs/getting-started): install and render a first table
+- [Installation](https://reactdatatable.com/docs/installation): package managers, CSS import, framework setup
+- [API Reference](https://reactdatatable.com/docs/api): all props and types
+- [Migration Guide](https://reactdatatable.com/docs/migration): upgrading from v7 to v8
+
+## Columns
+
+- [Columns Overview](https://reactdatatable.com/docs/columns): defining columns, selectors, formatting
+- [Cell Rendering](https://reactdatatable.com/docs/cells): custom cell components
+- [Column Groups](https://reactdatatable.com/docs/column-groups): spanning headers across columns
+- [Column Visibility](https://reactdatatable.com/docs/column-visibility): show and hide columns
+- [Column Reordering](https://reactdatatable.com/docs/column-reorder): drag to reorder
+- [Column Resizing](https://reactdatatable.com/docs/resizable): drag column edges, persist widths
+- [Column Pinning](https://reactdatatable.com/docs/column-pinning): pin columns left or right
+- [Column Filtering](https://reactdatatable.com/docs/filtering): per-column text, number, and select filters
+- [Sorting](https://reactdatatable.com/docs/sorting): client-side and server-side sorting
+
+## Rows
+
+- [Row Selection](https://reactdatatable.com/docs/selection): checkbox multi-select, select all, controlled selection
+- [Expandable Rows](https://reactdatatable.com/docs/expandable): detail panels with any component
+- [Row Interactions](https://reactdatatable.com/docs/row-interactions): click, double-click, hover handlers
+- [Row Pinning](https://reactdatatable.com/docs/row-pinning): pin rows to top
+- [Pagination](https://reactdatatable.com/docs/pagination): built-in and custom pagination, server-side
+- [Conditional Styles](https://reactdatatable.com/docs/conditional-styles): style rows and cells by data
+- [Fixed Header](https://reactdatatable.com/docs/fixed-header): sticky header with scrollable body
+- [Footer](https://reactdatatable.com/docs/footer): summary and pagination footers
+- [Loading State](https://reactdatatable.com/docs/loading): progress and skeleton states
+- [Inline Editing](https://reactdatatable.com/docs/inline-editing): edit cells in place
+
+## Styling
+
+- [Themes](https://reactdatatable.com/docs/themes): 5 built-in themes with dark mode, createTheme()
+- [Custom Styles](https://reactdatatable.com/docs/custom-styles): style every table region
+
+## Advanced
+
+- [TypeScript](https://reactdatatable.com/docs/typescript): generic column and row typing
+- [SSR](https://reactdatatable.com/docs/ssr): Next.js App Router, Remix, Astro
+- [Performance](https://reactdatatable.com/docs/performance): large datasets, memoization
+- [Headless Hooks](https://reactdatatable.com/docs/headless): use the logic without the UI
+- [Accessibility](https://reactdatatable.com/docs/accessibility): keyboard and screen reader support
+- [Localization](https://reactdatatable.com/docs/localization): translated labels and locales
+- [RTL Support](https://reactdatatable.com/docs/rtl): right-to-left layouts
+- [Mobile](https://reactdatatable.com/docs/mobile): responsive columns and layouts
+- [Export](https://reactdatatable.com/docs/export): CSV and JSON export
+- [Animations](https://reactdatatable.com/docs/animations): row animations
+
+## Recipes
+
+- [Server-side sort & filter](https://reactdatatable.com/docs/recipes/server-side)
+- [Approval workflow with bulk actions](https://reactdatatable.com/docs/recipes/bulk-action-toolbar)
+- [URL-synced table state](https://reactdatatable.com/docs/recipes/editable-grid)
+- [Dashboard drill-down](https://reactdatatable.com/docs/recipes/master-detail)
+- [Audit log viewer](https://reactdatatable.com/docs/recipes/sticky-footer)
+- [Persist column widths](https://reactdatatable.com/docs/recipes/persist-column-widths)
+- [Inline row actions](https://reactdatatable.com/docs/recipes/row-grouping)
+
+## Optional
+
+- [Changelog](https://reactdatatable.com/docs/changelog): release history
+- [Support & Sponsorship](https://reactdatatable.com/support): sponsor tiers, enterprise support via Tidelift
+- [GitHub repository](https://github.com/jbetancur/react-data-table-component)
+- [npm package](https://www.npmjs.com/package/react-data-table-component)

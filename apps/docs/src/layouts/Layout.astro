@@ -10,6 +10,24 @@ const {
   title = 'react-data-table-component',
   description = 'A fast, feature-rich React data table. Working table in 10 lines.',
 } = Astro.props;
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'react-data-table-component',
+  description:
+    'A fast, accessible React data table component with sorting, pagination, row selection, expandable rows, column filtering, and theming built in. Zero runtime dependencies.',
+  url: 'https://reactdatatable.com',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Any',
+  license: 'https://www.apache.org/licenses/LICENSE-2.0',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  softwareHelp: { '@type': 'CreativeWork', url: 'https://reactdatatable.com/docs' },
+  downloadUrl: 'https://www.npmjs.com/package/react-data-table-component',
+  codeRepository: 'https://github.com/jbetancur/react-data-table-component',
+  programmingLanguage: 'TypeScript',
+  author: { '@type': 'Person', name: 'John Betancur', url: 'https://github.com/jbetancur' },
+});
 ---
 
 <!doctype html>
@@ -30,6 +48,7 @@ const {
     <meta name="twitter:image" content={new URL('/og-image.png', Astro.url).href} />
     <link rel="canonical" href={Astro.url.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline type="application/ld+json" set:html={jsonLd} />
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col bg-white text-gray-900">
