@@ -95,6 +95,33 @@ Rules:
 
 ---
 
+## Sponsors and backers
+
+Tier definitions must stay in sync across three places:
+
+1. `README.md` tier table (canonical wording for perks and pricing).
+2. `apps/docs/src/pages/support.astro` tier cards, including the `ocSlug` Open Collective checkout links.
+3. The GitHub Sponsors and Open Collective dashboards. These are manual and John-only: never assume they changed, and remind John to update them whenever tiers change.
+
+Open Collective slugs survive tier renames, so they may not match the tier name (Supporter uses `backer-14044`, Backer uses `sponsor-14045`). Verify live tiers by fetching `https://opencollective.com/react-data-table-component`.
+
+**Adding a backer (Backer tier, $20/mo recurring, and above):**
+
+- Add to the `backers` array at the top of `support.astro` and to the `## Backers` list in `README.md`.
+- Recurring sponsors only. One-time donors never go in these lists, regardless of amount.
+- Link only their Open Collective or GitHub profile, verified against the collective's contributor list. Never guess personal sites or emails.
+
+**Adding a logo sponsor:**
+
+- Bronze ($100): small logo in the docs footer (`apps/docs/src/layouts/Layout.astro`) + small logo in README.
+- Silver ($200): medium logo in the docs sidebar (`apps/docs/src/layouts/DocsLayout.astro`) + logo in README.
+- Gold ($500): homepage sponsors section (`apps/docs/src/pages/index.astro`, replace the "Be the first to sponsor" placeholder) + top placement in README. Limited to 3.
+- Logos are curated by hand: get the asset and target URL from John, never source logos yourself.
+
+The contact email is `sponsors@reactdatatable.com` (Cloudflare Email Routing alias). It must never appear in static HTML; on the site it is assembled client-side from `data-user`/`data-domain` attributes (see the contact block in `support.astro`).
+
+---
+
 ## Release process
 
 Releases are triggered manually via the **Release** GitHub Actions workflow (`workflow_dispatch`). Before triggering:

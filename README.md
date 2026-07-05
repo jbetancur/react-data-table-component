@@ -51,13 +51,21 @@ Sponsoring puts your company logo in front of ~215k developers a week: in the RE
 | Tier | Price/month | Perk |
 | --- | --- | --- |
 | ☕ Supporter | $5 | Your name in the README supporters list |
-| 🎗 Backer | $20 | Name + link in README |
+| 🎗 Backer | $20 | Name + link in README + listed in the Backers section on reactdatatable.com |
 | 🥉 Bronze | $100 | Priority issue triage + small logo in README + docs site footer |
 | 🥈 Silver | $200 | Priority issue triage + medium logo in README + docs site sidebar |
-| 🥇 Gold | $500 | Priority issue triage + large logo in README + hero spot on reactdatatable.com. Limited to 3. |
+| 🥇 Gold | $500 | Priority issue triage + direct maintainer line + large logo in README + hero spot on reactdatatable.com. Limited to 3. |
 
 [![Sponsor on GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github)](https://github.com/sponsors/jbetancur)
 [![Sponsor on OpenCollective](https://img.shields.io/badge/Sponsor-OpenCollective-blue?logo=opencollective)](https://opencollective.com/react-data-table-component)
+
+## Enterprise support
+
+Available as part of the Tidelift Subscription.
+
+The maintainer of react-data-table-component and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-react-data-table-component?utm_source=npm-react-data-table-component&utm_medium=referral&utm_campaign=readme)
+
+<!-- TODO: replace the Tidelift link above with the exact referral URL from the dashboard's "Promote the Tidelift Subscription" marketing task. -->
 
 ## Need help?
 

@@ -42,13 +42,13 @@ function fmt(n: number): string {
 		</div>
 
 		<h1 class="text-5xl font-bold tracking-tight text-gray-900 max-w-3xl mx-auto leading-tight">
-			A data table that just<br />
-			<span class="text-brand-600">works out of the box</span>
+			A working data table<br />
+			<span class="text-brand-600">in 10 lines of React</span>
 		</h1>
 
 		<p class="mt-5 text-lg text-gray-500 max-w-xl mx-auto">
-			Sorting, pagination, row selection, theming, expandable rows, all included. No boilerplate. No styling work. No
-			$999 license.
+			Sorting, pagination, row selection, theming, and expandable rows, all included. No boilerplate. No CSS
+			file. No paid tier.
 		</p>
 
 		<div class="mt-8 flex items-center justify-center gap-4">
@@ -215,7 +215,11 @@ export default function App() {
 	<!-- Comparison table -->
 	<section class="bg-gray-50 py-20">
 		<div class="max-w-4xl mx-auto px-6">
-			<h2 class="text-2xl font-bold text-center text-gray-900 mb-10">How it compares</h2>
+			<h2 class="text-2xl font-bold text-center text-gray-900 mb-3">How it compares</h2>
+			<p class="text-center text-sm text-gray-500 max-w-2xl mx-auto mb-10">
+				All four are solid choices. The difference is how much you assemble yourself. This library optimizes
+				for a styled, working table with the least code, not for the largest feature surface.
+			</p>
 			<div class="overflow-x-auto">
 				<table
 					class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200"
@@ -225,31 +229,40 @@ export default function App() {
 							<th class="text-left px-4 py-3 text-gray-600 font-medium"></th>
 							<th class="text-center px-4 py-3 text-gray-600 font-medium">TanStack Table</th>
 							<th class="text-center px-4 py-3 text-gray-600 font-medium">AG Grid Community</th>
+							<th class="text-center px-4 py-3 text-gray-600 font-medium">MUI X Data Grid</th>
 							<th class="text-center px-4 py-3 text-brand-700 font-semibold bg-brand-50">This library</th>
 						</tr>
 					</thead>
 					<tbody>
 						{
 							[
-								['Setup effort', 'High (headless)', 'Medium', 'Low'],
-								['Styling required', 'Yes', 'No', 'No'],
-								['Built-in pagination', 'DIY', '✓', '✓'],
-								['Built-in sorting', 'DIY', '✓', '✓'],
-								['Row selection', 'DIY', '✓', '✓'],
-								['Expandable rows', 'DIY', '✗', '✓'],
-								['Zero peer deps', '✓', '✗', '✓'],
-								['Price', 'Free', 'Free', 'Free'],
-							].map(([feature, tanstack, ag, rdt], i) => (
+								['Approach', 'Headless', 'Full data grid', 'Full data grid', 'Full component'],
+								['Styled table out of the box', 'You build the UI', '✓', '✓', '✓'],
+								['Sorting, pagination & selection UI', 'State only', '✓', '✓', '✓'],
+								['Expandable row panels', 'State only', 'Enterprise tier', 'Pro tier', '✓'],
+								['Dark mode & themes', 'Bring your own', '✓ built-in', 'Via MUI theme', '5 built-in'],
+								['Requires a UI framework', 'No', 'No', '@mui/material + Emotion', 'No'],
+								['Size (min+gzip)', '~15 KB', '~338 KB', '~117 KB + MUI', '~35 KB'],
+								['Paid tiers', 'None', 'Enterprise', 'Pro & Premium', 'None'],
+							].map(([feature, tanstack, ag, mui, rdt], i) => (
 								<tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
 									<td class="px-4 py-2.5 text-gray-700 font-medium">{feature}</td>
 									<td class="px-4 py-2.5 text-center text-gray-500">{tanstack}</td>
 									<td class="px-4 py-2.5 text-center text-gray-500">{ag}</td>
+									<td class="px-4 py-2.5 text-center text-gray-500">{mui}</td>
 									<td class="px-4 py-2.5 text-center text-brand-700 font-medium bg-brand-50/30">{rdt}</td>
 								</tr>
 							))
 						}
 					</tbody>
 				</table>
+				<p class="text-center text-sm text-gray-500 mt-6 max-w-2xl mx-auto">
+					They're all great at what they do. This one's for when you want a styled, sortable,
+					paginated table working today, with nothing to configure and no tier to upgrade to.
+				</p>
+				<p class="text-center text-xs text-gray-400 mt-1">
+					Sizes are min+gzip via Bundlephobia, July 2026 (TanStack v8.21, AG Grid v36, MUI X v9.8).
+				</p>
 			</div>
 		</div>
 	</section>
@@ -258,43 +271,23 @@ export default function App() {
 	<section class="max-w-4xl mx-auto px-6 py-20 text-center">
 		<h2 class="text-xl font-semibold text-gray-900 mb-2">Sponsors</h2>
 		<p class="text-sm text-gray-500 mb-8">
-			Actively maintained since 2018. If your team ships products with it, consider sponsoring — it funds bug
+			Actively maintained since 2018. If your team ships products with it, consider sponsoring. It funds bug
 			fixes and keeps pace with the React ecosystem.
 		</p>
 
-		<!-- Sponsor logo slots — replace with real logos as sponsors sign on -->
-		<div class="flex flex-wrap items-center justify-center gap-6 mb-8 min-h-[64px]">
+		<!-- First sponsor slot, add more logos as sponsors sign on -->
+		<div class="flex flex-wrap items-center justify-center gap-6 mb-8">
 			<a
-				href="https://github.com/sponsors/jbetancur"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="flex items-center justify-center w-40 h-16 border-2 border-dashed border-gray-200 rounded-xl text-xs text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
+				href="/support"
+				class="flex items-center justify-center gap-2 h-16 px-6 border-2 border-dashed border-gray-200 rounded-xl text-sm text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
 			>
-				Your logo here
-			</a>
-			<a
-				href="https://github.com/sponsors/jbetancur"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="flex items-center justify-center w-40 h-16 border-2 border-dashed border-gray-200 rounded-xl text-xs text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
-			>
-				Your logo here
-			</a>
-			<a
-				href="https://github.com/sponsors/jbetancur"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="flex items-center justify-center w-40 h-16 border-2 border-dashed border-gray-200 rounded-xl text-xs text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
-			>
-				Your logo here
+				<span class="text-lg">♡</span> Be the first to sponsor
 			</a>
 		</div>
 
 		<div class="flex items-center justify-center gap-4">
 			<a
-				href="https://github.com/sponsors/jbetancur"
-				target="_blank"
-				rel="noopener noreferrer"
+				href="/support"
 				class="bg-brand-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-brand-700 shadow-sm text-sm"
 			>
 				Become a sponsor

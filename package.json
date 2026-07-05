@@ -2,6 +2,20 @@
   "name": "react-data-table-component",
   "version": "8.4.2",
   "description": "A fast, feature-rich React data table. Working table in 10 lines.",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/jbetancur"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/react-data-table-component"
+    },
+    {
+      "type": "tidelift",
+      "url": "https://tidelift.com/funding/github/npm/react-data-table-component"
+    }
+  ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
