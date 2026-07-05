@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataTable, { type ConditionalStyles, type ExpanderComponentProps, type TableColumn } from 'react-data-table-component';
 
 interface TeamMember {
@@ -90,20 +90,31 @@ function SpendBar({ budget, spent }: { budget: number; spent: number }) {
 	);
 }
 
-const memberColumns: TableColumn<TeamMember>[] = [
-	{ name: 'Name',        selector: m => m.name,        grow: 1 },
-	{ name: 'Role',        selector: m => m.role,        grow: 1 },
-	{ name: 'Open tickets',selector: m => m.tickets,     width: '110px', right: true },
-	{ name: 'Utilization', selector: m => m.utilization, width: '160px',
-		cell: m => <UtilBar pct={m.utilization} />,
-	},
-];
+function initials(name: string) {
+	return name.split(' ').map(part => part[0]).join('').slice(0, 2).toUpperCase();
+}
 
 function DepartmentDetail({ data: dept }: ExpanderComponentProps<Department>) {
 	return (
 		<div className="px-8 py-4 bg-gray-50 border-b border-gray-100">
 			<p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Team members</p>
-			<DataTable columns={memberColumns} data={dept.members} dense noHeader />
+			<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+				{dept.members.map(member => (
+					<div key={member.name} className="flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+						<div className="w-9 h-9 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold flex items-center justify-center shrink-0">
+							{initials(member.name)}
+						</div>
+						<div className="flex-1 min-w-0">
+							<div className="flex items-center justify-between gap-2">
+								<p className="text-sm font-medium text-gray-900 truncate">{member.name}</p>
+								<span className="text-[11px] text-gray-400 shrink-0">{member.tickets} open</span>
+							</div>
+							<p className="text-xs text-gray-500 truncate mb-1">{member.role}</p>
+							<UtilBar pct={member.utilization} />
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
@@ -145,15 +156,26 @@ const columns: TableColumn<Department>[] = [
 ];
 
 export default function DashboardDrilldownDemo() {
+	const [allExpanded, setAllExpanded] = useState(false);
+
 	return (
 		<div className="space-y-2">
-			<p className="text-xs text-gray-400">Expand any row to see team member utilization.</p>
+			<div className="flex items-center justify-between">
+				<p className="text-xs text-gray-400">Expand any row to see team member utilization.</p>
+				<button
+					onClick={() => setAllExpanded(v => !v)}
+					className="px-2.5 py-1 text-xs font-medium rounded-md border border-gray-200 text-gray-600 hover:border-gray-300"
+				>
+					{allExpanded ? 'Collapse all' : 'Expand all'}
+				</button>
+			</div>
 			<div className="rounded-xl border border-gray-200 overflow-hidden">
 				<DataTable
 					columns={columns}
 					data={departments}
 					expandableRows
 					expandableRowsComponent={DepartmentDetail}
+					expandableRowExpanded={() => allExpanded}
 					conditionalRowStyles={conditionalRowStyles}
 					defaultSortFieldId="name"
 					highlightOnHover

@@ -1,7 +1,9 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
 import ServerSideRecipeDemo from '../../../components/demos/ServerSideRecipeDemo.tsx';
+import serverSideSource from '../../../components/demos/ServerSideRecipeDemo.tsx?raw';
 ---
 
 <DocsLayout title="Server-side sort, page & filter | Recipes | react-data-table-component" description="Wire react-data-table-component to a server API for sorting, pagination, and filtering with a single useEffect pattern.">
@@ -13,9 +15,17 @@ import ServerSideRecipeDemo from '../../../components/demos/ServerSideRecipeDemo
     The demo below simulates a 400ms API delay — filter by name or department to see it in action.
   </p>
 
-  <div class="not-prose my-8">
+  <Demo
+    title="Server-side sort, page & filter"
+    description="Simulates a 400ms API delay. Sort, paginate, or filter by name/department to see it refetch."
+    code={serverSideSource}
+  >
     <ServerSideRecipeDemo client:load />
-  </div>
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
 
   <CodeBlock code={`import { useEffect, useState } from 'react';
 import DataTable, { type FilterState, SortOrder, type TableColumn } from 'react-data-table-component';

@@ -1,0 +1,74 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
+import LiveUpdatesDemo from '../../../components/demos/LiveUpdatesDemo.tsx';
+import liveUpdatesSource from '../../../components/demos/LiveUpdatesDemo.tsx?raw';
+---
+
+<DocsLayout title="Live-updating data grid | Recipes | react-data-table-component" description="Build a real-time price grid that flashes changed rows using conditionalRowStyles and keyField — no extra state library required.">
+  <h1>Live-updating data grid</h1>
+
+  <p>
+    A price ticker where rows briefly highlight when their value changes — the same pattern behind
+    trading blotters and live ops dashboards. It's just three ingredients you already have:
+    <code>keyField</code> to identify rows across updates, a small piece of state tracking which
+    rows just changed, and <code>conditionalRowStyles</code> to flash them.
+  </p>
+
+  <Demo
+    title="Live-updating price grid"
+    description="Prices tick every ~1.2s. Rows flash briefly when their price changes."
+    code={liveUpdatesSource}
+  >
+    <LiveUpdatesDemo client:load />
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
+
+  <h2>Match rows across updates with keyField</h2>
+
+  <p>
+    When <code>data</code> is replaced on every tick, React (and the table) need a stable identity
+    per row. Set <code>keyField</code> to whichever field uniquely identifies a row:
+  </p>
+
+  <CodeBlock code={`<DataTable columns={columns} data={data} keyField="symbol" />`} />
+
+  <h2>Track which rows just changed</h2>
+
+  <p>
+    Keep a <code>Set</code> of recently-changed keys in state. Add a key when its row updates,
+    then remove it after the flash duration:
+  </p>
+
+  <CodeBlock code={`const [flashed, setFlashed] = useState<Set<string>>(new Set());
+
+function updatePrice(symbol: string, next: number) {
+  setData(prev => prev.map(r => (r.symbol === symbol ? { ...r, price: next } : r)));
+  setFlashed(prev => new Set(prev).add(symbol));
+  setTimeout(() => setFlashed(prev => {
+    const copy = new Set(prev);
+    copy.delete(symbol);
+    return copy;
+  }), 600);
+}`} />
+
+  <h2>Flash the row with conditionalRowStyles</h2>
+
+  <p>
+    No animation library needed — a CSS <code>transition</code> on the inline style fades the
+    highlight out on its own:
+  </p>
+
+  <CodeBlock code={`const conditionalRowStyles: ConditionalStyles<Ticker>[] = [
+  {
+    when: r => flashed.has(r.symbol),
+    style: { backgroundColor: '#fefce8', transition: 'background-color 0.6s ease' },
+  },
+];
+
+<DataTable columns={columns} data={data} keyField="symbol" conditionalRowStyles={conditionalRowStyles} />`} />
+</DocsLayout>

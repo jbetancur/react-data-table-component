@@ -1,7 +1,9 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
 import PersistColumnWidthsDemo from '../../../components/demos/PersistColumnWidthsDemo.tsx';
+import persistColumnWidthsSource from '../../../components/demos/PersistColumnWidthsDemo.tsx?raw';
 ---
 
 <DocsLayout title="Persist column widths | Recipes | react-data-table-component" description="Save and restore resizable column widths using localStorage or a back-end API in react-data-table-component.">
@@ -14,9 +16,17 @@ import PersistColumnWidthsDemo from '../../../components/demos/PersistColumnWidt
     to localStorage, a database, or anywhere else.
   </p>
 
-  <div class="not-prose my-8">
+  <Demo
+    title="Persist column widths"
+    description="Drag a column edge to resize. Widths are saved to localStorage and restored on reload."
+    code={persistColumnWidthsSource}
+  >
     <PersistColumnWidthsDemo client:load />
-  </div>
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
 
   <h2>localStorage</h2>
 

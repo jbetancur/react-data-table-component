@@ -57,6 +57,12 @@ The docs live in `apps/docs/src/pages/docs/`. Each feature has its own `.astro` 
 - Add new pages to the sidebar in `apps/docs/src/layouts/DocsLayout.astro`.
 - If removing a page, add a `[[redirects]]` entry in `netlify.toml` pointing the old URL to its replacement.
 
+**Keeping `apps/docs/public/llms.txt` in sync:**
+
+- Every docs page listed in `DocsLayout.astro`'s sidebar nav should have a matching entry in `llms.txt`, with a one-line factual (non-marketing) description.
+- Add/remove/re-describe its `llms.txt` entry in the same change whenever a docs page is added, removed, or its scope changes materially — this applies especially to `comparisons.md`, since claims there go stale fastest.
+- Keep descriptions neutral and factual — `llms.txt` is read by LLMs/crawlers, not just humans; slanted copy reads as manipulation and can get the file distrusted or ignored.
+
 ---
 
 ## Updating CHANGELOG.md

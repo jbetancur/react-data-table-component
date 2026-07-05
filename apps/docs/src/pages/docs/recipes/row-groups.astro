@@ -1,0 +1,111 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
+import RowGroupingDemo from '../../../components/demos/RowGroupingDemo.tsx';
+import rowGroupingSource from '../../../components/demos/RowGroupingDemo.tsx?raw';
+---
+
+<DocsLayout title="Grouped rows with aggregates | Recipes | react-data-table-component" description="Build grouped summary rows with per-group totals and drill-down using a plain array reduce, expandableRows, and a column footer — no dedicated row-grouping API needed.">
+  <h1>Grouped rows with aggregates</h1>
+
+  <p>
+    Row grouping with per-group totals is usually sold as an enterprise grid feature. Here it's a
+    plain array <code>reduce</code> plus two props you already know: <code>expandableRows</code>
+    to drill into a group's line items, and a column <code>footer</code> for the grand total. The
+    detail panel is a plain list, not a table nested inside a table.
+  </p>
+
+  <Demo
+    title="Orders grouped by region"
+    description="Expand a region to see its individual orders. The Total column sums per-group and grand-totals in the footer."
+    code={rowGroupingSource}
+  >
+    <RowGroupingDemo client:load />
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
+
+  <h2>Group the flat data yourself</h2>
+
+  <p>
+    No <code>groupBy</code> prop to learn — reduce your flat rows into per-group summary objects
+    before they ever reach the table:
+  </p>
+
+  <CodeBlock code={`const groups: RegionGroup[] = Object.values(
+  orders.reduce<Record<string, RegionGroup>>((acc, order) => {
+    const g = (acc[order.region] ??= { region: order.region, count: 0, total: 0, orders: [] });
+    g.count += 1;
+    g.total += order.amount;
+    g.orders.push(order);
+    return acc;
+  }, {}),
+);`} />
+
+  <h2>Drill into a group without nesting another table</h2>
+
+  <p>
+    Each summary row already carries its own orders, so the expander component needs no extra
+    data fetching. It doesn't need to be a <code>DataTable</code> either — a simple line-item
+    list reads more clearly than a table nested inside a table:
+  </p>
+
+  <CodeBlock code={`function RegionOrders({ data }: ExpanderComponentProps<RegionGroup>) {
+  return (
+    <div style={{ padding: '10px 32px' }}>
+      {data.orders.map(order => (
+        <div key={order.id} style={{ display: 'flex', justifyContent: 'space-between', background: '#fff', border: '1px solid #e5e7eb', borderRadius: 6, padding: '8px 12px', marginBottom: 6 }}>
+          <span>{order.customer}</span>
+          <strong>\${order.amount.toLocaleString()}</strong>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+<DataTable
+  columns={columns}
+  data={groups}
+  keyField="region"
+  expandableRows
+  expandableRowsComponent={RegionOrders}
+/>`} />
+
+  <h2>Expand all / collapse all</h2>
+
+  <p>
+    Same pattern as any other expandable table — one boolean in state, flipped by the
+    button above the demo, expands or collapses every region at once:
+  </p>
+
+  <CodeBlock code={`const [allExpanded, setAllExpanded] = useState(false);
+
+<DataTable
+  columns={columns}
+  data={groups}
+  keyField="region"
+  expandableRows
+  expandableRowsComponent={RegionOrders}
+  expandableRowExpanded={() => allExpanded}
+/>`} />
+
+  <h2>Per-group and grand totals with footer</h2>
+
+  <p>
+    The same <code>footer</code> function that produces a table-wide total also works on grouped
+    data — it receives whatever rows are currently visible:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'total',
+  name: 'Total',
+  selector: r => r.total,
+  format: r => \`$\${r.total.toLocaleString()}\`,
+  footer: (rows: RegionGroup[]) => \`$\${rows.reduce((sum, r) => sum + r.total, 0).toLocaleString()}\`,
+}`} />
+
+  <p>See <a href="/docs/footer">Footer</a> for more on static labels vs. computed aggregates.</p>
+</DocsLayout>

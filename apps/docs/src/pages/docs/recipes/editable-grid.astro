@@ -1,7 +1,9 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
 import UrlSyncDemo from '../../../components/demos/UrlSyncDemo.tsx';
+import urlSyncSource from '../../../components/demos/UrlSyncDemo.tsx?raw';
 ---
 
 <DocsLayout title="URL-synced table state | Recipes | react-data-table-component" description="Sync sort, filters, and pagination to the URL query string so table state survives a page reload, is shareable as a link, and works with the browser back button.">
@@ -18,9 +20,17 @@ import UrlSyncDemo from '../../../components/demos/UrlSyncDemo.tsx';
     Copy the URL and open it in a new tab.
   </p>
 
-  <div class="not-prose my-8">
+  <Demo
+    title="URL-synced table state"
+    description="Sort, filter, or change page — watch the URL params update live. Reload the page or copy the URL to see state restored."
+    code={urlSyncSource}
+  >
     <UrlSyncDemo client:load />
-  </div>
+  </Demo>
+
+  <p class="text-xs text-gray-400 -mt-4">
+    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+  </p>
 
   <h2>Reading initial state from the URL</h2>
 

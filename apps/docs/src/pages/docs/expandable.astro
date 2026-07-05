@@ -172,6 +172,26 @@ export default function App() {
   expandableRowDisabled={row => row.locked === true}
 />`} />
 
+  <h2>Expand all / collapse all</h2>
+  <p>
+    <code>expandableRowExpanded</code> re-syncs any time its result changes, so a single boolean
+    in state — driven by an "Expand all" button — expands or collapses every row at once. Rows a
+    user has manually toggled since then are left alone until the shared state changes again:
+  </p>
+  <CodeBlock code={`const [allExpanded, setAllExpanded] = useState(false);
+
+<button onClick={() => setAllExpanded(v => !v)}>
+  {allExpanded ? 'Collapse all' : 'Expand all'}
+</button>
+
+<DataTable
+  columns={columns}
+  data={data}
+  expandableRows
+  expandableRowsComponent={ExpandedRow}
+  expandableRowExpanded={() => allExpanded}
+/>`} />
+
   <h2>Expand on row click</h2>
   <p>
     Instead of requiring the user to click the expander icon, you can expand/collapse on a
@@ -252,6 +272,11 @@ export default function App() {
       ['<code>localization</code>', '<code>Localization</code>', 'Localizable aria-labels for the expand/collapse button — see Localization below.'],
     ]}
   />
+
+  <p>
+    See it combined with other features in the <a href="/docs/recipes/master-detail">Dashboard with drill-down</a> recipe
+    and <a href="/docs/recipes/row-groups">Grouped rows with aggregates</a>.
+  </p>
 
   <h2>Localization</h2>
   <p>
