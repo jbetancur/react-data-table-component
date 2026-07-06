@@ -46,6 +46,11 @@ function compareBySelector<T>(a: T, b: T, selector: Selector<T>, direction: Sort
 	return 0;
 }
 
+// Constant selector passed to a table-level sortFunction when no column is selected
+// (the "not sorted" state), so custom sort functions can still run — e.g. to keep
+// pinned rows on top — without a real field to compare by.
+const noopSelector: Selector<unknown> = () => 0;
+
 export function sort<T>(
 	rows: T[],
 	selector: Selector<T> | null | undefined,
@@ -53,6 +58,9 @@ export function sort<T>(
 	sortFn?: SortFunction<T> | null,
 ): T[] {
 	if (!selector) {
+		if (sortFn && typeof sortFn === 'function') {
+			return sortFn(rows.slice(0), noopSelector as Selector<T>, direction);
+		}
 		return rows;
 	}
 

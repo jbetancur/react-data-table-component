@@ -116,6 +116,18 @@ describe('sort', () => {
 		expect(rows[rows.length - 1].name).toEqual('vadar');
 	});
 
+	test('still invokes a table-level sortFn with no field, so it can run in the "not sorted" state', () => {
+		const mockSort = vi.fn(rows => rows);
+
+		sort([{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }], null, SortOrder.DESC, mockSort);
+
+		expect(mockSort).toHaveBeenCalledWith(
+			[{ name: 'anakin' }, { name: 'leia' }, { name: 'vadar' }],
+			expect.any(Function),
+			SortOrder.DESC,
+		);
+	});
+
 	test('custom sort should be called', () => {
 		const mockSort = vi.fn();
 		const mockSelector = (row: { name: string }) => row.name;
