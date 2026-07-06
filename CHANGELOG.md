@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.4.3
+
+### Bug fixes
+
+- Fixed a table-level `sortFunction` not being called when a column's sort was cycled to the "not sorted" state, which broke patterns like pinning rows to the top regardless of sort. → [Row pinning](/docs/row-pinning)
+
+---
+
 ## 8.4.2
 
 ### Behavior changes
