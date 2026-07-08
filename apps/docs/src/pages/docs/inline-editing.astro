@@ -398,6 +398,18 @@ const columns: TableColumn<Employee>[] = [
   box-shadow: inset 0 0 0 3px var(--rdt-color-primary);
 }`} lang="css" />
 
+  <h2>Keyboard cell navigation</h2>
+
+  <p>
+    Pass <code>cellNavigation</code> to navigate the whole table with the keyboard, spreadsheet-style —
+    arrow keys between cells, <kbd>Enter</kbd>/<kbd>F2</kbd> to open the focused cell's editor, and
+    <kbd>Escape</kbd> to cancel and return focus to the cell. See
+    <a href="/docs/keyboard-navigation">Keyboard navigation</a> for the full key reference; it also
+    covers header, selection, and expander cells, and works on read-only tables.
+  </p>
+
+  <CodeBlock code={`<DataTable columns={columns} data={data} cellNavigation />`} />
+
   <h2>Limitations</h2>
   <ul>
     <li>Built-in editors cover text, number, date, checkbox, and select. For autocomplete, multi-line text, rich pickers, etc. use the <code>custom</code> editor.</li>
@@ -418,6 +430,11 @@ const columns: TableColumn<Employee>[] = [
       ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
     ]}
   />
+
+  <p>
+    <code>cellNavigation</code> is a table-level prop covered on its own page — see
+    <a href="/docs/keyboard-navigation">Keyboard navigation</a>.
+  </p>
 
   <h3>CellEditor</h3>
 

@@ -156,6 +156,12 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `onRowMouseEnter` | `(row, event) => void` | Called when the pointer enters a row. |
 | `onRowMouseLeave` | `(row, event) => void` | Called when the pointer leaves a row. |
 
+### Keyboard navigation
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `cellNavigation` | `boolean` | `false` | Spreadsheet-style keyboard navigation using the WAI-ARIA grid pattern (`role="grid"`, single Tab stop, roving tabindex). Arrow keys move between cells, including header, selection, and expander cells; `Home`/`End` and `Ctrl+Home`/`Ctrl+End` jump to row and grid edges; `Enter`/`F2` open a cell editor; `Enter`/`Space` sort from a header. See [Keyboard navigation](/docs/keyboard-navigation). |
+
 ### Column features
 
 | Prop | Type | Default | Description |

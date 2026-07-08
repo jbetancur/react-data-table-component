@@ -61,7 +61,8 @@ const columns = [
 - [SSR](https://reactdatatable.com/docs/ssr): Next.js App Router, Remix, Astro
 - [Performance](https://reactdatatable.com/docs/performance): large datasets, memoization
 - [Headless Hooks](https://reactdatatable.com/docs/headless): use the logic without the UI
-- [Accessibility](https://reactdatatable.com/docs/accessibility): keyboard and screen reader support
+- [Accessibility](https://reactdatatable.com/docs/accessibility): ARIA roles and screen reader support
+- [Keyboard Navigation](https://reactdatatable.com/docs/keyboard-navigation): cellNavigation prop for spreadsheet-style ARIA grid keyboard navigation
 - [Localization](https://reactdatatable.com/docs/localization): translated labels and locales
 - [RTL Support](https://reactdatatable.com/docs/rtl): right-to-left layouts
 - [Mobile](https://reactdatatable.com/docs/mobile): responsive columns and layouts

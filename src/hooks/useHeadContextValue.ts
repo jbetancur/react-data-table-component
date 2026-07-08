@@ -40,6 +40,8 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 			options.selectableRowsComponentProps,
 			options.selectableRowDisabled,
 			options.showSelectAll,
+			options.cellNavigation,
+			options.activeCell,
 			options.progressPending,
 			options.sortedData,
 			options.onSelectAllRows,

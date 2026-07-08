@@ -31,7 +31,7 @@ function TableFooter<T>({
 	footerComponent: FooterComponentProp,
 }: TableFooterProps<T>): JSX.Element {
 	const customStyles = useStyles();
-	const { columnWidths, pinnedOffsets } = useRowContext<T>();
+	const { columnWidths, pinnedOffsets, cellNavigation } = useRowContext<T>();
 
 	const firstRightPinnedId = React.useMemo(() => getFirstRightPinnedId(columns), [columns]);
 
@@ -64,7 +64,7 @@ function TableFooter<T>({
 						<React.Fragment key={`footer-${column.id}`}>
 							{firstRightPinnedId != null && column.id === firstRightPinnedId && <RightPinSpacer />}
 							<CellExtended
-								role="cell"
+								role={cellNavigation ? 'gridcell' : 'cell'}
 								data-column-id={column.id}
 								className={['rdt_footerCell', pinMeta.className].filter(Boolean).join(' ')}
 								button={column.button}

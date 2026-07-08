@@ -1078,7 +1078,9 @@ describe('DataTable::expandableRows', () => {
 			/>,
 		);
 
-		fireEvent.keyDown(container.querySelector(`div[data-tag="${STOP_PROP_TAG}"]`) as HTMLElement, { key: 'Enter' });
+		// Key events only count when the row itself is focused — bubbled keys from
+		// focused descendants (editors, cell navigation) must not toggle the row.
+		fireEvent.keyDown(container.querySelector('div[id^="row-"]') as HTMLElement, { key: 'Enter' });
 
 		expect(onRowExpandToggledMock).toHaveBeenCalled();
 	});

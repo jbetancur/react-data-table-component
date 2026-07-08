@@ -13,6 +13,53 @@ import ConditionalStylesDemo from '../../components/demos/ConditionalStylesDemo.
     <code>cell</code> renderer required.
   </p>
 
+  <Demo
+    title="Conditional row and cell styles — sales pipeline"
+    description="Won deals get a green left border; lost deals are dimmed. Value cells are bold-green for large deals, gray for small. Days Open cells turn amber then red as they age."
+    code={`import DataTable, { type ConditionalStyles, type TableColumn } from 'react-data-table-component';
+
+const conditionalRowStyles: ConditionalStyles<Deal>[] = [
+  {
+    when: r => r.stage === 'Closed Won',
+    style: { backgroundColor: '#f0fdf4', borderLeft: '3px solid #16a34a' },
+  },
+  {
+    when: r => r.stage === 'Closed Lost',
+    style: { backgroundColor: '#fef2f2', opacity: 0.75 },
+  },
+];
+
+const columns: TableColumn<Deal>[] = [
+  { name: 'Company', selector: r => r.company, sortable: true, grow: 2 },
+  { name: 'Rep',     selector: r => r.rep,     sortable: true },
+  {
+    name: 'Value',
+    selector: r => r.value,
+    format: r => fmt(r.value),
+    sortable: true,
+    right: true,
+    conditionalCellStyles: [
+      { when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
+      { when: r => r.value < 20000,   style: { color: '#9ca3af' } },
+    ],
+  },
+  {
+    name: 'Days open',
+    selector: r => r.daysOpen,
+    sortable: true,
+    right: true,
+    conditionalCellStyles: [
+      { when: r => r.daysOpen > 90, style: { color: '#dc2626', fontWeight: 700 } },
+      { when: r => r.daysOpen > 60, style: { color: '#d97706' } },
+    ],
+  },
+];
+
+<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} highlightOnHover />`}
+  >
+    <ConditionalStylesDemo client:load />
+  </Demo>
+
   <h2>conditionalRowStyles</h2>
 
   <p>
@@ -108,51 +155,4 @@ const conditionalRowStyles: ConditionalStyles<Deal>[] = [
   <p>
     See it combined with other features in the <a href="/docs/recipes/live-updates">Live-updating data grid</a> recipe.
   </p>
-
-  <Demo
-    title="Conditional row and cell styles — sales pipeline"
-    description="Won deals get a green left border; lost deals are dimmed. Value cells are bold-green for large deals, gray for small. Days Open cells turn amber then red as they age."
-    code={`import DataTable, { type ConditionalStyles, type TableColumn } from 'react-data-table-component';
-
-const conditionalRowStyles: ConditionalStyles<Deal>[] = [
-  {
-    when: r => r.stage === 'Closed Won',
-    style: { backgroundColor: '#f0fdf4', borderLeft: '3px solid #16a34a' },
-  },
-  {
-    when: r => r.stage === 'Closed Lost',
-    style: { backgroundColor: '#fef2f2', opacity: 0.75 },
-  },
-];
-
-const columns: TableColumn<Deal>[] = [
-  { name: 'Company', selector: r => r.company, sortable: true, grow: 2 },
-  { name: 'Rep',     selector: r => r.rep,     sortable: true },
-  {
-    name: 'Value',
-    selector: r => r.value,
-    format: r => fmt(r.value),
-    sortable: true,
-    right: true,
-    conditionalCellStyles: [
-      { when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
-      { when: r => r.value < 20000,   style: { color: '#9ca3af' } },
-    ],
-  },
-  {
-    name: 'Days open',
-    selector: r => r.daysOpen,
-    sortable: true,
-    right: true,
-    conditionalCellStyles: [
-      { when: r => r.daysOpen > 90, style: { color: '#dc2626', fontWeight: 700 } },
-      { when: r => r.daysOpen > 60, style: { color: '#d97706' } },
-    ],
-  },
-];
-
-<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} highlightOnHover />`}
-  >
-    <ConditionalStylesDemo client:load />
-  </Demo>
 </DocsLayout>

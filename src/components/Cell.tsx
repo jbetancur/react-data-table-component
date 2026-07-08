@@ -58,25 +58,28 @@ type CellExtendedProps = React.HTMLAttributes<HTMLDivElement> &
 		cellStyle?: React.CSSProperties;
 	};
 
-export function CellExtended({
-	button,
-	grow,
-	maxWidth,
-	minWidth,
-	width,
-	right,
-	center,
-	compact,
-	hide,
-	allowOverflow,
-	$headCell,
-	$noPadding,
-	headStyle,
-	cellStyle,
-	className,
-	style,
-	...rest
-}: CellExtendedProps): JSX.Element {
+export const CellExtended = React.forwardRef<HTMLDivElement, CellExtendedProps>(function CellExtended(
+	{
+		button,
+		grow,
+		maxWidth,
+		minWidth,
+		width,
+		right,
+		center,
+		compact,
+		hide,
+		allowOverflow,
+		$headCell,
+		$noPadding,
+		headStyle,
+		cellStyle,
+		className,
+		style,
+		...rest
+	},
+	ref,
+) {
 	const cellProps: CellProps = { button, grow, maxWidth, minWidth, width, right, center, compact, hide, allowOverflow };
 	const computedStyle = buildCellStyle(cellProps);
 	const hideClass = buildHideClass(hide);
@@ -91,9 +94,10 @@ export function CellExtended({
 		.join(' ');
 	return (
 		<div
+			ref={ref}
 			className={baseClass}
 			style={{ ...($headCell ? headStyle : cellStyle), ...computedStyle, ...style }}
 			{...rest}
 		/>
 	);
-}
+});

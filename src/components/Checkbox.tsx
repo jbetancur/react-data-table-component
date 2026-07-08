@@ -11,6 +11,8 @@ interface CheckboxProps {
 	checked?: boolean;
 	disabled?: boolean;
 	onClick?: (e: React.MouseEvent) => void;
+	/** Roving tabindex when cell navigation is enabled */
+	tabIndex?: number;
 }
 
 function Checkbox({
@@ -21,6 +23,7 @@ function Checkbox({
 	checked = false,
 	disabled = false,
 	onClick = noop,
+	tabIndex,
 }: CheckboxProps): JSX.Element {
 	const setCheckboxRef = (checkbox: HTMLInputElement) => {
 		if (checkbox) {
@@ -48,6 +51,7 @@ function Checkbox({
 				checked={checked}
 				disabled={disabled}
 				{...resolvedComponentOptions}
+				{...(tabIndex !== undefined && { tabIndex })}
 				onChange={noop}
 			/>
 		);
@@ -73,6 +77,7 @@ function Checkbox({
 				aria-label={name}
 				checked={checked}
 				disabled={disabled}
+				tabIndex={tabIndex}
 				onChange={noop}
 			/>
 		</span>

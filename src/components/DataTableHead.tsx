@@ -51,6 +51,8 @@ function DataTableHead<T>({
 		columnWidths,
 		pinnedOffsets,
 		resizable,
+		cellNavigation,
+		activeCell,
 		onSort,
 		onFilterChange,
 		onResizeStart,
@@ -163,6 +165,9 @@ function DataTableHead<T>({
 		onDragEnter,
 		onDragLeave,
 		draggingColumnId,
+		cellNavigation,
+		activeCell,
+		navCol: prefixColCount + visibleColumns.indexOf(column),
 	});
 
 	const firstRightPinnedId = React.useMemo(() => getFirstRightPinnedId(columns), [columns]);

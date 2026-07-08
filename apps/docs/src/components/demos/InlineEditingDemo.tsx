@@ -108,9 +108,10 @@ export default function InlineEditingDemo() {
 			<p className="text-xs text-gray-400">
 				Click any cell to edit. <strong>Name</strong> and <strong>Salary</strong> are text inputs;{' '}
 				<strong>Department</strong> and <strong>Status</strong> are dropdowns. <kbd>Enter</kbd> commits, <kbd>Esc</kbd>{' '}
-				cancels.
+				cancels. Keyboard navigation is enabled too: click or Tab into the table, move between cells and headers with
+				the arrow keys, and press <kbd>Enter</kbd> to edit or sort.
 			</p>
-			<DataTable columns={columns} data={data} highlightOnHover />
+			<DataTable columns={columns} data={data} highlightOnHover cellNavigation />
 			{lastEdit && <div className="text-xs text-emerald-600 font-mono">{lastEdit}</div>}
 		</div>
 	);

@@ -8,6 +8,7 @@ import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
 import { SortOrder } from '../types';
 import type { TableColumn, SortAction, SortColumn, FilterState, Localization } from '../types';
+import type { ActiveCell } from '../context/RowContext';
 
 type FilterLocalization = NonNullable<Localization['filter']>;
 
@@ -40,6 +41,10 @@ type TableColProps<T> = {
 	pinnedOffsets?: PinnedOffsets;
 	/** CSS grid placement styles — injected by DataTableHead when rendering in grouped-header grid mode */
 	gridStyle?: React.CSSProperties;
+	// Cell navigation: this header cell's column in the nav grid (header row is -1)
+	cellNavigation?: boolean;
+	activeCell?: ActiveCell | null;
+	navCol?: number;
 };
 
 function TableCol<T>({
@@ -69,6 +74,9 @@ function TableCol<T>({
 	onResizeStart,
 	pinnedOffsets,
 	gridStyle,
+	cellNavigation,
+	activeCell,
+	navCol,
 }: TableColProps<T>): JSX.Element | null {
 	const customStyles = useStyles();
 
@@ -105,7 +113,8 @@ function TableCol<T>({
 	};
 
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-		if (event.key === 'Enter') {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
 			handleSortChange(event.ctrlKey || event.metaKey);
 		}
 	};
@@ -142,7 +151,14 @@ function TableCol<T>({
 
 	const sortActive = !!(column.sortable && sortIndex !== -1);
 	const disableSort = !column.sortable || disabled;
-	const tabIndex = disableSort ? -1 : 0;
+	const isNavActive = !!cellNavigation && activeCell?.row === -1 && activeCell?.col === navCol;
+	// With cellNavigation the whole grid is one Tab stop (roving tabindex); otherwise
+	// only sortable headers are tabbable.
+	const tabIndex = cellNavigation ? (isNavActive ? 0 : -1) : disableSort ? -1 : 0;
+	// data-nav-row/col live on the outer cell (full column width) so the :focus-within
+	// ring spans the whole header, matching body gridcells — not just the inner sortable
+	// div, which is inset by header padding and would otherwise draw a narrower ring.
+	const outerNavAttributes = cellNavigation ? { 'data-nav-row': -1, 'data-nav-col': navCol } : undefined;
 	const nativeSortIconLeft = column.sortable && !sortIcon && !column.right;
 	const nativeSortIconRight = column.sortable && !sortIcon && column.right;
 	const customSortIconLeft = column.sortable && sortIcon && !column.right;
@@ -206,6 +222,9 @@ function TableCol<T>({
 			onDragEnd={onDragEnd}
 			onDragEnter={onDragEnter}
 			onDragLeave={onDragLeave}
+			{...outerNavAttributes}
+			data-nav-widget={cellNavigation && column.name ? 'true' : undefined}
+			{...(cellNavigation && !column.name ? { role: 'columnheader', tabIndex } : undefined)}
 		>
 			{column.name && (
 				<div
@@ -323,6 +342,14 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 		if (!pg || !ng) return false;
 		if (pg.gridColumn !== ng.gridColumn || pg.gridRow !== ng.gridRow) return false;
 	}
+	if (prevProps.cellNavigation !== nextProps.cellNavigation) return false;
+	if (prevProps.navCol !== nextProps.navCol) return false;
+	// Only re-render for active-cell changes that flip this header's Tab-stop state.
+	const prevNavActive =
+		!!prevProps.cellNavigation && prevProps.activeCell?.row === -1 && prevProps.activeCell?.col === prevProps.navCol;
+	const nextNavActive =
+		!!nextProps.cellNavigation && nextProps.activeCell?.row === -1 && nextProps.activeCell?.col === nextProps.navCol;
+	if (prevNavActive !== nextNavActive) return false;
 	return true;
 }
 
