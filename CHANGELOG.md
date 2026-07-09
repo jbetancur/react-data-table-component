@@ -2,6 +2,18 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.5.0
+
+### New features
+
+- **Keyboard cell navigation** — new `cellNavigation` prop turns the table into a WAI-ARIA grid (`role="grid"`/`"gridcell"`, single Tab stop, roving tabindex). Arrow keys move between cells, including the header row, selection checkboxes, and expander buttons; `Home`/`End` and `Ctrl+Home`/`Ctrl+End` jump to row and grid edges; `Enter`/`F2` open a cell's editor and `Escape` cancels it; `Enter`/`Space` sort from a header. → [Keyboard navigation](/docs/keyboard-navigation)
+
+### Bug fixes
+
+- Fixed inline-edit refocus resolving by DOM id, which could steal focus into a different `DataTable` instance on the same page when two tables shared column ids and row keys.
+
+---
+
 ## 8.4.3
 
 ### Bug fixes

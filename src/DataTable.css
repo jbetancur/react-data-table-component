@@ -629,6 +629,13 @@
 	padding-top: 0;
 	padding-bottom: 0;
 }
+
+/* Row divider border-bottom (see .rdt_row:not(:last-of-type) .rdt_cellBase above) would
+   otherwise stack with the box-shadow above, thickening the editing cell's bottom edge.
+   Needs equal specificity (two classes) to win over that compound selector. */
+.rdt_row:not(:last-of-type) .rdt_cellEditing {
+	border-bottom-color: transparent;
+}
 @supports (background-color: color-mix(in srgb, red 1%, white)) {
 	.rdt_cellEditing {
 		background-color: var(--rdt-color-cell-edit-bg, color-mix(in srgb, var(--rdt-color-primary, #1976d2) 8%, var(--rdt-color-bg, #fff)));
@@ -754,9 +761,10 @@
 /* ─── Cell navigation: focus outline ───────────────────────────────────────── */
 /* Focus ring for keyboard cell navigation (`cellNavigation`). :focus-within also
    covers cells whose real focus target is an inner widget (row checkbox, expander
-   button) or an open inline editor. Uses outline rather than box-shadow so it
-   doesn't fight with `.rdt_cellEditing`'s inset box-shadow while editing. */
-.rdt_table[role='grid'] [data-nav-row]:focus-within {
+   button). Excludes .rdt_cellEditing: that state already draws its own inset
+   box-shadow ring, and stacking this outline on top of it visibly thickens
+   whichever edge the two rings don't land on the same physical pixel. */
+.rdt_table[role='grid'] [data-nav-row]:focus-within:not(.rdt_cellEditing) {
 	outline: 2px solid var(--rdt-color-primary, #1976d2);
 	outline-offset: -2px;
 	z-index: 2;

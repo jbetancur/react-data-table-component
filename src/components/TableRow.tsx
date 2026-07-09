@@ -7,8 +7,9 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import RightPinSpacer from './RightPinSpacer';
-import { prop, equalizeId, getConditionalStyle, getFirstRightPinnedId, isEven } from '../util';
+import { prop, equalizeId, getConditionalStyle, getFirstRightPinnedId, getPrefixColCount, isEven } from '../util';
 import { STOP_PROP_TAG } from '../constants';
+import useRowExpander from '../hooks/useRowExpander';
 import type { TableRow, TableColumn } from '../types';
 
 function isRowTarget(e: React.MouseEvent<HTMLDivElement>): boolean {
@@ -78,57 +79,13 @@ function Row<T>({
 		striped,
 		cellNavigation,
 		activeCell,
+		animateRows,
 	} = useRowContext<T>();
 
-	type ExpanderState = { expanded: boolean; mounted: boolean; closing: boolean };
-	type ExpanderAction = { type: 'open' } | { type: 'close' } | { type: 'unmount' } | { type: 'sync'; value: boolean };
-
-	const [expanderState, expanderDispatch] = React.useReducer(
-		(state: ExpanderState, action: ExpanderAction): ExpanderState => {
-			switch (action.type) {
-				case 'open':
-					return { expanded: true, mounted: true, closing: false };
-				case 'close':
-					return { ...state, expanded: false, closing: true };
-				case 'unmount':
-					return { expanded: false, mounted: false, closing: false };
-				case 'sync':
-					return { expanded: action.value, mounted: action.value, closing: false };
-				default:
-					return state;
-			}
-		},
-		{ expanded: defaultExpanded, mounted: defaultExpanded, closing: false },
+	const { expanded, expanderMounted, isClosing, openExpander, closeExpander } = useRowExpander(
+		defaultExpanded,
+		animateRows,
 	);
-
-	const expanded = expanderState.expanded;
-	const expanderMounted = expanderState.mounted;
-	const isClosing = expanderState.closing;
-
-	React.useEffect(() => {
-		expanderDispatch({ type: 'sync', value: defaultExpanded });
-	}, [defaultExpanded]);
-
-	const { animateRows } = useRowContext<T>();
-
-	const EXPAND_DURATION = 220;
-	const closeTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
-
-	const openExpander = React.useCallback(() => {
-		if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-		expanderDispatch({ type: 'open' });
-	}, []);
-
-	const closeExpander = React.useCallback(() => {
-		if (animateRows) {
-			expanderDispatch({ type: 'close' });
-			closeTimerRef.current = setTimeout(() => {
-				expanderDispatch({ type: 'unmount' });
-			}, EXPAND_DURATION);
-		} else {
-			expanderDispatch({ type: 'unmount' });
-		}
-	}, [animateRows]);
 
 	const handleExpanded = React.useCallback(() => {
 		const next = !expanded;
@@ -201,7 +158,7 @@ function Row<T>({
 
 	// Cell navigation: selection/expander cells occupy the first nav columns, then each
 	// non-omitted data column gets the next index.
-	const navPrefixCount = (selectableRows ? 1 : 0) + (expandableRows && !expandableRowsHideExpander ? 1 : 0);
+	const navPrefixCount = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander);
 	const columnIndexMap = React.useMemo(() => {
 		const map = new Map<TableColumn<T>, number>();
 		let i = 0;

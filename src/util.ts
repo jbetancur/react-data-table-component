@@ -256,6 +256,15 @@ export function isEven(num: number): boolean {
 	return num % 2 === 0;
 }
 
+/** Number of system cells (selection checkbox, expander) rendered before data columns. */
+export function getPrefixColCount(
+	selectableRows: boolean,
+	expandableRows: boolean,
+	expandableRowsHideExpander: boolean,
+): number {
+	return (selectableRows ? 1 : 0) + (expandableRows && !expandableRowsHideExpander ? 1 : 0);
+}
+
 export function findColumnIndexById<T>(columns: TableColumn<T>[], id: string | undefined): number {
 	if (!id) {
 		return -1;
@@ -311,9 +320,7 @@ export function getPinnedOffsets<T>(
 	if (!hasPinned) return EMPTY_PINNED_OFFSETS;
 
 	const systemWidth = resolveSystemColWidth();
-	let baseLeft = 0;
-	if (selectableRows) baseLeft += systemWidth;
-	if (expandableRows && !expandableRowsHideExpander) baseLeft += systemWidth;
+	const baseLeft = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander) * systemWidth;
 
 	const left: Record<string | number, number> = {};
 	let leftAcc = baseLeft;
@@ -344,9 +351,7 @@ export function getPinnedTotalWidths<T>(
 	if (!hasPinned) return { left: 0, right: 0 };
 
 	const systemWidth = resolveSystemColWidth();
-	let left = 0;
-	if (selectableRows) left += systemWidth;
-	if (expandableRows && !expandableRowsHideExpander) left += systemWidth;
+	let left = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander) * systemWidth;
 	for (const col of visible.filter(c => c.pinned === 'left')) {
 		left += resolveColumnWidth(col, columnWidths);
 	}
@@ -434,31 +439,6 @@ export function getCellWidthProps<T>(
 	};
 }
 
-/** FLIP: element has already moved to its new layout position; start it offset
- * by `delta` (its old position) and transition back to rest. */
-export function flipElement(el: HTMLElement, delta: number, axis: 'X' | 'Y', duration: number): void {
-	el.style.transform = `translate${axis}(${delta}px)`;
-	el.style.transition = 'none';
-	el.getBoundingClientRect(); // force reflow so the offset applies before transitioning
-	el.style.transition = `transform ${duration}s cubic-bezier(0.2, 0, 0, 1)`;
-	el.style.transform = '';
-	const onEnd = () => {
-		el.style.transform = '';
-		el.style.transition = '';
-		el.removeEventListener('transitionend', onEnd);
-	};
-	el.addEventListener('transitionend', onEnd);
-}
-
-/**
- * After a column reorder, reassigns `pinned` based purely on position:
- * - The first N columns (where N = original left-pin count) become `pinned: 'left'`
- * - The last M columns (where M = original right-pin count) become `pinned: 'right'`
- * - Everything between them has `pinned` removed
- *
- * This enforces that pinned columns always form contiguous edges, and that
- * dragging a column into a pinned zone pins it while dragging one out unpins it.
- */
 /**
  * Assigns pin state based on position and explicit pin zones.
  *

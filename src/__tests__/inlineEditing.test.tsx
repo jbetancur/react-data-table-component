@@ -54,6 +54,109 @@ describe('inline editing: date editor', () => {
 	});
 });
 
+describe('inline editing: keyboard', () => {
+	test('Enter commits the edit', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{ id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit },
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const input = await screen.findByDisplayValue('Alice');
+		fireEvent.change(input, { target: { value: 'Alicia' } });
+		fireEvent.keyDown(input, { key: 'Enter' });
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		expect(onCellEdit.mock.calls[0][1]).toBe('Alicia');
+	});
+
+	test('Escape cancels without committing', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{ id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit },
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const input = await screen.findByDisplayValue('Alice');
+		fireEvent.change(input, { target: { value: 'Alicia' } });
+		fireEvent.keyDown(input, { key: 'Escape' });
+
+		await waitFor(() => expect(screen.queryByDisplayValue('Alicia')).not.toBeInTheDocument());
+		expect(onCellEdit).not.toHaveBeenCalled();
+		expect(getByText('Alice')).toBeInTheDocument();
+	});
+});
+
+describe('inline editing: checkbox editor', () => {
+	test('click commits the toggled value instantly', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{ id: 'active', name: 'Active', selector: r => r.active, editor: { type: 'checkbox' }, onCellEdit },
+		];
+
+		render(<DataTable columns={columns} data={rows} />);
+		const checkboxes = screen.getAllByRole('checkbox');
+		expect(checkboxes).toHaveLength(2);
+		expect((checkboxes[0] as HTMLInputElement).checked).toBe(true);
+
+		fireEvent.click(checkboxes[0]);
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		expect(onCellEdit.mock.calls[0][1]).toBe('false');
+	});
+
+	test('Space on the wrapper commits the toggle', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{ id: 'active', name: 'Active', selector: r => r.active, editor: { type: 'checkbox' }, onCellEdit },
+		];
+
+		render(<DataTable columns={columns} data={rows} />);
+		const wrap = screen.getAllByRole('checkbox')[1].parentElement as HTMLElement;
+		fireEvent.keyDown(wrap, { key: ' ' });
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		// Bob is inactive, so the toggle commits 'true'
+		expect(onCellEdit.mock.calls[0][1]).toBe('true');
+	});
+});
+
+describe('inline editing: select editor', () => {
+	test('renders options with placeholder and commits on change', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: {
+					type: 'select',
+					placeholder: 'Pick a name',
+					options: [
+						{ value: 'Alice', label: 'Alice' },
+						{ value: 'Zara', label: 'Zara' },
+					],
+				},
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const select = await screen.findByRole('combobox');
+		expect(screen.getByText('Pick a name')).toBeInTheDocument();
+		fireEvent.change(select, { target: { value: 'Zara' } });
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		expect(onCellEdit.mock.calls[0][1]).toBe('Zara');
+	});
+});
+
 describe('inline editing: validation', () => {
 	test('rejects edit when validate returns false (no callback fired)', async () => {
 		const onCellEdit = vi.fn();
