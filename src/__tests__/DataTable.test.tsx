@@ -2821,6 +2821,23 @@ describe('DataTable::columnResize', () => {
 		// Column width is applied via maxWidth (buildCellStyle sets maxWidth from width prop)
 		expect(headerCell.style.maxWidth).toBe('60px');
 	});
+
+	test('inverts drag delta in RTL so dragging the handle left widens the column', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={mock.data} columns={mock.columns} resizable direction={Direction.RTL} />,
+		);
+		const handle = container.querySelector('.rdt_resizeHandle') as HTMLElement;
+		const headerCell = handle.closest('[data-column-id]') as HTMLElement;
+
+		// Dragging left (clientX 100 → 40) is a -60 delta; in RTL it inverts to +60.
+		// startWidth is 0 in jsdom → newWidth = max(40, 0 + 60) = 60
+		fireEvent.mouseDown(handle, { clientX: 100 });
+		fireEvent.mouseMove(document, { clientX: 40 });
+		fireEvent.mouseUp(document);
+
+		expect(headerCell.style.maxWidth).toBe('60px');
+	});
 });
 
 describe('DataTable::columnGroups', () => {

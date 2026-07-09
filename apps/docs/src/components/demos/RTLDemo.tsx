@@ -41,11 +41,16 @@ export default function RTLDemo() {
 			name: isRTL ? 'الاسم' : 'Name',
 			selector: r => isRTL ? r.nameAr : r.name,
 			sortable: true,
+			width: '200px',
+			minWidth: '120px',
+			reorder: true,
 		},
 		{
 			name: isRTL ? 'القسم' : 'Department',
 			selector: r => isRTL ? r.departmentAr : r.department,
 			sortable: true,
+			minWidth: '140px',
+			reorder: true,
 		},
 		{
 			name: isRTL ? 'الراتب' : 'Salary',
@@ -53,6 +58,8 @@ export default function RTLDemo() {
 			format: r => `$${r.salary.toLocaleString()}`,
 			right: true,
 			sortable: true,
+			width: '140px',
+			reorder: true,
 		},
 	];
 
@@ -86,6 +93,7 @@ export default function RTLDemo() {
 				paginationPerPage={5}
 				highlightOnHover
 				striped
+				resizable
 			/>
 		</div>
 	);

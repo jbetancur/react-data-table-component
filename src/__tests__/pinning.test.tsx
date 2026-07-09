@@ -52,11 +52,11 @@ describe('DataTable column pinning', () => {
 		expect(cell?.style.position).toBe('sticky');
 	});
 
-	test('right-pinned cell has position:sticky with right offset', () => {
+	test('right-pinned cell has position:sticky with inline-end offset', () => {
 		const { container } = render(<DataTable columns={columns} data={data} />);
 		const cell = container.querySelector('.rdt_pinRight') as HTMLElement;
 		expect(cell?.style.position).toBe('sticky');
-		expect(cell?.style.right).toBe('0px');
+		expect(cell?.style.insetInlineEnd).toBe('0px');
 	});
 
 	test('strips pinned from columns when columnGroups are active', () => {
@@ -92,9 +92,9 @@ describe('DataTable column pinning', () => {
 		];
 		const { container } = render(<DataTable columns={multiPin} data={data} />);
 		const cells = Array.from(container.querySelectorAll('.rdt_pinLeft')) as HTMLElement[];
-		const lefts = cells.map(el => parseFloat(el.style.left)).filter(v => !isNaN(v));
-		expect(lefts).toContain(0);
-		expect(lefts.some(v => v > 0)).toBe(true);
+		const offsets = cells.map(el => parseFloat(el.style.insetInlineStart)).filter(v => !isNaN(v));
+		expect(offsets).toContain(0);
+		expect(offsets.some(v => v > 0)).toBe(true);
 	});
 });
 
@@ -126,7 +126,7 @@ describe('PinnedScrollbar', () => {
 		expect(track).not.toBeNull();
 	});
 
-	test('applies left and right margin insets to the track element', async () => {
+	test('applies logical margin insets to the track element', async () => {
 		const ref = makeScrollRef(1000, 400);
 		const { container } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={150} rightInset={120} />);
 
@@ -135,8 +135,8 @@ describe('PinnedScrollbar', () => {
 		});
 
 		const track = container.querySelector('.rdt_pinnedScrollbarTrack') as HTMLElement | null;
-		expect(track?.style.marginLeft).toBe('150px');
-		expect(track?.style.marginRight).toBe('120px');
+		expect(track?.style.marginInlineStart).toBe('150px');
+		expect(track?.style.marginInlineEnd).toBe('120px');
 	});
 
 	test('thumb width is proportional to viewport/scroll ratio', async () => {

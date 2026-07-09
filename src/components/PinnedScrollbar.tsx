@@ -37,9 +37,14 @@ export default function PinnedScrollbar({
 		const tw = Math.max(ratio * trackWidth, 30);
 		const maxThumbLeft = trackWidth - tw;
 		const maxScroll = scrollWidth - clientWidth;
+		// In RTL scrollLeft runs 0 → -maxScroll; shift into the 0 → maxScroll range
+		// so the thumb's physical position falls out of the same formula.
+		const isRTL = getComputedStyle(el).direction === 'rtl';
+		const scrolled = isRTL ? scrollLeft + maxScroll : scrollLeft;
 		setThumbWidth(tw);
-		setThumbLeft((scrollLeft / maxScroll) * maxThumbLeft);
-		setScrollPercent(maxScroll > 0 ? Math.round((scrollLeft / maxScroll) * 100) : 0);
+		setThumbLeft((scrolled / maxScroll) * maxThumbLeft);
+		const fromStart = isRTL ? -scrollLeft : scrollLeft;
+		setScrollPercent(maxScroll > 0 ? Math.round((fromStart / maxScroll) * 100) : 0);
 	}, [scrollRef]);
 
 	// Sync scrollbar when scroll container scrolls or resizes
@@ -78,7 +83,11 @@ export default function PinnedScrollbar({
 				const maxScroll = scrollWidth - clientWidth;
 				const dx = ev.clientX - dragStartX.current;
 				const scrollDelta = (dx / maxThumbLeft) * maxScroll;
-				el.scrollLeft = Math.max(0, Math.min(maxScroll, dragStartScroll.current + scrollDelta));
+				// scrollLeft's valid range is [-maxScroll, 0] in RTL, [0, maxScroll] in LTR
+				const isRTL = getComputedStyle(el).direction === 'rtl';
+				const min = isRTL ? -maxScroll : 0;
+				const max = isRTL ? 0 : maxScroll;
+				el.scrollLeft = Math.max(min, Math.min(max, dragStartScroll.current + scrollDelta));
 			};
 
 			const onUp = () => {
@@ -109,7 +118,8 @@ export default function PinnedScrollbar({
 				el.scrollLeft = 0;
 			} else if (e.key === 'End') {
 				e.preventDefault();
-				el.scrollLeft = el.scrollWidth;
+				// End = end of content: fully negative in RTL; the browser clamps either way
+				el.scrollLeft = getComputedStyle(el).direction === 'rtl' ? -el.scrollWidth : el.scrollWidth;
 			}
 		},
 		[scrollRef],
@@ -127,7 +137,11 @@ export default function PinnedScrollbar({
 			const clickX = e.clientX - rect.left;
 			const { scrollWidth, clientWidth } = el;
 			const direction = clickX < thumbLeft ? -1 : 1;
-			el.scrollLeft = Math.max(0, Math.min(scrollWidth - clientWidth, el.scrollLeft + direction * clientWidth * 0.8));
+			const maxScroll = scrollWidth - clientWidth;
+			const isRTL = getComputedStyle(el).direction === 'rtl';
+			const min = isRTL ? -maxScroll : 0;
+			const max = isRTL ? 0 : maxScroll;
+			el.scrollLeft = Math.max(min, Math.min(max, el.scrollLeft + direction * clientWidth * 0.8));
 		},
 		[scrollRef, thumbLeft],
 	);
@@ -139,7 +153,7 @@ export default function PinnedScrollbar({
 			className="rdt_pinnedScrollbarTrack"
 			ref={trackRef}
 			role="presentation"
-			style={{ marginLeft: leftInset, marginRight: rightInset }}
+			style={{ marginInlineStart: leftInset, marginInlineEnd: rightInset }}
 			onClick={handleTrackClick}
 		>
 			<div
