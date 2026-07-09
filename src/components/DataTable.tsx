@@ -9,7 +9,7 @@ import DataTableHead from './DataTableHead';
 import DataTableBody from './DataTableBody';
 import TablePaginationFooter from './TablePaginationFooter';
 import TableFooter from './TableFooter';
-import { getNumberOfPages, recalculatePage, getPinnedOffsets, getPinnedTotalWidths } from '../util';
+import { getNumberOfPages, recalculatePage } from '../util';
 import PinnedScrollbar from './PinnedScrollbar';
 import { defaultProps, DEFAULT_EXPANDABLE_ICON, DEFAULT_PAGINATION_ICONS } from '../defaultProps';
 import { createStyles } from '../styles';
@@ -28,6 +28,8 @@ import useHeadContextValue from '../hooks/useHeadContextValue';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import { useColorMode } from '../hooks/useColorMode';
 import useCellNavigation from '../hooks/useCellNavigation';
+import useColumnPinning from '../hooks/useColumnPinning';
+import useSortFlipAnimation from '../hooks/useSortFlipAnimation';
 
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
@@ -164,7 +166,6 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	}, []);
 
 	const tableId = React.useId();
-	const [, startTransition] = React.useTransition();
 	const { filterValues, handleFilterChange, filteredData } = useColumnFilter(
 		columns,
 		controlledFilterValues,
@@ -199,42 +200,15 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		defaultSortAsc,
 	);
 
-	// Pinning is incompatible with CSS-grid group headers — strip it when groups are active
-	const hasGroups = tableGroups.length > 0 || (columnGroups != null && columnGroups.length > 0);
-	const effectiveColumns = React.useMemo(() => {
-		if (!hasGroups) return tableColumns;
-		return tableColumns.map(c => {
-			if (!c.pinned) return c;
-			const { pinned: _p, ...rest } = c;
-			return rest as typeof c;
-		});
-	}, [hasGroups, tableColumns]);
-
-	const warnedPinGroupsRef = React.useRef(false);
-	React.useEffect(() => {
-		if (!hasGroups || warnedPinGroupsRef.current) return;
-		if (tableColumns.some(c => c.pinned)) {
-			warnedPinGroupsRef.current = true;
-			console.warn(
-				'DataTable: column pinning is not supported alongside columnGroups. ' +
-					'`pinned` has been stripped from affected columns. ' +
-					'Remove `columnGroups` or remove `pinned` from your column definitions to use pinning.',
-			);
-		}
-	}, [hasGroups, tableColumns]);
-
-	const pinnedOffsets = React.useMemo(
-		() => getPinnedOffsets(effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander),
-		[effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander],
-	);
-
-	const pinnedTotalWidths = React.useMemo(
-		() =>
-			getPinnedTotalWidths(effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander),
-		[effectiveColumns, columnWidths, selectableRows, expandableRows, expandableRowsHideExpander],
-	);
-
-	const hasPinnedColumns = pinnedTotalWidths.left > 0 || pinnedTotalWidths.right > 0;
+	const { effectiveColumns, pinnedOffsets, pinnedTotalWidths, hasPinnedColumns } = useColumnPinning({
+		tableColumns,
+		tableGroups,
+		columnGroups,
+		columnWidths,
+		selectableRows,
+		expandableRows,
+		expandableRowsHideExpander,
+	});
 	const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
 
 	const {
@@ -282,24 +256,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		handleClearSort,
 	]);
 
-	// Snapshot row Y-positions synchronously before dispatching sort, so
-	// DataTableBody can FLIP rows from their old positions to the new ones.
-	const bodyRef = React.useRef<HTMLDivElement>(null);
-	const prevRowTopsRef = React.useRef<Map<string | number, number>>(new Map());
-
-	const handleSort = React.useCallback(
-		(action: Parameters<typeof dispatchSort>[0]) => {
-			if (bodyRef.current) {
-				const snapshot = new Map<string | number, number>();
-				bodyRef.current.querySelectorAll<HTMLElement>('[id^="row-"]').forEach(el => {
-					snapshot.set(el.id.slice(4), el.getBoundingClientRect().top);
-				});
-				prevRowTopsRef.current = snapshot;
-			}
-			startTransition(() => dispatchSort(action));
-		},
-		[dispatchSort],
-	);
+	const { bodyRef, prevRowTopsRef, handleSort } = useSortFlipAnimation(dispatchSort);
 
 	const { rowsPerPage, currentPage, selectedRows, allSelected, selectedColumn, sortDirection, sortColumns } =
 		tableState;
@@ -367,6 +324,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const showFooterRow =
 		showFooter !== false && !progressPending && (showFooter === true || !!footerComponent || hasColumnFooter);
 
+	// Intentional dispatch during render ("adjusting state when props change" pattern):
+	// when filtering strands currentPage past the last page, clamp it before commit so
+	// the empty page never paints.
 	if (pagination && !paginationServer && filteredSortedData.length > 0 && filteredTableRows.length === 0) {
 		handleChangePage(recalculatePage(currentPage, getNumberOfPages(filteredSortedData.length, rowsPerPage)));
 	}

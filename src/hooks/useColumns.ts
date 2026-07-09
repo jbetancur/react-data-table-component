@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { decorateColumns, findColumnIndexById, getSortDirection, normalizePins } from '../util';
+import { decorateColumns, findColumnIndexById, getPinZoneForIndex, getSortDirection, normalizePins } from '../util';
+import { setDragGhost } from '../dom';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import { SortOrder } from '../types';
 import type { TableColumn, ColumnGroup } from '../types';
@@ -116,23 +117,13 @@ function useColumns<T>(
 			const [col] = moved.splice(srcIdx, 1);
 			moved.splice(tgtIdx, 0, col);
 
-			// Determine pin zone boundaries
 			const leftCount = moved.filter(c => c.pinned === 'left').length;
 			const rightCount = moved.filter(c => c.pinned === 'right').length;
-			const total = moved.length;
 
-			// Build pinZoneMap for new order
 			const pinZoneMap: Record<number, 'left' | 'right' | undefined> = {};
 			for (let i = 0; i < moved.length; i++) {
-				if (i < leftCount) pinZoneMap[i] = 'left';
-				else if (i >= total - rightCount) pinZoneMap[i] = 'right';
-				else pinZoneMap[i] = undefined;
+				pinZoneMap[i] = getPinZoneForIndex(i, leftCount, rightCount, moved.length);
 			}
-
-			// If dropped into left or right zone, force pin state
-			if (tgtIdx < leftCount) pinZoneMap[tgtIdx] = 'left';
-			else if (tgtIdx >= total - rightCount) pinZoneMap[tgtIdx] = 'right';
-			else pinZoneMap[tgtIdx] = undefined;
 
 			const reorderedCols = normalizePins(moved, pinZoneMap);
 			setTableColumns(reorderedCols);
@@ -166,26 +157,8 @@ function useColumns<T>(
 				sourceGroupKey.current = key;
 				setDraggingGroupKey(key);
 
-				e.dataTransfer.effectAllowed = 'move';
 				const group = tableGroups.find(g => String(g.columnIds[0]) === key);
-				const rect = el.getBoundingClientRect();
-				const ghost = document.createElement('div');
-				ghost.className = 'rdt_dragGhost';
-				const iconSpan = document.createElement('span');
-				iconSpan.className = 'rdt_dragGhostIcon';
-				iconSpan.setAttribute('aria-hidden', 'true');
-				iconSpan.innerHTML =
-					'<svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><circle cx="5" cy="3.5" r="1.2"/><circle cx="11" cy="3.5" r="1.2"/><circle cx="5" cy="8" r="1.2"/><circle cx="11" cy="8" r="1.2"/><circle cx="5" cy="12.5" r="1.2"/><circle cx="11" cy="12.5" r="1.2"/></svg>';
-				const labelSpan = document.createElement('span');
-				labelSpan.className = 'rdt_dragGhostLabel';
-				labelSpan.textContent = typeof group?.name === 'string' ? group.name : '';
-				ghost.appendChild(iconSpan);
-				ghost.appendChild(labelSpan);
-				ghost.style.width = `${rect.width}px`;
-				ghost.style.height = `${rect.height}px`;
-				document.body.appendChild(ghost);
-				e.dataTransfer.setDragImage(ghost, e.clientX - rect.left, e.clientY - rect.top);
-				setTimeout(() => document.body.removeChild(ghost), 0);
+				setDragGhost(e, typeof group?.name === 'string' ? group.name : '');
 			}
 		},
 		[tableGroups],

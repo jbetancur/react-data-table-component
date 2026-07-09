@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getPrefixColCount } from '../util';
 import type { ActiveCell } from '../context/RowContext';
 import type { TableColumn } from '../types';
 
@@ -55,7 +56,7 @@ export default function useCellNavigation<T>({
 }: Options<T>) {
 	const [activeCell, setActiveCell] = React.useState<ActiveCell | null>(null);
 
-	const navPrefixCols = (selectableRows ? 1 : 0) + (expandableRows && !expandableRowsHideExpander ? 1 : 0);
+	const navPrefixCols = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander);
 	const totalNavCols = navPrefixCols + effectiveColumns.filter(c => !c.omit).length;
 	const navMinRow = showTableHead ? -1 : 0;
 	const navMaxRow = filteredTableRowCount - 1;

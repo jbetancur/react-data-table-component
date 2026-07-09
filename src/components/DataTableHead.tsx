@@ -8,7 +8,8 @@ import ColumnExpander from './TableColExpander';
 import RightPinSpacer from './RightPinSpacer';
 import { CellBase } from './Cell';
 import { buildGridTemplateColumns, buildGroupHeaderCells, type GroupDragProps } from './dataTableHeadHelpers';
-import { flipElement, getFirstRightPinnedId } from '../util';
+import { getFirstRightPinnedId, getPrefixColCount } from '../util';
+import { flipElement } from '../dom';
 import type { TableColumn, ColumnGroup } from '../types';
 import { emptyFilterState } from '../hooks/useColumnFilter';
 import { useHeadContext } from '../context/HeadContext';
@@ -136,7 +137,7 @@ function DataTableHead<T>({
 		return new Set(visibleColumns.map(c => String(c.id)).filter(id => !covered.has(id)));
 	}, [columnGroups, visibleColumns]);
 
-	const prefixColCount = (selectableRows ? 1 : 0) + (expandableRows && !expandableRowsHideExpander ? 1 : 0);
+	const prefixColCount = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander);
 
 	// ── Shared column props ──────────────────────────────────────────────────
 	const colProps = (column: TableColumn<T>) => ({

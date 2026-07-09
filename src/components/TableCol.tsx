@@ -6,6 +6,7 @@ import NativeSortIcon from '../icons/NativeSortIcon';
 import ColumnFilter from './ColumnFilter';
 import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
+import { setDragGhost } from '../dom';
 import { SortOrder } from '../types';
 import type { TableColumn, SortAction, SortColumn, FilterState, Localization } from '../types';
 import type { ActiveCell } from '../context/RowContext';
@@ -171,18 +172,7 @@ function TableCol<T>({
 
 	const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
 		if (column.reorder && typeof column.name === 'string') {
-			e.dataTransfer.effectAllowed = 'move';
-			const el = e.currentTarget as HTMLDivElement;
-			const rect = el.getBoundingClientRect();
-			const ghost = document.createElement('div');
-			ghost.className = 'rdt_dragGhost';
-			// Grip icon + column name
-			ghost.innerHTML = `<span class="rdt_dragGhostIcon" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><circle cx="5" cy="3.5" r="1.2"/><circle cx="11" cy="3.5" r="1.2"/><circle cx="5" cy="8" r="1.2"/><circle cx="11" cy="8" r="1.2"/><circle cx="5" cy="12.5" r="1.2"/><circle cx="11" cy="12.5" r="1.2"/></svg></span><span class="rdt_dragGhostLabel">${column.name}</span>`;
-			ghost.style.width = `${rect.width}px`;
-			ghost.style.height = `${rect.height}px`;
-			document.body.appendChild(ghost);
-			e.dataTransfer.setDragImage(ghost, e.clientX - rect.left, e.clientY - rect.top);
-			setTimeout(() => document.body.removeChild(ghost), 0);
+			setDragGhost(e, column.name);
 		}
 		onDragStart(e);
 	};
