@@ -49,7 +49,8 @@ graph TD
     H["Header (optional title + actions)"]
     S["Subheader (optional: filters, search)"]
     SC["div.rdt_responsiveWrapper (scroll container)"]
-    T["div.rdt_table  aria role=table"]
+    T["div.rdt_table  aria role=table
+    (role=grid with cellNavigation)"]
     TH["div.rdt_TableHead"]
     THR["div.rdt_TableHeadRow"]
     TC["div.rdt_TableCol  ×N columns
@@ -60,6 +61,7 @@ graph TD
     TR["div.rdt_row  ×N rows
     id=row-..."]
     TD["div.rdt_TableCell  ×N columns
+    aria role=cell (role=gridcell with cellNavigation)
     data-column-id=..."]
     CEL["div[data-tag=allowRowEvents]
     cell content"]
@@ -87,9 +89,10 @@ graph TD
   <h1>Headless hooks</h1>
 
   <p>
-    <code>react-data-table-component</code> ships four hooks that power <code>&lt;DataTable /&gt;</code> internally.
-    You can import them directly and compose them yourself when you need full control over markup and styles,
-    without giving up sorting, pagination, selection, filtering, and column-drag logic.
+    <code>react-data-table-component</code> ships the hooks (and, for pinning, plain functions) that power
+    <code>&lt;DataTable /&gt;</code> internally. You can import them directly and compose them yourself when
+    you need full control over markup and styles, without giving up sorting, pagination, selection,
+    filtering, resizing, pinning, keyboard navigation, and export logic.
   </p>
   <p>
     This is the middle ground between using the styled <code>&lt;DataTable /&gt;</code> as-is and rebuilding
@@ -133,9 +136,17 @@ graph TD
     <pre class="mermaid" set:html={componentTreeDiagram} />
   </div>
 
+  <p>
+    <code>&lt;DataTable /&gt;</code>'s ARIA roles switch from <code>table</code>/<code>cell</code> to
+    <code>grid</code>/<code>gridcell</code> when <code>cellNavigation</code> is enabled, adding keyboard
+    grid navigation on top of the same tree. The <code>useCellNavigation</code> hook below is the same
+    logic that powers it — compose it into your own markup to get the same roving-tabindex behavior. See
+    <a href="/docs/keyboard-navigation">Keyboard navigation</a> for the interaction pattern it implements.
+  </p>
+
   <hr />
 
-  <h2>The four hooks</h2>
+  <h2>The core pipeline hooks</h2>
 
   <DocsTable
     headers={['Hook', 'What it does']}
@@ -144,53 +155,74 @@ graph TD
       ['<code>useTableState</code>', 'Sort, pagination, and row-selection state + dispatchers'],
       ['<code>useTableData</code>', 'Sorts and paginates the raw data into renderable rows'],
       ['<code>useColumnFilter</code>', 'Per-column filter values and client-side filter logic'],
-      ['<code>useTableExport</code>', 'Generates CSV / JSON from columns and rows, with download + clipboard helpers'],
     ]}
   />
 
-  <p>All five are pure: no JSX, no CSS, no hard dependency on the rendered component tree.</p>
+  <h2>Feature hooks</h2>
+
+  <p>Compose any of these on top of the pipeline as needed — none of them depend on each other.</p>
+
+  <DocsTable
+    headers={['Hook', 'What it does']}
+    rows={[
+      ['<code>useColumnVisibility</code>', 'Show/hide columns by id, independent of the sort/filter pipeline'],
+      ['<code>useColumnResize</code>', 'Drag-to-resize column widths (mouse-driven, DOM-only state)'],
+      ['<code>useCellNavigation</code>', 'Keyboard grid navigation — arrows, Home/End, roving tabindex. Same logic behind <code>cellNavigation</code>'],
+      ['<code>useTableExport</code>', 'Generates CSV / JSON from columns and rows, with download + clipboard helpers'],
+      ['<code>getPinnedOffsets</code> / <code>getPinnedTotalWidths</code> / <code>getPinnedCellMeta</code>', 'Pure functions (not hooks) that compute sticky-column offsets and shadow metadata for <code>column.pinned</code>'],
+    ]}
+  />
+
+  <p>All are pure: no JSX, no CSS, no hard dependency on the rendered component tree.</p>
 
   <hr />
 
   <h2>Basic example</h2>
 
-  <CodeBlock lang="tsx" code={`import {
+  <CodeBlock lang="tsx" code={`import { useState } from 'react';
+import {
   useColumns,
   useTableState,
   useTableData,
   useColumnFilter,
+  SortOrder,
+  type TableColumn,
 } from 'react-data-table-component';
 
-const columns = [
-  { id: 1, name: 'Name',  selector: (row) => row.name,  sortable: true },
-  { id: 2, name: 'Email', selector: (row) => row.email },
-  { id: 3, name: 'Role',  selector: (row) => row.role },
+interface Person {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+}
+
+const columns: TableColumn<Person>[] = [
+  { id: 'name',  name: 'Name',  selector: row => row.name,  sortable: true },
+  { id: 'email', name: 'Email', selector: row => row.email },
+  { id: 'role',  name: 'Role',  selector: row => row.role },
 ];
 
-function MyTable({ data }) {
+function MyTable({ data }: { data: Person[] }) {
+  const [rowsPerPage] = useState(10);
+
   // 1. Column order + drag state
-  const { tableColumns, handleDragStart, handleDragEnd } = useColumns(
+  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(
     columns,
-    () => {},   // onColumnOrderChange
-    null,       // defaultSortFieldId
-    true,       // defaultSortAsc
+    () => {},    // onColumnOrderChange
+    undefined,   // onColumnGroupOrderChange
+    undefined,   // columnGroups
+    null,        // defaultSortFieldId
+    true,        // defaultSortAsc
   );
 
   // 2. Sort / page / selection state
-  const {
-    tableState,
-    handleSort,
-    handleChangePage,
-    handleChangeRowsPerPage,
-    handleSelectedRow,
-    handleSelectAllRows,
-  } = useTableState({
+  const { tableState, handleSort, handleChangePage } = useTableState({
     data,
     keyField: 'id',
-    defaultSortColumn: tableColumns[0],
-    defaultSortDirection: 'asc',
+    defaultSortColumn,
+    defaultSortDirection,
     paginationDefaultPage: 1,
-    paginationPerPage: 10,
+    paginationPerPage: rowsPerPage,
     paginationServer: false,
     paginationServerOptions: {},
     paginationTotalRows: 0,
@@ -206,14 +238,15 @@ function MyTable({ data }) {
     onChangeRowsPerPage: () => {},
   });
 
-  const { selectedColumn, sortDirection, currentPage, rowsPerPage } = tableState;
+  const { selectedColumn, sortDirection, sortColumns, currentPage } = tableState;
 
   // 3. Sorted + paginated rows
-  const { sortedData, tableRows } = useTableData({
+  const { tableRows } = useTableData({
     data,
     columns: tableColumns,
     selectedColumn,
     sortDirection,
+    sortColumns,
     currentPage,
     rowsPerPage,
     pagination: true,
@@ -234,7 +267,16 @@ function MyTable({ data }) {
         <thead>
           <tr>
             {tableColumns.map(col => (
-              <th key={col.id} onClick={() => handleSort({ type: 'SORT_CHANGE', sortColumn: col, clearSelectedRows: false })}>
+              <th
+                key={col.id}
+                onClick={() => col.sortable && handleSort({
+                  type: 'SORT_CHANGE',
+                  selectedColumn: col,
+                  clearSelectedOnSort: false,
+                  additive: false,
+                  defaultSortDirection: SortOrder.ASC,
+                })}
+              >
                 {col.name}
               </th>
             ))}
@@ -242,7 +284,7 @@ function MyTable({ data }) {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i}>
+            <tr key={row.id}>
               {tableColumns.map(col => (
                 <td key={col.id}>{col.selector?.(row, i)}</td>
               ))}
@@ -250,6 +292,7 @@ function MyTable({ data }) {
           ))}
         </tbody>
       </table>
+      <button onClick={() => handleChangePage(currentPage + 1)}>Next page</button>
     </div>
   );
 }`} />
@@ -263,9 +306,16 @@ function MyTable({ data }) {
   <CodeBlock lang="ts" code={`function useColumns<T>(
   columns: TableColumn<T>[],
   onColumnOrderChange: (nextOrder: TableColumn<T>[]) => void,
+  onColumnGroupOrderChange: ((nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void) | undefined,
+  columnGroups: ColumnGroup[] | undefined,
   defaultSortFieldId: string | number | null | undefined,
   defaultSortAsc: boolean,
 ): ColumnsHook<T>`} />
+
+  <p>
+    Pass <code>undefined</code> for <code>onColumnGroupOrderChange</code> and <code>columnGroups</code>
+    if you're not using <a href="/docs/column-groups">column groups</a>.
+  </p>
 
   <DocsTable
     headers={['Property', 'Type', 'Description']}
@@ -311,7 +361,7 @@ function MyTable({ data }) {
       ['<code>selectableRowSelected</code>', '<code>(row: T) =&gt; boolean | null</code>', 'Pre-select matching rows'],
       ['<code>clearSelectedRows</code>', '<code>boolean</code>', 'Toggle to clear selection'],
       ['<code>onSelectedRowsChange</code>', '<code>(state) =&gt; void</code>', 'Fires on any selection change'],
-      ['<code>onSort</code>', '<code>(col, dir, rows) =&gt; void</code>', 'Fires after sort state changes'],
+      ['<code>onSort</code>', '<code>(col, dir, rows, sortColumns) =&gt; void</code>', 'Fires after sort state changes'],
       ['<code>onChangePage</code>', '<code>(page, total) =&gt; void</code>', 'Fires after page changes'],
       ['<code>onChangeRowsPerPage</code>', '<code>(perPage, page) =&gt; void</code>', 'Fires after rows-per-page changes'],
     ]}
@@ -326,11 +376,20 @@ function MyTable({ data }) {
       ['<code>handleSort</code>', '<code>(action: SortAction&lt;T&gt;) =&gt; void</code>', 'Dispatch a sort change'],
       ['<code>handleSelectAllRows</code>', '<code>(action: AllRowsAction&lt;T&gt;) =&gt; void</code>', 'Dispatch select/deselect all'],
       ['<code>handleSelectedRow</code>', '<code>(action: SingleRowAction&lt;T&gt;) =&gt; void</code>', 'Dispatch a single row toggle'],
+      ['<code>handleSelectedRange</code>', '<code>(action: RangeRowAction&lt;T&gt;) =&gt; void</code>', 'Dispatch a Shift-click range selection'],
       ['<code>handleChangePage</code>', '<code>(page: number) =&gt; void</code>', 'Dispatch a page change'],
       ['<code>handleChangeRowsPerPage</code>', '<code>(perPage, rowCount) =&gt; void</code>', 'Dispatch a per-page change'],
       ['<code>handleClearSelectedRows</code>', '<code>() =&gt; void</code>', 'Programmatically clear all selections'],
+      ['<code>handleClearSort</code>', '<code>() =&gt; void</code>', 'Programmatically reset sort to the default'],
     ]}
   />
+
+  <p>
+    <code>SortAction&lt;T&gt;</code> is <code>&#123; type: 'SORT_CHANGE', selectedColumn: TableColumn&lt;T&gt;,
+    clearSelectedOnSort: boolean, additive: boolean, defaultSortDirection: SortOrder &#125;</code>.
+    <code>additive: true</code> adds the column to the existing sort instead of replacing it (multi-column
+    sort); most callers pass <code>false</code>.
+  </p>
 
   <p><strong><code>TableState&lt;T&gt;</code> shape:</strong></p>
 
@@ -341,6 +400,7 @@ function MyTable({ data }) {
       ['<code>rowsPerPage</code>', '<code>number</code>'],
       ['<code>selectedColumn</code>', '<code>TableColumn&lt;T&gt;</code>'],
       ['<code>sortDirection</code>', '<code>SortOrder</code>'],
+      ['<code>sortColumns</code>', '<code>SortColumn&lt;T&gt;[]</code> — full sort config in priority order; required by <code>useTableData</code>'],
       ['<code>selectedRows</code>', '<code>T[]</code>'],
       ['<code>selectedCount</code>', '<code>number</code>'],
       ['<code>allSelected</code>', '<code>boolean</code>'],
@@ -366,9 +426,11 @@ function MyTable({ data }) {
       ['<code>paginationServer</code>', '<code>boolean</code>', 'Skip page slicing (server already paginated)'],
       ['<code>sortServer</code>', '<code>boolean</code>', 'Skip sorting (server already sorted)'],
       ['<code>sortFunction</code>', '<code>SortFunction&lt;T&gt; | null</code>', 'Global custom sort comparator'],
-      ['<code>onSort</code>', '<code>(col, dir, rows) =&gt; void</code>', 'Called after sort; receives sorted rows'],
+      ['<code>onSort</code>', '<code>(col, dir, rows, sortColumns) =&gt; void</code>', 'Called after sort; receives sorted rows'],
     ]}
   />
+
+  <p><code>sortColumns</code> (from <code>tableState.sortColumns</code>) is required — omitting it is a type error.</p>
 
   <DocsTable
     headers={['Property', 'Type', 'Description']}
@@ -411,6 +473,162 @@ function useColumnFilter<T>(
     Each column can define <code>filterFunction: (row: T, filter: FilterState) =&gt; boolean</code> to
     override the built-in operator logic. See <a href="/docs/filtering">Filtering</a> for the full
     <code>FilterState</code> type and operator reference.
+  </p>
+
+  <hr />
+
+  <h3><code>useCellNavigation&lt;T&gt;</code></h3>
+
+  <p>
+    Powers the WAI-ARIA grid pattern behind <code>cellNavigation</code>: arrow keys, <code>Home</code>/<code>End</code>,
+    <code>Ctrl+Home</code>/<code>Ctrl+End</code>, and a roving tabindex. It reads and writes plain
+    <code>data-nav-row</code> / <code>data-nav-col</code> attributes on your own cells — it doesn't know or
+    care what markup they're attached to.
+  </p>
+
+  <CodeBlock lang="ts" code={`function useCellNavigation<T>(options: UseCellNavigationOptions<T>): {
+  activeCell: ActiveCell | null;
+  handleNavFocus: (e: React.FocusEvent<HTMLDivElement>) => void;
+  handleNavKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void;
+}`} />
+
+  <DocsTable
+    headers={['Option', 'Type', 'Description']}
+    rows={[
+      ['<code>cellNavigation</code>', '<code>boolean</code>', 'Master on/off switch. When <code>false</code>, <code>activeCell</code> is always <code>null</code>.'],
+      ['<code>selectableRows</code>', '<code>boolean</code>', 'Reserves nav column 0 for a selection checkbox, if you render one.'],
+      ['<code>expandableRows</code>', '<code>boolean</code>', 'Reserves the next nav column for an expander button, if you render one.'],
+      ['<code>expandableRowsHideExpander</code>', '<code>boolean</code>', 'Skip the expander column reservation even when <code>expandableRows</code> is true.'],
+      ['<code>effectiveColumns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'Your current column list. Columns with <code>omit: true</code> are excluded from the nav grid.'],
+      ['<code>filteredTableRowCount</code>', '<code>number</code>', 'Row count for the currently visible page — clamps <code>ArrowDown</code>/<code>End</code>.'],
+      ['<code>showTableHead</code>', '<code>boolean</code>', 'Whether a header row participates in the grid (row <code>-1</code>). <code>false</code> removes header cells from the tab sequence entirely.'],
+    ]}
+  />
+
+  <p>
+    Wire it up by spreading <code>data-nav-row</code>/<code>data-nav-col</code> (row <code>-1</code> for the
+    header) onto each focusable cell, setting <code>tabIndex</code> from <code>activeCell</code>, and
+    attaching <code>onFocus</code>/<code>onKeyDown</code> to the table root:
+  </p>
+
+  <CodeBlock lang="tsx" code={`function Row({ row, rowIndex, columns, activeCell }) {
+  return (
+    <tr>
+      {columns.map((col, colIndex) => (
+        <td
+          key={col.id}
+          data-nav-row={rowIndex}
+          data-nav-col={colIndex}
+          tabIndex={activeCell?.row === rowIndex && activeCell?.col === colIndex ? 0 : -1}
+        >
+          {col.selector?.(row, rowIndex)}
+        </td>
+      ))}
+    </tr>
+  );
+}
+
+function MyTable({ data, columns }) {
+  const { activeCell, handleNavFocus, handleNavKeyDown } = useCellNavigation({
+    cellNavigation: true,
+    selectableRows: false,
+    expandableRows: false,
+    expandableRowsHideExpander: false,
+    effectiveColumns: columns,
+    filteredTableRowCount: data.length,
+    showTableHead: false,
+  });
+
+  return (
+    <table onFocus={handleNavFocus} onKeyDown={handleNavKeyDown}>
+      <tbody>
+        {data.map((row, i) => (
+          <Row key={row.id} row={row} rowIndex={i} columns={columns} activeCell={activeCell} />
+        ))}
+      </tbody>
+    </table>
+  );
+}`} />
+
+  <p>
+    Cells that hold an interactive widget instead of plain text (a checkbox, an expander button) should
+    also set <code>data-nav-widget="true"</code> — the hook then focuses the widget itself rather than
+    the cell wrapper, so <kbd>Space</kbd>/<kbd>Enter</kbd> activate it natively. See
+    <a href="/docs/keyboard-navigation">Keyboard navigation</a> for the full key reference this
+    reproduces.
+  </p>
+
+  <hr />
+
+  <h3><code>useColumnResize</code></h3>
+
+  <CodeBlock lang="ts" code={`function useColumnResize(options?: UseColumnResizeOptions): {
+  columnWidths: Record<string | number, number>;
+  handleResizeStart: (columnId: string | number, e: React.MouseEvent) => void;
+}`} />
+
+  <DocsTable
+    headers={['Option', 'Type', 'Description']}
+    rows={[
+      ['<code>initialColumnWidths</code>', '<code>Record&lt;string | number, number&gt;</code>', 'Seed widths, e.g. hydrated from localStorage.'],
+      ['<code>onColumnResize</code>', '<code>(columnId, width, allWidths) =&gt; void</code>', 'Fires on mouseup with the settled width.'],
+    ]}
+  />
+
+  <p>
+    Attach <code>handleResizeStart</code> to a drag handle's <code>onMouseDown</code>. The hook tracks
+    <code>mousemove</code>/<code>mouseup</code> on <code>document</code> itself — you don't need to wire
+    those up. Apply <code>columnWidths[column.id]</code> as an inline <code>width</code> on your header
+    and body cells for that column.
+  </p>
+
+  <hr />
+
+  <h3>Pinning: <code>getPinnedOffsets</code>, <code>getPinnedTotalWidths</code>, <code>getPinnedCellMeta</code></h3>
+
+  <p>
+    Column pinning has no hook — there's no state to own beyond <code>column.pinned</code> on your own
+    column list. These are pure functions: given your columns and current widths, they compute sticky
+    offsets and shadow metadata.
+  </p>
+
+  <CodeBlock lang="ts" code={`function getPinnedOffsets<T>(
+  columns: TableColumn<T>[],
+  columnWidths: Record<string | number, number>,
+  selectableRows: boolean,
+  expandableRows: boolean,
+  expandableRowsHideExpander: boolean,
+): PinnedOffsets
+
+function getPinnedTotalWidths<T>(
+  columns: TableColumn<T>[],
+  columnWidths: Record<string | number, number>,
+  selectableRows: boolean,
+  expandableRows: boolean,
+  expandableRowsHideExpander: boolean,
+): { left: number; right: number }
+
+function getPinnedCellMeta<T>(
+  column: TableColumn<T>,
+  pinnedOffsets: PinnedOffsets | undefined,
+  zIndex?: number,
+): PinnedCellMeta`} />
+
+  <CodeBlock lang="tsx" code={`const pinnedOffsets = getPinnedOffsets(columns, columnWidths, false, false, false);
+
+function Cell({ column, pinnedOffsets }: { column: TableColumn<Row>; pinnedOffsets: PinnedOffsets }) {
+  const meta = getPinnedCellMeta(column, pinnedOffsets, 1);
+  return <td className={meta.className} style={meta.style}>{/* ... */}</td>;
+}`} />
+
+  <p>
+    <code>getPinnedCellMeta</code> returns a <code>style</code> object (<code>position: 'sticky'</code>,
+    the computed <code>left</code>/<code>right</code> offset, and <code>zIndex</code>) that's enough to
+    render pinned columns on its own. <code>className</code> adds <code>rdt_pinLeftLast</code> /
+    <code>rdt_pinRightFirst</code> on the pinned boundary's edge column — those classes only draw a
+    shadow if you import <code>react-data-table-component/css</code> (or match the selectors
+    yourself); they're no-ops otherwise. See <a href="/docs/column-pinning">Column pinning</a> for the
+    <code>column.pinned</code> API these functions read.
   </p>
 
   <hr />
@@ -515,8 +733,8 @@ const columns: TableColumn<Employee>[] = [
 ];
 
 function MyTable({ data }: { data: Employee[] }) {
-  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(columns, () => {});
-  const { tableState, handleChangePage } = useTableState({ data, keyField: 'id', /* … */ });
+  const { tableColumns } = useColumns(columns, () => {}, undefined, undefined, null, true);
+  const { tableState } = useTableState({ data, keyField: 'id', /* … */ });
   const { tableRows } = useTableData({ data, columns: tableColumns, /* … */ });
   const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
   const rows = filteredData(tableRows);

@@ -41,6 +41,7 @@ export default function PersistColumnWidthsDemo() {
 
 	function handleResize(_id: string | number, _w: number, all: Record<string | number, number>) {
 		localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+		setInitialWidths(all);
 		setSaved(true);
 		setTimeout(() => setSaved(false), 1500);
 	}

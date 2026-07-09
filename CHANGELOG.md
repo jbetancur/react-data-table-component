@@ -6,7 +6,8 @@ A summary of notable changes per release. For the full commit history see the [r
 
 ### New features
 
-- **Keyboard cell navigation** — new `cellNavigation` prop turns the table into a WAI-ARIA grid (`role="grid"`/`"gridcell"`, single Tab stop, roving tabindex). Arrow keys move between cells, including the header row, selection checkboxes, and expander buttons; `Home`/`End` and `Ctrl+Home`/`Ctrl+End` jump to row and grid edges; `Enter`/`F2` open a cell's editor and `Escape` cancels it; `Enter`/`Space` sort from a header. → [Keyboard navigation](/docs/keyboard-navigation)
+- **Keyboard cell navigation** — new `cellNavigation` prop turns the table into a WAI-ARIA grid (`role="grid"`/`"gridcell"`, single Tab stop, roving tabindex). Arrow keys move between cells, including the header row, selection checkboxes, and expander buttons; `Home`/`End` and `Ctrl+Home`/`Ctrl+End` jump to row and grid edges; `Enter`/`F2` open a cell's editor and `Escape` cancels it; `Enter`/`Space` sort from a header. → [Keyboard navigation](/docs/keyboard-navigation) ([#1332](https://github.com/jbetancur/react-data-table-component/pull/1332))
+- **More headless hooks** — `useCellNavigation` (the same logic behind `cellNavigation`, usable on your own markup) and `useColumnResize` (drag-to-resize) are now exported. Column pinning gets three new pure-function exports — `getPinnedOffsets`, `getPinnedTotalWidths`, `getPinnedCellMeta` — since pinning has no state to own beyond `column.pinned` on your own columns. → [Headless hooks](/docs/headless)
 
 ### Bug fixes
 

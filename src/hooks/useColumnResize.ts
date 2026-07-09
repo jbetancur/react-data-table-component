@@ -3,12 +3,12 @@ import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 type ResizeRef = { columnId: string | number; startX: number; startWidth: number };
 
-type Options = {
+export type UseColumnResizeOptions = {
 	initialColumnWidths?: Record<string | number, number>;
 	onColumnResize?: (columnId: string | number, width: number, allWidths: Record<string | number, number>) => void;
 };
 
-export default function useColumnResize({ initialColumnWidths, onColumnResize }: Options = {}) {
+export default function useColumnResize({ initialColumnWidths, onColumnResize }: UseColumnResizeOptions = {}) {
 	const [columnWidths, setColumnWidths] = React.useState<Record<string | number, number>>(initialColumnWidths ?? {});
 	const resizeRef = React.useRef<ResizeRef | null>(null);
 	const onColumnResizeRef = React.useRef(onColumnResize);
