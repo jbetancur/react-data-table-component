@@ -582,7 +582,7 @@ describe('getPinnedCellMeta', () => {
 		const result = getPinnedCellMeta(col('b', 'left'), offsets);
 		expect(result.pinnedLeft).toBe(true);
 		expect(result.isLastLeftPin).toBe(true);
-		expect(result.style).toEqual({ position: 'sticky', left: 100 });
+		expect(result.style).toEqual({ position: 'sticky', insetInlineStart: 100 });
 		expect(result.className).toContain('rdt_pinLeft');
 		expect(result.className).toContain('rdt_pinLeftLast');
 	});
@@ -598,7 +598,7 @@ describe('getPinnedCellMeta', () => {
 		const result = getPinnedCellMeta(col('y', 'right'), offsets);
 		expect(result.pinnedRight).toBe(true);
 		expect(result.isFirstRightPin).toBe(true);
-		expect(result.style).toEqual({ position: 'sticky', right: 80 });
+		expect(result.style).toEqual({ position: 'sticky', insetInlineEnd: 80 });
 		expect(result.className).toContain('rdt_pinRight');
 		expect(result.className).toContain('rdt_pinRightFirst');
 	});
@@ -724,7 +724,7 @@ describe('getPinnedCellMeta with zIndex', () => {
 
 	test('includes zIndex in the sticky style when provided', () => {
 		const result = getPinnedCellMeta(col('left'), offsets, 2);
-		expect(result.style).toEqual({ position: 'sticky', left: 0, zIndex: 2 });
+		expect(result.style).toEqual({ position: 'sticky', insetInlineStart: 0, zIndex: 2 });
 	});
 
 	test('omits zIndex for unpinned columns', () => {

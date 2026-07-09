@@ -397,10 +397,12 @@ export function getPinnedCellMeta<T>(
 	const isLastLeftPin = pinnedLeft && id != null && offsets.left[id] === maxLeft;
 	const isFirstRightPin = pinnedRight && id != null && offsets.right[id] === maxRight;
 
+	// Logical insets so pin bands mirror under RTL: 'left' pins stick to the
+	// inline-start edge (physical right in RTL), 'right' pins to inline-end.
 	const style: React.CSSProperties = pinnedLeft
-		? { position: 'sticky', left: offsets.left[id!], ...(zIndex != null && { zIndex }) }
+		? { position: 'sticky', insetInlineStart: offsets.left[id!], ...(zIndex != null && { zIndex }) }
 		: pinnedRight
-			? { position: 'sticky', right: offsets.right[id!], ...(zIndex != null && { zIndex }) }
+			? { position: 'sticky', insetInlineEnd: offsets.right[id!], ...(zIndex != null && { zIndex }) }
 			: {};
 
 	const className = [

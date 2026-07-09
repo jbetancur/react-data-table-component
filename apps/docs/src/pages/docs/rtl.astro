@@ -16,7 +16,7 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <Demo
     title="Direction: LTR / RTL / AUTO"
-    description="Toggle between LTR, RTL, and AUTO. In RTL mode the pagination arrows reverse and column text aligns right-to-left."
+    description="Toggle between LTR, RTL, and AUTO. In RTL mode the pagination arrows reverse, column text aligns right-to-left, and the resize handles mirror to each column's left edge. Drag a column boundary to try it."
     code={`import DataTable, { Direction } from 'react-data-table-component';
 
 <DataTable
@@ -69,6 +69,7 @@ import DocsTable from '../../components/DocsTable.astro';
     <li>The wrapper receives <code>dir="rtl"</code>, which shifts inline content and flexbox row direction for you.</li>
     <li>Pagination first/prev/next/last buttons have their icons reversed via <code>.rdt_paginationButtonRTL</code>.</li>
     <li>Column <code>right: true</code> alignment continues to work as expected. Align numbers relative to the reading direction of the cell content, not the page.</li>
+    <li>With <code>resizable</code>, the resize handle moves to each column's left (end) edge and drag direction mirrors, so dragging away from the column widens it just like in LTR.</li>
   </ul>
 
   <h2>Pairing with localization</h2>

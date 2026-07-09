@@ -23,6 +23,7 @@ import useTableState from '../hooks/useTableState';
 import useTableData from '../hooks/useTableData';
 import useColumnFilter from '../hooks/useColumnFilter';
 import useColumnResize from '../hooks/useColumnResize';
+import useRTL from '../hooks/useRTL';
 import useRowContextValue from '../hooks/useRowContextValue';
 import useHeadContextValue from '../hooks/useHeadContextValue';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
@@ -173,7 +174,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	);
 
 	// ── Column resize state ────────────────────────────────────────────────────
-	const { columnWidths, handleResizeStart } = useColumnResize({ initialColumnWidths, onColumnResize });
+	const isRTL = useRTL(direction);
+	const { columnWidths, handleResizeStart } = useColumnResize({ initialColumnWidths, onColumnResize, isRTL });
 
 	const {
 		tableColumns,

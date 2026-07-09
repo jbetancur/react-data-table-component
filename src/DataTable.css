@@ -187,7 +187,8 @@
 .rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before {
 	content: '';
 	position: absolute;
-	left: 0;
+	/* inline-start = the boundary shared with the previous DOM sibling in both LTR and RTL */
+	inset-inline-start: 0;
 	top: var(--_sep-top, 20%);
 	height: var(--_sep-h, 60%);
 	width: 1px;
@@ -378,7 +379,7 @@
 .rdt_filterDot {
 	position: absolute;
 	top: 3px;
-	right: 3px;
+	inset-inline-end: 3px;
 	width: 5px;
 	height: 5px;
 	border-radius: 50%;
@@ -676,7 +677,7 @@
 .rdt_cellEditing:has(.rdt_editSelect)::after {
 	content: '';
 	position: absolute;
-	right: var(--rdt-cell-padding-x, 16px);
+	inset-inline-end: var(--rdt-cell-padding-x, 16px);
 	top: 50%;
 	transform: translateY(-50%);
 	width: 12px;
@@ -690,7 +691,7 @@
 }
 
 .rdt_editSelect {
-	padding-right: calc(var(--rdt-cell-padding-x, 16px) + 24px);
+	padding-inline-end: calc(var(--rdt-cell-padding-x, 16px) + 24px);
 }
 
 /* Dense rows shrink the editor height to match */
@@ -795,16 +796,29 @@
 	clip-path: inset(0 0 0 -8px);
 }
 
+/* box-shadow/clip-path have no logical variants — mirror the pin-band edge
+   shadows by hand under RTL, where inline-start pins sit on the physical right. */
+.rdt_pinLeftLast:dir(rtl) {
+	box-shadow: -2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
+	clip-path: inset(0 0 0 -8px);
+}
+
+.rdt_pinRightFirst:dir(rtl) {
+	box-shadow: 2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
+	clip-path: inset(0 -8px 0 0);
+}
+
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
 /*
  * The handle straddles the cell boundary so its hit area is centered on the
- * separator line rather than offset to one side. width/2 = 3px → right: -3px
- * centers a 6px-wide handle on the column edge, matching the position of
+ * separator line rather than offset to one side. width/2 = 3px → inset-inline-end: -3px
+ * centers a 6px-wide handle on the column's end edge, matching the position of
  * .rdt_headSeparator/.rdt_colSeparator pseudo-elements drawn at the boundary.
+ * inset-inline-end resolves to the left edge under RTL so the handle mirrors correctly.
  */
 .rdt_resizeHandle {
 	position: absolute;
-	right: -3px;
+	inset-inline-end: -3px;
 	top: 0;
 	height: 100%;
 	width: 6px;
@@ -897,7 +911,7 @@
 .rdt_groupCell + .rdt_groupCell::before {
 	content: '';
 	position: absolute;
-	left: 0;
+	inset-inline-start: 0;
 	top: 20%;
 	height: 60%;
 	width: 1px;
@@ -1298,7 +1312,7 @@
 
 .rdt_selectWrapper svg {
 	top: 50%;
-	right: 2px;
+	inset-inline-end: 2px;
 	transform: translateY(-50%);
 	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
 	position: absolute;
@@ -1316,8 +1330,8 @@
 	height: 100%;
 	max-width: 100%;
 	user-select: none;
-	padding-left: 8px;
-	padding-right: 22px;
+	padding-inline-start: 8px;
+	padding-inline-end: 22px;
 	box-sizing: border-box;
 	font-size: inherit;
 	font-family: inherit;
@@ -1325,7 +1339,6 @@
 	border: none;
 	background-color: transparent;
 	appearance: none;
-	direction: ltr;
 	flex-shrink: 0;
 	outline: none;
 }
