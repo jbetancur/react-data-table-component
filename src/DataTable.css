@@ -7,6 +7,10 @@
 	width: 100%;
 	height: 100%;
 	max-width: 100%;
+	/* When columns overflow the responsive wrapper, grow to the scrolled content
+	   width so row/table backgrounds paint across every column instead of ending
+	   at the container width. Wins over max-width per the min/max-width rules. */
+	min-width: fit-content;
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 	background-color: var(--rdt-color-bg, #fff);
 	font-family: var(--rdt-font-family, inherit);

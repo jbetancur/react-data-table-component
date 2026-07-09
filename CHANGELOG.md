@@ -8,6 +8,7 @@ A summary of notable changes per release. For the full commit history see the [r
 
 - Fixed column resizing under RTL. The handle now sits on the column's end (left) edge and dragging it away from the column widens it, mirroring LTR. Applies to both `direction={Direction.RTL}` and an inherited `dir="rtl"`. → [Resizable columns](/docs/resizable)
 - Fixed column and group-header separators rendering at the wrong boundaries under RTL. Small header/cell chrome (filter-indicator dot, inline-edit select arrow, rows-per-page chevron) now mirrors to the correct side as well. → [RTL support](/docs/rtl)
+- Fixed row and table backgrounds ending at the initial container width when the table scrolls horizontally, which left scrolled-into columns unpainted (default, striped, hover, and selected backgrounds all cut off).
 - Fixed column pinning under RTL: pinned columns now stick to logical edges (`pinned: 'left'` pins to the inline-start edge, which is the right side in RTL), and the pin-band shadows mirror accordingly. → [Column pinning](/docs/column-pinning)
 - Fixed the pinned-columns horizontal scrollbar under RTL: thumb position, drag, track clicks, and the End key now account for RTL scroll coordinates, and the track insets follow the mirrored pin bands.
 
