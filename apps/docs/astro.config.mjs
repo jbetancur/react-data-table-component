@@ -1,15 +1,16 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
 	site: 'https://reactdatatable.com',
 	markdown: {
 		shikiConfig: { theme: 'catppuccin-macchiato' },
 	},
-	integrations: [react(), tailwind({ applyBaseStyles: false }), sitemap()],
+	integrations: [react(), sitemap()],
 	vite: {
+		plugins: [tailwindcss()],
 		resolve: {
 			alias: {
 				// In dev, resolve the library from local source so edits are instant

@@ -13,6 +13,16 @@ export { default as useColumnVisibility } from './hooks/useColumnVisibility';
 export type { UseColumnVisibilityResult, ColumnVisibilityEntry } from './hooks/useColumnVisibility';
 export { default as useTableExport } from './hooks/useTableExport';
 export type { UseTableExportOptions, UseTableExportResult, ExportFormat } from './hooks/useTableExport';
+export { default as useCellNavigation } from './hooks/useCellNavigation';
+export type { UseCellNavigationOptions } from './hooks/useCellNavigation';
+export type { ActiveCell } from './context/RowContext';
+export { default as useColumnResize } from './hooks/useColumnResize';
+export type { UseColumnResizeOptions } from './hooks/useColumnResize';
+
+// Pure helpers behind column pinning — call these directly if you're rendering your own
+// markup and want sticky-offset positions without pulling in <DataTable />.
+export { getPinnedOffsets, getPinnedTotalWidths, getPinnedCellMeta } from './util';
+export type { PinnedOffsets, PinnedCellMeta } from './util';
 
 export { SortOrder } from './types';
 

@@ -31,7 +31,7 @@ function focusNavCell(root: HTMLElement, row: number, col: number): void {
 	(widget ?? cell).focus();
 }
 
-type Options<T> = {
+export type UseCellNavigationOptions<T> = {
 	cellNavigation: boolean;
 	selectableRows: boolean;
 	expandableRows: boolean;
@@ -53,7 +53,7 @@ export default function useCellNavigation<T>({
 	effectiveColumns,
 	filteredTableRowCount,
 	showTableHead,
-}: Options<T>) {
+}: UseCellNavigationOptions<T>) {
 	const [activeCell, setActiveCell] = React.useState<ActiveCell | null>(null);
 
 	const navPrefixCols = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander);
