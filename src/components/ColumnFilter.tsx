@@ -178,12 +178,26 @@ export default function ColumnFilter({
 		function handleKeyDown(e: KeyboardEvent) {
 			if (e.key === 'Escape') setOpen(false);
 		}
+		// The panel is position: fixed, so any scroll (page or the table's own
+		// scroll container) moves the anchor button out from under it. Close rather
+		// than track — capture phase catches scrolls inside nested containers.
+		function handleScroll(e: Event) {
+			if (panelRef.current && e.target instanceof Node && panelRef.current.contains(e.target)) return;
+			setOpen(false);
+		}
+		function handleResize() {
+			setOpen(false);
+		}
 
 		document.addEventListener('mousedown', handleClick);
 		document.addEventListener('keydown', handleKeyDown);
+		window.addEventListener('scroll', handleScroll, true);
+		window.addEventListener('resize', handleResize);
 		return () => {
 			document.removeEventListener('mousedown', handleClick);
 			document.removeEventListener('keydown', handleKeyDown);
+			window.removeEventListener('scroll', handleScroll, true);
+			window.removeEventListener('resize', handleResize);
 		};
 	}, [open]);
 

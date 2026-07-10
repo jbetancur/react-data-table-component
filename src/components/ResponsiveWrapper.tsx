@@ -14,11 +14,13 @@ const ResponsiveWrapper = React.forwardRef<HTMLDivElement, ResponsiveWrapperProp
 	ref,
 ) {
 	const customStyles = useStyles();
-	const scrollClass = $responsive
-		? $fixedHeader
-			? 'rdt_responsiveWrapperFixed'
-			: 'rdt_responsiveWrapperScroll'
-		: undefined;
+	// fixedHeader needs a scroll container even when responsive is off — maxHeight
+	// without overflow lets rows spill over whatever renders below the table.
+	const scrollClass = $fixedHeader
+		? 'rdt_responsiveWrapperFixed'
+		: $responsive
+			? 'rdt_responsiveWrapperScroll'
+			: undefined;
 	return (
 		<div
 			ref={ref}

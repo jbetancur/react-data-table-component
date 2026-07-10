@@ -18,7 +18,7 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <Demo
     title="Fixed header"
-    description="40 rows in a scrollable container. Toggle fixed header on/off and change the scroll height with the controls above the table."
+    description="40 rows and ~1160px of columns. By default wide content scrolls horizontally inside the table. Turn fixedHeader off to unlock the disable-responsive checkbox: with both off, the table overflows the demo card instead of scrolling. While fixedHeader is on the checkbox is disabled, since fixedHeader always creates a scroll container."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Employee>[] = [
@@ -52,6 +52,44 @@ const columns: TableColumn<Employee>[] = [
   <p>
     Because the scroll container is the responsive wrapper, horizontal scrolling for wide tables
     continues to work normally. Both axes scroll together, but the header sticks on the vertical axis.
+  </p>
+
+  <h2 id="responsive-false">Turning the scroll container off</h2>
+
+  <p>
+    <code>responsive={`{false}`}</code> removes the table's own horizontal scroll container, letting
+    wide content overflow into the parent instead. It exists for a few specific situations:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Parent-owned scrolling.</strong> The table sits inside your own scroll container
+      (a dashboard panel, a split view, several tables sharing one horizontal scrollbar). Nesting
+      the table's <code>overflow-x: auto</code> inside yours would produce scrollbars within
+      scrollbars.
+    </li>
+    <li>
+      <strong>Print and PDF export.</strong> An overflow container clips everything past the fold;
+      disabling it lets the full table width render in print stylesheets.
+    </li>
+    <li>
+      <strong>Table dictates layout.</strong> You want the page itself to widen or scroll rather
+      than the table.
+    </li>
+  </ul>
+
+  <CodeBlock code={`<div className="my-own-scroll-container">
+  <DataTable columns={columns} data={data} responsive={false} />
+  <OtherWidgetSharingTheScroll />
+</div>`} />
+
+  <p>
+    <strong>Trade-offs:</strong> features that rely on the table's own scrollport degrade. Pinned
+    columns stick against whatever scroll container the parent provides, which usually works, but
+    the custom pinned-columns scrollbar does not render, and the native one is left visible instead.
+    <code>fixedHeader</code> still creates a vertical scroll container regardless, since a height
+    cap without overflow is meaningless. Leave <code>responsive</code> on (the default) unless one
+    of the cases above applies.
   </p>
 
   <h2>With pagination</h2>

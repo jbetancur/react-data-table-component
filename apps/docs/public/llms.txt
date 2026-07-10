@@ -45,7 +45,7 @@ const columns = [
 - [Row Pinning](https://reactdatatable.com/docs/row-pinning): pin rows to top
 - [Pagination](https://reactdatatable.com/docs/pagination): built-in and custom pagination, server-side
 - [Conditional Styles](https://reactdatatable.com/docs/conditional-styles): style rows and cells by data
-- [Fixed Header](https://reactdatatable.com/docs/fixed-header): sticky header with scrollable body
+- [Fixed Header](https://reactdatatable.com/docs/fixed-header): sticky header with scrollable body; when to disable the responsive scroll container
 - [Footer](https://reactdatatable.com/docs/footer): summary and pagination footers
 - [Loading State](https://reactdatatable.com/docs/loading): progress and skeleton states
 - [Inline Editing](https://reactdatatable.com/docs/inline-editing): edit cells in place

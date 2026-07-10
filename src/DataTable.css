@@ -30,6 +30,10 @@
 .rdt_wrapper {
 	position: relative;
 	width: 100%;
+	/* Track the scrolled content width (same reason as .rdt_table above) so
+	   tableWrapper custom styles paint fully and ResizeObservers on this element
+	   see content-width changes. */
+	min-width: fit-content;
 }
 
 .rdt_responsiveWrapper {
@@ -142,7 +146,8 @@
  * the table scrolls horizontally — the border travels with the cell, not
  * with the scrolling content.
  */
-.rdt_row:not(:last-of-type) .rdt_cellBase {
+.rdt_row:not(:last-of-type) .rdt_cellBase,
+.rdt_row:not(:last-of-type) .rdt_rightPinSpacer {
 	border-bottom: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
 }
 
@@ -188,7 +193,11 @@
 .rdt_headSeparator .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before,
 .rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before,
 .rdt_colSeparator .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before,
-.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before {
+.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before,
+.rdt_headSeparator .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_rightPinSpacer::before,
+.rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_rightPinSpacer::before,
+.rdt_colSeparator .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_rightPinSpacer::before,
+.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_rightPinSpacer::before {
 	content: '';
 	position: absolute;
 	/* inline-start = the boundary shared with the previous DOM sibling in both LTR and RTL */
@@ -202,9 +211,19 @@
 
 /* Full-height variants override the inset defaults */
 .rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_cellBaseHead:not(.rdt_groupCell)::before,
-.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before {
+.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_cellBase:not(.rdt_cellBaseHead)::before,
+.rdt_headSeparatorFull .rdt_cellBaseHead:not(.rdt_groupCell) + .rdt_rightPinSpacer::before,
+.rdt_colSeparatorFull .rdt_cellBase:not(.rdt_cellBaseHead) + .rdt_rightPinSpacer::before {
 	--_sep-top: 0;
 	--_sep-h: 100%;
+}
+
+/* The spacer sits between the last unpinned column and the right pin band and
+   clips its own separator, so the line closing the unpinned columns only shows
+   when slack space actually opens the gap (zero-width spacer = no line). */
+.rdt_rightPinSpacer {
+	position: relative;
+	overflow: hidden;
 }
 
 
@@ -790,26 +809,33 @@
 	background-color: inherit;
 }
 
+/* The pin-band edge is a crisp 1px line (no blur), so it reads as a boundary
+   without washing out neighboring header/column separators. Kept as box-shadow
+   rather than border so it adds no width to the cell box. No clip-path: it
+   would also clip hit-testing on the resize handle straddling the cell edge. */
 .rdt_pinLeftLast {
-	box-shadow: 2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
-	clip-path: inset(0 -8px 0 0);
+	box-shadow: 1px 0 0 var(--rdt-color-pin-border, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
 }
 
 .rdt_pinRightFirst {
-	box-shadow: -2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
-	clip-path: inset(0 0 0 -8px);
+	box-shadow: -1px 0 0 var(--rdt-color-pin-border, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
 }
 
-/* box-shadow/clip-path have no logical variants — mirror the pin-band edge
-   shadows by hand under RTL, where inline-start pins sit on the physical right. */
+/* The pin boundary draws its own line — drop the column/header separator that
+   would double up at the same boundary. */
+.rdt_pinLeftLast + .rdt_cellBase,
+.rdt_pinRightFirst {
+	--rdt-col-sep-color: transparent;
+}
+
+/* box-shadow has no logical variant — mirror the pin-band edge line by hand
+   under RTL, where inline-start pins sit on the physical right. */
 .rdt_pinLeftLast:dir(rtl) {
-	box-shadow: -2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
-	clip-path: inset(0 0 0 -8px);
+	box-shadow: -1px 0 0 var(--rdt-color-pin-border, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
 }
 
 .rdt_pinRightFirst:dir(rtl) {
-	box-shadow: 2px 0 4px -1px var(--rdt-color-pin-shadow, rgba(0, 0, 0, 0.12));
-	clip-path: inset(0 -8px 0 0);
+	box-shadow: 1px 0 0 var(--rdt-color-pin-border, var(--rdt-color-divider, rgba(0, 0, 0, 0.12)));
 }
 
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
@@ -828,6 +854,12 @@
 	width: 6px;
 	cursor: col-resize;
 	user-select: none;
+}
+
+/* The last column's handle would straddle the scroll container's edge, which
+   clips its outer half and leaves a 3px hit target — keep it fully inside. */
+.rdt_cellBaseHead:last-child .rdt_resizeHandle {
+	inset-inline-end: 0;
 	z-index: 2;
 }
 
