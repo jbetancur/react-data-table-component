@@ -9,9 +9,15 @@ import RowPinningDemo from '../../components/demos/RowPinningDemo.tsx';
   <h1>Row pinning</h1>
 
   <p>
-    Row pinning keeps specific rows anchored at the top of the table regardless of the active
+    Row pinning keeps specific rows at the top of the data order regardless of the active
     sort column or direction. Common uses: a "totals" row, a currently selected record, a
     high-priority item, or the signed-in user's own row.
+  </p>
+
+  <p>
+    This is an ordering feature, not a sticky-position one. Pinned rows always sort to the top,
+    but they render in the normal document flow, so they scroll away with the rest of the table
+    when you scroll vertically. Native sticky-on-scroll row pinning is on the roadmap (see below).
   </p>
 
   <blockquote>
@@ -22,7 +28,7 @@ import RowPinningDemo from '../../components/demos/RowPinningDemo.tsx';
 
   <Demo
     title="Pin rows to top"
-    description="Click the pin icon on any row to anchor it. Pinned rows stay at position 1+ while the rest sort normally. Sort any column to see it in action."
+    description="Click the pin icon on any row to pin it. Pinned rows stay at the top of the sort order while the rest sort normally. Sort any column to see it in action."
     code={`import { useState, useMemo } from 'react';
 import DataTable, { SortOrder, type TableColumn, type SortFunction } from 'react-data-table-component';
 
