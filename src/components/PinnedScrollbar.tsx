@@ -55,6 +55,10 @@ export default function PinnedScrollbar({
 		el.addEventListener('scroll', update, { passive: true });
 		const ro = new ResizeObserver(update);
 		ro.observe(el);
+		// The container's size doesn't change when its *content* widens (async data,
+		// column resize/visibility), but scrollWidth does — watch the content too,
+		// or the scrollbar never appears/updates until the next container resize.
+		if (el.firstElementChild) ro.observe(el.firstElementChild);
 		update();
 		return () => {
 			el.removeEventListener('scroll', update);

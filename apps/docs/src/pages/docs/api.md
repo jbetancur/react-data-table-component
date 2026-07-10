@@ -45,7 +45,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `noTableHead` | `boolean` | `false` | Hide the column header row. |
 | `persistTableHead` | `boolean` | `false` | Show the column header even when data is empty. The header always stays visible during `progressPending` regardless of this prop. |
 | `dense` | `boolean` | `false` | Reduce row height for a compact look. |
-| `responsive` | `boolean` | `true` | Wrap the table in a horizontally scrollable container. |
+| `responsive` | `boolean` | `true` | Wrap the table in a horizontally scrollable container. Disable only when a parent element owns scrolling, see [Turning the scroll container off](/docs/fixed-header#responsive-false). |
 | `fixedHeader` | `boolean` | `false` | Stick the column header at the top when scrolling. |
 | `fixedHeaderScrollHeight` | `string` | `"100vh"` | Max height of the scrollable body when `fixedHeader` is on. |
 | `onScroll` | `(event) => void` | - | Called when the user scrolls the table body. Works with both `fixedHeader` enabled and disabled. |

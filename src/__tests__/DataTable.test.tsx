@@ -630,6 +630,13 @@ describe('DataTable::responsive', () => {
 
 		expect(container.querySelector('.rdt_responsiveWrapperScroll')).toBeNull();
 	});
+
+	test('fixedHeader still creates a scroll container when responsive=false', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} responsive={false} fixedHeader />);
+
+		expect(container.querySelector('.rdt_responsiveWrapperFixed')).not.toBeNull();
+	});
 });
 
 describe('DataTable::sorting', () => {

@@ -75,6 +75,11 @@ describe('DataTable column pinning', () => {
 		expect(container.querySelector('.rdt_responsiveWrapperHideScrollbar')).not.toBeNull();
 	});
 
+	test('does not hide native scrollbar when responsive is false', () => {
+		const { container } = render(<DataTable columns={columns} data={data} responsive={false} />);
+		expect(container.querySelector('.rdt_responsiveWrapperHideScrollbar')).toBeNull();
+	});
+
 	test('does not add hide-scrollbar class when no columns are pinned', () => {
 		const plain: TableColumn<Row>[] = [
 			{ id: 'name', name: 'Name', selector: r => r.name },

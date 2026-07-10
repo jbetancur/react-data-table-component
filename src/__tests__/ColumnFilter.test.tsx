@@ -55,6 +55,27 @@ describe('ColumnFilter:panel open/close', () => {
 		openPanel(container);
 		expect(container.querySelector('.rdt_filterPanel')).toBeNull();
 	});
+
+	test('scrolling closes the panel', () => {
+		const { container } = setup();
+		openPanel(container);
+		fireEvent.scroll(document);
+		expect(container.querySelector('.rdt_filterPanel')).toBeNull();
+	});
+
+	test('scrolling inside the panel does not close it', () => {
+		const { container } = setup();
+		openPanel(container);
+		fireEvent.scroll(container.querySelector('.rdt_filterPanel') as HTMLElement);
+		expect(container.querySelector('.rdt_filterPanel')).not.toBeNull();
+	});
+
+	test('window resize closes the panel', () => {
+		const { container } = setup();
+		openPanel(container);
+		fireEvent(window, new Event('resize'));
+		expect(container.querySelector('.rdt_filterPanel')).toBeNull();
+	});
 });
 
 describe('ColumnFilter:Apply and Clear', () => {

@@ -8,6 +8,8 @@ interface Employee {
 	department: string;
 	salary: number;
 	status: string;
+	email: string;
+	location: string;
 }
 
 const data: Employee[] = Array.from({ length: 40 }, (_, i) => ({
@@ -28,26 +30,32 @@ const data: Employee[] = Array.from({ length: 40 }, (_, i) => ({
 	department: ['Engineering', 'Product', 'Design', 'Analytics', 'Sales', 'HR'][i % 6],
 	salary: 80000 + ((i * 1237) % 70000),
 	status: ['Active', 'Remote', 'On Leave', 'Contractor'][i % 4],
+	email: `user${i + 1}@example.com`,
+	location: ['New York, NY', 'Austin, TX', 'Portland, OR', 'Chicago, IL', 'Remote (EU)'][i % 5],
 }));
 
 const columns: TableColumn<Employee>[] = [
 	{ name: '#', selector: r => r.id, width: '60px' },
-	{ name: 'Name', selector: r => r.name, sortable: true },
-	{ name: 'Department', selector: r => r.department, sortable: true },
+	{ name: 'Name', selector: r => r.name, sortable: true, width: '200px' },
+	{ name: 'Department', selector: r => r.department, sortable: true, width: '160px' },
 	{
 		name: 'Salary',
 		selector: r => r.salary,
 		format: r => `$${r.salary.toLocaleString()}`,
 		right: true,
 		sortable: true,
+		width: '140px',
 	},
-	{ name: 'Status', selector: r => r.status },
+	{ name: 'Status', selector: r => r.status, width: '140px' },
+	{ name: 'Email', selector: r => r.email, width: '260px' },
+	{ name: 'Location', selector: r => r.location, width: '200px' },
 ];
 
 const HEIGHT_OPTIONS = ['200px', '300px', '400px'];
 
 export default function FixedHeaderDemo() {
 	const [fixedHeader, setFixedHeader] = useState(true);
+	const [disableResponsive, setDisableResponsive] = useState(false);
 	const [scrollHeight, setScrollHeight] = useState('300px');
 
 	return (
@@ -61,6 +69,22 @@ export default function FixedHeaderDemo() {
 						className="rounded"
 					/>
 					fixedHeader
+				</label>
+
+				<label
+					className={`flex items-center gap-1.5 select-none text-gray-500 ${
+						fixedHeader ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
+					}`}
+					title={fixedHeader ? 'fixedHeader always creates a scroll container, so this has no effect' : undefined}
+				>
+					<input
+						type="checkbox"
+						checked={disableResponsive}
+						onChange={e => setDisableResponsive(e.target.checked)}
+						disabled={fixedHeader}
+						className="rounded"
+					/>
+					disable responsive
 				</label>
 
 				<div className="flex items-center gap-2">
@@ -90,6 +114,7 @@ export default function FixedHeaderDemo() {
 				data={data}
 				fixedHeader={fixedHeader}
 				fixedHeaderScrollHeight={scrollHeight}
+				responsive={!disableResponsive}
 				highlightOnHover
 				striped
 			/>

@@ -12,13 +12,13 @@ import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
   <p>
     Set <code>pinned: 'left'</code> or <code>pinned: 'right'</code> on any column to keep it
     visible while the user scrolls horizontally through a wide table. Pinned columns use
-    <code>position: sticky</code> and render a subtle directional shadow on the band edge to
+    <code>position: sticky</code> and render a crisp boundary line on the band edge to
     indicate the boundary between sticky and scrolling content.
   </p>
 
   <Demo
     title="Column pinning"
-    description="Name is pinned to the left, Status is pinned to the right. Scroll the table horizontally. Both stay in place. Resize any column and the pin offsets update automatically."
+    description="Choose how many columns to pin on each side, or none to reset. Scroll the table horizontally and pinned columns stay in place. Resize any column and the pin offsets update automatically."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Row>[] = [
@@ -143,23 +143,23 @@ const columns: TableColumn<Row>[] = [
     column, consider splitting the table or letting the first column be a wider summary cell.
   </p>
 
-  <h2>Customizing the pin shadow</h2>
+  <h2>Customizing the pin boundary</h2>
   <p>
-    The directional shadow is drawn on the inner edge of each pin band — class
+    A crisp 1px line marks the inner edge of each pin band — class
     <code>rdt_pinLeftLast</code> on the rightmost left-pinned column and
-    <code>rdt_pinRightFirst</code> on the leftmost right-pinned column. Override the color via
-    the <code>--rdt-color-pin-shadow</code> CSS variable:
+    <code>rdt_pinRightFirst</code> on the leftmost right-pinned column. It defaults to the
+    theme's divider color. Override it via the <code>--rdt-color-pin-border</code> CSS variable:
   </p>
 
   <CodeBlock code={`.rdt_table {
-  --rdt-color-pin-shadow: rgba(0, 0, 0, 0.2); /* darker shadow */
+  --rdt-color-pin-border: rgba(0, 0, 0, 0.3); /* darker boundary line */
 }`} lang="css" />
 
   <h2>When not to pin</h2>
   <ul>
     <li><strong>Narrow viewports.</strong> Pinning two columns from each side on a 320px-wide phone leaves almost no scrollable space. Consider <code>hide: 'sm'</code> on the same columns instead.</li>
     <li><strong>Variable-width content.</strong> Pin columns with predictable widths. A pinned column without a fixed <code>width</code> still works but may shift content during initial render.</li>
-    <li><strong>Single-screen tables.</strong> If your table fits on screen without horizontal scrolling, pinning adds visual noise (the shadow) for no benefit.</li>
+    <li><strong>Single-screen tables.</strong> If your table fits on screen without horizontal scrolling, pinning adds visual noise (the boundary line) for no benefit.</li>
   </ul>
 
   <h2>Requirements</h2>
@@ -185,7 +185,7 @@ const columns: TableColumn<Row>[] = [
     headers={['Variable', 'Default', 'Description']}
     rows={[
       ['<code>--rdt-system-col-width</code>', '<code>48px</code>', 'Width of the checkbox and expander columns. Pinning offsets read this so themes that customize the system column width stay aligned.'],
-      ['<code>--rdt-color-pin-shadow</code>', '<code>rgba(0, 0, 0, 0.12)</code>', 'Color of the directional shadow on the inner edge of each pin band.'],
+      ['<code>--rdt-color-pin-border</code>', 'theme divider color', 'Color of the 1px line on the inner edge of each pin band.'],
     ]}
   />
 </DocsLayout>
