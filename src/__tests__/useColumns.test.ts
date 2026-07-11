@@ -18,13 +18,14 @@ function makeHook(
 		defaultSortAsc?: boolean;
 		columnGroups?: ColumnGroup[];
 		onColumnOrderChange?: (cols: TableColumn<Row>[]) => void;
+		onColumnGroupOrderChange?: (groups: ColumnGroup[], cols: TableColumn<Row>[]) => void;
 	} = {},
 ) {
 	return renderHook(() =>
 		useColumns<Row>(
 			columns,
 			opts.onColumnOrderChange ?? noop,
-			undefined,
+			opts.onColumnGroupOrderChange,
 			opts.columnGroups,
 			opts.defaultSortFieldId ?? null,
 			opts.defaultSortAsc ?? true,
@@ -365,5 +366,119 @@ describe('useColumns:pin normalisation on drag', () => {
 
 		const newOrder = onOrderChange.mock.calls[0][0] as TableColumn<Row>[];
 		expect(newOrder.map(x => x.id)).toEqual([2, 3, 1]);
+	});
+});
+
+// ── pointer (touch/pen) reorder ───────────────────────────────────────────────
+
+function makePointerDown(
+	attr: { key: string; value: string },
+	pointerType: 'touch' | 'pen' | 'mouse' = 'touch',
+): React.PointerEvent<HTMLDivElement> {
+	const el = document.createElement('div');
+	el.setAttribute(attr.key, attr.value);
+	const ev = new Event('pointerdown') as unknown as React.PointerEvent<HTMLDivElement>;
+	Object.defineProperty(ev, 'currentTarget', { value: el });
+	Object.defineProperty(ev, 'pointerId', { value: 1 });
+	Object.defineProperty(ev, 'pointerType', { value: pointerType });
+	return ev;
+}
+
+function firePointerMove(clientX: number) {
+	document.dispatchEvent(Object.assign(new Event('pointermove'), { pointerId: 1, clientX, clientY: 0 }));
+}
+
+describe('useColumns:pointer reorder', () => {
+	const originalEfp = document.elementFromPoint;
+	beforeEach(() => vi.useFakeTimers());
+	afterEach(() => {
+		vi.clearAllTimers();
+		vi.useRealTimers();
+		vi.restoreAllMocks();
+		document.elementFromPoint = originalEfp;
+	});
+
+	function stubElementUnderPoint(attr: string, value: string) {
+		const el = document.createElement('div');
+		el.setAttribute(attr, value);
+		// jsdom does not implement elementFromPoint, so define it rather than spy.
+		document.elementFromPoint = () => el;
+	}
+
+	test('long-press + move reorders a column and fires onColumnOrderChange', () => {
+		const onOrderChange = vi.fn();
+		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
+
+		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
+		// Long-press elapses → column grabbed
+		act(() => vi.advanceTimersByTime(250));
+		expect(result.current.draggingColumnId).toBe('1');
+
+		stubElementUnderPoint('data-column-id', '2');
+		act(() => firePointerMove(500));
+
+		expect(onOrderChange).toHaveBeenCalled();
+		const newOrder = onOrderChange.mock.calls[0][0] as TableColumn<Row>[];
+		expect(newOrder.map(x => x.id)).toEqual([2, 1]);
+	});
+
+	test('does not reorder before the long-press elapses', () => {
+		const onOrderChange = vi.fn();
+		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
+
+		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
+		// Move before the timer fires — a plain scroll, not a grab
+		stubElementUnderPoint('data-column-id', '2');
+		act(() => firePointerMove(500));
+
+		expect(onOrderChange).not.toHaveBeenCalled();
+		expect(result.current.draggingColumnId).toBe('');
+	});
+
+	test('ignores mouse pointers (native DnD handles those)', () => {
+		const onOrderChange = vi.fn();
+		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
+
+		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' }, 'mouse')));
+		act(() => vi.advanceTimersByTime(250));
+
+		expect(result.current.draggingColumnId).toBe('');
+	});
+
+	test('pointerup clears the dragging state', () => {
+		const { result } = makeHook([col1, col2]);
+
+		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
+		act(() => vi.advanceTimersByTime(250));
+		expect(result.current.draggingColumnId).toBe('1');
+
+		act(() => {
+			document.dispatchEvent(Object.assign(new Event('pointerup'), { pointerId: 1 }));
+		});
+		expect(result.current.draggingColumnId).toBe('');
+	});
+
+	test('long-press + move swaps groups and fires order changes', () => {
+		const onOrderChange = vi.fn();
+		const onGroupOrderChange = vi.fn();
+		const groups: ColumnGroup[] = [
+			{ name: 'G1', columnIds: [1] },
+			{ name: 'G2', columnIds: [2] },
+		];
+		const { result } = makeHook([col1, col2], {
+			onColumnOrderChange: onOrderChange,
+			onColumnGroupOrderChange: onGroupOrderChange,
+			columnGroups: groups,
+		});
+
+		act(() => result.current.handleGroupPointerDown(makePointerDown({ key: 'data-group-key', value: '1' })));
+		act(() => vi.advanceTimersByTime(250));
+		expect(result.current.draggingGroupKey).toBe('1');
+
+		stubElementUnderPoint('data-group-key', '2');
+		act(() => firePointerMove(500));
+
+		expect(onOrderChange).toHaveBeenCalled();
+		expect(onGroupOrderChange).toHaveBeenCalled();
 	});
 });

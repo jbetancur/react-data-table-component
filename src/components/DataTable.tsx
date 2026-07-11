@@ -191,6 +191,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		handleGroupDragEnter,
 		handleGroupDragOver,
 		handleGroupDragEnd,
+		handlePointerDown,
+		handleGroupPointerDown,
 		defaultSortDirection,
 		defaultSortColumn,
 	} = useColumns(
@@ -438,6 +440,8 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onGroupDragEnter: handleGroupDragEnter,
 		onGroupDragOver: handleGroupDragOver,
 		onGroupDragEnd: handleGroupDragEnd,
+		onPointerDown: handlePointerDown,
+		onGroupPointerDown: handleGroupPointerDown,
 	});
 
 	const paginationFooterProps = {

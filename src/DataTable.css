@@ -387,6 +387,7 @@
 	height: 22px;
 	padding: 0;
 	transition: background-color 0.2s, color 0.2s;
+	touch-action: manipulation;
 }
 
 .rdt_filterIcon:hover,
@@ -854,6 +855,7 @@
 	width: 6px;
 	cursor: col-resize;
 	user-select: none;
+	touch-action: none;
 }
 
 /* The last column's handle would straddle the scroll container's edge, which

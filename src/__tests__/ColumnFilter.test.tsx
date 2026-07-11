@@ -45,7 +45,7 @@ describe('ColumnFilter:panel open/close', () => {
 	test('clicking outside the panel closes it', () => {
 		const { container } = setup();
 		openPanel(container);
-		fireEvent.mouseDown(document.body);
+		fireEvent.pointerDown(document.body);
 		expect(container.querySelector('.rdt_filterPanel')).toBeNull();
 	});
 

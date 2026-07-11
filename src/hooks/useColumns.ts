@@ -2,6 +2,7 @@ import * as React from 'react';
 import { decorateColumns, findColumnIndexById, getPinZoneForIndex, getSortDirection, normalizePins } from '../util';
 import { setDragGhost } from '../dom';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
+import usePointerReorder from '../hooks/usePointerReorder';
 import { SortOrder } from '../types';
 import type { TableColumn, ColumnGroup } from '../types';
 
@@ -19,6 +20,8 @@ type ColumnsHook<T> = {
 	handleGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	handleGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	handleGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	handlePointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+	handleGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
 	defaultSortDirection: SortOrder;
 	defaultSortColumn: TableColumn<T>;
 };
@@ -81,6 +84,41 @@ function useColumns<T>(
 
 	// ── Per-column drag handlers ───────────────────────────────────────────────
 
+	// Move the dragged column so it sits at the target column's position, re-normalizing
+	// pin zones. Shared by the HTML5-DnD path (mouse) and the pointer path (touch/pen).
+	const reorderColumnTo = React.useCallback(
+		(targetId: string) => {
+			if (!sourceColumnId.current || targetId === sourceColumnId.current) return;
+
+			// When groups exist, only allow reorder within the same group
+			if (tableGroups.length > 0) {
+				const srcGroupIds =
+					tableGroups.find(g => g.columnIds.some(cid => String(cid) === sourceColumnId.current))?.columnIds ?? [];
+				if (!srcGroupIds.some(cid => String(cid) === targetId)) return;
+			}
+
+			const srcIdx = findColumnIndexById(tableColumns, sourceColumnId.current);
+			const tgtIdx = findColumnIndexById(tableColumns, targetId);
+			if (srcIdx === -1 || tgtIdx === -1) return;
+			const moved = [...tableColumns];
+			const [col] = moved.splice(srcIdx, 1);
+			moved.splice(tgtIdx, 0, col);
+
+			const leftCount = moved.filter(c => c.pinned === 'left').length;
+			const rightCount = moved.filter(c => c.pinned === 'right').length;
+
+			const pinZoneMap: Record<number, 'left' | 'right' | undefined> = {};
+			for (let i = 0; i < moved.length; i++) {
+				pinZoneMap[i] = getPinZoneForIndex(i, leftCount, rightCount, moved.length);
+			}
+
+			const reorderedCols = normalizePins(moved, pinZoneMap);
+			setTableColumns(reorderedCols);
+			onColumnOrderChange(reorderedCols);
+		},
+		[onColumnOrderChange, tableColumns, tableGroups],
+	);
+
 	const handleDragStart = React.useCallback(
 		(e: React.DragEvent<HTMLDivElement>) => {
 			if (isDraggingGroup.current) return;
@@ -102,34 +140,10 @@ function useColumns<T>(
 			// Skip events that bubble from child elements within this same cell
 			if (el.contains(e.relatedTarget as Node)) return;
 			const id = el.getAttribute('data-column-id');
-			if (!id || !sourceColumnId.current || id === sourceColumnId.current) return;
-
-			// When groups exist, only allow reorder within the same group
-			if (tableGroups.length > 0) {
-				const srcGroupIds =
-					tableGroups.find(g => g.columnIds.some(cid => String(cid) === sourceColumnId.current))?.columnIds ?? [];
-				if (!srcGroupIds.some(cid => String(cid) === id)) return;
-			}
-
-			const srcIdx = findColumnIndexById(tableColumns, sourceColumnId.current);
-			const tgtIdx = findColumnIndexById(tableColumns, id);
-			const moved = [...tableColumns];
-			const [col] = moved.splice(srcIdx, 1);
-			moved.splice(tgtIdx, 0, col);
-
-			const leftCount = moved.filter(c => c.pinned === 'left').length;
-			const rightCount = moved.filter(c => c.pinned === 'right').length;
-
-			const pinZoneMap: Record<number, 'left' | 'right' | undefined> = {};
-			for (let i = 0; i < moved.length; i++) {
-				pinZoneMap[i] = getPinZoneForIndex(i, leftCount, rightCount, moved.length);
-			}
-
-			const reorderedCols = normalizePins(moved, pinZoneMap);
-			setTableColumns(reorderedCols);
-			onColumnOrderChange(reorderedCols);
+			if (!id) return;
+			reorderColumnTo(id);
 		},
-		[onColumnOrderChange, tableColumns, tableGroups],
+		[reorderColumnTo],
 	);
 
 	const handleDragOver = React.useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -164,16 +178,13 @@ function useColumns<T>(
 		[tableGroups],
 	);
 
-	const handleGroupDragEnter = React.useCallback(
-		(e: React.DragEvent<HTMLDivElement>) => {
-			e.preventDefault();
-			const el = e.currentTarget as HTMLDivElement;
-			if (el.contains(e.relatedTarget as Node)) return;
-			const key = el.getAttribute('data-group-key');
-			if (!key || !sourceGroupKey.current || key === sourceGroupKey.current) return;
+	// Swap the dragged group block with the target group. Shared by DnD and pointer paths.
+	const reorderGroupTo = React.useCallback(
+		(targetKey: string) => {
+			if (!sourceGroupKey.current || targetKey === sourceGroupKey.current) return;
 
 			const srcGroup = tableGroups.find(g => String(g.columnIds[0]) === sourceGroupKey.current);
-			const tgtGroup = tableGroups.find(g => String(g.columnIds[0]) === key);
+			const tgtGroup = tableGroups.find(g => String(g.columnIds[0]) === targetKey);
 			if (!srcGroup || !tgtGroup) return;
 
 			const srcIds = new Set(srcGroup.columnIds.map(String));
@@ -192,6 +203,18 @@ function useColumns<T>(
 		[onColumnGroupOrderChange, onColumnOrderChange, tableColumns, tableGroups],
 	);
 
+	const handleGroupDragEnter = React.useCallback(
+		(e: React.DragEvent<HTMLDivElement>) => {
+			e.preventDefault();
+			const el = e.currentTarget as HTMLDivElement;
+			if (el.contains(e.relatedTarget as Node)) return;
+			const key = el.getAttribute('data-group-key');
+			if (!key) return;
+			reorderGroupTo(key);
+		},
+		[reorderGroupTo],
+	);
+
 	const handleGroupDragOver = React.useCallback((e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
 	}, []);
@@ -202,6 +225,35 @@ function useColumns<T>(
 		sourceGroupKey.current = '';
 		setDraggingGroupKey('');
 	}, []);
+
+	// ── Pointer-based reorder (touch / pen) ────────────────────────────────────
+	// usePointerReorder owns the input mechanics (long-press grab, hit-testing,
+	// listener lifecycle); these callbacks bridge it to the same dragging state
+	// and reorder logic the DnD handlers use.
+
+	const { handlePointerDown, handleGroupPointerDown } = usePointerReorder({
+		onGrab: React.useCallback((mode, id) => {
+			if (mode === 'group') {
+				isDraggingGroup.current = true;
+				sourceGroupKey.current = id;
+				setDraggingGroupKey(id);
+			} else {
+				sourceColumnId.current = id;
+				setDraggingColumn(id);
+			}
+		}, []),
+		onMove: (mode, targetId) => (mode === 'group' ? reorderGroupTo(targetId) : reorderColumnTo(targetId)),
+		onRelease: React.useCallback(mode => {
+			if (mode === 'group') {
+				isDraggingGroup.current = false;
+				sourceGroupKey.current = '';
+				setDraggingGroupKey('');
+			} else {
+				sourceColumnId.current = '';
+				setDraggingColumn('');
+			}
+		}, []),
+	});
 
 	// ── Sort defaults ──────────────────────────────────────────────────────────
 
@@ -225,6 +277,8 @@ function useColumns<T>(
 		handleGroupDragEnter,
 		handleGroupDragOver,
 		handleGroupDragEnd,
+		handlePointerDown,
+		handleGroupPointerDown,
 		defaultSortDirection,
 		defaultSortColumn,
 	};

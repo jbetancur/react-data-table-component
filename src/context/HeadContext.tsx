@@ -57,7 +57,7 @@ export interface HeadContextValue<T> {
 	onSelectAllRows: (action: AllRowsAction<T>) => void;
 	onSort: (action: SortAction<T>) => void;
 	onFilterChange: (columnId: string | number, filter: FilterState) => void;
-	onResizeStart?: (columnId: string | number, e: React.MouseEvent) => void;
+	onResizeStart?: (columnId: string | number, e: React.PointerEvent) => void;
 	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
@@ -67,6 +67,8 @@ export interface HeadContextValue<T> {
 	onGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+	onGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

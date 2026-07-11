@@ -2813,7 +2813,7 @@ describe('DataTable::columnResize', () => {
 		expect(container.querySelectorAll('.rdt_resizeHandle').length).toBe(0);
 	});
 
-	test('updates column maxWidth after mouse drag', () => {
+	test('updates column maxWidth after pointer drag', () => {
 		const mock = dataMock();
 		const { container } = render(<DataTable data={mock.data} columns={mock.columns} resizable />);
 		const handle = container.querySelector('.rdt_resizeHandle') as HTMLElement;
@@ -2821,9 +2821,9 @@ describe('DataTable::columnResize', () => {
 
 		// jsdom has offsetWidth=0, so startWidth=0 (0 ?? 100 does NOT fallback since ?? only catches null/undefined)
 		// delta = clientX 160 - startX 100 = 60 → newWidth = max(40, 0 + 60) = 60
-		fireEvent.mouseDown(handle, { clientX: 100 });
-		fireEvent.mouseMove(document, { clientX: 160 });
-		fireEvent.mouseUp(document);
+		fireEvent.pointerDown(handle, { clientX: 100 });
+		fireEvent.pointerMove(document, { clientX: 160 });
+		fireEvent.pointerUp(document);
 
 		// Column width is applied via maxWidth (buildCellStyle sets maxWidth from width prop)
 		expect(headerCell.style.maxWidth).toBe('60px');
@@ -2839,9 +2839,9 @@ describe('DataTable::columnResize', () => {
 
 		// Dragging left (clientX 100 → 40) is a -60 delta; in RTL it inverts to +60.
 		// startWidth is 0 in jsdom → newWidth = max(40, 0 + 60) = 60
-		fireEvent.mouseDown(handle, { clientX: 100 });
-		fireEvent.mouseMove(document, { clientX: 40 });
-		fireEvent.mouseUp(document);
+		fireEvent.pointerDown(handle, { clientX: 100 });
+		fireEvent.pointerMove(document, { clientX: 40 });
+		fireEvent.pointerUp(document);
 
 		expect(headerCell.style.maxWidth).toBe('60px');
 	});
