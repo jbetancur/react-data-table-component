@@ -47,6 +47,20 @@ const arEG: Localization = {
 		expandRowAriaLabel: 'افتح الصف',
 		collapseRowAriaLabel: 'اقفل الصف',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'قايمة العمود',
+		rowMenuAriaLabel: 'قايمة الصف',
+		headerMenuButtonAriaLabel: 'إجراءات العمود',
+		rowMenuButtonAriaLabel: 'إجراءات الصف',
+		sortAscLabel: 'رتّب تصاعدي',
+		sortDescLabel: 'رتّب تنازلي',
+		clearSortLabel: 'شيل الترتيب',
+		pinLeftLabel: 'ثبّت على الشمال',
+		pinRightLabel: 'ثبّت على اليمين',
+		unpinLabel: 'شيل التثبيت',
+		hideColumnLabel: 'اخفي العمود',
+		resetLabel: 'رجّع الجدول',
+	},
 };
 
 export default arEG;

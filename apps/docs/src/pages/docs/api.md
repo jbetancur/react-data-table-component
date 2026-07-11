@@ -173,6 +173,14 @@ Column-level footers live on each [`TableColumn<T>`](#tablecolumnt) as the `foot
 | `onColumnOrderChange` | `(columns: TableColumn<T>[]) => void` | - | Called after a drag-to-reorder column operation with the new column order. |
 | `onColumnGroupOrderChange` | `(groups: ColumnGroup[], columns: TableColumn<T>[]) => void` | - | Called after a group drag-reorder with the new group order and the matching updated column order. |
 
+### Context menu
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `contextMenu` | `boolean \| { header?: boolean; row?: boolean; trigger?: 'right-click' \| 'menu-button' \| 'both'; menuPosition?: 'start' \| 'end' }` | - | Enable the context menu. `true` enables header and row menus with the right-click trigger. The header menu has built-in sort/pin/hide/reset actions; the row menu only opens when `contextMenuActions.row` returns items. `menuPosition` sets which inline edge the row menu button sits on (default `'end'` — right in LTR). See [Context menu](/docs/context-menu). |
+| `contextMenuActions` | `{ header?: ContextMenuAction[] \| (column) => ContextMenuAction[]; row?: (row, rowIndex) => ContextMenuAction[] }` | - | Custom menu items. Header items are appended after the built-ins; row items are the entire row menu. |
+| `onContextMenuAction` | `(action: ContextMenuAction, ctx: ContextMenuActionContext<T>) => void` | - | Called for every selected item, built-ins included (after their effect is applied). `ctx` is `{ type: 'header', column }` or `{ type: 'row', row, rowIndex }`. |
+
 ### Localization
 
 | Prop | Type | Default | Description |
@@ -246,6 +254,7 @@ const columns: TableColumn<MyRow>[] = [
 | `hide` | `Media \| number` | Hide the column below the given breakpoint (`Media.SM` = 599px, `MD` = 959px, `LG` = 1280px) or a custom pixel value. |
 | `omit` | `boolean` | Exclude the column entirely. Toggle this to show/hide a column. |
 | `reorder` | `boolean` | Allow drag-to-reorder for this column (requires `reorder` on at least two columns). |
+| `pinned` | `'left' \| 'right'` | Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container — give columns explicit widths. See [Column pinning](/docs/column-pinning). |
 | `style` | `CSSProperties` | Inline styles applied to every cell in this column. |
 | `conditionalCellStyles` | `ConditionalStyles<T>[]` | Per-cell conditional styles. |
 | `footer` | `ReactNode \| (rows: T[]) => ReactNode` | Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a `footer`, a footer row renders below the body. See [Footer](/docs/footer). |
@@ -316,6 +325,28 @@ interface CustomCellEditorContext<T> {
 | `--rdt-color-cell-edit-bg` | 8% primary on bg | Background of the cell while editing. |
 | `--rdt-color-cell-edit-hover` | 6% primary | Background of an editable cell on hover. |
 | `--rdt-color-cell-edit-hover-border` | 40% primary | Dashed underline colour on editable cell hover. |
+
+## ContextMenuAction
+
+A single item in a context menu. Pass arrays of these via `contextMenuActions`; selections arrive in `onContextMenuAction`.
+
+```ts
+import { type ContextMenuAction } from 'react-data-table-component';
+
+const rowActions = (row: MyRow): ContextMenuAction[] => [
+  { id: 'edit', label: 'Edit' },
+  { id: 'delete', label: 'Delete', disabled: row.locked },
+];
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | Identifier passed to `onContextMenuAction`. The built-in header actions reserve `sort-asc`, `sort-desc`, `clear-sort`, `pin-left`, `pin-right`, `unpin`, `hide-column`, and `reset`. |
+| `label` | `ReactNode` | Item content. |
+| `disabled` | `boolean` | Render the item disabled. |
+| `icon` | `ReactNode` | Optional icon rendered before the label. |
+
+Related types: `ContextMenuConfig` (the object form of the `contextMenu` prop), `ContextMenuActions<T>` (the `contextMenuActions` prop shape), and `ContextMenuActionContext<T>` (the `ctx` argument of `onContextMenuAction`) are all exported. See [Context menu](/docs/context-menu).
 
 ## DataTableHandle (ref)
 

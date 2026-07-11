@@ -80,6 +80,7 @@ function Row<T>({
 		cellNavigation,
 		activeCell,
 		animateRows,
+		rowMenu,
 	} = useRowContext<T>();
 
 	const { expanded, expanderMounted, isClosing, openExpander, closeExpander } = useRowExpander(
@@ -142,6 +143,12 @@ function Row<T>({
 			}
 		},
 		[onRowMiddleClicked, row],
+	);
+
+	const onRowContextMenu = rowMenu?.onContextMenu;
+	const handleRowContextMenu = React.useCallback(
+		(e: React.MouseEvent<HTMLDivElement>) => onRowContextMenu?.(row, rowIndex, e),
+		[onRowContextMenu, row, rowIndex],
 	);
 
 	const handleRowMouseEnter = React.useCallback(
@@ -215,6 +222,7 @@ function Row<T>({
 				onKeyDown={handleKeyDown}
 				onDoubleClick={handleRowDoubleClick}
 				onAuxClick={handleRowAuxClick}
+				onContextMenu={rowMenu?.rightClick ? handleRowContextMenu : undefined}
 				onMouseEnter={handleRowMouseEnter}
 				onMouseLeave={handleRowMouseLeave}
 			>
@@ -279,6 +287,25 @@ function Row<T>({
 						</React.Fragment>
 					);
 				})}
+
+				{rowMenu?.menuButton && (
+					<div className={`rdt_rowKebabCell${rowMenu.menuButtonPosition === 'start' ? ' rdt_rowKebabStart' : ''}`}>
+						<button
+							type="button"
+							className="rdt_kebabIcon rdt_rowKebab"
+							aria-label={rowMenu.ariaLabel}
+							aria-haspopup="menu"
+							onClick={e => {
+								e.stopPropagation();
+								rowMenu.onMenuButtonClick(row, rowIndex, e);
+							}}
+						>
+							<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+								<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+							</svg>
+						</button>
+					</div>
+				)}
 			</div>
 
 			{expandableRows && expanderMounted && expandableRowsComponent && (

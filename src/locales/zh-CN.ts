@@ -47,6 +47,20 @@ const zhCN: Localization = {
 		expandRowAriaLabel: '展开行',
 		collapseRowAriaLabel: '收起行',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: '列菜单',
+		rowMenuAriaLabel: '行菜单',
+		headerMenuButtonAriaLabel: '列操作',
+		rowMenuButtonAriaLabel: '行操作',
+		sortAscLabel: '升序排序',
+		sortDescLabel: '降序排序',
+		clearSortLabel: '清除排序',
+		pinLeftLabel: '固定到左侧',
+		pinRightLabel: '固定到右侧',
+		unpinLabel: '取消固定',
+		hideColumnLabel: '隐藏列',
+		resetLabel: '重置表格',
+	},
 };
 
 export default zhCN;

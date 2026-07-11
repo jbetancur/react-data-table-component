@@ -47,6 +47,20 @@ const zhTW: Localization = {
 		expandRowAriaLabel: '展開列',
 		collapseRowAriaLabel: '收合列',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: '欄位選單',
+		rowMenuAriaLabel: '列選單',
+		headerMenuButtonAriaLabel: '欄位操作',
+		rowMenuButtonAriaLabel: '列操作',
+		sortAscLabel: '遞增排序',
+		sortDescLabel: '遞減排序',
+		clearSortLabel: '清除排序',
+		pinLeftLabel: '固定至左側',
+		pinRightLabel: '固定至右側',
+		unpinLabel: '取消固定',
+		hideColumnLabel: '隱藏欄位',
+		resetLabel: '重設表格',
+	},
 };
 
 export default zhTW;

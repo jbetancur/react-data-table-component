@@ -47,6 +47,20 @@ const ko: Localization = {
 		expandRowAriaLabel: '행 펼치기',
 		collapseRowAriaLabel: '행 접기',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: '열 메뉴',
+		rowMenuAriaLabel: '행 메뉴',
+		headerMenuButtonAriaLabel: '열 작업',
+		rowMenuButtonAriaLabel: '행 작업',
+		sortAscLabel: '오름차순 정렬',
+		sortDescLabel: '내림차순 정렬',
+		clearSortLabel: '정렬 해제',
+		pinLeftLabel: '왼쪽 고정',
+		pinRightLabel: '오른쪽 고정',
+		unpinLabel: '고정 해제',
+		hideColumnLabel: '열 숨기기',
+		resetLabel: '표 초기화',
+	},
 };
 
 export default ko;

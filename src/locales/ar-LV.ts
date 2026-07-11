@@ -47,6 +47,20 @@ const arLV: Localization = {
 		expandRowAriaLabel: 'بسّط الصف',
 		collapseRowAriaLabel: 'اطوي الصف',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'قائمة العمود',
+		rowMenuAriaLabel: 'قائمة الصف',
+		headerMenuButtonAriaLabel: 'إجراءات العمود',
+		rowMenuButtonAriaLabel: 'إجراءات الصف',
+		sortAscLabel: 'رتّب تصاعدياً',
+		sortDescLabel: 'رتّب تنازلياً',
+		clearSortLabel: 'شيل الترتيب',
+		pinLeftLabel: 'ثبّت عاليسار',
+		pinRightLabel: 'ثبّت عاليمين',
+		unpinLabel: 'شيل التثبيت',
+		hideColumnLabel: 'خبّي العمود',
+		resetLabel: 'رجّع الجدول',
+	},
 };
 
 export default arLV;

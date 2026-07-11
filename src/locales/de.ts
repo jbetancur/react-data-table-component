@@ -47,6 +47,20 @@ const de: Localization = {
 		expandRowAriaLabel: 'Zeile aufklappen',
 		collapseRowAriaLabel: 'Zeile zuklappen',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'Spaltenmenü',
+		rowMenuAriaLabel: 'Zeilenmenü',
+		headerMenuButtonAriaLabel: 'Spaltenaktionen',
+		rowMenuButtonAriaLabel: 'Zeilenaktionen',
+		sortAscLabel: 'Aufsteigend sortieren',
+		sortDescLabel: 'Absteigend sortieren',
+		clearSortLabel: 'Sortierung aufheben',
+		pinLeftLabel: 'Links anheften',
+		pinRightLabel: 'Rechts anheften',
+		unpinLabel: 'Lösen',
+		hideColumnLabel: 'Spalte ausblenden',
+		resetLabel: 'Tabelle zurücksetzen',
+	},
 };
 
 export default de;

@@ -108,7 +108,7 @@ const custom: Localization = {
 
   <h2>The Localization type</h2>
   <p>
-    All three sub-objects are optional. Each key within them is also optional.
+    All sub-objects are optional. Each key within them is also optional.
   </p>
 
   <CodeBlock code={`interface Localization {
@@ -159,6 +159,21 @@ const custom: Localization = {
   expandable?: {
     expandRowAriaLabel?:   string;  // default: 'Expand Row'
     collapseRowAriaLabel?: string;  // default: 'Collapse Row'
+  };
+
+  contextMenu?: {
+    headerMenuAriaLabel?:  string;  // default: 'Column menu'
+    rowMenuAriaLabel?:     string;  // default: 'Row menu'
+    headerMenuButtonAriaLabel?: string;  // default: 'Column actions'
+    rowMenuButtonAriaLabel?:    string;  // default: 'Row actions'
+    sortAscLabel?:         string;  // default: 'Sort ascending'
+    sortDescLabel?:        string;  // default: 'Sort descending'
+    clearSortLabel?:       string;  // default: 'Clear sort'
+    pinLeftLabel?:         string;  // default: 'Pin left'
+    pinRightLabel?:        string;  // default: 'Pin right'
+    unpinLabel?:           string;  // default: 'Unpin'
+    hideColumnLabel?:      string;  // default: 'Hide column'
+    resetLabel?:           string;  // default: 'Reset table'
   };
 }`} />
 

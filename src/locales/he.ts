@@ -47,6 +47,20 @@ const he: Localization = {
 		expandRowAriaLabel: 'הרחב שורה',
 		collapseRowAriaLabel: 'כווץ שורה',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'תפריט עמודה',
+		rowMenuAriaLabel: 'תפריט שורה',
+		headerMenuButtonAriaLabel: 'פעולות עמודה',
+		rowMenuButtonAriaLabel: 'פעולות שורה',
+		sortAscLabel: 'מיון עולה',
+		sortDescLabel: 'מיון יורד',
+		clearSortLabel: 'נקה מיון',
+		pinLeftLabel: 'הצמד לשמאל',
+		pinRightLabel: 'הצמד לימין',
+		unpinLabel: 'בטל הצמדה',
+		hideColumnLabel: 'הסתר עמודה',
+		resetLabel: 'אפס טבלה',
+	},
 };
 
 export default he;

@@ -60,6 +60,7 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 			options.onPointerDown,
 			options.onGroupPointerDown,
 			options.localization,
+			options.headerMenu,
 		],
 	);
 }

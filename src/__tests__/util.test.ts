@@ -11,6 +11,7 @@ import {
 	getConditionalStyle,
 	isRowSelected,
 	normalizePins,
+	setColumnPin,
 	getPinnedOffsets,
 	getPinnedTotalWidths,
 	getPinnedCellMeta,
@@ -469,6 +470,45 @@ describe('normalizePins', () => {
 		expect(result[1].pinned).toBeUndefined();
 		expect(result[2].pinned).toBeUndefined();
 		expect(result[3].pinned).toBe('right');
+	});
+});
+
+describe('setColumnPin', () => {
+	const c = (id: number, pinned?: 'left' | 'right') =>
+		({ id, name: String(id), pinned }) as { id: number; name: string; pinned?: 'left' | 'right' };
+
+	test('pin left moves the column to the end of the left zone', () => {
+		const cols = [c(1, 'left'), c(2), c(3)];
+		const result = setColumnPin(cols, 3, 'left');
+		expect(result.map(col => col.id)).toEqual([1, 3, 2]);
+		expect(result[1].pinned).toBe('left');
+	});
+
+	test('pin right moves the column to the start of the right zone', () => {
+		const cols = [c(1), c(2), c(3, 'right')];
+		const result = setColumnPin(cols, 1, 'right');
+		expect(result.map(col => col.id)).toEqual([2, 1, 3]);
+		expect(result[1].pinned).toBe('right');
+	});
+
+	test('unpin from left drops the column just after the left zone', () => {
+		const cols = [c(1, 'left'), c(2, 'left'), c(3), c(4)];
+		const result = setColumnPin(cols, 1);
+		expect(result.map(col => col.id)).toEqual([2, 1, 3, 4]);
+		expect(result[1].pinned).toBeUndefined();
+	});
+
+	test('unpin from right drops the column just before the right zone', () => {
+		const cols = [c(1), c(2), c(3, 'right'), c(4, 'right')];
+		const result = setColumnPin(cols, 4);
+		expect(result.map(col => col.id)).toEqual([1, 2, 4, 3]);
+		expect(result[2].pinned).toBeUndefined();
+		expect(result[3].pinned).toBe('right');
+	});
+
+	test('returns the input array untouched for an unknown id', () => {
+		const cols = [c(1), c(2)];
+		expect(setColumnPin(cols, 99, 'left')).toBe(cols);
 	});
 });
 

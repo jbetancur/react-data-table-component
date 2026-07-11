@@ -12,6 +12,7 @@ import type {
 } from '../types';
 import type { PinnedOffsets } from '../util';
 import type { ActiveCell } from './RowContext';
+import type { HeaderMenuSlice } from '../hooks/useContextMenu';
 
 export interface HeadContextValue<T> {
 	// Sort state
@@ -48,6 +49,9 @@ export interface HeadContextValue<T> {
 	// Cell navigation (row -1 of the nav grid is the header row)
 	cellNavigation: boolean;
 	activeCell: ActiveCell | null;
+	/** Header context-menu feature slice — `null` when the feature is off. Compared by
+	 *  reference in the memo dep list and TableCol's memo; useContextMenu owns identity stability. */
+	headerMenu: HeaderMenuSlice<T>;
 	// Table state
 	progressPending: boolean;
 	sortedData: T[];

@@ -97,6 +97,47 @@ export type DataTableHandle = {
 	clearSort: () => void;
 };
 
+// ── Context menu types ────────────────────────────────────────────────────────
+
+export type ContextMenuTrigger = 'right-click' | 'menu-button' | 'both';
+
+/** Which inline edge the row menu button sits on. Logical (RTL-aware): `'end'` is
+ *  the row's inline end (right in LTR), `'start'` the inline start (left in LTR). */
+export type ContextMenuPosition = 'start' | 'end';
+
+export type ContextMenuConfig = {
+	/** Enable the header context menu. Defaults to `true`. */
+	header?: boolean;
+	/** Enable the row context menu. Only opens when `contextMenuActions.row` returns items. Defaults to `true`. */
+	row?: boolean;
+	/** How the menu opens. Defaults to `'right-click'`. */
+	trigger?: ContextMenuTrigger;
+	/** Which inline edge the row menu button sits on. Defaults to `'end'`. */
+	menuPosition?: ContextMenuPosition;
+};
+
+/** A single item in a context menu. Built-in header actions use the reserved ids
+ *  `sort-asc`, `sort-desc`, `clear-sort`, `pin-left`, `pin-right`, `unpin`,
+ *  `hide-column`, and `reset`. */
+export type ContextMenuAction = {
+	id: string;
+	label: React.ReactNode;
+	disabled?: boolean;
+	/** Optional icon rendered before the label. */
+	icon?: React.ReactNode;
+};
+
+/** What the selected menu action applies to. */
+export type ContextMenuActionContext<T> =
+	{ type: 'header'; column: TableColumn<T> } | { type: 'row'; row: T; rowIndex: number };
+
+export type ContextMenuActions<T> = {
+	/** Extra header menu items, appended after the built-ins. A static list or a function of the column. */
+	header?: ContextMenuAction[] | ((column: TableColumn<T>) => ContextMenuAction[]);
+	/** Row menu items. The row menu renders only these — there are no built-in row actions. */
+	row?: (row: T, rowIndex: number) => ContextMenuAction[];
+};
+
 // ── Feature-group prop types ──────────────────────────────────────────────────
 
 type SelectionProps<T> = {
@@ -277,6 +318,18 @@ type BaseTableProps<T> = {
 	onFilterChange?: (columnId: string | number, filter: FilterState) => void;
 	/** Override every user-visible string in DataTable. Pass a pre-built locale or build your own. */
 	localization?: Localization;
+	/**
+	 * Enable a context menu on header cells and rows. Pass `true` to enable both with the
+	 * default right-click trigger, or a config object to choose surfaces and trigger
+	 * (`'right-click' | 'menu-button' | 'both'`). The header menu ships built-in actions
+	 * (sort, pin, hide, reset); the row menu renders the items returned by
+	 * `contextMenuActions.row` and stays closed when there are none.
+	 */
+	contextMenu?: boolean | ContextMenuConfig;
+	/** Consumer-supplied menu items. Header items are appended after the built-ins. */
+	contextMenuActions?: ContextMenuActions<T>;
+	/** Called when any menu item is selected — built-ins included, after their effect is applied. */
+	onContextMenuAction?: (action: ContextMenuAction, ctx: ContextMenuActionContext<T>) => void;
 	/**
 	 * @deprecated Use the `localization` prop instead: `localization={{ filter: { ... } }}`. Will be removed in v9.
 	 */
@@ -599,6 +652,32 @@ export interface Localization {
 		/** aria-label for the collapse button. Default: "Collapse Row" */
 		collapseRowAriaLabel?: string;
 	};
+	contextMenu?: {
+		/** aria-label for the header menu. Default: "Column menu" */
+		headerMenuAriaLabel?: string;
+		/** aria-label for the row menu. Default: "Row menu" */
+		rowMenuAriaLabel?: string;
+		/** aria-label for the header menu (⋮) button. Default: "Column actions" */
+		headerMenuButtonAriaLabel?: string;
+		/** aria-label for the row menu (⋮) button. Default: "Row actions" */
+		rowMenuButtonAriaLabel?: string;
+		/** Label for the sort-ascending item. Default: "Sort ascending" */
+		sortAscLabel?: string;
+		/** Label for the sort-descending item. Default: "Sort descending" */
+		sortDescLabel?: string;
+		/** Label for the clear-sort item. Default: "Clear sort" */
+		clearSortLabel?: string;
+		/** Label for the pin-left item. Default: "Pin left" */
+		pinLeftLabel?: string;
+		/** Label for the pin-right item. Default: "Pin right" */
+		pinRightLabel?: string;
+		/** Label for the unpin item. Default: "Unpin" */
+		unpinLabel?: string;
+		/** Label for the hide-column item. Default: "Hide column" */
+		hideColumnLabel?: string;
+		/** Label for the reset item. Default: "Reset table" */
+		resetLabel?: string;
+	};
 }
 
 export interface PaginationServerOptions {
@@ -817,6 +896,9 @@ export interface SortAction<T> {
 	additive: boolean;
 	/** Direction a freshly clicked column sorts in first (from `defaultSortAsc`). */
 	defaultSortDirection: SortOrder;
+	/** Force a specific direction instead of cycling — used by the context menu's
+	 *  explicit sort-ascending / sort-descending actions. */
+	direction?: SortOrder;
 }
 
 export interface PaginationPageAction {

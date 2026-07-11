@@ -35,6 +35,18 @@ const columns: TableColumn<Row>[] = [
     <ColumnPinningDemo client:load />
   </Demo>
 
+  <h2>Columns need widths</h2>
+  <p>
+    Pinning is only visible when the table overflows its container horizontally — a pinned
+    column is <code>position: sticky</code>, and without horizontal scroll there is nothing to
+    stick against. Columns without a <code>width</code> are fluid: they shrink and grow to fill
+    the container, so the table never overflows and pinning appears to do nothing. Give your
+    columns <code>width</code> (or <code>minWidth</code>) values whose total exceeds the
+    container, as every example on this page does. Explicit widths also keep the sticky offsets
+    exact when several columns are pinned on the same side, since offsets are computed from the
+    declared widths.
+  </p>
+
   <h2>How it works</h2>
   <p>
     The table measures the widths of all pinned columns and computes cumulative

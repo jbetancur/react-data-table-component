@@ -369,7 +369,7 @@
 	position: relative;
 	display: inline-flex;
 	align-items: center;
-	margin-left: 4px;
+	margin-inline-start: 4px;
 	flex-shrink: 0;
 }
 
@@ -562,6 +562,128 @@
 @supports (background-color: color-mix(in srgb, red 1%, black)) {
 	.rdt_filterBtnPrimary:hover {
 		background-color: color-mix(in srgb, var(--rdt-color-primary, #1976d2) 85%, black);
+	}
+}
+
+/* ─── Context menu ──────────────────────────────────────────────────────────── */
+.rdt_kebabIcon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	position: relative;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--rdt-color-btn, rgba(0, 0, 0, 0.54));
+	border-radius: 50%;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	margin-inline-start: 4px;
+	transition: background-color 0.2s, color 0.2s;
+	touch-action: manipulation;
+}
+
+.rdt_kebabIcon:hover,
+.rdt_kebabIcon:focus {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
+	outline: none;
+}
+
+/* Menu — position is set inline (fixed, coords clamped/flipped after measure) */
+.rdt_contextMenu {
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	min-width: 180px;
+	max-width: calc(100vw - 24px);
+	padding: 4px;
+	box-sizing: border-box;
+	background: var(--rdt-color-bg, #fff);
+	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
+	border-radius: var(--rdt-border-radius, 6px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+}
+
+.rdt_contextMenuItem {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	background: none;
+	border: none;
+	border-radius: calc(var(--rdt-border-radius, 6px) * 0.6);
+	padding: 6px 10px;
+	font-size: 13px;
+	text-align: start;
+	cursor: pointer;
+	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
+}
+
+.rdt_contextMenuItem:hover:not(:disabled),
+.rdt_contextMenuItem:focus {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
+	outline: none;
+}
+
+.rdt_contextMenuItem:disabled {
+	color: var(--rdt-color-btn-disabled, rgba(0, 0, 0, 0.34));
+	cursor: default;
+}
+
+.rdt_contextMenuItemIcon {
+	display: inline-flex;
+	align-items: center;
+}
+
+.rdt_contextMenuSeparator {
+	height: 1px;
+	margin: 4px 6px;
+	background: var(--rdt-color-divider, rgba(0, 0, 0, 0.12));
+}
+
+/* Row kebab — sticky slot at the row's inline end. It paints an opaque square
+   (inheriting the row background: baseline, hover, stripe, selected) that masks
+   horizontally-scrolled cell content behind the circular button's transparent
+   corners. A negative inline margin pulls it out of layout flow so it never
+   shifts the column widths — same net effect as a zero-width slot. */
+.rdt_rowKebabCell {
+	position: sticky;
+	inset-inline-end: 8px;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* Wider than the 22px button so it paints a little padding around it and the
+	   button never sits flush against the table edge. */
+	width: 34px;
+	margin-inline-start: -34px;
+	overflow: visible;
+	z-index: 2;
+	background-color: inherit;
+}
+
+.rdt_rowKebabCell.rdt_rowKebabStart {
+	inset-inline-end: auto;
+	inset-inline-start: 8px;
+	margin-inline-start: 0;
+	margin-inline-end: -34px;
+	order: -1;
+}
+
+.rdt_rowKebab {
+	opacity: 0;
+}
+
+.rdt_row:hover .rdt_rowKebab,
+.rdt_row:focus-within .rdt_rowKebab {
+	opacity: 1;
+}
+
+@media (hover: none) {
+	.rdt_rowKebab {
+		opacity: 1;
 	}
 }
 

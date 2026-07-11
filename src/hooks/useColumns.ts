@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { decorateColumns, findColumnIndexById, getPinZoneForIndex, getSortDirection, normalizePins } from '../util';
+import {
+	decorateColumns,
+	findColumnIndexById,
+	getPinZoneForIndex,
+	getSortDirection,
+	normalizePins,
+	setColumnPin,
+} from '../util';
 import { setDragGhost } from '../dom';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import usePointerReorder from '../hooks/usePointerReorder';
@@ -22,6 +29,9 @@ type ColumnsHook<T> = {
 	handleGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	handlePointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
 	handleGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+	handlePinColumn: (columnId: string | number, side?: 'left' | 'right') => void;
+	handleHideColumn: (columnId: string | number) => void;
+	handleResetColumns: () => void;
 	defaultSortDirection: SortOrder;
 	defaultSortColumn: TableColumn<T>;
 };
@@ -255,6 +265,27 @@ function useColumns<T>(
 		}, []),
 	});
 
+	// ── Context-menu column actions ────────────────────────────────────────────
+
+	const handlePinColumn = React.useCallback(
+		(columnId: string | number, side?: 'left' | 'right') => {
+			const next = setColumnPin(tableColumns, columnId, side);
+			if (next === tableColumns) return;
+			setTableColumns(next);
+			onColumnOrderChange(next);
+		},
+		[onColumnOrderChange, tableColumns],
+	);
+
+	const handleHideColumn = React.useCallback((columnId: string | number) => {
+		setTableColumns(cols => cols.map(c => (String(c.id) === String(columnId) ? { ...c, omit: true } : c)));
+	}, []);
+
+	const handleResetColumns = React.useCallback(() => {
+		setTableColumns(decorateColumns(columns));
+		setTableGroups(columnGroups ?? []);
+	}, [columns, columnGroups]);
+
 	// ── Sort defaults ──────────────────────────────────────────────────────────
 
 	const defaultSortDirection = getSortDirection(defaultSortAsc);
@@ -279,6 +310,9 @@ function useColumns<T>(
 		handleGroupDragEnd,
 		handlePointerDown,
 		handleGroupPointerDown,
+		handlePinColumn,
+		handleHideColumn,
+		handleResetColumns,
 		defaultSortDirection,
 		defaultSortColumn,
 	};

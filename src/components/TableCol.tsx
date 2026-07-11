@@ -10,6 +10,7 @@ import { setDragGhost } from '../dom';
 import { SortOrder } from '../types';
 import type { TableColumn, SortAction, SortColumn, FilterState, Localization } from '../types';
 import type { ActiveCell } from '../context/RowContext';
+import type { HeaderMenuSlice } from '../hooks/useContextMenu';
 
 type FilterLocalization = NonNullable<Localization['filter']>;
 
@@ -47,6 +48,9 @@ type TableColProps<T> = {
 	cellNavigation?: boolean;
 	activeCell?: ActiveCell | null;
 	navCol?: number;
+	/** Header context-menu feature slice — `null` when the feature is off.
+	 *  Compared by reference in areColPropsEqual. */
+	headerMenu?: HeaderMenuSlice<T>;
 };
 
 function TableCol<T>({
@@ -80,6 +84,7 @@ function TableCol<T>({
 	cellNavigation,
 	activeCell,
 	navCol,
+	headerMenu,
 }: TableColProps<T>): JSX.Element | null {
 	const customStyles = useStyles();
 
@@ -215,6 +220,7 @@ function TableCol<T>({
 			onDragEnter={onDragEnter}
 			onDragLeave={onDragLeave}
 			onPointerDown={column.reorder ? onPointerDown : undefined}
+			onContextMenu={headerMenu?.rightClick ? (e: React.MouseEvent) => headerMenu.onContextMenu(column, e) : undefined}
 			{...outerNavAttributes}
 			data-nav-widget={cellNavigation && column.name ? 'true' : undefined}
 			{...(cellNavigation && !column.name ? { role: 'columnheader', tabIndex } : undefined)}
@@ -276,6 +282,25 @@ function TableCol<T>({
 					onFilterChange={onFilterChange}
 				/>
 			)}
+			{/* The menu button renders after the filter so it is always the outermost
+			    header control (flex order mirrors it automatically in RTL). */}
+			{headerMenu?.menuButton && (
+				<button
+					type="button"
+					className="rdt_kebabIcon"
+					aria-label={headerMenu.ariaLabel}
+					aria-haspopup="menu"
+					onClick={e => {
+						e.stopPropagation();
+						headerMenu.onMenuButtonClick(column, e);
+					}}
+					onPointerDown={e => e.stopPropagation()}
+				>
+					<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+						<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+					</svg>
+				</button>
+			)}
 			{onResizeStart && column.id != null && (
 				<div
 					className="rdt_resizeHandle"
@@ -293,6 +318,7 @@ function TableCol<T>({
 
 function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
 	if (prevProps.column !== nextProps.column) return false;
+	if (prevProps.headerMenu !== nextProps.headerMenu) return false;
 	if (prevProps.sortMulti !== nextProps.sortMulti) return false;
 	// Compare this column's slice of the sort config (position + direction). A change to
 	// either flips its active state, arrow direction, or multi-sort priority badge.
