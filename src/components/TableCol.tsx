@@ -36,9 +36,10 @@ type TableColProps<T> = {
 	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
 	/** Width override from column resize — takes precedence over column.width */
 	resizedWidth?: number;
-	onResizeStart?: (columnId: string | number, e: React.MouseEvent) => void;
+	onResizeStart?: (columnId: string | number, e: React.PointerEvent) => void;
 	pinnedOffsets?: PinnedOffsets;
 	/** CSS grid placement styles — injected by DataTableHead when rendering in grouped-header grid mode */
 	gridStyle?: React.CSSProperties;
@@ -71,6 +72,7 @@ function TableCol<T>({
 	onDragEnd,
 	onDragEnter,
 	onDragLeave,
+	onPointerDown,
 	resizedWidth,
 	onResizeStart,
 	pinnedOffsets,
@@ -212,6 +214,7 @@ function TableCol<T>({
 			onDragEnd={onDragEnd}
 			onDragEnter={onDragEnter}
 			onDragLeave={onDragLeave}
+			onPointerDown={column.reorder ? onPointerDown : undefined}
 			{...outerNavAttributes}
 			data-nav-widget={cellNavigation && column.name ? 'true' : undefined}
 			{...(cellNavigation && !column.name ? { role: 'columnheader', tabIndex } : undefined)}
@@ -274,7 +277,15 @@ function TableCol<T>({
 				/>
 			)}
 			{onResizeStart && column.id != null && (
-				<div className="rdt_resizeHandle" onMouseDown={e => onResizeStart(column.id!, e)} aria-hidden="true" />
+				<div
+					className="rdt_resizeHandle"
+					onPointerDown={e => {
+						// Keep a resize gesture from also starting a column reorder on the cell.
+						e.stopPropagation();
+						onResizeStart(column.id!, e);
+					}}
+					aria-hidden="true"
+				/>
 			)}
 		</CellExtended>
 	);

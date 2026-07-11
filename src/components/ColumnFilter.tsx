@@ -165,12 +165,13 @@ export default function ColumnFilter({
 		const firstFocusable = panelRef.current?.querySelector<HTMLElement>('select, input, button');
 		firstFocusable?.focus();
 
-		function handleClick(e: MouseEvent) {
+		function handleOutside(e: Event) {
+			const target = e.target as Node;
 			if (
 				containerRef.current &&
-				!containerRef.current.contains(e.target as Node) &&
+				!containerRef.current.contains(target) &&
 				panelRef.current &&
-				!panelRef.current.contains(e.target as Node)
+				!panelRef.current.contains(target)
 			) {
 				setOpen(false);
 			}
@@ -189,12 +190,15 @@ export default function ColumnFilter({
 			setOpen(false);
 		}
 
-		document.addEventListener('mousedown', handleClick);
+		// pointerdown covers mouse + touch in one event and, unlike mousedown, is not
+		// re-synthesized after the tap that opened the panel — which on touch devices
+		// fired a late emulated mousedown that closed the panel again (flicker).
+		document.addEventListener('pointerdown', handleOutside);
 		document.addEventListener('keydown', handleKeyDown);
 		window.addEventListener('scroll', handleScroll, true);
 		window.addEventListener('resize', handleResize);
 		return () => {
-			document.removeEventListener('mousedown', handleClick);
+			document.removeEventListener('pointerdown', handleOutside);
 			document.removeEventListener('keydown', handleKeyDown);
 			window.removeEventListener('scroll', handleScroll, true);
 			window.removeEventListener('resize', handleResize);
@@ -239,6 +243,22 @@ export default function ColumnFilter({
 		setPending(prev => ({ ...prev, logic }));
 	}
 
+	function toggleOpen() {
+		if (!open && buttonRef.current) {
+			const rect = buttonRef.current.getBoundingClientRect();
+			const panelMinWidth = 260;
+			const margin = 8;
+			// Clamp the panel within the viewport on both axes. Anchoring purely to the
+			// button's left/right pushes the panel off-screen for columns near either edge
+			// (common on mobile once the header is horizontally scrolled), which reads as
+			// the menu "not coming up".
+			const maxLeft = window.innerWidth - panelMinWidth - margin;
+			const left = Math.min(Math.max(margin, rect.left), Math.max(margin, maxLeft));
+			setPanelPos({ top: rect.bottom + 4, left });
+		}
+		setOpen(v => !v);
+	}
+
 	return (
 		<div ref={containerRef} className="rdt_filterContainer">
 			<button
@@ -253,16 +273,7 @@ export default function ColumnFilter({
 				aria-pressed={open}
 				onClick={e => {
 					e.stopPropagation();
-					if (!open && buttonRef.current) {
-						const rect = buttonRef.current.getBoundingClientRect();
-						const panelMinWidth = 260;
-						const fitsRight = rect.left + panelMinWidth <= window.innerWidth - 8;
-						setPanelPos({
-							top: rect.bottom + 4,
-							left: fitsRight ? rect.left : rect.right - panelMinWidth,
-						});
-					}
-					setOpen(v => !v);
+					toggleOpen();
 				}}
 			>
 				<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">

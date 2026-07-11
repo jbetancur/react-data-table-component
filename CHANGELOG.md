@@ -2,23 +2,28 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.5.2
+
+### Bug fixes
+
+- Column resize and reorder (including column groups) now work on touch devices. Resize handles respond to touch drags; reorder uses a short press-and-hold to grab a header so a normal swipe still scrolls the table. → [Column reordering](/docs/column-reorder)
+
+- Fixed the native sort icon animating (fading and spinning) as it disappeared when a column returned to the unsorted state; it now clears immediately. → [Sorting](/docs/sorting)
+- Fixed column filter menus on touch devices: the menu no longer flickers open/closed when tapping the filter icon, and filter icons on the leftmost/rightmost columns now open reliably with the panel clamped on-screen. → [Filtering](/docs/filtering)
+
+---
+
 ## 8.5.1
 
 ### Bug fixes
 
-- Fixed column resizing under RTL. The handle now sits on the column's end (left) edge and dragging it away from the column widens it, mirroring LTR. Applies to both `direction={Direction.RTL}` and an inherited `dir="rtl"`. → [Resizable columns](/docs/resizable)
-- Fixed column and group-header separators rendering at the wrong boundaries under RTL. Small header/cell chrome (filter-indicator dot, inline-edit select arrow, rows-per-page chevron) now mirrors to the correct side as well. → [RTL support](/docs/rtl)
-- Fixed row and table backgrounds ending at the initial container width when the table scrolls horizontally, which left scrolled-into columns unpainted (default, striped, hover, and selected backgrounds all cut off). `tableWrapper` custom styles now paint across the scrolled width as well.
-- Fixed `fixedHeader` with `responsive={false}` rendering a height-capped box without a scroll container, letting rows spill over content below the table. `fixedHeader` now always creates the scroll container.
-- Fixed the pinned-columns scrollbar not appearing (or going stale) when the table's content width changed without a container resize — e.g. rows loading asynchronously or columns being resized, shown, or hidden. Since the native scrollbar is hidden when columns are pinned, mouse users previously had no way to scroll in that state.
-- Fixed the native scrollbar being hidden when columns are pinned but `responsive={false}`, where the custom pinned scrollbar never renders.
-- Fixed open column-filter panels floating detached from their column when the table or page scrolls; the panel now closes on scroll and window resize.
-- Replaced the blurred pin-band edge shadow with a crisp boundary line that no longer washes out adjacent column separators. The line color follows the theme divider and can be overridden with `--rdt-color-pin-border`; the `--rdt-color-pin-shadow` variable is gone. The redundant column separator at the pin boundary is suppressed. → [Column pinning](/docs/column-pinning)
-- Fixed missing separators around the right pin band when columns leave slack space: the last unpinned column now closes with its own separator line, and row dividers no longer break across the gap in front of right-pinned columns.
-- Fixed right-pinned columns being nearly impossible to resize: a leftover clip on the pin band cut the resize handle's hit area down to a 3px sliver. Left-pinned and unpinned columns were unaffected.
-- Fixed the last column's resize handle hanging half outside the scroll container, which clipped its hit area; it now sits fully inside the column edge.
-- Fixed column pinning under RTL: pinned columns now stick to logical edges (`pinned: 'left'` pins to the inline-start edge, which is the right side in RTL), and the pin-band shadows mirror accordingly. → [Column pinning](/docs/column-pinning)
-- Fixed the pinned-columns horizontal scrollbar under RTL: thumb position, drag, track clicks, and the End key now account for RTL scroll coordinates, and the track insets follow the mirrored pin bands.
+- Fixed RTL support across resizing, pinning, and separators: resize handles sit on the correct edge and widen as in LTR, pinned columns stick to logical edges with mirrored shadows, the pinned horizontal scrollbar accounts for RTL scroll coordinates, and column/group-header separators plus small chrome (filter dot, select arrows, pagination chevron) mirror correctly. Applies to `direction={Direction.RTL}` and inherited `dir="rtl"`. → [RTL support](/docs/rtl)
+- Fixed row and table backgrounds cutting off at the initial container width when the table scrolls horizontally, leaving scrolled-into columns unpainted. → [Theming](/docs/theming)
+- Fixed `fixedHeader` with `responsive={false}` not creating a scroll container, letting rows spill over content below the table. `fixedHeader` now always creates one.
+- Fixed the pinned-columns scrollbar failing to appear or going stale when content width changed without a container resize (async rows, resizing or toggling columns), and when columns were pinned with `responsive={false}`. → [Column pinning](/docs/column-pinning)
+- Fixed resize handles being clipped for right-pinned columns and the last column, which cut their hit areas down to a sliver. → [Resizable columns](/docs/resizable)
+- Fixed pin-band separators: replaced the blurred edge shadow with a crisp boundary line (`--rdt-color-pin-border`, replacing `--rdt-color-pin-shadow`), and closed missing separators and broken row dividers around the right pin band. → [Column pinning](/docs/column-pinning)
+- Fixed open column-filter panels floating detached from their column on scroll; they now close on scroll and window resize.
 
 ---
 

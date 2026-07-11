@@ -23,14 +23,14 @@ export default function useColumnResize({
 		isRTLRef.current = isRTL;
 	});
 
-	const handleResizeStart = React.useCallback((columnId: string | number, e: React.MouseEvent) => {
+	const handleResizeStart = React.useCallback((columnId: string | number, e: React.PointerEvent) => {
 		if (typeof document === 'undefined') return;
 		e.preventDefault();
 		const headerCell = (e.currentTarget as HTMLElement).closest('[data-column-id]') as HTMLElement | null;
 		const startWidth = headerCell?.offsetWidth ?? 100;
 		resizeRef.current = { columnId, startX: e.clientX, startWidth };
 
-		function onMouseMove(mv: MouseEvent) {
+		function onPointerMove(mv: PointerEvent) {
 			if (!resizeRef.current) return;
 			const { columnId } = resizeRef.current;
 			// In RTL the handle sits on the column's left (end) edge, so dragging left
@@ -40,7 +40,7 @@ export default function useColumnResize({
 			setColumnWidths(prev => ({ ...prev, [columnId]: newWidth }));
 		}
 
-		function onMouseUp() {
+		function onPointerUp() {
 			if (resizeRef.current) {
 				const { columnId: id } = resizeRef.current;
 				setColumnWidths(prev => {
@@ -50,12 +50,12 @@ export default function useColumnResize({
 				});
 			}
 			resizeRef.current = null;
-			document.removeEventListener('mousemove', onMouseMove);
-			document.removeEventListener('mouseup', onMouseUp);
+			document.removeEventListener('pointermove', onPointerMove);
+			document.removeEventListener('pointerup', onPointerUp);
 		}
 
-		document.addEventListener('mousemove', onMouseMove);
-		document.addEventListener('mouseup', onMouseUp);
+		document.addEventListener('pointermove', onPointerMove);
+		document.addEventListener('pointerup', onPointerUp);
 	}, []);
 
 	return { columnWidths, handleResizeStart };

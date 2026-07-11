@@ -31,8 +31,8 @@ const columns = [
 - [Cell Rendering](https://reactdatatable.com/docs/cells): custom cell components
 - [Column Groups](https://reactdatatable.com/docs/column-groups): spanning headers across columns
 - [Column Visibility](https://reactdatatable.com/docs/column-visibility): show and hide columns
-- [Column Reordering](https://reactdatatable.com/docs/column-reorder): drag to reorder
-- [Column Resizing](https://reactdatatable.com/docs/resizable): drag column edges, persist widths
+- [Column Reordering](https://reactdatatable.com/docs/column-reorder): drag to reorder, mouse or touch (press-and-hold on touch)
+- [Column Resizing](https://reactdatatable.com/docs/resizable): drag column edges by mouse or touch, persist widths
 - [Column Pinning](https://reactdatatable.com/docs/column-pinning): pin columns left or right
 - [Column Filtering](https://reactdatatable.com/docs/filtering): per-column text, number, and select filters
 - [Sorting](https://reactdatatable.com/docs/sorting): client-side and server-side sorting

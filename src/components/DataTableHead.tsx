@@ -66,6 +66,8 @@ function DataTableHead<T>({
 		onGroupDragEnter,
 		onGroupDragOver,
 		onGroupDragEnd,
+		onPointerDown,
+		onGroupPointerDown,
 	} = useHeadContext<T>();
 
 	const groupDragProps: GroupDragProps = {
@@ -74,6 +76,7 @@ function DataTableHead<T>({
 		onGroupDragEnter,
 		onGroupDragOver,
 		onGroupDragEnd,
+		onGroupPointerDown,
 	};
 
 	const visibleColumns = columns.filter(c => !c.omit);
@@ -165,6 +168,7 @@ function DataTableHead<T>({
 		onDragEnd,
 		onDragEnter,
 		onDragLeave,
+		onPointerDown,
 		draggingColumnId,
 		cellNavigation,
 		activeCell,

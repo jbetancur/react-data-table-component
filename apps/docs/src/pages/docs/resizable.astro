@@ -11,8 +11,8 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <p>
     Enable drag-to-resize handles on column headers by setting <code>resizable</code>.
-    Users drag the right edge of any header cell to adjust its width. Resize is fully
-    compatible with sorting, pagination, filtering, pinning, and column reordering.
+    Users drag the right edge of any header cell to adjust its width, by mouse or touch.
+    Resize is fully compatible with sorting, pagination, filtering, pinning, and column reordering.
   </p>
 
   <Demo
@@ -155,9 +155,9 @@ export default function App() {
   <h2>Accessibility</h2>
 
   <p>
-    The resize handle is mouse-only. Keyboard users cannot drag-resize. If keyboard-accessible
-    resizing matters for your audience, provide a settings UI (a popover with width inputs per
-    column) as an alternative.
+    The resize handle is pointer-only (mouse and touch). Keyboard users cannot drag-resize. If
+    keyboard-accessible resizing matters for your audience, provide a settings UI (a popover with
+    width inputs per column) as an alternative.
   </p>
 
   <h2>Prop reference</h2>

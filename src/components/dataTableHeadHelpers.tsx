@@ -35,6 +35,7 @@ export interface GroupDragProps {
 	onGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
 	onGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 	onGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
 }
 
 /**
@@ -82,6 +83,7 @@ export function buildGroupHeaderCells<T>(
 						onDragEnter={group.reorder ? groupDragProps?.onGroupDragEnter : undefined}
 						onDragOver={group.reorder ? groupDragProps?.onGroupDragOver : undefined}
 						onDragEnd={group.reorder ? groupDragProps?.onGroupDragEnd : undefined}
+						onPointerDown={group.reorder ? groupDragProps?.onGroupPointerDown : undefined}
 						style={{
 							gridColumn: `${gridColStart} / ${gridColEnd}`,
 							gridRow: '1',
