@@ -54,6 +54,7 @@ export default function useRowContextValue<T>(options: RowContextValue<T>): RowC
 			options.localization,
 			options.cellNavigation,
 			options.activeCell,
+			options.rowMenu,
 		],
 	);
 }

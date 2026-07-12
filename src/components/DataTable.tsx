@@ -31,6 +31,8 @@ import { useColorMode } from '../hooks/useColorMode';
 import useCellNavigation from '../hooks/useCellNavigation';
 import useColumnPinning from '../hooks/useColumnPinning';
 import useSortFlipAnimation from '../hooks/useSortFlipAnimation';
+import useContextMenu from '../hooks/useContextMenu';
+import ContextMenu from './ContextMenu';
 
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
@@ -114,6 +116,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		columnGroups,
 		filterValues: controlledFilterValues,
 		onFilterChange: onFilterChangeProp,
+		contextMenu,
+		contextMenuActions,
+		onContextMenuAction,
 		localization: localizationProp = {},
 		columnFilterOptions,
 		expandableRowsOptions,
@@ -193,6 +198,9 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		handleGroupDragEnd,
 		handlePointerDown,
 		handleGroupPointerDown,
+		handlePinColumn,
+		handleHideColumn,
+		handleResetColumns,
 		defaultSortDirection,
 		defaultSortColumn,
 	} = useColumns(
@@ -286,6 +294,29 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
+
+	// ── Context menu ───────────────────────────────────────────────────────────
+	// Slices pass through to the contexts untouched — consumers read menu.header /
+	// menu.row directly, so new feature fields never touch this file.
+	const menu = useContextMenu({
+		contextMenu,
+		contextMenuActions,
+		onContextMenuAction,
+		localization: localization.contextMenu ?? {},
+		tableColumns,
+		columnGroups,
+		sortColumns,
+		defaultSortDirection,
+		clearSelectedOnSort:
+			(pagination && paginationServer && !persistSelectedOnSort) || sortServer || selectableRowsVisibleOnly,
+		filterValues,
+		onSort: handleSort,
+		onClearSort: handleClearSort,
+		onFilterChange: handleFilterChange,
+		onPinColumn: handlePinColumn,
+		onHideColumn: handleHideColumn,
+		onResetColumns: handleResetColumns,
+	});
 	const enabledPagination = pagination && !progressPending && data.length > 0;
 	const Pagination = paginationComponent || NativePagination;
 	const tableStyles = React.useMemo(() => createStyles(customStyles), [customStyles]);
@@ -391,6 +422,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		animateRows,
 		cellNavigation,
 		activeCell: effectiveActiveCell,
+		rowMenu: menu.row,
 	});
 
 	const headContextValue = useHeadContextValue<T>({
@@ -425,6 +457,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		showSelectAll,
 		cellNavigation,
 		activeCell: effectiveActiveCell,
+		headerMenu: menu.header,
 		progressPending,
 		sortedData: filteredSortedData,
 		onSelectAllRows: handleSelectAllRows,
@@ -560,6 +593,18 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 
 						{enabledPagination && (paginationPosition === 'bottom' || paginationPosition === 'both') && (
 							<TablePaginationFooter {...paginationFooterProps} />
+						)}
+
+						{menu.open && (
+							<ContextMenu
+								groups={menu.open.groups}
+								position={menu.open.position}
+								anchorRect={menu.open.anchorRect}
+								isRTL={isRTL}
+								ariaLabel={menu.open.ariaLabel}
+								onSelect={menu.onSelect}
+								onClose={menu.onClose}
+							/>
 						)}
 					</div>
 				</RowContext.Provider>

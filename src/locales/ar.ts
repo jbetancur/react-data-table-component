@@ -47,6 +47,20 @@ const ar: Localization = {
 		expandRowAriaLabel: 'توسيع الصف',
 		collapseRowAriaLabel: 'طي الصف',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'قائمة العمود',
+		rowMenuAriaLabel: 'قائمة الصف',
+		headerMenuButtonAriaLabel: 'إجراءات العمود',
+		rowMenuButtonAriaLabel: 'إجراءات الصف',
+		sortAscLabel: 'ترتيب تصاعدي',
+		sortDescLabel: 'ترتيب تنازلي',
+		clearSortLabel: 'إلغاء الترتيب',
+		pinLeftLabel: 'تثبيت لليسار',
+		pinRightLabel: 'تثبيت لليمين',
+		unpinLabel: 'إلغاء التثبيت',
+		hideColumnLabel: 'إخفاء العمود',
+		resetLabel: 'إعادة تعيين الجدول',
+	},
 };
 
 export default ar;

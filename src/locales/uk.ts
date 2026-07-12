@@ -47,6 +47,20 @@ const uk: Localization = {
 		expandRowAriaLabel: 'Розгорнути рядок',
 		collapseRowAriaLabel: 'Згорнути рядок',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'Меню стовпця',
+		rowMenuAriaLabel: 'Меню рядка',
+		headerMenuButtonAriaLabel: 'Дії зі стовпцем',
+		rowMenuButtonAriaLabel: 'Дії з рядком',
+		sortAscLabel: 'Сортувати за зростанням',
+		sortDescLabel: 'Сортувати за спаданням',
+		clearSortLabel: 'Скасувати сортування',
+		pinLeftLabel: 'Закріпити ліворуч',
+		pinRightLabel: 'Закріпити праворуч',
+		unpinLabel: 'Відкріпити',
+		hideColumnLabel: 'Приховати стовпець',
+		resetLabel: 'Скинути таблицю',
+	},
 };
 
 export default uk;

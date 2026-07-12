@@ -496,3 +496,34 @@ export function getPinZoneForIndex(
 	if (index >= total - rightCount) return 'right';
 	return undefined;
 }
+
+/**
+ * Pins or unpins a column by id, moving it into the matching edge zone so pinned
+ * columns stay contiguous — the same invariant drag-reorder maintains via normalizePins.
+ * Pin left inserts at the end of the left zone, pin right at the start of the right
+ * zone, and unpin drops the column just inside its former zone's boundary.
+ * Returns the input array untouched when the id is unknown.
+ */
+export function setColumnPin<T>(
+	columns: TableColumn<T>[],
+	columnId: string | number,
+	side?: 'left' | 'right',
+): TableColumn<T>[] {
+	const idx = findColumnIndexById(columns, String(columnId));
+	if (idx === -1) return columns;
+
+	const next = [...columns];
+	const [col] = next.splice(idx, 1);
+	const { pinned: _removed, ...rest } = col;
+	const updated = (side ? { ...rest, pinned: side } : rest) as TableColumn<T>;
+
+	const leftCount = next.filter(c => c.pinned === 'left').length;
+	const rightCount = next.filter(c => c.pinned === 'right').length;
+	let insertAt: number;
+	if (side === 'left') insertAt = leftCount;
+	else if (side === 'right') insertAt = next.length - rightCount;
+	else insertAt = col.pinned === 'right' ? next.length - rightCount : leftCount;
+
+	next.splice(insertAt, 0, updated);
+	return next;
+}

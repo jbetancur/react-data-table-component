@@ -11,6 +11,7 @@ import type {
 	ComponentProps,
 } from '../types';
 import type { PinnedOffsets } from '../util';
+import type { RowMenuSlice } from '../hooks/useContextMenu';
 
 export interface RowContextValue<T> {
 	keyField: string;
@@ -61,6 +62,9 @@ export interface RowContextValue<T> {
 	pinnedOffsets: PinnedOffsets;
 	/** Whether to animate rows on mount */
 	animateRows: boolean;
+	/** Row context-menu feature slice — `null` when the feature is off. Compared by
+	 *  reference in the memo dep list; useContextMenu owns identity stability. */
+	rowMenu: RowMenuSlice<T>;
 	/** Enable spreadsheet-style keyboard navigation between cells. */
 	cellNavigation: boolean;
 	/**

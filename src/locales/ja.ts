@@ -47,6 +47,20 @@ const ja: Localization = {
 		expandRowAriaLabel: '行を展開',
 		collapseRowAriaLabel: '行を折りたたむ',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: '列メニュー',
+		rowMenuAriaLabel: '行メニュー',
+		headerMenuButtonAriaLabel: '列の操作',
+		rowMenuButtonAriaLabel: '行の操作',
+		sortAscLabel: '昇順に並べ替え',
+		sortDescLabel: '降順に並べ替え',
+		clearSortLabel: '並べ替えを解除',
+		pinLeftLabel: '左に固定',
+		pinRightLabel: '右に固定',
+		unpinLabel: '固定を解除',
+		hideColumnLabel: '列を非表示',
+		resetLabel: 'テーブルをリセット',
+	},
 };
 
 export default ja;

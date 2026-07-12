@@ -47,6 +47,20 @@ const fr: Localization = {
 		expandRowAriaLabel: 'Développer la ligne',
 		collapseRowAriaLabel: 'Réduire la ligne',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'Menu de colonne',
+		rowMenuAriaLabel: 'Menu de ligne',
+		headerMenuButtonAriaLabel: 'Actions de colonne',
+		rowMenuButtonAriaLabel: 'Actions de ligne',
+		sortAscLabel: 'Trier par ordre croissant',
+		sortDescLabel: 'Trier par ordre décroissant',
+		clearSortLabel: 'Effacer le tri',
+		pinLeftLabel: 'Épingler à gauche',
+		pinRightLabel: 'Épingler à droite',
+		unpinLabel: 'Désépingler',
+		hideColumnLabel: 'Masquer la colonne',
+		resetLabel: 'Réinitialiser le tableau',
+	},
 };
 
 export default fr;

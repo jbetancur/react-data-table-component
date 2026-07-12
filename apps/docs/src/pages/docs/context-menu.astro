@@ -1,0 +1,174 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import Demo from '../../components/Demo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
+import ContextMenuDemo from '../../components/demos/ContextMenuDemo.tsx';
+import RowContextMenuDemo from '../../components/demos/RowContextMenuDemo.tsx';
+---
+
+<DocsLayout title="Context menu | react-data-table-component">
+  <h1>Context menu</h1>
+
+  <p>
+    Set <code>contextMenu</code> to give the table a built-in context menu. Header cells get a
+    menu of built-in actions — sort ascending/descending, clear sort, pin left/right, hide
+    column, and reset — plus any custom items you add. Rows get a menu of whatever actions you
+    supply via <code>contextMenuActions.row</code> (edit, delete, duplicate, and so on); with no
+    actions supplied, rows have no menu. The menu opens on right-click, from a menu (⋮) button,
+    or both.
+  </p>
+
+  <Demo
+    title="Header menu"
+    description="Right-click a header, or use its ⋮ button, to sort, pin left/right, hide, or reset columns — all built in, no config beyond contextMenu. The table is wider than its container, so pin a column then scroll horizontally to see it stick. The row menu is turned off here (row: false); it gets its own section below."
+    code={`import DataTable from 'react-data-table-component';
+
+<DataTable
+  columns={columns}
+  data={data}
+  // Header menu only — right-click a header or use its ⋮ button
+  contextMenu={{ row: false, trigger: 'both' }}
+  onContextMenuAction={(action, ctx) => {
+    if (ctx.type === 'header') console.log(action.id, ctx.column);
+  }}
+  resizable
+/>`}
+  >
+    <ContextMenuDemo client:load />
+  </Demo>
+
+  <h2>Enabling the menu</h2>
+  <p>
+    <code>contextMenu</code> accepts <code>true</code> for the defaults (header and row menus,
+    right-click trigger) or a config object. The <code>trigger</code> controls how the menu opens:
+  </p>
+
+  <ul>
+    <li><strong><code>'right-click'</code></strong> (default) — right-click a header cell or a row to open its menu.</li>
+    <li><strong><code>'menu-button'</code></strong> — show a ⋮ menu button instead; the best choice for touch-first UIs, where right-click isn't available. Row menu buttons appear on hover and are always visible on touch devices.</li>
+    <li><strong><code>'both'</code></strong> — right-click <em>and</em> a ⋮ menu button.</li>
+  </ul>
+
+  <CodeBlock code={`// Everything on, right-click only (default trigger)
+<DataTable contextMenu />
+
+// Menu buttons only — the right choice for touch-first UIs
+<DataTable contextMenu={{ trigger: 'menu-button' }} />
+
+// Both triggers, header menu only
+<DataTable contextMenu={{ row: false, trigger: 'both' }} />
+
+// Row menu button on the left edge instead of the right (RTL-aware: 'start' | 'end')
+<DataTable contextMenu={{ trigger: 'both', menuPosition: 'start' }} />`} />
+
+  <h2>Row menu</h2>
+  <p>
+    <code>contextMenu</code> on its own gives you the header menu. The row menu has
+    <strong>no built-in actions</strong>, so it stays off until you supply them via
+    <code>contextMenuActions.row</code> — a function that returns the menu items for a given
+    row. It receives the row and its index, so you can vary or disable items per row.
+    A row that returns an empty array (or no <code>row</code> function at all) has no menu, and
+    right-clicking it falls through to the browser's native menu.
+  </p>
+
+  <Demo
+    title="Row menu"
+    description="Right-click a row or use its ⋮ button. The items come from contextMenuActions.row and mutate the data — mark a task done, duplicate it, or delete it. 'Mark done' disables itself once a task is already Done, showing per-row item control. Use the position select to move the ⋮ button between the row's end (default) and start edge."
+    code={`import DataTable, { type ContextMenuAction, type TableColumn } from 'react-data-table-component';
+
+// Row items are a function of the row, so they can vary or disable per row.
+const rowActions = (row: Task): ContextMenuAction[] => [
+  { id: 'mark-done', label: 'Mark done', disabled: row.status === 'Done' },
+  { id: 'duplicate', label: 'Duplicate' },
+  { id: 'delete', label: 'Delete' },
+];
+
+<DataTable
+  columns={columns}
+  data={rows}
+  // 1. Turn the feature on (right-click, menu-button, or both).
+  //    menuPosition moves the row ⋮ button: 'end' (default) or 'start'.
+  contextMenu={{ trigger: 'both', menuPosition: 'end' }}
+  // 2. Supply the row menu items — without this, rows have no menu
+  contextMenuActions={{ row: rowActions }}
+  // 3. Handle the selection
+  onContextMenuAction={(action, ctx) => {
+    if (ctx.type !== 'row') return;
+    if (action.id === 'delete') setRows(prev => prev.filter(r => r.id !== ctx.row.id));
+    if (action.id === 'mark-done') setRows(prev => prev.map(r => r.id === ctx.row.id ? { ...r, status: 'Done' } : r));
+  }}
+/>`}
+  >
+    <RowContextMenuDemo client:load />
+  </Demo>
+
+  <h2>Built-in header actions</h2>
+  <ul>
+    <li><strong>Sort ascending / descending / clear sort</strong> — shown for sortable columns. Explicit direction, no cycling.</li>
+    <li><strong>Pin left / Pin right / Unpin</strong> — wires to the same mechanism as <a href="/docs/column-pinning">column pinning</a>; the column moves into the pinned band. Pinning is only visible when the table scrolls horizontally, so give columns explicit widths (see <a href="/docs/column-pinning">columns need widths</a>). Hidden when <a href="/docs/column-groups">column groups</a> are used, since pinning would tear a column out of its group.</li>
+    <li><strong>Hide column</strong> — removes the column from view. Disabled when it is the last visible column.</li>
+    <li><strong>Reset table</strong> — restores the original column order, visibility, and pin state, clears the sort, and clears all column filters.</li>
+  </ul>
+
+  <h2>Custom actions</h2>
+  <p>
+    Header items are appended after the built-ins, as a static list or a function of the
+    column. Row items are always a function of the row. Selections arrive in
+    <code>onContextMenuAction</code> — built-ins fire it too, after their effect is applied,
+    so you can persist state changes (for example the new pin layout via
+    <code>onColumnOrderChange</code>).
+  </p>
+
+  <CodeBlock code={`<DataTable
+  contextMenu
+  contextMenuActions={{
+    header: column => [{ id: 'export-col', label: \`Export \${column.name}\` }],
+    row: row => [
+      { id: 'edit', label: 'Edit', icon: <PencilIcon /> },
+      { id: 'delete', label: 'Delete' },
+    ],
+  }}
+  onContextMenuAction={(action, ctx) => {
+    if (ctx.type === 'header') console.log(action.id, ctx.column);
+    else console.log(action.id, ctx.row, ctx.rowIndex);
+  }}
+/>`} />
+
+  <p>
+    The built-in ids are reserved: <code>sort-asc</code>, <code>sort-desc</code>,
+    <code>clear-sort</code>, <code>pin-left</code>, <code>pin-right</code>, <code>unpin</code>,
+    <code>hide-column</code>, <code>reset</code>. Use different ids for custom actions.
+  </p>
+
+  <h2>Accessibility and behaviour</h2>
+  <ul>
+    <li>The menu renders with <code>role="menu"</code> / <code>role="menuitem"</code>; Arrow keys, Home, and End move focus, Escape closes and returns focus to the trigger.</li>
+    <li>Menu buttons carry <code>aria-haspopup="menu"</code> and localizable labels; row menu buttons appear on hover/focus and are always visible on touch devices.</li>
+    <li>On <a href="/docs/filtering">filterable</a> columns the header menu button renders after the filter icon, so it is always the outermost control — mirrored automatically in RTL.</li>
+    <li>The menu flips above the pointer near the bottom edge and clamps within the viewport; it closes on outside click, scroll, and resize.</li>
+    <li>In RTL the button-anchored menu aligns to the button's opposite edge automatically.</li>
+    <li>All labels can be translated via <code>localization.contextMenu</code> — see <a href="/docs/localization">Localization</a>. The bundled locales include translations.</li>
+  </ul>
+
+  <h2>Props</h2>
+  <DocsTable
+    headers={['Prop', 'Type', 'Description']}
+    rows={[
+      ['contextMenu', "boolean | { header?: boolean; row?: boolean; trigger?: 'right-click' | 'menu-button' | 'both'; menuPosition?: 'start' | 'end' }", "Enable the context menu. true enables header and row menus with the right-click trigger. menuPosition sets which inline edge the row menu button sits on (default 'end' — right in LTR)."],
+      ['contextMenuActions', '{ header?: ContextMenuAction[] | (column) => ContextMenuAction[]; row?: (row, rowIndex) => ContextMenuAction[] }', 'Custom menu items. Header items append after the built-ins; row items are the entire row menu.'],
+      ['onContextMenuAction', '(action, ctx) => void', 'Fires for every selected item, built-ins included. ctx is { type: "header", column } or { type: "row", row, rowIndex }.'],
+    ]}
+  />
+
+  <h3>ContextMenuAction</h3>
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['id', 'string', 'Identifier passed to onContextMenuAction. Built-in ids are reserved.'],
+      ['label', 'ReactNode', 'Item content.'],
+      ['disabled', 'boolean', 'Renders the item disabled.'],
+      ['icon', 'ReactNode', 'Optional icon rendered before the label.'],
+    ]}
+  />
+</DocsLayout>

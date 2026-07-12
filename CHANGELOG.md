@@ -2,7 +2,11 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
-## 8.5.2
+## 8.6.0
+
+### New features
+
+- **Context menu** — new `contextMenu` prop adds a menu to header cells and rows, opened by right-click, a kebab (⋮) button, or both. The header menu ships built-in actions (sort ascending/descending, clear sort, pin left/right, unpin, hide column, reset); row menus render consumer-supplied actions via `contextMenuActions.row`, and every selection fires `onContextMenuAction`. Fully keyboard-accessible (`role="menu"`, arrow keys, Escape with focus return), RTL-aware, and localizable via `localization.contextMenu` (all bundled locales translated). → [Context menu](/docs/context-menu) ([#1342](https://github.com/jbetancur/react-data-table-component/issues/1342))
 
 ### Bug fixes
 

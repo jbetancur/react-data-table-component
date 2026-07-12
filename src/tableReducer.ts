@@ -153,7 +153,7 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 		}
 
 		case 'SORT_CHANGE': {
-			const { selectedColumn, clearSelectedOnSort, additive, defaultSortDirection } = action;
+			const { selectedColumn, clearSelectedOnSort, additive, defaultSortDirection, direction } = action;
 			const firstDirection = defaultSortDirection;
 			const secondDirection = firstDirection === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC;
 
@@ -161,7 +161,19 @@ export function tableReducer<T>(state: TableState<T>, action: Action<T>): TableS
 
 			let nextSortColumns: SortColumn<T>[];
 
-			if (additive) {
+			if (direction) {
+				// Explicit direction (context menu): set it outright instead of cycling.
+				if (additive) {
+					nextSortColumns =
+						existingIndex === -1
+							? [...state.sortColumns, { column: selectedColumn, sortDirection: direction }]
+							: state.sortColumns.map((s, i) =>
+									i === existingIndex ? { column: selectedColumn, sortDirection: direction } : s,
+								);
+				} else {
+					nextSortColumns = [{ column: selectedColumn, sortDirection: direction }];
+				}
+			} else if (additive) {
 				// Ctrl/⌘+click: add or cycle the clicked column within the existing sort.
 				if (existingIndex === -1) {
 					nextSortColumns = [...state.sortColumns, { column: selectedColumn, sortDirection: firstDirection }];

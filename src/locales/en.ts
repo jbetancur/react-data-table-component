@@ -47,6 +47,20 @@ const en: Localization = {
 		expandRowAriaLabel: 'Expand Row',
 		collapseRowAriaLabel: 'Collapse Row',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'Column menu',
+		rowMenuAriaLabel: 'Row menu',
+		headerMenuButtonAriaLabel: 'Column actions',
+		rowMenuButtonAriaLabel: 'Row actions',
+		sortAscLabel: 'Sort ascending',
+		sortDescLabel: 'Sort descending',
+		clearSortLabel: 'Clear sort',
+		pinLeftLabel: 'Pin left',
+		pinRightLabel: 'Pin right',
+		unpinLabel: 'Unpin',
+		hideColumnLabel: 'Hide column',
+		resetLabel: 'Reset table',
+	},
 };
 
 export default en;

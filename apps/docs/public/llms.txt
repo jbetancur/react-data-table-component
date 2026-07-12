@@ -63,6 +63,7 @@ const columns = [
 - [Headless Hooks](https://reactdatatable.com/docs/headless): use the logic without the UI
 - [Accessibility](https://reactdatatable.com/docs/accessibility): ARIA roles and screen reader support
 - [Keyboard Navigation](https://reactdatatable.com/docs/keyboard-navigation): cellNavigation prop for spreadsheet-style ARIA grid keyboard navigation
+- [Context Menu](https://reactdatatable.com/docs/context-menu): right-click or menu-button menu with built-in header actions (sort, pin, hide, reset) and custom row actions
 - [Localization](https://reactdatatable.com/docs/localization): translated labels and locales
 - [RTL Support](https://reactdatatable.com/docs/rtl): right-to-left layouts
 - [Mobile](https://reactdatatable.com/docs/mobile): responsive columns and layouts

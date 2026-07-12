@@ -47,6 +47,20 @@ const ptBR: Localization = {
 		expandRowAriaLabel: 'Expandir linha',
 		collapseRowAriaLabel: 'Recolher linha',
 	},
+	contextMenu: {
+		headerMenuAriaLabel: 'Menu da coluna',
+		rowMenuAriaLabel: 'Menu da linha',
+		headerMenuButtonAriaLabel: 'Ações da coluna',
+		rowMenuButtonAriaLabel: 'Ações da linha',
+		sortAscLabel: 'Ordenar crescente',
+		sortDescLabel: 'Ordenar decrescente',
+		clearSortLabel: 'Limpar ordenação',
+		pinLeftLabel: 'Fixar à esquerda',
+		pinRightLabel: 'Fixar à direita',
+		unpinLabel: 'Desafixar',
+		hideColumnLabel: 'Ocultar coluna',
+		resetLabel: 'Redefinir tabela',
+	},
 };
 
 export default ptBR;
