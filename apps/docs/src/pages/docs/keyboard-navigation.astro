@@ -7,6 +7,7 @@ import KeyboardSortDemo from '../../components/demos/KeyboardSortDemo.tsx';
 import KeyboardEditDemo from '../../components/demos/KeyboardEditDemo.tsx';
 import KeyboardNavigationDemo from '../../components/demos/KeyboardNavigationDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Keyboard navigation | react-data-table-component">
@@ -161,10 +162,5 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Table prop', 'Type', 'Description']}
-    rows={[
-      ['<code>cellNavigation</code>', '<code>boolean</code>', "Enable spreadsheet-style keyboard navigation (WAI-ARIA grid pattern: <code>role='grid'</code>, single Tab stop, roving tabindex). Defaults to <code>false</code>."],
-    ]}
-  />
+  <PropsTable feature="keyboard" columns={['prop', 'type', 'description']} propHeader="Table prop" />
 </DocsLayout>

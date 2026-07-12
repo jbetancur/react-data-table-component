@@ -10,10 +10,6 @@
     {
       "type": "opencollective",
       "url": "https://opencollective.com/react-data-table-component"
-    },
-    {
-      "type": "tidelift",
-      "url": "https://tidelift.com/funding/github/npm/react-data-table-component"
     }
   ],
   "main": "dist/index.js",

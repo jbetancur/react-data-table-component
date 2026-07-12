@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import AnimationsDemo from '../../components/demos/AnimationsDemo.tsx';
 ---
 
@@ -111,4 +112,8 @@ export default function App() {
   --rdt-row-anim-duration: 300ms;
   --rdt-row-anim-stagger:  20ms;
 }`} lang="css" />
+
+  <h2>Prop reference</h2>
+
+  <PropsTable only={['animateRows']} columns={['prop', 'type', 'default', 'description']} />
 </DocsLayout>

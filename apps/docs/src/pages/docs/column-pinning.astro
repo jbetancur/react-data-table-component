@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
 ---
 
@@ -184,12 +185,7 @@ const columns: TableColumn<Row>[] = [
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Column prop', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>pinned</code>', "<code>'left' | 'right'</code>", '-', 'Pin the column to the left or right edge. Requires an explicit <code>id</code>.'],
-    ]}
-  />
+  <PropsTable feature="column-pinning" columns={['prop', 'type', 'default', 'description']} propHeader="Column prop" />
 
   <h2>CSS custom properties</h2>
 

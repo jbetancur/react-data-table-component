@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 ---
 
@@ -55,4 +56,8 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
     <li><code>headerSeparator</code>: defaults to <code>true</code> (subtle inset line)</li>
     <li><code>columnSeparator</code>: defaults to <code>false</code> (no body separators)</li>
   </ul>
+
+  <h2>Prop reference</h2>
+
+  <PropsTable only={['columnSeparator', 'headerSeparator']} columns={['prop', 'type', 'default', 'description']} />
 </DocsLayout>

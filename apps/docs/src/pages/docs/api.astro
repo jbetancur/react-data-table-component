@@ -1,0 +1,648 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
+---
+
+<DocsLayout
+  title="API reference | react-data-table-component"
+  description="Complete prop, type, and export reference for react-data-table-component v8."
+>
+  <h1>API reference</h1>
+
+  <p>
+    Complete reference for every prop, type, and export in <code>react-data-table-component</code> v8.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>Looking for examples or recipes?</strong> This page is the flat reference for "what does prop X do?".
+      Each feature has its own page with examples. Start there if you're new:
+    </p>
+    <ul>
+      <li><a href="/docs/columns">Columns</a> · <a href="/docs/cells">Cell rendering</a> · <a href="/docs/inline-editing">Inline editing</a></li>
+      <li><a href="/docs/sorting">Sorting</a> · <a href="/docs/pagination">Pagination</a> · <a href="/docs/filtering">Filtering</a></li>
+      <li><a href="/docs/selection">Selection</a> · <a href="/docs/expandable">Expandable rows</a></li>
+      <li><a href="/docs/resizable">Resizable</a> · <a href="/docs/column-pinning">Pinning</a> · <a href="/docs/column-groups">Groups</a></li>
+      <li><a href="/docs/themes">Themes</a> · <a href="/docs/custom-styles">Custom styles</a> · <a href="/docs/performance">Performance</a></li>
+      <li><a href="/docs/typescript">TypeScript</a> · <a href="/docs/headless">Headless hooks</a></li>
+    </ul>
+  </blockquote>
+
+  <h2 id="datatable-props">DataTable props</h2>
+
+  <p>
+    <code>DataTable&lt;T&gt;</code> accepts the following props where <code>T</code> is the row data type.
+    Only <code>columns</code> and <code>data</code> are required.
+  </p>
+
+  <h3 id="data">Data</h3>
+  <PropsTable group="Data" />
+
+  <h3 id="layout-appearance">Layout &amp; appearance</h3>
+  <PropsTable group="Layout & appearance" />
+
+  <h3 id="theming-styling">Theming &amp; styling</h3>
+  <PropsTable group="Theming & styling" />
+
+  <h3 id="sorting">Sorting</h3>
+  <PropsTable group="Sorting" propHeader="Prop / method" />
+
+  <h3 id="pagination">Pagination</h3>
+  <PropsTable group="Pagination" />
+
+  <h3 id="footer">Footer</h3>
+  <PropsTable group="Footer" />
+  <p>
+    Column-level footers live on each <a href="#tablecolumnt"><code>TableColumn&lt;T&gt;</code></a> as the
+    <code>footer</code> field. See <a href="/docs/footer">Footer</a> for the full walkthrough.
+  </p>
+
+  <h3 id="row-selection">Row selection</h3>
+  <PropsTable group="Row selection" propHeader="Prop / method" />
+
+  <h3 id="expandable-rows">Expandable rows</h3>
+  <PropsTable group="Expandable rows" />
+
+  <h3 id="row-events">Row events</h3>
+  <PropsTable group="Row events" columns={['prop', 'type', 'description']} />
+
+  <h3 id="keyboard-navigation">Keyboard navigation</h3>
+  <PropsTable group="Keyboard navigation" />
+
+  <h3 id="column-features">Column features</h3>
+  <PropsTable group="Column features" />
+
+  <h3 id="context-menu">Context menu</h3>
+  <PropsTable group="Context menu" />
+
+  <h3 id="localization">Localization</h3>
+  <PropsTable group="Localization" />
+
+  <h2 id="columngroup">ColumnGroup</h2>
+
+  <p>
+    Defines a spanning group header above one or more columns. Pass an array to the
+    <code>columnGroups</code> prop.
+  </p>
+
+  <CodeBlock code={`import { type ColumnGroup } from 'react-data-table-component';
+
+const columnGroups: ColumnGroup[] = [
+  { name: 'Employee',     columnIds: ['first', 'last', 'dept'] },
+  { name: 'Compensation', columnIds: ['base', 'bonus'], align: 'left' },
+];`} lang="ts" />
+
+  <DocsTable
+    headers={['Field', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>name</code>', '<code>ReactNode</code>', '-', '<strong>Required.</strong> Group header label. Accepts JSX.'],
+      ['<code>columnIds</code>', '<code>(string | number)[]</code>', '-', '<strong>Required.</strong> Ids of columns under this group. Must match each column&apos;s <code>id</code> exactly.'],
+      ['<code>align</code>', "<code>'left' | 'center' | 'right'</code>", "<code>'center'</code>", 'Horizontal alignment of the group label.'],
+      ['<code>reorder</code>', '<code>boolean</code>', '-', 'Allow drag-to-reorder for this group. Dragging moves all member columns as a block. Fires <code>onColumnGroupOrderChange</code>.'],
+    ]}
+  />
+
+  <p>Columns not listed in any group span the full group-row height with no label.</p>
+
+  <h2 id="tablecolumnt">TableColumn&lt;T&gt;</h2>
+
+  <CodeBlock code={`import { type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<MyRow>[] = [
+  {
+    id: 'name',
+    name: 'Full name',
+    selector: row => row.name,
+    sortable: true,
+    width: '200px',
+  },
+];`} lang="ts" />
+
+  <DocsTable
+    headers={['Prop', 'Type', 'Description']}
+    rows={[
+      ['<code>id</code>', '<code>string | number</code>', 'Stable identity used by <code>defaultSortFieldId</code>, <code>columnGroups</code>, and <code>filterValues</code>.'],
+      ['<code>name</code>', '<code>ReactNode</code>', 'Column header label.'],
+      ['<code>selector</code>', '<code>(row, index?) =&gt; Primitive | ReactNode</code>', 'Data accessor. For sortable columns return a <code>Primitive</code> (<code>string | number | boolean | bigint | Date</code>). Rows whose selector returns <code>null</code> or <code>undefined</code> sort to the end. <code>bigint</code> displays as its decimal string; <code>Date</code> displays via <code>toLocaleString()</code>, which follows the viewer&apos;s locale and timezone. Use <code>format</code> when you need deterministic or SSR-stable output.'],
+      ['<code>cell</code>', '<code>(row, index, column, id) =&gt; ReactNode</code>', 'Custom cell renderer. Overrides the <code>selector</code> display value.'],
+      ['<code>format</code>', '<code>(row, index) =&gt; ReactNode</code>', 'Format the selector value for display without changing the sort key.'],
+      ['<code>sortable</code>', '<code>boolean</code>', 'Enable sorting on this column.'],
+      ['<code>sortFunction</code>', '<code>(a: T, b: T) =&gt; number</code>', 'Custom comparator for this column.'],
+      ['<code>sortField</code>', '<code>string</code>', 'Field key passed to <code>onSort</code> for server-side sort identification.'],
+      ['<code>filterable</code>', '<code>boolean</code>', 'Show a filter popup for this column.'],
+      ['<code>filterType</code>', '<code>"text" | "number" | "date"</code>', 'Filter operator set and input widget. Defaults to <code>"text"</code>. See <a href="/docs/filtering">Filtering</a>.'],
+      ['<code>filterFunction</code>', '<code>(row, filter: FilterState) =&gt; boolean</code>', 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.'],
+      ['<code>width</code>', '<code>string</code>', 'Fixed column width, e.g. <code>"120px"</code>.'],
+      ['<code>minWidth</code>', '<code>string</code>', 'Minimum width.'],
+      ['<code>maxWidth</code>', '<code>string</code>', 'Maximum width.'],
+      ['<code>grow</code>', '<code>number</code>', 'Flex-grow factor (default <code>1</code>). Set to <code>0</code> to prevent growing.'],
+      ['<code>right</code>', '<code>boolean</code>', 'Right-align cell content.'],
+      ['<code>center</code>', '<code>boolean</code>', 'Center cell content.'],
+      ['<code>wrap</code>', '<code>boolean</code>', 'Allow cell text to wrap.'],
+      ['<code>compact</code>', '<code>boolean</code>', 'Remove cell padding.'],
+      ['<code>button</code>', '<code>boolean</code>', 'Center content and suppress row click propagation.'],
+      ['<code>allowOverflow</code>', '<code>boolean</code>', 'Allow cell content to overflow (useful for dropdowns and popovers).'],
+      ['<code>ignoreRowClick</code>', '<code>boolean</code>', 'Prevent clicks in this cell from firing <code>onRowClicked</code>.'],
+      ['<code>hide</code>', '<code>Media | number</code>', 'Hide the column below the given breakpoint (<code>Media.SM</code> = 599px, <code>MD</code> = 959px, <code>LG</code> = 1280px) or a custom pixel value.'],
+      ['<code>omit</code>', '<code>boolean</code>', 'Exclude the column entirely. Toggle this to show/hide a column.'],
+      ['<code>reorder</code>', '<code>boolean</code>', 'Allow drag-to-reorder for this column (requires <code>reorder</code> on at least two columns).'],
+      ['<code>pinned</code>', "<code>'left' | 'right'</code>", 'Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container — give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.'],
+      ['<code>style</code>', '<code>CSSProperties</code>', 'Inline styles applied to every cell in this column.'],
+      ['<code>conditionalCellStyles</code>', '<code>ConditionalStyles&lt;T&gt;[]</code>', 'Per-cell conditional styles.'],
+      ['<code>footer</code>', '<code>ReactNode | (rows: T[]) =&gt; ReactNode</code>', 'Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a <code>footer</code>, a footer row renders below the body. See <a href="/docs/footer">Footer</a>.'],
+    ]}
+  />
+
+  <h3 id="inline-editing">Inline editing</h3>
+
+  <DocsTable
+    headers={['Prop', 'Type', 'Description']}
+    rows={[
+      ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for <code>editor: { type: &apos;text&apos; }</code>. Ignored when <code>editor</code> is also set.'],
+      ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <a href="#celleditor">CellEditor</a> below. Takes precedence over <code>editable</code>.'],
+      ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Gate the edit before <code>onCellEdit</code> fires. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string error to keep the editor open with an inline tooltip.'],
+      ['<code>onCellEdit</code>', '<code>CellEditCallback&lt;T&gt;</code>', 'Called when the user commits an edit. Receives <code>(row: T, value: string, column: TableColumn&lt;T&gt;)</code>. The <code>value</code> is always a string; parse it to the target type in your handler.'],
+    ]}
+  />
+
+  <p>See <a href="/docs/inline-editing">Inline editing</a> for examples, CSS variables, and styling guidance.</p>
+
+  <h2 id="celleditor">CellEditor</h2>
+
+  <CodeBlock code={`import { type CellEditor } from 'react-data-table-component';
+
+type CellEditor<T = unknown> =
+  | { type: 'text'; placeholder?: string }
+  | { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
+  | { type: 'date'; min?: string; max?: string }
+  | { type: 'checkbox' }
+  | {
+      type: 'select';
+      options: Array<{ value: string; label: React.ReactNode }>;
+      placeholder?: string;
+    }
+  | {
+      type: 'custom';
+      render: (ctx: CustomCellEditorContext<T>) => React.ReactNode;
+    };
+
+interface CustomCellEditorContext<T> {
+  row: T;
+  value: string;
+  setValue: (next: string) => void;
+  commit: (value?: string) => void;
+  cancel: () => void;
+  column: TableColumn<T>;
+}`} lang="ts" />
+
+  <DocsTable
+    headers={['Variant', 'Field', 'Type', 'Description']}
+    rows={[
+      ['All', '<code>type</code>', '<code>"text" | "number" | "date" | "checkbox" | "select" | "custom"</code>', 'Editor widget to render.'],
+      ['<code>text</code> / <code>number</code> / <code>select</code>', '<code>placeholder</code>', '<code>string</code>', 'Placeholder text. For <code>select</code>, shown as a disabled hidden option when the current value is empty.'],
+      ['<code>number</code>', '<code>min</code> / <code>max</code> / <code>step</code>', '<code>number</code>', 'Forwarded to the native <code>&lt;input type="number"&gt;</code>.'],
+      ['<code>date</code>', '<code>min</code> / <code>max</code>', '<code>string</code>', 'Forwarded to the native <code>&lt;input type="date"&gt;</code> as ISO dates.'],
+      ['<code>select</code>', '<code>options</code>', '<code>{ value: string; label: ReactNode }[]</code>', 'Dropdown options. The <code>value</code> is what gets committed; <code>label</code> is displayed (must be string or number inside native <code>&lt;option&gt;</code>).'],
+      ['<code>custom</code>', '<code>render</code>', '<code>(ctx) =&gt; ReactNode</code>', 'Render any editor. Call <code>ctx.commit(value)</code> to save, <code>ctx.cancel()</code> to discard.'],
+    ]}
+  />
+
+  <h3 id="inline-editing-css-classes">Inline editing CSS classes</h3>
+
+  <DocsTable
+    headers={['Class', 'Applied to', 'Purpose']}
+    rows={[
+      ['<code>rdt_cellEditable</code>', 'Cell container', 'Added on every cell that has an editor defined (idle state).'],
+      ['<code>rdt_cellEditing</code>', 'Cell container', 'Added while the editor is open. Removes padding and paints the focus ring.'],
+      ['<code>rdt_editInput</code>', '<code>&lt;input&gt;</code>', 'Text editor control inside an editing cell.'],
+      ['<code>rdt_editSelect</code>', '<code>&lt;select&gt;</code>', 'Dropdown editor control inside an editing cell.'],
+    ]}
+  />
+
+  <h3 id="inline-editing-css-variables">Inline editing CSS variables</h3>
+
+  <DocsTable
+    headers={['Variable', 'Default', 'Purpose']}
+    rows={[
+      ['<code>--rdt-color-cell-edit-bg</code>', '8% primary on bg', 'Background of the cell while editing.'],
+      ['<code>--rdt-color-cell-edit-hover</code>', '6% primary', 'Background of an editable cell on hover.'],
+      ['<code>--rdt-color-cell-edit-hover-border</code>', '40% primary', 'Dashed underline colour on editable cell hover.'],
+    ]}
+  />
+
+  <h2 id="contextmenuaction">ContextMenuAction</h2>
+
+  <p>
+    A single item in a context menu. Pass arrays of these via <code>contextMenuActions</code>;
+    selections arrive in <code>onContextMenuAction</code>.
+  </p>
+
+  <CodeBlock code={`import { type ContextMenuAction } from 'react-data-table-component';
+
+const rowActions = (row: MyRow): ContextMenuAction[] => [
+  { id: 'edit', label: 'Edit' },
+  { id: 'delete', label: 'Delete', disabled: row.locked },
+];`} lang="ts" />
+
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['<code>id</code>', '<code>string</code>', 'Identifier passed to <code>onContextMenuAction</code>. The built-in header actions reserve <code>sort-asc</code>, <code>sort-desc</code>, <code>clear-sort</code>, <code>pin-left</code>, <code>pin-right</code>, <code>unpin</code>, <code>hide-column</code>, and <code>reset</code>.'],
+      ['<code>label</code>', '<code>ReactNode</code>', 'Item content.'],
+      ['<code>disabled</code>', '<code>boolean</code>', 'Render the item disabled.'],
+      ['<code>icon</code>', '<code>ReactNode</code>', 'Optional icon rendered before the label.'],
+    ]}
+  />
+
+  <p>
+    Related types: <code>ContextMenuConfig</code> (the object form of the <code>contextMenu</code> prop),
+    <code>ContextMenuActions&lt;T&gt;</code> (the <code>contextMenuActions</code> prop shape), and
+    <code>ContextMenuActionContext&lt;T&gt;</code> (the <code>ctx</code> argument of <code>onContextMenuAction</code>)
+    are all exported. See <a href="/docs/context-menu">Context menu</a>.
+  </p>
+
+  <h2 id="datatablehandle-ref">DataTableHandle (ref)</h2>
+
+  <p>Attach a ref to <code>DataTable</code> to imperatively control it.</p>
+
+  <CodeBlock code={`import DataTable, { type DataTableHandle } from 'react-data-table-component';
+import { useRef } from 'react';
+
+function App() {
+  const ref = useRef<DataTableHandle>(null);
+
+  return (
+    <>
+      <button onClick={() => ref.current?.clearSelectedRows()}>Clear selection</button>
+      <button onClick={() => ref.current?.clearSort()}>Reset sort</button>
+      <DataTable ref={ref} columns={columns} data={data} selectableRows />
+    </>
+  );
+}`} lang="tsx" />
+
+  <DocsTable
+    headers={['Method', 'Description']}
+    rows={[
+      ['<code>clearSelectedRows()</code>', 'Deselect all currently selected rows.'],
+      ['<code>clearSort()</code>', 'Reset sort to the default (<code>defaultSortFieldId</code> / <code>defaultSortAsc</code>), or unsorted if no defaults are set.'],
+    ]}
+  />
+
+  <h2 id="tablestyles">TableStyles</h2>
+
+  <p>
+    Pass to <code>customStyles</code> to override styles for any part of <code>DataTable</code>.
+    Each key accepts a <code>style</code> object (<code>React.CSSProperties</code>) and optional extra properties.
+  </p>
+
+  <CodeBlock code={`import DataTable, { type TableStyles } from 'react-data-table-component';
+
+const customStyles: TableStyles = {
+  headRow: {
+    style: {
+      backgroundColor: '#f8fafc',
+      borderBottomWidth: '2px',
+    },
+  },
+  headCells: {
+    style: {
+      fontSize: '13px',
+      fontWeight: 700,
+      color: '#374151',
+    },
+  },
+  rows: {
+    style: { minHeight: '56px' },
+    highlightOnHoverStyle: {
+      backgroundColor: '#f0f9ff',
+      borderBottomColor: '#e0f2fe',
+      outline: '1px solid #bae6fd',
+    },
+  },
+};`} lang="tsx" />
+
+  <DocsTable
+    headers={['Key', 'Extra fields', 'Description']}
+    rows={[
+      ['<code>table</code>', '-', 'The outermost table element.'],
+      ['<code>tableWrapper</code>', '-', 'Wrapper <code>&lt;div&gt;</code> around the table.'],
+      ['<code>responsiveWrapper</code>', '-', 'Horizontal-scroll wrapper (only present when <code>responsive</code>).'],
+      ['<code>header</code>', '<code>fontColor</code>, <code>fontSize</code>', 'Title / actions bar at the top.'],
+      ['<code>subHeader</code>', '-', 'Sub-header bar.'],
+      ['<code>head</code>', '-', 'The <code>&lt;thead&gt;</code> element.'],
+      ['<code>headRow</code>', '<code>denseStyle</code>', 'Column header row.'],
+      ['<code>headCells</code>', '<code>draggingStyle</code>', 'Individual header cells.'],
+      ['<code>cells</code>', '<code>draggingStyle</code>', 'Body cells.'],
+      ['<code>rows</code>', '<code>selectedHighlightStyle</code>, <code>denseStyle</code>, <code>highlightOnHoverStyle</code>, <code>stripedStyle</code>', 'Body rows.'],
+      ['<code>expanderRow</code>', '-', 'The expanded content row.'],
+      ['<code>expanderCell</code>', '-', 'Cell containing the expand/collapse button.'],
+      ['<code>expanderButton</code>', '-', 'The expand/collapse button itself.'],
+      ['<code>pagination</code>', '<code>pageButtonsStyle</code>', 'Pagination bar and page buttons.'],
+      ['<code>footer</code>', '-', 'The footer row container.'],
+      ['<code>footerCells</code>', '-', 'Individual footer cells.'],
+      ['<code>noData</code>', '-', 'Empty-state container.'],
+      ['<code>progress</code>', '-', 'Loading indicator container.'],
+    ]}
+  />
+
+  <h2 id="conditionalstylest">ConditionalStyles&lt;T&gt;</h2>
+
+  <p>
+    Used with <code>conditionalRowStyles</code> and <code>conditionalCellStyles</code> to apply styles
+    or class names based on row data.
+  </p>
+
+  <CodeBlock code={`const conditionalRowStyles = [
+  {
+    when: row => row.status === 'active',
+    style: { backgroundColor: '#f0fdf4', color: '#166534' },
+  },
+  {
+    when: row => row.salary > 100000,
+    // style can also be a function:
+    style: row => ({ fontWeight: row.salary > 150000 ? 700 : 400 }),
+  },
+  {
+    when: row => row.flagged,
+    classNames: ['flagged-row'],
+  },
+];`} lang="tsx" />
+
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['<code>when</code>', '<code>(row: T) =&gt; boolean</code>', '<strong>Required.</strong> Predicate that applies styles when this returns <code>true</code>.'],
+      ['<code>style</code>', '<code>CSSProperties | ((row: T) =&gt; CSSProperties)</code>', 'Inline styles to apply.'],
+      ['<code>classNames</code>', '<code>string[]</code>', 'CSS class names to add.'],
+    ]}
+  />
+
+  <h2 id="createtheme">createTheme()</h2>
+
+  <p>Registers a custom named theme. Call this outside your component tree so it runs once.</p>
+
+  <CodeBlock code={`import { createTheme } from 'react-data-table-component';
+
+createTheme(
+  'brand',       // name (pass to the theme prop)
+  {
+    text:             { primary: '#1a1a2e', secondary: '#4a4a6a', disabled: 'rgba(26,26,46,.38)' },
+    background:       { default: '#f0f4ff' },
+    divider:          { default: '#dde3f0' },
+    button:           { default: '#6366f1', hover: '#4f46e5', focus: 'rgba(99,102,241,.25)', disabled: '#c7d2fe' },
+    selected:         { default: '#ede9fe', text: '#3730a3' },
+    highlightOnHover: { default: '#e0e7ff', text: '#1a1a2e' },
+    striped:          { default: '#f5f3ff', text: '#1a1a2e' },
+  },
+  'default',     // optional: inherit from this theme
+);`} lang="ts" />
+
+  <DocsTable
+    headers={['Parameter', 'Type', 'Description']}
+    rows={[
+      ['<code>name</code>', '<code>string</code>', 'Theme name to reference in the <code>theme</code> prop.'],
+      ['<code>overrides</code>', '<code>Partial&lt;Theme&gt;</code>', 'Token overrides. Only the keys you provide are changed.'],
+      ['<code>inherit</code>', '<code>string</code>', 'Optional name of a built-in or previously registered theme to inherit from.'],
+    ]}
+  />
+
+  <p>The <code>Theme</code> interface token keys:</p>
+
+  <DocsTable
+    headers={['Token', 'Fields']}
+    rows={[
+      ['<code>text</code>', '<code>primary</code>, <code>secondary</code>, <code>disabled</code>'],
+      ['<code>background</code>', '<code>default</code>'],
+      ['<code>context</code>', '<code>background</code>, <code>text</code>'],
+      ['<code>divider</code>', '<code>default</code>'],
+      ['<code>button</code>', '<code>default</code>, <code>hover</code>, <code>focus</code>, <code>disabled</code>'],
+      ['<code>selected</code>', '<code>default</code>, <code>text</code>'],
+      ['<code>highlightOnHover</code>', '<code>default</code>, <code>text</code>'],
+      ['<code>striped</code>', '<code>default</code>, <code>text</code>'],
+      ['<code>colorScheme</code>', '<code>"light" | "dark"</code>. Sets native form control rendering.'],
+    ]}
+  />
+
+  <h2 id="pagination-types">Pagination types</h2>
+
+  <h3 id="paginationoptions">PaginationOptions</h3>
+
+  <p>Passed to <code>paginationComponentOptions</code>.</p>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>rowsPerPageText</code>', '<code>string</code>', '<code>"Rows per page:"</code>', 'Label for the rows-per-page select.'],
+      ['<code>rangeSeparatorText</code>', '<code>string</code>', '<code>"of"</code>', 'Separator between current range and total, e.g. "1–10 of 50".'],
+      ['<code>noRowsPerPage</code>', '<code>boolean</code>', '<code>false</code>', 'Hide the rows-per-page selector.'],
+      ['<code>selectAllRowsItem</code>', '<code>boolean</code>', '<code>false</code>', 'Add an "All" option to the rows-per-page selector.'],
+      ['<code>selectAllRowsItemText</code>', '<code>string</code>', '<code>"All"</code>', 'Label for the "All" option.'],
+    ]}
+  />
+
+  <h3 id="paginationserveroptions">PaginationServerOptions</h3>
+
+  <p>Passed to <code>paginationServerOptions</code> when using server-side pagination.</p>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>persistSelectedOnPageChange</code>', '<code>boolean</code>', '<code>false</code>', 'Keep the current selection when the page changes.'],
+      ['<code>persistSelectedOnSort</code>', '<code>boolean</code>', '<code>false</code>', 'Keep the current selection when the sort column or direction changes.'],
+    ]}
+  />
+
+  <h3 id="paginationcomponentprops">PaginationComponentProps</h3>
+
+  <p>The props your custom <code>paginationComponent</code> will receive.</p>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['<code>rowsPerPage</code>', '<code>number</code>', 'Currently selected rows-per-page value.'],
+      ['<code>rowCount</code>', '<code>number</code>', 'Total row count.'],
+      ['<code>currentPage</code>', '<code>number</code>', 'Current active page (1-based).'],
+      ['<code>onChangePage</code>', '<code>(page, totalRows) =&gt; void</code>', 'Call this to change page.'],
+      ['<code>onChangeRowsPerPage</code>', '<code>(rowsPerPage, page) =&gt; void</code>', 'Call this to change rows-per-page.'],
+    ]}
+  />
+
+  <h2 id="enums-constants">Enums &amp; constants</h2>
+
+  <p>All enums and constants are re-exported from the package root.</p>
+
+  <CodeBlock code={`import { Media, Direction, Alignment, SortOrder } from 'react-data-table-component';`} lang="ts" />
+
+  <DocsTable
+    headers={['Enum', 'Values', 'Description']}
+    rows={[
+      ['<code>Media</code>', '<code>SM = "sm"</code> (≤ 599px), <code>MD = "md"</code> (≤ 959px), <code>LG = "lg"</code> (≤ 1280px)', 'Breakpoints for the column <code>hide</code> prop.'],
+      ['<code>Direction</code>', '<code>LTR = "ltr"</code>, <code>RTL = "rtl"</code>, <code>AUTO = "auto"</code>', 'Text direction for the <code>direction</code> prop.'],
+      ['<code>Alignment</code>', '<code>LEFT = "left"</code>, <code>RIGHT = "right"</code>, <code>CENTER = "center"</code>', 'Alignment for <code>subHeaderAlign</code>.'],
+      ['<code>SortOrder</code>', '<code>ASC = "asc"</code>, <code>DESC = "desc"</code>', 'Sort direction passed to <code>onSort</code> and <code>sortFunction</code>.'],
+    ]}
+  />
+
+  <h2 id="usecolumnvisibility">useColumnVisibility</h2>
+
+  <p>
+    Hook for managing column show/hide state outside of <code>DataTable</code>. Pairs with the
+    <code>omit</code> column prop.
+  </p>
+
+  <CodeBlock code={`import { useColumnVisibility, type TableColumn } from 'react-data-table-component';
+
+const rawColumns: TableColumn<Row>[] = [
+  { id: 'name', name: 'Name', selector: r => r.name },
+  { id: 'dept', name: 'Department', selector: r => r.dept },
+];
+
+function App() {
+  const { columns, visibility, toggle, setAll } = useColumnVisibility(rawColumns);
+
+  return (
+    <>
+      {visibility.map(({ id, name, visible }) => (
+        <label key={id}>
+          <input type="checkbox" checked={visible} onChange={() => toggle(id)} />
+          {name}
+        </label>
+      ))}
+      <button onClick={() => setAll(true)}>Show all</button>
+      <DataTable columns={columns} data={data} />
+    </>
+  );
+}`} lang="tsx" />
+
+  <h3 id="usecolumnvisibilityresult">UseColumnVisibilityResult</h3>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'Columns with <code>omit</code> set according to current visibility. Pass directly to <code>DataTable</code>.'],
+      ['<code>visibility</code>', '<code>ColumnVisibilityEntry[]</code>', 'Current visibility state for every column.'],
+      ['<code>toggle</code>', '<code>(id: string | number) =&gt; void</code>', 'Toggle the visibility of a single column by id.'],
+      ['<code>setAll</code>', '<code>(visible: boolean) =&gt; void</code>', 'Show or hide all columns at once.'],
+    ]}
+  />
+
+  <h3 id="columnvisibilityentry">ColumnVisibilityEntry</h3>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['<code>id</code>', '<code>string | number</code>', 'Column id.'],
+      ['<code>name</code>', '<code>ReactNode</code>', 'Column name (mirrors the <code>name</code> field from the column definition).'],
+      ['<code>visible</code>', '<code>boolean</code>', 'Whether the column is currently visible.'],
+    ]}
+  />
+
+  <h2 id="usetableexport">useTableExport</h2>
+
+  <p>
+    Hook for generating CSV / JSON from your columns and rows, with download + clipboard helpers.
+    See <a href="/docs/export">Export (CSV / JSON)</a> for the full guide.
+  </p>
+
+  <CodeBlock code={`import { useTableExport, type TableColumn } from 'react-data-table-component';
+
+const columns: TableColumn<Row>[] = [
+  { id: 'id', name: 'ID', selector: r => r.id },
+  { id: 'name', name: 'Name', selector: r => r.name },
+];
+
+function App({ rows }: { rows: Row[] }) {
+  const { download, copy, toCSV, toJSON } = useTableExport({ columns, rows });
+
+  return (
+    <>
+      <button onClick={() => download('rows.csv')}>CSV</button>
+      <button onClick={() => download('rows.json', 'json')}>JSON</button>
+      <button onClick={() => copy()}>Copy CSV</button>
+    </>
+  );
+}`} lang="tsx" />
+
+  <h3 id="usetableexportoptions">UseTableExportOptions</h3>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Default', 'Description']}
+    rows={[
+      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'required', 'Same array you pass to DataTable. <code>omit: true</code> columns are skipped.'],
+      ['<code>rows</code>', '<code>T[]</code>', 'required', 'Rows to export.'],
+      ['<code>valueSource</code>', "<code>'selector' | 'format'</code>", "<code>'selector'</code>", "<code>'selector'</code> exports raw values; <code>'format'</code> runs <code>column.format</code> first."],
+      ['<code>headerOverrides</code>', '<code>Record&lt;string | number, string&gt;</code>', '–', 'Replace header label per column id.'],
+      ['<code>columnOrder</code>', '<code>(string | number)[]</code>', '–', 'Restrict and reorder columns by id.'],
+    ]}
+  />
+
+  <h3 id="usetableexportresult">UseTableExportResult</h3>
+
+  <DocsTable
+    headers={['Field', 'Type', 'Description']}
+    rows={[
+      ['<code>toCSV</code>', '<code>() =&gt; string</code>', 'Build a CSV string.'],
+      ['<code>toJSON</code>', '<code>() =&gt; string</code>', 'Build a pretty-printed JSON string.'],
+      ['<code>download</code>', "<code>(filename: string, format?: 'csv' | 'json') =&gt; void</code>", 'Trigger a browser download. SSR-safe (no-op when <code>document</code> is undefined).'],
+      ['<code>copy</code>', "<code>(format?: 'csv' | 'json') =&gt; Promise&lt;void&gt;</code>", 'Copy to clipboard via <code>navigator.clipboard</code>. Rejects when unavailable.'],
+    ]}
+  />
+
+  <h2 id="package-exports">Package exports</h2>
+
+  <CodeBlock code={`// Default export
+import DataTable from 'react-data-table-component';
+
+// Named exports
+import {
+  createTheme,
+  defaultThemes,
+  Media,
+  Direction,
+  Alignment,
+  SortOrder,
+  // Default icon sets (useful when building custom pagination/expander UIs)
+  DEFAULT_PAGINATION_ICONS,
+  DEFAULT_EXPANDABLE_ICON,
+  // Headless hooks
+  useTableState,
+  useColumns,
+  useTableData,
+  useColumnFilter,
+  useColumnVisibility,
+  useTableExport,
+  // Filter utilities
+  emptyFilterState,
+  isFilterActive,
+} from 'react-data-table-component';
+
+// TypeScript types
+import type {
+  TableProps,
+  TableColumn,
+  ColumnGroup,
+  TableRow,
+  TableStyles,
+  Theme,
+  ThemeProp,
+  ConditionalStyles,
+  DataTableHandle,
+  ExpanderComponentProps,
+  PaginationComponentProps,
+  PaginationOptions,
+  PaginationServerOptions,
+  PaginationIcons,
+  SortFunction,
+  Selector,
+  // Column visibility hook types
+  UseColumnVisibilityResult,
+  ColumnVisibilityEntry,
+  // Filter types
+  FilterType,
+  FilterOperator,
+  FilterCondition,
+  FilterState,
+} from 'react-data-table-component';`} lang="ts" />
+</DocsLayout>

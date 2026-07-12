@@ -34,6 +34,7 @@ const columns = [
 - [Column Reordering](https://reactdatatable.com/docs/column-reorder): drag to reorder, mouse or touch (press-and-hold on touch)
 - [Column Resizing](https://reactdatatable.com/docs/resizable): drag column edges by mouse or touch, persist widths
 - [Column Pinning](https://reactdatatable.com/docs/column-pinning): pin columns left or right
+- [Column Separators](https://reactdatatable.com/docs/column-separators): vertical divider lines between header and body columns
 - [Column Filtering](https://reactdatatable.com/docs/filtering): per-column text, number, and select filters
 - [Sorting](https://reactdatatable.com/docs/sorting): client-side and server-side sorting
 
@@ -87,6 +88,6 @@ const columns = [
 ## Optional
 
 - [Changelog](https://reactdatatable.com/docs/changelog): release history
-- [Support & Sponsorship](https://reactdatatable.com/support): sponsor tiers, enterprise support via Tidelift
+- [Support & Sponsorship](https://reactdatatable.com/support): sponsor tiers, direct consulting and enterprise support
 - [GitHub repository](https://github.com/jbetancur/react-data-table-component)
 - [npm package](https://www.npmjs.com/package/react-data-table-component)

@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import FooterBasicDemo from '../../components/demos/FooterBasicDemo.tsx';
 import FooterCustomDemo from '../../components/demos/FooterCustomDemo.tsx';
 ---
@@ -224,4 +225,13 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
       container for accessibility and has no constraints on its internal structure.
     </li>
   </ul>
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="footer" columns={['prop', 'type', 'default', 'description']} />
+
+  <p>
+    Column-level footers live on each <a href="/docs/api#tablecolumnt"><code>TableColumn</code></a> as
+    the <code>footer</code> field.
+  </p>
 </DocsLayout>

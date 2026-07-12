@@ -2,7 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
-import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import SortingDemo from '../../components/demos/SortingDemo.tsx';
 import PrioritySortDemo from '../../components/demos/PrioritySortDemo.tsx';
 import ServerSideSortingDemo from '../../components/demos/ServerSideSortingDemo.tsx';
@@ -481,22 +481,7 @@ function App() {
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Prop / method', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>defaultSortFieldId</code>', '<code>string | number</code>', '-', 'Column <code>id</code> to sort by on first render.'],
-      ['<code>defaultSortAsc</code>', '<code>boolean</code>', '<code>true</code>', 'Initial sort direction. <code>false</code> = descending.'],
-      ['<code>onSort</code>', '<code>(column, direction, sortedRows, sortColumns) =&gt; void</code>', '-', 'Called on every sort change with the primary column, its direction, the sorted rows, and the full <code>sortColumns</code> config in priority order. An empty <code>sortColumns</code> array means the sort was cleared.'],
-      ['<code>sortMulti</code>', '<code>boolean</code>', '<code>false</code>', 'Enable multi-column sorting. Ctrl/⌘-click a header to add it to the existing sort.'],
-      ['<code>sortServer</code>', '<code>boolean</code>', '<code>false</code>', 'Disable client-side sorting. Use with <code>onSort</code> to sort remotely.'],
-      ['<code>sortFunction</code>', '<code>SortFunction&lt;T&gt;</code>', '-', 'Table-level sort algorithm. Replaces the default sort for all columns.'],
-      ['<code>sortIcon</code>', '<code>ReactNode</code>', '-', 'Custom icon rendered inside sortable column headers.'],
-      ['<code>column.sortable</code>', '<code>boolean</code>', '<code>false</code>', 'Enable sorting on this column.'],
-      ['<code>column.sortFunction</code>', '<code>(a, b) =&gt; number</code>', '-', 'Per-column sort comparator. Takes priority over the table-level <code>sortFunction</code>.'],
-      ['<code>column.sortField</code>', '<code>string</code>', '-', 'Backend field name passed to <code>onSort</code> when it differs from <code>column.id</code>.'],
-      ['<code>ref.clearSort()</code>', '<code>DataTableHandle</code>', '-', 'Imperatively reset sort to the default (<code>defaultSortFieldId</code> / <code>defaultSortAsc</code>), or unsorted if no defaults are set. See <a href="/docs/api#datatablehandle-ref">DataTableHandle</a>.'],
-    ]}
-  />
+  <PropsTable feature="sorting" columns={['prop', 'type', 'default', 'description']} propHeader="Prop / method" />
 
   <p>
     See it combined with other features in the <a href="/docs/recipes/server-side">Server-side sort, page & filter</a> recipe

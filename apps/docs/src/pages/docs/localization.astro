@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Localization | react-data-table-component" description="Translate pagination labels, filter placeholders, and expandable row text in react-data-table-component using built-in locale strings or custom overrides.">
@@ -184,4 +185,8 @@ const custom: Localization = {
     <code>selectAllRowsItemText</code>) is still controlled by
     <code>paginationComponentOptions</code>, since those affect layout as well as text.
   </p>
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="localization" columns={['prop', 'type', 'default', 'description']} />
 </DocsLayout>
