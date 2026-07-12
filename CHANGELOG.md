@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.6.1
+
+### Bug fixes
+
+- A custom `progressComponent` could not be shown on the initial load — the skeleton rows always won. New `progressSkeleton` prop (default `true`) lets you set it to `false` to show your `progressComponent` on initial load instead. → [Loading state](/docs/loading)
+
+---
+
 ## 8.6.0
 
 ### New features

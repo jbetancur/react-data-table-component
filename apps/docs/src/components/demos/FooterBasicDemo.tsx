@@ -89,7 +89,6 @@ export default function FooterBasicDemo() {
 				columns={columns}
 				data={data}
 				highlightOnHover
-				dense
 			/>
 		</div>
 	);

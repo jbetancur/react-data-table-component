@@ -29,7 +29,8 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `columns` | `TableColumn<T>[]` | - | **Required.** Column definitions. |
 | `keyField` | `string` | `"id"` | Property on each row used as a stable React key. |
 | `progressPending` | `boolean` | `false` | Show a loading state. On initial load (no data yet) renders shimmer skeleton rows. On re-fetch (data already loaded) dims the existing rows and overlays a centered spinner. The column header always stays visible. |
-| `progressComponent` | `ReactNode` | built-in spinner | Custom loading indicator. |
+| `progressComponent` | `ReactNode` | built-in spinner | Custom loading indicator shown in the re-fetch overlay, and on initial load when `progressSkeleton` is `false`. |
+| `progressSkeleton` | `boolean` | `true` | Show shimmer skeleton rows on the initial load (no data yet). Set to `false` to show `progressComponent` on initial load instead. |
 | `noDataComponent` | `ReactNode` | built-in message | Rendered when `data` is empty. |
 
 ### Layout & appearance

@@ -31,10 +31,19 @@ function delay(ms: number) {
 
 type Mode = 'initial' | 'refetch' | 'idle';
 
+const customLoader = (
+	<div className="flex flex-col items-center gap-2 text-brand-600">
+		<div className="h-6 w-6 rounded-full border-2 border-brand-200 border-t-brand-600 animate-spin" />
+		<span className="text-xs font-medium">Fetching employees…</span>
+	</div>
+);
+
 export default function LoadingDemo() {
 	const [mode, setMode] = useState<Mode>('idle');
 	const [data, setData] = useState<Row[]>(ROWS);
 	const [pending, setPending] = useState(false);
+	const [useCustom, setUseCustom] = useState(false);
+	const [skeleton, setSkeleton] = useState(true);
 
 	async function simulateInitial() {
 		setData([]);
@@ -67,9 +76,31 @@ export default function LoadingDemo() {
 				<button className={btnSecondary} disabled={pending} onClick={simulateRefetch}>
 					Simulate re-fetch
 				</button>
+				<label className="flex items-center gap-1.5 text-xs text-gray-500 cursor-pointer select-none">
+					<input
+						type="checkbox"
+						checked={useCustom}
+						disabled={pending}
+						onChange={e => setUseCustom(e.target.checked)}
+					/>
+					Use custom loader
+				</label>
+				<label className="flex items-center gap-1.5 text-xs text-gray-500 cursor-pointer select-none">
+					<input
+						type="checkbox"
+						checked={skeleton}
+						disabled={pending}
+						onChange={e => setSkeleton(e.target.checked)}
+					/>
+					Skeleton on initial load
+				</label>
 				{mode !== 'idle' && (
 					<span className="text-xs text-gray-400 italic">
-						{mode === 'initial' ? 'Loading with no existing data — skeleton rows shown' : 'Re-fetching — existing rows dimmed, spinner overlaid'}
+						{mode === 'initial'
+							? skeleton
+								? 'Loading with no existing data — skeleton rows shown'
+								: 'Loading with no existing data — progress component shown'
+							: 'Re-fetching — existing rows dimmed, indicator overlaid'}
 					</span>
 				)}
 			</div>
@@ -77,6 +108,8 @@ export default function LoadingDemo() {
 				columns={columns}
 				data={data}
 				progressPending={pending}
+				progressComponent={useCustom ? customLoader : undefined}
+				progressSkeleton={skeleton}
 				highlightOnHover
 				striped
 			/>

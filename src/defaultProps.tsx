@@ -66,6 +66,7 @@ export const defaultProps = {
 			}}
 		/>
 	),
+	progressSkeleton: true,
 	persistTableHead: false,
 	sortIcon: null,
 	sortFunction: null,

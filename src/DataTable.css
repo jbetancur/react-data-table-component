@@ -1324,6 +1324,14 @@
 	pointer-events: none;
 }
 
+/* Initial load with a custom progressComponent: no rows behind it to fill height,
+ * so the overlay is in-flow and reserves its own vertical space. */
+.rdt_bodyOverlayEmpty {
+	position: static;
+	min-height: 96px;
+	padding: 24px 0;
+}
+
 /* ─── Footer ─────────────────────────────────────────────────────────────────
  * Lives inside .rdt_table so it shares the same flex layout as body rows —
  * column widths align automatically with the rest of the table.

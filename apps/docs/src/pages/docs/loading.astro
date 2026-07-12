@@ -18,6 +18,12 @@ import LoadingDemo from '../../components/demos/LoadingDemo';
     <li><strong>Re-fetch</strong> (rows already shown): existing rows stay in place, dim to 40% opacity, and a spinner overlays the centre. The header and pagination never disappear.</li>
   </ul>
 
+  <p>
+    Set <code>progressSkeleton</code> to <code>false</code> to opt out of the skeleton on initial load:
+    your <code>progressComponent</code> is shown instead of the shimmer rows. It defaults to <code>true</code>,
+    so a custom <code>progressComponent</code> still uses skeleton rows on first load unless you turn this off.
+  </p>
+
   <Demo
     title="Loading state"
     description="Click either button to see the two loading modes."
@@ -50,8 +56,9 @@ export default function UsersTable() {
   <h2>Custom spinner or message</h2>
 
   <p>
-    The default <code>progressComponent</code> is a CSS spinner circle. Pass any React node to replace it.
-    It will be centred in the overlay during re-fetches, or shown instead of skeletons on initial load.
+    The default <code>progressComponent</code> is a CSS spinner circle. Pass any React node to replace it:
+    your node is centred in the overlay during re-fetches. On initial load the skeleton rows show instead;
+    set <code>progressSkeleton={false}</code> to show your <code>progressComponent</code> there too.
   </p>
 
   <CodeBlock code={`<DataTable

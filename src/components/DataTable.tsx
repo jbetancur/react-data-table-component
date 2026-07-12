@@ -78,6 +78,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		responsive = defaultProps.responsive,
 		progressPending = defaultProps.progressPending,
 		progressComponent = defaultProps.progressComponent,
+		progressSkeleton = defaultProps.progressSkeleton,
 		persistTableHead = defaultProps.persistTableHead,
 		noDataComponent = defaultProps.noDataComponent,
 		disabled = defaultProps.disabled,
@@ -564,6 +565,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 										columnCount={tableColumns.length}
 										noDataComponent={noDataComponent}
 										progressComponent={progressComponent}
+										progressSkeleton={progressSkeleton}
 										expandableRowExpanded={expandableRowExpanded}
 										expandableRowDisabled={expandableRowDisabled}
 										bodyRef={bodyRef}

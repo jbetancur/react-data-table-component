@@ -538,6 +538,31 @@ describe('DataTable::progress/nodata', () => {
 		expect(container.querySelector('.rdt_skeletonPulse')).not.toBeNull();
 	});
 
+	test('should skip skeleton rows on initial load when progressSkeleton is false', () => {
+		const mock = dataMock();
+		const { container, getByText } = render(
+			<DataTable
+				data={[]}
+				columns={mock.columns}
+				progressPending
+				progressSkeleton={false}
+				progressComponent={<div>Loading…</div>}
+			/>,
+		);
+
+		expect(container.querySelector('.rdt_skeletonPulse')).toBeNull();
+		expect(getByText('Loading…')).not.toBeNull();
+	});
+
+	test('should still render skeleton rows when a custom progressComponent is passed but progressSkeleton is left default', () => {
+		const mock = dataMock();
+		const { container } = render(
+			<DataTable data={[]} columns={mock.columns} progressPending progressComponent={<div>Loading…</div>} />,
+		);
+
+		expect(container.querySelector('.rdt_skeletonPulse')).not.toBeNull();
+	});
+
 	describe('when persistTableHead', () => {
 		test('should render the progress component and keep TableHead when progressPending toggles to true', () => {
 			const mock = dataMock();
