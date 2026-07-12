@@ -341,6 +341,7 @@ type BaseTableProps<T> = {
 	pointerOnHover?: boolean;
 	progressComponent?: React.ReactNode;
 	progressPending?: boolean;
+	progressSkeleton?: boolean;
 	responsive?: boolean;
 	striped?: boolean;
 	style?: CSSObject;

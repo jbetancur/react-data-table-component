@@ -40,6 +40,7 @@ interface DataTableBodyProps<T> {
 	columnCount: number;
 	noDataComponent: React.ReactNode;
 	progressComponent: React.ReactNode;
+	progressSkeleton: boolean;
 	expandableRowExpanded?: RowState<T>;
 	expandableRowDisabled?: RowState<T>;
 	bodyRef: React.RefObject<HTMLDivElement>;
@@ -57,6 +58,7 @@ function DataTableBody<T>({
 	columnCount,
 	noDataComponent,
 	progressComponent,
+	progressSkeleton,
 	expandableRowExpanded,
 	expandableRowDisabled,
 	bodyRef,
@@ -163,13 +165,18 @@ function DataTableBody<T>({
 			{/* Empty + not loading */}
 			{!hasData && !isBusy && <NoData>{noDataComponent}</NoData>}
 
-			{/* Initial load: no existing data — show skeleton rows */}
-			{isBusy && !hasData && (
+			{/* Initial load with skeleton enabled: no existing data — show skeleton rows */}
+			{isBusy && !hasData && progressSkeleton && (
 				<Body className="rdt_TableBody" role="rowgroup">
 					{Array.from({ length: SKELETON_ROW_COUNT }).map((_, i) => (
 						<SkeletonRow key={i} colCount={columnCount} index={i} />
 					))}
 				</Body>
+			)}
+
+			{/* Initial load with skeleton disabled: show the progress component instead */}
+			{isBusy && !hasData && !progressSkeleton && (
+				<div className="rdt_bodyOverlay rdt_bodyOverlayEmpty">{progressComponent}</div>
 			)}
 
 			{/* Has data — always render rows, overlay when re-fetching */}
