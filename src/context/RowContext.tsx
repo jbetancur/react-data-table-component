@@ -1,17 +1,11 @@
 import * as React from 'react';
-import type {
-	TableColumn,
-	ConditionalStyles,
-	ExpandableIcon,
-	ExpandableRowsComponent,
-	Localization,
-	RowState,
-	SingleRowAction,
-	RangeRowAction,
-	ComponentProps,
-} from '../types';
+import type { TableColumn, ConditionalStyles } from '../types';
 import type { PinnedOffsets } from '../util';
 import type { RowMenuSlice } from '../hooks/useContextMenu';
+import type { RowEventsSlice } from '../hooks/useRowEvents';
+import type { ColumnDragSlice } from '../hooks/useColumns';
+import type { ExpansionSlice } from '../hooks/useExpansion';
+import type { RowSelectionSlice } from '../hooks/useSelection';
 
 export interface RowContextValue<T> {
 	keyField: string;
@@ -21,41 +15,14 @@ export interface RowContextValue<T> {
 	highlightOnHover: boolean;
 	pointerOnHover: boolean;
 	conditionalRowStyles: ConditionalStyles<T>[];
-	selectableRows: boolean;
-	selectableRowsComponent: 'input' | React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>>;
-	selectableRowsComponentProps: ComponentProps;
-	selectableRowsHighlight: boolean;
-	selectableRowsSingle: boolean;
-	selectableRowDisabled: RowState<T>;
-	expandableRows: boolean;
-	expandableIcon: ExpandableIcon;
-	localization: NonNullable<Localization['expandable']>;
-	expandableRowsComponent: ExpandableRowsComponent<T> | undefined;
-	expandableRowsComponentProps: ComponentProps | undefined;
-	expandableRowsHideExpander: boolean;
-	expandOnRowClicked: boolean;
-	expandOnRowDoubleClicked: boolean;
-	expandableInheritConditionalStyles: boolean;
-	onRowClicked: (row: T, e: React.MouseEvent) => void;
-	onRowDoubleClicked: (row: T, e: React.MouseEvent) => void;
-	onRowMiddleClicked: (row: T, e: React.MouseEvent) => void;
-	onRowMouseEnter: (row: T, e: React.MouseEvent) => void;
-	onRowMouseLeave: (row: T, e: React.MouseEvent) => void;
-	onRowExpandToggled: (expanded: boolean, row: T) => void;
-	onSelectedRow: (action: SingleRowAction<T>) => void;
-	/** Dispatch a range selection (Shift-click). */
-	onSelectedRange: (action: RangeRowAction<T>) => void;
-	/** Ref to the rows currently visible in order — used to compute range slices. */
-	visibleRowsRef: React.MutableRefObject<T[]>;
-	/** Ref to the last single-toggled key, the anchor for Shift-click ranges. */
-	lastSelectedKeyRef: React.MutableRefObject<string | number | null>;
-	/** Whether Shift-click range selection is enabled. */
-	selectableRowsRange: boolean;
-	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	/** Row selection feature slice — `null` when selectableRows is off. */
+	selection: RowSelectionSlice<T>;
+	/** Row expansion feature slice — `null` when expandableRows is off. */
+	expansion: ExpansionSlice<T>;
+	/** Row pointer-event feature slice — compared by reference in the memo dep list. */
+	rowEvents: RowEventsSlice<T>;
+	/** Column drag/reorder feature slice — body cells are drop targets during column reorder. */
+	columnDrag: ColumnDragSlice;
 	/** Resized column widths (px) keyed by column.id */
 	columnWidths: Record<string | number, number>;
 	/** Sticky offsets for pinned columns */

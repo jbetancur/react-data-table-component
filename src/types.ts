@@ -49,7 +49,7 @@ export type SortColumn<T> = {
 	sortDirection: SortOrder;
 };
 
-export type Primitive = string | number | boolean;
+export type Primitive = string | number | boolean | bigint | Date;
 export type ColumnSortFunction<T> = (a: T, b: T) => number;
 export type ExpandRowToggled<T> = (expanded: boolean, row: T) => void;
 export type Format<T> = (row: T, rowIndex: number) => React.ReactNode;

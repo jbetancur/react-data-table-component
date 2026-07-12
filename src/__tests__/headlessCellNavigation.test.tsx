@@ -42,7 +42,7 @@ function CustomTable() {
 							const active = activeCell?.row === rowIndex && activeCell?.col === colIndex;
 							return (
 								<td key={col.id} data-nav-row={rowIndex} data-nav-col={colIndex} tabIndex={active ? 0 : -1}>
-									{col.selector?.(row, rowIndex)}
+									{col.selector?.(row, rowIndex) as React.ReactNode}
 								</td>
 							);
 						})}

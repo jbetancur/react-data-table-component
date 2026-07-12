@@ -7,6 +7,17 @@ A summary of notable changes per release. For the full commit history see the [r
 ### New features
 
 - **Context menu** — new `contextMenu` prop adds a menu to header cells and rows, opened by right-click, a kebab (⋮) button, or both. The header menu ships built-in actions (sort ascending/descending, clear sort, pin left/right, unpin, hide column, reset); row menus render consumer-supplied actions via `contextMenuActions.row`, and every selection fires `onContextMenuAction`. Fully keyboard-accessible (`role="menu"`, arrow keys, Escape with focus return), RTL-aware, and localizable via `localization.contextMenu` (all bundled locales translated). → [Context menu](/docs/context-menu) ([#1342](https://github.com/jbetancur/react-data-table-component/issues/1342))
+- **bigint and Date selectors** — `Primitive` now includes `bigint` and `Date`, so selectors can return them directly for display and built-in sorting. `bigint` renders as its decimal string and `Date` as a locale string. → [Columns](/docs/api)
+
+### Bug fixes
+
+- Selectors that return `null` or `undefined` (e.g. a missing field) now sort to the end in both directions instead of landing in an arbitrary position. → [Sorting](/docs/sorting)
+- Pagination now sizes its layout from its own container instead of the window, fixing squeezed/overlapping controls in narrow containers and mobile viewports. → [Pagination](/docs/pagination)
+- Fixed a pagination SSR hydration mismatch that made React re-render the table client-side on wide viewports.
+- Skeleton loading rows now stretch to the full table width instead of fixed cell widths. → [Loading state](/docs/loading)
+- Widened the column resize handle and fixed the neighboring header cell stealing half its grab area; the hover indicator is now centered on the column separator, including under RTL. → [Resizable columns](/docs/resizable)
+
+## 8.5.2
 
 ### Bug fixes
 

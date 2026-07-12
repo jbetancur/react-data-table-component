@@ -964,41 +964,53 @@
 /* ─── Column resize handle ──────────────────────────────────────────────────── */
 /*
  * The handle straddles the cell boundary so its hit area is centered on the
- * separator line rather than offset to one side. width/2 = 3px → inset-inline-end: -3px
- * centers a 6px-wide handle on the column's end edge, matching the position of
+ * separator line rather than offset to one side. width/2 = 5px → inset-inline-end: -5px
+ * centers a 10px-wide handle on the column's end edge, matching the position of
  * .rdt_headSeparator/.rdt_colSeparator pseudo-elements drawn at the boundary.
  * inset-inline-end resolves to the left edge under RTL so the handle mirrors correctly.
+ * z-index lifts the outer half above the following header cell, which is
+ * position:relative and later in the DOM — without it that cell paints over the
+ * handle and hit-tests steal half the grab area.
  */
 .rdt_resizeHandle {
 	position: absolute;
-	inset-inline-end: -3px;
+	inset-inline-end: -5px;
 	top: 0;
 	height: 100%;
-	width: 6px;
+	width: 10px;
 	cursor: col-resize;
 	user-select: none;
 	touch-action: none;
+	z-index: 1;
 }
 
 /* The last column's handle would straddle the scroll container's edge, which
-   clips its outer half and leaves a 3px hit target — keep it fully inside. */
+   clips its outer half and leaves a sliver of a hit target — keep it fully inside. */
 .rdt_cellBaseHead:last-child .rdt_resizeHandle {
 	inset-inline-end: 0;
 	z-index: 2;
 }
 
-/* Reveal only when hovering the handle itself or actively dragging */
-.rdt_resizeHandle:hover,
-.rdt_resizeHandle:active {
-	background-image: linear-gradient(
-		to right,
-		transparent 0,
-		transparent 2px,
-		var(--rdt-color-primary, #1976d2) 2px,
-		var(--rdt-color-primary, #1976d2) 4px,
-		transparent 4px,
-		transparent 6px
-	);
+/* Hover/drag indicator: a 3px bar centered on the 1px separator line (drawn at
+   the next cell's inline-start) instead of sitting a pixel inside the current
+   column. inset-inline-end keeps it on the boundary side under RTL, which a
+   physical linear-gradient could not do. */
+.rdt_resizeHandle::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 3px;
+	inset-inline-end: 3px;
+}
+
+.rdt_cellBaseHead:last-child .rdt_resizeHandle::after {
+	inset-inline-end: 0;
+}
+
+.rdt_resizeHandle:hover::after,
+.rdt_resizeHandle:active::after {
+	background-color: var(--rdt-color-primary, #1976d2);
 }
 
 /* ─── Column group header — CSS Grid layout ─────────────────────────────────
@@ -1413,22 +1425,19 @@
 	white-space: nowrap;
 }
 
-@media (max-width: 599px) {
-	.rdt_paginationPageList {
-		width: 100%;
-		justify-content: space-around;
-	}
+/* Narrow mode is driven by the component measuring its own container width
+   (not a viewport media query, which disagrees with the container when the
+   table sits in a narrow pane on a wide window). The label and range are not
+   rendered at all in narrow mode, so no display:none rules are needed. */
+.rdt_paginationNarrow {
+	justify-content: center;
+	padding-left: 4px;
+	padding-right: 4px;
+}
 
-	.rdt_paginationRange,
-	.rdt_paginationRowLabel {
-		display: none;
-	}
-
-	.rdt_pagination {
-		justify-content: center;
-		padding-left: 4px;
-		padding-right: 4px;
-	}
+.rdt_paginationNarrow .rdt_paginationPageList {
+	width: 100%;
+	justify-content: space-around;
 }
 
 .rdt_paginationSpan {

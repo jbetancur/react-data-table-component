@@ -8,9 +8,11 @@ import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
 import { setDragGhost } from '../dom';
 import { SortOrder } from '../types';
-import type { TableColumn, SortAction, SortColumn, FilterState, Localization } from '../types';
+import type { TableColumn, FilterState, Localization } from '../types';
 import type { ActiveCell } from '../context/RowContext';
 import type { HeaderMenuSlice } from '../hooks/useContextMenu';
+import type { ColumnDragSlice } from '../hooks/useColumns';
+import type { SortingSlice } from '../hooks/useSorting';
 
 type FilterLocalization = NonNullable<Localization['filter']>;
 
@@ -18,26 +20,13 @@ type TableColProps<T> = {
 	column: TableColumn<T>;
 	disabled: boolean;
 	draggingColumnId?: string | number;
-	sortIcon?: React.ReactNode;
-	pagination: boolean;
-	paginationServer: boolean;
-	persistSelectedOnSort: boolean;
-	sortDirection: SortOrder;
-	sortColumns: SortColumn<T>[];
-	sortMulti: boolean;
-	defaultSortDirection: SortOrder;
-	sortServer: boolean;
-	selectableRowsVisibleOnly: boolean;
+	/** Sorting feature slice — areColPropsEqual does per-column checks within it. */
+	sorting: SortingSlice<T>;
 	filterValue: FilterState;
 	filterLocalization: FilterLocalization;
-	onSort: (action: SortAction<T>) => void;
 	onFilterChange: (columnId: string | number, filter: FilterState) => void;
-	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
-	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-	onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+	/** Column drag/reorder feature slice — compared by reference in areColPropsEqual. */
+	columnDrag: ColumnDragSlice;
 	/** Width override from column resize — takes precedence over column.width */
 	resizedWidth?: number;
 	onResizeStart?: (columnId: string | number, e: React.PointerEvent) => void;
@@ -57,26 +46,11 @@ function TableCol<T>({
 	column,
 	disabled,
 	draggingColumnId,
-	sortDirection,
-	sortColumns,
-	sortMulti,
-	defaultSortDirection,
-	sortIcon,
-	sortServer,
-	pagination,
-	paginationServer,
-	persistSelectedOnSort,
-	selectableRowsVisibleOnly,
+	sorting,
 	filterValue,
 	filterLocalization,
-	onSort,
 	onFilterChange,
-	onDragStart,
-	onDragOver,
-	onDragEnd,
-	onDragEnter,
-	onDragLeave,
-	onPointerDown,
+	columnDrag,
 	resizedWidth,
 	onResizeStart,
 	pinnedOffsets,
@@ -87,6 +61,19 @@ function TableCol<T>({
 	headerMenu,
 }: TableColProps<T>): JSX.Element | null {
 	const customStyles = useStyles();
+	const {
+		sortDirection,
+		sortColumns,
+		sortMulti,
+		defaultSortDirection,
+		sortIcon,
+		sortServer,
+		pagination,
+		paginationServer,
+		persistSelectedOnSort,
+		selectableRowsVisibleOnly,
+		onSort,
+	} = sorting;
 
 	const [showTooltip, setShowTooltip] = React.useState(false);
 	const columnRef = React.useRef<HTMLDivElement | null>(null);
@@ -181,7 +168,7 @@ function TableCol<T>({
 		if (column.reorder && typeof column.name === 'string') {
 			setDragGhost(e, column.name);
 		}
-		onDragStart(e);
+		columnDrag.onDragStart(e);
 	};
 
 	// Width: resized > column.width > auto from flex
@@ -215,11 +202,11 @@ function TableCol<T>({
 				...gridStyle,
 			}}
 			onDragStart={handleDragStart}
-			onDragOver={onDragOver}
-			onDragEnd={onDragEnd}
-			onDragEnter={onDragEnter}
-			onDragLeave={onDragLeave}
-			onPointerDown={column.reorder ? onPointerDown : undefined}
+			onDragOver={columnDrag.onDragOver}
+			onDragEnd={columnDrag.onDragEnd}
+			onDragEnter={columnDrag.onDragEnter}
+			onDragLeave={columnDrag.onDragLeave}
+			onPointerDown={column.reorder ? columnDrag.onPointerDown : undefined}
 			onContextMenu={headerMenu?.rightClick ? (e: React.MouseEvent) => headerMenu.onContextMenu(column, e) : undefined}
 			{...outerNavAttributes}
 			data-nav-widget={cellNavigation && column.name ? 'true' : undefined}
@@ -319,20 +306,29 @@ function TableCol<T>({
 function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
 	if (prevProps.column !== nextProps.column) return false;
 	if (prevProps.headerMenu !== nextProps.headerMenu) return false;
-	if (prevProps.sortMulti !== nextProps.sortMulti) return false;
-	// Compare this column's slice of the sort config (position + direction). A change to
-	// either flips its active state, arrow direction, or multi-sort priority badge.
-	const prevIdx = prevProps.sortColumns.findIndex(s => equalizeId(s.column.id, prevProps.column.id));
-	const nextIdx = nextProps.sortColumns.findIndex(s => equalizeId(s.column.id, nextProps.column.id));
-	if (prevIdx !== nextIdx) return false;
-	if (prevIdx !== -1 && prevProps.sortColumns[prevIdx].sortDirection !== nextProps.sortColumns[nextIdx].sortDirection)
-		return false;
-	// The priority badge shows only when more than one column is sorted; a flip across that
-	// threshold changes whether the badge renders even when this column's index is unchanged.
-	if (prevProps.sortMulti && prevProps.sortColumns.length !== nextProps.sortColumns.length) {
-		const prevMulti = prevProps.sortColumns.length > 1;
-		const nextMulti = nextProps.sortColumns.length > 1;
-		if (prevMulti !== nextMulti) return false;
+	if (prevProps.columnDrag !== nextProps.columnDrag) return false;
+	// The sorting slice changes identity on every sort interaction — compare this
+	// column's slice of the sort state instead of the reference, so only columns
+	// whose active state, arrow direction, or priority badge changed re-render.
+	if (prevProps.sorting !== nextProps.sorting) {
+		const prevSort = prevProps.sorting;
+		const nextSort = nextProps.sorting;
+		if (prevSort.sortMulti !== nextSort.sortMulti) return false;
+		if (prevSort.sortIcon !== nextSort.sortIcon) return false;
+		const prevIdx = prevSort.sortColumns.findIndex(s => equalizeId(s.column.id, prevProps.column.id));
+		const nextIdx = nextSort.sortColumns.findIndex(s => equalizeId(s.column.id, nextProps.column.id));
+		if (prevIdx !== nextIdx) return false;
+		if (prevIdx !== -1 && prevSort.sortColumns[prevIdx].sortDirection !== nextSort.sortColumns[nextIdx].sortDirection)
+			return false;
+		// Fallback direction for inactive columns — a change flips the hover arrow.
+		if (prevIdx === -1 && prevSort.sortDirection !== nextSort.sortDirection) return false;
+		// The priority badge shows only when more than one column is sorted; a flip across that
+		// threshold changes whether the badge renders even when this column's index is unchanged.
+		if (prevSort.sortMulti && prevSort.sortColumns.length !== nextSort.sortColumns.length) {
+			const prevMulti = prevSort.sortColumns.length > 1;
+			const nextMulti = nextSort.sortColumns.length > 1;
+			if (prevMulti !== nextMulti) return false;
+		}
 	}
 	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
 		const prevIsDragging = equalizeId(prevProps.column.id, prevProps.draggingColumnId);
@@ -343,7 +339,6 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 	if (prevProps.filterLocalization !== nextProps.filterLocalization) return false;
 	if (prevProps.resizedWidth !== nextProps.resizedWidth) return false;
 	if (prevProps.disabled !== nextProps.disabled) return false;
-	if (prevProps.sortIcon !== nextProps.sortIcon) return false;
 	if (prevProps.pinnedOffsets !== nextProps.pinnedOffsets) {
 		// Re-render when:
 		// 1. This column's own offset changed (resize, reorder).

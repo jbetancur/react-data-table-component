@@ -1,6 +1,15 @@
 import { SortOrder } from './types';
 import { SYSTEM_COL_WIDTH } from './constants';
-import type { CSSObject, ConditionalStyles, TableColumn, Format, TableRow, Selector, SortFunction } from './types';
+import type {
+	CSSObject,
+	ConditionalStyles,
+	TableColumn,
+	Format,
+	TableRow,
+	Selector,
+	SortFunction,
+	Primitive,
+} from './types';
 
 function isPlainObject(val: unknown): val is Record<string, unknown> {
 	return val !== null && typeof val === 'object' && !Array.isArray(val);
@@ -36,6 +45,14 @@ function compareBySelector<T>(a: T, b: T, selector: Selector<T>, direction: Sort
 	const flip = direction === SortOrder.ASC ? 1 : -1;
 	const aValue = selector(a);
 	const bValue = selector(b);
+
+	// Nullish values always sort to the end regardless of direction.
+	const aNull = aValue == null;
+	const bNull = bValue == null;
+	if (aNull || bNull) {
+		if (aNull && bNull) return 0;
+		return aNull ? 1 : -1;
+	}
 
 	if (aValue < bValue) {
 		return -1 * flip;
@@ -115,10 +132,10 @@ export function multiSort<T>(rows: T[], sortColumns: { column: TableColumn<T>; s
 
 export function getProperty<T>(
 	row: T,
-	selector: ((row: T, rowIndex?: number) => React.ReactNode) | undefined | null,
+	selector: ((row: T, rowIndex?: number) => Primitive | React.ReactNode) | undefined | null,
 	format: Format<T> | undefined | null,
 	rowIndex: number,
-): React.ReactNode {
+): Primitive | React.ReactNode {
 	if (!selector) {
 		return null;
 	}
@@ -129,6 +146,18 @@ export function getProperty<T>(
 	}
 
 	return selector(row, rowIndex);
+}
+
+// bigint and Date are valid Primitives but not part of React's ReactNode type.
+// Coerce them to renderable text at the JSX boundary.
+export function toReactNode(value: Primitive | React.ReactNode): React.ReactNode {
+	if (typeof value === 'bigint') {
+		return value.toString();
+	}
+	if (value instanceof Date) {
+		return value.toLocaleString();
+	}
+	return value as React.ReactNode;
 }
 
 export function insertItem<T>(array: T[] = [], item: T, index = 0): T[] {

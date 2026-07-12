@@ -1,10 +1,23 @@
 import * as React from 'react';
-import type { TableColumn, FilterState, FilterCondition, FilterOperator, FilterType } from '../types';
+import type { TableColumn, FilterState, FilterCondition, FilterOperator, FilterType, Localization } from '../types';
+
+/**
+ * Column-filter feature slice — the head-side transport for filter state.
+ * `filterValues` changes identity per applied filter (legitimate re-render);
+ * DataTableHead extracts each column's own value so TableCol memoization
+ * stays per-column.
+ */
+export type FilteringSlice = {
+	filterValues: Record<string | number, FilterState>;
+	localization: NonNullable<Localization['filter']>;
+	onFilterChange: (columnId: string | number, filter: FilterState) => void;
+};
 
 export interface UseColumnFilterResult<T> {
 	filterValues: Record<string | number, FilterState>;
 	handleFilterChange: (columnId: string | number, filter: FilterState) => void;
 	filteredData: (data: T[]) => T[];
+	filtering: FilteringSlice;
 }
 
 export function emptyFilterState(filterType: FilterType = 'text'): FilterState {
@@ -110,10 +123,14 @@ function rowMatchesFilter<T>(row: T, filter: FilterState, col: TableColumn<T>): 
 	return r1;
 }
 
+// Module-level so the default argument does not mint a new object per render.
+const EMPTY_LOCALIZATION: NonNullable<Localization['filter']> = {};
+
 export default function useColumnFilter<T>(
 	columns: TableColumn<T>[],
 	controlledFilterValues?: Record<string | number, FilterState>,
 	onFilterChangeProp?: (columnId: string | number, filter: FilterState) => void,
+	localization: NonNullable<Localization['filter']> = EMPTY_LOCALIZATION,
 ): UseColumnFilterResult<T> {
 	const [internalFilterValues, setInternalFilterValues] = React.useState<Record<string | number, FilterState>>({});
 	const filterValues = controlledFilterValues ?? internalFilterValues;
@@ -148,5 +165,10 @@ export default function useColumnFilter<T>(
 		[activeFilters, columns],
 	);
 
-	return { filterValues, handleFilterChange, filteredData };
+	const filtering = React.useMemo<FilteringSlice>(
+		() => ({ filterValues, localization, onFilterChange: handleFilterChange }),
+		[filterValues, localization, handleFilterChange],
+	);
+
+	return { filterValues, handleFilterChange, filteredData, filtering };
 }

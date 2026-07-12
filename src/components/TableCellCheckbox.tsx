@@ -3,8 +3,9 @@ import '../DataTable.css';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 import { prop, isEmpty } from '../util';
-import type { RowState, SingleRowAction, RangeRowAction, ComponentProps, TableRow } from '../types';
+import type { TableRow } from '../types';
 import type { NavCellProps } from '../context/RowContext';
+import type { RowSelectionSlice } from '../hooks/useSelection';
 
 type TableCellCheckboxProps<T> = {
 	name: string;
@@ -12,15 +13,7 @@ type TableCellCheckboxProps<T> = {
 	row: T;
 	rowCount: number;
 	selected: boolean;
-	selectableRowsComponent: 'input' | React.ComponentType<React.InputHTMLAttributes<HTMLInputElement>>;
-	selectableRowsComponentProps: ComponentProps;
-	selectableRowsSingle: boolean;
-	selectableRowDisabled: RowState<T>;
-	onSelectedRow: (action: SingleRowAction<T>) => void;
-	onSelectedRange: (action: RangeRowAction<T>) => void;
-	visibleRowsRef: React.MutableRefObject<T[]>;
-	lastSelectedKeyRef: React.MutableRefObject<string | number | null>;
-	selectableRowsRange: boolean;
+	selection: NonNullable<RowSelectionSlice<T>>;
 	nav?: NavCellProps;
 };
 
@@ -30,17 +23,20 @@ function TableCellCheckbox<T>({
 	row,
 	rowCount,
 	selected,
-	selectableRowsComponent,
-	selectableRowsComponentProps,
-	selectableRowsSingle,
-	selectableRowDisabled,
-	onSelectedRow,
-	onSelectedRange,
-	visibleRowsRef,
-	lastSelectedKeyRef,
-	selectableRowsRange,
+	selection,
 	nav,
 }: TableCellCheckboxProps<T>): JSX.Element {
+	const {
+		component: selectableRowsComponent,
+		componentProps: selectableRowsComponentProps,
+		single: selectableRowsSingle,
+		disabled: selectableRowDisabled,
+		range: selectableRowsRange,
+		onSelectedRow,
+		onSelectedRange,
+		visibleRowsRef,
+		lastSelectedKeyRef,
+	} = selection;
 	const disabled = !!(selectableRowDisabled && selectableRowDisabled(row));
 	const rowKey = prop(row as TableRow, keyField) as string | number | undefined;
 

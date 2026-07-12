@@ -15,10 +15,10 @@
 		"jsx": "react",
 		"moduleResolution": "bundler",
 		"outDir": "dist",
-		"target": "es6",
+		"target": "es2020",
 		"module": "esnext",
 		"lib": [
-			"es2017",
+			"es2020",
 			"dom"
 		],
 		"declaration": true,

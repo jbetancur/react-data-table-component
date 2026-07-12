@@ -41,7 +41,7 @@ Complete reference for every prop, type, and export in `react-data-table-compone
 | `subHeader` | `ReactNode` | - | Content for the sub-header bar. Providing any value shows the bar. |
 | `subHeaderAlign` | `Alignment` | `"right"` | Alignment of sub-header content. |
 | `subHeaderWrap` | `boolean` | `true` | Allow sub-header to wrap onto multiple lines. |
-| `noHeader` | `boolean` | `false` | Hide the title/actions header bar entirely. |
+| `noHeader` | `boolean` | `false` | Force-hide the title/actions header bar. The bar otherwise renders only when a `title` or `actions` is provided, so you rarely need this. |
 | `noTableHead` | `boolean` | `false` | Hide the column header row. |
 | `persistTableHead` | `boolean` | `false` | Show the column header even when data is empty. The header always stays visible during `progressPending` regardless of this prop. |
 | `dense` | `boolean` | `false` | Reduce row height for a compact look. |
@@ -231,7 +231,7 @@ const columns: TableColumn<MyRow>[] = [
 |---|---|---|
 | `id` | `string \| number` | Stable identity used by `defaultSortFieldId`, `columnGroups`, and `filterValues`. |
 | `name` | `ReactNode` | Column header label. |
-| `selector` | `(row, index?) => Primitive \| ReactNode` | Data accessor. For sortable columns return a `Primitive` (`string \| number \| boolean`). |
+| `selector` | `(row, index?) => Primitive \| ReactNode` | Data accessor. For sortable columns return a `Primitive` (`string \| number \| boolean \| bigint \| Date`). Rows whose selector returns `null` or `undefined` sort to the end. `bigint` displays as its decimal string; `Date` displays via `toLocaleString()`, which follows the viewer's locale and timezone. Use `format` when you need deterministic or SSR-stable output. |
 | `cell` | `(row, index, column, id) => ReactNode` | Custom cell renderer. Overrides the `selector` display value. |
 | `format` | `(row, index) => ReactNode` | Format the selector value for display without changing the sort key. |
 | `sortable` | `boolean` | Enable sorting on this column. |

@@ -60,3 +60,17 @@ export default function useColumnResize({
 
 	return { columnWidths, handleResizeStart };
 }
+
+/** Column-resize feature slice — `null` when `resizable` is off. Internal: the
+ *  public `useColumnResize` return shape is exported API and stays untouched. */
+export type ResizeSlice = {
+	onResizeStart: (columnId: string | number, e: React.PointerEvent) => void;
+} | null;
+
+export function useResizeSlice(
+	resizable: boolean,
+	onResizeStart: (columnId: string | number, e: React.PointerEvent) => void,
+): ResizeSlice {
+	// Identity is load-bearing: compared by reference in the head context dep list.
+	return React.useMemo(() => (resizable ? { onResizeStart } : null), [resizable, onResizeStart]);
+}
