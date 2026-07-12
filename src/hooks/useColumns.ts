@@ -13,22 +13,32 @@ import usePointerReorder from '../hooks/usePointerReorder';
 import { SortOrder } from '../types';
 import type { TableColumn, ColumnGroup } from '../types';
 
+/**
+ * Column drag/reorder feature slice — the DnD, group-drag, and pointer-reorder
+ * handlers, shared by RowContext (body cells are drop targets) and HeadContext.
+ * The volatile drag state (`draggingColumnId`, `draggingGroupKey`) stays out so
+ * slice identity is stable during a drag.
+ */
+export type ColumnDragSlice = {
+	onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	onGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
+	onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+	onGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+};
+
 type ColumnsHook<T> = {
 	tableColumns: TableColumn<T>[];
 	tableGroups: ColumnGroup[];
 	draggingColumnId: string;
 	draggingGroupKey: string;
-	handleDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleGroupDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleGroupDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleGroupDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleGroupDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-	handlePointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
-	handleGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+	columnDrag: ColumnDragSlice;
 	handlePinColumn: (columnId: string | number, side?: 'left' | 'right') => void;
 	handleHideColumn: (columnId: string | number) => void;
 	handleResetColumns: () => void;
@@ -294,22 +304,45 @@ function useColumns<T>(
 		[defaultSortFieldId, tableColumns],
 	);
 
+	// Consumers (context dep lists, TableCol's memo) compare the slice by reference —
+	// every field must stay a ref-stable callback. Identity changes only when
+	// tableColumns changes (via handleDragStart/handleDragEnter), which re-renders
+	// everything legitimately anyway.
+	const columnDrag = React.useMemo<ColumnDragSlice>(
+		() => ({
+			onDragStart: handleDragStart,
+			onDragOver: handleDragOver,
+			onDragEnd: handleDragEnd,
+			onDragEnter: handleDragEnter,
+			onDragLeave: handleDragLeave,
+			onGroupDragStart: handleGroupDragStart,
+			onGroupDragEnter: handleGroupDragEnter,
+			onGroupDragOver: handleGroupDragOver,
+			onGroupDragEnd: handleGroupDragEnd,
+			onPointerDown: handlePointerDown,
+			onGroupPointerDown: handleGroupPointerDown,
+		}),
+		[
+			handleDragStart,
+			handleDragOver,
+			handleDragEnd,
+			handleDragEnter,
+			handleDragLeave,
+			handleGroupDragStart,
+			handleGroupDragEnter,
+			handleGroupDragOver,
+			handleGroupDragEnd,
+			handlePointerDown,
+			handleGroupPointerDown,
+		],
+	);
+
 	return {
 		tableColumns,
 		tableGroups,
 		draggingColumnId,
 		draggingGroupKey,
-		handleDragStart,
-		handleDragEnter,
-		handleDragOver,
-		handleDragLeave,
-		handleDragEnd,
-		handleGroupDragStart,
-		handleGroupDragEnter,
-		handleGroupDragOver,
-		handleGroupDragEnd,
-		handlePointerDown,
-		handleGroupPointerDown,
+		columnDrag,
 		handlePinColumn,
 		handleHideColumn,
 		handleResetColumns,

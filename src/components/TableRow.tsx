@@ -47,35 +47,12 @@ function Row<T>({
 		columns,
 		conditionalRowStyles,
 		dense,
-		expandableIcon,
-		localization,
-		expandableRows,
-		expandableRowsComponent,
-		expandableRowsComponentProps,
-		expandableRowsHideExpander,
-		expandOnRowClicked,
-		expandOnRowDoubleClicked,
-		expandableInheritConditionalStyles,
+		expansion,
 		highlightOnHover,
 		keyField,
-		onRowClicked,
-		onRowDoubleClicked,
-		onRowMiddleClicked,
-		onRowMouseEnter,
-		onRowMouseLeave,
-		onRowExpandToggled,
-		onSelectedRow,
-		onSelectedRange,
-		visibleRowsRef,
-		lastSelectedKeyRef,
-		selectableRowsRange,
+		rowEvents,
+		selection,
 		pointerOnHover,
-		selectableRowDisabled,
-		selectableRows,
-		selectableRowsComponent,
-		selectableRowsComponentProps,
-		selectableRowsHighlight,
-		selectableRowsSingle,
 		striped,
 		cellNavigation,
 		activeCell,
@@ -88,12 +65,22 @@ function Row<T>({
 		animateRows,
 	);
 
+	// Locals mirror the slices so the callback dep arrays below stay scalar.
+	const selectableRows = !!selection;
+	const expandableRows = !!expansion;
+	const expandOnRowClicked = !!expansion?.expandOnRowClicked;
+	const expandOnRowDoubleClicked = !!expansion?.expandOnRowDoubleClicked;
+	const expandableRowsHideExpander = !!expansion?.hideExpander;
+	const onRowExpandToggled = expansion?.onToggled;
+
 	const handleExpanded = React.useCallback(() => {
 		const next = !expanded;
-		onRowExpandToggled(next, row);
+		onRowExpandToggled?.(next, row);
 		if (next) openExpander();
 		else closeExpander();
 	}, [expanded, onRowExpandToggled, row, openExpander, closeExpander]);
+
+	const { onRowClicked, onRowDoubleClicked, onRowMiddleClicked, onRowMouseEnter, onRowMouseLeave } = rowEvents;
 
 	const showPointer = pointerOnHover || (expandableRows && (expandOnRowClicked || expandOnRowDoubleClicked));
 
@@ -179,8 +166,8 @@ function Row<T>({
 		() => getConditionalStyle(row, conditionalRowStyles, ['rdt_TableRow']),
 		[row, conditionalRowStyles],
 	);
-	const highlightSelected = selectableRowsHighlight && selected;
-	const inheritStyles = expandableInheritConditionalStyles ? conditionalStyle : {};
+	const highlightSelected = !!selection?.highlight && selected;
+	const inheritStyles = expansion?.inheritConditionalStyles ? conditionalStyle : {};
 	const isStriped = striped && isEven(rowIndex);
 
 	const shouldAnimate = animateRows && isNew;
@@ -226,31 +213,23 @@ function Row<T>({
 				onMouseEnter={handleRowMouseEnter}
 				onMouseLeave={handleRowMouseLeave}
 			>
-				{selectableRows && (
+				{selection && (
 					<TableCellCheckbox
 						name={`Select row ${rowKeyField}`}
 						keyField={keyField}
 						row={row}
 						rowCount={rowCount}
 						selected={selected}
-						selectableRowsComponent={selectableRowsComponent}
-						selectableRowsComponentProps={selectableRowsComponentProps}
-						selectableRowDisabled={selectableRowDisabled}
-						selectableRowsSingle={selectableRowsSingle}
-						onSelectedRow={onSelectedRow}
-						onSelectedRange={onSelectedRange}
-						visibleRowsRef={visibleRowsRef}
-						lastSelectedKeyRef={lastSelectedKeyRef}
-						selectableRowsRange={selectableRowsRange}
+						selection={selection}
 						nav={cellNavigation ? { row: rowIndex, col: 0, active: navRowActive && activeCell?.col === 0 } : undefined}
 					/>
 				)}
 
-				{expandableRows && !expandableRowsHideExpander && (
+				{expansion && !expansion.hideExpander && (
 					<TableCellExpander
 						id={rowKeyField as string}
-						expandableIcon={expandableIcon}
-						expandableRowsOptions={localization}
+						expandableIcon={expansion.icon}
+						expandableRowsOptions={expansion.localization}
 						expanded={expanded}
 						row={row}
 						onToggled={handleExpanded}
@@ -308,14 +287,14 @@ function Row<T>({
 				)}
 			</div>
 
-			{expandableRows && expanderMounted && expandableRowsComponent && (
+			{expansion && expanderMounted && expansion.component && (
 				<ExpanderRow
 					key={`expander-${rowKeyField}`}
 					data={row}
 					extendedRowStyle={inheritStyles}
 					extendedClassNames={classNames}
-					ExpanderComponent={expandableRowsComponent}
-					expanderComponentProps={expandableRowsComponentProps ?? {}}
+					ExpanderComponent={expansion.component}
+					expanderComponentProps={expansion.componentProps ?? {}}
 					animate={animateRows}
 					closing={isClosing}
 				/>

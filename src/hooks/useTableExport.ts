@@ -48,7 +48,8 @@ function headerLabel<T>(col: TableColumn<T>, overrides?: Record<string | number,
 function cellToString(value: unknown): string {
 	if (value == null) return '';
 	if (typeof value === 'string') return value;
-	if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') return String(value);
+	if (value instanceof Date) return value.toISOString();
 	// React nodes or arbitrary objects shouldn't end up in exports — coerce to JSON for safety.
 	try {
 		return JSON.stringify(value);

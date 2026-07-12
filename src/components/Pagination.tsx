@@ -3,7 +3,7 @@ import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
 import Select from './Select';
 import { getNumberOfPages } from '../util';
-import useWindowSize from '../hooks/useWindowSize';
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import useRTL from '../hooks/useRTL';
 import { Direction } from '../constants';
 import type { PaginationIcons, PaginationOptions, PaginationChangePage, Localization } from '../types';
@@ -42,9 +42,26 @@ function Pagination({
 	onChangeRowsPerPage = defaultProps.onChangeRowsPerPage,
 	onChangePage = defaultProps.onChangePage,
 }: PaginationProps): JSX.Element {
-	const windowSize = useWindowSize();
+	const navRef = React.useRef<HTMLElement>(null);
+	const [containerWidth, setContainerWidth] = React.useState(0);
+
+	// Layout keys off the pagination's own width, not the window's: the table can
+	// sit in a container far narrower than the viewport (split panes, cards),
+	// where a window-based check renders the wide layout into a space that can't
+	// fit it. Starting at 0 (narrow) also matches SSR output, so hydration is
+	// clean; the layout effect measures before first paint, so there's no flash.
+	useIsomorphicLayoutEffect(() => {
+		const nav = navRef.current;
+		if (!nav) return;
+		const update = () => setContainerWidth(nav.getBoundingClientRect().width);
+		update();
+		const ro = new ResizeObserver(update);
+		ro.observe(nav);
+		return () => ro.disconnect();
+	}, []);
+
 	const isRTL = useRTL(direction);
-	const shouldShow = windowSize.width && windowSize.width > 599;
+	const shouldShow = containerWidth > 599;
 	const numPages = getNumberOfPages(rowCount, rowsPerPage);
 	const lastIndex = currentPage * rowsPerPage;
 	const firstIndex = lastIndex - rowsPerPage + 1;
@@ -103,7 +120,8 @@ function Pagination({
 
 	return (
 		<nav
-			className={['rdt_pagination', 'rdt_Pagination'].join(' ')}
+			ref={navRef}
+			className={['rdt_pagination', 'rdt_Pagination', !shouldShow && 'rdt_paginationNarrow'].filter(Boolean).join(' ')}
 			aria-label={localization?.navigationAriaLabel ?? 'Table pagination'}
 			style={customStyles.pagination?.style}
 		>

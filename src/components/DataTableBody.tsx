@@ -10,11 +10,11 @@ import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
 const SKELETON_ROW_COUNT = 5;
 
-function SkeletonCell({ width }: { width: string }): JSX.Element {
+function SkeletonCell({ basis }: { basis: string }): JSX.Element {
 	return (
 		<div
 			className="rdt_cellBase"
-			style={{ flex: `0 0 ${width}`, minWidth: width, padding: '8px 16px', display: 'flex', alignItems: 'center' }}
+			style={{ flex: `1 1 ${basis}`, minWidth: 0, padding: '8px 16px', display: 'flex', alignItems: 'center' }}
 		>
 			<div className="rdt_skeletonPulse" style={{ height: 14, borderRadius: 4, width: '70%' }} />
 		</div>
@@ -25,7 +25,7 @@ function SkeletonRow({ colCount, index }: { colCount: number; index: number }): 
 	return (
 		<div className="rdt_row" aria-hidden="true" style={{ opacity: 1 - index * 0.15, minHeight: 48 }}>
 			{Array.from({ length: colCount }).map((_, i) => (
-				<SkeletonCell key={i} width={i === 0 ? '160px' : '120px'} />
+				<SkeletonCell key={i} basis={i === 0 ? '160px' : '120px'} />
 			))}
 		</div>
 	);
@@ -62,7 +62,7 @@ function DataTableBody<T>({
 	bodyRef,
 	prevRowTopsRef,
 }: DataTableBodyProps<T>): JSX.Element {
-	const { expandableRows, animateRows } = useRowContext<T>();
+	const { expansion, animateRows } = useRowContext<T>();
 	const hasData = sortedData.length > 0;
 
 	const selectedIdSet = React.useMemo(
@@ -178,8 +178,8 @@ function DataTableBody<T>({
 					<Body ref={bodyRef} className={`rdt_TableBody${isBusy ? ' rdt_bodyBusy' : ''}`} role="rowgroup">
 						{rowMeta.map((meta, i) => {
 							const { row, id, selected, isNew, newRowIndex } = meta;
-							const defaultExpanded = !!(expandableRows && expandableRowExpanded && expandableRowExpanded(row));
-							const defaultExpanderDisabled = !!(expandableRows && expandableRowDisabled && expandableRowDisabled(row));
+							const defaultExpanded = !!(expansion && expandableRowExpanded && expandableRowExpanded(row));
+							const defaultExpanderDisabled = !!(expansion && expandableRowDisabled && expandableRowDisabled(row));
 
 							return (
 								<Row

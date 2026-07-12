@@ -4,7 +4,7 @@ import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
 import CellEditor from './CellEditor';
 import useCellEdit from '../hooks/useCellEdit';
-import { getProperty, getConditionalStyle, getPinnedCellMeta, getCellWidthProps } from '../util';
+import { getProperty, toReactNode, getConditionalStyle, getPinnedCellMeta, getCellWidthProps } from '../util';
 import type { TableColumn } from '../types';
 
 interface CellProps<T> {
@@ -19,17 +19,7 @@ interface CellProps<T> {
 
 function Cell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }: CellProps<T>): JSX.Element {
 	const customStyles = useStyles();
-	const {
-		onDragStart,
-		onDragOver,
-		onDragEnd,
-		onDragEnter,
-		onDragLeave,
-		columnWidths,
-		pinnedOffsets,
-		cellNavigation,
-		activeCell,
-	} = useRowContext<T>();
+	const { columnDrag, columnWidths, pinnedOffsets, cellNavigation, activeCell } = useRowContext<T>();
 	const resizedWidth = column.id != null ? columnWidths[column.id] : undefined;
 	const { conditionalStyle, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
 
@@ -105,11 +95,11 @@ function Cell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }: Cel
 				...pinMeta.style,
 			}}
 			draggable={column.reorder || undefined}
-			onDragStart={column.reorder ? onDragStart : undefined}
-			onDragOver={column.reorder ? onDragOver : undefined}
-			onDragEnd={column.reorder ? onDragEnd : undefined}
-			onDragEnter={column.reorder ? onDragEnter : undefined}
-			onDragLeave={column.reorder ? onDragLeave : undefined}
+			onDragStart={column.reorder ? columnDrag.onDragStart : undefined}
+			onDragOver={column.reorder ? columnDrag.onDragOver : undefined}
+			onDragEnd={column.reorder ? columnDrag.onDragEnd : undefined}
+			onDragEnter={column.reorder ? columnDrag.onDragEnter : undefined}
+			onDragLeave={column.reorder ? columnDrag.onDragLeave : undefined}
 			tabIndex={cellNavigation ? (isActive ? 0 : -1) : undefined}
 			data-nav-row={cellNavigation ? rowIndex : undefined}
 			data-nav-col={cellNavigation ? navCol : undefined}
@@ -128,7 +118,7 @@ function Cell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }: Cel
 								textOverflow: 'ellipsis',
 							}}
 						>
-							{getProperty(row, column.selector, column.format, rowIndex)}
+							{toReactNode(getProperty(row, column.selector, column.format, rowIndex))}
 						</div>
 					)}
 					{column.cell && column.cell(row, rowIndex, column, id)}

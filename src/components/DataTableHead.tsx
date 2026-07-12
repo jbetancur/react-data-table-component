@@ -30,54 +30,29 @@ function DataTableHead<T>({
 	expandableRowsHideExpander,
 }: DataTableHeadProps<T>): JSX.Element {
 	const {
-		sortDirection,
-		sortColumns,
-		sortMulti,
-		defaultSortDirection,
-		sortIcon,
-		sortServer,
-		pagination,
-		paginationServer,
-		persistSelectedOnSort,
-		selectableRowsVisibleOnly,
-		showSelectAll,
-		progressPending,
-		sortedData,
+		sorting,
+		selectAll,
 		fixedHeader,
 		dense,
 		draggingColumnId,
 		draggingGroupKey,
-		filterValues,
-		localization: filterLocalization,
+		filtering,
 		columnWidths,
 		pinnedOffsets,
-		resizable,
+		resize,
 		cellNavigation,
 		activeCell,
 		headerMenu,
-		onSort,
-		onFilterChange,
-		onResizeStart,
-		onDragStart,
-		onDragOver,
-		onDragEnd,
-		onDragEnter,
-		onDragLeave,
-		onGroupDragStart,
-		onGroupDragEnter,
-		onGroupDragOver,
-		onGroupDragEnd,
-		onPointerDown,
-		onGroupPointerDown,
+		columnDrag,
 	} = useHeadContext<T>();
 
 	const groupDragProps: GroupDragProps = {
 		draggingGroupKey,
-		onGroupDragStart,
-		onGroupDragEnter,
-		onGroupDragOver,
-		onGroupDragEnd,
-		onGroupPointerDown,
+		onGroupDragStart: columnDrag.onGroupDragStart,
+		onGroupDragEnter: columnDrag.onGroupDragEnter,
+		onGroupDragOver: columnDrag.onGroupDragOver,
+		onGroupDragEnd: columnDrag.onGroupDragEnd,
+		onGroupPointerDown: columnDrag.onGroupPointerDown,
 	};
 
 	const visibleColumns = columns.filter(c => !c.omit);
@@ -146,30 +121,17 @@ function DataTableHead<T>({
 	// ── Shared column props ──────────────────────────────────────────────────
 	const colProps = (column: TableColumn<T>) => ({
 		column,
-		disabled: progressPending || sortedData.length === 0,
-		pagination,
-		paginationServer,
-		persistSelectedOnSort,
-		selectableRowsVisibleOnly,
-		sortDirection,
-		sortColumns,
-		sortMulti,
-		defaultSortDirection,
-		sortIcon,
-		sortServer,
-		filterValue: filterValues[column.id!] ?? emptyFilterState(column.filterType),
-		filterLocalization,
+		disabled: sorting.sortDisabled,
+		sorting,
+		// Per-column extraction keeps TableCol's memo per-column: only the filtered
+		// column re-renders when a filter is applied.
+		filterValue: filtering.filterValues[column.id!] ?? emptyFilterState(column.filterType),
+		filterLocalization: filtering.localization,
 		resizedWidth: columnWidths[column.id!],
-		onSort,
-		onFilterChange,
-		onResizeStart: resizable ? onResizeStart : undefined,
+		onFilterChange: filtering.onFilterChange,
+		onResizeStart: resize?.onResizeStart,
 		pinnedOffsets,
-		onDragStart,
-		onDragOver,
-		onDragEnd,
-		onDragEnter,
-		onDragLeave,
-		onPointerDown,
+		columnDrag,
 		draggingColumnId,
 		cellNavigation,
 		activeCell,
@@ -199,7 +161,7 @@ function DataTableHead<T>({
 					{/* ── Prefix cells — span both grid rows ── */}
 					{selectableRows && (
 						<div style={{ gridColumn: '1', gridRow: '1 / span 2', display: 'flex', alignItems: 'stretch' }}>
-							{showSelectAll ? (
+							{selectAll?.hideSelectAll ? (
 								<CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)', width: '100%' }} />
 							) : (
 								<ColumnCheckbox />
@@ -263,7 +225,11 @@ function DataTableHead<T>({
 		<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>
 			<HeadRow ref={containerRef} className="rdt_TableHeadRow" role="row" $dense={dense}>
 				{selectableRows &&
-					(showSelectAll ? <CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)' }} /> : <ColumnCheckbox />)}
+					(selectAll?.hideSelectAll ? (
+						<CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)' }} />
+					) : (
+						<ColumnCheckbox />
+					))}
 
 				{expandableRows && !expandableRowsHideExpander && <ColumnExpander />}
 

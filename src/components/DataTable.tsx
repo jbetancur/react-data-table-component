@@ -22,9 +22,13 @@ import useColumns from '../hooks/useColumns';
 import useTableState from '../hooks/useTableState';
 import useTableData from '../hooks/useTableData';
 import useColumnFilter from '../hooks/useColumnFilter';
-import useColumnResize from '../hooks/useColumnResize';
+import useColumnResize, { useResizeSlice } from '../hooks/useColumnResize';
 import useRTL from '../hooks/useRTL';
 import useRowContextValue from '../hooks/useRowContextValue';
+import useRowEvents from '../hooks/useRowEvents';
+import useExpansion from '../hooks/useExpansion';
+import useSelection from '../hooks/useSelection';
+import useSorting from '../hooks/useSorting';
 import useHeadContextValue from '../hooks/useHeadContextValue';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import { useColorMode } from '../hooks/useColorMode';
@@ -119,7 +123,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		contextMenu,
 		contextMenuActions,
 		onContextMenuAction,
-		localization: localizationProp = {},
+		localization: localizationProp,
 		columnFilterOptions,
 		expandableRowsOptions,
 		resizable = false,
@@ -135,11 +139,17 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		ariaLabel,
 	} = props;
 
-	const localization = {
-		...localizationProp,
-		filter: { ...columnFilterOptions, ...localizationProp.filter },
-		expandable: { ...expandableRowsOptions, ...localizationProp.expandable },
-	};
+	// Memoized: the resolved sub-objects feed context memo dep lists and feature-slice
+	// memos, so their identity must only change when the underlying props change.
+	const localization = React.useMemo(
+		() => ({
+			...localizationProp,
+			filter: { ...columnFilterOptions, ...localizationProp?.filter },
+			expandable: { ...expandableRowsOptions, ...localizationProp?.expandable },
+			contextMenu: localizationProp?.contextMenu ?? {},
+		}),
+		[localizationProp, columnFilterOptions, expandableRowsOptions],
+	);
 
 	// Intentionally reading @deprecated props for backward compat; cast prevents TS hint 6385 here
 	const {
@@ -152,7 +162,11 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	// ── Icon resolution: theme.icons → prop override ─────────────────────────
 	const themeObj = React.useMemo(() => resolveThemeObject(theme), [theme]);
 	const sortIcon = sortIconProp ?? themeObj.icons?.sort ?? null;
-	const expandableIcon = { ...DEFAULT_EXPANDABLE_ICON, ...themeObj.icons?.expandable, ...expandableIconProp };
+	// Memoized: feeds the expansion feature slice, whose identity must be stable.
+	const expandableIcon = React.useMemo(
+		() => ({ ...DEFAULT_EXPANDABLE_ICON, ...themeObj.icons?.expandable, ...expandableIconProp }),
+		[themeObj, expandableIconProp],
+	);
 	const paginationIcons = { ...DEFAULT_PAGINATION_ICONS, ...themeObj.icons?.pagination, ...paginationIconsProp };
 	const selectableRowsComponent = selectableRowsComponentProp ?? defaultProps.selectableRowsComponent;
 	const selectableRowsComponentProps = selectableRowsComponentPropsProp ?? defaultProps.selectableRowsComponentProps;
@@ -172,32 +186,24 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	}, []);
 
 	const tableId = React.useId();
-	const { filterValues, handleFilterChange, filteredData } = useColumnFilter(
+	const { filterValues, handleFilterChange, filteredData, filtering } = useColumnFilter(
 		columns,
 		controlledFilterValues,
 		onFilterChangeProp,
+		localization.filter,
 	);
 
 	// ── Column resize state ────────────────────────────────────────────────────
 	const isRTL = useRTL(direction);
 	const { columnWidths, handleResizeStart } = useColumnResize({ initialColumnWidths, onColumnResize, isRTL });
+	const resize = useResizeSlice(resizable, handleResizeStart);
 
 	const {
 		tableColumns,
 		tableGroups,
 		draggingColumnId,
 		draggingGroupKey,
-		handleDragStart,
-		handleDragEnter,
-		handleDragOver,
-		handleDragLeave,
-		handleDragEnd,
-		handleGroupDragStart,
-		handleGroupDragEnter,
-		handleGroupDragOver,
-		handleGroupDragEnd,
-		handlePointerDown,
-		handleGroupPointerDown,
+		columnDrag,
 		handlePinColumn,
 		handleHideColumn,
 		handleResetColumns,
@@ -302,7 +308,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		contextMenu,
 		contextMenuActions,
 		onContextMenuAction,
-		localization: localization.contextMenu ?? {},
+		localization: localization.contextMenu,
 		tableColumns,
 		columnGroups,
 		sortColumns,
@@ -378,6 +384,63 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		visibleRowsRef.current = filteredTableRows;
 	}, [filteredTableRows]);
 
+	const sorting = useSorting<T>({
+		sortDirection,
+		sortColumns,
+		sortDisabled: progressPending || filteredSortedData.length === 0,
+		sortMulti,
+		defaultSortDirection,
+		sortIcon,
+		sortServer,
+		pagination,
+		paginationServer,
+		persistSelectedOnSort,
+		selectableRowsVisibleOnly,
+		onSort: handleSort,
+	});
+
+	const selection = useSelection<T>({
+		selectableRows,
+		component: selectableRowsComponent,
+		componentProps: selectableRowsComponentProps,
+		highlight: selectableRowsHighlight,
+		single: selectableRowsSingle,
+		disabled: selectableRowDisabled,
+		range: selectableRowsRange,
+		onSelectedRow: handleSelectedRow,
+		onSelectedRange: handleSelectedRange,
+		visibleRowsRef,
+		lastSelectedKeyRef,
+		allSelected,
+		selectedRows,
+		visibleRows,
+		keyField,
+		mergeSelections,
+		hideSelectAll: showSelectAll,
+		onSelectAllRows: handleSelectAllRows,
+	});
+
+	const expansion = useExpansion<T>({
+		expandableRows,
+		icon: expandableIcon,
+		component: expandableRowsComponent,
+		componentProps: expandableRowsComponentProps,
+		hideExpander: expandableRowsHideExpander,
+		expandOnRowClicked,
+		expandOnRowDoubleClicked,
+		inheritConditionalStyles: expandableInheritConditionalStyles,
+		onToggled: onRowExpandToggled,
+		localization: localization.expandable,
+	});
+
+	const rowEvents = useRowEvents<T>({
+		onRowClicked,
+		onRowDoubleClicked,
+		onRowMiddleClicked,
+		onRowMouseEnter,
+		onRowMouseLeave,
+	});
+
 	const rowContextValue = useRowContextValue<T>({
 		keyField,
 		columns: effectiveColumns,
@@ -386,37 +449,10 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		highlightOnHover,
 		pointerOnHover,
 		conditionalRowStyles,
-		selectableRows,
-		selectableRowsComponent,
-		selectableRowsComponentProps,
-		selectableRowsHighlight,
-		selectableRowsSingle,
-		selectableRowDisabled,
-		expandableRows,
-		expandableIcon,
-		localization: localization.expandable ?? {},
-		expandableRowsComponent,
-		expandableRowsComponentProps,
-		expandableRowsHideExpander,
-		expandOnRowClicked,
-		expandOnRowDoubleClicked,
-		expandableInheritConditionalStyles,
-		onRowClicked,
-		onRowDoubleClicked,
-		onRowMiddleClicked,
-		onRowMouseEnter,
-		onRowMouseLeave,
-		onRowExpandToggled,
-		onSelectedRow: handleSelectedRow,
-		onSelectedRange: handleSelectedRange,
-		visibleRowsRef,
-		lastSelectedKeyRef,
-		selectableRowsRange,
-		onDragStart: handleDragStart,
-		onDragOver: handleDragOver,
-		onDragEnd: handleDragEnd,
-		onDragEnter: handleDragEnter,
-		onDragLeave: handleDragLeave,
+		selection: selection.row,
+		expansion,
+		rowEvents,
+		columnDrag,
 		columnWidths,
 		pinnedOffsets,
 		animateRows,
@@ -426,55 +462,20 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	});
 
 	const headContextValue = useHeadContextValue<T>({
-		selectedColumn,
-		sortDirection,
-		sortColumns,
-		sortMulti,
-		defaultSortDirection,
-		sortIcon,
-		sortServer,
-		pagination,
-		paginationServer,
-		persistSelectedOnSort,
-		selectableRowsVisibleOnly,
+		sorting,
 		fixedHeader,
 		dense,
 		draggingColumnId,
 		draggingGroupKey,
-		filterValues,
-		localization: localization.filter ?? {},
+		filtering,
 		columnWidths,
 		pinnedOffsets,
-		resizable,
-		keyField,
-		mergeSelections,
-		allSelected,
-		selectedRows,
-		visibleRows,
-		selectableRowsComponent,
-		selectableRowsComponentProps,
-		selectableRowDisabled,
-		showSelectAll,
+		resize,
+		selectAll: selection.selectAll,
 		cellNavigation,
 		activeCell: effectiveActiveCell,
 		headerMenu: menu.header,
-		progressPending,
-		sortedData: filteredSortedData,
-		onSelectAllRows: handleSelectAllRows,
-		onSort: handleSort,
-		onFilterChange: handleFilterChange,
-		onResizeStart: resizable ? handleResizeStart : undefined,
-		onDragStart: handleDragStart,
-		onDragOver: handleDragOver,
-		onDragEnd: handleDragEnd,
-		onDragEnter: handleDragEnter,
-		onDragLeave: handleDragLeave,
-		onGroupDragStart: handleGroupDragStart,
-		onGroupDragEnter: handleGroupDragEnter,
-		onGroupDragOver: handleGroupDragOver,
-		onGroupDragEnd: handleGroupDragEnd,
-		onPointerDown: handlePointerDown,
-		onGroupPointerDown: handleGroupPointerDown,
+		columnDrag,
 	});
 
 	const paginationFooterProps = {

@@ -157,31 +157,31 @@ function makeDragEvent(attrs: Record<string, string> = {}): React.DragEvent<HTML
 }
 
 describe('useColumns:column drag handlers', () => {
-	test('handleDragStart sets draggingColumnId', () => {
+	test('columnDrag.onDragStart sets draggingColumnId', () => {
 		const { result } = makeHook([col1, col2]);
 
 		act(() => {
-			result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' }));
+			result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' }));
 		});
 
 		expect(result.current.draggingColumnId).toBe('1');
 	});
 
-	test('handleDragEnd clears draggingColumnId', () => {
+	test('columnDrag.onDragEnd clears draggingColumnId', () => {
 		const { result } = makeHook([col1, col2]);
 
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
-		act(() => result.current.handleDragEnd(makeDragEvent()));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragEnd(makeDragEvent()));
 
 		expect(result.current.draggingColumnId).toBe('');
 	});
 
-	test('handleDragEnter reorders columns and fires onColumnOrderChange', () => {
+	test('columnDrag.onDragEnter reorders columns and fires onColumnOrderChange', () => {
 		const onOrderChange = vi.fn();
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
 
 		// Start dragging col1
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
 
 		// Enter col2
 		const enterEl = document.createElement('div');
@@ -191,7 +191,7 @@ describe('useColumns:column drag handlers', () => {
 		Object.defineProperty(enterEvent, 'relatedTarget', { value: null });
 		Object.defineProperty(enterEvent, 'preventDefault', { value: () => undefined });
 
-		act(() => result.current.handleDragEnter(enterEvent));
+		act(() => result.current.columnDrag.onDragEnter(enterEvent));
 
 		expect(onOrderChange).toHaveBeenCalled();
 		// col2 should now be at index 0
@@ -200,19 +200,19 @@ describe('useColumns:column drag handlers', () => {
 		expect(newOrder[1].id).toBe(1);
 	});
 
-	test('handleDragStart ignores elements with no data-column-id', () => {
+	test('columnDrag.onDragStart ignores elements with no data-column-id', () => {
 		const { result } = makeHook([col1, col2]);
 
-		act(() => result.current.handleDragStart(makeDragEvent())); // no attribute
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent())); // no attribute
 
 		expect(result.current.draggingColumnId).toBe('');
 	});
 
-	test('handleDragEnter does nothing when entering the column being dragged', () => {
+	test('columnDrag.onDragEnter does nothing when entering the column being dragged', () => {
 		const onOrderChange = vi.fn();
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
 
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
 
 		const el = document.createElement('div');
 		el.setAttribute('data-column-id', '1'); // same column
@@ -221,16 +221,16 @@ describe('useColumns:column drag handlers', () => {
 		Object.defineProperty(ev, 'relatedTarget', { value: null });
 		Object.defineProperty(ev, 'preventDefault', { value: () => undefined });
 
-		act(() => result.current.handleDragEnter(ev));
+		act(() => result.current.columnDrag.onDragEnter(ev));
 
 		expect(onOrderChange).not.toHaveBeenCalled();
 	});
 
-	test('handleDragEnter ignores child-bubble events', () => {
+	test('columnDrag.onDragEnter ignores child-bubble events', () => {
 		const onOrderChange = vi.fn();
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
 
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
 
 		const el = document.createElement('div');
 		el.setAttribute('data-column-id', '2');
@@ -242,12 +242,12 @@ describe('useColumns:column drag handlers', () => {
 		Object.defineProperty(ev, 'relatedTarget', { value: child });
 		Object.defineProperty(ev, 'preventDefault', { value: () => undefined });
 
-		act(() => result.current.handleDragEnter(ev));
+		act(() => result.current.columnDrag.onDragEnter(ev));
 
 		expect(onOrderChange).not.toHaveBeenCalled();
 	});
 
-	test('handleDragEnter blocks cross-group reorder', () => {
+	test('columnDrag.onDragEnter blocks cross-group reorder', () => {
 		const onOrderChange = vi.fn();
 		const groups: ColumnGroup[] = [
 			{ name: 'G1', columnIds: [1] },
@@ -256,7 +256,7 @@ describe('useColumns:column drag handlers', () => {
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange, columnGroups: groups });
 
 		// Drag col1 (group G1) → try to enter col2 (group G2)
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
 
 		const el = document.createElement('div');
 		el.setAttribute('data-column-id', '2');
@@ -265,18 +265,18 @@ describe('useColumns:column drag handlers', () => {
 		Object.defineProperty(ev, 'relatedTarget', { value: null });
 		Object.defineProperty(ev, 'preventDefault', { value: () => undefined });
 
-		act(() => result.current.handleDragEnter(ev));
+		act(() => result.current.columnDrag.onDragEnter(ev));
 
 		expect(onOrderChange).not.toHaveBeenCalled();
 	});
 
-	test('handleDragOver and handleDragLeave call preventDefault', () => {
+	test('columnDrag.onDragOver and onDragLeave call preventDefault', () => {
 		const { result } = makeHook([col1, col2]);
 		const prevented: string[] = [];
 		const ev = { preventDefault: () => prevented.push('prevented') } as unknown as React.DragEvent<HTMLDivElement>;
 
-		act(() => result.current.handleDragOver(ev));
-		act(() => result.current.handleDragLeave(ev));
+		act(() => result.current.columnDrag.onDragOver(ev));
+		act(() => result.current.columnDrag.onDragLeave(ev));
 
 		expect(prevented).toHaveLength(2);
 	});
@@ -302,8 +302,8 @@ describe('useColumns:pin normalisation on drag', () => {
 		const { result } = makeHook([leftPin, unpinned], { onColumnOrderChange: onOrderChange });
 
 		// Drag unpinned (id=2) into the left-pinned column (id=1) position
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '2' })));
-		act(() => result.current.handleDragEnter(makeDragEnterEvent('1')));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '2' })));
+		act(() => result.current.columnDrag.onDragEnter(makeDragEnterEvent('1')));
 
 		const newOrder = onOrderChange.mock.calls[0][0] as TableColumn<Row>[];
 		// col2 inserted at index 0 → normalizePins has 1 left slot → col2 becomes left-pinned
@@ -322,8 +322,8 @@ describe('useColumns:pin normalisation on drag', () => {
 		const { result } = makeHook([leftPin, a, b], { onColumnOrderChange: onOrderChange });
 
 		// Drag the left-pinned col (id=1) to the last position (id=3)
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
-		act(() => result.current.handleDragEnter(makeDragEnterEvent('3')));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragEnter(makeDragEnterEvent('3')));
 
 		const newOrder = onOrderChange.mock.calls[0][0] as TableColumn<Row>[];
 		// col1 is now at index 2 — beyond the 1 left-pin zone → unpinned
@@ -339,8 +339,8 @@ describe('useColumns:pin normalisation on drag', () => {
 		const { result } = makeHook([leftPin, mid, rightPin], { onColumnOrderChange: onOrderChange });
 
 		// Drag right-pinned (id=3) into position of left-pinned (id=1)
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '3' })));
-		act(() => result.current.handleDragEnter(makeDragEnterEvent('1')));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '3' })));
+		act(() => result.current.columnDrag.onDragEnter(makeDragEnterEvent('1')));
 
 		const newOrder = onOrderChange.mock.calls[0][0] as TableColumn<Row>[];
 		// col3 inserted at index 0 → becomes left-pinned (1 left slot)
@@ -361,8 +361,8 @@ describe('useColumns:pin normalisation on drag', () => {
 		const { result } = makeHook([a, b, c], { onColumnOrderChange: onOrderChange });
 
 		// Drag A (index 0) to C (index 2) → result should be [B, C, A]
-		act(() => result.current.handleDragStart(makeDragEvent({ 'data-column-id': '1' })));
-		act(() => result.current.handleDragEnter(makeDragEnterEvent('3')));
+		act(() => result.current.columnDrag.onDragStart(makeDragEvent({ 'data-column-id': '1' })));
+		act(() => result.current.columnDrag.onDragEnter(makeDragEnterEvent('3')));
 
 		const newOrder = onOrderChange.mock.calls[0][0] as TableColumn<Row>[];
 		expect(newOrder.map(x => x.id)).toEqual([2, 3, 1]);
@@ -409,7 +409,7 @@ describe('useColumns:pointer reorder', () => {
 		const onOrderChange = vi.fn();
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
 
-		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
+		act(() => result.current.columnDrag.onPointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
 		// Long-press elapses → column grabbed
 		act(() => vi.advanceTimersByTime(250));
 		expect(result.current.draggingColumnId).toBe('1');
@@ -426,7 +426,7 @@ describe('useColumns:pointer reorder', () => {
 		const onOrderChange = vi.fn();
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
 
-		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
+		act(() => result.current.columnDrag.onPointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
 		// Move before the timer fires — a plain scroll, not a grab
 		stubElementUnderPoint('data-column-id', '2');
 		act(() => firePointerMove(500));
@@ -439,7 +439,7 @@ describe('useColumns:pointer reorder', () => {
 		const onOrderChange = vi.fn();
 		const { result } = makeHook([col1, col2], { onColumnOrderChange: onOrderChange });
 
-		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' }, 'mouse')));
+		act(() => result.current.columnDrag.onPointerDown(makePointerDown({ key: 'data-column-id', value: '1' }, 'mouse')));
 		act(() => vi.advanceTimersByTime(250));
 
 		expect(result.current.draggingColumnId).toBe('');
@@ -448,7 +448,7 @@ describe('useColumns:pointer reorder', () => {
 	test('pointerup clears the dragging state', () => {
 		const { result } = makeHook([col1, col2]);
 
-		act(() => result.current.handlePointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
+		act(() => result.current.columnDrag.onPointerDown(makePointerDown({ key: 'data-column-id', value: '1' })));
 		act(() => vi.advanceTimersByTime(250));
 		expect(result.current.draggingColumnId).toBe('1');
 
@@ -471,7 +471,7 @@ describe('useColumns:pointer reorder', () => {
 			columnGroups: groups,
 		});
 
-		act(() => result.current.handleGroupPointerDown(makePointerDown({ key: 'data-group-key', value: '1' })));
+		act(() => result.current.columnDrag.onGroupPointerDown(makePointerDown({ key: 'data-group-key', value: '1' })));
 		act(() => vi.advanceTimersByTime(250));
 		expect(result.current.draggingGroupKey).toBe('1');
 

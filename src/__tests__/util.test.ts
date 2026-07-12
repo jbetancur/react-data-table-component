@@ -3,6 +3,7 @@ import {
 	sort,
 	multiSort,
 	getProperty,
+	toReactNode,
 	insertItem,
 	removeItem,
 	decorateColumns,
@@ -96,6 +97,42 @@ describe('sort', () => {
 
 		expect(rows[0].count).toEqual(20);
 		expect(rows[rows.length - 1].count).toEqual(1);
+	});
+
+	test('built in sort when a value is a bigint and asc', () => {
+		const rows = sort(
+			[{ count: BigInt(20) }, { count: BigInt(10) }, { count: BigInt(1) }],
+			row => row.count,
+			SortOrder.ASC,
+		);
+
+		expect(rows[0].count).toEqual(BigInt(1));
+		expect(rows[rows.length - 1].count).toEqual(BigInt(20));
+	});
+
+	test('built in sort when a value is a Date and desc', () => {
+		const rows = sort(
+			[{ when: new Date('2020-01-01') }, { when: new Date('2022-01-01') }, { when: new Date('2021-01-01') }],
+			row => row.when,
+			SortOrder.DESC,
+		);
+
+		expect(rows[0].when).toEqual(new Date('2022-01-01'));
+		expect(rows[rows.length - 1].when).toEqual(new Date('2020-01-01'));
+	});
+
+	test('nullish values always sort to the end regardless of direction', () => {
+		// Selectors that reach a missing field return null/undefined at runtime even
+		// though Primitive excludes them; the comparator pushes those rows to the end.
+		type Row = { n: number | null | undefined };
+		const data: Row[] = [{ n: 2 }, { n: null }, { n: 1 }, { n: undefined }];
+		const selector = (row: Row) => row.n as number;
+
+		const asc = sort(data, selector, SortOrder.ASC);
+		expect(asc.map(r => r.n)).toEqual([1, 2, null, undefined]);
+
+		const desc = sort(data, selector, SortOrder.DESC);
+		expect(desc.map(r => r.n)).toEqual([2, 1, null, undefined]);
 	});
 
 	test('built in sort nested keys', () => {
@@ -240,6 +277,23 @@ describe('getProperty', () => {
 		);
 
 		expect(property).toEqual('IAMANAME');
+	});
+});
+
+describe('toReactNode', () => {
+	test('coerces bigint to its string form', () => {
+		expect(toReactNode(BigInt(42))).toEqual('42');
+	});
+
+	test('coerces Date to a locale string', () => {
+		const d = new Date('2021-01-01T00:00:00Z');
+		expect(toReactNode(d)).toEqual(d.toLocaleString());
+	});
+
+	test('passes strings, numbers, and nodes through unchanged', () => {
+		expect(toReactNode('hi')).toEqual('hi');
+		expect(toReactNode(7)).toEqual(7);
+		expect(toReactNode(null)).toEqual(null);
 	});
 });
 
