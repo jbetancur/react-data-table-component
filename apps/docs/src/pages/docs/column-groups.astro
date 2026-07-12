@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import ColumnGroupsDemo from '../../components/demos/ColumnGroupsDemo.tsx';
 ---
 
@@ -146,4 +147,14 @@ export default function App() {
   <CodeBlock code={`.my-table {
   --rdt-color-text-secondary: #4f46e5;
 }`} lang="css" />
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="column-groups" columns={['prop', 'type', 'default', 'description']} />
+
+  <p>
+    Each group is a <a href="/docs/api#columngroup"><code>ColumnGroup</code></a> object — see the API
+    reference for its <code>name</code>, <code>columnIds</code>, <code>align</code>, and
+    <code>reorder</code> fields.
+  </p>
 </DocsLayout>

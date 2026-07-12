@@ -1,7 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
-import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Getting started | react-data-table-component" description="Install react-data-table-component and build a sortable, paginated data table in React with 10 lines of code.">
@@ -42,18 +42,9 @@ export default function App() {
 
   <h2>Common props at a glance</h2>
 
-  <DocsTable
-    headers={['Prop', 'Type', 'Description']}
-    rows={[
-      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'Column definitions (required)'],
-      ['<code>data</code>', '<code>T[]</code>', 'Row data (required)'],
-      ['<code>pagination</code>', '<code>boolean</code>', 'Enable built-in pagination'],
-      ['<code>selectableRows</code>', '<code>boolean</code>', 'Enable row checkboxes'],
-      ['<code>expandableRows</code>', '<code>boolean</code>', 'Enable expandable row panels'],
-      ['<code>theme</code>', '<code>string</code>', 'Named theme (e.g. <code>"material"</code>, <code>"catppuccin"</code>, <code>"crisp"</code>)'],
-      ['<code>animateRows</code>', '<code>boolean</code>', 'Staggered row entrance + sort animation'],
-      ['<code>columnSeparator</code>', '<code>boolean | "full"</code>', 'Body column separators (headers always shown)'],
-    ]}
+  <PropsTable
+    only={['columns', 'data', 'pagination', 'selectableRows', 'expandableRows', 'theme', 'animateRows', 'columnSeparator']}
+    columns={['prop', 'type', 'description']}
   />
 
   <p>See the full <a href="/docs/api">API reference</a> for all props.</p>

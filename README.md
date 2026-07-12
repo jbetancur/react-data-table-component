@@ -42,30 +42,28 @@ The documentation contains information about installation, usage and contributio
 
 # Supporting React Data Table Component
 
-React Data Table Component has been actively maintained since 2018 and is downloaded ~215k times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
+React Data Table Component has been actively maintained since 2018 and is downloaded ![weekly downloads](https://img.shields.io/npm/dw/react-data-table-component.svg?label=%20&color=blue&style=flat-square) times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
 
 ## Sponsor the project
 
-Sponsoring puts your company logo in front of ~215k developers a week: in the README, the docs site, and every release. It's the right move if your team depends on this library and you want it to keep improving.
+Sponsoring puts your company logo in front of the ![weekly downloads](https://img.shields.io/npm/dw/react-data-table-component.svg?label=%20&color=blue&style=flat-square) developers who use it every week: in the README, the docs site, and every release. It's the right move if your team depends on this library and you want it to keep improving.
 
 | Tier | Price/month | Perk |
 | --- | --- | --- |
 | ☕ Supporter | $5 | Your name in the README supporters list |
 | 🎗 Backer | $20 | Name + link in README + listed in the Backers section on reactdatatable.com |
-| 🥉 Bronze | $100 | Priority issue triage + small logo in README + docs site footer |
-| 🥈 Silver | $200 | Priority issue triage + medium logo in README + docs site sidebar |
-| 🥇 Gold | $500 | Priority issue triage + direct maintainer line + large logo in README + hero spot on reactdatatable.com. Limited to 3. |
+| 🥉 Bronze | $100 | Visibility: small logo in README + docs site footer, and sponsor credit in every release's notes |
+| 🥈 Silver | $200 | Everything in Bronze + medium logo in the docs sidebar + priority issue queue: sponsor issues go to the front of the backlog, first response within 2 business days |
+| 🥇 Gold | $500 | Everything in Silver + hero logo on reactdatatable.com + top README placement + written support commitments: 12-month patch window for the previous major, security advisories before public disclosure, one compliance questionnaire per year, direct email channel (async, business hours). Limited to 3. |
+
+These are honest, written commitments from a solo maintainer: async and business hours. No fake 24/7 SLA.
 
 [![Sponsor on GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github)](https://github.com/sponsors/jbetancur)
 [![Sponsor on OpenCollective](https://img.shields.io/badge/Sponsor-OpenCollective-blue?logo=opencollective)](https://opencollective.com/react-data-table-component)
 
 ## Enterprise support
 
-Available as part of the Tidelift Subscription.
-
-The maintainer of react-data-table-component and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-react-data-table-component?utm_source=npm-react-data-table-component&utm_medium=referral&utm_campaign=readme)
-
-<!-- TODO: replace the Tidelift link above with the exact referral URL from the dashboard's "Promote the Tidelift Subscription" marketing task. -->
+Need commercial support, an SLA, or help with a major version upgrade? I offer direct consulting and priority support arrangements for teams that depend on react-data-table-component in production. Reach out via the [support page](https://reactdatatable.com/support).
 
 ## Need help?
 

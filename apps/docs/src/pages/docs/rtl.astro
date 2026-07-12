@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import RTLDemo from '../../components/demos/RTLDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="RTL support | react-data-table-component">
@@ -104,12 +105,7 @@ import { ar } from 'react-data-table-component/locales';
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Prop', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>direction</code>', '<code>Direction</code>', '<code>Direction.AUTO</code>', 'Text direction for the table. <code>ltr</code>, <code>rtl</code>, or <code>auto</code>.'],
-    ]}
-  />
+  <PropsTable feature="rtl" columns={['prop', 'type', 'default', 'description']} />
 
   <CodeBlock code={`import { Direction } from 'react-data-table-component';
 

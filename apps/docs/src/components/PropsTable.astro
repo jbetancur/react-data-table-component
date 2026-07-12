@@ -1,0 +1,85 @@
+---
+import DocsTable from './DocsTable.astro';
+import { dataTableProps, propGroupOrder, type PropDef, type PropFeature, type PropGroup } from '../data/props';
+
+type Column = 'prop' | 'type' | 'default' | 'description';
+
+interface Props {
+  // Filter by feature tag (feature pages) …
+  feature?: PropFeature;
+  // … or render whole api.md-style groups (the API reference).
+  group?: PropGroup;
+  groups?: PropGroup[];
+  // Restrict/order the rows explicitly by prop name (overrides feature/group).
+  only?: string[];
+  // Which columns to render. Default omits the Default column on feature pages.
+  columns?: Column[];
+  // Prefer the shorter `brief` copy where available. Defaults to true unless a
+  // group is given (the API reference wants the canonical description).
+  brief?: boolean;
+  // Header label for the first column.
+  propHeader?: string;
+}
+
+const {
+  feature,
+  group,
+  groups,
+  only,
+  columns,
+  brief = !group && !groups,
+  propHeader = 'Prop',
+} = Astro.props as Props;
+
+const byName = new Map(dataTableProps.map(p => [p.name, p] as const));
+
+let rows: PropDef[];
+if (only) {
+  rows = only.map(name => {
+    const p = byName.get(name);
+    if (!p) throw new Error(`PropsTable: unknown prop "${name}" in \`only\``);
+    return p;
+  });
+} else if (feature) {
+  rows = dataTableProps.filter(p => p.features.includes(feature));
+} else {
+  const wanted = groups ?? (group ? [group] : propGroupOrder);
+  rows = dataTableProps.filter(p => wanted.includes(p.group));
+}
+
+if (rows.length === 0) {
+  throw new Error(`PropsTable: no props matched (feature=${feature}, group=${group}).`);
+}
+
+// Row events have no defaults in the source; drop the Default column when none
+// of the selected rows define one, unless the caller pins the columns.
+const anyDefault = rows.some(p => p.default != null && p.default !== '');
+const cols: Column[] = columns ?? (anyDefault ? ['prop', 'type', 'default', 'description'] : ['prop', 'type', 'description']);
+
+const headerFor: Record<Column, string> = {
+  prop: propHeader,
+  type: 'Type',
+  default: 'Default',
+  description: 'Description',
+};
+const headers = cols.map(col => headerFor[col]);
+
+const cellFor = (p: PropDef, col: Column): string => {
+  switch (col) {
+    case 'prop': {
+      const label = `<code>${p.name}</code>`;
+      return p.deprecated ? `<s>${label}</s>` : label;
+    }
+    case 'type':
+      return p.type;
+    case 'default':
+      return p.default ?? '-';
+    case 'description':
+      return (brief && p.brief) || p.description;
+  }
+};
+
+const tableRows = rows.map(p => cols.map(col => cellFor(p, col)));
+---
+
+<DocsTable headers={headers} rows={tableRows} />

@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
 ---
 
@@ -237,4 +238,8 @@ tableRef.current?.clearSelectedRows();`} />
     indeterminate: (isIndeterminate: boolean) => isIndeterminate,
   }}
 />`} />
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="selection" columns={['prop', 'type', 'default', 'description']} propHeader="Prop / method" />
 </DocsLayout>

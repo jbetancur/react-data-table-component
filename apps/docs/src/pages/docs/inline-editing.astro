@@ -419,24 +419,7 @@ const columns: TableColumn<Employee>[] = [
     <li>Editing does not trigger row selection or row click handlers. Clicks inside the editor are stopped from propagating.</li>
   </ul>
 
-  <h2>Prop reference</h2>
-
-  <DocsTable
-    headers={['Column prop', 'Type', 'Description']}
-    rows={[
-      ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for a text editor. Equivalent to <code>editor: &#123; type: \'text\' &#125;</code>. Ignored when <code>editor</code> is set.'],
-      ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <code>CellEditor</code> below for the full union.'],
-      ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.'],
-      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
-    ]}
-  />
-
-  <p>
-    <code>cellNavigation</code> is a table-level prop covered on its own page — see
-    <a href="/docs/keyboard-navigation">Keyboard navigation</a>.
-  </p>
-
-  <h3>CellEditor</h3>
+  <h2 id="celleditor">CellEditor</h2>
 
   <CodeBlock code={`type CellEditor<T = unknown> =
   | { type: 'text'; placeholder?: string }
@@ -464,5 +447,22 @@ interface CustomCellEditorContext<T> {
 
   <p>
     See it combined with other features in the <a href="/docs/recipes/inventory-editor">Editable inventory grid</a> recipe.
+  </p>
+
+  <h2>Prop reference</h2>
+
+  <DocsTable
+    headers={['Column prop', 'Type', 'Description']}
+    rows={[
+      ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for a text editor. Equivalent to <code>editor: &#123; type: \'text\' &#125;</code>. Ignored when <code>editor</code> is set.'],
+      ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <a href="#celleditor">CellEditor</a> above for the full union.'],
+      ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.'],
+      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
+    ]}
+  />
+
+  <p>
+    <code>cellNavigation</code> is a table-level prop covered on its own page — see
+    <a href="/docs/keyboard-navigation">Keyboard navigation</a>.
   </p>
 </DocsLayout>

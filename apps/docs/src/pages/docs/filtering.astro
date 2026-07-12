@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import FilteringDemo from '../../components/demos/FilteringDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Filtering | react-data-table-component">
@@ -245,5 +246,14 @@ const rows = filteredData(tableRows);`} />
   <p>
     See it combined with other features in the <a href="/docs/recipes/server-side">Server-side sort, page & filter</a> recipe
     and <a href="/docs/recipes/editable-grid">URL-synced table state</a>.
+  </p>
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="filtering" columns={['prop', 'type', 'default', 'description']} />
+
+  <p>
+    Per-column filtering is configured on each <a href="/docs/api#tablecolumnt"><code>TableColumn</code></a>
+    via <code>filterable</code>, <code>filterType</code>, and <code>filterFunction</code>.
   </p>
 </DocsLayout>

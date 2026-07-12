@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import CustomStylesDemo from '../../components/demos/CustomStylesDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Custom styles | react-data-table-component">
@@ -203,5 +204,14 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
     In v8, they accept <code>React.CSSProperties</code>. The practical difference:
     pseudo-selectors like <code>&amp;:hover</code> are not valid here.
     Use <code>conditionalRowStyles</code> or CSS classes for hover and focus states.
+  </p>
+
+  <h2>Prop reference</h2>
+
+  <PropsTable only={['customStyles', 'conditionalRowStyles']} columns={['prop', 'type', 'default', 'description']} />
+
+  <p>
+    <code>customStyles</code> takes a <a href="/docs/api#tablestyles"><code>TableStyles</code></a> object —
+    see the API reference for every styleable slot.
   </p>
 </DocsLayout>

@@ -2,6 +2,7 @@
 import { Code } from 'astro:components';
 import Layout from '../layouts/Layout.astro';
 import LiveDemo from '../components/LiveDemo.tsx';
+import { backers } from '../data/backers';
 
 const [npmRes, ghRes] = await Promise.allSettled([
   fetch('https://api.npmjs.org/downloads/point/last-week/react-data-table-component'),
@@ -275,15 +276,32 @@ export default function App() {
 			fixes and keeps pace with the React ecosystem.
 		</p>
 
-		<!-- First sponsor slot, add more logos as sponsors sign on -->
+		<!-- Logo slot, add more logos as Bronze+ sponsors sign on -->
 		<div class="flex flex-wrap items-center justify-center gap-6 mb-8">
 			<a
 				href="/support"
 				class="flex items-center justify-center gap-2 h-16 px-6 border-2 border-dashed border-gray-200 rounded-xl text-sm text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
 			>
-				<span class="text-lg">♡</span> Be the first to sponsor
+				<span class="text-lg">♡</span> Be the first logo sponsor
 			</a>
 		</div>
+
+		{backers.length > 0 && (
+			<p class="text-sm text-gray-500 mb-8">
+				Thank you to our backers for their recurring support:{' '}
+				{backers.map(({ name, url }, i) => (
+					<>
+						{i > 0 && ', '}
+						{url ? (
+							<a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium">{name}</a>
+						) : (
+							<span class="text-gray-700 font-medium">{name}</span>
+						)}
+					</>
+				))}
+				. <a href="/support#backers" class="text-brand-600 hover:text-brand-700 font-medium">See all →</a>
+			</p>
+		)}
 
 		<div class="flex items-center justify-center gap-4">
 			<a

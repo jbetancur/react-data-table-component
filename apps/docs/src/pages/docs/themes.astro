@@ -5,6 +5,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import ThemesDemo from '../../components/demos/ThemesDemo.tsx';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Themes & Color Mode | react-data-table-component">
@@ -366,16 +367,8 @@ MyCheckbox.displayName = 'MyCheckbox';
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Prop', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>theme</code>', '<code>string | Theme | Record&lt;string, string&gt;</code>', '<code>"default"</code>', 'Named built-in theme, a <code>Theme</code> object from <code>createTheme(overrides, inherit)</code>, or a raw CSS variable map (<code>&#123; \'--rdt-color-bg\': \'#000\', ... &#125;</code>).'],
-      ['<code>colorMode</code>', '<code>"light" | "dark" | "system"</code>', '<code>"system"</code>', 'Controls when the theme\'s <code>darkMode</code> overrides are applied. <code>"system"</code> follows <code>localStorage</code>, the <code>html.dark</code> class, then <code>prefers-color-scheme</code>.'],
-      ['<code>selectableRowsComponent</code>', '<code>React.ComponentType&lt;InputHTMLAttributes&gt; | "input"</code>', '<code>"input"</code>', 'Custom checkbox component. Must accept standard input props and forward its ref to an <code>&lt;input&gt;</code> element so DataTable can set <code>indeterminate</code>.'],
-      ['<code>selectableRowsComponentProps</code>', '<code>Record&lt;string, unknown&gt;</code>', '-', 'Extra props forwarded to every instance of the custom checkbox component.'],
-      ['<code>headerSeparator</code>', '<code>boolean | "full"</code>', 'theme default or <code>true</code>', 'Line below the header row. <code>true</code> = subtle inset line. <code>"full"</code> = full-height divider. <code>false</code> = none. Overrides the theme\'s <code>headerSeparator</code> setting.'],
-      ['<code>columnSeparator</code>', '<code>boolean | "full"</code>', 'theme default or <code>false</code>', 'Vertical lines between body row cells. <code>true</code> = subtle inset. <code>"full"</code> = full-height. <code>false</code> = none. Overrides the theme\'s <code>columnSeparator</code> setting.'],
-      ['<code>customStyles</code>', '<code>TableStyles</code>', '-', 'Fine-grained style overrides per slot (rows, cells, header, pagination, etc.). Applied on top of the active theme. See the <a href="/docs/custom-styles">Custom Styles</a> page.'],
-    ]}
+  <PropsTable
+    only={['theme', 'colorMode', 'selectableRowsComponent', 'selectableRowsComponentProps', 'headerSeparator', 'columnSeparator', 'customStyles']}
+    columns={['prop', 'type', 'default', 'description']}
   />
 </DocsLayout>

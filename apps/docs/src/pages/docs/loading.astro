@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import LoadingDemo from '../../components/demos/LoadingDemo';
 ---
 
@@ -88,4 +89,8 @@ export default function UsersTable() {
 
   <CodeBlock code={`// Keep header visible when data is empty (e.g. after a filter returns nothing)
 <DataTable persistTableHead data={[]} columns={columns} />`} lang="tsx" />
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="loading" columns={['prop', 'type', 'default', 'description']} />
 </DocsLayout>

@@ -3,7 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ExpandableDemo from '../../components/demos/ExpandableDemo.tsx';
-import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Expandable rows | react-data-table-component">
@@ -253,31 +253,6 @@ export default function App() {
   animateRows
 />`} />
 
-  <h2>All expandable props</h2>
-  <DocsTable
-    headers={['Prop', 'Type', 'Description']}
-    rows={[
-      ['<code>expandableRows</code>', '<code>boolean</code>', 'Enable expandable rows'],
-      ['<code>expandableRowsComponent</code>', '<code>ComponentType&lt;&#123; data: T &#125;&gt;</code>', 'Component rendered inside each expanded row'],
-      ['<code>expandableRowsComponentProps</code>', '<code>Record&lt;string, unknown&gt;</code>', 'Extra props injected into every expander instance'],
-      ['<code>expandableRowExpanded</code>', '<code>(row: T) =&gt; boolean</code>', 'Pre-expand rows matching this predicate'],
-      ['<code>expandableRowDisabled</code>', '<code>(row: T) =&gt; boolean</code>', 'Prevent rows matching this predicate from being expanded'],
-      ['<code>expandOnRowClicked</code>', '<code>boolean</code>', 'Expand/collapse on row click'],
-      ['<code>expandOnRowDoubleClicked</code>', '<code>boolean</code>', 'Expand/collapse on row double-click'],
-      ['<code>expandableRowsHideExpander</code>', '<code>boolean</code>', 'Hide the expander icon column'],
-      ['<code>expandableIcon</code>', '<code>&#123; collapsed: ReactNode; expanded: ReactNode &#125;</code>', 'Custom expand/collapse icons'],
-      ['<code>expandableInheritConditionalStyles</code>', '<code>boolean</code>', "Apply the parent row's <code>conditionalRowStyles</code> to the expander row"],
-      ['<code>onRowExpandToggled</code>', '<code>(expanded: boolean, row: T) =&gt; void</code>', 'Fired when a row is expanded or collapsed'],
-      ['<code>animateRows</code>', '<code>boolean</code>', 'Animate expand/collapse (respects <code>prefers-reduced-motion</code>)'],
-      ['<code>localization</code>', '<code>Localization</code>', 'Localizable aria-labels for the expand/collapse button — see Localization below.'],
-    ]}
-  />
-
-  <p>
-    See it combined with other features in the <a href="/docs/recipes/master-detail">Dashboard with drill-down</a> recipe
-    and <a href="/docs/recipes/row-groups">Grouped rows with aggregates</a>.
-  </p>
-
   <h2>Localization</h2>
   <p>
     Override the aria-labels on the expand/collapse button via the <code>localization</code> prop.
@@ -313,4 +288,12 @@ const custom: Localization = {
   expandableRowsComponent={MyExpander}
   localization={custom}
 />`} />
+
+  <h2>Prop reference</h2>
+  <PropsTable feature="expandable" columns={['prop', 'type', 'description']} />
+
+  <p>
+    See it combined with other features in the <a href="/docs/recipes/master-detail">Dashboard with drill-down</a> recipe
+    and <a href="/docs/recipes/row-groups">Grouped rows with aggregates</a>.
+  </p>
 </DocsLayout>

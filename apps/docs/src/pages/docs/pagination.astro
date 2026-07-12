@@ -8,6 +8,7 @@ import ServerSidePaginationDemo from '../../components/demos/ServerSidePaginatio
 import ServerSideSortPaginationDemo from '../../components/demos/ServerSideSortPaginationDemo.tsx';
 import ServerSideDemo from '../../components/demos/ServerSideDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Pagination | react-data-table-component">
@@ -479,31 +480,6 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
   paginationComponent={MyPagination}
 />`} />
 
-  <h2>Prop reference</h2>
-
-  <DocsTable
-    headers={['Prop', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>pagination</code>', '<code>boolean</code>', '<code>false</code>', 'Enable the built-in pagination bar.'],
-      ['<code>paginationPerPage</code>', '<code>number</code>', '<code>10</code>', 'Initial number of rows per page.'],
-      ['<code>paginationDefaultPage</code>', '<code>number</code>', '<code>1</code>', 'Initial page number.'],
-      ['<code>paginationRowsPerPageOptions</code>', '<code>number[]</code>', '<code>[10, 25, 50, 100]</code>', 'Options shown in the rows-per-page dropdown.'],
-      ['<code>paginationPosition</code>', "<code>'top' | 'bottom' | 'both'</code>", "<code>'bottom'</code>", "Where the pagination bar renders relative to the table. <code>'both'</code> renders it above and below simultaneously."],
-      ['<code>paginationServer</code>', '<code>boolean</code>', '<code>false</code>', 'Delegate pagination to the server. Use with <code>paginationTotalRows</code> and the change callbacks.'],
-      ['<code>paginationTotalRows</code>', '<code>number</code>', '<code>0</code>', 'Total row count across all pages (server-side only). Used to calculate total pages.'],
-      ['<code>paginationResetDefaultPage</code>', '<code>boolean</code>', '<code>false</code>', 'Toggle this value to reset the pagination bar to page 1 (e.g. after a search).'],
-      ['<code>paginationServerOptions</code>', '<code>&#123; persistSelectedOnPageChange?, persistSelectedOnSort? &#125;</code>', '-', 'Server-side selection persistence options.'],
-      ['<code>paginationComponent</code>', '<code>ComponentType&lt;PaginationComponentProps&gt;</code>', '-', 'Replaces the built-in pagination bar with a custom component.'],
-      ['<code>paginationComponentOptions</code>', '<code>PaginationOptions</code>', '-', 'Options forwarded to the default pagination component. Covers visible text (<code>rowsPerPageText</code>, <code>rangeSeparatorText</code>, <code>selectAllRowsItemText</code>). Navigation aria-labels are set via the <code>localization</code> prop.'],
-      ['<code>paginationIconFirstPage</code>', '<code>ReactNode</code>', '-', 'Icon for the "first page" button.'],
-      ['<code>paginationIconLastPage</code>', '<code>ReactNode</code>', '-', 'Icon for the "last page" button.'],
-      ['<code>paginationIconNext</code>', '<code>ReactNode</code>', '-', 'Icon for the "next page" button.'],
-      ['<code>paginationIconPrevious</code>', '<code>ReactNode</code>', '-', 'Icon for the "previous page" button.'],
-      ['<code>onChangePage</code>', '<code>(page: number, totalRows: number) =&gt; void</code>', '-', 'Called when the user navigates to a different page.'],
-      ['<code>onChangeRowsPerPage</code>', '<code>(currentRowsPerPage: number, currentPage: number) =&gt; void</code>', '-', 'Called when the user changes the rows-per-page selection.'],
-    ]}
-  />
-
   <h2>Localization</h2>
   <p>
     All navigation aria-labels on the built-in pagination bar are controlled via the
@@ -547,6 +523,10 @@ const custom: Localization = {
 };
 
 <DataTable columns={columns} data={data} pagination localization={custom} />`} />
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="pagination" columns={['prop', 'type', 'default', 'description']} />
 
   <p>
     See it combined with other features in the <a href="/docs/recipes/server-side">Server-side sort, page & filter</a> recipe

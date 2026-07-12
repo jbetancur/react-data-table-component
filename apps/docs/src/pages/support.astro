@@ -1,16 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { backers } from '../data/backers';
 
 const GH_SPONSORS = 'https://github.com/sponsors/jbetancur';
 const OC_BASE = 'https://opencollective.com/react-data-table-component';
-// TODO: replace with the exact referral URL from Tidelift's "Promote the Tidelift Subscription" marketing task.
-const TIDELIFT_URL =
-  'https://tidelift.com/subscription/pkg/npm-react-data-table-component?utm_source=npm-react-data-table-component&utm_medium=referral&utm_campaign=docs';
 
-// Backer tier ($20/mo) and above. Add sponsors here as they sign on.
-const backers: { name: string; url?: string }[] = [
-  { name: 'Rich Tillman', url: 'https://opencollective.com/rich-tillman' },
-];
+const npmRes = await fetch('https://api.npmjs.org/downloads/point/last-week/react-data-table-component').catch(() => null);
+const weeklyDownloads: number = npmRes?.ok ? (await npmRes.json()).downloads : 215000;
+const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
 ---
 
 <Layout
@@ -21,21 +18,21 @@ const backers: { name: string; url?: string }[] = [
   <section class="max-w-4xl mx-auto px-6 pt-20 pb-12 text-center">
     <h1 class="text-4xl font-bold tracking-tight text-gray-900">Support &amp; Sponsorship</h1>
     <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
-      Actively maintained since 2018 and downloaded ~215k times a week. Your sponsorship funds bug fixes,
+      Actively maintained since 2018 and downloaded ~{fmt(weeklyDownloads)} times a week. Your sponsorship funds bug fixes,
       new features, and keeps pace with the React ecosystem.
     </p>
   </section>
 
   <!-- Sponsor tiers -->
   <section class="bg-gray-50 py-16">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-2xl font-bold text-gray-900 text-center mb-3">Sponsorship Tiers</h2>
       <p class="text-sm text-gray-500 text-center max-w-xl mx-auto mb-10">
-        Bronze and above is a support plan first, visibility second: your issues jump the queue of a
-        library your product already depends on.
+        Bronze buys visibility. Silver and Gold are support plans: your issues jump the queue of a
+        library your product already depends on, with written commitments at Gold.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         {[
           {
             name: '☕ Supporter',
@@ -55,25 +52,25 @@ const backers: { name: string; url?: string }[] = [
             name: '🥉 Bronze',
             price: '$100',
             period: '/mo',
-            perks: ['Priority issue triage', 'Small logo on docs site footer', 'Small logo + link in README'],
+            perks: ['Small logo + link in README', 'Small logo on docs site footer', 'Sponsor credit in release notes'],
             ocSlug: 'bronze-103592',
           },
           {
             name: '🥈 Silver',
             price: '$200',
             period: '/mo',
-            perks: ['Priority issue triage', 'Medium logo on docs site sidebar', 'Logo + link in README'],
+            perks: ['Everything in Bronze', 'Medium logo on docs site sidebar', 'Priority issue queue: front of the backlog', 'First response within 2 business days'],
             ocSlug: 'silver-103593',
           },
           {
             name: '🥇 Gold',
             price: '$500',
             period: '/mo',
-            perks: ['Priority issue triage', 'Direct line to the maintainer', 'Large logo: hero spot on reactdatatable.com', 'Top placement in README', 'Limited to 3 sponsors'],
+            perks: ['Everything in Silver', 'Large logo: hero spot on reactdatatable.com', 'Top placement in README', '12-month patch window for the previous major', 'Security advisories before public disclosure', 'One compliance questionnaire per year', 'Direct email channel (async, business hours)', 'Limited to 3 sponsors'],
             ocSlug: 'gold-103594',
           },
         ].map(({ name, price, period, perks, ocSlug }) => (
-          <div class="bg-white border border-gray-200 rounded-xl p-5 flex flex-col">
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col">
             <div class="font-semibold text-gray-900">{name}</div>
             <div class="mt-1 text-2xl font-bold text-gray-900">
               {price}<span class="text-sm font-normal text-gray-400">{period}</span>
@@ -110,8 +107,12 @@ const backers: { name: string; url?: string }[] = [
         ))}
       </div>
 
+      <p class="text-center text-xs text-gray-400 mt-6">
+        These are honest, written commitments from a solo maintainer: async and business hours. No fake 24/7 SLA.
+      </p>
+
       <!-- One-time -->
-      <div class="mt-8 bg-white border border-gray-200 rounded-xl p-6 text-center">
+      <div class="mt-8 max-w-xl mx-auto bg-white border border-gray-200 rounded-xl p-6 text-center">
         <h3 class="font-semibold text-gray-900 mb-1">One-time donation</h3>
         <p class="text-sm text-gray-500 mb-4">No commitment. Every bit helps.</p>
         <div class="flex flex-wrap items-center justify-center gap-2">
@@ -141,7 +142,7 @@ const backers: { name: string; url?: string }[] = [
 
   <!-- Backers -->
   <section class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-bold text-gray-900 text-center mb-2">Backers</h2>
+    <h2 id="backers" class="text-2xl font-bold text-gray-900 text-center mb-2">Backers</h2>
     <p class="text-sm text-gray-500 text-center mb-8">
       Thank you to everyone sponsoring at the Backer tier and above.
     </p>
@@ -164,22 +165,20 @@ const backers: { name: string; url?: string }[] = [
     )}
   </section>
 
-  <!-- Enterprise support (Tidelift) -->
+  <!-- Enterprise support -->
   <section class="max-w-4xl mx-auto px-6 py-16">
-    <div class="bg-gray-900 rounded-2xl px-8 py-10 text-center">
+    <div class="bg-gray-900 rounded-2xl px-8 py-10 text-center" data-contact data-user="sponsors" data-domain="reactdatatable.com">
       <h2 class="text-2xl font-bold text-white mb-3">Enterprise support</h2>
       <p class="text-sm text-gray-300 max-w-2xl mx-auto mb-6">
-        Need commercial support, security guarantees, and maintenance covered by an agreement? react-data-table-component
-        is available as part of the Tidelift Subscription, so your team gets enterprise-grade assurances while the
-        maintainer gets paid to keep it healthy.
+        Need commercial support, an SLA, or help with a major version upgrade? I offer direct consulting and
+        priority support arrangements for teams that depend on react-data-table-component in production.
       </p>
       <a
-        href={TIDELIFT_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+        data-contact-link
+        href="#"
         class="inline-block bg-white text-gray-900 text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-100 transition-colors"
       >
-        Learn about Tidelift →
+        Get in touch →
       </a>
     </div>
   </section>

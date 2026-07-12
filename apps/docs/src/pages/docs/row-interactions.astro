@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import { RowClickDemo, RowLinkDemo, ActionCellDemo } from '../../components/demos/RowInteractionsDemo.tsx';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Row interactions | react-data-table-component">
@@ -162,4 +163,8 @@ export default function App() {
   >
     <ActionCellDemo client:load />
   </Demo>
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="row-events" columns={['prop', 'type', 'description']} />
 </DocsLayout>

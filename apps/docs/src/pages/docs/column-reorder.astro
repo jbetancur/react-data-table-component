@@ -2,6 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import DraggableColumnsDemo from '../../components/demos/DraggableColumnsDemo.tsx';
 import DraggableGroupsDemo from '../../components/demos/DraggableGroupsDemo.tsx';
 ---
@@ -185,4 +186,13 @@ const columnGroups: ColumnGroup[] = [
   { name: 'Employee',     columnIds: ['first', 'last', 'dept'], reorder: true },
   { name: 'Compensation', columnIds: ['base', 'bonus'],         reorder: true },
 ];`} />
+
+  <h2>Prop reference</h2>
+
+  <PropsTable feature="column-reorder" columns={['prop', 'type', 'default', 'description']} />
+
+  <p>
+    Set <code>reorder: true</code> on each <a href="/docs/api#tablecolumnt"><code>TableColumn</code></a>
+    (or <a href="/docs/api#columngroup"><code>ColumnGroup</code></a>) you want to be draggable.
+  </p>
 </DocsLayout>

@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import ContextMenuDemo from '../../components/demos/ContextMenuDemo.tsx';
 import RowContextMenuDemo from '../../components/demos/RowContextMenuDemo.tsx';
 ---
@@ -152,14 +153,7 @@ const rowActions = (row: Task): ContextMenuAction[] => [
   </ul>
 
   <h2>Props</h2>
-  <DocsTable
-    headers={['Prop', 'Type', 'Description']}
-    rows={[
-      ['contextMenu', "boolean | { header?: boolean; row?: boolean; trigger?: 'right-click' | 'menu-button' | 'both'; menuPosition?: 'start' | 'end' }", "Enable the context menu. true enables header and row menus with the right-click trigger. menuPosition sets which inline edge the row menu button sits on (default 'end' — right in LTR)."],
-      ['contextMenuActions', '{ header?: ContextMenuAction[] | (column) => ContextMenuAction[]; row?: (row, rowIndex) => ContextMenuAction[] }', 'Custom menu items. Header items append after the built-ins; row items are the entire row menu.'],
-      ['onContextMenuAction', '(action, ctx) => void', 'Fires for every selected item, built-ins included. ctx is { type: "header", column } or { type: "row", row, rowIndex }.'],
-    ]}
-  />
+  <PropsTable feature="context-menu" columns={['prop', 'type', 'description']} />
 
   <h3>ContextMenuAction</h3>
   <DocsTable

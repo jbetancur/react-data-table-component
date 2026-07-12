@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ResizableDemo from '../../components/demos/ResizableDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 ---
 
 <DocsLayout title="Resizable columns | react-data-table-component">
@@ -162,10 +163,11 @@ export default function App() {
 
   <h2>Prop reference</h2>
 
+  <PropsTable feature="resizable" columns={['prop', 'type', 'default', 'description']} />
+
   <DocsTable
-    headers={['Prop', 'Type', 'Default', 'Description']}
+    headers={['Column prop', 'Type', 'Default', 'Description']}
     rows={[
-      ['<code>resizable</code>', '<code>boolean</code>', '<code>false</code>', 'Show resize handles on column header right edges.'],
       ['<code>column.width</code>', '<code>string</code>', '-', 'Initial width (e.g. <code>"180px"</code>).'],
       ['<code>column.minWidth</code>', '<code>string</code>', '<code>"100px"</code>', 'Minimum width the user can resize to. Hard floor of 40 px applies regardless.'],
     ]}
