@@ -167,7 +167,7 @@
 
 .rdt_rowHighlight:hover {
 	color: var(--rdt-color-highlight-text, rgba(0, 0, 0, 0.87));
-	background-color: var(--rdt-color-highlight, #eee);
+	background-color: var(--rdt-color-highlight, #eee) !important;
 	outline: 1px solid var(--rdt-color-bg, #fff);
 	transition-duration: 0.15s;
 	transition-property: background-color;
