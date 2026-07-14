@@ -52,17 +52,26 @@ const data: Row[] = [
 ];
 
 const columns: TableColumn<Row>[] = [
-	{ name: 'Name',       selector: r => r.name,       sortable: true },
-	{ name: 'Role',       selector: r => r.role },
+	{ name: 'Name', selector: r => r.name, sortable: true },
+	{ name: 'Role', selector: r => r.role },
 	{ name: 'Department', selector: r => r.department },
-	{ name: 'Salary',     selector: r => r.salary, format: r => `$${r.salary.toLocaleString()}`, right: true },
-	{ name: 'Access',     selector: r => r.locked,
+	{ name: 'Salary', selector: r => r.salary, format: r => `$${r.salary.toLocaleString()}`, right: true },
+	{
+		name: 'Access',
+		selector: r => r.locked,
 		cell: r => (
-			<span style={{
-				fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 99,
-				background: r.locked ? '#fee2e2' : '#dcfce7',
-				color: r.locked ? '#991b1b' : '#15803d',
-			}}>{r.locked ? 'Restricted' : 'Open'}</span>
+			<span
+				style={{
+					fontSize: 11,
+					fontWeight: 500,
+					padding: '2px 8px',
+					borderRadius: 99,
+					background: r.locked ? '#fee2e2' : '#dcfce7',
+					color: r.locked ? '#991b1b' : '#15803d',
+				}}
+			>
+				{r.locked ? 'Restricted' : 'Open'}
+			</span>
 		),
 	},
 ];
@@ -86,7 +95,12 @@ export default function ExpandableDemo() {
 					Animate expand
 				</label>
 				<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-					<input type="checkbox" checked={disableLocked} onChange={e => setDisableLocked(e.target.checked)} className="rounded" />
+					<input
+						type="checkbox"
+						checked={disableLocked}
+						onChange={e => setDisableLocked(e.target.checked)}
+						className="rounded"
+					/>
 					Disable "Restricted" rows
 				</label>
 			</div>
@@ -95,7 +109,7 @@ export default function ExpandableDemo() {
 				data={data}
 				expandableRows
 				expandableRowsComponent={ExpandedRow}
-				expandableRowDisabled={disableLocked ? (r => r.locked) : undefined}
+				expandableRowDisabled={disableLocked ? r => r.locked : undefined}
 				highlightOnHover
 				animateRows={animate}
 			/>

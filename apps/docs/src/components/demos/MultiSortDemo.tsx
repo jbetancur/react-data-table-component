@@ -46,8 +46,8 @@ export default function MultiSortDemo() {
 	return (
 		<div className="space-y-3">
 			<p className="text-xs text-gray-500">
-				Ctrl-click (⌘-click on macOS) a second column header to add it to the sort. Cycle each column
-				ascending → descending → off.
+				Ctrl-click (⌘-click on macOS) a second column header to add it to the sort. Cycle each column ascending →
+				descending → off.
 			</p>
 			<DataTable
 				columns={columns}

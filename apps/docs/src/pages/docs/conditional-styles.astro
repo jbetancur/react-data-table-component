@@ -32,7 +32,7 @@ const conditionalRowStyles: ConditionalStyles<Deal>[] = [
 
 const columns: TableColumn<Deal>[] = [
   { name: 'Company', selector: r => r.company, sortable: true, grow: 2 },
-  { name: 'Rep',     selector: r => r.rep,     sortable: true },
+  { name: 'Rep', selector: r => r.rep, sortable: true },
   {
     name: 'Value',
     selector: r => r.value,
@@ -41,7 +41,7 @@ const columns: TableColumn<Deal>[] = [
     right: true,
     conditionalCellStyles: [
       { when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
-      { when: r => r.value < 20000,   style: { color: '#9ca3af' } },
+      { when: r => r.value < 20000, style: { color: '#9ca3af' } },
     ],
   },
   {
@@ -56,7 +56,7 @@ const columns: TableColumn<Deal>[] = [
   },
 ];
 
-<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} highlightOnHover />`}
+<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} highlightOnHover />;`}
   >
     <ConditionalStylesDemo client:load />
   </Demo>
@@ -82,7 +82,7 @@ const conditionalRowStyles: ConditionalStyles<Deal>[] = [
   },
 ];
 
-<DataTable conditionalRowStyles={conditionalRowStyles} columns={columns} data={data} />`} />
+<DataTable conditionalRowStyles={conditionalRowStyles} columns={columns} data={data} />;`} />
 
   <h3>Style as a function</h3>
 
@@ -125,7 +125,7 @@ const conditionalRowStyles: ConditionalStyles<Deal>[] = [
     right: true,
     conditionalCellStyles: [
       { when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
-      { when: r => r.value < 20000,   style: { color: '#9ca3af' } },
+      { when: r => r.value < 20000, style: { color: '#9ca3af' } },
     ],
   },
   {

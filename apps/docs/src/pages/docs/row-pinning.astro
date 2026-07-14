@@ -47,9 +47,10 @@ export default function App() {
   const sortFunction: SortFunction<Employee> = useMemo(
     () => (rows, selector, direction) => {
       const pinned = rows.filter(r => pinnedIds.has(r.id));
-      const rest   = rows.filter(r => !pinnedIds.has(r.id));
+      const rest = rows.filter(r => !pinnedIds.has(r.id));
       const sorted = [...rest].sort((a, b) => {
-        const av = selector(a), bv = selector(b);
+        const av = selector(a),
+          bv = selector(b);
         if (av === bv) return 0;
         const cmp = av > bv ? 1 : -1;
         return direction === SortOrder.ASC ? cmp : -cmp;
@@ -67,7 +68,12 @@ export default function App() {
       sortable: true,
       cell: r => (
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <button onClick={e => { e.stopPropagation(); togglePin(r.id); }}>
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              togglePin(r.id);
+            }}
+          >
             {pinnedIds.has(r.id) ? '📌' : '○'}
           </button>
           {r.name}
@@ -75,8 +81,14 @@ export default function App() {
       ),
     },
     { id: 'department', name: 'Department', selector: r => r.department, sortable: true },
-    { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true,
-      format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+    {
+      id: 'salary',
+      name: 'Salary',
+      selector: r => r.salary,
+      sortable: true,
+      format: r => \`$\${r.salary.toLocaleString()}\`,
+      right: true,
+    },
   ];
 
   return <DataTable columns={columns} data={data} sortFunction={sortFunction} />;
@@ -102,13 +114,14 @@ export default function App() {
     the component so it's stable and doesn't need <code>useMemo</code>:
   </p>
 
-  <CodeBlock code={`const PINNED_IDS = new Set([42]);   // row with id 42 always floats to the top
+  <CodeBlock code={`const PINNED_IDS = new Set([42]); // row with id 42 always floats to the top
 
 const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
   const pinned = rows.filter(r => PINNED_IDS.has(r.id));
-  const rest   = rows.filter(r => !PINNED_IDS.has(r.id));
+  const rest = rows.filter(r => !PINNED_IDS.has(r.id));
   const sorted = [...rest].sort((a, b) => {
-    const av = selector(a), bv = selector(b);
+    const av = selector(a),
+      bv = selector(b);
     if (av === bv) return 0;
     const cmp = av > bv ? 1 : -1;
     return direction === SortOrder.ASC ? cmp : -cmp;
@@ -116,7 +129,7 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
   return [...pinned, ...sorted];
 };
 
-<DataTable columns={columns} data={data} sortFunction={sortFunction} />`} />
+<DataTable columns={columns} data={data} sortFunction={sortFunction} />;`} />
 
   <h2>Pinning by a condition (not an ID)</h2>
   <p>
@@ -127,11 +140,12 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
   <CodeBlock code={`// Always show 'Active' employees before others, then sort normally within each group
 const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
   const pinned = rows.filter(r => r.status === 'Active');
-  const rest   = rows.filter(r => r.status !== 'Active');
+  const rest = rows.filter(r => r.status !== 'Active');
 
   const sort = (arr: Employee[]) =>
     [...arr].sort((a, b) => {
-      const av = selector(a), bv = selector(b);
+      const av = selector(a),
+        bv = selector(b);
       if (av === bv) return 0;
       const cmp = av > bv ? 1 : -1;
       return direction === SortOrder.ASC ? cmp : -cmp;
@@ -150,11 +164,12 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
 const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
   const critical = rows.filter(r => r.priority === 'critical');
   const archived = rows.filter(r => r.archived);
-  const normal   = rows.filter(r => r.priority !== 'critical' && !r.archived);
+  const normal = rows.filter(r => r.priority !== 'critical' && !r.archived);
 
   const sort = (arr: Employee[]) =>
     [...arr].sort((a, b) => {
-      const av = selector(a), bv = selector(b);
+      const av = selector(a),
+        bv = selector(b);
       if (av === bv) return 0;
       const cmp = av > bv ? 1 : -1;
       return direction === SortOrder.ASC ? cmp : -cmp;
@@ -175,7 +190,7 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
 
   // Re-apply pin order on top of server result
   const pinned = sorted.filter(r => pinnedIds.has(r.id));
-  const rest   = sorted.filter(r => !pinnedIds.has(r.id));
+  const rest = sorted.filter(r => !pinnedIds.has(r.id));
   setData([...pinned, ...rest]);
 }`} />
 
@@ -199,7 +214,7 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
       },
     },
   ]}
-/>`} />
+/>;`} />
 
   <h2>Limitations</h2>
   <ul>

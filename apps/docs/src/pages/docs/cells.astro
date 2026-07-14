@@ -34,15 +34,15 @@ import CellsDemo from '../../components/demos/CellsDemo.tsx';
   <CodeBlock code={`// ✅ Sortable column with a custom badge cell
 {
   name: 'Status',
-  selector: row => row.status,                         // sort key
-  cell: row => <StatusBadge status={row.status} />,    // display
+  selector: row => row.status, // sort key
+  cell: row => <StatusBadge status={row.status} />, // display
   sortable: true,
 }
 
 // ✅ Currency column — format preserves sort order
 {
   name: 'Salary',
-  selector: row => row.salary,                         // sort on raw number
+  selector: row => row.salary, // sort on raw number
   format: row => \`$\${row.salary.toLocaleString()}\`, // display formatted
   sortable: true,
   right: true,
@@ -109,10 +109,23 @@ const columns: TableColumn<Employee>[] = [
     name: 'Employee',
     cell: row => (
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ width: 32, height: 32, borderRadius: '50%',
-          background: '#dbeafe', color: '#1d4ed8', fontWeight: 700,
-          display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {row.name.split(' ').map(n => n[0]).join('')}
+        <div
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            background: '#dbeafe',
+            color: '#1d4ed8',
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {row.name
+            .split(' ')
+            .map(n => n[0])
+            .join('')}
         </div>
         <div>
           <div style={{ fontWeight: 600 }}>{row.name}</div>
@@ -126,17 +139,21 @@ const columns: TableColumn<Employee>[] = [
   {
     name: 'Salary',
     selector: row => row.salary,
-    format: row => new Intl.NumberFormat('en-US', {
-      style: 'currency', currency: 'USD', maximumFractionDigits: 0,
-    }).format(row.salary),
+    format: row =>
+      new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      }).format(row.salary),
     sortable: true,
     right: true,
   },
   {
     name: 'Status',
     cell: row => (
-      <span style={{ padding: '2px 10px', borderRadius: 999,
-        fontSize: 12, fontWeight: 600, ...statusStyle(row.status) }}>
+      <span
+        style={{ padding: '2px 10px', borderRadius: 999, fontSize: 12, fontWeight: 600, ...statusStyle(row.status) }}
+      >
         {row.status}
       </span>
     ),
@@ -145,9 +162,7 @@ const columns: TableColumn<Employee>[] = [
   },
   {
     name: '',
-    cell: row => (
-      <button onClick={() => alert(\`Viewing \${row.name}\`)}>View profile</button>
-    ),
+    cell: row => <button onClick={() => alert(\`Viewing \${row.name}\`)}>View profile</button>,
     button: true,
     width: '120px',
   },

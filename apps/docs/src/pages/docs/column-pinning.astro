@@ -23,15 +23,15 @@ import ColumnPinningDemo from '../../components/demos/ColumnPinningDemo.tsx';
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Row>[] = [
-  { id: 'name',   name: 'Name',       selector: r => r.name,       width: '180px', pinned: 'left'  },
-  { id: 'role',   name: 'Role',       selector: r => r.role,       width: '220px' },
-  { id: 'dept',   name: 'Department', selector: r => r.department, width: '180px' },
-  { id: 'loc',    name: 'Location',   selector: r => r.location,   width: '200px' },
-  { id: 'salary', name: 'Salary',     selector: r => r.salary,     width: '140px', right: true },
-  { id: 'status', name: 'Status',     selector: r => r.status,     width: '120px', pinned: 'right' },
+  { id: 'name', name: 'Name', selector: r => r.name, width: '180px', pinned: 'left' },
+  { id: 'role', name: 'Role', selector: r => r.role, width: '220px' },
+  { id: 'dept', name: 'Department', selector: r => r.department, width: '180px' },
+  { id: 'loc', name: 'Location', selector: r => r.location, width: '200px' },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, width: '140px', right: true },
+  { id: 'status', name: 'Status', selector: r => r.status, width: '120px', pinned: 'right' },
 ];
 
-<DataTable columns={columns} data={data} resizable highlightOnHover />`}
+<DataTable columns={columns} data={data} resizable highlightOnHover />;`}
   >
     <ColumnPinningDemo client:load />
   </Demo>
@@ -84,11 +84,11 @@ const columns: TableColumn<Row>[] = [
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Row>[] = [
-  { id: 'id',     name: 'ID',     width: '80px',  pinned: 'left'  },
-  { id: 'name',   name: 'Name',   width: '180px', pinned: 'left'  },
+  { id: 'id', name: 'ID', width: '80px', pinned: 'left' },
+  { id: 'name', name: 'Name', width: '180px', pinned: 'left' },
   // ... scrolling columns ...
   { id: 'status', name: 'Status', width: '120px', pinned: 'right' },
-  { id: 'action', name: '',       width: '64px',  pinned: 'right' },
+  { id: 'action', name: '', width: '64px', pinned: 'right' },
 ];`} />
 
   <p>
@@ -106,11 +106,11 @@ const columns: TableColumn<Row>[] = [
   </p>
 
   <CodeBlock code={`<DataTable
-  columns={columns}            // Name has pinned: 'left'
+  columns={columns} // Name has pinned: 'left'
   data={data}
-  selectableRows               // checkbox column pins at 0
-  expandableRows               // expander column pins after the checkbox
-/>
+  selectableRows // checkbox column pins at 0
+  expandableRows // expander column pins after the checkbox
+/>;
 // → Name sticks at left: 96px (48px checkbox + 48px expander)`} />
 
   <p>
@@ -121,7 +121,9 @@ const columns: TableColumn<Row>[] = [
   </p>
 
   <CodeBlock code={`/* In your global CSS */
-.rdt_table { --rdt-system-col-width: 56px; }`} lang="css" />
+.rdt_table {
+  --rdt-system-col-width: 56px;
+}`} lang="css" />
 
   <h2>With resizable columns</h2>
   <p>
@@ -129,7 +131,7 @@ const columns: TableColumn<Row>[] = [
     triggers a re-render with new offsets so columns pinned further from the edge shift to match.
   </p>
 
-  <CodeBlock code={`<DataTable columns={columns} data={data} resizable />`} />
+  <CodeBlock code={`<DataTable columns={columns} data={data} resizable />;`} />
 
   <h2>With fixed header</h2>
   <p>
@@ -138,12 +140,7 @@ const columns: TableColumn<Row>[] = [
     corner) stays above scrolling body content.
   </p>
 
-  <CodeBlock code={`<DataTable
-  columns={columns}
-  data={data}
-  fixedHeader
-  fixedHeaderScrollHeight="400px"
-/>`} />
+  <CodeBlock code={`<DataTable columns={columns} data={data} fixedHeader fixedHeaderScrollHeight="400px" />;`} />
 
   <h2>Not supported with column groups</h2>
   <p>

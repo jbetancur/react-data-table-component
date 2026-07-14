@@ -20,8 +20,11 @@ const data: Employee[] = [
 const STORAGE_KEY = 'recipe-demo-column-widths';
 
 function loadWidths(): Record<string, number> {
-	try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}'); }
-	catch { return {}; }
+	try {
+		return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}');
+	} catch {
+		return {};
+	}
 }
 
 const columnDefs: TableColumn<Employee>[] = [

@@ -143,7 +143,9 @@ function PinPicker({
 }) {
 	const btn = (active: boolean) =>
 		`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
-			active ? 'bg-brand-600 text-white border-brand-600' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+			active
+				? 'bg-brand-600 text-white border-brand-600'
+				: 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
 		}`;
 	return (
 		<div className="flex items-center gap-2">

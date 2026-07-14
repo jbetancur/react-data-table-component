@@ -29,26 +29,38 @@ interface Employee {
 }
 
 const data: Employee[] = [
-  { id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000, active: true  },
-  { id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000, active: true  },
-  { id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000, active: false },
-  { id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000, active: true  },
-  { id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000, active: false },
-  { id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000, active: true  },
+  { id: 1, name: 'Aria Chen', department: 'Engineering', salary: 155000, active: true },
+  { id: 2, name: 'Marcus Webb', department: 'Product', salary: 132000, active: true },
+  { id: 3, name: 'Priya Kapoor', department: 'Design', salary: 118000, active: false },
+  { id: 4, name: 'Jordan Ellis', department: 'Analytics', salary: 143000, active: true },
+  { id: 5, name: 'Sam Rivera', department: 'Engineering', salary: 128000, active: false },
+  { id: 6, name: 'Taylor Brooks', department: 'Sales', salary: 97000, active: true },
 ];
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Name', selector: r => r.name, sortable: true },
   { name: 'Department', selector: r => r.department, sortable: true },
-  { name: 'Salary',     selector: r => r.salary,     sortable: true,
-    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  {
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+    right: true,
+  },
   {
     name: 'Status',
     selector: r => r.active,
     cell: r => (
-      <span style={{ padding: '2px 8px', borderRadius: 12, fontSize: 11, fontWeight: 600,
-        background: r.active ? '#dcfce7' : '#f3f4f6',
-        color: r.active ? '#15803d' : '#6b7280' }}>
+      <span
+        style={{
+          padding: '2px 8px',
+          borderRadius: 12,
+          fontSize: 11,
+          fontWeight: 600,
+          background: r.active ? '#dcfce7' : '#f3f4f6',
+          color: r.active ? '#15803d' : '#6b7280',
+        }}
+      >
         {r.active ? 'Active' : 'Inactive'}
       </span>
     ),
@@ -128,7 +140,7 @@ const customStyles: TableStyles = {
   },
 };
 
-<DataTable columns={columns} data={data} customStyles={customStyles} />`} />
+<DataTable columns={columns} data={data} customStyles={customStyles} />;`} />
 
   <h2>Available style targets</h2>
 
@@ -179,11 +191,7 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
   },
 ];
 
-<DataTable
-  columns={columns}
-  data={data}
-  conditionalRowStyles={conditionalRowStyles}
-/>`} />
+<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} />;`} />
 
   <h2>CSS custom properties</h2>
 

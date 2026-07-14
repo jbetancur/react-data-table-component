@@ -20,12 +20,7 @@ import PropsTable from '../../components/PropsTable.astro';
     description="Toggle between LTR, RTL, and AUTO. In RTL mode the pagination arrows reverse, column text aligns right-to-left, and the resize handles mirror to each column's left edge. Drag a column boundary to try it."
     code={`import DataTable, { Direction } from 'react-data-table-component';
 
-<DataTable
-  columns={columns}
-  data={data}
-  direction={Direction.RTL}
-  pagination
-/>`}
+<DataTable columns={columns} data={data} direction={Direction.RTL} pagination />;`}
   >
     <RTLDemo client:load />
   </Demo>
@@ -63,7 +58,7 @@ import PropsTable from '../../components/PropsTable.astro';
 // <html dir="rtl">
 
 // Then let the table pick it up automatically
-<DataTable columns={columns} data={data} direction={Direction.AUTO} />`} />
+<DataTable columns={columns} data={data} direction={Direction.AUTO} />;`} />
 
   <h2>What flips in RTL</h2>
   <ul>
@@ -84,24 +79,14 @@ import PropsTable from '../../components/PropsTable.astro';
   <CodeBlock code={`import DataTable, { Direction } from 'react-data-table-component';
 import { ar } from 'react-data-table-component/locales';
 
-<DataTable
-  columns={columns}
-  data={data}
-  direction={Direction.RTL}
-  localization={ar}
-/>`} />
+<DataTable columns={columns} data={data} direction={Direction.RTL} localization={ar} />;`} />
 
   <p>
     If your app already sets <code>&lt;html dir="rtl"&gt;</code>, use <code>Direction.AUTO</code>
     so the table follows the page without an explicit prop:
   </p>
 
-  <CodeBlock code={`<DataTable
-  columns={columns}
-  data={data}
-  direction={Direction.AUTO}
-  localization={ar}
-/>`} />
+  <CodeBlock code={`<DataTable columns={columns} data={data} direction={Direction.AUTO} localization={ar} />;`} />
 
   <h2>Prop reference</h2>
 
@@ -110,7 +95,7 @@ import { ar } from 'react-data-table-component/locales';
   <CodeBlock code={`import { Direction } from 'react-data-table-component';
 
 // Direction enum values
-Direction.LTR  // "ltr"
-Direction.RTL  // "rtl"
-Direction.AUTO // "auto"`} />
+Direction.LTR; // "ltr"
+Direction.RTL; // "rtl"
+Direction.AUTO; // "auto"`} />
 </DocsLayout>

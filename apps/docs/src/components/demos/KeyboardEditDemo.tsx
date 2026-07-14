@@ -44,8 +44,8 @@ export default function KeyboardEditDemo() {
 		<div className="space-y-2">
 			<p className="text-xs text-gray-400">
 				Arrow to Name or Salary, then press <kbd>Enter</kbd> or <kbd>F2</kbd> to open the editor. <kbd>Enter</kbd>{' '}
-				commits and <kbd>Escape</kbd> cancels — either way, focus returns to the cell so arrow-key navigation
-				continues immediately. Department has no editor, so Enter/F2 do nothing there.
+				commits and <kbd>Escape</kbd> cancels — either way, focus returns to the cell so arrow-key navigation continues
+				immediately. Department has no editor, so Enter/F2 do nothing there.
 			</p>
 			<DataTable columns={columns} data={data} highlightOnHover cellNavigation />
 		</div>

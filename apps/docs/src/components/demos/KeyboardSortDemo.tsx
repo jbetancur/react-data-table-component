@@ -33,9 +33,9 @@ export default function KeyboardSortDemo() {
 	return (
 		<div className="space-y-2">
 			<p className="text-xs text-gray-400">
-				<kbd>↑</kbd> from the first body row moves into the header. <kbd>Enter</kbd> or <kbd>Space</kbd> on a
-				sortable header cycles ascending → descending → unsorted, same as a click. <kbd>↓</kbd> from the header
-				returns to the body in the same column.
+				<kbd>↑</kbd> from the first body row moves into the header. <kbd>Enter</kbd> or <kbd>Space</kbd> on a sortable
+				header cycles ascending → descending → unsorted, same as a click. <kbd>↓</kbd> from the header returns to the
+				body in the same column.
 			</p>
 			<DataTable columns={columns} data={data} highlightOnHover cellNavigation />
 		</div>

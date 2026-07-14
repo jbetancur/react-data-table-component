@@ -11,25 +11,34 @@ interface Row {
 }
 
 const data: Row[] = [
-	{ id: 1, name: 'Aria Chen',    role: 'Engineering Lead',  department: 'Engineering', status: 'Active' },
-	{ id: 2, name: 'Marcus Webb',  role: 'Product Manager',   department: 'Product',     status: 'Active' },
-	{ id: 3, name: 'Priya Kapoor', role: 'Senior Designer',   department: 'Design',      status: 'On Leave' },
-	{ id: 4, name: 'Jordan Ellis', role: 'Data Scientist',    department: 'Analytics',   status: 'Active' },
-	{ id: 5, name: 'Sam Rivera',   role: 'DevOps Engineer',   department: 'Engineering', status: 'On Leave' },
-	{ id: 6, name: 'Taylor Brooks', role: 'Account Manager',  department: 'Sales',       status: 'Active' },
+	{ id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering', status: 'Active' },
+	{ id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product', status: 'Active' },
+	{ id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design', status: 'On Leave' },
+	{ id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics', status: 'Active' },
+	{ id: 5, name: 'Sam Rivera', role: 'DevOps Engineer', department: 'Engineering', status: 'On Leave' },
+	{ id: 6, name: 'Taylor Brooks', role: 'Account Manager', department: 'Sales', status: 'Active' },
 ];
 
 const columns: TableColumn<Row>[] = [
-	{ name: 'Name',       selector: r => r.name,       sortable: true },
-	{ name: 'Role',       selector: r => r.role },
+	{ name: 'Name', selector: r => r.name, sortable: true },
+	{ name: 'Role', selector: r => r.role },
 	{ name: 'Department', selector: r => r.department, sortable: true },
-	{ name: 'Status',     selector: r => r.status,
+	{
+		name: 'Status',
+		selector: r => r.status,
 		cell: r => (
-			<span style={{
-				fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 99,
-				background: r.status === 'Active' ? '#dcfce7' : '#fef3c7',
-				color: r.status === 'Active' ? '#15803d' : '#92400e',
-			}}>{r.status}</span>
+			<span
+				style={{
+					fontSize: 11,
+					fontWeight: 500,
+					padding: '2px 8px',
+					borderRadius: 99,
+					background: r.status === 'Active' ? '#dcfce7' : '#fef3c7',
+					color: r.status === 'Active' ? '#15803d' : '#92400e',
+				}}
+			>
+				{r.status}
+			</span>
 		),
 	},
 ];
@@ -48,7 +57,12 @@ export default function SelectionDemo() {
 					Single select
 				</label>
 				<label className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
-					<input type="checkbox" checked={disableOnLeave} onChange={e => setDisableOnLeave(e.target.checked)} className="rounded" />
+					<input
+						type="checkbox"
+						checked={disableOnLeave}
+						onChange={e => setDisableOnLeave(e.target.checked)}
+						className="rounded"
+					/>
 					Disable "On Leave" rows
 				</label>
 				<button
@@ -73,7 +87,7 @@ export default function SelectionDemo() {
 				keyField="id"
 				selectableRows
 				selectableRowsSingle={single}
-				selectableRowDisabled={disableOnLeave ? (r => r.status === 'On Leave') : undefined}
+				selectableRowDisabled={disableOnLeave ? r => r.status === 'On Leave' : undefined}
 				onSelectedRowsChange={({ selectedRows }) => setSelectedRows(selectedRows)}
 				highlightOnHover
 			/>

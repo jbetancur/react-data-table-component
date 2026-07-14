@@ -38,32 +38,32 @@ interface Employee {
 }
 
 const data: Employee[] = [
-  { id: 1, name: 'Aria Chen',    role: 'Engineering Lead', department: 'Engineering', salary: 155000 },
-  { id: 2, name: 'Marcus Webb',  role: 'Product Manager',  department: 'Product',     salary: 132000 },
-  { id: 3, name: 'Priya Kapoor', role: 'Senior Designer',  department: 'Design',      salary: 118000 },
-  { id: 4, name: 'Jordan Ellis', role: 'Data Scientist',   department: 'Analytics',   salary: 143000 },
-  { id: 5, name: 'Sam Rivera',   role: 'DevOps Engineer',  department: 'Engineering', salary: 128000 },
+  { id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering', salary: 155000 },
+  { id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product', salary: 132000 },
+  { id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design', salary: 118000 },
+  { id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics', salary: 143000 },
+  { id: 5, name: 'Sam Rivera', role: 'DevOps Engineer', department: 'Engineering', salary: 128000 },
 ];
 
 const initialColumns: TableColumn<Employee>[] = [
-  { id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true, reorder: true },
-  { id: 'role',       name: 'Role',       selector: r => r.role,       reorder: true },
+  { id: 'name', name: 'Name', selector: r => r.name, sortable: true, reorder: true },
+  { id: 'role', name: 'Role', selector: r => r.role, reorder: true },
   { id: 'department', name: 'Department', selector: r => r.department, sortable: true, reorder: true },
-  { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true, reorder: true,
-    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  {
+    id: 'salary',
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    reorder: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+    right: true,
+  },
 ];
 
 export default function App() {
   const [columns, setColumns] = useState(initialColumns);
 
-  return (
-    <DataTable
-      columns={columns}
-      data={data}
-      onColumnOrderChange={setColumns}
-      highlightOnHover
-    />
-  );
+  return <DataTable columns={columns} data={data} onColumnOrderChange={setColumns} highlightOnHover />;
 }`}
   >
     <DraggableColumnsDemo client:load />
@@ -78,9 +78,9 @@ export default function App() {
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Employee>[] = [
-  { id: 'name',   name: 'Name',   selector: r => r.name,   /* no reorder — pinned */ },
-  { id: 'role',   name: 'Role',   selector: r => r.role,   reorder: true },
-  { id: 'dept',   name: 'Dept',   selector: r => r.dept,   reorder: true },
+  { id: 'name', name: 'Name', selector: r => r.name /* no reorder — pinned */ },
+  { id: 'role', name: 'Role', selector: r => r.role, reorder: true },
+  { id: 'dept', name: 'Dept', selector: r => r.dept, reorder: true },
   { id: 'salary', name: 'Salary', selector: r => r.salary, reorder: true },
 ];`} />
 
@@ -99,8 +99,11 @@ function applyOrder(cols: TableColumn<Employee>[], order: string[]) {
 }
 
 function loadOrder(): string[] {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]'); }
-  catch { return []; }
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]');
+  } catch {
+    return [];
+  }
 }
 
 export default function App() {
@@ -111,9 +114,7 @@ export default function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next.map(c => String(c.id))));
   }
 
-  return (
-    <DataTable columns={columns} data={data} onColumnOrderChange={handleOrderChange} />
-  );
+  return <DataTable columns={columns} data={data} onColumnOrderChange={handleOrderChange} />;
 }`} />
 
   <h2>Reordering column groups</h2>
@@ -132,22 +133,34 @@ export default function App() {
 import DataTable, { type TableColumn, type ColumnGroup } from 'react-data-table-component';
 
 const columns: TableColumn<Row>[] = [
-  { id: 'first', name: 'First name',  selector: r => r.firstName,  sortable: true },
-  { id: 'last',  name: 'Last name',   selector: r => r.lastName,   sortable: true },
-  { id: 'dept',  name: 'Department',  selector: r => r.department, sortable: true },
-  { id: 'base',  name: 'Base salary', selector: r => r.baseSalary, sortable: true, right: true,
-    format: r => \`$\${r.baseSalary.toLocaleString()}\` },
-  { id: 'bonus', name: 'Bonus',       selector: r => r.bonus,      sortable: true, right: true,
-    format: r => \`$\${r.bonus.toLocaleString()}\` },
+  { id: 'first', name: 'First name', selector: r => r.firstName, sortable: true },
+  { id: 'last', name: 'Last name', selector: r => r.lastName, sortable: true },
+  { id: 'dept', name: 'Department', selector: r => r.department, sortable: true },
+  {
+    id: 'base',
+    name: 'Base salary',
+    selector: r => r.baseSalary,
+    sortable: true,
+    right: true,
+    format: r => \`$\${r.baseSalary.toLocaleString()}\`,
+  },
+  {
+    id: 'bonus',
+    name: 'Bonus',
+    selector: r => r.bonus,
+    sortable: true,
+    right: true,
+    format: r => \`$\${r.bonus.toLocaleString()}\`,
+  },
 ];
 
 const initialGroups: ColumnGroup[] = [
-  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], reorder: true },
-  { name: 'Compensation', columnIds: ['base', 'bonus'],         reorder: true },
+  { name: 'Employee', columnIds: ['first', 'last', 'dept'], reorder: true },
+  { name: 'Compensation', columnIds: ['base', 'bonus'], reorder: true },
 ];
 
 export default function App() {
-  const [cols, setCols]     = useState(columns);
+  const [cols, setCols] = useState(columns);
   const [groups, setGroups] = useState(initialGroups);
 
   return (
@@ -175,16 +188,16 @@ export default function App() {
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Employee>[] = [
-  { id: 'first', name: 'First name',  selector: r => r.firstName,  sortable: true, reorder: true },
-  { id: 'last',  name: 'Last name',   selector: r => r.lastName,   sortable: true, reorder: true },
-  { id: 'dept',  name: 'Department',  selector: r => r.department, sortable: true, reorder: true },
-  { id: 'base',  name: 'Base salary', selector: r => r.baseSalary, sortable: true, reorder: true },
-  { id: 'bonus', name: 'Bonus',       selector: r => r.bonus,      sortable: true, reorder: true },
+  { id: 'first', name: 'First name', selector: r => r.firstName, sortable: true, reorder: true },
+  { id: 'last', name: 'Last name', selector: r => r.lastName, sortable: true, reorder: true },
+  { id: 'dept', name: 'Department', selector: r => r.department, sortable: true, reorder: true },
+  { id: 'base', name: 'Base salary', selector: r => r.baseSalary, sortable: true, reorder: true },
+  { id: 'bonus', name: 'Bonus', selector: r => r.bonus, sortable: true, reorder: true },
 ];
 
 const columnGroups: ColumnGroup[] = [
-  { name: 'Employee',     columnIds: ['first', 'last', 'dept'], reorder: true },
-  { name: 'Compensation', columnIds: ['base', 'bonus'],         reorder: true },
+  { name: 'Employee', columnIds: ['first', 'last', 'dept'], reorder: true },
+  { name: 'Compensation', columnIds: ['base', 'bonus'], reorder: true },
 ];`} />
 
   <h2>Prop reference</h2>

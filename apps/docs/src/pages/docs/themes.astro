@@ -41,7 +41,7 @@ import PropsTable from '../../components/PropsTable.astro';
   <CodeBlock code={`// Apply Material Design layout with your own brand color
 createTheme('material-violet', { primary: '#6200EE' }, 'material');
 
-<DataTable columns={columns} data={data} theme="material-violet" />`} lang="tsx" />
+<DataTable columns={columns} data={data} theme="material-violet" />;`} lang="tsx" />
 
   <DocsTable
     headers={['Name', 'Density', 'Shape', 'Separator defaults']}
@@ -117,7 +117,7 @@ createTheme('my-brand', { primary: '#6200EE' }, 'material');
 
 // 2. Inline — compose and pass the object directly to the theme prop
 const inlineTheme = createTheme({ primary: '#e91e63' }, 'crisp');
-<DataTable theme={inlineTheme} columns={columns} data={data} />`} lang="ts" />
+<DataTable theme={inlineTheme} columns={columns} data={data} />;`} lang="ts" />
 
   <h3>Theme shape</h3>
   <p>
@@ -137,33 +137,33 @@ createTheme('violet', {
   },
   background: {
     default: '#f5f0ff',
-    header: '#ede7f6',   // distinct header background
+    header: '#ede7f6', // distinct header background
   },
-  divider:          { default: '#d1c4e9' },
-  selected:         { default: '#ede7f6', text: '#1a1a2e' },
+  divider: { default: '#d1c4e9' },
+  selected: { default: '#ede7f6', text: '#1a1a2e' },
   highlightOnHover: { default: '#ede7f6', text: '#1a1a2e' },
-  striped:          { default: '#f3eeff', text: '#1a1a2e' },
+  striped: { default: '#f3eeff', text: '#1a1a2e' },
   button: {
     default: '#6200EE',
-    focus:    'rgba(98,0,238,0.12)',
-    hover:    'rgba(98,0,238,0.08)',
+    focus: 'rgba(98,0,238,0.12)',
+    hover: 'rgba(98,0,238,0.08)',
     disabled: '#d1c4e9',
   },
   context: { background: '#6200EE', text: '#ffffff' },
   // Dark-mode overrides — only what changes
   darkMode: {
     primary: '#BB86FC',
-    text:       { primary: '#e0e0e0', secondary: '#b0b0b0' },
+    text: { primary: '#e0e0e0', secondary: '#b0b0b0' },
     background: { default: '#1a0533', header: '#240844' },
-    divider:    { default: '#3d1f6e' },
-    selected:   { default: '#2d1060', text: '#e0e0e0' },
+    divider: { default: '#3d1f6e' },
+    selected: { default: '#2d1060', text: '#e0e0e0' },
     highlightOnHover: { default: '#2d1060', text: '#e0e0e0' },
-    striped:    { default: '#1e0a40', text: '#e0e0e0' },
+    striped: { default: '#1e0a40', text: '#e0e0e0' },
   },
   // Structural
-  spacing:    { rowHeight: '48px', headerHeight: '56px', cellPaddingX: '16px' },
+  spacing: { rowHeight: '48px', headerHeight: '56px', cellPaddingX: '16px' },
   typography: { fontSize: '14px', fontSizeHeader: '12px' },
-  shape:      { borderRadius: '8px' },
+  shape: { borderRadius: '8px' },
 });`} lang="ts" />
 
   <h2>Icons</h2>
@@ -229,14 +229,14 @@ createTheme('icon-theme', {
       // expanded: omitted — falls back to the built-in default
     },
     pagination: {
-      next:     <ChevronRight size={16} />,
+      next: <ChevronRight size={16} />,
       previous: <ChevronLeft size={16} />,
       // first/last: omitted — fall back to defaults
     },
   },
 });
 
-<DataTable columns={columns} data={data} theme="icon-theme" />`} lang="tsx" />
+<DataTable columns={columns} data={data} theme="icon-theme" />;`} lang="tsx" />
 
   <h2>Custom checkbox component</h2>
   <p>
@@ -248,11 +248,7 @@ createTheme('icon-theme', {
 
   <CodeBlock code={`import Checkbox from '@mui/material/Checkbox';
 
-<DataTable
-  selectableRows
-  selectableRowsComponent={Checkbox}
-  selectableRowsComponentProps={{ color: 'primary' }}
-/>`} lang="tsx" />
+<DataTable selectableRows selectableRowsComponent={Checkbox} selectableRowsComponentProps={{ color: 'primary' }} />;`} lang="tsx" />
 
   <p>
     If you build your own checkbox, use <code>React.forwardRef</code> and forward the ref to the
@@ -262,22 +258,12 @@ createTheme('icon-theme', {
 
   <CodeBlock code={`import React from 'react';
 
-const MyCheckbox = React.forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
->((props, ref) => (
-  <input
-    {...props}
-    ref={ref}
-    style={{ accentColor: 'teal', width: 18, height: 18 }}
-  />
+const MyCheckbox = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => (
+  <input {...props} ref={ref} style={{ accentColor: 'teal', width: 18, height: 18 }} />
 ));
 MyCheckbox.displayName = 'MyCheckbox';
 
-<DataTable
-  selectableRows
-  selectableRowsComponent={MyCheckbox}
-/>`} lang="tsx" />
+<DataTable selectableRows selectableRowsComponent={MyCheckbox} />;`} lang="tsx" />
 
   <h2>Header &amp; column separators in themes</h2>
   <p>
@@ -286,14 +272,18 @@ MyCheckbox.displayName = 'MyCheckbox';
     takes precedence when explicitly passed.
   </p>
 
-  <CodeBlock code={`createTheme('grid', {
-  primary: '#1976d2',
-  headerSeparator: 'full',   // bold line below header row
-  columnSeparator: 'full',   // full-height lines between columns
-}, 'default');
+  <CodeBlock code={`createTheme(
+  'grid',
+  {
+    primary: '#1976d2',
+    headerSeparator: 'full', // bold line below header row
+    columnSeparator: 'full', // full-height lines between columns
+  },
+  'default',
+);
 
 // Override for one specific table
-<DataTable theme="grid" columnSeparator={false} />`} lang="tsx" />
+<DataTable theme="grid" columnSeparator={false} />;`} lang="tsx" />
 
   <Demo
     title="Column separators"
@@ -321,14 +311,14 @@ MyCheckbox.displayName = 'MyCheckbox';
   </p>
 
   <CodeBlock code={`.my-table {
-  --rdt-color-text-primary:   #1a1a2e;
-  --rdt-color-bg:             #f0f4ff;
-  --rdt-color-header-bg:      #e8edff;  /* separate header background */
-  --rdt-color-divider:        #c7d2fe;
-  --rdt-color-highlight:      #e0e7ff;
-  --rdt-color-selected:       #ede9fe;
-  --rdt-border-radius:        8px;
-  --rdt-font-size:            13px;
+  --rdt-color-text-primary: #1a1a2e;
+  --rdt-color-bg: #f0f4ff;
+  --rdt-color-header-bg: #e8edff; /* separate header background */
+  --rdt-color-divider: #c7d2fe;
+  --rdt-color-highlight: #e0e7ff;
+  --rdt-color-selected: #ede9fe;
+  --rdt-border-radius: 8px;
+  --rdt-font-size: 13px;
 }`} lang="css" />
 
   <h3>CSS variable reference</h3>

@@ -1,5 +1,12 @@
 import React from 'react';
-import { useColumns, useTableState, useTableData, useColumnFilter, type TableColumn, type FilterState } from 'react-data-table-component';
+import {
+	useColumns,
+	useTableState,
+	useTableData,
+	useColumnFilter,
+	type TableColumn,
+	type FilterState,
+} from 'react-data-table-component';
 
 interface Employee {
 	id: number;

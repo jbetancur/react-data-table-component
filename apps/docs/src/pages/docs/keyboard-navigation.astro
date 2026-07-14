@@ -23,7 +23,7 @@ import PropsTable from '../../components/PropsTable.astro';
     read-only tables too.
   </p>
 
-  <CodeBlock code={`<DataTable columns={columns} data={data} cellNavigation />`} />
+  <CodeBlock code={`<DataTable columns={columns} data={data} cellNavigation />;`} />
 
   <h2>All shortcuts</h2>
 
@@ -58,7 +58,7 @@ import PropsTable from '../../components/PropsTable.astro';
   <Demo
     title="Arrow movement"
     description="Click a cell, then move with the keyboard only. No editing, sorting, selection, or expansion — just movement."
-    code={`<DataTable columns={columns} data={data} cellNavigation />`}
+    code={`<DataTable columns={columns} data={data} cellNavigation />;`}
   >
     <KeyboardArrowNavDemo client:load />
   </Demo>
@@ -81,7 +81,7 @@ import PropsTable from '../../components/PropsTable.astro';
   { id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true, right: true },
 ];
 
-<DataTable columns={columns} data={data} cellNavigation />`}
+<DataTable columns={columns} data={data} cellNavigation />;`}
   >
     <KeyboardSortDemo client:load />
   </Demo>
@@ -102,11 +102,10 @@ import PropsTable from '../../components/PropsTable.astro';
     code={`const columns: TableColumn<Employee>[] = [
   { id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit: handleCellEdit },
   { id: 'department', name: 'Department', selector: r => r.department }, // no editor
-  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true,
-    editable: true, onCellEdit: handleCellEdit },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true, editable: true, onCellEdit: handleCellEdit },
 ];
 
-<DataTable columns={columns} data={data} cellNavigation />`}
+<DataTable columns={columns} data={data} cellNavigation />;`}
   >
     <KeyboardEditDemo client:load />
   </Demo>
@@ -130,7 +129,7 @@ import PropsTable from '../../components/PropsTable.astro';
   selectableRows
   expandableRows
   expandableRowsComponent={RowDetail}
-/>`}
+/>;`}
   >
     <KeyboardNavigationDemo client:load />
   </Demo>

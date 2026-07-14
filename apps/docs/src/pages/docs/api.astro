@@ -90,7 +90,7 @@ import PropsTable from '../../components/PropsTable.astro';
   <CodeBlock code={`import { type ColumnGroup } from 'react-data-table-component';
 
 const columnGroups: ColumnGroup[] = [
-  { name: 'Employee',     columnIds: ['first', 'last', 'dept'] },
+  { name: 'Employee', columnIds: ['first', 'last', 'dept'] },
   { name: 'Compensation', columnIds: ['base', 'bonus'], align: 'left' },
 ];`} lang="ts" />
 
@@ -386,17 +386,17 @@ const customStyles: TableStyles = {
   <CodeBlock code={`import { createTheme } from 'react-data-table-component';
 
 createTheme(
-  'brand',       // name (pass to the theme prop)
+  'brand', // name (pass to the theme prop)
   {
-    text:             { primary: '#1a1a2e', secondary: '#4a4a6a', disabled: 'rgba(26,26,46,.38)' },
-    background:       { default: '#f0f4ff' },
-    divider:          { default: '#dde3f0' },
-    button:           { default: '#6366f1', hover: '#4f46e5', focus: 'rgba(99,102,241,.25)', disabled: '#c7d2fe' },
-    selected:         { default: '#ede9fe', text: '#3730a3' },
+    text: { primary: '#1a1a2e', secondary: '#4a4a6a', disabled: 'rgba(26,26,46,.38)' },
+    background: { default: '#f0f4ff' },
+    divider: { default: '#dde3f0' },
+    button: { default: '#6366f1', hover: '#4f46e5', focus: 'rgba(99,102,241,.25)', disabled: '#c7d2fe' },
+    selected: { default: '#ede9fe', text: '#3730a3' },
     highlightOnHover: { default: '#e0e7ff', text: '#1a1a2e' },
-    striped:          { default: '#f5f3ff', text: '#1a1a2e' },
+    striped: { default: '#f5f3ff', text: '#1a1a2e' },
   },
-  'default',     // optional: inherit from this theme
+  'default', // optional: inherit from this theme
 );`} lang="ts" />
 
   <DocsTable

@@ -21,22 +21,32 @@ import AnimationsDemo from '../../components/demos/AnimationsDemo.tsx';
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
-interface Employee { id: number; name: string; department: string; salary: number }
+interface Employee {
+  id: number;
+  name: string;
+  department: string;
+  salary: number;
+}
 
 const data: Employee[] = [
-  { id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000 },
-  { id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000 },
-  { id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000 },
-  { id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000 },
-  { id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000 },
-  { id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000 },
+  { id: 1, name: 'Aria Chen', department: 'Engineering', salary: 155000 },
+  { id: 2, name: 'Marcus Webb', department: 'Product', salary: 132000 },
+  { id: 3, name: 'Priya Kapoor', department: 'Design', salary: 118000 },
+  { id: 4, name: 'Jordan Ellis', department: 'Analytics', salary: 143000 },
+  { id: 5, name: 'Sam Rivera', department: 'Engineering', salary: 128000 },
+  { id: 6, name: 'Taylor Brooks', department: 'Sales', salary: 97000 },
 ];
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: 'Name', selector: r => r.name, sortable: true },
   { name: 'Department', selector: r => r.department, sortable: true },
-  { name: 'Salary',     selector: r => r.salary,     sortable: true,
-    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  {
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+    right: true,
+  },
 ];
 
 export default function App() {
@@ -46,17 +56,10 @@ export default function App() {
   return (
     <div>
       <label>
-        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} />
-        {' '}animateRows
+        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} /> animateRows
       </label>
       <button onClick={() => setKey(k => k + 1)}>Replay entrance animation</button>
-      <DataTable
-        key={key}
-        columns={columns}
-        data={data}
-        animateRows={animate}
-        highlightOnHover
-      />
+      <DataTable key={key} columns={columns} data={data} animateRows={animate} highlightOnHover />
     </div>
   );
 }`}
@@ -110,7 +113,7 @@ export default function App() {
   <CodeBlock code={`/* your app's CSS */
 .rdt_Table {
   --rdt-row-anim-duration: 300ms;
-  --rdt-row-anim-stagger:  20ms;
+  --rdt-row-anim-stagger: 20ms;
 }`} lang="css" />
 
   <h2>Prop reference</h2>

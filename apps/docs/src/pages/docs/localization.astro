@@ -23,7 +23,7 @@ import PropsTable from '../../components/PropsTable.astro';
   <CodeBlock code={`import DataTable from 'react-data-table-component';
 import { fr } from 'react-data-table-component/locales';
 
-<DataTable columns={columns} data={data} localization={fr} />`} />
+<DataTable columns={columns} data={data} localization={fr} />;`} />
 
   <h2>Built-in locales</h2>
 
@@ -69,7 +69,7 @@ const myLocale: Localization = {
   },
 };
 
-<DataTable columns={columns} data={data} localization={myLocale} />`} />
+<DataTable columns={columns} data={data} localization={myLocale} />;`} />
 
   <h2>Custom locale from scratch</h2>
   <p>
@@ -81,11 +81,11 @@ const myLocale: Localization = {
 
 const custom: Localization = {
   pagination: {
-    navigationAriaLabel:   'Paginación de la tabla',
-    firstPageAriaLabel:    'Primera página',
+    navigationAriaLabel: 'Paginación de la tabla',
+    firstPageAriaLabel: 'Primera página',
     previousPageAriaLabel: 'Página anterior',
-    nextPageAriaLabel:     'Página siguiente',
-    lastPageAriaLabel:     'Última página',
+    nextPageAriaLabel: 'Página siguiente',
+    lastPageAriaLabel: 'Última página',
   },
   filter: {
     applyLabel: 'Aplicar',
@@ -95,17 +95,17 @@ const custom: Localization = {
     orLabel: 'O',
     operators: {
       contains: 'Contiene',
-      equals:   'Igual a',
-      blank:    'Vacío',
+      equals: 'Igual a',
+      blank: 'Vacío',
     },
   },
   expandable: {
-    expandRowAriaLabel:   'Expandir fila',
+    expandRowAriaLabel: 'Expandir fila',
     collapseRowAriaLabel: 'Contraer fila',
   },
 };
 
-<DataTable columns={columns} data={data} localization={custom} />`} />
+<DataTable columns={columns} data={data} localization={custom} />;`} />
 
   <h2>The Localization type</h2>
   <p>
@@ -114,67 +114,67 @@ const custom: Localization = {
 
   <CodeBlock code={`interface Localization {
   pagination?: {
-    navigationAriaLabel?:   string;  // default: 'Table pagination'
-    firstPageAriaLabel?:    string;  // default: 'First Page'
-    previousPageAriaLabel?: string;  // default: 'Previous Page'
-    nextPageAriaLabel?:     string;  // default: 'Next Page'
-    lastPageAriaLabel?:     string;  // default: 'Last Page'
+    navigationAriaLabel?: string; // default: 'Table pagination'
+    firstPageAriaLabel?: string; // default: 'First Page'
+    previousPageAriaLabel?: string; // default: 'Previous Page'
+    nextPageAriaLabel?: string; // default: 'Next Page'
+    lastPageAriaLabel?: string; // default: 'Last Page'
   };
 
   filter?: {
-    filterColumnAriaLabel?:    string;  // default: 'Filter column'
-    filterActiveAriaLabel?:    string;  // default: 'Filter active'
-    filterPanelAriaLabel?:     string;  // default: 'Filter panel'
-    operatorAriaLabel?:        string;  // default: 'Filter operator'
-    valuePlaceholder?:         string;  // default: 'Value'
-    valueAriaLabel?:           string;  // default: 'Filter value'
-    value2Placeholder?:        string;  // default: 'Value'
-    value2AriaLabel?:          string;  // default: 'Second filter value'
-    betweenSeparatorText?:     string;  // default: 'and'
-    removeConditionAriaLabel?: string;  // default: 'Remove condition'
-    addConditionAriaLabel?:    string;  // default: 'Add second condition'
-    addConditionLabel?:        string;  // default: '+ Add condition'
-    clearLabel?:               string;  // default: 'Clear'
-    applyLabel?:               string;  // default: 'Apply'
-    andLabel?:                 string;  // default: 'AND'
-    orLabel?:                  string;  // default: 'OR'
+    filterColumnAriaLabel?: string; // default: 'Filter column'
+    filterActiveAriaLabel?: string; // default: 'Filter active'
+    filterPanelAriaLabel?: string; // default: 'Filter panel'
+    operatorAriaLabel?: string; // default: 'Filter operator'
+    valuePlaceholder?: string; // default: 'Value'
+    valueAriaLabel?: string; // default: 'Filter value'
+    value2Placeholder?: string; // default: 'Value'
+    value2AriaLabel?: string; // default: 'Second filter value'
+    betweenSeparatorText?: string; // default: 'and'
+    removeConditionAriaLabel?: string; // default: 'Remove condition'
+    addConditionAriaLabel?: string; // default: 'Add second condition'
+    addConditionLabel?: string; // default: '+ Add condition'
+    clearLabel?: string; // default: 'Clear'
+    applyLabel?: string; // default: 'Apply'
+    andLabel?: string; // default: 'AND'
+    orLabel?: string; // default: 'OR'
     operators?: {
-      contains?:    string;  // default: 'Contains'
-      notContains?: string;  // default: 'Does not contain'
-      equals?:      string;  // default: 'Equals'
-      notEquals?:   string;  // default: 'Does not equal'
-      startsWith?:  string;  // default: 'Begins with'
-      endsWith?:    string;  // default: 'Ends with'
-      blank?:       string;  // default: 'Blank'
-      notBlank?:    string;  // default: 'Not blank'
-      gt?:          string;  // default: 'Greater than'
-      gte?:         string;  // default: '≥'
-      lt?:          string;  // default: 'Less than'
-      lte?:         string;  // default: '≤'
-      between?:     string;  // default: 'Between'
-      before?:      string;  // default: 'Before'
-      after?:       string;  // default: 'After'
+      contains?: string; // default: 'Contains'
+      notContains?: string; // default: 'Does not contain'
+      equals?: string; // default: 'Equals'
+      notEquals?: string; // default: 'Does not equal'
+      startsWith?: string; // default: 'Begins with'
+      endsWith?: string; // default: 'Ends with'
+      blank?: string; // default: 'Blank'
+      notBlank?: string; // default: 'Not blank'
+      gt?: string; // default: 'Greater than'
+      gte?: string; // default: '≥'
+      lt?: string; // default: 'Less than'
+      lte?: string; // default: '≤'
+      between?: string; // default: 'Between'
+      before?: string; // default: 'Before'
+      after?: string; // default: 'After'
     };
   };
 
   expandable?: {
-    expandRowAriaLabel?:   string;  // default: 'Expand Row'
-    collapseRowAriaLabel?: string;  // default: 'Collapse Row'
+    expandRowAriaLabel?: string; // default: 'Expand Row'
+    collapseRowAriaLabel?: string; // default: 'Collapse Row'
   };
 
   contextMenu?: {
-    headerMenuAriaLabel?:  string;  // default: 'Column menu'
-    rowMenuAriaLabel?:     string;  // default: 'Row menu'
-    headerMenuButtonAriaLabel?: string;  // default: 'Column actions'
-    rowMenuButtonAriaLabel?:    string;  // default: 'Row actions'
-    sortAscLabel?:         string;  // default: 'Sort ascending'
-    sortDescLabel?:        string;  // default: 'Sort descending'
-    clearSortLabel?:       string;  // default: 'Clear sort'
-    pinLeftLabel?:         string;  // default: 'Pin left'
-    pinRightLabel?:        string;  // default: 'Pin right'
-    unpinLabel?:           string;  // default: 'Unpin'
-    hideColumnLabel?:      string;  // default: 'Hide column'
-    resetLabel?:           string;  // default: 'Reset table'
+    headerMenuAriaLabel?: string; // default: 'Column menu'
+    rowMenuAriaLabel?: string; // default: 'Row menu'
+    headerMenuButtonAriaLabel?: string; // default: 'Column actions'
+    rowMenuButtonAriaLabel?: string; // default: 'Row actions'
+    sortAscLabel?: string; // default: 'Sort ascending'
+    sortDescLabel?: string; // default: 'Sort descending'
+    clearSortLabel?: string; // default: 'Clear sort'
+    pinLeftLabel?: string; // default: 'Pin left'
+    pinRightLabel?: string; // default: 'Pin right'
+    unpinLabel?: string; // default: 'Unpin'
+    hideColumnLabel?: string; // default: 'Hide column'
+    resetLabel?: string; // default: 'Reset table'
   };
 }`} />
 

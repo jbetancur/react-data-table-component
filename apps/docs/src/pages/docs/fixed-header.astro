@@ -22,21 +22,26 @@ import PropsTable from '../../components/PropsTable.astro';
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Employee>[] = [
-  { name: '#',          selector: r => r.id,         width: '60px' },
-  { name: 'Name',       selector: r => r.name,       sortable: true },
+  { name: '#', selector: r => r.id, width: '60px' },
+  { name: 'Name', selector: r => r.name, sortable: true },
   { name: 'Department', selector: r => r.department, sortable: true },
-  { name: 'Salary',     selector: r => r.salary,     sortable: true,
-    right: true, format: r => \`$\${r.salary.toLocaleString()}\` },
-  { name: 'Status',     selector: r => r.status },
+  {
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    right: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+  },
+  { name: 'Status', selector: r => r.status },
 ];
 
 <DataTable
   columns={columns}
-  data={data}           // large dataset
+  data={data} // large dataset
   fixedHeader
   fixedHeaderScrollHeight="300px"
   highlightOnHover
-/>`}
+/>;`}
   >
     <FixedHeaderDemo client:load />
   </Demo>
@@ -81,7 +86,7 @@ const columns: TableColumn<Employee>[] = [
   <CodeBlock code={`<div className="my-own-scroll-container">
   <DataTable columns={columns} data={data} responsive={false} />
   <OtherWidgetSharingTheScroll />
-</div>`} />
+</div>;`} />
 
   <p>
     <strong>Trade-offs:</strong> features that rely on the table's own scrollport degrade. Pinned
@@ -106,7 +111,7 @@ const columns: TableColumn<Employee>[] = [
   fixedHeaderScrollHeight="400px"
   pagination
   paginationPerPage={20}
-/>`} />
+/>;`} />
 
   <h2>With selection</h2>
   <p>
@@ -114,13 +119,7 @@ const columns: TableColumn<Employee>[] = [
     checkbox remains accessible at the top of the scrollable area.
   </p>
 
-  <CodeBlock code={`<DataTable
-  columns={columns}
-  data={data}
-  fixedHeader
-  fixedHeaderScrollHeight="350px"
-  selectableRows
-/>`} />
+  <CodeBlock code={`<DataTable columns={columns} data={data} fixedHeader fixedHeaderScrollHeight="350px" selectableRows />;`} />
 
   <h2>Tracking scroll position with <code>onScroll</code></h2>
   <p>
@@ -140,7 +139,7 @@ const columns: TableColumn<Employee>[] = [
   fixedHeader
   fixedHeaderScrollHeight="300px"
   onScroll={e => setScrollTop(Math.round((e.target as HTMLDivElement).scrollTop))}
-/>`}
+/>;`}
   >
     <OnScrollDemo client:load />
   </Demo>

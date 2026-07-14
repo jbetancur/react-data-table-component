@@ -21,11 +21,11 @@ import ColumnVisibilityDemo from '../../components/demos/ColumnVisibilityDemo.ts
     code={`import DataTable, { useColumnVisibility, type TableColumn } from 'react-data-table-component';
 
 const initialColumns: TableColumn<Employee>[] = [
-  { id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true },
+  { id: 'name', name: 'Name', selector: r => r.name, sortable: true },
   { id: 'department', name: 'Department', selector: r => r.department, sortable: true },
-  { id: 'role',       name: 'Role',       selector: r => r.role },
-  { id: 'salary',     name: 'Salary',     selector: r => r.salary,     sortable: true },
-  { id: 'location',   name: 'Location',   selector: r => r.location },
+  { id: 'role', name: 'Role', selector: r => r.role },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true },
+  { id: 'location', name: 'Location', selector: r => r.location },
 ];
 
 export default function App() {
@@ -47,12 +47,12 @@ export default function App() {
   <h2>Hook API</h2>
 
   <CodeBlock lang="ts" code={`const {
-  columns,      // TableColumn<T>[] — pass directly to DataTable, omit is managed for you
-  entries,      // { column, visible }[] — drive your toggle UI from this
+  columns, // TableColumn<T>[] — pass directly to DataTable, omit is managed for you
+  entries, // { column, visible }[] — drive your toggle UI from this
   toggleColumn, // (columnId) => void — flip one column's visibility
-  isVisible,    // (columnId) => boolean — check a specific column
-  showAll,      // () => void — make all columns visible
-  hideAll,      // () => void — hide all columns
+  isVisible, // (columnId) => boolean — check a specific column
+  showAll, // () => void — make all columns visible
+  hideAll, // () => void — hide all columns
 } = useColumnVisibility(initialColumns);`} />
 
   <h2>Column IDs are required</h2>
@@ -75,7 +75,7 @@ export default function App() {
   <CodeBlock lang="tsx" code={`const saved = JSON.parse(localStorage.getItem('hiddenCols') ?? '[]') as string[];
 
 const initialColumns: TableColumn<Employee>[] = [
-  { id: 'name',   name: 'Name',   selector: r => r.name },
+  { id: 'name', name: 'Name', selector: r => r.name },
   { id: 'salary', name: 'Salary', selector: r => r.salary, omit: saved.includes('salary') },
 ];
 
@@ -83,9 +83,7 @@ const { columns, entries, toggleColumn } = useColumnVisibility(initialColumns);
 
 const handleToggle = (id: string | number) => {
   toggleColumn(id);
-  const next = entries
-    .filter(e => (e.column.id === id ? e.visible : !e.visible))
-    .map(e => e.column.id as string);
+  const next = entries.filter(e => (e.column.id === id ? e.visible : !e.visible)).map(e => e.column.id as string);
   localStorage.setItem('hiddenCols', JSON.stringify(next));
 };`} />
 </DocsLayout>

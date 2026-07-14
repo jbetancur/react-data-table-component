@@ -11,22 +11,22 @@ interface Row {
 }
 
 const ALL_DATA: Row[] = [
-	{ id: 1,  name: 'Aria Chen',      department: 'Engineering', salary: 155000, bonus: 12000 },
-	{ id: 2,  name: 'Marcus Webb',    department: 'Product',     salary: 132000, bonus: 9500  },
-	{ id: 3,  name: 'Priya Kapoor',   department: 'Design',      salary: 118000, bonus: 7800  },
-	{ id: 4,  name: 'Jordan Ellis',   department: 'Analytics',   salary: 143000, bonus: 11200 },
-	{ id: 5,  name: 'Sam Rivera',     department: 'Engineering', salary: 128000, bonus: 9000  },
-	{ id: 6,  name: 'Taylor Brooks',  department: 'Engineering', salary: 122000, bonus: 8400  },
-	{ id: 7,  name: 'Casey Morgan',   department: 'Product',     salary: 108000, bonus: 6600  },
-	{ id: 8,  name: 'Alex Kim',       department: 'Analytics',   salary: 137000, bonus: 10100 },
-	{ id: 9,  name: 'Morgan Lee',     department: 'Design',      salary: 114000, bonus: 7200  },
-	{ id: 10, name: 'Drew Park',      department: 'Engineering', salary: 141000, bonus: 10800 },
+	{ id: 1, name: 'Aria Chen', department: 'Engineering', salary: 155000, bonus: 12000 },
+	{ id: 2, name: 'Marcus Webb', department: 'Product', salary: 132000, bonus: 9500 },
+	{ id: 3, name: 'Priya Kapoor', department: 'Design', salary: 118000, bonus: 7800 },
+	{ id: 4, name: 'Jordan Ellis', department: 'Analytics', salary: 143000, bonus: 11200 },
+	{ id: 5, name: 'Sam Rivera', department: 'Engineering', salary: 128000, bonus: 9000 },
+	{ id: 6, name: 'Taylor Brooks', department: 'Engineering', salary: 122000, bonus: 8400 },
+	{ id: 7, name: 'Casey Morgan', department: 'Product', salary: 108000, bonus: 6600 },
+	{ id: 8, name: 'Alex Kim', department: 'Analytics', salary: 137000, bonus: 10100 },
+	{ id: 9, name: 'Morgan Lee', department: 'Design', salary: 114000, bonus: 7200 },
+	{ id: 10, name: 'Drew Park', department: 'Engineering', salary: 141000, bonus: 10800 },
 ];
 
 function SummaryFooter({ rows }: FooterComponentProps<Row>) {
 	const totalSalary = rows.reduce((s, r) => s + r.salary, 0);
-	const totalBonus  = rows.reduce((s, r) => s + r.bonus, 0);
-	const avgSalary   = rows.length ? Math.round(totalSalary / rows.length) : 0;
+	const totalBonus = rows.reduce((s, r) => s + r.bonus, 0);
+	const avgSalary = rows.length ? Math.round(totalSalary / rows.length) : 0;
 
 	return (
 		<div
@@ -61,7 +61,7 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
 }
 
 const columns: TableColumn<Row>[] = [
-	{ id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true },
+	{ id: 'name', name: 'Name', selector: r => r.name, sortable: true },
 	{ id: 'department', name: 'Department', selector: r => r.department, sortable: true },
 	{
 		id: 'salary',
@@ -109,13 +109,7 @@ export default function FooterCustomDemo() {
 					</button>
 				))}
 			</div>
-			<DataTable
-				columns={columns}
-				data={data}
-				highlightOnHover
-				dense
-				footerComponent={SummaryFooter}
-			/>
+			<DataTable columns={columns} data={data} highlightOnHover dense footerComponent={SummaryFooter} />
 		</div>
 	);
 }

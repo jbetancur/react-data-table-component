@@ -24,7 +24,14 @@ const data: Employee[] = [
 const columns: TableColumn<Employee>[] = [
 	{ id: 'name', name: 'Name', selector: r => r.name, sortable: true },
 	{ id: 'department', name: 'Department', selector: r => r.department, sortable: true },
-	{ id: 'salary', name: 'Salary', selector: r => r.salary, format: r => `$${r.salary.toLocaleString()}`, right: true, sortable: true },
+	{
+		id: 'salary',
+		name: 'Salary',
+		selector: r => r.salary,
+		format: r => `$${r.salary.toLocaleString()}`,
+		right: true,
+		sortable: true,
+	},
 	{ id: 'hired', name: 'Hired', selector: r => r.hired, sortable: true },
 ];
 
@@ -44,9 +51,7 @@ export default function SortResetDemo() {
 				>
 					Reset sort
 				</button>
-				<span className="text-xs text-gray-500 font-mono">
-					{lastSort ?? 'Sort by any column, then reset'}
-				</span>
+				<span className="text-xs text-gray-500 font-mono">{lastSort ?? 'Sort by any column, then reset'}</span>
 			</div>
 			<DataTable
 				ref={ref}
