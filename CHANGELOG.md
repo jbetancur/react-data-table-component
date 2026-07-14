@@ -2,6 +2,15 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.6.2
+
+### Bug fixes
+
+- A numeric pixel value for `TableColumn.hide` (e.g. `hide: 480`) was a no-op — the column stayed visible at every width. Numeric breakpoints stopped working in the v8 refactor; the type now accepts only `Media` (`'sm' | 'md' | 'lg'`) to match. For a custom breakpoint, track viewport width yourself and toggle the column's `omit` prop instead. → [Mobile](/docs/mobile) ([#1346](https://github.com/jbetancur/react-data-table-component/issues/1346))
+- Fixed `highlightOnHover` not showing when a row's background color was set via `customStyles.rows.style`, since the inline style was winning over the hover class. → [Styling](/docs/custom-styles) ([#1351](https://github.com/jbetancur/react-data-table-component/pull/1351))
+
+---
+
 ## 8.6.1
 
 ### Bug fixes

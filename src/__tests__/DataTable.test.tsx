@@ -395,14 +395,6 @@ describe('DataTable::columns', () => {
 		expect(container.querySelector('.rdt_hideOnLg')).not.toBeNull();
 	});
 
-	test('should render correctly if column.hide is an integer', () => {
-		const mock = dataMock({ hide: 300 });
-		const { container } = render(<DataTable data={mock.data} columns={mock.columns} />);
-
-		// integer does not map to a media class, column still renders
-		expect(container.querySelector('div[data-column-id="1"]')).not.toBeNull();
-	});
-
 	test('should render correctly if column.omit is true', () => {
 		const mock = dataMock();
 		const mockColumns = mock.columns.slice();

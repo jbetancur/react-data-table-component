@@ -379,7 +379,7 @@ export type TableColumnBase = {
 	compact?: boolean;
 	reorder?: boolean;
 	grow?: number;
-	hide?: number | Media;
+	hide?: Media;
 	id?: string | number;
 	ignoreRowClick?: boolean;
 	maxWidth?: string;
