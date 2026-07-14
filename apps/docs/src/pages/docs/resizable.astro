@@ -22,14 +22,19 @@ import PropsTable from '../../components/PropsTable.astro';
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',       selector: r => r.name,       width: '180px', minWidth: '100px' },
-  { name: 'Role',       selector: r => r.role,       minWidth: '120px' },
+  { name: 'Name', selector: r => r.name, width: '180px', minWidth: '100px' },
+  { name: 'Role', selector: r => r.role, minWidth: '120px' },
   { name: 'Department', selector: r => r.department, width: '140px', minWidth: '80px' },
-  { name: 'Salary',     selector: r => r.salary,     width: '110px', right: true,
-    format: r => \`$\${r.salary.toLocaleString()}\` },
+  {
+    name: 'Salary',
+    selector: r => r.salary,
+    width: '110px',
+    right: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+  },
 ];
 
-<DataTable columns={columns} data={data} resizable highlightOnHover />`}
+<DataTable columns={columns} data={data} resizable highlightOnHover />;`}
   >
     <ResizableDemo client:load />
   </Demo>
@@ -53,12 +58,12 @@ const columns: TableColumn<Employee>[] = [
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Employee>[] = [
-  { name: 'Name',   selector: r => r.name,   width: '200px', minWidth: '120px' },
+  { name: 'Name', selector: r => r.name, width: '200px', minWidth: '120px' },
   { name: 'Status', selector: r => r.status, width: '100px' },
-  { name: 'Notes',  selector: r => r.notes,  /* grows to fill remaining space */ },
+  { name: 'Notes', selector: r => r.notes /* grows to fill remaining space */ },
 ];
 
-<DataTable columns={columns} data={data} resizable />`} />
+<DataTable columns={columns} data={data} resizable />;`} />
 
   <p>The hard floor is <strong>40 px</strong>. DataTable won't allow narrower than that regardless of <code>minWidth</code>.</p>
 
@@ -84,8 +89,11 @@ import DataTable, { type TableColumn } from 'react-data-table-component';
 const STORAGE_KEY = 'employees-table-widths';
 
 function loadWidths(): Record<string, string> {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}'); }
-  catch { return {}; }
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}');
+  } catch {
+    return {};
+  }
 }
 
 export default function App() {
@@ -112,10 +120,8 @@ export default function App() {
   }, []);
 
   const columns: TableColumn<Employee>[] = [
-    { id: 'name',   name: 'Name',   selector: r => r.name,
-      width: saved['name']   ?? '180px' },
-    { id: 'salary', name: 'Salary', selector: r => r.salary, right: true,
-      width: saved['salary'] ?? '110px' },
+    { id: 'name', name: 'Name', selector: r => r.name, width: saved['name'] ?? '180px' },
+    { id: 'salary', name: 'Salary', selector: r => r.salary, right: true, width: saved['salary'] ?? '110px' },
   ];
 
   return (

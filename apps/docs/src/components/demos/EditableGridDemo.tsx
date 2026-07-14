@@ -76,15 +76,12 @@ export default function EditableGridDemo() {
 
 	return (
 		<div className="rounded-xl border border-gray-200 overflow-hidden">
-			<DataTable
-				columns={columns}
-				data={data}
-				highlightOnHover
-				noDataComponent="No items"
-			/>
+			<DataTable columns={columns} data={data} highlightOnHover noDataComponent="No items" />
 			<div className="flex justify-between items-center px-4 py-3 bg-gray-50 border-t border-gray-200 text-sm font-semibold">
 				<span className="text-gray-500">{data.length} items</span>
-				<span className="text-gray-900">Grand total: <span className="text-brand-600">${grandTotal.toFixed(2)}</span></span>
+				<span className="text-gray-900">
+					Grand total: <span className="text-brand-600">${grandTotal.toFixed(2)}</span>
+				</span>
 			</div>
 		</div>
 	);

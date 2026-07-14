@@ -29,27 +29,32 @@ interface Employee {
 }
 
 const data: Employee[] = [
-  { id: 1,  name: 'Aria Chen',     department: 'Engineering', salary: 155000, hired: '2019-03-12' },
-  { id: 2,  name: 'Marcus Webb',   department: 'Product',     salary: 132000, hired: '2020-07-01' },
-  { id: 3,  name: 'Priya Kapoor',  department: 'Design',      salary: 118000, hired: '2021-01-15' },
-  { id: 4,  name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000, hired: '2018-11-30' },
-  { id: 5,  name: 'Sam Rivera',    department: 'Engineering', salary: 128000, hired: '2022-04-22' },
-  { id: 6,  name: 'Taylor Brooks', department: 'Sales',       salary:  97000, hired: '2023-02-08' },
-  { id: 7,  name: 'Morgan Lee',    department: 'Engineering', salary: 162000, hired: '2017-09-05' },
-  { id: 8,  name: 'Casey Park',    department: 'Design',      salary: 109000, hired: '2022-11-19' },
-  { id: 9,  name: 'Drew Santos',   department: 'Product',     salary: 138000, hired: '2020-03-30' },
-  { id: 10, name: 'Avery Johnson', department: 'Sales',       salary: 104000, hired: '2021-08-14' },
+  { id: 1, name: 'Aria Chen', department: 'Engineering', salary: 155000, hired: '2019-03-12' },
+  { id: 2, name: 'Marcus Webb', department: 'Product', salary: 132000, hired: '2020-07-01' },
+  { id: 3, name: 'Priya Kapoor', department: 'Design', salary: 118000, hired: '2021-01-15' },
+  { id: 4, name: 'Jordan Ellis', department: 'Analytics', salary: 143000, hired: '2018-11-30' },
+  { id: 5, name: 'Sam Rivera', department: 'Engineering', salary: 128000, hired: '2022-04-22' },
+  { id: 6, name: 'Taylor Brooks', department: 'Sales', salary: 97000, hired: '2023-02-08' },
+  { id: 7, name: 'Morgan Lee', department: 'Engineering', salary: 162000, hired: '2017-09-05' },
+  { id: 8, name: 'Casey Park', department: 'Design', salary: 109000, hired: '2022-11-19' },
+  { id: 9, name: 'Drew Santos', department: 'Product', salary: 138000, hired: '2020-03-30' },
+  { id: 10, name: 'Avery Johnson', department: 'Sales', salary: 104000, hired: '2021-08-14' },
 ];
 
 const columns: TableColumn<Employee>[] = [
-  { id: 'name',   name: 'Name',       selector: r => r.name,   sortable: true, filterable: true },
-  { id: 'dept',   name: 'Department', selector: r => r.department,              filterable: true },
+  { id: 'name', name: 'Name', selector: r => r.name, sortable: true, filterable: true },
+  { id: 'dept', name: 'Department', selector: r => r.department, filterable: true },
   {
-    id: 'salary', name: 'Salary',     selector: r => r.salary,
+    id: 'salary',
+    name: 'Salary',
+    selector: r => r.salary,
     format: r => \`$\${r.salary.toLocaleString()}\`,
-    right: true,  sortable: true, filterable: true, filterType: 'number',
+    right: true,
+    sortable: true,
+    filterable: true,
+    filterType: 'number',
   },
-  { id: 'hired',  name: 'Hired',      selector: r => r.hired,  sortable: true, filterable: true, filterType: 'date' },
+  { id: 'hired', name: 'Hired', selector: r => r.hired, sortable: true, filterable: true, filterType: 'date' },
 ];
 
 export default function App() {
@@ -66,11 +71,9 @@ export default function App() {
     pass every active filter to appear.
   </p>
 
-  <CodeBlock code={`const columns: TableColumn<Row>[] = [
-  { id: 'name', name: 'Name', selector: r => r.name, filterable: true },
-];
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [{ id: 'name', name: 'Name', selector: r => r.name, filterable: true }];
 
-<DataTable columns={columns} data={data} />`} />
+<DataTable columns={columns} data={data} />;`} />
 
   <h2>Filter types</h2>
   <p>
@@ -78,9 +81,9 @@ export default function App() {
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Row>[] = [
-  { id: 'name',  name: 'Name',       selector: r => r.name,  filterable: true },
-  { id: 'score', name: 'Score',      selector: r => r.score, filterable: true, filterType: 'number' },
-  { id: 'dob',   name: 'Birth date', selector: r => r.dob,   filterable: true, filterType: 'date' },
+  { id: 'name', name: 'Name', selector: r => r.name, filterable: true },
+  { id: 'score', name: 'Score', selector: r => r.score, filterable: true, filterType: 'number' },
+  { id: 'dob', name: 'Birth date', selector: r => r.dob, filterable: true, filterType: 'date' },
 ];`} />
 
   <DocsTable
@@ -109,8 +112,8 @@ export default function App() {
 // The shape of one column's filter state
 const filter: FilterState = {
   condition1: { operator: 'startsWith', value: 'J' },
-  condition2: { operator: 'endsWith',   value: 'son' },
-  logic: 'AND',  // 'AND' | 'OR' — defaults to 'AND'
+  condition2: { operator: 'endsWith', value: 'son' },
+  logic: 'AND', // 'AND' | 'OR' — defaults to 'AND'
 };`} />
 
   <h2>Apply / Clear behaviour</h2>
@@ -157,7 +160,7 @@ function App() {
 
   function handleFilterChange(columnId: string | number, filter: FilterState) {
     setFilterValues(prev => ({ ...prev, [columnId]: filter }));
-    setResetPage(v => !v);  // jump back to page 1 after each filter
+    setResetPage(v => !v); // jump back to page 1 after each filter
   }
 
   return (
@@ -177,13 +180,13 @@ function App() {
   <CodeBlock code={`import { emptyFilterState, isFilterActive, type FilterState } from 'react-data-table-component';
 
 // Create a default-empty FilterState for a given type
-emptyFilterState('number');  // { condition1: { operator: 'equals' } }
-emptyFilterState('text');    // { condition1: { operator: 'contains' } }
+emptyFilterState('number'); // { condition1: { operator: 'equals' } }
+emptyFilterState('text'); // { condition1: { operator: 'contains' } }
 
 // Check whether a FilterState is actually filtering anything
-isFilterActive({ condition1: { operator: 'contains' } });           // false — no value
+isFilterActive({ condition1: { operator: 'contains' } }); // false — no value
 isFilterActive({ condition1: { operator: 'contains', value: 'a' } }); // true
-isFilterActive({ condition1: { operator: 'blank' } });               // true — no value needed`} />
+isFilterActive({ condition1: { operator: 'blank' } }); // true — no value needed`} />
 
   <h2>Localization</h2>
   <p>
@@ -196,7 +199,7 @@ isFilterActive({ condition1: { operator: 'blank' } });               // true —
 import DataTable from 'react-data-table-component';
 import { fr } from 'react-data-table-component/locales';
 
-<DataTable columns={columns} data={data} localization={fr} />`} />
+<DataTable columns={columns} data={data} localization={fr} />;`} />
 
   <CodeBlock code={`// Custom / partial override — spread a locale and replace only what you need
 import { fr } from 'react-data-table-component/locales';
@@ -206,11 +209,11 @@ const myLocale: Localization = {
   ...fr,
   filter: {
     ...fr.filter,
-    applyLabel: 'Valider',   // override one key
+    applyLabel: 'Valider', // override one key
   },
 };
 
-<DataTable columns={columns} data={data} localization={myLocale} />`} />
+<DataTable columns={columns} data={data} localization={myLocale} />;`} />
 
   <CodeBlock code={`// Built from scratch — every key is optional
 import type { Localization } from 'react-data-table-component';
@@ -223,7 +226,7 @@ const custom: Localization = {
   },
 };
 
-<DataTable columns={columns} data={data} localization={custom} />`} />
+<DataTable columns={columns} data={data} localization={custom} />;`} />
 
   <h2>Headless usage</h2>
   <p>

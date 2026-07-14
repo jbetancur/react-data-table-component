@@ -48,47 +48,56 @@ export default function App() {
   const handleCellEdit = (row: Employee, value: string, column: TableColumn<Employee>) => {
     const field = column.id as keyof Employee;
     setData(prev =>
-      prev.map(r =>
-        r.id === row.id
-          ? { ...r, [field]: field === 'salary' ? Number(value) || r.salary : value }
-          : r,
-      ),
+      prev.map(r => (r.id === row.id ? { ...r, [field]: field === 'salary' ? Number(value) || r.salary : value } : r)),
     );
   };
 
   const columns: TableColumn<Employee>[] = [
     // Text editor — editable: true is shorthand for { editor: { type: 'text' } }
-    { id: 'name', name: 'Name', selector: r => r.name,
-      editable: true, onCellEdit: handleCellEdit },
+    { id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit: handleCellEdit },
 
     // Dropdown editor
-    { id: 'department', name: 'Department', selector: r => r.department,
+    {
+      id: 'department',
+      name: 'Department',
+      selector: r => r.department,
       editor: {
         type: 'select',
         options: [
           { value: 'Engineering', label: 'Engineering' },
-          { value: 'Product',     label: 'Product' },
-          { value: 'Design',      label: 'Design' },
+          { value: 'Product', label: 'Product' },
+          { value: 'Design', label: 'Design' },
         ],
       },
-      onCellEdit: handleCellEdit },
+      onCellEdit: handleCellEdit,
+    },
 
     // Custom cell renderer + dropdown editor compose freely
-    { id: 'status', name: 'Status', selector: r => r.status,
+    {
+      id: 'status',
+      name: 'Status',
+      selector: r => r.status,
       cell: row => <StatusBadge status={row.status} />,
       editor: {
         type: 'select',
         options: [
-          { value: 'Active',     label: 'Active' },
-          { value: 'On Leave',   label: 'On Leave' },
+          { value: 'Active', label: 'Active' },
+          { value: 'On Leave', label: 'On Leave' },
           { value: 'Terminated', label: 'Terminated' },
         ],
       },
-      onCellEdit: handleCellEdit },
+      onCellEdit: handleCellEdit,
+    },
 
-    { id: 'salary', name: 'Salary', selector: r => r.salary,
+    {
+      id: 'salary',
+      name: 'Salary',
+      selector: r => r.salary,
       format: r => \`$\${r.salary.toLocaleString()}\`,
-      right: true, editable: true, onCellEdit: handleCellEdit },
+      right: true,
+      editable: true,
+      onCellEdit: handleCellEdit,
+    },
   ];
 
   return <DataTable columns={columns} data={data} />;
@@ -181,7 +190,7 @@ export default function App() {
   editor: {
     type: 'select',
     options: [
-      { value: 'active',  label: 'Active' },
+      { value: 'active', label: 'Active' },
       { value: 'on_leave', label: 'On Leave' },
       { value: 'terminated', label: 'Terminated' },
     ],
@@ -248,7 +257,7 @@ export default function App() {
   />
 
   <CodeBlock code={`.rdt_table {
-  --rdt-color-cell-edit-bg: #fff7ed;        /* warm amber */
+  --rdt-color-cell-edit-bg: #fff7ed; /* warm amber */
   --rdt-color-cell-edit-hover: #fffbeb;
   --rdt-color-cell-edit-hover-border: #f59e0b;
 }`} lang="css" />
@@ -261,9 +270,7 @@ export default function App() {
   </p>
 
   <CodeBlock code={`const handleCellEdit = (row, value, column) => {
-  setData(prev =>
-    prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: value } : r))
-  );
+  setData(prev => prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: value } : r)));
 };`} />
 
   <p>
@@ -273,16 +280,14 @@ export default function App() {
 
   <CodeBlock code={`const handleCellEdit = async (row, value, column) => {
   // Optimistic update
-  setData(prev =>
-    prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: value } : r))
-  );
+  setData(prev => prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: value } : r)));
 
   try {
     await api.updateEmployee(row.id, { [column.id as string]: value });
   } catch (err) {
     // Roll back on failure
     setData(prev =>
-      prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: row[column.id as keyof typeof row] } : r))
+      prev.map(r => (r.id === row.id ? { ...r, [column.id as string]: row[column.id as keyof typeof row] } : r)),
     );
     console.error('Save failed:', err);
   }
@@ -328,9 +333,8 @@ export default function App() {
   <CodeBlock code={`const canEdit = user.role === 'admin';
 
 const columns: TableColumn<Employee>[] = [
-  { id: 'name',   name: 'Name',   selector: r => r.name },               // never editable
-  { id: 'salary', name: 'Salary', selector: r => r.salary,
-    editable: canEdit, onCellEdit: handleCellEdit },                     // editable only for admins
+  { id: 'name', name: 'Name', selector: r => r.name }, // never editable
+  { id: 'salary', name: 'Salary', selector: r => r.salary, editable: canEdit, onCellEdit: handleCellEdit }, // editable only for admins
 ];`} />
 
   <h2>Combining with custom cell renderers</h2>
@@ -347,8 +351,8 @@ const columns: TableColumn<Employee>[] = [
   editor: {
     type: 'select',
     options: [
-      { value: 'Active',     label: 'Active' },
-      { value: 'On Leave',   label: 'On Leave' },
+      { value: 'Active', label: 'Active' },
+      { value: 'On Leave', label: 'On Leave' },
       { value: 'Terminated', label: 'Terminated' },
     ],
   },
@@ -408,7 +412,7 @@ const columns: TableColumn<Employee>[] = [
     covers header, selection, and expander cells, and works on read-only tables.
   </p>
 
-  <CodeBlock code={`<DataTable columns={columns} data={data} cellNavigation />`} />
+  <CodeBlock code={`<DataTable columns={columns} data={data} cellNavigation />;`} />
 
   <h2>Limitations</h2>
   <ul>

@@ -32,32 +32,48 @@ interface Employee {
 
 const data: Employee[] = [
   {
-    id: 1, name: 'Aria Chen', role: 'Engineering Lead', department: 'Engineering',
-    salary: 155000, locked: false,
+    id: 1,
+    name: 'Aria Chen',
+    role: 'Engineering Lead',
+    department: 'Engineering',
+    salary: 155000,
+    locked: false,
     bio: 'Aria leads the platform team, focusing on reliability and developer experience.',
   },
   {
-    id: 2, name: 'Marcus Webb', role: 'Product Manager', department: 'Product',
-    salary: 132000, locked: true,
+    id: 2,
+    name: 'Marcus Webb',
+    role: 'Product Manager',
+    department: 'Product',
+    salary: 132000,
+    locked: true,
     bio: 'Marcus drives roadmap strategy across three product lines.',
   },
   {
-    id: 3, name: 'Priya Kapoor', role: 'Senior Designer', department: 'Design',
-    salary: 118000, locked: false,
+    id: 3,
+    name: 'Priya Kapoor',
+    role: 'Senior Designer',
+    department: 'Design',
+    salary: 118000,
+    locked: false,
     bio: 'Priya leads the design system and owns the mobile experience.',
   },
   {
-    id: 4, name: 'Jordan Ellis', role: 'Data Scientist', department: 'Analytics',
-    salary: 143000, locked: true,
+    id: 4,
+    name: 'Jordan Ellis',
+    role: 'Data Scientist',
+    department: 'Analytics',
+    salary: 143000,
+    locked: true,
     bio: 'Jordan builds ML pipelines for churn prediction and revenue forecasting.',
   },
 ];
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',       selector: r => r.name,       sortable: true },
-  { name: 'Role',       selector: r => r.role },
+  { name: 'Name', selector: r => r.name, sortable: true },
+  { name: 'Role', selector: r => r.role },
   { name: 'Department', selector: r => r.department },
-  { name: 'Salary',     selector: r => r.salary, format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
+  { name: 'Salary', selector: r => r.salary, format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
 ];
 
 // The expandable component receives the row as the \`data\` prop
@@ -75,19 +91,18 @@ export default function App() {
   return (
     <div>
       <label>
-        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} />
-        {' '}Animate expand
+        <input type="checkbox" checked={animate} onChange={e => setAnimate(e.target.checked)} /> Animate expand
       </label>
       <label>
-        <input type="checkbox" checked={disableLocked} onChange={e => setDisableLocked(e.target.checked)} />
-        {' '}Disable "Restricted" rows
+        <input type="checkbox" checked={disableLocked} onChange={e => setDisableLocked(e.target.checked)} /> Disable
+        "Restricted" rows
       </label>
       <DataTable
         columns={columns}
         data={data}
         expandableRows
         expandableRowsComponent={ExpandedRow}
-        expandableRowDisabled={disableLocked ? (r => r.locked) : undefined}
+        expandableRowDisabled={disableLocked ? r => r.locked : undefined}
         animateRows={animate}
         highlightOnHover
       />
@@ -121,14 +136,7 @@ const ExpandedRow = ({ data: row }: ExpanderComponentProps<Employee>) => (
 );
 
 export default function App() {
-  return (
-    <DataTable
-      columns={columns}
-      data={data}
-      expandableRows
-      expandableRowsComponent={ExpandedRow}
-    />
-  );
+  return <DataTable columns={columns} data={data} expandableRows expandableRowsComponent={ExpandedRow} />;
 }`} />
 
   <h2>Passing extra props to the expander</h2>
@@ -149,7 +157,7 @@ export default function App() {
   expandableRows
   expandableRowsComponent={DetailPanel}
   expandableRowsComponentProps={{ onDelete: handleDelete }}
-/>`} />
+/>;`} />
 
   <h2>Controlling which rows are expanded</h2>
   <p>
@@ -226,7 +234,7 @@ export default function App() {
   onRowExpandToggled={(expanded: boolean, row: Employee) => {
     console.log(expanded ? 'opened' : 'closed', row.name);
   }}
-/>`} />
+/>;`} />
 
   <h2>Custom expander icons</h2>
   <p>
@@ -237,9 +245,9 @@ export default function App() {
   expandableRowsComponent={ExpandedRow}
   expandableIcon={{
     collapsed: <span>&#9654;</span>,
-    expanded:  <span>&#9660;</span>,
+    expanded: <span>&#9660;</span>,
   }}
-/>`} />
+/>;`} />
 
   <h2>Animation</h2>
   <p>
@@ -247,11 +255,7 @@ export default function App() {
     The animation is automatically disabled when the user's OS has
     <code>prefers-reduced-motion</code> set.
   </p>
-  <CodeBlock code={`<DataTable
-  expandableRows
-  expandableRowsComponent={ExpandedRow}
-  animateRows
-/>`} />
+  <CodeBlock code={`<DataTable expandableRows expandableRowsComponent={ExpandedRow} animateRows />;`} />
 
   <h2>Localization</h2>
   <p>
@@ -263,31 +267,19 @@ export default function App() {
 import DataTable from 'react-data-table-component';
 import { fr } from 'react-data-table-component/locales';
 
-<DataTable
-  columns={columns}
-  data={data}
-  expandableRows
-  expandableRowsComponent={MyExpander}
-  localization={fr}
-/>`} />
+<DataTable columns={columns} data={data} expandableRows expandableRowsComponent={MyExpander} localization={fr} />;`} />
 
   <CodeBlock code={`// Custom aria-labels only
 import type { Localization } from 'react-data-table-component';
 
 const custom: Localization = {
   expandable: {
-    expandRowAriaLabel:   'Ouvrir la ligne',
+    expandRowAriaLabel: 'Ouvrir la ligne',
     collapseRowAriaLabel: 'Fermer la ligne',
   },
 };
 
-<DataTable
-  columns={columns}
-  data={data}
-  expandableRows
-  expandableRowsComponent={MyExpander}
-  localization={custom}
-/>`} />
+<DataTable columns={columns} data={data} expandableRows expandableRowsComponent={MyExpander} localization={custom} />;`} />
 
   <h2>Prop reference</h2>
   <PropsTable feature="expandable" columns={['prop', 'type', 'description']} />

@@ -27,19 +27,34 @@ import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const data = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
-  name: ['Aria Chen','Marcus Webb','Priya Kapoor','Jordan Ellis','Sam Rivera',
-         'Taylor Brooks','Casey Morgan','Alex Kim','Morgan Lee','Drew Park'][i % 10],
-  department: ['Engineering','Product','Design','Analytics','Sales','HR'][i % 6],
+  name: [
+    'Aria Chen',
+    'Marcus Webb',
+    'Priya Kapoor',
+    'Jordan Ellis',
+    'Sam Rivera',
+    'Taylor Brooks',
+    'Casey Morgan',
+    'Alex Kim',
+    'Morgan Lee',
+    'Drew Park',
+  ][i % 10],
+  department: ['Engineering', 'Product', 'Design', 'Analytics', 'Sales', 'HR'][i % 6],
   salary: 80000 + i * 3700,
-  status: ['Active','Remote','On Leave','Contractor'][i % 4],
+  status: ['Active', 'Remote', 'On Leave', 'Contractor'][i % 4],
 }));
 
-const columns: TableColumn<typeof data[0]>[] = [
-  { name: 'Name',       selector: r => r.name,       sortable: true },
+const columns: TableColumn<(typeof data)[0]>[] = [
+  { name: 'Name', selector: r => r.name, sortable: true },
   { name: 'Department', selector: r => r.department, sortable: true },
-  { name: 'Salary',     selector: r => r.salary,     sortable: true,
-    format: r => \`$\${r.salary.toLocaleString()}\`, right: true },
-  { name: 'Status',     selector: r => r.status },
+  {
+    name: 'Salary',
+    selector: r => r.salary,
+    sortable: true,
+    format: r => \`$\${r.salary.toLocaleString()}\`,
+    right: true,
+  },
+  { name: 'Status', selector: r => r.status },
 ];
 
 export default function App() {
@@ -48,7 +63,9 @@ export default function App() {
     <div>
       <div>
         {[5, 10, 15].map(n => (
-          <button key={n} onClick={() => setPerPage(n)}>{n}</button>
+          <button key={n} onClick={() => setPerPage(n)}>
+            {n}
+          </button>
         ))}
       </div>
       {/* key remounts the table so paginationPerPage takes effect */}
@@ -82,8 +99,8 @@ export default function App() {
   columns={columns}
   data={data}
   pagination
-  paginationPosition="top"   // "top" | "bottom" | "both"
-/>`}
+  paginationPosition="top" // "top" | "bottom" | "both"
+/>;`}
   >
     <PaginationPositionDemo client:load />
   </Demo>
@@ -102,18 +119,23 @@ export default function App() {
     code={`import { useState, useEffect, useCallback } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
-interface Employee { id: number; name: string; department: string; salary: number; status: string; }
+interface Employee {
+  id: number;
+  name: string;
+  department: string;
+  salary: number;
+  status: string;
+}
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',       selector: r => r.name },
+  { name: 'Name', selector: r => r.name },
   { name: 'Department', selector: r => r.department },
-  { name: 'Salary',     selector: r => r.salary, right: true,
-    format: r => \`$\${r.salary.toLocaleString()}\` },
-  { name: 'Status',     selector: r => r.status },
+  { name: 'Salary', selector: r => r.salary, right: true, format: r => \`$\${r.salary.toLocaleString()}\` },
+  { name: 'Status', selector: r => r.status },
 ];
 
 export default function App() {
-  const [data, setData]       = useState<Employee[]>([]);
+  const [data, setData] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalRows, setTotal] = useState(0);
   const [perPage, setPerPage] = useState(10);
@@ -127,7 +149,9 @@ export default function App() {
     setLoading(false);
   }, []);
 
-  useEffect(() => { load(1, perPage); }, []);
+  useEffect(() => {
+    load(1, perPage);
+  }, []);
 
   return (
     <DataTable
@@ -138,7 +162,10 @@ export default function App() {
       paginationServer
       paginationTotalRows={totalRows}
       onChangePage={page => load(page, perPage)}
-      onChangeRowsPerPage={(pp, page) => { setPerPage(pp); load(page, pp); }}
+      onChangeRowsPerPage={(pp, page) => {
+        setPerPage(pp);
+        load(page, pp);
+      }}
       highlightOnHover
     />
   );
@@ -173,7 +200,7 @@ export default function App() {
   const field = col.sortField ?? String(col.id);
   setSortField(field);
   setSortDir(dir);
-  setPage(1);   // keep local state in sync with the UI reset
+  setPage(1); // keep local state in sync with the UI reset
   fetchData({ page: 1, perPage, sortField: field, sortDir: dir });
 }`} />
 
@@ -190,23 +217,26 @@ export default function App() {
 import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
 
 export default function App() {
-  const [data, setData]           = useState<Employee[]>([]);
-  const [loading, setLoading]     = useState(true);
-  const [totalRows, setTotal]     = useState(0);
-  const [page, setPage]           = useState(1);
-  const [perPage, setPerPage]     = useState(10);
+  const [data, setData] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [totalRows, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
   const [sortField, setSortField] = useState('name');
-  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
+  const [sortDir, setSortDir] = useState<SortOrder>(SortOrder.ASC);
   const [resetPage, setResetPage] = useState(false);
 
-  const load = useCallback(async (params) => {
+  const load = useCallback(async params => {
     setLoading(true);
     const result = await fetchFromServer(params);
-    setData(result.rows); setTotal(result.total);
+    setData(result.rows);
+    setTotal(result.total);
     setLoading(false);
   }, []);
 
-  useEffect(() => { load({ page, perPage, sortField, sortDir }); }, []);
+  useEffect(() => {
+    load({ page, perPage, sortField, sortDir });
+  }, []);
 
   function handlePageChange(p: number) {
     setPage(p);
@@ -220,8 +250,10 @@ export default function App() {
 
   function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
     const field = col.sortField ?? String(col.id);
-    setSortField(field); setSortDir(dir);
-    setPage(1); setResetPage(prev => !prev);
+    setSortField(field);
+    setSortDir(dir);
+    setPage(1);
+    setResetPage(prev => !prev);
     load({ page: 1, perPage, sortField: field, sortDir: dir });
   }
 
@@ -260,22 +292,23 @@ export default function App() {
 import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
 
 export default function App() {
-  const [data, setData]           = useState<Employee[]>([]);
-  const [loading, setLoading]     = useState(false);
-  const [totalRows, setTotal]     = useState(0);
-  const [page, setPage]           = useState(1);
-  const [perPage, setPerPage]     = useState(10);
+  const [data, setData] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [totalRows, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
   const [sortField, setSortField] = useState('name');
-  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
-  const [search, setSearch]       = useState('');
+  const [sortDir, setSortDir] = useState<SortOrder>(SortOrder.ASC);
+  const [search, setSearch] = useState('');
   const [resetPage, setResetPage] = useState(false);
 
-  const load = useCallback(async (params) => {
+  const load = useCallback(async params => {
     setLoading(true);
     const qs = new URLSearchParams(params);
     const res = await fetch(\`/api/employees?\${qs}\`);
     const json = await res.json();
-    setData(json.rows); setTotal(json.total);
+    setData(json.rows);
+    setTotal(json.total);
     setLoading(false);
   }, []);
 
@@ -295,7 +328,8 @@ export default function App() {
 
   function handleSort(col: TableColumn<Employee>, dir: SortOrder) {
     const field = col.sortField ?? 'name';
-    setSortField(field); setSortDir(dir);
+    setSortField(field);
+    setSortDir(dir);
     setPage(1);
     load({ page: 1, perPage, sort: field, dir, q: search });
   }
@@ -309,12 +343,7 @@ export default function App() {
 
   return (
     <div>
-      <input
-        type="search"
-        placeholder="Search…"
-        value={search}
-        onChange={e => handleSearch(e.target.value)}
-      />
+      <input type="search" placeholder="Search…" value={search} onChange={e => handleSearch(e.target.value)} />
       <DataTable
         columns={columns}
         data={data}
@@ -349,16 +378,15 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
 
 export default function App() {
-  const [page, setPage]           = useState(1);
-  const [perPage, setPerPage]     = useState(10);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
   const [sortField, setSortField] = useState('name');
-  const [sortDir, setSortDir]     = useState<SortOrder>(SortOrder.ASC);
+  const [sortDir, setSortDir] = useState<SortOrder>(SortOrder.ASC);
 
   const { data, isLoading } = useQuery({
     queryKey: ['employees', page, perPage, sortField, sortDir],
     queryFn: () =>
-      fetch(\`/api/employees?page=\${page}&limit=\${perPage}&sort=\${sortField}&dir=\${sortDir}\`)
-        .then(r => r.json()),
+      fetch(\`/api/employees?page=\${page}&limit=\${perPage}&sort=\${sortField}&dir=\${sortDir}\`).then(r => r.json()),
     placeholderData: keepPreviousData,
   });
 
@@ -371,7 +399,10 @@ export default function App() {
       paginationServer
       paginationTotalRows={data?.total ?? 0}
       onChangePage={setPage}
-      onChangeRowsPerPage={(pp) => { setPerPage(pp); setPage(1); }}
+      onChangeRowsPerPage={pp => {
+        setPerPage(pp);
+        setPage(1);
+      }}
       sortServer
       onSort={(col, dir) => {
         setSortField(col.sortField ?? String(col.id));
@@ -391,9 +422,9 @@ import DataTable, { type TableColumn, SortOrder } from 'react-data-table-compone
 const fetcher = (url: string) => fetch(url).then(r => r.json());
 
 export default function App() {
-  const [page, setPage]       = useState(1);
+  const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
-  const [sort, setSort]       = useState({ field: 'name', dir: SortOrder.ASC });
+  const [sort, setSort] = useState({ field: 'name', dir: SortOrder.ASC });
 
   const url = \`/api/employees?page=\${page}&limit=\${perPage}&sort=\${sort.field}&dir=\${sort.dir}\`;
   const { data, isLoading } = useSWR(url, fetcher);
@@ -407,7 +438,10 @@ export default function App() {
       paginationServer
       paginationTotalRows={data?.total ?? 0}
       onChangePage={setPage}
-      onChangeRowsPerPage={(pp) => { setPerPage(pp); setPage(1); }}
+      onChangeRowsPerPage={pp => {
+        setPerPage(pp);
+        setPage(1);
+      }}
       sortServer
       onSort={(col, dir) => {
         setSort({ field: col.sortField ?? String(col.id), dir });
@@ -446,7 +480,7 @@ function handleSearch(q: string) {
     persistSelectedOnPageChange: true,
     persistSelectedOnSort: true,
   }}
-/>`} />
+/>;`} />
 
   <h2>Custom pagination component</h2>
   <p>
@@ -465,7 +499,9 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
       <button disabled={currentPage === 1} onClick={() => onChangePage(currentPage - 1, rowCount)}>
         ‹ Prev
       </button>
-      <span>Page {currentPage} of {pages}</span>
+      <span>
+        Page {currentPage} of {pages}
+      </span>
       <button disabled={currentPage === pages} onClick={() => onChangePage(currentPage + 1, rowCount)}>
         Next ›
       </button>
@@ -473,12 +509,7 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
   );
 }
 
-<DataTable
-  columns={columns}
-  data={data}
-  pagination
-  paginationComponent={MyPagination}
-/>`} />
+<DataTable columns={columns} data={data} pagination paginationComponent={MyPagination} />;`} />
 
   <h2>Localization</h2>
   <p>
@@ -493,7 +524,7 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
 import DataTable from 'react-data-table-component';
 import { fr } from 'react-data-table-component/locales';
 
-<DataTable columns={columns} data={data} pagination localization={fr} />`} />
+<DataTable columns={columns} data={data} pagination localization={fr} />;`} />
 
   <CodeBlock code={`// Partial override — spread a locale and replace only what you need
 import { fr } from 'react-data-table-component/locales';
@@ -507,22 +538,22 @@ const myLocale: Localization = {
   },
 };
 
-<DataTable columns={columns} data={data} pagination localization={myLocale} />`} />
+<DataTable columns={columns} data={data} pagination localization={myLocale} />;`} />
 
   <CodeBlock code={`// Built from scratch — every key is optional
 import type { Localization } from 'react-data-table-component';
 
 const custom: Localization = {
   pagination: {
-    navigationAriaLabel:   'Table navigation',
-    firstPageAriaLabel:    'First',
+    navigationAriaLabel: 'Table navigation',
+    firstPageAriaLabel: 'First',
     previousPageAriaLabel: 'Prev',
-    nextPageAriaLabel:     'Next',
-    lastPageAriaLabel:     'Last',
+    nextPageAriaLabel: 'Next',
+    lastPageAriaLabel: 'Last',
   },
 };
 
-<DataTable columns={columns} data={data} pagination localization={custom} />`} />
+<DataTable columns={columns} data={data} pagination localization={custom} />;`} />
 
   <h2>Prop reference</h2>
 

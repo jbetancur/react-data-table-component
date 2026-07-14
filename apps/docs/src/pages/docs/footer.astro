@@ -80,7 +80,7 @@ const columns: TableColumn<Row>[] = [
   },
 ];
 
-<DataTable columns={columns} data={data} highlightOnHover dense />`}
+<DataTable columns={columns} data={data} highlightOnHover dense />;`}
   >
     <FooterBasicDemo client:load />
   </Demo>
@@ -112,25 +112,41 @@ const columns: TableColumn<Row>[] = [
 
 function SummaryFooter({ rows }: FooterComponentProps<Row>) {
   const totalSalary = rows.reduce((s, r) => s + r.salary, 0);
-  const totalBonus  = rows.reduce((s, r) => s + r.bonus, 0);
-  const avgSalary   = rows.length ? Math.round(totalSalary / rows.length) : 0;
+  const totalBonus = rows.reduce((s, r) => s + r.bonus, 0);
+  const avgSalary = rows.length ? Math.round(totalSalary / rows.length) : 0;
 
   return (
-    <div style={{
-      display: 'flex', flexWrap: 'wrap', gap: '16px 32px',
-      padding: '10px 16px', borderTop: '1px solid #e5e7eb',
-      backgroundColor: '#f8fafc', fontSize: 13,
-    }}>
-      <span><strong>{rows.length}</strong> employees</span>
-      <span>Salary total: <strong>\${totalSalary.toLocaleString()}</strong></span>
-      <span>Salary avg: <strong>\${avgSalary.toLocaleString()}</strong></span>
-      <span>Bonus total: <strong>\${totalBonus.toLocaleString()}</strong></span>
-      <span>Total comp: <strong>\${(totalSalary + totalBonus).toLocaleString()}</strong></span>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '16px 32px',
+        padding: '10px 16px',
+        borderTop: '1px solid #e5e7eb',
+        backgroundColor: '#f8fafc',
+        fontSize: 13,
+      }}
+    >
+      <span>
+        <strong>{rows.length}</strong> employees
+      </span>
+      <span>
+        Salary total: <strong>\${totalSalary.toLocaleString()}</strong>
+      </span>
+      <span>
+        Salary avg: <strong>\${avgSalary.toLocaleString()}</strong>
+      </span>
+      <span>
+        Bonus total: <strong>\${totalBonus.toLocaleString()}</strong>
+      </span>
+      <span>
+        Total comp: <strong>\${(totalSalary + totalBonus).toLocaleString()}</strong>
+      </span>
     </div>
   );
 }
 
-<DataTable columns={columns} data={data} footerComponent={SummaryFooter} highlightOnHover dense />`}
+<DataTable columns={columns} data={data} footerComponent={SummaryFooter} highlightOnHover dense />;`}
   >
     <FooterCustomDemo client:load />
   </Demo>
@@ -177,7 +193,7 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
   },
 };
 
-<DataTable columns={columns} data={data} customStyles={customStyles} />`} />
+<DataTable columns={columns} data={data} customStyles={customStyles} />;`} />
 
   <p>
     All built-in themes (including their dark modes) set a <code>background.footer</code> value
@@ -185,13 +201,17 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
     theme with <code>createTheme</code>, set <code>background.footer</code> to control it:
   </p>
 
-  <CodeBlock code={`createTheme('my-theme', {
-  background: {
-    default: '#1a1a2e',
-    header:  '#16213e',
-    footer:  '#16213e',   // footer matches header
+  <CodeBlock code={`createTheme(
+  'my-theme',
+  {
+    background: {
+      default: '#1a1a2e',
+      header: '#16213e',
+      footer: '#16213e', // footer matches header
+    },
   },
-}, 'default');`} />
+  'default',
+);`} />
 
   <p>
     The CSS variable <code>--rdt-color-footer-bg</code> is emitted automatically when

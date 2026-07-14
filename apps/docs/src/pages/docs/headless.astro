@@ -197,9 +197,9 @@ interface Person {
 }
 
 const columns: TableColumn<Person>[] = [
-  { id: 'name',  name: 'Name',  selector: row => row.name,  sortable: true },
+  { id: 'name', name: 'Name', selector: row => row.name, sortable: true },
   { id: 'email', name: 'Email', selector: row => row.email },
-  { id: 'role',  name: 'Role',  selector: row => row.role },
+  { id: 'role', name: 'Role', selector: row => row.role },
 ];
 
 function MyTable({ data }: { data: Person[] }) {
@@ -208,11 +208,11 @@ function MyTable({ data }: { data: Person[] }) {
   // 1. Column order + drag state
   const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(
     columns,
-    () => {},    // onColumnOrderChange
-    undefined,   // onColumnGroupOrderChange
-    undefined,   // columnGroups
-    null,        // defaultSortFieldId
-    true,        // defaultSortAsc
+    () => {}, // onColumnOrderChange
+    undefined, // onColumnGroupOrderChange
+    undefined, // columnGroups
+    null, // defaultSortFieldId
+    true, // defaultSortAsc
   );
 
   // 2. Sort / page / selection state
@@ -269,13 +269,16 @@ function MyTable({ data }: { data: Person[] }) {
             {tableColumns.map(col => (
               <th
                 key={col.id}
-                onClick={() => col.sortable && handleSort({
-                  type: 'SORT_CHANGE',
-                  selectedColumn: col,
-                  clearSelectedOnSort: false,
-                  additive: false,
-                  defaultSortDirection: SortOrder.ASC,
-                })}
+                onClick={() =>
+                  col.sortable &&
+                  handleSort({
+                    type: 'SORT_CHANGE',
+                    selectedColumn: col,
+                    clearSelectedOnSort: false,
+                    additive: false,
+                    defaultSortDirection: SortOrder.ASC,
+                  })
+                }
               >
                 {col.name}
               </th>
@@ -310,7 +313,7 @@ function MyTable({ data }: { data: Person[] }) {
   columnGroups: ColumnGroup[] | undefined,
   defaultSortFieldId: string | number | null | undefined,
   defaultSortAsc: boolean,
-): ColumnsHook<T>`} />
+): ColumnsHook<T>;`} />
 
   <p>
     Pass <code>undefined</code> for <code>onColumnGroupOrderChange</code> and <code>columnGroups</code>
@@ -338,7 +341,7 @@ function MyTable({ data }: { data: Person[] }) {
 
   <h3><code>useTableState&lt;T&gt;</code></h3>
 
-  <CodeBlock lang="ts" code={`function useTableState<T>(props: UseTableStateProps<T>): UseTableStateReturn<T>`} />
+  <CodeBlock lang="ts" code={`function useTableState<T>(props: UseTableStateProps<T>): UseTableStateReturn<T>;`} />
 
   <p><strong>Props:</strong></p>
 
@@ -411,7 +414,7 @@ function MyTable({ data }: { data: Person[] }) {
 
   <h3><code>useTableData&lt;T&gt;</code></h3>
 
-  <CodeBlock lang="ts" code={`function useTableData<T>(props: UseTableDataProps<T>): UseTableDataReturn<T>`} />
+  <CodeBlock lang="ts" code={`function useTableData<T>(props: UseTableDataProps<T>): UseTableDataReturn<T>;`} />
 
   <DocsTable
     headers={['Prop', 'Type', 'Description']}
@@ -452,7 +455,7 @@ function useColumnFilter<T>(
   columns: TableColumn<T>[],
   controlledFilterValues?: Record<string | number, FilterState>,
   onFilterChange?: (columnId: string | number, filter: FilterState) => void,
-): UseColumnFilterResult<T>`} />
+): UseColumnFilterResult<T>;`} />
 
   <p>
     Omit both optional arguments to run in <strong>uncontrolled</strong> mode (internal state).
@@ -490,7 +493,7 @@ function useColumnFilter<T>(
   activeCell: ActiveCell | null;
   handleNavFocus: (e: React.FocusEvent<HTMLDivElement>) => void;
   handleNavKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void;
-}`} />
+};`} />
 
   <DocsTable
     headers={['Option', 'Type', 'Description']}
@@ -565,7 +568,7 @@ function MyTable({ data, columns }) {
   <CodeBlock lang="ts" code={`function useColumnResize(options?: UseColumnResizeOptions): {
   columnWidths: Record<string | number, number>;
   handleResizeStart: (columnId: string | number, e: React.MouseEvent) => void;
-}`} />
+};`} />
 
   <DocsTable
     headers={['Option', 'Type', 'Description']}
@@ -598,7 +601,7 @@ function MyTable({ data, columns }) {
   selectableRows: boolean,
   expandableRows: boolean,
   expandableRowsHideExpander: boolean,
-): PinnedOffsets
+): PinnedOffsets;
 
 function getPinnedTotalWidths<T>(
   columns: TableColumn<T>[],
@@ -606,19 +609,23 @@ function getPinnedTotalWidths<T>(
   selectableRows: boolean,
   expandableRows: boolean,
   expandableRowsHideExpander: boolean,
-): { left: number; right: number }
+): { left: number; right: number };
 
 function getPinnedCellMeta<T>(
   column: TableColumn<T>,
   pinnedOffsets: PinnedOffsets | undefined,
   zIndex?: number,
-): PinnedCellMeta`} />
+): PinnedCellMeta;`} />
 
   <CodeBlock lang="tsx" code={`const pinnedOffsets = getPinnedOffsets(columns, columnWidths, false, false, false);
 
 function Cell({ column, pinnedOffsets }: { column: TableColumn<Row>; pinnedOffsets: PinnedOffsets }) {
   const meta = getPinnedCellMeta(column, pinnedOffsets, 1);
-  return <td className={meta.className} style={meta.style}>{/* ... */}</td>;
+  return (
+    <td className={meta.className} style={meta.style}>
+      {/* ... */}
+    </td>
+  );
 }`} />
 
   <p>
@@ -692,7 +699,7 @@ useEffect(() => {
     user sees — sorted, filtered, and paginated — rather than the raw dataset.
   </p>
 
-  <CodeBlock lang="ts" code={`function useTableExport<T>(options: UseTableExportOptions<T>): UseTableExportResult`} />
+  <CodeBlock lang="ts" code={`function useTableExport<T>(options: UseTableExportOptions<T>): UseTableExportResult;`} />
 
   <h3>Options</h3>
 
@@ -722,20 +729,24 @@ useEffect(() => {
   <h3>Example — export the current filtered view</h3>
 
   <CodeBlock lang="tsx" code={`import {
-  useColumns, useTableState, useTableData, useColumnFilter, useTableExport,
+  useColumns,
+  useTableState,
+  useTableData,
+  useColumnFilter,
+  useTableExport,
   type TableColumn,
 } from 'react-data-table-component';
 
 const columns: TableColumn<Employee>[] = [
-  { id: 'name',   name: 'Name',       selector: r => r.name },
-  { id: 'dept',   name: 'Department', selector: r => r.department },
-  { id: 'salary', name: 'Salary',     selector: r => r.salary },
+  { id: 'name', name: 'Name', selector: r => r.name },
+  { id: 'dept', name: 'Department', selector: r => r.department },
+  { id: 'salary', name: 'Salary', selector: r => r.salary },
 ];
 
 function MyTable({ data }: { data: Employee[] }) {
   const { tableColumns } = useColumns(columns, () => {}, undefined, undefined, null, true);
-  const { tableState } = useTableState({ data, keyField: 'id', /* … */ });
-  const { tableRows } = useTableData({ data, columns: tableColumns, /* … */ });
+  const { tableState } = useTableState({ data, keyField: 'id' /* … */ });
+  const { tableRows } = useTableData({ data, columns: tableColumns /* … */ });
   const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
   const rows = filteredData(tableRows);
 

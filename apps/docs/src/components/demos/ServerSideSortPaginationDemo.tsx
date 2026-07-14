@@ -79,16 +79,13 @@ export default function ServerSideSortPaginationDemo() {
 	const [sortDir, setSortDir] = useState<SortOrder>(SortOrder.ASC);
 	const [resetPage, setResetPage] = useState(false);
 
-	const load = useCallback(
-		async (params: { page: number; perPage: number; sortField: string; sortDir: SortOrder }) => {
-			setLoading(true);
-			const result = await fakeFetch(params);
-			setData(result.rows);
-			setTotal(result.total);
-			setLoading(false);
-		},
-		[],
-	);
+	const load = useCallback(async (params: { page: number; perPage: number; sortField: string; sortDir: SortOrder }) => {
+		setLoading(true);
+		const result = await fakeFetch(params);
+		setData(result.rows);
+		setTotal(result.total);
+		setLoading(false);
+	}, []);
 
 	useEffect(() => {
 		load({ page, perPage, sortField, sortDir });

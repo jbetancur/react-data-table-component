@@ -30,13 +30,12 @@ interface Employee {
 }
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',   selector: row => row.name },          // row: Employee
-  { name: 'Salary', selector: row => row.salary,
-    format: (row, idx) => \`$\${row.salary.toLocaleString()}\` },
-  { name: 'Status', selector: row => row.status,         // typed as the union, not string
-    conditionalCellStyles: [
-      { when: r => r.status === 'Terminated', style: { color: 'red' } },
-    ],
+  { name: 'Name', selector: row => row.name }, // row: Employee
+  { name: 'Salary', selector: row => row.salary, format: (row, idx) => \`$\${row.salary.toLocaleString()}\` },
+  {
+    name: 'Status',
+    selector: row => row.status, // typed as the union, not string
+    conditionalCellStyles: [{ when: r => r.status === 'Terminated', style: { color: 'red' } }],
   },
 ];`} />
 
@@ -60,9 +59,7 @@ export default function App() {
 
   return (
     <>
-      <button onClick={() => tableRef.current?.clearSelectedRows()}>
-        Clear selection
-      </button>
+      <button onClick={() => tableRef.current?.clearSelectedRows()}>Clear selection</button>
       <DataTable ref={tableRef} selectableRows columns={columns} data={data} />
     </>
   );
@@ -83,7 +80,7 @@ function handleSort(column: TableColumn<Employee>, direction: SortOrder) {
   }
 }
 
-<DataTable columns={columns} data={data} sortServer onSort={handleSort} />`} />
+<DataTable columns={columns} data={data} sortServer onSort={handleSort} />;`} />
 
   <h2>Conditional row styles</h2>
 
@@ -94,7 +91,7 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
   { when: row => row.status === 'Terminated', style: { opacity: 0.5 } },
 ];
 
-<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} />`} />
+<DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} />;`} />
 
   <h2>Custom expander component</h2>
 
@@ -108,7 +105,7 @@ function EmployeeDetail({ data: row }: ExpanderComponentProps<Employee>) {
   );
 }
 
-<DataTable expandableRows expandableRowsComponent={EmployeeDetail} columns={columns} data={data} />`} />
+<DataTable expandableRows expandableRowsComponent={EmployeeDetail} columns={columns} data={data} />;`} />
 
   <h2>Filter values</h2>
 
@@ -127,7 +124,7 @@ const [filters, setFilters] = useState<Record<string, FilterState>>({});
   data={data}
   filterValues={filters}
   onFilterChange={(columnId, next) => setFilters(prev => ({ ...prev, [columnId]: next }))}
-/>`} />
+/>;`} />
 
   <h2>Headless hooks</h2>
 
@@ -153,7 +150,7 @@ import type { UseColumnVisibilityResult } from 'react-data-table-component';`} /
   onRowClicked={(row, e) => {
     // row is typed as Employee
   }}
-/>`} />
+/>;`} />
 
   <h2>Common type-related issues</h2>
 
@@ -164,11 +161,11 @@ import type { UseColumnVisibilityResult } from 'react-data-table-component';`} /
   </p>
 
   <CodeBlock code={`// ❌ Type error — object is not ReactNode
-{ name: 'Tags', selector: row => row.tags }   // row.tags: Tag[]
+{ name: 'Tags', selector: row => row.tags } // row.tags: Tag[]
 
 // ✅ Either format or render
 { name: 'Tags', selector: row => row.tags.join(', ') }
-{ name: 'Tags', cell:     row => <TagList tags={row.tags} /> }`} />
+{ name: 'Tags', cell: row => <TagList tags={row.tags} /> }`} />
 
   <h3>Column id type</h3>
   <p>
@@ -178,7 +175,7 @@ import type { UseColumnVisibilityResult } from 'react-data-table-component';`} /
 
   <CodeBlock code={`const handleCellEdit = (row: Employee, value: string, column: TableColumn<Employee>) => {
   const field = column.id as keyof Employee; // narrow string | number → known field
-  setData(prev => prev.map(r => r.id === row.id ? { ...r, [field]: value } : r));
+  setData(prev => prev.map(r => (r.id === row.id ? { ...r, [field]: value } : r)));
 };`} />
 
   <h2>Imported types — full list</h2>

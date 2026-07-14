@@ -30,42 +30,61 @@ interface Employee {
 }
 
 const StatusBadge = ({ status }: { status: Employee['status'] }) => (
-  <span style={{ padding: '2px 8px', borderRadius: 12, fontSize: 11, fontWeight: 600,
-    background: status === 'Active' ? '#dcfce7' : '#f3f4f6',
-    color:      status === 'Active' ? '#15803d' : '#6b7280' }}>
+  <span
+    style={{
+      padding: '2px 8px',
+      borderRadius: 12,
+      fontSize: 11,
+      fontWeight: 600,
+      background: status === 'Active' ? '#dcfce7' : '#f3f4f6',
+      color: status === 'Active' ? '#15803d' : '#6b7280',
+    }}
+  >
     {status}
   </span>
 );
 
 export default function App() {
-  const [showDept, setShowDept]     = useState(true);
+  const [showDept, setShowDept] = useState(true);
   const [showSalary, setShowSalary] = useState(true);
   const [filterable, setFilterable] = useState(false);
 
   const columns: TableColumn<Employee>[] = [
     {
-      id: 'name', name: 'Name', selector: r => r.name,
-      sortable: true, filterable,    // filterable toggles a filter input in the header
+      id: 'name',
+      name: 'Name',
+      selector: r => r.name,
+      sortable: true,
+      filterable, // filterable toggles a filter input in the header
     },
     {
-      id: 'department', name: 'Department', selector: r => r.department,
-      sortable: true, omit: !showDept,
+      id: 'department',
+      name: 'Department',
+      selector: r => r.department,
+      sortable: true,
+      omit: !showDept,
     },
     {
-      id: 'salary', name: 'Salary', selector: r => r.salary,
-      sortable: true, right: true,
+      id: 'salary',
+      name: 'Salary',
+      selector: r => r.salary,
+      sortable: true,
+      right: true,
       format: r => \`$\${r.salary.toLocaleString()}\`,
       omit: !showSalary,
-      conditionalCellStyles: [
-        { when: r => r.salary > 150000, style: { fontWeight: 700 } },
-      ],
+      conditionalCellStyles: [{ when: r => r.salary > 150000, style: { fontWeight: 700 } }],
     },
     {
-      id: 'status', name: 'Status', selector: r => r.status,
-      center: true, cell: r => <StatusBadge status={r.status} />,
+      id: 'status',
+      name: 'Status',
+      selector: r => r.status,
+      center: true,
+      cell: r => <StatusBadge status={r.status} />,
     },
     {
-      id: 'start', name: 'Start date', selector: r => r.startDate,
+      id: 'start',
+      name: 'Start date',
+      selector: r => r.startDate,
       sortable: true,
       format: r => new Date(r.startDate).toLocaleDateString(),
     },
@@ -183,11 +202,7 @@ const columns: TableColumn<Row>[] = [
 
   <CodeBlock code={`const [cols, setCols] = React.useState(columns);
 
-<DataTable
-  columns={cols}
-  data={data}
-  onColumnOrderChange={setCols}
-/>`} />
+<DataTable columns={cols} data={data} onColumnOrderChange={setCols} />;`} />
 
   <h2>Hiding columns</h2>
 

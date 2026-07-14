@@ -10,19 +10,18 @@ interface Employee {
 }
 
 const data: Employee[] = [
-	{ id: 1, name: 'Aria Chen',     department: 'Engineering', salary: 155000 },
-	{ id: 2, name: 'Marcus Webb',   department: 'Product',     salary: 132000 },
-	{ id: 3, name: 'Priya Kapoor',  department: 'Design',      salary: 118000 },
-	{ id: 4, name: 'Jordan Ellis',  department: 'Analytics',   salary: 143000 },
-	{ id: 5, name: 'Sam Rivera',    department: 'Engineering', salary: 128000 },
-	{ id: 6, name: 'Taylor Brooks', department: 'Sales',       salary:  97000 },
+	{ id: 1, name: 'Aria Chen', department: 'Engineering', salary: 155000 },
+	{ id: 2, name: 'Marcus Webb', department: 'Product', salary: 132000 },
+	{ id: 3, name: 'Priya Kapoor', department: 'Design', salary: 118000 },
+	{ id: 4, name: 'Jordan Ellis', department: 'Analytics', salary: 143000 },
+	{ id: 5, name: 'Sam Rivera', department: 'Engineering', salary: 128000 },
+	{ id: 6, name: 'Taylor Brooks', department: 'Sales', salary: 97000 },
 ];
 
 const columns: TableColumn<Employee>[] = [
-	{ id: 'name',       name: 'Name',       selector: r => r.name,       sortable: true },
+	{ id: 'name', name: 'Name', selector: r => r.name, sortable: true },
 	{ id: 'department', name: 'Department', selector: r => r.department, sortable: true },
-	{ id: 'salary',     name: 'Salary',     selector: r => r.salary,     right: true,
-		format: r => `$${r.salary.toLocaleString()}` },
+	{ id: 'salary', name: 'Salary', selector: r => r.salary, right: true, format: r => `$${r.salary.toLocaleString()}` },
 ];
 
 export default function ExportDemo() {

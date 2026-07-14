@@ -27,13 +27,17 @@ import DocsTable from '../../components/DocsTable.astro';
     code={`import { useState } from 'react';
 import DataTable, { useTableExport, type TableColumn } from 'react-data-table-component';
 
-interface Employee { id: number; name: string; department: string; salary: number; }
+interface Employee {
+  id: number;
+  name: string;
+  department: string;
+  salary: number;
+}
 
 const columns: TableColumn<Employee>[] = [
-  { id: 'name',       name: 'Name',       selector: r => r.name },
+  { id: 'name', name: 'Name', selector: r => r.name },
   { id: 'department', name: 'Department', selector: r => r.department },
-  { id: 'salary',     name: 'Salary',     selector: r => r.salary, right: true,
-    format: r => \`$\${r.salary.toLocaleString()}\` },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, right: true, format: r => \`$\${r.salary.toLocaleString()}\` },
 ];
 
 export default function App() {
@@ -68,10 +72,9 @@ export default function App() {
 type Employee = { id: number; name: string; salary: number };
 
 const columns: TableColumn<Employee>[] = [
-  { id: 'id',     name: 'ID',     selector: r => r.id },
-  { id: 'name',   name: 'Name',   selector: r => r.name },
-  { id: 'salary', name: 'Salary', selector: r => r.salary,
-    format: r => \`$\${r.salary.toLocaleString()}\` },
+  { id: 'id', name: 'ID', selector: r => r.id },
+  { id: 'name', name: 'Name', selector: r => r.name },
+  { id: 'salary', name: 'Salary', selector: r => r.salary, format: r => \`$\${r.salary.toLocaleString()}\` },
 ];
 
 function EmployeesTable({ data }: { data: Employee[] }) {
@@ -107,19 +110,14 @@ function EmployeesTable({ data }: { data: Employee[] }) {
     DataTable from the same hooks that feed <code>useTableExport</code>:
   </p>
 
-  <CodeBlock code={`import DataTable, {
-  useTableState,
-  useTableData,
-  useColumnFilter,
-  useTableExport,
-} from 'react-data-table-component';
+  <CodeBlock code={`import DataTable, { useTableState, useTableData, useColumnFilter, useTableExport } from 'react-data-table-component';
 
 function App() {
   // 1. Filters
   const { filterValues, handleFilterChange, filteredData } = useColumnFilter(columns);
 
   // 2. Sort + pagination state
-  const { tableState, handleSort, /* ... */ } = useTableState({ /* ... */ });
+  const { tableState, handleSort /* ... */ } = useTableState({/* ... */});
 
   // 3. Apply sort + pagination
   const { sortedData, tableRows } = useTableData({
@@ -156,7 +154,7 @@ function App() {
   <CodeBlock code={`useTableExport({
   columns,
   rows: data,
-  columnOrder: ['name', 'salary', 'id'],  // export these three, in this order
+  columnOrder: ['name', 'salary', 'id'], // export these three, in this order
 });`} />
 
   <h3>Override header labels</h3>

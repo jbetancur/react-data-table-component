@@ -24,7 +24,11 @@ const ALL_DATA: Employee[] = [
 ];
 
 function simulateFetch({
-	page, perPage, sortId, sortDir, filters,
+	page,
+	perPage,
+	sortId,
+	sortDir,
+	filters,
 }: {
 	page: number;
 	perPage: number;
@@ -51,9 +55,7 @@ function simulateFetch({
 				rows.sort((a, b) => {
 					const av = a[sortId as keyof Employee];
 					const bv = b[sortId as keyof Employee];
-					return sortDir === SortOrder.ASC
-						? av < bv ? -1 : av > bv ? 1 : 0
-						: av > bv ? -1 : av < bv ? 1 : 0;
+					return sortDir === SortOrder.ASC ? (av < bv ? -1 : av > bv ? 1 : 0) : av > bv ? -1 : av < bv ? 1 : 0;
 				});
 			}
 
@@ -83,15 +85,21 @@ export default function ServerSideRecipeDemo() {
 			setTotal(res.total);
 			setLoading(false);
 		});
-		return () => { cancelled = true; };
+		return () => {
+			cancelled = true;
+		};
 	}, [page, perPage, sortId, sortDir, filters]);
 
 	const columns: TableColumn<Employee>[] = [
 		{ id: 'name', name: 'Name', selector: r => r.name, sortable: true, filterable: true },
 		{ id: 'department', name: 'Department', selector: r => r.department, sortable: true, filterable: true },
 		{
-			id: 'salary', name: 'Salary', selector: r => r.salary, sortable: true,
-			right: true, format: r => `$${r.salary.toLocaleString()}`,
+			id: 'salary',
+			name: 'Salary',
+			selector: r => r.salary,
+			sortable: true,
+			right: true,
+			format: r => `$${r.salary.toLocaleString()}`,
 		},
 	];
 
@@ -106,13 +114,18 @@ export default function ServerSideRecipeDemo() {
 				paginationTotalRows={total}
 				paginationPerPage={perPage}
 				onChangePage={p => setPage(p)}
-				onChangeRowsPerPage={(pp, p) => { setPerPage(pp); setPage(p); }}
+				onChangeRowsPerPage={(pp, p) => {
+					setPerPage(pp);
+					setPage(p);
+				}}
 				sortServer
-				onSort={(col, dir) => { setSortId(col.id as string); setSortDir(dir); setPage(1); }}
+				onSort={(col, dir) => {
+					setSortId(col.id as string);
+					setSortDir(dir);
+					setPage(1);
+				}}
 				filterValues={filters}
-				onFilterChange={(columnId, next) =>
-					setFilters(prev => ({ ...prev, [columnId]: next }))
-				}
+				onFilterChange={(columnId, next) => setFilters(prev => ({ ...prev, [columnId]: next }))}
 				highlightOnHover
 			/>
 		</div>

@@ -24,8 +24,8 @@ function parseCsv(text: string): Contact[] {
 }
 
 const columns: TableColumn<Contact>[] = [
-	{ id: 'name',    name: 'Name',    selector: r => r.name,    sortable: true },
-	{ id: 'email',   name: 'Email',   selector: r => r.email,   sortable: true, grow: 1 },
+	{ id: 'name', name: 'Name', selector: r => r.name, sortable: true },
+	{ id: 'email', name: 'Email', selector: r => r.email, sortable: true, grow: 1 },
 	{ id: 'company', name: 'Company', selector: r => r.company, sortable: true },
 ];
 
@@ -59,7 +59,10 @@ export default function CsvImportDemo() {
 					/>
 				</label>
 				<button
-					onClick={() => { setData(parseCsv(SAMPLE_CSV)); setError(null); }}
+					onClick={() => {
+						setData(parseCsv(SAMPLE_CSV));
+						setError(null);
+					}}
 					className="px-3 py-1.5 text-xs font-medium rounded-md bg-brand-50 text-brand-700 hover:bg-brand-100"
 				>
 					Load sample CSV
@@ -71,7 +74,9 @@ export default function CsvImportDemo() {
 					columns={columns}
 					data={data}
 					highlightOnHover
-					noDataComponent={<div className="py-8 text-sm text-gray-400">Upload a CSV or load the sample to see it here</div>}
+					noDataComponent={
+						<div className="py-8 text-sm text-gray-400">Upload a CSV or load the sample to see it here</div>
+					}
 				/>
 			</div>
 		</div>

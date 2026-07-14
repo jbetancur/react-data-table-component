@@ -41,28 +41,26 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <CodeBlock code={`// ❌ New array literal every render → all rows re-render
 function App({ items }) {
-  return <DataTable
-    columns={[
-      { name: 'Name', selector: r => r.name },   // new function every render
-    ]}
-    data={items}
-  />;
+  return (
+    <DataTable
+      columns={[
+        { name: 'Name', selector: r => r.name }, // new function every render
+      ]}
+      data={items}
+    />
+  );
 }
 
 // ❌ Inline conditional row styles → new array → all rows re-render
 <DataTable
-  conditionalRowStyles={[
-    { when: r => r.flagged, style: { color: 'red' } },
-  ]}
+  conditionalRowStyles={[{ when: r => r.flagged, style: { color: 'red' } }]}
   /* ... */
-/>`} />
+/>;`} />
 
   <p>Fix: hoist or memoize the references.</p>
 
   <CodeBlock code={`// ✅ Stable column array
-const columns: TableColumn<Item>[] = [
-  { name: 'Name', selector: r => r.name },
-];
+const columns: TableColumn<Item>[] = [{ name: 'Name', selector: r => r.name }];
 
 function App({ items }) {
   return <DataTable columns={columns} data={items} />;
@@ -85,11 +83,14 @@ const columns = useMemo<TableColumn<Item>[]>(
     every render changes the handler identity and the row context updates downstream.
   </p>
 
-  <CodeBlock code={`const handleRowClicked = useCallback((row: Employee) => {
-  navigate(\`/employees/\${row.id}\`);
-}, [navigate]);
+  <CodeBlock code={`const handleRowClicked = useCallback(
+  (row: Employee) => {
+    navigate(\`/employees/\${row.id}\`);
+  },
+  [navigate],
+);
 
-<DataTable columns={columns} data={data} onRowClicked={handleRowClicked} />`} />
+<DataTable columns={columns} data={data} onRowClicked={handleRowClicked} />;`} />
 
   <h2>Stabilize the data array</h2>
 
@@ -101,7 +102,7 @@ const columns = useMemo<TableColumn<Item>[]>(
 
   <CodeBlock code={`// ❌ data is a new array every render
 function App() {
-  const items = useStore(s => s.items.map(transform));  // new array
+  const items = useStore(s => s.items.map(transform)); // new array
   return <DataTable data={items} columns={columns} />;
 }
 
@@ -125,7 +126,7 @@ function App() {
   data={pageOfData}
   sortServer
   onSort={(column, direction) => refetch({ sortBy: column.id, sortDir: direction })}
-/>`} />
+/>;`} />
 
   <h2>Server-side pagination</h2>
 
@@ -137,13 +138,13 @@ function App() {
 
   <CodeBlock code={`<DataTable
   columns={columns}
-  data={currentPageRows}            // just the rows for this page
+  data={currentPageRows} // just the rows for this page
   paginationServer
-  paginationTotalRows={total}       // total across all pages
+  paginationTotalRows={total} // total across all pages
   onChangePage={setPage}
   onChangeRowsPerPage={setPerPage}
   pagination
-/>`} />
+/>;`} />
 
   <h2>Column filtering</h2>
 
@@ -170,10 +171,8 @@ useEffect(() => {
   columns={columns}
   data={data}
   filterValues={filters}
-  onFilterChange={(columnId, next) =>
-    setFilters(prev => ({ ...prev, [columnId]: next }))
-  }
-/>`} />
+  onFilterChange={(columnId, next) => setFilters(prev => ({ ...prev, [columnId]: next }))}
+/>;`} />
 
   <h2>Cell renderers</h2>
 
@@ -184,11 +183,15 @@ useEffect(() => {
   </p>
 
   <CodeBlock code={`// ❌ New style object every cell
-{ cell: row => <span style={{ padding: 8, color: row.flagged ? 'red' : 'black' }}>{row.name}</span> }
+{
+  cell: row => <span style={{ padding: 8, color: row.flagged ? 'red' : 'black' }}>{row.name}</span>;
+}
 
 // ✅ Static + conditional override
 const baseStyle = { padding: 8 };
-{ cell: row => <span style={row.flagged ? { ...baseStyle, color: 'red' } : baseStyle}>{row.name}</span> }`} />
+{
+  cell: row => <span style={row.flagged ? { ...baseStyle, color: 'red' } : baseStyle}>{row.name}</span>;
+}`} />
 
   <h2>Avoid expensive selectors</h2>
 
@@ -198,14 +201,15 @@ const baseStyle = { padding: 8 };
   </p>
 
   <CodeBlock code={`// ❌ Walks an array every call
-{ selector: r => r.tags.find(t => t.primary)?.name ?? '' }
+{
+  selector: r => r.tags.find(t => t.primary)?.name ?? '';
+}
 
 // ✅ Compute upstream, store on the row
-const enriched = useMemo(
-  () => rows.map(r => ({ ...r, primaryTag: r.tags.find(t => t.primary)?.name ?? '' })),
-  [rows],
-);
-{ selector: r => r.primaryTag }`} />
+const enriched = useMemo(() => rows.map(r => ({ ...r, primaryTag: r.tags.find(t => t.primary)?.name ?? '' })), [rows]);
+{
+  selector: r => r.primaryTag;
+}`} />
 
   <h2>Animations</h2>
 

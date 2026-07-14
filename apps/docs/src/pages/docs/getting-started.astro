@@ -24,14 +24,14 @@ import PropsTable from '../../components/PropsTable.astro';
   <CodeBlock code={`import DataTable from 'react-data-table-component';
 
 const columns = [
-  { name: 'Name',       selector: row => row.name,   sortable: true },
-  { name: 'Role',       selector: row => row.role },
-  { name: 'Salary',     selector: row => row.salary, right: true },
+  { name: 'Name', selector: row => row.name, sortable: true },
+  { name: 'Role', selector: row => row.role },
+  { name: 'Salary', selector: row => row.salary, right: true },
 ];
 
 const data = [
-  { id: 1, name: 'Aria Chen',   role: 'Engineering Lead', salary: 155000 },
-  { id: 2, name: 'Marcus Webb', role: 'Product Manager',  salary: 132000 },
+  { id: 1, name: 'Aria Chen', role: 'Engineering Lead', salary: 155000 },
+  { id: 2, name: 'Marcus Webb', role: 'Product Manager', salary: 132000 },
 ];
 
 export default function App() {
@@ -60,11 +60,7 @@ export default function App() {
   </p>
 
   <CodeBlock code={`// Your rows use deviceIdentifier instead of id
-<DataTable
-  keyField="deviceIdentifier"
-  columns={columns}
-  data={devices}
-/>`} />
+<DataTable keyField="deviceIdentifier" columns={columns} data={devices} />;`} />
 
   <p>
     For display-only tables (no row selection) this doesn't affect rendering. DataTable falls back
@@ -88,7 +84,7 @@ interface Employee {
 }
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',   selector: row => row.name },
+  { name: 'Name', selector: row => row.name },
   { name: 'Salary', selector: row => row.salary },
 ];`} />
 

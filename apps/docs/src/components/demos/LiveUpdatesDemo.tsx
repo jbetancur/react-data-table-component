@@ -9,16 +9,16 @@ interface Ticker {
 }
 
 const INITIAL: Ticker[] = [
-	{ symbol: 'ACME', name: 'Acme Corp',       price: 182.4, change: 0 },
-	{ symbol: 'BLTC', name: 'Baltic Freight',  price: 64.12, change: 0 },
-	{ symbol: 'CNDL', name: 'Candle Systems',  price: 305.9, change: 0 },
-	{ symbol: 'DYNM', name: 'Dynamo Energy',   price: 48.77, change: 0 },
-	{ symbol: 'EVRG', name: 'Evergreen Foods', price: 96.3,  change: 0 },
+	{ symbol: 'ACME', name: 'Acme Corp', price: 182.4, change: 0 },
+	{ symbol: 'BLTC', name: 'Baltic Freight', price: 64.12, change: 0 },
+	{ symbol: 'CNDL', name: 'Candle Systems', price: 305.9, change: 0 },
+	{ symbol: 'DYNM', name: 'Dynamo Energy', price: 48.77, change: 0 },
+	{ symbol: 'EVRG', name: 'Evergreen Foods', price: 96.3, change: 0 },
 ];
 
 const columns: TableColumn<Ticker>[] = [
 	{ id: 'symbol', name: 'Symbol', selector: r => r.symbol, sortable: true, width: '110px', style: { fontWeight: 600 } },
-	{ id: 'name',   name: 'Name',   selector: r => r.name,   grow: 1 },
+	{ id: 'name', name: 'Name', selector: r => r.name, grow: 1 },
 	{
 		id: 'price',
 		name: 'Price',
@@ -50,20 +50,29 @@ export default function LiveUpdatesDemo() {
 			const symbol = INITIAL[Math.floor(Math.random() * INITIAL.length)].symbol;
 			const delta = +(Math.random() * 4 - 2).toFixed(2);
 
-			setData(prev => prev.map(r => (r.symbol === symbol ? { ...r, price: +(r.price + delta).toFixed(2), change: delta } : r)));
+			setData(prev =>
+				prev.map(r => (r.symbol === symbol ? { ...r, price: +(r.price + delta).toFixed(2), change: delta } : r)),
+			);
 			setFlashed(prev => new Set(prev).add(symbol));
-			setTimeout(() => setFlashed(prev => {
-				const next = new Set(prev);
-				next.delete(symbol);
-				return next;
-			}), 600);
+			setTimeout(
+				() =>
+					setFlashed(prev => {
+						const next = new Set(prev);
+						next.delete(symbol);
+						return next;
+					}),
+				600,
+			);
 		}, 1200);
 
 		return () => clearInterval(tick);
 	}, []);
 
 	const conditionalRowStyles: ConditionalStyles<Ticker>[] = [
-		{ when: r => flashed.has(r.symbol), style: { backgroundColor: '#fefce8', transition: 'background-color 0.6s ease' } },
+		{
+			when: r => flashed.has(r.symbol),
+			style: { backgroundColor: '#fefce8', transition: 'background-color 0.6s ease' },
+		},
 	];
 
 	return (

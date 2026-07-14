@@ -12,7 +12,19 @@ interface Employee {
 
 const data: Employee[] = Array.from({ length: 20 }, (_, i) => ({
 	id: i + 1,
-	name: ['Aria Chen', 'Marcus Webb', 'Priya Kapoor', 'Jordan Ellis', 'Sam Rivera', 'Taylor Brooks', 'Casey Morgan', 'Alex Kim', 'Morgan Lee', 'Drew Park'][i % 10] + (i >= 10 ? ` ${Math.floor(i / 10) + 1}` : ''),
+	name:
+		[
+			'Aria Chen',
+			'Marcus Webb',
+			'Priya Kapoor',
+			'Jordan Ellis',
+			'Sam Rivera',
+			'Taylor Brooks',
+			'Casey Morgan',
+			'Alex Kim',
+			'Morgan Lee',
+			'Drew Park',
+		][i % 10] + (i >= 10 ? ` ${Math.floor(i / 10) + 1}` : ''),
 	department: ['Engineering', 'Product', 'Design', 'Analytics', 'Sales', 'HR'][i % 6],
 	salary: 80000 + i * 4200,
 	status: (['Active', 'Remote', 'Contractor', 'On Leave'] as const)[i % 4],
@@ -57,9 +69,7 @@ export default function MobileDemo() {
 			selector: r => r.status,
 			center: true,
 			cell: r => (
-				<span className={`px-1.5 py-0.5 rounded-full text-xs font-medium ${statusColors[r.status]}`}>
-					{r.status}
-				</span>
+				<span className={`px-1.5 py-0.5 rounded-full text-xs font-medium ${statusColors[r.status]}`}>{r.status}</span>
 			),
 		},
 	];
@@ -119,7 +129,8 @@ export default function MobileDemo() {
 
 			{isNarrow && (
 				<p className="text-xs text-gray-400 text-center">
-					Department and Salary are hidden at this width — use <code className="bg-gray-100 px-1 rounded">omit</code> or <code className="bg-gray-100 px-1 rounded">hide: &quot;sm&quot;</code> to drop columns on small screens.
+					Department and Salary are hidden at this width — use <code className="bg-gray-100 px-1 rounded">omit</code> or{' '}
+					<code className="bg-gray-100 px-1 rounded">hide: &quot;sm&quot;</code> to drop columns on small screens.
 				</p>
 			)}
 		</div>

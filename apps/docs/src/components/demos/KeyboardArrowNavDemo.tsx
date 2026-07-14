@@ -27,9 +27,9 @@ export default function KeyboardArrowNavDemo() {
 		<div className="space-y-2">
 			<p className="text-xs text-gray-400">
 				A plain read-only table. Click a cell, then use <kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> to move,{' '}
-				<kbd>Home</kbd>/<kbd>End</kbd> to jump to the row edges, and <kbd>Ctrl</kbd>+<kbd>Home</kbd>/
-				<kbd>Ctrl</kbd>+<kbd>End</kbd> to jump to the grid corners. No editing, sorting, selection, or expansion
-				here — just movement, which works on any table.
+				<kbd>Home</kbd>/<kbd>End</kbd> to jump to the row edges, and <kbd>Ctrl</kbd>+<kbd>Home</kbd>/<kbd>Ctrl</kbd>+
+				<kbd>End</kbd> to jump to the grid corners. No editing, sorting, selection, or expansion here — just movement,
+				which works on any table.
 			</p>
 			<DataTable columns={columns} data={data} highlightOnHover cellNavigation />
 		</div>

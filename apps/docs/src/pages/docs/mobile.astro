@@ -21,15 +21,13 @@ import MobileDemo from '../../components/demos/MobileDemo.tsx';
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<Employee>[] = [
-  { name: 'Name',       selector: r => r.name,       sortable: true },
-  { name: 'Department', selector: r => r.department,              hide: 'sm' },
-  { name: 'Salary',     selector: r => r.salary,     right: true, hide: 'sm',
-    format: r => \`$\${r.salary.toLocaleString()}\` },
-  { name: 'Status',     selector: r => r.status,     center: true,
-    cell: r => <StatusBadge status={r.status} /> },
+  { name: 'Name', selector: r => r.name, sortable: true },
+  { name: 'Department', selector: r => r.department, hide: 'sm' },
+  { name: 'Salary', selector: r => r.salary, right: true, hide: 'sm', format: r => \`$\${r.salary.toLocaleString()}\` },
+  { name: 'Status', selector: r => r.status, center: true, cell: r => <StatusBadge status={r.status} /> },
 ];
 
-<DataTable columns={columns} data={data} striped highlightOnHover />`}
+<DataTable columns={columns} data={data} striped highlightOnHover />;`}
   >
     <MobileDemo client:only="react" />
   </Demo>
@@ -50,11 +48,44 @@ const columns: TableColumn<Employee>[] = [
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Row>[] = [
-  { name: 'Name',   selector: r => r.name },           // always visible
-  { name: 'Email',  selector: r => r.email,  hide: 'sm' }, // hidden below 600px
+  { name: 'Name', selector: r => r.name }, // always visible
+  { name: 'Email', selector: r => r.email, hide: 'sm' }, // hidden below 600px
   { name: 'Salary', selector: r => r.salary, hide: 'md' }, // hidden below 960px
   { name: 'Joined', selector: r => r.joined, hide: 'lg' }, // hidden below 1280px
 ];`} />
+
+  <p>
+    <code>hide</code> only supports these three fixed breakpoints. For a custom pixel value, track
+    the viewport yourself with <code>matchMedia</code> and drive the column's <code>omit</code>{' '}
+    prop instead:
+  </p>
+
+  <CodeBlock code={`import { useEffect, useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+
+  useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = () => setMatches(mql.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, [query]);
+
+  return matches;
+}
+
+function MyTable() {
+  const hideNotes = useMediaQuery('(max-width: 480px)');
+
+  const columns: TableColumn<Row>[] = [
+    { name: 'Name', selector: r => r.name },
+    { name: 'Notes', selector: r => r.notes, omit: hideNotes }, // hidden below 480px
+  ];
+
+  return <DataTable columns={columns} data={data} />;
+}`} />
 
   <h2>Pagination on small screens</h2>
 
@@ -85,15 +116,14 @@ const columns: TableColumn<Employee>[] = [
   <p>
     For apps where the primary use case on mobile is looking up a single record rather than
     comparing rows, consider rendering a completely different component below your breakpoint —
-    a simple list or card feed — and only mounting <code>DataTable</code> on wider viewports:
+    a simple list or card feed — and only mounting <code>DataTable</code> on wider viewports.
+    Reusing the <code>useMediaQuery</code> hook from above:
   </p>
 
-  <CodeBlock code={`import { useWindowSize } from 'react-data-table-component';
+  <CodeBlock code={`function MyPage() {
+  const isMobile = useMediaQuery('(max-width: 599px)');
 
-function MyPage() {
-  const { width } = useWindowSize();
-
-  if (width !== undefined && width < 600) {
+  if (isMobile) {
     return <MobileList data={data} />;
   }
 

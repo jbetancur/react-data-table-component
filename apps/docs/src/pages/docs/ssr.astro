@@ -38,7 +38,7 @@ import DataTable from 'react-data-table-component';
 import { getUsers } from '@/lib/db';
 
 const columns = [
-  { name: 'Name',  selector: (r: User) => r.name },
+  { name: 'Name', selector: (r: User) => r.name },
   { name: 'Email', selector: (r: User) => r.email },
 ];
 
@@ -72,10 +72,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   <CodeBlock code={`// pages/users.tsx
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
-interface User { id: number; name: string; email: string; }
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 const columns: TableColumn<User>[] = [
-  { name: 'Name',  selector: r => r.name },
+  { name: 'Name', selector: r => r.name },
   { name: 'Email', selector: r => r.email },
 ];
 
@@ -100,10 +104,14 @@ import DataTable, { type TableColumn } from 'react-data-table-component';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
-interface User { id: number; name: string; email: string; }
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 const columns: TableColumn<User>[] = [
-  { name: 'Name',  selector: r => r.name },
+  { name: 'Name', selector: r => r.name },
   { name: 'Email', selector: r => r.email },
 ];
 

@@ -34,7 +34,7 @@ import RowContextMenuDemo from '../../components/demos/RowContextMenuDemo.tsx';
     if (ctx.type === 'header') console.log(action.id, ctx.column);
   }}
   resizable
-/>`}
+/>;`}
   >
     <ContextMenuDemo client:load />
   </Demo>
@@ -97,9 +97,9 @@ const rowActions = (row: Task): ContextMenuAction[] => [
   onContextMenuAction={(action, ctx) => {
     if (ctx.type !== 'row') return;
     if (action.id === 'delete') setRows(prev => prev.filter(r => r.id !== ctx.row.id));
-    if (action.id === 'mark-done') setRows(prev => prev.map(r => r.id === ctx.row.id ? { ...r, status: 'Done' } : r));
+    if (action.id === 'mark-done') setRows(prev => prev.map(r => (r.id === ctx.row.id ? { ...r, status: 'Done' } : r)));
   }}
-/>`}
+/>;`}
   >
     <RowContextMenuDemo client:load />
   </Demo>
@@ -134,7 +134,7 @@ const rowActions = (row: Task): ContextMenuAction[] => [
     if (ctx.type === 'header') console.log(action.id, ctx.column);
     else console.log(action.id, ctx.row, ctx.rowIndex);
   }}
-/>`} />
+/>;`} />
 
   <p>
     The built-in ids are reserved: <code>sort-asc</code>, <code>sort-desc</code>,

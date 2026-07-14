@@ -32,20 +32,26 @@ import LoadingDemo from '../../components/demos/LoadingDemo';
 import DataTable from 'react-data-table-component';
 
 export default function UsersTable() {
-  const [data, setData]       = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true); // true on first render → skeleton immediately
 
   useEffect(() => {
     fetch('/api/users')
       .then(r => r.json())
-      .then(json => { setData(json.rows); setLoading(false); });
+      .then(json => {
+        setData(json.rows);
+        setLoading(false);
+      });
   }, []);
 
   function refresh() {
-    setLoading(true);                   // has existing rows → overlay mode
+    setLoading(true); // has existing rows → overlay mode
     fetch('/api/users')
       .then(r => r.json())
-      .then(json => { setData(json.rows); setLoading(false); });
+      .then(json => {
+        setData(json.rows);
+        setLoading(false);
+      });
   }
 
   return <DataTable columns={columns} data={data} progressPending={loading} />;
@@ -62,10 +68,7 @@ export default function UsersTable() {
     set <code>progressSkeleton={false}</code> to show your <code>progressComponent</code> there too.
   </p>
 
-  <CodeBlock code={`<DataTable
-  progressPending={loading}
-  progressComponent={<MyBrandSpinner size={40} />}
-/>`} lang="tsx" />
+  <CodeBlock code={`<DataTable progressPending={loading} progressComponent={<MyBrandSpinner size={40} />} />;`} lang="tsx" />
 
   <h2>Empty state</h2>
 
@@ -74,11 +77,7 @@ export default function UsersTable() {
     the <code>noDataComponent</code> is shown instead.
   </p>
 
-  <CodeBlock code={`<DataTable
-  data={[]}
-  progressPending={false}
-  noDataComponent={<p>No results match your search.</p>}
-/>`} lang="tsx" />
+  <CodeBlock code={`<DataTable data={[]} progressPending={false} noDataComponent={<p>No results match your search.</p>} />;`} lang="tsx" />
 
   <h2>Header visibility</h2>
 
@@ -88,7 +87,7 @@ export default function UsersTable() {
   </p>
 
   <CodeBlock code={`// Keep header visible when data is empty (e.g. after a filter returns nothing)
-<DataTable persistTableHead data={[]} columns={columns} />`} lang="tsx" />
+<DataTable persistTableHead data={[]} columns={columns} />;`} lang="tsx" />
 
   <h2>Prop reference</h2>
 

@@ -16,13 +16,13 @@ interface RegionGroup {
 }
 
 const ORDERS: Order[] = [
-	{ id: 1, region: 'West',    customer: 'Acme Corp',        amount: 4200 },
-	{ id: 2, region: 'West',    customer: 'Blue Harbor Inc',  amount: 1850 },
-	{ id: 3, region: 'West',    customer: 'Candle Systems',   amount: 3100 },
-	{ id: 4, region: 'East',    customer: 'Dynamo Energy',    amount: 2600 },
-	{ id: 5, region: 'East',    customer: 'Evergreen Foods',  amount: 5400 },
-	{ id: 6, region: 'Central', customer: 'Frontier Retail',  amount: 990 },
-	{ id: 7, region: 'Central', customer: 'Granite Works',    amount: 2200 },
+	{ id: 1, region: 'West', customer: 'Acme Corp', amount: 4200 },
+	{ id: 2, region: 'West', customer: 'Blue Harbor Inc', amount: 1850 },
+	{ id: 3, region: 'West', customer: 'Candle Systems', amount: 3100 },
+	{ id: 4, region: 'East', customer: 'Dynamo Energy', amount: 2600 },
+	{ id: 5, region: 'East', customer: 'Evergreen Foods', amount: 5400 },
+	{ id: 6, region: 'Central', customer: 'Frontier Retail', amount: 990 },
+	{ id: 7, region: 'Central', customer: 'Granite Works', amount: 2200 },
 	{ id: 8, region: 'Central', customer: 'Harbor Logistics', amount: 1475 },
 	{ id: 9, region: 'Central', customer: 'Ironclad Freight', amount: 3050 },
 ];
@@ -40,7 +40,7 @@ const groups: RegionGroup[] = Object.values(
 
 const columns: TableColumn<RegionGroup>[] = [
 	{ id: 'region', name: 'Region', selector: r => r.region, sortable: true, style: { fontWeight: 600 } },
-	{ id: 'count',  name: 'Orders', selector: r => r.count,  sortable: true, right: true, width: '110px' },
+	{ id: 'count', name: 'Orders', selector: r => r.count, sortable: true, right: true, width: '110px' },
 	{
 		id: 'total',
 		name: 'Total',
