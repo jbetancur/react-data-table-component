@@ -49,7 +49,7 @@ const columns = [
 - [Fixed Header](https://reactdatatable.com/docs/fixed-header): sticky header with scrollable body; when to disable the responsive scroll container
 - [Footer](https://reactdatatable.com/docs/footer): summary and pagination footers
 - [Loading State](https://reactdatatable.com/docs/loading): progress and skeleton states
-- [Inline Editing](https://reactdatatable.com/docs/inline-editing): edit cells in place
+- [Inline Editing](https://reactdatatable.com/docs/inline-editing): edit cells in place with built-in editor types, per-column validation, and optimistic server-save patterns
 
 ## Styling
 

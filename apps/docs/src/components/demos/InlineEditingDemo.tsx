@@ -34,7 +34,7 @@ export default function InlineEditingDemo() {
 
 	const handleCellEdit = (row: Employee, value: string, column: TableColumn<Employee>) => {
 		const field = column.id as keyof Employee;
-		const parsed = field === 'salary' ? Number(value) || row.salary : field === 'remote' ? value === 'true' : value;
+		const parsed = field === 'salary' ? Number(value) : field === 'remote' ? value === 'true' : value;
 		setData(prev => prev.map(r => (r.id === row.id ? { ...r, [field]: parsed } : r)));
 		setLastEdit(`Updated ${row.name} → ${String(column.name)}: "${value}"`);
 	};
@@ -46,6 +46,7 @@ export default function InlineEditingDemo() {
 			selector: r => r.name,
 			sortable: true,
 			editable: true,
+			validate: value => (value.trim() === '' ? 'Name is required' : true),
 			onCellEdit: handleCellEdit,
 		},
 		{
@@ -99,6 +100,10 @@ export default function InlineEditingDemo() {
 			sortable: true,
 			right: true,
 			editable: true,
+			validate: value => {
+				const n = Number(value);
+				return Number.isFinite(n) && n > 0 ? true : 'Enter a positive number';
+			},
 			onCellEdit: handleCellEdit,
 		},
 		{
@@ -117,8 +122,10 @@ export default function InlineEditingDemo() {
 			<p className="text-xs text-gray-400">
 				Click any cell to edit. <strong>Name</strong> and <strong>Salary</strong> are text inputs;{' '}
 				<strong>Department</strong> and <strong>Status</strong> are dropdowns; <strong>Remote</strong> is a checkbox.{' '}
-				<kbd>Enter</kbd> commits, <kbd>Esc</kbd> cancels. Keyboard navigation is enabled too: click or Tab into the
-				table, move between cells and headers with the arrow keys, and press <kbd>Enter</kbd> to edit or sort.
+				<kbd>Enter</kbd> commits, <kbd>Esc</kbd> cancels. <strong>Name</strong> and <strong>Salary</strong> are
+				validated: try committing an empty name or a negative salary to see the inline error. Keyboard navigation is
+				enabled too: click or Tab into the table, move between cells and headers with the arrow keys, and press{' '}
+				<kbd>Enter</kbd> to edit or sort.
 			</p>
 			<DataTable columns={columns} data={data} highlightOnHover cellNavigation />
 			{lastEdit && <div className="text-xs text-emerald-600 font-mono">{lastEdit}</div>}

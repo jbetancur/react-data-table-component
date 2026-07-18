@@ -195,6 +195,8 @@ interface CustomCellEditorContext<T> {
   commit: (value?: string) => void;
   cancel: () => void;
   column: TableColumn<T>;
+  error: string | null;
+  inputRef: React.RefCallback<HTMLElement>;
 }`} lang="ts" />
 
   <DocsTable

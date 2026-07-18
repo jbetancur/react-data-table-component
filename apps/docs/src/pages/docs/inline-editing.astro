@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
+import ServerSideEditDemo from '../../components/demos/ServerSideEditDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
 ---
 
@@ -30,7 +31,7 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <Demo
     title="Editable cells — text + dropdown"
-    description="Name and Salary use text inputs. Department and Status use dropdowns. Click any cell to edit."
+    description="Name and Salary use text inputs with validation. Department and Status use dropdowns. Click any cell to edit."
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
@@ -48,13 +49,20 @@ export default function App() {
   const handleCellEdit = (row: Employee, value: string, column: TableColumn<Employee>) => {
     const field = column.id as keyof Employee;
     setData(prev =>
-      prev.map(r => (r.id === row.id ? { ...r, [field]: field === 'salary' ? Number(value) || r.salary : value } : r)),
+      prev.map(r => (r.id === row.id ? { ...r, [field]: field === 'salary' ? Number(value) : value } : r)),
     );
   };
 
   const columns: TableColumn<Employee>[] = [
     // Text editor — editable: true is shorthand for { editor: { type: 'text' } }
-    { id: 'name', name: 'Name', selector: r => r.name, editable: true, onCellEdit: handleCellEdit },
+    {
+      id: 'name',
+      name: 'Name',
+      selector: r => r.name,
+      editable: true,
+      validate: value => (value.trim() === '' ? 'Name is required' : true),
+      onCellEdit: handleCellEdit,
+    },
 
     // Dropdown editor
     {
@@ -96,6 +104,10 @@ export default function App() {
       format: r => \`$\${r.salary.toLocaleString()}\`,
       right: true,
       editable: true,
+      validate: value => {
+        const n = Number(value);
+        return Number.isFinite(n) && n > 0 ? true : 'Enter a positive number';
+      },
       onCellEdit: handleCellEdit,
     },
   ];
@@ -216,9 +228,9 @@ export default function App() {
   id: 'role', name: 'Role', selector: r => r.role,
   editor: {
     type: 'custom',
-    render: ({ value, setValue, commit, cancel, row }) => (
+    render: ({ value, setValue, commit, cancel, row, inputRef }) => (
       <Autocomplete
-        autoFocus
+        ref={inputRef}
         value={value}
         onChange={setValue}
         onSelect={v => commit(v)}
@@ -234,6 +246,17 @@ export default function App() {
     The <code>ctx.row</code> field gives you the row data for context-aware editors
     (dependent dropdowns, etc.). The cell wrapper still owns padding and the focus ring —
     your custom editor only needs to render the input.
+  </p>
+
+  <p>
+    Validation works the same as for built-in editors: <code>ctx.commit</code> runs the
+    column's <code>validate</code> first, and a string result keeps the editor open with the
+    inline error tooltip. Since 8.7.0 the render context also carries the current error as
+    <code>ctx.error</code> (<code>string | null</code>), so your editor can style its own
+    invalid state, e.g. <code>aria-invalid=&#123;!!ctx.error&#125;</code>. Attach
+    <code>ctx.inputRef</code> as the <code>ref</code> of your focusable element to get the
+    same focus handling as the built-in editors: auto-focus when the editor opens and
+    refocus after a rejected commit.
   </p>
 
   <h2>The cell becomes the editor</h2>
@@ -292,6 +315,60 @@ export default function App() {
     console.error('Save failed:', err);
   }
 };`} />
+
+  <Demo
+    title="Server-side saves — optimistic update with rollback"
+    description="Edits apply immediately and save to a simulated server. Failed saves roll back. The server rejects prices over $1,000."
+    code={`import { useState } from 'react';
+import DataTable, { type TableColumn } from 'react-data-table-component';
+
+export default function App() {
+  const [data, setData] = useState<Product[]>(initialData);
+  const [savingId, setSavingId] = useState<number | null>(null);
+
+  const handleCellEdit = async (row: Product, value: string, column: TableColumn<Product>) => {
+    const field = column.id as keyof Product;
+    const parsed = field === 'name' ? value : Number(value);
+
+    // Optimistic update
+    setData(prev => prev.map(r => (r.id === row.id ? { ...r, [field]: parsed } : r)));
+    setSavingId(row.id);
+
+    try {
+      await api.updateProduct(row.id, { [field]: parsed });
+    } catch (err) {
+      // Roll back the field to its pre-edit value
+      setData(prev => prev.map(r => (r.id === row.id ? { ...r, [field]: row[field] } : r)));
+    } finally {
+      setSavingId(null);
+    }
+  };
+
+  const columns: TableColumn<Product>[] = [
+    { id: 'sku', name: 'SKU', selector: r => r.sku },
+    { id: 'name', name: 'Product', selector: r => r.name, editable: true, onCellEdit: handleCellEdit },
+    {
+      id: 'price',
+      name: 'Price',
+      selector: r => r.price,
+      right: true,
+      editor: { type: 'number', min: 0 },
+      validate: value => (Number(value) > 0 ? true : 'Enter a positive number'),
+      onCellEdit: handleCellEdit,
+    },
+  ];
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      conditionalRowStyles={[{ when: r => r.id === savingId, style: { opacity: 0.45 } }]}
+    />
+  );
+}`}
+  >
+    <ServerSideEditDemo client:load />
+  </Demo>
 
   <h2>Validation</h2>
   <p>

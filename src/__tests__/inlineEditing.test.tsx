@@ -224,4 +224,78 @@ describe('inline editing: custom editor', () => {
 		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
 		expect(onCellEdit.mock.calls[0][1]).toBe('Zara');
 	});
+
+	test('receives the validation error via ctx.error after a rejected commit', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: {
+					type: 'custom',
+					render: ctx => (
+						<button data-testid="custom-commit" data-error={ctx.error ?? ''} onClick={() => ctx.commit('')}>
+							save
+						</button>
+					),
+				},
+				validate: value => (value === '' ? 'Must not be empty' : true),
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const btn = await screen.findByTestId('custom-commit');
+		expect(btn).toHaveAttribute('data-error', '');
+		fireEvent.click(btn);
+
+		await waitFor(() => expect(screen.getByTestId('custom-commit')).toHaveAttribute('data-error', 'Must not be empty'));
+		expect(onCellEdit).not.toHaveBeenCalled();
+	});
+
+	test('focuses the element attached to ctx.inputRef on open and after a rejected commit', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: {
+					type: 'custom',
+					render: ctx => (
+						<>
+							<input
+								data-testid="custom-input"
+								ref={ctx.inputRef}
+								value={ctx.value}
+								onChange={e => ctx.setValue(e.target.value)}
+							/>
+							<button data-testid="custom-save" onClick={() => ctx.commit('')}>
+								save
+							</button>
+						</>
+					),
+				},
+				validate: value => (value === '' ? 'Must not be empty' : true),
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const input = await screen.findByTestId('custom-input');
+		await waitFor(() => expect(input).toHaveFocus());
+
+		const saveBtn = screen.getByTestId('custom-save');
+		saveBtn.focus();
+		expect(input).not.toHaveFocus();
+		fireEvent.click(saveBtn);
+
+		await waitFor(() => expect(input).toHaveFocus());
+		expect(onCellEdit).not.toHaveBeenCalled();
+	});
 });

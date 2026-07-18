@@ -418,6 +418,10 @@ export interface CustomCellEditorContext<T = unknown> {
 	cancel: () => void;
 	/** The column definition. */
 	column: TableColumn<T>;
+	/** Current validation error from `validate`, or `null`. Set when a commit was rejected with a message. */
+	error: string | null;
+	/** Attach as `ref` on your focusable element to opt in to auto-focus on open and refocus after a rejected commit. */
+	inputRef: React.RefCallback<HTMLElement>;
 }
 
 /** Options for inline cell editors. */

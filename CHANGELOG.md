@@ -2,6 +2,15 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.7.0
+
+### New features
+
+- **`ctx.error` for custom editors** — the custom editor render context now includes the current validation error (`string | null`), so custom editors can style their own invalid state when `validate` rejects a commit. → [Inline editing](/docs/inline-editing) ([#1355](https://github.com/jbetancur/react-data-table-component/issues/1355))
+- **`ctx.inputRef` for custom editors** — attach it as the `ref` of your focusable element to get auto-focus when the editor opens and refocus after a rejected commit, matching the built-in editors. → [Inline editing](/docs/inline-editing) ([#1355](https://github.com/jbetancur/react-data-table-component/issues/1355))
+
+---
+
 ## 8.6.2
 
 ### Bug fixes
