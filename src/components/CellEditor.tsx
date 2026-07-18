@@ -17,6 +17,7 @@ function CellEditor<T>({ edit, row, column, cellNavigation }: CellEditorProps<T>
 		setEditValue,
 		editError,
 		inputRef,
+		customInputRef,
 		seedValue,
 		cancelEdit,
 		commitEdit,
@@ -102,6 +103,8 @@ function CellEditor<T>({ edit, row, column, cellNavigation }: CellEditorProps<T>
 						commit: commitEdit,
 						cancel: cancelEdit,
 						column,
+						error: editError,
+						inputRef: customInputRef,
 					})}
 				</div>
 			)}

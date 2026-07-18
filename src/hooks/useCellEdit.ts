@@ -7,7 +7,8 @@ export interface CellEditApi<T> {
 	editValue: string;
 	setEditValue: React.Dispatch<React.SetStateAction<string>>;
 	editError: string | null;
-	inputRef: React.RefObject<HTMLInputElement | HTMLSelectElement>;
+	inputRef: React.MutableRefObject<HTMLElement | null>;
+	customInputRef: React.RefCallback<HTMLElement>;
 	seedValue: () => string;
 	startEdit: () => void;
 	cancelEdit: () => void;
@@ -26,7 +27,10 @@ export default function useCellEdit<T>(column: TableColumn<T>, row: T, rowIndex:
 	const [editing, setEditing] = React.useState(false);
 	const [editValue, setEditValue] = React.useState('');
 	const [editError, setEditError] = React.useState<string | null>(null);
-	const inputRef = React.useRef<HTMLInputElement | HTMLSelectElement>(null);
+	const inputRef = React.useRef<HTMLElement | null>(null);
+	const customInputRef = React.useCallback<React.RefCallback<HTMLElement>>(el => {
+		inputRef.current = el;
+	}, []);
 
 	const seedValue = React.useCallback((): string => {
 		const raw = column.selector ? column.selector(row, rowIndex) : undefined;
@@ -92,6 +96,7 @@ export default function useCellEdit<T>(column: TableColumn<T>, row: T, rowIndex:
 		setEditValue,
 		editError,
 		inputRef,
+		customInputRef,
 		seedValue,
 		startEdit,
 		cancelEdit,
