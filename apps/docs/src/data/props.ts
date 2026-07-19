@@ -35,7 +35,7 @@ export type PropFeature =
   | 'fixed-header'
   | 'loading';
 
-// Which api.md `###` subsection a prop renders under, in source order.
+// Which api.astro `###` subsection a prop renders under, in source order.
 export type PropGroup =
   | 'Data'
   | 'Layout & appearance'
@@ -872,6 +872,24 @@ export const dataTableProps: PropDef[] = [
     default: c('false'),
     description: `Show drag handles on column headers for resizing.`,
     brief: 'Show drag handles on column headers for resizing.',
+    group: 'Column features',
+    features: ['resizable'],
+  },
+  {
+    name: 'initialColumnWidths',
+    type: c('Record&lt;string | number, number&gt;'),
+    default: '-',
+    description: `Seed column widths (px) by column ${c('id')}, useful for hydrating persisted widths on mount. See <a href="/docs/recipes/persist-column-widths">Persist column widths</a>.`,
+    brief: `Seed column widths (px) by column ${c('id')} on mount.`,
+    group: 'Column features',
+    features: ['resizable'],
+  },
+  {
+    name: 'onColumnResize',
+    type: c('(columnId, width, allWidths) =&gt; void'),
+    default: '-',
+    description: `Called after the user finishes resizing a column. Receives the column ${c('id')}, its final width (px), and the full widths map for persisting.`,
+    brief: 'Called with the column id, final width (px), and full widths map after a resize.',
     group: 'Column features',
     features: ['resizable'],
   },

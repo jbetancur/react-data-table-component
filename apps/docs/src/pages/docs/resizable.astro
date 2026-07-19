@@ -78,17 +78,17 @@ const columns: TableColumn<Employee>[] = [
   <h2>Persisting widths</h2>
 
   <p>
-    Column widths live in component state only. They reset on remount. DataTable doesn't
-    expose a single "widths changed" callback because the resize handler doesn't propagate
-    to props. The reliable way to persist is to observe the DOM:
+    Pass <code>onColumnResize</code> to receive the settled width after every drag, and
+    <code>initialColumnWidths</code> to hydrate saved widths on mount. Both are keyed by
+    the <code>id</code> you set on each column:
   </p>
 
-  <CodeBlock code={`import { useEffect, useRef, useState } from 'react';
+  <CodeBlock code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
 
 const STORAGE_KEY = 'employees-table-widths';
 
-function loadWidths(): Record<string, string> {
+function loadWidths(): Record<string, number> {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}');
   } catch {
@@ -97,43 +97,32 @@ function loadWidths(): Record<string, string> {
 }
 
 export default function App() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const [saved] = useState(loadWidths);
-
-  useEffect(() => {
-    const el = wrapperRef.current;
-    if (!el) return;
-    let timer: ReturnType<typeof setTimeout>;
-    const observer = new MutationObserver(() => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const widths: Record<string, string> = {};
-        el.querySelectorAll<HTMLElement>('.rdt_TableCol').forEach(col => {
-          const id = col.dataset.columnId;
-          if (id && col.style.width) widths[id] = col.style.width;
-        });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(widths));
-      }, 200);
-    });
-    observer.observe(el, { attributes: true, attributeFilter: ['style'], subtree: true });
-    return () => observer.disconnect();
-  }, []);
+  const [initialWidths] = useState(loadWidths);
 
   const columns: TableColumn<Employee>[] = [
-    { id: 'name', name: 'Name', selector: r => r.name, width: saved['name'] ?? '180px' },
-    { id: 'salary', name: 'Salary', selector: r => r.salary, right: true, width: saved['salary'] ?? '110px' },
+    { id: 'name', name: 'Name', selector: r => r.name },
+    { id: 'salary', name: 'Salary', selector: r => r.salary, right: true },
   ];
 
   return (
-    <div ref={wrapperRef}>
-      <DataTable columns={columns} data={data} resizable />
-    </div>
+    <DataTable
+      columns={columns}
+      data={data}
+      resizable
+      initialColumnWidths={initialWidths}
+      onColumnResize={(_id, _width, allWidths) =>
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(allWidths))
+      }
+    />
   );
 }`} />
 
   <p>
-    See <a href="/docs/recipes">recipes</a> for the same pattern with debouncing.
+    See the <a href="/docs/recipes/persist-column-widths">Persist column widths</a> recipe
+    for a live demo, including saving to a back-end API instead of localStorage.
   </p>
+
+  <PropsTable only={['initialColumnWidths', 'onColumnResize']} columns={['prop', 'type', 'description']} />
 
   <h2>With column pinning</h2>
 

@@ -41,13 +41,13 @@ function simulateFetch({
 			let rows = [...ALL_DATA];
 
 			// filter
-			const nameFilter = filters['name'];
-			if (nameFilter?.value) {
-				rows = rows.filter(r => r.name.toLowerCase().includes(String(nameFilter.value).toLowerCase()));
+			const nameFilter = filters['name']?.condition1.value;
+			if (nameFilter) {
+				rows = rows.filter(r => r.name.toLowerCase().includes(nameFilter.toLowerCase()));
 			}
-			const deptFilter = filters['department'];
-			if (deptFilter?.value) {
-				rows = rows.filter(r => r.department.toLowerCase().includes(String(deptFilter.value).toLowerCase()));
+			const deptFilter = filters['department']?.condition1.value;
+			if (deptFilter) {
+				rows = rows.filter(r => r.department.toLowerCase().includes(deptFilter.toLowerCase()));
 			}
 
 			// sort

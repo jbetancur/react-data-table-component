@@ -4,6 +4,7 @@ import {
 	useTableState,
 	useTableData,
 	useColumnFilter,
+	SortOrder,
 	type TableColumn,
 	type FilterState,
 } from 'react-data-table-component';
@@ -101,9 +102,15 @@ export default function HeadlessDemo() {
 
 	function clickSort(col: TableColumn<Employee>) {
 		if (!col.sortable) return;
-		const isAsc = selectedColumn?.id === col.id && (tableState.sortDirection as string) === 'asc';
-		const newDir = (isAsc ? 'desc' : 'asc') as typeof tableState.sortDirection;
-		handleSort({ type: 'SORT_CHANGE', selectedColumn: col, sortDirection: newDir, clearSelectedOnSort: false });
+		const isAsc = selectedColumn?.id === col.id && tableState.sortDirection === SortOrder.ASC;
+		handleSort({
+			type: 'SORT_CHANGE',
+			selectedColumn: col,
+			clearSelectedOnSort: false,
+			additive: false,
+			defaultSortDirection: SortOrder.ASC,
+			direction: isAsc ? SortOrder.DESC : SortOrder.ASC,
+		});
 	}
 
 	return (

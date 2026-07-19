@@ -75,10 +75,7 @@ export default function UrlSyncDemo() {
 	const [perPage, setPerPage] = useState(init.perPage);
 	const [filters, setFilters] = useState<Record<string, FilterState>>(() =>
 		Object.fromEntries(
-			Object.entries(init.filters).map(([k, v]) => [
-				k,
-				{ value: v, operator: 'contains' as const, condition2: null, join: 'and' as const },
-			]),
+			Object.entries(init.filters).map(([k, v]) => [k, { condition1: { operator: 'contains' as const, value: v } }]),
 		),
 	);
 
@@ -91,7 +88,7 @@ export default function UrlSyncDemo() {
 			perPage,
 			filters: Object.fromEntries(
 				Object.entries(filters)
-					.map(([k, f]) => [k, String(f.value ?? '')])
+					.map(([k, f]) => [k, String(f.condition1?.value ?? '')])
 					.filter(([, v]) => v),
 			),
 		});

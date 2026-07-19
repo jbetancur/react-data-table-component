@@ -100,13 +100,13 @@ const nav = [
   {
     group: 'Recipes',
     links: [
-      { label: 'Approval workflow', href: '/docs/recipes/bulk-action-toolbar' },
+      { label: 'Approval workflow', href: '/docs/recipes/approval-workflow' },
       { label: 'Server-side sort & filter', href: '/docs/recipes/server-side' },
-      { label: 'URL-synced table state', href: '/docs/recipes/editable-grid' },
-      { label: 'Dashboard drill-down', href: '/docs/recipes/master-detail' },
-      { label: 'Audit log viewer', href: '/docs/recipes/sticky-footer' },
+      { label: 'URL-synced table state', href: '/docs/recipes/url-synced-state' },
+      { label: 'Dashboard drill-down', href: '/docs/recipes/dashboard-drilldown' },
+      { label: 'Audit log viewer', href: '/docs/recipes/audit-log' },
       { label: 'Persist column widths', href: '/docs/recipes/persist-column-widths' },
-      { label: 'Inline row actions', href: '/docs/recipes/row-grouping' },
+      { label: 'Inline row actions', href: '/docs/recipes/inline-row-actions' },
       { label: 'Live-updating grid', href: '/docs/recipes/live-updates' },
       { label: 'Editable inventory grid', href: '/docs/recipes/inventory-editor' },
       { label: 'Grouped rows with aggregates', href: '/docs/recipes/row-groups' },
@@ -150,7 +150,6 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 13.7c-.3 0-.6-.1-.8-.3L1.6 7.8C.6 6.8.1 5.5.1 4.1.1 1.8 2 0 4.3 0c1.2 0 2.3.5 3.1 1.3L8 1.9l.6-.6C9.4.5 10.5 0 11.7 0 14 0 15.9 1.8 15.9 4.1c0 1.4-.5 2.7-1.5 3.7l-5.6 5.6c-.2.2-.5.3-.8.3z"/></svg>
             Sponsor this project
           </div>
-          <p class="mt-1 text-[11px] text-pink-400 leading-snug">215k downloads/week · actively maintained since 2018</p>
         </a>
 
         {nav.map(({ group, links }) => (

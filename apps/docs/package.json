@@ -10,19 +10,19 @@
   },
   "dependencies": {
     "@astrojs/react": "^6.0.1",
-    "@astrojs/sitemap": "^3.7.2",
-    "@shikijs/langs": "^4.1.0",
-    "@tailwindcss/vite": "^4.3.2",
-    "astro": "^7.0.7",
+    "@astrojs/sitemap": "^3.7.3",
+    "@shikijs/langs": "^4.3.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.1",
     "react": "^18.3.1",
     "react-data-table-component": "*",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^4.3.2"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
     "pagefind": "^1.5.2"
   }
 }

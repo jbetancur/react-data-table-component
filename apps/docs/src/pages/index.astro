@@ -3,6 +3,9 @@ import { Code } from 'astro:components';
 import Layout from '../layouts/Layout.astro';
 import LiveDemo from '../components/LiveDemo.tsx';
 import { backers } from '../data/backers';
+import pkg from '../../../../package.json';
+
+const version = `v${pkg.version.split('.').slice(0, 2).join('.')}`;
 
 const [npmRes, ghRes] = await Promise.allSettled([
   fetch('https://api.npmjs.org/downloads/point/last-week/react-data-table-component'),
@@ -32,7 +35,7 @@ function fmt(n: number): string {
 			<div
 				class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 text-xs font-medium px-3 py-1 rounded-full border border-brand-100"
 			>
-				v8.0 · No peer deps · React 18+
+				{version} · No peer deps · React 18+
 			</div>
 			<a
 				href="/docs/changelog"
@@ -48,8 +51,8 @@ function fmt(n: number): string {
 		</h1>
 
 		<p class="mt-5 text-lg text-gray-500 max-w-xl mx-auto">
-			Sorting, pagination, row selection, theming, and expandable rows, all included. No boilerplate. No CSS
-			file. No paid tier.
+			Sorting, pagination, row selection, inline editing, expandable rows, and theming, all included. No
+			boilerplate. No CSS file. No paid tier.
 		</p>
 
 		<div class="mt-8 flex items-center justify-center gap-4">
@@ -188,6 +191,21 @@ export default function App() {
 						desc: 'Per-column filter inputs for text, number, and select. Client-side or hook into your own server search.',
 					},
 					{
+						icon: '✎',
+						title: 'Inline editing',
+						desc: 'Editable cells with text, number, select, and custom editors. Per-column validation and server-save patterns built in.',
+					},
+					{
+						icon: '⌨',
+						title: 'Keyboard navigation',
+						desc: 'WAI-ARIA grid with arrow-key cell navigation, Home/End jumps, and Enter to edit or sort. One prop: cellNavigation.',
+					},
+					{
+						icon: '☰',
+						title: 'Context menu',
+						desc: 'Right-click or menu-button menus with built-in header actions (sort, pin, hide, reset) plus your own row actions.',
+					},
+					{
 						icon: '⊞',
 						title: 'Column groups',
 						desc: 'Span headers across multiple columns. Useful for financial and analytical tables.',
@@ -241,6 +259,7 @@ export default function App() {
 								['Styled table out of the box', 'You build the UI', '✓', '✓', '✓'],
 								['Sorting, pagination & selection UI', 'State only', '✓', '✓', '✓'],
 								['Expandable row panels', 'State only', 'Enterprise tier', 'Pro tier', '✓'],
+								['Inline cell editing', 'You build the UI', '✓', '✓', '✓ editors + validation'],
 								['Dark mode & themes', 'Bring your own', '✓ built-in', 'Via MUI theme', '5 built-in, incl. Material'],
 								['Requires a UI framework', 'No', 'No', '@mui/material + Emotion', 'No'],
 								['Size (min+gzip)', '~15 KB', '~338 KB', '~117 KB + MUI', '~35 KB'],

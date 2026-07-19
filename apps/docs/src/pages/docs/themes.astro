@@ -3,6 +3,8 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ThemesDemo from '../../components/demos/ThemesDemo.tsx';
+import IconsDemo from '../../components/demos/IconsDemo.tsx';
+import iconsDemoSource from '../../components/demos/IconsDemo.tsx?raw';
 import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
@@ -172,6 +174,14 @@ createTheme('violet', {
     bake them into a theme so every table using it gets them automatically, or pass them as
     per-table props for a one-off override. Props win when both are set.
   </p>
+
+  <Demo
+    title="Custom icons"
+    description="Switch between the built-in icons and custom inline-SVG replacements for pagination, expander, and sort."
+    code={iconsDemoSource}
+  >
+    <IconsDemo client:load />
+  </Demo>
 
   <h3>Override via props</h3>
   <p>

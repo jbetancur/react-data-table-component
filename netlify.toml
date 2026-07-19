@@ -5,10 +5,30 @@
 [build.environment]
   NODE_VERSION = "24.0.0"
 
-# Redirect bare /docs to the getting-started page
+# Recipe pages renamed to match their content
 [[redirects]]
-  from = "/docs"
-  to = "/docs/getting-started"
+  from = "/docs/recipes/bulk-action-toolbar"
+  to = "/docs/recipes/approval-workflow"
+  status = 301
+
+[[redirects]]
+  from = "/docs/recipes/editable-grid"
+  to = "/docs/recipes/url-synced-state"
+  status = 301
+
+[[redirects]]
+  from = "/docs/recipes/master-detail"
+  to = "/docs/recipes/dashboard-drilldown"
+  status = 301
+
+[[redirects]]
+  from = "/docs/recipes/sticky-footer"
+  to = "/docs/recipes/audit-log"
+  status = 301
+
+[[redirects]]
+  from = "/docs/recipes/row-grouping"
+  to = "/docs/recipes/inline-row-actions"
   status = 301
 
 [[headers]]
