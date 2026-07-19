@@ -254,10 +254,12 @@ export default function IconsDemo() {
 				// Pagination icons
 				{...(mode === 'custom-pagination'
 					? {
-							paginationIconFirstPage: <ChevronsLeft />,
-							paginationIconLastPage: <ChevronsRight />,
-							paginationIconPrevious: <ChevronLeft />,
-							paginationIconNext: <ChevronRight />,
+							paginationIcons: {
+								first: <ChevronsLeft />,
+								last: <ChevronsRight />,
+								previous: <ChevronLeft />,
+								next: <ChevronRight />,
+							},
 						}
 					: {})}
 

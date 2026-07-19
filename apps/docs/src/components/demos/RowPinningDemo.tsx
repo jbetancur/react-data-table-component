@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import DataTable from '../ThemedDataTable';
-import { type TableColumn, SortOrder } from 'react-data-table-component';
+import { type TableColumn, type Selector, SortOrder } from 'react-data-table-component';
 
 type Status = 'Active' | 'On Leave' | 'Terminated';
 
@@ -129,7 +129,7 @@ export default function RowPinningDemo() {
 	);
 
 	const sortFunction = useMemo(
-		() => (rows: Employee[], selector: (r: Employee) => string | number | boolean, direction: SortOrder) => {
+		() => (rows: Employee[], selector: Selector<Employee>, direction: SortOrder) => {
 			const pinned = rows.filter(r => pinnedIds.has(r.id));
 			const rest = rows.filter(r => !pinnedIds.has(r.id));
 			const sorted = [...rest].sort((a, b) => {

@@ -74,16 +74,16 @@ const columns = [
 ## Recipes
 
 - [Server-side sort & filter](https://reactdatatable.com/docs/recipes/server-side)
-- [Approval workflow with bulk actions](https://reactdatatable.com/docs/recipes/bulk-action-toolbar)
-- [URL-synced table state](https://reactdatatable.com/docs/recipes/editable-grid)
-- [Dashboard drill-down](https://reactdatatable.com/docs/recipes/master-detail)
+- [Approval workflow with bulk actions](https://reactdatatable.com/docs/recipes/approval-workflow)
+- [URL-synced table state](https://reactdatatable.com/docs/recipes/url-synced-state)
+- [Dashboard drill-down](https://reactdatatable.com/docs/recipes/dashboard-drilldown)
 - [Live-updating data grid](https://reactdatatable.com/docs/recipes/live-updates): flash-on-change rows using conditionalRowStyles and keyField
 - [Editable inventory grid](https://reactdatatable.com/docs/recipes/inventory-editor): spreadsheet-style inline editing with a derived total column
 - [Grouped rows with aggregates](https://reactdatatable.com/docs/recipes/row-groups): per-group totals and drill-down without a dedicated groupBy API
 - [CSV import](https://reactdatatable.com/docs/recipes/csv-import): load a user-uploaded CSV file into the table
-- [Audit log viewer](https://reactdatatable.com/docs/recipes/sticky-footer)
+- [Audit log viewer](https://reactdatatable.com/docs/recipes/audit-log)
 - [Persist column widths](https://reactdatatable.com/docs/recipes/persist-column-widths)
-- [Inline row actions](https://reactdatatable.com/docs/recipes/row-grouping)
+- [Inline row actions](https://reactdatatable.com/docs/recipes/inline-row-actions)
 
 ## Optional
 

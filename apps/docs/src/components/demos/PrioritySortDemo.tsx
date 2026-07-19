@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import DataTable from '../ThemedDataTable';
-import { type TableColumn, SortOrder } from 'react-data-table-component';
+import { type TableColumn, type Selector, SortOrder } from 'react-data-table-component';
 
 type Status = 'Active' | 'On Leave' | 'Terminated';
 
@@ -87,7 +87,7 @@ export default function PrioritySortDemo() {
 
 	const sortFunction = useMemo(() => {
 		if (mode === 'secondary-sort') {
-			return (rows: Employee[], selector: (r: Employee) => string | number | boolean, direction: SortOrder) =>
+			return (rows: Employee[], selector: Selector<Employee>, direction: SortOrder) =>
 				[...rows].sort((a, b) => {
 					const av = selector(a);
 					const bv = selector(b);
