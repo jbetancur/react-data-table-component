@@ -286,6 +286,47 @@ describe('ColumnFilter:date filter type', () => {
 	});
 });
 
+describe('ColumnFilter:datetime filter type', () => {
+	test('renders datetime-local inputs and the date operator set', () => {
+		const { container } = setup({ filterType: 'datetime', filterValue: emptyFilterState('datetime') });
+		openPanel(container);
+
+		const input = container.querySelector('input[aria-label="Filter value"]') as HTMLInputElement;
+		expect(input.type).toBe('datetime-local');
+
+		const opts = Array.from(container.querySelectorAll('select[aria-label="Filter operator"] option')).map(
+			o => o.textContent,
+		);
+		expect(opts).toEqual(['Equals', 'Before', 'After', 'Between', 'Blank', 'Not blank']);
+	});
+});
+
+describe('ColumnFilter:time filter type', () => {
+	test('renders a time input with seconds precision and the date operator set', () => {
+		const { container } = setup({ filterType: 'time', filterValue: emptyFilterState('time') });
+		openPanel(container);
+
+		const input = container.querySelector('input[aria-label="Filter value"]') as HTMLInputElement;
+		expect(input.type).toBe('time');
+		expect(input.step).toBe('1');
+
+		const opts = Array.from(container.querySelectorAll('select[aria-label="Filter operator"] option')).map(
+			o => o.textContent,
+		);
+		expect(opts).toEqual(['Equals', 'Before', 'After', 'Between', 'Blank', 'Not blank']);
+	});
+
+	test('between shows two time inputs', () => {
+		const { container } = setup({ filterType: 'time', filterValue: emptyFilterState('time') });
+		openPanel(container);
+		fireEvent.change(container.querySelector('select[aria-label="Filter operator"]') as HTMLSelectElement, {
+			target: { value: 'between' },
+		});
+		const inputs = container.querySelectorAll('input[type="time"]');
+		expect(inputs).toHaveLength(2);
+	});
+});
+
 describe('ColumnFilter:localization (options prop)', () => {
 	const options = {
 		filterColumnAriaLabel: 'test-filter-col',

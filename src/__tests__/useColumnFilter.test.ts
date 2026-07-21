@@ -211,6 +211,90 @@ describe('useColumnFilter:date operators', () => {
 	});
 });
 
+describe('useColumnFilter:datetime operators', () => {
+	type Event = { id: number; at: string };
+	const events: Event[] = [
+		{ id: 1, at: '2024-01-01T09:00' },
+		{ id: 2, at: '2024-01-01T15:30' },
+		{ id: 3, at: '2024-01-01T15:30:45' },
+		{ id: 4, at: '2024-01-02T08:00' },
+	];
+	const cols: TableColumn<Event>[] = [
+		{ id: 'at', name: 'At', selector: r => r.at, filterable: true, filterType: 'datetime' },
+	];
+	const setFilter = (filter: FilterState) => {
+		const { result } = renderHook(() => useColumnFilter<Event>(cols, { at: filter }));
+		return result.current.filteredData(events);
+	};
+
+	test('equals matches the exact instant, not the whole day', () => {
+		expect(setFilter({ condition1: { operator: 'equals', value: '2024-01-01T15:30' } }).map(r => r.id)).toEqual([2]);
+	});
+
+	test('before / after compare on time of day', () => {
+		expect(setFilter({ condition1: { operator: 'before', value: '2024-01-01T12:00' } }).map(r => r.id)).toEqual([1]);
+		expect(setFilter({ condition1: { operator: 'after', value: '2024-01-01T12:00' } }).map(r => r.id)).toEqual([
+			2, 3, 4,
+		]);
+	});
+
+	test('between bounds a time window across days', () => {
+		expect(
+			setFilter({
+				condition1: { operator: 'between', value: '2024-01-01T15:00', value2: '2024-01-02T09:00' },
+			}).map(r => r.id),
+		).toEqual([2, 3, 4]);
+	});
+});
+
+describe('useColumnFilter:time operators', () => {
+	// Same clock times spread across different days — the date must be ignored.
+	type Log = { id: number; ts: string };
+	const logs: Log[] = [
+		{ id: 1, ts: '2024-01-01T03:15:00' },
+		{ id: 2, ts: '2024-02-14T09:30:00' },
+		{ id: 3, ts: '2024-03-20T17:45:30' },
+		{ id: 4, ts: '2024-04-01T23:10:00' },
+		{ id: 5, ts: '2024-05-05T00:20:00' },
+	];
+	const cols: TableColumn<Log>[] = [
+		{ id: 'ts', name: 'Timestamp', selector: r => r.ts, filterable: true, filterType: 'time' },
+	];
+	const setFilter = (filter: FilterState) => {
+		const { result } = renderHook(() => useColumnFilter<Log>(cols, { ts: filter }));
+		return result.current.filteredData(logs).map(r => r.id);
+	};
+
+	test('after matches a time of day on every date', () => {
+		expect(setFilter({ condition1: { operator: 'after', value: '17:00' } })).toEqual([3, 4]);
+	});
+
+	test('before ignores the date component', () => {
+		expect(setFilter({ condition1: { operator: 'before', value: '09:30' } })).toEqual([1, 5]);
+	});
+
+	test('equals matches to the second', () => {
+		expect(setFilter({ condition1: { operator: 'equals', value: '17:45:30' } })).toEqual([3]);
+		expect(setFilter({ condition1: { operator: 'equals', value: '17:45' } })).toEqual([]);
+	});
+
+	test('between bounds a normal daytime window', () => {
+		expect(setFilter({ condition1: { operator: 'between', value: '09:00', value2: '18:00' } })).toEqual([2, 3]);
+	});
+
+	test('between wraps past midnight when start is later than end', () => {
+		// Overnight window 22:00–06:00 matches late-night and early-morning rows
+		expect(setFilter({ condition1: { operator: 'between', value: '22:00', value2: '06:00' } })).toEqual([1, 4, 5]);
+	});
+
+	test('non-time cell values do not match', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Log>(cols, { ts: { condition1: { operator: 'after', value: '00:00' } } }),
+		);
+		expect(result.current.filteredData([{ id: 9, ts: 'not a time' }])).toEqual([]);
+	});
+});
+
 describe('useColumnFilter:condition combinators', () => {
 	const setFilter = (filter: FilterState) => {
 		const { result } = renderHook(() => useColumnFilter<Row>(columns, { name: filter }));

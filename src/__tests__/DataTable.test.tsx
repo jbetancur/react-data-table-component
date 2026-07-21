@@ -2789,6 +2789,18 @@ describe('DataTable::columnFilter', () => {
 		});
 	});
 
+	test('filters a filterable column that has no explicit id', () => {
+		const data = [{ name: 'Apple' }, { name: 'Banana' }];
+		const columns = [{ name: 'Name', selector: (row: (typeof data)[0]) => row.name, filterable: true }];
+		const { container } = render(<DataTable data={data} columns={columns} keyField="name" />);
+
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'ban' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(1);
+	});
+
 	test('keeps table head visible when a filter matches no rows', () => {
 		const data = [
 			{ id: 1, some: { name: 'Apple' } },
@@ -2811,6 +2823,46 @@ describe('DataTable::columnFilter', () => {
 		// The head must persist so the filter can be cleared
 		expect(container.querySelector('.rdt_TableHead')).not.toBeNull();
 		expect(container.querySelector('.rdt_filterIcon')).not.toBeNull();
+	});
+
+	test('with client pagination, a filter matches across all pages, not just the current one', () => {
+		const data = Array.from({ length: 20 }, (_, i) => ({
+			id: i + 1,
+			name: i % 2 === 0 ? 'match' : 'other',
+		}));
+		const columns = [{ name: 'Name', id: 'name', selector: (row: (typeof data)[0]) => row.name, filterable: true }];
+		const { container } = render(<DataTable data={data} columns={columns} pagination paginationPerPage={10} />);
+
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, {
+			target: { value: 'match' },
+		});
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+
+		// 10 rows match across the whole set; all fit on the first filtered page.
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(10);
+	});
+
+	test('filtering on a later page clamps back to a page with results', () => {
+		const data = Array.from({ length: 30 }, (_, i) => ({
+			id: i + 1,
+			// only rows 1-3 match; they live on page 1
+			name: i < 3 ? 'apple' : 'other',
+		}));
+		const columns = [{ name: 'Name', id: 'name', selector: (row: (typeof data)[0]) => row.name, filterable: true }];
+		const { container } = render(<DataTable data={data} columns={columns} pagination paginationPerPage={10} />);
+
+		// Go to the last page, then filter — the matches only exist on page 1
+		fireEvent.click(container.querySelector('#pagination-last-page') as HTMLButtonElement);
+
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, {
+			target: { value: 'apple' },
+		});
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+
+		// Page clamps back so the 3 matches render rather than an empty page
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(3);
 	});
 
 	test('clears filter when Clear button is clicked', () => {

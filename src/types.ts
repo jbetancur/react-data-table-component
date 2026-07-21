@@ -5,7 +5,7 @@ export type CSSObject = React.CSSProperties;
 
 // ── Column filter types ────────────────────────────────────────────────────────
 
-export type FilterType = 'text' | 'number' | 'date';
+export type FilterType = 'text' | 'number' | 'date' | 'datetime' | 'time';
 
 export type FilterOperator =
 	| 'contains'
