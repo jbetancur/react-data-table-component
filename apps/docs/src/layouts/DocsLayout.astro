@@ -235,10 +235,11 @@ function HeadlessTable({ data }: { data: Employee[] }) {
             {tableColumns.map(col => (
               <th key={col.id}
                 onClick={() => col.sortable && handleSort({
-                  type: 'SORT_CHANGE', sortColumn: col,
-                  sortDirection: selectedColumn?.id === col.id && sortDirection === SortOrder.ASC
+                  type: 'SORT_CHANGE', selectedColumn: col,
+                  additive: false, defaultSortDirection: SortOrder.ASC,
+                  direction: selectedColumn?.id === col.id && sortDirection === SortOrder.ASC
                     ? SortOrder.DESC : SortOrder.ASC,
-                  clearSelectedRows: false,
+                  clearSelectedOnSort: false,
                 })}
               >
                 {col.name}

@@ -141,6 +141,20 @@
 }
 
 /*
+ * Inside a fixed-header scroll container the browser can skip layout and paint
+ * for rows outside the viewport. contain-intrinsic-size keeps the scrollbar
+ * stable by estimating skipped rows at the theme row height.
+ */
+.rdt_responsiveWrapperFixed .rdt_row {
+	content-visibility: auto;
+	contain-intrinsic-size: auto var(--rdt-row-height, 48px);
+}
+
+.rdt_responsiveWrapperFixed .rdt_rowDense {
+	contain-intrinsic-size: auto 32px;
+}
+
+/*
  * Row separators are drawn on each cell rather than on the row container.
  * This keeps the divider line visible on sticky (pinned) cells even when
  * the table scrolls horizontally — the border travels with the cell, not

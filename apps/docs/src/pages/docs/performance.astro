@@ -2,6 +2,9 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import Demo from '../../components/Demo.astro';
+import PerformanceDemo from '../../components/demos/PerformanceDemo.tsx';
+import performanceSource from '../../components/demos/PerformanceDemo.tsx?raw';
 ---
 
 <DocsLayout title="Performance | react-data-table-component" description="Tips for rendering large datasets in react-data-table-component: memoization, virtualization, and server-side data patterns.">
@@ -31,7 +34,31 @@ import DocsTable from '../../components/DocsTable.astro';
     ]}
   />
 
-  <h2>The biggest footgun: new references every render</h2>
+  <h2>Try it yourself</h2>
+
+  <p>
+    Don't take the table's word for it. This demo generates the dataset in your browser and
+    times every interaction: data generation, sorting, filtering, and page changes. You can
+    see exactly where client-side handling stops being free on your hardware.
+  </p>
+
+  <Demo
+    title="Stress test"
+    description="Pick a row and column count, then sort, filter, and paginate. The readout shows generation time and click-to-render time for the last interaction."
+    code={performanceSource}
+  >
+    <PerformanceDemo client:load />
+  </Demo>
+
+  <h2>Recommendations</h2>
+
+  <p>
+    Everything in this section is in your hands as a consumer of the library. The table
+    memoizes its own internals; these patterns keep your side of the contract so that
+    memoization actually holds.
+  </p>
+
+  <h3>The biggest footgun: new references every render</h3>
 
   <p>
     <code>DataTable</code> uses <code>React.memo</code> on its row and cell components.
@@ -75,7 +102,7 @@ const columns = useMemo<TableColumn<Item>[]>(
   [showSalary],
 );`} />
 
-  <h2>Stabilize event handlers</h2>
+  <h3>Stabilize event handlers</h3>
 
   <p>
     Pass <code>useCallback</code>-wrapped handlers for any callback prop you read from inside
@@ -92,7 +119,7 @@ const columns = useMemo<TableColumn<Item>[]>(
 
 <DataTable columns={columns} data={data} onRowClicked={handleRowClicked} />;`} />
 
-  <h2>Stabilize the data array</h2>
+  <h3>Stabilize the data array</h3>
 
   <p>
     A new <code>data</code> array re-runs sort, pagination slicing, and filter predicates.
@@ -113,7 +140,7 @@ function App() {
   return <DataTable data={items} columns={columns} />;
 }`} />
 
-  <h2>Sorting is O(n log n) in the table</h2>
+  <h3>Sorting is O(n log n) in the table</h3>
 
   <p>
     Client-side sort runs on the full <code>data</code> array on every sort change. For
@@ -128,7 +155,7 @@ function App() {
   onSort={(column, direction) => refetch({ sortBy: column.id, sortDir: direction })}
 />;`} />
 
-  <h2>Server-side pagination</h2>
+  <h3>Server-side pagination</h3>
 
   <p>
     When pagination is server-driven, pass only the current page's rows in <code>data</code>
@@ -146,7 +173,7 @@ function App() {
   pagination
 />;`} />
 
-  <h2>Column filtering</h2>
+  <h3>Column filtering</h3>
 
   <p>
     Built-in filters run client-side on every keystroke. For large datasets, switch to
@@ -174,7 +201,7 @@ useEffect(() => {
   onFilterChange={(columnId, next) => setFilters(prev => ({ ...prev, [columnId]: next }))}
 />;`} />
 
-  <h2>Cell renderers</h2>
+  <h3>Cell renderers</h3>
 
   <p>
     A custom <code>cell</code> renderer runs once per cell on every row re-render. Keep them
@@ -193,7 +220,7 @@ const baseStyle = { padding: 8 };
   cell: row => <span style={row.flagged ? { ...baseStyle, color: 'red' } : baseStyle}>{row.name}</span>;
 }`} />
 
-  <h2>Avoid expensive selectors</h2>
+  <h3>Avoid expensive selectors</h3>
 
   <p>
     <code>selector</code> runs once per cell on render <em>and</em> once per row on every sort
@@ -211,7 +238,7 @@ const enriched = useMemo(() => rows.map(r => ({ ...r, primaryTag: r.tags.find(t 
   selector: r => r.primaryTag;
 }`} />
 
-  <h2>Animations</h2>
+  <h3>Animations</h3>
 
   <p>
     <code>animateRows</code> staggers row entrance and animates sort transitions. On very
