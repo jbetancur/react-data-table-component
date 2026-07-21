@@ -187,12 +187,6 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	}, []);
 
 	const tableId = React.useId();
-	const { filterValues, handleFilterChange, filteredData, filtering } = useColumnFilter(
-		columns,
-		controlledFilterValues,
-		onFilterChangeProp,
-		localization.filter,
-	);
 
 	// ── Column resize state ────────────────────────────────────────────────────
 	const isRTL = useRTL(direction);
@@ -217,6 +211,16 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		columnGroups,
 		defaultSortFieldId,
 		defaultSortAsc,
+	);
+
+	// Filter against the decorated columns (ids auto-assigned by useColumns) so the
+	// head, matcher, and context-menu keying all agree — a column with no explicit
+	// id still filters. Passing raw `columns` here would leave them id-less.
+	const { filterValues, handleFilterChange, filteredData, filtering } = useColumnFilter(
+		tableColumns,
+		controlledFilterValues,
+		onFilterChangeProp,
+		localization.filter,
 	);
 
 	const { effectiveColumns, pinnedOffsets, pinnedTotalWidths, hasPinnedColumns } = useColumnPinning({
@@ -296,8 +300,18 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	});
 
 	// ── Client-side column filtering ───────────────────────────────────────────
+	// Filtering must run on the full sorted set *before* pagination slices it,
+	// otherwise a filter only ever matches rows on the current page. For client
+	// pagination we therefore slice filteredSortedData ourselves; server pagination
+	// and the no-pagination case pass tableRows (already the full set) through.
 	const filteredSortedData = React.useMemo(() => filteredData(sortedData), [filteredData, sortedData]);
-	const filteredTableRows = React.useMemo(() => filteredData(tableRows), [filteredData, tableRows]);
+	const filteredTableRows = React.useMemo(() => {
+		if (pagination && !paginationServer) {
+			const lastIndex = currentPage * rowsPerPage;
+			return filteredSortedData.slice(lastIndex - rowsPerPage, lastIndex);
+		}
+		return filteredData(tableRows);
+	}, [pagination, paginationServer, currentPage, rowsPerPage, filteredSortedData, filteredData, tableRows]);
 
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));

@@ -43,7 +43,7 @@ function operatorsFor(filterType: FilterType, overrides?: ColumnFilterOptions['o
 	const base =
 		filterType === 'number'
 			? DEFAULT_NUMBER_OPERATORS
-			: filterType === 'date'
+			: filterType === 'date' || filterType === 'datetime' || filterType === 'time'
 				? DEFAULT_DATE_OPERATORS
 				: DEFAULT_TEXT_OPERATORS;
 	if (!overrides) return base;
@@ -75,7 +75,19 @@ type ConditionRowProps = {
 function ConditionRow({ condition, filterType, options, onChange, onRemove }: ConditionRowProps): JSX.Element {
 	const operators = operatorsFor(filterType, options.operators);
 	const selected = operators.find(o => o.value === condition.operator) ?? operators[0];
-	const inputType = filterType === 'number' ? 'number' : filterType === 'date' ? 'date' : 'text';
+	const inputType =
+		filterType === 'number'
+			? 'number'
+			: filterType === 'date'
+				? 'date'
+				: filterType === 'datetime'
+					? 'datetime-local'
+					: filterType === 'time'
+						? 'time'
+						: 'text';
+	// Time inputs default to minute precision; step=1 exposes a seconds field so
+	// logs can be filtered to the second.
+	const inputStep = filterType === 'time' ? 1 : undefined;
 
 	return (
 		<div className="rdt_filterConditionRow">
@@ -96,6 +108,7 @@ function ConditionRow({ condition, filterType, options, onChange, onRemove }: Co
 				<input
 					className="rdt_filterInput"
 					type={inputType}
+					step={inputStep}
 					value={condition.value ?? ''}
 					placeholder={options.valuePlaceholder ?? 'Value'}
 					onChange={e => onChange({ ...condition, value: e.target.value })}
@@ -110,6 +123,7 @@ function ConditionRow({ condition, filterType, options, onChange, onRemove }: Co
 					<input
 						className="rdt_filterInput"
 						type={inputType}
+						step={inputStep}
 						value={condition.value2 ?? ''}
 						placeholder={options.value2Placeholder ?? 'Value'}
 						onChange={e => onChange({ ...condition, value2: e.target.value })}

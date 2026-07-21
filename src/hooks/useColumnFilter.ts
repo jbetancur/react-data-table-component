@@ -35,11 +35,48 @@ export function isFilterActive(filter: FilterState): boolean {
 	return isConditionActive(filter.condition1) || (!!filter.condition2 && isConditionActive(filter.condition2));
 }
 
+// Seconds since midnight for a clock time, ignoring any date component.
+// Accepts a bare time ("17:30", "17:30:45") or a full timestamp whose time
+// portion is extracted ("2024-01-01T17:30:00", "2024-01-01 17:30"). Returns
+// null when no HH:MM can be found.
+function timeOfDaySeconds(raw: string): number | null {
+	const match = raw.match(/(\d{1,2}):(\d{2})(?::(\d{2}))?/);
+	if (!match) return null;
+	const h = Number(match[1]);
+	const m = Number(match[2]);
+	const s = match[3] ? Number(match[3]) : 0;
+	if (h > 23 || m > 59 || s > 59) return null;
+	return h * 3600 + m * 60 + s;
+}
+
 function applyCondition(condition: FilterCondition, cellValue: string, filterType: FilterType): boolean {
 	const { operator, value = '', value2 = '' } = condition;
 
 	if (operator === 'blank') return cellValue.trim() === '';
 	if (operator === 'notBlank') return cellValue.trim() !== '';
+
+	if (filterType === 'time') {
+		const t = timeOfDaySeconds(cellValue);
+		if (t === null) return false;
+		const t1 = timeOfDaySeconds(value);
+		const t2 = timeOfDaySeconds(value2);
+		switch (operator) {
+			case 'equals':
+				return t1 !== null && t === t1;
+			case 'before':
+				return t1 !== null && t < t1;
+			case 'after':
+				return t1 !== null && t > t1;
+			case 'between':
+				if (t1 === null) return t2 === null || t <= t2;
+				if (t2 === null) return t >= t1;
+				// A start later than the end is a window that wraps past midnight
+				// (e.g. 22:00–06:00), so match times outside the [t2, t1] gap.
+				return t1 <= t2 ? t >= t1 && t <= t2 : t >= t1 || t <= t2;
+			default:
+				return true;
+		}
+	}
 
 	if (filterType === 'number') {
 		const num = parseFloat(cellValue);
@@ -67,14 +104,15 @@ function applyCondition(condition: FilterCondition, cellValue: string, filterTyp
 		}
 	}
 
-	if (filterType === 'date') {
+	if (filterType === 'date' || filterType === 'datetime') {
 		const d = new Date(cellValue);
 		if (isNaN(d.getTime())) return false;
 		const d1 = new Date(value);
 		const d2 = new Date(value2);
 		switch (operator) {
 			case 'equals':
-				return d.toDateString() === d1.toDateString();
+				// date matches the whole calendar day; datetime matches the exact instant
+				return filterType === 'datetime' ? d.getTime() === d1.getTime() : d.toDateString() === d1.toDateString();
 			case 'before':
 				return d < d1;
 			case 'after':

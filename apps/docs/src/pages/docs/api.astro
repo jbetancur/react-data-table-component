@@ -132,7 +132,7 @@ const columns: TableColumn<MyRow>[] = [
       ['<code>sortFunction</code>', '<code>(a: T, b: T) =&gt; number</code>', 'Custom comparator for this column.'],
       ['<code>sortField</code>', '<code>string</code>', 'Field key passed to <code>onSort</code> for server-side sort identification.'],
       ['<code>filterable</code>', '<code>boolean</code>', 'Show a filter popup for this column.'],
-      ['<code>filterType</code>', '<code>"text" | "number" | "date"</code>', 'Filter operator set and input widget. Defaults to <code>"text"</code>. See <a href="/docs/filtering">Filtering</a>.'],
+      ['<code>filterType</code>', '<code>"text" | "number" | "date" | "datetime" | "time"</code>', 'Filter operator set and input widget. Defaults to <code>"text"</code>. See <a href="/docs/filtering">Filtering</a>.'],
       ['<code>filterFunction</code>', '<code>(row, filter: FilterState) =&gt; boolean</code>', 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.'],
       ['<code>width</code>', '<code>string</code>', 'Fixed column width, e.g. <code>"120px"</code>.'],
       ['<code>minWidth</code>', '<code>string</code>', 'Minimum width.'],

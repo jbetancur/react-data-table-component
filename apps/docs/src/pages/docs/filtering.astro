@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import FilteringDemo from '../../components/demos/FilteringDemo.tsx';
+import TimeFilterDemo from '../../components/demos/TimeFilterDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
 ---
@@ -58,11 +59,18 @@ const columns: TableColumn<Employee>[] = [
 ];
 
 export default function App() {
-  return <DataTable columns={columns} data={data} highlightOnHover />;
+  return <DataTable columns={columns} data={data} highlightOnHover pagination paginationPerPage={10} />;
 }`}
   >
     <FilteringDemo client:load />
   </Demo>
+
+  <p>
+    Filtering runs on the full dataset before pagination, so a filter matches rows on every
+    page, not just the one you are viewing. The result count and page navigation update to the
+    filtered set. This applies to client-side pagination; see the
+    <a href="/docs/recipes/server-side">server-side recipe</a> for the server case.
+  </p>
 
   <h2>Quick start</h2>
   <p>
@@ -84,6 +92,8 @@ export default function App() {
   { id: 'name', name: 'Name', selector: r => r.name, filterable: true },
   { id: 'score', name: 'Score', selector: r => r.score, filterable: true, filterType: 'number' },
   { id: 'dob', name: 'Birth date', selector: r => r.dob, filterable: true, filterType: 'date' },
+  { id: 'seen', name: 'Last seen', selector: r => r.seen, filterable: true, filterType: 'datetime' },
+  { id: 'ranAt', name: 'Ran at', selector: r => r.ranAt, filterable: true, filterType: 'time' },
 ];`} />
 
   <DocsTable
@@ -92,14 +102,47 @@ export default function App() {
       ['<code>"text"</code> (default)', 'Contains', 'Text', 'Contains, Does not contain, Equals, Does not equal, Begins with, Ends with, Blank, Not blank'],
       ['<code>"number"</code>', 'Equals', 'Number', 'Equals, Does not equal, Greater than, ≥, Less than, ≤, Between, Blank, Not blank'],
       ['<code>"date"</code>', 'Equals', 'Date', 'Equals, Before, After, Between, Blank, Not blank'],
+      ['<code>"datetime"</code>', 'Equals', 'Date &amp; time', 'Equals, Before, After, Between, Blank, Not blank'],
+      ['<code>"time"</code>', 'Equals', 'Time', 'Equals, Before, After, Between, Blank, Not blank'],
     ]}
   />
 
   <p>
     <strong>Blank / Not blank</strong> match on empty cells and need no value input.
-    <strong>Between</strong> (number and date) shows two value inputs for inclusive bounds.
-    For <code>"date"</code> columns, <code>selector</code> should return an ISO string (<code>"2024-03-15"</code>) or any value parseable by <code>new Date()</code>.
+    <strong>Between</strong> (number, date, datetime, and time) shows two value inputs for inclusive bounds.
+    For <code>"date"</code> and <code>"datetime"</code> columns, <code>selector</code> should return an ISO string (<code>"2024-03-15"</code> or <code>"2024-03-15T14:30"</code>) or any value parseable by <code>new Date()</code>.
   </p>
+  <p>
+    <code>"date"</code> compares by calendar day, so <strong>Equals</strong> matches any time on that day.
+    <code>"datetime"</code> compares the exact instant, so <strong>Equals</strong> matches a specific minute. Because
+    <code>datetime-local</code> inputs are timezone-naive, filtering is exact only when your cell values are also local
+    time (no <code>Z</code> / offset); otherwise supply a <code>filterFunction</code>.
+  </p>
+  <p>
+    <code>"time"</code> compares the <em>time of day</em> and ignores the date, so it filters across every date at once
+    — useful for logs (&ldquo;anything after 17:00&rdquo;, &ldquo;errors between 02:00 and 04:00&rdquo;). The input
+    accepts seconds, and the cell value may be a bare time (<code>"17:30"</code>) or any timestamp whose time portion
+    is read (<code>"2024-03-15T17:30:45"</code>). A <strong>Between</strong> whose start is later than its end wraps
+    past midnight, so <code>22:00</code>–<code>06:00</code> matches an overnight window.
+  </p>
+
+  <Demo
+    title="Time-of-day filter"
+    description="Log rows across several days. Open the Time filter, choose Between, and enter 02:00 and 04:00 to surface the nightly cron failures regardless of date. Try 22:00 to 06:00 for an overnight window that wraps past midnight."
+    code={`const columns: TableColumn<LogEntry>[] = [
+  {
+    id: 'at',
+    name: 'Time',
+    selector: r => r.at,               // full ISO timestamp
+    format: r => r.at.slice(11),       // show just the time
+    filterable: true,
+    filterType: 'time',                // filters by time of day, ignoring the date
+  },
+  // ...
+];`}
+  >
+    <TimeFilterDemo client:load />
+  </Demo>
 
   <h2>Two conditions per column</h2>
   <p>
