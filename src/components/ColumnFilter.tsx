@@ -58,6 +58,12 @@ function emptyCondition(filterType: FilterType): FilterCondition {
 	return { operator: defaultOperator(filterType) };
 }
 
+// Shield the table's keyboard handlers (cell navigation, sort) from keystrokes in
+// filter inputs, but let Escape through so the panel's close handler still fires.
+function stopUnlessEscape(e: React.KeyboardEvent) {
+	if (e.key !== 'Escape') e.stopPropagation();
+}
+
 type ConditionRowProps = {
 	condition: FilterCondition;
 	filterType: FilterType;
@@ -93,7 +99,7 @@ function ConditionRow({ condition, filterType, options, onChange, onRemove }: Co
 					value={condition.value ?? ''}
 					placeholder={options.valuePlaceholder ?? 'Value'}
 					onChange={e => onChange({ ...condition, value: e.target.value })}
-					onKeyDown={e => e.stopPropagation()}
+					onKeyDown={stopUnlessEscape}
 					aria-label={options.valueAriaLabel ?? 'Filter value'}
 				/>
 			)}
@@ -107,7 +113,7 @@ function ConditionRow({ condition, filterType, options, onChange, onRemove }: Co
 						value={condition.value2 ?? ''}
 						placeholder={options.value2Placeholder ?? 'Value'}
 						onChange={e => onChange({ ...condition, value2: e.target.value })}
-						onKeyDown={e => e.stopPropagation()}
+						onKeyDown={stopUnlessEscape}
 						aria-label={options.value2AriaLabel ?? 'Filter second value'}
 					/>
 				</>
@@ -177,7 +183,10 @@ export default function ColumnFilter({
 			}
 		}
 		function handleKeyDown(e: KeyboardEvent) {
-			if (e.key === 'Escape') setOpen(false);
+			if (e.key === 'Escape') {
+				setOpen(false);
+				buttonRef.current?.focus();
+			}
 		}
 		// The panel is position: fixed, so any scroll (page or the table's own
 		// scroll container) moves the anchor button out from under it. Close rather
@@ -210,6 +219,7 @@ export default function ColumnFilter({
 	function handleApply() {
 		onFilterChange(columnId, pending);
 		setOpen(false);
+		buttonRef.current?.focus();
 	}
 
 	function handleClear() {
@@ -217,6 +227,7 @@ export default function ColumnFilter({
 		setPending(empty);
 		onFilterChange(columnId, empty);
 		setOpen(false);
+		buttonRef.current?.focus();
 	}
 
 	function handleCondition1Change(next: FilterCondition) {

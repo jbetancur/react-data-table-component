@@ -2789,6 +2789,30 @@ describe('DataTable::columnFilter', () => {
 		});
 	});
 
+	test('keeps table head visible when a filter matches no rows', () => {
+		const data = [
+			{ id: 1, some: { name: 'Apple' } },
+			{ id: 2, some: { name: 'Banana' } },
+		];
+		const columns = [
+			{
+				name: 'Name',
+				id: 'name',
+				selector: (row: (typeof data)[0]) => row.some.name,
+				filterable: true,
+			},
+		];
+		const { container } = render(<DataTable data={data} columns={columns} />);
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'zzz' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(0);
+		expect(container.querySelector('.rdt_noData')).not.toBeNull();
+		// The head must persist so the filter can be cleared
+		expect(container.querySelector('.rdt_TableHead')).not.toBeNull();
+		expect(container.querySelector('.rdt_filterIcon')).not.toBeNull();
+	});
+
 	test('clears filter when Clear button is clicked', () => {
 		const data = [
 			{ id: 1, some: { name: 'Apple' } },

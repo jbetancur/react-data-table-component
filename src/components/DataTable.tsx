@@ -21,7 +21,7 @@ import { HeadContext } from '../context/HeadContext';
 import useColumns from '../hooks/useColumns';
 import useTableState from '../hooks/useTableState';
 import useTableData from '../hooks/useTableData';
-import useColumnFilter from '../hooks/useColumnFilter';
+import useColumnFilter, { isFilterActive } from '../hooks/useColumnFilter';
 import useColumnResize, { useResizeSlice } from '../hooks/useColumnResize';
 import useRTL from '../hooks/useRTL';
 import useRowContextValue from '../hooks/useRowContextValue';
@@ -338,7 +338,11 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		[handleChangeRowsPerPageState, filteredTableRows.length],
 	);
 
-	const showTableHead = !noTableHead && (persistTableHead || progressPending || filteredSortedData.length > 0);
+	// An active column filter must keep the head visible even with zero matches —
+	// the filter UI lives in the head, so hiding it would strand the filter.
+	const hasActiveFilters = React.useMemo(() => Object.values(filterValues).some(isFilterActive), [filterValues]);
+	const showTableHead =
+		!noTableHead && (persistTableHead || progressPending || hasActiveFilters || filteredSortedData.length > 0);
 	const showHeader = !noHeader && !!(title || actions);
 
 	// ── Cell navigation ────────────────────────────────────────────────────────

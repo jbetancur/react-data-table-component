@@ -142,6 +142,25 @@ describe('ContextMenu:built-in actions', () => {
 		expect(headerCell(container, 'age')).not.toBeNull();
 	});
 
+	test('hide column clears its active filter so rows are not stranded filtered', () => {
+		const filterableColumns: TableColumn<Row>[] = [
+			{ id: 'name', name: 'Name', selector: row => row.name, filterable: true },
+			{ id: 'age', name: 'Age', selector: row => row.age },
+		];
+		const { container } = render(<DataTable columns={filterableColumns} data={data} contextMenu />);
+
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'zeta' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(container.querySelectorAll('.rdt_row').length).toBe(1);
+
+		fireEvent.contextMenu(headerCell(container, 'name'));
+		fireEvent.click(menuItem('Hide column') as HTMLElement);
+
+		expect(container.querySelector('.rdt_filterIcon')).toBeNull();
+		expect(container.querySelectorAll('.rdt_row').length).toBe(2);
+	});
+
 	test('pin left moves the column to the first position and offers unpin', () => {
 		const onColumnOrderChange = vi.fn();
 		const { container } = render(

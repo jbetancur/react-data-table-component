@@ -2,6 +2,19 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.7.1
+
+### Bug fixes
+
+- Faster cell rendering on large tables: non-editable cells now skip editing state entirely and share hoisted style objects, and rows inside a fixed-header scroll container use `content-visibility: auto` so off-screen rows skip layout and paint. → [Performance](/docs/performance) ([#1360](https://github.com/jbetancur/react-data-table-component/pull/1360))
+- Applying a column filter that matched no rows hid the table head along with the rows, leaving no way to clear the filter. The head now stays visible while any column filter is active. → [Filtering](/docs/filtering) ([#1359](https://github.com/jbetancur/react-data-table-component/issues/1359))
+- A column filter with only its second condition filled was silently ignored; it now applies on its own, and an empty first condition no longer force-matches every row under OR logic. → [Filtering](/docs/filtering)
+- A `between` filter with one empty bound filtered out every row; the empty side is now unbounded (lower-only acts as ≥, upper-only as ≤) for both number and date columns. → [Filtering](/docs/filtering)
+- Hiding a column via the context menu now clears that column's active filter, which otherwise kept filtering rows with no visible way to clear it. → [Context menu](/docs/context-menu)
+- Pressing Escape while typing in a filter input now closes the filter panel, and closing via Escape, Apply, or Clear returns focus to the filter icon. → [Filtering](/docs/filtering)
+
+---
+
 ## 8.7.0
 
 ### New features

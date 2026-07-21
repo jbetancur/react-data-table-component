@@ -27,11 +27,12 @@ export function emptyFilterState(filterType: FilterType = 'text'): FilterState {
 
 function isConditionActive(condition: FilterCondition): boolean {
 	if (condition.operator === 'blank' || condition.operator === 'notBlank') return true;
+	if (condition.operator === 'between' && (condition.value2?.trim() ?? '') !== '') return true;
 	return (condition.value?.trim() ?? '') !== '';
 }
 
 export function isFilterActive(filter: FilterState): boolean {
-	return isConditionActive(filter.condition1);
+	return isConditionActive(filter.condition1) || (!!filter.condition2 && isConditionActive(filter.condition2));
 }
 
 function applyCondition(condition: FilterCondition, cellValue: string, filterType: FilterType): boolean {
@@ -59,7 +60,8 @@ function applyCondition(condition: FilterCondition, cellValue: string, filterTyp
 			case 'lte':
 				return num <= v1;
 			case 'between':
-				return num >= v1 && num <= v2;
+				// An empty bound is unbounded on that side
+				return (isNaN(v1) || num >= v1) && (isNaN(v2) || num <= v2);
 			default:
 				return true;
 		}
@@ -78,7 +80,7 @@ function applyCondition(condition: FilterCondition, cellValue: string, filterTyp
 			case 'after':
 				return d > d1;
 			case 'between':
-				return d >= d1 && d <= d2;
+				return (isNaN(d1.getTime()) || d >= d1) && (isNaN(d2.getTime()) || d <= d2);
 			default:
 				return true;
 		}
@@ -113,14 +115,18 @@ function rowMatchesFilter<T>(row: T, filter: FilterState, col: TableColumn<T>): 
 	const raw = col.selector ? col.selector(row) : '';
 	const cellValue = String(raw ?? '');
 
-	const r1 = applyCondition(filter.condition1, cellValue, filterType);
+	// Only active conditions participate — an empty condition1 must not force-match
+	// (OR) or be a no-op operand (AND) when condition2 is doing the filtering.
+	const c1Active = isConditionActive(filter.condition1);
+	const c2Active = !!filter.condition2 && isConditionActive(filter.condition2);
 
-	if (filter.condition2 && isConditionActive(filter.condition2)) {
-		const r2 = applyCondition(filter.condition2, cellValue, filterType);
+	if (c1Active && c2Active) {
+		const r1 = applyCondition(filter.condition1, cellValue, filterType);
+		const r2 = applyCondition(filter.condition2!, cellValue, filterType);
 		return filter.logic === 'OR' ? r1 || r2 : r1 && r2;
 	}
-
-	return r1;
+	if (c2Active) return applyCondition(filter.condition2!, cellValue, filterType);
+	return applyCondition(filter.condition1, cellValue, filterType);
 }
 
 // Module-level so the default argument does not mint a new object per render.
