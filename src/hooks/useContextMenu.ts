@@ -271,6 +271,11 @@ export default function useContextMenu<T>({
 						break;
 					case 'hide-column':
 						onHideColumn(column.id!);
+						// A hidden column has no filter icon left, so an active filter
+						// would keep filtering with no way to clear it.
+						if (filterValues[String(column.id)]) {
+							onFilterChange(column.id!, emptyFilterState(column.filterType));
+						}
 						break;
 					case 'reset':
 						onResetColumns();

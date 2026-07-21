@@ -42,6 +42,26 @@ describe('ColumnFilter:panel open/close', () => {
 		expect(container.querySelector('.rdt_filterPanel')).toBeNull();
 	});
 
+	test('pressing Escape inside a filter input closes the panel and refocuses the icon', () => {
+		const { container } = setup();
+		openPanel(container);
+		const input = container.querySelector('.rdt_filterInput') as HTMLInputElement;
+		input.focus();
+		fireEvent.keyDown(input, { key: 'Escape' });
+		expect(container.querySelector('.rdt_filterPanel')).toBeNull();
+		expect(document.activeElement).toBe(container.querySelector('.rdt_filterIcon'));
+	});
+
+	test('other keys in a filter input do not propagate to the table', () => {
+		const documentKeyDown = vi.fn();
+		document.addEventListener('keydown', documentKeyDown);
+		const { container } = setup();
+		openPanel(container);
+		fireEvent.keyDown(container.querySelector('.rdt_filterInput') as HTMLInputElement, { key: 'a' });
+		document.removeEventListener('keydown', documentKeyDown);
+		expect(documentKeyDown).not.toHaveBeenCalled();
+	});
+
 	test('clicking outside the panel closes it', () => {
 		const { container } = setup();
 		openPanel(container);

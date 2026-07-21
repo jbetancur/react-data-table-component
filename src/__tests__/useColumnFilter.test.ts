@@ -40,6 +40,20 @@ describe('isFilterActive', () => {
 		expect(isFilterActive({ condition1: { operator: 'blank' } })).toBe(true);
 		expect(isFilterActive({ condition1: { operator: 'notBlank' } })).toBe(true);
 	});
+
+	test('is active when only the second condition has a value', () => {
+		expect(
+			isFilterActive({
+				condition1: { operator: 'contains' },
+				condition2: { operator: 'contains', value: 'app' },
+			}),
+		).toBe(true);
+	});
+
+	test('between is active with only one bound filled', () => {
+		expect(isFilterActive({ condition1: { operator: 'between', value: '10' } })).toBe(true);
+		expect(isFilterActive({ condition1: { operator: 'between', value2: '20' } })).toBe(true);
+	});
 });
 
 describe('useColumnFilter:uncontrolled', () => {
@@ -147,6 +161,14 @@ describe('useColumnFilter:number operators', () => {
 	test('equals only matches the exact value', () => {
 		expect(setFilter({ condition1: { operator: 'equals', value: '20' } }).map(r => r.id)).toEqual([2]);
 	});
+
+	test('between with only a lower bound acts as gte', () => {
+		expect(setFilter({ condition1: { operator: 'between', value: '15' } }).map(r => r.id)).toEqual([2, 3]);
+	});
+
+	test('between with only an upper bound acts as lte', () => {
+		expect(setFilter({ condition1: { operator: 'between', value2: '15' } }).map(r => r.id)).toEqual([1, 4]);
+	});
 });
 
 describe('useColumnFilter:date operators', () => {
@@ -171,6 +193,11 @@ describe('useColumnFilter:date operators', () => {
 		expect(
 			setFilter({ condition1: { operator: 'between', value: '2024-01-01', value2: '2024-06-15' } }).map(r => r.id),
 		).toEqual([1, 2, 4]);
+	});
+
+	test('between with only one date bound leaves the other side unbounded', () => {
+		expect(setFilter({ condition1: { operator: 'between', value: '2024-06-01' } }).map(r => r.id)).toEqual([2, 3]);
+		expect(setFilter({ condition1: { operator: 'between', value2: '2024-06-01' } }).map(r => r.id)).toEqual([1, 4]);
 	});
 
 	test('unknown date operator returns all rows', () => {
@@ -218,6 +245,26 @@ describe('useColumnFilter:condition combinators', () => {
 		}).map(r => r.name);
 
 		expect(names).toEqual(['Apple', 'Banana']);
+	});
+
+	test('second condition applies alone when the first is empty', () => {
+		const names = setFilter({
+			condition1: { operator: 'contains' },
+			condition2: { operator: 'startsWith', value: 'ban' },
+			logic: 'AND',
+		}).map(r => r.name);
+
+		expect(names).toEqual(['Banana']);
+	});
+
+	test('empty first condition does not force-match every row under OR', () => {
+		const names = setFilter({
+			condition1: { operator: 'contains' },
+			condition2: { operator: 'equals', value: 'cherry' },
+			logic: 'OR',
+		}).map(r => r.name);
+
+		expect(names).toEqual(['Cherry']);
 	});
 });
 
