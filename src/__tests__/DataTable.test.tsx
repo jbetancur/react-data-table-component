@@ -3059,3 +3059,31 @@ describe('DataTable::footer', () => {
 		expect(container.querySelector('.rdt_footer')).toBeNull();
 	});
 });
+
+describe('DataTable::animateRows', () => {
+	type Row = { id: number; name: string };
+	const columns = [{ id: 'name', name: 'Name', selector: (r: Row) => r.name }];
+
+	test('a row added after mount animates with a numeric keyField', async () => {
+		const initial: Row[] = [
+			{ id: 1, name: 'a' },
+			{ id: 2, name: 'b' },
+		];
+		const { container, rerender } = render(<DataTable data={initial} columns={columns} animateRows keyField="id" />);
+		await act(async () => {
+			await Promise.resolve();
+		});
+
+		rerender(<DataTable data={[...initial, { id: 3, name: 'c' }]} columns={columns} animateRows keyField="id" />);
+		await act(async () => {
+			await Promise.resolve();
+		});
+
+		const rows = Array.from(container.querySelectorAll('.rdt_TableBody .rdt_row'));
+		const added = rows.find(r => r.id === 'row-3');
+		const existing = rows.find(r => r.id === 'row-1');
+		// The new row animates; a row that was already present does not.
+		expect(added?.className).toContain('rdt_animatedRow');
+		expect(existing?.className).not.toContain('rdt_animatedRow');
+	});
+});

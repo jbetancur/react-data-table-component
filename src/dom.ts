@@ -1,20 +1,30 @@
 /** DOM-touching helpers (drag ghosts, FLIP animations). Kept out of util.ts so
  * that module stays pure logic. */
 
+// Tracks the in-flight cleanup for each animating element so a re-sort mid-flight
+// tears down the previous transition instead of leaking its listener and styles.
+const flipCleanups = new WeakMap<HTMLElement, () => void>();
+
 /** FLIP: element has already moved to its new layout position; start it offset
  * by `delta` (its old position) and transition back to rest. */
 export function flipElement(el: HTMLElement, delta: number, axis: 'X' | 'Y', duration: number): void {
+	// If a prior FLIP on this element is still running, cancel it first so its
+	// transitionend can't fire late and its styles can't linger.
+	flipCleanups.get(el)?.();
+
 	el.style.transform = `translate${axis}(${delta}px)`;
 	el.style.transition = 'none';
 	el.getBoundingClientRect(); // force reflow so the offset applies before transitioning
-	el.style.transition = `transform ${duration}s cubic-bezier(0.2, 0, 0, 1)`;
+	el.style.transition = `transform ${duration}s cubic-bezier(0.4, 0, 0.2, 1)`;
 	el.style.transform = '';
-	const onEnd = () => {
+	const cleanup = () => {
 		el.style.transform = '';
 		el.style.transition = '';
-		el.removeEventListener('transitionend', onEnd);
+		el.removeEventListener('transitionend', cleanup);
+		flipCleanups.delete(el);
 	};
-	el.addEventListener('transitionend', onEnd);
+	flipCleanups.set(el, cleanup);
+	el.addEventListener('transitionend', cleanup);
 }
 
 const DRAG_GHOST_ICON =
