@@ -25,6 +25,20 @@ export function emptyFilterState(filterType: FilterType = 'text'): FilterState {
 	return { condition1: { operator: op } };
 }
 
+// True when a filter carries nothing a consumer could have intended — the default
+// operator for its type, no values, and no second condition. Used to tell an
+// applied-but-cleared filterFunction filter from an intentional value-less one.
+function isEmptyFilter(filter: FilterState, filterType: FilterType = 'text'): boolean {
+	const { operator, value, value2 } = filter.condition1;
+	const defaultOp: FilterOperator = filterType === 'text' ? 'contains' : 'equals';
+	return (
+		operator === defaultOp &&
+		(value?.trim() ?? '') === '' &&
+		(value2?.trim() ?? '') === '' &&
+		filter.condition2 === undefined
+	);
+}
+
 function isConditionActive(condition: FilterCondition): boolean {
 	if (condition.operator === 'blank' || condition.operator === 'notBlank') return true;
 	if (condition.operator === 'between' && (condition.value2?.trim() ?? '') !== '') return true;
@@ -33,6 +47,19 @@ function isConditionActive(condition: FilterCondition): boolean {
 
 export function isFilterActive(filter: FilterState): boolean {
 	return isConditionActive(filter.condition1) || (!!filter.condition2 && isConditionActive(filter.condition2));
+}
+
+// The calendar day (YYYY-MM-DD) of a date-ish string, timezone-agnostically.
+// An ISO date prefix is used verbatim so "2024-03-15" and "2024-03-15T00:30"
+// yield the same day; anything else falls back to the local day of a parsed Date.
+function calendarDay(raw: string): string | null {
+	const iso = raw.match(/^(\d{4}-\d{2}-\d{2})/);
+	if (iso) return iso[1];
+	const d = new Date(raw);
+	if (isNaN(d.getTime())) return null;
+	const m = String(d.getMonth() + 1).padStart(2, '0');
+	const day = String(d.getDate()).padStart(2, '0');
+	return `${d.getFullYear()}-${m}-${day}`;
 }
 
 // Seconds since midnight for a clock time, ignoring any date component.
@@ -111,8 +138,12 @@ function applyCondition(condition: FilterCondition, cellValue: string, filterTyp
 		const d2 = new Date(value2);
 		switch (operator) {
 			case 'equals':
-				// date matches the whole calendar day; datetime matches the exact instant
-				return filterType === 'datetime' ? d.getTime() === d1.getTime() : d.toDateString() === d1.toDateString();
+				// datetime matches the exact instant; date matches the calendar day.
+				// For the day comparison we compare the ISO Y-M-D of each side rather
+				// than parsed Date objects: a bare "2024-03-15" parses as UTC midnight
+				// while "2024-03-15T00:30" parses as local, so toDateString() on the
+				// two disagrees by a day in non-UTC zones. Comparing day strings avoids it.
+				return filterType === 'datetime' ? d.getTime() === d1.getTime() : calendarDay(cellValue) === calendarDay(value);
 			case 'before':
 				return d < d1;
 			case 'after':
@@ -190,9 +221,19 @@ export default function useColumnFilter<T>(
 		[onFilterChangeProp],
 	);
 
+	// A filter is active if it matches values the built-in matcher understands, OR
+	// the column supplies a filterFunction and the condition is anything other than
+	// the pristine empty default — a custom function owns its own activation logic,
+	// so it must run even for value-less operators the built-in heuristic ignores.
 	const activeFilters = React.useMemo(
-		() => (Object.entries(filterValues) as [string, FilterState][]).filter(([, v]) => isFilterActive(v)),
-		[filterValues],
+		() =>
+			(Object.entries(filterValues) as [string, FilterState][]).filter(([colId, v]) => {
+				if (isFilterActive(v)) return true;
+				const col = columns.find(c => String(c.id) === colId);
+				if (!col?.filterFunction) return false;
+				return !isEmptyFilter(v, col.filterType);
+			}),
+		[filterValues, columns],
 	);
 
 	const filteredData = React.useCallback(
