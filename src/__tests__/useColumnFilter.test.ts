@@ -185,6 +185,22 @@ describe('useColumnFilter:date operators', () => {
 		expect(setFilter({ condition1: { operator: 'after', value: '2024-12-31' } }).map(r => r.id)).toEqual([3]);
 	});
 
+	test('equals matches the calendar day even when the cell carries a time (no TZ skew)', () => {
+		type WithTime = { id: number; d: string };
+		const cols: TableColumn<WithTime>[] = [
+			{ id: 'd', name: 'D', selector: r => r.d, filterable: true, filterType: 'date' },
+		];
+		const rows: WithTime[] = [
+			{ id: 1, d: '2024-03-15T00:30:00' },
+			{ id: 2, d: '2024-03-15T23:45:00' },
+			{ id: 3, d: '2024-03-16T10:00:00' },
+		];
+		const { result } = renderHook(() =>
+			useColumnFilter<WithTime>(cols, { d: { condition1: { operator: 'equals', value: '2024-03-15' } } }),
+		);
+		expect(result.current.filteredData(rows).map(r => r.id)).toEqual([1, 2]);
+	});
+
 	test('equals matches rows on the same calendar day', () => {
 		expect(setFilter({ condition1: { operator: 'equals', value: '2024-01-01' } }).map(r => r.id)).toEqual([1, 4]);
 	});
@@ -369,5 +385,49 @@ describe('useColumnFilter:custom filterFunction', () => {
 		);
 
 		expect(result.current.filteredData(data).map(r => r.name)).toEqual(['Banana', 'Cherry']);
+	});
+
+	test('runs for a value-less operator (built-in isFilterActive would skip it)', () => {
+		let calls = 0;
+		const custom: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				filterable: true,
+				filterFunction: row => {
+					calls++;
+					return row.name.length === 5;
+				},
+			},
+		];
+
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(custom, { name: { condition1: { operator: 'startsWith' } } }),
+		);
+
+		expect(result.current.filteredData(data).map(r => r.name)).toEqual(['Apple']);
+		expect(calls).toBeGreaterThan(0);
+	});
+
+	test('does not run once its filter is cleared back to the empty default', () => {
+		let calls = 0;
+		const custom: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				filterable: true,
+				filterFunction: () => {
+					calls++;
+					return false;
+				},
+			},
+		];
+
+		const { result } = renderHook(() => useColumnFilter<Row>(custom, { name: emptyFilterState('text') }));
+
+		expect(result.current.filteredData(data)).toHaveLength(data.length);
+		expect(calls).toBe(0);
 	});
 });
