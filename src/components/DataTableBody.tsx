@@ -131,7 +131,7 @@ function DataTableBody<T>({
 
 			if (reducedMotion || Math.abs(prevTop - newTop) < 1) return;
 
-			flipElement(el, prevTop - newTop, 'Y', 0.22);
+			flipElement(el, prevTop - newTop, 'Y', 0.3);
 		});
 
 		// Clear snapshot so page navigation can't reuse stale sort positions
@@ -146,17 +146,24 @@ function DataTableBody<T>({
 		return tableRows.map((row, i) => {
 			const key = prop(row as TableRow, keyField) as string | number;
 			const id = isEmpty(key) ? i : key;
-			const selected = isEmpty(key) ? selectedRows.includes(row) : selectedIdSet.has(key);
-			const isNew = animateRows && isMounted && !seenIdsSet.has(id);
+			// The seen-set is keyed by string to match the DOM row id the FLIP effect
+			// deletes by (el.id.slice(4)); a numeric keyField would otherwise never match.
+			const isNew = animateRows && isMounted && !seenIdsSet.has(String(id));
 			const newRowIndex = isNew ? Math.min(newRowSeq++, STAGGER_CAP) : 0;
-			return { row, id, selected, isNew, newRowIndex };
+			return {
+				row,
+				id,
+				selected: isEmpty(key) ? selectedRows.includes(row) : selectedIdSet.has(key),
+				isNew,
+				newRowIndex,
+			};
 		});
 	}, [tableRows, keyField, selectedRows, selectedIdSet, animateRows, isMounted, seenIdsSet]);
 
 	React.useEffect(() => {
 		if (!animateRows) return;
 		for (const meta of rowMeta) {
-			if (meta.isNew) seenIdsRef.current.add(meta.id);
+			if (meta.isNew) seenIdsRef.current.add(String(meta.id));
 		}
 	}, [rowMeta, animateRows]);
 

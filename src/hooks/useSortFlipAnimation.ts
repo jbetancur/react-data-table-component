@@ -8,7 +8,6 @@ export default function useSortFlipAnimation<T>(dispatchSort: (action: SortActio
 	prevRowTopsRef: React.MutableRefObject<Map<string | number, number>>;
 	handleSort: (action: SortAction<T>) => void;
 } {
-	const [, startTransition] = React.useTransition();
 	const bodyRef = React.useRef<HTMLDivElement>(null);
 	const prevRowTopsRef = React.useRef<Map<string | number, number>>(new Map());
 
@@ -21,7 +20,8 @@ export default function useSortFlipAnimation<T>(dispatchSort: (action: SortActio
 				});
 				prevRowTopsRef.current = snapshot;
 			}
-			startTransition(() => dispatchSort(action));
+
+			dispatchSort(action);
 		},
 		[dispatchSort],
 	);

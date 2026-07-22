@@ -14,6 +14,9 @@ function expanderReducer(state: ExpanderState, action: ExpanderAction): Expander
 		case 'unmount':
 			return { expanded: false, mounted: false, closing: false };
 		case 'sync':
+			// Don't yank a row out of its close animation: if we're mid-close and the
+			// synced value is still false, let the close timer finish the unmount.
+			if (state.closing && !action.value) return state;
 			return { expanded: action.value, mounted: action.value, closing: false };
 		default:
 			return state;
@@ -29,11 +32,14 @@ export default function useRowExpander(defaultExpanded: boolean, animateRows: bo
 		closing: false,
 	});
 
+	const closeTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
 	React.useEffect(() => {
 		dispatch({ type: 'sync', value: defaultExpanded });
 	}, [defaultExpanded]);
 
-	const closeTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+	// Clear a pending close timer on unmount so it can't dispatch into a dead component.
+	React.useEffect(() => () => clearTimeout(closeTimerRef.current ?? undefined), []);
 
 	const openExpander = React.useCallback(() => {
 		if (closeTimerRef.current) clearTimeout(closeTimerRef.current);

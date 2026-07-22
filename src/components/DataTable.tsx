@@ -549,6 +549,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 							$fixedHeader={fixedHeader}
 							$fixedHeaderScrollHeight={fixedHeaderScrollHeight}
 							$hiddenScrollbar={hasPinnedColumns && responsive}
+							$animateRows={animateRows}
 							className={className}
 							onScroll={onScroll}
 							{...wrapperProps}

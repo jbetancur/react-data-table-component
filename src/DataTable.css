@@ -155,6 +155,18 @@
 }
 
 /*
+ * animateRows and content-visibility are incompatible: the browser estimates
+ * off-screen row positions, so getBoundingClientRect during a FLIP reports the
+ * estimate rather than the real position and the animation is wrong or skipped.
+ * With animation on, opt rows back into normal layout (the row count that
+ * animates is bounded by the visible page, so the perf cost is limited).
+ */
+.rdt_responsiveWrapperAnimated .rdt_row {
+	content-visibility: visible;
+	contain-intrinsic-size: auto;
+}
+
+/*
  * Row separators are drawn on each cell rather than on the row container.
  * This keeps the divider line visible on sticky (pinned) cells even when
  * the table scrolls horizontally — the border travels with the cell, not
@@ -1652,6 +1664,12 @@
 		animation: none !important;
 		grid-template-rows: 1fr !important;
 		opacity: 1 !important;
+	}
+	/* Loading indicators: stop the infinite shimmer/spin loops. !important also
+	   overrides the spinner's inline animation (default progressComponent). */
+	.rdt_skeletonPulse,
+	.rdt_spinner {
+		animation: none !important;
 	}
 
 	/* Column reorder FLIP animations are skipped via JS matchMedia check */

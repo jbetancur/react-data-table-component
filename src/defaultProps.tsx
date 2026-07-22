@@ -56,6 +56,7 @@ export const defaultProps = {
 	progressPending: false,
 	progressComponent: (
 		<div
+			className="rdt_spinner"
 			style={{
 				width: 28,
 				height: 28,

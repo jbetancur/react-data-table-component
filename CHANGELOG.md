@@ -6,13 +6,17 @@ A summary of notable changes per release. For the full commit history see the [r
 
 ### New features
 
-- **`filterType: 'datetime'`** — filter columns down to a specific date and time via a `datetime-local` input, reusing the date operators. `Equals` matches the exact instant rather than the whole calendar day. → [Filtering](/docs/filtering) ([#1362](https://github.com/jbetancur/react-data-table-component/issues/1362))
-- **`filterType: 'time'`** — filter by time of day, ignoring the date, so a filter matches across every date at once (e.g. "errors between 02:00 and 04:00"). Accepts seconds precision, reads the time portion of full timestamps, and a `Between` whose start is later than its end wraps past midnight. → [Filtering](/docs/filtering)
+- **`filterType: 'datetime'`** — filter to a specific date and time via a `datetime-local` input; `Equals` matches the exact instant. → [Filtering](/docs/filtering) ([#1362](https://github.com/jbetancur/react-data-table-component/issues/1362))
+- **`filterType: 'time'`** — filter by time of day across all dates; supports seconds and `Between` windows that wrap past midnight. → [Filtering](/docs/filtering)
 
 ### Bug fixes
 
-- With client-side pagination, column filtering only matched rows on the current page — filtering ran after the page was sliced, so matches on other pages never appeared and the result count disagreed with the rows shown. Filtering now runs on the full sorted set before pagination. → [Filtering](/docs/filtering) ([#1364](https://github.com/jbetancur/react-data-table-component/issues/1364))
-- A `filterable` column without an explicit `id` showed the filter UI but never actually filtered, because the filter matched against undecorated columns whose ids had not yet been auto-assigned. → [Filtering](/docs/filtering) ([#1363](https://github.com/jbetancur/react-data-table-component/issues/1363))
+- Client-side filtering now runs before pagination, so filters match across all pages instead of just the current one. → [Filtering](/docs/filtering) ([#1364](https://github.com/jbetancur/react-data-table-component/issues/1364))
+- A `filterable` column with no explicit `id` now filters instead of silently doing nothing. → [Filtering](/docs/filtering) ([#1363](https://github.com/jbetancur/react-data-table-component/issues/1363))
+- A custom `filterFunction` now runs for value-less operators, not only when a value is entered. → [Filtering](/docs/filtering) ([#1366](https://github.com/jbetancur/react-data-table-component/issues/1366))
+- The `date` filter's `Equals` no longer skips by a day for timestamped cells in non-UTC timezones. → [Filtering](/docs/filtering)
+- `animateRows`: fixed sort animation breaking across a sort cycle, not animating under `fixedHeader`, entrance animations being skipped with a numeric `keyField`, stale styles from an interrupted animation, and the expander close animation being cut short or leaking a timer. Sort movement is also smoother. → [Animations](/docs/animations) ([#1368](https://github.com/jbetancur/react-data-table-component/issues/1368))
+- The loading skeleton shimmer and the default spinner now stop under `prefers-reduced-motion: reduce`.
 
 ---
 
