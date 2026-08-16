@@ -255,6 +255,42 @@ describe('DataTable::onSelectedRowsChange', () => {
 	});
 });
 
+describe('DataTable::controlled selectedRows', () => {
+	test('should call onSelectedRowsChange with the correct values when a row is toggled while another is selected via the controlled selectedRows prop', () => {
+		const mock = dataMock();
+		const onSelectedRowsChange = vi.fn();
+
+		const { container, rerender } = render(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				keyField="id"
+				selectableRows
+				selectedRows={[]}
+				onSelectedRowsChange={onSelectedRowsChange}
+			/>,
+		);
+
+		rerender(
+			<DataTable
+				data={mock.data}
+				columns={mock.columns}
+				keyField="id"
+				selectableRows
+				selectedRows={[mock.data[0]]}
+				onSelectedRowsChange={onSelectedRowsChange}
+			/>,
+		);
+
+		fireEvent.click(container.querySelector('input[name="Select row 2"]') as HTMLInputElement);
+
+		const calls = onSelectedRowsChange.mock.calls;
+		const lastCall = calls[calls.length - 1][0];
+		expect(lastCall.selectedCount).toBe(2);
+		expect(lastCall.selectedRows.map((row: { id: number }) => row.id).sort()).toEqual([1, 2]);
+	});
+});
+
 describe('data prop changes', () => {
 	test('should update state if the data prop changes', () => {
 		const mock = dataMock();
