@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.8.1
+
+### Bug fixes
+
+- Controlled `selectedRows` is no longer dropped when a row is toggled in-table. Selection deltas are computed against the `selectedRows` prop instead of stale internal state, so a selection set from outside survives the next checkbox click and `onSelectedRowsChange` emits the correct set. → [Row selection](/docs/selection) ([#1374](https://github.com/jbetancur/react-data-table-component/issues/1374))
+
+---
+
 ## 8.8.0
 
 ### New features
