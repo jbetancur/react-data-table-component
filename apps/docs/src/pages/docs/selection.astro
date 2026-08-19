@@ -4,6 +4,9 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import PropsTable from '../../components/PropsTable.astro';
 import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
+import ControlledSelectionDemo from '../../components/demos/ControlledSelectionDemo.tsx';
+import CustomCheckboxDemo from '../../components/demos/CustomCheckboxDemo.tsx';
+import VisibleOnlyDemo from '../../components/demos/VisibleOnlyDemo.tsx';
 ---
 
 <DocsLayout title="Row selection | react-data-table-component">
@@ -13,11 +16,6 @@ import SelectionDemo from '../../components/demos/SelectionDemo.tsx';
     Add <code>selectableRows</code> to enable checkbox-based multi-select. Shift-click extends
     the selection across a contiguous range. Pass <code>selectedRows</code> to drive
     selection from outside, or use the imperative <code>ref</code> API to clear it.
-  </p>
-
-  <p class="callout">
-    <strong>New in 8.1.0</strong> — Shift-click range selection (on by default) and a
-    controlled <code>selectedRows</code> prop.
   </p>
 
   <div class="not-prose my-6 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
@@ -104,14 +102,6 @@ export default function App() {
     <SelectionDemo client:load />
   </Demo>
 
-  <h2>Custom selection toolbar</h2>
-  <p>
-    v8 removed the built-in <code>contextMessage</code> and <code>contextActions</code> props.
-    Use <code>onSelectedRowsChange</code> to drive your own toolbar rendered outside the table —
-    you get full control over layout, copy, and actions. See the
-    <a href="/docs/recipes#bulk-action-toolbar">bulk-action toolbar recipe</a> for a complete example.
-  </p>
-
   <h2>Range selection (Shift-click)</h2>
   <p>
     Click one row's checkbox, then Shift-click another to toggle every row in between to match
@@ -128,6 +118,27 @@ export default function App() {
 // Disable range selection
 <DataTable selectableRows selectableRowsRange={false} />`} />
 
+  <h2>Uncontrolled selection (default)</h2>
+  <p>
+    Omit <code>selectedRows</code> and the table owns selection itself. Read it via
+    <code>onSelectedRowsChange</code>, and clear it imperatively through the ref. This is the
+    demo at the top of this page, and it is what you want unless something outside the table
+    needs to set the selection.
+  </p>
+  <CodeBlock code={`const ref = useRef<DataTableHandle>(null);
+
+<DataTable
+  ref={ref}
+  keyField="id"
+  columns={columns}
+  data={data}
+  selectableRows
+  onSelectedRowsChange={({ selectedRows }) => setCount(selectedRows.length)}
+/>
+
+// clear it from outside
+ref.current?.clearSelectedRows();`} />
+
   <h2>Controlled selection</h2>
   <p>
     Pass <code>selectedRows</code> to drive selection from your own state. The table will
@@ -135,24 +146,52 @@ export default function App() {
     toggles. Match rows by <code>keyField</code>, so the entries you pass in must include the
     key field.
   </p>
-  <CodeBlock code={`function App() {
+  <p>
+    Reach for this when something other than the table needs to set the selection: a "select all
+    matching" action, selection restored from URL or saved state, or a second view that has to
+    stay in sync. The demo below drives it from filter predicates.
+  </p>
+  <Demo
+    title="Controlled selection"
+    description="The buttons set selection from outside the table. Checkbox clicks write back to the same state."
+    code={`function App() {
   const [selected, setSelected] = useState<Employee[]>([]);
 
+  const selectWhere = (predicate) => setSelected(data.filter(predicate));
+
   return (
-    <DataTable
-      keyField="id"
-      columns={columns}
-      data={data}
-      selectableRows
-      selectedRows={selected}
-      onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
-    />
+    <>
+      <button onClick={() => selectWhere(r => r.status === 'Active')}>Select Active</button>
+      <button onClick={() => selectWhere(r => r.role.includes('Engineer'))}>Select Engineers</button>
+      <button onClick={() => setSelected(data.filter(r => !selected.some(s => s.id === r.id)))}>
+        Invert
+      </button>
+      <button onClick={() => setSelected([])}>Clear</button>
+
+      <DataTable
+        keyField="id"
+        columns={columns}
+        data={data}
+        selectableRows
+        selectedRows={selected}
+        onSelectedRowsChange={({ selectedRows }) => setSelected(selectedRows)}
+      />
+    </>
   );
-}`} />
+}`}
+  >
+    <ControlledSelectionDemo client:load />
+  </Demo>
+
   <p>
     Controlled selection is useful when selection lives in URL state, a Redux/Zustand store,
     or needs to survive remounts. Omit <code>selectedRows</code> to fall back to the table's
     internal state.
+  </p>
+  <p>
+    Write the emitted rows back to the same state you pass to <code>selectedRows</code>. The
+    table computes each toggle against the prop, so a value you set from outside is preserved
+    when the user checks another box.
   </p>
 
   <h2>Single select</h2>
@@ -169,6 +208,38 @@ export default function App() {
 
   <h2>Pre-select rows</h2>
   <CodeBlock code={`<DataTable selectableRows selectableRowSelected={row => row.status === 'Active'} />;`} />
+
+  <h2>Select only visible rows</h2>
+  <p>
+    When pagination is enabled, <code>selectableRowsVisibleOnly</code> makes the "select all"
+    checkbox operate only on the current page rather than the full dataset.
+  </p>
+  <p>
+    It also changes what happens when the page changes: the selection is cleared. That keeps
+    "select all" honest — it always refers to the rows in front of you — but it means a
+    selection cannot be accumulated across pages. Leave the prop off if you need that.
+  </p>
+  <CodeBlock code={`<DataTable selectableRows pagination selectableRowsVisibleOnly />;`} />
+
+  <Demo
+    title="Page-scoped vs dataset-scoped selection"
+    description="Two tables over the same nine rows, three per page. Tick select all on page 1, then move to page 2."
+    code={`// Default: select all takes the whole dataset, selection survives paging
+<DataTable keyField="id" columns={columns} data={data} selectableRows pagination paginationPerPage={3} />
+
+// Page-scoped: select all takes the current page, paging clears the selection
+<DataTable
+  keyField="id"
+  columns={columns}
+  data={data}
+  selectableRows
+  pagination
+  paginationPerPage={3}
+  selectableRowsVisibleOnly
+/>`}
+  >
+    <VisibleOnlyDemo client:load />
+  </Demo>
 
   <h2>onSelectedRowsChange</h2>
   <p>The callback receives <code>{`{ allSelected, selectedCount, selectedRows }`}</code>.</p>
@@ -187,6 +258,14 @@ export default function App() {
   <CodeBlock code={`const tableRef = useRef<DataTableHandle>(null);
 tableRef.current?.clearSelectedRows();`} />
 
+  <h2>Custom selection toolbar</h2>
+  <p>
+    v8 removed the built-in <code>contextMessage</code> and <code>contextActions</code> props.
+    Use <code>onSelectedRowsChange</code> to drive your own toolbar rendered outside the table —
+    you get full control over layout, copy, and actions. See the
+    <a href="/docs/recipes#bulk-action-toolbar">bulk-action toolbar recipe</a> for a complete example.
+  </p>
+
   <h2>Highlight selected rows</h2>
   <p>
     Add <code>selectableRowsHighlight</code> to apply the theme's selected-row background
@@ -201,13 +280,6 @@ tableRef.current?.clearSelectedRows();`} />
   </p>
   <CodeBlock code={`<DataTable selectableRows selectableRowsNoSelectAll />;`} />
 
-  <h2>Select only visible rows</h2>
-  <p>
-    When pagination is enabled, <code>selectableRowsVisibleOnly</code> makes the "select all"
-    checkbox operate only on the current page rather than the full dataset.
-  </p>
-  <CodeBlock code={`<DataTable selectableRows pagination selectableRowsVisibleOnly />;`} />
-
   <h2>Custom checkbox component</h2>
   <p>
     Replace the built-in checkbox with your own component via <code>selectableRowsComponent</code>.
@@ -216,6 +288,49 @@ tableRef.current?.clearSelectedRows();`} />
   <CodeBlock code={`import Checkbox from '@mui/material/Checkbox';
 
 <DataTable selectableRows selectableRowsComponent={Checkbox} selectableRowsComponentProps={{ color: 'primary' }} />;`} />
+
+  <p>
+    Your component receives <code>checked</code>, <code>disabled</code>, <code>name</code>,
+    <code>onClick</code>, and a <code>ref</code>. Forward that ref to a real
+    <code>&lt;input type="checkbox"&gt;</code> — DataTable sets <code>.indeterminate</code> on the
+    node directly for the partial-selection state on the header checkbox. Keep the input in the
+    DOM and style a sibling element off it, rather than replacing it, so keyboard and screen
+    reader behaviour still work.
+  </p>
+
+  <Demo
+    title="Fully custom checkbox"
+    description="A spinning vinyl record standing in for the checkbox. Disc turns amber when the header selection is partial; the accent colour is forwarded through selectableRowsComponentProps."
+    code={`const VinylCheckbox = forwardRef<HTMLInputElement, Props>(
+  ({ accent = '#7c3aed', checked, disabled, ...rest }, ref) => (
+    <label className="vinyl-wrap" style={{ '--vinyl-accent': accent }}>
+      {/* the ref must land on a real input: DataTable sets .indeterminate on it */}
+      <input ref={ref} type="checkbox" checked={checked} disabled={disabled} {...rest} />
+      <span className="vinyl-disc" aria-hidden="true">
+        <span className="vinyl-label" />
+      </span>
+    </label>
+  ),
+);
+
+<DataTable
+  keyField="id"
+  columns={columns}
+  data={data}
+  selectableRows
+  selectableRowsComponent={VinylCheckbox}
+  selectableRowsComponentProps={{ accent }}
+  selectableRowDisabled={r => r.id === 4}
+/>
+
+/* The input is visually hidden but still present and focusable.
+   Everything visible is a sibling driven by :checked / :indeterminate. */
+.vinyl-wrap input { position: absolute; inset: 0; opacity: 0; }
+.vinyl-wrap input:checked ~ .vinyl-disc { transform: rotate(180deg); }
+.vinyl-wrap input:indeterminate ~ .vinyl-disc { box-shadow: 0 0 0 2px #f59e0b; }`}
+  >
+    <CustomCheckboxDemo client:load />
+  </Demo>
   <p>
     A prop value can also be a function — it is called with the checkbox's indeterminate state
     (<code>true</code> for the header checkbox when only some rows are selected) and its return
