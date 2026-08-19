@@ -93,7 +93,17 @@ export default function useTableState<T>(props: UseTableStateProps<T>): UseTable
 
 	const hasDefaultSort = defaultSortColumn.id != null || !!defaultSortColumn.selector;
 
-	const [tableState, dispatch] = React.useReducer<React.Reducer<TableState<T>, Action<T>>>(tableReducer, {
+	const reducer = React.useCallback(
+		(state: TableState<T>, action: Action<T>): TableState<T> => {
+			const calculatedState =
+				controlledSelectedRows !== undefined ? { ...state, selectedRows: controlledSelectedRows } : state;
+
+			return tableReducer(calculatedState, action);
+		},
+		[controlledSelectedRows],
+	);
+
+	const [tableState, dispatch] = React.useReducer(reducer, {
 		allSelected: false,
 		selectedCount: 0,
 		selectedRows: [],
