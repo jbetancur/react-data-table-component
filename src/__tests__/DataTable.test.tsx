@@ -2958,6 +2958,54 @@ describe('DataTable::columnResize', () => {
 		expect(headerCell.style.maxWidth).toBe('60px');
 	});
 
+	test('does not resize a column below its minWidth', () => {
+		const mock = dataMock({ minWidth: '120px' });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} resizable />);
+		const handle = container.querySelector('.rdt_resizeHandle') as HTMLElement;
+		const headerCell = handle.closest('[data-column-id]') as HTMLElement;
+
+		Object.defineProperty(headerCell, 'offsetWidth', { value: 300, configurable: true });
+
+		// 300 - 300 = 0, below the configured 120px minimum.
+		fireEvent.pointerDown(handle, { clientX: 300 });
+		fireEvent.pointerMove(document, { clientX: 0 });
+		fireEvent.pointerUp(document);
+
+		expect(headerCell.style.maxWidth).toBe('120px');
+	});
+
+	test('resizes to the 40px floor without a configured minWidth', () => {
+		const mock = dataMock();
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} resizable />);
+		const handle = container.querySelector('.rdt_resizeHandle') as HTMLElement;
+		const headerCell = handle.closest('[data-column-id]') as HTMLElement;
+
+		Object.defineProperty(headerCell, 'offsetWidth', { value: 300, configurable: true });
+
+		// 300 - 300 = 0, so the existing 40px floor applies.
+		fireEvent.pointerDown(handle, { clientX: 300 });
+		fireEvent.pointerMove(document, { clientX: 0 });
+		fireEvent.pointerUp(document);
+
+		expect(headerCell.style.maxWidth).toBe('40px');
+	});
+
+	test('does not clamp a resize above its minWidth', () => {
+		const mock = dataMock({ minWidth: '120px' });
+		const { container } = render(<DataTable data={mock.data} columns={mock.columns} resizable />);
+		const handle = container.querySelector('.rdt_resizeHandle') as HTMLElement;
+		const headerCell = handle.closest('[data-column-id]') as HTMLElement;
+
+		Object.defineProperty(headerCell, 'offsetWidth', { value: 300, configurable: true });
+
+		// 300 - 50 = 250, above the configured minimum.
+		fireEvent.pointerDown(handle, { clientX: 300 });
+		fireEvent.pointerMove(document, { clientX: 250 });
+		fireEvent.pointerUp(document);
+
+		expect(headerCell.style.maxWidth).toBe('250px');
+	});
+
 	test('inverts drag delta in RTL so dragging the handle left widens the column', () => {
 		const mock = dataMock();
 		const { container } = render(

@@ -29,7 +29,7 @@ type TableColProps<T> = {
 	columnDrag: ColumnDragSlice;
 	/** Width override from column resize — takes precedence over column.width */
 	resizedWidth?: number;
-	onResizeStart?: (columnId: string | number, e: React.PointerEvent) => void;
+	onResizeStart?: (columnId: string | number, e: React.PointerEvent, configuredMinWidth?: string) => void;
 	pinnedOffsets?: PinnedOffsets;
 	/** CSS grid placement styles — injected by DataTableHead when rendering in grouped-header grid mode */
 	gridStyle?: React.CSSProperties;
@@ -294,7 +294,7 @@ function TableCol<T>({
 					onPointerDown={e => {
 						// Keep a resize gesture from also starting a column reorder on the cell.
 						e.stopPropagation();
-						onResizeStart(column.id!, e);
+						onResizeStart(column.id!, e, column.minWidth);
 					}}
 					aria-hidden="true"
 				/>
