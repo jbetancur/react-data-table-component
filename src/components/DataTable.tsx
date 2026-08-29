@@ -38,6 +38,12 @@ import useSortFlipAnimation from '../hooks/useSortFlipAnimation';
 import useContextMenu from '../hooks/useContextMenu';
 import ContextMenu from './ContextMenu';
 
+function getHeadSepClass(headerSeparator: boolean | 'subtle' | 'full'): string | undefined {
+	if (headerSeparator === false) return undefined;
+	if (headerSeparator === 'full') return 'rdt_headSeparatorFull';
+	return 'rdt_headSeparator';
+}
+
 function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTableHandle>): JSX.Element {
 	const {
 		data = defaultProps.data,
@@ -516,12 +522,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	const effectiveHeaderSep = headerSeparator !== undefined ? headerSeparator : (themeObj.headerSeparator ?? true);
 	const sepClass =
 		effectiveColumnSep === 'full' ? 'rdt_colSeparatorFull' : effectiveColumnSep ? 'rdt_colSeparator' : undefined;
-	const headSepClass =
-		effectiveHeaderSep === false
-			? undefined
-			: effectiveHeaderSep === 'full'
-				? 'rdt_headSeparatorFull'
-				: 'rdt_headSeparator';
+	const headSepClass = getHeadSepClass(effectiveHeaderSep);
 
 	return (
 		<StylesContext.Provider value={tableStyles}>

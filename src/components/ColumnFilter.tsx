@@ -4,6 +4,7 @@ import type { FilterState, FilterCondition, FilterOperator, FilterType, Localiza
 
 type ColumnFilterOptions = NonNullable<Localization['filter']>;
 import { emptyFilterState, isFilterActive } from '../hooks/useColumnFilter';
+import FilterIcon from '../icons/FilterIcon';
 
 type OperatorOption = { value: FilterOperator; label: string; noInput?: boolean; twoInputs?: boolean };
 
@@ -39,19 +40,28 @@ const DEFAULT_DATE_OPERATORS: OperatorOption[] = [
 	{ value: 'notBlank', label: 'Not blank', noInput: true },
 ];
 
+function baseOperators(filterType: FilterType): OperatorOption[] {
+	if (filterType === 'number') return DEFAULT_NUMBER_OPERATORS;
+	if (filterType === 'date' || filterType === 'datetime' || filterType === 'time') return DEFAULT_DATE_OPERATORS;
+	return DEFAULT_TEXT_OPERATORS;
+}
+
 function operatorsFor(filterType: FilterType, overrides?: ColumnFilterOptions['operators']): OperatorOption[] {
-	const base =
-		filterType === 'number'
-			? DEFAULT_NUMBER_OPERATORS
-			: filterType === 'date' || filterType === 'datetime' || filterType === 'time'
-				? DEFAULT_DATE_OPERATORS
-				: DEFAULT_TEXT_OPERATORS;
+	const base = baseOperators(filterType);
 	if (!overrides) return base;
 	return base.map(op => (overrides[op.value] ? { ...op, label: overrides[op.value]! } : op));
 }
 
 function defaultOperator(filterType: FilterType): FilterOperator {
 	return filterType === 'text' ? 'contains' : 'equals';
+}
+
+function inputTypeFor(filterType: FilterType): string {
+	if (filterType === 'number') return 'number';
+	if (filterType === 'date') return 'date';
+	if (filterType === 'datetime') return 'datetime-local';
+	if (filterType === 'time') return 'time';
+	return 'text';
 }
 
 function emptyCondition(filterType: FilterType): FilterCondition {
@@ -75,16 +85,7 @@ type ConditionRowProps = {
 function ConditionRow({ condition, filterType, options, onChange, onRemove }: ConditionRowProps): JSX.Element {
 	const operators = operatorsFor(filterType, options.operators);
 	const selected = operators.find(o => o.value === condition.operator) ?? operators[0];
-	const inputType =
-		filterType === 'number'
-			? 'number'
-			: filterType === 'date'
-				? 'date'
-				: filterType === 'datetime'
-					? 'datetime-local'
-					: filterType === 'time'
-						? 'time'
-						: 'text';
+	const inputType = inputTypeFor(filterType);
 	// Time inputs default to minute precision; step=1 exposes a seconds field so
 	// logs can be filtered to the second.
 	const inputStep = filterType === 'time' ? 1 : undefined;
@@ -301,9 +302,7 @@ export default function ColumnFilter({
 					toggleOpen();
 				}}
 			>
-				<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-					<path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
-				</svg>
+				<FilterIcon />
 				{isActive && <span className="rdt_filterDot" />}
 			</button>
 

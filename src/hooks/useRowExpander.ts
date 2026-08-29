@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-const EXPAND_DURATION = 220;
+import { EXPAND_DURATION } from '../constants';
 
 type ExpanderState = { expanded: boolean; mounted: boolean; closing: boolean };
 type ExpanderAction = { type: 'open' } | { type: 'close' } | { type: 'unmount' } | { type: 'sync'; value: boolean };

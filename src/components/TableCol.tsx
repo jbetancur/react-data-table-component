@@ -3,6 +3,7 @@ import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
 import { CellExtended } from './Cell';
 import NativeSortIcon from '../icons/NativeSortIcon';
+import MenuIcon from '../icons/MenuIcon';
 import ColumnFilter from './ColumnFilter';
 import { equalizeId, getPinnedCellMeta } from '../util';
 import type { PinnedOffsets } from '../util';
@@ -15,6 +16,16 @@ import type { ColumnDragSlice } from '../hooks/useColumns';
 import type { SortingSlice } from '../hooks/useSorting';
 
 type FilterLocalization = NonNullable<Localization['filter']>;
+
+function getAriaSort(
+	disableSort: boolean,
+	sortActive: boolean,
+	columnSortDirection: SortOrder,
+): React.AriaAttributes['aria-sort'] {
+	if (disableSort) return undefined;
+	if (!sortActive) return 'none';
+	return columnSortDirection === SortOrder.ASC ? 'ascending' : 'descending';
+}
 
 type TableColProps<T> = {
 	column: TableColumn<T>;
@@ -146,6 +157,7 @@ function TableCol<T>({
 
 	const sortActive = !!(column.sortable && sortIndex !== -1);
 	const disableSort = !column.sortable || disabled;
+	const ariaSort = getAriaSort(disableSort, sortActive, columnSortDirection);
 	const isNavActive = !!cellNavigation && activeCell?.row === -1 && activeCell?.col === navCol;
 	// With cellNavigation the whole grid is one Tab stop (roving tabindex); otherwise
 	// only sortable headers are tabbable.
@@ -228,15 +240,7 @@ function TableCol<T>({
 						.join(' ')}
 					onClick={!disableSort ? handleClick : undefined}
 					onKeyDown={!disableSort ? handleKeyDown : undefined}
-					aria-sort={
-						!disableSort
-							? sortActive
-								? columnSortDirection === SortOrder.ASC
-									? 'ascending'
-									: 'descending'
-								: 'none'
-							: undefined
-					}
+					aria-sort={ariaSort}
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
@@ -283,9 +287,7 @@ function TableCol<T>({
 					}}
 					onPointerDown={e => e.stopPropagation()}
 				>
-					<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-						<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-					</svg>
+					<MenuIcon />
 				</button>
 			)}
 			{onResizeStart && column.id != null && (

@@ -10,6 +10,14 @@ type ResponsiveWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
 	$animateRows?: boolean;
 };
 
+// fixedHeader needs a scroll container even when responsive is off — maxHeight
+// without overflow lets rows spill over whatever renders below the table.
+function getScrollClass($fixedHeader?: boolean, $responsive?: boolean): string | undefined {
+	if ($fixedHeader) return 'rdt_responsiveWrapperFixed';
+	if ($responsive) return 'rdt_responsiveWrapperScroll';
+	return undefined;
+}
+
 const ResponsiveWrapper = React.forwardRef<HTMLDivElement, ResponsiveWrapperProps>(function ResponsiveWrapper(
 	{
 		$responsive,
@@ -24,13 +32,7 @@ const ResponsiveWrapper = React.forwardRef<HTMLDivElement, ResponsiveWrapperProp
 	ref,
 ) {
 	const customStyles = useStyles();
-	// fixedHeader needs a scroll container even when responsive is off — maxHeight
-	// without overflow lets rows spill over whatever renders below the table.
-	const scrollClass = $fixedHeader
-		? 'rdt_responsiveWrapperFixed'
-		: $responsive
-			? 'rdt_responsiveWrapperScroll'
-			: undefined;
+	const scrollClass = getScrollClass($fixedHeader, $responsive);
 	return (
 		<div
 			ref={ref}
