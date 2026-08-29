@@ -7,6 +7,7 @@ import TableCellCheckbox from './TableCellCheckbox';
 import TableCellExpander from './TableCellExpander';
 import ExpanderRow from './ExpanderRow';
 import RightPinSpacer from './RightPinSpacer';
+import MenuIcon from '../icons/MenuIcon';
 import { prop, equalizeId, getConditionalStyle, getFirstRightPinnedId, getPrefixColCount, isEven } from '../util';
 import { STOP_PROP_TAG } from '../constants';
 import useRowExpander from '../hooks/useRowExpander';
@@ -279,9 +280,7 @@ function Row<T>({
 								rowMenu.onMenuButtonClick(row, rowIndex, e);
 							}}
 						>
-							<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-								<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-							</svg>
+							<MenuIcon />
 						</button>
 					</div>
 				)}

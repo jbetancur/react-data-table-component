@@ -19,6 +19,10 @@
 	color-scheme: var(--rdt-color-scheme, light);
 	/* Sort icon scales with the theme's icon size */
 	--rdt-sort-icon-size: calc(var(--rdt-icon-size, 18px) * 0.8);
+	/* Expander open/close animation length. Mirrors EXPAND_DURATION in
+	   constants.ts, which keeps the closing row mounted for exactly this long
+	   before unmounting it — keep the two in sync. */
+	--rdt-expand-duration: 220ms;
 }
 
 .rdt_tableDisabled {
@@ -1619,11 +1623,11 @@
 /* Expander row — grid-row trick gives a true height animation without JS measurement */
 .rdt_expanderRowAnimated {
 	display: grid;
-	animation: rdt_expandIn 0.22s cubic-bezier(0.2, 0, 0, 1) forwards;
+	animation: rdt_expandIn var(--rdt-expand-duration, 220ms) cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
 .rdt_expanderRowClosing {
-	animation: rdt_expandOut 0.22s cubic-bezier(0.2, 0, 0, 1) forwards;
+	animation: rdt_expandOut var(--rdt-expand-duration, 220ms) cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
 @keyframes rdt_expandIn {
@@ -1671,6 +1675,4 @@
 	.rdt_spinner {
 		animation: none !important;
 	}
-
-	/* Column reorder FLIP animations are skipped via JS matchMedia check */
 }
