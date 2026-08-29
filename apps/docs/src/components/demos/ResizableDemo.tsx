@@ -34,9 +34,6 @@ const columns: TableColumn<Row>[] = [
 
 export default function ResizableDemo() {
 	return (
-		<div className="space-y-2">
-			<p className="text-xs text-gray-400">Drag the right edge of any column header to resize it.</p>
-			<DataTable columns={columns} data={data} resizable highlightOnHover />
-		</div>
+		<DataTable columns={columns} data={data} resizable highlightOnHover />
 	);
 }
