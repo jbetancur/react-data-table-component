@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.8.2
+
+### Bug fixes
+
+- Column `minWidth` now correctly clamps resize drags. Previously the configured minimum was ignored and columns could be dragged below the specified minimum width. → [Resizable columns](/docs/resizable) ([#1378](https://github.com/jbetancur/react-data-table-component/pull/1378))
+
+---
+
 ## 8.8.1
 
 ### Bug fixes
