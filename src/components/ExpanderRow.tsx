@@ -25,11 +25,8 @@ function ExpanderRow<T>({
 	const customStyles = useStyles();
 	const extraClasses = extendedClassNames.split(' ').filter(c => c !== 'rdt_TableRow');
 	const className = ['rdt_ExpanderRow', 'rdt_expanderRow', ...extraClasses].join(' ');
-	const wrapperClassName = animate
-		? closing
-			? 'rdt_expanderRowAnimated rdt_expanderRowClosing'
-			: 'rdt_expanderRowAnimated'
-		: undefined;
+	const animatedClasses = ['rdt_expanderRowAnimated', closing && 'rdt_expanderRowClosing'];
+	const wrapperClassName = animate ? animatedClasses.filter(Boolean).join(' ') : undefined;
 
 	return (
 		<div className={wrapperClassName}>

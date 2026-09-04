@@ -17,13 +17,21 @@ import type { SortingSlice } from '../hooks/useSorting';
 
 type FilterLocalization = NonNullable<Localization['filter']>;
 
+function getTabIndex(untabbable: boolean): number {
+	return untabbable ? -1 : 0;
+}
+
 function getAriaSort(
 	disableSort: boolean,
 	sortActive: boolean,
 	columnSortDirection: SortOrder,
 ): React.AriaAttributes['aria-sort'] {
-	if (disableSort) return undefined;
-	if (!sortActive) return 'none';
+	if (disableSort) {
+		return undefined;
+	}
+	if (!sortActive) {
+		return 'none';
+	}
 	return columnSortDirection === SortOrder.ASC ? 'ascending' : 'descending';
 }
 
@@ -163,7 +171,7 @@ function TableCol<T>({
 	const isNavActive = !!cellNavigation && activeCell?.row === -1 && activeCell?.col === navCol;
 	// With cellNavigation the whole grid is one Tab stop (roving tabindex); otherwise
 	// only sortable headers are tabbable.
-	const tabIndex = cellNavigation ? (isNavActive ? 0 : -1) : disableSort ? -1 : 0;
+	const tabIndex = cellNavigation ? getTabIndex(!isNavActive) : getTabIndex(disableSort);
 	// data-nav-row/col live on the outer cell (full column width) so the :focus-within
 	// ring spans the whole header, matching body gridcells — not just the inner sortable
 	// div, which is inset by header padding and would otherwise draw a narrower ring.
@@ -309,41 +317,68 @@ function TableCol<T>({
 }
 
 function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
-	if (prevProps.column !== nextProps.column) return false;
-	if (prevProps.headerMenu !== nextProps.headerMenu) return false;
-	if (prevProps.columnDrag !== nextProps.columnDrag) return false;
+	if (prevProps.column !== nextProps.column) {
+		return false;
+	}
+	if (prevProps.headerMenu !== nextProps.headerMenu) {
+		return false;
+	}
+	if (prevProps.columnDrag !== nextProps.columnDrag) {
+		return false;
+	}
 	// The sorting slice changes identity on every sort interaction — compare this
 	// column's slice of the sort state instead of the reference, so only columns
 	// whose active state, arrow direction, or priority badge changed re-render.
 	if (prevProps.sorting !== nextProps.sorting) {
 		const prevSort = prevProps.sorting;
 		const nextSort = nextProps.sorting;
-		if (prevSort.sortMulti !== nextSort.sortMulti) return false;
-		if (prevSort.sortIcon !== nextSort.sortIcon) return false;
+		if (prevSort.sortMulti !== nextSort.sortMulti) {
+			return false;
+		}
+		if (prevSort.sortIcon !== nextSort.sortIcon) {
+			return false;
+		}
 		const prevIdx = prevSort.sortColumns.findIndex(s => equalizeId(s.column.id, prevProps.column.id));
 		const nextIdx = nextSort.sortColumns.findIndex(s => equalizeId(s.column.id, nextProps.column.id));
-		if (prevIdx !== nextIdx) return false;
-		if (prevIdx !== -1 && prevSort.sortColumns[prevIdx].sortDirection !== nextSort.sortColumns[nextIdx].sortDirection)
+		if (prevIdx !== nextIdx) {
 			return false;
+		}
+		if (prevIdx !== -1 && prevSort.sortColumns[prevIdx].sortDirection !== nextSort.sortColumns[nextIdx].sortDirection) {
+			return false;
+		}
 		// Fallback direction for inactive columns — a change flips the hover arrow.
-		if (prevIdx === -1 && prevSort.sortDirection !== nextSort.sortDirection) return false;
+		if (prevIdx === -1 && prevSort.sortDirection !== nextSort.sortDirection) {
+			return false;
+		}
 		// The priority badge shows only when more than one column is sorted; a flip across that
 		// threshold changes whether the badge renders even when this column's index is unchanged.
 		if (prevSort.sortMulti && prevSort.sortColumns.length !== nextSort.sortColumns.length) {
 			const prevMulti = prevSort.sortColumns.length > 1;
 			const nextMulti = nextSort.sortColumns.length > 1;
-			if (prevMulti !== nextMulti) return false;
+			if (prevMulti !== nextMulti) {
+				return false;
+			}
 		}
 	}
 	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
 		const prevIsDragging = equalizeId(prevProps.column.id, prevProps.draggingColumnId);
 		const nextIsDragging = equalizeId(nextProps.column.id, nextProps.draggingColumnId);
-		if (prevIsDragging !== nextIsDragging) return false;
+		if (prevIsDragging !== nextIsDragging) {
+			return false;
+		}
 	}
-	if (prevProps.filterValue !== nextProps.filterValue) return false;
-	if (prevProps.filterLocalization !== nextProps.filterLocalization) return false;
-	if (prevProps.resizedWidth !== nextProps.resizedWidth) return false;
-	if (prevProps.disabled !== nextProps.disabled) return false;
+	if (prevProps.filterValue !== nextProps.filterValue) {
+		return false;
+	}
+	if (prevProps.filterLocalization !== nextProps.filterLocalization) {
+		return false;
+	}
+	if (prevProps.resizedWidth !== nextProps.resizedWidth) {
+		return false;
+	}
+	if (prevProps.disabled !== nextProps.disabled) {
+		return false;
+	}
 	if (prevProps.pinnedOffsets !== nextProps.pinnedOffsets) {
 		// Re-render when:
 		// 1. This column's own offset changed (resize, reorder).
@@ -355,28 +390,42 @@ function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColPro
 		const nextLeft = nextProps.pinnedOffsets?.left[id!];
 		const prevRight = prevProps.pinnedOffsets?.right[id!];
 		const nextRight = nextProps.pinnedOffsets?.right[id!];
-		if (prevLeft !== nextLeft || prevRight !== nextRight) return false;
+		if (prevLeft !== nextLeft || prevRight !== nextRight) {
+			return false;
+		}
 
 		const prevLeftKeys = prevProps.pinnedOffsets ? Object.keys(prevProps.pinnedOffsets.left).length : 0;
 		const nextLeftKeys = nextProps.pinnedOffsets ? Object.keys(nextProps.pinnedOffsets.left).length : 0;
 		const prevRightKeys = prevProps.pinnedOffsets ? Object.keys(prevProps.pinnedOffsets.right).length : 0;
 		const nextRightKeys = nextProps.pinnedOffsets ? Object.keys(nextProps.pinnedOffsets.right).length : 0;
-		if (prevLeftKeys !== nextLeftKeys || prevRightKeys !== nextRightKeys) return false;
+		if (prevLeftKeys !== nextLeftKeys || prevRightKeys !== nextRightKeys) {
+			return false;
+		}
 	}
 	const pg = prevProps.gridStyle;
 	const ng = nextProps.gridStyle;
 	if (pg !== ng) {
-		if (!pg || !ng) return false;
-		if (pg.gridColumn !== ng.gridColumn || pg.gridRow !== ng.gridRow) return false;
+		if (!pg || !ng) {
+			return false;
+		}
+		if (pg.gridColumn !== ng.gridColumn || pg.gridRow !== ng.gridRow) {
+			return false;
+		}
 	}
-	if (prevProps.cellNavigation !== nextProps.cellNavigation) return false;
-	if (prevProps.navCol !== nextProps.navCol) return false;
+	if (prevProps.cellNavigation !== nextProps.cellNavigation) {
+		return false;
+	}
+	if (prevProps.navCol !== nextProps.navCol) {
+		return false;
+	}
 	// Only re-render for active-cell changes that flip this header's Tab-stop state.
 	const prevNavActive =
 		!!prevProps.cellNavigation && prevProps.activeCell?.row === -1 && prevProps.activeCell?.col === prevProps.navCol;
 	const nextNavActive =
 		!!nextProps.cellNavigation && nextProps.activeCell?.row === -1 && nextProps.activeCell?.col === nextProps.navCol;
-	if (prevNavActive !== nextNavActive) return false;
+	if (prevNavActive !== nextNavActive) {
+		return false;
+	}
 	return true;
 }
 

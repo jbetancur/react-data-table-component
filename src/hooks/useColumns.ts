@@ -108,18 +108,24 @@ function useColumns<T>(
 	// pin zones. Shared by the HTML5-DnD path (mouse) and the pointer path (touch/pen).
 	const reorderColumnTo = React.useCallback(
 		(targetId: string) => {
-			if (!sourceColumnId.current || targetId === sourceColumnId.current) return;
+			if (!sourceColumnId.current || targetId === sourceColumnId.current) {
+				return;
+			}
 
 			// When groups exist, only allow reorder within the same group
 			if (tableGroups.length > 0) {
 				const srcGroupIds =
 					tableGroups.find(g => g.columnIds.some(cid => String(cid) === sourceColumnId.current))?.columnIds ?? [];
-				if (!srcGroupIds.some(cid => String(cid) === targetId)) return;
+				if (!srcGroupIds.some(cid => String(cid) === targetId)) {
+					return;
+				}
 			}
 
 			const srcIdx = findColumnIndexById(tableColumns, sourceColumnId.current);
 			const tgtIdx = findColumnIndexById(tableColumns, targetId);
-			if (srcIdx === -1 || tgtIdx === -1) return;
+			if (srcIdx === -1 || tgtIdx === -1) {
+				return;
+			}
 			const moved = [...tableColumns];
 			const [col] = moved.splice(srcIdx, 1);
 			moved.splice(tgtIdx, 0, col);
@@ -141,7 +147,9 @@ function useColumns<T>(
 
 	const handleDragStart = React.useCallback(
 		(e: React.DragEvent<HTMLDivElement>) => {
-			if (isDraggingGroup.current) return;
+			if (isDraggingGroup.current) {
+				return;
+			}
 			const { attributes } = e.target as HTMLDivElement;
 			const id = attributes.getNamedItem('data-column-id')?.value;
 
@@ -155,12 +163,18 @@ function useColumns<T>(
 
 	const handleDragEnter = React.useCallback(
 		(e: React.DragEvent<HTMLDivElement>) => {
-			if (isDraggingGroup.current) return;
+			if (isDraggingGroup.current) {
+				return;
+			}
 			const el = e.currentTarget as HTMLDivElement;
 			// Skip events that bubble from child elements within this same cell
-			if (el.contains(e.relatedTarget as Node)) return;
+			if (el.contains(e.relatedTarget as Node)) {
+				return;
+			}
 			const id = el.getAttribute('data-column-id');
-			if (!id) return;
+			if (!id) {
+				return;
+			}
 			reorderColumnTo(id);
 		},
 		[reorderColumnTo],
@@ -201,11 +215,15 @@ function useColumns<T>(
 	// Swap the dragged group block with the target group. Shared by DnD and pointer paths.
 	const reorderGroupTo = React.useCallback(
 		(targetKey: string) => {
-			if (!sourceGroupKey.current || targetKey === sourceGroupKey.current) return;
+			if (!sourceGroupKey.current || targetKey === sourceGroupKey.current) {
+				return;
+			}
 
 			const srcGroup = tableGroups.find(g => String(g.columnIds[0]) === sourceGroupKey.current);
 			const tgtGroup = tableGroups.find(g => String(g.columnIds[0]) === targetKey);
-			if (!srcGroup || !tgtGroup) return;
+			if (!srcGroup || !tgtGroup) {
+				return;
+			}
 
 			const srcIds = new Set(srcGroup.columnIds.map(String));
 			const tgtIds = new Set(tgtGroup.columnIds.map(String));
@@ -227,9 +245,13 @@ function useColumns<T>(
 		(e: React.DragEvent<HTMLDivElement>) => {
 			e.preventDefault();
 			const el = e.currentTarget as HTMLDivElement;
-			if (el.contains(e.relatedTarget as Node)) return;
+			if (el.contains(e.relatedTarget as Node)) {
+				return;
+			}
 			const key = el.getAttribute('data-group-key');
-			if (!key) return;
+			if (!key) {
+				return;
+			}
 			reorderGroupTo(key);
 		},
 		[reorderGroupTo],
@@ -280,7 +302,9 @@ function useColumns<T>(
 	const handlePinColumn = React.useCallback(
 		(columnId: string | number, side?: 'left' | 'right') => {
 			const next = setColumnPin(tableColumns, columnId, side);
-			if (next === tableColumns) return;
+			if (next === tableColumns) {
+				return;
+			}
 			setTableColumns(next);
 			onColumnOrderChange(next);
 		},

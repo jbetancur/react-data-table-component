@@ -52,7 +52,9 @@ function Pagination({
 	// clean; the layout effect measures before first paint, so there's no flash.
 	useIsomorphicLayoutEffect(() => {
 		const nav = navRef.current;
-		if (!nav) return;
+		if (!nav) {
+			return;
+		}
 		const update = () => setContainerWidth(nav.getBoundingClientRect().width);
 		update();
 		const ro = new ResizeObserver(update);

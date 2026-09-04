@@ -157,7 +157,9 @@ export default function useContextMenu<T>({
 	const onRowContextMenu = React.useCallback((row: T, rowIndex: number, e: React.MouseEvent) => {
 		const items = rowActionsRef.current?.(row, rowIndex) ?? [];
 		// No items for this row — let the native browser menu through.
-		if (items.length === 0) return;
+		if (items.length === 0) {
+			return;
+		}
 		e.preventDefault();
 		triggerRef.current = e.currentTarget as HTMLElement;
 		setMenuState({
@@ -169,7 +171,9 @@ export default function useContextMenu<T>({
 
 	const onRowMenuButtonClick = React.useCallback((row: T, rowIndex: number, e: React.MouseEvent<HTMLButtonElement>) => {
 		const items = rowActionsRef.current?.(row, rowIndex) ?? [];
-		if (items.length === 0) return;
+		if (items.length === 0) {
+			return;
+		}
 		triggerRef.current = e.currentTarget;
 		const rect = e.currentTarget.getBoundingClientRect();
 		setMenuState({
@@ -187,7 +191,9 @@ export default function useContextMenu<T>({
 	);
 
 	const openMenu = React.useMemo<OpenContextMenu | null>(() => {
-		if (!menuState) return null;
+		if (!menuState) {
+			return null;
+		}
 		const { ctx, position, anchorRect } = menuState;
 
 		if (ctx.type === 'row') {
@@ -210,11 +216,15 @@ export default function useContextMenu<T>({
 		// Pinning moves a column to the table edge, which would tear it out of its
 		// header group — omit pin actions when column groups are in play.
 		if (!columnGroups?.length) {
-			if (column.pinned !== 'left')
+			if (column.pinned !== 'left') {
 				columnGroup.push({ id: 'pin-left', label: localization.pinLeftLabel ?? 'Pin left' });
-			if (column.pinned !== 'right')
+			}
+			if (column.pinned !== 'right') {
 				columnGroup.push({ id: 'pin-right', label: localization.pinRightLabel ?? 'Pin right' });
-			if (column.pinned) columnGroup.push({ id: 'unpin', label: localization.unpinLabel ?? 'Unpin' });
+			}
+			if (column.pinned) {
+				columnGroup.push({ id: 'unpin', label: localization.unpinLabel ?? 'Unpin' });
+			}
 		}
 		const visibleCount = tableColumns.filter(c => !c.omit).length;
 		columnGroup.push({
@@ -227,20 +237,26 @@ export default function useContextMenu<T>({
 
 		const custom =
 			typeof contextMenuActions?.header === 'function' ? contextMenuActions.header(column) : contextMenuActions?.header;
-		if (custom?.length) groups.push(custom);
+		if (custom?.length) {
+			groups.push(custom);
+		}
 
 		return { groups, position, anchorRect, ariaLabel: localization.headerMenuAriaLabel ?? 'Column menu' };
 	}, [menuState, contextMenuActions, localization, resolveColumn, sortColumns, columnGroups, tableColumns]);
 
 	const handleMenuClose = React.useCallback((returnFocus: boolean) => {
 		setMenuState(null);
-		if (returnFocus) triggerRef.current?.focus();
+		if (returnFocus) {
+			triggerRef.current?.focus();
+		}
 		triggerRef.current = null;
 	}, []);
 
 	const handleMenuSelect = React.useCallback(
 		(action: ContextMenuAction) => {
-			if (!menuState) return;
+			if (!menuState) {
+				return;
+			}
 			const { ctx } = menuState;
 
 			if (ctx.type === 'header') {

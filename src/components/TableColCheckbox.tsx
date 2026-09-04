@@ -3,11 +3,14 @@ import '../DataTable.css';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
 import { useHeadContext } from '../context/HeadContext';
+import { getRovingTabIndex } from '../util';
 
 function ColumnCheckbox<T>(): JSX.Element | null {
 	const { selectAll, cellNavigation, activeCell } = useHeadContext<T>();
 	// Rendered only when selection is on (DataTableHead gates on the slice).
-	if (!selectAll) return null;
+	if (!selectAll) {
+		return null;
+	}
 
 	const { allSelected, selectedRows, visibleRows, disabled: rowDisabled, keyField, mergeSelections } = selectAll;
 
@@ -47,7 +50,7 @@ function ColumnCheckbox<T>(): JSX.Element | null {
 				checked={allSelected}
 				indeterminate={indeterminate}
 				disabled={isDisabled}
-				tabIndex={cellNavigation ? (navActive ? 0 : -1) : undefined}
+				tabIndex={getRovingTabIndex(!!cellNavigation, !!navActive)}
 			/>
 		</CellBase>
 	);

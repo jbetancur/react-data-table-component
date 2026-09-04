@@ -13,7 +13,9 @@ export function buildGridTemplateColumns<T>(
 	columnWidths: Record<string | number, number>,
 ): string {
 	const tracks: string[] = [];
-	for (let i = 0; i < prefixColCount; i++) tracks.push('var(--rdt-system-col-width, 48px)');
+	for (let i = 0; i < prefixColCount; i++) {
+		tracks.push('var(--rdt-system-col-width, 48px)');
+	}
 	for (const col of visibleColumns) {
 		const resized = col.id != null ? columnWidths[col.id] : undefined;
 		if (resized != null) {

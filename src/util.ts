@@ -50,7 +50,9 @@ function compareBySelector<T>(a: T, b: T, selector: Selector<T>, direction: Sort
 	const aNull = aValue == null;
 	const bNull = bValue == null;
 	if (aNull || bNull) {
-		if (aNull && bNull) return 0;
+		if (aNull && bNull) {
+			return 0;
+		}
 		return aNull ? 1 : -1;
 	}
 
@@ -316,7 +318,9 @@ export type PinnedOffsets = {
 export const EMPTY_PINNED_OFFSETS: PinnedOffsets = { left: {}, right: {} };
 
 function resolveColumnWidth<T>(col: TableColumn<T>, columnWidths: Record<string | number, number>): number {
-	if (col.id != null && columnWidths[col.id] != null) return columnWidths[col.id];
+	if (col.id != null && columnWidths[col.id] != null) {
+		return columnWidths[col.id];
+	}
 	const raw = col.width ?? col.minWidth ?? '100px';
 	const n = parseFloat(raw);
 	return isNaN(n) ? 100 : n;
@@ -329,10 +333,14 @@ function resolveColumnWidth<T>(col: TableColumn<T>, columnWidths: Record<string 
  * keep pinned columns aligned without code changes to this library.
  */
 function resolveSystemColWidth(): number {
-	if (typeof window === 'undefined' || typeof document === 'undefined') return SYSTEM_COL_WIDTH;
+	if (typeof window === 'undefined' || typeof document === 'undefined') {
+		return SYSTEM_COL_WIDTH;
+	}
 	const root = document.querySelector('.rdt_table') ?? document.documentElement;
 	const raw = getComputedStyle(root).getPropertyValue('--rdt-system-col-width').trim();
-	if (!raw) return SYSTEM_COL_WIDTH;
+	if (!raw) {
+		return SYSTEM_COL_WIDTH;
+	}
 	const n = parseFloat(raw);
 	return isNaN(n) ? SYSTEM_COL_WIDTH : n;
 }
@@ -346,7 +354,9 @@ export function getPinnedOffsets<T>(
 ): PinnedOffsets {
 	const visible = columns.filter(c => !c.omit);
 	const hasPinned = visible.some(c => c.pinned);
-	if (!hasPinned) return EMPTY_PINNED_OFFSETS;
+	if (!hasPinned) {
+		return EMPTY_PINNED_OFFSETS;
+	}
 
 	const systemWidth = resolveSystemColWidth();
 	const baseLeft = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander) * systemWidth;
@@ -354,14 +364,18 @@ export function getPinnedOffsets<T>(
 	const left: Record<string | number, number> = {};
 	let leftAcc = baseLeft;
 	for (const col of visible.filter(c => c.pinned === 'left')) {
-		if (col.id != null) left[col.id] = leftAcc;
+		if (col.id != null) {
+			left[col.id] = leftAcc;
+		}
 		leftAcc += resolveColumnWidth(col, columnWidths);
 	}
 
 	const right: Record<string | number, number> = {};
 	let rightAcc = 0;
 	for (const col of [...visible.filter(c => c.pinned === 'right')].reverse()) {
-		if (col.id != null) right[col.id] = rightAcc;
+		if (col.id != null) {
+			right[col.id] = rightAcc;
+		}
 		rightAcc += resolveColumnWidth(col, columnWidths);
 	}
 
@@ -377,7 +391,9 @@ export function getPinnedTotalWidths<T>(
 ): { left: number; right: number } {
 	const visible = columns.filter(c => !c.omit);
 	const hasPinned = visible.some(c => c.pinned);
-	if (!hasPinned) return { left: 0, right: 0 };
+	if (!hasPinned) {
+		return { left: 0, right: 0 };
+	}
 
 	const systemWidth = resolveSystemColWidth();
 	let left = getPrefixColCount(selectableRows, expandableRows, expandableRowsHideExpander) * systemWidth;
@@ -416,8 +432,12 @@ function getPinnedStyle(
 	id: string | number | undefined,
 	zIndex?: number,
 ): React.CSSProperties {
-	if (pinnedLeft) return { position: 'sticky', insetInlineStart: offsets.left[id!], ...(zIndex != null && { zIndex }) };
-	if (pinnedRight) return { position: 'sticky', insetInlineEnd: offsets.right[id!], ...(zIndex != null && { zIndex }) };
+	if (pinnedLeft) {
+		return { position: 'sticky', insetInlineStart: offsets.left[id!], ...(zIndex != null && { zIndex }) };
+	}
+	if (pinnedRight) {
+		return { position: 'sticky', insetInlineEnd: offsets.right[id!], ...(zIndex != null && { zIndex }) };
+	}
 	return {};
 }
 
@@ -458,7 +478,9 @@ export function getPinnedCellMeta<T>(
  * injected just before it so non-pinned cells fill the space up to the pins. */
 export function getFirstRightPinnedId<T>(columns: TableColumn<T>[]): string | number | null {
 	for (const col of columns) {
-		if (!col.omit && col.pinned === 'right') return col.id ?? null;
+		if (!col.omit && col.pinned === 'right') {
+			return col.id ?? null;
+		}
 	}
 	return null;
 }
@@ -478,6 +500,16 @@ export function getCellWidthProps<T>(
 	};
 }
 
+/** Roving tabindex: with cell navigation on, the grid is a single Tab stop and only
+ * the active cell is tabbable. Off, the element opts out of tabindex entirely. */
+export function getRovingTabIndex(navEnabled: boolean, isActive: boolean): number | undefined {
+	if (!navEnabled) {
+		return undefined;
+	}
+
+	return isActive ? 0 : -1;
+}
+
 /**
  * Assigns pin state based on position and explicit pin zones.
  *
@@ -495,7 +527,9 @@ export function normalizePins<T>(
 	if (pinZoneMap) {
 		return cols.map((col, i) => {
 			const zone = pinZoneMap[i];
-			if (zone) return { ...col, pinned: zone };
+			if (zone) {
+				return { ...col, pinned: zone };
+			}
 			const { pinned: _removed, ...rest } = col;
 			return rest as TableColumn<T>;
 		});
@@ -509,8 +543,12 @@ export function normalizePins<T>(
 	}
 
 	return cols.map((col, i) => {
-		if (i < leftCount) return { ...col, pinned: 'left' };
-		if (rightCount > 0 && i >= cols.length - rightCount) return { ...col, pinned: 'right' };
+		if (i < leftCount) {
+			return { ...col, pinned: 'left' };
+		}
+		if (rightCount > 0 && i >= cols.length - rightCount) {
+			return { ...col, pinned: 'right' };
+		}
 		const { pinned: _removed, ...rest } = col;
 		return rest as TableColumn<T>;
 	});
@@ -529,8 +567,12 @@ export function getPinZoneForIndex(
 	rightCount: number,
 	total: number,
 ): 'left' | 'right' | undefined {
-	if (index < leftCount) return 'left';
-	if (index >= total - rightCount) return 'right';
+	if (index < leftCount) {
+		return 'left';
+	}
+	if (index >= total - rightCount) {
+		return 'right';
+	}
 	return undefined;
 }
 
@@ -547,7 +589,9 @@ export function setColumnPin<T>(
 	side?: 'left' | 'right',
 ): TableColumn<T>[] {
 	const idx = findColumnIndexById(columns, String(columnId));
-	if (idx === -1) return columns;
+	if (idx === -1) {
+		return columns;
+	}
 
 	const next = [...columns];
 	const [col] = next.splice(idx, 1);
@@ -557,9 +601,13 @@ export function setColumnPin<T>(
 	const leftCount = next.filter(c => c.pinned === 'left').length;
 	const rightCount = next.filter(c => c.pinned === 'right').length;
 	let insertAt: number;
-	if (side === 'left') insertAt = leftCount;
-	else if (side === 'right') insertAt = next.length - rightCount;
-	else insertAt = col.pinned === 'right' ? next.length - rightCount : leftCount;
+	if (side === 'left') {
+		insertAt = leftCount;
+	} else if (side === 'right') {
+		insertAt = next.length - rightCount;
+	} else {
+		insertAt = col.pinned === 'right' ? next.length - rightCount : leftCount;
+	}
 
 	next.splice(insertAt, 0, updated);
 	return next;

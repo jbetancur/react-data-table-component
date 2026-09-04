@@ -40,16 +40,28 @@ function escapeCsvCell(value: string): string {
 }
 
 function headerLabel<T>(col: TableColumn<T>, overrides?: Record<string | number, string>): string {
-	if (col.id != null && overrides && overrides[col.id] !== undefined) return overrides[col.id];
-	if (typeof col.name === 'string' || typeof col.name === 'number') return String(col.name);
+	if (col.id != null && overrides && overrides[col.id] !== undefined) {
+		return overrides[col.id];
+	}
+	if (typeof col.name === 'string' || typeof col.name === 'number') {
+		return String(col.name);
+	}
 	return col.id != null ? String(col.id) : '';
 }
 
 function cellToString(value: unknown): string {
-	if (value == null) return '';
-	if (typeof value === 'string') return value;
-	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') return String(value);
-	if (value instanceof Date) return value.toISOString();
+	if (value == null) {
+		return '';
+	}
+	if (typeof value === 'string') {
+		return value;
+	}
+	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
+		return String(value);
+	}
+	if (value instanceof Date) {
+		return value.toISOString();
+	}
 	// React nodes or arbitrary objects shouldn't end up in exports — coerce to JSON for safety.
 	try {
 		return JSON.stringify(value);
@@ -69,10 +81,14 @@ export default function useTableExport<T>(options: UseTableExportOptions<T>): Us
 
 	const exportColumns = React.useMemo(() => {
 		const visible = columns.filter(c => !c.omit);
-		if (!columnOrder) return visible;
+		if (!columnOrder) {
+			return visible;
+		}
 		const byId = new Map<string | number, TableColumn<T>>();
 		visible.forEach(c => {
-			if (c.id != null) byId.set(c.id, c);
+			if (c.id != null) {
+				byId.set(c.id, c);
+			}
 		});
 		return columnOrder.map(id => byId.get(id)).filter((c): c is TableColumn<T> => !!c);
 	}, [columns, columnOrder]);
@@ -112,7 +128,9 @@ export default function useTableExport<T>(options: UseTableExportOptions<T>): Us
 
 	const download = React.useCallback(
 		(filename: string, format: ExportFormat = 'csv') => {
-			if (typeof document === 'undefined') return;
+			if (typeof document === 'undefined') {
+				return;
+			}
 			const content = format === 'json' ? toJSON() : toCSV();
 			const mime = format === 'json' ? 'application/json;charset=utf-8' : 'text/csv;charset=utf-8';
 			const blob = new Blob([content], { type: mime });

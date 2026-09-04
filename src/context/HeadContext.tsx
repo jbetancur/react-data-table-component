@@ -42,7 +42,9 @@ const HeadContext = React.createContext<HeadContextValue<any> | null>(null);
 
 export function useHeadContext<T>(): HeadContextValue<T> {
 	const ctx = React.useContext(HeadContext);
-	if (!ctx) throw new Error('useHeadContext must be used inside DataTable');
+	if (!ctx) {
+		throw new Error('useHeadContext must be used inside DataTable');
+	}
 	return ctx as HeadContextValue<T>;
 }
 

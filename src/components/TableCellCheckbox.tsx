@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../DataTable.css';
 import { CellBase } from './Cell';
 import Checkbox from './Checkbox';
-import { prop, isEmpty } from '../util';
+import { prop, isEmpty, getRovingTabIndex } from '../util';
 import type { TableRow } from '../types';
 import type { NavCellProps } from '../context/RowContext';
 import type { RowSelectionSlice } from '../hooks/useSelection';
@@ -86,7 +86,9 @@ function TableCellCheckbox<T>({
 			rowCount,
 			singleSelect: selectableRowsSingle,
 		});
-		if (!isEmpty(rowKey)) lastSelectedKeyRef.current = rowKey as string | number;
+		if (!isEmpty(rowKey)) {
+			lastSelectedKeyRef.current = rowKey as string | number;
+		}
 	};
 
 	return (
@@ -108,7 +110,7 @@ function TableCellCheckbox<T>({
 				aria-checked={selected}
 				onClick={handleOnRowSelected}
 				disabled={disabled}
-				tabIndex={nav ? (nav.active ? 0 : -1) : undefined}
+				tabIndex={getRovingTabIndex(!!nav, !!nav?.active)}
 			/>
 		</CellBase>
 	);

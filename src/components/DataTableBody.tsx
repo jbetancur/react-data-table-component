@@ -110,11 +110,15 @@ function DataTableBody<T>({
 		}
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		const container = bodyRef.current;
-		if (!container) return;
+		if (!container) {
+			return;
+		}
 
 		const prevTops = prevRowTopsRef.current;
 		// Only run FLIP if we have a snapshot (i.e. a sort actually happened)
-		if (prevTops.size === 0) return;
+		if (prevTops.size === 0) {
+			return;
+		}
 
 		let hasUnseenRows = false;
 		container.querySelectorAll<HTMLElement>('[id^="row-"]').forEach(el => {
@@ -129,7 +133,9 @@ function DataTableBody<T>({
 				return;
 			}
 
-			if (reducedMotion || Math.abs(prevTop - newTop) < 1) return;
+			if (reducedMotion || Math.abs(prevTop - newTop) < 1) {
+				return;
+			}
 
 			flipElement(el, prevTop - newTop, 'Y', 0.3);
 		});
@@ -138,7 +144,9 @@ function DataTableBody<T>({
 		prevRowTopsRef.current = new Map();
 
 		// Trigger a re-render so rowMeta picks up the newly-unseened rows as isNew
-		if (hasUnseenRows) forceUpdate();
+		if (hasUnseenRows) {
+			forceUpdate();
+		}
 	}, [tableRows]);
 
 	const rowMeta = React.useMemo(() => {
@@ -161,9 +169,13 @@ function DataTableBody<T>({
 	}, [tableRows, keyField, selectedRows, selectedIdSet, animateRows, isMounted, seenIdsSet]);
 
 	React.useEffect(() => {
-		if (!animateRows) return;
+		if (!animateRows) {
+			return;
+		}
 		for (const meta of rowMeta) {
-			if (meta.isNew) seenIdsRef.current.add(String(meta.id));
+			if (meta.isNew) {
+				seenIdsRef.current.add(String(meta.id));
+			}
 		}
 	}, [rowMeta, animateRows]);
 

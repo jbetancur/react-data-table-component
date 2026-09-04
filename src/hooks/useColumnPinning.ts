@@ -32,9 +32,13 @@ export default function useColumnPinning<T>({
 	// Pinning is incompatible with CSS-grid group headers — strip it when groups are active
 	const hasGroups = tableGroups.length > 0 || (columnGroups != null && columnGroups.length > 0);
 	const effectiveColumns = React.useMemo(() => {
-		if (!hasGroups) return tableColumns;
+		if (!hasGroups) {
+			return tableColumns;
+		}
 		return tableColumns.map(c => {
-			if (!c.pinned) return c;
+			if (!c.pinned) {
+				return c;
+			}
 			const { pinned: _p, ...rest } = c;
 			return rest as typeof c;
 		});
@@ -42,7 +46,9 @@ export default function useColumnPinning<T>({
 
 	const warnedPinGroupsRef = React.useRef(false);
 	React.useEffect(() => {
-		if (!hasGroups || warnedPinGroupsRef.current) return;
+		if (!hasGroups || warnedPinGroupsRef.current) {
+			return;
+		}
 		if (tableColumns.some(c => c.pinned)) {
 			warnedPinGroupsRef.current = true;
 			console.warn(

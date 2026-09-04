@@ -25,14 +25,20 @@ export default function PinnedScrollbar({
 
 	const update = React.useCallback(() => {
 		const el = scrollRef.current;
-		if (!el) return;
+		if (!el) {
+			return;
+		}
 		const { scrollWidth, clientWidth, scrollLeft } = el;
 		const canScroll = scrollWidth > clientWidth;
 		setVisible(canScroll);
-		if (!canScroll) return;
+		if (!canScroll) {
+			return;
+		}
 		const track = trackRef.current;
 		const trackWidth = track?.clientWidth ?? 0;
-		if (trackWidth === 0) return;
+		if (trackWidth === 0) {
+			return;
+		}
 		const ratio = clientWidth / scrollWidth;
 		const tw = Math.max(ratio * trackWidth, 30);
 		const maxThumbLeft = trackWidth - tw;
@@ -50,15 +56,21 @@ export default function PinnedScrollbar({
 	// Sync scrollbar when scroll container scrolls or resizes
 	React.useEffect(() => {
 		const el = scrollRef.current;
-		if (!el) return;
-		if (!el.id) el.id = scrollContainerId;
+		if (!el) {
+			return;
+		}
+		if (!el.id) {
+			el.id = scrollContainerId;
+		}
 		el.addEventListener('scroll', update, { passive: true });
 		const ro = new ResizeObserver(update);
 		ro.observe(el);
 		// The container's size doesn't change when its *content* widens (async data,
 		// column resize/visibility), but scrollWidth does — watch the content too,
 		// or the scrollbar never appears/updates until the next container resize.
-		if (el.firstElementChild) ro.observe(el.firstElementChild);
+		if (el.firstElementChild) {
+			ro.observe(el.firstElementChild);
+		}
 		update();
 		return () => {
 			el.removeEventListener('scroll', update);
@@ -71,15 +83,21 @@ export default function PinnedScrollbar({
 		(e: React.MouseEvent) => {
 			e.preventDefault();
 			const el = scrollRef.current;
-			if (!el) return;
+			if (!el) {
+				return;
+			}
 			isDragging.current = true;
 			dragStartX.current = e.clientX;
 			dragStartScroll.current = el.scrollLeft;
 
 			const onMove = (ev: MouseEvent) => {
-				if (!isDragging.current) return;
+				if (!isDragging.current) {
+					return;
+				}
 				const track = trackRef.current;
-				if (!el || !track) return;
+				if (!el || !track) {
+					return;
+				}
 				const { scrollWidth, clientWidth } = el;
 				const trackWidth = track.clientWidth;
 				const tw = Math.max((clientWidth / scrollWidth) * trackWidth, 30);
@@ -109,7 +127,9 @@ export default function PinnedScrollbar({
 	const handleThumbKeyDown = React.useCallback(
 		(e: React.KeyboardEvent<HTMLDivElement>) => {
 			const el = scrollRef.current;
-			if (!el) return;
+			if (!el) {
+				return;
+			}
 			const step = el.clientWidth * 0.1;
 			if (e.key === 'ArrowLeft') {
 				e.preventDefault();
@@ -133,10 +153,14 @@ export default function PinnedScrollbar({
 	const handleTrackClick = React.useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
 			const thumb = thumbRef.current;
-			if (thumb && thumb.contains(e.target as Node)) return;
+			if (thumb && thumb.contains(e.target as Node)) {
+				return;
+			}
 			const el = scrollRef.current;
 			const track = trackRef.current;
-			if (!el || !track) return;
+			if (!el || !track) {
+				return;
+			}
 			const rect = track.getBoundingClientRect();
 			const clickX = e.clientX - rect.left;
 			const { scrollWidth, clientWidth } = el;
@@ -150,7 +174,9 @@ export default function PinnedScrollbar({
 		[scrollRef, thumbLeft],
 	);
 
-	if (!visible) return null;
+	if (!visible) {
+		return null;
+	}
 
 	return (
 		<div

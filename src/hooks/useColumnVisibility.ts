@@ -19,7 +19,9 @@ export default function useColumnVisibility<T>(initialColumns: TableColumn<T>[])
 	const [hiddenIds, setHiddenIds] = React.useState<Set<string | number>>(() => {
 		const hidden = new Set<string | number>();
 		initialColumns.forEach(col => {
-			if (col.omit && col.id != null) hidden.add(col.id);
+			if (col.omit && col.id != null) {
+				hidden.add(col.id);
+			}
 		});
 		return hidden;
 	});

@@ -34,20 +34,28 @@ export default function useCellEdit<T>(column: TableColumn<T>, row: T, rowIndex:
 
 	const seedValue = React.useCallback((): string => {
 		const raw = column.selector ? column.selector(row, rowIndex) : undefined;
-		if (raw == null) return '';
-		if (typeof raw === 'boolean') return raw ? 'true' : 'false';
+		if (raw == null) {
+			return '';
+		}
+		if (typeof raw === 'boolean') {
+			return raw ? 'true' : 'false';
+		}
 		return String(raw);
 	}, [column, row, rowIndex]);
 
 	const startEdit = React.useCallback(() => {
-		if (!editor) return;
+		if (!editor) {
+			return;
+		}
 		setEditValue(seedValue());
 		setEditError(null);
 		setEditing(true);
 	}, [editor, seedValue]);
 
 	React.useEffect(() => {
-		if (editing) inputRef.current?.focus();
+		if (editing) {
+			inputRef.current?.focus();
+		}
 	}, [editing]);
 
 	const cancelEdit = React.useCallback(() => {
@@ -78,8 +86,12 @@ export default function useCellEdit<T>(column: TableColumn<T>, row: T, rowIndex:
 	);
 
 	const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement>) => {
-		if (e.key === 'Enter') commitEdit();
-		if (e.key === 'Escape') cancelEdit();
+		if (e.key === 'Enter') {
+			commitEdit();
+		}
+		if (e.key === 'Escape') {
+			cancelEdit();
+		}
 	};
 
 	// Checkbox editor commits instantly on click — no extra state.

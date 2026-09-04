@@ -24,7 +24,9 @@ function focusNavCell(root: HTMLElement, row: number, col: number): void {
 			}
 		});
 	}
-	if (!cell) return;
+	if (!cell) {
+		return;
+	}
 	const widget = cell.dataset.navWidget
 		? cell.querySelector<HTMLElement>('input:not(:disabled), button:not(:disabled), [role="columnheader"]')
 		: null;
@@ -62,7 +64,9 @@ export default function useCellNavigation<T>({
 	const navMaxRow = filteredTableRowCount - 1;
 
 	const effectiveActiveCell = React.useMemo((): ActiveCell | null => {
-		if (!cellNavigation || totalNavCols === 0 || navMaxRow < navMinRow) return null;
+		if (!cellNavigation || totalNavCols === 0 || navMaxRow < navMinRow) {
+			return null;
+		}
 		const base = activeCell ?? { row: navMaxRow >= 0 ? 0 : navMinRow, col: 0 };
 		return {
 			row: Math.min(Math.max(base.row, navMinRow), navMaxRow),
@@ -72,7 +76,9 @@ export default function useCellNavigation<T>({
 
 	const handleNavFocus = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
 		const cell = (e.target as HTMLElement).closest<HTMLElement>('[data-nav-row]');
-		if (!cell) return;
+		if (!cell) {
+			return;
+		}
 		const row = Number(cell.dataset.navRow);
 		const col = Number(cell.dataset.navCol);
 		setActiveCell(prev => (prev && prev.row === row && prev.col === col ? prev : { row, col }));
@@ -80,24 +86,38 @@ export default function useCellNavigation<T>({
 
 	const handleNavKeyDown = React.useCallback(
 		(e: React.KeyboardEvent<HTMLDivElement>) => {
-			if (e.defaultPrevented) return;
-			if (!NAV_KEYS.includes(e.key) && e.key !== ' ') return;
+			if (e.defaultPrevented) {
+				return;
+			}
+			if (!NAV_KEYS.includes(e.key) && e.key !== ' ') {
+				return;
+			}
 			const target = e.target as HTMLElement;
 			const cell = target.closest<HTMLElement>('[data-nav-row]');
-			if (!cell) return;
+			if (!cell) {
+				return;
+			}
 
 			// Space on a focused cell wrapper would scroll the page; swallow it. Widgets and
 			// editors handle Space themselves and preventDefault before it bubbles here.
 			if (e.key === ' ') {
-				if (target === cell) e.preventDefault();
+				if (target === cell) {
+					e.preventDefault();
+				}
 				return;
 			}
 
 			// Don't hijack arrows from text-entry widgets (open editors, custom cell content).
 			const tag = target.tagName;
-			if (target.isContentEditable || tag === 'TEXTAREA' || tag === 'SELECT') return;
-			if (tag === 'INPUT' && !['checkbox', 'radio', 'button'].includes((target as HTMLInputElement).type)) return;
-			if (target.closest('.rdt_editCustomWrap')) return;
+			if (target.isContentEditable || tag === 'TEXTAREA' || tag === 'SELECT') {
+				return;
+			}
+			if (tag === 'INPUT' && !['checkbox', 'radio', 'button'].includes((target as HTMLInputElement).type)) {
+				return;
+			}
+			if (target.closest('.rdt_editCustomWrap')) {
+				return;
+			}
 
 			const rtl = getComputedStyle(e.currentTarget).direction === 'rtl';
 			const row = Number(cell.dataset.navRow);
@@ -120,18 +140,24 @@ export default function useCellNavigation<T>({
 					break;
 				case 'Home':
 					nextCol = 0;
-					if (e.ctrlKey || e.metaKey) nextRow = navMaxRow >= 0 ? 0 : navMinRow;
+					if (e.ctrlKey || e.metaKey) {
+						nextRow = navMaxRow >= 0 ? 0 : navMinRow;
+					}
 					break;
 				case 'End':
 					nextCol = totalNavCols - 1;
-					if (e.ctrlKey || e.metaKey) nextRow = navMaxRow >= 0 ? navMaxRow : navMinRow;
+					if (e.ctrlKey || e.metaKey) {
+						nextRow = navMaxRow >= 0 ? navMaxRow : navMinRow;
+					}
 					break;
 			}
 
 			nextRow = Math.min(Math.max(nextRow, navMinRow), Math.max(navMaxRow, navMinRow));
 			nextCol = Math.min(Math.max(nextCol, 0), Math.max(totalNavCols - 1, 0));
 			e.preventDefault();
-			if (nextRow === row && nextCol === col) return;
+			if (nextRow === row && nextCol === col) {
+				return;
+			}
 			focusNavCell(e.currentTarget, nextRow, nextCol);
 		},
 		[navMinRow, navMaxRow, totalNavCols],

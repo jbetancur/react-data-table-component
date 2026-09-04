@@ -32,12 +32,19 @@ export default function ContextMenu({
 	// the element to avoid a re-render flash.
 	useIsomorphicLayoutEffect(() => {
 		const el = menuRef.current;
-		if (!el) return;
+		if (!el) {
+			return;
+		}
 		const rect = el.getBoundingClientRect();
 		const margin = 8;
-		let left = anchorRect ? (isRTL ? anchorRect.right - rect.width : anchorRect.left) : position.x;
+		let left = position.x;
+		if (anchorRect) {
+			left = isRTL ? anchorRect.right - rect.width : anchorRect.left;
+		}
 		let top = anchorRect ? anchorRect.bottom + 4 : position.y;
-		if (left + rect.width > window.innerWidth - margin) left = window.innerWidth - rect.width - margin;
+		if (left + rect.width > window.innerWidth - margin) {
+			left = window.innerWidth - rect.width - margin;
+		}
 		left = Math.max(margin, left);
 		if (top + rect.height > window.innerHeight - margin) {
 			const flipped = (anchorRect ? anchorRect.top - 4 : position.y) - rect.height;
@@ -53,12 +60,16 @@ export default function ContextMenu({
 		first?.focus();
 
 		function handleOutside(e: Event) {
-			if (menuRef.current && !menuRef.current.contains(e.target as Node)) onClose(false);
+			if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+				onClose(false);
+			}
 		}
 		// The menu is position: fixed, so any scroll moves the anchor out from under it —
 		// close rather than track (same behaviour as the column filter panel).
 		function handleScroll(e: Event) {
-			if (menuRef.current && e.target instanceof Node && menuRef.current.contains(e.target)) return;
+			if (menuRef.current && e.target instanceof Node && menuRef.current.contains(e.target)) {
+				return;
+			}
 			onClose(false);
 		}
 		function handleResize() {
@@ -85,19 +96,28 @@ export default function ContextMenu({
 			onClose(false);
 			return;
 		}
-		if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Home' && e.key !== 'End') return;
+		if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Home' && e.key !== 'End') {
+			return;
+		}
 		e.preventDefault();
 
 		const items = Array.from(
 			menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]:not([aria-disabled="true"])') ?? [],
 		);
-		if (items.length === 0) return;
+		if (items.length === 0) {
+			return;
+		}
 		const currentIndex = items.indexOf(document.activeElement as HTMLElement);
 		let nextIndex: number;
-		if (e.key === 'Home') nextIndex = 0;
-		else if (e.key === 'End') nextIndex = items.length - 1;
-		else if (e.key === 'ArrowDown') nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
-		else nextIndex = currentIndex <= 0 ? items.length - 1 : currentIndex - 1;
+		if (e.key === 'Home') {
+			nextIndex = 0;
+		} else if (e.key === 'End') {
+			nextIndex = items.length - 1;
+		} else if (e.key === 'ArrowDown') {
+			nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
+		} else {
+			nextIndex = currentIndex <= 0 ? items.length - 1 : currentIndex - 1;
+		}
 		items[nextIndex].focus();
 	};
 

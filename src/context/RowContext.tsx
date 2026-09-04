@@ -59,7 +59,9 @@ const RowContext = React.createContext<RowContextValue<any> | null>(null);
 
 export function useRowContext<T>(): RowContextValue<T> {
 	const ctx = React.useContext(RowContext);
-	if (!ctx) throw new Error('useRowContext must be used inside DataTable');
+	if (!ctx) {
+		throw new Error('useRowContext must be used inside DataTable');
+	}
 	return ctx as RowContextValue<T>;
 }
 
