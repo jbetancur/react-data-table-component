@@ -6,4 +6,7 @@ export interface Backer {
   url?: string;
 }
 
-export const backers: Backer[] = [{ name: 'Rich Tillman', url: 'https://opencollective.com/rich-tillman' }];
+export const backers: Backer[] = [
+  { name: 'Rich Tillman', url: 'https://opencollective.com/rich-tillman' },
+  { name: 'Simon Schick', url: 'https://github.com/SimonSchick' },
+];

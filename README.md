@@ -78,6 +78,7 @@ _Become a [Gold Sponsor](https://github.com/sponsors/jbetancur) and your logo go
 Thank you to our recurring backers:
 
 - Rich Tillman
+- [Simon Schick](https://github.com/SimonSchick)
 
 # Contributors
 
