@@ -1,0 +1,100 @@
+---
+// Renders client-side: .astro pages don't expose headings to the build, so the
+// list is built from the DOM on load. Existing hand-written ids are preserved.
+---
+
+<aside
+  id="docs-toc"
+  class="hidden xl:block w-52 shrink-0 sticky top-20 h-[calc(100vh-6rem)] overflow-y-auto"
+  hidden
+>
+  <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">On this page</p>
+  <ul id="docs-toc-list" class="space-y-1 text-sm border-l border-gray-100"></ul>
+</aside>
+
+<script is:inline>
+  (function () {
+    var toc = document.getElementById('docs-toc');
+    var list = document.getElementById('docs-toc-list');
+    var article = document.querySelector('article');
+    if (!toc || !list || !article) return;
+
+    function slugify(text) {
+      return text
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    var headings = [].slice.call(article.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+
+    var used = Object.create(null);
+    var links = [];
+
+    headings.forEach(function (heading) {
+      var id = heading.id;
+      if (!id) {
+        var base = slugify(heading.textContent || '') || 'section';
+        id = base;
+        var n = 2;
+        while (used[id] || document.getElementById(id)) {
+          id = base + '-' + n++;
+        }
+        heading.id = id;
+      }
+      used[id] = true;
+
+      var a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = heading.textContent || '';
+      a.className =
+        'block py-1 pr-2 -ml-px border-l border-transparent text-gray-500 hover:text-gray-900 transition-colors ' +
+        (heading.tagName === 'H3' ? 'pl-6 text-xs' : 'pl-3');
+
+      var li = document.createElement('li');
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push({ id: id, el: a });
+    });
+
+    toc.hidden = false;
+
+    var active = null;
+    function setActive(id) {
+      if (id === active) return;
+      active = id;
+      links.forEach(function (link) {
+        var on = link.id === id;
+        link.el.classList.toggle('border-brand-500', on);
+        link.el.classList.toggle('text-brand-700', on);
+        link.el.classList.toggle('font-medium', on);
+        link.el.classList.toggle('border-transparent', !on);
+        link.el.classList.toggle('text-gray-500', !on);
+      });
+    }
+
+    // Track which headings are above the viewport top; the last one is current.
+    var visible = Object.create(null);
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          visible[entry.target.id] = entry.isIntersecting;
+        });
+        for (var i = links.length - 1; i >= 0; i--) {
+          if (visible[links[i].id]) {
+            setActive(links[i].id);
+            return;
+          }
+        }
+      },
+      { rootMargin: '-70px 0px -75% 0px' },
+    );
+    headings.forEach(function (h) {
+      observer.observe(h);
+    });
+  })();
+</script>

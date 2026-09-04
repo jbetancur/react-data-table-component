@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import Demo from '../components/Demo.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import HeadlessDemo from '../components/demos/HeadlessDemo.tsx';
 
 interface Props {
@@ -293,6 +294,8 @@ function HeadlessTable({ data }: { data: Employee[] }) {
         </nav>
       )}
     </article>
+
+    <TableOfContents />
   </div>
 </Layout>
 
