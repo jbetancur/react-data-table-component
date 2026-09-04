@@ -36,6 +36,7 @@ type TableColProps<T> = {
 	filterValue: FilterState;
 	filterLocalization: FilterLocalization;
 	onFilterChange: (columnId: string | number, filter: FilterState) => void;
+	getDistinctValues: (columnId: string | number) => string[];
 	/** Column drag/reorder feature slice — compared by reference in areColPropsEqual. */
 	columnDrag: ColumnDragSlice;
 	/** Width override from column resize — takes precedence over column.width */
@@ -61,6 +62,7 @@ function TableCol<T>({
 	filterValue,
 	filterLocalization,
 	onFilterChange,
+	getDistinctValues,
 	columnDrag,
 	resizedWidth,
 	onResizeStart,
@@ -271,6 +273,7 @@ function TableCol<T>({
 					filterType={column.filterType}
 					options={filterLocalization}
 					onFilterChange={onFilterChange}
+					getDistinctValues={getDistinctValues}
 				/>
 			)}
 			{/* The menu button renders after the filter so it is always the outermost

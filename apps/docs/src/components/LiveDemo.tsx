@@ -62,6 +62,7 @@ const columns = [
 		selector: (row: Row) => row.department,
 		sortable: true,
 		filterable: true,
+		filterType: 'set' as const,
 		reorder: true,
 		hide: Media.MD,
 	},

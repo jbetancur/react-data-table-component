@@ -431,3 +431,173 @@ describe('useColumnFilter:custom filterFunction', () => {
 		expect(calls).toBe(0);
 	});
 });
+
+describe('set filter', () => {
+	const setColumns: TableColumn<Row>[] = [
+		{ id: 'name', name: 'Name', selector: r => r.name, filterable: true, filterType: 'set' },
+		{ id: 'price', name: 'Price', selector: r => r.price, filterable: true, filterType: 'number' },
+	];
+
+	test('keeps only rows whose value is selected', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: ['Apple', 'Cherry'] } }),
+		);
+
+		expect(result.current.filteredData(data).map(r => r.name)).toEqual(['Apple', 'Cherry']);
+	});
+
+	test('an undefined selection matches every row', () => {
+		const { result } = renderHook(() => useColumnFilter<Row>(setColumns, { name: emptyFilterState('set') }));
+
+		expect(result.current.filteredData(data)).toHaveLength(data.length);
+	});
+
+	test('an empty selection matches no rows', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: [] } }),
+		);
+
+		expect(result.current.filteredData(data)).toHaveLength(0);
+	});
+
+	test('selecting the empty string matches blank cells', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: [''] } }),
+		);
+
+		expect(result.current.filteredData(data).map(r => r.id)).toEqual([4]);
+	});
+
+	test('an empty selection is active even though it carries no condition', () => {
+		expect(isFilterActive({ ...emptyFilterState('set'), values: [] })).toBe(true);
+		expect(isFilterActive(emptyFilterState('set'))).toBe(false);
+	});
+
+	test('getDistinctValues returns sorted distinct values with blanks last', () => {
+		const { result } = renderHook(() => useColumnFilter<Row>(setColumns, { rows: data }));
+
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Apple', 'Banana', 'Cherry', '']);
+	});
+
+	test('getDistinctValues sees rows added after mount', () => {
+		const { result, rerender } = renderHook(({ rows }) => useColumnFilter<Row>(setColumns, { rows }), {
+			initialProps: { rows: data.slice(0, 2) },
+		});
+
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Apple', 'Banana']);
+
+		rerender({ rows: data });
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Apple', 'Banana', 'Cherry', '']);
+	});
+
+	test('the filtering slice keeps its identity when only the rows change', () => {
+		const { result, rerender } = renderHook(({ rows }) => useColumnFilter<Row>(setColumns, { rows }), {
+			initialProps: { rows: data.slice(0, 2) },
+		});
+
+		const first = result.current.filtering;
+		rerender({ rows: data });
+
+		expect(result.current.filtering).toBe(first);
+	});
+
+	test('still accepts the deprecated positional signature', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: ['Apple'] } }),
+		);
+
+		expect(result.current.filteredData(data).map(r => r.name)).toEqual(['Apple']);
+	});
+
+	test('getDistinctValues is not narrowed by other columns filters', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, {
+				filterValues: {
+					price: { condition1: { operator: 'lt', value: '25' } },
+					name: { ...emptyFilterState('set'), values: ['Apple'] },
+				},
+				rows: data,
+			}),
+		);
+
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Apple', 'Banana', 'Cherry', '']);
+	});
+
+	test('whitespace-only cells are selectable as blanks', () => {
+		const wsRows: Row[] = [
+			{ id: 1, name: '   ', price: 1, releasedAt: '2024-01-01' },
+			{ id: 2, name: '', price: 2, releasedAt: '2024-01-01' },
+			{ id: 3, name: 'Real', price: 3, releasedAt: '2024-01-01' },
+		];
+
+		const { result } = renderHook(() => useColumnFilter<Row>(setColumns, { rows: wsRows }));
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Real', '']);
+
+		const { result: r2 } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: [''] } }),
+		);
+		expect(r2.current.filteredData(wsRows).map(r => r.id)).toEqual([1, 2]);
+	});
+
+	test('a caller-supplied whitespace value matches blanks', () => {
+		const wsRows: Row[] = [
+			{ id: 1, name: '  ', price: 1, releasedAt: '2024-01-01' },
+			{ id: 2, name: 'Real', price: 2, releasedAt: '2024-01-01' },
+		];
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: ['   '] } }),
+		);
+
+		expect(result.current.filteredData(wsRows).map(r => r.id)).toEqual([1]);
+	});
+
+	test('a set column with no selector does not filter anything out', () => {
+		const noSelector: TableColumn<Row>[] = [{ id: 'name', name: 'Name', filterable: true, filterType: 'set' }];
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(noSelector, { name: { ...emptyFilterState('set'), values: ['Apple'] } }),
+		);
+
+		expect(result.current.filteredData(data)).toHaveLength(data.length);
+	});
+
+	test('values appearing after the filter was applied are not hidden', () => {
+		const applied: FilterState = {
+			...emptyFilterState('set'),
+			values: ['Banana'],
+			knownValues: ['Apple', 'Banana', 'Cherry', ''],
+		};
+		const { result } = renderHook(() => useColumnFilter<Row>(setColumns, { name: applied }));
+
+		const withNew = [...data, { id: 9, name: 'Zebra', price: 99, releasedAt: '2024-01-01' }];
+		// Apple was in the checklist and left unchecked. Zebra was not in it at all.
+		expect(result.current.filteredData(withNew).map(r => r.name)).toEqual(['Banana', 'Zebra']);
+	});
+
+	test('without knownValues the selection stays an exhaustive allow-list', () => {
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(setColumns, { name: { ...emptyFilterState('set'), values: ['Banana'] } }),
+		);
+
+		const withNew = [...data, { id: 9, name: 'Zebra', price: 99, releasedAt: '2024-01-01' }];
+		expect(result.current.filteredData(withNew).map(r => r.name)).toEqual(['Banana']);
+	});
+});
+
+describe('useColumnFilter:options vs filterValues detection', () => {
+	test('a filterValues record keyed by an option name is not read as options', () => {
+		const cols: TableColumn<Row>[] = [
+			{ id: 'rows', name: 'Rows', selector: r => r.name, filterable: true, filterType: 'text' },
+		];
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(cols, { rows: { condition1: { operator: 'contains', value: 'Apple' } } } as never),
+		);
+
+		expect(result.current.filteredData(data).map(r => r.name)).toEqual(['Apple']);
+	});
+
+	test('an empty object is treated as options, not as filter values', () => {
+		const { result } = renderHook(() => useColumnFilter<Row>(columns, {}));
+
+		expect(result.current.filteredData(data)).toHaveLength(data.length);
+	});
+});

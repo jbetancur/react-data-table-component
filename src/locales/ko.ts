@@ -25,6 +25,11 @@ const ko: Localization = {
 		applyLabel: '적용',
 		andLabel: '그리고',
 		orLabel: '또는',
+		selectAllLabel: '(모두 선택)',
+		blanksLabel: '(공백)',
+		searchPlaceholder: '검색',
+		searchAriaLabel: '필터 값 검색',
+		noMatchesText: '일치 항목 없음',
 		operators: {
 			contains: '포함',
 			notContains: '포함하지 않음',

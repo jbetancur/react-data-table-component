@@ -25,6 +25,11 @@ const ja: Localization = {
 		applyLabel: '適用',
 		andLabel: 'かつ',
 		orLabel: 'または',
+		selectAllLabel: '(すべて選択)',
+		blanksLabel: '(空白)',
+		searchPlaceholder: '検索',
+		searchAriaLabel: 'フィルター値を検索',
+		noMatchesText: '一致なし',
 		operators: {
 			contains: '含む',
 			notContains: '含まない',

@@ -25,6 +25,11 @@ const fr: Localization = {
 		applyLabel: 'Appliquer',
 		andLabel: 'ET',
 		orLabel: 'OU',
+		selectAllLabel: '(Tout sélectionner)',
+		blanksLabel: '(Vides)',
+		searchPlaceholder: 'Rechercher',
+		searchAriaLabel: 'Rechercher des valeurs de filtre',
+		noMatchesText: 'Aucun résultat',
 		operators: {
 			contains: 'Contient',
 			notContains: 'Ne contient pas',

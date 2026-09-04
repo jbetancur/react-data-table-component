@@ -918,6 +918,15 @@ export const dataTableProps: PropDef[] = [
     features: ['filtering'],
   },
   {
+    name: 'filterServer',
+    type: c('boolean'),
+    default: c('false'),
+    description: `Disable client-side filtering; fire ${c('onFilterChange')} and let the server filter. Implied by ${c('paginationServer')}.`,
+    brief: `Disable client-side filtering. Use with ${c('onFilterChange')} to filter remotely.`,
+    group: 'Column features',
+    features: ['filtering'],
+  },
+  {
     name: 'onColumnOrderChange',
     type: c('(columns: TableColumn&lt;T&gt;[]) =&gt; void'),
     default: '-',

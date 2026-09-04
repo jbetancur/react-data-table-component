@@ -25,6 +25,11 @@ const arLV: Localization = {
 		applyLabel: 'طبّق',
 		andLabel: 'و',
 		orLabel: 'أو',
+		selectAllLabel: '(تحديد الكل)',
+		blanksLabel: '(فارغ)',
+		searchPlaceholder: 'بحث',
+		searchAriaLabel: 'البحث في قيم التصفية',
+		noMatchesText: 'لا توجد نتائج',
 		operators: {
 			contains: 'بيحتوي على',
 			notContains: 'ما بيحتوي على',

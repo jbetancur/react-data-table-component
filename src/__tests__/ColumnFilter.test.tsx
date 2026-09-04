@@ -449,3 +449,187 @@ describe('ColumnFilter:localization (options prop)', () => {
 		expect(input2.placeholder).toBe('test-placeholder2');
 	});
 });
+
+describe('ColumnFilter:set filter', () => {
+	const values = ['Design', 'Engineering', 'Product', ''];
+
+	function setupSet(overrides: Partial<React.ComponentProps<typeof ColumnFilter>> = {}) {
+		return setup({
+			filterType: 'set',
+			filterValue: emptyFilterState('set'),
+			getDistinctValues: () => values,
+			...overrides,
+		});
+	}
+
+	function itemLabels(container: HTMLElement) {
+		return [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem span')].map(el => el.textContent);
+	}
+
+	test('renders a checkbox per distinct value instead of the operator UI', () => {
+		const { container } = setupSet();
+		openPanel(container);
+
+		expect(container.querySelector('.rdt_filterSelect')).toBeNull();
+		expect(container.querySelector('.rdt_filterAddCondition')).toBeNull();
+		expect(itemLabels(container)).toEqual(['(Select all)', 'Design', 'Engineering', 'Product', '(Blanks)']);
+	});
+
+	test('every value starts checked when no selection has been made', () => {
+		const { container } = setupSet();
+		openPanel(container);
+
+		const boxes = [...container.querySelectorAll<HTMLInputElement>('.rdt_filterSetItem input')];
+		expect(boxes.every(b => b.checked)).toBe(true);
+	});
+
+	test('unchecking a value applies the remaining values', () => {
+		const { container, onChange } = setupSet();
+		openPanel(container);
+
+		const design = container.querySelectorAll<HTMLInputElement>('.rdt_filterSetItem input')[1];
+		fireEvent.click(design);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLElement);
+
+		const applied = onChange.mock.calls[0][1] as FilterState;
+		expect(applied.values).toEqual(['Engineering', 'Product', '']);
+	});
+
+	test('select all clears every value when all are checked', () => {
+		const { container, onChange } = setupSet();
+		openPanel(container);
+
+		fireEvent.click(container.querySelector('.rdt_filterSetSelectAll input') as HTMLElement);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLElement);
+
+		expect((onChange.mock.calls[0][1] as FilterState).values).toEqual([]);
+	});
+
+	test('unchecking select-all while searching clears the whole selection', () => {
+		const { container, onChange } = setupSet();
+		openPanel(container);
+
+		fireEvent.change(container.querySelector('.rdt_filterSetSearch') as HTMLElement, {
+			target: { value: 'eng' },
+		});
+		expect(itemLabels(container)).toEqual(['(Select all)', 'Engineering']);
+
+		// Subtracting just the visible values would keep the ones the search is hiding.
+		fireEvent.click(container.querySelector('.rdt_filterSetSelectAll input') as HTMLElement);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLElement);
+
+		expect((onChange.mock.calls[0][1] as FilterState).values).toEqual([]);
+	});
+
+	test('search then select-all then check one value filters to only that value', () => {
+		const { container, onChange } = setupSet();
+		openPanel(container);
+
+		fireEvent.change(container.querySelector('.rdt_filterSetSearch') as HTMLElement, {
+			target: { value: 'eng' },
+		});
+		fireEvent.click(container.querySelector('.rdt_filterSetSelectAll input') as HTMLElement);
+		fireEvent.click(container.querySelectorAll('.rdt_filterSetItem input')[1] as HTMLElement);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLElement);
+
+		expect((onChange.mock.calls[0][1] as FilterState).values).toEqual(['Engineering']);
+	});
+
+	test('checking select-all while searching adds only the visible values', () => {
+		const { container, onChange } = setupSet();
+		openPanel(container);
+
+		// Clear everything first so the visible values are the only ones added back.
+		fireEvent.click(container.querySelector('.rdt_filterSetSelectAll input') as HTMLElement);
+		fireEvent.change(container.querySelector('.rdt_filterSetSearch') as HTMLElement, {
+			target: { value: 'eng' },
+		});
+		fireEvent.click(container.querySelector('.rdt_filterSetSelectAll input') as HTMLElement);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLElement);
+
+		expect((onChange.mock.calls[0][1] as FilterState).values).toEqual(['Engineering']);
+	});
+
+	test('select-all is indeterminate on a partial selection', () => {
+		const { container } = setupSet();
+		openPanel(container);
+
+		const selectAll = container.querySelector('.rdt_filterSetSelectAll input') as HTMLInputElement;
+		expect(selectAll.indeterminate).toBe(false);
+
+		fireEvent.click(container.querySelectorAll('.rdt_filterSetItem input')[1] as HTMLElement);
+		expect(selectAll.checked).toBe(false);
+		expect(selectAll.indeterminate).toBe(true);
+	});
+
+	test('applying a set filter saves the values in the checklist', () => {
+		const { container, onChange } = setupSet();
+		openPanel(container);
+
+		fireEvent.click(container.querySelectorAll('.rdt_filterSetItem input')[1] as HTMLElement);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLElement);
+
+		expect((onChange.mock.calls[0][1] as FilterState).knownValues).toEqual(values);
+	});
+
+	test('a value added after the filter was applied shows as checked', () => {
+		const { container } = setupSet({
+			filterValue: {
+				condition1: { operator: 'equals' },
+				values: ['Design'],
+				knownValues: ['Design', 'Engineering'],
+			},
+			getDistinctValues: () => ['Design', 'Engineering', 'Support'],
+		});
+		openPanel(container);
+
+		const boxes = Array.from(container.querySelectorAll('.rdt_filterSetItem input')) as HTMLInputElement[];
+		// Support was not in the checklist, so it stays checked.
+		expect(boxes.slice(1).map(b => b.checked)).toEqual([true, false, true]);
+	});
+
+	test('shows a message when the search matches nothing', () => {
+		const { container } = setupSet();
+		openPanel(container);
+
+		fireEvent.change(container.querySelector('.rdt_filterSetSearch') as HTMLElement, {
+			target: { value: 'zzz' },
+		});
+
+		expect(container.querySelector('.rdt_filterSetList')).toBeNull();
+		expect(container.querySelector('.rdt_filterSetEmpty')?.textContent).toBe('No matches');
+	});
+
+	test('the blanks entry is searchable by its label', () => {
+		const { container } = setupSet();
+		openPanel(container);
+
+		fireEvent.change(container.querySelector('.rdt_filterSetSearch') as HTMLElement, {
+			target: { value: 'blank' },
+		});
+
+		expect(itemLabels(container)).toEqual(['(Select all)', '(Blanks)']);
+	});
+
+	test('distinct values are re-read each time the panel opens', () => {
+		const getDistinctValues = vi.fn(() => values);
+		const { container } = setupSet({ getDistinctValues });
+
+		openPanel(container);
+		fireEvent.keyDown(document, { key: 'Escape' });
+		openPanel(container);
+
+		expect(getDistinctValues).toHaveBeenCalledTimes(2);
+	});
+
+	test('clearing resets to the pristine match-everything state', () => {
+		const { container, onChange } = setupSet({
+			filterValue: { ...emptyFilterState('set'), values: ['Design'] },
+		});
+		openPanel(container);
+
+		fireEvent.click(container.querySelector('.rdt_filterBtn') as HTMLElement);
+
+		expect((onChange.mock.calls[0][1] as FilterState).values).toBeUndefined();
+	});
+});

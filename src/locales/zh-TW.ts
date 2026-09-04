@@ -25,6 +25,11 @@ const zhTW: Localization = {
 		applyLabel: '套用',
 		andLabel: '且',
 		orLabel: '或',
+		selectAllLabel: '(全選)',
+		blanksLabel: '(空白)',
+		searchPlaceholder: '搜尋',
+		searchAriaLabel: '搜尋篩選值',
+		noMatchesText: '無相符項目',
 		operators: {
 			contains: '包含',
 			notContains: '不包含',

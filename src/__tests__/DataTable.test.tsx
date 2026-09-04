@@ -2788,6 +2788,112 @@ describe('DataTable::columnFilter', () => {
 		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(2);
 	});
 
+	test('set filter lists the column distinct values and filters on Apply', () => {
+		const data = [
+			{ id: 1, dept: 'Engineering' },
+			{ id: 2, dept: 'Design' },
+			{ id: 3, dept: 'Engineering' },
+			{ id: 4, dept: '' },
+		];
+		const columns = [
+			{
+				name: 'Dept',
+				id: 'dept',
+				selector: (row: (typeof data)[0]) => row.dept,
+				filterable: true,
+				filterType: 'set' as const,
+			},
+		];
+		const { container } = render(<DataTable data={data} columns={columns} />);
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+
+		// Distinct values, deduped, blanks last, behind a "(Select all)" row.
+		const labels = [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem span')].map(
+			el => el.textContent,
+		);
+		expect(labels).toEqual(['(Select all)', 'Design', 'Engineering', '(Blanks)']);
+
+		// Uncheck Engineering, leaving Design + the blank row.
+		const boxes = container.querySelectorAll<HTMLInputElement>('.rdt_filterSetItem input');
+		fireEvent.click(boxes[2]);
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(4);
+
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(2);
+	});
+
+	test('re-applying a set filter unchanged keeps rows that arrived after it was applied', () => {
+		const columns = [
+			{
+				name: 'Dept',
+				id: 'dept',
+				selector: (row: { id: number; dept: string }) => row.dept,
+				filterable: true,
+				filterType: 'set' as const,
+			},
+		];
+		const initial = [
+			{ id: 1, dept: 'Engineering' },
+			{ id: 2, dept: 'Design' },
+		];
+		const { container, rerender } = render(<DataTable data={initial} columns={columns} keyField="id" />);
+		const rowCount = () => container.querySelectorAll('.rdt_TableBody [role="row"]').length;
+
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		const boxes = container.querySelectorAll<HTMLInputElement>('.rdt_filterSetItem input');
+		fireEvent.click(boxes[2]); // uncheck Engineering
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(rowCount()).toBe(1);
+
+		// Sales was not in the checklist when the filter was applied, so it stays visible.
+		rerender(<DataTable data={[...initial, { id: 3, dept: 'Sales' }]} columns={columns} keyField="id" />);
+		expect(rowCount()).toBe(2);
+
+		// Re-applying without touching anything must not turn Sales into an exclusion.
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(rowCount()).toBe(2);
+	});
+
+	test('set filter choices are the full distinct set, not narrowed by another column filter', () => {
+		const data = [
+			{ id: 1, dept: 'Engineering', region: 'EU' },
+			{ id: 2, dept: 'Design', region: 'US' },
+			{ id: 3, dept: 'Sales', region: 'US' },
+		];
+		const columns = [
+			{
+				name: 'Dept',
+				id: 'dept',
+				selector: (row: (typeof data)[0]) => row.dept,
+				filterable: true,
+				filterType: 'set' as const,
+			},
+			{
+				name: 'Region',
+				id: 'region',
+				selector: (row: (typeof data)[0]) => row.region,
+				filterable: true,
+			},
+		];
+		const { container } = render(<DataTable data={data} columns={columns} />);
+
+		// Filter Region to "US" first.
+		const icons = container.querySelectorAll<HTMLButtonElement>('.rdt_filterIcon');
+		fireEvent.click(icons[1]);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, {
+			target: { value: 'US' },
+		});
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+
+		// The Dept checklist still lists every department, including the EU-only one.
+		fireEvent.click(container.querySelectorAll<HTMLButtonElement>('.rdt_filterIcon')[0]);
+		const labels = [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem span')].map(
+			el => el.textContent,
+		);
+		expect(labels).toEqual(['(Select all)', 'Design', 'Engineering', 'Sales']);
+	});
+
 	test('respects custom filterFunction (receives FilterState)', () => {
 		const data = [
 			{ id: 1, some: { name: 'Alpha' } },
@@ -2925,6 +3031,90 @@ describe('DataTable::columnFilter', () => {
 		const clearBtn = container.querySelectorAll('.rdt_filterBtn')[0] as HTMLButtonElement;
 		fireEvent.click(clearBtn);
 		expect(container.querySelectorAll('.rdt_TableBody [role="row"]').length).toBe(2);
+	});
+});
+
+describe('DataTable::filterServer', () => {
+	// The server returned these two rows for `name contains "an"`. Filtering them again
+	// client-side would drop Apple, which the server deliberately sent.
+	const serverPage = [
+		{ id: 1, name: 'Banana' },
+		{ id: 2, name: 'Apple' },
+	];
+	const columns = [{ id: 'name', name: 'Name', selector: (r: { name: string }) => r.name, filterable: true }];
+	const filterValues = { name: { condition1: { operator: 'contains' as const, value: 'an' } } };
+	const rowCount = (c: HTMLElement) => c.querySelectorAll('.rdt_TableBody [role="row"]').length;
+
+	test('paginationServer skips the client-side filter pass', () => {
+		const { container } = render(
+			<DataTable
+				data={serverPage}
+				columns={columns}
+				pagination
+				paginationServer
+				paginationTotalRows={50}
+				filterValues={filterValues}
+				onFilterChange={vi.fn()}
+			/>,
+		);
+		expect(rowCount(container)).toBe(2);
+	});
+
+	test('filterServer skips the client-side filter pass without pagination', () => {
+		const { container } = render(
+			<DataTable
+				data={serverPage}
+				columns={columns}
+				filterServer
+				filterValues={filterValues}
+				onFilterChange={vi.fn()}
+			/>,
+		);
+		expect(rowCount(container)).toBe(2);
+	});
+
+	test('a filter matching nothing locally does not blank a server page', () => {
+		const { container } = render(
+			<DataTable
+				data={serverPage}
+				columns={columns}
+				pagination
+				paginationServer
+				paginationTotalRows={50}
+				filterValues={{ name: { condition1: { operator: 'contains', value: 'zzz' } } }}
+				onFilterChange={vi.fn()}
+			/>,
+		);
+		expect(rowCount(container)).toBe(2);
+	});
+
+	test('onFilterChange still fires so the consumer can refetch', () => {
+		const onFilterChange = vi.fn();
+		const { container } = render(
+			<DataTable
+				data={serverPage}
+				columns={columns}
+				pagination
+				paginationServer
+				paginationTotalRows={50}
+				filterValues={filterValues}
+				onFilterChange={onFilterChange}
+			/>,
+		);
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
+		fireEvent.change(container.querySelector('.rdt_filterInput') as HTMLInputElement, { target: { value: 'x' } });
+		fireEvent.click(container.querySelector('.rdt_filterBtnPrimary') as HTMLButtonElement);
+		expect(onFilterChange).toBeCalledWith(
+			'name',
+			expect.objectContaining({ condition1: { operator: 'contains', value: 'x' } }),
+		);
+	});
+
+	test('client-side filtering still applies without either flag', () => {
+		const { container } = render(
+			<DataTable data={serverPage} columns={columns} filterValues={filterValues} onFilterChange={vi.fn()} />,
+		);
+		expect(rowCount(container)).toBe(1);
 	});
 });
 

@@ -56,4 +56,12 @@ module.exports = [
 			'prettier/prettier': ['error', { singleQuote: true }],
 		},
 	},
+	{
+		// Oversight: This rule is not applied to all files, only to the files that use the ColumnFilter component and the useColumnFilter hook.
+		// TODO: Fix this in a future PR by applying the rule to all files in the project.
+		files: ['src/components/ColumnFilter.tsx', 'src/hooks/useColumnFilter.ts'],
+		rules: {
+			curly: ['error', 'all'],
+		},
+	},
 ];

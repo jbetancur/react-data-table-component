@@ -26,14 +26,24 @@ const data: Row[] = [
 ];
 
 const columns: TableColumn<Row>[] = [
-	{ name: 'Name', selector: r => r.name, sortable: true },
-	{ name: 'Department', selector: r => r.department, sortable: true },
+	{ id: 'name', name: 'Name', selector: r => r.name, sortable: true, filterable: true },
 	{
+		id: 'department',
+		name: 'Department',
+		selector: r => r.department,
+		sortable: true,
+		filterable: true,
+		filterType: 'set',
+	},
+	{
+		id: 'salary',
 		name: 'Salary',
 		selector: r => r.salary,
 		format: r => `$${r.salary.toLocaleString()}`,
 		right: true,
 		sortable: true,
+		filterable: true,
+		filterType: 'number',
 	},
 ];
 

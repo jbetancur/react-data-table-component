@@ -129,6 +129,7 @@ function DataTableHead<T>({
 		filterLocalization: filtering.localization,
 		resizedWidth: columnWidths[column.id!],
 		onFilterChange: filtering.onFilterChange,
+		getDistinctValues: filtering.getDistinctValues,
 		onResizeStart: resize?.onResizeStart,
 		pinnedOffsets,
 		columnDrag,

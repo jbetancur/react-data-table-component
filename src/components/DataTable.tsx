@@ -106,6 +106,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 		onSort = defaultProps.onSort,
 		sortFunction = defaultProps.sortFunction,
 		sortServer = defaultProps.sortServer,
+		filterServer = defaultProps.filterServer,
 		sortMulti = defaultProps.sortMulti,
 		expandableRowsComponent = defaultProps.expandableRowsComponent,
 		expandableRowsComponentProps = defaultProps.expandableRowsComponentProps,
@@ -222,12 +223,12 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	// Filter against the decorated columns (ids auto-assigned by useColumns) so the
 	// head, matcher, and context-menu keying all agree — a column with no explicit
 	// id still filters. Passing raw `columns` here would leave them id-less.
-	const { filterValues, handleFilterChange, filteredData, filtering } = useColumnFilter(
-		tableColumns,
-		controlledFilterValues,
-		onFilterChangeProp,
-		localization.filter,
-	);
+	const { filterValues, handleFilterChange, filteredData, filtering } = useColumnFilter(tableColumns, {
+		filterValues: controlledFilterValues,
+		onFilterChange: onFilterChangeProp,
+		localization: localization.filter,
+		rows: data,
+	});
 
 	const { effectiveColumns, pinnedOffsets, pinnedTotalWidths, hasPinnedColumns } = useColumnPinning({
 		tableColumns,
@@ -308,16 +309,26 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	// ── Client-side column filtering ───────────────────────────────────────────
 	// Filtering must run on the full sorted set *before* pagination slices it,
 	// otherwise a filter only ever matches rows on the current page. For client
-	// pagination we therefore slice filteredSortedData ourselves; server pagination
-	// and the no-pagination case pass tableRows (already the full set) through.
-	const filteredSortedData = React.useMemo(() => filteredData(sortedData), [filteredData, sortedData]);
+	// pagination we therefore slice filteredSortedData ourselves; the no-pagination
+	// case passes tableRows (already the full set) through.
+	//
+	// Server-filtered data is already filtered, and the table only holds the rows the
+	// server sent, so running the matcher again would drop rows the server chose to
+	// return. paginationServer implies it: a page cannot be filtered against rows it
+	// does not hold.
+	const isFilterServer = filterServer || (pagination && paginationServer);
+	const applyFilter = React.useCallback(
+		(rows: T[]) => (isFilterServer ? rows : filteredData(rows)),
+		[isFilterServer, filteredData],
+	);
+	const filteredSortedData = React.useMemo(() => applyFilter(sortedData), [applyFilter, sortedData]);
 	const filteredTableRows = React.useMemo(() => {
 		if (pagination && !paginationServer) {
 			const lastIndex = currentPage * rowsPerPage;
 			return filteredSortedData.slice(lastIndex - rowsPerPage, lastIndex);
 		}
-		return filteredData(tableRows);
-	}, [pagination, paginationServer, currentPage, rowsPerPage, filteredSortedData, filteredData, tableRows]);
+		return applyFilter(tableRows);
+	}, [pagination, paginationServer, currentPage, rowsPerPage, filteredSortedData, applyFilter, tableRows]);
 
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
