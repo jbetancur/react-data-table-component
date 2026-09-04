@@ -17,8 +17,12 @@ interface TableFooterProps<T> {
 }
 
 function resolveFooter<T>(footer: ColumnFooter<T> | undefined, rows: T[]): React.ReactNode {
-	if (footer == null) return null;
-	if (typeof footer === 'function') return (footer as (rows: T[]) => React.ReactNode)(rows);
+	if (footer == null) {
+		return null;
+	}
+	if (typeof footer === 'function') {
+		return (footer as (rows: T[]) => React.ReactNode)(rows);
+	}
 	return footer;
 }
 
@@ -56,7 +60,9 @@ function TableFooter<T>({
 				)}
 
 				{columns.map(column => {
-					if (column.omit) return null;
+					if (column.omit) {
+						return null;
+					}
 					const resizedWidth = column.id != null ? columnWidths[column.id] : undefined;
 					const pinMeta = getPinnedCellMeta(column, pinnedOffsets, 1);
 

@@ -79,7 +79,9 @@ describe('useTableExport: download', () => {
 		const origCreate = document.createElement.bind(document);
 		vi.spyOn(document, 'createElement').mockImplementation(tag => {
 			const el = origCreate(tag);
-			if (tag === 'a') (el as HTMLAnchorElement).click = clickSpy;
+			if (tag === 'a') {
+				(el as HTMLAnchorElement).click = clickSpy;
+			}
 			return el;
 		});
 

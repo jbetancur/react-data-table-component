@@ -4,7 +4,14 @@ import { useRowContext } from '../context/RowContext';
 import { CellExtended } from './Cell';
 import CellEditor from './CellEditor';
 import useCellEdit from '../hooks/useCellEdit';
-import { getProperty, toReactNode, getConditionalStyle, getPinnedCellMeta, getCellWidthProps } from '../util';
+import {
+	getProperty,
+	toReactNode,
+	getConditionalStyle,
+	getPinnedCellMeta,
+	getCellWidthProps,
+	getRovingTabIndex,
+} from '../util';
 import type { TableColumn } from '../types';
 
 interface CellProps<T> {
@@ -26,7 +33,9 @@ const innerCellStyles = {
 } as const satisfies Record<string, React.CSSProperties>;
 
 function getInnerCellStyle<T>(column: TableColumn<T>): React.CSSProperties {
-	if (column.wrap) return column.allowOverflow ? innerCellStyles.wrapOverflow : innerCellStyles.wrap;
+	if (column.wrap) {
+		return column.allowOverflow ? innerCellStyles.wrapOverflow : innerCellStyles.wrap;
+	}
 	return column.allowOverflow ? innerCellStyles.overflow : innerCellStyles.base;
 }
 
@@ -65,7 +74,7 @@ function PlainCell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }
 			onDragEnd={column.reorder ? columnDrag.onDragEnd : undefined}
 			onDragEnter={column.reorder ? columnDrag.onDragEnter : undefined}
 			onDragLeave={column.reorder ? columnDrag.onDragLeave : undefined}
-			tabIndex={cellNavigation ? (isActive ? 0 : -1) : undefined}
+			tabIndex={getRovingTabIndex(!!cellNavigation, isActive)}
 			data-nav-row={cellNavigation ? rowIndex : undefined}
 			data-nav-col={cellNavigation ? navCol : undefined}
 		>
@@ -107,14 +116,18 @@ function EditableCell<T>({ id, column, row, rowIndex, navCol, dataTag, isDraggin
 	React.useEffect(() => {
 		if (cellNavigation && isActive && wasEditingRef.current && !editing) {
 			const el = cellRef.current;
-			if (el && (document.activeElement === document.body || el.contains(document.activeElement))) el.focus();
+			if (el && (document.activeElement === document.body || el.contains(document.activeElement))) {
+				el.focus();
+			}
 		}
 		wasEditingRef.current = editing;
 	}, [cellNavigation, isActive, editing]);
 
 	const handleCellKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		// While editing, keys belong to the editor input.
-		if (editing) return;
+		if (editing) {
+			return;
+		}
 
 		if ((e.key === 'Enter' || e.key === 'F2') && editor && editor.type !== 'checkbox') {
 			e.preventDefault();
@@ -162,7 +175,7 @@ function EditableCell<T>({ id, column, row, rowIndex, navCol, dataTag, isDraggin
 			onDragEnd={column.reorder ? columnDrag.onDragEnd : undefined}
 			onDragEnter={column.reorder ? columnDrag.onDragEnter : undefined}
 			onDragLeave={column.reorder ? columnDrag.onDragLeave : undefined}
-			tabIndex={cellNavigation ? (isActive ? 0 : -1) : undefined}
+			tabIndex={getRovingTabIndex(!!cellNavigation, isActive)}
 			data-nav-row={cellNavigation ? rowIndex : undefined}
 			data-nav-col={cellNavigation ? navCol : undefined}
 			onKeyDown={cellNavigation ? handleCellKeyDown : undefined}

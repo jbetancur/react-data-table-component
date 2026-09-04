@@ -34,25 +34,37 @@ export default function usePointerReorder({ onGrab, onMove, onRelease }: UsePoin
 	} | null>(null);
 
 	const start = React.useCallback((mode: Mode, e: React.PointerEvent<HTMLDivElement>) => {
-		if (typeof document === 'undefined') return;
-		if (e.pointerType === 'mouse') return;
+		if (typeof document === 'undefined') {
+			return;
+		}
+		if (e.pointerType === 'mouse') {
+			return;
+		}
 		const id = (e.currentTarget as HTMLElement).getAttribute(MODE_ATTR[mode]);
-		if (!id) return;
+		if (!id) {
+			return;
+		}
 
 		const pointerId = e.pointerId;
 
 		function onPointerMove(mv: PointerEvent) {
 			const state = drag.current;
-			if (!state || mv.pointerId !== state.pointerId || !state.active) return;
+			if (!state || mv.pointerId !== state.pointerId || !state.active) {
+				return;
+			}
 			mv.preventDefault();
 			const under = document.elementFromPoint(mv.clientX, mv.clientY);
 			const target = under?.closest(`[${MODE_ATTR[mode]}]`)?.getAttribute(MODE_ATTR[mode]);
-			if (target) callbacks.current.onMove(mode, target);
+			if (target) {
+				callbacks.current.onMove(mode, target);
+			}
 		}
 
 		function end() {
 			const state = drag.current;
-			if (!state) return;
+			if (!state) {
+				return;
+			}
 			clearTimeout(state.longPressTimer);
 			callbacks.current.onRelease(mode);
 			document.removeEventListener('pointermove', onPointerMove);
@@ -63,7 +75,9 @@ export default function usePointerReorder({ onGrab, onMove, onRelease }: UsePoin
 
 		const longPressTimer = setTimeout(() => {
 			const state = drag.current;
-			if (!state) return;
+			if (!state) {
+				return;
+			}
 			state.active = true;
 			callbacks.current.onGrab(mode, id);
 		}, LONG_PRESS_MS);

@@ -38,9 +38,23 @@ import useSortFlipAnimation from '../hooks/useSortFlipAnimation';
 import useContextMenu from '../hooks/useContextMenu';
 import ContextMenu from './ContextMenu';
 
+function getColSepClass(columnSeparator: boolean | 'subtle' | 'full'): string | undefined {
+	if (columnSeparator === 'full') {
+		return 'rdt_colSeparatorFull';
+	}
+
+	return columnSeparator ? 'rdt_colSeparator' : undefined;
+}
+
 function getHeadSepClass(headerSeparator: boolean | 'subtle' | 'full'): string | undefined {
-	if (headerSeparator === false) return undefined;
-	if (headerSeparator === 'full') return 'rdt_headSeparatorFull';
+	if (headerSeparator === false) {
+		return undefined;
+	}
+
+	if (headerSeparator === 'full') {
+		return 'rdt_headSeparatorFull';
+	}
+
 	return 'rdt_headSeparator';
 }
 
@@ -531,8 +545,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	// Prop wins; if not explicitly passed, fall back to what the theme declares, then built-in defaults.
 	const effectiveColumnSep = columnSeparator !== undefined ? columnSeparator : (themeObj.columnSeparator ?? false);
 	const effectiveHeaderSep = headerSeparator !== undefined ? headerSeparator : (themeObj.headerSeparator ?? true);
-	const sepClass =
-		effectiveColumnSep === 'full' ? 'rdt_colSeparatorFull' : effectiveColumnSep ? 'rdt_colSeparator' : undefined;
+	const sepClass = getColSepClass(effectiveColumnSep);
 	const headSepClass = getHeadSepClass(effectiveHeaderSep);
 
 	return (

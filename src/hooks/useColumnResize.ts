@@ -25,7 +25,9 @@ export default function useColumnResize({
 
 	const handleResizeStart = React.useCallback(
 		(columnId: string | number, e: React.PointerEvent, configuredMinWidth?: string) => {
-			if (typeof document === 'undefined') return;
+			if (typeof document === 'undefined') {
+				return;
+			}
 			e.preventDefault();
 			const headerCell = (e.currentTarget as HTMLElement).closest('[data-column-id]') as HTMLElement | null;
 			const startWidth = headerCell?.offsetWidth ?? 100;
@@ -38,7 +40,9 @@ export default function useColumnResize({
 			};
 
 			function onPointerMove(mv: PointerEvent) {
-				if (!resizeRef.current) return;
+				if (!resizeRef.current) {
+					return;
+				}
 				const { columnId } = resizeRef.current;
 				// In RTL the handle sits on the column's left (end) edge, so dragging left
 				// (negative clientX delta) should widen the column — invert the delta.
@@ -52,7 +56,9 @@ export default function useColumnResize({
 					const { columnId: id } = resizeRef.current;
 					setColumnWidths(prev => {
 						const w = prev[id];
-						if (w != null) onColumnResizeRef.current?.(id, w, prev);
+						if (w != null) {
+							onColumnResizeRef.current?.(id, w, prev);
+						}
 						return prev;
 					});
 				}

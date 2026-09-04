@@ -29,24 +29,44 @@ export function CellBase({
 	return <div className={baseClass} style={{ ...($headCell ? headStyle : cellStyle), ...style }} {...rest} />;
 }
 
+function getJustifyContent({ right, center, button }: CellProps): React.CSSProperties['justifyContent'] {
+	if (right) {
+		return 'flex-end';
+	}
+
+	if (center || button) {
+		return 'center';
+	}
+
+	return undefined;
+}
+
 export function buildCellStyle(props: CellProps): React.CSSProperties {
-	const { button, grow, maxWidth, minWidth, width, right, center, compact } = props;
+	const { button, grow, maxWidth, minWidth, width, compact } = props;
 	return {
 		flexGrow: grow === 0 || button ? 0 : (grow ?? 1),
 		flexShrink: 0,
 		flexBasis: 0,
 		maxWidth: width ?? maxWidth ?? '100%',
 		minWidth: width ?? minWidth ?? '100px',
-		justifyContent: right ? 'flex-end' : center || button ? 'center' : undefined,
+		justifyContent: getJustifyContent(props),
 		padding: compact || button ? 0 : undefined,
 	};
 }
 
 export function buildHideClass(hide: CellProps['hide']): string {
-	if (!hide) return '';
-	if (hide === 'sm') return 'rdt_hideOnSm';
-	if (hide === 'md') return 'rdt_hideOnMd';
-	if (hide === 'lg') return 'rdt_hideOnLg';
+	if (!hide) {
+		return '';
+	}
+	if (hide === 'sm') {
+		return 'rdt_hideOnSm';
+	}
+	if (hide === 'md') {
+		return 'rdt_hideOnMd';
+	}
+	if (hide === 'lg') {
+		return 'rdt_hideOnLg';
+	}
 	return '';
 }
 

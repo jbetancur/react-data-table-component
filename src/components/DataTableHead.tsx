@@ -67,7 +67,9 @@ function DataTableHead<T>({
 
 	useIsomorphicLayoutEffect(() => {
 		const container = containerRef.current;
-		if (!container) return;
+		if (!container) {
+			return;
+		}
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		const animate = isMounted.current;
 		isMounted.current = true;
@@ -76,7 +78,9 @@ function DataTableHead<T>({
 			const newLeft = el.getBoundingClientRect().left;
 			const prevLeft = savedPositions.current.get(key);
 			savedPositions.current.set(key, newLeft);
-			if (!animate || reducedMotion || prevLeft == null || Math.abs(prevLeft - newLeft) < 1) return;
+			if (!animate || reducedMotion || prevLeft == null || Math.abs(prevLeft - newLeft) < 1) {
+				return;
+			}
 
 			flipElement(el, prevLeft - newLeft, 'X', 0.2);
 		};
@@ -99,7 +103,9 @@ function DataTableHead<T>({
 
 	// Count of non-omitted columns each group spans
 	const groupColSpans = React.useMemo(() => {
-		if (!columnGroups) return {};
+		if (!columnGroups) {
+			return {};
+		}
 		const map: Record<string, number> = {};
 		for (const group of columnGroups) {
 			map[String(group.name)] = group.columnIds.filter(id =>
@@ -111,7 +117,9 @@ function DataTableHead<T>({
 
 	// IDs of columns not covered by any group
 	const ungroupedIds = React.useMemo(() => {
-		if (!columnGroups) return new Set<string>();
+		if (!columnGroups) {
+			return new Set<string>();
+		}
 		const covered = new Set(([] as (string | number)[]).concat(...columnGroups.map(g => g.columnIds)).map(String));
 		return new Set(visibleColumns.map(c => String(c.id)).filter(id => !covered.has(id)));
 	}, [columnGroups, visibleColumns]);
@@ -148,8 +156,11 @@ function DataTableHead<T>({
 
 		// Expander column index (1-based grid column)
 		let expanderGridCol = 0;
-		if (selectableRows) expanderGridCol = 2;
-		else if (expandableRows && !expandableRowsHideExpander) expanderGridCol = 1;
+		if (selectableRows) {
+			expanderGridCol = 2;
+		} else if (expandableRows && !expandableRowsHideExpander) {
+			expanderGridCol = 1;
+		}
 
 		return (
 			<Head className="rdt_TableHead" role="rowgroup" $fixedHeader={fixedHeader}>

@@ -14,8 +14,12 @@ function clickCell(getByText: (s: string) => HTMLElement, text: string) {
 	const node = getByText(text);
 	// Walk up to the rdt_TableCell to fire onClick where the handler lives.
 	let target: HTMLElement | null = node;
-	while (target && !target.classList.contains('rdt_cellEditable')) target = target.parentElement;
-	if (!target) throw new Error(`No editable cell wrapping ${text}`);
+	while (target && !target.classList.contains('rdt_cellEditable')) {
+		target = target.parentElement;
+	}
+	if (!target) {
+		throw new Error(`No editable cell wrapping ${text}`);
+	}
 	fireEvent.click(target);
 }
 

@@ -3,6 +3,7 @@ import '../DataTable.css';
 import { useStyles } from '../context/StylesContext';
 import { CellBase } from './Cell';
 import ExpanderButton from './ExpanderButton';
+import { getRovingTabIndex } from '../util';
 import type { ExpandableIcon, Localization } from '../types';
 import type { NavCellProps } from '../context/RowContext';
 
@@ -51,7 +52,7 @@ function CellExpander<T>({
 				expandableRowsOptions={expandableRowsOptions}
 				disabled={disabled}
 				onToggled={onToggled}
-				tabIndex={nav ? (nav.active ? 0 : -1) : undefined}
+				tabIndex={getRovingTabIndex(!!nav, !!nav?.active)}
 			/>
 		</CellBase>
 	);

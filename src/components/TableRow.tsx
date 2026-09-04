@@ -77,8 +77,11 @@ function Row<T>({
 	const handleExpanded = React.useCallback(() => {
 		const next = !expanded;
 		onRowExpandToggled?.(next, row);
-		if (next) openExpander();
-		else closeExpander();
+		if (next) {
+			openExpander();
+		} else {
+			closeExpander();
+		}
 	}, [expanded, onRowExpandToggled, row, openExpander, closeExpander]);
 
 	const { onRowClicked, onRowDoubleClicked, onRowMiddleClicked, onRowMouseEnter, onRowMouseLeave } = rowEvents;
@@ -101,7 +104,9 @@ function Row<T>({
 		(e: React.KeyboardEvent<HTMLDivElement>) => {
 			// Only act on keys pressed while the row itself is focused — with cellNavigation
 			// (or an open editor) key events bubble up from focused descendants.
-			if (e.target !== e.currentTarget) return;
+			if (e.target !== e.currentTarget) {
+				return;
+			}
 			if (e.key === 'Enter') {
 				if (!defaultExpanderDisabled && expandableRows && expandOnRowClicked) {
 					handleExpanded();
@@ -157,7 +162,11 @@ function Row<T>({
 	const columnIndexMap = React.useMemo(() => {
 		const map = new Map<TableColumn<T>, number>();
 		let i = 0;
-		for (const c of columns) if (!c.omit) map.set(c, i++);
+		for (const c of columns) {
+			if (!c.omit) {
+				map.set(c, i++);
+			}
+		}
 		return map;
 	}, [columns]);
 	const navRowActive = cellNavigation && activeCell?.row === rowIndex;
@@ -203,7 +212,7 @@ function Row<T>({
 				id={`row-${id}`}
 				role="row"
 				aria-selected={selectableRows ? selected : undefined}
-				tabIndex={cellNavigation ? -1 : !defaultExpanderDisabled && showPointer ? 0 : -1}
+				tabIndex={!cellNavigation && !defaultExpanderDisabled && showPointer ? 0 : -1}
 				className={className}
 				style={style}
 				onClick={handleRowClick}
@@ -303,15 +312,33 @@ function Row<T>({
 }
 
 function areRowPropsEqual<T>(prevProps: TableRowProps<T>, nextProps: TableRowProps<T>): boolean {
-	if (prevProps.row !== nextProps.row) return false;
-	if (prevProps.selected !== nextProps.selected) return false;
-	if (prevProps.defaultExpanded !== nextProps.defaultExpanded) return false;
-	if (prevProps.defaultExpanderDisabled !== nextProps.defaultExpanderDisabled) return false;
-	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) return false;
-	if (prevProps.rowCount !== nextProps.rowCount) return false;
-	if (prevProps.rowIndex !== nextProps.rowIndex) return false;
-	if (prevProps.isNew !== nextProps.isNew) return false;
-	if (prevProps.newRowIndex !== nextProps.newRowIndex) return false;
+	if (prevProps.row !== nextProps.row) {
+		return false;
+	}
+	if (prevProps.selected !== nextProps.selected) {
+		return false;
+	}
+	if (prevProps.defaultExpanded !== nextProps.defaultExpanded) {
+		return false;
+	}
+	if (prevProps.defaultExpanderDisabled !== nextProps.defaultExpanderDisabled) {
+		return false;
+	}
+	if (prevProps.draggingColumnId !== nextProps.draggingColumnId) {
+		return false;
+	}
+	if (prevProps.rowCount !== nextProps.rowCount) {
+		return false;
+	}
+	if (prevProps.rowIndex !== nextProps.rowIndex) {
+		return false;
+	}
+	if (prevProps.isNew !== nextProps.isNew) {
+		return false;
+	}
+	if (prevProps.newRowIndex !== nextProps.newRowIndex) {
+		return false;
+	}
 	return true;
 }
 
