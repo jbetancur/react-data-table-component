@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 if (typeof window !== 'undefined' && typeof window.ResizeObserver === 'undefined') {
 	window.ResizeObserver = class ResizeObserver {
