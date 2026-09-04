@@ -25,6 +25,11 @@ const ptBR: Localization = {
 		applyLabel: 'Aplicar',
 		andLabel: 'E',
 		orLabel: 'OU',
+		selectAllLabel: '(Selecionar tudo)',
+		blanksLabel: '(Vazios)',
+		searchPlaceholder: 'Pesquisar',
+		searchAriaLabel: 'Pesquisar valores de filtro',
+		noMatchesText: 'Nenhuma correspondência',
 		operators: {
 			contains: 'Contém',
 			notContains: 'Não contém',

@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import FilteringDemo from '../../components/demos/FilteringDemo.tsx';
 import TimeFilterDemo from '../../components/demos/TimeFilterDemo.tsx';
+import SetFilterDemo from '../../components/demos/SetFilterDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
 ---
@@ -12,12 +13,13 @@ import PropsTable from '../../components/PropsTable.astro';
   <h1>Filtering</h1>
 
   <p>
-    Built-in per-column filter popups with operator selection, two-condition AND/OR logic,
-    and support for text, number, and date column types.
+    Built-in per-column filter popups for text, number, date, datetime, and time-of-day columns, with
+    operator selection and two-condition AND/OR logic. Categorical columns can use a set filter instead,
+    picking values from a checklist rather than typing an operator.
   </p>
 
   <Demo
-    title="Column filters — text, number, and date"
+    title="Column filters: text, number, and date"
     description="Click the filter icon in any column header. Pick an operator, enter a value, then click Apply. Try salary ≥ 130000, or filter hired Before 2021-01-01."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
@@ -85,7 +87,9 @@ export default function App() {
 
   <h2>Filter types</h2>
   <p>
-    Set <code>filterType</code> to get the right operator set and input widget. Defaults to <code>"text"</code>.
+    Set <code>filterType</code> to get the right operator set and input widget. It defaults to <code>"text"</code>.
+    Five of the six types work the same way, an operator plus a value you type;
+    <a href="#set-filters"><code>"set"</code></a> is the exception and shows a checklist instead.
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Row>[] = [
@@ -104,27 +108,38 @@ export default function App() {
       ['<code>"date"</code>', 'Equals', 'Date', 'Equals, Before, After, Between, Blank, Not blank'],
       ['<code>"datetime"</code>', 'Equals', 'Date &amp; time', 'Equals, Before, After, Between, Blank, Not blank'],
       ['<code>"time"</code>', 'Equals', 'Time', 'Equals, Before, After, Between, Blank, Not blank'],
+      ['<code>"set"</code>', 'n/a', 'Checklist', 'None, pick values from a list'],
     ]}
   />
 
-  <p>
-    <strong>Blank / Not blank</strong> match on empty cells and need no value input.
-    <strong>Between</strong> (number, date, datetime, and time) shows two value inputs for inclusive bounds.
-    For <code>"date"</code> and <code>"datetime"</code> columns, <code>selector</code> should return an ISO string (<code>"2024-03-15"</code> or <code>"2024-03-15T14:30"</code>) or any value parseable by <code>new Date()</code>.
-  </p>
-  <p>
-    <code>"date"</code> compares by calendar day, so <strong>Equals</strong> matches any time on that day.
-    <code>"datetime"</code> compares the exact instant, so <strong>Equals</strong> matches a specific minute. Because
-    <code>datetime-local</code> inputs are timezone-naive, filtering is exact only when your cell values are also local
-    time (no <code>Z</code> / offset); otherwise supply a <code>filterFunction</code>.
-  </p>
-  <p>
-    <code>"time"</code> compares the <em>time of day</em> and ignores the date, so it filters across every date at once
-    — useful for logs (&ldquo;anything after 17:00&rdquo;, &ldquo;errors between 02:00 and 04:00&rdquo;). The input
-    accepts seconds, and the cell value may be a bare time (<code>"17:30"</code>) or any timestamp whose time portion
-    is read (<code>"2024-03-15T17:30:45"</code>). A <strong>Between</strong> whose start is later than its end wraps
-    past midnight, so <code>22:00</code>–<code>06:00</code> matches an overnight window.
-  </p>
+  <p>A few types have behaviour worth knowing before you pick one:</p>
+
+  <ul>
+    <li>
+      <code>"date"</code> matches a whole calendar day, so <strong>Equals</strong> finds a row recorded at any time
+      that day. <code>"datetime"</code> matches an exact instant, down to the minute.
+    </li>
+    <li>
+      <code>"time"</code> ignores the date and compares only the time of day, so it filters across every date at
+      once. Handy for logs: &ldquo;anything after 17:00&rdquo;, or &ldquo;errors between 02:00 and 04:00&rdquo;.
+      A <strong>Between</strong> that starts later than it ends wraps past midnight, so <code>22:00</code>&ndash;<code>06:00</code>
+      gives you an overnight window.
+    </li>
+    <li>
+      <strong>Between</strong> gives you two inputs and includes both bounds. Fill in only one to leave that side
+      open, so a number filter with just a lower bound behaves like <strong>&ge;</strong>.
+    </li>
+    <li>
+      Date and datetime columns expect the <code>selector</code> to return an ISO string, like
+      <code>"2024-03-15"</code> or <code>"2024-03-15T14:30"</code>.
+    </li>
+  </ul>
+
+  <blockquote>
+    <code>datetime</code> filtering assumes your cell values are local time. If they carry a <code>Z</code> or a UTC
+    offset, the browser&rsquo;s <code>datetime-local</code> input has no timezone to compare against and matches will
+    be off. Supply a <a href="#custom-filter-function"><code>filterFunction</code></a> for those columns.
+  </blockquote>
 
   <Demo
     title="Time-of-day filter"
@@ -144,20 +159,67 @@ export default function App() {
     <TimeFilterDemo client:load />
   </Demo>
 
-  <h2>Two conditions per column</h2>
+  <h3 id="set-filters">Set filters: pick from a checklist</h3>
   <p>
-    Each filter popup has a <strong>+ Add condition</strong> link. Adding a second condition
-    reveals an AND / OR toggle. AND means both conditions must match; OR means either must match.
+    <code>filterType: 'set'</code> replaces the operator dropdown with a checklist of the column&rsquo;s distinct
+    values. Instead of typing an operator and a value, you check the values you want to keep. This is usually what
+    people want for categorical columns (department, status, region, log level), where
+    &ldquo;Engineering or Design or Product&rdquo; would otherwise need several OR conditions.
   </p>
 
-  <CodeBlock code={`import type { FilterState } from 'react-data-table-component';
+  <CodeBlock code={`const columns: TableColumn<Row>[] = [
+  { id: 'department', name: 'Department', selector: r => r.department, filterable: true, filterType: 'set' },
+];`} />
 
-// The shape of one column's filter state
-const filter: FilterState = {
-  condition1: { operator: 'startsWith', value: 'J' },
-  condition2: { operator: 'endsWith', value: 'son' },
-  logic: 'AND', // 'AND' | 'OR' — defaults to 'AND'
-};`} />
+  <p>The checklist is built from your data, so there is nothing else to configure.</p>
+
+  <Demo
+    title="Set filter"
+    description="Open the Service, Severity, or Owner filter and check the values to keep. Two incidents have no owner, so the Owner filter includes (Blanks). Use the search box to narrow a long list, then (Select all) to act on just the matches."
+    code={`const columns: TableColumn<Incident>[] = [
+  { id: 'service', name: 'Service', selector: r => r.service, filterable: true, filterType: 'set' },
+  { id: 'severity', name: 'Severity', selector: r => r.severity, filterable: true, filterType: 'set' },
+  { id: 'owner', name: 'Owner', selector: r => r.owner, filterable: true, filterType: 'set' },
+  // ...
+];`}
+  >
+    <SetFilterDemo client:load />
+  </Demo>
+
+  <ul>
+    <li>
+      <strong>Values are derived from the rows you pass in</strong>, sorted naturally. The list is the column&rsquo;s
+      full distinct set and does not change as you filter other columns.
+    </li>
+    <li>
+      <strong>A search box</strong> narrows long lists, and <strong>(Select all)</strong> acts on what the search
+      has narrowed to. Searching, unchecking <strong>(Select all)</strong>, then checking one value is the quickest
+      way to filter down to a single value.
+    </li>
+    <li>
+      <strong>Empty cells</strong> are collected under <strong>(Blanks)</strong>, and are represented by the empty
+      string in filter state.
+    </li>
+    <li>
+      Values are read through the column&rsquo;s <code>selector</code> and compared as strings. <code>format</code>
+      affects only what the cell displays, not what the checklist shows.
+    </li>
+  </ul>
+
+  <blockquote>
+    Set filters build the checklist from the rows the table is holding. With <code>paginationServer</code> that is
+    only the current page, so the checklist lists just the values present on that page. Until a prop for supplying
+    the full value list lands, drive the filter yourself, as in <a href="#server-side">Server-side filtering</a>
+    below.
+  </blockquote>
+
+  <h2>Two conditions per column</h2>
+  <p>
+    Every filter popup has a <strong>+ Add condition</strong> link. Adding a second condition reveals an AND / OR
+    toggle: AND means a row has to match both, OR means either will do. That covers things like &ldquo;starts with
+    J but does not end with son&rdquo; without writing a <a href="#custom-filter-function">custom filter
+    function</a>. Set filters have no operators, so they show the checklist instead of this link.
+  </p>
 
   <h2>Apply / Clear behaviour</h2>
   <p>
@@ -166,7 +228,72 @@ const filter: FilterState = {
     Clicking <strong>Clear</strong> resets the column's filter and applies immediately.
   </p>
 
-  <h2>Custom filter function</h2>
+  <h2 id="filter-state">Filter state</h2>
+  <p>
+    You can ignore this section until you need to read or write filters yourself, which comes up when you persist
+    them in a URL, restore them on load, or filter on the server. One <code>FilterState</code> describes one
+    column&rsquo;s filter. Operator-based types fill in <code>condition1</code>, plus <code>condition2</code> and
+    <code>logic</code> when there is a second condition. Set filters use <code>values</code> instead and ignore
+    the conditions entirely.
+  </p>
+
+  <CodeBlock code={`import type { FilterState } from 'react-data-table-component';
+
+// Operator-based: "starts with J AND ends with son"
+const nameFilter: FilterState = {
+  condition1: { operator: 'startsWith', value: 'J' },
+  condition2: { operator: 'endsWith', value: 'son' },
+  logic: 'AND', // 'AND' | 'OR' — defaults to 'AND'
+};
+
+// Set filter: "keep Engineering and Design rows, plus rows with no department"
+const deptFilter: FilterState = {
+  condition1: { operator: 'equals' },   // ignored by set filters
+  values: ['Engineering', 'Design', ''],
+};`} />
+
+  <p>
+    For a set filter, <code>values: undefined</code> means no selection has been made yet and matches every row;
+    an empty array means nothing is selected and matches none. Cells that are empty or contain only whitespace are
+    all treated as blanks and selected with the empty string, shown in the checklist as <code>(Blanks)</code>.
+  </p>
+
+  <h3>Values that appear after a set filter is applied</h3>
+  <p>
+    When the built-in panel applies a set filter it also records <code>knownValues</code>, the values in the checklist
+    at that moment. If new data later brings a value that was not on that list, it was never unchecked, so those rows
+    stay visible. Checking or unchecking anything in the panel makes the selection explicit again and records a fresh
+    snapshot.
+  </p>
+  <p>
+    Omit <code>knownValues</code> when building filter state yourself and <code>values</code> is treated as an
+    exhaustive allow-list, so anything not listed is filtered out, including values added later.
+  </p>
+
+  <CodeBlock code={`const filter: FilterState = {
+  condition1: { operator: 'equals' },
+  values: ['Engineering'],
+  // Design and Support were in the checklist and left unchecked; anything else is new
+  knownValues: ['Engineering', 'Design', 'Support'],
+};`} />
+
+  <p>
+    Two helpers are exported for working with filter state: <code>emptyFilterState</code> builds a blank one for a
+    given filter type, and <code>isFilterActive</code> tells you whether a filter is actually narrowing anything.
+  </p>
+
+  <CodeBlock code={`import { emptyFilterState, isFilterActive } from 'react-data-table-component';
+
+// Create a default-empty FilterState for a given type
+emptyFilterState('number'); // { condition1: { operator: 'equals' } }
+emptyFilterState('text'); // { condition1: { operator: 'contains' } }
+
+// Check whether a FilterState is actually filtering anything
+isFilterActive({ condition1: { operator: 'contains' } }); // false — no value
+isFilterActive({ condition1: { operator: 'contains', value: 'a' } }); // true
+isFilterActive({ condition1: { operator: 'blank' } }); // true — no value needed`} />
+
+  <h2 id="custom-filter-function">Custom filter function</h2>
   <p>
     Override built-in operator logic per column with <code>filterFunction</code>. It receives
     the full <code>FilterState</code> so both conditions are available:
@@ -218,58 +345,36 @@ function App() {
   );
 }`} />
 
-  <h2>Utility exports</h2>
+  <h2 id="server-side">Server-side filtering</h2>
+  <p>
+    If your backend does the filtering, add <code>filterServer</code>. The popups still render and still call
+    <code>onFilterChange</code>, but the built-in matcher is skipped, so the rows your server returned are shown
+    as-is. <code>paginationServer</code> turns this on for you, since a page cannot be filtered against rows it
+    does not hold.
+  </p>
 
-  <CodeBlock code={`import { emptyFilterState, isFilterActive, type FilterState } from 'react-data-table-component';
+  <CodeBlock code={`const [filterValues, setFilterValues] = useState({});
 
-// Create a default-empty FilterState for a given type
-emptyFilterState('number'); // { condition1: { operator: 'equals' } }
-emptyFilterState('text'); // { condition1: { operator: 'contains' } }
+const handleFilterChange = (columnId, filter) => {
+  const next = { ...filterValues, [columnId]: filter };
+  setFilterValues(next);
+  fetchFromApi({ filters: next, page: 1 }).then(setRows);
+};
 
-// Check whether a FilterState is actually filtering anything
-isFilterActive({ condition1: { operator: 'contains' } }); // false — no value
-isFilterActive({ condition1: { operator: 'contains', value: 'a' } }); // true
-isFilterActive({ condition1: { operator: 'blank' } }); // true — no value needed`} />
+<DataTable
+  columns={columns}
+  data={rows}
+  filterServer
+  filterValues={filterValues}
+  onFilterChange={handleFilterChange}
+/>`} />
 
   <h2>Localization</h2>
   <p>
-    Use the <code>localization</code> prop to swap every string in the table UI.
-    Import a pre-built locale or build your own — all keys are optional and fall
-    back to English defaults.
+    Every string in the filter panel is overridable through the table-level
+    <code>localization</code> prop, under its <code>filter</code> key. See
+    <a href="/docs/localization">Localization</a> for the full list of keys and their defaults.
   </p>
-
-  <CodeBlock code={`// Drop-in locale
-import DataTable from 'react-data-table-component';
-import { fr } from 'react-data-table-component/locales';
-
-<DataTable columns={columns} data={data} localization={fr} />;`} />
-
-  <CodeBlock code={`// Custom / partial override — spread a locale and replace only what you need
-import { fr } from 'react-data-table-component/locales';
-import type { Localization } from 'react-data-table-component';
-
-const myLocale: Localization = {
-  ...fr,
-  filter: {
-    ...fr.filter,
-    applyLabel: 'Valider', // override one key
-  },
-};
-
-<DataTable columns={columns} data={data} localization={myLocale} />;`} />
-
-  <CodeBlock code={`// Built from scratch — every key is optional
-import type { Localization } from 'react-data-table-component';
-
-const custom: Localization = {
-  filter: {
-    clearLabel: 'Reset',
-    applyLabel: 'Go',
-    operators: { contains: 'has', equals: 'is' },
-  },
-};
-
-<DataTable columns={columns} data={data} localization={custom} />;`} />
 
   <h2>Headless usage</h2>
   <p>

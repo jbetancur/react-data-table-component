@@ -25,6 +25,11 @@ const ar: Localization = {
 		applyLabel: 'تطبيق',
 		andLabel: 'و',
 		orLabel: 'أو',
+		selectAllLabel: '(تحديد الكل)',
+		blanksLabel: '(فارغ)',
+		searchPlaceholder: 'بحث',
+		searchAriaLabel: 'البحث في قيم التصفية',
+		noMatchesText: 'لا توجد نتائج',
 		operators: {
 			contains: 'يحتوي على',
 			notContains: 'لا يحتوي على',

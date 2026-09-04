@@ -25,6 +25,11 @@ const uk: Localization = {
 		applyLabel: 'Застосувати',
 		andLabel: 'І',
 		orLabel: 'АБО',
+		selectAllLabel: '(Вибрати все)',
+		blanksLabel: '(Порожні)',
+		searchPlaceholder: 'Пошук',
+		searchAriaLabel: 'Пошук значень фільтра',
+		noMatchesText: 'Немає збігів',
 		operators: {
 			contains: 'Містить',
 			notContains: 'Не містить',

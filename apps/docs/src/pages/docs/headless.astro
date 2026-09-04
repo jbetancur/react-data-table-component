@@ -453,14 +453,30 @@ function MyTable({ data }: { data: Person[] }) {
 
 function useColumnFilter<T>(
   columns: TableColumn<T>[],
-  controlledFilterValues?: Record<string | number, FilterState>,
-  onFilterChange?: (columnId: string | number, filter: FilterState) => void,
+  options?: {
+    filterValues?: Record<string | number, FilterState>;
+    onFilterChange?: (columnId: string | number, filter: FilterState) => void;
+    localization?: Localization['filter'];
+    rows?: T[];
+  },
 ): UseColumnFilterResult<T>;`} />
 
   <p>
-    Omit both optional arguments to run in <strong>uncontrolled</strong> mode (internal state).
-    Pass both to run in <strong>controlled</strong> mode (you own the state).
+    Omit <code>filterValues</code> and <code>onFilterChange</code> to run in <strong>uncontrolled</strong> mode
+    (internal state). Pass both to run in <strong>controlled</strong> mode (you own the state).
   </p>
+
+  <p>
+    Pass <code>rows</code> when any column uses <code>filterType: 'set'</code>. That is the row array the checklist
+    derives its distinct values from, so without it a set filter opens an empty list. Every other filter type ignores
+    it.
+  </p>
+
+  <blockquote>
+    The older positional form <code>useColumnFilter(columns, filterValues, onFilterChange)</code> still works and is
+    deprecated. It cannot supply <code>rows</code>, so set filters need the options object. The positional form is
+    removed in v9.
+  </blockquote>
 
   <DocsTable
     headers={['Property', 'Type', 'Description']}

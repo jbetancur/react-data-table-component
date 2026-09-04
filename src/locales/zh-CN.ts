@@ -25,6 +25,11 @@ const zhCN: Localization = {
 		applyLabel: '应用',
 		andLabel: '且',
 		orLabel: '或',
+		selectAllLabel: '(全选)',
+		blanksLabel: '(空白)',
+		searchPlaceholder: '搜索',
+		searchAriaLabel: '搜索筛选值',
+		noMatchesText: '无匹配项',
 		operators: {
 			contains: '包含',
 			notContains: '不包含',

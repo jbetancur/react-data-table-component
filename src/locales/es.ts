@@ -25,6 +25,11 @@ const es: Localization = {
 		applyLabel: 'Aplicar',
 		andLabel: 'Y',
 		orLabel: 'O',
+		selectAllLabel: '(Seleccionar todo)',
+		blanksLabel: '(Vacíos)',
+		searchPlaceholder: 'Buscar',
+		searchAriaLabel: 'Buscar valores de filtro',
+		noMatchesText: 'Sin coincidencias',
 		operators: {
 			contains: 'Contiene',
 			notContains: 'No contiene',

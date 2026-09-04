@@ -2,6 +2,23 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.9.0
+
+### New features
+
+- **`filterType: 'set'`** — filter a column by ticking values from a checklist of its distinct values, with a search box and a `(Blanks)` entry for empty cells. Selections live on the new `FilterState.values`. → [Filtering](/docs/filtering) ([#1372](https://github.com/jbetancur/react-data-table-component/issues/1372))
+- **`filterServer`** — skip the built-in client-side filter pass and let your backend filter, the way `sortServer` does for sorting. Filter popups still render and still call `onFilterChange`. → [Filtering](/docs/filtering#server-side)
+
+### Bug fixes
+
+- Column filters no longer re-filter server-paginated rows client-side, which could blank the page. `paginationServer` now implies `filterServer`. → [Filtering](/docs/filtering#server-side)
+
+### Deprecations
+
+- `useColumnFilter(columns, filterValues, onFilterChange)` — use `useColumnFilter(columns, { filterValues, onFilterChange, localization, rows })` instead. Set filters need `rows`, which only the options form accepts. The positional form still works and is removed in v9. → [Headless](/docs/headless)
+
+---
+
 ## 8.8.2
 
 ### Bug fixes

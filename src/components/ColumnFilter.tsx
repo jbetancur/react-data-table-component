@@ -1,77 +1,18 @@
 import * as React from 'react';
 import '../DataTable.css';
 import type { FilterState, FilterCondition, FilterOperator, FilterType, Localization } from '../types';
-
-type ColumnFilterOptions = NonNullable<Localization['filter']>;
-import { emptyFilterState, isFilterActive } from '../hooks/useColumnFilter';
+import { emptyFilterState, isFilterActive, isValueSelected } from '../hooks/useColumnFilter';
+import { emptyCondition, inputTypeFor, operatorsFor } from './filterOperators';
 import FilterIcon from '../icons/FilterIcon';
 
-type OperatorOption = { value: FilterOperator; label: string; noInput?: boolean; twoInputs?: boolean };
-
-const DEFAULT_TEXT_OPERATORS: OperatorOption[] = [
-	{ value: 'contains', label: 'Contains' },
-	{ value: 'notContains', label: 'Does not contain' },
-	{ value: 'equals', label: 'Equals' },
-	{ value: 'notEquals', label: 'Does not equal' },
-	{ value: 'startsWith', label: 'Begins with' },
-	{ value: 'endsWith', label: 'Ends with' },
-	{ value: 'blank', label: 'Blank', noInput: true },
-	{ value: 'notBlank', label: 'Not blank', noInput: true },
-];
-
-const DEFAULT_NUMBER_OPERATORS: OperatorOption[] = [
-	{ value: 'equals', label: 'Equals' },
-	{ value: 'notEquals', label: 'Does not equal' },
-	{ value: 'gt', label: 'Greater than' },
-	{ value: 'gte', label: 'Greater than or equal' },
-	{ value: 'lt', label: 'Less than' },
-	{ value: 'lte', label: 'Less than or equal' },
-	{ value: 'between', label: 'Between', twoInputs: true },
-	{ value: 'blank', label: 'Blank', noInput: true },
-	{ value: 'notBlank', label: 'Not blank', noInput: true },
-];
-
-const DEFAULT_DATE_OPERATORS: OperatorOption[] = [
-	{ value: 'equals', label: 'Equals' },
-	{ value: 'before', label: 'Before' },
-	{ value: 'after', label: 'After' },
-	{ value: 'between', label: 'Between', twoInputs: true },
-	{ value: 'blank', label: 'Blank', noInput: true },
-	{ value: 'notBlank', label: 'Not blank', noInput: true },
-];
-
-function baseOperators(filterType: FilterType): OperatorOption[] {
-	if (filterType === 'number') return DEFAULT_NUMBER_OPERATORS;
-	if (filterType === 'date' || filterType === 'datetime' || filterType === 'time') return DEFAULT_DATE_OPERATORS;
-	return DEFAULT_TEXT_OPERATORS;
-}
-
-function operatorsFor(filterType: FilterType, overrides?: ColumnFilterOptions['operators']): OperatorOption[] {
-	const base = baseOperators(filterType);
-	if (!overrides) return base;
-	return base.map(op => (overrides[op.value] ? { ...op, label: overrides[op.value]! } : op));
-}
-
-function defaultOperator(filterType: FilterType): FilterOperator {
-	return filterType === 'text' ? 'contains' : 'equals';
-}
-
-function inputTypeFor(filterType: FilterType): string {
-	if (filterType === 'number') return 'number';
-	if (filterType === 'date') return 'date';
-	if (filterType === 'datetime') return 'datetime-local';
-	if (filterType === 'time') return 'time';
-	return 'text';
-}
-
-function emptyCondition(filterType: FilterType): FilterCondition {
-	return { operator: defaultOperator(filterType) };
-}
+type ColumnFilterOptions = NonNullable<Localization['filter']>;
 
 // Shield the table's keyboard handlers (cell navigation, sort) from keystrokes in
 // filter inputs, but let Escape through so the panel's close handler still fires.
 function stopUnlessEscape(e: React.KeyboardEvent) {
-	if (e.key !== 'Escape') e.stopPropagation();
+	if (e.key !== 'Escape') {
+		e.stopPropagation();
+	}
 }
 
 type ConditionRowProps = {
@@ -148,12 +89,185 @@ function ConditionRow({ condition, filterType, options, onChange, onRemove }: Co
 	);
 }
 
+type SetFilterPanelProps = {
+	values: string[];
+	selected: string[] | undefined;
+	knownValues: string[] | undefined;
+	options: ColumnFilterOptions;
+	onChange: (next: string[]) => void;
+};
+
+function SetFilterPanel({ values, selected, knownValues, options, onChange }: SetFilterPanelProps): JSX.Element {
+	const [search, setSearch] = React.useState('');
+
+	const isChecked = (value: string) => isValueSelected(value, selected, knownValues);
+
+	const searching = search.trim() !== '';
+
+	const visible = React.useMemo(() => {
+		const q = search.trim().toLowerCase();
+		if (!q) {
+			return values;
+		}
+		const blanksLabel = options.blanksLabel ?? '(Blanks)';
+		return values.filter(v => (v === '' ? blanksLabel : v).toLowerCase().includes(q));
+	}, [values, search, options.blanksLabel]);
+
+	const allVisibleChecked = visible.length > 0 && visible.every(isChecked);
+	const someVisibleChecked = visible.some(isChecked);
+
+	// Indeterminate has no attribute form, so it is set on the node.
+	const selectAllRef = React.useRef<HTMLInputElement>(null);
+
+	React.useEffect(() => {
+		if (selectAllRef.current) {
+			selectAllRef.current.indeterminate = someVisibleChecked && !allVisibleChecked;
+		}
+	}, [someVisibleChecked, allVisibleChecked]);
+
+	// Everything shown as checked, including values that are only checked because they
+	// showed up after the filter was applied. Editing makes them explicit.
+	function currentSelection(): Set<string> {
+		return new Set(values.filter(isChecked));
+	}
+
+	function toggle(value: string) {
+		const base = currentSelection();
+		if (base.has(value)) {
+			base.delete(value);
+		} else {
+			base.add(value);
+		}
+
+		onChange([...base]);
+	}
+
+	function toggleAll() {
+		// While searching, unchecking select-all means "none of these", the gesture that
+		// starts a "show only X". Subtracting from the full selection instead would
+		// silently keep the values the search is hiding.
+		if (allVisibleChecked && searching) {
+			onChange([]);
+			return;
+		}
+
+		const base = currentSelection();
+
+		for (const v of visible) {
+			if (allVisibleChecked) {
+				base.delete(v);
+			} else {
+				base.add(v);
+			}
+		}
+		onChange([...base]);
+	}
+
+	return (
+		<div className="rdt_filterSet">
+			<input
+				className="rdt_filterInput rdt_filterSetSearch"
+				type="text"
+				value={search}
+				placeholder={options.searchPlaceholder ?? 'Search'}
+				onChange={e => setSearch(e.target.value)}
+				onKeyDown={stopUnlessEscape}
+				aria-label={options.searchAriaLabel ?? 'Search filter values'}
+			/>
+
+			{visible.length === 0 ? (
+				<div className="rdt_filterSetEmpty">{options.noMatchesText ?? 'No matches'}</div>
+			) : (
+				<div className="rdt_filterSetList" role="group">
+					<label className="rdt_filterSetItem rdt_filterSetSelectAll">
+						<input ref={selectAllRef} type="checkbox" checked={allVisibleChecked} onChange={toggleAll} />
+						<span>{options.selectAllLabel ?? '(Select all)'}</span>
+					</label>
+					{visible.map(value => (
+						<label key={value} className="rdt_filterSetItem">
+							<input type="checkbox" checked={isChecked(value)} onChange={() => toggle(value)} />
+							<span>{value === '' ? (options.blanksLabel ?? '(Blanks)') : value}</span>
+						</label>
+					))}
+				</div>
+			)}
+		</div>
+	);
+}
+
+type ConditionLogicGroupProps = {
+	condition: FilterCondition | undefined;
+	logic: FilterState['logic'];
+	filterType: FilterType;
+	options: ColumnFilterOptions;
+	onLogicChange: (logic: 'AND' | 'OR') => void;
+	onChange: (next: FilterCondition) => void;
+	onAdd: () => void;
+	onRemove: () => void;
+};
+
+function ConditionLogicGroup({
+	condition,
+	logic,
+	filterType,
+	options,
+	onLogicChange,
+	onChange,
+	onAdd,
+	onRemove,
+}: ConditionLogicGroupProps): JSX.Element {
+	if (!condition) {
+		return (
+			<button
+				type="button"
+				className="rdt_filterAddCondition"
+				aria-label={options.addConditionAriaLabel ?? 'Add a second filter condition'}
+				onClick={onAdd}
+			>
+				{options.addConditionLabel ?? '+ Add condition'}
+			</button>
+		);
+	}
+
+	return (
+		<>
+			<div className="rdt_filterLogicRow">
+				<button
+					type="button"
+					className={['rdt_filterLogicBtn', logic !== 'OR' && 'rdt_filterLogicBtnActive'].filter(Boolean).join(' ')}
+					aria-pressed={logic !== 'OR'}
+					onClick={() => onLogicChange('AND')}
+				>
+					{options.andLabel ?? 'AND'}
+				</button>
+				<button
+					type="button"
+					className={['rdt_filterLogicBtn', logic === 'OR' && 'rdt_filterLogicBtnActive'].filter(Boolean).join(' ')}
+					aria-pressed={logic === 'OR'}
+					onClick={() => onLogicChange('OR')}
+				>
+					{options.orLabel ?? 'OR'}
+				</button>
+			</div>
+			<ConditionRow
+				condition={condition}
+				filterType={filterType}
+				options={options}
+				onChange={onChange}
+				onRemove={onRemove}
+			/>
+		</>
+	);
+}
+
 type ColumnFilterProps = {
 	columnId: string | number;
 	filterValue: FilterState;
 	filterType?: FilterType;
 	options?: ColumnFilterOptions;
 	onFilterChange: (columnId: string | number, filter: FilterState) => void;
+	/** Only read by `filterType: "set"`. */
+	getDistinctValues?: (columnId: string | number) => string[];
 };
 
 export default function ColumnFilter({
@@ -162,9 +276,12 @@ export default function ColumnFilter({
 	filterType = 'text',
 	options = {},
 	onFilterChange,
+	getDistinctValues,
 }: ColumnFilterProps): JSX.Element {
+	const isSet = filterType === 'set';
 	const [open, setOpen] = React.useState(false);
 	const [panelPos, setPanelPos] = React.useState<{ top: number; left: number } | null>(null);
+	const [distinctValues, setDistinctValues] = React.useState<string[]>([]);
 	const [pending, setPending] = React.useState<FilterState>(() => filterValue ?? emptyFilterState(filterType));
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const buttonRef = React.useRef<HTMLButtonElement>(null);
@@ -181,7 +298,9 @@ export default function ColumnFilter({
 	const panelRef = React.useRef<HTMLDivElement>(null);
 
 	React.useEffect(() => {
-		if (!open) return;
+		if (!open) {
+			return;
+		}
 
 		const firstFocusable = panelRef.current?.querySelector<HTMLElement>('select, input, button');
 		firstFocusable?.focus();
@@ -207,7 +326,9 @@ export default function ColumnFilter({
 		// scroll container) moves the anchor button out from under it. Close rather
 		// than track — capture phase catches scrolls inside nested containers.
 		function handleScroll(e: Event) {
-			if (panelRef.current && e.target instanceof Node && panelRef.current.contains(e.target)) return;
+			if (panelRef.current && e.target instanceof Node && panelRef.current.contains(e.target)) {
+				return;
+			}
 			setOpen(false);
 		}
 		function handleResize() {
@@ -231,8 +352,20 @@ export default function ColumnFilter({
 
 	const isActive = isFilterActive(filterValue);
 
+	function applied(): FilterState {
+		if (!isSet || pending.values === undefined) {
+			return pending;
+		}
+
+		// Written out explicitly, or the new knownValues would turn values that show as
+		// checked into exclusions.
+		const checked = distinctValues.filter(v => isValueSelected(v, pending.values, pending.knownValues));
+
+		return { ...pending, values: checked, knownValues: distinctValues };
+	}
+
 	function handleApply() {
-		onFilterChange(columnId, pending);
+		onFilterChange(columnId, applied());
 		setOpen(false);
 		buttonRef.current?.focus();
 	}
@@ -271,6 +404,9 @@ export default function ColumnFilter({
 
 	function toggleOpen() {
 		if (!open && buttonRef.current) {
+			if (isSet && getDistinctValues) {
+				setDistinctValues(getDistinctValues(columnId));
+			}
 			const rect = buttonRef.current.getBoundingClientRect();
 			const panelMinWidth = 260;
 			const margin = 8;
@@ -314,54 +450,34 @@ export default function ColumnFilter({
 					aria-label={options.filterPanelAriaLabel ?? 'Column filter'}
 					style={{ position: 'fixed', top: panelPos.top, left: panelPos.left }}
 				>
-					<ConditionRow
-						condition={pending.condition1}
-						filterType={filterType}
-						options={options}
-						onChange={handleCondition1Change}
-					/>
-
-					{pending.condition2 ? (
-						<>
-							<div className="rdt_filterLogicRow">
-								<button
-									type="button"
-									className={['rdt_filterLogicBtn', pending.logic !== 'OR' && 'rdt_filterLogicBtnActive']
-										.filter(Boolean)
-										.join(' ')}
-									aria-pressed={pending.logic !== 'OR'}
-									onClick={() => handleLogicChange('AND')}
-								>
-									{options.andLabel ?? 'AND'}
-								</button>
-								<button
-									type="button"
-									className={['rdt_filterLogicBtn', pending.logic === 'OR' && 'rdt_filterLogicBtnActive']
-										.filter(Boolean)
-										.join(' ')}
-									aria-pressed={pending.logic === 'OR'}
-									onClick={() => handleLogicChange('OR')}
-								>
-									{options.orLabel ?? 'OR'}
-								</button>
-							</div>
-							<ConditionRow
-								condition={pending.condition2}
-								filterType={filterType}
-								options={options}
-								onChange={handleCondition2Change}
-								onRemove={handleRemoveCondition2}
-							/>
-						</>
+					{isSet ? (
+						<SetFilterPanel
+							values={distinctValues}
+							selected={pending.values}
+							knownValues={pending.knownValues}
+							options={options}
+							onChange={next => setPending(prev => ({ ...prev, values: next, knownValues: undefined }))}
+						/>
 					) : (
-						<button
-							type="button"
-							className="rdt_filterAddCondition"
-							aria-label={options.addConditionAriaLabel ?? 'Add a second filter condition'}
-							onClick={handleAddCondition}
-						>
-							{options.addConditionLabel ?? '+ Add condition'}
-						</button>
+						<ConditionRow
+							condition={pending.condition1}
+							filterType={filterType}
+							options={options}
+							onChange={handleCondition1Change}
+						/>
+					)}
+
+					{!isSet && (
+						<ConditionLogicGroup
+							condition={pending.condition2}
+							logic={pending.logic}
+							filterType={filterType}
+							options={options}
+							onLogicChange={handleLogicChange}
+							onChange={handleCondition2Change}
+							onAdd={handleAddCondition}
+							onRemove={handleRemoveCondition2}
+						/>
 					)}
 
 					<div className="rdt_filterActions">

@@ -10,8 +10,8 @@ import serverSideSource from '../../../components/demos/ServerSideRecipeDemo.tsx
   <h1>Server-side sort, page &amp; filter</h1>
 
   <p>
-    Enable <code>sortServer</code>, <code>paginationServer</code>, and pass controlled
-    <code>filterValues</code>. Refetch from a single effect that depends on every state knob.
+    Enable <code>sortServer</code>, <code>paginationServer</code>, and <code>filterServer</code>, then pass
+    controlled <code>filterValues</code>. Refetch from a single effect that depends on every state knob.
     The demo below simulates a 400ms API delay — filter by name or department to see it in action.
   </p>
 
@@ -72,6 +72,7 @@ export default function App() {
       sortServer
       onSort={(col, dir) => setSort({ id: col.id as string, dir })}
 
+      filterServer
       filterValues={filters}
       onFilterChange={(columnId, next) =>
         setFilters(prev => ({ ...prev, [columnId]: next }))

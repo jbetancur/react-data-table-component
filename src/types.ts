@@ -5,7 +5,7 @@ export type CSSObject = React.CSSProperties;
 
 // ── Column filter types ────────────────────────────────────────────────────────
 
-export type FilterType = 'text' | 'number' | 'date' | 'datetime' | 'time';
+export type FilterType = 'text' | 'number' | 'date' | 'datetime' | 'time' | 'set';
 
 export type FilterOperator =
 	| 'contains'
@@ -36,6 +36,14 @@ export type FilterState = {
 	condition2?: FilterCondition;
 	/** How condition1 and condition2 combine. Defaults to "AND". */
 	logic?: 'AND' | 'OR';
+	/** Selected values for `filterType: "set"`; blanks are the empty string. `undefined`
+	 *  matches every row, `[]` matches none. Unused by the other filter types. */
+	values?: string[];
+	/** The distinct values in the checklist when this set filter was applied. Cell values
+	 *  missing from this list are not filtered out, so rows added later stay visible.
+	 *  Set by the built-in panel; omit it to treat `values` as an exhaustive
+	 *  allow-list. Unused by the other filter types. */
+	knownValues?: string[];
 };
 
 export enum SortOrder {
@@ -316,6 +324,13 @@ type BaseTableProps<T> = {
 	filterValues?: Record<string | number, FilterState>;
 	/** Called when the user clicks Apply in a column filter popup. */
 	onFilterChange?: (columnId: string | number, filter: FilterState) => void;
+	/**
+	 * The data is filtered server-side, so skip the built-in client-side pass. The filter
+	 * popups still render and still call `onFilterChange`; use it to refetch. Without this,
+	 * a server-filtered page gets filtered a second time against rows it no longer holds.
+	 * Implied by `paginationServer`. Defaults to `false`.
+	 */
+	filterServer?: boolean;
 	/** Override every user-visible string in DataTable. Pass a pre-built locale or build your own. */
 	localization?: Localization;
 	/**
@@ -390,7 +405,8 @@ export type TableColumnBase = {
 	sortable?: boolean;
 	/** Enable the built-in filter popup for this column. */
 	filterable?: boolean;
-	/** Filter input type. Determines the available operators and input widget. Defaults to "text". */
+	/** Filter input type. Determines the available operators and input widget. Defaults to "text".
+	 *  "set" replaces the operator UI with a checklist of the column's distinct values. */
 	filterType?: FilterType;
 	style?: CSSObject;
 	width?: string;
@@ -632,6 +648,16 @@ export interface Localization {
 		andLabel?: string;
 		/** Label for the OR logic button. Default: "OR" */
 		orLabel?: string;
+		/** Label for the select-all checkbox in a "set" filter. Default: "(Select all)" */
+		selectAllLabel?: string;
+		/** Label for the blank-values entry in a "set" filter. Default: "(Blanks)" */
+		blanksLabel?: string;
+		/** Placeholder for the search box in a "set" filter. Default: "Search" */
+		searchPlaceholder?: string;
+		/** aria-label for the search box in a "set" filter. Default: "Search filter values" */
+		searchAriaLabel?: string;
+		/** Text shown when a "set" filter search matches nothing. Default: "No matches" */
+		noMatchesText?: string;
 		/** Labels for filter operators. */
 		operators?: {
 			contains?: string;

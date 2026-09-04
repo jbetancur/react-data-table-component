@@ -25,6 +25,11 @@ const he: Localization = {
 		applyLabel: 'החל',
 		andLabel: 'וגם',
 		orLabel: 'או',
+		selectAllLabel: '(בחר הכול)',
+		blanksLabel: '(ריקים)',
+		searchPlaceholder: 'חיפוש',
+		searchAriaLabel: 'חיפוש ערכי סינון',
+		noMatchesText: 'אין התאמות',
 		operators: {
 			contains: 'מכיל',
 			notContains: 'אינו מכיל',
