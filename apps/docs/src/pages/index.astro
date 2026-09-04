@@ -306,20 +306,26 @@ export default function App() {
 		</div>
 
 		{backers.length > 0 && (
-			<p class="text-sm text-gray-500 mb-8">
-				Thank you to our backers for their recurring support:{' '}
-				{backers.map(({ name, url }, i) => (
-					<>
-						{i > 0 && ', '}
-						{url ? (
-							<a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium">{name}</a>
-						) : (
-							<span class="text-gray-700 font-medium">{name}</span>
-						)}
-					</>
-				))}
-				. <a href="/support#backers" class="text-brand-600 hover:text-brand-700 font-medium">See all →</a>
-			</p>
+			<div class="mb-8">
+				<h3 class="text-sm font-semibold text-gray-900 mb-1">Backers</h3>
+				<p class="text-sm text-gray-500 mb-4">Thank you to our backers for their recurring support.</p>
+				<ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+					{backers.slice(0, 6).map(({ name, url }) => (
+						<li>
+							{url ? (
+								<a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium">{name}</a>
+							) : (
+								<span class="text-gray-700 font-medium">{name}</span>
+							)}
+						</li>
+					))}
+				</ul>
+				{backers.length > 6 && (
+					<p class="text-sm mt-4">
+						<a href="/support#backers" class="text-brand-600 hover:text-brand-700 font-medium">See all →</a>
+					</p>
+				)}
+			</div>
 		)}
 
 		<div class="flex items-center justify-center gap-4">
