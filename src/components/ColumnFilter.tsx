@@ -4,6 +4,7 @@ import type { FilterState, FilterCondition, FilterOperator, FilterType, Localiza
 import { emptyFilterState, isFilterActive, isValueSelected } from '../hooks/useColumnFilter';
 import { emptyCondition, inputTypeFor, operatorsFor } from './filterOperators';
 import FilterIcon from '../icons/FilterIcon';
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
 type ColumnFilterOptions = NonNullable<Localization['filter']>;
 
@@ -297,6 +298,28 @@ export default function ColumnFilter({
 
 	const panelRef = React.useRef<HTMLDivElement>(null);
 
+	// Measure after every render: adding a condition or changing filter content can
+	// resize an open panel. Position before paint without moving focus or remounting.
+	useIsomorphicLayoutEffect(() => {
+		const panel = panelRef.current;
+		const button = buttonRef.current;
+		if (!open || !panel || !button || !panelPos) {
+			return;
+		}
+		const rect = panel.getBoundingClientRect();
+		const anchor = button.getBoundingClientRect();
+		const margin = 8;
+		const left = Math.max(margin, Math.min(anchor.left, window.innerWidth - rect.width - margin));
+		let top = anchor.bottom + 4;
+		if (top + rect.height > window.innerHeight - margin) {
+			const flipped = anchor.top - rect.height - 4;
+			top = flipped >= margin ? flipped : Math.max(margin, window.innerHeight - rect.height - margin);
+		}
+		panel.style.left = `${left}px`;
+		panel.style.top = `${Math.max(margin, top)}px`;
+		panel.style.visibility = 'visible';
+	});
+
 	React.useEffect(() => {
 		if (!open) {
 			return;
@@ -408,15 +431,7 @@ export default function ColumnFilter({
 				setDistinctValues(getDistinctValues(columnId));
 			}
 			const rect = buttonRef.current.getBoundingClientRect();
-			const panelMinWidth = 260;
-			const margin = 8;
-			// Clamp the panel within the viewport on both axes. Anchoring purely to the
-			// button's left/right pushes the panel off-screen for columns near either edge
-			// (common on mobile once the header is horizontally scrolled), which reads as
-			// the menu "not coming up".
-			const maxLeft = window.innerWidth - panelMinWidth - margin;
-			const left = Math.min(Math.max(margin, rect.left), Math.max(margin, maxLeft));
-			setPanelPos({ top: rect.bottom + 4, left });
+			setPanelPos({ top: rect.bottom + 4, left: rect.left });
 		}
 		setOpen(v => !v);
 	}
@@ -448,7 +463,7 @@ export default function ColumnFilter({
 					className="rdt_filterPanel"
 					role="dialog"
 					aria-label={options.filterPanelAriaLabel ?? 'Column filter'}
-					style={{ position: 'fixed', top: panelPos.top, left: panelPos.left }}
+					style={{ position: 'fixed', top: panelPos.top, left: panelPos.left, visibility: 'hidden' }}
 				>
 					{isSet ? (
 						<SetFilterPanel
