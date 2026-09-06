@@ -241,7 +241,7 @@ const ref = useRef<DataTableHandle>(null);
 <DataTable ref={ref} onSelectedRowsChange={handleChange} ... />
 ```
 
-### Behavioural fix: `createTheme` shape
+### Behavioral fix: `createTheme` shape
 
 If you were following old examples that wrapped theme tokens in a `colors` object, that wrapper was never a real API. Pass tokens at the top level:
 

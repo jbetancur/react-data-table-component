@@ -93,14 +93,14 @@ describe('useColumns:tableColumns', () => {
 // ── tableGroups ───────────────────────────────────────────────────────────────
 
 describe('useColumns:tableGroups', () => {
-	test('initialises with the provided columnGroups', () => {
+	test('initializes with the provided columnGroups', () => {
 		const groups: ColumnGroup[] = [{ name: 'Info', columnIds: [1, 2] }];
 		const { result } = makeHook([col1, col2], { columnGroups: groups });
 
 		expect(result.current.tableGroups).toEqual(groups);
 	});
 
-	test('initialises to an empty array when no columnGroups are provided', () => {
+	test('initializes to an empty array when no columnGroups are provided', () => {
 		const { result } = makeHook([col1, col2]);
 
 		expect(result.current.tableGroups).toEqual([]);

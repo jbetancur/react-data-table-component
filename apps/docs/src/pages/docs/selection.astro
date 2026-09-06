@@ -109,7 +109,7 @@ export default function App() {
     selection is enabled by default; opt out with <code>selectableRowsRange=&#123;false&#125;</code>.
   </p>
   <p>
-    The behaviour respects <code>selectableRowDisabled</code> — disabled rows in the range are
+    The behavior respects <code>selectableRowDisabled</code> — disabled rows in the range are
     skipped, not toggled. It also stays within the current page when pagination is enabled.
   </p>
   <CodeBlock code={`// Default: range selection on
@@ -295,12 +295,12 @@ tableRef.current?.clearSelectedRows();`} />
     <code>&lt;input type="checkbox"&gt;</code> — DataTable sets <code>.indeterminate</code> on the
     node directly for the partial-selection state on the header checkbox. Keep the input in the
     DOM and style a sibling element off it, rather than replacing it, so keyboard and screen
-    reader behaviour still work.
+    reader behavior still work.
   </p>
 
   <Demo
     title="Fully custom checkbox"
-    description="A spinning vinyl record standing in for the checkbox. Disc turns amber when the header selection is partial; the accent colour is forwarded through selectableRowsComponentProps."
+    description="A spinning vinyl record standing in for the checkbox. Disc turns amber when the header selection is partial; the accent color is forwarded through selectableRowsComponentProps."
     code={`const VinylCheckbox = forwardRef<HTMLInputElement, Props>(
   ({ accent = '#7c3aed', checked, disabled, ...rest }, ref) => (
     <label className="vinyl-wrap" style={{ '--vinyl-accent': accent }}>
