@@ -5,6 +5,8 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import FilteringDemo from '../../components/demos/FilteringDemo.tsx';
 import TimeFilterDemo from '../../components/demos/TimeFilterDemo.tsx';
 import SetFilterDemo from '../../components/demos/SetFilterDemo.tsx';
+import SetFilterOptionsDemo from '../../components/demos/SetFilterOptionsDemo.tsx';
+import SetFilterSeparatorDemo from '../../components/demos/SetFilterSeparatorDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
 ---
@@ -112,7 +114,7 @@ export default function App() {
     ]}
   />
 
-  <p>A few types have behaviour worth knowing before you pick one:</p>
+  <p>A few types have behavior worth knowing before you pick one:</p>
 
   <ul>
     <li>
@@ -189,7 +191,13 @@ export default function App() {
   <ul>
     <li>
       <strong>Values are derived from the rows you pass in</strong>, sorted naturally. The list is the column&rsquo;s
-      full distinct set and does not change as you filter other columns.
+      full distinct set and does not change as you filter other columns. Set
+      <a href="#supplying-set-values"><code>filterOptions.values</code></a> on the column to supply the list instead.
+    </li>
+    <li>
+      <strong>One cell can hold several values.</strong> A column of tags or a stack, formatted as
+      <code>React, TypeScript</code>, lists each part separately once you set
+      <a href="#multi-value-cells"><code>filterOptions.separator</code></a>.
     </li>
     <li>
       <strong>A search box</strong> narrows long lists, and <strong>(Select all)</strong> acts on what the search
@@ -206,12 +214,137 @@ export default function App() {
     </li>
   </ul>
 
-  <blockquote>
-    Set filters build the checklist from the rows the table is holding. With <code>paginationServer</code> that is
-    only the current page, so the checklist lists just the values present on that page. Until a prop for supplying
-    the full value list lands, drive the filter yourself, as in <a href="#server-side">Server-side filtering</a>
-    below.
-  </blockquote>
+  <h3 id="supplying-set-values">Supplying the checklist values</h3>
+
+  <p>
+    Deriving values from the rows only works when the rows already contain every value worth filtering on. A
+    column whose domain is fixed and known, a status or a priority, is usually the opposite case: the list is
+    something you know up front, and the loaded rows are just a sample of it. Set
+    <code>filterOptions.values</code> on the column to supply the list yourself.
+  </p>
+
+  <p>
+    This matters most with server-side data. The table only holds the current page, so a status the server knows
+    about but the page does not would never appear in the checklist, and the user could not ask for it. That is
+    circular: the value only becomes selectable once rows carrying it are loaded, but loading them is the whole
+    point of selecting it. Supplying the list breaks the loop.
+  </p>
+
+  <p>
+    The demo below holds only <strong>Active</strong> and <strong>Pending</strong> tickets, as though the first
+    page had just come back from a server. All four statuses are still listed, and picking
+    <strong>Closed</strong> or <strong>Archived</strong> refetches.
+  </p>
+
+  <Demo
+    title="Set filter with supplied values"
+    description="Open the Status filter. All four statuses are offered even though only Active and Pending are loaded, so picking one the page does not hold can go and fetch it."
+    code={`const STATUSES = ['Active', 'Pending', 'Closed', 'Archived'];
+
+const columns: TableColumn<Ticket>[] = [
+  { id: 'subject', name: 'Subject', selector: r => r.subject, grow: 2 },
+  {
+    id: 'status',
+    name: 'Status',
+    selector: r => r.status,
+    filterable: true,
+    filterType: 'set',
+    filterOptions: { values: STATUSES },
+  },
+];
+
+<DataTable
+  columns={columns}
+  data={rows}
+  filterServer
+  filterValues={filters}
+  onFilterChange={(columnId, next) => {
+    setFilters(prev => ({ ...prev, [columnId]: next }));
+    fetchFromServer(next.values); // undefined means nothing is selected yet
+  }}
+/>;`}
+  >
+    <SetFilterOptionsDemo client:load />
+  </Demo>
+
+  <p>
+    Pair it with <code>filterServer</code>, which is implied by <code>paginationServer</code>, so the built-in
+    matcher does not run a second time against rows the server already filtered. See
+    <a href="#server-side">Server-side filtering</a> below.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Order is kept as given.</strong> Derived values are sorted naturally, but a supplied list is
+      authored, so <code>['Low', 'Medium', 'High']</code> stays in that order rather than being alphabetized.
+    </li>
+    <li>
+      <strong>Blanks are only offered if you ask for one.</strong> Include an empty string in the list to get a
+      <strong>(Blanks)</strong> entry. Derived lists add one whenever a row has an empty cell.
+    </li>
+    <li>
+      <code>values</code> also takes a function, receiving the rows the table is holding, so a fixed domain can be
+      merged with whatever else turned up:
+      <code>{`{ values: rows => [...new Set([...STATUSES, ...rows.map(r => r.status)])] }`}</code>.
+    </li>
+    <li>
+      The column still needs a <code>selector</code>. <code>filterOptions.values</code> supplies the checklist, but
+      client-side matching reads cell values through the selector.
+    </li>
+  </ul>
+
+  <h3 id="multi-value-cells">Cells holding several values</h3>
+
+  <p>
+    A column sometimes holds more than one thing per cell: a list of tags, a stack, the labels on an issue. Left
+    alone, a set filter treats the whole cell as one value, so a row reading <code>React, TypeScript</code> offers
+    exactly that string in the checklist and nothing for <code>React</code> on its own. Set
+    <code>filterOptions.separator</code> to split the cell into its parts.
+  </p>
+
+  <p>
+    Each part becomes its own checklist entry, and a row matches when <strong>any</strong> of its parts is
+    selected. Checking <strong>React</strong> and <strong>Postgres</strong> shows every project using either,
+    which is how a tag filter is normally read.
+  </p>
+
+  <Demo
+    title="Set filter on a multi-value column"
+    description="Open the Stack filter. Each technology is listed separately even though the cells hold comma separated strings, and picking one shows every project using it."
+    code={`const columns: TableColumn<Project>[] = [
+  { id: 'name', name: 'Project', selector: r => r.name, grow: 2 },
+  {
+    id: 'stack',
+    name: 'Stack',
+    selector: r => r.stack,
+    filterable: true,
+    filterType: 'set',
+    filterOptions: { separator: ',' },
+  },
+];`}
+  >
+    <SetFilterSeparatorDemo client:load />
+  </Demo>
+
+  <ul>
+    <li>
+      <strong>Parts are trimmed, and empty ones dropped.</strong> <code>'React, , TypeScript,'</code> yields two
+      values, so ragged data does not litter the checklist with blanks.
+    </li>
+    <li>
+      <strong>A cell left with nothing counts as blank.</strong> An empty cell, or one holding only separators,
+      still reaches the <strong>(Blanks)</strong> entry.
+    </li>
+    <li>
+      <strong>A RegExp works too</strong>, for data that is not consistently delimited:
+      <code>{`{ separator: /\s*[,|]\s*/ }`}</code>.
+    </li>
+    <li>
+      Pair it with <code>filterOptions.values</code> to supply the parts yourself rather than deriving them from
+      the loaded rows. The two are independent: <code>values</code> sets the checklist,
+      <code>separator</code> governs how cells are matched against it.
+    </li>
+  </ul>
 
   <h2>Two conditions per column</h2>
   <p>
@@ -221,12 +354,36 @@ export default function App() {
     function</a>. Set filters have no operators, so they show the checklist instead of this link.
   </p>
 
-  <h2>Apply / Clear behaviour</h2>
+  <h2>Apply / Clear behavior</h2>
   <p>
     Filters apply only when the user clicks <strong>Apply</strong>. Typing does not immediately
     re-filter. This avoids jarring mid-keystroke changes on large datasets.
     Clicking <strong>Clear</strong> resets the column's filter and applies immediately.
   </p>
+
+  <h2>Keyboard and accessibility</h2>
+  <ul>
+    <li>
+      The filter button carries <code>aria-haspopup="dialog"</code> and <code>aria-expanded</code>, and the panel
+      is a <code>role="dialog"</code> labelled for screen readers.
+    </li>
+    <li>
+      Opening the panel moves focus into it. Tab and Shift+Tab cycle within the panel rather than escaping behind
+      it, and Escape closes it and returns focus to the filter button.
+    </li>
+    <li>
+      In a set filter, Tab moves through the search box, <strong>(Select all)</strong>, each value, then Clear and
+      Apply; Space toggles the focused checkbox. Checkboxes show a focus ring, and the focused row is highlighted.
+    </li>
+    <li>
+      While a search narrows the checklist, <strong>(Select all)</strong> acts only on the matches, and announces
+      that to screen readers.
+    </li>
+    <li>
+      The panel flips above its button near the bottom edge, clamps within the viewport, and scrolls internally
+      when it cannot fit. It fades in on open, and holds still under <code>prefers-reduced-motion: reduce</code>.
+    </li>
+  </ul>
 
   <h2 id="filter-state">Filter state</h2>
   <p>

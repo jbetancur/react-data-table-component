@@ -48,6 +48,19 @@ function setValueOf(raw: string): string {
 	return isBlank(raw) ? '' : raw;
 }
 
+// The parts of a cell under a column's `separator`, or the whole cell when it has none.
+// Parts are trimmed and empties dropped, so "React, , TypeScript" yields two values and a
+// cell of only separators folds to a single blank rather than vanishing from the checklist.
+function splitCellValue(cellValue: string, separator: string | RegExp | undefined): string[] {
+	if (separator === undefined) {
+		return [setValueOf(cellValue)];
+	}
+
+	const parts = cellValue.split(separator).filter(part => !isBlank(part));
+
+	return parts.length > 0 ? parts.map(part => part.trim()) : [''];
+}
+
 // Cached by array identity so the set is built once per filter pass, not per row.
 const selectedSetCache = new WeakMap<string[], Set<string>>();
 function selectedSetOf(values: string[]): Set<string> {
@@ -278,7 +291,10 @@ function rowMatchesFilter<T>(row: T, filter: FilterState, col: TableColumn<T>): 
 		if (!col.selector) {
 			return true;
 		}
-		return isValueSelected(setValueOf(cellValue), filter.values, filter.knownValues);
+		// Any part matching keeps the row: checking a tag shows every row carrying it.
+		return splitCellValue(cellValue, col.filterOptions?.separator).some(value =>
+			isValueSelected(value, filter.values, filter.knownValues),
+		);
 	}
 
 	// Only active conditions participate — an empty condition1 must not force-match
@@ -429,6 +445,13 @@ export default function useColumnFilter<T>(
 		const { columnsById: cols, rows: allRows } = distinctSource.current;
 		const col = cols.get(String(columnId));
 
+		const values = col?.filterOptions?.values;
+		if (values) {
+			const supplied = typeof values === 'function' ? values(allRows) : values;
+
+			return [...new Set(supplied.map(setValueOf))];
+		}
+
 		if (!col?.selector) {
 			return [];
 		}
@@ -436,7 +459,9 @@ export default function useColumnFilter<T>(
 		const seen = new Set<string>();
 
 		for (const row of allRows) {
-			seen.add(setValueOf(String(col.selector(row) ?? '')));
+			for (const value of splitCellValue(String(col.selector(row) ?? ''), col.filterOptions?.separator)) {
+				seen.add(value);
+			}
 		}
 
 		// Blanks sort last so the checklist opens on real values.

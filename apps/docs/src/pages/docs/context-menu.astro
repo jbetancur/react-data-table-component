@@ -142,12 +142,14 @@ const rowActions = (row: Task): ContextMenuAction[] => [
     <code>hide-column</code>, <code>reset</code>. Use different ids for custom actions.
   </p>
 
-  <h2>Accessibility and behaviour</h2>
+  <h2>Accessibility and behavior</h2>
   <ul>
     <li>The menu renders with <code>role="menu"</code> / <code>role="menuitem"</code>; Arrow keys, Home, and End move focus, Escape closes and returns focus to the trigger.</li>
     <li>Menu buttons carry <code>aria-haspopup="menu"</code> and localizable labels; row menu buttons appear on hover/focus and are always visible on touch devices.</li>
     <li>On <a href="/docs/filtering">filterable</a> columns the header menu button renders after the filter icon, so it is always the outermost control — mirrored automatically in RTL.</li>
     <li>The menu flips above the pointer near the bottom edge and clamps within the viewport; it closes on outside click, scroll, and resize.</li>
+    <li>The built-in actions carry icons. If any item in a menu has one, items without an <code>icon</code> still reserve the space, so every label starts at the same offset.</li>
+    <li>The menu fades in on open, and holds still when <code>prefers-reduced-motion: reduce</code> is set.</li>
     <li>In RTL the button-anchored menu aligns to the button's opposite edge automatically.</li>
     <li>All labels can be translated via <code>localization.contextMenu</code> — see <a href="/docs/localization">Localization</a>. The bundled locales include translations.</li>
   </ul>
@@ -162,7 +164,7 @@ const rowActions = (row: Task): ContextMenuAction[] => [
       ['id', 'string', 'Identifier passed to onContextMenuAction. Built-in ids are reserved.'],
       ['label', 'ReactNode', 'Item content.'],
       ['disabled', 'boolean', 'Renders the item disabled.'],
-      ['icon', 'ReactNode', 'Optional icon rendered before the label.'],
+      ['icon', 'ReactNode', 'Optional icon rendered before the label. Built-in actions supply their own; omit it and the item still aligns with those that have one.'],
     ]}
   />
 </DocsLayout>

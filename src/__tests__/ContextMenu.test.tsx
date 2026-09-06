@@ -413,3 +413,56 @@ describe('ContextMenu:localization', () => {
 		expect(menuItem('Ocultar columna')).not.toBeUndefined();
 	});
 });
+
+describe('ContextMenu:icons', () => {
+	function openHeaderMenu() {
+		const { container } = render(<DataTable columns={columns} data={data} contextMenu />);
+		fireEvent.contextMenu(headerCell(container, 'name'));
+		return container;
+	}
+
+	test('built-in header actions render an icon', () => {
+		openHeaderMenu();
+
+		const sortAsc = menuItem('Sort ascending') as HTMLElement;
+		expect(sortAsc.querySelector('.rdt_contextMenuItemIcon svg')).not.toBeNull();
+	});
+
+	test('an icon-less custom action still gets the icon slot so labels line up', () => {
+		const { container } = render(
+			<DataTable
+				columns={columns}
+				data={data}
+				contextMenu
+				contextMenuActions={{ header: [{ id: 'custom', label: 'Custom' }] }}
+			/>,
+		);
+		fireEvent.contextMenu(headerCell(container, 'name'));
+
+		const custom = menuItem('Custom') as HTMLElement;
+		const slot = custom.querySelector('.rdt_contextMenuItemIcon');
+		expect(slot).not.toBeNull();
+		expect(slot?.querySelector('svg')).toBeNull();
+	});
+
+	test('a menu with no icons at all renders no icon slots', () => {
+		const rowActions: ContextMenuAction[] = [{ id: 'a', label: 'Only action' }];
+		const { container } = render(
+			<DataTable columns={columns} data={data} contextMenu contextMenuActions={{ row: () => rowActions }} />,
+		);
+		fireEvent.contextMenu(container.querySelector('.rdt_row') as HTMLElement);
+
+		expect(menuItem('Only action')?.querySelector('.rdt_contextMenuItemIcon')).toBeNull();
+	});
+});
+
+describe('ContextMenu:reveal', () => {
+	test('the menu is marked visible once positioned, which is what drives the open animation', () => {
+		const { container } = render(<DataTable columns={columns} data={data} contextMenu />);
+		fireEvent.contextMenu(headerCell(container, 'name'));
+
+		const el = menu() as HTMLElement;
+		expect(el.style.visibility).toBe('visible');
+		expect(el.classList.contains('rdt_popupVisible')).toBe(true);
+	});
+});

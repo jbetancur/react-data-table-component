@@ -310,6 +310,13 @@
 	opacity: 1;
 }
 
+/* The real input is a transparent overlay, so keyboard focus has to be drawn on the
+   box the user actually sees. :focus-visible keeps the ring off mouse clicks. */
+.rdt_Checkbox:has(> input[type='checkbox']:focus-visible)::before {
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: 2px;
+}
+
 .rdt_Checkbox::after {
 	content: '';
 	position: absolute;
@@ -442,21 +449,39 @@
 }
 
 /* Panel — position is set inline (fixed, coords from getBoundingClientRect) */
-.rdt_filterPanel {
+/* Shared chrome for the floating surfaces (column filter panel, context menu). Both
+   mount hidden, get positioned in a layout effect, then have rdt_popupVisible added
+   to reveal them — keep the two in step by styling them here rather than apart. */
+.rdt_popup {
 	z-index: 9999;
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
+	box-sizing: border-box;
 	background: var(--rdt-color-bg, #fff);
 	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
 	border-radius: var(--rdt-border-radius, 6px);
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+	box-shadow: var(--rdt-shadow-popup, 0 4px 16px rgba(0, 0, 0, 0.14));
+}
+
+.rdt_popupVisible {
+	animation: rdt_popupIn 140ms ease-out;
+}
+
+/* Fade only, no travel: both popups flip above their anchor when there is no room
+   below, so a fixed direction would animate the wrong way in the flipped case. */
+@keyframes rdt_popupIn {
+	from {
+		opacity: 0;
+	}
+}
+
+.rdt_filterPanel {
+	gap: 6px;
 	padding: 10px;
 	min-width: min(260px, calc(100vw - 16px));
 	max-width: calc(100vw - 16px);
 	max-height: calc(100vh - 16px);
 	overflow: auto;
-	box-sizing: border-box;
 }
 
 /* A single condition row: [select] [input] ([and] [input]) [remove] */
@@ -532,7 +557,8 @@
 	user-select: none;
 }
 
-.rdt_filterSetItem:hover {
+.rdt_filterSetItem:hover,
+.rdt_filterSetItem:focus-within {
 	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
 }
 
@@ -542,11 +568,9 @@
 	white-space: nowrap;
 }
 
-.rdt_filterSetItem > input {
-	flex: none;
-	margin: 0;
-	cursor: pointer;
-	accent-color: var(--rdt-color-primary, #1976d2);
+.rdt_filterSetItem > .rdt_Checkbox {
+	--rdt-checkbox-size: 14px;
+	cursor: inherit;
 }
 
 .rdt_filterSetSelectAll {
@@ -688,17 +712,9 @@
 
 /* Menu — position is set inline (fixed, coords clamped/flipped after measure) */
 .rdt_contextMenu {
-	z-index: 9999;
-	display: flex;
-	flex-direction: column;
 	min-width: 180px;
 	max-width: calc(100vw - 24px);
 	padding: 4px;
-	box-sizing: border-box;
-	background: var(--rdt-color-bg, #fff);
-	border: 1px solid var(--rdt-color-divider, rgba(0, 0, 0, 0.18));
-	border-radius: var(--rdt-border-radius, 6px);
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
 }
 
 .rdt_contextMenuItem {
@@ -716,10 +732,18 @@
 	color: var(--rdt-color-text-primary, rgba(0, 0, 0, 0.87));
 }
 
-.rdt_contextMenuItem:hover:not(:disabled),
+.rdt_contextMenuItem:hover:not(:disabled) {
+	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
+}
+
+/* Keyboard focus needs to outrank hover: arrowing down while the pointer rests on
+   another item would otherwise highlight both identically, hiding which is active.
+   Plain :focus, not :focus-visible: focus here is always moved by script (menu open,
+   then arrow keys), which does not reliably match :focus-visible. */
 .rdt_contextMenuItem:focus {
 	background-color: var(--rdt-color-btn-hover, rgba(0, 0, 0, 0.08));
-	outline: none;
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -2px;
 }
 
 .rdt_contextMenuItem:disabled {
@@ -727,9 +751,20 @@
 	cursor: default;
 }
 
+/* A fixed slot so labels line up whether or not an item has an icon: built-ins have
+   one and custom actions may not, and they share a menu. */
 .rdt_contextMenuItemIcon {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 14px;
+}
+
+/* Icons are currentColor, so a disabled item already dims them. Mute only the enabled
+   ones: stacking this opacity on the disabled color all but erased the glyph. */
+.rdt_contextMenuItem:not(:disabled) .rdt_contextMenuItemIcon {
+	opacity: 0.7;
 }
 
 .rdt_contextMenuSeparator {
@@ -912,7 +947,7 @@
 
 /*
  * Native select arrow — rendered as a ::after pseudo-element on the editing
- * cell so we can use currentColor (inherits the theme's text colour) via
+ * cell so we can use currentColor (inherits the theme's text color) via
  * mask-image. The select element itself can't host ::after.
  */
 .rdt_cellEditing:has(.rdt_editSelect)::after {
@@ -1738,6 +1773,9 @@
 	   overrides the spinner's inline animation (default progressComponent). */
 	.rdt_skeletonPulse,
 	.rdt_spinner {
+		animation: none !important;
+	}
+	.rdt_popupVisible {
 		animation: none !important;
 	}
 }

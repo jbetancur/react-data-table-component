@@ -6,7 +6,7 @@ import type { SortOrder, SortAction, SortColumn } from '../types';
  * `sortColumns` changes identity on every sort interaction — that is legitimate
  * (headers must re-render); TableCol's memo does per-column checks inside the
  * slice to keep unaffected columns from re-rendering. The remaining fields are
- * config that also feeds the SORT_CHANGE action (selection-clearing behaviour).
+ * config that also feeds the SORT_CHANGE action (selection-clearing behavior).
  */
 export type SortingSlice<T> = {
 	sortDirection: SortOrder;
