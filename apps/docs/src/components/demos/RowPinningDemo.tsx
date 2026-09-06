@@ -148,7 +148,7 @@ export default function RowPinningDemo() {
 		<div className="space-y-3">
 			<p className="text-xs text-gray-500">
 				Click the 📌 icon on any row to pin it. Pinned rows stay at the top regardless of how you sort. Sort any column
-				to see the behaviour.
+				to see the behavior.
 			</p>
 			<DataTable
 				columns={columns}
