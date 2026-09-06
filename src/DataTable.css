@@ -452,8 +452,10 @@
 	border-radius: var(--rdt-border-radius, 6px);
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
 	padding: 10px;
-	min-width: 260px;
-	max-width: calc(100vw - 24px);
+	min-width: min(260px, calc(100vw - 16px));
+	max-width: calc(100vw - 16px);
+	max-height: calc(100vh - 16px);
+	overflow: auto;
 	box-sizing: border-box;
 }
 
