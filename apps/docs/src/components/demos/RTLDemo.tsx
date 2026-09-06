@@ -62,6 +62,7 @@ export default function RTLDemo() {
 			name: isRTL ? 'الاسم' : 'Name',
 			selector: r => (isRTL ? r.nameAr : r.name),
 			sortable: true,
+			filterable: true,
 			width: '200px',
 			minWidth: '120px',
 			reorder: true,
@@ -70,6 +71,7 @@ export default function RTLDemo() {
 			name: isRTL ? 'القسم' : 'Department',
 			selector: r => (isRTL ? r.departmentAr : r.department),
 			sortable: true,
+			filterable: true,
 			minWidth: '140px',
 			reorder: true,
 		},
@@ -79,6 +81,8 @@ export default function RTLDemo() {
 			format: r => `$${r.salary.toLocaleString()}`,
 			right: true,
 			sortable: true,
+			filterable: true,
+			filterType: 'number',
 			width: '140px',
 			reorder: true,
 		},
@@ -115,6 +119,7 @@ export default function RTLDemo() {
 				highlightOnHover
 				striped
 				resizable
+				contextMenu
 			/>
 		</div>
 	);

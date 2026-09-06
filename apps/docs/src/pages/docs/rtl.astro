@@ -17,10 +17,10 @@ import PropsTable from '../../components/PropsTable.astro';
 
   <Demo
     title="Direction: LTR / RTL / AUTO"
-    description="Toggle between LTR, RTL, and AUTO. In RTL mode the pagination arrows reverse, column text aligns right-to-left, and the resize handles mirror to each column's left edge. Drag a column boundary to try it."
+    description="Toggle between LTR, RTL, and AUTO. In RTL mode the pagination arrows reverse, column text aligns right-to-left, and the resize handles mirror to each column's left edge. Drag a column boundary to try it, or open a filter panel or right-click a header to see the popups align to the right edge of their button."
     code={`import DataTable, { Direction } from 'react-data-table-component';
 
-<DataTable columns={columns} data={data} direction={Direction.RTL} pagination />;`}
+<DataTable columns={columns} data={data} direction={Direction.RTL} pagination contextMenu />;`}
   >
     <RTLDemo client:load />
   </Demo>
@@ -66,6 +66,7 @@ import PropsTable from '../../components/PropsTable.astro';
     <li>Pagination first/prev/next/last buttons have their icons reversed via <code>.rdt_paginationButtonRTL</code>.</li>
     <li>Column <code>right: true</code> alignment continues to work as expected. Align numbers relative to the reading direction of the cell content, not the page.</li>
     <li>With <code>resizable</code>, the resize handle moves to each column's left (end) edge and drag direction mirrors, so dragging away from the column widens it just like in LTR.</li>
+    <li>Popups anchored to a button, the column filter panel and the context menu, align their right edge to the button instead of their left, so they open across the column they belong to. Both are still clamped to stay inside the viewport.</li>
   </ul>
 
   <h2>Pairing with localization</h2>

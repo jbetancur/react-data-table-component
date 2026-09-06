@@ -24,6 +24,7 @@ A summary of notable changes per release. For the full commit history see the [r
 - Tab no longer escapes an open column filter panel. Focus now cycles within it, so a keyboard user could not end up behind an open panel with no way back. → [Filtering](/docs/filtering)
 - A disabled context menu item's icon is no longer nearly invisible. The icon was muted with an opacity that multiplied with the already-dimmed disabled color. → [Context menu](/docs/context-menu)
 - A set filter's `(Select all)` now announces that it acts on the search results while a search narrows the list. New `selectAllFilteredAriaLabel` localization string. → [Filtering](/docs/filtering)
+- The column filter popup now aligns to the right edge of its button in RTL, matching the context menu. It always aligned its left edge to the button, so in RTL the panel opened across the wrong side of the column it belongs to. → [RTL](/docs/rtl) ([#1388](https://github.com/jbetancur/react-data-table-component/issues/1388))
 
 ---
 
