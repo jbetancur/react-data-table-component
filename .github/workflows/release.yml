@@ -99,6 +99,8 @@ jobs:
           VERSION="${{ steps.version.outputs.value }}"
           # Extract everything between the ## X.Y.Z heading and the next --- or ## heading
           NOTES=$(awk "/^## ${VERSION}$/{found=1; next} found && /^(---|## )/{exit} found{print}" CHANGELOG.md)
+          # GitHub Releases resolve root-relative links against github.com, so absolutize the docs links
+          NOTES=$(echo "$NOTES" | sed -E 's#\]\(/#](https://reactdatatable.com/#g')
           echo "content<<EOF" >> $GITHUB_OUTPUT
           echo "$NOTES" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT

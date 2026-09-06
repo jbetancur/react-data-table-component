@@ -157,7 +157,7 @@ A summary of notable changes per release. For the full commit history see the [r
 ### Bug fixes
 
 - Fixed RTL support across resizing, pinning, and separators: resize handles sit on the correct edge and widen as in LTR, pinned columns stick to logical edges with mirrored shadows, the pinned horizontal scrollbar accounts for RTL scroll coordinates, and column/group-header separators plus small chrome (filter dot, select arrows, pagination chevron) mirror correctly. Applies to `direction={Direction.RTL}` and inherited `dir="rtl"`. → [RTL support](/docs/rtl)
-- Fixed row and table backgrounds cutting off at the initial container width when the table scrolls horizontally, leaving scrolled-into columns unpainted. → [Theming](/docs/theming)
+- Fixed row and table backgrounds cutting off at the initial container width when the table scrolls horizontally, leaving scrolled-into columns unpainted. → [Theming](/docs/themes)
 - Fixed `fixedHeader` with `responsive={false}` not creating a scroll container, letting rows spill over content below the table. `fixedHeader` now always creates one.
 - Fixed the pinned-columns scrollbar failing to appear or going stale when content width changed without a container resize (async rows, resizing or toggling columns), and when columns were pinned with `responsive={false}`. → [Column pinning](/docs/column-pinning)
 - Fixed resize handles being clipped for right-pinned columns and the last column, which cut their hit areas down to a sliver. → [Resizable columns](/docs/resizable)
