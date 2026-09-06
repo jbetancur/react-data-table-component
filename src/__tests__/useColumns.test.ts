@@ -282,7 +282,7 @@ describe('useColumns:column drag handlers', () => {
 	});
 });
 
-// ── pin normalisation on drag ─────────────────────────────────────────────────
+// ── pin normalization on drag ─────────────────────────────────────────────────
 
 function makeDragEnterEvent(targetId: string): React.DragEvent<HTMLDivElement> {
 	const el = document.createElement('div');
@@ -294,7 +294,7 @@ function makeDragEnterEvent(targetId: string): React.DragEvent<HTMLDivElement> {
 	return ev;
 }
 
-describe('useColumns:pin normalisation on drag', () => {
+describe('useColumns:pin normalization on drag', () => {
 	test('dragging a non-pinned column into left-pin zone pins it', () => {
 		const onOrderChange = vi.fn();
 		const leftPin: TableColumn<Row> = { id: 1, name: 'Name', selector: r => r.name, pinned: 'left' };

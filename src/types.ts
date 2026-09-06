@@ -46,6 +46,25 @@ export type FilterState = {
 	knownValues?: string[];
 };
 
+/** Per-column filter settings. Only read by `filterType: "set"`. */
+export type SetFilterOptions<T = unknown> = {
+	/**
+	 * The checklist values, replacing the ones derived from the rows. Use it when the column has a
+	 * known domain the loaded rows may not cover, such as a status the server holds but the current
+	 * page does not. Order is kept as given, and blanks are only offered if the list contains an
+	 * empty string. The function form receives the rows the table is holding, so a fixed domain can
+	 * be merged with whatever else turned up.
+	 */
+	values?: string[] | ((rows: T[]) => string[]);
+	/**
+	 * Splits a cell holding several values into its parts, so a column formatted as
+	 * "React, TypeScript" offers each tag in the checklist rather than the whole string. A row
+	 * matches when any of its parts is selected. Parts are trimmed and empty ones dropped, so a
+	 * cell is blank only when nothing is left after the split.
+	 */
+	separator?: string | RegExp;
+};
+
 export enum SortOrder {
 	ASC = 'asc',
 	DESC = 'desc',
@@ -483,6 +502,8 @@ export interface TableColumn<T> extends TableColumnBase {
 	sortFunction?: ColumnSortFunction<T>;
 	/** Custom filter function — overrides built-in operator logic. Receives the full FilterState so both conditions are available. */
 	filterFunction?: (row: T, filter: FilterState) => boolean;
+	/** Settings for this column's filter. Only read by `filterType: "set"`. */
+	filterOptions?: SetFilterOptions<T>;
 	/** Called when the user commits an inline edit (blur or Enter). Only fires when editable: true. */
 	onCellEdit?: CellEditCallback<T>;
 	/**
@@ -650,6 +671,9 @@ export interface Localization {
 		orLabel?: string;
 		/** Label for the select-all checkbox in a "set" filter. Default: "(Select all)" */
 		selectAllLabel?: string;
+		/** aria-label for the select-all checkbox while a search is narrowing the list, where it
+		 *  acts only on the matches. Default: "(Select all) search results" */
+		selectAllFilteredAriaLabel?: string;
 		/** Label for the blank-values entry in a "set" filter. Default: "(Blanks)" */
 		blanksLabel?: string;
 		/** Placeholder for the search box in a "set" filter. Default: "Search" */
@@ -867,13 +891,13 @@ export interface Theme {
 	/** Checkbox appearance — controls the CSS variables for the built-in CSS checkbox. */
 	checkbox?: { size?: string; borderRadius?: string };
 	/**
-	 * Default header column separator behaviour for this theme.
+	 * Default header column separator behavior for this theme.
 	 * The `headerSeparator` prop overrides this when explicitly passed.
 	 * Omitting both falls back to `'subtle'`.
 	 */
 	headerSeparator?: boolean | 'subtle' | 'full';
 	/**
-	 * Default body column separator behaviour for this theme.
+	 * Default body column separator behavior for this theme.
 	 * The `columnSeparator` prop overrides this when explicitly passed.
 	 * Omitting both falls back to `false` (no separator).
 	 */

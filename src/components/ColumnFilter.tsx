@@ -4,6 +4,7 @@ import type { FilterState, FilterCondition, FilterOperator, FilterType, Localiza
 import { emptyFilterState, isFilterActive, isValueSelected } from '../hooks/useColumnFilter';
 import { emptyCondition, inputTypeFor, operatorsFor } from './filterOperators';
 import FilterIcon from '../icons/FilterIcon';
+import Checkbox from './Checkbox';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
 type ColumnFilterOptions = NonNullable<Localization['filter']>;
@@ -117,15 +118,6 @@ function SetFilterPanel({ values, selected, knownValues, options, onChange }: Se
 	const allVisibleChecked = visible.length > 0 && visible.every(isChecked);
 	const someVisibleChecked = visible.some(isChecked);
 
-	// Indeterminate has no attribute form, so it is set on the node.
-	const selectAllRef = React.useRef<HTMLInputElement>(null);
-
-	React.useEffect(() => {
-		if (selectAllRef.current) {
-			selectAllRef.current.indeterminate = someVisibleChecked && !allVisibleChecked;
-		}
-	}, [someVisibleChecked, allVisibleChecked]);
-
 	// Everything shown as checked, including values that are only checked because they
 	// showed up after the filter was applied. Editing makes them explicit.
 	function currentSelection(): Set<string> {
@@ -181,15 +173,30 @@ function SetFilterPanel({ values, selected, knownValues, options, onChange }: Se
 			) : (
 				<div className="rdt_filterSetList" role="group">
 					<label className="rdt_filterSetItem rdt_filterSetSelectAll">
-						<input ref={selectAllRef} type="checkbox" checked={allVisibleChecked} onChange={toggleAll} />
+						<Checkbox
+							// While searching it acts only on the matches, which the narrowed list shows
+							// but the label alone does not say.
+							name={
+								searching
+									? (options.selectAllFilteredAriaLabel ?? '(Select all) search results')
+									: (options.selectAllLabel ?? '(Select all)')
+							}
+							checked={allVisibleChecked}
+							indeterminate={someVisibleChecked && !allVisibleChecked}
+							onClick={toggleAll}
+						/>
 						<span>{options.selectAllLabel ?? '(Select all)'}</span>
 					</label>
-					{visible.map(value => (
-						<label key={value} className="rdt_filterSetItem">
-							<input type="checkbox" checked={isChecked(value)} onChange={() => toggle(value)} />
-							<span>{value === '' ? (options.blanksLabel ?? '(Blanks)') : value}</span>
-						</label>
-					))}
+					{visible.map(value => {
+						const label = value === '' ? (options.blanksLabel ?? '(Blanks)') : value;
+
+						return (
+							<label key={value} className="rdt_filterSetItem">
+								<Checkbox name={label} checked={isChecked(value)} onClick={() => toggle(value)} />
+								<span>{label}</span>
+							</label>
+						);
+					})}
 				</div>
 			)}
 		</div>
@@ -318,6 +325,9 @@ export default function ColumnFilter({
 		panel.style.left = `${left}px`;
 		panel.style.top = `${Math.max(margin, top)}px`;
 		panel.style.visibility = 'visible';
+		// Idempotent: this effect re-measures on every render, and re-adding a class the
+		// element already carries does not restart the animation.
+		panel.classList.add('rdt_popupVisible');
 	});
 
 	React.useEffect(() => {
@@ -343,6 +353,30 @@ export default function ColumnFilter({
 			if (e.key === 'Escape') {
 				setOpen(false);
 				buttonRef.current?.focus();
+				return;
+			}
+			// A dialog keeps focus inside it: tabbing off the last control would otherwise
+			// land behind an open panel, with no way back except the mouse.
+			if (e.key !== 'Tab' || !panelRef.current) {
+				return;
+			}
+			const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+				'select, input:not([disabled]), button:not([disabled])',
+			);
+			if (focusable.length === 0) {
+				return;
+			}
+
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+			const active = document.activeElement;
+
+			if (e.shiftKey && active === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && active === last) {
+				e.preventDefault();
+				first.focus();
 			}
 		}
 		// The panel is position: fixed, so any scroll (page or the table's own
@@ -447,7 +481,8 @@ export default function ColumnFilter({
 						? (options.filterActiveAriaLabel ?? 'Filter active')
 						: (options.filterColumnAriaLabel ?? 'Filter column')
 				}
-				aria-pressed={open}
+				aria-haspopup="dialog"
+				aria-expanded={open}
 				onClick={e => {
 					e.stopPropagation();
 					toggleOpen();
@@ -460,7 +495,7 @@ export default function ColumnFilter({
 			{open && panelPos && (
 				<div
 					ref={panelRef}
-					className="rdt_filterPanel"
+					className="rdt_popup rdt_filterPanel"
 					role="dialog"
 					aria-label={options.filterPanelAriaLabel ?? 'Column filter'}
 					style={{ position: 'fixed', top: panelPos.top, left: panelPos.left, visibility: 'hidden' }}

@@ -490,6 +490,78 @@ describe('set filter', () => {
 		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Apple', 'Banana', 'Cherry', '']);
 	});
 
+	test('filterOptions replaces the derived values and keeps the given order', () => {
+		const columns: TableColumn<Row>[] = [
+			{
+				...setColumns[0],
+				filterOptions: { values: ['Cherry', 'Damson', 'Apple'] },
+			},
+		];
+
+		const { result } = renderHook(() => useColumnFilter<Row>(columns, { rows: data }));
+
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Cherry', 'Damson', 'Apple']);
+	});
+
+	test('filterOptions offers no blanks unless the list asks for one', () => {
+		const columns: TableColumn<Row>[] = [{ ...setColumns[0], filterOptions: { values: ['Apple'] } }];
+		const { result } = renderHook(() => useColumnFilter<Row>(columns, { rows: data }));
+
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Apple']);
+
+		const withBlank: TableColumn<Row>[] = [{ ...setColumns[0], filterOptions: { values: ['Apple', '  '] } }];
+		const { result: r2 } = renderHook(() => useColumnFilter<Row>(withBlank, { rows: data }));
+
+		expect(r2.current.filtering.getDistinctValues('name')).toEqual(['Apple', '']);
+	});
+
+	test('the filterOptions function receives the rows the table is holding', () => {
+		const columns: TableColumn<Row>[] = [
+			{
+				...setColumns[0],
+				filterOptions: { values: rows => [...new Set(['Damson', ...rows.map(r => r.name)])] },
+			},
+		];
+
+		const { result, rerender } = renderHook(({ rows }) => useColumnFilter<Row>(columns, { rows }), {
+			initialProps: { rows: data.slice(0, 2) },
+		});
+
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Damson', 'Apple', 'Banana']);
+
+		rerender({ rows: data });
+		expect(result.current.filtering.getDistinctValues('name')).toEqual(['Damson', 'Apple', 'Banana', 'Cherry', '']);
+	});
+
+	test('selecting a filterOptions value the rows do not contain keeps only rows outside the checklist', () => {
+		const columns: TableColumn<Row>[] = [{ ...setColumns[0], filterOptions: { values: ['Apple', 'Damson'] } }];
+
+		// knownValues is the checklist that was on screen, so Banana and Cherry were never
+		// offered and are not treated as unchecked. Only Apple, offered and left unchecked, goes.
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(columns, {
+				filterValues: { name: { ...emptyFilterState('set'), values: ['Damson'], knownValues: ['Apple', 'Damson'] } },
+				rows: data,
+			}),
+		);
+
+		expect(result.current.filteredData(data).map(r => r.name)).toEqual(['Banana', 'Cherry', '']);
+	});
+
+	test('an exhaustive filterOptions selection drops every row outside it', () => {
+		const columns: TableColumn<Row>[] = [{ ...setColumns[0], filterOptions: { values: ['Apple', 'Damson'] } }];
+
+		// No knownValues, so values is an exhaustive allow-list and Damson matches no row.
+		const { result } = renderHook(() =>
+			useColumnFilter<Row>(columns, {
+				filterValues: { name: { ...emptyFilterState('set'), values: ['Damson'] } },
+				rows: data,
+			}),
+		);
+
+		expect(result.current.filteredData(data)).toEqual([]);
+	});
+
 	test('the filtering slice keeps its identity when only the rows change', () => {
 		const { result, rerender } = renderHook(({ rows }) => useColumnFilter<Row>(setColumns, { rows }), {
 			initialProps: { rows: data.slice(0, 2) },
@@ -580,6 +652,108 @@ describe('set filter', () => {
 
 		const withNew = [...data, { id: 9, name: 'Zebra', price: 99, releasedAt: '2024-01-01' }];
 		expect(result.current.filteredData(withNew).map(r => r.name)).toEqual(['Banana']);
+	});
+
+	describe('separator', () => {
+		const tagColumns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Tags',
+				selector: r => r.name,
+				filterable: true,
+				filterType: 'set',
+				filterOptions: { separator: ',' },
+			},
+		];
+
+		const tagRows: Row[] = [
+			{ id: 1, name: 'React, TypeScript', price: 1, releasedAt: '2024-01-01' },
+			{ id: 2, name: 'TypeScript', price: 2, releasedAt: '2024-01-01' },
+			{ id: 3, name: 'Vue', price: 3, releasedAt: '2024-01-01' },
+			{ id: 4, name: '', price: 4, releasedAt: '2024-01-01' },
+		];
+
+		test('the checklist offers each part rather than the whole cell', () => {
+			const { result } = renderHook(() => useColumnFilter<Row>(tagColumns, { rows: tagRows }));
+
+			expect(result.current.filtering.getDistinctValues('name')).toEqual(['React', 'TypeScript', 'Vue', '']);
+		});
+
+		test('a row matches when any of its parts is selected', () => {
+			const { result } = renderHook(() =>
+				useColumnFilter<Row>(tagColumns, { name: { ...emptyFilterState('set'), values: ['React'] } }),
+			);
+
+			expect(result.current.filteredData(tagRows).map(r => r.id)).toEqual([1]);
+		});
+
+		test('selecting a shared part keeps every row carrying it', () => {
+			const { result } = renderHook(() =>
+				useColumnFilter<Row>(tagColumns, { name: { ...emptyFilterState('set'), values: ['TypeScript'] } }),
+			);
+
+			expect(result.current.filteredData(tagRows).map(r => r.id)).toEqual([1, 2]);
+		});
+
+		test('a RegExp separator splits the same way', () => {
+			const regexColumns: TableColumn<Row>[] = [{ ...tagColumns[0], filterOptions: { separator: /\s*[,|]\s*/ } }];
+			const mixed: Row[] = [{ id: 1, name: 'React | TypeScript, Vue', price: 1, releasedAt: '2024-01-01' }];
+
+			const { result } = renderHook(() => useColumnFilter<Row>(regexColumns, { rows: mixed }));
+			expect(result.current.filtering.getDistinctValues('name')).toEqual(['React', 'TypeScript', 'Vue']);
+		});
+
+		test('parts are trimmed and empty ones dropped', () => {
+			const ragged: Row[] = [{ id: 1, name: 'React, , TypeScript,', price: 1, releasedAt: '2024-01-01' }];
+			const { result } = renderHook(() => useColumnFilter<Row>(tagColumns, { rows: ragged }));
+
+			expect(result.current.filtering.getDistinctValues('name')).toEqual(['React', 'TypeScript']);
+		});
+
+		test('a cell of only separators is blank', () => {
+			const blankish: Row[] = [{ id: 1, name: ' , ', price: 1, releasedAt: '2024-01-01' }];
+			const { result } = renderHook(() => useColumnFilter<Row>(tagColumns, { rows: blankish }));
+
+			expect(result.current.filtering.getDistinctValues('name')).toEqual(['']);
+
+			const { result: r2 } = renderHook(() =>
+				useColumnFilter<Row>(tagColumns, { name: { ...emptyFilterState('set'), values: [''] } }),
+			);
+			expect(r2.current.filteredData(blankish).map(r => r.id)).toEqual([1]);
+		});
+
+		test('a part appearing after the filter was applied is not hidden', () => {
+			const applied: FilterState = {
+				...emptyFilterState('set'),
+				values: ['Vue'],
+				knownValues: ['React', 'TypeScript', 'Vue', ''],
+			};
+			const { result } = renderHook(() => useColumnFilter<Row>(tagColumns, { name: applied }));
+
+			const withNew = [...tagRows, { id: 9, name: 'Svelte, React', price: 9, releasedAt: '2024-01-01' }];
+			// React was in the checklist and left unchecked, but Svelte was not in it at all.
+			expect(result.current.filteredData(withNew).map(r => r.id)).toEqual([3, 9]);
+		});
+
+		test('a part is matched after trimming', () => {
+			const padded: Row[] = [{ id: 1, name: '  React  , TypeScript', price: 1, releasedAt: '2024-01-01' }];
+			const { result } = renderHook(() =>
+				useColumnFilter<Row>(tagColumns, { name: { ...emptyFilterState('set'), values: ['React'] } }),
+			);
+
+			expect(result.current.filteredData(padded).map(r => r.id)).toEqual([1]);
+		});
+
+		test('no separator leaves the cell atomic', () => {
+			const { result } = renderHook(() => useColumnFilter<Row>(setColumns, { rows: tagRows }));
+
+			expect(result.current.filtering.getDistinctValues('name')).toEqual([
+				'React, TypeScript',
+				'TypeScript',
+				'Vue',
+				'',
+			]);
+		});
 	});
 });
 

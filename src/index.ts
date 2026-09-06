@@ -56,6 +56,7 @@ export type {
 	FilterOperator,
 	FilterCondition,
 	FilterState,
+	SetFilterOptions,
 	CellEditor,
 	CellEditCallback,
 	CellValidateResult,

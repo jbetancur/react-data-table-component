@@ -53,6 +53,7 @@ export default function ContextMenu({
 		el.style.left = `${left}px`;
 		el.style.top = `${top}px`;
 		el.style.visibility = 'visible';
+		el.classList.add('rdt_popupVisible');
 	}, [position, anchorRect, isRTL]);
 
 	React.useEffect(() => {
@@ -65,7 +66,7 @@ export default function ContextMenu({
 			}
 		}
 		// The menu is position: fixed, so any scroll moves the anchor out from under it —
-		// close rather than track (same behaviour as the column filter panel).
+		// close rather than track (same behavior as the column filter panel).
 		function handleScroll(e: Event) {
 			if (menuRef.current && e.target instanceof Node && menuRef.current.contains(e.target)) {
 				return;
@@ -122,11 +123,14 @@ export default function ContextMenu({
 	};
 
 	const renderedGroups = groups.filter(g => g.length > 0);
+	// If anything in the menu has an icon, icon-less items still get the slot so every
+	// label starts at the same offset.
+	const hasIcons = renderedGroups.some(g => g.some(a => a.icon));
 
 	return (
 		<div
 			ref={menuRef}
-			className="rdt_contextMenu"
+			className="rdt_popup rdt_contextMenu"
 			role="menu"
 			aria-label={ariaLabel}
 			tabIndex={-1}
@@ -149,7 +153,7 @@ export default function ContextMenu({
 							aria-disabled={action.disabled || undefined}
 							onClick={() => onSelect(action)}
 						>
-							{action.icon && (
+							{(action.icon || hasIcons) && (
 								<span className="rdt_contextMenuItemIcon" aria-hidden="true">
 									{action.icon}
 								</span>

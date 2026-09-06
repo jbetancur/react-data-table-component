@@ -2,6 +2,16 @@ import * as React from 'react';
 import { equalizeId } from '../util';
 import { emptyFilterState } from './useColumnFilter';
 import { SortOrder } from '../types';
+import {
+	ClearSortIcon,
+	HideColumnIcon,
+	PinLeftIcon,
+	PinRightIcon,
+	ResetIcon,
+	SortAscIcon,
+	SortDescIcon,
+	UnpinIcon,
+} from '../icons/MenuIcons';
 import type {
 	ColumnGroup,
 	ContextMenuAction,
@@ -206,9 +216,14 @@ export default function useContextMenu<T>({
 
 		if (column.sortable) {
 			groups.push([
-				{ id: 'sort-asc', label: localization.sortAscLabel ?? 'Sort ascending' },
-				{ id: 'sort-desc', label: localization.sortDescLabel ?? 'Sort descending' },
-				{ id: 'clear-sort', label: localization.clearSortLabel ?? 'Clear sort', disabled: sortColumns.length === 0 },
+				{ id: 'sort-asc', label: localization.sortAscLabel ?? 'Sort ascending', icon: <SortAscIcon /> },
+				{ id: 'sort-desc', label: localization.sortDescLabel ?? 'Sort descending', icon: <SortDescIcon /> },
+				{
+					id: 'clear-sort',
+					label: localization.clearSortLabel ?? 'Clear sort',
+					disabled: sortColumns.length === 0,
+					icon: <ClearSortIcon />,
+				},
 			]);
 		}
 
@@ -217,13 +232,13 @@ export default function useContextMenu<T>({
 		// header group — omit pin actions when column groups are in play.
 		if (!columnGroups?.length) {
 			if (column.pinned !== 'left') {
-				columnGroup.push({ id: 'pin-left', label: localization.pinLeftLabel ?? 'Pin left' });
+				columnGroup.push({ id: 'pin-left', label: localization.pinLeftLabel ?? 'Pin left', icon: <PinLeftIcon /> });
 			}
 			if (column.pinned !== 'right') {
-				columnGroup.push({ id: 'pin-right', label: localization.pinRightLabel ?? 'Pin right' });
+				columnGroup.push({ id: 'pin-right', label: localization.pinRightLabel ?? 'Pin right', icon: <PinRightIcon /> });
 			}
 			if (column.pinned) {
-				columnGroup.push({ id: 'unpin', label: localization.unpinLabel ?? 'Unpin' });
+				columnGroup.push({ id: 'unpin', label: localization.unpinLabel ?? 'Unpin', icon: <UnpinIcon /> });
 			}
 		}
 		const visibleCount = tableColumns.filter(c => !c.omit).length;
@@ -231,9 +246,10 @@ export default function useContextMenu<T>({
 			id: 'hide-column',
 			label: localization.hideColumnLabel ?? 'Hide column',
 			disabled: visibleCount <= 1,
+			icon: <HideColumnIcon />,
 		});
 		groups.push(columnGroup);
-		groups.push([{ id: 'reset', label: localization.resetLabel ?? 'Reset table' }]);
+		groups.push([{ id: 'reset', label: localization.resetLabel ?? 'Reset table', icon: <ResetIcon /> }]);
 
 		const custom =
 			typeof contextMenuActions?.header === 'function' ? contextMenuActions.header(column) : contextMenuActions?.header;

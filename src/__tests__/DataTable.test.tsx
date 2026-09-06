@@ -2808,9 +2808,9 @@ describe('DataTable::columnFilter', () => {
 		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLButtonElement);
 
 		// Distinct values, deduped, blanks last, behind a "(Select all)" row.
-		const labels = [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem span')].map(
-			el => el.textContent,
-		);
+		const labels = [
+			...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem > span:not(.rdt_Checkbox)'),
+		].map(el => el.textContent);
 		expect(labels).toEqual(['(Select all)', 'Design', 'Engineering', '(Blanks)']);
 
 		// Uncheck Engineering, leaving Design + the blank row.
@@ -2888,9 +2888,9 @@ describe('DataTable::columnFilter', () => {
 
 		// The Dept checklist still lists every department, including the EU-only one.
 		fireEvent.click(container.querySelectorAll<HTMLButtonElement>('.rdt_filterIcon')[0]);
-		const labels = [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem span')].map(
-			el => el.textContent,
-		);
+		const labels = [
+			...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem > span:not(.rdt_Checkbox)'),
+		].map(el => el.textContent);
 		expect(labels).toEqual(['(Select all)', 'Design', 'Engineering', 'Sales']);
 	});
 

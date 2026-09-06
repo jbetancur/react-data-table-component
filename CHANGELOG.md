@@ -2,6 +2,31 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.10.0
+
+### New features
+
+- **`column.filterOptions`** — per-column set filter settings. `values` supplies the checklist instead of deriving it from the loaded rows, so a column can offer values the current page does not hold. Takes an array or a function of the rows. → [Filtering](/docs/filtering#supplying-set-values) ([#1372](https://github.com/jbetancur/react-data-table-component/issues/1372))
+- **`column.filterOptions.separator`** — splits a set filter cell holding several values, so a column formatted as "React, TypeScript" offers each tag in the checklist rather than the whole string. A row matches when any of its parts is selected. → [Filtering](/docs/filtering#multi-value-cells)
+
+### Behavior changes
+
+- Context menu items now show icons for the built-in actions. Custom actions without an `icon` still align with the ones that have one. → [Context menu](/docs/context-menu)
+- The column filter panel and the context menu now fade in rather than appearing instantly, and share one set of popup styles so they stay visually consistent. Respects `prefers-reduced-motion`. → [Context menu](/docs/context-menu)
+- Both popups' drop shadow reads from the new `--rdt-shadow-popup` variable instead of a hardcoded value, so dark themes can set their own. The filter panel previously had no variable at all. → [Theming](/docs/themes)
+- The column filter button now reports `aria-expanded` and `aria-haspopup="dialog"` instead of `aria-pressed`, which described it as a toggle rather than something that opens a panel. → [Filtering](/docs/filtering)
+
+### Bug fixes
+
+- Set filter checkboxes now use the table's own checkbox styling instead of the browser's native control, so they match the row selection checkboxes and follow the theme. → [Filtering](/docs/filtering)
+- Keyboard focus in the context menu is now distinguishable from mouse hover. Both painted the same background, so arrowing through the menu while the pointer rested on another item highlighted two items at once. → [Context menu](/docs/context-menu)
+- Checkboxes now show a focus ring when tabbed to. The styled checkbox hides the real input and draws its own box, which had no focus style, so keyboard users tabbing through row selection or a set filter checklist could not see where they were. → [Row selection](/docs/selection)
+- Tab no longer escapes an open column filter panel. Focus now cycles within it, so a keyboard user could not end up behind an open panel with no way back. → [Filtering](/docs/filtering)
+- A disabled context menu item's icon is no longer nearly invisible. The icon was muted with an opacity that multiplied with the already-dimmed disabled color. → [Context menu](/docs/context-menu)
+- A set filter's `(Select all)` now announces that it acts on the search results while a search narrows the list. New `selectAllFilteredAriaLabel` localization string. → [Filtering](/docs/filtering)
+
+---
+
 ## 8.9.1
 
 ### Bug fixes

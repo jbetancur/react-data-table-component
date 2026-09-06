@@ -463,7 +463,9 @@ describe('ColumnFilter:set filter', () => {
 	}
 
 	function itemLabels(container: HTMLElement) {
-		return [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem span')].map(el => el.textContent);
+		return [...container.querySelectorAll('.rdt_filterSetList .rdt_filterSetItem > span:not(.rdt_Checkbox)')].map(
+			el => el.textContent,
+		);
 	}
 
 	test('renders a checkbox per distinct value instead of the operator UI', () => {
@@ -631,5 +633,76 @@ describe('ColumnFilter:set filter', () => {
 		fireEvent.click(container.querySelector('.rdt_filterBtn') as HTMLElement);
 
 		expect((onChange.mock.calls[0][1] as FilterState).values).toBeUndefined();
+	});
+
+	test('select-all says it acts on the search results while a search narrows the list', () => {
+		const { container } = setupSet();
+		openPanel(container);
+
+		const selectAll = () => container.querySelector('.rdt_filterSetSelectAll input') as HTMLElement;
+		expect(selectAll().getAttribute('aria-label')).toBe('(Select all)');
+
+		fireEvent.change(container.querySelector('.rdt_filterSetSearch') as HTMLElement, {
+			target: { value: 'des' },
+		});
+
+		expect(selectAll().getAttribute('aria-label')).toBe('(Select all) search results');
+		// The visible text is unchanged; only the announced label narrows.
+		expect(container.querySelector('.rdt_filterSetSelectAll > span:not(.rdt_Checkbox)')?.textContent).toBe(
+			'(Select all)',
+		);
+	});
+});
+
+describe('ColumnFilter:reveal', () => {
+	test('the panel shares the popup chrome and is marked visible once positioned', () => {
+		const { container } = setup();
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLElement);
+
+		const panel = container.querySelector('.rdt_filterPanel') as HTMLElement;
+		expect(panel.classList.contains('rdt_popup')).toBe(true);
+		expect(panel.classList.contains('rdt_popupVisible')).toBe(true);
+		expect(panel.style.visibility).toBe('visible');
+	});
+});
+
+describe('ColumnFilter:dialog semantics', () => {
+	test('the filter button reports its popup, not a pressed state', () => {
+		const { container } = setup();
+		const btn = container.querySelector('.rdt_filterIcon') as HTMLElement;
+
+		expect(btn.getAttribute('aria-haspopup')).toBe('dialog');
+		expect(btn.getAttribute('aria-expanded')).toBe('false');
+		expect(btn.getAttribute('aria-pressed')).toBeNull();
+
+		fireEvent.click(btn);
+		expect(btn.getAttribute('aria-expanded')).toBe('true');
+	});
+
+	test('Tab from the last control wraps to the first instead of escaping the panel', () => {
+		const { container } = setup();
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLElement);
+
+		const panel = document.querySelector('.rdt_filterPanel') as HTMLElement;
+		const focusable = panel.querySelectorAll<HTMLElement>('select, input:not([disabled]), button:not([disabled])');
+		const first = focusable[0];
+		const last = focusable[focusable.length - 1];
+
+		last.focus();
+		fireEvent.keyDown(document, { key: 'Tab' });
+		expect(document.activeElement).toBe(first);
+	});
+
+	test('Shift+Tab from the first control wraps to the last', () => {
+		const { container } = setup();
+		fireEvent.click(container.querySelector('.rdt_filterIcon') as HTMLElement);
+
+		const panel = document.querySelector('.rdt_filterPanel') as HTMLElement;
+		const focusable = panel.querySelectorAll<HTMLElement>('select, input:not([disabled]), button:not([disabled])');
+		const last = focusable[focusable.length - 1];
+
+		focusable[0].focus();
+		fireEvent.keyDown(document, { key: 'Tab', shiftKey: true });
+		expect(document.activeElement).toBe(last);
 	});
 });
