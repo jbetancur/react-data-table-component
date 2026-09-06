@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.9.1
+
+### Bug fixes
+
+- The column filter popup no longer clips off screen. The popup was positioned using a hardcoded 260px width and always opened below its button. Its rendered width can be larger (for example, datetime inputs), and a button near the bottom of the viewport would leave the controls off screen. → [Filtering](/docs/filtering) ([#1386](https://github.com/jbetancur/react-data-table-component/issues/1386))
+
+---
+
 ## 8.9.0
 
 ### New features
