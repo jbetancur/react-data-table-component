@@ -316,7 +316,11 @@ export default function ColumnFilter({
 		const rect = panel.getBoundingClientRect();
 		const anchor = button.getBoundingClientRect();
 		const margin = 8;
-		const left = Math.max(margin, Math.min(anchor.left, window.innerWidth - rect.width - margin));
+		// Read the direction off the panel rather than take it as a prop: it picks up `dir`
+		// set anywhere up the tree, and ColumnFilter renders too far down to reach useRTL.
+		const isRTL = getComputedStyle(panel).direction === 'rtl';
+		const anchored = isRTL ? anchor.right - rect.width : anchor.left;
+		const left = Math.max(margin, Math.min(anchored, window.innerWidth - rect.width - margin));
 		let top = anchor.bottom + 4;
 		if (top + rect.height > window.innerHeight - margin) {
 			const flipped = anchor.top - rect.height - 4;
