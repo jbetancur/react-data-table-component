@@ -1,4 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
+import { createElement } from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { renderToString } from 'react-dom/server';
 import { useColorMode } from '../hooks/useColorMode';
 
 beforeEach(() => {
@@ -35,6 +38,26 @@ describe('useColorMode:explicit mode', () => {
 });
 
 describe('useColorMode:system mode', () => {
+	test('updates server-rendered styles when hydrating with a dark preference', async () => {
+		function Surface() {
+			const mode = useColorMode('system');
+			return createElement('div', { style: { color: mode === 'dark' ? 'white' : 'black' } });
+		}
+
+		const container = document.createElement('div');
+		container.innerHTML = renderToString(createElement(Surface));
+		document.body.append(container);
+		document.documentElement.classList.add('dark');
+		const root = hydrateRoot(container, createElement(Surface));
+		try {
+			await act(async () => undefined);
+			expect((container.firstElementChild as HTMLElement).style.color).toBe('white');
+		} finally {
+			act(() => root.unmount());
+			container.remove();
+		}
+	});
+
 	test('reads "dark" from localStorage when stored theme is "dark"', () => {
 		localStorage.setItem('theme', 'dark');
 		const { result } = renderHook(() => useColorMode('system'));

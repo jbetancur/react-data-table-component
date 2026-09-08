@@ -23,7 +23,9 @@ function detectDark(): boolean {
  * changes without a page reload.
  */
 export function useColorMode(mode: ColorMode = 'light'): 'light' | 'dark' {
-	const [systemResolved, setSystemResolved] = useState<'light' | 'dark'>(() => (detectDark() ? 'dark' : 'light'));
+	// Match the server render; the effect applies the browser preference after
+	// hydration so React also updates styles generated from the resolved mode.
+	const [systemResolved, setSystemResolved] = useState<'light' | 'dark'>('light');
 
 	useEffect(() => {
 		if (mode !== 'system') {

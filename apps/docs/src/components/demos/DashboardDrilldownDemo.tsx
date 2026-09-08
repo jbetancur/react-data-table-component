@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import DataTable, {
+import {
 	type ConditionalStyles,
 	type ExpanderComponentProps,
 	type TableColumn,
 } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
 
 interface TeamMember {
 	name: string;

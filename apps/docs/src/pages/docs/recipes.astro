@@ -72,12 +72,12 @@ const recipes = [
     {recipes.map(({ href, title, desc }) => (
       <a
         href={href}
-        class="block rounded-xl border border-gray-100 p-5 hover:border-brand-200 hover:shadow-sm transition-all group"
+        class="block rounded-xl border border-gray-100 p-5 hover:border-brand-200 hover:shadow-sm transition-all group dark:border-gray-800"
       >
-        <div class="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
+        <div class="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors dark:text-gray-100 dark:group-hover:text-brand-400">
           {title} →
         </div>
-        <p class="mt-1 text-sm text-gray-500">{desc}</p>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{desc}</p>
       </a>
     ))}
   </div>

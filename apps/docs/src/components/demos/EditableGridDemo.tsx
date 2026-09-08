@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import DataTable, { type TableColumn } from 'react-data-table-component';
+import { type TableColumn } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
 
 interface LineItem {
 	id: number;

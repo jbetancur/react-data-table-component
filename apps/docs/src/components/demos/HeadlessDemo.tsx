@@ -115,7 +115,7 @@ export default function HeadlessDemo() {
 
 	return (
 		<div style={{ fontFamily: 'system-ui, sans-serif', fontSize: 13 }}>
-			<p style={{ marginBottom: 8, fontSize: 11, color: '#6b7280', fontStyle: 'italic' }}>
+			<p style={{ marginBottom: 8, fontSize: 11, color: 'var(--docs-text-muted)', fontStyle: 'italic' }}>
 				Custom markup — no DataTable component used. All logic from the four headless hooks.
 			</p>
 
@@ -131,7 +131,7 @@ export default function HeadlessDemo() {
 							flex: 1,
 							padding: '4px 8px',
 							fontSize: 12,
-							border: '1px solid #e5e7eb',
+							border: '1px solid var(--docs-border)',
 							borderRadius: 6,
 							outline: 'none',
 						}}
@@ -142,7 +142,7 @@ export default function HeadlessDemo() {
 			{/* Custom table markup */}
 			<table style={{ width: '100%', borderCollapse: 'collapse' }}>
 				<thead>
-					<tr style={{ background: '#f8fafc' }}>
+					<tr style={{ background: 'var(--docs-surface-muted)' }}>
 						{tableColumns.map(col => {
 							const isActive = selectedColumn?.id === col.id;
 							return (
@@ -156,11 +156,11 @@ export default function HeadlessDemo() {
 										fontSize: 11,
 										textTransform: 'uppercase',
 										letterSpacing: '0.05em',
-										color: isActive ? '#4f46e5' : '#374151',
+										color: isActive ? '#4f46e5' : 'var(--docs-text)',
 										cursor: col.sortable ? 'pointer' : 'default',
 										userSelect: 'none',
 										borderBottom: '2px solid',
-										borderBottomColor: isActive ? '#4f46e5' : '#e5e7eb',
+										borderBottomColor: isActive ? '#4f46e5' : 'var(--docs-border)',
 									}}
 								>
 									{col.name}{' '}
@@ -182,12 +182,12 @@ export default function HeadlessDemo() {
 						<tr
 							key={row.id}
 							style={{
-								background: i % 2 === 0 ? '#fff' : '#f9fafb',
-								borderBottom: '1px solid #f3f4f6',
+								background: i % 2 === 0 ? 'var(--docs-surface)' : 'var(--docs-surface-muted)',
+								borderBottom: '1px solid var(--docs-border)',
 							}}
 						>
 							{tableColumns.map(col => (
-								<td key={col.id} style={{ padding: '8px 12px', color: '#1f2937' }}>
+								<td key={col.id} style={{ padding: '8px 12px', color: 'var(--docs-text)' }}>
 									{col.id === 'salary' ? `$${row.salary.toLocaleString()}` : String(col.selector?.(row) ?? '')}
 								</td>
 							))}
@@ -204,7 +204,7 @@ export default function HeadlessDemo() {
 					justifyContent: 'space-between',
 					marginTop: 12,
 					fontSize: 12,
-					color: '#6b7280',
+					color: 'var(--docs-text-muted)',
 				}}
 			>
 				<span>
@@ -215,7 +215,7 @@ export default function HeadlessDemo() {
 					<select
 						value={rowsPerPage}
 						onChange={e => handleChangeRowsPerPage(Number(e.target.value), data.length)}
-						style={{ border: '1px solid #e5e7eb', borderRadius: 4, padding: '2px 4px', fontSize: 12 }}
+						style={{ border: '1px solid var(--docs-border)', borderRadius: 4, padding: '2px 4px', fontSize: 12 }}
 					>
 						{[5, 10].map(n => (
 							<option key={n} value={n}>
@@ -228,10 +228,10 @@ export default function HeadlessDemo() {
 						disabled={currentPage <= 1}
 						style={{
 							padding: '2px 8px',
-							border: '1px solid #e5e7eb',
+							border: '1px solid var(--docs-border)',
 							borderRadius: 4,
 							cursor: 'pointer',
-							background: '#fff',
+							background: 'var(--docs-surface)',
 							opacity: currentPage <= 1 ? 0.4 : 1,
 						}}
 					>
@@ -242,10 +242,10 @@ export default function HeadlessDemo() {
 						disabled={currentPage >= totalPages}
 						style={{
 							padding: '2px 8px',
-							border: '1px solid #e5e7eb',
+							border: '1px solid var(--docs-border)',
 							borderRadius: 4,
 							cursor: 'pointer',
-							background: '#fff',
+							background: 'var(--docs-surface)',
 							opacity: currentPage >= totalPages ? 0.4 : 1,
 						}}
 					>

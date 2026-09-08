@@ -11,9 +11,9 @@ const { code, lang = 'tsx' } = Astro.props;
 ---
 
 <div class="not-prose my-6 rounded-xl overflow-hidden text-sm leading-relaxed relative group">
-  <Code code={code} lang={lang} theme="catppuccin-macchiato" defaultColor={false} />
+  <Code code={code} lang={lang} themes={{ light: 'catppuccin-latte', dark: 'catppuccin-macchiato' }} />
   <button
-    class="copy-btn absolute top-[24px] right-4 flex items-center p-1.5 rounded-md bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white opacity-0 group-hover:opacity-100 transition-all"
+    class="copy-btn absolute top-[24px] right-4 flex items-center p-1.5 rounded-md bg-gray-100 text-gray-600 dark:bg-white/10 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 dark:hover:text-white opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all"
     aria-label="Copy code"
     data-code={code}
   >

@@ -1,0 +1,49 @@
+<!-- Run before first paint, using the same storage key as useColorMode. -->
+<script is:inline>
+  (() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    let preference = 'system';
+
+    function readPreference() {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') return stored;
+        // System mode is represented by absence, matching the library hook.
+        if (stored !== null) localStorage.removeItem('theme');
+        return 'system';
+      } catch {
+        return 'system';
+      }
+    }
+
+    function applyTheme() {
+      const dark = preference === 'dark' || (preference === 'system' && media.matches);
+      document.documentElement.classList.toggle('dark', dark);
+      const select = document.getElementById('theme-select');
+      if (select) select.value = preference;
+    }
+
+    preference = readPreference();
+    applyTheme();
+    media.addEventListener('change', applyTheme);
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'theme' || event.key === null) {
+        preference = readPreference();
+        applyTheme();
+      }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      applyTheme();
+      document.getElementById('theme-select')?.addEventListener('change', (event) => {
+        preference = event.target.value;
+        try {
+          if (preference === 'system') localStorage.removeItem('theme');
+          else localStorage.setItem('theme', preference);
+        } catch {
+          // Keep the selection usable for this page when storage is unavailable.
+        }
+        applyTheme();
+      });
+    });
+  })();
+</script>

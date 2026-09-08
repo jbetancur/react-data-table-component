@@ -16,18 +16,18 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
 >
   <!-- Hero -->
   <section class="max-w-4xl mx-auto px-6 pt-20 pb-12 text-center">
-    <h1 class="text-4xl font-bold tracking-tight text-gray-900">Support &amp; Sponsorship</h1>
-    <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
+    <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Support &amp; Sponsorship</h1>
+    <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto dark:text-gray-400">
       Actively maintained since 2018 and downloaded ~{fmt(weeklyDownloads)} times a week. Your sponsorship funds bug fixes,
       new features, and keeps pace with the React ecosystem.
     </p>
   </section>
 
   <!-- Sponsor tiers -->
-  <section class="bg-gray-50 py-16">
+  <section class="bg-gray-50 py-16 dark:bg-gray-900">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-gray-900 text-center mb-3">Sponsorship Tiers</h2>
-      <p class="text-sm text-gray-500 text-center max-w-xl mx-auto mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-3 dark:text-gray-100">Sponsorship Tiers</h2>
+      <p class="text-sm text-gray-500 text-center max-w-xl mx-auto mb-10 dark:text-gray-400">
         Bronze buys visibility. Silver and Gold are support plans: your issues jump the queue of a
         library your product already depends on, with written commitments at Gold.
       </p>
@@ -70,12 +70,12 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
             ocSlug: 'gold-103594',
           },
         ].map(({ name, price, period, perks, ocSlug }) => (
-          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col">
-            <div class="font-semibold text-gray-900">{name}</div>
-            <div class="mt-1 text-2xl font-bold text-gray-900">
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col dark:bg-gray-950 dark:border-gray-700">
+            <div class="font-semibold text-gray-900 dark:text-gray-100">{name}</div>
+            <div class="mt-1 text-2xl font-bold text-gray-900 dark:text-gray-100">
               {price}<span class="text-sm font-normal text-gray-400">{period}</span>
             </div>
-            <ul class="mt-3 flex-1 space-y-1.5 text-xs text-gray-500">
+            <ul class="mt-3 flex-1 space-y-1.5 text-xs text-gray-500 dark:text-gray-400">
               {perks.map((p) => (
                 <li class="flex items-start gap-1.5">
                   <svg class="mt-0.5 shrink-0 text-brand-500" width="12" height="12" viewBox="0 0 16 16" fill="none">
@@ -98,7 +98,7 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
                 href={`${OC_BASE}/contribute/${ocSlug}/checkout`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block text-center border border-brand-200 text-brand-700 text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-50 transition-colors"
+                class="block text-center border border-brand-200 text-brand-700 text-xs font-medium px-3 py-2 rounded-lg hover:bg-brand-50 transition-colors dark:text-brand-200 dark:hover:bg-brand-900/30"
               >
                 Open Collective →
               </a>
@@ -112,9 +112,9 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
       </p>
 
       <!-- One-time -->
-      <div class="mt-8 max-w-xl mx-auto bg-white border border-gray-200 rounded-xl p-6 text-center">
-        <h3 class="font-semibold text-gray-900 mb-1">One-time donation</h3>
-        <p class="text-sm text-gray-500 mb-4">No commitment. Every bit helps.</p>
+      <div class="mt-8 max-w-xl mx-auto bg-white border border-gray-200 rounded-xl p-6 text-center dark:bg-gray-950 dark:border-gray-700">
+        <h3 class="font-semibold text-gray-900 mb-1 dark:text-gray-100">One-time donation</h3>
+        <p class="text-sm text-gray-500 mb-4 dark:text-gray-400">No commitment. Every bit helps.</p>
         <div class="flex flex-wrap items-center justify-center gap-2">
           <a
             href={`${GH_SPONSORS}?frequency=one-time`}
@@ -128,7 +128,7 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
             href={`${OC_BASE}/contribute/one-time-thanks-103595/checkout`}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-block border border-brand-200 text-brand-700 text-sm font-medium px-5 py-2 rounded-lg hover:bg-brand-50 transition-colors"
+            class="inline-block border border-brand-200 text-brand-700 text-sm font-medium px-5 py-2 rounded-lg hover:bg-brand-50 transition-colors dark:text-brand-200 dark:hover:bg-brand-900/30"
           >
             Open Collective →
           </a>
@@ -142,8 +142,8 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
 
   <!-- Backers -->
   <section class="max-w-4xl mx-auto px-6 py-16">
-    <h2 id="backers" class="text-2xl font-bold text-gray-900 text-center mb-2">Backers</h2>
-    <p class="text-sm text-gray-500 text-center mb-8">
+    <h2 id="backers" class="text-2xl font-bold text-gray-900 text-center mb-2 dark:text-gray-100">Backers</h2>
+    <p class="text-sm text-gray-500 text-center mb-8 dark:text-gray-400">
       Thank you to everyone sponsoring at the Backer tier and above.
     </p>
     {backers.length > 0 ? (
@@ -151,16 +151,16 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
         {backers.map(({ name, url }) => (
           <li>
             {url ? (
-              <a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium">{name}</a>
+              <a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium dark:text-brand-400 dark:hover:text-brand-200">{name}</a>
             ) : (
-              <span class="text-gray-700 font-medium">{name}</span>
+              <span class="text-gray-700 font-medium dark:text-gray-300">{name}</span>
             )}
           </li>
         ))}
       </ul>
     ) : (
       <p class="text-center text-sm text-gray-400">
-        <a href="/support" class="text-brand-600 hover:text-brand-700 font-medium">Be the first backer →</a>
+        <a href="/support" class="text-brand-600 hover:text-brand-700 font-medium dark:text-brand-400 dark:hover:text-brand-200">Be the first backer →</a>
       </p>
     )}
   </section>
@@ -176,7 +176,7 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
       <a
         data-contact-link
         href="#"
-        class="inline-block bg-white text-gray-900 text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-100 transition-colors"
+        class="inline-block bg-white text-gray-900 text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-100 transition-colors dark:bg-gray-950 dark:text-gray-100 dark:hover:bg-gray-800"
       >
         Get in touch →
       </a>
@@ -185,40 +185,40 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
 
   <!-- Logo placement -->
   <section class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-bold text-gray-900 text-center mb-3">Where your logo appears</h2>
-    <p class="text-sm text-gray-500 text-center mb-10">Bronze tier and above. Logos link to your site and stay up as long as you sponsor.</p>
+    <h2 class="text-2xl font-bold text-gray-900 text-center mb-3 dark:text-gray-100">Where your logo appears</h2>
+    <p class="text-sm text-gray-500 text-center mb-10 dark:text-gray-400">Bronze tier and above. Logos link to your site and stay up as long as you sponsor.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <div class="border border-gray-200 rounded-xl p-6">
-        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Bronze · $100/mo</div>
-        <h3 class="font-semibold text-gray-900 mb-1">Docs site footer</h3>
-        <p class="text-xs text-gray-500 mb-4">Small logo in the footer of every page on reactdatatable.com, seen by every developer reading the docs.</p>
-        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono">
-          <div class="border-t border-gray-200 pt-2 mt-2 flex items-center gap-2">
-            <div class="w-8 h-4 bg-gray-200 rounded" />
+      <div class="border border-gray-200 rounded-xl p-6 dark:border-gray-700">
+        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2 dark:text-brand-400">Bronze · $100/mo</div>
+        <h3 class="font-semibold text-gray-900 mb-1 dark:text-gray-100">Docs site footer</h3>
+        <p class="text-xs text-gray-500 mb-4 dark:text-gray-400">Small logo in the footer of every page on reactdatatable.com, seen by every developer reading the docs.</p>
+        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono dark:bg-gray-900 dark:border-gray-800">
+          <div class="border-t border-gray-200 pt-2 mt-2 flex items-center gap-2 dark:border-gray-700">
+            <div class="w-8 h-4 bg-gray-200 rounded dark:bg-gray-700" />
             <span>Apache 2.0 licensed · GitHub · Built with Astro</span>
           </div>
           <div class="flex items-center gap-2 mt-1 text-[10px]">
-            <div class="w-8 h-4 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-brand-400">logo</div>
+            <div class="w-8 h-4 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-brand-400 dark:bg-brand-900/50">logo</div>
             <span class="text-gray-300">← your logo here</span>
           </div>
         </div>
       </div>
 
-      <div class="border border-gray-200 rounded-xl p-6">
-        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Silver · $200/mo</div>
-        <h3 class="font-semibold text-gray-900 mb-1">Docs site sidebar</h3>
-        <p class="text-xs text-gray-500 mb-4">Medium logo in the sidebar of every docs page, visible to developers actively reading the documentation.</p>
-        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono">
+      <div class="border border-gray-200 rounded-xl p-6 dark:border-gray-700">
+        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2 dark:text-brand-400">Silver · $200/mo</div>
+        <h3 class="font-semibold text-gray-900 mb-1 dark:text-gray-100">Docs site sidebar</h3>
+        <p class="text-xs text-gray-500 mb-4 dark:text-gray-400">Medium logo in the sidebar of every docs page, visible to developers actively reading the documentation.</p>
+        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono dark:bg-gray-900 dark:border-gray-800">
           <div class="flex gap-2">
-            <div class="w-16 border-r border-gray-200 pr-2 space-y-1">
-              <div class="w-full h-2 bg-gray-200 rounded" />
-              <div class="w-full h-2 bg-gray-200 rounded" />
-              <div class="w-12 h-6 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-[9px] text-brand-400 mt-2">logo</div>
+            <div class="w-16 border-r border-gray-200 pr-2 space-y-1 dark:border-gray-700">
+              <div class="w-full h-2 bg-gray-200 rounded dark:bg-gray-700" />
+              <div class="w-full h-2 bg-gray-200 rounded dark:bg-gray-700" />
+              <div class="w-12 h-6 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-[9px] text-brand-400 mt-2 dark:bg-brand-900/50">logo</div>
             </div>
             <div class="flex-1 space-y-1">
-              <div class="w-full h-2 bg-gray-200 rounded" />
-              <div class="w-3/4 h-2 bg-gray-200 rounded" />
+              <div class="w-full h-2 bg-gray-200 rounded dark:bg-gray-700" />
+              <div class="w-3/4 h-2 bg-gray-200 rounded dark:bg-gray-700" />
             </div>
           </div>
         </div>
@@ -226,15 +226,15 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
 
       <div class="border-2 border-brand-200 rounded-xl p-6 relative">
         <div class="absolute -top-3 left-4 bg-brand-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">Most visible</div>
-        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Gold · $500/mo</div>
-        <h3 class="font-semibold text-gray-900 mb-1">Homepage hero</h3>
-        <p class="text-xs text-gray-500 mb-4">Large logo in the sponsors section of the homepage, the highest-traffic page, seen by every new visitor. Limited to 3.</p>
-        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono">
+        <div class="text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2 dark:text-brand-400">Gold · $500/mo</div>
+        <h3 class="font-semibold text-gray-900 mb-1 dark:text-gray-100">Homepage hero</h3>
+        <p class="text-xs text-gray-500 mb-4 dark:text-gray-400">Large logo in the sponsors section of the homepage, the highest-traffic page, seen by every new visitor. Limited to 3.</p>
+        <div class="bg-gray-50 rounded-lg p-3 border border-gray-100 text-xs text-gray-400 font-mono dark:bg-gray-900 dark:border-gray-800">
           <div class="text-center space-y-1">
             <div class="text-[10px] text-gray-300">Sponsors</div>
             <div class="flex items-center justify-center gap-2">
-              <div class="w-16 h-8 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-[9px] text-brand-400">your logo</div>
-              <div class="w-10 h-6 bg-gray-200 rounded" />
+              <div class="w-16 h-8 bg-brand-100 rounded border border-brand-200 flex items-center justify-center text-[9px] text-brand-400 dark:bg-brand-900/50">your logo</div>
+              <div class="w-10 h-6 bg-gray-200 rounded dark:bg-gray-700" />
             </div>
           </div>
         </div>
@@ -248,7 +248,7 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
 
   <!-- FAQ -->
   <section class="max-w-2xl mx-auto px-6 py-16">
-    <h2 class="text-xl font-bold text-gray-900 mb-8 text-center">Common questions</h2>
+    <h2 class="text-xl font-bold text-gray-900 mb-8 text-center dark:text-gray-100">Common questions</h2>
     <dl class="space-y-6">
       {[
         {
@@ -269,19 +269,19 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
         },
       ].map(({ q, a }) => (
         <div>
-          <dt class="font-semibold text-gray-900 text-sm">{q}</dt>
-          <dd class="mt-1 text-sm text-gray-500">{a}</dd>
+          <dt class="font-semibold text-gray-900 text-sm dark:text-gray-100">{q}</dt>
+          <dd class="mt-1 text-sm text-gray-500 dark:text-gray-400">{a}</dd>
         </div>
       ))}
     </dl>
 
     <div class="mt-12 text-center" data-contact data-user="sponsors" data-domain="reactdatatable.com">
-      <p class="text-sm text-gray-500 mb-3">Questions about sponsorship or consulting?</p>
+      <p class="text-sm text-gray-500 mb-3 dark:text-gray-400">Questions about sponsorship or consulting?</p>
       <div class="inline-flex items-center gap-2">
         <a
           data-contact-link
           href="#"
-          class="text-sm text-brand-600 hover:text-brand-700 font-medium"
+          class="text-sm text-brand-600 hover:text-brand-700 font-medium dark:text-brand-400 dark:hover:text-brand-200"
         >
           Email me directly →
         </a>
@@ -289,7 +289,7 @@ const fmt = (n: number) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(n));
           data-contact-copy
           type="button"
           aria-label="Copy email address"
-          class="hidden items-center gap-1 text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-md px-2 py-1 transition-colors"
+          class="hidden items-center gap-1 text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-md px-2 py-1 transition-colors dark:hover:text-gray-400 dark:border-gray-700"
         >
           <svg data-copy-icon width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="4" width="9" height="9" rx="1.5"/>
