@@ -294,4 +294,94 @@ describe('PinnedScrollbar', () => {
 		second.unmount();
 		ref.current!.remove();
 	});
+
+	// The effect keys on the *ref object*, so pointing the component at a
+	// different container mid-life re-runs it. The container swapped in already
+	// has an id, so nothing is stamped and aria-controls has to follow it.
+	test('aria-controls re-points when the scroll container is swapped for another one', async () => {
+		const first = makeScrollRef(1000, 400).current!;
+		const second = makeScrollRef(1000, 400).current!;
+		second.id = 'second-scroll-container';
+		document.body.append(first, second);
+
+		let swap!: (el: HTMLDivElement) => void;
+		function SwapHarness({ initial }: { initial: HTMLDivElement }): JSX.Element {
+			const [target, setTarget] = React.useState(initial);
+			swap = setTarget;
+			const ref = React.useMemo(() => ({ current: target }) as React.RefObject<HTMLDivElement>, [target]);
+			return <PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />;
+		}
+
+		const { container, unmount } = renderWithTheme(<SwapHarness initial={first} />);
+		await act(async () => {
+			first.dispatchEvent(new Event('scroll'));
+		});
+		await act(async () => {
+			swap(second);
+		});
+
+		const thumb = container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		const controls = thumb.getAttribute('aria-controls');
+		expect(controls).toBe('second-scroll-container');
+		expect(document.getElementById(controls!)).toBe(second);
+
+		unmount();
+		first.remove();
+		second.remove();
+	});
+
+	// Reverse of the host-supplied-id case: the stamp happens first and the host
+	// takes the id over afterwards, so the remount sees an id it did not write.
+	test('aria-controls follows an id the host assigns after the first mount stamped one', async () => {
+		const ref = makeScrollRef(1000, 400);
+		document.body.appendChild(ref.current!);
+
+		const first = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+		await act(async () => {
+			ref.current!.dispatchEvent(new Event('scroll'));
+		});
+		first.unmount();
+
+		ref.current!.id = 'host-took-over-later';
+		const second = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+		await act(async () => {
+			ref.current!.dispatchEvent(new Event('scroll'));
+		});
+
+		const thumb = second.container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		expect(thumb.getAttribute('aria-controls')).toBe('host-took-over-later');
+		expect(document.getElementById(thumb.getAttribute('aria-controls')!)).toBe(ref.current);
+
+		second.unmount();
+		ref.current!.remove();
+	});
+
+	// Control: two scrollbars on the page at once, each on its own container.
+	// Green before and after — the id each thumb points at is per-instance state,
+	// and this pins that the two never share one.
+	test('two concurrent scrollbars each control their own container (control)', async () => {
+		const a = makeScrollRef(1000, 400);
+		const b = makeScrollRef(1000, 400);
+		document.body.append(a.current!, b.current!);
+
+		const firstRender = renderWithTheme(<PinnedScrollbar scrollRef={a} leftInset={0} rightInset={0} />);
+		const secondRender = renderWithTheme(<PinnedScrollbar scrollRef={b} leftInset={0} rightInset={0} />);
+		await act(async () => {
+			a.current!.dispatchEvent(new Event('scroll'));
+			b.current!.dispatchEvent(new Event('scroll'));
+		});
+
+		const thumbA = firstRender.container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		const thumbB = secondRender.container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		const controlsA = thumbA.getAttribute('aria-controls');
+		const controlsB = thumbB.getAttribute('aria-controls');
+		expect(controlsA).not.toBe(controlsB);
+		expect(document.getElementById(controlsA!)).toBe(a.current);
+		expect(document.getElementById(controlsB!)).toBe(b.current);
+
+		firstRender.unmount();
+		secondRender.unmount();
+		a.current!.remove();
+		b.current!.remove();
+	});
 });
