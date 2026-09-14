@@ -101,6 +101,32 @@ describe('DataTable column pinning', () => {
 		expect(offsets).toContain(0);
 		expect(offsets.some(v => v > 0)).toBe(true);
 	});
+
+	test('pinned scrollbar aria-controls still resolves after a column is unpinned and re-pinned', async () => {
+		const unpinnedCols: TableColumn<Row>[] = columns.map(c => ({ ...c, pinned: undefined }));
+		const { container, rerender } = render(<DataTable columns={columns} data={data} responsive />);
+
+		const wrapper = container.querySelector('.rdt_responsiveWrapper') as HTMLElement;
+		Object.defineProperty(wrapper, 'scrollWidth', { configurable: true, get: () => 1000 });
+		Object.defineProperty(wrapper, 'clientWidth', { configurable: true, get: () => 400 });
+		await act(async () => {
+			wrapper.dispatchEvent(new Event('scroll'));
+		});
+
+		// Unpinning every column drops hasPinnedColumns, which unmounts the
+		// scrollbar; re-pinning mounts a fresh one with a new useId, while the
+		// wrapper keeps the id the first mount stamped on it.
+		rerender(<DataTable columns={unpinnedCols} data={data} responsive />);
+		rerender(<DataTable columns={columns} data={data} responsive />);
+		await act(async () => {
+			wrapper.dispatchEvent(new Event('scroll'));
+		});
+
+		const thumb = container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		const controls = thumb.getAttribute('aria-controls');
+		expect(controls).toBe(wrapper.id);
+		expect(document.getElementById(controls!)).toBe(wrapper);
+	});
 });
 
 // ── PinnedScrollbar ──────────────────────────────────────────────────────────
