@@ -195,4 +195,77 @@ describe('PinnedScrollbar', () => {
 			expect(ref.current!.scrollLeft).toBeGreaterThanOrEqual(0);
 		}
 	});
+
+	// Control: the container has no id of its own, so the effect stamps it with
+	// this mount's useId and aria-controls matches either way. Green before and
+	// after the fix — it pins the untouched offset-0 case so the fix can't be
+	// read as changing the ordinary first-mount path.
+	test('aria-controls resolves to the scroll container it labelled (control)', async () => {
+		const ref = makeScrollRef(1000, 400);
+		document.body.appendChild(ref.current!);
+		const { container, unmount } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+
+		await act(async () => {
+			ref.current!.dispatchEvent(new Event('scroll'));
+		});
+
+		const thumb = container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		const controls = thumb.getAttribute('aria-controls');
+		expect(controls).toBe(ref.current!.id);
+		expect(document.getElementById(controls!)).toBe(ref.current);
+
+		unmount();
+		ref.current!.remove();
+	});
+
+	// A dangling aria-controls is invisible in a rendered-DOM assertion — it only
+	// shows up when you resolve the id, which is what assistive tech does.
+	test('aria-controls points at a host-supplied container id instead of a fresh one', async () => {
+		const ref = makeScrollRef(1000, 400);
+		ref.current!.id = 'host-app-scroll-container';
+		document.body.appendChild(ref.current!);
+		const { container, unmount } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+
+		await act(async () => {
+			ref.current!.dispatchEvent(new Event('scroll'));
+		});
+
+		const thumb = container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		// The container already had an id, so the effect leaves it alone — the thumb
+		// must follow it rather than pointing at its own unused useId value.
+		expect(ref.current!.id).toBe('host-app-scroll-container');
+		expect(thumb.getAttribute('aria-controls')).toBe('host-app-scroll-container');
+		expect(document.getElementById(thumb.getAttribute('aria-controls')!)).toBe(ref.current);
+
+		unmount();
+		ref.current!.remove();
+	});
+
+	test('aria-controls survives a remount onto the same container', async () => {
+		const ref = makeScrollRef(1000, 400);
+		document.body.appendChild(ref.current!);
+
+		// First mount stamps the container with its useId value.
+		const first = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+		await act(async () => {
+			ref.current!.dispatchEvent(new Event('scroll'));
+		});
+		const stampedId = ref.current!.id;
+		first.unmount();
+
+		// Unmounting doesn't clear the id, and the remount gets a *different* useId.
+		// Unpinning then re-pinning a column does exactly this in DataTable.
+		const second = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+		await act(async () => {
+			ref.current!.dispatchEvent(new Event('scroll'));
+		});
+
+		const thumb = second.container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
+		expect(ref.current!.id).toBe(stampedId);
+		expect(thumb.getAttribute('aria-controls')).toBe(stampedId);
+		expect(document.getElementById(thumb.getAttribute('aria-controls')!)).toBe(ref.current);
+
+		second.unmount();
+		ref.current!.remove();
+	});
 });
