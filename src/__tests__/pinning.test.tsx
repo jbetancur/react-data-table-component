@@ -384,4 +384,22 @@ describe('PinnedScrollbar', () => {
 		a.current!.remove();
 		b.current!.remove();
 	});
+
+	// Control: the effect bails at `if (!el) return` before it can stamp an id or
+	// call setControlsId, and `visible` never flips, so no thumb — and no
+	// aria-controls — is emitted at all. Green before and after the fix; it pins
+	// that the new state doesn't leak an attribute onto a scrollbar that the
+	// early return means was never rendered.
+	test('emits no thumb and no aria-controls when the scroll ref is empty (control)', async () => {
+		const ref = { current: null } as React.RefObject<HTMLDivElement>;
+		const { container, unmount } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
+
+		await act(async () => {});
+
+		expect(container.querySelector('.rdt_pinnedScrollbarTrack')).toBeNull();
+		expect(container.querySelector('.rdt_pinnedScrollbarThumb')).toBeNull();
+		expect(container.querySelector('[aria-controls]')).toBeNull();
+
+		unmount();
+	});
 });
