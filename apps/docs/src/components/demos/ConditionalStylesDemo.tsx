@@ -43,7 +43,7 @@ const columns: TableColumn<Deal>[] = [
 		right: true,
 		conditionalCellStyles: [
 			{ when: r => r.value >= 200000, style: { fontWeight: 700, color: '#15803d' } },
-			{ when: r => r.value < 20000, style: { color: '#9ca3af' } },
+			{ when: r => r.value < 20000, style: { color: 'var(--demo-muted-text)' } },
 		],
 	},
 	{
@@ -67,11 +67,11 @@ const columns: TableColumn<Deal>[] = [
 const conditionalRowStyles: ConditionalStyles<Deal>[] = [
 	{
 		when: r => r.stage === 'Closed Won',
-		style: { backgroundColor: '#f0fdf4', borderLeft: '3px solid #16a34a' },
+		style: { backgroundColor: 'var(--demo-success-bg)', borderLeft: '3px solid var(--demo-success-border)' },
 	},
 	{
 		when: r => r.stage === 'Closed Lost',
-		style: { backgroundColor: '#fef2f2', opacity: 0.75 },
+		style: { backgroundColor: 'var(--demo-danger-bg)', borderLeft: '3px solid var(--demo-danger-border)' },
 	},
 ];
 

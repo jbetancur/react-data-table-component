@@ -67,14 +67,14 @@ export default function SelectionDemo() {
 				</label>
 				<button
 					onClick={() => ref.current?.clearSelectedRows()}
-					className="px-2.5 py-1 text-xs border border-gray-200 rounded-md text-gray-600 hover:border-gray-300 hover:text-gray-900"
+					className="px-2.5 py-1 text-xs border border-gray-200 rounded-md text-gray-600 hover:border-gray-300 hover:text-gray-900 dark:border-gray-700 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-gray-100"
 				>
 					Clear selection
 				</button>
 			</div>
 			<div className="text-sm min-h-[1.25rem]">
 				{selectedRows.length > 0 && (
-					<span className="text-brand-600 font-medium">
+					<span className="text-brand-600 dark:text-brand-400 font-medium">
 						{selectedRows.length} selected: {selectedRows.map(r => r.name).join(', ')}
 					</span>
 				)}

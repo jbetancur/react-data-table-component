@@ -224,3 +224,38 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline dark:tex
   background: #eff6ff !important;
   border-color: #2563eb !important;
 }
+
+/* Demo content uses a few intentionally simple Tailwind colors. Re-map those
+   utilities in dark mode so controls and explanatory panels stay legible even
+   when an individual demo does not need a bespoke dark class. */
+.not-prose {
+  --demo-muted-text: #6b7280;
+  --demo-success-bg: #f0fdf4;
+  --demo-success-border: #16a34a;
+  --demo-danger-bg: #fef2f2;
+  --demo-danger-border: #dc2626;
+}
+
+html.dark .not-prose {
+  --demo-muted-text: #d1d5db;
+  --demo-success-bg: #052e16;
+  --demo-success-border: #22c55e;
+  --demo-danger-bg: #450a0a;
+  --demo-danger-border: #f87171;
+}
+
+html.dark .not-prose .bg-white { background-color: #111827 !important; }
+html.dark .not-prose .bg-gray-50 { background-color: #1f2937 !important; }
+html.dark .not-prose .bg-gray-100 { background-color: #374151 !important; }
+html.dark .not-prose .border-gray-100 { border-color: #374151 !important; }
+html.dark .not-prose .border-gray-200 { border-color: #4b5563 !important; }
+html.dark .not-prose .border-gray-300 { border-color: #6b7280 !important; }
+html.dark .not-prose .text-gray-900 { color: #f3f4f6 !important; }
+html.dark .not-prose .text-gray-800 { color: #e5e7eb !important; }
+html.dark .not-prose .text-gray-700 { color: #d1d5db !important; }
+html.dark .not-prose .text-gray-600 { color: #d1d5db !important; }
+html.dark .not-prose .text-gray-500 { color: #9ca3af !important; }
+html.dark .not-prose .text-gray-400 { color: #9ca3af !important; }
+html.dark .not-prose .text-brand-600 { color: #60a5fa !important; }
+html.dark .not-prose .hover\:bg-gray-50:hover { background-color: #1f2937 !important; }
+html.dark .not-prose .hover\:bg-gray-100:hover { background-color: #374151 !important; }
