@@ -50,7 +50,7 @@ The docs live in `apps/docs/src/pages/docs/`. Each feature has its own `.astro` 
 **When adding a new prop or changing an existing one:**
 
 - Update the prop reference table on the relevant docs page.
-- Update the type signature in the API reference at `apps/docs/src/pages/docs/api.md`.
+- Update the type signature in the API reference at `apps/docs/src/pages/docs/api.astro`.
 
 **Nav and routing:**
 
