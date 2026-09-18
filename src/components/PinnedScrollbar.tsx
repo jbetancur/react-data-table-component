@@ -14,7 +14,7 @@ export default function PinnedScrollbar({
 }: PinnedScrollbarProps): JSX.Element | null {
 	const scrollContainerId = React.useId();
 	// The id the thumb points at. Only equals scrollContainerId when this
-	// component is the one that labelled the container — see the sync effect.
+	// component is the one that labelled the container. See the sync effect.
 	const [controlsId, setControlsId] = React.useState(scrollContainerId);
 	const trackRef = React.useRef<HTMLDivElement>(null);
 	const thumbRef = React.useRef<HTMLDivElement>(null);
@@ -65,7 +65,7 @@ export default function PinnedScrollbar({
 		if (!el.id) {
 			el.id = scrollContainerId;
 		}
-		// The container keeps whatever id it already had — a host-supplied one, or
+		// The container keeps whatever id it already had, a host-supplied one or
 		// one left behind by a previous mount (useId hands out a fresh value each
 		// time). Point aria-controls at the id that is actually on the element, or
 		// it dangles and assistive tech can't resolve the scrollbar's target.

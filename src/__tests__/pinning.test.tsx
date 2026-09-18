@@ -222,10 +222,8 @@ describe('PinnedScrollbar', () => {
 		}
 	});
 
-	// Control: the container has no id of its own, so the effect stamps it with
-	// this mount's useId and aria-controls matches either way. Green before and
-	// after the fix — it pins the untouched offset-0 case so the fix can't be
-	// read as changing the ordinary first-mount path.
+	// Control, green before and after the fix: with no host id the effect labels
+	// the container itself, so aria-controls matches on an ordinary first mount.
 	test('aria-controls resolves to the scroll container it labelled (control)', async () => {
 		const ref = makeScrollRef(1000, 400);
 		document.body.appendChild(ref.current!);
@@ -244,7 +242,7 @@ describe('PinnedScrollbar', () => {
 		ref.current!.remove();
 	});
 
-	// A dangling aria-controls is invisible in a rendered-DOM assertion — it only
+	// A dangling aria-controls is invisible in a rendered-DOM assertion. It only
 	// shows up when you resolve the id, which is what assistive tech does.
 	test('aria-controls points at a host-supplied container id instead of a fresh one', async () => {
 		const ref = makeScrollRef(1000, 400);
@@ -257,7 +255,7 @@ describe('PinnedScrollbar', () => {
 		});
 
 		const thumb = container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
-		// The container already had an id, so the effect leaves it alone — the thumb
+		// The container already had an id, so the effect leaves it alone, and the thumb
 		// must follow it rather than pointing at its own unused useId value.
 		expect(ref.current!.id).toBe('host-app-scroll-container');
 		expect(thumb.getAttribute('aria-controls')).toBe('host-app-scroll-container');
@@ -356,9 +354,8 @@ describe('PinnedScrollbar', () => {
 		ref.current!.remove();
 	});
 
-	// Control: two scrollbars on the page at once, each on its own container.
-	// Green before and after — the id each thumb points at is per-instance state,
-	// and this pins that the two never share one.
+	// Control, green before and after the fix: two scrollbars on one page each
+	// point at their own container.
 	test('two concurrent scrollbars each control their own container (control)', async () => {
 		const a = makeScrollRef(1000, 400);
 		const b = makeScrollRef(1000, 400);
@@ -386,8 +383,8 @@ describe('PinnedScrollbar', () => {
 	});
 
 	// Control: the effect bails at `if (!el) return` before it can stamp an id or
-	// call setControlsId, and `visible` never flips, so no thumb — and no
-	// aria-controls — is emitted at all. Green before and after the fix; it pins
+	// call setControlsId, and `visible` never flips, so no thumb, and no
+	// aria-controls, is emitted at all. Green before and after the fix; it pins
 	// that the new state doesn't leak an attribute onto a scrollbar that the
 	// early return means was never rendered.
 	test('emits no thumb and no aria-controls when the scroll ref is empty (control)', async () => {
