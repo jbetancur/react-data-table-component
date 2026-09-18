@@ -139,6 +139,16 @@ function makeScrollRef(scrollWidth = 1000, clientWidth = 400): React.RefObject<H
 }
 
 describe('PinnedScrollbar', () => {
+	const attached: HTMLElement[] = [];
+	const attach = (el: HTMLElement): HTMLElement => {
+		document.body.appendChild(el);
+		attached.push(el);
+		return el;
+	};
+	afterEach(() => {
+		for (const el of attached.splice(0)) el.remove();
+	});
+
 	test('renders null before ResizeObserver fires (no overflow detected yet)', () => {
 		const ref = makeScrollRef(400, 400); // no overflow
 		const { container } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
@@ -222,11 +232,10 @@ describe('PinnedScrollbar', () => {
 		}
 	});
 
-	// Control, green before and after the fix: with no host id the effect labels
-	// the container itself, so aria-controls matches on an ordinary first mount.
-	test('aria-controls resolves to the scroll container it labelled (control)', async () => {
+	// With no host id the effect labels the container itself.
+	test('aria-controls resolves to the scroll container it labelled', async () => {
 		const ref = makeScrollRef(1000, 400);
-		document.body.appendChild(ref.current!);
+		attach(ref.current!);
 		const { container, unmount } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
 
 		await act(async () => {
@@ -239,15 +248,12 @@ describe('PinnedScrollbar', () => {
 		expect(document.getElementById(controls!)).toBe(ref.current);
 
 		unmount();
-		ref.current!.remove();
 	});
 
-	// A dangling aria-controls is invisible in a rendered-DOM assertion. It only
-	// shows up when you resolve the id, which is what assistive tech does.
 	test('aria-controls points at a host-supplied container id instead of a fresh one', async () => {
 		const ref = makeScrollRef(1000, 400);
 		ref.current!.id = 'host-app-scroll-container';
-		document.body.appendChild(ref.current!);
+		attach(ref.current!);
 		const { container, unmount } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
 
 		await act(async () => {
@@ -255,19 +261,16 @@ describe('PinnedScrollbar', () => {
 		});
 
 		const thumb = container.querySelector('.rdt_pinnedScrollbarThumb') as HTMLElement;
-		// The container already had an id, so the effect leaves it alone, and the thumb
-		// must follow it rather than pointing at its own unused useId value.
 		expect(ref.current!.id).toBe('host-app-scroll-container');
 		expect(thumb.getAttribute('aria-controls')).toBe('host-app-scroll-container');
 		expect(document.getElementById(thumb.getAttribute('aria-controls')!)).toBe(ref.current);
 
 		unmount();
-		ref.current!.remove();
 	});
 
 	test('aria-controls survives a remount onto the same container', async () => {
 		const ref = makeScrollRef(1000, 400);
-		document.body.appendChild(ref.current!);
+		attach(ref.current!);
 
 		// First mount stamps the container with its useId value.
 		const first = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
@@ -290,17 +293,14 @@ describe('PinnedScrollbar', () => {
 		expect(document.getElementById(thumb.getAttribute('aria-controls')!)).toBe(ref.current);
 
 		second.unmount();
-		ref.current!.remove();
 	});
 
-	// The effect keys on the *ref object*, so pointing the component at a
-	// different container mid-life re-runs it. The container swapped in already
-	// has an id, so nothing is stamped and aria-controls has to follow it.
+	// The effect re-runs when the ref object changes, and the container swapped
+	// in keeps its own id.
 	test('aria-controls re-points when the scroll container is swapped for another one', async () => {
-		const first = makeScrollRef(1000, 400).current!;
-		const second = makeScrollRef(1000, 400).current!;
+		const first = attach(makeScrollRef(1000, 400).current!);
+		const second = attach(makeScrollRef(1000, 400).current!);
 		second.id = 'second-scroll-container';
-		document.body.append(first, second);
 
 		let swap!: (el: HTMLDivElement) => void;
 		function SwapHarness({ initial }: { initial: HTMLDivElement }): JSX.Element {
@@ -324,15 +324,12 @@ describe('PinnedScrollbar', () => {
 		expect(document.getElementById(controls!)).toBe(second);
 
 		unmount();
-		first.remove();
-		second.remove();
 	});
 
-	// Reverse of the host-supplied-id case: the stamp happens first and the host
-	// takes the id over afterwards, so the remount sees an id it did not write.
+	// The host takes the id over after the first mount stamped one.
 	test('aria-controls follows an id the host assigns after the first mount stamped one', async () => {
 		const ref = makeScrollRef(1000, 400);
-		document.body.appendChild(ref.current!);
+		attach(ref.current!);
 
 		const first = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
 		await act(async () => {
@@ -351,15 +348,13 @@ describe('PinnedScrollbar', () => {
 		expect(document.getElementById(thumb.getAttribute('aria-controls')!)).toBe(ref.current);
 
 		second.unmount();
-		ref.current!.remove();
 	});
 
-	// Control, green before and after the fix: two scrollbars on one page each
-	// point at their own container.
-	test('two concurrent scrollbars each control their own container (control)', async () => {
+	test('two concurrent scrollbars each control their own container', async () => {
 		const a = makeScrollRef(1000, 400);
 		const b = makeScrollRef(1000, 400);
-		document.body.append(a.current!, b.current!);
+		attach(a.current!);
+		attach(b.current!);
 
 		const firstRender = renderWithTheme(<PinnedScrollbar scrollRef={a} leftInset={0} rightInset={0} />);
 		const secondRender = renderWithTheme(<PinnedScrollbar scrollRef={b} leftInset={0} rightInset={0} />);
@@ -378,20 +373,12 @@ describe('PinnedScrollbar', () => {
 
 		firstRender.unmount();
 		secondRender.unmount();
-		a.current!.remove();
-		b.current!.remove();
 	});
 
-	// Control: the effect bails at `if (!el) return` before it can stamp an id or
-	// call setControlsId, and `visible` never flips, so no thumb, and no
-	// aria-controls, is emitted at all. Green before and after the fix; it pins
-	// that the new state doesn't leak an attribute onto a scrollbar that the
-	// early return means was never rendered.
-	test('emits no thumb and no aria-controls when the scroll ref is empty (control)', async () => {
+	// An empty scroll ref renders no scrollbar.
+	test('emits no thumb and no aria-controls when the scroll ref is empty', () => {
 		const ref = { current: null } as React.RefObject<HTMLDivElement>;
 		const { container, unmount } = renderWithTheme(<PinnedScrollbar scrollRef={ref} leftInset={0} rightInset={0} />);
-
-		await act(async () => {});
 
 		expect(container.querySelector('.rdt_pinnedScrollbarTrack')).toBeNull();
 		expect(container.querySelector('.rdt_pinnedScrollbarThumb')).toBeNull();

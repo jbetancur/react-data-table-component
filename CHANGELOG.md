@@ -40,8 +40,8 @@ These are accessibility fixes, but they change the rendered markup, so tests tha
 - The column filter button now reports `aria-expanded` and `aria-haspopup="dialog"` instead of `aria-pressed`, which described it as a toggle rather than something that opens a panel. → [Filtering](/docs/filtering)
 
 ### Bug fixes
-- **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
 
+- **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
 - Set filter checkboxes now use the table's own checkbox styling instead of the browser's native control, so they match the row selection checkboxes and follow the theme. → [Filtering](/docs/filtering)
 - Keyboard focus in the context menu is now distinguishable from mouse hover. Both painted the same background, so arrowing through the menu while the pointer rested on another item highlighted two items at once. → [Context menu](/docs/context-menu)
 - Checkboxes now show a focus ring when tabbed to. The styled checkbox hides the real input and draws its own box, which had no focus style, so keyboard users tabbing through row selection or a set filter checklist could not see where they were. → [Row selection](/docs/selection)
