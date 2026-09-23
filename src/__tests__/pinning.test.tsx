@@ -140,13 +140,15 @@ function makeScrollRef(scrollWidth = 1000, clientWidth = 400): React.RefObject<H
 
 describe('PinnedScrollbar', () => {
 	const attached: HTMLElement[] = [];
-	const attach = (el: HTMLElement): HTMLElement => {
+	const attach = <T extends HTMLElement>(el: T): T => {
 		document.body.appendChild(el);
 		attached.push(el);
 		return el;
 	};
 	afterEach(() => {
-		for (const el of attached.splice(0)) el.remove();
+		for (const el of attached.splice(0)) {
+			el.remove();
+		}
 	});
 
 	test('renders null before ResizeObserver fires (no overflow detected yet)', () => {
