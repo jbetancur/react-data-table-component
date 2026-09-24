@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.11.1
+
+### Bug fixes
+
+- **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
+
+---
+
 ## 8.11.0
 
 ### Behavior changes
@@ -41,7 +49,6 @@ These are accessibility fixes, but they change the rendered markup, so tests tha
 
 ### Bug fixes
 
-- **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
 - Set filter checkboxes now use the table's own checkbox styling instead of the browser's native control, so they match the row selection checkboxes and follow the theme. → [Filtering](/docs/filtering)
 - Keyboard focus in the context menu is now distinguishable from mouse hover. Both painted the same background, so arrowing through the menu while the pointer rested on another item highlighted two items at once. → [Context menu](/docs/context-menu)
 - Checkboxes now show a focus ring when tabbed to. The styled checkbox hides the real input and draws its own box, which had no focus style, so keyboard users tabbing through row selection or a set filter checklist could not see where they were. → [Row selection](/docs/selection)
