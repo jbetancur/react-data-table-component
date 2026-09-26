@@ -303,3 +303,168 @@ describe('inline editing: custom editor', () => {
 		expect(onCellEdit).not.toHaveBeenCalled();
 	});
 });
+
+describe('inline editing: textarea editor', () => {
+	test('renders a textarea with default rows (3) and commits on blur', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea', placeholder: 'Enter description' },
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		expect(textarea.tagName.toLowerCase()).toBe('textarea');
+		expect(textarea).toHaveAttribute('rows', '3');
+		expect(textarea).toHaveAttribute('placeholder', 'Enter description');
+
+		fireEvent.change(textarea, { target: { value: 'Alice\nLine 2\nLine 3' } });
+		fireEvent.blur(textarea);
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		expect(onCellEdit.mock.calls[0][1]).toBe('Alice\nLine 2\nLine 3');
+	});
+
+	test('renders a textarea with custom rows', async () => {
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea', rows: 5 },
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		expect(textarea).toHaveAttribute('rows', '5');
+	});
+
+	test('Enter key does not commit, allowing newlines', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea' },
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		fireEvent.change(textarea, { target: { value: 'Alice\nNext line' } });
+		fireEvent.keyDown(textarea, { key: 'Enter' });
+
+		// Enter should NOT commit for textarea
+		expect(onCellEdit).not.toHaveBeenCalled();
+		expect(textarea).toHaveValue('Alice\nNext line');
+	});
+
+	test('Ctrl+Enter commits the edit', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea' },
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		fireEvent.change(textarea, { target: { value: 'Alice\nNote line' } });
+		fireEvent.keyDown(textarea, { key: 'Enter', ctrlKey: true });
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		expect(onCellEdit.mock.calls[0][1]).toBe('Alice\nNote line');
+	});
+
+	test('Cmd/Meta+Enter commits the edit', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea' },
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		fireEvent.change(textarea, { target: { value: 'Alice\nMac note' } });
+		fireEvent.keyDown(textarea, { key: 'Enter', metaKey: true });
+
+		await waitFor(() => expect(onCellEdit).toHaveBeenCalled());
+		expect(onCellEdit.mock.calls[0][1]).toBe('Alice\nMac note');
+	});
+
+	test('Escape cancels the edit without committing', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea' },
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		fireEvent.change(textarea, { target: { value: 'Alicia\nDraft' } });
+		fireEvent.keyDown(textarea, { key: 'Escape' });
+
+		await waitFor(() => expect(screen.queryByRole('textbox')).not.toBeInTheDocument());
+		expect(onCellEdit).not.toHaveBeenCalled();
+		expect(getByText('Alice')).toBeInTheDocument();
+	});
+
+	test('validates textarea edits and displays error tooltip on rejection', async () => {
+		const onCellEdit = vi.fn();
+		const columns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: 'Name',
+				selector: r => r.name,
+				editor: { type: 'textarea' },
+				validate: value => (value.trim().length < 5 ? 'Minimum 5 characters' : true),
+				onCellEdit,
+			},
+		];
+
+		const { getByText } = render(<DataTable columns={columns} data={rows} />);
+		clickCell(getByText, 'Alice');
+
+		const textarea = await screen.findByDisplayValue('Alice');
+		fireEvent.change(textarea, { target: { value: 'Hi' } });
+		fireEvent.keyDown(textarea, { key: 'Enter', ctrlKey: true });
+
+		await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent('Minimum 5 characters'));
+		expect(textarea).toHaveAttribute('aria-invalid', 'true');
+		expect(onCellEdit).not.toHaveBeenCalled();
+	});
+});
