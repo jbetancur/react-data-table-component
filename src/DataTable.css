@@ -50,7 +50,6 @@
 	overflow-x: auto;
 	overflow-y: hidden;
 	min-height: 0;
-	overscroll-behavior-x: contain;
 	touch-action: pan-x pan-y;
 	-webkit-overflow-scrolling: touch;
 }
@@ -60,7 +59,6 @@
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	min-height: 0;
-	overscroll-behavior-x: contain;
 	touch-action: pan-x pan-y;
 }
 
