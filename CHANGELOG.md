@@ -6,6 +6,7 @@ A summary of notable changes per release. For the full commit history see the [r
 
 ### New features
 
+- **`textarea` cell editor** — multi-line text editor with newline insertion, modifier-key/blur commit, and row height expansion. → [Inline editing](/docs/inline-editing) ([#1354](https://github.com/jbetancur/react-data-table-component/issues/1354))
 - **`column.filterOptions`** — per-column set filter settings. `values` supplies the checklist instead of deriving it from the loaded rows, so a column can offer values the current page does not hold. Takes an array or a function of the rows. → [Filtering](/docs/filtering#supplying-set-values) ([#1372](https://github.com/jbetancur/react-data-table-component/issues/1372))
 - **`column.filterOptions.separator`** — splits a set filter cell holding several values, so a column formatted as "React, TypeScript" offers each tag in the checklist rather than the whole string. A row matches when any of its parts is selected. → [Filtering](/docs/filtering#multi-value-cells)
 
