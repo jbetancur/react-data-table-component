@@ -12,8 +12,9 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <p>
     Click an editable cell to swap its content for an inline editor. Commit with <kbd>Enter</kbd>
-    or by clicking away; <kbd>Esc</kbd> discards the change. The library doesn't own your data
-. You handle the update in <code>onCellEdit</code>.
+    (or <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> for textareas) or by clicking away;
+    <kbd>Esc</kbd> discards the change. The library doesn't own your data. You handle the update
+    in <code>onCellEdit</code>.
   </p>
 
   <p>
@@ -548,7 +549,7 @@ interface CustomCellEditorContext<T> {
       ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for a text editor. Equivalent to <code>editor: &#123; type: \'text\' &#125;</code>. Ignored when <code>editor</code> is set.'],
       ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <a href="#celleditor">CellEditor</a> above for the full union.'],
       ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.'],
-      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
+      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> for textareas, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
     ]}
   />
 
