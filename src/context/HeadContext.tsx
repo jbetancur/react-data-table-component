@@ -9,6 +9,7 @@ import type { SelectAllSlice } from '../hooks/useSelection';
 import type { SortingSlice } from '../hooks/useSorting';
 
 export interface HeadContextValue<T> {
+	tableId: string;
 	/** Sorting feature slice — `sortColumns` inside it changes identity per sort
 	 *  interaction; TableCol's memo does per-column checks within the slice. */
 	sorting: SortingSlice<T>;

@@ -86,14 +86,14 @@ describe('ColumnFilter:viewport positioning', () => {
 	// `direction` sets. Guards the plumbing the standalone renders above skip.
 	test('picks up RTL from the table wrapper', () => {
 		anchor = new DOMRect(400, 40, 22, 22);
-		const { getAllByRole, getByRole } = render(
+		const { getByRole } = render(
 			<DataTable
 				data={[{ name: 'Amir' }]}
 				columns={[{ name: 'Name', selector: (r: { name: string }) => r.name, filterable: true }]}
 				direction={Direction.RTL}
 			/>,
 		);
-		fireEvent.click(getAllByRole('button', { name: 'Filter column' })[0]);
+		fireEvent.click(getByRole('button', { name: 'Filter column: Name' }));
 		expect(getByRole('dialog').style.left).toBe('82px');
 	});
 

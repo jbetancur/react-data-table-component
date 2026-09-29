@@ -270,6 +270,8 @@ function ConditionLogicGroup({
 
 type ColumnFilterProps = {
 	columnId: string | number;
+	/** Appended to the filter button label so repeated filter buttons can be told apart. */
+	columnName?: string;
 	filterValue: FilterState;
 	filterType?: FilterType;
 	options?: ColumnFilterOptions;
@@ -280,6 +282,7 @@ type ColumnFilterProps = {
 
 export default function ColumnFilter({
 	columnId,
+	columnName,
 	filterValue,
 	filterType = 'text',
 	options = {},
@@ -412,6 +415,9 @@ export default function ColumnFilter({
 	}, [open]);
 
 	const isActive = isFilterActive(filterValue);
+	const buttonLabel = isActive
+		? (options.filterActiveAriaLabel ?? 'Filter active')
+		: (options.filterColumnAriaLabel ?? 'Filter column');
 
 	function applied(): FilterState {
 		if (!isSet || pending.values === undefined) {
@@ -480,11 +486,7 @@ export default function ColumnFilter({
 				ref={buttonRef}
 				type="button"
 				className={['rdt_filterIcon', isActive && 'rdt_filterIconActive'].filter(Boolean).join(' ')}
-				aria-label={
-					isActive
-						? (options.filterActiveAriaLabel ?? 'Filter active')
-						: (options.filterColumnAriaLabel ?? 'Filter column')
-				}
+				aria-label={columnName ? `${buttonLabel}: ${columnName}` : buttonLabel}
 				aria-haspopup="dialog"
 				aria-expanded={open}
 				onClick={e => {

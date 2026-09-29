@@ -6,10 +6,17 @@ interface CellEditorProps<T> {
 	edit: CellEditApi<T>;
 	row: T;
 	column: TableColumn<T>;
+	/** Id of the column header's name, so any `column.name` node labels the editor. */
+	labelledBy: string;
 	cellNavigation: boolean;
 }
 
-function CellEditor<T>({ edit, row, column, cellNavigation }: CellEditorProps<T>): JSX.Element {
+function CellEditor<T>({ edit, row, column, labelledBy, cellNavigation }: CellEditorProps<T>): JSX.Element {
+	// aria-label is the fallback browsers use when the header isn't rendered (noTableHead).
+	const labelProps = {
+		'aria-labelledby': labelledBy,
+		'aria-label': typeof column.name === 'string' ? column.name : undefined,
+	};
 	const {
 		editor,
 		editing,
@@ -32,6 +39,7 @@ function CellEditor<T>({ edit, row, column, cellNavigation }: CellEditorProps<T>
 					ref={inputRef as React.RefObject<HTMLInputElement>}
 					type={editor.type === 'text' ? undefined : editor.type}
 					className="rdt_editInput"
+					{...labelProps}
 					value={editValue}
 					placeholder={editor.type === 'date' ? undefined : editor.placeholder}
 					min={editor.type === 'text' ? undefined : editor.min}
@@ -73,6 +81,7 @@ function CellEditor<T>({ edit, row, column, cellNavigation }: CellEditorProps<T>
 					<input
 						type="checkbox"
 						className="rdt_editCheckbox"
+						{...labelProps}
 						aria-checked={seedValue() === 'true'}
 						checked={seedValue() === 'true'}
 						tabIndex={cellNavigation ? -1 : undefined}
@@ -85,6 +94,7 @@ function CellEditor<T>({ edit, row, column, cellNavigation }: CellEditorProps<T>
 				<select
 					ref={inputRef as React.RefObject<HTMLSelectElement>}
 					className="rdt_editSelect"
+					{...labelProps}
 					value={editValue}
 					aria-invalid={!!editError}
 					onChange={e => {
