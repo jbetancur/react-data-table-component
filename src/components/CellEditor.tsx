@@ -52,6 +52,21 @@ function CellEditor<T>({ edit, row, column, labelledBy, cellNavigation }: CellEd
 					onClick={e => e.stopPropagation()}
 				/>
 			)}
+			{editing && editor?.type === 'textarea' && (
+				<textarea
+					ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+					className="rdt_editTextarea"
+					{...labelProps}
+					value={editValue}
+					placeholder={editor.placeholder}
+					rows={editor.rows ?? 3}
+					aria-invalid={!!editError}
+					onChange={e => setEditValue(e.target.value)}
+					onBlur={() => commitEdit()}
+					onKeyDown={handleInputKeyDown}
+					onClick={e => e.stopPropagation()}
+				/>
+			)}
 			{editor?.type === 'checkbox' && (
 				// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 				<div

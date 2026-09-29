@@ -921,7 +921,8 @@
    the cell keeps its horizontal padding (and thus its original width — no
    jitter). It stretches vertically because the cell uses align-items:stretch. */
 .rdt_editInput,
-.rdt_editSelect {
+.rdt_editSelect,
+.rdt_editTextarea {
 	display: block;
 	box-sizing: border-box;
 	width: calc(100% + 2 * var(--rdt-cell-padding-x, 16px));
@@ -938,7 +939,16 @@
 	-webkit-appearance: none;
 }
 
-.rdt_editInput::placeholder {
+.rdt_editTextarea {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	resize: vertical;
+	font-family: inherit;
+	line-height: inherit;
+}
+
+.rdt_editInput::placeholder,
+.rdt_editTextarea::placeholder {
 	color: var(--rdt-color-text-secondary, rgba(0, 0, 0, 0.54));
 	opacity: 0.7;
 }
@@ -970,7 +980,8 @@
 
 /* Dense rows shrink the editor height to match */
 .rdt_rowDense .rdt_editInput,
-.rdt_rowDense .rdt_editSelect {
+.rdt_rowDense .rdt_editSelect,
+.rdt_rowDense .rdt_editTextarea {
 	min-height: 32px;
 }
 

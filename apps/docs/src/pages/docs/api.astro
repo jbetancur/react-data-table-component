@@ -175,6 +175,7 @@ const columns: TableColumn<MyRow>[] = [
 
 type CellEditor<T = unknown> =
   | { type: 'text'; placeholder?: string }
+  | { type: 'textarea'; placeholder?: string; rows?: number }
   | { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
   | { type: 'date'; min?: string; max?: string }
   | { type: 'checkbox' }
@@ -202,8 +203,9 @@ interface CustomCellEditorContext<T> {
   <DocsTable
     headers={['Variant', 'Field', 'Type', 'Description']}
     rows={[
-      ['All', '<code>type</code>', '<code>"text" | "number" | "date" | "checkbox" | "select" | "custom"</code>', 'Editor widget to render.'],
-      ['<code>text</code> / <code>number</code> / <code>select</code>', '<code>placeholder</code>', '<code>string</code>', 'Placeholder text. For <code>select</code>, shown as a disabled hidden option when the current value is empty.'],
+      ['All', '<code>type</code>', '<code>"text" | "textarea" | "number" | "date" | "checkbox" | "select" | "custom"</code>', 'Editor widget to render.'],
+      ['<code>text</code> / <code>textarea</code> / <code>number</code> / <code>select</code>', '<code>placeholder</code>', '<code>string</code>', 'Placeholder text. For <code>select</code>, shown as a disabled hidden option when the current value is empty.'],
+      ['<code>textarea</code>', '<code>rows</code>', '<code>number</code>', 'Visible text lines for multi-line editing (default: 3). Forwarded to native <code>&lt;textarea&gt;</code>.'],
       ['<code>number</code>', '<code>min</code> / <code>max</code> / <code>step</code>', '<code>number</code>', 'Forwarded to the native <code>&lt;input type="number"&gt;</code>.'],
       ['<code>date</code>', '<code>min</code> / <code>max</code>', '<code>string</code>', 'Forwarded to the native <code>&lt;input type="date"&gt;</code> as ISO dates.'],
       ['<code>select</code>', '<code>options</code>', '<code>{ value: string; label: ReactNode }[]</code>', 'Dropdown options. The <code>value</code> is what gets committed; <code>label</code> is displayed (must be string or number inside native <code>&lt;option&gt;</code>).'],
@@ -219,6 +221,7 @@ interface CustomCellEditorContext<T> {
       ['<code>rdt_cellEditable</code>', 'Cell container', 'Added on every cell that has an editor defined (idle state).'],
       ['<code>rdt_cellEditing</code>', 'Cell container', 'Added while the editor is open. Removes padding and paints the focus ring.'],
       ['<code>rdt_editInput</code>', '<code>&lt;input&gt;</code>', 'Text editor control inside an editing cell.'],
+      ['<code>rdt_editTextarea</code>', '<code>&lt;textarea&gt;</code>', 'Multi-line textarea editor control inside an editing cell.'],
       ['<code>rdt_editSelect</code>', '<code>&lt;select&gt;</code>', 'Dropdown editor control inside an editing cell.'],
     ]}
   />

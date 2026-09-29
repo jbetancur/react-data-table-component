@@ -12,13 +12,14 @@ import DocsTable from '../../components/DocsTable.astro';
 
   <p>
     Click an editable cell to swap its content for an inline editor. Commit with <kbd>Enter</kbd>
-    or by clicking away; <kbd>Esc</kbd> discards the change. The library doesn't own your data
-. You handle the update in <code>onCellEdit</code>.
+    (or <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> for textareas) or by clicking away;
+    <kbd>Esc</kbd> discards the change. The library doesn't own your data. You handle the update
+    in <code>onCellEdit</code>.
   </p>
 
   <p>
-    Six editor types are built in: <code>text</code>, <code>number</code>, <code>date</code>,
-    <code>checkbox</code>, <code>select</code>, and <code>custom</code>. The cell itself becomes
+    Seven editor types are built in: <code>text</code>, <code>textarea</code>, <code>number</code>,
+    <code>date</code>, <code>checkbox</code>, <code>select</code>, and <code>custom</code>. The cell itself becomes
     the editor: full-bleed input, primary-color focus ring, no nested borders. Add a
     <code>validate</code> function on any column to reject invalid input or surface an inline
     error message.
@@ -146,6 +147,18 @@ export default function App() {
 { id: 'name', name: 'Name', selector: r => r.name,
   editor: { type: 'text', placeholder: 'Enter a name…' },
   onCellEdit }`} />
+
+  <h3>Multi-line text (textarea)</h3>
+  <p>
+    For multi-line notes, descriptions, or addresses. <kbd>Enter</kbd> inserts a newline, while
+    <kbd>Ctrl</kbd>+<kbd>Enter</kbd>, <kbd>Cmd</kbd>+<kbd>Enter</kbd>, or clicking away (blur) commits the edit:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'notes', name: 'Notes', selector: r => r.notes,
+  editor: { type: 'textarea', placeholder: 'Add notes…', rows: 3 },
+  onCellEdit,
+}`} />
 
   <h3>Number input</h3>
   <p>
@@ -456,14 +469,16 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Styling the input</h2>
   <p>
-    Editor controls have class <code>rdt_editInput</code> (text) and <code>rdt_editSelect</code>
-    (dropdown). Both inherit font and color from the cell and stretch to fill its full
-    footprint. The cell itself uses <code>rdt_cellEditable</code> (idle hover state) and
-    <code>rdt_cellEditing</code> (active edit state). Override any of them in your stylesheet:
+    Editor controls have class <code>rdt_editInput</code> (text), <code>rdt_editTextarea</code>
+    (multi-line text), and <code>rdt_editSelect</code> (dropdown). All inherit font and color
+    from the cell and stretch to fill its full footprint. The cell itself uses
+    <code>rdt_cellEditable</code> (idle hover state) and <code>rdt_cellEditing</code> (active edit state).
+    Override any of them in your stylesheet:
   </p>
 
   <CodeBlock code={`/* Make the input bigger and chunkier */
 .rdt_editInput,
+.rdt_editTextarea,
 .rdt_editSelect {
   font-size: 14px;
   font-weight: 500;
@@ -488,7 +503,7 @@ const columns: TableColumn<Employee>[] = [
 
   <h2>Limitations</h2>
   <ul>
-    <li>Built-in editors cover text, number, date, checkbox, and select. For autocomplete, multi-line text, rich pickers, etc. use the <code>custom</code> editor.</li>
+    <li>Built-in editors cover text, textarea, number, date, checkbox, and select. For autocomplete, rich pickers, etc. use the <code>custom</code> editor.</li>
     <li>The <code>value</code> passed to <code>onCellEdit</code> and <code>validate</code> is always a string. Parse it yourself.</li>
     <li>Dropdown <code>label</code>s must be strings or numbers. They render inside native <code>&lt;option&gt;</code> elements which can't contain arbitrary React content.</li>
     <li>There is no built-in "dirty" indicator or undo stack. Track that in your application state if you need it.</li>
@@ -499,6 +514,7 @@ const columns: TableColumn<Employee>[] = [
 
   <CodeBlock code={`type CellEditor<T = unknown> =
   | { type: 'text'; placeholder?: string }
+  | { type: 'textarea'; placeholder?: string; rows?: number }
   | { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
   | { type: 'date'; min?: string; max?: string }
   | { type: 'checkbox' }
@@ -533,7 +549,7 @@ interface CustomCellEditorContext<T> {
       ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for a text editor. Equivalent to <code>editor: &#123; type: \'text\' &#125;</code>. Ignored when <code>editor</code> is set.'],
       ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <a href="#celleditor">CellEditor</a> above for the full union.'],
       ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.'],
-      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
+      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> for textareas, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
     ]}
   />
 

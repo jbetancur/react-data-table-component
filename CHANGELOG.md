@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.12.0
+
+### New features
+
+- **`textarea` cell editor** — multi-line text editor with newline insertion, modifier-key/blur commit, and row height expansion. → [Inline editing](/docs/inline-editing) ([#1354](https://github.com/jbetancur/react-data-table-component/issues/1354))
+
+---
+
 ## 8.11.0
 
 ### Behavior changes

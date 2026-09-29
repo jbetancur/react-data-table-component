@@ -12,14 +12,55 @@ interface Employee {
 	status: Status;
 	salary: number;
 	remote: boolean;
+	notes: string;
 }
 
 const initialData: Employee[] = [
-	{ id: 1, name: 'Aria Chen', department: 'Engineering', status: 'Active', salary: 155000, remote: true },
-	{ id: 2, name: 'Marcus Webb', department: 'Product', status: 'Active', salary: 132000, remote: false },
-	{ id: 3, name: 'Priya Kapoor', department: 'Design', status: 'On Leave', salary: 118000, remote: true },
-	{ id: 4, name: 'Jordan Ellis', department: 'Analytics', status: 'Active', salary: 143000, remote: false },
-	{ id: 5, name: 'Sam Rivera', department: 'Engineering', status: 'Terminated', salary: 128000, remote: false },
+	{
+		id: 1,
+		name: 'Aria Chen',
+		department: 'Engineering',
+		status: 'Active',
+		salary: 155000,
+		remote: true,
+		notes: 'Tech lead on the platform team.\nMentoring two juniors.',
+	},
+	{
+		id: 2,
+		name: 'Marcus Webb',
+		department: 'Product',
+		status: 'Active',
+		salary: 132000,
+		remote: false,
+		notes: 'Focusing on Q3 roadmap and feature delivery.',
+	},
+	{
+		id: 3,
+		name: 'Priya Kapoor',
+		department: 'Design',
+		status: 'On Leave',
+		salary: 118000,
+		remote: true,
+		notes: 'Returning next month.\nDesign system lead.',
+	},
+	{
+		id: 4,
+		name: 'Jordan Ellis',
+		department: 'Analytics',
+		status: 'Active',
+		salary: 143000,
+		remote: false,
+		notes: 'Leading the ETL pipeline migration project.',
+	},
+	{
+		id: 5,
+		name: 'Sam Rivera',
+		department: 'Engineering',
+		status: 'Terminated',
+		salary: 128000,
+		remote: false,
+		notes: 'Completed handover of all open tickets.',
+	},
 ];
 
 const statusColors: Record<Status, string> = {
@@ -107,6 +148,14 @@ export default function InlineEditingDemo() {
 			onCellEdit: handleCellEdit,
 		},
 		{
+			id: 'notes',
+			name: 'Notes',
+			selector: r => r.notes,
+			wrap: true,
+			editor: { type: 'textarea', placeholder: 'Add notes…', rows: 2 },
+			onCellEdit: handleCellEdit,
+		},
+		{
 			id: 'remote',
 			name: 'Remote',
 			selector: r => r.remote,
@@ -121,7 +170,9 @@ export default function InlineEditingDemo() {
 		<div className="space-y-2">
 			<p className="text-xs text-gray-400">
 				Click any cell to edit. <strong>Name</strong> and <strong>Salary</strong> are text inputs;{' '}
-				<strong>Department</strong> and <strong>Status</strong> are dropdowns; <strong>Remote</strong> is a checkbox.{' '}
+				<strong>Department</strong> and <strong>Status</strong> are dropdowns; <strong>Notes</strong> is a
+				multi-line textarea (<kbd>Enter</kbd> for newline, <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> or blur
+				to commit); <strong>Remote</strong> is a checkbox.{' '}
 				<kbd>Enter</kbd> commits, <kbd>Esc</kbd> cancels. <strong>Name</strong> and <strong>Salary</strong> are
 				validated: try committing an empty name or a negative salary to see the inline error. Keyboard navigation is
 				enabled too: click or Tab into the table, move between cells and headers with the arrow keys, and press{' '}

@@ -13,7 +13,7 @@ export interface CellEditApi<T> {
 	startEdit: () => void;
 	cancelEdit: () => void;
 	commitEdit: (value?: string) => void;
-	handleInputKeyDown: (e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement>) => void;
+	handleInputKeyDown: (e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
 	handleCheckboxCommit: (e: React.MouseEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -85,8 +85,15 @@ export default function useCellEdit<T>(column: TableColumn<T>, row: T, rowIndex:
 		[column, row, editValue, cancelEdit],
 	);
 
-	const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement>) => {
+	const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
 		if (e.key === 'Enter') {
+			if (editor?.type === 'textarea') {
+				if (e.ctrlKey || e.metaKey) {
+					e.preventDefault();
+					commitEdit();
+				}
+				return;
+			}
 			commitEdit();
 		}
 		if (e.key === 'Escape') {

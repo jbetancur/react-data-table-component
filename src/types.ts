@@ -462,6 +462,7 @@ export interface CustomCellEditorContext<T = unknown> {
 /** Options for inline cell editors. */
 export type CellEditor<T = unknown> =
 	| { type: 'text'; placeholder?: string }
+	| { type: 'textarea'; placeholder?: string; rows?: number }
 	| { type: 'number'; placeholder?: string; min?: number; max?: number; step?: number }
 	| { type: 'date'; min?: string; max?: string }
 	| { type: 'checkbox' }
