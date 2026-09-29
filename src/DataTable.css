@@ -1754,6 +1754,30 @@
 	animation: rdt_sortPulse 0.4s ease both;
 }
 
+/* ─── Keyboard focus ring ───────────────────────────────────────────────────── */
+/* Kept after the per-control `:focus { outline: none }` rules so it wins. The
+   background tint those rules apply is too faint to meet 3:1 non-text contrast. */
+.rdt_filterIcon:focus-visible,
+.rdt_kebabIcon:focus-visible,
+.rdt_expanderButton:focus-visible,
+.rdt_paginationButton:focus-visible {
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: 2px;
+}
+
+/* The sort control fills its header cell edge to edge, so an outset ring is clipped
+   and an inset one crowds the label. Ring the header cell instead, like the grid ring. */
+.rdt_TableCol:has(> .rdt_columnSortableEnabled:focus-visible) {
+	outline: 2px solid var(--rdt-color-primary, #1976d2);
+	outline-offset: -2px;
+}
+
+/* In a cellNavigation grid the expander is the cell's own focus target, and the
+   cell ring already marks it. */
+.rdt_table[role='grid'] .rdt_expanderButton:focus-visible {
+	outline: none;
+}
+
 /* Respect user's motion preference */
 @media (prefers-reduced-motion: reduce) {
 	.rdt_animatedRow,

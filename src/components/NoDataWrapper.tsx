@@ -4,5 +4,12 @@ import { useStyles } from '../context/StylesContext';
 
 export default function NoDataWrapper({ style, ...rest }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
 	const customStyles = useStyles();
-	return <div role="status" className="rdt_noData" style={{ ...customStyles.noData?.style, ...style }} {...rest} />;
+	// A table may only own rows, so the message sits in a single-cell row.
+	return (
+		<div role="row" className="rdt_noData" style={{ ...customStyles.noData?.style, ...style }}>
+			<div role="cell">
+				<div role="status" {...rest} />
+			</div>
+		</div>
+	);
 }

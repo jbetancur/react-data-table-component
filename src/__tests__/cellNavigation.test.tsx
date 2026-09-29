@@ -126,7 +126,7 @@ describe('cellNavigation', () => {
 		const { container } = render(<DataTable columns={sortableColumns} data={rows} cellNavigation />);
 
 		fireEvent.keyDown(getCells(container)[0], { key: 'ArrowUp' });
-		const header = getHeaders(container)[0];
+		const header = getHeaders(container)[0].querySelector<HTMLElement>('[data-sort-handle]')!;
 		expect(document.activeElement).toBe(header);
 
 		fireEvent.keyDown(header, { key: 'Enter' }); // sort asc (already ascending)

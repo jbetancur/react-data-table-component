@@ -38,7 +38,7 @@ function CellExpander<T>({
 			className="rdt_cellExpander"
 			$noPadding
 			style={customStyles.expanderCell?.style as React.CSSProperties}
-			role={nav ? 'gridcell' : undefined}
+			role={nav ? 'gridcell' : 'cell'}
 			tabIndex={nav ? -1 : undefined}
 			data-nav-row={nav?.row}
 			data-nav-col={nav?.col}

@@ -79,6 +79,7 @@
     "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.69.0",
     "@vitest/coverage-v8": "^5.0.0",
+    "axe-core": "^4.13.0",
     "concurrently": "^10.0.3",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",

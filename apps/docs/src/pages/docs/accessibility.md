@@ -37,7 +37,11 @@ Always provide `ariaLabel` so screen readers can identify `DataTable`. Without i
 | Header row | `role="row"` |
 | Data row | `role="row"`, `aria-selected` (when `selectableRows` is enabled) |
 | Data cell | `role="cell"` (or `role="gridcell"` with `cellNavigation`) |
-| Column header | `role="columnheader"` |
+| Column header | `role="columnheader"`, `aria-sort` (sortable columns). Contains the sort control, filter button and column menu button |
+| Sort control | `role="button"` inside the column header, focusable only when the column is sortable |
+| Expander and hidden select-all header slots | `role="cell"`, so header and body rows have the same number of cells |
+
+With `columnGroups`, the column headers sit in a single `role="row"`; the group labels above them are visual only.
 
 By default this is a **static table**: nothing but sortable headers is focusable, which is the right shape for a screen reader's native table-reading commands. Passing `cellNavigation` turns it into an interactive **grid** (WAI-ARIA grid pattern) instead — every cell becomes focusable via a single roving tab stop, and arrow keys move between them. See [Keyboard navigation](/docs/keyboard-navigation) for the full key reference and the reasoning for making this opt-in rather than the default.
 
@@ -45,7 +49,7 @@ By default this is a **static table**: nothing but sortable headers is focusable
 
 ## Sorting
 
-Sortable column headers expose `aria-sort` so screen readers announce the current direction.
+Sortable column headers expose `aria-sort` on the `role="columnheader"` element so screen readers announce the current direction.
 
 | State | `aria-sort` value |
 | --- | --- |
@@ -54,7 +58,7 @@ Sortable column headers expose `aria-sort` so screen readers announce the curren
 | Sorted Z → A / high → low | `"descending"` |
 | Column not sortable | attribute omitted |
 
-**Keyboard**: sortable headers receive `tabIndex={0}`. Press **Enter** or **Space** to toggle the sort direction. Non-sortable headers are removed from the tab order. Keyboard focus is indicated with a visible `:focus-visible` outline in the theme's primary color. With `cellNavigation` enabled, header cells instead participate in the grid's roving tabindex — see [Keyboard navigation](/docs/keyboard-navigation).
+**Keyboard**: the sort control inside a sortable header receives `tabIndex={0}`. Press **Enter** or **Space** to toggle the sort direction. Non-sortable headers are removed from the tab order. Keyboard focus draws a 2px `:focus-visible` ring in the theme's primary color (`--rdt-color-primary`) around the header cell. The filter, menu, expander and pagination buttons get the same ring. With `cellNavigation` enabled, header cells instead participate in the grid's roving tabindex: arrowing onto a sortable header focuses its sort control, and a non-sortable header takes focus itself. See [Keyboard navigation](/docs/keyboard-navigation).
 
 ---
 
@@ -72,14 +76,15 @@ When `selectableRows` is enabled:
 
 ## Column filters
 
-Each filterable column header contains a filter toggle button. The popup is a `role="dialog"`.
+Each filterable column header contains a filter toggle button, inside the `role="columnheader"` element. The popup is a `role="dialog"`.
 
 ### Filter toggle button
 
 | Attribute | Value |
 | --- | --- |
-| `aria-label` | `"Filter active"` when a filter is applied, `"Filter column"` otherwise |
-| `aria-pressed` | `true` while the popup is open, `false` when closed |
+| `aria-label` | `"Filter active: {name}"` when a filter is applied, `"Filter column: {name}"` otherwise. `{name}` is the column name when it is a string; otherwise the label has no suffix |
+| `aria-haspopup` | `"dialog"` |
+| `aria-expanded` | `true` while the popup is open, `false` when closed |
 
 ### Filter panel (popup)
 
@@ -111,6 +116,12 @@ Focus moves automatically to the first focusable element (the operator `<select>
 
 ---
 
+## Inline editing
+
+Editor inputs, selects and checkboxes are labelled by their column header through `aria-labelledby`, so the label matches whatever `column.name` renders, including React nodes. When the header is not rendered (`noTableHead`), a string `column.name` is used as the `aria-label` instead.
+
+---
+
 ## Expandable rows
 
 The expand toggle is a `<button>` with `aria-label="Expand Row"` or `"Collapse Row"`. Expanded content renders inline beneath the row and is read naturally by screen readers.
@@ -138,7 +149,7 @@ Disabled buttons have both `disabled` and `aria-disabled="true"`. The rows-per-p
 
 - While data is loading, the table wrapper carries `aria-busy="true"`. Skeleton rows are `aria-hidden="true"` so they are not read aloud.
 - When a re-fetch overlays existing rows, the overlay is `aria-hidden="true"` and `aria-busy` on the wrapper communicates the busy state.
-- When there is no data, the empty-state container has `role="status"` so screen readers announce the "no records" message when it appears.
+- When there is no data, the message renders in a single-cell row and is wrapped in `role="status"` so screen readers announce it when it appears.
 
 ---
 
@@ -152,6 +163,6 @@ Column resize handles are `aria-hidden="true"`. They are drag-only with no keybo
 
 - **Always provide `ariaLabel`.** Without it, screen readers announce a generic "table".
 - **Always set `id` on filterable columns.** The filter state is keyed by `column.id`; omitting it silently disables filtering.
-- **Use descriptive `name` values.** Column `name` is the visible label announced for sortable headers and filter dialogs.
+- **Use descriptive `name` values.** Column `name` labels the header, the sort control, the filter button and inline editors.
 - **Avoid icon-only column names without labels.** If `column.name` is a React node (e.g. an icon), wrap it with an accessible label (`aria-label` or a visually-hidden `<span>`).
 - **Test with a keyboard.** Tab through the header row, sort with Enter, open a filter panel with Enter or Space, navigate inputs with Tab, and close with Escape.

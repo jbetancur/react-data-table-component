@@ -8,6 +8,7 @@ import type { ExpansionSlice } from '../hooks/useExpansion';
 import type { RowSelectionSlice } from '../hooks/useSelection';
 
 export interface RowContextValue<T> {
+	tableId: string;
 	keyField: string;
 	columns: TableColumn<T>[];
 	dense: boolean;

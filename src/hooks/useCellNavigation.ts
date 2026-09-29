@@ -9,7 +9,7 @@ const NAV_KEYS = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Home', 'En
 // row when the exact coordinate has no cell (e.g. a header slot with no bulk action, like
 // the expander column). Cells flagged data-nav-widget hand focus to their single
 // interactive child — an input/button (row checkbox, expander button) or, for sortable
-// headers, the inner columnheader div — so Space/Enter activate it natively and the
+// headers, the inner sort handle — so Space/Enter activate it natively and the
 // visible focus ring (drawn on the outer cell via :focus-within) still spans the full
 // column width instead of just the inner element. A disabled widget falls back to the cell.
 function focusNavCell(root: HTMLElement, row: number, col: number): void {
@@ -28,7 +28,7 @@ function focusNavCell(root: HTMLElement, row: number, col: number): void {
 		return;
 	}
 	const widget = cell.dataset.navWidget
-		? cell.querySelector<HTMLElement>('input:not(:disabled), button:not(:disabled), [role="columnheader"]')
+		? cell.querySelector<HTMLElement>('input:not(:disabled), button:not(:disabled), [data-sort-handle]')
 		: null;
 	(widget ?? cell).focus();
 }

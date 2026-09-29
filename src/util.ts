@@ -306,6 +306,11 @@ export function findColumnIndexById<T>(columns: TableColumn<T>[], id: string | u
 	});
 }
 
+// Whitespace would split an aria-labelledby IDREF list.
+export function getColumnNameId(tableId: string, columnId: string | number | undefined): string {
+	return `${tableId}-col-${String(columnId).replace(/\s/g, '_')}-name`;
+}
+
 export function equalizeId(a: string | number | undefined, b: string | number | undefined): boolean {
 	return a == b;
 }

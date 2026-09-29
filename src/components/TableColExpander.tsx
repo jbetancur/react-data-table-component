@@ -8,6 +8,7 @@ function ColumnExpander(): JSX.Element {
 	return (
 		<CellBase
 			className="rdt_columnExpander"
+			role="cell"
 			$noPadding
 			style={customStyles.expanderCell?.style as React.CSSProperties}
 		/>

@@ -8,7 +8,7 @@ import ColumnExpander from './TableColExpander';
 import RightPinSpacer from './RightPinSpacer';
 import { CellBase } from './Cell';
 import { buildGridTemplateColumns, buildGroupHeaderCells, type GroupDragProps } from './dataTableHeadHelpers';
-import { getFirstRightPinnedId, getPrefixColCount } from '../util';
+import { getColumnNameId, getFirstRightPinnedId, getPrefixColCount } from '../util';
 import { flipElement } from '../dom';
 import type { TableColumn, ColumnGroup } from '../types';
 import { emptyFilterState } from '../hooks/useColumnFilter';
@@ -30,6 +30,7 @@ function DataTableHead<T>({
 	expandableRowsHideExpander,
 }: DataTableHeadProps<T>): JSX.Element {
 	const {
+		tableId,
 		sorting,
 		selectAll,
 		fixedHeader,
@@ -129,6 +130,7 @@ function DataTableHead<T>({
 	// ── Shared column props ──────────────────────────────────────────────────
 	const colProps = (column: TableColumn<T>) => ({
 		column,
+		nameId: getColumnNameId(tableId, column.id),
 		disabled: sorting.sortDisabled,
 		sorting,
 		// Per-column extraction keeps TableCol's memo per-column: only the filtered
@@ -167,14 +169,14 @@ function DataTableHead<T>({
 				<div
 					ref={containerRef}
 					className={['rdt_headGrid', dense && 'rdt_headGridDense'].filter(Boolean).join(' ')}
-					role="presentation"
+					role="row"
 					style={{ gridTemplateColumns }}
 				>
 					{/* ── Prefix cells — span both grid rows ── */}
 					{selectableRows && (
 						<div style={{ gridColumn: '1', gridRow: '1 / span 2', display: 'flex', alignItems: 'stretch' }}>
 							{selectAll?.hideSelectAll ? (
-								<CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)', width: '100%' }} />
+								<CellBase role="cell" style={{ flex: '0 0 var(--rdt-system-col-width, 48px)', width: '100%' }} />
 							) : (
 								<ColumnCheckbox />
 							)}
@@ -238,7 +240,7 @@ function DataTableHead<T>({
 			<HeadRow ref={containerRef} className="rdt_TableHeadRow" role="row" $dense={dense}>
 				{selectableRows &&
 					(selectAll?.hideSelectAll ? (
-						<CellBase style={{ flex: '0 0 var(--rdt-system-col-width, 48px)' }} />
+						<CellBase role="cell" style={{ flex: '0 0 var(--rdt-system-col-width, 48px)' }} />
 					) : (
 						<ColumnCheckbox />
 					))}

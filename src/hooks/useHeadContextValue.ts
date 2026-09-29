@@ -12,6 +12,7 @@ export default function useHeadContextValue<T>(options: HeadContextValue<T>): He
 		// not on every fresh `options` object the caller passes in.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[
+			options.tableId,
 			options.sorting,
 			options.fixedHeader,
 			options.dense,
