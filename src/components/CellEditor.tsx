@@ -56,6 +56,7 @@ function CellEditor<T>({ edit, row, column, labelledBy, cellNavigation }: CellEd
 				<textarea
 					ref={inputRef as React.RefObject<HTMLTextAreaElement>}
 					className="rdt_editTextarea"
+					{...labelProps}
 					value={editValue}
 					placeholder={editor.placeholder}
 					rows={editor.rows ?? 3}
