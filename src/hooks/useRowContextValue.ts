@@ -12,6 +12,7 @@ export default function useRowContextValue<T>(options: RowContextValue<T>): RowC
 		// not on every fresh `options` object the caller passes in.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[
+			options.tableId,
 			options.keyField,
 			options.columns,
 			options.dense,

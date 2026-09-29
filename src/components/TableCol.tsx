@@ -37,6 +37,8 @@ function getAriaSort(
 
 type TableColProps<T> = {
 	column: TableColumn<T>;
+	/** Referenced by the inline editor's aria-labelledby. */
+	nameId: string;
 	disabled: boolean;
 	draggingColumnId?: string | number;
 	/** Sorting feature slice — areColPropsEqual does per-column checks within it. */
@@ -64,6 +66,7 @@ type TableColProps<T> = {
 
 function TableCol<T>({
 	column,
+	nameId,
 	disabled,
 	draggingColumnId,
 	sorting,
@@ -169,6 +172,7 @@ function TableCol<T>({
 	const disableSort = !column.sortable || disabled;
 	const ariaSort = getAriaSort(disableSort, sortActive, columnSortDirection);
 	const isNavActive = !!cellNavigation && activeCell?.row === -1 && activeCell?.col === navCol;
+	const hasSortHandle = !!column.name && !disableSort;
 	// With cellNavigation the whole grid is one Tab stop (roving tabindex); otherwise
 	// only sortable headers are tabbable.
 	const tabIndex = cellNavigation ? getTabIndex(!isNavActive) : getTabIndex(disableSort);
@@ -231,15 +235,20 @@ function TableCol<T>({
 			onPointerDown={column.reorder ? columnDrag.onPointerDown : undefined}
 			onContextMenu={headerMenu?.rightClick ? (e: React.MouseEvent) => headerMenu.onContextMenu(column, e) : undefined}
 			{...outerNavAttributes}
-			data-nav-widget={cellNavigation && column.name ? 'true' : undefined}
-			{...(cellNavigation && !column.name ? { role: 'columnheader', tabIndex } : undefined)}
+			// The filter and menu buttons must sit inside the columnheader: a row may only own cells.
+			role="columnheader"
+			aria-sort={ariaSort}
+			data-nav-widget={cellNavigation && hasSortHandle ? 'true' : undefined}
+			tabIndex={cellNavigation && !hasSortHandle ? tabIndex : undefined}
 		>
 			{column.name && (
 				<div
+					id={nameId}
 					data-column-id={column.id}
 					data-sort-id={column.id}
-					role="columnheader"
-					tabIndex={tabIndex}
+					data-sort-handle={hasSortHandle ? 'true' : undefined}
+					role={hasSortHandle ? 'button' : undefined}
+					tabIndex={hasSortHandle ? tabIndex : undefined}
 					className={[
 						'rdt_TableCol_Sortable',
 						'rdt_columnSortable',
@@ -250,7 +259,6 @@ function TableCol<T>({
 						.join(' ')}
 					onClick={!disableSort ? handleClick : undefined}
 					onKeyDown={!disableSort ? handleKeyDown : undefined}
-					aria-sort={ariaSort}
 				>
 					{!disableSort && customSortIconRight && renderCustomSortIcon()}
 					{!disableSort && nativeSortIconRight && renderNativeSortIcon(sortActive)}
@@ -277,6 +285,7 @@ function TableCol<T>({
 			{column.filterable && column.id != null && (
 				<ColumnFilter
 					columnId={column.id}
+					columnName={typeof column.name === 'string' ? column.name : undefined}
 					filterValue={filterValue}
 					filterType={column.filterType}
 					options={filterLocalization}
@@ -318,6 +327,9 @@ function TableCol<T>({
 
 function areColPropsEqual<T>(prevProps: TableColProps<T>, nextProps: TableColProps<T>): boolean {
 	if (prevProps.column !== nextProps.column) {
+		return false;
+	}
+	if (prevProps.nameId !== nextProps.nameId) {
 		return false;
 	}
 	if (prevProps.headerMenu !== nextProps.headerMenu) {

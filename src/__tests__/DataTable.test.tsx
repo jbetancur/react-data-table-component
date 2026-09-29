@@ -821,7 +821,7 @@ describe('DataTable::sorting', () => {
 		const lastCall = onSortMock.mock.calls[onSortMock.mock.calls.length - 1];
 		expect(lastCall[0]).toEqual({});
 		expect(lastCall[3]).toEqual([]);
-		expect(target().getAttribute('aria-sort')).toBe('none');
+		expect(target().closest('[role="columnheader"]')?.getAttribute('aria-sort')).toBe('none');
 	});
 
 	test('Ctrl+click adds a second sort column when sortMulti is enabled', () => {

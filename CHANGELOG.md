@@ -2,6 +2,29 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.11.0
+
+### Behavior changes
+
+These are accessibility fixes, but they change the rendered markup, so tests that query the header by role may need updating.
+
+- `role="columnheader"` and `aria-sort` now sit on the outer header cell (`.rdt_TableCol`) for every column. The inner `.rdt_columnSortable` element is now a `role="button"` sort control, and is only focusable when the column is sortable. Tests or styles that selected the inner element by `[role="columnheader"]` should use `.rdt_TableCol` or `[data-sort-handle]` instead.
+- Clicking the `columnheader` element in a test no longer sorts, because the click handler is on the sort control inside it. Replace `fireEvent.click(getByRole('columnheader', { name: 'Name' }))` with `fireEvent.click(getByRole('button', { name: 'Name' }))`. Real mouse clicks are unaffected.
+- A column header's accessible name now includes the buttons inside it, so an exact-match `getByRole('columnheader', { name: 'Name' })` no longer matches on filterable or menu columns. Query the sort control with `getByRole('button', { name: 'Name' })`, or match the header with a regex.
+- The filter button's label now includes the column name ("Filter column: Name"), so screen reader users can tell several filter buttons apart. The column name is appended to a custom `filterColumnAriaLabel` / `filterActiveAriaLabel` as well. → [Filtering](/docs/filtering)
+
+### Bug fixes
+
+- The column filter and header menu buttons no longer sit outside their column header. They were owned directly by the header row, which failed axe `aria-required-children` and left screen readers with no column context for them. ([#1398](https://github.com/jbetancur/react-data-table-component/issues/1398))
+- The row expander cell now has `role="cell"`, so the expand button is no longer a direct child of the row. The expander and hidden select-all header slots are now cells too, so header and body cell counts line up.
+- Grouped headers (`columnGroups`) now render their column headers inside a `role="row"`. They previously had no row parent at all.
+- The "no data" message now sits in a row and cell instead of directly inside the table, which only allows rows.
+- Inline editor inputs, selects and checkboxes are now labelled by their column header, including when `column.name` is a React node. They previously had no accessible name. → [Inline editing](/docs/inline-editing)
+- Keyboard focus is now clearly visible on the sort control, filter button, column and row menu buttons, expander button and pagination buttons. They removed the browser outline and showed focus only as a faint gray tint (or, for the sort control, by fading), which did not meet 3:1 contrast. They now get a 2px ring in the theme's primary color, shown for keyboard focus only. → [Accessibility](/docs/accessibility)
+- Horizontal scrolling over the table now scrolls the page or container around it once the table has no more to scroll. The responsive wrapper set `overscroll-behavior-x: contain`, which swallowed side-scroll and swipe gestures, most noticeably on mobile and trackpads. ([#1392](https://github.com/jbetancur/react-data-table-component/issues/1392))
+
+---
+
 ## 8.10.0
 
 ### New features

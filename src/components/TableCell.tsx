@@ -11,6 +11,7 @@ import {
 	getPinnedCellMeta,
 	getCellWidthProps,
 	getRovingTabIndex,
+	getColumnNameId,
 } from '../util';
 import type { TableColumn } from '../types';
 
@@ -90,7 +91,7 @@ function PlainCell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }
 
 function EditableCell<T>({ id, column, row, rowIndex, navCol, dataTag, isDragging }: CellProps<T>): JSX.Element {
 	const customStyles = useStyles();
-	const { columnDrag, columnWidths, pinnedOffsets, cellNavigation, activeCell } = useRowContext<T>();
+	const { tableId, columnDrag, columnWidths, pinnedOffsets, cellNavigation, activeCell } = useRowContext<T>();
 	const resizedWidth = column.id != null ? columnWidths[column.id] : undefined;
 	const { conditionalStyle, classNames } = getConditionalStyle(row, column.conditionalCellStyles, ['rdt_TableCell']);
 
@@ -181,7 +182,15 @@ function EditableCell<T>({ id, column, row, rowIndex, navCol, dataTag, isDraggin
 			onKeyDown={cellNavigation ? handleCellKeyDown : undefined}
 			onClick={editor && !editing && editor.type !== 'checkbox' ? startEdit : undefined}
 		>
-			{editor && <CellEditor edit={edit} row={row} column={column} cellNavigation={!!cellNavigation} />}
+			{editor && (
+				<CellEditor
+					edit={edit}
+					row={row}
+					column={column}
+					labelledBy={getColumnNameId(tableId, column.id)}
+					cellNavigation={!!cellNavigation}
+				/>
+			)}
 			{!editing && editor?.type !== 'checkbox' && (
 				<>
 					{!column.cell && (

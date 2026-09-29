@@ -492,6 +492,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	});
 
 	const rowContextValue = useRowContextValue<T>({
+		tableId,
 		keyField,
 		columns: effectiveColumns,
 		dense,
@@ -512,6 +513,7 @@ function DataTableInner<T>(props: TableProps<T>, ref: React.ForwardedRef<DataTab
 	});
 
 	const headContextValue = useHeadContextValue<T>({
+		tableId,
 		sorting,
 		fixedHeader,
 		dense,
