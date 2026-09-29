@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -16,8 +17,24 @@
 }
 
 @layer base {
+  html {
+    color-scheme: light;
+    --docs-surface: #fff;
+    --docs-surface-muted: #f9fafb;
+    --docs-border: #e5e7eb;
+    --docs-text: #1f2937;
+    --docs-text-muted: #6b7280;
+  }
+  html.dark {
+    color-scheme: dark;
+    --docs-surface: #030712;
+    --docs-surface-muted: #111827;
+    --docs-border: #374151;
+    --docs-text: #e5e7eb;
+    --docs-text-muted: #9ca3af;
+  }
   body {
-    @apply antialiased text-gray-900 bg-white;
+    @apply antialiased text-gray-900 bg-white dark:text-gray-100 dark:bg-gray-950;
     overscroll-behavior-x: none;
   }
 }
@@ -26,8 +43,7 @@
 
 /* Fenced / preformatted blocks */
 article pre:not(.mermaid) {
-  @apply bg-gray-950 rounded-xl px-5 py-4 overflow-x-auto my-5 text-sm leading-relaxed;
-  border: 1px solid rgba(255,255,255,0.06);
+  @apply rounded-xl px-5 py-4 overflow-x-auto my-5 text-sm leading-relaxed border border-gray-200 dark:border-gray-800;
 }
 
 article pre.mermaid {
@@ -35,8 +51,14 @@ article pre.mermaid {
   border: none;
 }
 article pre code {
-  @apply font-mono text-gray-200 bg-transparent p-0;
+  @apply font-mono bg-transparent p-0;
   font-size: 0.82rem;
+}
+
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
 }
 
 /* Reset dark pre styles inside .not-prose callout blocks (but not Shiki code blocks) */
@@ -55,7 +77,7 @@ article .not-prose pre:not(.astro-code) code {
 
 /* Inline code */
 article code:not(pre code) {
-  @apply font-mono text-brand-700 bg-brand-50 rounded px-1.5 py-0.5;
+  @apply font-mono text-brand-700 bg-brand-50 rounded px-1.5 py-0.5 dark:text-brand-200 dark:bg-brand-900/30;
   font-size: 0.82em;
 }
 
@@ -64,29 +86,29 @@ article table {
   @apply w-full border-collapse text-sm my-5;
 }
 article th {
-  @apply text-left px-3 py-2 bg-gray-50 border border-gray-200 font-semibold text-gray-700;
+  @apply text-left px-3 py-2 bg-gray-50 border border-gray-200 font-semibold text-gray-700 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-300;
 }
 article td {
-  @apply px-3 py-2 border border-gray-200 text-gray-600;
+  @apply px-3 py-2 border border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-400;
 }
 
 /* Headings — scroll-margin clears the sticky 56px header on anchor jumps */
-article h1 { @apply text-2xl font-bold text-gray-900 mb-3; }
-article h2 { @apply text-lg font-semibold text-gray-900 mt-8 mb-3 pt-4 border-t border-gray-100 scroll-mt-20; }
-article h3 { @apply text-base font-semibold text-gray-800 mt-5 mb-2 scroll-mt-20; }
-article p  { @apply text-gray-600 leading-relaxed mb-3; }
-article ul { @apply list-disc pl-5 space-y-1 text-gray-600 mb-4; }
-article ol { @apply list-decimal pl-5 space-y-1 text-gray-600 mb-4; }
+article h1 { @apply text-2xl font-bold text-gray-900 mb-3 dark:text-gray-100; }
+article h2 { @apply text-lg font-semibold text-gray-900 mt-8 mb-3 pt-4 border-t border-gray-100 scroll-mt-20 dark:text-gray-100 dark:border-gray-800; }
+article h3 { @apply text-base font-semibold text-gray-800 mt-5 mb-2 scroll-mt-20 dark:text-gray-200; }
+article p  { @apply text-gray-600 leading-relaxed mb-3 dark:text-gray-400; }
+article ul { @apply list-disc pl-5 space-y-1 text-gray-600 mb-4 dark:text-gray-400; }
+article ol { @apply list-decimal pl-5 space-y-1 text-gray-600 mb-4 dark:text-gray-400; }
 article li { @apply leading-relaxed; }
-article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
+article a  { @apply text-brand-600 hover:text-brand-700 hover:underline dark:text-brand-400 dark:hover:text-brand-200; }
 
 /* ── Pagefind search UI ────────────────────────────────────────────────────── */
 #pagefind-ui-root {
   --pagefind-ui-scale: 1;
   --pagefind-ui-primary: #2563eb;
-  --pagefind-ui-text: #111827;
-  --pagefind-ui-background: #ffffff;
-  --pagefind-ui-border: #e5e7eb;
+  --pagefind-ui-text: var(--docs-text);
+  --pagefind-ui-background: var(--docs-surface);
+  --pagefind-ui-border: var(--docs-border);
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: 8px;
   --pagefind-ui-tag: #eff6ff;
@@ -103,14 +125,14 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
 /* Input — restore padding Tailwind preflight strips, left clears the magnifier icon */
 #pagefind-ui-root .pagefind-ui__search-input {
   padding: 0 calc(70px * var(--pagefind-ui-scale)) 0 calc(54px * var(--pagefind-ui-scale)) !important;
-  background: #fff !important;
-  color: #111827 !important;
+  background: var(--docs-surface) !important;
+  color: var(--docs-text) !important;
   font-family: var(--pagefind-ui-font) !important;
   font-size: 1rem !important;
   font-weight: 500 !important;
   box-sizing: border-box !important;
   border-radius: 8px 8px 0 0 !important;
-  border-bottom: 1px solid #e5e7eb !important;
+  border-bottom: 1px solid var(--docs-border) !important;
 }
 
 #pagefind-ui-root .pagefind-ui__search-input:focus {
@@ -121,8 +143,8 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
 
 /* Clear button */
 #pagefind-ui-root .pagefind-ui__search-clear {
-  background: #fff !important;
-  color: #6b7280 !important;
+  background: var(--docs-surface) !important;
+  color: var(--docs-text-muted) !important;
   font-size: 0.75rem !important;
 }
 
@@ -139,7 +161,7 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
 
 #pagefind-ui-root .pagefind-ui__message {
   font-size: 0.8rem !important;
-  color: #6b7280 !important;
+  color: var(--docs-text-muted) !important;
   font-weight: 500 !important;
   height: auto !important;
   padding: 0.75rem 0 0.5rem !important;
@@ -148,7 +170,7 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
 /* Individual result */
 #pagefind-ui-root .pagefind-ui__result {
   padding: 0.75rem 0 !important;
-  border-top: 1px solid #f3f4f6 !important;
+  border-top: 1px solid var(--docs-border) !important;
   gap: 0 !important;
 }
 
@@ -173,7 +195,7 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
 
 #pagefind-ui-root .pagefind-ui__result-excerpt {
   font-size: 0.8rem !important;
-  color: #6b7280 !important;
+  color: var(--docs-text-muted) !important;
   margin: 0 !important;
   line-height: 1.5 !important;
   min-width: unset !important;
@@ -202,3 +224,38 @@ article a  { @apply text-brand-600 hover:text-brand-700 hover:underline; }
   background: #eff6ff !important;
   border-color: #2563eb !important;
 }
+
+/* Demo content uses a few intentionally simple Tailwind colors. Re-map those
+   utilities in dark mode so controls and explanatory panels stay legible even
+   when an individual demo does not need a bespoke dark class. */
+.not-prose {
+  --demo-muted-text: #6b7280;
+  --demo-success-bg: #f0fdf4;
+  --demo-success-border: #16a34a;
+  --demo-danger-bg: #fef2f2;
+  --demo-danger-border: #dc2626;
+}
+
+html.dark .not-prose {
+  --demo-muted-text: #d1d5db;
+  --demo-success-bg: #052e16;
+  --demo-success-border: #22c55e;
+  --demo-danger-bg: #450a0a;
+  --demo-danger-border: #f87171;
+}
+
+html.dark .not-prose .bg-white { background-color: #111827 !important; }
+html.dark .not-prose .bg-gray-50 { background-color: #1f2937 !important; }
+html.dark .not-prose .bg-gray-100 { background-color: #374151 !important; }
+html.dark .not-prose .border-gray-100 { border-color: #374151 !important; }
+html.dark .not-prose .border-gray-200 { border-color: #4b5563 !important; }
+html.dark .not-prose .border-gray-300 { border-color: #6b7280 !important; }
+html.dark .not-prose .text-gray-900 { color: #f3f4f6 !important; }
+html.dark .not-prose .text-gray-800 { color: #e5e7eb !important; }
+html.dark .not-prose .text-gray-700 { color: #d1d5db !important; }
+html.dark .not-prose .text-gray-600 { color: #d1d5db !important; }
+html.dark .not-prose .text-gray-500 { color: #9ca3af !important; }
+html.dark .not-prose .text-gray-400 { color: #9ca3af !important; }
+html.dark .not-prose .text-brand-600 { color: #60a5fa !important; }
+html.dark .not-prose .hover\:bg-gray-50:hover { background-color: #1f2937 !important; }
+html.dark .not-prose .hover\:bg-gray-100:hover { background-color: #374151 !important; }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import DataTable, { type ConditionalStyles, type TableColumn } from 'react-data-table-component';
+import { type ConditionalStyles, type TableColumn } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
 
 interface Ticker {
 	symbol: string;

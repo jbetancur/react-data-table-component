@@ -135,7 +135,7 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
           <label for="rdt-version-switcher" class="sr-only">Documentation version</label>
           <select
             id="rdt-version-switcher"
-            class="text-xs font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full px-2 py-0.5 pr-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-200 appearance-none bg-no-repeat bg-right"
+            class="text-xs font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full px-2 py-0.5 pr-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-200 appearance-none bg-no-repeat bg-right dark:text-brand-200 dark:bg-brand-900/30"
             style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 12%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22%231d4ed8%22 stroke-width=%221.5%22><path d=%22M3 4.5l3 3 3-3%22/></svg>'); background-position: right 6px center;"
             onchange="if (this.value && this.value !== 'current') { window.location.href = this.value; }"
           >
@@ -163,8 +163,8 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
                     href={href}
                     class={`block px-2 py-1 rounded-md ${
                       currentPath === href
-                        ? 'bg-brand-50 text-brand-700 font-medium'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                        ? 'bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-200 font-medium'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-900'
                     }`}
                   >
                     {label}
@@ -272,9 +272,9 @@ function HeadlessTable({ data }: { data: Employee[] }) {
 
       <!-- Prev / Next navigation -->
       {(prevLink || nextLink) && (
-        <nav class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between gap-4 text-sm">
+        <nav class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between gap-4 text-sm dark:border-gray-800">
           {prevLink ? (
-            <a href={prevLink.href} class="group flex items-center gap-2 text-gray-500 hover:text-brand-600 transition-colors">
+            <a href={prevLink.href} class="group flex items-center gap-2 text-gray-500 hover:text-brand-600 transition-colors dark:text-gray-400 dark:hover:text-brand-400">
               <span class="text-lg leading-none">←</span>
               <span>
                 <span class="block text-xs text-gray-400 group-hover:text-brand-400">Previous</span>
@@ -283,7 +283,7 @@ function HeadlessTable({ data }: { data: Employee[] }) {
             </a>
           ) : <span />}
           {nextLink ? (
-            <a href={nextLink.href} class="group flex items-center gap-2 text-right text-gray-500 hover:text-brand-600 transition-colors ml-auto">
+            <a href={nextLink.href} class="group flex items-center gap-2 text-right text-gray-500 hover:text-brand-600 transition-colors ml-auto dark:text-gray-400 dark:hover:text-brand-400">
               <span>
                 <span class="block text-xs text-gray-400 group-hover:text-brand-400">Next</span>
                 <span class="font-medium">{nextLink.label}</span>

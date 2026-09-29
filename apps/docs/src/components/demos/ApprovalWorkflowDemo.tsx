@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import DataTable, { type DataTableHandle, type TableColumn } from 'react-data-table-component';
+import { type DataTableHandle, type TableColumn } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
 
 type Status = 'pending' | 'approved' | 'rejected' | 'needs-info';
 

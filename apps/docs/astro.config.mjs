@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
 	site: 'https://reactdatatable.com',
 	markdown: {
-		shikiConfig: { theme: 'catppuccin-macchiato' },
+		shikiConfig: { themes: { light: 'catppuccin-latte', dark: 'catppuccin-macchiato' } },
 	},
 	integrations: [react(), sitemap()],
 	vite: {

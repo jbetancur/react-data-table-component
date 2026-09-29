@@ -93,11 +93,11 @@ const columns = [
 
 function ExpandedRow({ data }: { data: Row }) {
 	return (
-		<div className="px-6 py-4 bg-gray-50 border-t border-gray-100 text-sm text-gray-600 grid grid-cols-2 gap-x-8 gap-y-1.5">
-			<div><span className="font-medium text-gray-700">Department:</span> {data.department}</div>
-			<div><span className="font-medium text-gray-700">Status:</span> {data.status}</div>
-			<div><span className="font-medium text-gray-700">Salary:</span> ${data.salary.toLocaleString()}</div>
-			<div><span className="font-medium text-gray-700">Role:</span> {data.role}</div>
+		<div className="px-6 py-4 bg-gray-50 border-t border-gray-100 text-sm text-gray-600 grid grid-cols-2 gap-x-8 gap-y-1.5 dark:bg-gray-900 dark:border-gray-800 dark:text-gray-400">
+			<div><span className="font-medium text-gray-700 dark:text-gray-300">Department:</span> {data.department}</div>
+			<div><span className="font-medium text-gray-700 dark:text-gray-300">Status:</span> {data.status}</div>
+			<div><span className="font-medium text-gray-700 dark:text-gray-300">Salary:</span> ${data.salary.toLocaleString()}</div>
+			<div><span className="font-medium text-gray-700 dark:text-gray-300">Role:</span> {data.role}</div>
 		</div>
 	);
 }
@@ -118,7 +118,7 @@ export default function LiveDemo() {
 		`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
 			active
 				? 'bg-brand-600 text-white border-brand-600'
-				: 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+				: 'bg-white dark:bg-gray-950 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-gray-300'
 		}`;
 
 	const toggleClass = (active: boolean) =>
@@ -127,12 +127,12 @@ export default function LiveDemo() {
 		}`;
 
 	return (
-		<div className="rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+		<div className="rounded-xl border border-gray-200 overflow-hidden shadow-sm dark:border-gray-700">
 			{/* Toolbar */}
-			<div className="flex flex-col gap-3 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm">
+			<div className="flex flex-col gap-3 px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm dark:bg-gray-900 dark:border-gray-700">
 				{/* Theme row */}
 				<div className="flex items-center gap-2 flex-wrap">
-					<span className="text-gray-500 font-medium shrink-0">Theme</span>
+					<span className="text-gray-500 font-medium shrink-0 dark:text-gray-400">Theme</span>
 					{THEMES.map(t => (
 						<button key={t} onClick={() => setTheme(t)} className={btnClass(theme === t)}>
 							{t.charAt(0).toUpperCase() + t.slice(1)}
@@ -148,7 +148,7 @@ export default function LiveDemo() {
 						['Striped', striped, setStriped],
 						['Animate', animateRows, setAnimateRows],
 					] as [string, boolean, (v: boolean) => void][]).map(([label, value, setter]) => (
-						<label key={label} className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none">
+						<label key={label} className="flex items-center gap-1.5 text-gray-500 cursor-pointer select-none dark:text-gray-400">
 							<button
 								role="switch"
 								aria-checked={value}
@@ -162,7 +162,7 @@ export default function LiveDemo() {
 					))}
 
 					{selectable && selectedCount > 0 && (
-						<span className="text-brand-600 font-medium shrink-0 ml-auto">{selectedCount} selected</span>
+						<span className="text-brand-600 font-medium shrink-0 ml-auto dark:text-brand-400">{selectedCount} selected</span>
 					)}
 				</div>
 			</div>
@@ -172,7 +172,7 @@ export default function LiveDemo() {
 				columns={columns}
 				data={data}
 				theme={theme}
-				colorMode="light"
+				colorMode="system"
 				striped={striped}
 				highlightOnHover
 				selectableRows={selectable}

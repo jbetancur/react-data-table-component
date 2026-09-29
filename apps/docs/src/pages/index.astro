@@ -33,24 +33,24 @@ function fmt(n: number): string {
 	<section class="max-w-7xl mx-auto px-6 pt-20 pb-16 text-center">
 		<div class="flex items-center justify-center gap-3 mb-6 flex-wrap">
 			<div
-				class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 text-xs font-medium px-3 py-1 rounded-full border border-brand-100"
+				class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 text-xs font-medium px-3 py-1 rounded-full border border-brand-100 dark:bg-brand-900/30 dark:text-brand-200"
 			>
 				{version} · No peer deps · React 18+
 			</div>
 			<a
 				href="/docs/changelog"
-				class="inline-flex items-center gap-1 text-xs font-medium text-brand-600 hover:text-brand-700 hover:underline"
+				class="inline-flex items-center gap-1 text-xs font-medium text-brand-600 hover:text-brand-700 hover:underline dark:text-brand-400 dark:hover:text-brand-200"
 			>
 				What's new in v8 →
 			</a>
 		</div>
 
-		<h1 class="text-5xl font-bold tracking-tight text-gray-900 max-w-3xl mx-auto leading-tight">
+		<h1 class="text-5xl font-bold tracking-tight text-gray-900 max-w-3xl mx-auto leading-tight dark:text-gray-100">
 			A working data table<br />
-			<span class="text-brand-600">in 10 lines of React</span>
+			<span class="text-brand-600 dark:text-brand-400">in 10 lines of React</span>
 		</h1>
 
-		<p class="mt-5 text-lg text-gray-500 max-w-xl mx-auto">
+		<p class="mt-5 text-lg text-gray-500 max-w-xl mx-auto dark:text-gray-400">
 			Sorting, pagination, row selection, inline editing, expandable rows, and theming, all included. No
 			boilerplate. No CSS file. No paid tier.
 		</p>
@@ -66,7 +66,7 @@ function fmt(n: number): string {
 				href="https://github.com/jbetancur/react-data-table-component"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-gray-600 px-5 py-2.5 rounded-lg font-medium hover:text-gray-900 border border-gray-200 hover:border-gray-300"
+				class="text-gray-600 px-5 py-2.5 rounded-lg font-medium hover:text-gray-900 border border-gray-200 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-100 dark:border-gray-700 dark:hover:border-gray-600"
 			>
 				GitHub
 			</a>
@@ -74,7 +74,7 @@ function fmt(n: number): string {
 
 		<!-- Install snippet -->
 		<div class="mt-8 inline-flex items-center gap-4 bg-gray-950 text-gray-100 rounded-lg px-5 py-3 font-mono text-sm group relative">
-			<span><span class="text-gray-500">$</span> npm install react-data-table-component</span>
+			<span><span class="text-gray-500 dark:text-gray-400">$</span> npm install react-data-table-component</span>
 			<button
 				id="install-copy-btn"
 				aria-label="Copy install command"
@@ -104,19 +104,19 @@ function fmt(n: number): string {
 		<!-- Social proof stats -->
 		<div class="mt-10 flex items-center justify-center gap-8 flex-wrap text-center">
 			<div>
-				<div class="text-2xl font-bold text-gray-900">{fmt(weeklyDownloads)}</div>
+				<div class="text-2xl font-bold text-gray-900 dark:text-gray-100">{fmt(weeklyDownloads)}</div>
 				<div class="text-xs text-gray-400 mt-0.5">weekly downloads</div>
 			</div>
-			<div class="w-px h-8 bg-gray-200 hidden sm:block"></div>
+			<div class="w-px h-8 bg-gray-200 hidden sm:block dark:bg-gray-700"></div>
 			<div>
 				<a href="https://github.com/jbetancur/react-data-table-component" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
-					<div class="text-2xl font-bold text-gray-900">{fmt(stars)}</div>
+					<div class="text-2xl font-bold text-gray-900 dark:text-gray-100">{fmt(stars)}</div>
 					<div class="text-xs text-gray-400 mt-0.5">GitHub stars</div>
 				</a>
 			</div>
-			<div class="w-px h-8 bg-gray-200 hidden sm:block"></div>
+			<div class="w-px h-8 bg-gray-200 hidden sm:block dark:bg-gray-700"></div>
 			<div>
-				<div class="text-2xl font-bold text-gray-900">2018</div>
+				<div class="text-2xl font-bold text-gray-900 dark:text-gray-100">2018</div>
 				<div class="text-xs text-gray-400 mt-0.5">actively maintained since</div>
 			</div>
 		</div>
@@ -147,8 +147,7 @@ export default function App() {
   return <DataTable columns={columns} data={data} pagination />;
 }`}
 				lang="tsx"
-				theme="catppuccin-macchiato"
-				defaultColor={false}
+				themes={{ light: 'catppuccin-latte', dark: 'catppuccin-macchiato' }}
 				class="rounded-xl text-sm leading-relaxed overflow-x-auto p-6"
 			/>
 		</div>
@@ -156,7 +155,7 @@ export default function App() {
 
 	<!-- Feature grid -->
 	<section class="max-w-7xl mx-auto px-6 py-20">
-		<h2 class="text-2xl font-bold text-center text-gray-900 mb-12">Everything included, nothing to configure</h2>
+		<h2 class="text-2xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Everything included, nothing to configure</h2>
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 			{
 				[
@@ -221,10 +220,10 @@ export default function App() {
 						desc: 'Works in Next.js App Router, Remix, and Astro. No useLayoutEffect warnings. Ships "use client" automatically.',
 					},
 				].map(({ icon, title, desc }) => (
-					<div class="border border-gray-100 rounded-xl p-5 hover:border-brand-200 hover:shadow-sm transition-all">
+					<div class="border border-gray-100 rounded-xl p-5 hover:border-brand-200 hover:shadow-sm transition-all dark:border-gray-800">
 						<div class="text-2xl mb-3">{icon}</div>
-						<h3 class="font-semibold text-gray-900 mb-1">{title}</h3>
-						<p class="text-sm text-gray-500">{desc}</p>
+						<h3 class="font-semibold text-gray-900 mb-1 dark:text-gray-100">{title}</h3>
+						<p class="text-sm text-gray-500 dark:text-gray-400">{desc}</p>
 					</div>
 				))
 			}
@@ -232,24 +231,24 @@ export default function App() {
 	</section>
 
 	<!-- Comparison table -->
-	<section class="bg-gray-50 py-20">
+	<section class="bg-gray-50 py-20 dark:bg-gray-900">
 		<div class="max-w-4xl mx-auto px-6">
-			<h2 class="text-2xl font-bold text-center text-gray-900 mb-3">How it compares</h2>
-			<p class="text-center text-sm text-gray-500 max-w-2xl mx-auto mb-10">
+			<h2 class="text-2xl font-bold text-center text-gray-900 mb-3 dark:text-gray-100">How it compares</h2>
+			<p class="text-center text-sm text-gray-500 max-w-2xl mx-auto mb-10 dark:text-gray-400">
 				All four are solid choices. The difference is how much you assemble yourself. This library optimizes
 				for a styled, working table with the least code, not for the largest feature surface.
 			</p>
 			<div class="overflow-x-auto">
 				<table
-					class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200"
+					class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:bg-gray-950 dark:border-gray-700"
 				>
 					<thead>
-						<tr class="bg-gray-50 border-b border-gray-200">
-							<th class="text-left px-4 py-3 text-gray-600 font-medium"></th>
-							<th class="text-center px-4 py-3 text-gray-600 font-medium">TanStack Table</th>
-							<th class="text-center px-4 py-3 text-gray-600 font-medium">AG Grid Community</th>
-							<th class="text-center px-4 py-3 text-gray-600 font-medium">MUI X Data Grid</th>
-							<th class="text-center px-4 py-3 text-brand-700 font-semibold bg-brand-50">This library</th>
+						<tr class="bg-gray-50 border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+							<th class="text-left px-4 py-3 text-gray-600 font-medium dark:text-gray-400"></th>
+							<th class="text-center px-4 py-3 text-gray-600 font-medium dark:text-gray-400">TanStack Table</th>
+							<th class="text-center px-4 py-3 text-gray-600 font-medium dark:text-gray-400">AG Grid Community</th>
+							<th class="text-center px-4 py-3 text-gray-600 font-medium dark:text-gray-400">MUI X Data Grid</th>
+							<th class="text-center px-4 py-3 text-brand-700 font-semibold bg-brand-50 dark:text-brand-200 dark:bg-brand-900/30">This library</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -266,17 +265,17 @@ export default function App() {
 								['Paid tiers', 'None', 'Enterprise', 'Pro & Premium', 'None'],
 							].map(([feature, tanstack, ag, mui, rdt], i) => (
 								<tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
-									<td class="px-4 py-2.5 text-gray-700 font-medium">{feature}</td>
-									<td class="px-4 py-2.5 text-center text-gray-500">{tanstack}</td>
-									<td class="px-4 py-2.5 text-center text-gray-500">{ag}</td>
-									<td class="px-4 py-2.5 text-center text-gray-500">{mui}</td>
-									<td class="px-4 py-2.5 text-center text-brand-700 font-medium bg-brand-50/30">{rdt}</td>
+									<td class="px-4 py-2.5 text-gray-700 font-medium dark:text-gray-300">{feature}</td>
+									<td class="px-4 py-2.5 text-center text-gray-500 dark:text-gray-400">{tanstack}</td>
+									<td class="px-4 py-2.5 text-center text-gray-500 dark:text-gray-400">{ag}</td>
+									<td class="px-4 py-2.5 text-center text-gray-500 dark:text-gray-400">{mui}</td>
+									<td class="px-4 py-2.5 text-center text-brand-700 font-medium bg-brand-50/30 dark:text-brand-200">{rdt}</td>
 								</tr>
 							))
 						}
 					</tbody>
 				</table>
-				<p class="text-center text-sm text-gray-500 mt-6 max-w-2xl mx-auto">
+				<p class="text-center text-sm text-gray-500 mt-6 max-w-2xl mx-auto dark:text-gray-400">
 					They're all great at what they do. This one's for when you want a styled, sortable,
 					paginated table working today, with nothing to configure and no tier to upgrade to.
 				</p>
@@ -289,8 +288,8 @@ export default function App() {
 
 	<!-- Sponsors -->
 	<section class="max-w-4xl mx-auto px-6 py-20 text-center">
-		<h2 class="text-xl font-semibold text-gray-900 mb-2">Sponsors</h2>
-		<p class="text-sm text-gray-500 mb-8">
+		<h2 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Sponsors</h2>
+		<p class="text-sm text-gray-500 mb-8 dark:text-gray-400">
 			Actively maintained since 2018. If your team ships products with it, consider sponsoring. It funds bug
 			fixes and keeps pace with the React ecosystem.
 		</p>
@@ -299,7 +298,7 @@ export default function App() {
 		<div class="flex flex-wrap items-center justify-center gap-6 mb-8">
 			<a
 				href="/support"
-				class="flex items-center justify-center gap-2 h-16 px-6 border-2 border-dashed border-gray-200 rounded-xl text-sm text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
+				class="flex items-center justify-center gap-2 h-16 px-6 border-2 border-dashed border-gray-200 rounded-xl text-sm text-gray-400 hover:border-brand-300 hover:text-brand-500 transition-colors dark:border-gray-700"
 			>
 				<span class="text-lg">♡</span> Be the first logo sponsor
 			</a>
@@ -307,22 +306,22 @@ export default function App() {
 
 		{backers.length > 0 && (
 			<div class="mb-8">
-				<h3 class="text-sm font-semibold text-gray-900 mb-1">Backers</h3>
-				<p class="text-sm text-gray-500 mb-4">Thank you to our backers for their recurring support.</p>
+				<h3 class="text-sm font-semibold text-gray-900 mb-1 dark:text-gray-100">Backers</h3>
+				<p class="text-sm text-gray-500 mb-4 dark:text-gray-400">Thank you to our backers for their recurring support.</p>
 				<ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
 					{backers.slice(0, 6).map(({ name, url }) => (
 						<li>
 							{url ? (
-								<a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium">{name}</a>
+								<a href={url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 font-medium dark:text-brand-400 dark:hover:text-brand-200">{name}</a>
 							) : (
-								<span class="text-gray-700 font-medium">{name}</span>
+								<span class="text-gray-700 font-medium dark:text-gray-300">{name}</span>
 							)}
 						</li>
 					))}
 				</ul>
 				{backers.length > 6 && (
 					<p class="text-sm mt-4">
-						<a href="/support#backers" class="text-brand-600 hover:text-brand-700 font-medium">See all →</a>
+						<a href="/support#backers" class="text-brand-600 hover:text-brand-700 font-medium dark:text-brand-400 dark:hover:text-brand-200">See all →</a>
 					</p>
 				)}
 			</div>
@@ -337,7 +336,7 @@ export default function App() {
 			</a>
 			<a
 				href="/support"
-				class="text-sm text-gray-500 hover:text-gray-700 border border-gray-200 px-5 py-2 rounded-lg hover:border-gray-300"
+				class="text-sm text-gray-500 hover:text-gray-700 border border-gray-200 px-5 py-2 rounded-lg hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
 			>
 				View sponsorship tiers →
 			</a>
@@ -345,10 +344,10 @@ export default function App() {
 	</section>
 
 	<!-- CTA -->
-	<section class="bg-gray-50 py-20">
+	<section class="bg-gray-50 py-20 dark:bg-gray-900">
 		<div class="max-w-3xl mx-auto px-6 text-center">
-			<h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to ship?</h2>
-			<p class="text-gray-500 mb-8">One install. No config. Working table in 10 lines.</p>
+			<h2 class="text-3xl font-bold text-gray-900 mb-4 dark:text-gray-100">Ready to ship?</h2>
+			<p class="text-gray-500 mb-8 dark:text-gray-400">One install. No config. Working table in 10 lines.</p>
 			<a
 				href="/docs/getting-started"
 				class="bg-brand-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-700 shadow-sm text-lg"

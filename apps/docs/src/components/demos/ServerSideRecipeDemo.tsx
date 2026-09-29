@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import DataTable, { type FilterState, SortOrder, type TableColumn } from 'react-data-table-component';
+import { type FilterState, SortOrder, type TableColumn } from 'react-data-table-component';
+import DataTable from '../ThemedDataTable';
 
 interface Employee {
 	id: number;

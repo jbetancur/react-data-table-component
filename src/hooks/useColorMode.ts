@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import type { ColorMode } from '../types';
 
 function detectDark(): boolean {
@@ -23,9 +23,14 @@ function detectDark(): boolean {
  * changes without a page reload.
  */
 export function useColorMode(mode: ColorMode = 'light'): 'light' | 'dark' {
-	const [systemResolved, setSystemResolved] = useState<'light' | 'dark'>(() => (detectDark() ? 'dark' : 'light'));
+	// Match the server render; the effect applies the browser preference after
+	// hydration so React also updates styles generated from the resolved mode.
+	const [systemResolved, setSystemResolved] = useState<'light' | 'dark'>('light');
 
-	useEffect(() => {
+	// Resolve the pre-paint <html class="dark"> marker before the browser paints
+	// hydrated tables. Falling back to useEffect keeps SSR warning-free.
+	const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+	useIsomorphicLayoutEffect(() => {
 		if (mode !== 'system') {
 			return;
 		}
