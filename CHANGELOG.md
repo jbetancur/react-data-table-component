@@ -2,6 +2,14 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.11.1
+
+### Bug fixes
+
+- **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
+
+---
+
 ## 8.11.0
 
 ### Behavior changes
