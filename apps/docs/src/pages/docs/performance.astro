@@ -47,7 +47,7 @@ import performanceSource from '../../components/demos/PerformanceDemo.tsx?raw';
     description="Pick a row and column count, then sort, filter, and paginate. The readout shows generation time and click-to-render time for the last interaction."
     code={performanceSource}
   >
-    <PerformanceDemo client:load />
+    <PerformanceDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Recommendations</h2>

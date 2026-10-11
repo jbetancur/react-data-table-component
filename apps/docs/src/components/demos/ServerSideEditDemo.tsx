@@ -43,7 +43,7 @@ export default function ServerSideEditDemo() {
 			setStatus({ ok: true, message: `Saved ${row.sku} → ${String(column.name)}: "${value}"` });
 		} catch (err) {
 			setData(prev => prev.map(r => (r.id === row.id ? { ...r, [field]: row[field] } : r)));
-			setStatus({ ok: false, message: `${(err as Error).message} — rolled back ${row.sku}` });
+			setStatus({ ok: false, message: `${(err as Error).message} (rolled back ${row.sku})` });
 		} finally {
 			setSavingId(null);
 		}
@@ -77,7 +77,7 @@ export default function ServerSideEditDemo() {
 		<div className="space-y-2">
 			<p className="text-xs text-gray-400">
 				Edits apply optimistically, then save to a simulated server with ~1s latency. The row dims while the save is in
-				flight. The server rejects any <strong>Price</strong> over $1,000 — try it to watch the edit roll back.
+				flight. The server rejects any <strong>Price</strong> over $1,000. Try it to watch the edit roll back.
 			</p>
 			<DataTable
 				columns={columns}

@@ -110,7 +110,7 @@ export default function App() {
   );
 }`}
   >
-    <ExpandableDemo client:load />
+    <ExpandableDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>The expander component</h2>
@@ -183,7 +183,7 @@ export default function App() {
   <h2>Expand all / collapse all</h2>
   <p>
     <code>expandableRowExpanded</code> re-syncs any time its result changes, so a single boolean
-    in state — driven by an "Expand all" button — expands or collapses every row at once. Rows a
+    in state, driven by an "Expand all" button, expands or collapses every row at once. Rows a
     user has manually toggled since then are left alone until the shared state changes again:
   </p>
   <CodeBlock code={`const [allExpanded, setAllExpanded] = useState(false);
@@ -260,7 +260,7 @@ export default function App() {
   <h2>Localization</h2>
   <p>
     Override the aria-labels on the expand/collapse button via the <code>localization</code> prop.
-    Use a pre-built locale or supply your own — every key is optional.
+    Use a pre-built locale or supply your own. Every key is optional.
   </p>
 
   <CodeBlock code={`// Drop-in locale

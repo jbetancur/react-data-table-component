@@ -24,10 +24,10 @@ const columns: TableColumn<Task>[] = [
 
 export default function RowContextMenuDemo(): JSX.Element {
 	const [rows, setRows] = useState<Task[]>(initialData);
-	const [lastAction, setLastAction] = useState('none yet — open the ⋮ menu on any row');
+	const [lastAction, setLastAction] = useState('none yet (open the ⋮ menu on any row)');
 	const [menuPosition, setMenuPosition] = useState<'start' | 'end'>('end');
 
-	// Row menu items are a function of the row, so they can vary per row —
+	// Row menu items are a function of the row, so they can vary per row:
 	// here "Mark done" disables itself once a task is already Done.
 	const rowActions = (row: Task): ContextMenuAction[] => [
 		{ id: 'mark-done', label: 'Mark done', disabled: row.status === 'Done' },

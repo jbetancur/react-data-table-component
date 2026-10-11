@@ -43,7 +43,7 @@ const columns: TableColumn<Employee>[] = [
   highlightOnHover
 />;`}
   >
-    <FixedHeaderDemo client:load />
+    <FixedHeaderDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>How it works</h2>
@@ -130,7 +130,7 @@ const columns: TableColumn<Employee>[] = [
 
   <Demo
     title="onScroll"
-    description="Scroll the table body — the current scrollTop value updates in real time."
+    description="Scroll the table body. The current scrollTop value updates in real time."
     code={`const [scrollTop, setScrollTop] = useState(0);
 
 <DataTable
@@ -141,7 +141,7 @@ const columns: TableColumn<Employee>[] = [
   onScroll={e => setScrollTop(Math.round((e.target as HTMLDivElement).scrollTop))}
 />;`}
   >
-    <OnScrollDemo client:load />
+    <OnScrollDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Prop reference</h2>

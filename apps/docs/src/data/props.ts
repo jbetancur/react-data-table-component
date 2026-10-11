@@ -957,8 +957,8 @@ export const dataTableProps: PropDef[] = [
     on: 'column',
     type: `${c("'left'")} | ${c("'right'")}`,
     default: '-',
-    description: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container — give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.`,
-    brief: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container — give columns explicit widths.`,
+    description: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.`,
+    brief: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths.`,
     group: 'Column features',
     features: ['column-pinning'],
   },
@@ -968,7 +968,7 @@ export const dataTableProps: PropDef[] = [
     name: 'contextMenu',
     type: `${c("boolean | { header?: boolean; row?: boolean; trigger?: 'right-click' | 'menu-button' | 'both'; menuPosition?: 'start' | 'end' }")}`,
     default: '-',
-    description: `Enable the context menu. ${c('true')} enables header and row menus with the right-click trigger. The header menu has built-in sort/pin/hide/reset actions; the row menu only opens when ${c('contextMenuActions.row')} returns items. ${c('menuPosition')} sets which inline edge the row menu button sits on (default ${c("'end'")} — right in LTR). See <a href="/docs/context-menu">Context menu</a>.`,
+    description: `Enable the context menu. ${c('true')} enables header and row menus with the right-click trigger. The header menu has built-in sort/pin/hide/reset actions; the row menu only opens when ${c('contextMenuActions.row')} returns items. ${c('menuPosition')} sets which inline edge the row menu button sits on (default ${c("'end'")}, right in LTR). See <a href="/docs/context-menu">Context menu</a>.`,
     brief: `Enable the context menu. ${c('true')} enables header and row menus with the right-click trigger. The header menu has built-in sort/pin/hide/reset actions; the row menu only opens when ${c('contextMenuActions.row')} returns items.`,
     group: 'Context menu',
     features: ['context-menu'],
@@ -1034,4 +1034,50 @@ export const propGroupOrder: PropGroup[] = [
   'Column features',
   'Context menu',
   'Localization',
+];
+
+// TableColumn<T> fields for the API reference. `section: 'inline-editing'` rows render
+// under their own heading.
+export interface ColumnPropDef {
+  name: string;
+  type: string;
+  description: string;
+  section?: 'inline-editing';
+}
+
+export const columnProps: ColumnPropDef[] = [
+  { name: 'id', type: '<code>string | number</code>', description: 'Stable identity used by <code>defaultSortFieldId</code>, <code>columnGroups</code>, and <code>filterValues</code>.' },
+  { name: 'name', type: '<code>ReactNode</code>', description: 'Column header label.' },
+  { name: 'selector', type: '<code>(row, index?) =&gt; Primitive | ReactNode</code>', description: 'Data accessor. For sortable columns return a <code>Primitive</code> (<code>string | number | boolean | bigint | Date</code>). Rows whose selector returns <code>null</code> or <code>undefined</code> sort to the end. <code>bigint</code> displays as its decimal string; <code>Date</code> displays via <code>toLocaleString()</code>, which follows the viewer&apos;s locale and timezone. Use <code>format</code> when you need deterministic or SSR-stable output.' },
+  { name: 'cell', type: '<code>(row, index, column, id) =&gt; ReactNode</code>', description: 'Custom cell renderer. Overrides the <code>selector</code> display value.' },
+  { name: 'format', type: '<code>(row, index) =&gt; ReactNode</code>', description: 'Format the selector value for display without changing the sort key.' },
+  { name: 'sortable', type: '<code>boolean</code>', description: 'Enable sorting on this column.' },
+  { name: 'sortFunction', type: '<code>(a: T, b: T) =&gt; number</code>', description: 'Custom comparator for this column.' },
+  { name: 'sortField', type: '<code>string</code>', description: 'Field key passed to <code>onSort</code> for server-side sort identification.' },
+  { name: 'filterable', type: '<code>boolean</code>', description: 'Show a filter popup for this column.' },
+  { name: 'filterType', type: '<code>"text" | "number" | "date" | "datetime" | "time" | "set"</code>', description: 'Filter operator set and input widget. Defaults to <code>"text"</code>. <code>"set"</code> shows a checklist of the column&apos;s distinct values instead of operators. See <a href="/docs/filtering">Filtering</a>.' },
+  { name: 'filterFunction', type: '<code>(row, filter: FilterState) =&gt; boolean</code>', description: 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.' },
+  { name: 'filterOptions', type: '<code>&#123; values?: string[] | ((rows: T[]) =&gt; string[]); separator?: string | RegExp &#125;</code>', description: 'Settings for a <code>"set"</code> filter. <code>values</code> supplies the checklist instead of deriving it from the loaded rows. <code>separator</code> splits a multi-value cell into its parts. See <a href="/docs/filtering#supplying-set-values">Filtering</a>.' },
+  { name: 'width', type: '<code>string</code>', description: 'Fixed column width, e.g. <code>"120px"</code>.' },
+  { name: 'minWidth', type: '<code>string</code>', description: 'Minimum width.' },
+  { name: 'maxWidth', type: '<code>string</code>', description: 'Maximum width.' },
+  { name: 'grow', type: '<code>number</code>', description: 'Flex-grow factor (default <code>1</code>). Set to <code>0</code> to prevent growing.' },
+  { name: 'right', type: '<code>boolean</code>', description: 'Right-align cell content.' },
+  { name: 'center', type: '<code>boolean</code>', description: 'Center cell content.' },
+  { name: 'wrap', type: '<code>boolean</code>', description: 'Allow cell text to wrap.' },
+  { name: 'compact', type: '<code>boolean</code>', description: 'Remove cell padding.' },
+  { name: 'button', type: '<code>boolean</code>', description: 'Center content and suppress row click propagation.' },
+  { name: 'allowOverflow', type: '<code>boolean</code>', description: 'Allow cell content to overflow (useful for dropdowns and popovers).' },
+  { name: 'ignoreRowClick', type: '<code>boolean</code>', description: 'Prevent clicks in this cell from firing <code>onRowClicked</code>.' },
+  { name: 'hide', type: '<code>Media</code>', description: 'Hide the column below the given breakpoint (<code>Media.SM</code> = 599px, <code>MD</code> = 959px, <code>LG</code> = 1280px).' },
+  { name: 'omit', type: '<code>boolean</code>', description: 'Exclude the column entirely. Toggle this to show/hide a column.' },
+  { name: 'reorder', type: '<code>boolean</code>', description: 'Allow drag-to-reorder for this column (requires <code>reorder</code> on at least two columns).' },
+  { name: 'pinned', type: '<code>\'left\' | \'right\'</code>', description: 'Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.' },
+  { name: 'style', type: '<code>CSSProperties</code>', description: 'Inline styles applied to every cell in this column.' },
+  { name: 'conditionalCellStyles', type: '<code>ConditionalStyles&lt;T&gt;[]</code>', description: 'Per-cell conditional styles.' },
+  { name: 'footer', type: '<code>ReactNode | (rows: T[]) =&gt; ReactNode</code>', description: 'Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a <code>footer</code>, a footer row renders below the body. See <a href="/docs/footer">Footer</a>.' },
+  { name: 'editable', type: '<code>boolean</code>', description: 'Shorthand for <code>editor: { type: &apos;text&apos; }</code>. Ignored when <code>editor</code> is also set.', section: 'inline-editing' },
+  { name: 'editor', type: '<code>CellEditor</code>', description: 'Editor configuration. See <a href="#celleditor">CellEditor</a> below. Takes precedence over <code>editable</code>.', section: 'inline-editing' },
+  { name: 'validate', type: '<code>(value, row, column) =&gt; true | false | string</code>', description: 'Gate the edit before <code>onCellEdit</code> fires. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string error to keep the editor open with an inline tooltip.', section: 'inline-editing' },
+  { name: 'onCellEdit', type: '<code>CellEditCallback&lt;T&gt;</code>', description: 'Called when the user commits an edit. Receives <code>(row: T, value: string, column: TableColumn&lt;T&gt;)</code>. The <code>value</code> is always a string; parse it to the target type in your handler.', section: 'inline-editing' },
 ];

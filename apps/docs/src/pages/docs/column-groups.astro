@@ -67,7 +67,7 @@ export default function App() {
   return <DataTable columns={columns} data={data} columnGroups={columnGroups} highlightOnHover />;
 }`}
   >
-    <ColumnGroupsDemo client:load />
+    <ColumnGroupsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Drag to reorder groups</h2>
@@ -158,7 +158,7 @@ export default function App() {
   <PropsTable feature="column-groups" columns={['prop', 'type', 'default', 'description']} />
 
   <p>
-    Each group is a <a href="/docs/api#columngroup"><code>ColumnGroup</code></a> object — see the API
+    Each group is a <a href="/docs/api#columngroup"><code>ColumnGroup</code></a> object. See the API
     reference for its <code>name</code>, <code>columnIds</code>, <code>align</code>, and
     <code>reorder</code> fields.
   </p>

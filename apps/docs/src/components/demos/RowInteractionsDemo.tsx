@@ -42,7 +42,7 @@ export function RowClickDemo() {
 						fontSize: 13,
 					}}
 				>
-					<strong>{selected.name}</strong> — {selected.role}, {selected.department}
+					<strong>{selected.name}</strong>: {selected.role}, {selected.department}
 					<span style={{ marginLeft: 12, color: '#0369a1' }}>{selected.email}</span>
 				</div>
 			)}

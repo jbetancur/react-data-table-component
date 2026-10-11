@@ -31,7 +31,7 @@ Always provide `ariaLabel` so screen readers can identify `DataTable`. Without i
 
 | Element | Role / attribute |
 | --- | --- |
-| Table wrapper | `role="table"` (or `role="grid"` with `cellNavigation` — see below), `aria-label` (from `ariaLabel` prop), `aria-busy` during load |
+| Table wrapper | `role="table"` (or `role="grid"` with `cellNavigation`, see below), `aria-label` (from `ariaLabel` prop), `aria-busy` during load |
 | Header section | `role="rowgroup"` |
 | Body section | `role="rowgroup"` |
 | Header row | `role="row"` |
@@ -43,7 +43,7 @@ Always provide `ariaLabel` so screen readers can identify `DataTable`. Without i
 
 With `columnGroups`, the column headers sit in a single `role="row"`; the group labels above them are visual only.
 
-By default this is a **static table**: nothing but sortable headers is focusable, which is the right shape for a screen reader's native table-reading commands. Passing `cellNavigation` turns it into an interactive **grid** (WAI-ARIA grid pattern) instead — every cell becomes focusable via a single roving tab stop, and arrow keys move between them. See [Keyboard navigation](/docs/keyboard-navigation) for the full key reference and the reasoning for making this opt-in rather than the default.
+By default this is a **static table**: nothing but sortable headers is focusable, which is the right shape for a screen reader's native table-reading commands. Passing `cellNavigation` turns it into an interactive **grid** (WAI-ARIA grid pattern) instead: every cell becomes focusable via a single roving tab stop, and arrow keys move between them. See [Keyboard navigation](/docs/keyboard-navigation) for the full key reference and the reasoning for making this opt-in rather than the default.
 
 ---
 

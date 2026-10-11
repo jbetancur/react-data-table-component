@@ -1,83 +1,26 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
-
-const recipes = [
-  {
-    href: '/docs/recipes/approval-workflow',
-    title: 'Approval workflow',
-    desc: 'Bulk-approve or reject requests. Toolbar buttons adapt to the selected rows\' status — already-resolved rows are excluded automatically.',
-  },
-  {
-    href: '/docs/recipes/server-side',
-    title: 'Server-side sort, page & filter',
-    desc: 'Wire sorting, pagination, and column filters to your own API in a single useEffect.',
-  },
-  {
-    href: '/docs/recipes/url-synced-state',
-    title: 'URL-synced table state',
-    desc: 'Sync sort, filters, and pagination to the URL — shareable links, reload-safe, back button works.',
-  },
-  {
-    href: '/docs/recipes/dashboard-drilldown',
-    title: 'Dashboard with drill-down',
-    desc: 'Department overview with expandable rows, health-status row tinting, and inline budget-spend bars.',
-  },
-  {
-    href: '/docs/recipes/audit-log',
-    title: 'Audit log viewer',
-    desc: 'Fixed header, severity row tinting, and multi-field live search — all wired together.',
-  },
-  {
-    href: '/docs/recipes/persist-column-widths',
-    title: 'Persist column widths',
-    desc: 'Save and restore resizable column widths to localStorage or a back-end API.',
-  },
-  {
-    href: '/docs/recipes/inline-row-actions',
-    title: 'Inline row actions',
-    desc: 'Per-row ⋮ menu with edit, duplicate, and delete — confirmation modals included.',
-  },
-  {
-    href: '/docs/recipes/live-updates',
-    title: 'Live-updating data grid',
-    desc: 'Flash-on-change rows for a real-time price grid, using conditionalRowStyles and keyField.',
-  },
-  {
-    href: '/docs/recipes/inventory-editor',
-    title: 'Editable inventory grid',
-    desc: 'Spreadsheet-style inline editing with a derived total column and a running grand total.',
-  },
-  {
-    href: '/docs/recipes/row-groups',
-    title: 'Grouped rows with aggregates',
-    desc: 'Per-group totals and drill-down built from a plain array reduce — no groupBy API needed.',
-  },
-  {
-    href: '/docs/recipes/csv-import',
-    title: 'CSV import',
-    desc: 'Load a user-uploaded CSV file into the table with FileReader and a small parser.',
-  },
-];
+import { recipes } from '../../data/nav';
 ---
 
 <DocsLayout title="Recipes | react-data-table-component" description="Copy-paste recipes for common react-data-table-component patterns: bulk actions, server-side data, editable grids, and more.">
   <h1>Recipes</h1>
 
   <p>
-    Working patterns for common product needs. Each recipe is self-contained — copy into your
+    Working patterns for common product needs. Each recipe is self-contained: copy into your
     project and adjust.
   </p>
 
   <div class="not-prose mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-    {recipes.map(({ href, title, desc }) => (
+    {recipes.map(({ href, label, description }) => (
       <a
         href={href}
         class="block rounded-xl border border-gray-100 p-5 hover:border-brand-200 hover:shadow-sm transition-all group"
       >
         <div class="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
-          {title} →
+          {label} →
         </div>
-        <p class="mt-1 text-sm text-gray-500">{desc}</p>
+        <p class="mt-1 text-sm text-gray-500">{description}</p>
       </a>
     ))}
   </div>

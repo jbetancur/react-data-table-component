@@ -22,7 +22,7 @@ import RowPinningDemo from '../../components/demos/RowPinningDemo.tsx';
 
   <blockquote>
     <strong>Coming in a future release:</strong> native <code>pinnedRows</code> / <code>pinnedRowIds</code> props
-    are on the roadmap. The patterns below are the recommended workaround until then — they compose
+    are on the roadmap. The patterns below are the recommended workaround until then. They compose
     cleanly with all existing features and are easy to swap out for the native API when it lands.
   </blockquote>
 
@@ -94,7 +94,7 @@ export default function App() {
   return <DataTable columns={columns} data={data} sortFunction={sortFunction} />;
 }`}
   >
-    <RowPinningDemo client:load />
+    <RowPinningDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>How it works</h2>
@@ -105,7 +105,7 @@ export default function App() {
   </p>
   <p>
     Because <code>sortFunction</code> is called on every sort change, the pinned set just needs to
-    live in React state — update the set and the rows re-order instantly without remounting the table.
+    live in React state. Update the set and the rows re-order instantly without remounting the table.
   </p>
 
   <h2>Static pinned rows (hardcoded)</h2>
@@ -133,7 +133,7 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
 
   <h2>Pinning by a condition (not an ID)</h2>
   <p>
-    You can pin based on any row property — not just an ID. For example, always show active
+    You can pin based on any row property, not just an ID. For example, always show active
     employees before terminated ones, or float rows flagged as urgent:
   </p>
 
@@ -196,7 +196,7 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
 
   <h2>Visual treatment</h2>
   <p>
-    Pinned rows don't receive any special styling by default — add your own via
+    Pinned rows don't receive any special styling by default. Add your own via
     <code>conditionalRowStyles</code> to make them visually distinct:
   </p>
 
@@ -218,8 +218,8 @@ const sortFunction: SortFunction<Employee> = (rows, selector, direction) => {
 
   <h2>Limitations</h2>
   <ul>
-    <li>This is a <strong>sort-layer workaround</strong> — rows are reordered by the sort function, not truly fixed in the DOM. If you use <code>sortServer</code>, you must apply pin order yourself after the fetch (see above).</li>
-    <li>Pinned rows participate in pagination. If a pinned row is on page 2, it won't appear on page 1 — pin logic only affects order within the current data array. For cross-page pinning, pre-sort your data array before passing it to <code>data</code>.</li>
+    <li>This is a <strong>sort-layer workaround</strong>: rows are reordered by the sort function, not truly fixed in the DOM. If you use <code>sortServer</code>, you must apply pin order yourself after the fetch (see above).</li>
+    <li>Pinned rows participate in pagination. If a pinned row is on page 2, it won't appear on page 1: pin logic only affects order within the current data array. For cross-page pinning, pre-sort your data array before passing it to <code>data</code>.</li>
     <li>Native <code>pinnedRows</code> support (sticky DOM positioning, cross-page pinning, built-in styling) is planned for a future release.</li>
   </ul>
 </DocsLayout>

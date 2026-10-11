@@ -66,7 +66,7 @@ const initialData: Row[] = [
 	},
 ];
 
-// Fixed widths so the table overflows horizontally — otherwise pinning a column
+// Fixed widths so the table overflows horizontally, otherwise pinning a column
 // has nothing to stick against and appears to do nothing.
 const columns: TableColumn<Row>[] = [
 	{ id: 'name', name: 'Name', selector: row => row.name, sortable: true, width: '180px', filterable: true },
@@ -87,7 +87,7 @@ const columns: TableColumn<Row>[] = [
 ];
 
 export default function ContextMenuDemo(): JSX.Element {
-	const [lastAction, setLastAction] = useState('none yet — right-click a header or use a ⋮ button');
+	const [lastAction, setLastAction] = useState('none yet (right-click a header or use a ⋮ button)');
 
 	return (
 		<div>

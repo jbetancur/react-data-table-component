@@ -143,7 +143,7 @@ export default function ApprovalWorkflowDemo() {
 
 	return (
 		<div className="relative space-y-2">
-			{/* Bulk toolbar — actions change based on what's selected */}
+			{/* Bulk toolbar: actions change based on what's selected */}
 			{selected.length > 0 && (
 				<div className="flex items-center gap-3 px-4 py-2.5 bg-brand-50 border border-brand-100 rounded-lg text-sm">
 					<span className="font-medium text-brand-700">

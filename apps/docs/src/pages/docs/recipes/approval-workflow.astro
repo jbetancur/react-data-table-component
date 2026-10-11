@@ -6,25 +6,25 @@ import ApprovalWorkflowDemo from '../../../components/demos/ApprovalWorkflowDemo
 import approvalWorkflowSource from '../../../components/demos/ApprovalWorkflowDemo.tsx?raw';
 ---
 
-<DocsLayout title="Multi-step approval workflow | Recipes | react-data-table-component" description="Build an approval queue with bulk actions that adapt to the selected rows' status — approved and rejected rows are excluded automatically.">
+<DocsLayout title="Multi-step approval workflow | Recipes | react-data-table-component" description="Build an approval queue with bulk actions that adapt to the selected rows' status. Approved and rejected rows are excluded automatically.">
   <h1>Multi-step approval workflow</h1>
 
   <p>
     Select rows from an approval queue and act on them in bulk. The toolbar buttons change based
-    on which rows are selected — already-resolved requests (approved or rejected) are
+    on which rows are selected. Already-resolved requests (approved or rejected) are
     automatically excluded from the action, so reviewers can't accidentally re-process them.
   </p>
 
   <Demo
     title="Approval queue with bulk actions"
-    description="Select a few rows — the toolbar appears with actions filtered to what's actually actionable."
+    description="Select a few rows and the toolbar appears with actions filtered to what's actually actionable."
     code={approvalWorkflowSource}
   >
-    <ApprovalWorkflowDemo client:load />
+    <ApprovalWorkflowDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <h2>Disabling already-resolved rows</h2>

@@ -40,7 +40,7 @@ export default function MultiSortDemo() {
 
 	const summary =
 		sortColumns.length === 0
-			? 'No sort — click a header to sort, click a third time to remove it'
+			? 'No sort. Click a header to sort, click a third time to remove it'
 			: sortColumns.map((s, i) => `${i + 1}. ${String(s.column.id)} ${s.sortDirection}`).join('  ·  ');
 
 	return (

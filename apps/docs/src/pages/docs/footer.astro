@@ -21,12 +21,12 @@ import FooterCustomDemo from '../../components/demos/FooterCustomDemo.tsx';
 
   <ul>
     <li>
-      <strong>Column-level <code>footer</code></strong> — the 80% case. Add a <code>footer</code> field
+      <strong>Column-level <code>footer</code></strong>: the 80% case. Add a <code>footer</code> field
       to any <code>TableColumn</code>. The footer row appears automatically when at least one
       visible column has one.
     </li>
     <li>
-      <strong><code>footerComponent</code> prop</strong> — escape hatch. Replace the entire footer
+      <strong><code>footerComponent</code> prop</strong>: escape hatch. Replace the entire footer
       row with a custom component when you need multi-row summaries, custom layouts, or aggregates
       that span columns.
     </li>
@@ -36,13 +36,13 @@ import FooterCustomDemo from '../../components/demos/FooterCustomDemo.tsx';
 
   <p>
     Pass <code>footer</code> as either a static <code>ReactNode</code> or a function that receives
-    the filtered+sorted rows and returns a node. Use the function form to compute aggregates —
+    the filtered+sorted rows and returns a node. Use the function form to compute aggregates:
     it sees exactly the rows the user sees in the body, so totals update automatically when you
     sort or filter.
   </p>
 
   <Demo
-    title="Column footers — totals that track filtering"
+    title="Column footers: totals that track filtering"
     description="Use the department filter to narrow the rows. The count and salary/bonus totals in the footer update to match what's on screen."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
@@ -67,7 +67,7 @@ const columns: TableColumn<Row>[] = [
     selector: r => r.salary,
     right: true,
     format: r => \`$\${r.salary.toLocaleString()}\`,
-    // aggregate function — receives the current visible rows
+    // aggregate function: receives the current visible rows
     footer: rows => \`$\${rows.reduce((s, r) => s + r.salary, 0).toLocaleString()}\`,
   },
   {
@@ -82,12 +82,12 @@ const columns: TableColumn<Row>[] = [
 
 <DataTable columns={columns} data={data} highlightOnHover dense />;`}
   >
-    <FooterBasicDemo client:load />
+    <FooterBasicDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p>
     Each footer cell inherits its column's <code>right</code>, <code>center</code>,
-    <code>width</code>, <code>minWidth</code>, and <code>maxWidth</code> — so totals line up
+    <code>width</code>, <code>minWidth</code>, and <code>maxWidth</code>, so totals line up
     under their column automatically, including after a resize or sort.
   </p>
 
@@ -101,12 +101,12 @@ const columns: TableColumn<Row>[] = [
 
   <p>
     Pass <code>footerComponent</code> to replace the footer row entirely. The component receives
-    <code>{`{ rows, columns }`}</code> and can render whatever it likes — multi-stat summaries,
+    <code>{`{ rows, columns }`}</code> and can render whatever it likes: multi-stat summaries,
     action buttons, contextual copy, anything.
   </p>
 
   <Demo
-    title="Custom footer component — multi-stat summary bar"
+    title="Custom footer component: multi-stat summary bar"
     description="The footer bar computes headcount, total salary, average salary, bonus total, and total compensation from the visible rows. Filter by department to see every stat update."
     code={`import DataTable, { type FooterComponentProps } from 'react-data-table-component';
 
@@ -148,7 +148,7 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
 
 <DataTable columns={columns} data={data} footerComponent={SummaryFooter} highlightOnHover dense />;`}
   >
-    <FooterCustomDemo client:load />
+    <FooterCustomDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p>
@@ -163,9 +163,9 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
   </p>
 
   <ul>
-    <li><code>showFooter</code> — force the footer row on even if no column defines a <code>footer</code>.</li>
-    <li><code>showFooter={`{false}`}</code> — suppress the footer entirely, overriding column footers and <code>footerComponent</code>. Useful for toggling the summary on and off.</li>
-    <li>Omitted (default) — auto: render when any visible column has <code>footer</code> or <code>footerComponent</code> is provided.</li>
+    <li><code>showFooter</code>: force the footer row on even if no column defines a <code>footer</code>.</li>
+    <li><code>showFooter={`{false}`}</code>: suppress the footer entirely, overriding column footers and <code>footerComponent</code>. Useful for toggling the summary on and off.</li>
+    <li>Omitted (default): render automatically when any visible column has <code>footer</code> or <code>footerComponent</code> is provided.</li>
   </ul>
 
   <p>
@@ -223,7 +223,7 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
   <h2>Pinned columns</h2>
 
   <p>
-    Footer cells in pinned columns stick to the table edge exactly like their body cells — no
+    Footer cells in pinned columns stick to the table edge exactly like their body cells, no
     extra config required. Pinning offsets are computed from the same source as the rest of the
     table, so they stay aligned after resizing.
   </p>
@@ -241,7 +241,7 @@ function SummaryFooter({ rows }: FooterComponentProps<Row>) {
     </li>
     <li>
       For multi-row footers, group subtotals, or any layout that doesn't map 1:1 to columns,
-      reach for <code>footerComponent</code> — it renders inside a <code>role="rowgroup"</code>
+      reach for <code>footerComponent</code>. It renders inside a <code>role="rowgroup"</code>
       container for accessibility and has no constraints on its internal structure.
     </li>
   </ul>

@@ -94,9 +94,9 @@ export default function LoadingDemo() {
 					<span className="text-xs text-gray-400 italic">
 						{mode === 'initial'
 							? skeleton
-								? 'Loading with no existing data — skeleton rows shown'
-								: 'Loading with no existing data — progress component shown'
-							: 'Re-fetching — existing rows dimmed, indicator overlaid'}
+								? 'Loading with no existing data: skeleton rows shown'
+								: 'Loading with no existing data: progress component shown'
+							: 'Re-fetching: existing rows dimmed, indicator overlaid'}
 					</span>
 				)}
 			</div>

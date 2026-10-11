@@ -39,7 +39,7 @@ import CellsDemo from '../../components/demos/CellsDemo.tsx';
   sortable: true,
 }
 
-// ✅ Currency column — format preserves sort order
+// ✅ Currency column: format preserves sort order
 {
   name: 'Salary',
   selector: row => row.salary, // sort on raw number
@@ -100,7 +100,7 @@ import CellsDemo from '../../components/demos/CellsDemo.tsx';
   </p>
 
   <Demo
-    title="Custom cells — avatar, currency format, status badge, action button"
+    title="Custom cells: avatar, currency format, status badge, action button"
     description="Each column demonstrates a different cell technique: a composite avatar+name renderer, format() for currency and dates, a status badge via cell(), and an action button column."
     code={`import DataTable, { type TableColumn } from 'react-data-table-component';
 
@@ -168,7 +168,7 @@ const columns: TableColumn<Employee>[] = [
   },
 ];`}
   >
-    <CellsDemo client:load />
+    <CellsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p>

@@ -16,20 +16,20 @@ import urlSyncSource from '../../../components/demos/UrlSyncDemo.tsx?raw';
   </p>
 
   <p>
-    Try sorting a column, typing in a filter, or changing the page — watch the URL update live.
+    Try sorting a column, typing in a filter, or changing the page, and watch the URL update live.
     Copy the URL and open it in a new tab.
   </p>
 
   <Demo
     title="URL-synced table state"
-    description="Sort, filter, or change page — watch the URL params update live. Reload the page or copy the URL to see state restored."
+    description="Sort, filter, or change page, and watch the URL params update live. Reload the page or copy the URL to see state restored."
     code={urlSyncSource}
   >
-    <UrlSyncDemo client:load />
+    <UrlSyncDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <h2>Reading initial state from the URL</h2>
@@ -84,7 +84,7 @@ const [filters, setFilters] = useState(/* map init.filters to FilterState */);`}
 
   <p>
     Pass the state as controlled props. Use <code>sortServer</code> to prevent the table from
-    re-sorting internally — the URL is the source of truth, so the component controls sort:
+    re-sorting internally. The URL is the source of truth, so the component controls sort:
   </p>
 
   <CodeBlock code={`<DataTable

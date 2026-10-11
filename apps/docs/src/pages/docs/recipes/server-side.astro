@@ -12,7 +12,7 @@ import serverSideSource from '../../../components/demos/ServerSideRecipeDemo.tsx
   <p>
     Enable <code>sortServer</code>, <code>paginationServer</code>, and <code>filterServer</code>, then pass
     controlled <code>filterValues</code>. Refetch from a single effect that depends on every state knob.
-    The demo below simulates a 400ms API delay — filter by name or department to see it in action.
+    The demo below simulates a 400ms API delay. Filter by name or department to see it in action.
   </p>
 
   <Demo
@@ -20,11 +20,11 @@ import serverSideSource from '../../../components/demos/ServerSideRecipeDemo.tsx
     description="Simulates a 400ms API delay. Sort, paginate, or filter by name/department to see it refetch."
     code={serverSideSource}
   >
-    <ServerSideRecipeDemo client:load />
+    <ServerSideRecipeDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <CodeBlock code={`import { useEffect, useState } from 'react';

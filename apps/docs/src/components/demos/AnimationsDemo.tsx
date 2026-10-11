@@ -48,7 +48,7 @@ export default function AnimationsDemo() {
 					Replay entrance animation
 				</button>
 				<span className="text-gray-400 text-xs ml-auto">
-					{animate ? 'Animations on — sort to see reorder animation' : 'Animations off'}
+					{animate ? 'Animations on: sort to see reorder animation' : 'Animations off'}
 				</span>
 			</div>
 			<DataTable key={mountKey} columns={columns} data={BASE_DATA} animateRows={animate} highlightOnHover />

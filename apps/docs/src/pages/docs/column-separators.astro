@@ -22,10 +22,10 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
 // Default: header separators on (subtle), no body separators
 <DataTable columns={columns} data={data} />
 
-// Body separators — subtle inset (60% height, centered)
+// Body separators: subtle inset (60% height, centered)
 <DataTable columns={columns} data={data} columnSeparator />
 
-// Body separators — full-height
+// Body separators: full-height
 <DataTable columns={columns} data={data} columnSeparator="full" />
 
 // No header separators
@@ -34,7 +34,7 @@ import ColumnSeparatorsDemo from '../../components/demos/ColumnSeparatorsDemo.ts
 // Full-height header separators + subtle body separators
 <DataTable columns={columns} data={data} headerSeparator="full" columnSeparator />`}
   >
-    <ColumnSeparatorsDemo client:load />
+    <ColumnSeparatorsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Values</h2>

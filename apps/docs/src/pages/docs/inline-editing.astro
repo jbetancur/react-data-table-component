@@ -26,7 +26,7 @@ import DocsTable from '../../components/DocsTable.astro';
   </p>
 
   <Demo
-    title="Editable cells — text + dropdown"
+    title="Editable cells: text + dropdown"
     description="Name and Salary use text inputs with validation. Department and Status use dropdowns. Click any cell to edit."
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
@@ -50,7 +50,7 @@ export default function App() {
   };
 
   const columns: TableColumn<Employee>[] = [
-    // Text editor — editable: true is shorthand for { editor: { type: 'text' } }
+    // Text editor. editable: true is shorthand for { editor: { type: 'text' } }
     {
       id: 'name',
       name: 'Name',
@@ -111,7 +111,7 @@ export default function App() {
   return <DataTable columns={columns} data={data} />;
 }`}
   >
-    <InlineEditingDemo client:load />
+    <InlineEditingDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>How it works</h2>
@@ -129,7 +129,7 @@ export default function App() {
 
   <p>
     Pick the right editor for the value type. Every editor calls <code>onCellEdit(row, value, column)</code>
-    with the new value as a <strong>string</strong> — you parse it into a number, boolean, or
+    with the new value as a <strong>string</strong>. You parse it into a number, boolean, or
     date in your update handler.
   </p>
 
@@ -143,7 +143,7 @@ export default function App() {
 { id: 'name', name: 'Name', selector: r => r.name,
   editable: true, onCellEdit }
 
-// Equivalent explicit form — supports placeholder
+// Equivalent explicit form, supports placeholder
 { id: 'name', name: 'Name', selector: r => r.name,
   editor: { type: 'text', placeholder: 'Enter a name…' },
   onCellEdit }`} />
@@ -189,7 +189,7 @@ export default function App() {
   <CodeBlock code={`{
   id: 'salary', name: 'Salary', selector: r => r.salary,
   editor: { type: 'number', min: 0, step: 1000 },
-  onCellEdit, // value arrives as a string — Number(value) it on commit
+  onCellEdit, // value arrives as a string, so Number(value) it on commit
 }`} />
 
   <h3>Date picker</h3>
@@ -272,7 +272,7 @@ export default function App() {
 
   <p>
     The <code>ctx.row</code> field gives you the row data for context-aware editors
-    (dependent dropdowns, etc.). The cell wrapper still owns padding and the focus ring —
+    (dependent dropdowns, etc.). The cell wrapper still owns padding and the focus ring, so
     your custom editor only needs to render the input.
   </p>
 
@@ -346,7 +346,7 @@ export default function App() {
 };`} />
 
   <Demo
-    title="Server-side saves — optimistic update with rollback"
+    title="Server-side saves: optimistic update with rollback"
     description="Edits apply immediately and save to a simulated server. Failed saves roll back. The server rejects prices over $1,000."
     code={`import { useState } from 'react';
 import DataTable, { type TableColumn } from 'react-data-table-component';
@@ -396,7 +396,7 @@ export default function App() {
   );
 }`}
   >
-    <ServerSideEditDemo client:load />
+    <ServerSideEditDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Validation</h2>
@@ -405,9 +405,9 @@ export default function App() {
     <code>onCellEdit</code> fires. Return:
   </p>
   <ul>
-    <li><code>true</code> — accept the value, commit the edit.</li>
-    <li><code>false</code> — reject silently, close the editor without firing the callback.</li>
-    <li>A <code>string</code> — keep the editor open, paint an error ring, and show the message as an inline tooltip.</li>
+    <li><code>true</code>: accept the value, commit the edit.</li>
+    <li><code>false</code>: reject silently, close the editor without firing the callback.</li>
+    <li>A <code>string</code>: keep the editor open, paint an error ring, and show the message as an inline tooltip.</li>
   </ul>
 
   <CodeBlock code={`{
@@ -513,7 +513,7 @@ const columns: TableColumn<Employee>[] = [
   <h2>Keyboard cell navigation</h2>
 
   <p>
-    Pass <code>cellNavigation</code> to navigate the whole table with the keyboard, spreadsheet-style —
+    Pass <code>cellNavigation</code> to navigate the whole table with the keyboard, spreadsheet-style:
     arrow keys between cells, <kbd>Enter</kbd>/<kbd>F2</kbd> to open the focused cell's editor, and
     <kbd>Escape</kbd> to cancel and return focus to the cell. See
     <a href="/docs/keyboard-navigation">Keyboard navigation</a> for the full key reference; it also
@@ -575,7 +575,7 @@ interface CustomCellEditorContext<T> {
   />
 
   <p>
-    <code>cellNavigation</code> is a table-level prop covered on its own page — see
+    <code>cellNavigation</code> is a table-level prop covered on its own page. See
     <a href="/docs/keyboard-navigation">Keyboard navigation</a>.
   </p>
 </DocsLayout>

@@ -27,7 +27,7 @@ const ORDERS: Order[] = [
 	{ id: 9, region: 'Central', customer: 'Ironclad Freight', amount: 3050 },
 ];
 
-// Group flat rows into per-region summary rows — a plain reduce, no groupBy API required.
+// Group flat rows into per-region summary rows: a plain reduce, no groupBy API required.
 const groups: RegionGroup[] = Object.values(
 	ORDERS.reduce<Record<string, RegionGroup>>((acc, order) => {
 		const g = (acc[order.region] ??= { region: order.region, count: 0, total: 0, orders: [] });

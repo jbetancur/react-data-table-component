@@ -21,11 +21,11 @@ import persistColumnWidthsSource from '../../../components/demos/PersistColumnWi
     description="Drag a column edge to resize. Widths are saved to localStorage and restored on reload."
     code={persistColumnWidthsSource}
   >
-    <PersistColumnWidthsDemo client:load />
+    <PersistColumnWidthsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <h2>localStorage</h2>

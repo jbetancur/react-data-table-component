@@ -10,7 +10,7 @@ import PropsTable from '../../components/PropsTable.astro';
 
   <p>
     Pass a <code>localization</code> object to <code>DataTable</code> to override every
-    string and aria-label rendered by the table — filter panel, pagination navigation, and
+    string and aria-label rendered by the table: filter panel, pagination navigation, and
     expand/collapse buttons. All keys are optional and fall back to English defaults.
   </p>
 
@@ -48,7 +48,7 @@ import { fr } from 'react-data-table-component/locales';
   />
 
   <p>
-    Each locale is a standalone module. Only the locale you import enters your bundle — the
+    Each locale is a standalone module. Only the locale you import enters your bundle. The
     rest are tree-shaken away.
   </p>
 
@@ -73,8 +73,8 @@ const myLocale: Localization = {
 
   <h2>Custom locale from scratch</h2>
   <p>
-    Build a locale object from the <code>Localization</code> type. Every key is optional —
-    any omitted key falls back to the English default.
+    Build a locale object from the <code>Localization</code> type. Every key is optional,
+    and any omitted key falls back to the English default.
   </p>
 
   <CodeBlock code={`import type { Localization } from 'react-data-table-component';

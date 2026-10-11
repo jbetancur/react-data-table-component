@@ -104,7 +104,7 @@ export default function App() {
   );
 }`}
   >
-    <CustomStylesDemo client:load />
+    <CustomStylesDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>customStyles: targeting table parts</h2>
@@ -219,7 +219,7 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
   <PropsTable only={['customStyles', 'conditionalRowStyles']} columns={['prop', 'type', 'default', 'description']} />
 
   <p>
-    <code>customStyles</code> takes a <a href="/docs/api#tablestyles"><code>TableStyles</code></a> object —
-    see the API reference for every styleable slot.
+    <code>customStyles</code> takes a <a href="/docs/api#tablestyles"><code>TableStyles</code></a> object.
+    See the API reference for every styleable slot.
   </p>
 </DocsLayout>

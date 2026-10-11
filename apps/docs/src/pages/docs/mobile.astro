@@ -10,7 +10,7 @@ import MobileDemo from '../../components/demos/MobileDemo.tsx';
   <h1>Mobile</h1>
 
   <p>
-    A data table is fundamentally a desktop pattern — comparing values across rows requires seeing
+    A data table is fundamentally a desktop pattern: comparing values across rows requires seeing
     multiple columns at once. On small screens the table stays a table, but several defaults are
     tuned to make that experience as comfortable as possible.
   </p>
@@ -44,7 +44,7 @@ const columns: TableColumn<Employee>[] = [
 
   <p>
     Use the <code>hide</code> property on a column to remove it below a breakpoint.
-    The column header and all its cells disappear — the remaining columns fill the available width.
+    The column header and all its cells disappear, and the remaining columns fill the available width.
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Row>[] = [
@@ -115,8 +115,8 @@ function MyTable() {
 
   <p>
     For apps where the primary use case on mobile is looking up a single record rather than
-    comparing rows, consider rendering a completely different component below your breakpoint —
-    a simple list or card feed — and only mounting <code>DataTable</code> on wider viewports.
+    comparing rows, consider rendering a completely different component below your breakpoint
+    (a simple list or card feed) and only mounting <code>DataTable</code> on wider viewports.
     Reusing the <code>useMediaQuery</code> hook from above:
   </p>
 

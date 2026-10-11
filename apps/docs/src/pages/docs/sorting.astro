@@ -21,7 +21,7 @@ import MultiSortDemo from '../../components/demos/MultiSortDemo.tsx';
     Columns without <code>sortable</code> are not interactive and are excluded from the tab order.
   </p>
   <p>
-    Enable <code>sortMulti</code> to let users sort by several columns at once — hold
+    Enable <code>sortMulti</code> to let users sort by several columns at once: hold
     <kbd>Ctrl</kbd> (or <kbd>⌘</kbd> on macOS) while clicking additional headers. See
     <a href="#multi-column-sorting">Multi-column sorting</a> below.
   </p>
@@ -55,7 +55,7 @@ const columns: TableColumn<Employee>[] = [
   highlightOnHover
 />;`}
   >
-    <SortingDemo client:load />
+    <SortingDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2 id="removable-sorting">Removable sorting</h2>
@@ -64,15 +64,15 @@ const columns: TableColumn<Employee>[] = [
     user can clear a sort directly from the header instead of resetting the whole table:
   </p>
   <ol>
-    <li>First click — sort ascending (or the direction set by <code>defaultSortAsc</code>).</li>
-    <li>Second click — sort descending.</li>
-    <li>Third click — remove the sort.</li>
+    <li>First click: sort ascending (or the direction set by <code>defaultSortAsc</code>).</li>
+    <li>Second click: sort descending.</li>
+    <li>Third click: remove the sort.</li>
   </ol>
   <p>
     When the sort is removed, <code>onSort</code> fires with an empty column (<code>{`{}`}</code>),
     the default direction, and an empty <code>sortColumns</code> array. The table returns to its
     original (unsorted) row order. This is also the signal a server-side handler should use to drop
-    its <code>ORDER BY</code> clause — see <a href="#server-side-sorting">Server-side sorting</a>.
+    its <code>ORDER BY</code> clause. See <a href="#server-side-sorting">Server-side sorting</a>.
   </p>
 
   <h2 id="multi-column-sorting">Multi-column sorting</h2>
@@ -116,7 +116,7 @@ export default function App() {
   );
 }`}
   >
-    <MultiSortDemo client:load />
+    <MultiSortDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p>
@@ -139,7 +139,7 @@ export default function App() {
   <p>
     <code>onSort</code> fires on every sort change, whether triggered by clicking a header or by
     a <code>defaultSortFieldId</code> change. It receives four arguments: the primary sorted column,
-    its direction, the fully sorted row array, and <code>sortColumns</code> — the complete sort
+    its direction, the fully sorted row array, and <code>sortColumns</code>, the complete sort
     configuration in priority order.
   </p>
   <p>
@@ -250,7 +250,7 @@ const withSecondarySalary: SortFunction<Employee> = (rows, selector, direction) 
     return primary !== 0 ? primary : b.salary - a.salary; // salary desc as tiebreaker
   });`}
   >
-    <PrioritySortDemo client:load />
+    <PrioritySortDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h3>Sorting null / empty values last</h3>
@@ -308,14 +308,14 @@ const SortIcon = () => (
     to your query.
   </p>
   <p>
-    The removable and multi-column behaviors apply to server-side sorting too — the table sends the
+    The removable and multi-column behaviors apply to server-side sorting too: the table sends the
     intent, your handler turns it into a query. Two cases to handle:
   </p>
   <ul>
     <li>
       <strong>Cleared sort:</strong> the three-state cycle means a header can now resolve to
       <em>no sort</em>. When that happens <code>onSort</code> fires with an empty
-      <code>sortColumns</code> array and an empty primary column — drop your <code>ORDER BY</code> and
+      <code>sortColumns</code> array and an empty primary column. Drop your <code>ORDER BY</code> and
       fetch the default order.
     </li>
     <li>
@@ -387,7 +387,7 @@ export default function App() {
   );
 }`}
   >
-    <ServerSideSortingDemo client:load />
+    <ServerSideSortingDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Combined: server-side sorting and pagination</h2>
@@ -461,7 +461,7 @@ export default function App() {
   );
 }`}
   >
-    <ServerSideSortPaginationDemo client:load />
+    <ServerSideSortPaginationDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Resetting sort programmatically</h2>
@@ -489,7 +489,7 @@ function App() {
   );
 }`}
   >
-    <SortResetDemo client:load />
+    <SortResetDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Prop reference</h2>
