@@ -6,10 +6,11 @@ A summary of notable changes per release. For the full commit history see the [r
 
 ### New features
 
-- **`textarea` cell editor** — multi-line text editor with newline insertion, modifier-key/blur commit, and row height expansion. → [Inline editing](/docs/inline-editing) ([#1354](https://github.com/jbetancur/react-data-table-component/issues/1354))
+- **`textarea` cell editor** — `editor: { type: 'textarea', rows?, placeholder? }` edits multi-line text in place. Enter inserts a newline, Ctrl/Cmd+Enter or blur commits, Esc cancels. The editor and row grow with the content up to `--rdt-cell-edit-textarea-max-height` (240px), then scroll. → [Inline editing](/docs/inline-editing) ([#1354](https://github.com/jbetancur/react-data-table-component/issues/1354))
 
 ### Bug fixes
 
+- `--rdt-row-anim-duration` and `--rdt-row-anim-stagger` now change the `animateRows` entrance timing. They were documented but the CSS hardcoded both values. → [Animations](/docs/animations)
 - **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
 
 ---

@@ -1727,8 +1727,8 @@
  * (sort/filter/pagination do not re-trigger entrance).
  */
 .rdt_animatedRow {
-	animation: rdt_rowEnter 0.18s ease both;
-	animation-delay: calc(var(--rdt-row-index, 0) * 16ms);
+	animation: rdt_rowEnter var(--rdt-row-anim-duration, 0.18s) ease both;
+	animation-delay: calc(var(--rdt-row-index, 0) * var(--rdt-row-anim-stagger, 16ms));
 }
 
 /* Expander row — grid-row trick gives a true height animation without JS measurement */

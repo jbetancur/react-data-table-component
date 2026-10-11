@@ -26,7 +26,7 @@ const data: LogEntry[] = [
 ];
 
 const levelColor: Record<LogEntry['level'], string> = {
-	info: 'var(--rdt-color-text-muted, #64748b)',
+	info: 'var(--rdt-color-text-secondary, #64748b)',
 	warn: '#b45309',
 	error: '#dc2626',
 };

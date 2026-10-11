@@ -117,7 +117,7 @@ export default function App() {
   <h2>How it works</h2>
   <ol>
     <li>Click an editable cell. The cell content is replaced by the editor, seeded with the current selector value (stringified).</li>
-    <li>Press <kbd>Enter</kbd> or click outside. <code>onCellEdit(row, value, column)</code> fires.</li>
+    <li>Press <kbd>Enter</kbd> (<kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> in a textarea) or click outside. <code>onCellEdit(row, value, column)</code> fires.</li>
     <li>Press <kbd>Esc</kbd>. The editor closes without firing the callback.</li>
   </ol>
   <p>
@@ -157,6 +157,26 @@ export default function App() {
   <CodeBlock code={`{
   id: 'notes', name: 'Notes', selector: r => r.notes,
   editor: { type: 'textarea', placeholder: 'Add notes…', rows: 3 },
+  onCellEdit,
+}`} />
+
+  <p>
+    <code>rows</code> sets the minimum height (default 3). The editor grows with its content and
+    the row grows with it, up to <code>--rdt-cell-edit-textarea-max-height</code> (240px by
+    default), after which it scrolls.
+  </p>
+
+  <p>
+    The committed value keeps its newlines, but cells collapse whitespace when displaying text,
+    so a multi-line note shows on one line. To show the line breaks, render the cell with
+    <code>white-space: pre-line</code> and set <code>wrap</code>:
+  </p>
+
+  <CodeBlock code={`{
+  id: 'notes', name: 'Notes', selector: r => r.notes,
+  cell: r => <span style={{ whiteSpace: 'pre-line' }}>{r.notes}</span>,
+  wrap: true,
+  editor: { type: 'textarea' },
   onCellEdit,
 }`} />
 
