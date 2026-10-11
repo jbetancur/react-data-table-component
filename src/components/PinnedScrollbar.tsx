@@ -13,6 +13,8 @@ export default function PinnedScrollbar({
 	rightInset,
 }: PinnedScrollbarProps): JSX.Element | null {
 	const scrollContainerId = React.useId();
+	// The scroll container id aria-controls points at.
+	const [controlsId, setControlsId] = React.useState(scrollContainerId);
 	const trackRef = React.useRef<HTMLDivElement>(null);
 	const thumbRef = React.useRef<HTMLDivElement>(null);
 	const [thumbWidth, setThumbWidth] = React.useState(0);
@@ -62,6 +64,9 @@ export default function PinnedScrollbar({
 		if (!el.id) {
 			el.id = scrollContainerId;
 		}
+		// An existing container id is preserved and is what aria-controls must
+		// name, or the reference dangles.
+		setControlsId(el.id);
 		el.addEventListener('scroll', update, { passive: true });
 		const ro = new ResizeObserver(update);
 		ro.observe(el);
@@ -191,7 +196,7 @@ export default function PinnedScrollbar({
 				ref={thumbRef}
 				role="scrollbar"
 				tabIndex={0}
-				aria-controls={scrollContainerId}
+				aria-controls={controlsId}
 				aria-orientation="horizontal"
 				aria-valuenow={scrollPercent}
 				aria-valuemin={0}

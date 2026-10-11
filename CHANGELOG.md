@@ -8,6 +8,10 @@ A summary of notable changes per release. For the full commit history see the [r
 
 - **`textarea` cell editor** — multi-line text editor with newline insertion, modifier-key/blur commit, and row height expansion. → [Inline editing](/docs/inline-editing) ([#1354](https://github.com/jbetancur/react-data-table-component/issues/1354))
 
+### Bug fixes
+
+- **Pinned scrollbar** now sets `aria-controls` to the scroll container's real id. When the container already carried an id, or was labelled again after an unpin and re-pin, the thumb kept pointing at a generated id no element had, so assistive technology could not resolve what the scrollbar controlled.
+
 ---
 
 ## 8.11.0
