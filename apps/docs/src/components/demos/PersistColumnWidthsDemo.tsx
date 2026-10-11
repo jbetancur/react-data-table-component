@@ -57,7 +57,7 @@ export default function PersistColumnWidthsDemo() {
 	return (
 		<div className="space-y-3">
 			<div className="flex items-center gap-3 text-sm text-gray-500">
-				<span className="text-xs">Drag column edges to resize — widths persist across sessions.</span>
+				<span className="text-xs">Drag column edges to resize. Widths persist across sessions.</span>
 				<button
 					onClick={handleReset}
 					className="ml-auto px-2.5 py-1 text-xs border border-gray-200 rounded-md hover:border-gray-300 text-gray-500"

@@ -30,7 +30,7 @@ import PropsTable from '../../components/PropsTable.astro';
 <DataTable columns={columns} data={data} theme="crisp" colorMode="dark" />
 <DataTable columns={columns} data={data} theme="catppuccin" colorMode="system" />`}
   >
-    <ThemesDemo client:load />
+    <ThemesDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Structural themes</h2>
@@ -98,7 +98,7 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
     </tbody>
   </table>
 
-  <CodeBlock code={`// Always dark — ignores OS preference
+  <CodeBlock code={`// Always dark, ignores OS preference
 <DataTable columns={columns} data={data} theme="material" colorMode="dark" />
 
 // Follow OS / page toggle (default, explicit)
@@ -114,10 +114,10 @@ createTheme('material-violet', { primary: '#6200EE' }, 'material');
 
   <CodeBlock code={`import { createTheme } from 'react-data-table-component';
 
-// 1. Named — register globally, reference by string in the theme prop
+// 1. Named: register globally, reference by string in the theme prop
 createTheme('my-brand', { primary: '#6200EE' }, 'material');
 
-// 2. Inline — compose and pass the object directly to the theme prop
+// 2. Inline: compose and pass the object directly to the theme prop
 const inlineTheme = createTheme({ primary: '#e91e63' }, 'crisp');
 <DataTable theme={inlineTheme} columns={columns} data={data} />;`} lang="ts" />
 
@@ -152,7 +152,7 @@ createTheme('violet', {
     disabled: '#d1c4e9',
   },
   context: { background: '#6200EE', text: '#ffffff' },
-  // Dark-mode overrides — only what changes
+  // Dark-mode overrides, only what changes
   darkMode: {
     primary: '#BB86FC',
     text: { primary: '#e0e0e0', secondary: '#b0b0b0' },
@@ -180,7 +180,7 @@ createTheme('violet', {
     description="Switch between the built-in icons and custom inline-SVG replacements for pagination, expander, and sort."
     code={iconsDemoSource}
   >
-    <IconsDemo client:load />
+    <IconsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h3>Override via props</h3>
@@ -191,14 +191,14 @@ createTheme('violet', {
 
   <CodeBlock code={`import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
-// Sort icon — replaces the chevron shown in sortable column headers
+// Sort icon: replaces the chevron shown in sortable column headers
 <DataTable
   sortIcon={<ChevronUp size={14} />}
   columns={columns}
   data={data}
 />
 
-// Expander icons — collapsed / expanded state
+// Expander icons: collapsed / expanded state
 <DataTable
   expandableRows
   expandableIcon={{
@@ -209,7 +209,7 @@ createTheme('violet', {
   data={data}
 />
 
-// Pagination icons — any subset; omitted keys fall back to defaults
+// Pagination icons: any subset; omitted keys fall back to defaults
 <DataTable
   pagination
   paginationIcons={{
@@ -236,12 +236,12 @@ createTheme('icon-theme', {
     sort: <ChevronUp size={14} />,
     expandable: {
       collapsed: <ChevronDown size={16} />,
-      // expanded: omitted — falls back to the built-in default
+      // expanded: omitted, falls back to the built-in default
     },
     pagination: {
       next: <ChevronRight size={16} />,
       previous: <ChevronLeft size={16} />,
-      // first/last: omitted — fall back to defaults
+      // first/last: omitted, fall back to defaults
     },
   },
 });
@@ -310,7 +310,7 @@ MyCheckbox.displayName = 'MyCheckbox';
 // Remove the default header separator
 <DataTable columns={columns} data={data} headerSeparator={false} />`}
   >
-    <ColumnSeparatorsDemo client:load />
+    <ColumnSeparatorsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>CSS variable override</h2>

@@ -13,7 +13,7 @@ import dashboardDrilldownSource from '../../../components/demos/DashboardDrilldo
     A department overview table that combines <strong>expandable rows</strong>,
     <strong>conditional row styles</strong> for health status, and custom <code>cell</code>
     renderers for inline progress bars. Expand any row to drill into a card grid of individual
-    team members — the detail panel is a plain React component, not another table.
+    team members. The detail panel is a plain React component, not another table.
   </p>
 
   <Demo
@@ -21,17 +21,17 @@ import dashboardDrilldownSource from '../../../components/demos/DashboardDrilldo
     description="Expand a department row to see individual team member utilization."
     code={dashboardDrilldownSource}
   >
-    <DashboardDrilldownDemo client:load />
+    <DashboardDrilldownDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <h2>Conditional row styles</h2>
 
   <p>
-    Tint rows based on a derived health field so problems are visible at a glance — no extra
+    Tint rows based on a derived health field so problems are visible at a glance, no extra
     column needed:
   </p>
 
@@ -43,7 +43,7 @@ import dashboardDrilldownSource from '../../../components/demos/DashboardDrilldo
   <h2>A card layout in the expander, not a nested table</h2>
 
   <p>
-    <code>expandableRowsComponent</code> can render anything — it doesn't have to be another
+    <code>expandableRowsComponent</code> can render anything. It doesn't have to be another
     <code>DataTable</code>. A grid of team-member cards reads better here than a table-in-a-table.
     The parent row arrives as <code>data</code>:
   </p>
@@ -56,7 +56,7 @@ import dashboardDrilldownSource from '../../../components/demos/DashboardDrilldo
           <div key={member.name} style={{ display: 'flex', gap: 12, background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, padding: '10px 12px' }}>
             <div className="avatar">{initials(member.name)}</div>
             <div style={{ flex: 1 }}>
-              <strong>{member.name}</strong> — {member.role}
+              <strong>{member.name}</strong>: {member.role}
               <UtilBar pct={member.utilization} />
             </div>
           </div>
@@ -78,7 +78,7 @@ import dashboardDrilldownSource from '../../../components/demos/DashboardDrilldo
 
   <p>
     <code>expandableRowExpanded</code> re-syncs whenever its result changes, so a single boolean
-    in state — flipped by the "Expand all" button above the demo — expands or collapses every
+    in state, flipped by the "Expand all" button above the demo, expands or collapses every
     department at once:
   </p>
 

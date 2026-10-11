@@ -2,7 +2,7 @@ import { useState } from 'react';
 import DataTable from '../ThemedDataTable';
 import { type TableColumn } from 'react-data-table-component';
 
-// Inline SVG icon primitives — no external dependency
+// Inline SVG icon primitives, no external dependency
 const ChevronLeft = () => (
 	<svg
 		width="14"
@@ -217,7 +217,7 @@ const modes: { key: Mode; label: string }[] = [
 
 const ExpandedRow = ({ data: row }: { data: Employee }) => (
 	<div style={{ padding: '12px 24px', background: '#f9fafb', fontSize: 13, color: '#4b5563' }}>
-		<strong>{row.name}</strong> — {row.bio}
+		<strong>{row.name}</strong>: {row.bio}
 	</div>
 );
 

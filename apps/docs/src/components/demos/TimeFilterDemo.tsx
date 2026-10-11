@@ -7,7 +7,7 @@ interface LogEntry {
 	service: string;
 	level: 'info' | 'warn' | 'error';
 	message: string;
-	// Full ISO timestamps spanning several days — the time filter reads the
+	// Full ISO timestamps spanning several days. The time filter reads the
 	// time-of-day and ignores the date, so a window matches across all of them.
 	at: string;
 }

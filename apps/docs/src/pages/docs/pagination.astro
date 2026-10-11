@@ -83,7 +83,7 @@ export default function App() {
   );
 }`}
   >
-    <PaginationDemo client:load />
+    <PaginationDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Pagination position</h2>
@@ -102,7 +102,7 @@ export default function App() {
   paginationPosition="top" // "top" | "bottom" | "both"
 />;`}
   >
-    <PaginationPositionDemo client:load />
+    <PaginationPositionDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Server-side pagination</h2>
@@ -171,7 +171,7 @@ export default function App() {
   );
 }`}
   >
-    <ServerSidePaginationDemo client:load />
+    <ServerSidePaginationDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Callback contract</h2>
@@ -212,7 +212,7 @@ export default function App() {
 
   <Demo
     title="Server-side sort + pagination"
-    description="150-row simulated dataset. Sort any column, then page through the results — each action triggers exactly one fetch (300 ms latency)."
+    description="150-row simulated dataset. Sort any column, then page through the results. Each action triggers exactly one fetch (300 ms latency)."
     code={`import { useState, useEffect, useCallback } from 'react';
 import DataTable, { type TableColumn, SortOrder } from 'react-data-table-component';
 
@@ -275,7 +275,7 @@ export default function App() {
   );
 }`}
   >
-    <ServerSideSortPaginationDemo client:load />
+    <ServerSideSortPaginationDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Full example: search, sort, and pagination</h2>
@@ -362,7 +362,7 @@ export default function App() {
   );
 }`}
   >
-    <ServerSideDemo client:load />
+    <ServerSideDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>With React Query</h2>
@@ -514,7 +514,7 @@ function MyPagination({ rowsPerPage, rowCount, currentPage, onChangePage }: Pagi
   <h2>Localization</h2>
   <p>
     All navigation aria-labels on the built-in pagination bar are controlled via the
-    <code>localization</code> prop. Use a pre-built locale or supply your own — every key is
+    <code>localization</code> prop. Use a pre-built locale or supply your own. Every key is
     optional and falls back to the English default. Visible text such as
     <code>rowsPerPageText</code> and <code>rangeSeparatorText</code> is still set via
     <code>paginationComponentOptions</code>.
@@ -526,7 +526,7 @@ import { fr } from 'react-data-table-component/locales';
 
 <DataTable columns={columns} data={data} pagination localization={fr} />;`} />
 
-  <CodeBlock code={`// Partial override — spread a locale and replace only what you need
+  <CodeBlock code={`// Partial override: spread a locale and replace only what you need
 import { fr } from 'react-data-table-component/locales';
 import type { Localization } from 'react-data-table-component';
 
@@ -540,7 +540,7 @@ const myLocale: Localization = {
 
 <DataTable columns={columns} data={data} pagination localization={myLocale} />;`} />
 
-  <CodeBlock code={`// Built from scratch — every key is optional
+  <CodeBlock code={`// Built from scratch, every key is optional
 import type { Localization } from 'react-data-table-component';
 
 const custom: Localization = {

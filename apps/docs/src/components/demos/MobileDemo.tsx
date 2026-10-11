@@ -129,7 +129,7 @@ export default function MobileDemo() {
 
 			{isNarrow && (
 				<p className="text-xs text-gray-400 text-center">
-					Department and Salary are hidden at this width — use <code className="bg-gray-100 px-1 rounded">omit</code> or{' '}
+					Department and Salary are hidden at this width. Use <code className="bg-gray-100 px-1 rounded">omit</code> or{' '}
 					<code className="bg-gray-100 px-1 rounded">hide: &quot;sm&quot;</code> to drop columns on small screens.
 				</p>
 			)}

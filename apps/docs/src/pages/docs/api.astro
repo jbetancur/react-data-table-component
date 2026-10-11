@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
+import { columnProps } from '../../data/props';
 ---
 
 <DocsLayout
@@ -122,50 +123,14 @@ const columns: TableColumn<MyRow>[] = [
 
   <DocsTable
     headers={['Prop', 'Type', 'Description']}
-    rows={[
-      ['<code>id</code>', '<code>string | number</code>', 'Stable identity used by <code>defaultSortFieldId</code>, <code>columnGroups</code>, and <code>filterValues</code>.'],
-      ['<code>name</code>', '<code>ReactNode</code>', 'Column header label.'],
-      ['<code>selector</code>', '<code>(row, index?) =&gt; Primitive | ReactNode</code>', 'Data accessor. For sortable columns return a <code>Primitive</code> (<code>string | number | boolean | bigint | Date</code>). Rows whose selector returns <code>null</code> or <code>undefined</code> sort to the end. <code>bigint</code> displays as its decimal string; <code>Date</code> displays via <code>toLocaleString()</code>, which follows the viewer&apos;s locale and timezone. Use <code>format</code> when you need deterministic or SSR-stable output.'],
-      ['<code>cell</code>', '<code>(row, index, column, id) =&gt; ReactNode</code>', 'Custom cell renderer. Overrides the <code>selector</code> display value.'],
-      ['<code>format</code>', '<code>(row, index) =&gt; ReactNode</code>', 'Format the selector value for display without changing the sort key.'],
-      ['<code>sortable</code>', '<code>boolean</code>', 'Enable sorting on this column.'],
-      ['<code>sortFunction</code>', '<code>(a: T, b: T) =&gt; number</code>', 'Custom comparator for this column.'],
-      ['<code>sortField</code>', '<code>string</code>', 'Field key passed to <code>onSort</code> for server-side sort identification.'],
-      ['<code>filterable</code>', '<code>boolean</code>', 'Show a filter popup for this column.'],
-      ['<code>filterType</code>', '<code>"text" | "number" | "date" | "datetime" | "time" | "set"</code>', 'Filter operator set and input widget. Defaults to <code>"text"</code>. <code>"set"</code> shows a checklist of the column&apos;s distinct values instead of operators. See <a href="/docs/filtering">Filtering</a>.'],
-      ['<code>filterFunction</code>', '<code>(row, filter: FilterState) =&gt; boolean</code>', 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.'],
-      ['<code>filterOptions</code>', '<code>&#123; values?: string[] | ((rows: T[]) =&gt; string[]); separator?: string | RegExp &#125;</code>', 'Settings for a <code>"set"</code> filter. <code>values</code> supplies the checklist instead of deriving it from the loaded rows. <code>separator</code> splits a multi-value cell into its parts. See <a href="/docs/filtering#supplying-set-values">Filtering</a>.'],
-      ['<code>width</code>', '<code>string</code>', 'Fixed column width, e.g. <code>"120px"</code>.'],
-      ['<code>minWidth</code>', '<code>string</code>', 'Minimum width.'],
-      ['<code>maxWidth</code>', '<code>string</code>', 'Maximum width.'],
-      ['<code>grow</code>', '<code>number</code>', 'Flex-grow factor (default <code>1</code>). Set to <code>0</code> to prevent growing.'],
-      ['<code>right</code>', '<code>boolean</code>', 'Right-align cell content.'],
-      ['<code>center</code>', '<code>boolean</code>', 'Center cell content.'],
-      ['<code>wrap</code>', '<code>boolean</code>', 'Allow cell text to wrap.'],
-      ['<code>compact</code>', '<code>boolean</code>', 'Remove cell padding.'],
-      ['<code>button</code>', '<code>boolean</code>', 'Center content and suppress row click propagation.'],
-      ['<code>allowOverflow</code>', '<code>boolean</code>', 'Allow cell content to overflow (useful for dropdowns and popovers).'],
-      ['<code>ignoreRowClick</code>', '<code>boolean</code>', 'Prevent clicks in this cell from firing <code>onRowClicked</code>.'],
-      ['<code>hide</code>', '<code>Media</code>', 'Hide the column below the given breakpoint (<code>Media.SM</code> = 599px, <code>MD</code> = 959px, <code>LG</code> = 1280px).'],
-      ['<code>omit</code>', '<code>boolean</code>', 'Exclude the column entirely. Toggle this to show/hide a column.'],
-      ['<code>reorder</code>', '<code>boolean</code>', 'Allow drag-to-reorder for this column (requires <code>reorder</code> on at least two columns).'],
-      ['<code>pinned</code>', "<code>'left' | 'right'</code>", 'Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container — give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.'],
-      ['<code>style</code>', '<code>CSSProperties</code>', 'Inline styles applied to every cell in this column.'],
-      ['<code>conditionalCellStyles</code>', '<code>ConditionalStyles&lt;T&gt;[]</code>', 'Per-cell conditional styles.'],
-      ['<code>footer</code>', '<code>ReactNode | (rows: T[]) =&gt; ReactNode</code>', 'Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a <code>footer</code>, a footer row renders below the body. See <a href="/docs/footer">Footer</a>.'],
-    ]}
+    rows={columnProps.filter(p => !p.section).map(p => [`<code>${p.name}</code>`, p.type, p.description])}
   />
 
   <h3 id="inline-editing">Inline editing</h3>
 
   <DocsTable
     headers={['Prop', 'Type', 'Description']}
-    rows={[
-      ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for <code>editor: { type: &apos;text&apos; }</code>. Ignored when <code>editor</code> is also set.'],
-      ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <a href="#celleditor">CellEditor</a> below. Takes precedence over <code>editable</code>.'],
-      ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Gate the edit before <code>onCellEdit</code> fires. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string error to keep the editor open with an inline tooltip.'],
-      ['<code>onCellEdit</code>', '<code>CellEditCallback&lt;T&gt;</code>', 'Called when the user commits an edit. Receives <code>(row: T, value: string, column: TableColumn&lt;T&gt;)</code>. The <code>value</code> is always a string; parse it to the target type in your handler.'],
-    ]}
+    rows={columnProps.filter(p => p.section === 'inline-editing').map(p => [`<code>${p.name}</code>`, p.type, p.description])}
   />
 
   <p>See <a href="/docs/inline-editing">Inline editing</a> for examples, CSS variables, and styling guidance.</p>

@@ -94,7 +94,7 @@ export default function ControlledSelectionDemo() {
 					<div className="mt-1 font-mono text-xs text-brand-600 min-h-[1.25rem]">
 						{selected.length > 0 ? `[${selected.map(r => r.id).join(', ')}]` : '[]'}
 						{selected.length > 0 && (
-							<span className="text-gray-400"> — {selected.map(r => r.name).join(', ')}</span>
+							<span className="text-gray-400">: {selected.map(r => r.name).join(', ')}</span>
 						)}
 					</div>
 				</div>

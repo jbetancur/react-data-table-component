@@ -99,7 +99,7 @@ export default function App() {
   );
 }`}
   >
-    <SelectionDemo client:load />
+    <SelectionDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Range selection (Shift-click)</h2>
@@ -109,7 +109,7 @@ export default function App() {
     selection is enabled by default; opt out with <code>selectableRowsRange=&#123;false&#125;</code>.
   </p>
   <p>
-    The behavior respects <code>selectableRowDisabled</code> — disabled rows in the range are
+    The behavior respects <code>selectableRowDisabled</code>: disabled rows in the range are
     skipped, not toggled. It also stays within the current page when pagination is enabled.
   </p>
   <CodeBlock code={`// Default: range selection on
@@ -180,7 +180,7 @@ ref.current?.clearSelectedRows();`} />
   );
 }`}
   >
-    <ControlledSelectionDemo client:load />
+    <ControlledSelectionDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p>
@@ -216,7 +216,7 @@ ref.current?.clearSelectedRows();`} />
   </p>
   <p>
     It also changes what happens when the page changes: the selection is cleared. That keeps
-    "select all" honest — it always refers to the rows in front of you — but it means a
+    "select all" honest (it always refers to the rows in front of you), but it means a
     selection cannot be accumulated across pages. Leave the prop off if you need that.
   </p>
   <CodeBlock code={`<DataTable selectableRows pagination selectableRowsVisibleOnly />;`} />
@@ -238,7 +238,7 @@ ref.current?.clearSelectedRows();`} />
   selectableRowsVisibleOnly
 />`}
   >
-    <VisibleOnlyDemo client:load />
+    <VisibleOnlyDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>onSelectedRowsChange</h2>
@@ -261,8 +261,8 @@ tableRef.current?.clearSelectedRows();`} />
   <h2>Custom selection toolbar</h2>
   <p>
     v8 removed the built-in <code>contextMessage</code> and <code>contextActions</code> props.
-    Use <code>onSelectedRowsChange</code> to drive your own toolbar rendered outside the table —
-    you get full control over layout, copy, and actions. See the
+    Use <code>onSelectedRowsChange</code> to drive your own toolbar rendered outside the table.
+    You get full control over layout, copy, and actions. See the
     <a href="/docs/recipes#bulk-action-toolbar">bulk-action toolbar recipe</a> for a complete example.
   </p>
 
@@ -292,7 +292,7 @@ tableRef.current?.clearSelectedRows();`} />
   <p>
     Your component receives <code>checked</code>, <code>disabled</code>, <code>name</code>,
     <code>onClick</code>, and a <code>ref</code>. Forward that ref to a real
-    <code>&lt;input type="checkbox"&gt;</code> — DataTable sets <code>.indeterminate</code> on the
+    <code>&lt;input type="checkbox"&gt;</code>. DataTable sets <code>.indeterminate</code> on the
     node directly for the partial-selection state on the header checkbox. Keep the input in the
     DOM and style a sibling element off it, rather than replacing it, so keyboard and screen
     reader behavior still work.
@@ -329,10 +329,10 @@ tableRef.current?.clearSelectedRows();`} />
 .vinyl-wrap input:checked ~ .vinyl-disc { transform: rotate(180deg); }
 .vinyl-wrap input:indeterminate ~ .vinyl-disc { box-shadow: 0 0 0 2px #f59e0b; }`}
   >
-    <CustomCheckboxDemo client:load />
+    <CustomCheckboxDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
   <p>
-    A prop value can also be a function — it is called with the checkbox's indeterminate state
+    A prop value can also be a function. It is called with the checkbox's indeterminate state
     (<code>true</code> for the header checkbox when only some rows are selected) and its return
     value is passed to the component instead. Useful for components that express the
     indeterminate state through a different prop:

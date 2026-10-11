@@ -201,7 +201,7 @@ const jsonLd = JSON.stringify({
 
         if (!pagefindLoaded) {
           pagefindLoaded = true;
-          // pagefind-ui.js is an IIFE that sets window.PagefindUI — not an ES module.
+          // pagefind-ui.js is an IIFE that sets window.PagefindUI, not an ES module.
           // Use script/link tag injection so Vite never touches these URLs.
           // The files only exist after `astro build && pagefind --site dist`.
           const base = '/pagefind/';

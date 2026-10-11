@@ -1,13 +1,13 @@
 ---
 /**
- * Demo.astro — wraps a live React island with a toggleable "View code" panel.
+ * Demo.astro: wraps a live React island with a toggleable "View code" panel.
  *
  * Usage:
  *   <Demo code={`import DataTable from '...'`} title="Basic example">
- *     <MyDemoIsland client:load />
+ *     <MyDemoIsland client:visible={{ rootMargin: '200px' }} />
  *   </Demo>
  *
- * The <Code> component uses Astro's built-in Shiki highlighter — zero config.
+ * The <Code> component uses Astro's built-in Shiki highlighter, zero config.
  */
 import { Code } from 'astro:components';
 import type { ComponentProps } from 'astro/types';

@@ -116,7 +116,7 @@ export default function HeadlessDemo() {
 	return (
 		<div style={{ fontFamily: 'system-ui, sans-serif', fontSize: 13 }}>
 			<p style={{ marginBottom: 8, fontSize: 11, color: '#6b7280', fontStyle: 'italic' }}>
-				Custom markup — no DataTable component used. All logic from the four headless hooks.
+				Custom markup. No DataTable component used. All logic from the four headless hooks.
 			</p>
 
 			{/* Filter inputs */}

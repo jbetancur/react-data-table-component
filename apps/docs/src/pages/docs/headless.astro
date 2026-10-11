@@ -140,7 +140,7 @@ graph TD
     <code>&lt;DataTable /&gt;</code>'s ARIA roles switch from <code>table</code>/<code>cell</code> to
     <code>grid</code>/<code>gridcell</code> when <code>cellNavigation</code> is enabled, adding keyboard
     grid navigation on top of the same tree. The <code>useCellNavigation</code> hook below is the same
-    logic that powers it — compose it into your own markup to get the same roving-tabindex behavior. See
+    logic that powers it. Compose it into your own markup to get the same roving-tabindex behavior. See
     <a href="/docs/keyboard-navigation">Keyboard navigation</a> for the interaction pattern it implements.
   </p>
 
@@ -160,14 +160,14 @@ graph TD
 
   <h2>Feature hooks</h2>
 
-  <p>Compose any of these on top of the pipeline as needed — none of them depend on each other.</p>
+  <p>Compose any of these on top of the pipeline as needed. None of them depend on each other.</p>
 
   <DocsTable
     headers={['Hook', 'What it does']}
     rows={[
       ['<code>useColumnVisibility</code>', 'Show/hide columns by id, independent of the sort/filter pipeline'],
       ['<code>useColumnResize</code>', 'Drag-to-resize column widths (mouse-driven, DOM-only state)'],
-      ['<code>useCellNavigation</code>', 'Keyboard grid navigation — arrows, Home/End, roving tabindex. Same logic behind <code>cellNavigation</code>'],
+      ['<code>useCellNavigation</code>', 'Keyboard grid navigation: arrows, Home/End, roving tabindex. Same logic behind <code>cellNavigation</code>'],
       ['<code>useTableExport</code>', 'Generates CSV / JSON from columns and rows, with download + clipboard helpers'],
       ['<code>getPinnedOffsets</code> / <code>getPinnedTotalWidths</code> / <code>getPinnedCellMeta</code>', 'Pure functions (not hooks) that compute sticky-column offsets and shadow metadata for <code>column.pinned</code>'],
     ]}
@@ -256,7 +256,7 @@ function MyTable({ data }: { data: Person[] }) {
     onSort: () => {},
   });
 
-  // 4. Optional: per-column filtering (uncontrolled — internal state)
+  // 4. Optional: per-column filtering (uncontrolled, internal state)
   const { filteredData } = useColumnFilter(tableColumns);
 
   const rows = filteredData(tableRows);
@@ -403,7 +403,7 @@ function MyTable({ data }: { data: Person[] }) {
       ['<code>rowsPerPage</code>', '<code>number</code>'],
       ['<code>selectedColumn</code>', '<code>TableColumn&lt;T&gt;</code>'],
       ['<code>sortDirection</code>', '<code>SortOrder</code>'],
-      ['<code>sortColumns</code>', '<code>SortColumn&lt;T&gt;[]</code> — full sort config in priority order; required by <code>useTableData</code>'],
+      ['<code>sortColumns</code>', '<code>SortColumn&lt;T&gt;[]</code>: full sort config in priority order; required by <code>useTableData</code>'],
       ['<code>selectedRows</code>', '<code>T[]</code>'],
       ['<code>selectedCount</code>', '<code>number</code>'],
       ['<code>allSelected</code>', '<code>boolean</code>'],
@@ -433,7 +433,7 @@ function MyTable({ data }: { data: Person[] }) {
     ]}
   />
 
-  <p><code>sortColumns</code> (from <code>tableState.sortColumns</code>) is required — omitting it is a type error.</p>
+  <p><code>sortColumns</code> (from <code>tableState.sortColumns</code>) is required. Omitting it is a type error.</p>
 
   <DocsTable
     headers={['Property', 'Type', 'Description']}
@@ -488,7 +488,7 @@ function useColumnFilter<T>(
   />
 
   <p>
-    <code>filteredData</code> is a stable memoised function — safe to call in render.
+    <code>filteredData</code> is a stable memoized function, safe to call in render.
     Each column can define <code>filterFunction: (row: T, filter: FilterState) =&gt; boolean</code> to
     override the built-in operator logic. See <a href="/docs/filtering">Filtering</a> for the full
     <code>FilterState</code> type and operator reference.
@@ -501,7 +501,7 @@ function useColumnFilter<T>(
   <p>
     Powers the WAI-ARIA grid pattern behind <code>cellNavigation</code>: arrow keys, <code>Home</code>/<code>End</code>,
     <code>Ctrl+Home</code>/<code>Ctrl+End</code>, and a roving tabindex. It reads and writes plain
-    <code>data-nav-row</code> / <code>data-nav-col</code> attributes on your own cells — it doesn't know or
+    <code>data-nav-row</code> / <code>data-nav-col</code> attributes on your own cells. It doesn't know or
     care what markup they're attached to.
   </p>
 
@@ -519,7 +519,7 @@ function useColumnFilter<T>(
       ['<code>expandableRows</code>', '<code>boolean</code>', 'Reserves the next nav column for an expander button, if you render one.'],
       ['<code>expandableRowsHideExpander</code>', '<code>boolean</code>', 'Skip the expander column reservation even when <code>expandableRows</code> is true.'],
       ['<code>effectiveColumns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'Your current column list. Columns with <code>omit: true</code> are excluded from the nav grid.'],
-      ['<code>filteredTableRowCount</code>', '<code>number</code>', 'Row count for the currently visible page — clamps <code>ArrowDown</code>/<code>End</code>.'],
+      ['<code>filteredTableRowCount</code>', '<code>number</code>', 'Row count for the currently visible page. Clamps <code>ArrowDown</code>/<code>End</code>.'],
       ['<code>showTableHead</code>', '<code>boolean</code>', 'Whether a header row participates in the grid (row <code>-1</code>). <code>false</code> removes header cells from the tab sequence entirely.'],
     ]}
   />
@@ -571,7 +571,7 @@ function MyTable({ data, columns }) {
 
   <p>
     Cells that hold an interactive widget instead of plain text (a checkbox, an expander button) should
-    also set <code>data-nav-widget="true"</code> — the hook then focuses the widget itself rather than
+    also set <code>data-nav-widget="true"</code>, and the hook then focuses the widget itself rather than
     the cell wrapper, so <kbd>Space</kbd>/<kbd>Enter</kbd> activate it natively. See
     <a href="/docs/keyboard-navigation">Keyboard navigation</a> for the full key reference this
     reproduces.
@@ -596,7 +596,7 @@ function MyTable({ data, columns }) {
 
   <p>
     Attach <code>handleResizeStart</code> to a drag handle's <code>onMouseDown</code>. The hook tracks
-    <code>mousemove</code>/<code>mouseup</code> on <code>document</code> itself — you don't need to wire
+    <code>mousemove</code>/<code>mouseup</code> on <code>document</code> itself, so you don't need to wire
     those up. Apply <code>columnWidths[column.id]</code> as an inline <code>width</code> on your header
     and body cells for that column.
   </p>
@@ -606,7 +606,7 @@ function MyTable({ data, columns }) {
   <h3>Pinning: <code>getPinnedOffsets</code>, <code>getPinnedTotalWidths</code>, <code>getPinnedCellMeta</code></h3>
 
   <p>
-    Column pinning has no hook — there's no state to own beyond <code>column.pinned</code> on your own
+    Column pinning has no hook. There's no state to own beyond <code>column.pinned</code> on your own
     column list. These are pure functions: given your columns and current widths, they compute sticky
     offsets and shadow metadata.
   </p>
@@ -648,7 +648,7 @@ function Cell({ column, pinnedOffsets }: { column: TableColumn<Row>; pinnedOffse
     <code>getPinnedCellMeta</code> returns a <code>style</code> object (<code>position: 'sticky'</code>,
     the computed <code>left</code>/<code>right</code> offset, and <code>zIndex</code>) that's enough to
     render pinned columns on its own. <code>className</code> adds <code>rdt_pinLeftLast</code> /
-    <code>rdt_pinRightFirst</code> on the pinned boundary's edge column — those classes only draw a
+    <code>rdt_pinRightFirst</code> on the pinned boundary's edge column. Those classes only draw a
     shadow if you import <code>react-data-table-component/css</code> (or match the selectors
     yourself); they're no-ops otherwise. See <a href="/docs/column-pinning">Column pinning</a> for the
     <code>column.pinned</code> API these functions read.
@@ -712,7 +712,7 @@ useEffect(() => {
   <p>
     Generates CSV or JSON from any set of columns and rows. Pair it with
     <code>useTableData</code> and <code>useColumnFilter</code> to export exactly what the
-    user sees — sorted, filtered, and paginated — rather than the raw dataset.
+    user sees (sorted, filtered, and paginated) rather than the raw dataset.
   </p>
 
   <CodeBlock lang="ts" code={`function useTableExport<T>(options: UseTableExportOptions<T>): UseTableExportResult;`} />
@@ -742,7 +742,7 @@ useEffect(() => {
     ]}
   />
 
-  <h3>Example — export the current filtered view</h3>
+  <h3>Example: export the current filtered view</h3>
 
   <CodeBlock lang="tsx" code={`import {
   useColumns,

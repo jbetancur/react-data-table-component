@@ -6,7 +6,7 @@ import EditableGridDemo from '../../../components/demos/EditableGridDemo.tsx';
 import editableGridSource from '../../../components/demos/EditableGridDemo.tsx?raw';
 ---
 
-<DocsLayout title="Editable inventory grid | Recipes | react-data-table-component" description="Build a spreadsheet-style editable line-item grid with per-cell validation, a derived total column, and a running grand total — using only editable columns.">
+<DocsLayout title="Editable inventory grid | Recipes | react-data-table-component" description="Build a spreadsheet-style editable line-item grid with per-cell validation, a derived total column, and a running grand total, using only editable columns.">
   <h1>Editable inventory grid</h1>
 
   <p>
@@ -20,11 +20,11 @@ import editableGridSource from '../../../components/demos/EditableGridDemo.tsx?r
     description="Edit product, quantity, or price directly in the cells. Total and grand total update automatically."
     code={editableGridSource}
   >
-    <EditableGridDemo client:load />
+    <EditableGridDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <h2>Editable columns with a shared handler</h2>
@@ -55,7 +55,7 @@ const columns: TableColumn<LineItem>[] = [
   <h2>A derived column that isn't editable</h2>
 
   <p>
-    The <strong>total</strong> column has no <code>editable</code> flag — it's computed straight
+    The <strong>total</strong> column has no <code>editable</code> flag. It's computed straight
     from the row on every render, so it never drifts out of sync with quantity or price:
   </p>
 
@@ -70,8 +70,8 @@ const columns: TableColumn<LineItem>[] = [
   <h2>Running grand total</h2>
 
   <p>
-    Reduce over <code>data</code> on every render and show it in a footer bar below the table —
-    it updates automatically as cells are edited, with no extra event wiring:
+    Reduce over <code>data</code> on every render and show it in a footer bar below the table.
+    It updates automatically as cells are edited, with no extra event wiring:
   </p>
 
   <CodeBlock code={`const grandTotal = data.reduce((sum, r) => sum + r.quantity * r.price, 0);
@@ -82,7 +82,7 @@ const columns: TableColumn<LineItem>[] = [
 </div>`} />
 
   <p>
-    Prefer it inside the table itself? Pass a <code>footer</code> to a column instead — see
+    Prefer it inside the table itself? Pass a <code>footer</code> to a column instead. See
     <a href="/docs/footer">Footer</a> for the built-in summary row.
   </p>
 </DocsLayout>

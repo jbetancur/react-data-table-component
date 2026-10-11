@@ -41,18 +41,18 @@ export default function App() {
   );
 }`}
   >
-    <ColumnVisibilityDemo client:load />
+    <ColumnVisibilityDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Hook API</h2>
 
   <CodeBlock lang="ts" code={`const {
-  columns, // TableColumn<T>[] — pass directly to DataTable, omit is managed for you
-  entries, // { column, visible }[] — drive your toggle UI from this
-  toggleColumn, // (columnId) => void — flip one column's visibility
-  isVisible, // (columnId) => boolean — check a specific column
-  showAll, // () => void — make all columns visible
-  hideAll, // () => void — hide all columns
+  columns, // TableColumn<T>[]: pass directly to DataTable, omit is managed for you
+  entries, // { column, visible }[]: drive your toggle UI from this
+  toggleColumn, // (columnId) => void: flip one column's visibility
+  isVisible, // (columnId) => boolean: check a specific column
+  showAll, // () => void: make all columns visible
+  hideAll, // () => void: hide all columns
 } = useColumnVisibility(initialColumns);`} />
 
   <h2>Column IDs are required</h2>

@@ -42,14 +42,14 @@ export default function App() {
       <DataTable columns={columns} data={data} pointerOnHover highlightOnHover onRowClicked={row => setSelected(row)} />
       {selected && (
         <div>
-          {selected.name} — {selected.role}, {selected.department}
+          {selected.name}: {selected.role}, {selected.department}
         </div>
       )}
     </div>
   );
 }`}
   >
-    <RowClickDemo client:load />
+    <RowClickDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Rows as navigation links</h2>
@@ -116,7 +116,7 @@ export default function App() {
   );
 }`}
   >
-    <RowLinkDemo client:load />
+    <RowLinkDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Action buttons in cells</h2>
@@ -161,7 +161,7 @@ export default function App() {
   );
 }`}
   >
-    <ActionCellDemo client:load />
+    <ActionCellDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Prop reference</h2>

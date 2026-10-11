@@ -36,7 +36,7 @@ const columns: TableColumn<Employee>[] = [
 
 <DataTable columns={columns} data={data} resizable highlightOnHover />;`}
   >
-    <ResizableDemo client:load />
+    <ResizableDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>How it works</h2>

@@ -6,12 +6,12 @@ import InlineRowActionsDemo from '../../../components/demos/InlineRowActionsDemo
 import inlineRowActionsSource from '../../../components/demos/InlineRowActionsDemo.tsx?raw';
 ---
 
-<DocsLayout title="Inline row actions | Recipes | react-data-table-component" description="Add a per-row actions dropdown with edit, duplicate, and delete — including confirmation modals and optimistic state updates.">
+<DocsLayout title="Inline row actions | Recipes | react-data-table-component" description="Add a per-row actions dropdown with edit, duplicate, and delete, including confirmation modals and optimistic state updates.">
   <h1>Inline row actions</h1>
 
   <p>
     A per-row <strong>⋮ menu</strong> with edit, duplicate, and delete. Destructive actions
-    show a confirmation modal before committing. State is updated optimistically — no network
+    show a confirmation modal before committing. State is updated optimistically, no network
     call needed to see the result.
   </p>
 
@@ -20,11 +20,11 @@ import inlineRowActionsSource from '../../../components/demos/InlineRowActionsDe
     description="Click the ⋮ menu on any row to edit, duplicate, or delete it."
     code={inlineRowActionsSource}
   >
-    <InlineRowActionsDemo client:load />
+    <InlineRowActionsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p class="text-xs text-gray-400 -mt-4">
-    This demo uses Tailwind utility classes for layout — swap in your own CSS when copying into your project.
+    This demo uses Tailwind utility classes for layout. Swap in your own CSS when copying into your project.
   </p>
 
   <h2>The actions column</h2>

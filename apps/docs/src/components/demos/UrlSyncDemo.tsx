@@ -123,7 +123,7 @@ export default function UrlSyncDemo() {
 	// Show current URL params so the demo is self-explanatory
 	const [urlDisplay, setUrlDisplay] = useState('');
 	useEffect(() => {
-		setUrlDisplay(window.location.search || '(no params — default state)');
+		setUrlDisplay(window.location.search || '(no params, default state)');
 	}, [sortId, sortDir, page, perPage, filters]);
 
 	return (

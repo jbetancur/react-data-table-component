@@ -10,12 +10,12 @@ import ConditionalStylesDemo from '../../components/demos/ConditionalStylesDemo.
   <h1>Conditional styles</h1>
 
   <p>
-    Apply styles or CSS class names to rows and cells based on row data — no custom
+    Apply styles or CSS class names to rows and cells based on row data, no custom
     <code>cell</code> renderer required.
   </p>
 
   <Demo
-    title="Conditional row and cell styles — sales pipeline"
+    title="Conditional row and cell styles: sales pipeline"
     description="Won deals get a green left border; lost deals are dimmed. Value cells are bold-green for large deals, gray for small. Days Open cells turn amber then red as they age."
     code={`import DataTable, { type ConditionalStyles, type TableColumn } from 'react-data-table-component';
 
@@ -58,7 +58,7 @@ const columns: TableColumn<Deal>[] = [
 
 <DataTable columns={columns} data={data} conditionalRowStyles={conditionalRowStyles} highlightOnHover />;`}
   >
-    <ConditionalStylesDemo client:load />
+    <ConditionalStylesDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>conditionalRowStyles</h2>
@@ -144,7 +144,7 @@ const conditionalRowStyles: ConditionalStyles<Deal>[] = [
   <p>
     Conditional row styles are applied after the base row style, so they override the default
     background. The hover highlight from <code>highlightOnHover</code> will override a conditional
-    background on hover — which is usually the desired behavior. If you need the conditional color
+    background on hover, which is usually the desired behavior. If you need the conditional color
     to persist on hover, set it via <code>rows.highlightOnHoverStyle</code> in <code>customStyles</code>.
   </p>
 

@@ -3,11 +3,11 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 ---
 
-<DocsLayout title="TypeScript | react-data-table-component" description="Fully typed React data table: generic column types, prop types, and custom render function types — all inferred from your data.">
+<DocsLayout title="TypeScript | react-data-table-component" description="Fully typed React data table: generic column types, prop types, and custom render function types, all inferred from your data.">
   <h1>TypeScript</h1>
 
   <p>
-    Every public API is fully typed. In most cases you don't need to import any types at all —
+    Every public API is fully typed. In most cases you don't need to import any types at all:
     column shapes and event handlers infer from the row type you pass to <code>DataTable</code>.
     This page covers the patterns where explicit typing is useful.
   </p>
@@ -41,7 +41,7 @@ const columns: TableColumn<Employee>[] = [
 
   <p>
     If you ever see <code>any</code> appearing in your editor, double-check that the columns
-    array has an explicit <code>TableColumn&lt;Employee&gt;[]</code> annotation — TypeScript
+    array has an explicit <code>TableColumn&lt;Employee&gt;[]</code> annotation, because TypeScript
     cannot infer the row type from <code>data</code> alone when columns are declared separately.
   </p>
 
@@ -100,7 +100,7 @@ const conditionalRowStyles: ConditionalStyles<Employee>[] = [
 function EmployeeDetail({ data: row }: ExpanderComponentProps<Employee>) {
   return (
     <div style={{ padding: 12 }}>
-      <strong>{row.name}</strong> — ID {row.id}
+      <strong>{row.name}</strong> (ID {row.id})
     </div>
   );
 }
@@ -129,8 +129,8 @@ const [filters, setFilters] = useState<Record<string, FilterState>>({});
   <h2>Headless hooks</h2>
 
   <p>
-    Each hook re-exports the types it accepts and returns. Most users won't need to import them
-    — destructured returns are fully typed. If you wrap a hook in another, import the option
+    Each hook re-exports the types it accepts and returns. Most users won't need to import them,
+    since destructured returns are fully typed. If you wrap a hook in another, import the option
     types:
   </p>
 
@@ -160,7 +160,7 @@ import type { UseColumnVisibilityResult } from 'react-data-table-component';`} /
     object will fail. Stringify or wrap in JSX:
   </p>
 
-  <CodeBlock code={`// ❌ Type error — object is not ReactNode
+  <CodeBlock code={`// ❌ Type error: object is not ReactNode
 { name: 'Tags', selector: row => row.tags } // row.tags: Tag[]
 
 // ✅ Either format or render
@@ -178,7 +178,7 @@ import type { UseColumnVisibilityResult } from 'react-data-table-component';`} /
   setData(prev => prev.map(r => (r.id === row.id ? { ...r, [field]: value } : r)));
 };`} />
 
-  <h2>Imported types — full list</h2>
+  <h2>Imported types: full list</h2>
 
   <CodeBlock code={`import type {
   // Core

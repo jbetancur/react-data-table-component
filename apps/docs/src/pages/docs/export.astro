@@ -12,7 +12,7 @@ import DocsTable from '../../components/DocsTable.astro';
   <p>
     <code>useTableExport</code> is a headless hook that turns your columns and rows into CSV
     or JSON. It can also trigger a browser download or copy to the clipboard. It does not
-    touch your DataTable; you pass it the same data the table is rendering — or a filtered /
+    touch your DataTable; you pass it the same data the table is rendering, or a filtered /
     sorted slice if you only want to export the "current view".
   </p>
 
@@ -62,7 +62,7 @@ export default function App() {
   );
 }`}
   >
-    <ExportDemo client:load />
+    <ExportDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Basic usage</h2>
@@ -105,7 +105,7 @@ function EmployeesTable({ data }: { data: Employee[] }) {
 
   <p>
     DataTable owns sort and pagination state internally, but you can lift them out by using
-    the headless hooks directly — or just keep a copy of the filtered/sorted rows via the
+    the headless hooks directly, or just keep a copy of the filtered/sorted rows via the
     callbacks. The simplest pattern for "what the user is looking at right now" is to drive
     DataTable from the same hooks that feed <code>useTableExport</code>:
   </p>
@@ -144,7 +144,7 @@ function App() {
 
   <p>
     For server-side data, just pass whatever rows the server returned for your current
-    filters — <code>useTableExport</code> doesn't care where the rows came from.
+    filters. <code>useTableExport</code> doesn't care where the rows came from.
   </p>
 
   <h2>Customizing column output</h2>
@@ -210,7 +210,7 @@ function App() {
 
   <p>
     Values containing commas, quotes, or newlines are wrapped in double quotes and any
-    interior quotes are doubled — the standard RFC 4180 rule. Booleans and numbers are
+    interior quotes are doubled, the standard RFC 4180 rule. Booleans and numbers are
     coerced with <code>String()</code>. <code>null</code> and <code>undefined</code> become
     empty cells. Anything more complex (objects, React nodes) is run through
     <code>JSON.stringify</code> as a safety net.

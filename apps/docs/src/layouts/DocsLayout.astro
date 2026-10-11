@@ -3,6 +3,7 @@ import Layout from './Layout.astro';
 import Demo from '../components/Demo.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import HeadlessDemo from '../components/demos/HeadlessDemo.tsx';
+import { nav } from '../data/nav';
 
 interface Props {
   title?: string;
@@ -10,111 +11,6 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-
-const nav = [
-  {
-    group: 'Introduction',
-    links: [
-      { label: 'Getting Started', href: '/docs/getting-started' },
-      { label: 'Installation', href: '/docs/installation' },
-      { label: 'Comparisons', href: '/docs/comparisons' },
-      { label: 'Changelog', href: '/docs/changelog' },
-      { label: 'llms.txt', href: '/llms.txt' },
-    ],
-  },
-  {
-    group: 'Reference',
-    links: [
-      { label: 'API Reference', href: '/docs/api' },
-      { label: 'Migration Guide', href: '/docs/migration' },
-    ],
-  },
-  {
-    group: 'Columns',
-    links: [
-      { label: 'Overview', href: '/docs/columns' },
-      { label: 'Cell Rendering', href: '/docs/cells' },
-      { label: 'Column Groups', href: '/docs/column-groups' },
-      { label: 'Column Visibility', href: '/docs/column-visibility' },
-      { label: 'Column Reordering', href: '/docs/column-reorder' },
-      { label: 'Column Resizing', href: '/docs/resizable' },
-      { label: 'Column Pinning', href: '/docs/column-pinning' },
-      { label: 'Column Separators', href: '/docs/column-separators' },
-      { label: 'Column Filtering', href: '/docs/filtering' },
-      { label: 'Sorting', href: '/docs/sorting' },
-    ],
-  },
-  {
-    group: 'Editing',
-    links: [
-      { label: 'Inline Editing', href: '/docs/inline-editing' },
-    ],
-  },
-  {
-    group: 'Rows',
-    links: [
-      { label: 'Row Interactions', href: '/docs/row-interactions' },
-      { label: 'Row Selection', href: '/docs/selection' },
-      { label: 'Row Pinning', href: '/docs/row-pinning' },
-      { label: 'Expandable Rows', href: '/docs/expandable' },
-      { label: 'Conditional Styles', href: '/docs/conditional-styles' },
-      { label: 'Fixed Header', href: '/docs/fixed-header' },
-      { label: 'Pagination', href: '/docs/pagination' },
-      { label: 'Footer', href: '/docs/footer' },
-      { label: 'Loading State', href: '/docs/loading' },
-    ],
-  },
-  {
-    group: 'Interactivity',
-    links: [
-      { label: 'Animations', href: '/docs/animations' },
-      { label: 'Accessibility', href: '/docs/accessibility' },
-      { label: 'Keyboard Navigation', href: '/docs/keyboard-navigation' },
-      { label: 'Context Menu', href: '/docs/context-menu' },
-      { label: 'Localization', href: '/docs/localization' },
-      { label: 'RTL Support', href: '/docs/rtl' },
-      { label: 'Mobile', href: '/docs/mobile' },
-    ],
-  },
-  {
-    group: 'Styling',
-    links: [
-      { label: 'Themes', href: '/docs/themes' },
-      { label: 'Custom Styles', href: '/docs/custom-styles' },
-    ],
-  },
-  {
-    group: 'Import / Export',
-    links: [
-      { label: 'Export (CSV / JSON)', href: '/docs/export' },
-    ],
-  },
-  {
-    group: 'Advanced',
-    links: [
-      { label: 'Headless Hooks', href: '/docs/headless' },
-      { label: 'TypeScript', href: '/docs/typescript' },
-      { label: 'SSR', href: '/docs/ssr' },
-      { label: 'Performance', href: '/docs/performance' },
-    ],
-  },
-  {
-    group: 'Recipes',
-    links: [
-      { label: 'Approval workflow', href: '/docs/recipes/approval-workflow' },
-      { label: 'Server-side sort & filter', href: '/docs/recipes/server-side' },
-      { label: 'URL-synced table state', href: '/docs/recipes/url-synced-state' },
-      { label: 'Dashboard drill-down', href: '/docs/recipes/dashboard-drilldown' },
-      { label: 'Audit log viewer', href: '/docs/recipes/audit-log' },
-      { label: 'Persist column widths', href: '/docs/recipes/persist-column-widths' },
-      { label: 'Inline row actions', href: '/docs/recipes/inline-row-actions' },
-      { label: 'Live-updating grid', href: '/docs/recipes/live-updates' },
-      { label: 'Editable inventory grid', href: '/docs/recipes/inventory-editor' },
-      { label: 'Grouped rows with aggregates', href: '/docs/recipes/row-groups' },
-      { label: 'CSV import', href: '/docs/recipes/csv-import' },
-    ],
-  },
-];
 
 const currentPath = Astro.url.pathname;
 
@@ -182,7 +78,7 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
       <slot />
       {currentPath.endsWith('/headless') && (
         <Demo
-          title="Live example — all four hooks"
+          title="Live example: all four hooks"
           description="A custom-markup table built entirely from useColumns, useTableState, useTableData, and useColumnFilter. No DataTable component. Sort by clicking headers, filter using the inputs, and paginate below."
           code={`import {
   useColumns, useTableState, useTableData, useColumnFilter,
@@ -219,7 +115,7 @@ function HeadlessTable({ data }: { data: Employee[] }) {
 
   return (
     <div>
-      {/* Filter inputs — your own markup */}
+      {/* Filter inputs: your own markup */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
         {tableColumns.map(col => (
           <input key={col.id}
@@ -229,7 +125,7 @@ function HeadlessTable({ data }: { data: Employee[] }) {
           />
         ))}
       </div>
-      {/* Table — completely custom markup */}
+      {/* Table: completely custom markup */}
       <table>
         <thead>
           <tr>
@@ -258,7 +154,7 @@ function HeadlessTable({ data }: { data: Employee[] }) {
           ))}
         </tbody>
       </table>
-      {/* Pagination — your own controls */}
+      {/* Pagination: your own controls */}
       <button onClick={() => handleChangePage(currentPage - 1)} disabled={currentPage <= 1}>‹</button>
       <span>Page {currentPage}</span>
       <button onClick={() => handleChangePage(currentPage + 1)}>›</button>
@@ -266,7 +162,7 @@ function HeadlessTable({ data }: { data: Employee[] }) {
   );
 }`}
         >
-          <HeadlessDemo client:load />
+          <HeadlessDemo client:visible={{ rootMargin: '200px' }} />
         </Demo>
       )}
 

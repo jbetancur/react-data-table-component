@@ -33,7 +33,7 @@ import PropsTable from '../../components/PropsTable.astro';
       ['<kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd>', 'Move between cells. <kbd>↑</kbd> from the first body row moves into the header row. Clamped at the edges, no wraparound.'],
       ['<kbd>Home</kbd> / <kbd>End</kbd>', 'Jump to the first / last cell in the current row.'],
       ['<kbd>Ctrl</kbd>+<kbd>Home</kbd> / <kbd>Ctrl</kbd>+<kbd>End</kbd>', 'Jump to the first / last cell of the grid.'],
-      ['<kbd>Enter</kbd> or <kbd>F2</kbd>', "Open the focused cell's editor, if it has one (<code>editable</code>/<code>editor</code> — see <a href=\"/docs/inline-editing\">Inline editing</a>)."],
+      ['<kbd>Enter</kbd> or <kbd>F2</kbd>', "Open the focused cell's editor, if it has one (<code>editable</code>/<code>editor</code>, see <a href=\"/docs/inline-editing\">Inline editing</a>)."],
       ['<kbd>Escape</kbd>', 'Cancel an open editor and return focus to the cell so navigation can continue.'],
       ['<kbd>Enter</kbd> or <kbd>Space</kbd> on a header', 'Sort by that column (sortable columns only).'],
       ['<kbd>Space</kbd> on a checkbox / <kbd>Enter</kbd> on an expander', 'Toggle row selection / expand or collapse the row.'],
@@ -50,24 +50,24 @@ import PropsTable from '../../components/PropsTable.astro';
 
   <p>
     The base behavior works on any table, editable or not. Arrow keys move one cell at a time and
-    clamp at the edges — there's no wraparound from the last column back to the first. <kbd>Home</kbd>
+    clamp at the edges. There's no wraparound from the last column back to the first. <kbd>Home</kbd>
     and <kbd>End</kbd> jump to the first / last cell in the current row; add <kbd>Ctrl</kbd>
     (<kbd>⌘</kbd> on macOS) to jump to the first / last cell of the whole grid instead.
   </p>
 
   <Demo
     title="Arrow movement"
-    description="Click a cell, then move with the keyboard only. No editing, sorting, selection, or expansion — just movement."
+    description="Click a cell, then move with the keyboard only. No editing, sorting, selection, or expansion, just movement."
     code={`<DataTable columns={columns} data={data} cellNavigation />;`}
   >
-    <KeyboardArrowNavDemo client:load />
+    <KeyboardArrowNavDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Sorting from the keyboard</h2>
 
   <p>
     Arrow <kbd>↑</kbd> out of the first body row to reach the header. On a sortable column,
-    <kbd>Enter</kbd> or <kbd>Space</kbd> cycles the sort exactly like a click would — ascending,
+    <kbd>Enter</kbd> or <kbd>Space</kbd> cycles the sort exactly like a click would: ascending,
     then descending, then back to unsorted. See <a href="/docs/sorting">Sorting</a> for the full
     behavior, including multi-column sort.
   </p>
@@ -83,7 +83,7 @@ import PropsTable from '../../components/PropsTable.astro';
 
 <DataTable columns={columns} data={data} cellNavigation />;`}
   >
-    <KeyboardSortDemo client:load />
+    <KeyboardSortDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Editing from the keyboard</h2>
@@ -107,14 +107,14 @@ import PropsTable from '../../components/PropsTable.astro';
 
 <DataTable columns={columns} data={data} cellNavigation />;`}
   >
-    <KeyboardEditDemo client:load />
+    <KeyboardEditDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Selection and expansion from the keyboard</h2>
 
   <p>
     Selection checkboxes and expander buttons sit in the nav grid like any other cell. Arrow onto
-    a row's checkbox and press <kbd>Space</kbd> to select it — arrow up far enough and you reach the
+    a row's checkbox and press <kbd>Space</kbd> to select it. Arrow up far enough and you reach the
     header's select-all checkbox, which works the same way. Arrow onto an expander button and press
     <kbd>Enter</kbd> to expand or collapse that row.
   </p>
@@ -131,19 +131,19 @@ import PropsTable from '../../components/PropsTable.astro';
   expandableRowsComponent={RowDetail}
 />;`}
   >
-    <KeyboardNavigationDemo client:load />
+    <KeyboardNavigationDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>The grid pattern</h2>
 
   <p>
     Without <code>cellNavigation</code>, the table renders <code>role="table"</code> with plain
-    <code>role="cell"</code> cells — the right shape for a screen reader's native table-reading
+    <code>role="cell"</code> cells, the right shape for a screen reader's native table-reading
     commands, since nothing in the table is meant to hold focus. Turning on <code>cellNavigation</code>
     switches every region to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/">WAI-ARIA grid
     pattern</a>: <code>role="grid"</code>, <code>role="gridcell"</code> for body cells, and a single
     roving <code>tabIndex={'{0}'}</code> that follows the last-focused cell. This is why it's an opt-in
-    prop rather than always-on — it's the right choice for tables you expect people to operate, not a
+    prop rather than always-on. It's the right choice for tables you expect people to operate, not a
     strict upgrade over the default.
   </p>
 
@@ -155,7 +155,7 @@ import PropsTable from '../../components/PropsTable.astro';
   <h2>Limitations</h2>
   <ul>
     <li>Clamps at row/column edges rather than wrapping.</li>
-    <li>Doesn't cross page boundaries — arrowing past the last row does not auto-paginate.</li>
+    <li>Doesn't cross page boundaries: arrowing past the last row does not auto-paginate.</li>
     <li>Key bindings are fixed. There's no prop to remap them.</li>
   </ul>
 

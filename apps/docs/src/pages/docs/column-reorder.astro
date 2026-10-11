@@ -66,7 +66,7 @@ export default function App() {
   return <DataTable columns={columns} data={data} onColumnOrderChange={setColumns} highlightOnHover />;
 }`}
   >
-    <DraggableColumnsDemo client:load />
+    <DraggableColumnsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Enabling reorder per column</h2>
@@ -78,7 +78,7 @@ export default function App() {
   </p>
 
   <CodeBlock code={`const columns: TableColumn<Employee>[] = [
-  { id: 'name', name: 'Name', selector: r => r.name /* no reorder — pinned */ },
+  { id: 'name', name: 'Name', selector: r => r.name /* no reorder, pinned */ },
   { id: 'role', name: 'Role', selector: r => r.role, reorder: true },
   { id: 'dept', name: 'Dept', selector: r => r.dept, reorder: true },
   { id: 'salary', name: 'Salary', selector: r => r.salary, reorder: true },
@@ -178,11 +178,11 @@ export default function App() {
   );
 }`}
   >
-    <DraggableGroupsDemo client:load />
+    <DraggableGroupsDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <p>
-    You can combine both — set <code>reorder: true</code> on columns AND on groups.
+    You can combine both: set <code>reorder: true</code> on columns AND on groups.
     Column drag is automatically restricted to within the same group, so spans stay correct.
     Group drag moves the entire block. This mirrors the AG Grid reorder experience.
   </p>

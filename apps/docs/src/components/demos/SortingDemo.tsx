@@ -156,7 +156,7 @@ export default function SortingDemo() {
 						className="rounded"
 					/>
 					<span className="text-gray-600 text-xs">
-						localeCompare sort <span className="text-gray-400">(sort Name — watch where Étienne lands)</span>
+						localeCompare sort <span className="text-gray-400">(sort Name and watch where Étienne lands)</span>
 					</span>
 				</label>
 			</div>

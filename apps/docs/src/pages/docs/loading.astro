@@ -57,7 +57,7 @@ export default function UsersTable() {
   return <DataTable columns={columns} data={data} progressPending={loading} />;
 }`}
   >
-    <LoadingDemo client:load />
+    <LoadingDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>Custom spinner or message</h2>
