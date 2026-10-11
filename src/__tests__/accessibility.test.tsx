@@ -124,6 +124,15 @@ describe('axe', () => {
 		expect(container.querySelector('.rdt_cellEditing input')).not.toBeNull();
 		await expectNoViolations();
 	});
+
+	test('cell editor open (textarea)', async () => {
+		const { container } = render(
+			<DataTable columns={[{ ...columns[0], editor: { type: 'textarea' } }, columns[1]]} data={rows} />,
+		);
+		fireEvent.click(container.querySelector('.rdt_cellEditable') as HTMLElement);
+		expect(container.querySelector('.rdt_cellEditing textarea')).not.toBeNull();
+		await expectNoViolations();
+	});
 });
 
 describe('header cell semantics', () => {
@@ -158,6 +167,27 @@ describe('header cell semantics', () => {
 		const input = container.querySelector('.rdt_cellEditing input') as HTMLElement;
 		const label = document.getElementById(input.getAttribute('aria-labelledby') as string);
 		expect(label?.textContent).toBe('Full name');
+		expect(label?.closest('[role="columnheader"]')).not.toBeNull();
+	});
+
+	test('the inline textarea editor is labelled by its column header', () => {
+		const jsxColumns: TableColumn<Row>[] = [
+			{
+				id: 'name',
+				name: (
+					<span>
+						Full <em>notes</em>
+					</span>
+				),
+				selector: r => r.name,
+				editor: { type: 'textarea' },
+			},
+		];
+		const { container } = render(<DataTable columns={jsxColumns} data={rows} />);
+		fireEvent.click(container.querySelector('.rdt_cellEditable') as HTMLElement);
+		const textarea = container.querySelector('.rdt_cellEditing textarea') as HTMLElement;
+		const label = document.getElementById(textarea.getAttribute('aria-labelledby') as string);
+		expect(label?.textContent).toBe('Full notes');
 		expect(label?.closest('[role="columnheader"]')).not.toBeNull();
 	});
 

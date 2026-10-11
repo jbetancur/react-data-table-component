@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { TableColumn } from '../types';
 import type { CellEditApi } from '../hooks/useCellEdit';
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
 interface CellEditorProps<T> {
 	edit: CellEditApi<T>;
@@ -32,6 +33,14 @@ function CellEditor<T>({ edit, row, column, labelledBy, cellNavigation }: CellEd
 		handleCheckboxCommit,
 	} = edit;
 
+	useIsomorphicLayoutEffect(() => {
+		const el = inputRef.current;
+		if (editing && el instanceof HTMLTextAreaElement) {
+			el.style.height = 'auto';
+			el.style.height = `${el.scrollHeight}px`;
+		}
+	}, [editing, editValue, inputRef]);
+
 	return (
 		<>
 			{editing && (editor?.type === 'text' || editor?.type === 'number' || editor?.type === 'date') && (
@@ -45,6 +54,21 @@ function CellEditor<T>({ edit, row, column, labelledBy, cellNavigation }: CellEd
 					min={editor.type === 'text' ? undefined : editor.min}
 					max={editor.type === 'text' ? undefined : editor.max}
 					step={editor.type === 'number' ? editor.step : undefined}
+					aria-invalid={!!editError}
+					onChange={e => setEditValue(e.target.value)}
+					onBlur={() => commitEdit()}
+					onKeyDown={handleInputKeyDown}
+					onClick={e => e.stopPropagation()}
+				/>
+			)}
+			{editing && editor?.type === 'textarea' && (
+				<textarea
+					ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+					className="rdt_editTextarea"
+					{...labelProps}
+					value={editValue}
+					placeholder={editor.placeholder}
+					rows={editor.rows ?? 3}
 					aria-invalid={!!editError}
 					onChange={e => setEditValue(e.target.value)}
 					onBlur={() => commitEdit()}
