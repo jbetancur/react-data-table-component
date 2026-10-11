@@ -505,7 +505,7 @@ export interface TableColumn<T> extends TableColumnBase {
 	filterFunction?: (row: T, filter: FilterState) => boolean;
 	/** Settings for this column's filter. Only read by `filterType: "set"`. */
 	filterOptions?: SetFilterOptions<T>;
-	/** Called when the user commits an inline edit (blur or Enter). Only fires when editable: true. */
+	/** Called when the user commits an inline edit (Enter, Ctrl/Cmd+Enter for textarea, or blur). Only fires when `editable` or `editor` is set. */
 	onCellEdit?: CellEditCallback<T>;
 	/**
 	 * Validate an inline-edit value before `onCellEdit` fires.

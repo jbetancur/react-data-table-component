@@ -134,6 +134,7 @@ const columns: TableColumn<MyRow>[] = [
       ['<code>filterable</code>', '<code>boolean</code>', 'Show a filter popup for this column.'],
       ['<code>filterType</code>', '<code>"text" | "number" | "date" | "datetime" | "time" | "set"</code>', 'Filter operator set and input widget. Defaults to <code>"text"</code>. <code>"set"</code> shows a checklist of the column&apos;s distinct values instead of operators. See <a href="/docs/filtering">Filtering</a>.'],
       ['<code>filterFunction</code>', '<code>(row, filter: FilterState) =&gt; boolean</code>', 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.'],
+      ['<code>filterOptions</code>', '<code>&#123; values?: string[] | ((rows: T[]) =&gt; string[]); separator?: string | RegExp &#125;</code>', 'Settings for a <code>"set"</code> filter. <code>values</code> supplies the checklist instead of deriving it from the loaded rows. <code>separator</code> splits a multi-value cell into its parts. See <a href="/docs/filtering#supplying-set-values">Filtering</a>.'],
       ['<code>width</code>', '<code>string</code>', 'Fixed column width, e.g. <code>"120px"</code>.'],
       ['<code>minWidth</code>', '<code>string</code>', 'Minimum width.'],
       ['<code>maxWidth</code>', '<code>string</code>', 'Maximum width.'],
@@ -205,7 +206,7 @@ interface CustomCellEditorContext<T> {
     rows={[
       ['All', '<code>type</code>', '<code>"text" | "textarea" | "number" | "date" | "checkbox" | "select" | "custom"</code>', 'Editor widget to render.'],
       ['<code>text</code> / <code>textarea</code> / <code>number</code> / <code>select</code>', '<code>placeholder</code>', '<code>string</code>', 'Placeholder text. For <code>select</code>, shown as a disabled hidden option when the current value is empty.'],
-      ['<code>textarea</code>', '<code>rows</code>', '<code>number</code>', 'Visible text lines for multi-line editing (default: 3). Forwarded to native <code>&lt;textarea&gt;</code>.'],
+      ['<code>textarea</code>', '<code>rows</code>', '<code>number</code>', 'Minimum visible lines (default: 3). The editor grows to fit its content up to <code>--rdt-cell-edit-textarea-max-height</code>, then scrolls.'],
       ['<code>number</code>', '<code>min</code> / <code>max</code> / <code>step</code>', '<code>number</code>', 'Forwarded to the native <code>&lt;input type="number"&gt;</code>.'],
       ['<code>date</code>', '<code>min</code> / <code>max</code>', '<code>string</code>', 'Forwarded to the native <code>&lt;input type="date"&gt;</code> as ISO dates.'],
       ['<code>select</code>', '<code>options</code>', '<code>{ value: string; label: ReactNode }[]</code>', 'Dropdown options. The <code>value</code> is what gets committed; <code>label</code> is displayed (must be string or number inside native <code>&lt;option&gt;</code>).'],
