@@ -2,6 +2,23 @@
 
 A summary of notable changes per release. For the full commit history see the [repository on GitHub](https://github.com/jbetancur/react-data-table-component/commits/master).
 
+## 8.13.0
+
+### New features
+
+- **`react-data-table-component/headless` entry** — the hooks, pinning helpers, and their types on their own. It contains no component and injects no stylesheet (about 10 kB gzipped, against about 40 kB for the main entry, which loads `<DataTable>` and its CSS even when you only import a hook). The main entry still exports the same hooks. → [Headless hooks](/docs/headless)
+- **Hook options are optional** — `useTableState({ data })` and `useColumns(columns)` now work. Every other option has a default matching `<DataTable>` (`keyField: 'id'`, page 1, 10 rows per page). `useTableData` needs only `data` and the sort and page fields from `tableState`, and `useCellNavigation` needs only `cellNavigation: true`, `effectiveColumns`, and `filteredTableRowCount`. Existing calls that pass everything are unaffected.
+- **`useColumns` options object** — `useColumns(columns, { defaultSortFieldId, defaultSortAsc, onColumnOrderChange, columnGroups, onColumnGroupOrderChange })`. The six-argument positional form still works.
+- **Hook types exported** — `UseTableStateProps`, `UseTableStateReturn`, `UseTableDataProps`, `UseTableDataReturn`, `UseColumnsOptions`, `UseColumnsResult`, `ColumnDragSlice`, `UseColumnFilterOptions`, `UseColumnFilterResult`, `TableState`, `SortAction`, `SingleRowAction`, `AllRowsAction`, `RangeRowAction`. → [TypeScript](/docs/typescript)
+- **Headless docs section** — headless now has its own docs group: an [overview](/docs/headless), a [hook reference](/docs/headless/reference), and a [Tailwind example](/docs/headless/tailwind) with sort, filter, row selection, and pagination on your own `<table>`.
+
+### Bug fixes
+
+- **Headless docs** — the example and live demo filtered a single page, because they ran `filteredData` on rows that were already paginated. They now filter the sorted set and slice the page afterwards, as `<DataTable>` does. If you copied that example, filter `sortedData` instead of `tableRows`. → [Headless hooks](/docs/headless)
+- **Headless docs** — the `useColumns` reference listed `handleDragStart` and four other handlers that do not exist. The drag handlers are on the returned `columnDrag` object. The `useColumnResize` reference now shows the pointer-event signature it has.
+
+---
+
 ## 8.12.0
 
 ### New features

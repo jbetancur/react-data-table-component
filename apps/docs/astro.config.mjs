@@ -40,6 +40,9 @@ const checkInternalLinks = {
 export default defineConfig({
 	site: 'https://reactdatatable.com',
 	prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
+	// HTML compression drops the line break between text and an inline tag that starts the
+	// next line, which glues words to links ("See<a>"). Keep source whitespace instead.
+	compressHTML: false,
 	markdown: {
 		shikiConfig: { theme: 'catppuccin-macchiato' },
 	},
@@ -49,6 +52,8 @@ export default defineConfig({
 		resolve: {
 			alias: {
 				// In dev, resolve the library from local source so edits are instant
+				// Longer specifier first: Vite matches string aliases by prefix, in order.
+				'react-data-table-component/headless': new URL('../../src/headless.ts', import.meta.url).pathname,
 				'react-data-table-component': new URL('../../src/index.ts', import.meta.url).pathname,
 				// Allow importing the root CHANGELOG.md as an Astro markdown module
 				'~changelog': new URL('../../CHANGELOG.md', import.meta.url).pathname,

@@ -14,7 +14,18 @@ export default defineConfig([
 		injectStyle: true,
 		treeshake: true,
 		minify: true,
-		onSuccess: 'node scripts/use-client-banner.mjs',
+		onSuccess: 'node scripts/use-client-banner.mjs dist/index.js dist/index.mjs',
+	},
+	// Headless bundle — hooks and pure helpers only. No component, no injected CSS.
+	{
+		entry: { 'headless/index': 'src/headless.ts' },
+		format: ['esm', 'cjs'],
+		dts: true,
+		sourcemap: true,
+		external: ['react', 'react-dom'],
+		treeshake: true,
+		minify: true,
+		onSuccess: 'node scripts/use-client-banner.mjs dist/headless/index.js dist/headless/index.mjs',
 	},
 	// Locales bundle — pure data, no React, no CSS.
 	{

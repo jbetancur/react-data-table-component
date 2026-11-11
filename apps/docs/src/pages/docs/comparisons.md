@@ -28,6 +28,8 @@ Choose **react-data-table-component** when:
 - Sorting, pagination, and selection should come with their controls included
 - You want built-in themes and dark mode instead of writing CSS
 
+react-data-table-component also exports the hooks behind `<DataTable>` from a separate [`/headless` entry](/docs/headless) (~10 KB min+gzip, no component or CSS). They cover sorting, pagination, selection, filtering, column order, resizing, and keyboard navigation state. They are a narrower toolkit than TanStack Table: there are no hooks for grouping, expansion, or virtualization, and you write the markup and ARIA roles yourself.
+
 ## react-data-table-component vs AG Grid
 
 AG Grid Community is a full-featured data grid with sorting, pagination, selection, and built-in themes included free. It is the heavyweight option: ~338 KB min+gzip, with advanced features such as master/detail (expandable rows), pivoting, and the server-side row model reserved for the commercial AG Grid Enterprise license.

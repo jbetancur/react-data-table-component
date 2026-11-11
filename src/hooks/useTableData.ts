@@ -3,19 +3,31 @@ import { sort, multiSort } from '../util';
 import { SortOrder } from '../types';
 import type { TableColumn, SortColumn, SortFunction, Selector } from '../types';
 
-interface UseTableDataProps<T> {
+const noop = (): void => {};
+
+export interface UseTableDataProps<T> {
 	data: T[];
-	columns: TableColumn<T>[];
+	/** Accepted for symmetry with `<DataTable>`; sorting reads `selectedColumn` / `sortColumns`. */
+	columns?: TableColumn<T>[];
+	/** From `tableState.selectedColumn`. */
 	selectedColumn: TableColumn<T>;
+	/** From `tableState.sortDirection`. */
 	sortDirection: SortOrder;
+	/** From `tableState.sortColumns`. */
 	sortColumns: SortColumn<T>[];
+	/** From `tableState.currentPage`. */
 	currentPage: number;
+	/** From `tableState.rowsPerPage`. */
 	rowsPerPage: number;
-	pagination: boolean;
-	paginationServer: boolean;
-	sortServer: boolean;
-	sortFunction: SortFunction<T> | null;
-	onSort: (
+	/** Slice `tableRows` to the current page. Defaults to `false`. */
+	pagination?: boolean;
+	/** The server already paginated: skip slicing. */
+	paginationServer?: boolean;
+	/** The server already sorted: skip sorting. */
+	sortServer?: boolean;
+	/** Global custom sort comparator. */
+	sortFunction?: SortFunction<T> | null;
+	onSort?: (
 		selectedColumn: TableColumn<T>,
 		sortDirection: SortOrder,
 		sortedRows: T[],
@@ -23,8 +35,10 @@ interface UseTableDataProps<T> {
 	) => void;
 }
 
-interface UseTableDataReturn<T> {
+export interface UseTableDataReturn<T> {
+	/** Every row after sorting, before the page slice. Filter this, then paginate. */
 	sortedData: T[];
+	/** `sortedData` sliced to the current page (or all of it without client pagination). */
 	tableRows: T[];
 }
 
@@ -39,11 +53,11 @@ export default function useTableData<T>(props: UseTableDataProps<T>): UseTableDa
 		sortColumns,
 		currentPage,
 		rowsPerPage,
-		pagination,
-		paginationServer,
-		sortServer,
-		sortFunction,
-		onSort,
+		pagination = false,
+		paginationServer = false,
+		sortServer = false,
+		sortFunction = null,
+		onSort = noop,
 	} = props;
 
 	// Memoize sorted data with stable dependencies
