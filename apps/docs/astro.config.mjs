@@ -40,6 +40,9 @@ const checkInternalLinks = {
 export default defineConfig({
 	site: 'https://reactdatatable.com',
 	prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
+	// HTML compression drops the line break between text and an inline tag that starts the
+	// next line, which glues words to links ("See<a>"). Keep source whitespace instead.
+	compressHTML: false,
 	markdown: {
 		shikiConfig: { theme: 'catppuccin-macchiato' },
 	},

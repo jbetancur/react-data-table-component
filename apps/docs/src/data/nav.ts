@@ -141,9 +141,30 @@ export const nav: NavGroup[] = [
     links: [{ label: 'Export (CSV / JSON)', href: '/docs/export', description: 'CSV and JSON export' }],
   },
   {
+    group: 'Headless',
+    links: [
+      {
+        label: 'Overview',
+        href: '/docs/headless',
+        description:
+          'what the headless hooks are, the /headless entry, how the hooks fit together, and when to use them instead of the DataTable component',
+      },
+      {
+        label: 'Hook Reference',
+        href: '/docs/headless/reference',
+        description: 'signatures, options, defaults, and return values for each headless hook and pinning helper',
+      },
+      {
+        label: 'Tailwind Example',
+        href: '/docs/headless/tailwind',
+        description:
+          'a sortable, filterable, selectable, paginated table built from the headless hooks and Tailwind utility classes, without the DataTable component or its stylesheet',
+      },
+    ],
+  },
+  {
     group: 'Advanced',
     links: [
-      { label: 'Headless Hooks', href: '/docs/headless', description: 'use the sorting, pagination, selection, and filtering hooks with your own markup via the /headless entry' },
       { label: 'TypeScript', href: '/docs/typescript', description: 'generic column and row typing' },
       { label: 'SSR', href: '/docs/ssr', description: 'Next.js App Router, Remix, Astro' },
       { label: 'Performance', href: '/docs/performance', description: 'large datasets, memoization' },
@@ -202,12 +223,6 @@ export const nav: NavGroup[] = [
         label: 'Grouped rows with aggregates',
         href: '/docs/recipes/row-groups',
         description: 'Per-group totals and drill-down built from a plain array reduce, no groupBy API needed.',
-      },
-      {
-        label: 'Headless table with Tailwind',
-        href: '/docs/recipes/headless-tailwind',
-        description:
-          'A sortable, filterable, selectable, paginated table built from the headless hooks and Tailwind utility classes, without the DataTable component or its stylesheet.',
       },
       {
         label: 'CSV import',
