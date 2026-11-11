@@ -34,7 +34,7 @@ function focusNavCell(root: HTMLElement, row: number, col: number): void {
 }
 
 export type UseCellNavigationOptions<T> = {
-	/** Master switch. Defaults to `true`; when `false`, `activeCell` is always `null`. */
+	/** Master switch. Defaults to `false`, like the `<DataTable>` prop; when off, `activeCell` is always `null`. */
 	cellNavigation?: boolean;
 	/** Reserve nav column 0 for a selection checkbox. Defaults to `false`. */
 	selectableRows?: boolean;
@@ -52,7 +52,7 @@ export type UseCellNavigationOptions<T> = {
 // so the grid always keeps exactly one Tab stop even when the active row is sorted,
 // filtered, or paginated away.
 export default function useCellNavigation<T>({
-	cellNavigation = true,
+	cellNavigation = false,
 	selectableRows = false,
 	expandableRows = false,
 	expandableRowsHideExpander = false,

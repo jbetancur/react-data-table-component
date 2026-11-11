@@ -310,9 +310,9 @@ function useColumnFilter<T>(
   <DocsTable
     headers={['Option', 'Type', 'Description']}
     rows={[
+      ['<code>cellNavigation</code>', '<code>boolean</code>', 'Master on/off switch. Default <code>false</code>, matching the <code>cellNavigation</code> prop, so pass <code>true</code> to enable. When off, <code>activeCell</code> is always <code>null</code>.'],
       ['<code>effectiveColumns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'Required. Your current column list. Columns with <code>omit: true</code> are excluded from the nav grid.'],
       ['<code>filteredTableRowCount</code>', '<code>number</code>', 'Required. Row count for the currently visible page. Clamps <code>ArrowDown</code>/<code>End</code>.'],
-      ['<code>cellNavigation</code>', '<code>boolean</code>', 'Master on/off switch, default <code>true</code>. When <code>false</code>, <code>activeCell</code> is always <code>null</code>.'],
       ['<code>showTableHead</code>', '<code>boolean</code>', 'Whether a header row participates in the grid (row <code>-1</code>), default <code>true</code>. <code>false</code> removes header cells from the tab sequence entirely.'],
       ['<code>selectableRows</code>', '<code>boolean</code>', 'Reserves nav column 0 for a selection checkbox, if you render one. Default <code>false</code>.'],
       ['<code>expandableRows</code>', '<code>boolean</code>', 'Reserves the next nav column for an expander button, if you render one. Default <code>false</code>.'],
@@ -350,6 +350,7 @@ function useColumnFilter<T>(
 
 function MyTable({ data, columns }) {
   const { activeCell, handleNavFocus, handleNavKeyDown } = useCellNavigation({
+    cellNavigation: true,
     effectiveColumns: columns,
     filteredTableRowCount: data.length,
     showTableHead: false, // this table renders no header row

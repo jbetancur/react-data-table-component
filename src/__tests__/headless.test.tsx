@@ -144,8 +144,16 @@ describe('headless hooks with default options', () => {
 		expect(result.current.tableState.selectedRows).toEqual([data[1]]);
 	});
 
-	test('useCellNavigation is on by default and includes the header row', () => {
+	test('useCellNavigation is off by default, like the cellNavigation prop', () => {
 		const { result } = renderHook(() => useCellNavigation({ effectiveColumns: columns, filteredTableRowCount: 3 }));
+
+		expect(result.current.activeCell).toBeNull();
+	});
+
+	test('useCellNavigation needs only the switch, columns, and row count', () => {
+		const { result } = renderHook(() =>
+			useCellNavigation({ cellNavigation: true, effectiveColumns: columns, filteredTableRowCount: 3 }),
+		);
 
 		expect(result.current.activeCell).toEqual({ row: 0, col: 0 });
 	});
