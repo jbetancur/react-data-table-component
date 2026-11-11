@@ -34,13 +34,17 @@ function focusNavCell(root: HTMLElement, row: number, col: number): void {
 }
 
 export type UseCellNavigationOptions<T> = {
-	cellNavigation: boolean;
-	selectableRows: boolean;
-	expandableRows: boolean;
-	expandableRowsHideExpander: boolean;
+	/** Master switch. Defaults to `true`; when `false`, `activeCell` is always `null`. */
+	cellNavigation?: boolean;
+	/** Reserve nav column 0 for a selection checkbox. Defaults to `false`. */
+	selectableRows?: boolean;
+	/** Reserve the next nav column for an expander button. Defaults to `false`. */
+	expandableRows?: boolean;
+	expandableRowsHideExpander?: boolean;
 	effectiveColumns: TableColumn<T>[];
 	filteredTableRowCount: number;
-	showTableHead: boolean;
+	/** Whether a header row (row `-1`) takes part in the grid. Defaults to `true`. */
+	showTableHead?: boolean;
 };
 
 // The nav grid counts selection/expander cells before data columns; row -1 is the
@@ -48,13 +52,13 @@ export type UseCellNavigationOptions<T> = {
 // so the grid always keeps exactly one Tab stop even when the active row is sorted,
 // filtered, or paginated away.
 export default function useCellNavigation<T>({
-	cellNavigation,
-	selectableRows,
-	expandableRows,
-	expandableRowsHideExpander,
+	cellNavigation = true,
+	selectableRows = false,
+	expandableRows = false,
+	expandableRowsHideExpander = false,
 	effectiveColumns,
 	filteredTableRowCount,
-	showTableHead,
+	showTableHead = true,
 }: UseCellNavigationOptions<T>) {
 	const [activeCell, setActiveCell] = React.useState<ActiveCell | null>(null);
 

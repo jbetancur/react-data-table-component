@@ -21,6 +21,11 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
+    "./headless": {
+      "types": "./dist/headless/index.d.ts",
+      "import": "./dist/headless/index.mjs",
+      "require": "./dist/headless/index.js"
+    },
     "./locales": {
       "types": "./dist/locales/index.d.ts",
       "import": "./dist/locales/index.mjs",

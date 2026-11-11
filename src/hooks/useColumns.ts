@@ -33,7 +33,7 @@ export type ColumnDragSlice = {
 	onGroupPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
 };
 
-type ColumnsHook<T> = {
+export type UseColumnsResult<T> = {
 	tableColumns: TableColumn<T>[];
 	tableGroups: ColumnGroup[];
 	draggingColumnId: string;
@@ -78,14 +78,59 @@ export function swapGroupBlocks<T>(
 	return result;
 }
 
+const noop = (): void => {};
+
+export interface UseColumnsOptions<T> {
+	/** Fires with the new column list after a drag-reorder or pin change. */
+	onColumnOrderChange?: (nextOrder: TableColumn<T>[]) => void;
+	/** Fires after a column group is dragged to a new position. */
+	onColumnGroupOrderChange?: (nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void;
+	columnGroups?: ColumnGroup[];
+	/** `id` of the column sorted on first render. */
+	defaultSortFieldId?: string | number | null;
+	/** Defaults to `true`. */
+	defaultSortAsc?: boolean;
+}
+
+/**
+ * Column order, drag-to-reorder, pinning, and the default sort column.
+ *
+ * Takes an options object: `useColumns(columns, { defaultSortFieldId: 'name' })`.
+ * The positional form `useColumns(columns, onColumnOrderChange, onColumnGroupOrderChange,
+ * columnGroups, defaultSortFieldId, defaultSortAsc)` is what `<DataTable>` calls and
+ * keeps working.
+ */
 function useColumns<T>(
 	columns: TableColumn<T>[],
-	onColumnOrderChange: (nextOrder: TableColumn<T>[]) => void,
-	onColumnGroupOrderChange: ((nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void) | undefined,
-	columnGroups: ColumnGroup[] | undefined,
-	defaultSortFieldId: string | number | null | undefined,
-	defaultSortAsc: boolean,
-): ColumnsHook<T> {
+	optionsOrOnColumnOrderChange?: UseColumnsOptions<T> | ((nextOrder: TableColumn<T>[]) => void),
+	positionalOnColumnGroupOrderChange?: (nextGroups: ColumnGroup[], nextColumns: TableColumn<T>[]) => void,
+	positionalColumnGroups?: ColumnGroup[],
+	positionalDefaultSortFieldId?: string | number | null,
+	positionalDefaultSortAsc?: boolean,
+): UseColumnsResult<T> {
+	const options: UseColumnsOptions<T> =
+		typeof optionsOrOnColumnOrderChange === 'function'
+			? {
+					onColumnOrderChange: optionsOrOnColumnOrderChange,
+					onColumnGroupOrderChange: positionalOnColumnGroupOrderChange,
+					columnGroups: positionalColumnGroups,
+					defaultSortFieldId: positionalDefaultSortFieldId,
+					defaultSortAsc: positionalDefaultSortAsc,
+				}
+			: (optionsOrOnColumnOrderChange ?? {
+					onColumnGroupOrderChange: positionalOnColumnGroupOrderChange,
+					columnGroups: positionalColumnGroups,
+					defaultSortFieldId: positionalDefaultSortFieldId,
+					defaultSortAsc: positionalDefaultSortAsc,
+				});
+	const {
+		onColumnOrderChange = noop,
+		onColumnGroupOrderChange,
+		columnGroups,
+		defaultSortFieldId,
+		defaultSortAsc = true,
+	} = options;
+
 	const [tableColumns, setTableColumns] = React.useState<TableColumn<T>[]>(() => decorateColumns(columns));
 	const [tableGroups, setTableGroups] = React.useState<ColumnGroup[]>(() => columnGroups ?? []);
 	const [draggingColumnId, setDraggingColumn] = React.useState('');

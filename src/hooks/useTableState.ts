@@ -14,40 +14,52 @@ import type {
 	SortColumn,
 } from '../types';
 
-interface UseTableStateProps<T> {
+/** Stable fallbacks, so an omitted option never changes identity between renders. */
+const NO_SORT_COLUMN = {};
+const NO_SERVER_OPTIONS = {};
+const noop = (): void => {};
+
+export interface UseTableStateProps<T> {
+	/** Full dataset (used for selection totals and page math). */
 	data: T[];
-	keyField: string;
-	defaultSortColumn: TableColumn<T>;
-	defaultSortDirection: SortOrder;
-	paginationDefaultPage: number;
-	paginationPerPage: number;
-	paginationServer: boolean;
-	paginationServerOptions: {
+	/** Unique row identifier field. Defaults to `'id'`. */
+	keyField?: string;
+	/** Column sorted on first render — pass `defaultSortColumn` from `useColumns`. Defaults to no sort. */
+	defaultSortColumn?: TableColumn<T>;
+	/** Defaults to ascending. */
+	defaultSortDirection?: SortOrder;
+	/** Starting page, 1-based. Defaults to `1`. */
+	paginationDefaultPage?: number;
+	/** Defaults to `10`. */
+	paginationPerPage?: number;
+	paginationServer?: boolean;
+	paginationServerOptions?: {
 		persistSelectedOnSort?: boolean;
 		persistSelectedOnPageChange?: boolean;
 	};
-	paginationTotalRows: number;
-	pagination: boolean;
-	selectableRowsSingle: boolean;
-	selectableRowsVisibleOnly: boolean;
-	selectableRowSelected: ((row: T) => boolean) | null;
-	clearSelectedRows: boolean;
+	/** Total rows on the server. Only used with `paginationServer`. */
+	paginationTotalRows?: number;
+	pagination?: boolean;
+	selectableRowsSingle?: boolean;
+	selectableRowsVisibleOnly?: boolean;
+	selectableRowSelected?: ((row: T) => boolean) | null;
+	clearSelectedRows?: boolean;
 	paginationPage?: number;
-	paginationResetDefaultPage: boolean;
+	paginationResetDefaultPage?: boolean;
 	/** Controlled selection. When provided, internal selection state is overridden. */
 	controlledSelectedRows?: T[];
-	onSelectedRowsChange: (state: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
-	onSort: (
+	onSelectedRowsChange?: (state: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => void;
+	onSort?: (
 		selectedColumn: TableColumn<T>,
 		sortDirection: SortOrder,
 		sortedRows: T[],
 		sortColumns: SortColumn<T>[],
 	) => void;
-	onChangePage: (page: number, totalRows: number) => void;
-	onChangeRowsPerPage: (currentRowsPerPage: number, currentPage: number) => void;
+	onChangePage?: (page: number, totalRows: number) => void;
+	onChangeRowsPerPage?: (currentRowsPerPage: number, currentPage: number) => void;
 }
 
-interface UseTableStateReturn<T> {
+export interface UseTableStateReturn<T> {
 	// State
 	tableState: TableState<T>;
 	// Actions
@@ -67,28 +79,31 @@ interface UseTableStateReturn<T> {
 export default function useTableState<T>(props: UseTableStateProps<T>): UseTableStateReturn<T> {
 	const {
 		data,
-		keyField,
-		defaultSortColumn,
-		defaultSortDirection,
-		paginationDefaultPage,
-		paginationPerPage,
-		paginationServer,
-		paginationServerOptions,
-		paginationTotalRows,
-		pagination,
-		selectableRowsSingle,
-		selectableRowsVisibleOnly,
-		selectableRowSelected,
-		clearSelectedRows,
+		keyField = 'id',
+		defaultSortColumn = NO_SORT_COLUMN as TableColumn<T>,
+		defaultSortDirection = SortOrder.ASC,
+		paginationDefaultPage = 1,
+		paginationPerPage = 10,
+		paginationServer = false,
+		paginationServerOptions = NO_SERVER_OPTIONS,
+		paginationTotalRows = 0,
+		pagination = false,
+		selectableRowsSingle = false,
+		selectableRowsVisibleOnly = false,
+		selectableRowSelected = null,
+		clearSelectedRows = false,
 		paginationPage,
-		paginationResetDefaultPage,
+		paginationResetDefaultPage = false,
 		controlledSelectedRows,
-		onSelectedRowsChange,
-		onChangePage,
-		onChangeRowsPerPage,
+		onSelectedRowsChange = noop,
+		onChangePage = noop,
+		onChangeRowsPerPage = noop,
 	} = props;
 
-	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
+	const {
+		persistSelectedOnSort = false,
+		persistSelectedOnPageChange = false,
+	}: NonNullable<UseTableStateProps<T>['paginationServerOptions']> = paginationServerOptions;
 	const mergeSelections = paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort);
 
 	const hasDefaultSort = defaultSortColumn.id != null || !!defaultSortColumn.selector;
