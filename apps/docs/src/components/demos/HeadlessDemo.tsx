@@ -7,7 +7,7 @@ import {
 	SortOrder,
 	type TableColumn,
 	type FilterState,
-} from 'react-data-table-component';
+} from 'react-data-table-component/headless';
 
 interface Employee {
 	id: number;
@@ -43,62 +43,38 @@ const SortArrow = ({ dir }: { dir: 'asc' | 'desc' | null }) => {
 };
 
 export default function HeadlessDemo() {
-	// 1. Column order
-	const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns<Employee>(
-		rawColumns,
-		() => {}, // onColumnOrderChange
-		undefined, // onColumnGroupOrderChange
-		undefined, // columnGroups
-		'name', // defaultSortFieldId
-		true, // defaultSortAsc
-	);
+	// 1. Column order + default sort
+	const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns<Employee>(rawColumns, {
+		defaultSortFieldId: 'name',
+	});
 
-	// 2. Sort / page / selection state
+	// 2. Sort / page / selection state. Everything except `data` is optional.
 	const { tableState, handleSort, handleChangePage, handleChangeRowsPerPage } = useTableState<Employee>({
 		data,
-		keyField: 'id',
 		defaultSortColumn,
 		defaultSortDirection,
-		pagination: true,
-		paginationDefaultPage: 1,
 		paginationPerPage: 5,
-		paginationServer: false,
-		paginationServerOptions: {},
-		paginationTotalRows: 0,
-		paginationResetDefaultPage: false,
-		selectableRowsSingle: false,
-		selectableRowsVisibleOnly: false,
-		selectableRowSelected: null,
-		clearSelectedRows: false,
-		onSelectedRowsChange: () => {},
-		onSort: () => {},
-		onChangePage: () => {},
-		onChangeRowsPerPage: () => {},
 	});
 
 	const { selectedColumn, sortDirection, sortColumns, currentPage, rowsPerPage } = tableState;
 
-	// 3. Sorted + paginated rows
-	const { sortedData, tableRows } = useTableData<Employee>({
+	// 3. Sorted rows. Pagination is left off here so the filter below sees every row.
+	const { sortedData } = useTableData<Employee>({
 		data,
-		columns: tableColumns,
 		selectedColumn,
 		sortDirection,
 		sortColumns,
 		currentPage,
 		rowsPerPage,
-		pagination: true,
-		paginationServer: false,
-		sortServer: false,
-		sortFunction: null,
-		onSort: () => {},
 	});
 
-	// 4. Per-column filtering
+	// 4. Filter the full sorted set, then slice the page. Slicing first would only
+	//    ever match rows on the current page.
 	const { filterValues, handleFilterChange, filteredData } = useColumnFilter<Employee>(tableColumns);
-	const rows = filteredData(tableRows);
+	const filteredRows = filteredData(sortedData);
+	const rows = filteredRows.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
-	const totalPages = Math.ceil(filteredData(sortedData).length / rowsPerPage);
+	const totalPages = Math.max(1, Math.ceil(filteredRows.length / rowsPerPage));
 
 	function clickSort(col: TableColumn<Employee>) {
 		if (!col.sortable) return;
@@ -126,7 +102,11 @@ export default function HeadlessDemo() {
 						key={col.id}
 						placeholder={`Filter ${col.name}…`}
 						value={(filterValues[col.id!] as FilterState | undefined)?.condition1?.value ?? ''}
-						onChange={e => handleFilterChange(col.id!, { condition1: { operator: 'contains', value: e.target.value } })}
+						onChange={e => {
+							handleFilterChange(col.id!, { condition1: { operator: 'contains', value: e.target.value } });
+							// A narrower result set may not reach the current page.
+							handleChangePage(1);
+						}}
 						style={{
 							flex: 1,
 							padding: '4px 8px',
@@ -208,13 +188,13 @@ export default function HeadlessDemo() {
 				}}
 			>
 				<span>
-					Page {currentPage} of {totalPages} &middot; {filteredData(sortedData).length} rows
+					Page {currentPage} of {totalPages} &middot; {filteredRows.length} of {data.length} rows
 				</span>
 				<div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
 					<span>Rows per page:</span>
 					<select
 						value={rowsPerPage}
-						onChange={e => handleChangeRowsPerPage(Number(e.target.value), data.length)}
+						onChange={e => handleChangeRowsPerPage(Number(e.target.value), filteredRows.length)}
 						style={{ border: '1px solid #e5e7eb', borderRadius: 4, padding: '2px 4px', fontSize: 12 }}
 					>
 						{[5, 10].map(n => (

@@ -143,7 +143,7 @@ export const nav: NavGroup[] = [
   {
     group: 'Advanced',
     links: [
-      { label: 'Headless Hooks', href: '/docs/headless', description: 'use the logic without the UI' },
+      { label: 'Headless Hooks', href: '/docs/headless', description: 'use the sorting, pagination, selection, and filtering hooks with your own markup via the /headless entry' },
       { label: 'TypeScript', href: '/docs/typescript', description: 'generic column and row typing' },
       { label: 'SSR', href: '/docs/ssr', description: 'Next.js App Router, Remix, Astro' },
       { label: 'Performance', href: '/docs/performance', description: 'large datasets, memoization' },

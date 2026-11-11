@@ -12,7 +12,9 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const currentPath = Astro.url.pathname;
+// Static builds serve /docs/page/ (trailing slash) while dev serves /docs/page. Nav hrefs
+// have no trailing slash, so normalize before comparing.
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 // Flatten nav to a single ordered list for prev/next (excludes non-page links like llms.txt)
 const allLinks = nav.flatMap(({ links }) => links).filter(({ href }) => href.startsWith('/docs/'));
@@ -79,11 +81,11 @@ const nextLink = currentIndex < allLinks.length - 1 ? allLinks[currentIndex + 1]
       {currentPath.endsWith('/headless') && (
         <Demo
           title="Live example: all four hooks"
-          description="A custom-markup table built entirely from useColumns, useTableState, useTableData, and useColumnFilter. No DataTable component. Sort by clicking headers, filter using the inputs, and paginate below."
+          description="A custom-markup table built entirely from useColumns, useTableState, useTableData, and useColumnFilter. No DataTable component. Sort by clicking headers, filter using the inputs (filters search every page, not only the visible one), and paginate below."
           code={`import {
   useColumns, useTableState, useTableData, useColumnFilter,
   type TableColumn, SortOrder,
-} from 'react-data-table-component';
+} from 'react-data-table-component/headless';
 
 const rawColumns: TableColumn<Employee>[] = [
   { id: 'name',   name: 'Name',       selector: r => r.name,       sortable: true },
@@ -92,26 +94,24 @@ const rawColumns: TableColumn<Employee>[] = [
 ];
 
 function HeadlessTable({ data }: { data: Employee[] }) {
-  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(
-    rawColumns, () => {}, 'name', true,
-  );
-  const { tableState, handleSort, handleChangePage, handleChangeRowsPerPage } = useTableState({
-    data, keyField: 'id',
-    defaultSortColumn, defaultSortDirection,
-    pagination: true, paginationDefaultPage: 1, paginationPerPage: 5,
-    paginationServer: false, paginationServerOptions: {}, paginationTotalRows: 0,
-    paginationResetDefaultPage: false, selectableRowsSingle: false,
-    selectableRowsVisibleOnly: false, selectableRowSelected: null, clearSelectedRows: false,
-    onSelectedRowsChange: () => {}, onSort: () => {}, onChangePage: () => {}, onChangeRowsPerPage: () => {},
+  const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(rawColumns, {
+    defaultSortFieldId: 'name',
   });
-  const { selectedColumn, sortDirection, currentPage, rowsPerPage } = tableState;
-  const { sortedData, tableRows } = useTableData({
-    data, columns: tableColumns, selectedColumn, sortDirection,
-    currentPage, rowsPerPage, pagination: true, paginationServer: false,
-    sortServer: false, sortFunction: null, onSort: () => {},
+  const { tableState, handleSort, handleChangePage } = useTableState({
+    data, defaultSortColumn, defaultSortDirection, paginationPerPage: 5,
   });
+  const { selectedColumn, sortDirection, sortColumns, currentPage, rowsPerPage } = tableState;
+
+  // Sort only. The page is sliced after filtering, below.
+  const { sortedData } = useTableData({
+    data, selectedColumn, sortDirection, sortColumns, currentPage, rowsPerPage,
+  });
+
+  // Filter the full sorted set, then slice the page.
   const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
-  const rows = filteredData(tableRows);
+  const filteredRows = filteredData(sortedData);
+  const rows = filteredRows.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+  const totalPages = Math.max(1, Math.ceil(filteredRows.length / rowsPerPage));
 
   return (
     <div>
@@ -120,8 +120,11 @@ function HeadlessTable({ data }: { data: Employee[] }) {
         {tableColumns.map(col => (
           <input key={col.id}
             placeholder={\`Filter \${col.name}…\`}
-            value={filterValues[col.id!] ?? ''}
-            onChange={e => handleFilterChange(col.id!, e.target.value)}
+            value={filterValues[col.id!]?.condition1?.value ?? ''}
+            onChange={e => {
+              handleFilterChange(col.id!, { condition1: { operator: 'contains', value: e.target.value } });
+              handleChangePage(1); // the narrower result set may not reach this page
+            }}
           />
         ))}
       </div>
@@ -156,8 +159,8 @@ function HeadlessTable({ data }: { data: Employee[] }) {
       </table>
       {/* Pagination: your own controls */}
       <button onClick={() => handleChangePage(currentPage - 1)} disabled={currentPage <= 1}>‹</button>
-      <span>Page {currentPage}</span>
-      <button onClick={() => handleChangePage(currentPage + 1)}>›</button>
+      <span>Page {currentPage} of {totalPages}</span>
+      <button onClick={() => handleChangePage(currentPage + 1)} disabled={currentPage >= totalPages}>›</button>
     </div>
   );
 }`}

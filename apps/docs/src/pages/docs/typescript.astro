@@ -129,13 +129,35 @@ const [filters, setFilters] = useState<Record<string, FilterState>>({});
   <h2>Headless hooks</h2>
 
   <p>
-    Each hook re-exports the types it accepts and returns. Most users won't need to import them,
-    since destructured returns are fully typed. If you wrap a hook in another, import the option
-    types:
+    The option and result types of each hook are exported, along with <code>TableState</code> and the
+    sort and selection action types. Most users won't need to import them, since destructured returns
+    are fully typed. If you wrap a hook in another, import the types:
   </p>
 
-  <CodeBlock code={`import { useTableState, useColumns, useColumnVisibility } from 'react-data-table-component';
-import type { UseColumnVisibilityResult } from 'react-data-table-component';`} />
+  <CodeBlock code={`import { useTableState, useColumns, useTableData } from 'react-data-table-component/headless';
+import type {
+  UseTableStateProps,
+  UseTableStateReturn,
+  UseColumnsOptions,
+  UseColumnsResult,
+  UseTableDataProps,
+  UseTableDataReturn,
+  UseColumnFilterOptions,
+  UseColumnFilterResult,
+  UseColumnVisibilityResult,
+  UseCellNavigationOptions,
+  UseColumnResizeOptions,
+  TableState,
+  SortAction,
+  SingleRowAction,
+  AllRowsAction,
+  RangeRowAction,
+} from 'react-data-table-component/headless';`} />
+
+  <p>
+    Everything above is also exported from the main <code>react-data-table-component</code> entry. See
+    <a href="/docs/headless">Headless hooks</a>.
+  </p>
 
   <h2>Generics on the default export</h2>
 

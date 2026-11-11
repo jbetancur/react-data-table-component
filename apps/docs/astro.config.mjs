@@ -49,6 +49,8 @@ export default defineConfig({
 		resolve: {
 			alias: {
 				// In dev, resolve the library from local source so edits are instant
+				// Longer specifier first: Vite matches string aliases by prefix, in order.
+				'react-data-table-component/headless': new URL('../../src/headless.ts', import.meta.url).pathname,
 				'react-data-table-component': new URL('../../src/index.ts', import.meta.url).pathname,
 				// Allow importing the root CHANGELOG.md as an Astro markdown module
 				'~changelog': new URL('../../CHANGELOG.md', import.meta.url).pathname,

@@ -32,7 +32,7 @@ export default function Movies() {
 - Responsive (x-scroll / flex)
 - TypeScript types bundled
 - SSR-safe; ships `"use client"` for Next.js App Router (import directly into a Server Component file)
-- Headless hooks exported for full markup/style control when you outgrow the defaults
+- Headless hooks for full markup/style control when you outgrow the defaults, available on their own from `react-data-table-component/headless` (no component, no CSS)
 
 # Documentation Website
 
