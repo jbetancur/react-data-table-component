@@ -59,14 +59,15 @@ article code:not(pre code) {
   font-size: 0.82em;
 }
 
-/* Tables */
-article table {
+/* Tables. Skipped inside .not-prose (live demos), where a demo that renders its own
+   <table> brings its own styles. */
+article table:not(.not-prose *) {
   @apply w-full border-collapse text-sm my-5;
 }
-article th {
+article th:not(.not-prose *) {
   @apply text-left px-3 py-2 bg-gray-50 border border-gray-200 font-semibold text-gray-700;
 }
-article td {
+article td:not(.not-prose *) {
   @apply px-3 py-2 border border-gray-200 text-gray-600;
 }
 

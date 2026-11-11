@@ -1,0 +1,183 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Demo from '../../../components/Demo.astro';
+import HeadlessTailwindDemo from '../../../components/demos/HeadlessTailwindDemo.tsx';
+import headlessTailwindSource from '../../../components/demos/HeadlessTailwindDemo.tsx?raw';
+---
+
+<DocsLayout title="Headless table with Tailwind | Recipes | react-data-table-component" description="Build a sortable, filterable, selectable, paginated table with the headless hooks and Tailwind CSS utility classes, with no DataTable component and no library stylesheet.">
+  <h1>Headless table with Tailwind</h1>
+
+  <p>
+    When your design system is Tailwind and you want to own every element, skip
+    <code>&lt;DataTable /&gt;</code> and build the table from the <a href="/docs/headless">headless hooks</a>.
+    The hooks hold sort, page, selection, and filter state. You write a plain <code>&lt;table&gt;</code> and
+    style it with utility classes.
+  </p>
+
+  <p>
+    If <code>&lt;DataTable /&gt;</code> with <a href="/docs/custom-styles">custom styles</a> or a
+    <a href="/docs/themes">theme</a> gets you there, use that instead. It is far less code, and the header,
+    checkboxes, and pagination come with their accessibility wiring.
+  </p>
+
+  <Demo
+    title="Headless table with Tailwind"
+    description="Sort by clicking a header, search and filter by status, select rows, and page through the results. Every element and class is in the demo source."
+    code={headlessTailwindSource}
+  >
+    <HeadlessTailwindDemo client:visible={{ rootMargin: '200px' }} />
+  </Demo>
+
+  <h2>Import from the headless entry</h2>
+
+  <CodeBlock lang="ts" code={`import {
+  useColumns,
+  useTableState,
+  useTableData,
+  useColumnFilter,
+  SortOrder,
+  type TableColumn,
+} from 'react-data-table-component/headless';`} />
+
+  <p>
+    <code>react-data-table-component/headless</code> contains the hooks only. It does not load
+    <code>&lt;DataTable /&gt;</code> or inject the library stylesheet, so nothing competes with your
+    utility classes.
+  </p>
+
+  <h2>The pipeline</h2>
+
+  <p>
+    Four hooks, in this order. Filter the full sorted set first and slice the page last, so a search finds
+    rows on every page.
+  </p>
+
+  <CodeBlock lang="tsx" code={`const { tableColumns, defaultSortColumn, defaultSortDirection } = useColumns(columns, {
+  defaultSortFieldId: 'customer',
+});
+
+const { tableState, handleSort, handleChangePage, handleSelectedRow, handleSelectAllRows } =
+  useTableState({ data, defaultSortColumn, defaultSortDirection, paginationPerPage: 5 });
+
+const { selectedColumn, sortDirection, sortColumns, currentPage, rowsPerPage } = tableState;
+
+const { sortedData } = useTableData({
+  data, selectedColumn, sortDirection, sortColumns, currentPage, rowsPerPage,
+});
+
+const { filterValues, handleFilterChange, filteredData } = useColumnFilter(tableColumns);
+const filteredRows = filteredData(sortedData);
+const rows = filteredRows.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);`} />
+
+  <h2>Sortable headers</h2>
+
+  <p>
+    Put a real <code>&lt;button&gt;</code> inside each <code>&lt;th&gt;</code> and set <code>aria-sort</code> on
+    the header cell. The button gives you keyboard support for free. Clicking the same column again
+    cycles ascending, descending, then back to unsorted. Add <code>direction: SortOrder.DESC</code> (or
+    <code>ASC</code>) to the action to force a direction instead.
+  </p>
+
+  <CodeBlock lang="tsx" code={`<th scope="col" aria-sort={ariaSort} className="px-3 py-2.5">
+  <button
+    type="button"
+    onClick={() =>
+      handleSort({
+        type: 'SORT_CHANGE',
+        selectedColumn: col,
+        clearSelectedOnSort: false,
+        additive: false,
+        defaultSortDirection: SortOrder.ASC,
+      })
+    }
+    className="inline-flex items-center gap-1 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-500"
+  >
+    {col.name}
+  </button>
+</th>`} />
+
+  <h2>Row selection</h2>
+
+  <p>
+    Selection is driven by actions. For a row checkbox, pass the row and whether it is selected
+    <em>before</em> the click. <code>rowCount</code> is the number of rows "select all" covers, which is how
+    the hook knows when to set <code>tableState.allSelected</code>.
+  </p>
+
+  <CodeBlock lang="tsx" code={`const isSelected = (row: Invoice) => tableState.selectedRows.some(r => r.id === row.id);
+
+<input
+  type="checkbox"
+  className="size-4 rounded border-gray-300 accent-blue-600"
+  checked={isSelected(row)}
+  onChange={() =>
+    handleSelectedRow({
+      type: 'SELECT_SINGLE_ROW',
+      keyField: 'id',
+      row,
+      isSelected: isSelected(row),
+      rowCount: filteredRows.length,
+      singleSelect: false,
+    })
+  }
+/>`} />
+
+  <p>
+    The header checkbox toggles between every filtered row and none. Set <code>indeterminate</code> through a
+    ref, since React has no prop for it.
+  </p>
+
+  <CodeBlock lang="tsx" code={`<input
+  type="checkbox"
+  checked={tableState.allSelected}
+  ref={el => {
+    if (el) el.indeterminate = tableState.selectedRows.length > 0 && !tableState.allSelected;
+  }}
+  onChange={() =>
+    handleSelectAllRows({
+      type: 'SELECT_ALL_ROWS',
+      keyField: 'id',
+      rows: filteredRows,
+      rowCount: filteredRows.length,
+      mergeSelections: false,
+    })
+  }
+/>`} />
+
+  <h2>Filters reset the page and the selection</h2>
+
+  <p>
+    A filter changes how many pages there are and which rows "select all" covers. Go back to page 1 and
+    clear the selection whenever one changes, so neither points at rows that are no longer shown.
+  </p>
+
+  <CodeBlock lang="tsx" code={`function applyFilter(columnId: string, operator: 'contains' | 'equals', value: string) {
+  handleFilterChange(columnId, { condition1: { operator, value } });
+  handleClearSelectedRows();
+  handleChangePage(1);
+}
+
+<input
+  type="search"
+  value={filterValues.customer?.condition1.value ?? ''}
+  onChange={e => applyFilter('customer', 'contains', e.target.value)}
+  className="rounded-md border border-gray-300 px-3 py-1.5 focus:ring-2 focus:ring-blue-500/30"
+/>`} />
+
+  <h2>What you take on</h2>
+
+  <ul>
+    <li>Markup and semantics: <code>&lt;table&gt;</code>, <code>scope</code>, <code>aria-sort</code>, and labels on every checkbox and input.</li>
+    <li>Empty, loading, and error states.</li>
+    <li>Responsive behavior, such as the <code>overflow-x-auto</code> wrapper in the demo.</li>
+    <li>Dark mode, with Tailwind's <code>dark:</code> variants on the same elements.</li>
+  </ul>
+
+  <p>
+    For keyboard grid navigation, column resizing, and pinning on your own markup, see the
+    <code>useCellNavigation</code>, <code>useColumnResize</code>, and pinning helpers on the
+    <a href="/docs/headless">Headless hooks</a> page.
+  </p>
+</DocsLayout>

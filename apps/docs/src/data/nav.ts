@@ -204,6 +204,12 @@ export const nav: NavGroup[] = [
         description: 'Per-group totals and drill-down built from a plain array reduce, no groupBy API needed.',
       },
       {
+        label: 'Headless table with Tailwind',
+        href: '/docs/recipes/headless-tailwind',
+        description:
+          'A sortable, filterable, selectable, paginated table built from the headless hooks and Tailwind utility classes, without the DataTable component or its stylesheet.',
+      },
+      {
         label: 'CSV import',
         href: '/docs/recipes/csv-import',
         description: 'Load a user-uploaded CSV file into the table with FileReader and a small parser.',

@@ -10,6 +10,7 @@ A summary of notable changes per release. For the full commit history see the [r
 - **Hook options are optional** — `useTableState({ data })` and `useColumns(columns)` now work. Every other option has a default matching `<DataTable>` (`keyField: 'id'`, page 1, 10 rows per page). `useTableData` needs only `data` and the sort and page fields from `tableState`, and `useCellNavigation` needs only `effectiveColumns` and `filteredTableRowCount`. Existing calls that pass everything are unaffected.
 - **`useColumns` options object** — `useColumns(columns, { defaultSortFieldId, defaultSortAsc, onColumnOrderChange, columnGroups, onColumnGroupOrderChange })`. The six-argument positional form still works.
 - **Hook types exported** — `UseTableStateProps`, `UseTableStateReturn`, `UseTableDataProps`, `UseTableDataReturn`, `UseColumnsOptions`, `UseColumnsResult`, `ColumnDragSlice`, `UseColumnFilterOptions`, `UseColumnFilterResult`, `TableState`, `SortAction`, `SingleRowAction`, `AllRowsAction`, `RangeRowAction`. → [TypeScript](/docs/typescript)
+- **Recipe: headless table with Tailwind** — sort, filter, row selection, and pagination on your own `<table>` with utility classes. → [Headless table with Tailwind](/docs/recipes/headless-tailwind)
 
 ### Bug fixes
 
