@@ -5,6 +5,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import CustomStylesDemo from '../../components/demos/CustomStylesDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
+import { tableStyleKeyRows } from '../../data/props';
 ---
 
 <DocsLayout title="Custom styles | react-data-table-component">
@@ -144,27 +145,11 @@ const customStyles: TableStyles = {
 
   <h2>Available style targets</h2>
 
-  <DocsTable
-    headers={['Key', 'Description']}
-    rows={[
-      ['<code>table</code>', 'The root <code>&lt;div&gt;</code> wrapping the table'],
-      ['<code>tableWrapper</code>', 'Inner wrapper for overflow handling'],
-      ['<code>responsiveWrapper</code>', 'Horizontal scroll container'],
-      ['<code>header</code>', 'Title bar above the table'],
-      ['<code>subHeader</code>', 'Sub-header area (search, actions)'],
-      ['<code>head</code>', 'Column header area'],
-      ['<code>headRow</code>', 'Column header row'],
-      ['<code>headCells</code>', 'Column header cells'],
-      ['<code>cells</code>', 'Body cells'],
-      ['<code>rows</code>', 'Body rows (includes <code>selectedHighlightStyle</code>)'],
-      ['<code>expanderRow</code>', 'Expanded row container'],
-      ['<code>expanderCell</code>', 'Expander toggle cell'],
-      ['<code>expanderButton</code>', 'Expand/collapse button icon'],
-      ['<code>pagination</code>', 'Pagination bar'],
-      ['<code>noData</code>', 'Empty-state container'],
-      ['<code>progress</code>', 'Loading state container'],
-    ]}
-  />
+  <p>
+    Each key takes a <code>style</code> object. Some keys accept extra style fields for a specific state.
+  </p>
+
+  <DocsTable headers={['Key', 'Extra fields', 'Description']} rows={tableStyleKeyRows} />
 
   <h2>Conditional row styles</h2>
 

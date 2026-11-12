@@ -1066,6 +1066,34 @@ export const tableExportResultRows: string[][] = [
   [c('copy'), c("(format?: 'csv' | 'json') =&gt; Promise&lt;void&gt;"), 'Copy to the clipboard. Rejects when the Clipboard API is unavailable.'],
 ];
 
+export const contextMenuActionRows: string[][] = [
+  [c('id'), c('string'), `Identifier passed to ${c('onContextMenuAction')}. The built-in header actions reserve ${c('sort-asc')}, ${c('sort-desc')}, ${c('clear-sort')}, ${c('pin-left')}, ${c('pin-right')}, ${c('unpin')}, ${c('hide-column')}, and ${c('reset')}.`],
+  [c('label'), c('ReactNode'), 'Item content.'],
+  [c('disabled'), c('boolean'), 'Render the item disabled.'],
+  [c('icon'), c('ReactNode'), 'Optional icon rendered before the label. Built-in actions supply their own; omit it and the item still aligns with those that have one.'],
+];
+
+export const tableStyleKeyRows: string[][] = [
+  [c('table'), '-', 'The table root element.'],
+  [c('tableWrapper'), '-', `Wrapper ${c('&lt;div&gt;')} around the table.`],
+  [c('responsiveWrapper'), '-', 'Scroll container around the table.'],
+  [c('header'), `${c('fontColor')}, ${c('fontSize')}`, 'Title and actions bar above the table.'],
+  [c('subHeader'), '-', 'Sub-header bar (search, actions).'],
+  [c('head'), '-', 'Column header area.'],
+  [c('headRow'), c('denseStyle'), 'Column header row.'],
+  [c('headCells'), c('draggingStyle'), 'Column header cells.'],
+  [c('cells'), c('draggingStyle'), 'Body cells.'],
+  [c('rows'), `${c('selectedHighlightStyle')}, ${c('denseStyle')}, ${c('highlightOnHoverStyle')}, ${c('stripedStyle')}`, 'Body rows.'],
+  [c('expanderRow'), '-', 'The expanded content row.'],
+  [c('expanderCell'), '-', 'Cell containing the expand/collapse button.'],
+  [c('expanderButton'), '-', 'The expand/collapse button.'],
+  [c('pagination'), c('pageButtonsStyle'), 'Pagination bar and page buttons.'],
+  [c('footer'), '-', 'The footer row container.'],
+  [c('footerCells'), '-', 'Individual footer cells.'],
+  [c('noData'), '-', 'Empty-state container.'],
+  [c('progress'), '-', 'Loading indicator container.'],
+];
+
 export const inlineEditingCssVarRows: string[][] = [
   [c('--rdt-color-cell-edit-bg'), '8% primary on bg', 'Background of the cell while editing.'],
   [c('--rdt-color-cell-edit-hover'), '6% primary', 'Background of an editable cell on hover.'],

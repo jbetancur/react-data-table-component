@@ -3,7 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
-import { inlineEditingCssVarRows } from '../../data/props';
+import { contextMenuActionRows, inlineEditingCssVarRows, tableStyleKeyRows } from '../../data/props';
 ---
 
 <DocsLayout
@@ -204,15 +204,7 @@ const rowActions = (row: MyRow): ContextMenuAction[] => [
   { id: 'delete', label: 'Delete', disabled: row.locked },
 ];`} lang="ts" />
 
-  <DocsTable
-    headers={['Field', 'Type', 'Description']}
-    rows={[
-      ['<code>id</code>', '<code>string</code>', 'Identifier passed to <code>onContextMenuAction</code>. The built-in header actions reserve <code>sort-asc</code>, <code>sort-desc</code>, <code>clear-sort</code>, <code>pin-left</code>, <code>pin-right</code>, <code>unpin</code>, <code>hide-column</code>, and <code>reset</code>.'],
-      ['<code>label</code>', '<code>ReactNode</code>', 'Item content.'],
-      ['<code>disabled</code>', '<code>boolean</code>', 'Render the item disabled.'],
-      ['<code>icon</code>', '<code>ReactNode</code>', 'Optional icon rendered before the label.'],
-    ]}
-  />
+  <DocsTable headers={['Field', 'Type', 'Description']} rows={contextMenuActionRows} />
 
   <p>
     Related types: <code>ContextMenuConfig</code> (the object form of the <code>contextMenu</code> prop),
@@ -281,29 +273,7 @@ const customStyles: TableStyles = {
   },
 };`} lang="tsx" />
 
-  <DocsTable
-    headers={['Key', 'Extra fields', 'Description']}
-    rows={[
-      ['<code>table</code>', '-', 'The outermost table element.'],
-      ['<code>tableWrapper</code>', '-', 'Wrapper <code>&lt;div&gt;</code> around the table.'],
-      ['<code>responsiveWrapper</code>', '-', 'Horizontal-scroll wrapper (only present when <code>responsive</code>).'],
-      ['<code>header</code>', '<code>fontColor</code>, <code>fontSize</code>', 'Title / actions bar at the top.'],
-      ['<code>subHeader</code>', '-', 'Sub-header bar.'],
-      ['<code>head</code>', '-', 'The <code>&lt;thead&gt;</code> element.'],
-      ['<code>headRow</code>', '<code>denseStyle</code>', 'Column header row.'],
-      ['<code>headCells</code>', '<code>draggingStyle</code>', 'Individual header cells.'],
-      ['<code>cells</code>', '<code>draggingStyle</code>', 'Body cells.'],
-      ['<code>rows</code>', '<code>selectedHighlightStyle</code>, <code>denseStyle</code>, <code>highlightOnHoverStyle</code>, <code>stripedStyle</code>', 'Body rows.'],
-      ['<code>expanderRow</code>', '-', 'The expanded content row.'],
-      ['<code>expanderCell</code>', '-', 'Cell containing the expand/collapse button.'],
-      ['<code>expanderButton</code>', '-', 'The expand/collapse button itself.'],
-      ['<code>pagination</code>', '<code>pageButtonsStyle</code>', 'Pagination bar and page buttons.'],
-      ['<code>footer</code>', '-', 'The footer row container.'],
-      ['<code>footerCells</code>', '-', 'Individual footer cells.'],
-      ['<code>noData</code>', '-', 'Empty-state container.'],
-      ['<code>progress</code>', '-', 'Loading indicator container.'],
-    ]}
-  />
+  <DocsTable headers={['Key', 'Extra fields', 'Description']} rows={tableStyleKeyRows} />
 
   <h2 id="conditionalstylest">ConditionalStyles&lt;T&gt;</h2>
 

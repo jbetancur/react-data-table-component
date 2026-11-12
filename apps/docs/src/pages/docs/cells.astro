@@ -3,6 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import CellsDemo from '../../components/demos/CellsDemo.tsx';
 ---
 
@@ -64,18 +65,11 @@ import CellsDemo from '../../components/demos/CellsDemo.tsx';
 
   <h2>Alignment and sizing</h2>
 
-  <DocsTable
-    headers={['Prop', 'Effect']}
-    rows={[
-      ['<code>right</code>', 'Right-align cell content.'],
-      ['<code>center</code>', 'Center cell content.'],
-      ['<code>width</code>', 'Fixed column width, e.g. <code>"120px"</code>. Overrides flex sizing.'],
-      ['<code>minWidth</code>', 'Minimum width before shrinking.'],
-      ['<code>maxWidth</code>', 'Maximum width before growing stops.'],
-      ['<code>grow</code>', 'Flex-grow factor. Default <code>1</code>. Set to <code>0</code> to prevent growing.'],
-      ['<code>wrap</code>', 'Allow text to wrap inside the cell.'],
-      ['<code>compact</code>', 'Remove this column\'s cell padding. Independent of the table-level <code>dense</code> prop, which shrinks row height instead.'],
-    ]}
+  <PropsTable
+    source="column"
+    only={['right', 'center', 'width', 'minWidth', 'maxWidth', 'grow', 'wrap', 'compact']}
+    columns={['prop', 'description']}
+    propHeader="Prop"
   />
 
   <h2>Overflow and portals</h2>
