@@ -58,24 +58,30 @@ export const nav: NavGroup[] = [
         href: '/docs/column-separators',
         description: 'vertical divider lines between header and body columns',
       },
+    ],
+  },
+  {
+    group: 'Data',
+    links: [
+      { label: 'Sorting', href: '/docs/sorting', description: 'client-side and server-side sorting' },
       {
         label: 'Column Filtering',
         href: '/docs/filtering',
         description:
-          "per-column text, number, date, datetime, and time-of-day filters with operator selection and two-condition AND/OR logic, plus set filters that pick from a checklist of a column's distinct values or a supplied list, optionally splitting cells that hold several values, and a filterServer option for backend filtering",
+          'per-column text, number, date, time, and set filters with operators and AND/OR conditions, multi-value cells, and server-side filtering',
       },
-      { label: 'Sorting', href: '/docs/sorting', description: 'client-side and server-side sorting' },
-    ],
-  },
-  {
-    group: 'Editing',
-    links: [
+      {
+        label: 'Pagination',
+        href: '/docs/pagination',
+        description: 'built-in and custom pagination, server-side',
+      },
       {
         label: 'Inline Editing',
         href: '/docs/inline-editing',
         description:
           'edit cells in place with built-in editor types, per-column validation, and optimistic server-save patterns',
       },
+      { label: 'Export (CSV / JSON)', href: '/docs/export', description: 'CSV and JSON export' },
     ],
   },
   {
@@ -93,40 +99,44 @@ export const nav: NavGroup[] = [
       },
       { label: 'Row Pinning', href: '/docs/row-pinning', description: 'pin rows to top' },
       { label: 'Expandable Rows', href: '/docs/expandable', description: 'detail panels with any component' },
-      { label: 'Conditional Styles', href: '/docs/conditional-styles', description: 'style rows and cells by data' },
+    ],
+  },
+  {
+    group: 'Layout',
+    links: [
       {
         label: 'Fixed Header',
         href: '/docs/fixed-header',
         description: 'sticky header with scrollable body; when to disable the responsive scroll container',
       },
-      {
-        label: 'Pagination',
-        href: '/docs/pagination',
-        description: 'built-in and custom pagination, server-side',
-      },
       { label: 'Footer', href: '/docs/footer', description: 'summary and pagination footers' },
       { label: 'Loading State', href: '/docs/loading', description: 'progress and skeleton states' },
+      { label: 'Mobile', href: '/docs/mobile', description: 'responsive columns and layouts' },
     ],
   },
   {
     group: 'Interactivity',
     links: [
-      { label: 'Animations', href: '/docs/animations', description: 'row animations' },
-      { label: 'Accessibility', href: '/docs/accessibility', description: 'ARIA roles and screen reader support' },
-      {
-        label: 'Keyboard Navigation',
-        href: '/docs/keyboard-navigation',
-        description: 'cellNavigation prop for spreadsheet-style ARIA grid keyboard navigation',
-      },
       {
         label: 'Context Menu',
         href: '/docs/context-menu',
         description:
           'right-click or menu-button menu with built-in header actions (sort, pin, hide, reset) and custom row actions',
       },
+      {
+        label: 'Keyboard Navigation',
+        href: '/docs/keyboard-navigation',
+        description: 'cellNavigation prop for spreadsheet-style ARIA grid keyboard navigation',
+      },
+      { label: 'Animations', href: '/docs/animations', description: 'row animations' },
+    ],
+  },
+  {
+    group: 'Accessibility & i18n',
+    links: [
+      { label: 'Accessibility', href: '/docs/accessibility', description: 'ARIA roles and screen reader support' },
       { label: 'Localization', href: '/docs/localization', description: 'translated labels and locales' },
       { label: 'RTL Support', href: '/docs/rtl', description: 'right-to-left layouts' },
-      { label: 'Mobile', href: '/docs/mobile', description: 'responsive columns and layouts' },
     ],
   },
   {
@@ -134,11 +144,8 @@ export const nav: NavGroup[] = [
     links: [
       { label: 'Themes', href: '/docs/themes', description: '5 built-in themes with dark mode, createTheme()' },
       { label: 'Custom Styles', href: '/docs/custom-styles', description: 'style every table region' },
+      { label: 'Conditional Styles', href: '/docs/conditional-styles', description: 'style rows and cells by data' },
     ],
-  },
-  {
-    group: 'Import / Export',
-    links: [{ label: 'Export (CSV / JSON)', href: '/docs/export', description: 'CSV and JSON export' }],
   },
   {
     group: 'Headless',
@@ -187,7 +194,7 @@ export const nav: NavGroup[] = [
       {
         label: 'URL-synced table state',
         href: '/docs/recipes/url-synced-state',
-        description: 'Sync sort, filters, and pagination to the URL: shareable links, reload-safe, back button works.',
+        description: 'Sync sort, filters, and pagination to the URL so links are shareable and state survives reload and back navigation.',
       },
       {
         label: 'Dashboard drill-down',
@@ -197,7 +204,7 @@ export const nav: NavGroup[] = [
       {
         label: 'Audit log viewer',
         href: '/docs/recipes/audit-log',
-        description: 'Fixed header, severity row tinting, and multi-field live search, all wired together.',
+        description: 'Fixed header, severity row tinting, and multi-field live search.',
       },
       {
         label: 'Persist column widths',
@@ -207,7 +214,7 @@ export const nav: NavGroup[] = [
       {
         label: 'Inline row actions',
         href: '/docs/recipes/inline-row-actions',
-        description: 'Per-row ⋮ menu with edit, duplicate, and delete, with confirmation modals included.',
+        description: 'Per-row ⋮ menu with edit, duplicate, and delete actions and confirmation modals.',
       },
       {
         label: 'Live-updating grid',
@@ -222,7 +229,7 @@ export const nav: NavGroup[] = [
       {
         label: 'Grouped rows with aggregates',
         href: '/docs/recipes/row-groups',
-        description: 'Per-group totals and drill-down built from a plain array reduce, no groupBy API needed.',
+        description: 'Per-group totals and drill-down built with an array reduce instead of a groupBy API.',
       },
       {
         label: 'CSV import',

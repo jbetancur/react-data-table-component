@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets';
 import '../styles/global.css';
 
 interface Props {
@@ -48,6 +49,8 @@ const jsonLd = JSON.stringify({
     <meta name="twitter:image" content={new URL('/og-image.png', Astro.url).href} />
     <link rel="canonical" href={Astro.url.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-jetbrains-mono" />
     <script is:inline type="application/ld+json" set:html={jsonLd} />
     <title>{title}</title>
   </head>

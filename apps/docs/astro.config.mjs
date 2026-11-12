@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -43,6 +43,24 @@ export default defineConfig({
 	// HTML compression drops the line break between text and an inline tag that starts the
 	// next line, which glues words to links ("See<a>"). Keep source whitespace instead.
 	compressHTML: false,
+	fonts: [
+		{
+			provider: fontProviders.google(),
+			name: 'Inter',
+			cssVariable: '--font-inter',
+			weights: [400, 500, 600, 700],
+			styles: ['normal'],
+			fallbacks: ['system-ui', 'sans-serif'],
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'JetBrains Mono',
+			cssVariable: '--font-jetbrains-mono',
+			weights: [400, 500],
+			styles: ['normal'],
+			fallbacks: ['Fira Code', 'monospace'],
+		},
+	],
 	markdown: {
 		shikiConfig: { theme: 'catppuccin-macchiato' },
 	},

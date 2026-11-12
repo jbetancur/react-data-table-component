@@ -2,7 +2,7 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
-import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
 import MobileDemo from '../../components/demos/MobileDemo.tsx';
 ---
 
@@ -29,7 +29,7 @@ const columns: TableColumn<Employee>[] = [
 
 <DataTable columns={columns} data={data} striped highlightOnHover />;`}
   >
-    <MobileDemo client:only="react" />
+    <MobileDemo client:visible={{ rootMargin: '200px' }} />
   </Demo>
 
   <h2>How it works</h2>
@@ -132,10 +132,7 @@ function MyTable() {
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Column prop', 'Type', 'Description']}
-    rows={[
-      ['<code>hide</code>', '<code>Media</code>', 'Hide the column below the given breakpoint (<code>Media.SM</code> = 599px, <code>MD</code> = 959px, <code>LG</code> = 1280px). See the <a href="/docs/api#tablecolumnt">API reference</a> for every column field.'],
-    ]}
-  />
+  <PropsTable source="column" only={['hide']} />
+
+  <p>See the <a href="/docs/api#tablecolumnt">API reference</a> for every column field.</p>
 </DocsLayout>

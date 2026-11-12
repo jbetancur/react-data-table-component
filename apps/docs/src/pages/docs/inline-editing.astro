@@ -5,6 +5,8 @@ import CodeBlock from '../../components/CodeBlock.astro';
 import InlineEditingDemo from '../../components/demos/InlineEditingDemo.tsx';
 import ServerSideEditDemo from '../../components/demos/ServerSideEditDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import PropsTable from '../../components/PropsTable.astro';
+import { inlineEditingCssVarRows } from '../../data/props';
 ---
 
 <DocsLayout title="Inline editing | react-data-table-component">
@@ -298,15 +300,7 @@ export default function App() {
 
   <h3>Customizable variables</h3>
 
-  <DocsTable
-    headers={['Variable', 'Default', 'Purpose']}
-    rows={[
-      ['<code>--rdt-color-cell-edit-bg</code>', '8% primary on bg', 'Background of the cell while editing.'],
-      ['<code>--rdt-color-cell-edit-hover</code>', '6% primary', 'Background of an editable cell on hover.'],
-      ['<code>--rdt-color-cell-edit-hover-border</code>', '40% primary', 'Color of the dashed underline that hints "this cell is editable" on hover.'],
-      ['<code>--rdt-cell-edit-textarea-max-height</code>', '<code>240px</code>', 'Maximum height of the inline textarea editor before scrolling.'],
-    ]}
-  />
+  <DocsTable headers={['Variable', 'Default', 'Purpose']} rows={inlineEditingCssVarRows} />
 
   <CodeBlock code={`.rdt_table {
   --rdt-color-cell-edit-bg: #fff7ed; /* warm amber */
@@ -564,15 +558,7 @@ interface CustomCellEditorContext<T> {
 
   <h2>Prop reference</h2>
 
-  <DocsTable
-    headers={['Column prop', 'Type', 'Description']}
-    rows={[
-      ['<code>editable</code>', '<code>boolean</code>', 'Shorthand for a text editor. Equivalent to <code>editor: &#123; type: \'text\' &#125;</code>. Ignored when <code>editor</code> is set.'],
-      ['<code>editor</code>', '<code>CellEditor</code>', 'Editor configuration. See <a href="#celleditor">CellEditor</a> above for the full union.'],
-      ['<code>validate</code>', '<code>(value, row, column) =&gt; true | false | string</code>', 'Runs before <code>onCellEdit</code>. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string to keep the editor open with an inline error.'],
-      ['<code>onCellEdit</code>', '<code>(row: T, value: string, column: TableColumn&lt;T&gt;) =&gt; void</code>', 'Called when the user commits an edit (<kbd>Enter</kbd>, <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> for textareas, blur, or selection change for dropdowns). Receives the original row, the new string value, and the column definition.'],
-    ]}
-  />
+  <PropsTable source="column" section="inline-editing" />
 
   <p>
     <code>cellNavigation</code> is a table-level prop covered on its own page. See

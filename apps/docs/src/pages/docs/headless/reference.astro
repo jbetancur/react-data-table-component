@@ -2,6 +2,7 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
 import DocsTable from '../../../components/DocsTable.astro';
+import { tableExportOptionRows, tableExportResultRows } from '../../../data/props';
 ---
 
 <DocsLayout title="Headless hook reference | react-data-table-component" description="Signatures, options, defaults, and return values for the headless hooks and pinning helpers in react-data-table-component.">
@@ -463,28 +464,11 @@ function Cell({ column, pinnedOffsets }: { column: TableColumn<Row>; pinnedOffse
 
   <h3>Options</h3>
 
-  <DocsTable
-    headers={['Option', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'required', 'Columns to include. Columns with <code>omit: true</code> are skipped automatically.'],
-      ['<code>rows</code>', '<code>T[]</code>', 'required', 'Rows to export. Pass the filtered/sorted slice for "current view" semantics.'],
-      ['<code>valueSource</code>', '<code>\'selector\' | \'format\'</code>', '<code>\'selector\'</code>', '<code>\'selector\'</code> exports raw values; <code>\'format\'</code> runs <code>column.format</code> first.'],
-      ['<code>headerOverrides</code>', '<code>Record&lt;string | number, string&gt;</code>', '—', 'Override the header label for columns whose <code>name</code> is a React node.'],
-      ['<code>columnOrder</code>', '<code>(string | number)[]</code>', '—', 'Restrict and reorder exported columns by id. Omit to include all visible columns.'],
-    ]}
-  />
+  <DocsTable headers={['Option', 'Type', 'Default', 'Description']} rows={tableExportOptionRows} />
 
   <h3>Return value</h3>
 
-  <DocsTable
-    headers={['Property', 'Type', 'Description']}
-    rows={[
-      ['<code>toCSV</code>', '<code>() =&gt; string</code>', 'Returns a CSV string.'],
-      ['<code>toJSON</code>', '<code>() =&gt; string</code>', 'Returns a pretty-printed JSON string.'],
-      ['<code>download</code>', '<code>(filename: string, format?: \'csv\' | \'json\') =&gt; void</code>', 'Triggers a browser file download. No-op on the server.'],
-      ['<code>copy</code>', '<code>(format?: \'csv\' | \'json\') =&gt; Promise&lt;void&gt;</code>', 'Copies to clipboard via the Clipboard API.'],
-    ]}
-  />
+  <DocsTable headers={['Property', 'Type', 'Description']} rows={tableExportResultRows} />
 
   <h3>Example: export the current filtered view</h3>
 

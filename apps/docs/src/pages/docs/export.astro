@@ -4,6 +4,7 @@ import Demo from '../../components/Demo.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import ExportDemo from '../../components/demos/ExportDemo.tsx';
 import DocsTable from '../../components/DocsTable.astro';
+import { tableExportOptionRows, tableExportResultRows } from '../../data/props';
 ---
 
 <DocsLayout title="Export (CSV / JSON) | react-data-table-component">
@@ -218,28 +219,11 @@ function App() {
 
   <h2>API</h2>
 
-  <DocsTable
-    headers={['Option', 'Type', 'Default', 'Description']}
-    rows={[
-      ['<code>columns</code>', '<code>TableColumn&lt;T&gt;[]</code>', 'required', 'Same columns array you pass to DataTable. Columns with <code>omit: true</code> are skipped.'],
-      ['<code>rows</code>', '<code>T[]</code>', 'required', 'Rows to export.'],
-      ['<code>valueSource</code>', "<code>'selector' | 'format'</code>", "<code>'selector'</code>", 'Use raw selector values or run <code>column.format</code> first.'],
-      ['<code>headerOverrides</code>', '<code>Record&lt;string|number, string&gt;</code>', '—', 'Replace header label per column id.'],
-      ['<code>columnOrder</code>', '<code>(string|number)[]</code>', '—', 'Restrict and reorder columns by id.'],
-    ]}
-  />
+  <DocsTable headers={['Option', 'Type', 'Default', 'Description']} rows={tableExportOptionRows} />
 
   <h3>Returns</h3>
 
-  <DocsTable
-    headers={['Property', 'Type', 'Description']}
-    rows={[
-      ['<code>toCSV</code>', '<code>() =&gt; string</code>', 'Build a CSV string (no download).'],
-      ['<code>toJSON</code>', '<code>() =&gt; string</code>', 'Build a pretty-printed JSON array string.'],
-      ['<code>download</code>', '<code>(filename, format?) =&gt; void</code>', "Trigger a browser download. <code>format</code> defaults to <code>'csv'</code>."],
-      ['<code>copy</code>', '<code>(format?) =&gt; Promise&lt;void&gt;</code>', 'Copy to clipboard. Rejects when the clipboard API is unavailable.'],
-    ]}
-  />
+  <DocsTable headers={['Property', 'Type', 'Description']} rows={tableExportResultRows} />
 
   <p>
     Need the reverse direction? See the <a href="/docs/recipes/csv-import">CSV import recipe</a>.

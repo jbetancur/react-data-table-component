@@ -2,16 +2,15 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
+import InstallTabs from '../../components/InstallTabs.astro';
 ---
 
-<DocsLayout title="Installation | react-data-table-component" description="Install react-data-table-component via npm or yarn. Works with React 18+, Next.js App Router, Vite, and Remix.">
+<DocsLayout title="Installation | react-data-table-component" description="Install react-data-table-component with npm, yarn, pnpm, or bun. Works with React 18+, Next.js App Router, Vite, and Remix.">
   <h1>Installation</h1>
 
-  <h2>npm</h2>
-  <CodeBlock code="npm install react-data-table-component" lang="sh" />
+  <p>Install the package with your package manager:</p>
 
-  <h2>yarn</h2>
-  <CodeBlock code="yarn add react-data-table-component" lang="sh" />
+  <InstallTabs />
 
   <h2>Requirements</h2>
 
@@ -36,9 +35,8 @@ import DocsTable from '../../components/DocsTable.astro';
   </p>
 
   <p>
-    If you are using <strong>Next.js App Router</strong> and need styles available during
-    SSR to avoid a flash of unstyled content, import the stylesheet explicitly in your
-    root <code>layout.tsx</code>:
+    If you render on the server and want styles in the initial HTML, import the stylesheet
+    once at the root of your app, for example in a Next.js App Router <code>layout.tsx</code>:
   </p>
 
   <CodeBlock code={`import 'react-data-table-component/css';`} lang="ts" />
@@ -58,44 +56,14 @@ import DocsTable from '../../components/DocsTable.astro';
     headers={['Framework', 'Notes']}
     rows={[
       ['Vite / Create React App', 'Works out of the box'],
-      ['Next.js App Router', 'Import <code>&lt;DataTable&gt;</code> directly from any file. The bundle ships with <code>"use client"</code>. Optionally import <code>react-data-table-component/css</code> in <code>layout.tsx</code> to avoid a flash of unstyled content on first SSR load.'],
+      ['Next.js App Router', 'Import <code>&lt;DataTable&gt;</code> directly from any file. The bundle ships with <code>"use client"</code>.'],
       ['Next.js Pages Router', 'Works out of the box'],
       ['Remix', 'Works out of the box'],
       ['Astro', 'Use <code>client:load</code> or <code>client:visible</code> directive'],
     ]}
   />
 
-  <h3>Next.js App Router: layout.tsx (optional)</h3>
-
   <p>
-    Optional: import the stylesheet once in your root layout so styles are present in the
-    initial SSR HTML.
+    See <a href="/docs/ssr">SSR</a> for a full example in each framework.
   </p>
-
-  <CodeBlock code={`// app/layout.tsx
-import 'react-data-table-component/css';
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}`} lang="tsx" />
-
-  <h3>Next.js App Router: using the table</h3>
-
-  <p>
-    The bundle declares its own <code>"use client"</code> boundary, so you can import
-    <code>&lt;DataTable&gt;</code> directly from a Server Component file. No wrapper needed.
-  </p>
-
-  <CodeBlock code={`// app/users/page.tsx (Server Component, no directive needed).
-import DataTable from 'react-data-table-component';
-import { getUsers } from '@/lib/db';
-
-export default async function UsersPage() {
-  const users = await getUsers();
-  return <DataTable columns={columns} data={users} />;
-}`} lang="tsx" />
 </DocsLayout>

@@ -6,14 +6,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "docs:stop": "astro dev stop"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.1",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/react": "^7.1.8",
+    "@astrojs/sitemap": "^3.7.4",
     "@shikijs/langs": "^4.3.1",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.1",
+    "astro": "^7.4.11",
     "react": "^18.3.1",
     "react-data-table-component": "*",
     "react-dom": "^18.3.1",

@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
+import InstallTabs from '../../components/InstallTabs.astro';
 import PropsTable from '../../components/PropsTable.astro';
 ---
 
@@ -15,9 +16,12 @@ import PropsTable from '../../components/PropsTable.astro';
 
   <h2>Installation</h2>
 
-  <CodeBlock code="npm install react-data-table-component" lang="sh" />
+  <InstallTabs />
 
-  <p>That's it. No CSS import required.</p>
+  <p>
+    That's it. No CSS import required. See <a href="/docs/installation">Installation</a> for
+    peer dependencies and framework notes.
+  </p>
 
   <h2>Minimal example</h2>
 
