@@ -1,10 +1,23 @@
 ---
 import DocsTable from './DocsTable.astro';
-import { dataTableProps, propGroupOrder, type PropDef, type PropFeature, type PropGroup } from '../data/props';
+import {
+  columnProps,
+  dataTableProps,
+  propGroupOrder,
+  type ColumnPropDef,
+  type PropDef,
+  type PropFeature,
+  type PropGroup,
+} from '../data/props';
 
 type Column = 'prop' | 'type' | 'default' | 'description';
+type Row = Pick<PropDef, 'name' | 'type' | 'default' | 'description' | 'brief' | 'deprecated'>;
 
 interface Props {
+  // `column` renders TableColumn fields from `columnProps` instead of DataTable props:
+  // every field outside a section, one `section`, or the rows named by `only`.
+  source?: 'table' | 'column';
+  section?: ColumnPropDef['section'];
   // Filter by feature tag (feature pages) …
   feature?: PropFeature;
   // … or render whole api.md-style groups (the API reference).
@@ -22,24 +35,29 @@ interface Props {
 }
 
 const {
+  source = 'table',
+  section,
   feature,
   group,
   groups,
   only,
   columns,
   brief = !group && !groups,
-  propHeader = 'Prop',
+  propHeader = source === 'column' ? 'Column prop' : 'Prop',
 } = Astro.props as Props;
 
-const byName = new Map(dataTableProps.map(p => [p.name, p] as const));
+const catalog: Row[] = source === 'column' ? columnProps : dataTableProps;
+const byName = new Map(catalog.map(p => [p.name, p] as const));
 
-let rows: PropDef[];
+let rows: Row[];
 if (only) {
   rows = only.map(name => {
     const p = byName.get(name);
-    if (!p) throw new Error(`PropsTable: unknown prop "${name}" in \`only\``);
+    if (!p) throw new Error(`PropsTable: unknown ${source} prop "${name}" in \`only\``);
     return p;
   });
+} else if (source === 'column') {
+  rows = columnProps.filter(p => p.section === section);
 } else if (feature) {
   rows = dataTableProps.filter(p => p.features.includes(feature));
 } else {
@@ -48,7 +66,7 @@ if (only) {
 }
 
 if (rows.length === 0) {
-  throw new Error(`PropsTable: no props matched (feature=${feature}, group=${group}).`);
+  throw new Error(`PropsTable: no props matched (source=${source}, feature=${feature}, group=${group}, section=${section}).`);
 }
 
 // Row events have no defaults in the source; drop the Default column when none
@@ -64,7 +82,7 @@ const headerFor: Record<Column, string> = {
 };
 const headers = cols.map(col => headerFor[col]);
 
-const cellFor = (p: PropDef, col: Column): string => {
+const cellFor = (p: Row, col: Column): string => {
   switch (col) {
     case 'prop': {
       const label = `<code>${p.name}</code>`;

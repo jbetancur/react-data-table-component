@@ -68,6 +68,61 @@ export interface PropDef {
 
 const c = (s: string) => `<code>${s}</code>`;
 
+// TableColumn<T> fields, rendered via <PropsTable source="column">. `section: 'inline-editing'`
+// rows render under their own heading. `brief` works as it does on PropDef.
+export interface ColumnPropDef {
+  name: string;
+  type: string;
+  description: string;
+  brief?: string;
+  section?: 'inline-editing';
+}
+
+export const columnProps: ColumnPropDef[] = [
+  { name: 'id', type: '<code>string | number</code>', description: 'Stable identity used by <code>defaultSortFieldId</code>, <code>columnGroups</code>, and <code>filterValues</code>.' },
+  { name: 'name', type: '<code>ReactNode</code>', description: 'Column header label.' },
+  { name: 'selector', type: '<code>(row, index?) =&gt; Primitive | ReactNode</code>', description: 'Data accessor. For sortable columns return a <code>Primitive</code> (<code>string | number | boolean | bigint | Date</code>). Rows whose selector returns <code>null</code> or <code>undefined</code> sort to the end. <code>bigint</code> displays as its decimal string; <code>Date</code> displays via <code>toLocaleString()</code>, which follows the viewer&apos;s locale and timezone. Use <code>format</code> when you need deterministic or SSR-stable output.', brief: 'Data accessor used for sorting and default display.' },
+  { name: 'cell', type: '<code>(row, index, column, id) =&gt; ReactNode</code>', description: 'Custom cell renderer. Overrides the <code>selector</code> display value.' },
+  { name: 'format', type: '<code>(row, index) =&gt; ReactNode</code>', description: 'Format the selector value for display without changing the sort key.' },
+  { name: 'sortable', type: '<code>boolean</code>', description: 'Enable sorting on this column.' },
+  { name: 'sortFunction', type: '<code>(a: T, b: T) =&gt; number</code>', description: `Custom comparator for this column. Takes priority over the table-level ${c('sortFunction')}.` },
+  { name: 'sortField', type: '<code>string</code>', description: `Backend field name passed to ${c('onSort')} for server-side sorting, when it differs from ${c('id')}.` },
+  { name: 'filterable', type: '<code>boolean</code>', description: 'Show a filter popup for this column.' },
+  { name: 'filterType', type: '<code>"text" | "number" | "date" | "datetime" | "time" | "set"</code>', description: 'Filter operator set and input widget. Defaults to <code>"text"</code>. <code>"set"</code> shows a checklist of the column&apos;s distinct values instead of operators. See <a href="/docs/filtering">Filtering</a>.', brief: 'Filter operator set and input widget. Defaults to <code>"text"</code>. See <a href="/docs/filtering">Filtering</a>.' },
+  { name: 'filterFunction', type: '<code>(row, filter: FilterState) =&gt; boolean</code>', description: 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.' },
+  { name: 'filterOptions', type: '<code>&#123; values?: string[] | ((rows: T[]) =&gt; string[]); separator?: string | RegExp &#125;</code>', description: `Per-column filter settings, only read by ${c("filterType: 'set'")}. ${c('values')} supplies the checklist instead of deriving it from the rows: use it when the column has a known domain the loaded rows may not cover, such as a status the server holds but the current page does not. Order is kept as given, and blanks are only offered if the list contains an empty string. ${c('separator')} splits a cell holding several values, so a column formatted as "React, TypeScript" lists each tag separately and a row matches when any of its parts is selected. See <a href="/docs/filtering#supplying-set-values">Filtering</a> and <a href="/docs/filtering#multi-value-cells">multi-value cells</a>.`, brief: `Per-column set filter settings. ${c('values')} supplies the checklist, ${c('separator')} splits multi-value cells.` },
+  { name: 'width', type: '<code>string</code>', description: 'Fixed column width, e.g. <code>"120px"</code>. With <code>resizable</code>, this is the starting width.' },
+  { name: 'minWidth', type: '<code>string</code>', description: 'Minimum width. Defaults to <code>"100px"</code> when neither <code>width</code> nor <code>minWidth</code> is set. With <code>resizable</code>, the user cannot drag narrower than this, with a hard floor of 40px.' },
+  { name: 'maxWidth', type: '<code>string</code>', description: 'Maximum width.' },
+  { name: 'grow', type: '<code>number</code>', description: 'Flex-grow factor (default <code>1</code>). Set to <code>0</code> to prevent growing.' },
+  { name: 'right', type: '<code>boolean</code>', description: 'Right-align cell content.' },
+  { name: 'center', type: '<code>boolean</code>', description: 'Center cell content.' },
+  { name: 'wrap', type: '<code>boolean</code>', description: 'Allow cell text to wrap.' },
+  { name: 'compact', type: '<code>boolean</code>', description: 'Remove this column&apos;s cell padding. Independent of the table-level <code>dense</code> prop, which shrinks row height instead.' },
+  { name: 'button', type: '<code>boolean</code>', description: 'Center content and suppress row click propagation.' },
+  { name: 'allowOverflow', type: '<code>boolean</code>', description: 'Allow cell content to overflow (useful for dropdowns and popovers).' },
+  { name: 'ignoreRowClick', type: '<code>boolean</code>', description: 'Prevent clicks in this cell from firing <code>onRowClicked</code>.' },
+  { name: 'hide', type: '<code>Media</code>', description: 'Hide the column below the given breakpoint (<code>Media.SM</code> = 599px, <code>MD</code> = 959px, <code>LG</code> = 1280px).' },
+  { name: 'omit', type: '<code>boolean</code>', description: 'Exclude the column entirely. Toggle this to show/hide a column.' },
+  { name: 'reorder', type: '<code>boolean</code>', description: 'Allow drag-to-reorder for this column (requires <code>reorder</code> on at least two columns).' },
+  { name: 'pinned', type: '<code>\'left\' | \'right\'</code>', description: 'Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.', brief: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths.` },
+  { name: 'style', type: '<code>CSSProperties</code>', description: 'Inline styles applied to every cell in this column.' },
+  { name: 'conditionalCellStyles', type: '<code>ConditionalStyles&lt;T&gt;[]</code>', description: 'Per-cell conditional styles.' },
+  { name: 'footer', type: '<code>ReactNode | (rows: T[]) =&gt; ReactNode</code>', description: 'Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a <code>footer</code>, a footer row renders below the body. See <a href="/docs/footer">Footer</a>.', brief: 'Footer cell for this column: a static node or a function of the filtered and sorted rows. See <a href="/docs/footer">Footer</a>.' },
+  { name: 'editable', type: '<code>boolean</code>', description: 'Shorthand for <code>editor: { type: &apos;text&apos; }</code>. Ignored when <code>editor</code> is also set.', section: 'inline-editing' },
+  { name: 'editor', type: '<code>CellEditor</code>', description: 'Editor configuration. See <a href="#celleditor">CellEditor</a> for the full union. Takes precedence over <code>editable</code>.', section: 'inline-editing' },
+  { name: 'validate', type: '<code>(value, row, column) =&gt; true | false | string</code>', description: 'Gate the edit before <code>onCellEdit</code> fires. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string error to keep the editor open with an inline tooltip.', section: 'inline-editing' },
+  { name: 'onCellEdit', type: '<code>CellEditCallback&lt;T&gt;</code>', description: 'Called when the user commits an edit (<kbd>Enter</kbd>, <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Enter</kbd> for textareas, blur, or selection change for dropdowns). Receives <code>(row: T, value: string, column: TableColumn&lt;T&gt;)</code>. The <code>value</code> is always a string; parse it to the target type in your handler.', section: 'inline-editing' },
+];
+
+// A TableColumn field shown in a DataTable prop table as `column.<name>`. Type and copy
+// come from `columnProps`; only its placement and default are given here.
+const columnEntry = (name: string, placement: Pick<PropDef, 'default' | 'group' | 'features'>): PropDef => {
+  const col = columnProps.find(p => p.name === name);
+  if (!col) throw new Error(`props.ts: unknown column prop "${name}"`);
+  return { name: `column.${name}`, on: 'column', type: col.type, description: col.description, brief: col.brief, ...placement };
+};
+
 export const dataTableProps: PropDef[] = [
   // ── Data ─────────────────────────────────────────────────────────────────
   {
@@ -430,33 +485,9 @@ export const dataTableProps: PropDef[] = [
     group: 'Sorting',
     features: ['sorting'],
   },
-  {
-    name: 'column.sortable',
-    on: 'column',
-    type: c('boolean'),
-    default: c('false'),
-    description: `Enable sorting on this column.`,
-    group: 'Sorting',
-    features: ['sorting'],
-  },
-  {
-    name: 'column.sortFunction',
-    on: 'column',
-    type: c('(a, b) =&gt; number'),
-    default: '-',
-    description: `Per-column sort comparator. Takes priority over the table-level ${c('sortFunction')}.`,
-    group: 'Sorting',
-    features: ['sorting'],
-  },
-  {
-    name: 'column.sortField',
-    on: 'column',
-    type: c('string'),
-    default: '-',
-    description: `Backend field name passed to ${c('onSort')} when it differs from ${c('column.id')}.`,
-    group: 'Sorting',
-    features: ['sorting'],
-  },
+  columnEntry('sortable', { default: c('false'), group: 'Sorting', features: ['sorting'] }),
+  columnEntry('sortFunction', { default: '-', group: 'Sorting', features: ['sorting'] }),
+  columnEntry('sortField', { default: '-', group: 'Sorting', features: ['sorting'] }),
   {
     name: 'ref.clearSort()',
     on: 'ref',
@@ -926,16 +957,7 @@ export const dataTableProps: PropDef[] = [
     group: 'Column features',
     features: ['filtering'],
   },
-  {
-    name: 'column.filterOptions',
-    on: 'column',
-    type: c('{ values?: string[] | ((rows: T[]) =&gt; string[]); separator?: string | RegExp }'),
-    default: '-',
-    description: `Per-column filter settings, only read by ${c("filterType: 'set'")}. ${c('values')} supplies the checklist instead of deriving it from the rows: use it when the column has a known domain the loaded rows may not cover, such as a status the server holds but the current page does not. Order is kept as given, and blanks are only offered if the list contains an empty string. ${c('separator')} splits a cell holding several values, so a column formatted as "React, TypeScript" lists each tag separately and a row matches when any of its parts is selected. See <a href="/docs/filtering#supplying-set-values">Filtering</a> and <a href="/docs/filtering#multi-value-cells">multi-value cells</a>.`,
-    brief: `Per-column set filter settings. ${c('values')} supplies the checklist, ${c('separator')} splits multi-value cells.`,
-    group: 'Column features',
-    features: ['filtering'],
-  },
+  columnEntry('filterOptions', { default: '-', group: 'Column features', features: ['filtering'] }),
   {
     name: 'onColumnOrderChange',
     type: c('(columns: TableColumn&lt;T&gt;[]) =&gt; void'),
@@ -952,16 +974,7 @@ export const dataTableProps: PropDef[] = [
     group: 'Column features',
     features: ['column-reorder', 'column-groups'],
   },
-  {
-    name: 'column.pinned',
-    on: 'column',
-    type: `${c("'left'")} | ${c("'right'")}`,
-    default: '-',
-    description: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.`,
-    brief: `Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths.`,
-    group: 'Column features',
-    features: ['column-pinning'],
-  },
+  columnEntry('pinned', { default: '-', group: 'Column features', features: ['column-pinning'] }),
 
   // ── Context menu ─────────────────────────────────────────────────────────
   {
@@ -1036,48 +1049,26 @@ export const propGroupOrder: PropGroup[] = [
   'Localization',
 ];
 
-// TableColumn<T> fields for the API reference. `section: 'inline-editing'` rows render
-// under their own heading.
-export interface ColumnPropDef {
-  name: string;
-  type: string;
-  description: string;
-  section?: 'inline-editing';
-}
+// Reference rows shared by more than one page, passed straight to <DocsTable>.
 
-export const columnProps: ColumnPropDef[] = [
-  { name: 'id', type: '<code>string | number</code>', description: 'Stable identity used by <code>defaultSortFieldId</code>, <code>columnGroups</code>, and <code>filterValues</code>.' },
-  { name: 'name', type: '<code>ReactNode</code>', description: 'Column header label.' },
-  { name: 'selector', type: '<code>(row, index?) =&gt; Primitive | ReactNode</code>', description: 'Data accessor. For sortable columns return a <code>Primitive</code> (<code>string | number | boolean | bigint | Date</code>). Rows whose selector returns <code>null</code> or <code>undefined</code> sort to the end. <code>bigint</code> displays as its decimal string; <code>Date</code> displays via <code>toLocaleString()</code>, which follows the viewer&apos;s locale and timezone. Use <code>format</code> when you need deterministic or SSR-stable output.' },
-  { name: 'cell', type: '<code>(row, index, column, id) =&gt; ReactNode</code>', description: 'Custom cell renderer. Overrides the <code>selector</code> display value.' },
-  { name: 'format', type: '<code>(row, index) =&gt; ReactNode</code>', description: 'Format the selector value for display without changing the sort key.' },
-  { name: 'sortable', type: '<code>boolean</code>', description: 'Enable sorting on this column.' },
-  { name: 'sortFunction', type: '<code>(a: T, b: T) =&gt; number</code>', description: 'Custom comparator for this column.' },
-  { name: 'sortField', type: '<code>string</code>', description: 'Field key passed to <code>onSort</code> for server-side sort identification.' },
-  { name: 'filterable', type: '<code>boolean</code>', description: 'Show a filter popup for this column.' },
-  { name: 'filterType', type: '<code>"text" | "number" | "date" | "datetime" | "time" | "set"</code>', description: 'Filter operator set and input widget. Defaults to <code>"text"</code>. <code>"set"</code> shows a checklist of the column&apos;s distinct values instead of operators. See <a href="/docs/filtering">Filtering</a>.' },
-  { name: 'filterFunction', type: '<code>(row, filter: FilterState) =&gt; boolean</code>', description: 'Custom filter predicate. Overrides built-in operator logic. Receives the full <code>FilterState</code> including both conditions.' },
-  { name: 'filterOptions', type: '<code>&#123; values?: string[] | ((rows: T[]) =&gt; string[]); separator?: string | RegExp &#125;</code>', description: 'Settings for a <code>"set"</code> filter. <code>values</code> supplies the checklist instead of deriving it from the loaded rows. <code>separator</code> splits a multi-value cell into its parts. See <a href="/docs/filtering#supplying-set-values">Filtering</a>.' },
-  { name: 'width', type: '<code>string</code>', description: 'Fixed column width, e.g. <code>"120px"</code>.' },
-  { name: 'minWidth', type: '<code>string</code>', description: 'Minimum width.' },
-  { name: 'maxWidth', type: '<code>string</code>', description: 'Maximum width.' },
-  { name: 'grow', type: '<code>number</code>', description: 'Flex-grow factor (default <code>1</code>). Set to <code>0</code> to prevent growing.' },
-  { name: 'right', type: '<code>boolean</code>', description: 'Right-align cell content.' },
-  { name: 'center', type: '<code>boolean</code>', description: 'Center cell content.' },
-  { name: 'wrap', type: '<code>boolean</code>', description: 'Allow cell text to wrap.' },
-  { name: 'compact', type: '<code>boolean</code>', description: 'Remove cell padding.' },
-  { name: 'button', type: '<code>boolean</code>', description: 'Center content and suppress row click propagation.' },
-  { name: 'allowOverflow', type: '<code>boolean</code>', description: 'Allow cell content to overflow (useful for dropdowns and popovers).' },
-  { name: 'ignoreRowClick', type: '<code>boolean</code>', description: 'Prevent clicks in this cell from firing <code>onRowClicked</code>.' },
-  { name: 'hide', type: '<code>Media</code>', description: 'Hide the column below the given breakpoint (<code>Media.SM</code> = 599px, <code>MD</code> = 959px, <code>LG</code> = 1280px).' },
-  { name: 'omit', type: '<code>boolean</code>', description: 'Exclude the column entirely. Toggle this to show/hide a column.' },
-  { name: 'reorder', type: '<code>boolean</code>', description: 'Allow drag-to-reorder for this column (requires <code>reorder</code> on at least two columns).' },
-  { name: 'pinned', type: '<code>\'left\' | \'right\'</code>', description: 'Freeze the column to an edge during horizontal scroll. Only visible when the table overflows its container, so give columns explicit widths. See <a href="/docs/column-pinning">Column pinning</a>.' },
-  { name: 'style', type: '<code>CSSProperties</code>', description: 'Inline styles applied to every cell in this column.' },
-  { name: 'conditionalCellStyles', type: '<code>ConditionalStyles&lt;T&gt;[]</code>', description: 'Per-cell conditional styles.' },
-  { name: 'footer', type: '<code>ReactNode | (rows: T[]) =&gt; ReactNode</code>', description: 'Footer cell for this column. Static node or a function receiving the filtered+sorted rows (typically used to render aggregates like sums or averages). When any visible column has a <code>footer</code>, a footer row renders below the body. See <a href="/docs/footer">Footer</a>.' },
-  { name: 'editable', type: '<code>boolean</code>', description: 'Shorthand for <code>editor: { type: &apos;text&apos; }</code>. Ignored when <code>editor</code> is also set.', section: 'inline-editing' },
-  { name: 'editor', type: '<code>CellEditor</code>', description: 'Editor configuration. See <a href="#celleditor">CellEditor</a> below. Takes precedence over <code>editable</code>.', section: 'inline-editing' },
-  { name: 'validate', type: '<code>(value, row, column) =&gt; true | false | string</code>', description: 'Gate the edit before <code>onCellEdit</code> fires. Return <code>true</code> to accept, <code>false</code> to reject silently, or a string error to keep the editor open with an inline tooltip.', section: 'inline-editing' },
-  { name: 'onCellEdit', type: '<code>CellEditCallback&lt;T&gt;</code>', description: 'Called when the user commits an edit. Receives <code>(row: T, value: string, column: TableColumn&lt;T&gt;)</code>. The <code>value</code> is always a string; parse it to the target type in your handler.', section: 'inline-editing' },
+export const tableExportOptionRows: string[][] = [
+  [c('columns'), c('TableColumn&lt;T&gt;[]'), 'required', `Same columns array you pass to DataTable. Columns with ${c('omit: true')} are skipped.`],
+  [c('rows'), c('T[]'), 'required', 'Rows to export. Pass the filtered and sorted slice to export the current view.'],
+  [c('valueSource'), c("'selector' | 'format'"), c("'selector'"), `${c("'selector'")} exports raw selector values; ${c("'format'")} runs ${c('column.format')} first.`],
+  [c('headerOverrides'), c('Record&lt;string | number, string&gt;'), '-', `Replace the header label per column id. Useful when ${c('column.name')} is a React node.`],
+  [c('columnOrder'), c('(string | number)[]'), '-', 'Restrict and reorder exported columns by id. Omit to include all visible columns.'],
+];
+
+export const tableExportResultRows: string[][] = [
+  [c('toCSV'), c('() =&gt; string'), 'Build a CSV string (no download).'],
+  [c('toJSON'), c('() =&gt; string'), 'Build a pretty-printed JSON array string.'],
+  [c('download'), c("(filename: string, format?: 'csv' | 'json') =&gt; void"), `Trigger a browser download. ${c('format')} defaults to ${c("'csv'")}. No-op on the server.`],
+  [c('copy'), c("(format?: 'csv' | 'json') =&gt; Promise&lt;void&gt;"), 'Copy to the clipboard. Rejects when the Clipboard API is unavailable.'],
+];
+
+export const inlineEditingCssVarRows: string[][] = [
+  [c('--rdt-color-cell-edit-bg'), '8% primary on bg', 'Background of the cell while editing.'],
+  [c('--rdt-color-cell-edit-hover'), '6% primary', 'Background of an editable cell on hover.'],
+  [c('--rdt-color-cell-edit-hover-border'), '40% primary', 'Color of the dashed underline that marks an editable cell on hover.'],
+  [c('--rdt-cell-edit-textarea-max-height'), c('240px'), 'Maximum height of the inline textarea editor before scrolling.'],
 ];
