@@ -3,7 +3,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
 import DocsTable from '../../components/DocsTable.astro';
 import PropsTable from '../../components/PropsTable.astro';
-import { columnProps } from '../../data/props';
+import { inlineEditingCssVarRows } from '../../data/props';
 ---
 
 <DocsLayout
@@ -121,17 +121,11 @@ const columns: TableColumn<MyRow>[] = [
   },
 ];`} lang="ts" />
 
-  <DocsTable
-    headers={['Prop', 'Type', 'Description']}
-    rows={columnProps.filter(p => !p.section).map(p => [`<code>${p.name}</code>`, p.type, p.description])}
-  />
+  <PropsTable source="column" brief={false} propHeader="Prop" />
 
   <h3 id="inline-editing">Inline editing</h3>
 
-  <DocsTable
-    headers={['Prop', 'Type', 'Description']}
-    rows={columnProps.filter(p => p.section === 'inline-editing').map(p => [`<code>${p.name}</code>`, p.type, p.description])}
-  />
+  <PropsTable source="column" section="inline-editing" brief={false} propHeader="Prop" />
 
   <p>See <a href="/docs/inline-editing">Inline editing</a> for examples, CSS variables, and styling guidance.</p>
 
@@ -194,15 +188,7 @@ interface CustomCellEditorContext<T> {
 
   <h3 id="inline-editing-css-variables">Inline editing CSS variables</h3>
 
-  <DocsTable
-    headers={['Variable', 'Default', 'Purpose']}
-    rows={[
-      ['<code>--rdt-color-cell-edit-bg</code>', '8% primary on bg', 'Background of the cell while editing.'],
-      ['<code>--rdt-color-cell-edit-hover</code>', '6% primary', 'Background of an editable cell on hover.'],
-      ['<code>--rdt-color-cell-edit-hover-border</code>', '40% primary', 'Dashed underline color on editable cell hover.'],
-      ['<code>--rdt-cell-edit-textarea-max-height</code>', '<code>240px</code>', 'Maximum height of the inline textarea editor before scrolling.'],
-    ]}
-  />
+  <DocsTable headers={['Variable', 'Default', 'Purpose']} rows={inlineEditingCssVarRows} />
 
   <h2 id="contextmenuaction">ContextMenuAction</h2>
 

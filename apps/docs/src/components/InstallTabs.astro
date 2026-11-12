@@ -1,0 +1,101 @@
+---
+import CodeBlock from './CodeBlock.astro';
+
+interface Props {
+  pkg?: string;
+}
+
+const { pkg = 'react-data-table-component' } = Astro.props;
+const managers = [
+  { name: 'npm', command: `npm install ${pkg}` },
+  { name: 'yarn', command: `yarn add ${pkg}` },
+  { name: 'pnpm', command: `pnpm add ${pkg}` },
+  { name: 'bun', command: `bun add ${pkg}` },
+];
+const id = `install-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="install-tabs not-prose my-11 rounded-xl overflow-hidden bg-gray-950">
+  <div role="tablist" aria-label="Package manager" class="flex px-2 border-b border-white/10">
+    {managers.map(({ name }, i) => (
+      <button
+        type="button"
+        role="tab"
+        id={`${id}-tab-${name}`}
+        aria-controls={`${id}-panel-${name}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? 0 : -1}
+        data-pm={name}
+        class="-mb-px px-3 py-2 font-mono text-xs text-gray-400 border-b-2 border-transparent hover:text-gray-200 aria-selected:text-white aria-selected:border-brand-400 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-400"
+      >
+        {name}
+      </button>
+    ))}
+  </div>
+  {managers.map(({ name, command }, i) => (
+    <div
+      role="tabpanel"
+      id={`${id}-panel-${name}`}
+      aria-labelledby={`${id}-tab-${name}`}
+      hidden={i !== 0}
+      class="install-panel"
+    >
+      <CodeBlock code={command} lang="sh" />
+    </div>
+  ))}
+</div>
+
+<style>
+  /* Sit the CodeBlock flush under the tab bar */
+  .install-panel > :global(div) {
+    margin: 0;
+    border-radius: 0;
+  }
+  .install-panel :global(pre) {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+  .install-panel :global(.copy-btn) {
+    top: 14px;
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'docs-package-manager';
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.install-tabs [role="tab"]')];
+
+  const select = (name: string) => {
+    tabs.forEach(tab => {
+      const selected = tab.dataset.pm === name;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      document.getElementById(tab.getAttribute('aria-controls')!)!.hidden = !selected;
+    });
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      select(tab.dataset.pm!);
+      localStorage.setItem(STORAGE_KEY, tab.dataset.pm!);
+    });
+
+    tab.addEventListener('keydown', event => {
+      const siblings = [...tab.parentElement!.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+      const index = siblings.indexOf(tab);
+      const next = {
+        ArrowRight: siblings[(index + 1) % siblings.length],
+        ArrowLeft: siblings[(index - 1 + siblings.length) % siblings.length],
+        Home: siblings[0],
+        End: siblings[siblings.length - 1],
+      }[event.key];
+      if (!next) return;
+      event.preventDefault();
+      next.focus();
+      next.click();
+    });
+  });
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved && tabs.some(tab => tab.dataset.pm === saved)) select(saved);
+</script>

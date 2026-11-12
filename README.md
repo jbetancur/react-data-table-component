@@ -19,12 +19,17 @@ const columns = [
   { name: 'Director', selector: row => row.director },
 ];
 
+const data = [
+  { id: 1, title: 'Beetlejuice', year: 1988, director: 'Tim Burton' },
+  { id: 2, title: 'Ghostbusters', year: 1984, director: 'Ivan Reitman' },
+];
+
 export default function Movies() {
   return <DataTable columns={columns} data={data} pagination />;
 }
 ```
 
-# Key Features
+## Key features
 
 - Sorting, row selection, expandable rows, and pagination (all opt-in props)
 - Themeable via CSS variables; deeply customizable via `customStyles`
@@ -34,13 +39,13 @@ export default function Movies() {
 - SSR-safe; ships `"use client"` for Next.js App Router (import directly into a Server Component file)
 - Headless hooks for full markup/style control when you outgrow the defaults, available on their own from `react-data-table-component/headless` (no component, no CSS)
 
-# Documentation Website
+## Documentation
 
 The documentation contains information about installation, usage and contributions.
 
 [reactdatatable.com](https://reactdatatable.com)
 
-# Supporting React Data Table Component
+## Supporting React Data Table Component
 
 React Data Table Component has been actively maintained since 2018 and is downloaded ![weekly downloads](https://img.shields.io/npm/dw/react-data-table-component.svg?label=%20&color=blue&style=flat-square) times a week. If your team ships products with it, your support keeps it maintained, bug-free, and moving forward.
 
@@ -80,6 +85,6 @@ Thank you to our recurring backers:
 - Rich Tillman
 - [Simon Schick](https://github.com/SimonSchick)
 
-# Contributors
+## Contributors
 
 [![Contributors](https://contrib.rocks/image?repo=jbetancur/react-data-table-component)](https://github.com/jbetancur/react-data-table-component/graphs/contributors)
