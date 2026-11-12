@@ -3,9 +3,10 @@ import CodeBlock from './CodeBlock.astro';
 
 interface Props {
   pkg?: string;
+  class?: string;
 }
 
-const { pkg = 'react-data-table-component' } = Astro.props;
+const { pkg = 'react-data-table-component', class: className = 'my-11' } = Astro.props;
 const managers = [
   { name: 'npm', command: `npm install ${pkg}` },
   { name: 'yarn', command: `yarn add ${pkg}` },
@@ -15,7 +16,7 @@ const managers = [
 const id = `install-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<div class="install-tabs not-prose my-11 rounded-xl overflow-hidden bg-gray-950">
+<div class:list={['install-tabs not-prose rounded-xl overflow-hidden bg-gray-950', className]}>
   <div role="tablist" aria-label="Package manager" class="flex px-2 border-b border-white/10">
     {managers.map(({ name }, i) => (
       <button
@@ -53,8 +54,11 @@ const id = `install-${Math.random().toString(36).slice(2, 8)}`;
   }
   .install-panel :global(pre) {
     margin: 0;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
     border: none;
     border-radius: 0;
+    font-size: 0.82rem;
   }
   .install-panel :global(.copy-btn) {
     top: 14px;

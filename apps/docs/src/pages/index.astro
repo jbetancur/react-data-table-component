@@ -1,6 +1,7 @@
 ---
 import { Code } from 'astro:components';
 import Layout from '../layouts/Layout.astro';
+import InstallTabs from '../components/InstallTabs.astro';
 import LiveDemo from '../components/LiveDemo.tsx';
 import { backers } from '../data/backers';
 import pkg from '../../../../package.json';
@@ -73,33 +74,7 @@ function fmt(n: number): string {
 		</div>
 
 		<!-- Install snippet -->
-		<div class="mt-8 inline-flex items-center gap-4 bg-gray-950 text-gray-100 rounded-lg px-5 py-3 font-mono text-sm group relative">
-			<span><span class="text-gray-500">$</span> npm install react-data-table-component</span>
-			<button
-				id="install-copy-btn"
-				aria-label="Copy install command"
-				class="flex items-center gap-1 text-xs text-gray-400 hover:text-white transition-colors"
-			>
-				<svg id="install-icon-copy" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-					<rect x="4" y="4" width="9" height="9" rx="1.5"/>
-					<path d="M3 11H2.5A1.5 1.5 0 0 1 1 9.5v-7A1.5 1.5 0 0 1 2.5 1h7A1.5 1.5 0 0 1 11 2.5V3"/>
-				</svg>
-				<svg id="install-icon-check" class="hidden" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<polyline points="2 8 6 12 14 4"/>
-				</svg>
-			</button>
-		</div>
-		<script>
-			document.getElementById('install-copy-btn')?.addEventListener('click', async () => {
-				await navigator.clipboard.writeText('npm install react-data-table-component');
-				document.getElementById('install-icon-copy')?.classList.add('hidden');
-				document.getElementById('install-icon-check')?.classList.remove('hidden');
-				setTimeout(() => {
-					document.getElementById('install-icon-copy')?.classList.remove('hidden');
-					document.getElementById('install-icon-check')?.classList.add('hidden');
-				}, 2000);
-			});
-		</script>
+		<InstallTabs class="mt-8 mx-auto max-w-md text-left" />
 
 		<!-- Social proof stats -->
 		<div class="mt-10 flex items-center justify-center gap-8 flex-wrap text-center">
